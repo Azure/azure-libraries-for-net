@@ -56,7 +56,7 @@ namespace Fluent.Tests.Compute
                     Assert.Equal(containerService.AgentPoolName, "agentPool0" + csName);
                     Assert.Equal(containerService.AgentPoolLeafDomainLabel, "ap0" + dnsPrefix);
                     Assert.Equal(containerService.AgentPoolVMSize, ContainerServiceVMSizeTypes.StandardA1);
-                    Assert.Equal(containerService.OrchestratorType, ContainerServiceOchestratorTypes.DCOS);
+                    Assert.Equal(containerService.OrchestratorType, ContainerServiceOrchestratorTypes.DCOS);
                     Assert.True(containerService.IsDiagnosticsEnabled);
                     Assert.True(containerService.Tags.ContainsKey("tag1"));
 

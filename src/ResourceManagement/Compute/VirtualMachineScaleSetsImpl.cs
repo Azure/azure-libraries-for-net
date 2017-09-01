@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:4DBD1302C1BE61E6004FB18DA868020B:A8445E32081DE89D5D3DAD2DAAFEFB2F
         public async Task ReimageAsync(string groupName, string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Inner.ReimageAsync(groupName, name, cancellationToken);
+            await Inner.ReimageAsync(groupName, name, cancellationToken: cancellationToken);
         }
 
         ///GENMHASH:4DBD1302C1BE61E6004FB18DA868020B:A8445E32081DE89D5D3DAD2DAAFEFB2F

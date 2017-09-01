@@ -1594,7 +1594,7 @@ namespace Microsoft.Azure.Management.Samples.Common
                 .Append("\n\t\tAgent pool leaf domain label: ").Append(containerService.AgentPoolLeafDomainLabel)
                 .Append("\n\tLinux user name: ").Append(containerService.LinuxRootUsername)
                 .Append("\n\tSSH key: ").Append(containerService.SshKey);
-            if (containerService.OrchestratorType == ContainerServiceOchestratorTypes.Kubernetes)
+            if (containerService.OrchestratorType == ContainerServiceOrchestratorTypes.Kubernetes)
             {
                 info.Append("\n\tName: ").Append(containerService.ServicePrincipalClientId);
             }
