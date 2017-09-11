@@ -258,7 +258,7 @@ namespace Fluent.Tests.Network
                 ISubnet subnet;
                 Assert.True(network.Subnets.TryGetValue(ipConfig.SubnetName, out subnet));
                 Assert.Equal(1, subnet.NetworkInterfaceIPConfigurationCount);
-                var ipConfigs = subnet.GetNetworkInterfaceIPConfigurations();
+                var ipConfigs = subnet.ListNetworkInterfaceIPConfigurations();
                 Assert.NotNull(ipConfigs);
                 Assert.Equal(1, ipConfigs.Count);
 
