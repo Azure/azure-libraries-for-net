@@ -92,7 +92,7 @@ namespace Fluent.Tests.ResourceManager
                 Assert.Equal(deployment.Name, deploymentName2);
                 deployment.Cancel();
                 deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName2);
-                Assert.Equal(deployment.ProvisioningState, "Canceled");
+                Assert.Equal("Canceled", deployment.ProvisioningState);
                 resourceManager.GenericResources.Delete(rgName, "Microsoft.Network", "", "virtualnetworks", "VNet1", "2015-06-15");
             }
         }

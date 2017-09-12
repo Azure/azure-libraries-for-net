@@ -215,12 +215,12 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
                 var customScriptExtension = extensions["CustomScriptForLinux"];
                 Assert.NotNull(customScriptExtension);
-                Assert.Equal(customScriptExtension.PublisherName, "Microsoft.OSTCExtensions");
-                Assert.Equal(customScriptExtension.TypeName, "CustomScriptForLinux");
+                Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension.PublisherName);
+                Assert.Equal("CustomScriptForLinux", customScriptExtension.TypeName);
                 Assert.NotNull(customScriptExtension.PublicSettings);
                 Assert.Equal(1, customScriptExtension.PublicSettings.Count);
                 Assert.NotNull(customScriptExtension.PublicSettingsAsJsonString);
-                Assert.Equal(customScriptExtension.AutoUpgradeMinorVersionEnabled, true);
+                Assert.True(customScriptExtension.AutoUpgradeMinorVersionEnabled);
 
                 // Special check for C# implementation, seems runtime changed the actual type of public settings from 
                 // dictionary to Newtonsoft.Json.Linq.JObject. In future such changes needs to be catched before attemptting
@@ -241,7 +241,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string fileUrisString = (publicSettings["fileUris"]).ToString();
                 if (HttpMockServer.Mode != HttpRecorderMode.Playback)
                 {
-                    Assert.True(fileUrisString.Contains(uri));
+                    Assert.Contains(uri, fileUrisString);
                 }
 
                 /*** UPDATE THE EXTENSION WITH NEW PUBLIC AND PROTECTED SETTINGS **/
@@ -278,9 +278,9 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
                 var customScriptExtension2 = extensions["CustomScriptForLinux"];
                 Assert.NotNull(customScriptExtension2);
-                Assert.Equal(customScriptExtension2.PublisherName, "Microsoft.OSTCExtensions");
-                Assert.Equal(customScriptExtension2.TypeName, "CustomScriptForLinux");
-                Assert.Equal(customScriptExtension2.AutoUpgradeMinorVersionEnabled, true);
+                Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension2.PublisherName);
+                Assert.Equal("CustomScriptForLinux", customScriptExtension2.TypeName);
+                Assert.True(customScriptExtension2.AutoUpgradeMinorVersionEnabled);
 
                 var publicSettings2 = customScriptExtension2.PublicSettings;
                 Assert.NotNull(publicSettings2);
@@ -289,7 +289,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string fileUris2String = (publicSettings2["fileUris"]).ToString();
                 if (HttpMockServer.Mode != HttpRecorderMode.Playback)
                 {
-                    Assert.True(fileUris2String.Contains(uri2));
+                    Assert.Contains(uri2, fileUris2String);
                 }
             }
         }
@@ -431,12 +431,12 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 {
                     nicCount++;
                     Assert.NotNull(nic.Id);
-                    Assert.True(nic.VirtualMachineId.ToLower().StartsWith(virtualMachineScaleSet.Id.ToLower()));
+                    Assert.StartsWith(virtualMachineScaleSet.Id.ToLower(), nic.VirtualMachineId.ToLower());
                     Assert.NotNull(nic.MacAddress);
                     Assert.NotNull(nic.DnsServers);
                     Assert.NotNull(nic.AppliedDnsServers);
                     var ipConfigs = nic.IPConfigurations;
-                    Assert.Equal(ipConfigs.Count(), 1);
+                    Assert.Single(ipConfigs);
                     foreach (var ipConfig in ipConfigs.Values)
                     {
                         Assert.NotNull(ipConfig);
@@ -449,11 +449,11 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         var lbBackends = ipConfig.ListAssociatedLoadBalancerBackends();
                         // VMSS is created with a internet facing LB with two Backend pools so there will be two
                         // backends in ip-config as well
-                        Assert.Equal(lbBackends.Count, 2);
+                        Assert.Equal(2, lbBackends.Count);
                         foreach (var lbBackend in lbBackends)
                         {
                             var lbRules = lbBackend.LoadBalancingRules;
-                            Assert.Equal(lbRules.Count, 1);
+                            Assert.Equal(1, lbRules.Count);
                             foreach (var rule in lbRules.Values)
                             {
                                 Assert.NotNull(rule);
@@ -464,7 +464,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         var lbNatRules = ipConfig.ListAssociatedLoadBalancerInboundNatRules();
                         // VMSS is created with a internet facing LB with two nat pools so there will be two
                         //  nat rules in ip-config as well
-                        Assert.Equal(lbNatRules.Count, 2);
+                        Assert.Equal(2, lbNatRules.Count);
                         foreach (var lbNatRule in lbNatRules)
                         {
                             Assert.True((lbNatRule.FrontendPort >= 5000 && lbNatRule.FrontendPort <= 5099) || 
@@ -476,11 +476,11 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 Assert.True(nicCount > 0);
 
-                Assert.Equal(virtualMachineScaleSet.VhdContainers.Count(), 2);
+                Assert.Equal(2, virtualMachineScaleSet.VhdContainers.Count());
                 Assert.Equal(virtualMachineScaleSet.Sku, VirtualMachineScaleSetSkuTypes.StandardA0);
                 // Check defaults
                 Assert.True(virtualMachineScaleSet.UpgradeModel == UpgradeMode.Automatic);
-                Assert.Equal(virtualMachineScaleSet.Capacity, 2);
+                Assert.Equal(2, virtualMachineScaleSet.Capacity);
                 // Fetch the primary Virtual network
                 primaryNetwork = virtualMachineScaleSet.GetPrimaryNetwork();
 
@@ -530,7 +530,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 {
                     nicCount++;
                     var ipConfigs = nic.IPConfigurations;
-                    Assert.Equal(ipConfigs.Count, 1);
+                    Assert.Equal(1, ipConfigs.Count);
                     foreach (var ipConfig in ipConfigs.Values)
                     {
                         Assert.NotNull(ipConfig);
@@ -545,7 +545,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         foreach (var lbBackend in lbBackends)
                         {
                             var lbRules = lbBackend.LoadBalancingRules;
-                            Assert.Equal(lbRules.Count, 1);
+                            Assert.Equal(1, lbRules.Count);
                             foreach (var rule in lbRules.Values)
                             {
                                 Assert.NotNull(rule);
@@ -824,14 +824,14 @@ namespace Fluent.Tests.Compute.VirtualMachine
             foreach (var vm in virtualMachines)
             {
                 Assert.NotNull(vm.Size);
-                Assert.Equal(vm.OSType, OperatingSystemTypes.Linux);
-                Assert.NotNull(vm.ComputerName.StartsWith(vmScaleSet.ComputerNamePrefix));
+                Assert.Equal(OperatingSystemTypes.Linux, vm.OSType);
+                Assert.StartsWith(vmScaleSet.ComputerNamePrefix, vm.ComputerName);
                 Assert.True(vm.IsLinuxPasswordAuthenticationEnabled);
                 Assert.True(vm.IsOSBasedOnPlatformImage);
                 Assert.Null(vm.StoredImageUnmanagedVhdUri);
                 Assert.False(vm.IsWindowsAutoUpdateEnabled);
                 Assert.False(vm.IsWindowsVMAgentProvisioned);
-                Assert.True(vm.AdministratorUserName.Equals("jvuser", StringComparison.OrdinalIgnoreCase));
+                Assert.Equal("jvuser", vm.AdministratorUserName, ignoreCase: true);
                 var vmImage = vm.GetOSPlatformImage();
                 Assert.NotNull(vmImage);
                 Assert.Equal(vm.Extensions.Count(), vmScaleSet.Extensions.Count);
@@ -853,7 +853,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 var nics = vmScaleSet.ListNetworkInterfacesByInstanceId(vm.InstanceId);
                 Assert.NotNull(nics);
-                Assert.Equal(nics.Count(), 1);
+                Assert.Single(nics);
                 var nic = nics.First();
                 Assert.NotNull(nic.VirtualMachineId);
                 Assert.True(string.Compare(nic.VirtualMachineId, vm.Id, true) == 0);
@@ -926,14 +926,14 @@ namespace Fluent.Tests.Compute.VirtualMachine
             loadBalancer = azure.LoadBalancers.GetByResourceGroup(resourceGroup.Name, loadBalancerName);
 
             Assert.True(loadBalancer.PublicIPAddressIds.Count() == 1);
-            Assert.Equal(loadBalancer.HttpProbes.Count(), 2);
+            Assert.Equal(2, loadBalancer.HttpProbes.Count());
             ILoadBalancerHttpProbe httpProbe = null;
             Assert.True(loadBalancer.HttpProbes.TryGetValue("httpProbe", out httpProbe));
-            Assert.Equal(httpProbe.LoadBalancingRules.Count(), 1);
+            Assert.Single(httpProbe.LoadBalancingRules);
             ILoadBalancerHttpProbe httpsProbe = null;
             Assert.True(loadBalancer.HttpProbes.TryGetValue("httpsProbe", out httpsProbe));
-            Assert.Equal(httpProbe.LoadBalancingRules.Count(), 1);
-            Assert.Equal(loadBalancer.InboundNatPools.Count(), 2);
+            Assert.Single(httpProbe.LoadBalancingRules);
+            Assert.Equal(2, loadBalancer.InboundNatPools.Count());
             return loadBalancer;
         }
 
@@ -1000,19 +1000,19 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
             loadBalancer = azure.LoadBalancers.GetByResourceGroup(resourceGroup.Name, loadBalancerName);
 
-            Assert.Equal(loadBalancer.PublicIPAddressIds.Count(), 0);
-            Assert.Equal(loadBalancer.Backends.Count(), 2);
+            Assert.Empty(loadBalancer.PublicIPAddressIds);
+            Assert.Equal(2, loadBalancer.Backends.Count());
             ILoadBalancerBackend backend1 = null;
             Assert.True(loadBalancer.Backends.TryGetValue(backendPoolName1, out backend1));
             ILoadBalancerBackend backend2 = null;
             Assert.True(loadBalancer.Backends.TryGetValue(backendPoolName2, out backend2));
             ILoadBalancerHttpProbe httpProbe = null;
             Assert.True(loadBalancer.HttpProbes.TryGetValue("httpProbe", out httpProbe));
-            Assert.Equal(httpProbe.LoadBalancingRules.Count(), 1);
+            Assert.Single(httpProbe.LoadBalancingRules);
             ILoadBalancerHttpProbe httpsProbe = null;
             Assert.True(loadBalancer.HttpProbes.TryGetValue("httpsProbe", out httpsProbe));
-            Assert.Equal(httpProbe.LoadBalancingRules.Count(), 1);
-            Assert.Equal(loadBalancer.InboundNatPools.Count(), 2);
+            Assert.Single(httpProbe.LoadBalancingRules);
+            Assert.Equal(2, loadBalancer.InboundNatPools.Count());
             return loadBalancer;
         }
 
@@ -1064,11 +1064,11 @@ namespace Fluent.Tests.Compute.VirtualMachine
             loadBalancer = azure.LoadBalancers.GetByResourceGroup(resourceGroup.Name, loadBalancerName);
 
             Assert.True(loadBalancer.PublicIPAddressIds.Count() == 1);
-            var httpProbe = loadBalancer.HttpProbes.FirstOrDefault();
+            var httpProbe = loadBalancer.HttpProbes.Values.FirstOrDefault();
             Assert.NotNull(httpProbe);
-            var rule = httpProbe.Value.LoadBalancingRules.FirstOrDefault();
+            var rule = httpProbe.LoadBalancingRules.Values.FirstOrDefault();
             Assert.NotNull(rule);
-            var natPool = loadBalancer.InboundNatPools.FirstOrDefault();
+            var natPool = loadBalancer.InboundNatPools.Values.FirstOrDefault();
             Assert.NotNull(natPool);
             return loadBalancer;
         }

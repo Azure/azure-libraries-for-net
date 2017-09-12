@@ -42,7 +42,7 @@ namespace Fluent.Tests
                     Assert.Null(batchAccount.AutoStorage);
                     // List
                     var accounts = batchManager.BatchAccounts.ListByResourceGroup(rgName);
-                    Assert.True(accounts.Any(account => StringComparer.OrdinalIgnoreCase.Equals(account.Name, batchAccountName)));
+                    Assert.Contains(accounts, account => StringComparer.OrdinalIgnoreCase.Equals(account.Name, batchAccountName));
                     // Get
                     batchAccount = batchManager.BatchAccounts.GetByResourceGroup(rgName, batchAccountName);
                     Assert.NotNull(batchAccount);
@@ -164,7 +164,7 @@ namespace Fluent.Tests
 
                     var batchAccounts = batchManager.BatchAccounts.ListByResourceGroup(rgName);
 
-                    Assert.Equal(batchAccounts.Count(), 0);
+                    Assert.Empty(batchAccounts);
                 }
                 finally
                 {
@@ -208,7 +208,7 @@ namespace Fluent.Tests
 
                     // List
                     var accounts = batchManager.BatchAccounts.ListByResourceGroup(rgName);
-                    Assert.True(accounts.Any(account => StringComparer.OrdinalIgnoreCase.Equals(account.Name, batchAccountName)));
+                    Assert.Contains(accounts, account => StringComparer.OrdinalIgnoreCase.Equals(account.Name, batchAccountName));
 
                     // Get
                     batchAccount = batchManager.BatchAccounts.GetByResourceGroup(rgName, batchAccountName);
@@ -230,7 +230,7 @@ namespace Fluent.Tests
                     }
                     var batchAccounts = batchManager.BatchAccounts.ListByResourceGroup(rgName);
 
-                    Assert.Equal(batchAccounts.Count(), 0);
+                    Assert.Empty(batchAccounts);
                 }
                 finally
                 {

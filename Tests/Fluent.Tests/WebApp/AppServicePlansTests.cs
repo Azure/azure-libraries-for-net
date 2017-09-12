@@ -35,7 +35,7 @@ namespace Fluent.Tests.WebApp
                     .Create();
                 Assert.NotNull(appServicePlan);
                 Assert.Equal(PricingTier.PremiumP1, appServicePlan.PricingTier);
-                Assert.Equal(false, appServicePlan.PerSiteScaling);
+                Assert.False(appServicePlan.PerSiteScaling);
                 Assert.Equal(2, appServicePlan.Capacity);
                 Assert.Equal(0, appServicePlan.NumberOfWebApps);
                 Assert.Equal(20, appServicePlan.MaxInstances);
@@ -61,7 +61,7 @@ namespace Fluent.Tests.WebApp
                     .Apply();
                 Assert.NotNull(appServicePlan);
                 Assert.Equal(PricingTier.StandardS1, appServicePlan.PricingTier);
-                Assert.Equal(true, appServicePlan.PerSiteScaling);
+                Assert.True(appServicePlan.PerSiteScaling);
                 Assert.Equal(3, appServicePlan.Capacity);
             }
         }

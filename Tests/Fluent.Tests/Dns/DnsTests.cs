@@ -77,13 +77,13 @@ namespace Fluent.Tests.Dns
                     .Create();
 
                     // Check DNS zone properties
-                    Assert.True(dnsZone.Name.StartsWith(topLevelDomain));
+                    Assert.StartsWith(topLevelDomain, dnsZone.Name);
                     Assert.True(dnsZone.NameServers.Count() > 0); // Default '@' name servers
                     Assert.True(dnsZone.Tags.Count == 2);
 
                     // Check SOA record - external child resource (created by default)
                     var soaRecordSet = dnsZone.GetSoaRecordSet();
-                    Assert.True(soaRecordSet.Name.StartsWith("@"));
+                    Assert.StartsWith("@", soaRecordSet.Name);
                     var soaRecord = soaRecordSet.Record;
                     Assert.NotNull(soaRecord);
 
@@ -98,7 +98,7 @@ namespace Fluent.Tests.Dns
                     // Check AAAA records
                     var aaaaRecordSets = dnsZone.AaaaRecordSets.List();
                     Assert.True(aaaaRecordSets.Count() == 1);
-                    Assert.True(aaaaRecordSets.ElementAt(0).Name.StartsWith("www"));
+                    Assert.StartsWith("www", aaaaRecordSets.ElementAt(0).Name);
                     Assert.True(aaaaRecordSets.ElementAt(0).IPv6Addresses.Count() == 2);
 
                     // Check MX records
@@ -106,7 +106,7 @@ namespace Fluent.Tests.Dns
                     Assert.True(mxRecordSets.Count() == 1);
                     var mxRecordSet = mxRecordSets.ElementAt(0);
                     Assert.NotNull(mxRecordSet);
-                    Assert.True(mxRecordSet.Name.StartsWith("email"));
+                    Assert.StartsWith("email", mxRecordSet.Name);
                     Assert.True(mxRecordSet.Metadata.Count() == 2);
                     Assert.True(mxRecordSet.Records.Count() == 2);
                     foreach (var mxRecord in mxRecordSet.Records)
@@ -239,14 +239,14 @@ namespace Fluent.Tests.Dns
 
                     // Check TXT records
                     txtRecordSets = dnsZone.TxtRecordSets.List();
-                    Assert.Equal(1, txtRecordSets.Count());
+                    Assert.Single(txtRecordSets);
 
                     // Check CNAME records
                     cnameRecordSets = dnsZone.CNameRecordSets.List();
                     Assert.Equal(2, cnameRecordSets.Count());
                     foreach (var cnameRecordSet in cnameRecordSets)
                     {
-                        Assert.True(cnameRecordSet.CanonicalName.StartsWith("doc.contoso.com"));
+                        Assert.StartsWith("doc.contoso.com", cnameRecordSet.CanonicalName);
                         Assert.True(cnameRecordSet.Name.StartsWith("documents") || cnameRecordSet.Name.StartsWith("help"));
                     }
 
@@ -268,7 +268,7 @@ namespace Fluent.Tests.Dns
 
                     // Check A records
                     aRecordSets = dnsZone.ARecordSets.List();
-                    Assert.Equal(1, aRecordSets.Count());
+                    Assert.Single(aRecordSets);
                     var aRecordSet = aRecordSets.ElementAt(0);
                     Assert.Equal(2, aRecordSet.IPv4Addresses.Count());
                     foreach (var ipV4Address in aRecordSet.IPv4Addresses)
@@ -288,7 +288,7 @@ namespace Fluent.Tests.Dns
 
                     // Check SOA Records
                     soaRecordSet = dnsZone.GetSoaRecordSet();
-                    Assert.True(soaRecordSet.Name.StartsWith("@"));
+                    Assert.StartsWith("@", soaRecordSet.Name);
                     soaRecord = soaRecordSet.Record;
                     Assert.NotNull(soaRecord);
                     Assert.Equal(600, soaRecord.MinimumTtl);
@@ -311,9 +311,9 @@ namespace Fluent.Tests.Dns
                     Assert.True(dnsZone.Tags.Count() == 3);
                     // Check "mail" MX record
                     mxRecordSet = dnsZone.MXRecordSets.GetByName("email");
-                    Assert.True(mxRecordSet.Records.Count() == 1);
-                    Assert.True(mxRecordSet.Metadata.Count() == 3);
-                    Assert.True(mxRecordSet.Records[0].Exchange.StartsWith("mail.contoso-mail-exchange1.com"));
+                    Assert.Single(mxRecordSet.Records);
+                    Assert.Equal(3, mxRecordSet.Metadata.Count());
+                    Assert.StartsWith("mail.contoso-mail-exchange1.com", mxRecordSet.Records[0].Exchange);
 
                     azure.DnsZones.DeleteById(dnsZone.Id);
                 } finally

@@ -51,18 +51,18 @@ namespace Fluent.Tests.Network
                 Assert.Equal("10.0.0.0/29", subnet.AddressPrefix);
                 subnet = network.Subnets["subnetB"];
                 Assert.Equal("10.0.0.8/29", subnet.AddressPrefix);
-                Assert.True(nsg.Id.Equals(subnet.NetworkSecurityGroupId,  StringComparison.OrdinalIgnoreCase));
+                Assert.Equal(nsg.Id, subnet.NetworkSecurityGroupId, ignoreCase: true);
 
                 // Verify NSG
                 var subnets = nsg.Refresh().ListAssociatedSubnets();
                 Assert.Equal(1, subnets.Count);
                 subnet = subnets[0];
-                Assert.True(subnet.Name.Equals("subnetB", StringComparison.OrdinalIgnoreCase));
-                Assert.True(subnet.Parent.Name.Equals(newName, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal("subnetB", subnet.Name, ignoreCase: true);
+                Assert.Equal(subnet.Parent.Name, newName, ignoreCase: true);
                 Assert.NotNull(subnet.NetworkSecurityGroupId);
                 INetworkSecurityGroup nsg2 = subnet.GetNetworkSecurityGroup();
                 Assert.NotNull(nsg2);
-                Assert.True(nsg2.Id.Equals(nsg.Id, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal(nsg2.Id, nsg.Id, ignoreCase: true);
 
                 network = manager.Networks.GetByResourceGroup(groupName, newName);
                 network = network.Update()
@@ -99,7 +99,7 @@ namespace Fluent.Tests.Network
                 subnet = network.Subnets["subnetD"];
                 Assert.NotNull(subnet);
                 Assert.Equal("141.25.0.16/29", subnet.AddressPrefix);
-                Assert.True(nsg.Id.Equals(subnet.NetworkSecurityGroupId, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal(nsg.Id, subnet.NetworkSecurityGroupId, ignoreCase: true);
 
                 Assert.True(network.Tags.ContainsKey("tag1"));
 
