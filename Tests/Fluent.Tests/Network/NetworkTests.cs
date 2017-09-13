@@ -4,16 +4,127 @@
 using Azure.Tests;
 using Fluent.Tests.Common;
 using Microsoft.Azure.Management.Network.Fluent;
+using Microsoft.Azure.Management.Network.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using System;
+using System.Linq;
 using System.Text;
 using Xunit;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
 namespace Fluent.Tests.Network
 {
     public class Network
     {
+        [Fact]
+        public void CreateUpdatePeering()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var testId = TestUtilities.GenerateName("");
+                Region region = Region.USEast;
+                string groupName = "rg" + testId;
+                string networkName = "netA" + testId;
+                string networkName2 = "netB" + testId;
+                var networks = TestHelper.CreateNetworkManager().Networks;
+
+                // Create networks
+                ICreatable<INetwork> remoteNetworkDefinition = networks.Define(networkName2)
+                        .WithRegion(region)
+                        .WithNewResourceGroup(groupName)
+                        .WithAddressSpace("10.1.0.0/27")
+                        .WithSubnet("subnet3", "10.1.0.0/27");
+
+                ICreatable<INetwork> localNetworkDefinition = networks.Define(networkName)
+                        .WithRegion(region)
+                        .WithNewResourceGroup(groupName)
+                        .WithAddressSpace("10.0.0.0/27")
+                        .WithSubnet("subnet1", "10.0.0.0/28")
+                        .WithSubnet("subnet2", "10.0.0.16/28");
+
+                var createdNetworks = networks.Create(remoteNetworkDefinition, localNetworkDefinition);
+                INetwork localNetwork = createdNetworks.FirstOrDefault(o => o.Key == localNetworkDefinition.Key);
+                Assert.NotNull(localNetwork);
+                INetwork remoteNetwork = createdNetworks.FirstOrDefault(o => o.Key == remoteNetworkDefinition.Key);
+                Assert.NotNull(remoteNetwork);
+
+                // Create peering
+                INetworkPeering localPeering = localNetwork.Peerings.Define("peer0")
+                    .WithRemoteNetwork(remoteNetwork)
+
+                    // Optionals
+                    .WithTrafficForwardingBetweenBothNetworks()
+                    .WithoutAccessFromEitherNetwork()
+                    .WithGatewayUseByRemoteNetworkAllowed()
+                    .Create();
+
+                // Verify local peering
+                Assert.NotNull(localNetwork.Peerings);
+                var localPeerings = localNetwork.Peerings.List();
+                Assert.Single(localPeerings);
+                localPeering = localPeerings.FirstOrDefault();
+                Assert.NotNull(localPeering);
+                Assert.Equal("peer0", localPeering.Name, true);
+                Assert.Equal(NetworkPeeringState.Connected, localPeering.State);
+                Assert.True(localPeering.IsTrafficForwardingFromRemoteNetworkAllowed);
+                // TODO Assert.False(localPeering.IsAccessFromRemoteNetworkAllowed());
+                Assert.Equal(NetworkPeeringGatewayUse.ByRemoteNetwork, localPeering.GatewayUse);
+
+                // Verify remote peering
+                Assert.NotNull(remoteNetwork.Peerings);
+                Assert.Single(remoteNetwork.Peerings.List());
+                INetworkPeering remotePeering = localPeering.GetRemotePeering();
+                Assert.NotNull(remotePeering);
+                Assert.Equal(localNetwork.Id, remotePeering.RemoteNetworkId, true);
+                Assert.Equal(NetworkPeeringState.Connected, remotePeering.State);
+                Assert.True(remotePeering.IsTrafficForwardingFromRemoteNetworkAllowed);
+                // TODO Assert.False(remotePeering.IsAccessFromRemoteNetworkAllowed());
+                Assert.Equal(NetworkPeeringGatewayUse.None, remotePeering.GatewayUse);
+
+                // Update peering
+                localPeering = localNetwork.Peerings.List().FirstOrDefault();
+                Assert.NotNull(localPeering);
+
+                // Verify remote IP invisibility to local network before peering
+                remoteNetwork = localPeering.GetRemoteNetwork();
+                Assert.NotNull(remoteNetwork);
+                ISubnet remoteSubnet = remoteNetwork.Subnets["subnet3"];
+                Assert.NotNull(remoteSubnet);
+                var remoteAvailableIPs = remoteSubnet.ListAvailablePrivateIPAddresses();
+                Assert.NotNull(remoteAvailableIPs);
+                Assert.NotEmpty(remoteAvailableIPs);
+                string remoteTestIP = remoteAvailableIPs.FirstOrDefault();
+                Assert.False(localNetwork.IsPrivateIPAddressAvailable(remoteTestIP));
+
+                localPeering.Update()
+                    .WithoutTrafficForwardingFromEitherNetwork()
+                    .WithAccessBetweenBothNetworks()
+                    .WithoutAnyGatewayUse()
+                    .Apply();
+
+                // Verify local peering changes
+                Assert.False(localPeering.IsTrafficForwardingFromRemoteNetworkAllowed);
+                // TODO Assert.True(localPeering.IsAccessFromRemoteNetworkAllowed());
+                Assert.Equal(NetworkPeeringGatewayUse.None, localPeering.GatewayUse);
+
+                // Verify remote peering changes
+                remotePeering = localPeering.GetRemotePeering();
+                Assert.NotNull(remotePeering);
+                Assert.False(remotePeering.IsTrafficForwardingFromRemoteNetworkAllowed);
+                // TODO Assert.True(remotePeering.IsAccessFromRemoteNetworkAllowed());
+                Assert.Equal(NetworkPeeringGatewayUse.None, remotePeering.GatewayUse);
+
+                // Delete the peering
+                localNetwork.Peerings.DeleteById(remotePeering.Id);
+
+                // Verify deletion
+                Assert.Empty(localNetwork.Peerings.List());
+                Assert.Empty(remoteNetwork.Peerings.List());
+
+                // Cleanup
+                networks.Manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
+            }
+        }
 
         [Fact]
         public void CreateUpdate()

@@ -82,10 +82,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
 
     /// <summary>
     /// The stage of the virtual network definition which contains all the minimum required inputs for
-    /// the resource to be created (via  WithCreate.create()), but also allows
+    /// the resource to be created, but also allows
     /// for any other optional settings to be specified, except for adding subnets.
-    /// Subnets can be added only right after the address space is explicitly specified
-    /// (see  WithCreate.withAddressSpace(String)).
+    /// Subnets can be added only right after the address space is explicitly specified.
     /// </summary>
     public interface IWithCreate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.INetwork>,
