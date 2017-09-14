@@ -78,18 +78,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
             if (remoteNetwork != null)
             {
                 // Return cached network
-                return await Task.FromResult(remoteNetwork);
+                return remoteNetwork;
             }
             else if (IsSameSubscription())
             {
                 // Fetch and cache the remote network if within the same subscription
                 remoteNetwork = await Manager.Networks.GetByIdAsync(RemoteNetworkId());
-                return await Task.FromResult(remoteNetwork);
+                return remoteNetwork;
             }
             else
             {
                 // Otherwise bail out
-                return await Task.FromResult((INetwork)null);
+                return null;
             }
         }
 
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 parent.ResourceGroupName, networkName, Name, Inner);
             if (inner == null)
             {
-                return await Task.FromResult((INetworkPeering)null);
+                return null;
             }
 
             // After successful creation, update the inner
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             // Then return the created local peering
-            return await Task.FromResult(localPeering);
+            return localPeering;
         }
 
         ///GENMHASH:E9313E7AFF3D55B1D5E1491AAF57645D:55EF0880DF255C40FBB22F800E1919AE
@@ -398,7 +398,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 remoteNetwork = network;
                 return WithRemoteNetwork(network.Id);
             }
-            return this;
+            else
+            {
+                return this;
+            }
         }
 
         ///GENMHASH:66DA63C7E53E44771C1865118198C32A:D4D043FD877FB2085809FF6322CA51FC
@@ -428,13 +431,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public async Task<INetworkPeering> GetRemotePeeringAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var remoteNetwork = await GetRemoteNetworkAsync();
-            if (remoteNetwork == null)
+            if (remoteNetwork != null)
             {
-                return await Task.FromResult((INetworkPeering)null);
+                return await remoteNetwork.Peerings.GetByRemoteNetworkAsync(NetworkId());
             }
             else
             {
-                return await remoteNetwork.Peerings.GetByRemoteNetworkAsync(NetworkId());
+                return null;
             }
        }
 

@@ -28,14 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:31765EEA1AC846369BF9436E32D2EA18:ED5536E94E5EC9F517090473579BDDF6
         public async Task<INetworkPeering> GetByRemoteNetworkAsync(INetwork network, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (network != null)
-            {
-                return await GetByRemoteNetworkAsync(network.Id);
-            }
-            else
-            {
-                return await Task.FromResult((INetworkPeering) null);
-            }
+            return (network != null) ? await GetByRemoteNetworkAsync(network.Id) : null;
         }
 
         ///GENMHASH:2601382D41F49CF9CEB130D1B7B2F577:50110639F684E518AB3F92CCAC684E86
@@ -43,21 +36,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (remoteNetworkResourceId == null)
             {
-                return await Task.FromResult((INetworkPeering)null);
+                return null;
             }
             else
             {
                 var peerings = await ListAsync();
                 return peerings.FirstOrDefault(p =>
                 {
-                    if (p.RemoteNetworkId == null)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return (p.RemoteNetworkId.Equals(remoteNetworkResourceId, StringComparison.OrdinalIgnoreCase));
-                    }
+                    return (p.RemoteNetworkId != null) 
+                    ? (p.RemoteNetworkId.Equals(remoteNetworkResourceId, StringComparison.OrdinalIgnoreCase)) 
+                    : false;
                 });
             }
         }
@@ -142,14 +130,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FEB11B34B6BD4D33F16FE39DA7586D7F:986665BCBCA0EEB0AA9F1D112AF0A6DD
         public INetworkPeering GetByRemoteNetwork(string remoteNetworkResourceId)
         {
-            if (remoteNetworkResourceId != null)
-            {
-                return List().FirstOrDefault(p => p.RemoteNetworkId.Equals(remoteNetworkResourceId, StringComparison.OrdinalIgnoreCase));
-            }
-            else
-            {
-                return null;
-            }
+            return (remoteNetworkResourceId != null) 
+                ? List().FirstOrDefault(p => p.RemoteNetworkId.Equals(remoteNetworkResourceId, StringComparison.OrdinalIgnoreCase)) 
+                : null;
         }
 
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691
