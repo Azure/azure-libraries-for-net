@@ -67,7 +67,7 @@ namespace Fluent.Tests.Network
                 Assert.Equal("peer0", localPeering.Name, true);
                 Assert.Equal(NetworkPeeringState.Connected, localPeering.State);
                 Assert.True(localPeering.IsTrafficForwardingFromRemoteNetworkAllowed);
-                // TODO Assert.False(localPeering.IsAccessFromRemoteNetworkAllowed());
+                Assert.False(localPeering.CheckAccessBetweenNetworks());
                 Assert.Equal(NetworkPeeringGatewayUse.ByRemoteNetwork, localPeering.GatewayUse);
 
                 // Verify remote peering
@@ -78,7 +78,7 @@ namespace Fluent.Tests.Network
                 Assert.Equal(localNetwork.Id, remotePeering.RemoteNetworkId, true);
                 Assert.Equal(NetworkPeeringState.Connected, remotePeering.State);
                 Assert.True(remotePeering.IsTrafficForwardingFromRemoteNetworkAllowed);
-                // TODO Assert.False(remotePeering.IsAccessFromRemoteNetworkAllowed());
+                Assert.False(remotePeering.CheckAccessBetweenNetworks());
                 Assert.Equal(NetworkPeeringGatewayUse.None, remotePeering.GatewayUse);
 
                 // Update peering
@@ -104,14 +104,14 @@ namespace Fluent.Tests.Network
 
                 // Verify local peering changes
                 Assert.False(localPeering.IsTrafficForwardingFromRemoteNetworkAllowed);
-                // TODO Assert.True(localPeering.IsAccessFromRemoteNetworkAllowed());
+                Assert.True(localPeering.CheckAccessBetweenNetworks());
                 Assert.Equal(NetworkPeeringGatewayUse.None, localPeering.GatewayUse);
 
                 // Verify remote peering changes
                 remotePeering = localPeering.GetRemotePeering();
                 Assert.NotNull(remotePeering);
                 Assert.False(remotePeering.IsTrafficForwardingFromRemoteNetworkAllowed);
-                // TODO Assert.True(remotePeering.IsAccessFromRemoteNetworkAllowed());
+                Assert.True(remotePeering.CheckAccessBetweenNetworks());
                 Assert.Equal(NetworkPeeringGatewayUse.None, remotePeering.GatewayUse);
 
                 // Delete the peering

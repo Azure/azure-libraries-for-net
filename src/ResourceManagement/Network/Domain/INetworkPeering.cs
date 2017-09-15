@@ -19,6 +19,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.INetworkPeering>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<NetworkPeering.Update.IUpdate>
     {
+        /// <return>
+        /// True if the peering enables IP addresses within the peered networks to be accessible from both networks, otherwise false
+        /// (Note this method makes a separate call to Azure.).
+        /// </return>
+        bool CheckAccessBetweenNetworks();
+
         /// <return>The associated matching peering on the remote network if it is in the same subscription, otherwise this future computation will evaluate to null.</return>
         Microsoft.Azure.Management.Network.Fluent.INetworkPeering GetRemotePeering();
 

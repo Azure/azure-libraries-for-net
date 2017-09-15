@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// Implementation for network peering.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uTmV0d29ya1BlZXJpbmdJbXBs
-    internal partial class NetworkPeeringImpl  :
+    internal partial class NetworkPeeringImpl :
         IndependentChildImpl<
-            INetworkPeering, 
-            INetwork, 
-            VirtualNetworkPeeringInner, 
-            NetworkPeeringImpl, 
-            IHasId, 
-            IUpdate, 
+            INetworkPeering,
+            INetwork,
+            VirtualNetworkPeeringInner,
+            NetworkPeeringImpl,
+            IHasId,
+            IUpdate,
             INetworkManager>,
         INetworkPeering,
         IDefinition,
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return WithAccessFromRemoteNetwork().WithAccessToRemoteNetwork();
         }
 
-        ///GENMHASH:B18E1028D4CF4EB59D0438373B8B2DB7:80C64E19A8D560A86F1F8CFDB9A03C5C
+        ///GENMHASH:B18E1028D4CF4EB59D0438373B8B2DB7:242B3C9040820E707DE3D7CE607A4034
         public async Task<INetwork> GetRemoteNetworkAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             if (remoteNetwork != null)
@@ -89,6 +89,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             else
             {
                 // Otherwise bail out
+                remoteNetwork = null;
                 return null;
             }
         }
@@ -189,7 +190,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return WithoutAccessFromRemoteNetwork().WithoutAccessToRemoteNetwork();
         }
 
-        ///GENMHASH:B2EB74D988CD2A7EFC551E57BE9B48BB:99F370EC14AABFB3BA0FBCE08DE56074
+        ///GENMHASH:B2EB74D988CD2A7EFC551E57BE9B48BB:4FFCDCB491AE20C1268464BD73D55EF2
         protected override async Task<INetworkPeering> CreateChildResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             NetworkPeeringImpl localPeering = this;
@@ -239,7 +240,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                     isUpdateNeeded = true;
                     remotePeeringUpdate = remotePeeringUpdate.WithTrafficForwardingFromRemoteNetwork();
                 }
-                else if(!localPeering.remoteForwarding.Value && remotePeering.IsTrafficForwardingFromRemoteNetworkAllowed)
+                else if (!localPeering.remoteForwarding.Value && remotePeering.IsTrafficForwardingFromRemoteNetworkAllowed)
                 {
                     isUpdateNeeded = true;
                     remotePeeringUpdate = remotePeeringUpdate.WithoutTrafficForwardingFromRemoteNetwork();
@@ -249,17 +250,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 if (localPeering.remoteAccess == null)
                 {
                     // No access change, so ignore
-                    // TODO: Clean up the impl casts when Network REST API is fixed
                 }
-                else if (localPeering.remoteAccess.Value && !((NetworkPeeringImpl) remotePeering).IsAccessFromRemoteNetworkAllowed())
+                else if (localPeering.remoteAccess.Value && !((NetworkPeeringImpl)remotePeering).IsAccessFromRemoteNetworkAllowed())
                 {
                     isUpdateNeeded = true;
-                    remotePeeringUpdate = ((NetworkPeeringImpl) remotePeeringUpdate).WithAccessFromRemoteNetwork();
+                    remotePeeringUpdate = ((NetworkPeeringImpl)remotePeeringUpdate).WithAccessFromRemoteNetwork();
                 }
-                else if (!localPeering.remoteAccess.Value && ((NetworkPeeringImpl) remotePeering).IsAccessFromRemoteNetworkAllowed())
+                else if (!localPeering.remoteAccess.Value && ((NetworkPeeringImpl)remotePeering).IsAccessFromRemoteNetworkAllowed())
                 {
                     isUpdateNeeded = true;
-                    remotePeeringUpdate = ((NetworkPeeringImpl) remotePeeringUpdate).WithoutAccessFromRemoteNetwork();
+                    remotePeeringUpdate = ((NetworkPeeringImpl)remotePeeringUpdate).WithoutAccessFromRemoteNetwork();
                 }
 
                 // Update gateway use permission on the remote peering if needed
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 string peeringName = SdkContext.RandomResourceName("peer", 15);
                 var remotePeeringDefinition = remoteNetwork.Peerings.Define(peeringName)
                     .WithRemoteNetwork(localPeering.parent.Id);
-                
+
                 // Process remote network's UseRemoteGateways setting
                 if (localPeering.startGatewayUseByRemoteNetwork == null)
                 {
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
                 if (localPeering.remoteAccess != null && !localPeering.remoteAccess.Value)
                 {
-                    ((NetworkPeeringImpl) remotePeeringDefinition).WithoutAccessFromRemoteNetwork(); // Assumes by default access is on for new peerings
+                    ((NetworkPeeringImpl)remotePeeringDefinition).WithoutAccessFromRemoteNetwork(); // Assumes by default access is on for new peerings
                 }
 
                 if (localPeering.remoteForwarding != null && localPeering.remoteForwarding.Value)
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 return null;
             }
-       }
+        }
 
         ///GENMHASH:DEE77E157A54E1F40622B36C399B7443:F9614692AE565E77CD29AC394144EA66
         public NetworkPeeringImpl WithTrafficForwardingFromRemoteNetwork()
@@ -501,5 +501,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
             Inner.AllowVirtualNetworkAccess = true;
             return this;
         }
+
+        ///GENMHASH:F8C8AE2CA027129A8C6051A94E25D216:F2F8E6E3ED818C594DBBBC9524DB0011
+        public bool CheckAccessBetweenNetworks()
+        {
+            if (!(Inner.AllowVirtualNetworkAccess ?? false))
+            {
+                // If network access is disabled on this peering, then it's disabled for both networks, regardless of what the remote peering says
+                return false;
+            }
+            
+            // Check the access setting on the remote peering
+            INetworkPeering remotePeering = GetRemotePeering();
+            if (remotePeering == null)
+            {
+                return false;
+            }
+            else
+            {
+                // Access is enabled on local peering, so up to the remote peering to determine whether it's enabled or disabled overall
+                return remotePeering.Inner.AllowVirtualNetworkAccess ?? false;
+            }
+        }
+
     }
 }
