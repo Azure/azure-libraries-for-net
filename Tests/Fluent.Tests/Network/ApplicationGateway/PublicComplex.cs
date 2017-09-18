@@ -156,11 +156,11 @@ namespace Fluent.Tests.Network.ApplicationGateway
             Assert.Equal(2, appGateway.SslCertificates.Count);
 
             // Verify backend HTTP settings configs
-            Assert.Equal(appGateway.BackendHttpConfigurations.Count, 2);
+            Assert.Equal(2, appGateway.BackendHttpConfigurations.Count);
             IApplicationGatewayBackendHttpConfiguration config = appGateway.BackendHttpConfigurations["config1"];
             Assert.NotNull(config);
-            Assert.Equal(config.Port, 8081);
-            Assert.Equal(config.RequestTimeout, 45);
+            Assert.Equal(8081, config.Port);
+            Assert.Equal(45, config.RequestTimeout);
             Assert.NotNull(config.Probe);
             Assert.Equal("probe1", config.Probe.Name);
 
@@ -220,8 +220,8 @@ namespace Fluent.Tests.Network.ApplicationGateway
 
             // Verify SSL policy - disabled protocols  
             Assert.Equal(2, appGateway.DisabledSslProtocols.Count);
-            Assert.True(appGateway.DisabledSslProtocols.Contains(ApplicationGatewaySslProtocol.TlsV1_0));
-            Assert.True(appGateway.DisabledSslProtocols.Contains(ApplicationGatewaySslProtocol.TlsV1_1));
+            Assert.Contains(ApplicationGatewaySslProtocol.TlsV1_0, appGateway.DisabledSslProtocols);
+            Assert.Contains(ApplicationGatewaySslProtocol.TlsV1_1, appGateway.DisabledSslProtocols);
             Assert.True(!appGateway.DisabledSslProtocols.Contains(ApplicationGatewaySslProtocol.TlsV1_2));
 
             return appGateway;
@@ -252,7 +252,7 @@ namespace Fluent.Tests.Network.ApplicationGateway
             // Get the resource created so far
             Assert.True(resource.Tags.ContainsKey("tag1"));
             Assert.Equal(resource.Size, ApplicationGatewaySkuName.StandardSmall);
-            Assert.Equal(resource.InstanceCount, 1);
+            Assert.Equal(1, resource.InstanceCount);
 
             // Verify listeners
             IApplicationGatewayListener listener = resource.Listeners["listener1"];

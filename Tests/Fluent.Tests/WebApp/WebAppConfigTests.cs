@@ -61,7 +61,7 @@ namespace Fluent.Tests.WebApp
                         .Apply();
                 webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
                 Assert.Equal(documentSize + 1, webApp.DefaultDocuments.Count);
-                Assert.True(webApp.DefaultDocuments.Contains("somedocument.Html"));
+                Assert.Contains("somedocument.Html", webApp.DefaultDocuments);
 
                 // App settings
                 webApp.Update()
@@ -71,9 +71,9 @@ namespace Fluent.Tests.WebApp
                 webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
                 var appSettingMap = webApp.AppSettings;
                 Assert.Equal("appvalue", appSettingMap["appkey"].Value);
-                Assert.Equal(false, appSettingMap["appkey"].Sticky);
+                Assert.False(appSettingMap["appkey"].Sticky);
                 Assert.Equal("stickyvalue", appSettingMap["stickykey"].Value);
-                Assert.Equal(true, appSettingMap["stickykey"].Sticky);
+                Assert.True(appSettingMap["stickykey"].Sticky);
 
                 // Connection strings
                 webApp.Update()
@@ -83,9 +83,9 @@ namespace Fluent.Tests.WebApp
                 webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
                 var connectionStringMap = webApp.ConnectionStrings;
                 Assert.Equal("connectionValue", connectionStringMap["connectionName"].Value);
-                Assert.Equal(false, connectionStringMap["connectionName"].Sticky);
+                Assert.False(connectionStringMap["connectionName"].Sticky);
                 Assert.Equal("stickyValue", connectionStringMap["stickyName"].Value);
-                Assert.Equal(true, connectionStringMap["stickyName"].Sticky);
+                Assert.True(connectionStringMap["stickyName"].Sticky);
             }
         }
     }

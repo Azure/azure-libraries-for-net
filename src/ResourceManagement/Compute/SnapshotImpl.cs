@@ -202,7 +202,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:26BC80239F0CCAAB14CDBC15A85351B8:5C4E68981DCB985DABC30CE2B145CC62
         public SnapshotImpl WithSku(DiskSkuTypes sku)
         {
-            Inner.AccountType = sku.AccountType;
+            Inner.Sku = new DiskSku
+            {
+                Name = sku.AccountType
+            };
             return this;
         }
 
@@ -259,9 +262,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:A57B8C47BCE45BC6F3DA10CAF14C67BE
         public DiskSkuTypes Sku()
         {
-            if (Inner.AccountType != null && Inner.AccountType.HasValue)
+            if (Inner.Sku != null && Inner.Sku.Name != null && Inner.Sku.Name.HasValue)
             {
-                return new DiskSkuTypes(Inner.AccountType.Value);
+                return DiskSkuTypes.FromStorageAccountType(Inner.Sku.Name.Value);
             }
             return null;
         }

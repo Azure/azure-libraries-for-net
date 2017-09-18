@@ -67,9 +67,9 @@ namespace Fluent.Tests
                     Assert.NotNull(nestedProfile.MonitorStatus);
                     Assert.Equal(443, nestedProfile.MonitoringPort);
                     Assert.Equal("/", nestedProfile.MonitoringPath);
-                    Assert.Equal(0, nestedProfile.AzureEndpoints.Count());
-                    Assert.Equal(0, nestedProfile.NestedProfileEndpoints.Count());
-                    Assert.Equal(1, nestedProfile.ExternalEndpoints.Count());
+                    Assert.Empty(nestedProfile.AzureEndpoints);
+                    Assert.Empty(nestedProfile.NestedProfileEndpoints);
+                    Assert.Single(nestedProfile.ExternalEndpoints);
                     Assert.Equal(nestedTmProfileDnsLabel + ".trafficmanager.net", nestedProfile.Fqdn);
                     Assert.Equal(500, nestedProfile.TimeToLive);
 
@@ -119,15 +119,15 @@ namespace Fluent.Tests
                     Assert.NotNull(profile.MonitorStatus);
                     Assert.Equal(80, profile.MonitoringPort);
                     Assert.Equal("/", profile.MonitoringPath);
-                    Assert.Equal(1, profile.AzureEndpoints.Count());
-                    Assert.Equal(1, profile.NestedProfileEndpoints.Count());
+                    Assert.Single(profile.AzureEndpoints);
+                    Assert.Single(profile.NestedProfileEndpoints);
                     Assert.Equal(2, profile.ExternalEndpoints.Count());
                     Assert.Equal(tmProfileDnsLabel + ".trafficmanager.net", profile.Fqdn);
                     Assert.Equal(300, profile.TimeToLive); // Default
 
                     profile = profile.Refresh();
-                    Assert.Equal(1, profile.AzureEndpoints.Count());
-                    Assert.Equal(1, profile.NestedProfileEndpoints.Count());
+                    Assert.Single(profile.AzureEndpoints);
+                    Assert.Single(profile.NestedProfileEndpoints);
                     Assert.Equal(2, profile.ExternalEndpoints.Count());
 
                     int c = 0;
@@ -207,8 +207,8 @@ namespace Fluent.Tests
 
                     Assert.Equal(8080, profile.MonitoringPort);
                     Assert.Equal("/", profile.MonitoringPath);
-                    Assert.Equal(1, profile.AzureEndpoints.Count());
-                    Assert.Equal(1, profile.NestedProfileEndpoints.Count());
+                    Assert.Single(profile.AzureEndpoints);
+                    Assert.Single(profile.NestedProfileEndpoints);
                     Assert.Equal(2, profile.ExternalEndpoints.Count());
                     Assert.Equal(600, profile.TimeToLive);
 
@@ -335,7 +335,7 @@ namespace Fluent.Tests
                     Assert.True(profile.ExternalEndpoints.ContainsKey("external-ep-1"));
                     endpoint = profile.ExternalEndpoints["external-ep-1"];
                     Assert.NotNull(endpoint.GeographicLocationCodes);
-                    Assert.Equal(1, endpoint.GeographicLocationCodes.Count());
+                    Assert.Single(endpoint.GeographicLocationCodes);
                 }
                 finally
                 {

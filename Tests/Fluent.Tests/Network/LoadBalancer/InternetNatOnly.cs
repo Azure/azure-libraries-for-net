@@ -91,7 +91,7 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             var pip = publicFrontend.GetPublicIPAddress();
             Assert.NotNull(pip);
             Assert.Equal(pip.Name, loadBalancerHelper.PipNames[0]);
-            Assert.True(pip.LeafDomainLabel.Equals(loadBalancerHelper.PipNames[0], StringComparison.OrdinalIgnoreCase));
+            Assert.Equal(pip.LeafDomainLabel, loadBalancerHelper.PipNames[0], ignoreCase: true);
             Assert.Equal(88, natRule.FrontendPort);
 
             // Verify backends
@@ -140,7 +140,7 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             var frontend = resource.Frontends[publicFrontend.Name];
             Assert.True(frontend.IsPublic);
             publicFrontend = (ILoadBalancerPublicFrontend)frontend;
-            Assert.True(pip.Id.Equals(publicFrontend.PublicIPAddressId, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal(pip.Id, publicFrontend.PublicIPAddressId, ignoreCase: true);
             Assert.Equal(0, publicFrontend.LoadBalancingRules.Count);
 
             // Verify probes

@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the type of the orchestrator.
         /// </summary>
-        Models.ContainerServiceOchestratorTypes Microsoft.Azure.Management.Compute.Fluent.IContainerService.OrchestratorType
+        Models.ContainerServiceOrchestratorTypes Microsoft.Azure.Management.Compute.Fluent.IContainerService.OrchestratorType
         {
             get
             {

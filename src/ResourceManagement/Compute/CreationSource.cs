@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             }
             if (this.Type == CreationSourceType.CopiedFromSnapshot)
             {
-                string sourceResourceId = this.creationData.SourceUri;
+                string sourceResourceId = this.creationData.SourceResourceId;
                 if (sourceResourceId == null)
                 {
                     sourceResourceId = this.creationData.SourceUri;

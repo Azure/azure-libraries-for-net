@@ -101,7 +101,7 @@ namespace Fluent.Tests
 
                 var serviceObjectives = sqlServer.ListServiceObjectives();
 
-                Assert.NotEqual(serviceObjectives.Count(), 0);
+                Assert.NotEmpty(serviceObjectives);
                 Assert.NotNull(serviceObjectives.FirstOrDefault().Refresh());
                 Assert.NotNull(sqlServer.GetServiceObjective("d1737d22-a8ea-4de7-9bd0-33395d2a7419"));
 
@@ -200,7 +200,7 @@ namespace Fluent.Tests
                     true);
 
                 sqlServer.Refresh();
-                Assert.Equal(sqlServer.ElasticPools.List().Count(), 0);
+                Assert.Empty(sqlServer.ElasticPools.List());
 
                 // List
                 var sqlServers = sqlServerManager.SqlServers.ListByResourceGroup(GroupName);
@@ -262,8 +262,8 @@ namespace Fluent.Tests
                 }
             }
 
-            Assert.Equal(startIPAddress, 1);
-            Assert.Equal(endIPAddress, 1);
+            Assert.Equal(1, startIPAddress);
+            Assert.Equal(1, endIPAddress);
 
             Assert.NotNull(sqlServer.Databases.Get(database2Name));
             Assert.NotNull(sqlServer.Databases.Get(database1InEPName));
@@ -275,7 +275,7 @@ namespace Fluent.Tests
 
             Assert.NotNull(ep2);
             Assert.Equal(ep2.Edition, ElasticPoolEditions.Premium);
-            Assert.Equal(ep2.ListDatabases().Count(), 2);
+            Assert.Equal(2, ep2.ListDatabases().Count());
             Assert.NotNull(ep2.GetDatabase(database1InEPName));
             Assert.NotNull(ep2.GetDatabase(database2InEPName));
 
@@ -291,9 +291,9 @@ namespace Fluent.Tests
                 sqlServer.Databases.Delete(database2InEPName);
                 sqlServer.Databases.Delete(SqlDatabaseName);
 
-                Assert.Equal(ep1.ListDatabases().Count(), 0);
-                Assert.Equal(ep2.ListDatabases().Count(), 0);
-                Assert.Equal(ep3.ListDatabases().Count(), 0);
+                Assert.Empty(ep1.ListDatabases());
+                Assert.Empty(ep2.ListDatabases());
+                Assert.Empty(ep3.ListDatabases());
 
                 sqlServer.ElasticPools.Delete(elasticPool1Name);
                 sqlServer.ElasticPools.Delete(elasticPool2Name);
@@ -320,19 +320,19 @@ namespace Fluent.Tests
                         .WithoutFirewallRule(SqlFirewallRuleName)
                         .Apply();
 
-                Assert.Equal(sqlServer.ElasticPools.List().Count(), 0);
+                Assert.Empty(sqlServer.ElasticPools.List());
 
                 firewalls = sqlServer.FirewallRules.List();
-                Assert.Equal(firewalls.Count(), 2);
+                Assert.Equal(2, firewalls.Count());
                 foreach (ISqlFirewallRule firewallRule in firewalls)
                 {
                     firewallRule.Delete();
                 }
             }
 
-            Assert.Equal(sqlServer.ElasticPools.List().Count(), 0);
+            Assert.Empty(sqlServer.ElasticPools.List());
             // Only master database is remaining in the SQLServer.
-            Assert.Equal(sqlServer.Databases.List().Count(), 1);
+            Assert.Single(sqlServer.Databases.List());
         }
 
         [Fact]
@@ -365,7 +365,7 @@ namespace Fluent.Tests
 
                 transparentDataEncryption = transparentDataEncryption.UpdateStatus(TransparentDataEncryptionStates.Enabled);
                 Assert.NotNull(transparentDataEncryption);
-                Assert.Equal(transparentDataEncryption.Status, TransparentDataEncryptionStates.Enabled);
+                Assert.Equal(TransparentDataEncryptionStates.Enabled, transparentDataEncryption.Status);
 
                 transparentDataEncryptionActivities = transparentDataEncryption.ListActivities();
                 Assert.NotNull(transparentDataEncryptionActivities);
@@ -373,7 +373,7 @@ namespace Fluent.Tests
                 TestHelper.Delay(10000);
                 transparentDataEncryption = sqlDatabase.GetTransparentDataEncryption().UpdateStatus(TransparentDataEncryptionStates.Disabled);
                 Assert.NotNull(transparentDataEncryption);
-                Assert.Equal(transparentDataEncryption.Status, TransparentDataEncryptionStates.Disabled);
+                Assert.Equal(TransparentDataEncryptionStates.Disabled, transparentDataEncryption.Status);
                 Assert.Equal(transparentDataEncryption.SqlServerName, SqlServerName);
                 Assert.Equal(transparentDataEncryption.DatabaseName, SqlDatabaseName);
                 Assert.NotNull(transparentDataEncryption.Name);
@@ -386,7 +386,7 @@ namespace Fluent.Tests
                 var serviceTierAdvisors = sqlDatabase.ListServiceTierAdvisors();
                 Assert.NotNull(serviceTierAdvisors);
                 Assert.NotNull(serviceTierAdvisors.Values.First().ServiceLevelObjectiveUsageMetrics);
-                Assert.NotEqual(serviceTierAdvisors.Count(), 0);
+                Assert.NotEmpty(serviceTierAdvisors);
 
                 Assert.NotNull(serviceTierAdvisors.Values.First().Refresh());
                 Assert.NotNull(serviceTierAdvisors.Values.First().ServiceLevelObjectiveUsageMetrics);
@@ -462,13 +462,13 @@ namespace Fluent.Tests
                 TestHelper.Delay(2000);
                 var replicationLinksInDb1 = new List<IReplicationLink>(databaseInServer1.ListReplicationLinks().Values);
 
-                Assert.Equal(replicationLinksInDb1.Count(), 1);
+                Assert.Single(replicationLinksInDb1);
                 Assert.Equal(replicationLinksInDb1.FirstOrDefault().PartnerDatabase, databaseInServer2.Name);
                 Assert.Equal(replicationLinksInDb1.FirstOrDefault().PartnerServer, databaseInServer2.SqlServerName);
 
                 var replicationLinksInDb2 = new List<IReplicationLink>(databaseInServer2.ListReplicationLinks().Values);
 
-                Assert.Equal(replicationLinksInDb2.Count(), 1);
+                Assert.Single(replicationLinksInDb2);
                 Assert.Equal(replicationLinksInDb2.FirstOrDefault().PartnerDatabase, databaseInServer1.Name);
                 Assert.Equal(replicationLinksInDb2.FirstOrDefault().PartnerServer, databaseInServer1.SqlServerName);
 
@@ -485,7 +485,7 @@ namespace Fluent.Tests
                 TestHelper.Delay(30000);
 
                 replicationLinksInDb2.FirstOrDefault().Delete();
-                Assert.Equal(databaseInServer2.ListReplicationLinks().Count(), 0);
+                Assert.Empty(databaseInServer2.ListReplicationLinks());
 
                 sqlServer1.Databases.Delete(databaseInServer1.Name);
                 sqlServer2.Databases.Delete(databaseInServer2.Name);
@@ -619,7 +619,7 @@ namespace Fluent.Tests
                         .Apply();
 
                 sqlDatabase = sqlServer.Databases.Get(SqlDatabaseName);
-                Assert.Equal(sqlDatabase.MaxSizeBytes, 268435456000L);
+                Assert.Equal(268435456000L, sqlDatabase.MaxSizeBytes);
 
                 // Put the database back in elastic pool.
                 sqlDatabase.Update()
@@ -638,7 +638,7 @@ namespace Fluent.Tests
                 // List databases in elastic pool.
                 var databasesInElasticPool = elasticPool.ListDatabases();
                 Assert.NotNull(databasesInElasticPool);
-                Assert.Equal(databasesInElasticPool.Count(), 1);
+                Assert.Single(databasesInElasticPool);
 
                 // Get a particular database in elastic pool.
                 var databaseInElasticPool = elasticPool.GetDatabase(SqlDatabaseName);
@@ -699,7 +699,7 @@ namespace Fluent.Tests
                         .WithEdition(ElasticPoolEditions.Standard)
                         .Create();
                 ValidateSqlElasticPool(sqlElasticPool);
-                Assert.Equal(sqlElasticPool.ListDatabases().Count(), 0);
+                Assert.Empty(sqlElasticPool.ListDatabases());
 
                 sqlElasticPool = sqlElasticPool.Update()
                         .WithDtu(100)
@@ -710,7 +710,7 @@ namespace Fluent.Tests
                         .Apply();
 
                 ValidateSqlElasticPool(sqlElasticPool);
-                Assert.Equal(sqlElasticPool.ListDatabases().Count(), 1);
+                Assert.Single(sqlElasticPool.ListDatabases());
 
                 // Get
                 ValidateSqlElasticPool(sqlServer.ElasticPools.Get(SqlElasticPoolName));
@@ -840,7 +840,7 @@ namespace Fluent.Tests
 
         private static void ValidateListSqlFirewallRule(IReadOnlyList<ISqlFirewallRule> sqlFirewallRules)
         {
-            Assert.True(sqlFirewallRules.Any(firewallRule => StringComparer.OrdinalIgnoreCase.Equals(firewallRule.Name, SqlFirewallRuleName)));
+            Assert.Contains(sqlFirewallRules, firewallRule => StringComparer.OrdinalIgnoreCase.Equals(firewallRule.Name, SqlFirewallRuleName));
         }
 
         private static void ValidateSqlFirewallRule(ISqlFirewallRule sqlFirewallRule, string firewallName)
@@ -857,7 +857,7 @@ namespace Fluent.Tests
 
         private static void ValidateListSqlElasticPool(IReadOnlyList<ISqlElasticPool> sqlElasticPools)
         {
-            Assert.True(sqlElasticPools.Any(elasticPool => StringComparer.OrdinalIgnoreCase.Equals(elasticPool.Name, SqlElasticPoolName)));
+            Assert.Contains(sqlElasticPools, elasticPool => StringComparer.OrdinalIgnoreCase.Equals(elasticPool.Name, SqlElasticPoolName));
         }
 
         private static void ValidateSqlElasticPool(ISqlElasticPool sqlElasticPool)
@@ -879,7 +879,7 @@ namespace Fluent.Tests
 
         private static void ValidateListSqlDatabase(IReadOnlyList<ISqlDatabase> sqlDatabases)
         {
-            Assert.True(sqlDatabases.Any(database => StringComparer.OrdinalIgnoreCase.Equals(database.Name, SqlDatabaseName)));
+            Assert.Contains(sqlDatabases, database => StringComparer.OrdinalIgnoreCase.Equals(database.Name, SqlDatabaseName));
         }
 
         private static void ValidateSqlServer(ISqlServer sqlServer)

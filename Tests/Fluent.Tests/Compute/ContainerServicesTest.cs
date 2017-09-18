@@ -51,12 +51,12 @@ namespace Fluent.Tests.Compute
                     Assert.NotNull(containerService.Id);
                     Assert.Equal(containerService.Region, Region.USWest);
                     Assert.Equal(containerService.MasterNodeCount, (int)ContainerServiceMasterProfileCount.MIN);
-                    Assert.Equal(containerService.LinuxRootUsername, "testusername");
-                    Assert.Equal(containerService.AgentPoolCount, 1);
+                    Assert.Equal("testusername", containerService.LinuxRootUsername);
+                    Assert.Equal(1, containerService.AgentPoolCount);
                     Assert.Equal(containerService.AgentPoolName, "agentPool0" + csName);
                     Assert.Equal(containerService.AgentPoolLeafDomainLabel, "ap0" + dnsPrefix);
                     Assert.Equal(containerService.AgentPoolVMSize, ContainerServiceVMSizeTypes.StandardA1);
-                    Assert.Equal(containerService.OrchestratorType, ContainerServiceOchestratorTypes.DCOS);
+                    Assert.Equal(ContainerServiceOrchestratorTypes.DCOS, containerService.OrchestratorType);
                     Assert.True(containerService.IsDiagnosticsEnabled);
                     Assert.True(containerService.Tags.ContainsKey("tag1"));
 

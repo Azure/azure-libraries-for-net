@@ -71,7 +71,7 @@ namespace Azure.Tests.Common
         {
             T resourceByGroup = collection.GetByResourceGroup(resource.ResourceGroupName, resource.Name);
             T resourceById = collection.GetById(resourceByGroup.Id);
-            Assert.True(resourceById.Id.Equals(resourceByGroup.Id, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal(resourceById.Id, resourceByGroup.Id, ignoreCase: true);
             return resourceById;
         }
 

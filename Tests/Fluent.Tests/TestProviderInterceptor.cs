@@ -43,7 +43,7 @@ namespace Fluent.Tests.ResourceManager
                         .Create();
 
                     provider = resourceManager.Providers.GetByName("Microsoft.KeyVault");
-                    Assert.True(string.Equals(provider.RegistrationState, "Registered"));
+                    Assert.Equal("Registered", provider.RegistrationState);
                     IList<ProviderResourceType> resourceTypes = provider.ResourceTypes;
                     Assert.True(resourceTypes.Count > 0);
                 }

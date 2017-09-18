@@ -58,9 +58,9 @@ namespace Fluent.Tests.Dns
 
                     // Check AAAA records
                     var aaaaRecordSets = dnsZone.AaaaRecordSets.List();
-                    Assert.True(aaaaRecordSets.Count() == 1);
-                    Assert.True(aaaaRecordSets.ElementAt(0).Name.StartsWith("www"));
-                    Assert.True(aaaaRecordSets.ElementAt(0).IPv6Addresses.Count() == 2);
+                    Assert.Single(aaaaRecordSets);
+                    Assert.StartsWith("www", aaaaRecordSets.ElementAt(0).Name);
+                    Assert.Equal(2, aaaaRecordSets.ElementAt(0).IPv6Addresses.Count());
 
                     // Check CNAME records
                     var cnameRecordSets = dnsZone.CNameRecordSets.List();
@@ -105,7 +105,7 @@ namespace Fluent.Tests.Dns
                         CloudError cloudError = ((CloudException)exception).Body;
                         Assert.NotNull(cloudError);
                         Assert.NotNull(cloudError.Code);
-                        Assert.True(cloudError.Code.Contains("PreconditionFailed"));
+                        Assert.Contains("PreconditionFailed", cloudError.Code);
                     }
                 }
                 finally
@@ -185,7 +185,7 @@ namespace Fluent.Tests.Dns
                         CloudError cloudError = ((CloudException)exception).Body;
                         Assert.NotNull(cloudError);
                         Assert.NotNull(cloudError.Code);
-                        Assert.True(cloudError.Code.Contains("PreconditionFailed"));
+                        Assert.Contains("PreconditionFailed", cloudError.Code);
                     }
                     // Try update with correct etags
                     dnsZone.Update()
@@ -279,7 +279,7 @@ namespace Fluent.Tests.Dns
                         CloudError cloudError = ((CloudException)exception).Body;
                         Assert.NotNull(cloudError);
                         Assert.NotNull(cloudError.Code);
-                        Assert.True(cloudError.Code.Contains("PreconditionFailed"));
+                        Assert.Contains("PreconditionFailed", cloudError.Code);
                     }
 
                     // Try delete with correct etags
