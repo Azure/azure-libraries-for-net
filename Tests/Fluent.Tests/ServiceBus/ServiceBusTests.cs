@@ -48,30 +48,30 @@ namespace Fluent.Tests
                     Assert.True(found);
 
                     Assert.NotNull(nspace.DnsLabel);
-                    Assert.True(nspace.DnsLabel.Equals(namespaceDNSLabel, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(nspace.DnsLabel, namespaceDNSLabel, ignoreCase: true);
                     Assert.NotNull(nspace.Fqdn);
-                    Assert.True(nspace.Fqdn.Contains(namespaceDNSLabel));
+                    Assert.Contains(namespaceDNSLabel, nspace.Fqdn);
                     Assert.NotNull(nspace.Sku);
                     Assert.True(nspace.Sku.Equals(NamespaceSku.PremiumCapacity1));
                     Assert.NotNull(nspace.Region);
                     Assert.True(nspace.Region.Equals(region));
                     Assert.NotNull(nspace.ResourceGroupName);
-                    Assert.True(nspace.ResourceGroupName.Equals(rgName, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(nspace.ResourceGroupName, rgName, ignoreCase: true);
                     Assert.NotNull(nspace.CreatedAt);
                     Assert.NotNull(nspace.Queues);
-                    Assert.Equal(0, nspace.Queues.List().Count());
+                    Assert.Empty(nspace.Queues.List());
                     Assert.NotNull(nspace.Topics);
-                    Assert.Equal(0, nspace.Topics.List().Count());
+                    Assert.Empty(nspace.Topics.List());
                     Assert.NotNull(nspace.AuthorizationRules);
                     var defaultNsRules = nspace.AuthorizationRules.List();
-                    Assert.Equal(1, defaultNsRules.Count());
+                    Assert.Single(defaultNsRules);
                     var defaultNsRule = defaultNsRules.ElementAt(0);
-                    Assert.True(defaultNsRule.Name.Equals("RootManageSharedAccessKey", StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal("RootManageSharedAccessKey", defaultNsRule.Name, ignoreCase: true);
                     Assert.NotNull(defaultNsRule.Rights);
                     Assert.NotNull(defaultNsRule.NamespaceName);
-                    Assert.True(defaultNsRule.NamespaceName.Equals(namespaceDNSLabel, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(defaultNsRule.NamespaceName, namespaceDNSLabel, ignoreCase: true);
                     Assert.NotNull(defaultNsRule.ResourceGroupName);
-                    Assert.True(defaultNsRule.ResourceGroupName.Equals(rgName, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(defaultNsRule.ResourceGroupName, rgName, ignoreCase: true);
                     nspace.Update()
                         .WithSku(NamespaceSku.PremiumCapacity2)
                         .Apply();
@@ -127,7 +127,7 @@ namespace Fluent.Tests
                     Assert.NotNull(queue);
                     Assert.NotNull(queue.Inner);
                     Assert.NotNull(queue.Name);
-                    Assert.True(queue.Name.Equals(queueName, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(queue.Name, queueName, ignoreCase: true);
 
                     // Default lock duration is 1 minute, assert TimeSpan("00:01:00") parsing
                     //
@@ -226,7 +226,7 @@ namespace Fluent.Tests
                     //
                     var queuesInNamespace = nspace.Queues.List();
                     Assert.NotNull(queuesInNamespace);
-                    Assert.Equal(1, queuesInNamespace.Count());
+                    Assert.Single(queuesInNamespace);
                     IQueue foundQueue = queuesInNamespace.FirstOrDefault(q => q.Name.Equals(queueName, StringComparison.OrdinalIgnoreCase));
                     Assert.NotNull(foundQueue);
                     // Remove Queue
@@ -236,7 +236,7 @@ namespace Fluent.Tests
                         .Apply();
                     queuesInNamespace = nspace.Queues.List();
                     Assert.NotNull(queuesInNamespace);
-                    Assert.Equal(0, queuesInNamespace.Count());
+                    Assert.Empty(queuesInNamespace);
                 }
                 finally
                 {
@@ -288,7 +288,7 @@ namespace Fluent.Tests
                     Assert.NotNull(topic);
                     Assert.NotNull(topic.Inner);
                     Assert.NotNull(topic.Name);
-                    Assert.True(topic.Name.Equals(topicName, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(topic.Name, topicName, ignoreCase: true);
 
                     var dupDetectionDuration = topic.DuplicateMessageDetectionHistoryDuration;
                     Assert.NotNull(dupDetectionDuration);
@@ -374,7 +374,7 @@ namespace Fluent.Tests
                     //
                     var topicsInNamespace = nspace.Topics.List();
                     Assert.NotNull(topicsInNamespace);
-                    Assert.Equal(1, topicsInNamespace.Count());
+                    Assert.Single(topicsInNamespace);
                     ITopic foundTopic = topicsInNamespace.FirstOrDefault(t => t.Name.Equals(topicName, StringComparison.OrdinalIgnoreCase));
                     Assert.NotNull(foundTopic);
                     // Remove Topic
@@ -384,7 +384,7 @@ namespace Fluent.Tests
                             .Apply();
                     topicsInNamespace = nspace.Topics.List();
                     Assert.NotNull(topicsInNamespace);
-                    Assert.Equal(0, topicsInNamespace.Count());
+                    Assert.Empty(topicsInNamespace);
                 }
                 finally
                 {
@@ -453,7 +453,7 @@ namespace Fluent.Tests
                     //
                     var queuesInNamespace = nspace.Queues.List();
                     Assert.NotNull(queuesInNamespace);
-                    Assert.Equal(1, queuesInNamespace.Count());
+                    Assert.Single(queuesInNamespace);
                     var queue = queuesInNamespace.ElementAt(0);
                     Assert.NotNull(queue);
                     Assert.NotNull(queue.Inner);
@@ -463,11 +463,11 @@ namespace Fluent.Tests
                             .WithListeningEnabled()
                             .Create();
                     Assert.NotNull(qRule);
-                    Assert.True(qRule.Rights.Contains(AccessRights.Listen));
+                    Assert.Contains(AccessRights.Listen, qRule.Rights);
                     qRule = qRule.Update()
                         .WithManagementEnabled()
                         .Apply();
-                    Assert.True(qRule.Rights.Contains(AccessRights.Manage));
+                    Assert.Contains(AccessRights.Manage, qRule.Rights);
                     var rulesInQueue = queue.AuthorizationRules.List();
                     Assert.True(rulesInQueue.Count() > 0);
                     var foundQRule = false;
@@ -485,7 +485,7 @@ namespace Fluent.Tests
                     //
                     var topicsInNamespace = nspace.Topics.List();
                     Assert.NotNull(topicsInNamespace);
-                    Assert.Equal(1, topicsInNamespace.Count());
+                    Assert.Single(topicsInNamespace);
                     var topic = topicsInNamespace.ElementAt(0);
                     Assert.NotNull(topic);
                     Assert.NotNull(topic.Inner);
@@ -494,11 +494,11 @@ namespace Fluent.Tests
                             .WithSendingEnabled()
                             .Create();
                     Assert.NotNull(tRule);
-                    Assert.True(tRule.Rights.Contains(AccessRights.Send));
+                    Assert.Contains(AccessRights.Send, tRule.Rights);
                     tRule = tRule.Update()
                             .WithManagementEnabled()
                             .Apply();
-                    Assert.True(tRule.Rights.Contains(AccessRights.Manage));
+                    Assert.Contains(AccessRights.Manage, tRule.Rights);
                     var rulesInTopic = topic.AuthorizationRules.List();
                     Assert.True(rulesInTopic.Count() > 0);
                     var foundTRule = false;

@@ -1778,7 +1778,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
         public async Task ReimageAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Manager.Inner.VirtualMachineScaleSets.ReimageAsync(ResourceGroupName, Name, cancellationToken);
+            await Manager.Inner.VirtualMachineScaleSets.ReimageAsync(ResourceGroupName, Name, cancellationToken: cancellationToken);
         }
 
         ///GENMHASH:7BA741621F15820BA59476A9CFEBBD88:395C45C93AFFE4737734EBBF09A6B2AF

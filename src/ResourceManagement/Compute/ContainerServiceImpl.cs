@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public ContainerServiceImpl WithSwarmOrchestration()
         {
-            this.WithOrchestratorProfile(ContainerServiceOchestratorTypes.Swarm);
+            this.WithOrchestratorProfile(ContainerServiceOrchestratorTypes.Swarm);
             return this;
         }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public ContainerServiceImpl WithKubernetesOrchestration()
         {
-            this.WithOrchestratorProfile(ContainerServiceOchestratorTypes.Kubernetes);
+            this.WithOrchestratorProfile(ContainerServiceOrchestratorTypes.Kubernetes);
             return this;
         }
 
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         public ContainerServiceImpl WithDcosOrchestration()
         {
-            this.WithOrchestratorProfile(ContainerServiceOchestratorTypes.DCOS);
+            this.WithOrchestratorProfile(ContainerServiceOrchestratorTypes.DCOS);
             return this;
         }
 
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this.GetSingleAgentPool().Name;
         }
 
-        public ContainerServiceOchestratorTypes OrchestratorType()
+        public ContainerServiceOrchestratorTypes OrchestratorType()
         {
             if (this.Inner.OrchestratorProfile == null)
             {
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
 
-        private ContainerServiceImpl WithOrchestratorProfile(ContainerServiceOchestratorTypes orchestratorType)
+        private ContainerServiceImpl WithOrchestratorProfile(ContainerServiceOrchestratorTypes orchestratorType)
         {
             ContainerServiceOrchestratorProfile orchestratorProfile = new ContainerServiceOrchestratorProfile();
             orchestratorProfile.OrchestratorType = orchestratorType;

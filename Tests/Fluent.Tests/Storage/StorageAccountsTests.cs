@@ -106,7 +106,7 @@ namespace Fluent.Tests.Storage
                         .WithAccessTier(AccessTier.Cool)
                         .Apply();
 
-                    Assert.Equal(storageAccount.AccessTier, AccessTier.Cool);
+                    Assert.Equal(AccessTier.Cool, storageAccount.AccessTier);
                 }
                 finally
                 {

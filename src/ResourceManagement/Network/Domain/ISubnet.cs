@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 {
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -11,7 +12,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
     public interface ISubnet  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.SubnetInner>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Network.Fluent.INetwork>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Network.Fluent.INetwork>,
+        Microsoft.Azure.Management.Network.Fluent.ISubnetBeta
     {
         /// <summary>
         /// Gets the address space prefix, in CIDR notation, assigned to this subnet.
@@ -24,6 +26,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         string RouteTableId { get; }
 
         /// <return>
+        /// Network interface IP configurations that are associated with this subnet
+        /// Note that this call may result in multiple calls to Azure to fetch all the referenced interfaces each time it is invoked.
+        /// </return>
+        System.Collections.Generic.IReadOnlyCollection<Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration> ListNetworkInterfaceIPConfigurations();
+
+        /// <return>
         /// The network security group associated with this subnet, if any
         /// Note that this method will result in a call to Azure each time it is invoked.
         /// </return>
@@ -33,6 +41,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Network interface IP configurations that are associated with this subnet
         /// Note that this call may result in multiple calls to Azure to fetch all the referenced interfaces each time it is invoked.
         /// </return>
+        /// <deprecated>Use  Subnet.ListNetworkInterfaceIPConfigurations() instead.</deprecated>
+        [Obsolete("Use  Subnet.ListNetworkInterfaceIPConfigurations() instead.")]
         System.Collections.Generic.ISet<Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration> GetNetworkInterfaceIPConfigurations();
 
         /// <summary>

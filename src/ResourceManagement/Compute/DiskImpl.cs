@@ -151,9 +151,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:A57B8C47BCE45BC6F3DA10CAF14C67BE
         public DiskSkuTypes Sku()
         {
-            if (Inner.AccountType != null && Inner.AccountType.HasValue)
+            if (Inner.Sku != null && Inner.Sku.Name != null && Inner.Sku.Name.HasValue)
             {
-                return DiskSkuTypes.FromStorageAccountType(Inner.AccountType.Value);
+                return DiskSkuTypes.FromStorageAccountType(Inner.Sku.Name.Value);
             }
             return null;
         }
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:3E35FB42190F8D9DBB9DAD636FA3EDE3:18D9C432A23D2C301F2F3E9EF7C57583
         public string VirtualMachineId()
         {
-            return Inner.OwnerId;
+            return Inner.ManagedBy;
         }
 
         ///GENMHASH:DAC486F08AF23F259E630032FC20FAF1:3FE53F300A729DFBC3C1F55BBB117CA1
@@ -227,7 +227,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:26BC80239F0CCAAB14CDBC15A85351B8:5C4E68981DCB985DABC30CE2B145CC62
         public DiskImpl WithSku(DiskSkuTypes sku)
         {
-            Inner.AccountType = sku.AccountType;
+            Inner.Sku = new DiskSku
+            {
+                Name = sku.AccountType
+            };
             return this;
         }
 

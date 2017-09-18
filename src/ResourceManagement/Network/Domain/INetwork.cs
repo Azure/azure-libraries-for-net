@@ -14,7 +14,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     public interface INetwork  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.VirtualNetworkInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.INetwork>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Network.Update.IUpdate>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Network.Update.IUpdate>,
+        Microsoft.Azure.Management.Network.Fluent.INetworkBeta
     {
         /// <summary>
         /// Gets list of address spaces associated with this virtual network, in the CIDR notation.

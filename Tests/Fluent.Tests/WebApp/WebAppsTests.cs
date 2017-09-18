@@ -58,9 +58,9 @@ namespace Fluent.Tests.WebApp
 
                 // List
                 var webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName1);
-                Assert.Equal(1, webApps.Count());
+                Assert.Single(webApps);
                 webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName2);
-                Assert.Equal(1, webApps.Count());
+                Assert.Single(webApps);
 
                 // Update
                 webApp1.Update()

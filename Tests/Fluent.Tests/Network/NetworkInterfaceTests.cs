@@ -96,8 +96,8 @@ namespace Fluent.Tests.Network
                 Assert.NotNull(nic);
                 primaryIPConfig = nic.PrimaryIPConfiguration;
                 Assert.NotNull(primaryIPConfig);
-                Assert.True("subnet1".Equals(primaryIPConfig.SubnetName, StringComparison.OrdinalIgnoreCase));
-                Assert.True(network.Id.Equals(primaryIPConfig.NetworkId, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal("subnet1", primaryIPConfig.SubnetName, ignoreCase: true);
+                Assert.Equal(network.Id, primaryIPConfig.NetworkId, ignoreCase: true);
 
                 // Verify NIC1
                 nic = nics[1];
@@ -106,12 +106,12 @@ namespace Fluent.Tests.Network
 
                 primaryIPConfig = nic.PrimaryIPConfiguration;
                 Assert.NotNull(primaryIPConfig);
-                Assert.True("subnet1".Equals(primaryIPConfig.SubnetName, StringComparison.OrdinalIgnoreCase));
-                Assert.True(network.Id.Equals(primaryIPConfig.NetworkId, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal("subnet1", primaryIPConfig.SubnetName, ignoreCase: true);
+                Assert.Equal(network.Id, primaryIPConfig.NetworkId, ignoreCase: true);
 
                 Assert.True(nic.IPConfigurations.TryGetValue("nicip2", out secondaryIPConfig));
-                Assert.True("subnet1".Equals(primaryIPConfig.SubnetName, StringComparison.OrdinalIgnoreCase));
-                Assert.True(network.Id.Equals(secondaryIPConfig.NetworkId, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal("subnet1", primaryIPConfig.SubnetName, ignoreCase: true);
+                Assert.Equal(network.Id, secondaryIPConfig.NetworkId, ignoreCase: true);
 
                 // Verify NIC2
                 nic = nics[2];
@@ -120,12 +120,12 @@ namespace Fluent.Tests.Network
 
                 primaryIPConfig = nic.PrimaryIPConfiguration;
                 Assert.NotNull(primaryIPConfig);
-                Assert.True("subnet1".Equals(primaryIPConfig.SubnetName, StringComparison.OrdinalIgnoreCase));
-                Assert.True(network.Id.Equals(primaryIPConfig.NetworkId, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal("subnet1", primaryIPConfig.SubnetName, ignoreCase: true);
+                Assert.Equal(network.Id, primaryIPConfig.NetworkId, ignoreCase: true);
 
                 Assert.True(nic.IPConfigurations.TryGetValue("nicip2", out secondaryIPConfig));
-                Assert.True("subnet1".Equals(secondaryIPConfig.SubnetName, StringComparison.OrdinalIgnoreCase));
-                Assert.True(network.Id.Equals(secondaryIPConfig.NetworkId, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal("subnet1", secondaryIPConfig.SubnetName, ignoreCase: true);
+                Assert.Equal(network.Id, secondaryIPConfig.NetworkId, ignoreCase: true);
 
                 nic = null;
 
@@ -172,12 +172,12 @@ namespace Fluent.Tests.Network
 
                         primaryIPConfig = n.PrimaryIPConfiguration;
                         Assert.NotNull(primaryIPConfig);
-                        Assert.True("subnet1".Equals(primaryIPConfig.SubnetName, StringComparison.OrdinalIgnoreCase));
-                        Assert.True(network.Id.Equals(primaryIPConfig.NetworkId, StringComparison.OrdinalIgnoreCase));
+                        Assert.Equal("subnet1", primaryIPConfig.SubnetName, ignoreCase: true);
+                        Assert.Equal(network.Id, primaryIPConfig.NetworkId, ignoreCase: true);
 
                         Assert.True(n.IPConfigurations.TryGetValue("nicip2", out secondaryIPConfig));
-                        Assert.True("subnet1".Equals(secondaryIPConfig.SubnetName, StringComparison.OrdinalIgnoreCase));
-                        Assert.True(network.Id.Equals(secondaryIPConfig.NetworkId, StringComparison.OrdinalIgnoreCase));
+                        Assert.Equal("subnet1", secondaryIPConfig.SubnetName, ignoreCase: true);
+                        Assert.Equal(network.Id, secondaryIPConfig.NetworkId, ignoreCase: true);
                     }
                     else if (n.Id.Equals(nics[1].Id, StringComparison.OrdinalIgnoreCase))
                     {
@@ -186,8 +186,8 @@ namespace Fluent.Tests.Network
                         primaryIPConfig = n.PrimaryIPConfiguration;
                         Assert.NotNull(primaryIPConfig);
                         Assert.False("nicip2".Equals(primaryIPConfig.Name, StringComparison.OrdinalIgnoreCase));
-                        Assert.True("subnet2".Equals(primaryIPConfig.SubnetName, StringComparison.OrdinalIgnoreCase));
-                        Assert.True(network.Id.Equals(primaryIPConfig.NetworkId, StringComparison.OrdinalIgnoreCase));
+                        Assert.Equal("subnet2", primaryIPConfig.SubnetName, ignoreCase: true);
+                        Assert.Equal(network.Id, primaryIPConfig.NetworkId, ignoreCase: true);
                     }
                     else if (n.Id.Equals(nics[2].Id, StringComparison.OrdinalIgnoreCase))
                     {
@@ -198,12 +198,12 @@ namespace Fluent.Tests.Network
                         Assert.NotNull(primaryIPConfig);
                         Assert.False("nicip2".Equals(primaryIPConfig.Name, StringComparison.OrdinalIgnoreCase));
                         Assert.False("nicip3".Equals(primaryIPConfig.Name, StringComparison.OrdinalIgnoreCase));
-                        Assert.True("subnet1".Equals(primaryIPConfig.SubnetName, StringComparison.OrdinalIgnoreCase));
-                        Assert.True(network.Id.Equals(primaryIPConfig.NetworkId, StringComparison.OrdinalIgnoreCase));
+                        Assert.Equal("subnet1", primaryIPConfig.SubnetName, ignoreCase: true);
+                        Assert.Equal(network.Id, primaryIPConfig.NetworkId, ignoreCase: true);
 
                         Assert.True(n.IPConfigurations.TryGetValue("nicip3", out secondaryIPConfig));
-                        Assert.True("subnet1".Equals(secondaryIPConfig.SubnetName));
-                        Assert.True(network.Id.Equals(secondaryIPConfig.NetworkId));
+                        Assert.Equal("subnet1", secondaryIPConfig.SubnetName);
+                        Assert.Equal(network.Id, secondaryIPConfig.NetworkId);
                     }
                     else
                     {
@@ -258,14 +258,14 @@ namespace Fluent.Tests.Network
                 ISubnet subnet;
                 Assert.True(network.Subnets.TryGetValue(ipConfig.SubnetName, out subnet));
                 Assert.Equal(1, subnet.NetworkInterfaceIPConfigurationCount);
-                var ipConfigs = subnet.GetNetworkInterfaceIPConfigurations();
+                var ipConfigs = subnet.ListNetworkInterfaceIPConfigurations();
                 Assert.NotNull(ipConfigs);
                 Assert.Equal(1, ipConfigs.Count);
 
                 INicIPConfiguration ipConfig2 = null;
                 ipConfig2 = ipConfigs.FirstOrDefault(i => i.Name.Equals(ipConfig.Name, StringComparison.OrdinalIgnoreCase));
                 Assert.NotNull(ipConfig2);
-                Assert.True(ipConfig.Name.Equals(ipConfig2.Name, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal(ipConfig.Name, ipConfig2.Name, ignoreCase: true);
 
                 var resource = manager.NetworkInterfaces.GetById(nic.Id);
                 resource = resource.Update()
@@ -355,10 +355,10 @@ namespace Fluent.Tests.Network
                                                                     .Create(nic1Creatable, nic2Creatable, nic3Creatable, nic4Creatable);
 
                 Assert.True(batchNics.Count() == 4);
-                Assert.True(batchNics.Any(nic => nic.Name.Equals(nic1Name, StringComparison.OrdinalIgnoreCase)));
-                Assert.True(batchNics.Any(nic => nic.Name.Equals(nic2Name, StringComparison.OrdinalIgnoreCase)));
-                Assert.True(batchNics.Any(nic => nic.Name.Equals(nic3Name, StringComparison.OrdinalIgnoreCase)));
-                Assert.True(batchNics.Any(nic => nic.Name.Equals(nic4Name, StringComparison.OrdinalIgnoreCase)));
+                Assert.Contains(batchNics, nic => nic.Name.Equals(nic1Name, StringComparison.OrdinalIgnoreCase));
+                Assert.Contains(batchNics, nic => nic.Name.Equals(nic2Name, StringComparison.OrdinalIgnoreCase));
+                Assert.Contains(batchNics, nic => nic.Name.Equals(nic3Name, StringComparison.OrdinalIgnoreCase));
+                Assert.Contains(batchNics, nic => nic.Name.Equals(nic4Name, StringComparison.OrdinalIgnoreCase));
 
                 IResourceGroup resourceGroup = (IResourceGroup)batchNics.CreatedRelatedResource(rgCreatable.Key);
                 Assert.NotNull(resourceGroup);

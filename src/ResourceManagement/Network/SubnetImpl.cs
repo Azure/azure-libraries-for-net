@@ -27,54 +27,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
         }
 
-        
-        ///GENMHASH:800CEBA636763193270CED876CFEF15E:D03CF632A56161643BB9B792B63AEE9C
+        ///GENMHASH:800CEBA636763193270CED876CFEF15E:CB481EB2DEF3D1F45015152F66FFC968
         internal ISet<INicIPConfiguration> GetNetworkInterfaceIPConfigurations()
         {
-            var ipConfigs = new HashSet<INicIPConfiguration>();
-            var nics = new Dictionary<string, INetworkInterface>();
-            var ipConfigRefs = Inner.IpConfigurations;
-            if (ipConfigRefs == null)
-            {
-                return ipConfigs;
-            }
-
-            foreach (var ipConfigRef in ipConfigRefs)
-            {
-                string nicID = ResourceUtils.ParentResourcePathFromResourceId(ipConfigRef.Id);
-                string ipConfigName = ResourceUtils.NameFromResourceId(ipConfigRef.Id);
-
-                // Check if NIC already cached
-                INetworkInterface nic;
-                if (!nics.TryGetValue(nicID.ToLower(), out nic))
-                {
-                    //  NIC not previously found, so ask Azure for it  
-                    nic = Parent.Manager.NetworkInterfaces.GetById(nicID);
-                }
-
-                if (nic == null)
-                {
-                    // NIC doesn't exist so ignore this bad reference  
-                    continue;
-                }
-
-                // Cache the NIC
-                nics[nic.Id.ToLower()] = nic;
-
-                // Get the IP config  
-                INicIPConfiguration ipConfig;
-                if (!nic.IPConfigurations.TryGetValue(ipConfigName, out ipConfig))
-                {
-                    // IP config not found, so ignore this bad reference  
-                    continue;
-                }
-
-                ipConfigs.Add(ipConfig);
-            }
-
-            return ipConfigs;
+            return (new SortedSet<INicIPConfiguration>(ListNetworkInterfaceIPConfigurations()));
         }
-
         
         ///GENMHASH:965854F936E6686E5CF712FF5E950D9E:49D3D07DD88DEEA404C2173A84254C19
         internal int NetworkInterfaceIPConfigurationCount()
@@ -197,11 +154,83 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         
         ///GENMHASH:31626FBDA69232B7DD9945ADF14E191A:245758B25F0370039EC9345CF6DFAC4C
-        public SubnetImpl WithoutNetworkSecurityGroup()
+        internal SubnetImpl WithoutNetworkSecurityGroup()
         {
             Inner.NetworkSecurityGroup = null;
             return this;
         }
 
+        ///GENMHASH:A4DDE1D1D48B67FA48D835924D16FDA1:FF7B041ADA25EA1EECE12F0DADBD55E5
+        internal IReadOnlyCollection<INicIPConfiguration> ListNetworkInterfaceIPConfigurations()
+        {
+            List<INicIPConfiguration> ipConfigs = new List<INicIPConfiguration>();
+            IDictionary<string, INetworkInterface> nics = new SortedDictionary<string, INetworkInterface>();
+            IList<IPConfigurationInner> ipConfigRefs = Inner.IpConfigurations;
+            if (ipConfigRefs == null)
+            {
+                return ipConfigs;
+            }
+
+            foreach(var ipConfigRef in ipConfigRefs)
+            {
+                string nicID = ResourceUtils.ParentResourcePathFromResourceId(ipConfigRef.Id);
+                string ipConfigName = ResourceUtils.NameFromResourceId(ipConfigRef.Id);
+                // Check if NIC already cached
+                INetworkInterface nic;
+                if (!nics.TryGetValue(nicID.ToLower(), out nic))
+                {
+                    //  NIC not previously found, so ask Azure for it
+                    nic = Parent.Manager.NetworkInterfaces.GetById(nicID);
+                }
+
+                if (nic == null)
+                {
+                    // NIC doesn't exist so ignore this bad reference
+                    continue;
+                }
+
+                // Cache the NIC
+                nics[nic.Id.ToLower()] = nic;
+
+                // Get the IP config
+                INicIPConfiguration ipConfig = nic.IPConfigurations[ipConfigName];
+                if (ipConfig == null)
+                {
+                    // IP config not found, so ignore this bad reference
+                    continue;
+                }
+
+                ipConfigs.Add(ipConfig);
+            }
+
+            return ipConfigs;
+        }
+
+        ///GENMHASH:51856D80D1043AF4DAEAC97421929883:1EE6C0626118BB9397921EAE99A6FE25
+        internal ISet<string> ListAvailablePrivateIPAddresses()
+        {
+            ISet<string> ipAddresses = new SortedSet<string>();
+
+            string cidr = AddressPrefix();
+            if (cidr == null)
+            {
+                return ipAddresses; // Should never happen, but just in case
+            }
+
+            string takenIPAddress = cidr.Split('/')[0];
+
+            var result = Extensions.Synchronize(() => Parent.Manager.Networks.Inner.CheckIPAddressAvailabilityAsync(
+                Parent.ResourceGroupName,
+                Parent.Name,
+                takenIPAddress));
+
+            if (result == null)
+            {
+                return ipAddresses;
+            }
+
+            ipAddresses.UnionWith(result.AvailableIPAddresses);
+            return ipAddresses;
+        }
     }
 }

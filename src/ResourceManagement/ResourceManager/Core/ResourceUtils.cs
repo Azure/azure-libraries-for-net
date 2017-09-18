@@ -9,47 +9,32 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
     {
         public static string GroupFromResourceId(string id)
         {
-            if (string.IsNullOrWhiteSpace(id))
-            {
-                return null;
-            }
-            return ResourceId.FromString(id).ResourceGroupName;
+            return (!string.IsNullOrWhiteSpace(id)) ? ResourceId.FromString(id).ResourceGroupName : null;
+        }
+
+        public static string SubscriptionFromResourceId(string id)
+        {
+            return (id != null) ? ResourceId.FromString(id).SubscriptionId : null;
         }
 
         public static string ResourceProviderFromResourceId(string id)
         {
-            if (string.IsNullOrWhiteSpace(id))
-            {
-                return null;
-            }
-            return ResourceId.FromString(id).ProviderNamespace;
-        }
-
-        public static string NameFromResourceId(string id)
-        {
-            if (string.IsNullOrWhiteSpace(id))
-            {
-                return null;
-            }
-            return ResourceId.FromString(id).Name;
+            return (!string.IsNullOrWhiteSpace(id)) ? ResourceId.FromString(id).ProviderNamespace : null;
         }
 
         public static string ResourceTypeFromResourceId(string id)
         {
-            if (string.IsNullOrWhiteSpace(id))
-            {
-                return null;
-            }
-            return ResourceId.FromString(id).ResourceType;
+            return (!string.IsNullOrWhiteSpace(id)) ? ResourceId.FromString(id).ResourceType : null;
+        }
+
+        public static string NameFromResourceId(string id)
+        {
+            return (!string.IsNullOrWhiteSpace(id)) ? ResourceId.FromString(id).Name : null;
         }
 
         public static string ParentResourcePathFromResourceId(string id)
         {
-            if (string.IsNullOrWhiteSpace(id))
-            {
-                return null;
-            }
-            return ResourceId.FromString(id)?.Parent?.Id;
+            return (!string.IsNullOrWhiteSpace(id)) ? ResourceId.FromString(id)?.Parent?.Id : null;
         }
 
         public static string ConstructResourceId(
