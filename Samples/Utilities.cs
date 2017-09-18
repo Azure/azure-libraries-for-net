@@ -783,11 +783,30 @@ namespace Microsoft.Azure.Management.Samples.Common
             {
                 info.Append("\n\tSubnet: ").Append(subnet.Name)
                         .Append("\n\t\tAddress prefix: ").Append(subnet.AddressPrefix);
+
+                // Output associated NSG
                 var subnetNsg = subnet.GetNetworkSecurityGroup();
                 if (subnetNsg != null)
                 {
                     info.Append("\n\t\tNetwork security group: ").Append(subnetNsg.Id);
                 }
+
+                // Output associated route table
+                var routeTable = subnet.GetRouteTable();
+                if (routeTable != null)
+                {
+                    info.Append("\n\tRoute table ID: ").Append(routeTable.Id);
+                }
+            }
+
+            // Output peerings
+            foreach (var peering in network.Peerings.List())
+            {
+                info.Append("\n\tPeering: ").Append(peering.Name)
+                    .Append("\n\t\tRemote network ID: ").Append(peering.RemoteNetworkId)
+                    .Append("\n\t\tPeering state: ").Append(peering.State)
+                    .Append("\n\t\tIs traffic forwarded from remote network allowed? ").Append(peering.IsTrafficForwardingFromRemoteNetworkAllowed)
+                    .Append("\n\t\tGateway use: ").Append(peering.GatewayUse);
             }
 
             Utilities.Log(info.ToString());
