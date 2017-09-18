@@ -102,7 +102,7 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             var frontend = lb.Frontends.Values.First();
             Assert.True(frontend.IsPublic);
             var publicFrontend = (ILoadBalancerPublicFrontend)frontend;
-            Assert.True(pip0.Id.Equals(publicFrontend.PublicIPAddressId, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal(pip0.Id, publicFrontend.PublicIPAddressId, ignoreCase: true);
 
             // Verify backends
             Assert.Equal(1, lb.Backends.Count);
@@ -118,7 +118,7 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             Assert.True(lb.LoadBalancingRules.ContainsKey("rule1"));
             var rule = lb.LoadBalancingRules["rule1"];
             Assert.NotNull(rule.Backend);
-            Assert.True(rule.Probe.Name.Equals("tcpProbe1", StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("tcpProbe1", rule.Probe.Name, ignoreCase: true);
 
             // Verify inbound NAT pools
             Assert.True(lb.InboundNatPools.ContainsKey("natpool1"));

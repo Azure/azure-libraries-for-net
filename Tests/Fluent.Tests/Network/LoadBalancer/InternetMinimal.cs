@@ -60,12 +60,12 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             Assert.Equal(0, lb.PrivateFrontends.Count);
             var frontend = lb.Frontends.Values.First();
             Assert.Equal(1, frontend.LoadBalancingRules.Count);
-            Assert.True("lbrule1".Equals(frontend.LoadBalancingRules.Values.First().Name, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("lbrule1", frontend.LoadBalancingRules.Values.First().Name, ignoreCase: true);
             Assert.True(frontend.IsPublic);
             var publicFrontend = (ILoadBalancerPublicFrontend) frontend;
             IPublicIPAddress pip = publicFrontend.GetPublicIPAddress();
             Assert.NotNull(pip);
-            Assert.True(pip.LeafDomainLabel.Equals(pipDnsLabel, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal(pip.LeafDomainLabel, pipDnsLabel, ignoreCase: true);
 
             // Verify TCP probes
             Assert.Equal(0, lb.TcpProbes.Count);
@@ -145,7 +145,7 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             var frontend = lbRule.Frontend;
             Assert.True(frontend.IsPublic);
             var publicFrontend = (ILoadBalancerPublicFrontend)frontend;
-            Assert.True(pip.Id.Equals(publicFrontend.PublicIPAddressId, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal(pip.Id, publicFrontend.PublicIPAddressId, ignoreCase: true);
             Assert.Equal(2, publicFrontend.LoadBalancingRules.Count);
 
             // Verify probes
@@ -158,7 +158,7 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             Assert.True(resource.HttpProbes.ContainsKey("httpprobe"));
             var httpProbe = resource.HttpProbes["httpprobe"];
             Assert.Equal(3, httpProbe.NumberOfProbes);
-            Assert.True("/foo".Equals(httpProbe.RequestPath, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("/foo", httpProbe.RequestPath, ignoreCase: true);
             Assert.True(httpProbe.LoadBalancingRules.ContainsKey("lbrule2"));
 
             // Verify backends
@@ -182,10 +182,10 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             Assert.NotNull(lbRule);
             Assert.Equal(22, lbRule.FrontendPort);
             Assert.NotNull(lbRule.Frontend);
-            Assert.True("httpprobe".Equals(lbRule.Probe.Name, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("httpprobe", lbRule.Probe.Name, ignoreCase: true);
             Assert.Equal(TransportProtocol.Udp, lbRule.Protocol);
             Assert.NotNull(lbRule.Backend);
-            Assert.True("backend2".Equals(lbRule.Backend.Name, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("backend2", lbRule.Backend.Name, ignoreCase: true);
 
             return resource;
         }

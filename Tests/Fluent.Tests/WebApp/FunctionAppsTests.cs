@@ -72,7 +72,7 @@ namespace Fluent.Tests.WebApp
 
                 // List
                 var functionApps = appServiceManager.FunctionApps.ListByResourceGroup(GroupName1);
-                Assert.Equal(1, functionApps.Count());
+                Assert.Single(functionApps);
                 functionApps = appServiceManager.FunctionApps.ListByResourceGroup(GroupName2);
                 Assert.Equal(2, functionApps.Count());
 

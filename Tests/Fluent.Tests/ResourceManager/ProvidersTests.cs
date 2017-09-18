@@ -39,7 +39,7 @@ namespace Fluent.Tests.ResourceManager
                     TestHelper.Delay(5000);
                     provider = resourceManager.Providers.GetByName(provider.Namespace);
                 }
-                Assert.True(string.Equals(provider.RegistrationState, "Registered"));
+                Assert.Equal("Registered", provider.RegistrationState);
                 IList<ProviderResourceType> resourceTypes = provider.ResourceTypes;
                 Assert.True(resourceTypes.Count > 0);
             }

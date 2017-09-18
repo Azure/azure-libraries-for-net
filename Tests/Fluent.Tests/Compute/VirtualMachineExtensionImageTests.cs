@@ -70,13 +70,13 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.NotNull(dockerExtensionImageType);
 
                 Assert.NotNull(dockerExtensionImageType.Id);
-                Assert.True(dockerExtensionImageType.Name.Equals(dockerExtensionImageTypeName, StringComparison.OrdinalIgnoreCase));
-                Assert.True(dockerExtensionImageType.RegionName.Equals("eastus", StringComparison.OrdinalIgnoreCase));
-                Assert.True(dockerExtensionImageType.Id
+                Assert.Equal(dockerExtensionImageType.Name, dockerExtensionImageTypeName, ignoreCase: true);
+                Assert.Equal("eastus", dockerExtensionImageType.RegionName, ignoreCase: true);
+                Assert.EndsWith("/Providers/Microsoft.Compute/Locations/eastus/Publishers/Microsoft.Azure.Extensions/ArtifactTypes/VMExtension/Types/DockerExtension".ToLower(), dockerExtensionImageType.Id
                         .ToLower()
-                        .EndsWith("/Providers/Microsoft.Compute/Locations/eastus/Publishers/Microsoft.Azure.Extensions/ArtifactTypes/VMExtension/Types/DockerExtension".ToLower()));
+);
                 Assert.NotNull(dockerExtensionImageType.Publisher);
-                Assert.True(dockerExtensionImageType.Publisher.Name.Equals(dockerExtensionPublisherName, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal(dockerExtensionImageType.Publisher.Name, dockerExtensionPublisherName, ignoreCase: true);
 
                 // Fetch Azure docker extension versions
                 //
@@ -86,19 +86,19 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 IVirtualMachineExtensionImageVersion extensionImageFirstVersion = extensionImageVersions.List().FirstOrDefault();
                 Assert.NotNull(extensionImageFirstVersion);
                 String versionName = extensionImageFirstVersion.Name;
-                Assert.True(extensionImageFirstVersion.Id
+                Assert.EndsWith(("/Providers/Microsoft.Compute/Locations/eastus/Publishers/Microsoft.Azure.Extensions/ArtifactTypes/VMExtension/Types/DockerExtension/Versions/" + versionName).ToLower(), extensionImageFirstVersion.Id
                         .ToLower()
-                        .EndsWith(("/Providers/Microsoft.Compute/Locations/eastus/Publishers/Microsoft.Azure.Extensions/ArtifactTypes/VMExtension/Types/DockerExtension/Versions/" + versionName).ToLower()));
+);
                 Assert.NotNull(extensionImageFirstVersion.Type);
 
                 // Fetch the Azure docker extension image
                 //
                 var dockerExtensionImage = extensionImageFirstVersion.GetImage();
 
-                Assert.True(dockerExtensionImage.RegionName.Equals("eastus", StringComparison.OrdinalIgnoreCase));
-                Assert.True(dockerExtensionImage.PublisherName.Equals(dockerExtensionPublisherName, StringComparison.OrdinalIgnoreCase));
-                Assert.True(dockerExtensionImage.TypeName.Equals(dockerExtensionImageTypeName, StringComparison.OrdinalIgnoreCase));
-                Assert.True(dockerExtensionImage.VersionName.Equals(versionName, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal("eastus", dockerExtensionImage.RegionName, ignoreCase: true);
+                Assert.Equal(dockerExtensionImage.PublisherName, dockerExtensionPublisherName, ignoreCase: true);
+                Assert.Equal(dockerExtensionImage.TypeName, dockerExtensionImageTypeName, ignoreCase: true);
+                Assert.Equal(dockerExtensionImage.VersionName, versionName, ignoreCase: true);
                 Assert.True(dockerExtensionImage.OSType == OperatingSystemTypes.Linux || dockerExtensionImage.OSType == OperatingSystemTypes.Windows);
             }
         }

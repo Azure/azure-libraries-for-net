@@ -90,7 +90,7 @@ namespace Fluent.Tests.Network
                     .WithRetentionPolicyDays(5)
                     .WithRetentionPolicyEnabled()
                     .Apply();
-                Assert.Equal(true, flowLogSettings.Enabled);
+                Assert.True(flowLogSettings.Enabled);
                 Assert.Equal(5, flowLogSettings.RetentionDays);
                 Assert.Equal(storageAccount.Id, flowLogSettings.StorageId);
 
@@ -116,7 +116,7 @@ namespace Fluent.Tests.Network
 
                 // test packet capture
                 IEnumerable<IPacketCapture> packetCaptures = nw.PacketCaptures.List();
-                Assert.Equal(0, packetCaptures.Count());
+                Assert.Empty(packetCaptures);
                 IPacketCapture packetCapture = nw.PacketCaptures
                     .Define("NewPacketCapture")
                     .WithTarget(vm0.Id)
@@ -128,7 +128,7 @@ namespace Fluent.Tests.Network
                         .Attach()
                     .Create();
                 packetCaptures = nw.PacketCaptures.List();
-                Assert.Equal(1, packetCaptures.Count());
+                Assert.Single(packetCaptures);
                 Assert.Equal("NewPacketCapture", packetCapture.Name);
                 Assert.Equal(1500, packetCapture.TimeLimitInSeconds);
                 Assert.Equal(PcProtocol.TCP.Value, packetCapture.Filters[0].Protocol);
