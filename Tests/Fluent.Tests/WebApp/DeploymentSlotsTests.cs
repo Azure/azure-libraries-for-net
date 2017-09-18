@@ -66,14 +66,14 @@ namespace Fluent.Tests.WebApp
                 Assert.Equal(JavaVersion.V7_51, slot2.JavaVersion);
                 appSettingMap = slot2.AppSettings;
                 Assert.Equal("appvalue", appSettingMap["appkey"].Value);
-                Assert.Equal(false, appSettingMap["appkey"].Sticky);
+                Assert.False(appSettingMap["appkey"].Sticky);
                 Assert.Equal("stickyvalue", appSettingMap["stickykey"].Value);
-                Assert.Equal(true, appSettingMap["stickykey"].Sticky);
+                Assert.True(appSettingMap["stickykey"].Sticky);
                 connectionStringMap = slot2.ConnectionStrings;
                 Assert.Equal("connectionValue", connectionStringMap["connectionName"].Value);
-                Assert.Equal(false, connectionStringMap["connectionName"].Sticky);
+                Assert.False(connectionStringMap["connectionName"].Sticky);
                 Assert.Equal("stickyValue", connectionStringMap["stickyName"].Value);
-                Assert.Equal(true, connectionStringMap["stickyName"].Sticky);
+                Assert.True(connectionStringMap["stickyName"].Sticky);
 
                 // Update deployment slot
                 slot2.Update()

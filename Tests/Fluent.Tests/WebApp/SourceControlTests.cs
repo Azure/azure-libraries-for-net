@@ -43,7 +43,7 @@ namespace Fluent.Tests.WebApp
 
                 var body = await response.Content.ReadAsStringAsync();
                 Assert.NotNull(body);
-                Assert.True(body.Contains("Hello world from linux 4"));
+                Assert.Contains("Hello world from linux 4", body);
             }
         }
     }

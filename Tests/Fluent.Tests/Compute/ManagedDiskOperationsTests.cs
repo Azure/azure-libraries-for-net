@@ -51,14 +51,14 @@ namespace Fluent.Tests.Compute
                             .Create();
 
                     Assert.NotNull(disk.Id);
-                    Assert.True(disk.Name.Equals(diskName, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(disk.Name, diskName, ignoreCase: true);
                     Assert.True(disk.Sku == DiskSkuTypes.StandardLRS);
-                    Assert.Equal(disk.CreationMethod, DiskCreateOption.Empty);
+                    Assert.Equal(DiskCreateOption.Empty, disk.CreationMethod);
                     Assert.False(disk.IsAttachedToVirtualMachine);
-                    Assert.Equal(disk.SizeInGB, 100);
+                    Assert.Equal(100, disk.SizeInGB);
                     Assert.Null(disk.OSType);
                     Assert.NotNull(disk.Source);
-                    Assert.Equal(disk.Source.Type, CreationSourceType.Empty);
+                    Assert.Equal(CreationSourceType.Empty, disk.Source.Type);
                     Assert.Null(disk.Source.SourceId());
 
                     // Resize and change storage account type
@@ -69,7 +69,7 @@ namespace Fluent.Tests.Compute
                             .Apply();
 
                     Assert.Equal(disk.Sku, updateTo);
-                    Assert.Equal(disk.SizeInGB, 200);
+                    Assert.Equal(200, disk.SizeInGB);
 
                     disk = computeManager.Disks.GetByResourceGroup(disk.ResourceGroupName, disk.Name);
                     Assert.NotNull(disk);
@@ -145,15 +145,15 @@ namespace Fluent.Tests.Compute
                     disk = computeManager.Disks.GetById(disk.Id);
 
                     Assert.NotNull(disk.Id);
-                    Assert.True(disk.Name.Equals(diskName2, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(disk.Name, diskName2, ignoreCase: true);
                     Assert.True(disk.Sku == DiskSkuTypes.StandardLRS);
-                    Assert.Equal(disk.CreationMethod, DiskCreateOption.Copy);
+                    Assert.Equal(DiskCreateOption.Copy, disk.CreationMethod);
                     Assert.False(disk.IsAttachedToVirtualMachine);
-                    Assert.Equal(disk.SizeInGB, 200);
+                    Assert.Equal(200, disk.SizeInGB);
                     Assert.Null(disk.OSType);
                     Assert.NotNull(disk.Source);
-                    Assert.Equal(disk.Source.Type, CreationSourceType.CopiedFromDisk);
-                    Assert.True(disk.Source.SourceId().Equals(emptyDisk.Id, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(CreationSourceType.CopiedFromDisk, disk.Source.Type);
+                    Assert.Equal(disk.Source.SourceId(), emptyDisk.Id, ignoreCase: true);
 
                     computeManager.Disks.DeleteById(emptyDisk.Id);
                     computeManager.Disks.DeleteById(disk.Id);
@@ -207,14 +207,14 @@ namespace Fluent.Tests.Compute
                             .Create();
 
                     Assert.NotNull(snapshot.Id);
-                    Assert.True(snapshot.Name.Equals(snapshotName, StringComparison.OrdinalIgnoreCase));
-                    Assert.Equal(snapshot.Sku, DiskSkuTypes.StandardLRS);
-                    Assert.Equal(snapshot.CreationMethod, DiskCreateOption.Copy);
-                    Assert.Equal(snapshot.SizeInGB, 200);
+                    Assert.Equal(snapshotName, snapshot.Name, true);
+                    Assert.Equal(DiskSkuTypes.StandardLRS, snapshot.Sku);
+                    Assert.Equal(DiskCreateOption.Copy, snapshot.CreationMethod);
+                    Assert.Equal(200, snapshot.SizeInGB);
                     Assert.Null(snapshot.OSType);
                     Assert.NotNull(snapshot.Source);
-                    Assert.Equal(snapshot.Source.Type, CreationSourceType.CopiedFromDisk);
-                    Assert.True(snapshot.Source.SourceId().Equals(emptyDisk.Id, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(CreationSourceType.CopiedFromDisk, snapshot.Source.Type);
+                    Assert.Equal(emptyDisk.Id, snapshot.Source.SourceId(), true);
 
                     var fromSnapshotDisk = computeManager.Disks
                             .Define(snapshotBasedDiskName)
@@ -226,20 +226,20 @@ namespace Fluent.Tests.Compute
                             .Create();
 
                     Assert.NotNull(fromSnapshotDisk.Id);
-                    Assert.True(fromSnapshotDisk.Name.Equals(snapshotBasedDiskName, StringComparison.OrdinalIgnoreCase));
-                    Assert.Equal(fromSnapshotDisk.Sku, DiskSkuTypes.StandardLRS);
-                    Assert.Equal(fromSnapshotDisk.CreationMethod, DiskCreateOption.Copy);
-                    Assert.Equal(fromSnapshotDisk.SizeInGB, 300);
+                    Assert.Equal(snapshotBasedDiskName, fromSnapshotDisk.Name, true);
+                    Assert.Equal(DiskSkuTypes.StandardLRS, fromSnapshotDisk.Sku);
+                    Assert.Equal(DiskCreateOption.Copy, fromSnapshotDisk.CreationMethod);
+                    Assert.Equal(300, fromSnapshotDisk.SizeInGB);
                     Assert.Null(fromSnapshotDisk.OSType);
                     Assert.NotNull(fromSnapshotDisk.Source);
-                    Assert.Equal(fromSnapshotDisk.Source.Type, CreationSourceType.CopiedFromSnapshot);
-                    Assert.True(fromSnapshotDisk.Source.SourceId().Equals(snapshot.Id));
+                    Assert.Equal(CreationSourceType.CopiedFromSnapshot, fromSnapshotDisk.Source.Type);
+                    Assert.Equal(snapshot.Id, fromSnapshotDisk.Source.SourceId(), true);
                 }
                 finally
                 {
                     try
                     {
-                        resourceManager.ResourceGroups.DeleteByName(rgName);
+                        resourceManager.ResourceGroups.BeginDeleteByName(rgName);
                     }
                     catch { }
                 }

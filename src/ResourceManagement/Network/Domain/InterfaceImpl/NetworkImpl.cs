@@ -39,28 +39,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Explicitly adds a subnet to the virtual network.
-        /// Note this method's effect is additive, i.e. each time it is used, a new subnet is added to the network.
-        /// </summary>
-        /// <param name="name">The name to assign to the subnet.</param>
-        /// <param name="cidr">The address space of the subnet, within the address space of the network, using the CIDR notation.</param>
-        /// <return>The next stage of the virtual network update.</return>
-        Network.Update.IUpdate Network.Update.IWithSubnet.WithSubnet(string name, string cidr)
-        {
-            return this.WithSubnet(name, cidr) as Network.Update.IUpdate;
-        }
-
-        /// <summary>
-        /// Removes a subnet from the virtual network.
-        /// </summary>
-        /// <param name="name">Name of the subnet to remove.</param>
-        /// <return>The next stage of the virtual network update.</return>
-        Network.Update.IUpdate Network.Update.IWithSubnet.WithoutSubnet(string name)
-        {
-            return this.WithoutSubnet(name) as Network.Update.IUpdate;
-        }
-
-        /// <summary>
         /// Begins the description of an update of an existing subnet of this network.
         /// </summary>
         /// <param name="name">The name of an existing subnet.</param>
@@ -81,6 +59,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Explicitly adds a subnet to the virtual network.
+        /// Note this method's effect is additive, i.e. each time it is used, a new subnet is added to the network.
+        /// </summary>
+        /// <param name="name">The name to assign to the subnet.</param>
+        /// <param name="cidr">The address space of the subnet, within the address space of the network, using the CIDR notation.</param>
+        /// <return>The next stage of the virtual network update.</return>
+        Network.Update.IUpdate Network.Update.IWithSubnet.WithSubnet(string name, string cidr)
+        {
+            return this.WithSubnet(name, cidr) as Network.Update.IUpdate;
+        }
+
+        /// <summary>
         /// Explicitly defines all the subnets in the virtual network based on the provided map.
         /// This replaces any previously existing subnets.
         /// </summary>
@@ -89,6 +79,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Network.Update.IUpdate Network.Update.IWithSubnet.WithSubnets(IDictionary<string,string> nameCidrPairs)
         {
             return this.WithSubnets(nameCidrPairs) as Network.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Removes a subnet from the virtual network.
+        /// </summary>
+        /// <param name="name">Name of the subnet to remove.</param>
+        /// <return>The next stage of the virtual network update.</return>
+        Network.Update.IUpdate Network.Update.IWithSubnet.WithoutSubnet(string name)
+        {
+            return this.WithoutSubnet(name) as Network.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Begins the definition of a new subnet to add to the virtual network.
+        /// The definition must be completed with a call to  Subnet.DefinitionStages.WithAttach.attach().
+        /// </summary>
+        /// <param name="name">The name of the subnet.</param>
+        /// <return>The first stage of the new subnet definition.</return>
+        Subnet.Definition.IBlank<Network.Definition.IWithCreateAndSubnet> Network.Definition.IWithSubnet.DefineSubnet(string name)
+        {
+            return this.DefineSubnet(name) as Subnet.Definition.IBlank<Network.Definition.IWithCreateAndSubnet>;
         }
 
         /// <summary>
@@ -103,17 +114,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Network.Definition.IWithCreateAndSubnet Network.Definition.IWithSubnet.WithSubnet(string name, string cidr)
         {
             return this.WithSubnet(name, cidr) as Network.Definition.IWithCreateAndSubnet;
-        }
-
-        /// <summary>
-        /// Begins the definition of a new subnet to add to the virtual network.
-        /// The definition must be completed with a call to  Subnet.DefinitionStages.WithAttach.attach().
-        /// </summary>
-        /// <param name="name">The name of the subnet.</param>
-        /// <return>The first stage of the new subnet definition.</return>
-        Subnet.Definition.IBlank<Network.Definition.IWithCreateAndSubnet> Network.Definition.IWithSubnet.DefineSubnet(string name)
-        {
-            return this.DefineSubnet(name) as Subnet.Definition.IBlank<Network.Definition.IWithCreateAndSubnet>;
         }
 
         /// <summary>
@@ -139,17 +139,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets list of address spaces associated with this virtual network, in the CIDR notation.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyList<string> Microsoft.Azure.Management.Network.Fluent.INetwork.AddressSpaces
-        {
-            get
-            {
-                return this.AddressSpaces() as System.Collections.Generic.IReadOnlyList<string>;
-            }
-        }
-
-        /// <summary>
         /// Gets list of DNS server IP addresses associated with this virtual network.
         /// </summary>
         System.Collections.Generic.IReadOnlyList<string> Microsoft.Azure.Management.Network.Fluent.INetwork.DnsServerIPs
@@ -157,6 +146,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
             get
             {
                 return this.DnsServerIPs() as System.Collections.Generic.IReadOnlyList<string>;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the specified private IP address is within this network's address space.
+        /// </summary>
+        /// <param name="ipAddress">An IP address.</param>
+        /// <return>True if the specified IP address is within this network's address space, otherwise false.</return>
+        bool Microsoft.Azure.Management.Network.Fluent.INetworkBeta.IsPrivateIPAddressInNetwork(string ipAddress)
+        {
+            return this.IsPrivateIPAddressInNetwork(ipAddress);
+        }
+
+        /// <summary>
+        /// Gets entry point to managing virtual network peerings for this network.
+        /// </summary>
+        Microsoft.Azure.Management.Network.Fluent.INetworkPeerings Microsoft.Azure.Management.Network.Fluent.INetworkBeta.Peerings
+        {
+            get
+            {
+                return this.Peerings() as Microsoft.Azure.Management.Network.Fluent.INetworkPeerings;
             }
         }
 
@@ -171,6 +181,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 return this.Subnets() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ISubnet>;
             }
+        }
+
+        /// <summary>
+        /// Gets list of address spaces associated with this virtual network, in the CIDR notation.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<string> Microsoft.Azure.Management.Network.Fluent.INetwork.AddressSpaces
+        {
+            get
+            {
+                return this.AddressSpaces() as System.Collections.Generic.IReadOnlyList<string>;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the specified private IP address is available in this network.
+        /// </summary>
+        /// <param name="ipAddress">An IP address from this network's address space.</param>
+        /// <return>True if the address is within this network's address space and is available.</return>
+        bool Microsoft.Azure.Management.Network.Fluent.INetworkBeta.IsPrivateIPAddressAvailable(string ipAddress)
+        {
+            return this.IsPrivateIPAddressAvailable(ipAddress);
         }
 
         /// <summary>

@@ -22,12 +22,12 @@ namespace Fluent.Tests.ResourceManager
                 Action<IResourceGroup> checkResourceGroup = (IResourceGroup resourceGroup) =>
                 {
                     Assert.NotNull(resourceGroup.Name);
-                    Assert.True(resourceGroup.Name.Equals(rgName, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(resourceGroup.Name, rgName, ignoreCase: true);
                     Assert.NotNull(resourceGroup.RegionName);
                     Assert.True(StringComparer.CurrentCultureIgnoreCase.Equals(resourceGroup.RegionName, Region.USEast2.Name));
                     Assert.NotNull(resourceGroup.Id);
                     Assert.NotNull(resourceGroup.Tags);
-                    Assert.Equal(resourceGroup.Tags.Count, 3);
+                    Assert.Equal(3, resourceGroup.Tags.Count);
                 };
 
                 try
@@ -53,7 +53,7 @@ namespace Fluent.Tests.ResourceManager
                         .WithTag("t5", "v5")
                         .Apply();
                     Assert.NotNull(resourceGroup.Tags);
-                    Assert.Equal(resourceGroup.Tags.Count, 4);
+                    Assert.Equal(4, resourceGroup.Tags.Count);
                 }
                 finally
                 {

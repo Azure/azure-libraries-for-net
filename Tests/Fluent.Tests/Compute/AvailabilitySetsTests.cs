@@ -32,7 +32,7 @@ namespace Fluent.Tests.Compute
                         .WithFaultDomainCount(3)
                         .Create();
 
-                    Assert.True(string.Equals(availabilitySet.ResourceGroupName, rgName));
+                    Assert.Equal(availabilitySet.ResourceGroupName, rgName);
                     Assert.True(availabilitySet.UpdateDomainCount == 2);
                     Assert.True(availabilitySet.FaultDomainCount == 3);
 
@@ -53,10 +53,6 @@ namespace Fluent.Tests.Compute
 
                     // Delete
                     computeManager.AvailabilitySets.DeleteById(availabilitySet.Id);
-                }
-                catch
-                {
-                    //
                 }
                 finally
                 {

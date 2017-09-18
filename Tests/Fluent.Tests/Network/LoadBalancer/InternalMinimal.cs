@@ -63,11 +63,11 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             var frontend = lb.Frontends.Values.First();
             Assert.Equal(1, frontend.LoadBalancingRules.Count);
             Assert.False(frontend.IsPublic);
-            Assert.True("lbrule1".Equals(frontend.LoadBalancingRules.Values.First().Name, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("lbrule1", frontend.LoadBalancingRules.Values.First().Name, ignoreCase: true);
             var privateFrontend = (ILoadBalancerPrivateFrontend) frontend;
-            Assert.True(network.Id.Equals(privateFrontend.NetworkId, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal(network.Id, privateFrontend.NetworkId, ignoreCase: true);
             Assert.NotNull(privateFrontend.PrivateIPAddress);
-            Assert.True("subnet1".Equals(privateFrontend.SubnetName, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("subnet1", privateFrontend.SubnetName, ignoreCase: true);
             Assert.Equal(IPAllocationMethod.Dynamic, privateFrontend.PrivateIPAllocationMethod);
 
             // Verify TCP probes
@@ -144,9 +144,9 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             var frontend = resource.Frontends[lbRule.Frontend.Name];
             Assert.False(frontend.IsPublic);
             var privateFrontend = (ILoadBalancerPrivateFrontend) frontend;
-            Assert.True("subnet2".Equals(privateFrontend.SubnetName, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("subnet2", privateFrontend.SubnetName, ignoreCase: true);
             Assert.Equal(IPAllocationMethod.Static, privateFrontend.PrivateIPAllocationMethod);
-            Assert.True("10.0.0.13".Equals(privateFrontend.PrivateIPAddress));
+            Assert.Equal("10.0.0.13", privateFrontend.PrivateIPAddress);
             Assert.Equal(2, privateFrontend.LoadBalancingRules.Count);
 
             // Verify probes
@@ -159,7 +159,7 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             Assert.True(resource.HttpProbes.ContainsKey("httpprobe"));
             var httpProbe = resource.HttpProbes["httpprobe"];
             Assert.Equal(3, httpProbe.NumberOfProbes);
-            Assert.True("/foo".Equals(httpProbe.RequestPath, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("/foo", httpProbe.RequestPath, ignoreCase: true);
             Assert.True(httpProbe.LoadBalancingRules.ContainsKey("lbrule2"));
 
             // Verify backends
@@ -182,10 +182,10 @@ namespace Fluent.Tests.Network.LoadBalancerHelpers
             Assert.NotNull(lbRule);
             Assert.Equal(22, lbRule.FrontendPort);
             Assert.NotNull(lbRule.Frontend);
-            Assert.True("httpprobe".Equals(lbRule.Probe.Name, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("httpprobe", lbRule.Probe.Name, ignoreCase: true);
             Assert.Equal(TransportProtocol.Udp, lbRule.Protocol);
             Assert.NotNull(lbRule.Backend);
-            Assert.True("backend2".Equals(lbRule.Backend.Name, StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("backend2", lbRule.Backend.Name, ignoreCase: true);
 
             return resource;
         }

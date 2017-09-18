@@ -76,7 +76,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.NotNull(virtualMachine);
                 Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
                 Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
-                Assert.True(virtualMachine.BootDiagnosticsStorageUri.Contains(storageName));
+                Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
             }
         }
 
@@ -114,7 +114,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.NotNull(virtualMachine);
                 Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
                 Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
-                Assert.True(virtualMachine.BootDiagnosticsStorageUri.Contains(storageName));
+                Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
             }
         }
 
@@ -183,7 +183,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
                 Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
                 Assert.NotNull(virtualMachine.OSUnmanagedDiskVhdUri);
-                Assert.True(virtualMachine.OSUnmanagedDiskVhdUri.ToLower().StartsWith(virtualMachine.BootDiagnosticsStorageUri.ToLower()));
+                Assert.StartsWith(virtualMachine.BootDiagnosticsStorageUri.ToLower(), virtualMachine.OSUnmanagedDiskVhdUri.ToLower());
             }
         }
 
@@ -222,7 +222,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.NotNull(virtualMachine);
                 Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
                 Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
-                Assert.True(virtualMachine.BootDiagnosticsStorageUri.Contains(storageName));
+                Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
             }
         }
 
@@ -307,7 +307,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.NotNull(virtualMachine);
                 Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
                 Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
-                Assert.True(virtualMachine.BootDiagnosticsStorageUri.Contains(storageName));
+                Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
                 // There should be a different storage account created for the OS Disk
                 Assert.False(virtualMachine.OSUnmanagedDiskVhdUri.ToLower().StartsWith(virtualMachine.BootDiagnosticsStorageUri.ToLower()));
             }

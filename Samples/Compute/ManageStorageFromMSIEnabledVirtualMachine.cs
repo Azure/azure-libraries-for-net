@@ -32,11 +32,11 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
             var rgName = Utilities.CreateRandomName("rgCOMV");
             var pipName = Utilities.CreateRandomName("pip1");
             var userName = "tirekicker";
-            var password = "12NewPA$$w0rd!";
+            var password = "12NewPA34w0rd!";
             var region = Region.USWestCentral;
 
             var installScript = "https://raw.githubusercontent.com/Azure/azure-sdk-for-net/Fluent/Samples/Asset/create_resources_with_msi.sh";
-            var installCommand = "bash create_resources_with_msi.sh {subscriptionID} {port} {stgName} {rgName} {location}";
+            var installCommand = "bash create_resources_with_msi.sh {stgName} {rgName} {location}";
             List<String> fileUris = new List<String>();
             fileUris.Add(installScript);
             try
@@ -68,8 +68,7 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
                 // Prepare custom script to install az cli that uses MSI to create a storage account
                 //
                 var stgName = Utilities.CreateRandomName("st44");
-                installCommand = installCommand.Replace("{subscriptionID}", azure.SubscriptionId)
-                                .Replace("{port}", "50342")
+                installCommand = installCommand
                                 .Replace("{stgName}", stgName)
                                 .Replace("{rgName}", rgName)
                                 .Replace("{location}", region.Name);

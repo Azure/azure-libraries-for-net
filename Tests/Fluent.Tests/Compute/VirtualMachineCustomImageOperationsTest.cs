@@ -56,9 +56,9 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.Null(customImage.SourceVirtualMachineId);
                     Assert.NotNull(customImage.OSDiskImage);
                     Assert.NotNull(customImage.OSDiskImage.BlobUri);
-                    Assert.Equal(customImage.OSDiskImage.Caching, CachingTypes.ReadWrite);
-                    Assert.Equal(customImage.OSDiskImage.OsState, OperatingSystemStateTypes.Generalized);
-                    Assert.Equal(customImage.OSDiskImage.OsType, OperatingSystemTypes.Linux);
+                    Assert.Equal(CachingTypes.ReadWrite, customImage.OSDiskImage.Caching);
+                    Assert.Equal(OperatingSystemStateTypes.Generalized, customImage.OSDiskImage.OsState);
+                    Assert.Equal(OperatingSystemTypes.Linux, customImage.OSDiskImage.OsType);
                     Assert.NotNull(customImage.DataDiskImages);
                     Assert.Equal(customImage.DataDiskImages.Count, linuxVM.UnmanagedDataDisks.Count);
                     foreach (ImageDataDisk diskImage in customImage.DataDiskImages.Values)
@@ -139,14 +139,14 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .FromVirtualMachine(vm.Id)
                             .Create();
 
-                    Assert.True(customImage.Name.Equals(imageName, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(customImage.Name, imageName, ignoreCase: true);
                     Assert.NotNull(customImage.OSDiskImage);
-                    Assert.Equal(customImage.OSDiskImage.OsState, OperatingSystemStateTypes.Generalized);
-                    Assert.Equal(customImage.OSDiskImage.OsType, OperatingSystemTypes.Linux);
+                    Assert.Equal(OperatingSystemStateTypes.Generalized, customImage.OSDiskImage.OsState);
+                    Assert.Equal(OperatingSystemTypes.Linux, customImage.OSDiskImage.OsType);
                     Assert.NotNull(customImage.DataDiskImages);
-                    Assert.Equal(customImage.DataDiskImages.Count, 2);
+                    Assert.Equal(2, customImage.DataDiskImages.Count);
                     Assert.NotNull(customImage.SourceVirtualMachineId);
-                    Assert.True(customImage.SourceVirtualMachineId.Equals(vm.Id, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(customImage.SourceVirtualMachineId, vm.Id, ignoreCase: true);
 
                     foreach (var vmDisk in vm.UnmanagedDataDisks.Values)
                     {
@@ -212,7 +212,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     var osVhdUri = nativeVM.OSUnmanagedDiskVhdUri;
                     Assert.NotNull(osVhdUri);
                     var dataDisks = nativeVM.UnmanagedDataDisks;
-                    Assert.Equal(dataDisks.Count, 2);
+                    Assert.Equal(2, dataDisks.Count);
 
                     computeManager.VirtualMachines.DeleteById(nativeVM.Id);
 
@@ -269,18 +269,18 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .Create();
 
                     Assert.NotNull(customImage);
-                    Assert.True(customImage.Name.Equals(imageName, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(customImage.Name, imageName, ignoreCase: true);
                     Assert.NotNull(customImage.OSDiskImage);
-                    Assert.Equal(customImage.OSDiskImage.OsState, OperatingSystemStateTypes.Generalized);
-                    Assert.Equal(customImage.OSDiskImage.OsType, OperatingSystemTypes.Linux);
+                    Assert.Equal(OperatingSystemStateTypes.Generalized, customImage.OSDiskImage.OsState);
+                    Assert.Equal(OperatingSystemTypes.Linux, customImage.OSDiskImage.OsType);
                     Assert.NotNull(customImage.DataDiskImages);
-                    Assert.Equal(customImage.DataDiskImages.Count, 2);
+                    Assert.Equal(2, customImage.DataDiskImages.Count);
                     Assert.Null(customImage.SourceVirtualMachineId);
 
                     Assert.True(customImage.DataDiskImages.ContainsKey(vmNativeDataDisk1.Lun));
                     Assert.Equal(customImage.DataDiskImages[vmNativeDataDisk1.Lun].Caching, vmNativeDataDisk1.CachingType);
                     Assert.True(customImage.DataDiskImages.ContainsKey(vmNativeDataDisk2.Lun));
-                    Assert.Equal(customImage.DataDiskImages[vmNativeDataDisk2.Lun].Caching, CachingTypes.None);
+                    Assert.Equal(CachingTypes.None, customImage.DataDiskImages[vmNativeDataDisk2.Lun].Caching);
 
                     foreach (var vmDisk in dataDisks.Values)
                     {

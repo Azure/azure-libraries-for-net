@@ -97,6 +97,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Network interface IP configurations that are associated with this subnet
         /// Note that this call may result in multiple calls to Azure to fetch all the referenced interfaces each time it is invoked.
         /// </return>
+        /// <deprecated>Use  Subnet.listNetworkInterfaceIPConfigurations() instead.</deprecated>
         System.Collections.Generic.ISet<Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration> Microsoft.Azure.Management.Network.Fluent.ISubnet.GetNetworkInterfaceIPConfigurations()
         {
             return this.GetNetworkInterfaceIPConfigurations() as System.Collections.Generic.ISet<Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration>;
@@ -124,6 +125,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
         }
 
+        /// <return>
+        /// Network interface IP configurations that are associated with this subnet
+        /// Note that this call may result in multiple calls to Azure to fetch all the referenced interfaces each time it is invoked.
+        /// </return>
+        System.Collections.Generic.IReadOnlyCollection<Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration> Microsoft.Azure.Management.Network.Fluent.ISubnet.ListNetworkInterfaceIPConfigurations()
+        {
+            return this.ListNetworkInterfaceIPConfigurations() as System.Collections.Generic.IReadOnlyCollection<Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration>;
+        }
+
         /// <summary>
         /// Gets the resource ID of the route table associated with this subnet, if any.
         /// </summary>
@@ -142,6 +152,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup Microsoft.Azure.Management.Network.Fluent.ISubnet.GetNetworkSecurityGroup()
         {
             return this.GetNetworkSecurityGroup() as Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup;
+        }
+
+        /// <return>Available private IP addresses within this network.</return>
+        System.Collections.Generic.ISet<string> Microsoft.Azure.Management.Network.Fluent.ISubnetBeta.ListAvailablePrivateIPAddresses()
+        {
+            return this.ListAvailablePrivateIPAddresses() as System.Collections.Generic.ISet<string>;
         }
 
         /// <summary>

@@ -18,6 +18,15 @@ namespace Samples.Tests
 
         [Fact]
         [Trait("Samples", "Network")]
+        public void ManageNetworkPeeringInSameSubscriptionTest()
+        {
+            RunSampleAsTest(
+                this.GetType().FullName,
+                ManageNetworkPeeringInSameSubscription.Program.RunSample);
+        }
+
+        [Fact]
+        [Trait("Samples", "Network")]
         public void ManageApplicationGatewayTest()
         {
             RunSampleAsTest(
