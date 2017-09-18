@@ -219,10 +219,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
             string takenIPAddress = cidr.Split('/')[0];
 
-            var result = Parent.Manager.Networks.Inner.CheckIPAddressAvailabilityAsync(
+            var result = Extensions.Synchronize(() => Parent.Manager.Networks.Inner.CheckIPAddressAvailabilityAsync(
                 Parent.ResourceGroupName,
                 Parent.Name,
-                takenIPAddress).Result;
+                takenIPAddress));
 
             if (result == null)
             {
