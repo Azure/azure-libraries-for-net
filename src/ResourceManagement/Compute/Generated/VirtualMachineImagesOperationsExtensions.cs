@@ -46,32 +46,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='version'>
             /// A valid image SKU version.
             /// </param>
-            public static VirtualMachineImageInner Get(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, string version)
-            {
-                return operations.GetAsync(location, publisherName, offer, skus, version).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a virtual machine image.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            /// <param name='publisherName'>
-            /// A valid image publisher.
-            /// </param>
-            /// <param name='offer'>
-            /// A valid image publisher offer.
-            /// </param>
-            /// <param name='skus'>
-            /// A valid image SKU.
-            /// </param>
-            /// <param name='version'>
-            /// A valid image SKU version.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -81,33 +55,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets a list of all virtual machine image versions for the specified
-            /// location, publisher, offer, and SKU.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            /// <param name='publisherName'>
-            /// A valid image publisher.
-            /// </param>
-            /// <param name='offer'>
-            /// A valid image publisher offer.
-            /// </param>
-            /// <param name='skus'>
-            /// A valid image SKU.
-            /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            public static IList<VirtualMachineImageResourceInner> List(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer, string skus, ODataQuery<VirtualMachineImageResourceInner> odataQuery = default(ODataQuery<VirtualMachineImageResourceInner>))
-            {
-                return ((IVirtualMachineImagesOperations)operations).ListAsync(location, publisherName, offer, skus, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -156,24 +103,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='publisherName'>
             /// A valid image publisher.
             /// </param>
-            public static IList<VirtualMachineImageResourceInner> ListOffers(this IVirtualMachineImagesOperations operations, string location, string publisherName)
-            {
-                return operations.ListOffersAsync(location, publisherName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a list of virtual machine image offers for the specified location and
-            /// publisher.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            /// <param name='publisherName'>
-            /// A valid image publisher.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -195,21 +124,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='location'>
             /// The name of a supported Azure region.
             /// </param>
-            public static IList<VirtualMachineImageResourceInner> ListPublishers(this IVirtualMachineImagesOperations operations, string location)
-            {
-                return operations.ListPublishersAsync(location).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a list of virtual machine image publishers for the specified Azure
-            /// location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -219,27 +133,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets a list of virtual machine image SKUs for the specified location,
-            /// publisher, and offer.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The name of a supported Azure region.
-            /// </param>
-            /// <param name='publisherName'>
-            /// A valid image publisher.
-            /// </param>
-            /// <param name='offer'>
-            /// A valid image publisher offer.
-            /// </param>
-            public static IList<VirtualMachineImageResourceInner> ListSkus(this IVirtualMachineImagesOperations operations, string location, string publisherName, string offer)
-            {
-                return operations.ListSkusAsync(location, publisherName, offer).GetAwaiter().GetResult();
             }
 
             /// <summary>

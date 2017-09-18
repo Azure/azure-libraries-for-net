@@ -31,20 +31,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='location'>
             /// The location upon which run commands is queried.
             /// </param>
-            public static IPage<RunCommandDocumentBase> List(this IVirtualMachineRunCommandsOperations operations, string location)
-            {
-                return operations.ListAsync(location).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all available run commands for a subscription in a location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The location upon which run commands is queried.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -68,23 +54,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='commandId'>
             /// The command id.
             /// </param>
-            public static RunCommandDocumentInner Get(this IVirtualMachineRunCommandsOperations operations, string location, string commandId)
-            {
-                return operations.GetAsync(location, commandId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets specific run command for a subscription in a location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The location upon which run commands is queried.
-            /// </param>
-            /// <param name='commandId'>
-            /// The command id.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -94,20 +63,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Lists all available run commands for a subscription in a location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<RunCommandDocumentBase> ListNext(this IVirtualMachineRunCommandsOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

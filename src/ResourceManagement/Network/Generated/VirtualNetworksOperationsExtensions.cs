@@ -34,49 +34,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='virtualNetworkName'>
             /// The name of the virtual network.
             /// </param>
-            public static void Delete(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName)
-            {
-                operations.DeleteAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified virtual network.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets the specified virtual network by resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static VirtualNetworkInner Get(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string expand = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, virtualNetworkName, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -120,26 +83,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters supplied to the create or update virtual network operation
             /// </param>
-            public static VirtualNetworkInner CreateOrUpdate(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, VirtualNetworkInner parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, virtualNetworkName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a virtual network in the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -149,17 +92,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all virtual networks in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static IPage<VirtualNetworkInner> ListAll(this IVirtualNetworksOperations operations)
-            {
-                return operations.ListAllAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -188,20 +120,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
-            public static IPage<VirtualNetworkInner> List(this IVirtualNetworksOperations operations, string resourceGroupName)
-            {
-                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all virtual networks in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -211,26 +129,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Checks whether a private IP address is available for use.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='ipAddress'>
-            /// The private IP address to be verified.
-            /// </param>
-            public static IPAddressAvailabilityResultInner CheckIPAddressAvailability(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, string ipAddress = default(string))
-            {
-                return operations.CheckIPAddressAvailabilityAsync(resourceGroupName, virtualNetworkName, ipAddress).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -271,23 +169,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='virtualNetworkName'>
             /// The name of the virtual network.
             /// </param>
-            public static IPage<VirtualNetworkUsage> ListUsage(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName)
-            {
-                return operations.ListUsageAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists usage stats.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -297,23 +178,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes the specified virtual network.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            public static void BeginDelete(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -351,26 +215,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters supplied to the create or update virtual network operation
             /// </param>
-            public static VirtualNetworkInner BeginCreateOrUpdate(this IVirtualNetworksOperations operations, string resourceGroupName, string virtualNetworkName, VirtualNetworkInner parameters)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, virtualNetworkName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a virtual network in the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualNetworkName'>
-            /// The name of the virtual network.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update virtual network operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -380,20 +224,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all virtual networks in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<VirtualNetworkInner> ListAllNext(this IVirtualNetworksOperations operations, string nextPageLink)
-            {
-                return operations.ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -425,20 +255,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<VirtualNetworkInner> ListNext(this IVirtualNetworksOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all virtual networks in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -448,20 +264,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Lists usage stats.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<VirtualNetworkUsage> ListUsageNext(this IVirtualNetworksOperations operations, string nextPageLink)
-            {
-                return operations.ListUsageNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

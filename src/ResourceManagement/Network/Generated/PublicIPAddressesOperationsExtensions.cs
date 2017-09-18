@@ -34,49 +34,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='publicIpAddressName'>
             /// The name of the subnet.
             /// </param>
-            public static void Delete(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName)
-            {
-                operations.DeleteAsync(resourceGroupName, publicIpAddressName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified public IP address.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='publicIpAddressName'>
-            /// The name of the subnet.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets the specified public IP address in a specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='publicIpAddressName'>
-            /// The name of the subnet.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static PublicIPAddressInner Get(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, string expand = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, publicIpAddressName, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -120,26 +83,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters supplied to the create or update public IP address operation.
             /// </param>
-            public static PublicIPAddressInner CreateOrUpdate(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, PublicIPAddressInner parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a static or dynamic public IP address.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='publicIpAddressName'>
-            /// The name of the public IP address.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update public IP address operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -157,17 +100,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<PublicIPAddressInner> ListAll(this IPublicIPAddressesOperations operations)
-            {
-                return operations.ListAllAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all the public IP addresses in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -177,20 +109,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all public IP addresses in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static IPage<PublicIPAddressInner> List(this IPublicIPAddressesOperations operations, string resourceGroupName)
-            {
-                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -226,24 +144,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='virtualMachineScaleSetName'>
             /// The name of the virtual machine scale set.
             /// </param>
-            public static IPage<PublicIPAddressInner> ListVirtualMachineScaleSetPublicIPAddresses(this IPublicIPAddressesOperations operations, string resourceGroupName, string virtualMachineScaleSetName)
-            {
-                return operations.ListVirtualMachineScaleSetPublicIPAddressesAsync(resourceGroupName, virtualMachineScaleSetName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about all public IP addresses on a virtual machine scale
-            /// set level.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualMachineScaleSetName'>
-            /// The name of the virtual machine scale set.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -253,33 +153,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets information about all public IP addresses in a virtual machine IP
-            /// configuration in a virtual machine scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualMachineScaleSetName'>
-            /// The name of the virtual machine scale set.
-            /// </param>
-            /// <param name='virtualmachineIndex'>
-            /// The virtual machine index.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The network interface name.
-            /// </param>
-            /// <param name='ipConfigurationName'>
-            /// The IP configuration name.
-            /// </param>
-            public static IPage<PublicIPAddressInner> ListVirtualMachineScaleSetVMPublicIPAddresses(this IPublicIPAddressesOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string virtualmachineIndex, string networkInterfaceName, string ipConfigurationName)
-            {
-                return operations.ListVirtualMachineScaleSetVMPublicIPAddressesAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, ipConfigurationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -342,38 +215,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='expand'>
             /// Expands referenced resources.
             /// </param>
-            public static PublicIPAddressInner GetVirtualMachineScaleSetPublicIPAddress(this IPublicIPAddressesOperations operations, string resourceGroupName, string virtualMachineScaleSetName, string virtualmachineIndex, string networkInterfaceName, string ipConfigurationName, string publicIpAddressName, string expand = default(string))
-            {
-                return operations.GetVirtualMachineScaleSetPublicIPAddressAsync(resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, ipConfigurationName, publicIpAddressName, expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get the specified public IP address in a virtual machine scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='virtualMachineScaleSetName'>
-            /// The name of the virtual machine scale set.
-            /// </param>
-            /// <param name='virtualmachineIndex'>
-            /// The virtual machine index.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='ipConfigurationName'>
-            /// The name of the IP configuration.
-            /// </param>
-            /// <param name='publicIpAddressName'>
-            /// The name of the public IP Address.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -383,23 +224,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes the specified public IP address.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='publicIpAddressName'>
-            /// The name of the subnet.
-            /// </param>
-            public static void BeginDelete(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, publicIpAddressName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -437,26 +261,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters supplied to the create or update public IP address operation.
             /// </param>
-            public static PublicIPAddressInner BeginCreateOrUpdate(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, PublicIPAddressInner parameters)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a static or dynamic public IP address.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='publicIpAddressName'>
-            /// The name of the public IP address.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update public IP address operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -477,20 +281,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<PublicIPAddressInner> ListAllNext(this IPublicIPAddressesOperations operations, string nextPageLink)
-            {
-                return operations.ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all the public IP addresses in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -500,20 +290,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all public IP addresses in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<PublicIPAddressInner> ListNext(this IPublicIPAddressesOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -546,21 +322,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<PublicIPAddressInner> ListVirtualMachineScaleSetPublicIPAddressesNext(this IPublicIPAddressesOperations operations, string nextPageLink)
-            {
-                return operations.ListVirtualMachineScaleSetPublicIPAddressesNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about all public IP addresses on a virtual machine scale
-            /// set level.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -570,21 +331,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets information about all public IP addresses in a virtual machine IP
-            /// configuration in a virtual machine scale set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<PublicIPAddressInner> ListVirtualMachineScaleSetVMPublicIPAddressesNext(this IPublicIPAddressesOperations operations, string nextPageLink)
-            {
-                return operations.ListVirtualMachineScaleSetVMPublicIPAddressesNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

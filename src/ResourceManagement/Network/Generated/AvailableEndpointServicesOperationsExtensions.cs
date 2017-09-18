@@ -31,20 +31,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='location'>
             /// The location to check available endpoint services.
             /// </param>
-            public static IPage<EndpointServiceResultInner> List(this IAvailableEndpointServicesOperations operations, string location)
-            {
-                return operations.ListAsync(location).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List what values of endpoint services are available for use.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The location to check available endpoint services.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -54,20 +40,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// List what values of endpoint services are available for use.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<EndpointServiceResultInner> ListNext(this IAvailableEndpointServicesOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

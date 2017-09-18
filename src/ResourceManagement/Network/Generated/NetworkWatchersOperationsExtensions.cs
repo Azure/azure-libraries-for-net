@@ -39,26 +39,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters that define the network watcher resource.
             /// </param>
-            public static NetworkWatcherInner CreateOrUpdate(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NetworkWatcherInner parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a network watcher in the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the network watcher resource.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -68,23 +48,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets the specified network watcher by resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            public static NetworkWatcherInner Get(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName)
-            {
-                return operations.GetAsync(resourceGroupName, networkWatcherName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -122,43 +85,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='networkWatcherName'>
             /// The name of the network watcher.
             /// </param>
-            public static void Delete(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName)
-            {
-                operations.DeleteAsync(resourceGroupName, networkWatcherName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified network watcher resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets all network watchers by resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static IEnumerable<NetworkWatcherInner> List(this INetworkWatchersOperations operations, string resourceGroupName)
-            {
-                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -187,17 +119,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IEnumerable<NetworkWatcherInner> ListAll(this INetworkWatchersOperations operations)
-            {
-                return operations.ListAllAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all network watchers by subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -207,26 +128,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets the current network topology by resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='targetResourceGroupName'>
-            /// The name of the target resource group to perform topology on.
-            /// </param>
-            public static TopologyInner GetTopology(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceGroupName)
-            {
-                return operations.GetTopologyAsync(resourceGroupName, networkWatcherName, targetResourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -271,27 +172,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters that define the IP flow to be verified.
             /// </param>
-            public static VerificationIPFlowResultInner VerifyIPFlow(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, VerificationIPFlowParametersInner parameters)
-            {
-                return operations.VerifyIPFlowAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Verify IP flow from the specified VM to a location given the currently
-            /// configured NSG rules.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the IP flow to be verified.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -301,26 +181,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets the next hop from the specified VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the source and destination endpoint.
-            /// </param>
-            public static NextHopResultInner GetNextHop(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NextHopParametersInner parameters)
-            {
-                return operations.GetNextHopAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -364,26 +224,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='targetResourceId'>
             /// ID of the target VM.
             /// </param>
-            public static SecurityGroupViewResultInner GetVMSecurityRules(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
-            {
-                return operations.GetVMSecurityRulesAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the configured and effective security group rules on the specified VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// ID of the target VM.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -393,26 +233,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Initiate troubleshooting on a specified resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the resource to troubleshoot.
-            /// </param>
-            public static TroubleshootingResultInner GetTroubleshooting(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TroubleshootingParametersInner parameters)
-            {
-                return operations.GetTroubleshootingAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -456,26 +276,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='targetResourceId'>
             /// The target resource ID to query the troubleshooting result.
             /// </param>
-            public static TroubleshootingResultInner GetTroubleshootingResult(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
-            {
-                return operations.GetTroubleshootingResultAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get the last completed troubleshooting result on a specified resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource ID to query the troubleshooting result.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -502,26 +302,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters that define the configuration of flow log.
             /// </param>
-            public static FlowLogInformationInner SetFlowLogConfiguration(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogInformationInner parameters)
-            {
-                return operations.SetFlowLogConfigurationAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Configures flow log on a specified resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the configuration of flow log.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -531,26 +311,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Queries status of flow log on a specified resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource where getting the flow logging status.
-            /// </param>
-            public static FlowLogInformationInner GetFlowLogStatus(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
-            {
-                return operations.GetFlowLogStatusAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -596,28 +356,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters that determine how the connectivity check will be performed.
             /// </param>
-            public static ConnectivityInformationInner CheckConnectivity(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, ConnectivityParametersInner parameters)
-            {
-                return operations.CheckConnectivityAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Verifies the possibility of establishing a direct TCP connection from a
-            /// virtual machine to a given endpoint including another VM or an arbitrary
-            /// remote server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that determine how the connectivity check will be performed.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -641,50 +379,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='networkWatcherName'>
             /// The name of the network watcher.
             /// </param>
-            public static void BeginDelete(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, networkWatcherName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified network watcher resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task BeginDeleteAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Verify IP flow from the specified VM to a location given the currently
-            /// configured NSG rules.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the IP flow to be verified.
-            /// </param>
-            public static VerificationIPFlowResultInner BeginVerifyIPFlow(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, VerificationIPFlowParametersInner parameters)
-            {
-                return operations.BeginVerifyIPFlowAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -729,26 +429,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters that define the source and destination endpoint.
             /// </param>
-            public static NextHopResultInner BeginGetNextHop(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NextHopParametersInner parameters)
-            {
-                return operations.BeginGetNextHopAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the next hop from the specified VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the source and destination endpoint.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -758,26 +438,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets the configured and effective security group rules on the specified VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// ID of the target VM.
-            /// </param>
-            public static SecurityGroupViewResultInner BeginGetVMSecurityRules(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
-            {
-                return operations.BeginGetVMSecurityRulesAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -821,26 +481,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters that define the resource to troubleshoot.
             /// </param>
-            public static TroubleshootingResultInner BeginGetTroubleshooting(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TroubleshootingParametersInner parameters)
-            {
-                return operations.BeginGetTroubleshootingAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Initiate troubleshooting on a specified resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the resource to troubleshoot.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -850,26 +490,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Get the last completed troubleshooting result on a specified resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource ID to query the troubleshooting result.
-            /// </param>
-            public static TroubleshootingResultInner BeginGetTroubleshootingResult(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
-            {
-                return operations.BeginGetTroubleshootingResultAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -913,26 +533,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters that define the configuration of flow log.
             /// </param>
-            public static FlowLogInformationInner BeginSetFlowLogConfiguration(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogInformationInner parameters)
-            {
-                return operations.BeginSetFlowLogConfigurationAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Configures flow log on a specified resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the configuration of flow log.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -959,26 +559,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='targetResourceId'>
             /// The target resource where getting the flow logging status.
             /// </param>
-            public static FlowLogInformationInner BeginGetFlowLogStatus(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
-            {
-                return operations.BeginGetFlowLogStatusAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Queries status of flow log on a specified resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource where getting the flow logging status.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -988,28 +568,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Verifies the possibility of establishing a direct TCP connection from a
-            /// virtual machine to a given endpoint including another VM or an arbitrary
-            /// remote server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that determine how the connectivity check will be performed.
-            /// </param>
-            public static ConnectivityInformationInner BeginCheckConnectivity(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, ConnectivityParametersInner parameters)
-            {
-                return operations.BeginCheckConnectivityAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>

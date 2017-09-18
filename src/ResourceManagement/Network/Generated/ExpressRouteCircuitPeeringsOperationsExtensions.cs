@@ -37,52 +37,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='peeringName'>
             /// The name of the peering.
             /// </param>
-            public static void Delete(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName)
-            {
-                operations.DeleteAsync(resourceGroupName, circuitName, peeringName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified peering from the specified express route circuit.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='circuitName'>
-            /// The name of the express route circuit.
-            /// </param>
-            /// <param name='peeringName'>
-            /// The name of the peering.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets the specified authorization from the specified express route circuit.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='circuitName'>
-            /// The name of the express route circuit.
-            /// </param>
-            /// <param name='peeringName'>
-            /// The name of the peering.
-            /// </param>
-            public static ExpressRouteCircuitPeeringInner Get(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName)
-            {
-                return operations.GetAsync(resourceGroupName, circuitName, peeringName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -130,30 +90,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// Parameters supplied to the create or update express route circuit peering
             /// operation.
             /// </param>
-            public static ExpressRouteCircuitPeeringInner CreateOrUpdate(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName, ExpressRouteCircuitPeeringInner peeringParameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, circuitName, peeringName, peeringParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a peering in the specified express route circuits.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='circuitName'>
-            /// The name of the express route circuit.
-            /// </param>
-            /// <param name='peeringName'>
-            /// The name of the peering.
-            /// </param>
-            /// <param name='peeringParameters'>
-            /// Parameters supplied to the create or update express route circuit peering
-            /// operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -177,23 +113,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='circuitName'>
             /// The name of the express route circuit.
             /// </param>
-            public static IPage<ExpressRouteCircuitPeeringInner> List(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName)
-            {
-                return operations.ListAsync(resourceGroupName, circuitName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all peerings in a specified express route circuit.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='circuitName'>
-            /// The name of the express route circuit.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -203,26 +122,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes the specified peering from the specified express route circuit.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='circuitName'>
-            /// The name of the express route circuit.
-            /// </param>
-            /// <param name='peeringName'>
-            /// The name of the peering.
-            /// </param>
-            public static void BeginDelete(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, circuitName, peeringName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -267,30 +166,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// Parameters supplied to the create or update express route circuit peering
             /// operation.
             /// </param>
-            public static ExpressRouteCircuitPeeringInner BeginCreateOrUpdate(this IExpressRouteCircuitPeeringsOperations operations, string resourceGroupName, string circuitName, string peeringName, ExpressRouteCircuitPeeringInner peeringParameters)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, circuitName, peeringName, peeringParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a peering in the specified express route circuits.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='circuitName'>
-            /// The name of the express route circuit.
-            /// </param>
-            /// <param name='peeringName'>
-            /// The name of the peering.
-            /// </param>
-            /// <param name='peeringParameters'>
-            /// Parameters supplied to the create or update express route circuit peering
-            /// operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -300,20 +175,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all peerings in a specified express route circuit.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<ExpressRouteCircuitPeeringInner> ListNext(this IExpressRouteCircuitPeeringsOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

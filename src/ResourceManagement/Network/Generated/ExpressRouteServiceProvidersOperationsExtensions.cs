@@ -28,17 +28,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<ExpressRouteServiceProviderInner> List(this IExpressRouteServiceProvidersOperations operations)
-            {
-                return operations.ListAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all the available express route service providers.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -48,20 +37,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all the available express route service providers.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<ExpressRouteServiceProviderInner> ListNext(this IExpressRouteServiceProvidersOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

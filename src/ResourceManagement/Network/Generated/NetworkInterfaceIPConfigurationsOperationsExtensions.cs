@@ -34,23 +34,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='networkInterfaceName'>
             /// The name of the network interface.
             /// </param>
-            public static IPage<NetworkInterfaceIPConfigurationInner> List(this INetworkInterfaceIPConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName)
-            {
-                return operations.ListAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get all ip configurations in a network interface
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -77,26 +60,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='ipConfigurationName'>
             /// The name of the ip configuration name.
             /// </param>
-            public static NetworkInterfaceIPConfigurationInner Get(this INetworkInterfaceIPConfigurationsOperations operations, string resourceGroupName, string networkInterfaceName, string ipConfigurationName)
-            {
-                return operations.GetAsync(resourceGroupName, networkInterfaceName, ipConfigurationName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the specified network interface ip configuration.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
-            /// <param name='ipConfigurationName'>
-            /// The name of the ip configuration name.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -106,20 +69,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Get all ip configurations in a network interface
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<NetworkInterfaceIPConfigurationInner> ListNext(this INetworkInterfaceIPConfigurationsOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

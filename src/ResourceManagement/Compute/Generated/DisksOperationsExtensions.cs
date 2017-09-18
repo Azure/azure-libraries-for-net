@@ -37,26 +37,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='disk'>
             /// Disk object supplied in the body of the Put disk operation.
             /// </param>
-            public static DiskInner CreateOrUpdate(this IDisksOperations operations, string resourceGroupName, string diskName, DiskInner disk)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, diskName, disk).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the disk within the given subscription and resource group.
-            /// </param>
-            /// <param name='disk'>
-            /// Disk object supplied in the body of the Put disk operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -66,26 +46,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Updates (patches) a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the disk within the given subscription and resource group.
-            /// </param>
-            /// <param name='disk'>
-            /// Disk object supplied in the body of the Patch disk operation.
-            /// </param>
-            public static DiskInner Update(this IDisksOperations operations, string resourceGroupName, string diskName, DiskUpdateInner disk)
-            {
-                return operations.UpdateAsync(resourceGroupName, diskName, disk).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -126,23 +86,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='diskName'>
             /// The name of the disk within the given subscription and resource group.
             /// </param>
-            public static DiskInner Get(this IDisksOperations operations, string resourceGroupName, string diskName)
-            {
-                return operations.GetAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the disk within the given subscription and resource group.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -152,23 +95,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the disk within the given subscription and resource group.
-            /// </param>
-            public static OperationStatusResponseInner Delete(this IDisksOperations operations, string resourceGroupName, string diskName)
-            {
-                return operations.DeleteAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -203,20 +129,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
-            public static IPage<DiskInner> ListByResourceGroup(this IDisksOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the disks under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -234,17 +146,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<DiskInner> List(this IDisksOperations operations)
-            {
-                return operations.ListAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the disks under a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -254,26 +155,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Grants access to a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the disk within the given subscription and resource group.
-            /// </param>
-            /// <param name='grantAccessData'>
-            /// Access data object supplied in the body of the get disk access operation.
-            /// </param>
-            public static AccessUriInner GrantAccess(this IDisksOperations operations, string resourceGroupName, string diskName, GrantAccessDataInner grantAccessData)
-            {
-                return operations.GrantAccessAsync(resourceGroupName, diskName, grantAccessData).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -314,23 +195,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='diskName'>
             /// The name of the disk within the given subscription and resource group.
             /// </param>
-            public static OperationStatusResponseInner RevokeAccess(this IDisksOperations operations, string resourceGroupName, string diskName)
-            {
-                return operations.RevokeAccessAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Revokes access to a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the disk within the given subscription and resource group.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -340,26 +204,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Creates or updates a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the disk within the given subscription and resource group.
-            /// </param>
-            /// <param name='disk'>
-            /// Disk object supplied in the body of the Put disk operation.
-            /// </param>
-            public static DiskInner BeginCreateOrUpdate(this IDisksOperations operations, string resourceGroupName, string diskName, DiskInner disk)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, diskName, disk).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -403,26 +247,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='disk'>
             /// Disk object supplied in the body of the Patch disk operation.
             /// </param>
-            public static DiskInner BeginUpdate(this IDisksOperations operations, string resourceGroupName, string diskName, DiskUpdateInner disk)
-            {
-                return operations.BeginUpdateAsync(resourceGroupName, diskName, disk).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates (patches) a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the disk within the given subscription and resource group.
-            /// </param>
-            /// <param name='disk'>
-            /// Disk object supplied in the body of the Patch disk operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -432,23 +256,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the disk within the given subscription and resource group.
-            /// </param>
-            public static OperationStatusResponseInner BeginDelete(this IDisksOperations operations, string resourceGroupName, string diskName)
-            {
-                return operations.BeginDeleteAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -489,26 +296,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='grantAccessData'>
             /// Access data object supplied in the body of the get disk access operation.
             /// </param>
-            public static AccessUriInner BeginGrantAccess(this IDisksOperations operations, string resourceGroupName, string diskName, GrantAccessDataInner grantAccessData)
-            {
-                return operations.BeginGrantAccessAsync(resourceGroupName, diskName, grantAccessData).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Grants access to a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the disk within the given subscription and resource group.
-            /// </param>
-            /// <param name='grantAccessData'>
-            /// Access data object supplied in the body of the get disk access operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -518,23 +305,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Revokes access to a disk.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='diskName'>
-            /// The name of the disk within the given subscription and resource group.
-            /// </param>
-            public static OperationStatusResponseInner BeginRevokeAccess(this IDisksOperations operations, string resourceGroupName, string diskName)
-            {
-                return operations.BeginRevokeAccessAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -569,20 +339,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<DiskInner> ListByResourceGroupNext(this IDisksOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the disks under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -592,20 +348,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Lists all the disks under a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<DiskInner> ListNext(this IDisksOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

@@ -37,26 +37,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='snapshot'>
             /// Snapshot object supplied in the body of the Put disk operation.
             /// </param>
-            public static SnapshotInner CreateOrUpdate(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotInner snapshot)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, snapshotName, snapshot).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot within the given subscription and resource group.
-            /// </param>
-            /// <param name='snapshot'>
-            /// Snapshot object supplied in the body of the Put disk operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -66,26 +46,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Updates (patches) a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot within the given subscription and resource group.
-            /// </param>
-            /// <param name='snapshot'>
-            /// Snapshot object supplied in the body of the Patch snapshot operation.
-            /// </param>
-            public static SnapshotInner Update(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotUpdateInner snapshot)
-            {
-                return operations.UpdateAsync(resourceGroupName, snapshotName, snapshot).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -126,23 +86,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='snapshotName'>
             /// The name of the snapshot within the given subscription and resource group.
             /// </param>
-            public static SnapshotInner Get(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName)
-            {
-                return operations.GetAsync(resourceGroupName, snapshotName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot within the given subscription and resource group.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -152,23 +95,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot within the given subscription and resource group.
-            /// </param>
-            public static OperationStatusResponseInner Delete(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName)
-            {
-                return operations.DeleteAsync(resourceGroupName, snapshotName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -203,20 +129,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
-            public static IPage<SnapshotInner> ListByResourceGroup(this ISnapshotsOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists snapshots under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -234,17 +146,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<SnapshotInner> List(this ISnapshotsOperations operations)
-            {
-                return operations.ListAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists snapshots under a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -254,27 +155,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Grants access to a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot within the given subscription and resource group.
-            /// </param>
-            /// <param name='grantAccessData'>
-            /// Access data object supplied in the body of the get snapshot access
-            /// operation.
-            /// </param>
-            public static AccessUriInner GrantAccess(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, GrantAccessDataInner grantAccessData)
-            {
-                return operations.GrantAccessAsync(resourceGroupName, snapshotName, grantAccessData).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -316,23 +196,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='snapshotName'>
             /// The name of the snapshot within the given subscription and resource group.
             /// </param>
-            public static OperationStatusResponseInner RevokeAccess(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName)
-            {
-                return operations.RevokeAccessAsync(resourceGroupName, snapshotName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Revokes access to a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot within the given subscription and resource group.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -342,26 +205,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Creates or updates a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot within the given subscription and resource group.
-            /// </param>
-            /// <param name='snapshot'>
-            /// Snapshot object supplied in the body of the Put disk operation.
-            /// </param>
-            public static SnapshotInner BeginCreateOrUpdate(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotInner snapshot)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, snapshotName, snapshot).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -405,26 +248,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='snapshot'>
             /// Snapshot object supplied in the body of the Patch snapshot operation.
             /// </param>
-            public static SnapshotInner BeginUpdate(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotUpdateInner snapshot)
-            {
-                return operations.BeginUpdateAsync(resourceGroupName, snapshotName, snapshot).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates (patches) a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot within the given subscription and resource group.
-            /// </param>
-            /// <param name='snapshot'>
-            /// Snapshot object supplied in the body of the Patch snapshot operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -434,23 +257,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot within the given subscription and resource group.
-            /// </param>
-            public static OperationStatusResponseInner BeginDelete(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName)
-            {
-                return operations.BeginDeleteAsync(resourceGroupName, snapshotName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -492,27 +298,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// Access data object supplied in the body of the get snapshot access
             /// operation.
             /// </param>
-            public static AccessUriInner BeginGrantAccess(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, GrantAccessDataInner grantAccessData)
-            {
-                return operations.BeginGrantAccessAsync(resourceGroupName, snapshotName, grantAccessData).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Grants access to a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot within the given subscription and resource group.
-            /// </param>
-            /// <param name='grantAccessData'>
-            /// Access data object supplied in the body of the get snapshot access
-            /// operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -522,23 +307,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Revokes access to a snapshot.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='snapshotName'>
-            /// The name of the snapshot within the given subscription and resource group.
-            /// </param>
-            public static OperationStatusResponseInner BeginRevokeAccess(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName)
-            {
-                return operations.BeginRevokeAccessAsync(resourceGroupName, snapshotName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -573,20 +341,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<SnapshotInner> ListByResourceGroupNext(this ISnapshotsOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists snapshots under a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -596,20 +350,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Lists snapshots under a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<SnapshotInner> ListNext(this ISnapshotsOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

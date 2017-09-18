@@ -34,23 +34,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='loadBalancerName'>
             /// The name of the load balancer.
             /// </param>
-            public static IPage<ProbeInner> List(this ILoadBalancerProbesOperations operations, string resourceGroupName, string loadBalancerName)
-            {
-                return operations.ListAsync(resourceGroupName, loadBalancerName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all the load balancer probes.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -77,26 +60,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='probeName'>
             /// The name of the probe.
             /// </param>
-            public static ProbeInner Get(this ILoadBalancerProbesOperations operations, string resourceGroupName, string loadBalancerName, string probeName)
-            {
-                return operations.GetAsync(resourceGroupName, loadBalancerName, probeName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets load balancer probe.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='probeName'>
-            /// The name of the probe.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -106,20 +69,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all the load balancer probes.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<ProbeInner> ListNext(this ILoadBalancerProbesOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

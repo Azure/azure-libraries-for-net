@@ -39,26 +39,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='parameters'>
             /// Parameters supplied to the Create Availability Set operation.
             /// </param>
-            public static AvailabilitySetInner CreateOrUpdate(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName, AvailabilitySetInner parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, availabilitySetName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Create or update an availability set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='availabilitySetName'>
-            /// The name of the availability set.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the Create Availability Set operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -68,23 +48,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Delete an availability set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='availabilitySetName'>
-            /// The name of the availability set.
-            /// </param>
-            public static OperationStatusResponseInner Delete(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName)
-            {
-                return operations.DeleteAsync(resourceGroupName, availabilitySetName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -122,23 +85,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='availabilitySetName'>
             /// The name of the availability set.
             /// </param>
-            public static AvailabilitySetInner Get(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName)
-            {
-                return operations.GetAsync(resourceGroupName, availabilitySetName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Retrieves information about an availability set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='availabilitySetName'>
-            /// The name of the availability set.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -159,20 +105,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
-            public static IEnumerable<AvailabilitySetInner> List(this IAvailabilitySetsOperations operations, string resourceGroupName)
-            {
-                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all availability sets in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -182,24 +114,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Lists all available virtual machine sizes that can be used to create a new
-            /// virtual machine in an existing availability set.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='availabilitySetName'>
-            /// The name of the availability set.
-            /// </param>
-            public static IEnumerable<VirtualMachineSize> ListAvailableSizes(this IAvailabilitySetsOperations operations, string resourceGroupName, string availabilitySetName)
-            {
-                return operations.ListAvailableSizesAsync(resourceGroupName, availabilitySetName).GetAwaiter().GetResult();
             }
 
             /// <summary>

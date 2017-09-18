@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:21EB605E5FAA6C13D208A1A4CE8C136D:1B548782C32FC0F04862DDDB5537335F
         public new IEnumerable<INetworkPeering> ListByParent(string resourceGroupName, string parentName)
         {
-            return WrapList(Inner.List(resourceGroupName, parentName));
+            return WrapList(Extensions.Synchronize(() => Inner.ListAsync(resourceGroupName, parentName)));
         }
 
         public async override Task<IPagedCollection<INetworkPeering>> ListByParentAsync(string resourceGroupName, string parentName, CancellationToken cancellationToken = default(CancellationToken))
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:36D77DC2D156B03AD386962C63360272
         public IEnumerable<INetworkPeering> List()
         {
-            return WrapList(Inner.List(network.ResourceGroupName, network.Name));
+            return WrapList(Extensions.Synchronize(() => Inner.ListAsync(network.ResourceGroupName, network.Name)));
         }
 
         ///GENMHASH:7F5BEBF638B801886F5E13E6CCFF6A4E:1F35F9CAEDCC9462F8462E3AE050584D

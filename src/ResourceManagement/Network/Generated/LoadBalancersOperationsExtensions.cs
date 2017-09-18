@@ -34,49 +34,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='loadBalancerName'>
             /// The name of the load balancer.
             /// </param>
-            public static void Delete(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName)
-            {
-                operations.DeleteAsync(resourceGroupName, loadBalancerName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified load balancer.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets the specified load balancer.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static LoadBalancerInner Get(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, string expand = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, loadBalancerName, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -120,26 +83,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters supplied to the create or update load balancer operation.
             /// </param>
-            public static LoadBalancerInner CreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancerInner parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a load balancer.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update load balancer operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -149,17 +92,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all the load balancers in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            public static IPage<LoadBalancerInner> ListAll(this ILoadBalancersOperations operations)
-            {
-                return operations.ListAllAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -188,20 +120,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
-            public static IPage<LoadBalancerInner> List(this ILoadBalancersOperations operations, string resourceGroupName)
-            {
-                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all the load balancers in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -211,23 +129,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes the specified load balancer.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            public static void BeginDelete(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, loadBalancerName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -265,26 +166,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters supplied to the create or update load balancer operation.
             /// </param>
-            public static LoadBalancerInner BeginCreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancerInner parameters)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a load balancer.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update load balancer operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -305,20 +186,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<LoadBalancerInner> ListAllNext(this ILoadBalancersOperations operations, string nextPageLink)
-            {
-                return operations.ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all the load balancers in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -328,20 +195,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all the load balancers in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<LoadBalancerInner> ListNext(this ILoadBalancersOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

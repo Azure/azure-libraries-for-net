@@ -37,52 +37,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='ruleName'>
             /// The name of the rule.
             /// </param>
-            public static void Delete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
-            {
-                operations.DeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified rule from a route filter.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeFilterName'>
-            /// The name of the route filter.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the rule.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets the specified rule from a route filter.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeFilterName'>
-            /// The name of the route filter.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the rule.
-            /// </param>
-            public static RouteFilterRuleInner Get(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
-            {
-                return operations.GetAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -109,29 +69,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Creates or updates a route in the specified route filter.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeFilterName'>
-            /// The name of the route filter.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the route filter rule.
-            /// </param>
-            /// <param name='routeFilterRuleParameters'>
-            /// Parameters supplied to the create or update route filter rule operation.
-            /// </param>
-            public static RouteFilterRuleInner CreateOrUpdate(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, RouteFilterRuleInner routeFilterRuleParameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -181,29 +118,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='routeFilterRuleParameters'>
             /// Parameters supplied to the update route filter rule operation.
             /// </param>
-            public static RouteFilterRuleInner Update(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, PatchRouteFilterRuleInner routeFilterRuleParameters)
-            {
-                return operations.UpdateAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a route in the specified route filter.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeFilterName'>
-            /// The name of the route filter.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the route filter rule.
-            /// </param>
-            /// <param name='routeFilterRuleParameters'>
-            /// Parameters supplied to the update route filter rule operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -213,23 +127,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all RouteFilterRules in a route filter.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeFilterName'>
-            /// The name of the route filter.
-            /// </param>
-            public static IPage<RouteFilterRuleInner> ListByRouteFilter(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName)
-            {
-                return operations.ListByRouteFilterAsync(resourceGroupName, routeFilterName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -270,55 +167,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='ruleName'>
             /// The name of the rule.
             /// </param>
-            public static void BeginDelete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified rule from a route filter.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeFilterName'>
-            /// The name of the route filter.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the rule.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task BeginDeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Creates or updates a route in the specified route filter.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeFilterName'>
-            /// The name of the route filter.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the route filter rule.
-            /// </param>
-            /// <param name='routeFilterRuleParameters'>
-            /// Parameters supplied to the create or update route filter rule operation.
-            /// </param>
-            public static RouteFilterRuleInner BeginCreateOrUpdate(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, RouteFilterRuleInner routeFilterRuleParameters)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -368,29 +222,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='routeFilterRuleParameters'>
             /// Parameters supplied to the update route filter rule operation.
             /// </param>
-            public static RouteFilterRuleInner BeginUpdate(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, PatchRouteFilterRuleInner routeFilterRuleParameters)
-            {
-                return operations.BeginUpdateAsync(resourceGroupName, routeFilterName, ruleName, routeFilterRuleParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a route in the specified route filter.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeFilterName'>
-            /// The name of the route filter.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the route filter rule.
-            /// </param>
-            /// <param name='routeFilterRuleParameters'>
-            /// Parameters supplied to the update route filter rule operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -400,20 +231,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all RouteFilterRules in a route filter.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<RouteFilterRuleInner> ListByRouteFilterNext(this IRouteFilterRulesOperations operations, string nextPageLink)
-            {
-                return operations.ListByRouteFilterNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

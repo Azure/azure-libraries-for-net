@@ -34,23 +34,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='loadBalancerName'>
             /// The name of the load balancer.
             /// </param>
-            public static IPage<FrontendIPConfigurationInner> List(this ILoadBalancerFrontendIPConfigurationsOperations operations, string resourceGroupName, string loadBalancerName)
-            {
-                return operations.ListAsync(resourceGroupName, loadBalancerName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all the load balancer frontend IP configurations.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -77,26 +60,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='frontendIPConfigurationName'>
             /// The name of the frontend IP configuration.
             /// </param>
-            public static FrontendIPConfigurationInner Get(this ILoadBalancerFrontendIPConfigurationsOperations operations, string resourceGroupName, string loadBalancerName, string frontendIPConfigurationName)
-            {
-                return operations.GetAsync(resourceGroupName, loadBalancerName, frontendIPConfigurationName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets load balancer frontend IP configuration.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='frontendIPConfigurationName'>
-            /// The name of the frontend IP configuration.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -106,20 +69,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all the load balancer frontend IP configurations.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<FrontendIPConfigurationInner> ListNext(this ILoadBalancerFrontendIPConfigurationsOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

@@ -38,27 +38,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// Parameters supplied to the create or update local network gateway
             /// operation.
             /// </param>
-            public static LocalNetworkGatewayInner CreateOrUpdate(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, LocalNetworkGatewayInner parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, localNetworkGatewayName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a local network gateway in the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='localNetworkGatewayName'>
-            /// The name of the local network gateway.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update local network gateway
-            /// operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -68,23 +47,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets the specified local network gateway in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='localNetworkGatewayName'>
-            /// The name of the local network gateway.
-            /// </param>
-            public static LocalNetworkGatewayInner Get(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName)
-            {
-                return operations.GetAsync(resourceGroupName, localNetworkGatewayName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -122,43 +84,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='localNetworkGatewayName'>
             /// The name of the local network gateway.
             /// </param>
-            public static void Delete(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName)
-            {
-                operations.DeleteAsync(resourceGroupName, localNetworkGatewayName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified local network gateway.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='localNetworkGatewayName'>
-            /// The name of the local network gateway.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets all the local network gateways in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static IPage<LocalNetworkGatewayInner> List(this ILocalNetworkGatewaysOperations operations, string resourceGroupName)
-            {
-                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -179,27 +110,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Creates or updates a local network gateway in the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='localNetworkGatewayName'>
-            /// The name of the local network gateway.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update local network gateway
-            /// operation.
-            /// </param>
-            public static LocalNetworkGatewayInner BeginCreateOrUpdate(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, LocalNetworkGatewayInner parameters)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, localNetworkGatewayName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -241,43 +151,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='localNetworkGatewayName'>
             /// The name of the local network gateway.
             /// </param>
-            public static void BeginDelete(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, localNetworkGatewayName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified local network gateway.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='localNetworkGatewayName'>
-            /// The name of the local network gateway.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task BeginDeleteAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets all the local network gateways in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<LocalNetworkGatewayInner> ListNext(this ILocalNetworkGatewaysOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

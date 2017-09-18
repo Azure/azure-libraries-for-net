@@ -34,49 +34,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='routeTableName'>
             /// The name of the route table.
             /// </param>
-            public static void Delete(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName)
-            {
-                operations.DeleteAsync(resourceGroupName, routeTableName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified route table.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeTableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets the specified route table.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            public static RouteTableInner Get(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, string expand = default(string))
-            {
-                return operations.GetAsync(resourceGroupName, routeTableName, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -120,26 +83,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters supplied to the create or update route table operation.
             /// </param>
-            public static RouteTableInner CreateOrUpdate(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, RouteTableInner parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, routeTableName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Create or updates a route table in a specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update route table operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -149,20 +92,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all route tables in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            public static IPage<RouteTableInner> List(this IRouteTablesOperations operations, string resourceGroupName)
-            {
-                return operations.ListAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -191,17 +120,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<RouteTableInner> ListAll(this IRouteTablesOperations operations)
-            {
-                return operations.ListAllAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all route tables in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -211,23 +129,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes the specified route table.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
-            public static void BeginDelete(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, routeTableName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -265,26 +166,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='parameters'>
             /// Parameters supplied to the create or update route table operation.
             /// </param>
-            public static RouteTableInner BeginCreateOrUpdate(this IRouteTablesOperations operations, string resourceGroupName, string routeTableName, RouteTableInner parameters)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, routeTableName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Create or updates a route table in a specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the create or update route table operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -305,20 +186,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<RouteTableInner> ListNext(this IRouteTablesOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all route tables in a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -328,20 +195,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all route tables in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<RouteTableInner> ListAllNext(this IRouteTablesOperations operations, string nextPageLink)
-            {
-                return operations.ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

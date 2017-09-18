@@ -34,23 +34,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='networkInterfaceName'>
             /// The name of the network interface.
             /// </param>
-            public static IPage<LoadBalancerInner> List(this INetworkInterfaceLoadBalancersOperations operations, string resourceGroupName, string networkInterfaceName)
-            {
-                return operations.ListAsync(resourceGroupName, networkInterfaceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get all load balancers in a network interface
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkInterfaceName'>
-            /// The name of the network interface.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -60,20 +43,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Get all load balancers in a network interface
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<LoadBalancerInner> ListNext(this INetworkInterfaceLoadBalancersOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

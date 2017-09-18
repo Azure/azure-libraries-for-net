@@ -37,52 +37,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='routeName'>
             /// The name of the route.
             /// </param>
-            public static void Delete(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName)
-            {
-                operations.DeleteAsync(resourceGroupName, routeTableName, routeName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified route from a route table.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
-            /// <param name='routeName'>
-            /// The name of the route.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeTableName, routeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets the specified route from a route table.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
-            /// <param name='routeName'>
-            /// The name of the route.
-            /// </param>
-            public static RouteInner Get(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName)
-            {
-                return operations.GetAsync(resourceGroupName, routeTableName, routeName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -129,29 +89,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='routeParameters'>
             /// Parameters supplied to the create or update route operation.
             /// </param>
-            public static RouteInner CreateOrUpdate(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName, RouteInner routeParameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, routeTableName, routeName, routeParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a route in the specified route table.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
-            /// <param name='routeName'>
-            /// The name of the route.
-            /// </param>
-            /// <param name='routeParameters'>
-            /// Parameters supplied to the create or update route operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -175,23 +112,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='routeTableName'>
             /// The name of the route table.
             /// </param>
-            public static IPage<RouteInner> List(this IRoutesOperations operations, string resourceGroupName, string routeTableName)
-            {
-                return operations.ListAsync(resourceGroupName, routeTableName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets all routes in a route table.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -201,26 +121,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes the specified route from a route table.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
-            /// <param name='routeName'>
-            /// The name of the route.
-            /// </param>
-            public static void BeginDelete(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, routeTableName, routeName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -264,29 +164,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// <param name='routeParameters'>
             /// Parameters supplied to the create or update route operation.
             /// </param>
-            public static RouteInner BeginCreateOrUpdate(this IRoutesOperations operations, string resourceGroupName, string routeTableName, string routeName, RouteInner routeParameters)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, routeTableName, routeName, routeParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates a route in the specified route table.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='routeTableName'>
-            /// The name of the route table.
-            /// </param>
-            /// <param name='routeName'>
-            /// The name of the route.
-            /// </param>
-            /// <param name='routeParameters'>
-            /// Parameters supplied to the create or update route operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -296,20 +173,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets all routes in a route table.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<RouteInner> ListNext(this IRoutesOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
