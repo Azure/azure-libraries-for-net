@@ -72,10 +72,6 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                     Assert.False(osDisk.AvailabilityZones.Count == 0);
                     Assert.True(osDisk.AvailabilityZones.Contains(AvailabilityZoneId.Zone_1));
                 }
-                catch (Exception ex)
-                {
-                    var e = ex;
-                }
                 finally
                 {
                     try
@@ -185,10 +181,6 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                     Assert.False(osDisk.AvailabilityZones.Count == 0);
                     Assert.True(osDisk.AvailabilityZones.Contains(AvailabilityZoneId.Zone_1));
                 }
-                catch (Exception ex)
-                {
-                    var e = ex;
-                }
                 finally
                 {
                     try
@@ -265,7 +257,16 @@ namespace Fluent.Tests.Compute.VirtuaMachine
             }
         }
 
-        [Fact(Skip = "Though valid scenario, ignoring it due to network service bug")]
+        [Fact(Skip = "Cannot be run because of NRP bug.")]
+        // This test put multiple non-zonal (regional) & non-availability set virtual machine's NIC into backend pool of a zone-redundant load balancer.
+        // There is a bug in the service, where such an attempt will fail with error
+        // "error": {
+        //    "code": "NetworkInterfaceAndLoadBalancerAreInDifferentAvailabilitySets",
+        //    "message": "Network interface /subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/networkInterfaces/<nic-name> uses load balancer /subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Compute/virtualMachines/<vm-name>).",
+        //    "details": []
+        // }
+        // Enable this test once it is fixed. 
+        //
         public void CanCreateRegionalNonAvailSetVMsAndAssociateThemWithSingleBackendPoolOfZoneResilientLB()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
@@ -408,9 +409,17 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                 }
             }
         }
-
-
-        [Fact(Skip = "Though valid scenario, ignoring it due to network service bug")]
+        
+        [Fact(Skip = "Cannot be run because of NRP bug.")]
+        // This test put multiple zonal virtual machine's NIC into backend pool of a zone-redundant load balancer.
+        // There is a bug in the service, where such an attempt will fail with error
+        // "error": {
+        //    "code": "NetworkInterfaceAndLoadBalancerAreInDifferentAvailabilitySets",
+        //    "message": "Network interface /subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/networkInterfaces/<nic-name> uses load balancer /subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Compute/virtualMachines/<vm-name>).",
+        //    "details": []
+        // }
+        // Enable this test once it is fixed. 
+        //
         public void CanCreateZonedVMsAndAssociateThemWithSingleBackendPoolOfZoneResilientLB()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
