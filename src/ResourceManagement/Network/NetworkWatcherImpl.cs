@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent;
@@ -63,7 +65,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return new TopologyImpl(this, response, targetResourceGroup);
         }
 
-        
+        ///GENMHASH:6ADE0CC8B76996D06BE85035269E8EC9:8852F6E8948BB93D289E3C993AA4F3B7
+        public IToDestination CheckConnectivity()
+        {
+            return new ConnectivityCheckImpl(this);
+        }
+
         ///GENMHASH:E85C9E0FD0DD69D8054769E60F0023E7:08E9F33BF19AA5A33146856680A21489
         public TopologyImpl GetTopology(string targetResourceGroup)
         {

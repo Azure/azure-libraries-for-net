@@ -60,12 +60,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition
         Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithCreate WithTimeLimitInSeconds(int timeLimitInSeconds);
 
         /// <summary>
-        /// Gets Begin the definition of packet capture filter.
+        /// Begin the definition of packet capture filter.
         /// </summary>
-        /// <summary>
-        /// Gets the next stage.
-        /// </summary>
-        Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition.IBlank<Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithCreate> DefinePacketCaptureFilter { get; }
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition.IBlank<Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithCreate> DefinePacketCaptureFilter();
 
         /// <summary>
         /// Set maximum size of the capture output.

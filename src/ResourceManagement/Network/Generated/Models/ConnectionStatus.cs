@@ -6,21 +6,18 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.Azure.Management.Network.Fluent;
-
     /// <summary>
     /// Defines values for ConnectionStatus.
     /// </summary>
-    public static class ConnectionStatus
+    public class ConnectionStatus : ExpandableStringEnum<ConnectionStatus>
     {
-        public const string Unknown = "Unknown";
-        public const string Connected = "Connected";
-        public const string Disconnected = "Disconnected";
-        public const string Degraded = "Degraded";
+        public static readonly ConnectionStatus Unknown = Parse("Unknown");
+        public static readonly ConnectionStatus Connected = Parse("Connected");
+        public static readonly ConnectionStatus Disconnected = Parse("Disconnected");
+        public static readonly ConnectionStatus Degraded = Parse("Degraded");
     }
 }

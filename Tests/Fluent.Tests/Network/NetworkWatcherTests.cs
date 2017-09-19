@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,9 +34,12 @@ namespace Fluent.Tests.Network
             {
                 string newName = SdkContext.RandomResourceName("nw", 6);
                 var groupName = SdkContext.RandomResourceName("rg", 6);
+                var manager = TestHelper.CreateNetworkManager();
+
+                // make sure Network Watcher is disabled in current subscription and region as only one can exist
+                EnsureNetworkWatcherNotExists(manager.NetworkWatchers);
 
                 // Create network watcher
-                var manager = TestHelper.CreateNetworkManager();
                 var nw = manager.NetworkWatchers.Define(newName)
                     .WithRegion(REGION)
                     .WithNewResourceGroup(groupName)
@@ -63,6 +69,10 @@ namespace Fluent.Tests.Network
                 // Create network watcher
                 var manager = TestHelper.CreateNetworkManager();
                 var computeManager = TestHelper.CreateComputeManager();
+
+                // make sure Network Watcher is disabled in current subscription and region as only one can exist
+                EnsureNetworkWatcherNotExists(manager.NetworkWatchers);
+
                 var nw = manager.NetworkWatchers.Define(newName)
                     .WithRegion(REGION)
                     .WithNewResourceGroup(groupName)
@@ -94,7 +104,7 @@ namespace Fluent.Tests.Network
                 Assert.Equal(5, flowLogSettings.RetentionDays);
                 Assert.Equal(storageAccount.Id, flowLogSettings.StorageId);
 
-                INextHop nextHop = nw.NextHop.WithTargetResourceId(vm0.Id)
+                INextHop nextHop = nw.NextHop().WithTargetResourceId(vm0.Id)
                     .WithSourceIPAddress("10.0.0.4")
                     .WithDestinationIPAddress("8.8.8.8")
                     .Execute();
@@ -102,7 +112,7 @@ namespace Fluent.Tests.Network
                 Assert.Equal(NextHopType.Internet, nextHop.NextHopType);
                 Assert.Null(nextHop.NextHopIpAddress);
 
-                IVerificationIPFlow verificationIPFlow = nw.VerifyIPFlow
+                IVerificationIPFlow verificationIPFlow = nw.VerifyIPFlow()
                     .WithTargetResourceId(vm0.Id)
                     .WithDirection(Direction.Outbound)
                     .WithProtocol(Protocol.TCP)
@@ -122,7 +132,7 @@ namespace Fluent.Tests.Network
                     .WithTarget(vm0.Id)
                     .WithStorageAccountId(storageAccount.Id)
                     .WithTimeLimitInSeconds(1500)
-                    .DefinePacketCaptureFilter
+                    .DefinePacketCaptureFilter()
                         .WithProtocol(PcProtocol.TCP)
                         .WithLocalIPAddresses(new List<string>(){"127.0.0.1", "127.0.0.5"})
                         .Attach()
@@ -137,6 +147,12 @@ namespace Fluent.Tests.Network
                 packetCapture.Stop();
                 Assert.Equal("Stopped", packetCapture.GetStatus().PacketCaptureStatus.Value);
                 nw.PacketCaptures.DeleteByName(packetCapture.Name);
+                IConnectivityCheck connectivityCheck = nw.CheckConnectivity()
+                    .ToDestinationResourceId(vm0.Id)
+                    .ToDestinationPort(80)
+                    .FromSourceVirtualMachine(virtualMachines.ElementAt(0).Id)
+                    .Execute();
+                Assert.Equal("Reachable", connectivityCheck.ConnectionStatus.ToString());
 
                 computeManager.VirtualMachines.DeleteById(virtualMachines.ElementAt(1).Id);
                 topology.Refresh();
@@ -227,6 +243,18 @@ namespace Fluent.Tests.Network
                 .WithRegion(REGION)
                 .WithExistingResourceGroup(groupName)
                 .Create();
+        }
+
+        void EnsureNetworkWatcherNotExists(INetworkWatchers networkWatchers)
+        {
+            var nwList = networkWatchers.List();
+            foreach (INetworkWatcher nw in nwList)
+            {
+                if (REGION == nw.Region)
+                {
+                    networkWatchers.DeleteById(nw.Id);
+                }
+            }
         }
     }
 }

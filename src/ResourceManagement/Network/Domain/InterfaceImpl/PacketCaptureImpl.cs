@@ -217,17 +217,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets Begin the definition of packet capture filter.
+        /// Begin the definition of packet capture filter.
         /// </summary>
-        /// <summary>
-        /// Gets the next stage.
-        /// </summary>
-        PCFilter.Definition.IBlank<PacketCapture.Definition.IWithCreate> PacketCapture.Definition.IWithCreate.DefinePacketCaptureFilter
+        /// <return>The next stage.</return>
+        PCFilter.Definition.IBlank<PacketCapture.Definition.IWithCreate> PacketCapture.Definition.IWithCreate.DefinePacketCaptureFilter()
         {
-            get
-            {
-                return this.DefinePacketCaptureFilter() as PCFilter.Definition.IBlank<PacketCapture.Definition.IWithCreate>;
-            }
+            return this.DefinePacketCaptureFilter() as PCFilter.Definition.IBlank<PacketCapture.Definition.IWithCreate>;
         }
     }
 }
