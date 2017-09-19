@@ -11,7 +11,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.Network.Fluent.ILoadBalancerFrontend,
         Microsoft.Azure.Management.Network.Fluent.IHasPrivateIPAddress,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasSubnet
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasSubnet,
+        Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPrivateFrontendBeta
     {
         /// <return>
         /// Associated subnet

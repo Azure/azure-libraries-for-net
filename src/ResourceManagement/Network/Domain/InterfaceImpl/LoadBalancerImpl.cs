@@ -36,8 +36,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
-    internal partial class LoadBalancerImpl 
+    internal partial class LoadBalancerImpl
     {
+        /// <summary>
+        /// Specifies the SKU for the load balancer.
+        /// </summary>
+        /// <param name="skuType">The SKU type.</param>
+        /// <return>The next stage of the definition.</return>
+        LoadBalancer.Definition.IWithCreate LoadBalancer.Definition.IWithSku.WithSku(LoadBalancerSkuType skuType)
+        {
+            return this.WithSku(skuType) as LoadBalancer.Definition.IWithCreate;
+        }
+
         /// <summary>
         /// Begins the definition of a new inbount NAT pool to add to the load balancer.
         /// The definition must be completed with a call to  LoadBalancerInboundNatPool.DefinitionStages.WithAttach.attach().
@@ -434,6 +444,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
             get
             {
                 return this.LoadBalancingRules() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ILoadBalancingRule>;
+            }
+        }
+
+        /// <summary>
+        /// Gets load balancer sku.
+        /// </summary>
+        Microsoft.Azure.Management.Network.Fluent.Models.LoadBalancerSkuType Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBeta.Sku
+        {
+            get
+            {
+                return this.Sku() as Microsoft.Azure.Management.Network.Fluent.Models.LoadBalancerSkuType;
             }
         }
 

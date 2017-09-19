@@ -6,11 +6,27 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition
     using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.Network.Fluent.Models;
+
+    /// <summary>
+    /// The stage of the IP address definition allowing to specify availability zone.
+    /// </summary>
+    public interface IWithAvailabilityZone :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the availability zone for the IP address.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithCreate WithAvailabilityZone(AvailabilityZoneId zoneId);
+    }
 
     /// <summary>
     /// A public IP address definition allowing to specify the leaf domain label, if any.
     /// </summary>
-    public interface IWithLeafDomainLabel 
+    public interface IWithLeafDomainLabel
     {
         /// <summary>
         /// Ensures that no leaf domain label will be used.
@@ -50,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition
     /// <summary>
     /// A public IP address definition allowing to set the IP allocation method (static or dynamic).
     /// </summary>
-    public interface IWithIPAddress 
+    public interface IWithIPAddress
     {
         /// <summary>
         /// Enables static IP address allocation.
@@ -78,6 +94,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition
         Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithIPAddress,
         Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithReverseFQDN,
         Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithIdleTimeout,
+        Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithAvailabilityZone,
+        Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithSku,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithCreate>
     {
     }
@@ -85,7 +103,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition
     /// <summary>
     /// A public IP address definition allowing the reverse FQDN to be specified.
     /// </summary>
-    public interface IWithReverseFQDN 
+    public interface IWithReverseFQDN
     {
         /// <summary>
         /// Specifies the reverse FQDN to assign to this public IP address.
@@ -112,7 +130,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition
     /// <summary>
     /// A public IP address definition allowing the idle timeout to be specified.
     /// </summary>
-    public interface IWithIdleTimeout 
+    public interface IWithIdleTimeout
     {
         /// <summary>
         /// Specifies the timeout (in minutes) for an idle connection.
@@ -121,4 +139,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithCreate WithIdleTimeoutInMinutes(int minutes);
     }
+
+    /// <summary>
+    /// The stage of the IP address definition allowing to specify SKU.
+    /// </summary>
+    public interface IWithSku :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the SKU for the IP address.
+        /// </summary>
+        /// <param name="skuType">The SKU type.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithCreate WithSku(PublicIPSkuType skuType);
+    }
+
 }

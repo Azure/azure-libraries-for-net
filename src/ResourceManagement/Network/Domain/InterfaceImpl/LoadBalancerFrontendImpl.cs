@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
-    internal partial class LoadBalancerFrontendImpl 
+    internal partial class LoadBalancerFrontendImpl
     {
         /// <summary>
         /// Gets the name of the subnet associated with this resource.
@@ -35,6 +35,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
             get
             {
                 return this.SubnetName();
+            }
+        }
+
+        System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPrivateFrontendBeta.AvailabilityZones
+        {
+            get
+            {
+                return this.AvailabilityZones();
             }
         }
 
@@ -412,6 +420,26 @@ namespace Microsoft.Azure.Management.Network.Fluent
         LoadBalancerPrivateFrontend.Update.IUpdate LoadBalancerPrivateFrontend.Update.IWithSubnet.WithExistingSubnet(INetwork network, string subnetName)
         {
             return this.WithExistingSubnet(network, subnetName) as LoadBalancerPrivateFrontend.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the availability zone for the private frontend.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        LoadBalancerPrivateFrontend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> LoadBalancerPrivateFrontend.UpdateDefinition.IWithAvailabilityZone<LoadBalancer.Update.IUpdate>.WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            return this.WithAvailabilityZone(zoneId) as LoadBalancerPrivateFrontend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the availability zone for the private frontend.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        LoadBalancerPrivateFrontend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate> LoadBalancerPrivateFrontend.Definition.IWithAvailabilityZone<LoadBalancer.Definition.IWithCreate>.WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            return this.WithAvailabilityZone(zoneId) as LoadBalancerPrivateFrontend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate>;
         }
 
         /// <summary>

@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     using Microsoft.Azure.Management.Storage.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
     /// The stage of a virtual machine definition containing various settings when virtual machine is created from image.
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to select a VM size.
     /// </summary>
-    public interface IWithVMSize 
+    public interface IWithVMSize
     {
         /// <summary>
         /// Selects the size of the virtual machine.
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify the operating system image.
     /// </summary>
-    public interface IWithOS 
+    public interface IWithOS
     {
         /// <summary>
         /// Specifies a specialized operating system unmanaged disk to be attached to the virtual machine.
@@ -182,7 +183,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a Linux virtual machine definition allowing to specify an SSH root user name.
     /// </summary>
-    public interface IWithLinuxRootUsernameManaged 
+    public interface IWithLinuxRootUsernameManaged
     {
         /// <summary>
         /// Specifies an SSH root user name for the Linux virtual machine.
@@ -195,7 +196,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify the primary network interface.
     /// </summary>
-    public interface IWithPrimaryNetworkInterface 
+    public interface IWithPrimaryNetworkInterface
     {
         /// <summary>
         /// Creates a new network interface to associate with the virtual machine as its primary network interface,
@@ -216,7 +217,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify a private IP address within a virtual network subnet.
     /// </summary>
-    public interface IWithPrivateIP 
+    public interface IWithPrivateIP
     {
         /// <summary>
         /// Enables dynamic private IP address allocation within the specified existing virtual network subnet for
@@ -237,7 +238,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to add an unmanaged data disk.
     /// </summary>
-    public interface IWithUnmanagedDataDisk 
+    public interface IWithUnmanagedDataDisk
     {
         /// <summary>
         /// Attaches an existing unmanaged VHD as a data disk to the virtual machine.
@@ -332,7 +333,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a Windows virtual machine definition allowing to specify an administrator password.
     /// </summary>
-    public interface IWithWindowsAdminPasswordManagedOrUnmanaged 
+    public interface IWithWindowsAdminPasswordManagedOrUnmanaged
     {
         /// <summary>
         /// Specifies the administrator password for the Windows virtual machine.
@@ -345,7 +346,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of the virtual machine definition allowing to specify extensions.
     /// </summary>
-    public interface IWithExtension 
+    public interface IWithExtension
     {
         /// <summary>
         /// Starts the definition of an extension to be attached to the virtual machine.
@@ -413,7 +414,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of the virtual machine definition allowing to specify availability set.
     /// </summary>
-    public interface IWithAvailabilitySet 
+    public interface IWithAvailabilitySet
     {
         /// <summary>
         /// Specifies an existing availability set to associate with the virtual machine.
@@ -467,7 +468,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a Linux virtual machine definition allowing to specify an SSH root user name.
     /// </summary>
-    public interface IWithLinuxRootUsernameManagedOrUnmanaged 
+    public interface IWithLinuxRootUsernameManagedOrUnmanaged
     {
         /// <summary>
         /// Specifies an SSH root user name for the Linux virtual machine.
@@ -519,6 +520,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// </summary>
     public interface IWithManagedCreate  :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedDataDisk,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithAvailabilityZone,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate
     {
         /// <summary>
@@ -546,7 +548,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to associate a public IP address with its primary network interface.
     /// </summary>
-    public interface IWithPublicIPAddress 
+    public interface IWithPublicIPAddress
     {
         /// <summary>
         /// Associates an existing public IP address with the VM's primary network interface.
@@ -581,7 +583,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify the virtual network subnet for a new primary network interface.
     /// </summary>
-    public interface IWithSubnet 
+    public interface IWithSubnet
     {
         /// <summary>
         /// Associates a subnet with the virtual machine's primary network interface.
@@ -594,7 +596,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of the Windows virtual machine definition allowing to specify an administrator user name.
     /// </summary>
-    public interface IWithWindowsAdminUsernameUnmanaged 
+    public interface IWithWindowsAdminUsernameUnmanaged
     {
         /// <summary>
         /// Specifies the administrator user name for the Windows virtual machine.
@@ -607,7 +609,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify a purchase plan.
     /// </summary>
-    public interface IWithPlan 
+    public interface IWithPlan
     {
         /// <summary>
         /// Specifies the purchase plan for the virtual machine.
@@ -643,7 +645,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a Linux virtual machine definition allowing to specify an SSH root password or public key.
     /// </summary>
-    public interface IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged 
+    public interface IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged
     {
         /// <summary>
         /// Specifies the SSH root password for the Linux virtual machine.
@@ -663,7 +665,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify a managed data disk.
     /// </summary>
-    public interface IWithManagedDataDisk 
+    public interface IWithManagedDataDisk
     {
         /// <summary>
         /// Specifies the data disk to be created from the data disk image in the virtual machine image.
@@ -765,7 +767,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify OS disk configurations.
     /// </summary>
-    public interface IWithOSDiskSettings 
+    public interface IWithOSDiskSettings
     {
         /// <summary>
         /// Specifies the encryption settings for the OS Disk.
@@ -799,7 +801,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a Windows virtual machine definition allowing to specify an administrator user name.
     /// </summary>
-    public interface IWithWindowsAdminUsernameManagedOrUnmanaged 
+    public interface IWithWindowsAdminUsernameManagedOrUnmanaged
     {
         /// <summary>
         /// Specifies the administrator user name for the Windows virtual machine.
@@ -812,7 +814,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a Windows virtual machine definition allowing to specify an administrator user name.
     /// </summary>
-    public interface IWithWindowsAdminUsernameManaged 
+    public interface IWithWindowsAdminUsernameManaged
     {
         /// <summary>
         /// Specifies the administrator user name for the Windows virtual machine.
@@ -825,7 +827,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a Windows virtual machine definition allowing to specify an administrator user name.
     /// </summary>
-    public interface IWithWindowsAdminPasswordManaged 
+    public interface IWithWindowsAdminPasswordManaged
     {
         /// <summary>
         /// Specifies the administrator password for the Windows virtual machine.
@@ -888,7 +890,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a Windows virtual machine definition allowing to specify an administrator password.
     /// </summary>
-    public interface IWithWindowsAdminPasswordUnmanaged 
+    public interface IWithWindowsAdminPasswordUnmanaged
     {
         /// <summary>
         /// Specifies the administrator password for the Windows virtual machine.
@@ -901,7 +903,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a Linux virtual machine definition allowing to specify an SSH root user name.
     /// </summary>
-    public interface IWithLinuxRootUsernameUnmanaged 
+    public interface IWithLinuxRootUsernameUnmanaged
     {
         /// <summary>
         /// Specifies an SSH root user name for the Linux virtual machine.
@@ -912,9 +914,23 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     }
 
     /// <summary>
+    /// The stage of the VM definition allowing to specify availability zone.
+    /// </summary>
+    public interface IWithAvailabilityZone :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the availability zone for the virtual machine.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedCreate WithAvailabilityZone(AvailabilityZoneId zoneId);
+    }
+
+    /// <summary>
     /// The stage of a virtual machine definition allowing to specify additional network interfaces.
     /// </summary>
-    public interface IWithSecondaryNetworkInterface 
+    public interface IWithSecondaryNetworkInterface
     {
         /// <summary>
         /// Associates an existing network interface with the virtual machine.
@@ -939,7 +955,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify a storage account.
     /// </summary>
-    public interface IWithStorageAccount 
+    public interface IWithStorageAccount
     {
         /// <summary>
         /// Specifies the name of a new storage account to put the VM's OS and data disk VHD into.
@@ -973,7 +989,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a Linux virtual machine definition allowing to specify an SSH root password or public key.
     /// </summary>
-    public interface IWithLinuxRootPasswordOrPublicKeyManaged 
+    public interface IWithLinuxRootPasswordOrPublicKeyManaged
     {
         /// <summary>
         /// Specifies the SSH root password for the Linux virtual machine.
@@ -1001,7 +1017,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a Linux virtual machine definition allowing to specify an SSH root password or public key.
     /// </summary>
-    public interface IWithLinuxRootPasswordOrPublicKeyUnmanaged 
+    public interface IWithLinuxRootPasswordOrPublicKeyUnmanaged
     {
         /// <summary>
         /// Specifies an SSH root password for the Linux virtual machine.
