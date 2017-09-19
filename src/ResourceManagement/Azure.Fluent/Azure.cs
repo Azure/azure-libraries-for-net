@@ -21,6 +21,7 @@ using System;
 using System.Linq;
 using ISubscriptions = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscriptions;
 using ISubscription = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscription;
+using Microsoft.Azure.Management.ContainerInstance.Fluent;
 using Microsoft.Azure.Management.ContainerRegistry.Fluent;
 using Microsoft.Azure.Management.CosmosDB.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
@@ -47,6 +48,7 @@ namespace Microsoft.Azure.Management.Fluent
         private IAppServiceManager appServiceManager;
         private ISearchManager searchManager;
         private IServiceBusManager serviceBusManager;
+        private IContainerInstanceManager containerInstanceManager;
         private IRegistryManager registryManager;
         private ICosmosDBManager cosmosDBManager;
 
@@ -347,6 +349,14 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IContainerGroups ContainerGroups
+        {
+            get
+            {
+                return containerInstanceManager.ContainerGroups;
+            }
+        }
+
         public IRegistries ContainerRegistries
         {
             get
@@ -383,6 +393,7 @@ namespace Microsoft.Azure.Management.Fluent
             appServiceManager = AppServiceManager.Authenticate(restClient, subscriptionId, tenantId);
             searchManager = SearchManager.Authenticate(restClient, subscriptionId);
             serviceBusManager = ServiceBusManager.Authenticate(restClient, subscriptionId);
+            containerInstanceManager = ContainerInstanceManager.Authenticate(restClient, subscriptionId);
             registryManager = RegistryManager.Authenticate(restClient, subscriptionId);
             cosmosDBManager = CosmosDBManager.Authenticate(restClient, subscriptionId);
 
