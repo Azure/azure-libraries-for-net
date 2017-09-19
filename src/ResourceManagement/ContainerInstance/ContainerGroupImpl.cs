@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     using Microsoft.Azure.Management.Storage.Fluent;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.File;
+    using System.Linq;
 
     /// <summary>
     /// Implementation for ContainerGroup and its create interfaces.
@@ -165,29 +166,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             // Splitting ports between TCP and UDP ports
             if (this.Inner.IpAddress != null && this.Inner.IpAddress.Ports != null && this.Inner.IpAddress.Ports.Count > 0)
             {
-                List<Port> tcpPorts = new List<Port>();
-                List<Port> udpPorts = new List<Port>();
-                foreach (var port in this.Inner.IpAddress.Ports)
-                {
-                    if (port.Protocol.Equals(ContainerGroupNetworkProtocol.TCP))
-                    {
-                        tcpPorts.Add(port);
-                    }
-                    else if (port.Protocol.Equals(ContainerGroupNetworkProtocol.UDP))
-                    {
-                        udpPorts.Add(port);
-                    }
-                }
-                this.externalTcpPorts = new int[tcpPorts.Count];
-                for (int i = 0; i < externalTcpPorts.Length; i++)
-                {
-                    externalTcpPorts[i] = tcpPorts[i].PortProperty;
-                }
-                this.externalUdpPorts = new int[udpPorts.Count];
-                for (int i = 0; i < externalUdpPorts.Length; i++)
-                {
-                    externalUdpPorts[i] = udpPorts[i].PortProperty;
-                }
+                this.externalTcpPorts = this.Inner.IpAddress.Ports.Where(p => ContainerGroupNetworkProtocol.TCP.Equals(p.Protocol)).Select(p => p.PortProperty).ToArray();
+                this.externalUdpPorts = this.Inner.IpAddress.Ports.Where(p => ContainerGroupNetworkProtocol.UDP.Equals(p.Protocol)).Select(p => p.PortProperty).ToArray();
             }
             else
             {
@@ -219,10 +199,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
                         this.Inner.Volumes = new List<Volume>();
                     }
                     var storageAccountKey = (await storageAccount.GetKeysAsync())[0].Value;
-                    var sas = String.Format(
-                        "DefaultEndpointsProtocol=https;AccountName=%s;AccountKey=%s;EndpointSuffix=core.Windows.Net",
-                        storageAccount.Name,
-                        storageAccountKey);
+                    var sas = $"DefaultEndpointsProtocol=https;AccountName={storageAccount.Name};AccountKey={storageAccountKey};EndpointSuffix=core.Windows.Net";
                     var cloudFileClient = CloudStorageAccount.Parse(sas).CreateCloudFileClient();
                     foreach (var fileShare in this.newFileShares)
                     {
