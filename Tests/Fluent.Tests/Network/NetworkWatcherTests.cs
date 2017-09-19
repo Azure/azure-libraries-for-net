@@ -31,9 +31,12 @@ namespace Fluent.Tests.Network
             {
                 string newName = SdkContext.RandomResourceName("nw", 6);
                 var groupName = SdkContext.RandomResourceName("rg", 6);
+                var manager = TestHelper.CreateNetworkManager();
+
+                // make sure Network Watcher is disabled in current subscription and region as only one can exist
+                EnsureNetworkWatcherNotExists(manager.NetworkWatchers);
 
                 // Create network watcher
-                var manager = TestHelper.CreateNetworkManager();
                 var nw = manager.NetworkWatchers.Define(newName)
                     .WithRegion(REGION)
                     .WithNewResourceGroup(groupName)
@@ -63,6 +66,10 @@ namespace Fluent.Tests.Network
                 // Create network watcher
                 var manager = TestHelper.CreateNetworkManager();
                 var computeManager = TestHelper.CreateComputeManager();
+
+                // make sure Network Watcher is disabled in current subscription and region as only one can exist
+                EnsureNetworkWatcherNotExists(manager.NetworkWatchers);
+
                 var nw = manager.NetworkWatchers.Define(newName)
                     .WithRegion(REGION)
                     .WithNewResourceGroup(groupName)
@@ -233,6 +240,18 @@ namespace Fluent.Tests.Network
                 .WithRegion(REGION)
                 .WithExistingResourceGroup(groupName)
                 .Create();
+        }
+
+        void EnsureNetworkWatcherNotExists(INetworkWatchers networkWatchers)
+        {
+            var nwList = networkWatchers.List();
+            foreach (INetworkWatcher nw in nwList)
+            {
+                if (REGION == nw.Region)
+                {
+                    networkWatchers.DeleteById(nw.Id);
+                }
+            }
         }
     }
 }
