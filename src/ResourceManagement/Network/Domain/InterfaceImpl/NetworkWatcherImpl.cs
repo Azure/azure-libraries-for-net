@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition;
     using Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition;
     using Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Update;
     using Microsoft.Azure.Management.Network.Fluent.NextHop.Definition;
@@ -24,17 +25,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets First step specifying the parameters to get next hop for the VM.
+        /// First step specifying the parameters to get next hop for the VM.
         /// </summary>
-        /// <summary>
-        /// Gets a stage to specify target vm.
-        /// </summary>
-        NextHop.Definition.IWithTargetResource Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.NextHop
+        /// <return>A stage to specify parameters for next hop.</return>
+        NextHop.Definition.IWithTargetResource Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.NextHop()
         {
-            get
-            {
-                return this.NextHop() as NextHop.Definition.IWithTargetResource;
-            }
+            return this.NextHop() as NextHop.Definition.IWithTargetResource;
         }
 
         /// <summary>
@@ -58,6 +54,25 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Verifies the possibility of establishing a direct TCP connection from a virtual machine to a given endpoint
+        /// including another virtual machine or an arbitrary remote server.
+        /// </summary>
+        /// <return>A stage to specify parameters for connectivity check.</return>
+        ConnectivityCheck.Definition.IToDestination Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.CheckConnectivity()
+        {
+            return this.CheckConnectivity() as ConnectivityCheck.Definition.IToDestination;
+        }
+
+        /// <summary>
+        /// Verify IP flow from the specified VM to a location given the currently configured NSG rules.
+        /// </summary>
+        /// <return>A stage to specify parameters for ip flow verification.</return>
+        VerificationIPFlow.Definition.IWithTargetResource Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.VerifyIPFlow()
+        {
+            return this.VerifyIPFlow() as VerificationIPFlow.Definition.IWithTargetResource;
+        }
+
+        /// <summary>
         /// Gets network topology of a given resource group.
         /// </summary>
         /// <param name="targetResourceGroup">The name of the target resource group to perform getTopology on.</param>
@@ -65,20 +80,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.Network.Fluent.ITopology Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.GetTopology(string targetResourceGroup)
         {
             return this.GetTopology(targetResourceGroup) as Microsoft.Azure.Management.Network.Fluent.ITopology;
-        }
-
-        /// <summary>
-        /// Gets Verify IP flow from the specified VM to a location given the currently configured NSG rules.
-        /// </summary>
-        /// <summary>
-        /// Gets a stage to specify target vm.
-        /// </summary>
-        VerificationIPFlow.Definition.IWithTargetResource Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.VerifyIPFlow
-        {
-            get
-            {
-                return this.VerifyIPFlow() as VerificationIPFlow.Definition.IWithTargetResource;
-            }
         }
 
         /// <summary>
