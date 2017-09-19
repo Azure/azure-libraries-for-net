@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             VirtualMachineScaleSetInner innerModel,
             IComputeManager computeManager,
             IStorageManager storageManager,
-            INetworkManager networkManager, 
+            INetworkManager networkManager,
             IGraphRbacManager rbacManager) : base(name, innerModel, computeManager)
         {
             this.storageManager = storageManager;
@@ -622,8 +622,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:9019C44FB9C28F62603D9972D45A9522:04EA2CF2FF84B5C44179285E14BA0FF0
         public bool IsManagedServiceIdentityEnabled()
         {
-           return this.ManagedServiceIdentityPrincipalId() != null
-            && this.ManagedServiceIdentityTenantId() != null;
+            return this.ManagedServiceIdentityPrincipalId() != null
+             && this.ManagedServiceIdentityTenantId() != null;
         }
 
         ///GENMHASH:D19E7D61822C4048249EC4B57FA6F59B:E55E888BE3583ADCF1863F5A9DC47299
@@ -634,6 +634,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return this.Inner.Identity.TenantId;
             }
             return null;
+        }
+
+        ///GENMHASH:F856C02184EB290DC74E5823D4280D7C:C06C8F12A2F1E86C908BE0388D483D06
+        public ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> AvailabilityZones()
+        {
+            var zones = new HashSet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>();
+            if (this.Inner.Zones != null)
+            {
+                foreach (var zone in this.Inner.Zones)
+                {
+                    zones.Add(AvailabilityZoneId.Parse(zone));
+                }
+            }
+            return zones;
         }
 
         ///GENMHASH:E059E91FE0CBE4B6875986D1B46994D2:DAA85BBA01C168FF877DF34933F404C0
@@ -2150,6 +2164,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineScaleSetImpl WithOverProvisioning()
         {
             return this.WithOverProvision(true);
+        }
+
+        ///GENMHASH:5D8D71845C83EB59F52EB2C4B1C05618:8669839F7D5CF9000DF1C6A1D335E292
+        public VirtualMachineScaleSetImpl WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            // Note: Only for virtual machine scale set, new zone can be specified, hence
+            // this option is available for both definition and update cases.
+            //
+            //
+            if (this.Inner.Zones == null)
+            {
+                this.Inner.Zones = new List<string>();
+            }
+            this.Inner.Zones.Add(zoneId.ToString());
+            return this;
         }
 
         ///GENMHASH:9C4A541B9A2E22540116BFA125189F57:2F8856B5F0BA5E1B741D68C6CED48D9A

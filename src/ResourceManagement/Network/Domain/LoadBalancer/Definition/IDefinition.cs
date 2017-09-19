@@ -14,11 +14,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.Network.Fluent.Models;
 
     /// <summary>
     /// The stage of a load balancer definition allowing to create a load balancing rule.
     /// </summary>
-    public interface IWithLoadBalancingRule 
+    public interface IWithLoadBalancingRule
     {
         /// <summary>
         /// Begins the definition of a new load balancing rule to add to the load balancer.
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition
     /// <summary>
     /// The stage of an Internet-facing load balancer definition allowing to define one or more public frontends.
     /// </summary>
-    public interface IWithPublicFrontend 
+    public interface IWithPublicFrontend
     {
         /// <summary>
         /// Begins an explicit definition of a new public (Internet-facing) load balancer frontend.
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition
     /// <summary>
     /// The stage of a load balancer definition allowing to create a new inbound NAT pool for a virtual machine scale set.
     /// </summary>
-    public interface IWithInboundNatPool 
+    public interface IWithInboundNatPool
     {
         /// <summary>
         /// Begins the definition of a new inbount NAT pool to add to the load balancer.
@@ -123,7 +124,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition
     /// <summary>
     /// The stage of the load balancer definition allowing to add a load balancing probe.
     /// </summary>
-    public interface IWithProbe 
+    public interface IWithProbe
     {
         /// <summary>
         /// Begins the definition of a new TCP probe to add to the load balancer.
@@ -143,7 +144,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition
     /// <summary>
     /// The stage of a load balancer definition allowing to add a backend.
     /// </summary>
-    public interface IWithBackend 
+    public interface IWithBackend
     {
         /// <summary>
         /// Starts the definition of a backend.
@@ -174,7 +175,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition
     /// <summary>
     /// The stage of a load balancer definition allowing to create a new inbound NAT rule.
     /// </summary>
-    public interface IWithInboundNatRule 
+    public interface IWithInboundNatRule
     {
         /// <summary>
         /// Begins the definition of a new inbound NAT rule to add to the load balancer.
@@ -194,14 +195,29 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithCreate>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithBackend,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithFrontend,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithProbe
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithProbe,
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithSku
     {
+    }
+
+    /// <summary>
+    /// The stage of the load balancer definition allowing to specify SKU.
+    /// </summary>
+    public interface IWithSku :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the SKU for the load balancer.
+        /// </summary>
+        /// <param name="skuType">The SKU type.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Definition.IWithCreate WithSku(LoadBalancerSkuType skuType);
     }
 
     /// <summary>
     /// The stage of an internal load balancer definition allowing to define one or more private frontends.
     /// </summary>
-    public interface IWithPrivateFrontend 
+    public interface IWithPrivateFrontend
     {
         /// <summary>
         /// Begins an explicit definition of a new private (internal) load balancer frontend.

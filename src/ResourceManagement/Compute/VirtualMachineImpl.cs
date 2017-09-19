@@ -81,6 +81,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private string creatableDiagnosticsStorageAccountKey;
         // Utility to setup MSI for the virtual machine
         private VirtualMachineMsiHelper virtualMachineMsiHelper;
+        // Reference to the PublicIp creatable that is implicitly created
+        private Network.Fluent.PublicIPAddress.Definition.IWithCreate implicitPipCreatable;
 
         ///GENMHASH:0A331C2401291DF824493E64F2798884:D3B04C536032C2BDC056A8F85225875E
         internal VirtualMachineImpl(
@@ -88,7 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             VirtualMachineInner innerModel,
             IComputeManager computeManager,
             IStorageManager storageManager,
-            INetworkManager networkManager, 
+            INetworkManager networkManager,
             IGraphRbacManager rbacManager)
             : base(name, innerModel, computeManager)
         {
@@ -145,7 +147,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             var virtualMachineInner = await this.Manager.Inner.VirtualMachines.GetAsync(this.ResourceGroupName,
                 this.Name,
-                InstanceViewTypes.InstanceView, 
+                InstanceViewTypes.InstanceView,
                 cancellationToken);
             this.virtualMachineInstanceView = virtualMachineInner.InstanceView;
             return this.virtualMachineInstanceView;
@@ -223,7 +225,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:842FBE4DCB8BFE1B50632DBBE157AEA8:B5262187B60CE486998F800E9A96B659
         public IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize> AvailableSizes()
         {
-            return Extensions.Synchronize(() => Manager.Inner.VirtualMachines.ListAvailableSizesAsync(this.ResourceGroupName,this.Name))
+            return Extensions.Synchronize(() => Manager.Inner.VirtualMachines.ListAvailableSizesAsync(this.ResourceGroupName, this.Name))
                 .Select(inner => new VirtualMachineSizeImpl(inner));
         }
 
@@ -241,8 +243,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;
             VirtualMachineCaptureResultInner captureResult = await Manager.Inner.VirtualMachines.CaptureAsync(
-                this.ResourceGroupName, 
-                this.Name, 
+                this.ResourceGroupName,
+                this.Name,
                 parameters,
                 cancellationToken);
             return JsonConvert.SerializeObject(captureResult.Output);
@@ -318,11 +320,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
-        ///GENMHASH:BA50EF0AC88D5405DFE18FCE26A595B2:027C20A1A590AAED2CC3F40647663D8B
+        ///GENMHASH:493C4B7BDF89C914E95EEE1D0DE7160E:822C2C149045D9889CBFE50421B57410
         public VirtualMachineImpl WithNewPrimaryPublicIPAddress(string leafDnsLabel)
         {
+            Network.Fluent.PublicIPAddress.Definition.IWithGroup definitionWithGroup = this.networkManager.PublicIPAddresses
+                .Define(this.namer.RandomName("pip", 15))
+                .WithRegion(this.RegionName);
+            Network.Fluent.PublicIPAddress.Definition.IWithCreate definitionAfterGroup;
+            if (this.newGroup != null)
+            {
+                definitionAfterGroup = definitionWithGroup.WithNewResourceGroup(this.newGroup);
+            }
+            else
+            {
+                definitionAfterGroup = definitionWithGroup.WithExistingResourceGroup(this.ResourceGroupName);
+            }
+            this.implicitPipCreatable = definitionAfterGroup.WithLeafDomainLabel(leafDnsLabel);
+            // Create NIC with creatable PIP
+            //
             var nicCreatable = this.nicDefinitionWithCreate
-                .WithNewPrimaryPublicIPAddress(leafDnsLabel);
+                    .WithNewPrimaryPublicIPAddress(this.implicitPipCreatable);
             this.creatablePrimaryNetworkInterfaceKey = nicCreatable.Key;
             this.AddCreatableDependency(nicCreatable as IResourceCreator<IHasId>);
             return this;
@@ -593,6 +610,34 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineImpl WithAdminPassword(string password)
         {
             Inner.OsProfile.AdminPassword = password;
+            return this;
+        }
+
+        ///GENMHASH:5D8D71845C83EB59F52EB2C4B1C05618:DAD67F2444F1C28988F244EE4625A3F5
+        public VirtualMachineImpl WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            if (IsInCreateMode)
+            {
+                // Note: Zone is not updatable as of now, so this is available only during definition time.
+                // Service return `ResourceAvailabilityZonesCannotBeModified` upon attempt to append a new
+                // zone or remove one. Trying to remove the last one means attempt to change resource from
+                // zonal to regional, which is not supported.
+                //
+                // though not updatable, still adding above 'isInCreateMode' check just as a reminder to
+                // take special handling of 'implicitPipCreatable' when avail zone update is supported.
+                //
+                if (this.Inner.Zones == null)
+                {
+                    this.Inner.Zones = new List<String>();
+                }
+                this.Inner.Zones.Add(zoneId.ToString());
+                // zone aware VM can be attached to only zone aware public IP.
+                //
+                if (this.implicitPipCreatable != null)
+                {
+                    this.implicitPipCreatable.WithAvailabilityZone(zoneId);
+                }
+            }
             return this;
         }
 
@@ -1466,8 +1511,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             if (this.Inner.DiagnosticsProfile != null
                 && this.Inner.DiagnosticsProfile.BootDiagnostics != null
                 && this.Inner.DiagnosticsProfile.BootDiagnostics.Enabled != null
-                && this.Inner.DiagnosticsProfile.BootDiagnostics.Enabled.HasValue) {
-                    return this.Inner.DiagnosticsProfile.BootDiagnostics.Enabled.Value;
+                && this.Inner.DiagnosticsProfile.BootDiagnostics.Enabled.HasValue)
+            {
+                return this.Inner.DiagnosticsProfile.BootDiagnostics.Enabled.Value;
             }
             return false;
         }
@@ -1477,8 +1523,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             // Even though diagnostics can disabled azure still keep the storage uri
             if (this.Inner.DiagnosticsProfile != null
-                && this.Inner.DiagnosticsProfile.BootDiagnostics != null) {
-                    return this.Inner.DiagnosticsProfile.BootDiagnostics.StorageUri;
+                && this.Inner.DiagnosticsProfile.BootDiagnostics != null)
+            {
+                return this.Inner.DiagnosticsProfile.BootDiagnostics.StorageUri;
             }
             return null;
         }
@@ -1486,7 +1533,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:9019C44FB9C28F62603D9972D45A9522:04EA2CF2FF84B5C44179285E14BA0FF0
         public string ManagedServiceIdentityPrincipalId()
         {
-            if (this.Inner.Identity != null) {
+            if (this.Inner.Identity != null)
+            {
                 return this.Inner.Identity.PrincipalId;
             }
             return null;
@@ -1502,10 +1550,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:D19E7D61822C4048249EC4B57FA6F59B:E55E888BE3583ADCF1863F5A9DC47299
         public string ManagedServiceIdentityTenantId()
         {
-            if (this.Inner.Identity != null) {
+            if (this.Inner.Identity != null)
+            {
                 return this.Inner.Identity.TenantId;
             }
             return null;
+        }
+
+        ///GENMHASH:F856C02184EB290DC74E5823D4280D7C:C06C8F12A2F1E86C908BE0388D483D06
+        public ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> AvailabilityZones()
+        {
+            var zones = new HashSet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>();
+            if (this.Inner.Zones != null)
+            {
+                foreach (var zone in this.Inner.Zones)
+                {
+                    zones.Add(AvailabilityZoneId.Parse(zone));
+                }
+            }
+            return zones;
         }
 
         ///GENMHASH:E059E91FE0CBE4B6875986D1B46994D2:AF3425B1B2ADC5865D8191FBE2FE4BBC
@@ -1829,24 +1892,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
 
         ///GENMHASH:679C8E77D63CDAC3C75B428C73FDBA6F:810F9B4884B03FC354476CC848056897
-        private async Task<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> HandleBootDiagnosticsStorageSettingsAsync(IStorageAccount diskStorageAccount, 
+        private async Task<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> HandleBootDiagnosticsStorageSettingsAsync(IStorageAccount diskStorageAccount,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (this.Inner.DiagnosticsProfile == null 
+            if (this.Inner.DiagnosticsProfile == null
                 || this.Inner.DiagnosticsProfile.BootDiagnostics == null)
             {
                 return diskStorageAccount;
-            } else if (this.Inner.DiagnosticsProfile.BootDiagnostics.StorageUri != null)
+            }
+            else if (this.Inner.DiagnosticsProfile.BootDiagnostics.StorageUri != null)
             {
                 return diskStorageAccount;
-            } else if (this.Inner.DiagnosticsProfile.BootDiagnostics.Enabled.HasValue 
-                && this.Inner.DiagnosticsProfile.BootDiagnostics.Enabled == true)
+            }
+            else if (this.Inner.DiagnosticsProfile.BootDiagnostics.Enabled.HasValue
+              && this.Inner.DiagnosticsProfile.BootDiagnostics.Enabled == true)
             {
                 if (this.creatableDiagnosticsStorageAccountKey != null)
                 {
                     var diagnosticsStgAccount = (IStorageAccount)this.CreatedResource(this.creatableDiagnosticsStorageAccountKey);
                     this.Inner.DiagnosticsProfile.BootDiagnostics.StorageUri = diagnosticsStgAccount.EndPoints.Primary.Blob;
-                    return diskStorageAccount == null? diagnosticsStgAccount : diskStorageAccount;
+                    return diskStorageAccount == null ? diagnosticsStgAccount : diskStorageAccount;
                 }
                 if (diskStorageAccount != null)
                 {
@@ -1919,7 +1984,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (this.Inner.DiagnosticsProfile == null)
             {
-                this.Inner.DiagnosticsProfile =  new DiagnosticsProfile();
+                this.Inner.DiagnosticsProfile = new DiagnosticsProfile();
             }
             if (this.Inner.DiagnosticsProfile.BootDiagnostics == null)
             {

@@ -8,8 +8,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition;
     using Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class PublicIPAddressImpl 
+    internal partial class PublicIPAddressImpl
     {
         /// <summary>
         /// Gets the assigned reverse FQDN, if any.
@@ -80,6 +81,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
             get
             {
                 return this.HasAssignedLoadBalancer();
+            }
+        }
+
+        /// <summary>
+        /// Gets public IP address sku.
+        /// </summary>
+        Microsoft.Azure.Management.Network.Fluent.Models.PublicIPSkuType Microsoft.Azure.Management.Network.Fluent.IPublicIPAddressBeta.Sku
+        {
+            get
+            {
+                return this.Sku() as Microsoft.Azure.Management.Network.Fluent.Models.PublicIPSkuType;
+            }
+        }
+
+        /// <summary>
+        /// Gets the availability zones assigned to the public IP address.
+        /// </summary>
+        System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> Microsoft.Azure.Management.Network.Fluent.IPublicIPAddressBeta.AvailabilityZones
+        {
+            get
+            {
+                return this.AvailabilityZones() as System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>;
             }
         }
 
@@ -262,6 +285,26 @@ namespace Microsoft.Azure.Management.Network.Fluent
         PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithIdleTimeout.WithIdleTimeoutInMinutes(int minutes)
         {
             return this.WithIdleTimeoutInMinutes(minutes) as PublicIPAddress.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies the availability zone for the IP address.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            return this.WithAvailabilityZone(zoneId) as PublicIPAddress.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies the SKU for the IP address.
+        /// </summary>
+        /// <param name="skuType">The SKU type.</param>
+        /// <return>The next stage of the definition.</return>
+        PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithSku.WithSku(PublicIPSkuType skuType)
+        {
+            return this.WithSku(skuType) as PublicIPAddress.Definition.IWithCreate;
         }
     }
 }

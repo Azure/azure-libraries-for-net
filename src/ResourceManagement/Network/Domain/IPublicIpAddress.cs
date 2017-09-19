@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     public interface IPublicIPAddress  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.PublicIPAddressInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<PublicIPAddress.Update.IUpdate>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<PublicIPAddress.Update.IUpdate>,
+        Microsoft.Azure.Management.Network.Fluent.IPublicIPAddressBeta
     {
         /// <summary>
         /// Gets the assigned reverse FQDN, if any.

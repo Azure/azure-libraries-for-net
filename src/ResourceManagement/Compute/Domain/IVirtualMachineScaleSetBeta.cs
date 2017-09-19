@@ -34,5 +34,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// virtual machine scale set.
         /// </summary>
         string ManagedServiceIdentityTenantId { get; }
+
+        /// <summary>
+        /// Gets the availability zones assigned to virtual machine scale set.
+        /// </summary>
+        System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> AvailabilityZones { get; }
     }
 }

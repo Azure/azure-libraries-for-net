@@ -50,7 +50,20 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (subnetRef != null) ? ResourceUtils.NameFromResourceId(subnetRef.Id) : null;
         }
 
-        
+        ///GENMHASH:F856C02184EB290DC74E5823D4280D7C:C06C8F12A2F1E86C908BE0388D483D06
+        public ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> AvailabilityZones()
+        {
+            var zones = new HashSet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>();
+            if (this.Inner.Zones != null)
+            {
+                foreach (var zone in this.Inner.Zones)
+                {
+                    zones.Add(AvailabilityZoneId.Parse(zone));
+                }
+            }
+            return zones;
+        }
+
         ///GENMHASH:F4EEE08685E447AE7D2A8F7252EC223A:516B6A004CB15A757AC222DE49CEC6EC
         internal string PrivateIPAddress()
         {
@@ -153,7 +166,24 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return WithExistingSubnet(network.Id, subnetName);
         }
 
-        
+        ///GENMHASH:5D8D71845C83EB59F52EB2C4B1C05618:F5D9787C620CCC86AB464B5DD00F73EB
+        public LoadBalancerFrontendImpl WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            // Note: Zone is not updatable as of now, so this is available only during definition time.
+            // Service return `ResourceAvailabilityZonesCannotBeModified` upon attempt to append a new
+            // zone or remove one. Trying to remove the last one means attempt to change resource from
+            // zonal to regional, which is not supported.
+            //
+            // Zone is supported only for internal load balancer, hence exposed only for PrivateFrontEnd
+            //
+            if (this.Inner.Zones == null)
+            {
+                this.Inner.Zones = new List<string>();
+            }
+            this.Inner.Zones.Add(zoneId.ToString());
+            return this;
+        }
+
         ///GENMHASH:E8683B20FED733D23930E96CCD1EB0A2:E6CC43D15A29B0635E7C303E592E8569
         internal LoadBalancerFrontendImpl WithExistingSubnet (string parentNetworkResourceId, string subnetName)
         {

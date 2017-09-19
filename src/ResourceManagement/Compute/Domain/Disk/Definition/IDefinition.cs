@@ -7,11 +7,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
     /// The stage of the managed disk definition allowing to choose Linux OS source.
     /// </summary>
-    public interface IWithLinuxDiskSource 
+    public interface IWithLinuxDiskSource
     {
         /// <summary>
         /// Specifies the source specialized or generalized Linux OS VHD.
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose source data disk VHD.
     /// </summary>
-    public interface IWithDataDiskFromVhd 
+    public interface IWithDataDiskFromVhd
     {
         /// <summary>
         /// Specifies the source data VHD.
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of a managed disk definition allowing to choose a Windows OS source.
     /// </summary>
-    public interface IWithWindowsDiskSource 
+    public interface IWithWindowsDiskSource
     {
         /// <summary>
         /// Specifies a source specialized or generalized Windows OS VHD.
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose source data disk image.
     /// </summary>
-    public interface IWithDataDiskFromImage 
+    public interface IWithDataDiskFromImage
     {
         /// <summary>
         /// Specifies the ID of an image containing source data disk image.
@@ -144,7 +145,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose managed disk containing data.
     /// </summary>
-    public interface IWithDataDiskFromDisk 
+    public interface IWithDataDiskFromDisk
     {
         /// <summary>
         /// Specifies the ID of source data managed disk.
@@ -164,7 +165,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of the managed disk definition that specifies it hold data.
     /// </summary>
-    public interface IWithData 
+    public interface IWithData
     {
         /// <summary>
         /// Begins definition of managed disk containing data.
@@ -200,7 +201,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose account type.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Specifies the SKU.
@@ -227,6 +228,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     }
 
     /// <summary>
+    /// The stage of the managed disk definition allowing to specify availability zone.
+    /// </summary>
+    public interface IWithAvailabilityZone :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the availability zone for the managed disk.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreate WithAvailabilityZone(AvailabilityZoneId zoneId);
+    }
+
+    /// <summary>
     /// The stage of a managed disk definition allowing to specify the resource group.
     /// </summary>
     public interface IWithGroup  :
@@ -237,7 +252,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose source operating system image.
     /// </summary>
-    public interface IWithOSDiskFromImage 
+    public interface IWithOSDiskFromImage
     {
         /// <summary>
         /// Specifies the ID of an image containing the operating system.
@@ -284,7 +299,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose managed snapshot containing data.
     /// </summary>
-    public interface IWithDataDiskFromSnapshot 
+    public interface IWithDataDiskFromSnapshot
     {
         /// <summary>
         /// Specifies the source data managed snapshot.
@@ -309,7 +324,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     public interface IWithCreate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.IDisk>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreate>,
-        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithSku
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithSku,
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithAvailabilityZone
     {
     }
 }

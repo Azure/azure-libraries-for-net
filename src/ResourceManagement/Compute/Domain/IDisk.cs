@@ -9,6 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Rest;
+    using System.Collections.Generic;
 
     /// <summary>
     /// An immutable client-side representation of an Azure managed disk.
@@ -16,7 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     public interface IDisk  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Compute.Fluent.IComputeManager,Models.DiskInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IDisk>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Disk.Update.IUpdate>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Disk.Update.IUpdate>,
+        Microsoft.Azure.Management.Compute.Fluent.IDiskBeta
     {
         /// <summary>
         /// Revokes access granted to the disk asynchronously.

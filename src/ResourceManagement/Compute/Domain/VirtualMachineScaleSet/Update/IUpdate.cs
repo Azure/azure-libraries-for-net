@@ -10,11 +10,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
     /// The stage of the virtual machine definition allowing to specify extensions.
     /// </summary>
-    public interface IWithExtension 
+    public interface IWithExtension
     {
         /// <summary>
         /// Begins the description of an update of an existing extension assigned to the virtual machines in the scale set.
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     /// A stage of the virtual machine scale set update allowing to remove the associations between the primary network
     /// interface configuration and the specified inbound NAT pools of the load balancer.
     /// </summary>
-    public interface IWithoutPrimaryLoadBalancerNatPool 
+    public interface IWithoutPrimaryLoadBalancerNatPool
     {
         /// <summary>
         /// Removes the associations between the primary network interface configuration and the specified inbound NAT pools
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     /// The stage of a virtual machine scale set update allowing to remove the association between the primary network
     /// interface configuration and a backend of a load balancer.
     /// </summary>
-    public interface IWithoutPrimaryLoadBalancerBackend 
+    public interface IWithoutPrimaryLoadBalancerBackend
     {
         /// <summary>
         /// Removes the associations between the primary network interface configuration and the specified backends
@@ -109,7 +110,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     /// The stage of a virtual machine scale set update allowing to change the SKU for the virtual machines
     /// in the scale set.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Specifies the SKU for the virtual machines in the scale set.
@@ -130,7 +131,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     /// The stage of a virtual machine scale set update allowing to remove the public and internal load balancer
     /// from the primary network interface configuration.
     /// </summary>
-    public interface IWithoutPrimaryLoadBalancer 
+    public interface IWithoutPrimaryLoadBalancer
     {
         /// <summary>
         /// Removes the association between the Internet-facing load balancer and the primary network interface configuration.
@@ -153,7 +154,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     /// The stage of a virtual machine scale set definition allowing to specify the number of
     /// virtual machines in the scale set.
     /// </summary>
-    public interface IWithCapacity 
+    public interface IWithCapacity
     {
         /// <summary>
         /// Specifies the new number of virtual machines in the scale set.
@@ -197,7 +198,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancer,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancerBackend,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancerNatPool,
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithManagedServiceIdentity
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithManagedServiceIdentity,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithAvailabilityZone
     {
     }
 
@@ -263,7 +265,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     /// <summary>
     /// The stage of a virtual machine scale set update allowing to specify managed data disks.
     /// </summary>
-    public interface IWithManagedDataDisk 
+    public interface IWithManagedDataDisk
     {
         /// <summary>
         /// Specifies that a managed disk needs to be created implicitly with the given size.
@@ -302,7 +304,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     /// <summary>
     /// The stage of the virtual machine scale set definition allowing to specify unmanaged data disk.
     /// </summary>
-    public interface IWithUnmanagedDataDisk 
+    public interface IWithUnmanagedDataDisk
     {
     }
 
@@ -389,4 +391,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithRoleAndScopeOrApply WithRoleDefinitionBasedAccessToCurrentResourceGroup(string roleDefinitionId);
     }
 
+    /// <summary>
+    /// The stage of the virtual machine scale set update allowing to specify availability zone.
+    /// </summary>
+    public interface IWithAvailabilityZone :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the availability zone for the virtual machine scale set.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithAvailabilityZone(AvailabilityZoneId zoneId);
+    }
 }
