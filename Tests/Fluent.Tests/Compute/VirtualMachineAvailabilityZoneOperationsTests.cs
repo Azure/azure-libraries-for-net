@@ -89,7 +89,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
         }
 
         [Fact]
-        public void canCreateZonedVMWithExplicitZoneForRelatedResources()
+        public void CanCreateZonedVMWithExplicitZoneForRelatedResources()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
