@@ -33,7 +33,13 @@ function Check-LicenseHeader()
     return $retValue;
 }
 
-if(Check-SyncMethods | Check-LicenseHeader) {
+$syncMethods = Check-SyncMethods
+$licenseHeaders = Check-LicenseHeader
+
+if($syncMethods -Or $licenseHeaders) {
+    Write-Host "[FAILED]: Style Check failed..."
     exit(-1)
 }
+
+Write-Host "[SUCCESS]: Style Check passed..."
 exit(0)
