@@ -264,6 +264,12 @@ var mappings = {
         'args': '-FT 1 -ServiceName Monitor',
         'composite': true
     },
+    'containerinstance': {
+        'dir': 'ContainerInstance',
+        'source': 'arm-containerinstance/2017-08-01-preview/swagger/ContainerInstance.json',
+        'package': 'Microsoft.Azure.Management.ContainerInstance.Fluent',
+        'args': '-FT 1',
+    },
     'containerregistry': {
         'dir': 'ContainerRegistry',
         'source': 'arm-containerregistry/2017-03-01/swagger/containerregistry.json',
