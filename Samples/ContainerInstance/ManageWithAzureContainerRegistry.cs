@@ -13,7 +13,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Samples.Common;
 using System;
 
-namespace ManageContainerInstanceWithAzureContainerRegistry
+namespace ManageWithAzureContainerRegistry
 {
     public class Program
     {

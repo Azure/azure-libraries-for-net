@@ -23,18 +23,18 @@ namespace Samples.Tests
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var rollUpClient = TestHelper.CreateRollupClient();
-                ManageContainerInstanceWithAzureFileShareMount.Program.RunSample(rollUpClient);
+                ManageWithAzureFileShareMount.Program.RunSample(rollUpClient);
             }
         }
 
         [Fact(Skip = "Storage plane calls can not be played back")]
         [Trait("Samples", "ContainerInstance")]
-        public void ManageContainerInstanceWithManualAzureFileShareMountCreationTest()
+        public void ManageWithManualAzureFileShareMountCreationTest()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var rollUpClient = TestHelper.CreateRollupClient();
-                ManageContainerInstanceWithManualAzureFileShareMountCreation.Program.RunSample(rollUpClient);
+                ManageWithManualAzureFileShareMountCreation.Program.RunSample(rollUpClient);
             }
         }
 
@@ -45,7 +45,7 @@ namespace Samples.Tests
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var rollUpClient = TestHelper.CreateRollupClient();
-                ManageContainerInstanceWithMultipleContainerImages.Program.RunSample(rollUpClient);
+                ManageWithMultipleContainerImages.Program.RunSample(rollUpClient);
             }
         }
 
@@ -56,7 +56,7 @@ namespace Samples.Tests
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var rollUpClient = TestHelper.CreateRollupClient();
-                ManageContainerInstanceWithAzureContainerRegistry.Program.RunSample(rollUpClient);
+                ManageWithAzureContainerRegistry.Program.RunSample(rollUpClient);
             }
         }
     }

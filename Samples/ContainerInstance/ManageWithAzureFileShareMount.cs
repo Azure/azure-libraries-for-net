@@ -1,38 +1,29 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using Docker.DotNet;
 using Microsoft.Azure.Management.ContainerInstance.Fluent;
+using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
 using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Samples.Common;
 using Microsoft.Azure.Management.Storage.Fluent;
-using Microsoft.Azure.Management.Storage.Fluent.Models;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.File;
 using System;
+using System.Net.Http;
 
-namespace ManageContainerInstanceWithManualAzureFileShareMountCreation
+namespace ManageWithAzureFileShareMount
 {
     public class Program
     {
         private static readonly Region region = Region.USEast;
 
-        private async static void CreateFileShare(string saName, string storageAccountKey, string shareName)
-        {
-            CloudFileShare cloudFileShare = CloudStorageAccount.Parse(
-                $"DefaultEndpointsProtocol=https;AccountName={saName};AccountKey={storageAccountKey};EndpointSuffix=core.windows.net")
-                .CreateCloudFileClient()
-                .GetShareReference(shareName);
-            await cloudFileShare.CreateAsync();
-        }
 
         /**
          * Azure Container Instance sample for managing container instances with Azure File Share mount.
-         *    - Create a storage account and an Azure file share resource
-         *    - Create an Azure container instance using Docker image "seanmckenna/aci-hellofiles" with a mount to the file share from above
+         *    - Create an Azure container instance using Docker image "seanmckenna/aci-hellofiles" with a mount to a new file share
          *    - Retrieve container log content
          *    - Delete the container group resource
          */
@@ -40,7 +31,6 @@ namespace ManageContainerInstanceWithManualAzureFileShareMountCreation
         {
             string rgName = SdkContext.RandomResourceName("rgACI", 15);
             string aciName = SdkContext.RandomResourceName("acisample", 20);
-            string saName = SdkContext.RandomResourceName("sa", 20);
             string shareName = SdkContext.RandomResourceName("fileshare", 20);
             string containerImageName = "seanmckenna/aci-hellofiles";
             string volumeMountName = "aci-helloshare";
@@ -48,31 +38,16 @@ namespace ManageContainerInstanceWithManualAzureFileShareMountCreation
             try
             {
                 //=============================================================
-                // Create a new storage account and an Azure file share resource
-
-                IStorageAccount storageAccount = azure.StorageAccounts.Define(saName)
-                    .WithRegion(region)
-                    .WithNewResourceGroup(rgName)
-                    .Create();
-
-                StorageAccountKey storageAccountKey = storageAccount.GetKeys()[0];
-
-                CreateFileShare(saName, storageAccountKey.Value, shareName);
-
-                //=============================================================
                 // Create a container group with one container instance of default CPU core count and memory size
                 //   using public Docker image "seanmckenna/aci-hellofiles" which mounts the file share created previously
                 //   as read/write shared container volume.
+
                 IContainerGroup containerGroup = azure.ContainerGroups.Define(aciName)
                     .WithRegion(region)
                     .WithNewResourceGroup(rgName)
                     .WithLinux()
                     .WithPublicImageRegistryOnly()
-                    .DefineVolume(volumeMountName)
-                        .WithExistingReadWriteAzureFileShare(shareName)
-                        .WithStorageAccountName(saName)
-                        .WithStorageAccountKey(storageAccountKey.Value)
-                        .Attach()
+                    .WithNewAzureFileShareVolume(volumeMountName, shareName)
                     .DefineContainerInstance(aciName)
                         .WithImage(containerImageName)
                         .WithExternalTcpPort(80)

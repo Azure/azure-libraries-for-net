@@ -10,7 +10,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Samples.Common;
 using System;
 
-namespace ManageContainerInstanceWithMultipleContainerImages
+namespace ManageWithMultipleContainerImages
 {
     public class Program
     {
