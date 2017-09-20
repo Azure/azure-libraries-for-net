@@ -643,6 +643,11 @@ namespace Microsoft.Azure.Management.Fluent
         ICosmosDBAccounts CosmosDBAccounts { get; }
 
         /// <summary>
+        /// Entry point to Azure container instance management.
+        /// </summary>
+        IContainerGroups ContainerGroups { get; }
+
+        /// <summary>
         /// Entry point to Azure container registry management.
         /// </summary>
         IRegistries ContainerRegistries { get; }
