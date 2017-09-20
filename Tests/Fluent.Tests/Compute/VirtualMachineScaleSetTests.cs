@@ -389,7 +389,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     .WithSubnet("subnet1", "10.0.0.0/28")
                     .Create();
 
-                ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1");
+                ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1", LoadBalancerSkuType.Basic, Location);
                 List<string> backends = new List<string>();
                 foreach (string backend in publicLoadBalancer.Backends.Keys)
                 {
@@ -457,7 +457,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             foreach (var rule in lbRules.Values)
                             {
                                 Assert.NotNull(rule);
-                                Assert.True((rule.FrontendPort == 80 && rule.BackendPort == 80) || 
+                                Assert.True((rule.FrontendPort == 80 && rule.BackendPort == 80) ||
                                             (rule.FrontendPort == 443 && rule.BackendPort == 443));
                             }
                         }
@@ -467,7 +467,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         Assert.Equal(2, lbNatRules.Count);
                         foreach (var lbNatRule in lbNatRules)
                         {
-                            Assert.True((lbNatRule.FrontendPort >= 5000 && lbNatRule.FrontendPort <= 5099) || 
+                            Assert.True((lbNatRule.FrontendPort >= 5000 && lbNatRule.FrontendPort <= 5099) ||
                                         (lbNatRule.FrontendPort >= 6000 && lbNatRule.FrontendPort <= 6099));
                             Assert.True(lbNatRule.BackendPort == 22 || lbNatRule.BackendPort == 23);
                         }
@@ -521,7 +521,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternalLoadBalancer());
                 Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends().Count() == 2);
                 Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools().Count() == 2);
-            
+
                 // Check NIC + IPConfig after update
                 //
                 nics = virtualMachineScaleSet.ListNetworkInterfaces();
@@ -549,13 +549,13 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             foreach (var rule in lbRules.Values)
                             {
                                 Assert.NotNull(rule);
-                                Assert.True((rule.FrontendPort == 80 && rule.BackendPort == 80) || 
-                                            (rule.FrontendPort == 443 && rule.BackendPort == 443) || 
-                                            (rule.FrontendPort == 1000 && rule.BackendPort == 1000) || 
+                                Assert.True((rule.FrontendPort == 80 && rule.BackendPort == 80) ||
+                                            (rule.FrontendPort == 443 && rule.BackendPort == 443) ||
+                                            (rule.FrontendPort == 1000 && rule.BackendPort == 1000) ||
                                             (rule.FrontendPort == 1001 && rule.BackendPort == 1001));
                             }
                         }
-                        
+
                         var lbNatRules = ipConfig.ListAssociatedLoadBalancerInboundNatRules();
                         // Updated VMSS has a internet facing LB with one nat pool and a internal LB with two
                         // nat pools so there should be 3 nat rule in ip-config
@@ -567,15 +567,15 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         foreach (var lbNatRule in lbNatRules)
                         {
                             // As mentioned above some chnages are not propgating to all VM instances 6000+ should be there
-                            Assert.True((lbNatRule.FrontendPort >= 6000 && lbNatRule.FrontendPort <= 6099) || 
-                                        (lbNatRule.FrontendPort >= 5000 && lbNatRule.FrontendPort <= 5099) || 
-                                        (lbNatRule.FrontendPort >= 8000 && lbNatRule.FrontendPort <= 8099) || 
+                            Assert.True((lbNatRule.FrontendPort >= 6000 && lbNatRule.FrontendPort <= 6099) ||
+                                        (lbNatRule.FrontendPort >= 5000 && lbNatRule.FrontendPort <= 5099) ||
+                                        (lbNatRule.FrontendPort >= 8000 && lbNatRule.FrontendPort <= 8099) ||
                                         (lbNatRule.FrontendPort >= 9000 && lbNatRule.FrontendPort <= 9099));
 
                             // Same as above
-                            Assert.True(lbNatRule.BackendPort == 23 || 
-                                        lbNatRule.BackendPort == 22 || 
-                                        lbNatRule.BackendPort == 44 || 
+                            Assert.True(lbNatRule.BackendPort == 23 ||
+                                        lbNatRule.BackendPort == 22 ||
+                                        lbNatRule.BackendPort == 44 ||
                                         lbNatRule.BackendPort == 45);
                         }
                     }
@@ -610,7 +610,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithSubnet("subnet1", "10.0.0.0/28")
                             .Create();
 
-                    ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1");
+                    ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1", LoadBalancerSkuType.Basic, Location);
                     List<string> backends = new List<string>();
                     foreach (string backend in publicLoadBalancer.Backends.Keys)
                     {
@@ -715,7 +715,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithSubnet("subnet1", "10.0.0.0/28")
                             .Create();
 
-                    ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1");
+                    ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1", LoadBalancerSkuType.Basic, Location);
                     List<string> backends = new List<string>();
                     foreach (string backend in publicLoadBalancer.Backends.Keys)
                     {
@@ -816,6 +816,231 @@ namespace Fluent.Tests.Compute.VirtualMachine
             }
         }
 
+        [Fact]
+        public void CanCreateTwoRegionalVMSSAndAssociateEachWithDifferentBackendPoolOfZoneResilientLoadBalancer()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string groupName = TestUtilities.GenerateName("javacsmrg");
+                var storageAccountName = TestUtilities.GenerateName("ja");
+                Region region = Region.USEast2;
+                IAzure azure = null;
+                try
+                {
+                    azure = TestHelper.CreateRollupClient();
+                    IResourceGroup resourceGroup = azure.ResourceGroups
+                        .Define(groupName)
+                        .WithRegion(region)
+                        .Create();
+
+                    INetwork network = azure
+                            .Networks
+                            .Define("vmssvnet")
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithAddressSpace("10.0.0.0/28")
+                            .WithSubnet("subnet1", "10.0.0.0/28")
+                            .Create();
+
+                    // Creates a STANDARD LB with one public frontend ip configuration with two backend pools
+                    // Each address pool of STANDARD LB can hold different VMSS resource.
+                    //
+                    ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1", LoadBalancerSkuType.Standard, region);
+
+                    // With default LB SKU BASIC, an attempt to associate two different VMSS to different
+                    // backend pool will cause below error (more accurately, while trying to put second VMSS)
+                    // {
+                    //        "startTime": "2017-09-06T14:27:22.1849435+00:00",
+                    //        "endTime": "2017-09-06T14:27:45.8885142+00:00",
+                    //        "status": "Failed",
+                    //        "error": {
+                    //            "code": "VmIsNotInSameAvailabilitySetAsLb",
+                    //            "message": "Virtual Machine /subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Compute/virtualMachines/|providers|Microsoft.Compute|virtualMachineScaleSets|<vm-ss-name>|virtualMachines|<instance-id> is using different Availability Set than other Virtual Machines connected to the Load Balancer(s) <lb-name>."
+                    //         },
+                    //        "name": "97531d64-db37-4d21-a1cb-9c53aad7c342"
+                    // }
+
+                    List<string> backends = new List<string>();
+                    foreach (string backend in publicLoadBalancer.Backends.Keys)
+                    {
+                        backends.Add(backend);
+                    }
+                    Assert.True(backends.Count() == 2);
+
+                    List<String> natpools = new List<string>();
+                    foreach (String natPool in publicLoadBalancer.InboundNatPools.Keys)
+                    {
+                        natpools.Add(natPool);
+                    }
+                    Assert.True(natpools.Count() == 2);
+
+                    var vmss_name1 = TestUtilities.GenerateName("vmss1");
+                    // HTTP goes to this virtual machine scale set
+                    //
+                    var virtualMachineScaleSet1 = azure.VirtualMachineScaleSets
+                            .Define(vmss_name1)
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
+                            .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                            .WithExistingPrimaryInternetFacingLoadBalancer(publicLoadBalancer)
+                            .WithPrimaryInternetFacingLoadBalancerBackends(backends.ElementAt(0)) // This VMSS in the first backend pool
+                            .WithPrimaryInternetFacingLoadBalancerInboundNatPools(natpools.ElementAt(0))
+                            .WithoutPrimaryInternalLoadBalancer()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                            .WithRootUsername("jvuser")
+                            .WithRootPassword("123OData!@#123")
+                            .Create();
+
+                    var vmss_name2 = TestUtilities.GenerateName("vmss2");
+                    // HTTPS goes to this virtual machine scale set
+                    //
+                    var virtualMachineScaleSet2 = azure.VirtualMachineScaleSets
+                        .Define(vmss_name2)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
+                        .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                        .WithExistingPrimaryInternetFacingLoadBalancer(publicLoadBalancer)
+                        .WithPrimaryInternetFacingLoadBalancerBackends(backends.ElementAt(1)) // This VMSS in the second backend pool
+                        .WithPrimaryInternetFacingLoadBalancerInboundNatPools(natpools.ElementAt(1))
+                        .WithoutPrimaryInternalLoadBalancer()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("jvuser")
+                        .WithRootPassword("123OData!@#123")
+                        .Create();
+
+                    //
+                    Assert.Null(virtualMachineScaleSet1.GetPrimaryInternalLoadBalancer());
+                    Assert.True(virtualMachineScaleSet1.ListPrimaryInternalLoadBalancerBackends().Count() == 0);
+                    Assert.True(virtualMachineScaleSet1.ListPrimaryInternalLoadBalancerInboundNatPools().Count() == 0);
+
+                    Assert.NotNull(virtualMachineScaleSet1.GetPrimaryInternetFacingLoadBalancer());
+                    Assert.True(virtualMachineScaleSet1.ListPrimaryInternetFacingLoadBalancerBackends().Count() == 1);
+
+
+                    Assert.Null(virtualMachineScaleSet2.GetPrimaryInternalLoadBalancer());
+                    Assert.True(virtualMachineScaleSet2.ListPrimaryInternalLoadBalancerBackends().Count() == 0);
+                    Assert.True(virtualMachineScaleSet2.ListPrimaryInternalLoadBalancerInboundNatPools().Count() == 0);
+
+                    Assert.NotNull(virtualMachineScaleSet2.GetPrimaryInternetFacingLoadBalancer());
+                    Assert.True(virtualMachineScaleSet2.ListPrimaryInternetFacingLoadBalancerBackends().Count() == 1);
+                }
+                finally
+                {
+                    try
+                    {
+                        if (azure != null)
+                        {
+                            azure.ResourceGroups.BeginDeleteByName(groupName);
+                        }
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        [Fact]
+        public void CanCreateZoneRedundantVirtualMachineScaleSetWithZoneResilientLoadBalancer()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string groupName = TestUtilities.GenerateName("javacsmrg");
+                var storageAccountName = TestUtilities.GenerateName("ja");
+                Region region = Region.USEast2;
+                IAzure azure = null;
+                try
+                {
+                    azure = TestHelper.CreateRollupClient();
+                    IResourceGroup resourceGroup = azure.ResourceGroups
+                        .Define(groupName)
+                        .WithRegion(region)
+                        .Create();
+
+                    INetwork network = azure
+                            .Networks
+                            .Define("vmssvnet")
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithAddressSpace("10.0.0.0/28")
+                            .WithSubnet("subnet1", "10.0.0.0/28")
+                            .Create();
+
+                    // Zone redundant VMSS requires STANDARD LB
+                    //
+                    // Creates a STANDARD LB with one public frontend ip configuration with two backend pools
+                    // Each address pool of STANDARD LB can hold different VMSS resource.
+                    //
+                    ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure,
+                        resourceGroup,
+                        "1",
+                        LoadBalancerSkuType.Standard, region);
+
+                    List<string> backends = new List<string>();
+                    foreach (string backend in publicLoadBalancer.Backends.Keys)
+                    {
+                        backends.Add(backend);
+                    }
+                    Assert.True(backends.Count() == 2);
+
+                    List<String> natpools = new List<string>();
+                    foreach (String natPool in publicLoadBalancer.InboundNatPools.Keys)
+                    {
+                        natpools.Add(natPool);
+                    }
+                    Assert.True(natpools.Count() == 2);
+
+                    var vmss_name = TestUtilities.GenerateName("vmss");
+                    // HTTP & HTTPS traffic on port 80, 443 of Internet-facing LB goes to corresponding port in virtual machine scale set
+                    //
+                    var virtualMachineScaleSet = azure.VirtualMachineScaleSets
+                            .Define(vmss_name)
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardD3v2)
+                            .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                            .WithExistingPrimaryInternetFacingLoadBalancer(publicLoadBalancer)
+                            .WithPrimaryInternetFacingLoadBalancerBackends(backends.ElementAt(0), backends.ElementAt(1))
+                            .WithoutPrimaryInternalLoadBalancer()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                            .WithRootUsername("jvuser")
+                            .WithRootPassword("123OData!@#123")
+                            .WithAvailabilityZone(AvailabilityZoneId.Zone_1)  // Zone redundant - zone 1 + zone 2
+                            .WithAvailabilityZone(AvailabilityZoneId.Zone_2)
+                            .Create();
+
+                    // Check zones
+                    //
+                    Assert.NotNull(virtualMachineScaleSet.AvailabilityZones);
+                    Assert.Equal(2, virtualMachineScaleSet.AvailabilityZones.Count);
+
+                    // Validate Network specific properties (LB, VNet, NIC, IPConfig etc..)
+                    //
+                    Assert.Null(virtualMachineScaleSet.GetPrimaryInternalLoadBalancer());
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends().Count() == 0);
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools().Count() == 0);
+
+                    Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternetFacingLoadBalancer());
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends().Count() == 2);
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools().Count() == 2);
+
+                    var primaryNetwork = virtualMachineScaleSet.GetPrimaryNetwork();
+                    Assert.NotNull(primaryNetwork.Id);
+                }
+                finally
+                {
+                    try
+                    {
+                        if (azure != null)
+                        {
+                            azure.ResourceGroups.BeginDeleteByName(groupName);
+                        }
+                    }
+                    catch { }
+                }
+            }
+        }
+
         private void CheckVMInstances(IVirtualMachineScaleSet vmScaleSet)
         {
             var virtualMachineScaleSetVMs = vmScaleSet.VirtualMachines;
@@ -858,11 +1083,16 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.NotNull(nic.VirtualMachineId);
                 Assert.True(string.Compare(nic.VirtualMachineId, vm.Id, true) == 0);
                 Assert.NotNull(vm.ListNetworkInterfaces());
-            }            
+            }
         }
 
 
-        private ILoadBalancer CreateInternetFacingLoadBalancer(IAzure azure, IResourceGroup resourceGroup, string id, [CallerMemberName] string methodName = "testframework_failed")
+        private ILoadBalancer CreateInternetFacingLoadBalancer(IAzure azure,
+            IResourceGroup resourceGroup,
+            string id,
+            LoadBalancerSkuType lbSkuType,
+            Region location,
+            [CallerMemberName] string methodName = "testframework_failed")
         {
             string loadBalancerName = TestUtilities.GenerateName("extlb" + id + "-", methodName);
             string publicIPName = "pip-" + loadBalancerName;
@@ -872,15 +1102,23 @@ namespace Fluent.Tests.Compute.VirtualMachine
             string natPoolName1 = loadBalancerName + "-INP1";
             string natPoolName2 = loadBalancerName + "-INP2";
 
+            // Sku of PublicIP and LoadBalancer must match
+            //
+            PublicIPSkuType publicIPSkuType = lbSkuType.Equals(LoadBalancerSkuType.Basic) ? PublicIPSkuType.Basic : PublicIPSkuType.Standard;
+
             IPublicIPAddress publicIPAddress = azure.PublicIPAddresses
                 .Define(publicIPName)
-                .WithRegion(Location)
+                .WithRegion(location)
                 .WithExistingResourceGroup(resourceGroup)
                 .WithLeafDomainLabel(publicIPName)
+                // Optionals
+                .WithStaticIP()
+                .WithSku(publicIPSkuType)
+                // Create
                 .Create();
 
             ILoadBalancer loadBalancer = azure.LoadBalancers.Define(loadBalancerName)
-                .WithRegion(Location)
+                .WithRegion(location)
                 .WithExistingResourceGroup(resourceGroup)
                 // Add two rules that uses above backend and probe
                 .DefineLoadBalancingRule("httpRule")
@@ -921,6 +1159,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 .DefineHttpProbe("httpsProbe")
                     .WithRequestPath("/")
                     .Attach()
+                 .WithSku(lbSkuType)
                 .Create();
 
             loadBalancer = azure.LoadBalancers.GetByResourceGroup(resourceGroup.Name, loadBalancerName);
@@ -983,7 +1222,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     .FromFrontendPortRange(9000, 9099)
                     .ToBackendPort(45)
                     .Attach()
-                
+
                 // Explicitly define the frontend
                 .DefinePrivateFrontend(privateFrontEndName)
                     .WithExistingSubnet(network, subnetName)

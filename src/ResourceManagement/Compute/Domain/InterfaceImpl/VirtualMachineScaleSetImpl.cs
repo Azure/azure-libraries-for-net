@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using System;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
-    internal partial class VirtualMachineScaleSetImpl 
+    internal partial class VirtualMachineScaleSetImpl
     {
         /// <summary>
         /// Specifies the SSH root user name for the Linux virtual machine.
@@ -75,6 +75,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithOverProvision.WithOverProvisioning()
         {
             return this.WithOverProvisioning() as VirtualMachineScaleSet.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies the availability zone for the virtual machine scale set.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            return this.WithAvailabilityZone(zoneId) as VirtualMachineScaleSet.Update.IWithApply;
+        }
+
+        /// <summary>
+        /// Specifies the availability zone for the virtual machine scale set.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            return this.WithAvailabilityZone(zoneId) as VirtualMachineScaleSet.Definition.IWithManagedCreate;
         }
 
         /// <summary>
@@ -706,7 +726,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ReimageAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.ReimageAsync(cancellationToken);
         }
 
@@ -776,7 +796,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.Reimage()
         {
- 
+
             this.Reimage();
         }
 
@@ -807,7 +827,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.Start()
         {
- 
+
             this.Start();
         }
 
@@ -886,7 +906,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.Deallocate()
         {
- 
+
             this.Deallocate();
         }
 
@@ -926,7 +946,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.PowerOff()
         {
- 
+
             this.PowerOff();
         }
 
@@ -978,7 +998,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.Restart()
         {
- 
+
             this.Restart();
         }
 
@@ -1010,7 +1030,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.StartAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.StartAsync(cancellationToken);
         }
 
@@ -1042,7 +1062,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.PowerOffAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.PowerOffAsync(cancellationToken);
         }
 
@@ -1052,7 +1072,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.DeallocateAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.DeallocateAsync(cancellationToken);
         }
 
@@ -1072,7 +1092,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.RestartAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.RestartAsync(cancellationToken);
         }
 
@@ -1469,6 +1489,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the availability zones assigned to virtual machine scale set.
+        /// </summary>
+        System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.AvailabilityZones
+        {
+            get
+            {
+                return this.AvailabilityZones() as System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>;
+            }
+        }
+
+        /// <summary>
         /// Specifies that Managed Service Identity needs to be enabled in the virtual machine scale set.
         /// </summary>
         /// <param name="tokenPort">the port on the virtual machine scale set instance where access token is available</param>
@@ -1598,7 +1629,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
     }
 
-    public partial class ManagedDataDiskCollection 
+    public partial class ManagedDataDiskCollection
     {
     }
 }

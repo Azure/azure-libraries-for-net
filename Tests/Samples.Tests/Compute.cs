@@ -298,5 +298,27 @@ namespace Samples.Tests
                 ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup.Program.RunSample(rollUpClient);
             }
         }
+
+        [Fact]
+        [Trait("Samples", "Compute")]
+        public void ManageZonalVirtualMachineTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ManageZonalVirtualMachine.Program.RunSample(rollUpClient);
+            }
+        }
+
+        [Fact]
+        [Trait("Samples", "Compute")]
+        public void ManageZoneRedundantVirtualMachineScaleSetTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ManageZoneRedundantVirtualMachineScaleSet.Program.RunSample(rollUpClient);
+            }
+        }
     }
 }

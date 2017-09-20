@@ -44,8 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NextHop.Definition
     }
 
     /// <summary>
-    /// The stage of the definition which contains all the minimum required inputs for
-    /// the resource to be created, but also allows
+    /// The stage of the definition which contains all the minimum required inputs for execution, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
     public interface IWithExecute  :
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NextHop.Definition
     }
 
     /// <summary>
-    /// The first stage of a virtual machine definition.
+    /// The first stage of next hop parameters definition.
     /// </summary>
     public interface IWithTargetResource 
     {

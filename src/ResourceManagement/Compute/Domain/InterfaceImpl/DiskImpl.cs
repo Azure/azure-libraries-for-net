@@ -9,8 +9,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.Compute.Fluent.Disk.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class DiskImpl 
+    internal partial class DiskImpl
     {
         /// <summary>
         /// Gets true if the disk is attached to a virtual machine, otherwise false.
@@ -69,6 +70,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the availability zones assigned to the disk.
+        /// </summary>
+        System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> Microsoft.Azure.Management.Compute.Fluent.IDiskBeta.AvailabilityZones
+        {
+            get
+            {
+                return this.AvailabilityZones() as System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>;
+            }
+        }
+
+        /// <summary>
         /// Gets the details of the source from which the disk is created.
         /// </summary>
         Models.CreationSource Microsoft.Azure.Management.Compute.Fluent.IDisk.Source
@@ -84,7 +96,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IDisk.RevokeAccess()
         {
- 
+
             this.RevokeAccess();
         }
 
@@ -104,7 +116,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IDisk.RevokeAccessAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.RevokeAccessAsync(cancellationToken);
         }
 
@@ -306,6 +318,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithDataDiskFromDisk.FromDisk(IDisk managedDisk)
         {
             return this.FromDisk(managedDisk) as Disk.Definition.IWithCreateAndSize;
+        }
+
+        /// <summary>
+        /// Specifies the availability zone for the managed disk.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        Disk.Definition.IWithCreate Disk.Definition.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            return this.WithAvailabilityZone(zoneId) as Disk.Definition.IWithCreate;
         }
 
         /// <summary>

@@ -134,7 +134,7 @@ namespace ManageNetworkWatcher
                     .WithTarget(vm.Id)
                     .WithStorageAccountId(storageAccount.Id)
                     .WithTimeLimitInSeconds(1500)
-                    .DefinePacketCaptureFilter
+                    .DefinePacketCaptureFilter()
                         .WithProtocol(PcProtocol.TCP)
                         .Attach()
                     .Create();
@@ -161,7 +161,7 @@ namespace ManageNetworkWatcher
                 String ipAddress = vm.GetPrimaryNetworkInterface().PrimaryPrivateIP;
                 // Test IP flow on the NIC
                 Utilities.Log("Verifying IP flow for vm id " + vm.Id + "...");
-                IVerificationIPFlow verificationIPFlow = nw.VerifyIPFlow
+                IVerificationIPFlow verificationIPFlow = nw.VerifyIPFlow()
                     .WithTargetResourceId(vm.Id)
                     .WithDirection(Direction.Outbound)
                     .WithProtocol(Protocol.TCP)
@@ -175,7 +175,7 @@ namespace ManageNetworkWatcher
                 //============================================================
                 // Analyze next hop – get the next hop type and IP address for a virtual machine
                 Utilities.Log("Calculating next hop...");
-                INextHop nextHop = nw.NextHop.WithTargetResourceId(vm.Id)
+                INextHop nextHop = nw.NextHop().WithTargetResourceId(vm.Id)
                     .WithSourceIPAddress(ipAddress)
                     .WithDestinationIPAddress("8.8.8.8")
                     .Execute();

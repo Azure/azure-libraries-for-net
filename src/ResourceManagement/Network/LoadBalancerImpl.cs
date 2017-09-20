@@ -716,7 +716,30 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return loadBalancingRules;
         }
 
-        
+        ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:B735363AC52A7558004775F61BD34BFB
+        public LoadBalancerSkuType Sku()
+        {
+            if (this.Inner.Sku == null || this.Inner.Sku.Name == null)
+            {
+                return null;
+            }
+            return LoadBalancerSkuType.Parse(this.Inner.Sku.Name);
+        }
+
+        ///GENMHASH:840DEA7030527F277A11984D70E2E76B:1B5B4D6A6A16556B13473A11AA9FE0C7
+        internal LoadBalancerImpl WithSku(LoadBalancerSkuType skuType)
+        {
+            // Note: SKU is not updatable as of now, so this is available only during definition time
+            // Service return `SkuCannotBeChangedOnUpdate` upon attempt to change it.
+            // Service default is LoadBalancerSkuType.BASIC
+            //
+            this.Inner.Sku = new LoadBalancerSku
+            {
+                Name = skuType.ToString()
+            };
+            return this;
+        }
+
         ///GENMHASH:327A257714E97E0CC9195D07369866F6:4D7D14E19D9E3A3FB56435CFB0209907
         internal IReadOnlyDictionary<string, ILoadBalancerPublicFrontend> PublicFrontends()
         {

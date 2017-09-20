@@ -11,11 +11,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
     /// The stage of the Linux virtual machine scale set definition allowing to specify SSH root user name.
     /// </summary>
-    public interface IWithLinuxRootUsernameManagedOrUnmanaged 
+    public interface IWithLinuxRootUsernameManagedOrUnmanaged
     {
         /// <summary>
         /// Specifies the SSH root user name for the Linux virtual machine.
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of a virtual machine scale set definition allowing to specify extensions.
     /// </summary>
-    public interface IWithExtension 
+    public interface IWithExtension
     {
         /// <summary>
         /// Begins the definition of an extension reference to be attached to the virtual machines in the scale set.
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the Windows virtual machine scale set definition allowing to specify administrator user name.
     /// </summary>
-    public interface IWithWindowsAdminPasswordManagedOrUnmanaged 
+    public interface IWithWindowsAdminPasswordManagedOrUnmanaged
     {
         /// <summary>
         /// Specifies the administrator password for the Windows virtual machine.
@@ -168,7 +169,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the Linux virtual machine scale set definition allowing to specify SSH root password or public key.
     /// </summary>
-    public interface IWithLinuxRootPasswordOrPublicKeyManaged 
+    public interface IWithLinuxRootPasswordOrPublicKeyManaged
     {
         /// <summary>
         /// Specifies the SSH root password for the Linux virtual machine.
@@ -189,7 +190,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of a virtual machine scale set definition allowing to specify managed data disks.
     /// </summary>
-    public interface IWithManagedDataDisk 
+    public interface IWithManagedDataDisk
     {
         /// <summary>
         /// Specifies the data disk to be created from the data disk image in the virtual machine image.
@@ -247,7 +248,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of a virtual machine scale set definition allowing to specify the storage account.
     /// </summary>
-    public interface IWithStorageAccount 
+    public interface IWithStorageAccount
     {
         /// <summary>
         /// Specifies a new storage account for the OS and data disk VHDs of the virtual machines
@@ -277,7 +278,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the Windows virtual machine scale set definition allowing to specify administrator user name.
     /// </summary>
-    public interface IWithWindowsAdminPasswordUnmanaged 
+    public interface IWithWindowsAdminPasswordUnmanaged
     {
         /// <summary>
         /// Specifies the administrator password for the Windows virtual machine.
@@ -291,7 +292,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The stage of a virtual machine scale set definition allowing to specify the virtual network subnet for the
     /// primary network configuration.
     /// </summary>
-    public interface IWithNetworkSubnet 
+    public interface IWithNetworkSubnet
     {
         /// <summary>
         /// Associate an existing virtual network subnet with the primary network interface of the virtual machines
@@ -323,7 +324,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the Linux virtual machine scale set definition allowing to specify SSH root user name.
     /// </summary>
-    public interface IWithLinuxRootUsernameUnmanaged 
+    public interface IWithLinuxRootUsernameUnmanaged
     {
         /// <summary>
         /// Specifies the SSH root user name for the Linux virtual machine.
@@ -336,7 +337,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the Windows virtual machine scale set definition allowing to specify administrator user name.
     /// </summary>
-    public interface IWithWindowsAdminUsernameUnmanaged 
+    public interface IWithWindowsAdminUsernameUnmanaged
     {
         /// <summary>
         /// Specifies the administrator user name for the Windows virtual machine.
@@ -349,7 +350,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of a virtual machine scale set definition allowing to specify SKU for the virtual machines.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Specifies the SKU for the virtual machines in the scale set.
@@ -369,7 +370,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the Linux virtual machine scale set definition allowing to specify SSH root password or public key.
     /// </summary>
-    public interface IWithLinuxRootPasswordOrPublicKeyUnmanaged 
+    public interface IWithLinuxRootPasswordOrPublicKeyUnmanaged
     {
         /// <summary>
         /// Specifies the SSH root password for the Linux virtual machine.
@@ -394,6 +395,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     public interface IWithManagedCreate  :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithManagedDataDisk,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithManagedDiskOptionals,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithAvailabilityZone,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate
     {
     }
@@ -401,7 +403,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the Linux virtual machine scale set definition allowing to specify SSH root user name.
     /// </summary>
-    public interface IWithLinuxRootUsernameManaged 
+    public interface IWithLinuxRootUsernameManaged
     {
         /// <summary>
         /// Specifies the SSH root user name for the Linux virtual machine.
@@ -415,7 +417,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The stage of a virtual machine scale set definition allowing to specify an internal load balancer for
     /// the primary network interface of the virtual machines in the scale set.
     /// </summary>
-    public interface IWithPrimaryInternalLoadBalancer 
+    public interface IWithPrimaryInternalLoadBalancer
     {
         /// <summary>
         /// Specifies the internal load balancer whose backends and/or NAT pools can be assigned to the primary network
@@ -466,7 +468,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the Windows virtual machine scale set definition allowing to specify administrator user name.
     /// </summary>
-    public interface IWithWindowsAdminUsernameManagedOrUnmanaged 
+    public interface IWithWindowsAdminUsernameManagedOrUnmanaged
     {
         /// <summary>
         /// Specifies the administrator user name for the Windows virtual machine.
@@ -479,7 +481,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the virtual machine scale set definition allowing to specify the operating system image.
     /// </summary>
-    public interface IWithOS 
+    public interface IWithOS
     {
         /// <summary>
         /// Specifies a known marketplace Linux image used as the virtual machine's operating system.
@@ -560,7 +562,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the Windows virtual machine scale set definition allowing to specify administrator user name.
     /// </summary>
-    public interface IWithWindowsAdminUsernameManaged 
+    public interface IWithWindowsAdminUsernameManaged
     {
         /// <summary>
         /// Specifies the administrator user name for the Windows virtual machine.
@@ -573,7 +575,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of a virtual machine scale set definition allowing to specify OS disk configurations.
     /// </summary>
-    public interface IWithOSDiskSettings 
+    public interface IWithOSDiskSettings
     {
         /// <summary>
         /// Specifies the caching type for the operating system disk.
@@ -610,7 +612,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The stage of a virtual machine scale set definition allowing to specify an Internet-facing load balancer for
     /// the primary network interface of the virtual machines in the scale set.
     /// </summary>
-    public interface IWithPrimaryInternetFacingLoadBalancer 
+    public interface IWithPrimaryInternetFacingLoadBalancer
     {
         /// <summary>
         /// Specifies an Internet-facing load balancer whose backends and/or NAT pools can be assigned to the primary
@@ -643,7 +645,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the Windows virtual machine scale set definition allowing to specify administrator user name.
     /// </summary>
-    public interface IWithWindowsAdminPasswordManaged 
+    public interface IWithWindowsAdminPasswordManaged
     {
         /// <summary>
         /// Specifies the administrator password for the Windows virtual machine.
@@ -656,7 +658,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of a virtual machine scale set definition allowing to specify the computer name prefix.
     /// </summary>
-    public interface IWithComputerNamePrefix 
+    public interface IWithComputerNamePrefix
     {
         /// <summary>
         /// Specifies the name prefix to use for auto-generating the names for the virtual machines in the scale set.
@@ -687,7 +689,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The stage of the virtual machine scale set definition allowing to specify number of
     /// virtual machines in the scale set.
     /// </summary>
-    public interface IWithCapacity 
+    public interface IWithCapacity
     {
         /// <summary>
         /// Specifies the maximum number of virtual machines in the scale set.
@@ -700,7 +702,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the Linux virtual machine scale set definition allowing to specify SSH root password or public key.
     /// </summary>
-    public interface IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged 
+    public interface IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged
     {
         /// <summary>
         /// Specifies the SSH root password for the Linux virtual machine.
@@ -721,7 +723,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of a virtual machine scale set definition allowing to specify the upgrade policy.
     /// </summary>
-    public interface IWithUpgradePolicy 
+    public interface IWithUpgradePolicy
     {
         /// <summary>
         /// Specifies the virtual machine scale set upgrade policy mode.
@@ -734,14 +736,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the virtual machine scale set definition allowing to specify unmanaged data disk.
     /// </summary>
-    public interface IWithUnmanagedDataDisk 
+    public interface IWithUnmanagedDataDisk
     {
     }
 
     /// <summary>
     /// The stage of the virtual machine scale set definition allowing to specify the custom data.
     /// </summary>
-    public interface IWithCustomData 
+    public interface IWithCustomData
     {
         /// <summary>
         /// Specifies the custom data for the virtual machine scale set.
@@ -755,7 +757,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The stage of a virtual machine scale set definition allowing to specify whether
     /// or not to over-provision virtual machines in the scale set.
     /// </summary>
-    public interface IWithOverProvision 
+    public interface IWithOverProvision
     {
         /// <summary>
         /// Disables over-provisioning of virtual machines.
@@ -851,7 +853,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The optionals applicable only for managed disks.
     /// </summary>
-    public interface IWithManagedDiskOptionals 
+    public interface IWithManagedDiskOptionals
     {
         /// <summary>
         /// Specifies the default caching type for the managed data disks.
@@ -939,5 +941,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         /// <param name="roleDefinitionId">Role definition to assigned to the virtual machine scale set.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithRoleAndScopeOrCreate WithRoleDefinitionBasedAccessToCurrentResourceGroup(string roleDefinitionId);
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine scale set definition allowing to specify availability zone.
+    /// </summary>
+    public interface IWithAvailabilityZone :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the availability zone for the virtual machine scale set.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithManagedCreate WithAvailabilityZone(AvailabilityZoneId zoneId);
     }
 }

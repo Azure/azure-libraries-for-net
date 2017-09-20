@@ -7,16 +7,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Models;
     using ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The implementation for Disk and its create and update interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uRGlza0ltcGw=
     internal partial class DiskImpl :
-        GroupableResource<IDisk, 
+        GroupableResource<IDisk,
             DiskInner,
-            DiskImpl, 
-            IComputeManager, 
+            DiskImpl,
+            IComputeManager,
             Disk.Definition.IWithGroup,
             Disk.Definition.IWithDiskSource,
             Disk.Definition.IWithCreate,
@@ -172,6 +173,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return Inner.ManagedBy;
         }
 
+        ///GENMHASH:F856C02184EB290DC74E5823D4280D7C:C06C8F12A2F1E86C908BE0388D483D06
+        public System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> AvailabilityZones()
+        {
+            var zones = new HashSet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>();
+            if (this.Inner.Zones != null)
+            {
+                foreach (var zone in this.Inner.Zones)
+                {
+                    zones.Add(AvailabilityZoneId.Parse(zone));
+                }
+            }
+            return zones;
+        }
+
         ///GENMHASH:DAC486F08AF23F259E630032FC20FAF1:3FE53F300A729DFBC3C1F55BBB117CA1
         public async Task<string> GrantAccessAsync(int accessDurationInSeconds, CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -224,6 +239,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
         }
 
+        ///GENMHASH:5D8D71845C83EB59F52EB2C4B1C05618:F6AC9662F6BE0BAA07D7F729A9CB504D
+        public DiskImpl WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            // Note: Zone is not updatable as of now, so this is available only during definition time.
+            // Service return `ResourceAvailabilityZonesCannotBeModified` upon attempt to append a new
+            // zone or remove one. Trying to remove the last one means attempt to change resource from
+            // zonal to regional, which is not supported.
+            if (this.Inner.Zones == null)
+            {
+                this.Inner.Zones = new List<string>();
+            }
+            this.Inner.Zones.Add(zoneId.ToString());
+            return this;
+        }
+
         ///GENMHASH:26BC80239F0CCAAB14CDBC15A85351B8:5C4E68981DCB985DABC30CE2B145CC62
         public DiskImpl WithSku(DiskSkuTypes sku)
         {
@@ -248,7 +278,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public DiskImpl WithWindowsFromSnapshot(ISnapshot sourceSnapshot)
         {
             WithWindowsFromSnapshot(sourceSnapshot.Id);
-            if (sourceSnapshot.OSType != null && sourceSnapshot.OSType.HasValue) {
+            if (sourceSnapshot.OSType != null && sourceSnapshot.OSType.HasValue)
+            {
                 this.WithOSType(sourceSnapshot.OSType.Value);
             }
             this.WithSku(sourceSnapshot.Sku);

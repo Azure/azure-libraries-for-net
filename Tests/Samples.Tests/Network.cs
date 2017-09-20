@@ -27,10 +27,19 @@ namespace Samples.Tests
 
         [Fact]
         [Trait("Samples", "Network")]
+        public void VerifyNetworkPeeringWithNetworkWatcherTest()
+        {
+            RunSampleAsTest(
+                GetType().FullName,
+                VerifyNetworkPeeringWithNetworkWatcher.Program.RunSample);
+        }
+
+        [Fact]
+        [Trait("Samples", "Network")]
         public void ManageApplicationGatewayTest()
         {
             RunSampleAsTest(
-                this.GetType().FullName,
+                GetType().FullName,
                 ManageApplicationGateway.Program.RunSample);
         }
 

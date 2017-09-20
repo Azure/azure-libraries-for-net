@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Rest;
     using System;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     internal partial class VirtualMachineImpl
     {
@@ -57,6 +58,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.Definition.IWithLinuxCreateUnmanaged VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyUnmanaged.WithRootPassword(string rootPassword)
         {
             return this.WithRootPassword(rootPassword) as VirtualMachine.Definition.IWithLinuxCreateUnmanaged;
+        }
+
+        /// <summary>
+        /// Specifies the availability zone for the virtual machine.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            return this.WithAvailabilityZone(zoneId) as VirtualMachine.Definition.IWithManagedCreate;
         }
 
         /// <summary>
@@ -1554,6 +1565,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             get
             {
                 return this.ManagedServiceIdentityTenantId();
+            }
+        }
+
+        /// <summary>
+        /// Gets the availability zones assigned to the virtual machine.
+        /// </summary>
+        System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.AvailabilityZones
+        {
+            get
+            {
+                return this.AvailabilityZones() as System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>;
             }
         }
 

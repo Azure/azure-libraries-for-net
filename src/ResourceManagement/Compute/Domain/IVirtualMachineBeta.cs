@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         string ManagedServiceIdentityTenantId { get; }
 
         /// <summary>
+        /// Gets the availability zones assigned to the virtual machine.
+        /// </summary>
+        System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> AvailabilityZones { get; }
+
+        /// <summary>
         /// Captures the virtual machine by copying virtual hard disks of the VM asynchronously.
         /// </summary>
         /// <param name="containerName">Destination container name to store the captured VHD.</param>
