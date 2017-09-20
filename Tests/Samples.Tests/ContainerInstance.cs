@@ -16,7 +16,7 @@ namespace Samples.Tests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Storage plane calls can not be played back")]
         [Trait("Samples", "ContainerInstance")]
         public void ManageContainerInstanceWithAzureFileShareMountTest()
         {
@@ -27,7 +27,7 @@ namespace Samples.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Storage plane calls can not be played back")]
         [Trait("Samples", "ContainerInstance")]
         public void ManageContainerInstanceWithManualAzureFileShareMountCreationTest()
         {
