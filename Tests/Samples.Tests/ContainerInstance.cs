@@ -18,7 +18,7 @@ namespace Samples.Tests
 
         [Fact(Skip = "Storage plane calls can not be played back")]
         [Trait("Samples", "ContainerInstance")]
-        public void ManageContainerInstanceWithAzureFileShareMountTest()
+        public void ManageWithAzureFileShareMountTest()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
@@ -40,7 +40,7 @@ namespace Samples.Tests
 
         [Fact]
         [Trait("Samples", "ContainerInstance")]
-        public void ManageContainerInstanceWithMultipleContainerImagesTest()
+        public void ManageWithMultipleContainerImagesTest()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
@@ -51,7 +51,7 @@ namespace Samples.Tests
 
         [Fact(Skip = "Docker .Net client and SSHShell require real network connections to be made")]
         [Trait("Samples", "ContainerInstance")]
-        public void ManageContainerInstanceWithAzureContainerRegistryTest()
+        public void ManageWithAzureContainerRegistryTest()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
