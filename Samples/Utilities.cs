@@ -40,6 +40,7 @@ using Microsoft.Azure.Management.Compute.Fluent.Models;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent.Models;
 using Microsoft.Azure.Management.Network.Fluent.Models;
+using Microsoft.Azure.Management.ContainerInstance.Fluent;
 
 namespace Microsoft.Azure.Management.Samples.Common
 {
@@ -1589,6 +1590,92 @@ namespace Microsoft.Azure.Management.Samples.Common
                 .Append("\n\tUser: ").Append(acrCredentials.Username)
                 .Append("\n\tFirst Password: ").Append(acrCredentials.Passwords[0].Value)
                 .Append("\n\tSecond Password: ").Append(acrCredentials.Passwords[1].Value);
+            Log(info.ToString());
+        }
+
+        public static void Print(IContainerGroup containerGroup)
+        {
+            StringBuilder info = new StringBuilder();
+
+            info = new StringBuilder().Append("Container Group: ").Append(containerGroup.Id)
+                .Append("Name: ").Append(containerGroup.Name)
+                .Append("\n\tResource group: ").Append(containerGroup.ResourceGroupName)
+                .Append("\n\tRegion: ").Append(containerGroup.RegionName)
+                .Append("\n\tTags: ").Append(containerGroup.Tags)
+                .Append("\n\tOS type: ").Append(containerGroup.OSType.Value);
+
+            if (containerGroup.IPAddress != null)
+            {
+                info.Append("\n\tPublic IP address: ").Append(containerGroup.IPAddress);
+                info.Append("\n\tExternal TCP ports:");
+                foreach (int port in containerGroup.ExternalTcpPorts)
+                {
+                    info.Append(" ").Append(port);
+                }
+                info.Append("\n\tExternal UDP ports:");
+                foreach (int port in containerGroup.ExternalUdpPorts)
+                {
+                    info.Append(" ").Append(port);
+                }
+            }
+            if (containerGroup.ImageRegistryServers.Count > 0)
+            {
+                info.Append("\n\tPrivate Docker image registries:");
+                foreach (string server in containerGroup.ImageRegistryServers)
+                {
+                    info.Append(" ").Append(server);
+                }
+            }
+            if (containerGroup.Volumes.Count > 0)
+            {
+                info.Append("\n\tVolume mapping: ");
+                foreach (var entry in containerGroup.Volumes)
+                {
+                    info.Append("\n\t\tName: ").Append(entry.Key).Append(" -> ").Append(entry.Value.AzureFile.ShareName);
+                }
+            }
+            if (containerGroup.Containers.Count > 0)
+            {
+                info.Append("\n\tContainer instances: ");
+                foreach (var entry in containerGroup.Containers)
+                {
+                    var container = entry.Value;
+                    info.Append("\n\t\tName: ").Append(entry.Key).Append(" -> ").Append(container.Image);
+                    info.Append("\n\t\t\tResources: ");
+                    info.Append(container.Resources.Requests.Cpu).Append(" CPUs ");
+                    info.Append(container.Resources.Requests.MemoryInGB).Append(" GB");
+                    info.Append("\n\t\t\tPorts:");
+                    foreach (var port in container.Ports)
+                    {
+                        info.Append(" ").Append(port.Port);
+                    }
+                    if (container.VolumeMounts != null)
+                    {
+                        info.Append("\n\t\t\tVolume mounts:");
+                        foreach (var volumeMount in container.VolumeMounts)
+                        {
+                            info.Append(" ").Append(volumeMount.Name).Append("->").Append(volumeMount.MountPath);
+                        }
+                    }
+                    if (container.Command != null)
+                    {
+                        info.Append("\n\t\t\tStart commands:");
+                        foreach (var command in container.Command)
+                        {
+                            info.Append("\n\t\t\t\t").Append(command);
+                        }
+                    }
+                    if (container.EnvironmentVariables != null)
+                    {
+                        info.Append("\n\t\t\tENV vars:");
+                        foreach (var envVar in container.EnvironmentVariables)
+                        {
+                            info.Append("\n\t\t\t\t").Append(envVar.Name).Append("=").Append(envVar.Value);
+                        }
+                    }
+                }
+            }
+
             Log(info.ToString());
         }
 

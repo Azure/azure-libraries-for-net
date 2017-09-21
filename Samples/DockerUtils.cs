@@ -255,6 +255,7 @@ namespace Microsoft.Azure.Management.Samples.Common
                     Utilities.Log(output);
                     string dockerHostPort = "2376"; // Default Docker port when secured connection is enabled
                     dockerHostTlsEnabled = true;
+                    SdkContext.DelayProvider.Delay(10000);
 
                     dockerHostUrl = "tcp://" + dockerHostIP + ":" + dockerHostPort;
                 }

@@ -1,7 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using Docker.DotNet;
+using Microsoft.Azure.Management.ContainerInstance.Fluent;
+using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
 using Microsoft.Azure.Management.ContainerRegistry.Fluent;
 using Microsoft.Azure.Management.ContainerRegistry.Fluent.Models;
 using Microsoft.Azure.Management.Fluent;
@@ -11,33 +13,29 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Samples.Common;
 using System;
 
-namespace ManageContainerRegistry
+namespace ManageWithAzureContainerRegistry
 {
     public class Program
     {
-        private static readonly Region Region = Region.USEast2;
-
+        private static readonly Region region = Region.USEast;
 
         /**
-         * Azure Container Registry sample for managing container registry.
+         * Azure Container Instance sample for managing container groups with private image repositories.
          *  - Create an Azure Container Registry to be used for holding the Docker images
          *  - If a local Docker engine cannot be found, create a Linux virtual machine that will host a Docker engine
          *      to be used for this sample
-         *  - Use Docker DotNet to create a Docker client that will push/pull an image to/from Azure Container Registry
-         *  - Pull a test image from the public Docker repo (hello-world:latest) to be used as a sample for pushing/pulling
-         *      to/from an Azure Container Registry
-         *  - Create a new Docker container from an image that was pulled from Azure Container Registry
+         *  - Use Docker DotNet to create a Docker client that will push an image to Azure Container Registry
+         *  - Create a new container group with one container instance from the image that was pushed in the registry
          */
         public static void RunSample(IAzure azure)
         {
-            string rgName = SdkContext.RandomResourceName("rgACR", 15);
-            string acrName = SdkContext.RandomResourceName("acrsample", 20);
+            string rgName = SdkContext.RandomResourceName("rgACI", 15);
+            string acrName = SdkContext.RandomResourceName("acr", 20);
+            string aciName = SdkContext.RandomResourceName("acisample", 20);
             string saName = SdkContext.RandomResourceName("sa", 20);
-            Region region = Region.USEast2;
-            string dockerImageName = "hello-world";
+            string dockerImageName = "microsoft/aci-helloworld";
             string dockerImageTag = "latest";
             string dockerContainerName = "sample-hello";
-            string dockerImageRelPath = "samplesdotnet";
 
             try
             {
@@ -101,7 +99,7 @@ namespace ManageContainerRegistry
                     //=============================================================
                     // Commit the new container
 
-                    string privateRepoUrl = azureRegistry.LoginServerUrl + "/" + dockerImageRelPath + "/" + dockerContainerName;
+                    string privateRepoUrl = azureRegistry.LoginServerUrl + "/" + dockerContainerName;
                     Utilities.Log("Commiting image at: " + privateRepoUrl);
 
                     var commitContainerResult = dockerClient.Miscellaneous.CommitContainerChanges(
@@ -129,49 +127,31 @@ namespace ManageContainerRegistry
                         });
 
                     //=============================================================
-                    // Verify that the image we saved in the Azure Container registry can be pulled and instantiated locally
+                    // Create a container group with one container instance of default CPU core count and memory size
+                    //   using public Docker image "microsoft/aci-helloworld" and mounts a new file share as read/write
+                    //   shared container volume.
 
-                    var pullAcrImgResult = dockerClient.Images.PullImage(
-                        new Docker.DotNet.Models.ImagesPullParameters()
-                        {
-                            Parent = privateRepoUrl,
-                            Tag = dockerImageTag
-                        },
-                        new Docker.DotNet.Models.AuthConfig()
-                        {
-                            Username = acrCredentials.Username,
-                            Password = acrCredentials.Passwords[0].Value,
-                            ServerAddress = azureRegistry.LoginServerUrl
-                        });
+                    IContainerGroup containerGroup = azure.ContainerGroups.Define(aciName)
+                        .WithRegion(region)
+                        .WithNewResourceGroup(rgName)
+                        .WithLinux()
+                        .WithPrivateImageRegistry(azureRegistry.LoginServerUrl, acrCredentials.Username, acrCredentials.Passwords[0].Value)
+                        .WithoutVolume()
+                        .DefineContainerInstance(aciName)
+                            .WithImage(privateRepoUrl)
+                            .WithExternalTcpPort(80)
+                            .Attach()
+                        .Create();
 
-                    Utilities.Log("List Docker images for: " + dockerClient.Configuration.EndpointBaseUri.AbsoluteUri);
-                    listImages = dockerClient.Images.ListImages(
-                        new Docker.DotNet.Models.ImagesListParameters()
-                        {
-                            All = true
-                        });
-                    foreach (var img in listImages)
-                    {
-                        Utilities.Log("\tFound image " + img.RepoTags[0] + " (id:" + img.ID + ")");
-                    }
+                    Utilities.Print(containerGroup);
 
-                    var createAcrContainerResult = dockerClient.Containers.CreateContainer(
-                        new Docker.DotNet.Models.CreateContainerParameters()
-                        {
-                            Name = dockerContainerName + "fromazure",
-                            Image = privateRepoUrl + ":" + dockerImageTag
-                        });
+                    //=============================================================
+                    // Check the container instance logs
 
-                    Utilities.Log("List Docker containers for: " + dockerClient.Configuration.EndpointBaseUri.AbsoluteUri);
-                    listContainers = dockerClient.Containers.ListContainers(
-                        new Docker.DotNet.Models.ContainersListParameters()
-                        {
-                            All = true
-                        });
-                    foreach (var container in listContainers)
-                    {
-                        Utilities.Log("\tFound container " + container.Names[0] + " (id:" + container.ID + ")");
-                    }
+                    SdkContext.DelayProvider.Delay(15000);
+
+                    string logContent = containerGroup.GetLogContent(aciName);
+                    Utilities.Log($"Logs for container instance: {aciName}\n{logContent}");
                 }
             }
             finally
