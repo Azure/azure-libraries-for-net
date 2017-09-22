@@ -19,7 +19,7 @@ The authentication file, referenced as "my.azureauth" in the example above, cont
 az ad sp create-for-rbac --sdk-auth > my.azureauth
 ```
 
-If you don't have Azure CLI installed, you can also do this in the [cloud shell](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart). Alternatively, you can login to Fluent SDK through other ways of authentication and create an auth file by following [this sample](https://github.com/Azure/azure-sdk-for-net/blob/Fluent/Samples/GraphRbac/ManageServicePrincipal.cs). For detailed explanations of the content in this auth file, or directions to create the auth file manually, please see [Auth file formats](#auth-file-formats).
+If you don't have Azure CLI installed, you can also do this in the [cloud shell](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart). Alternatively, you can login to Fluent SDK through other ways of authentication and create an auth file by following [this sample](https://github.com/Azure/azure-libraries-for-net/blob/master/Samples/GraphRbac/ManageServicePrincipal.cs). For detailed explanations of the content in this auth file, or directions to create the auth file manually, please see [Auth file formats](#auth-file-formats).
 
 ## Using `AzureCredentials`
 
