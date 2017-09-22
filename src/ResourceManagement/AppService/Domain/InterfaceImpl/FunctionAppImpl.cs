@@ -1697,5 +1697,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 return this.UpdateAuthentication() as WebAppAuthentication.Update.IUpdate<WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>>;
             }
         }
+
+
+        /// <summary>
+        /// Gets the entry point to function deployment slot management API under the function app.
+        /// </summary>
+        Fluent.IFunctionDeploymentSlots Microsoft.Azure.Management.AppService.Fluent.IFunctionApp.DeploymentSlots
+        {
+            get
+            {
+                return this.DeploymentSlots() as IFunctionDeploymentSlots;
+            }
+        }
     }
 }
