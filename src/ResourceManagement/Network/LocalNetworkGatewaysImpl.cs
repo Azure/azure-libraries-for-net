@@ -61,15 +61,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:7F5BEBF638B801886F5E13E6CCFF6A4E:CAB88407089EFFF792A7B997566459B3
         public async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<ILocalNetworkGateway>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return this.Manager().ResourceManager().ResourceGroups().ListAsync()
-            //$ .FlatMap(new Func1<ResourceGroup, Observable<LocalNetworkGateway>>() {
-            //$ @Override
-            //$ public Observable<LocalNetworkGateway> call(ResourceGroup resourceGroup) {
-            //$ return wrapPageAsync(Inner.ListByResourceGroupAsync(resourceGroup.Name()));
-            //$ }
-            //$ });
-
-            return null;
+            return await PagedCollection<ILocalNetworkGateway, LocalNetworkGatewayInner>.LoadPage(async (cancellation) =>
+            {
+                var resourceGroups = await Manager.ResourceManager.ResourceGroups.ListAsync(true, cancellation);
+                var localNetworkGateways = await Task.WhenAll(resourceGroups.Select(async (rg) => await Inner.ListAsync(rg.Name, cancellation)));
+                return localNetworkGateways.SelectMany(x => x);
+            }, WrapModel, cancellationToken);
         }
 
         ///GENMHASH:0FEF45F7011A46EAF6E2D15139AE631D:A606C608C6616DA4F865A57B39DF3F12

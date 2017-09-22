@@ -70,10 +70,22 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return false;
         }
 
+        ///GENMHASH:F157B95CCB8CF0DA53120069F9F2C22E:AC1F1618AD3F0F9E28C72955671856B0
+        public BgpSettings BgpSettings()
+        {
+            return Inner.BgpSettings;
+        }
+
         ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:43E446F640DC3345BDBD9A3378F2018A
         public VirtualNetworkGatewaySku Sku()
         {
             return this.Inner.Sku;
+        }
+
+        ///GENMHASH:F99E854D8AAB8BF785315F056C8E5841:F8CE870B2409B36218704067B16D0893
+        public bool ActiveActive()
+        {
+            return Inner.ActiveActive.HasValue ? Inner.ActiveActive.Value : false;
         }
 
         ///GENMHASH:386C210EC4D5BBD8C3D394142B2C0750:D3617A465978379A3EFA4AC36D95F3B2
@@ -110,27 +122,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             Inner.BgpSettings = null;
             Inner.EnableBgp = false;
             return this;
-        }
-
-        ///GENMHASH:AC21A10EE2E745A89E94E447800452C1:166EA5FAEBD8EF7829C0875573231D79
-        protected override void BeforeCreating()
-        {
-            // Reset and update IP configs
-            EnsureDefaultIPConfig();
-            this.Inner.IpConfigurations = InnersFromWrappers<VirtualNetworkGatewayIPConfigurationInner, IVirtualNetworkGatewayIPConfiguration>(this.ipConfigs.Values);
-        }
-
-        ///GENMHASH:6EBB2EF319A59A13633F5A0954A40EF9:5E1483B1F2AC819468AF87C89BCDB29C
-        private VirtualNetworkGatewayIPConfigurationImpl EnsureDefaultIPConfig()
-        {
-            VirtualNetworkGatewayIPConfigurationImpl ipConfig = (VirtualNetworkGatewayIPConfigurationImpl) DefaultIPConfiguration();
-            if (ipConfig == null)
-            {
-                string name = SdkContext.RandomResourceName("ipcfg", 11);
-                ipConfig = DefineIPConfiguration(name);
-                ipConfig.Attach();
-            }
-            return ipConfig;
         }
 
         ///GENMHASH:52541ED0C8AE1806DF3F2DF0DE092357:0C8BC6D2668030C17723EE0F2EBC2291
@@ -199,7 +190,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
             bgpSettings.BgpPeeringAddress = bgpPeeringAddress;
             return this;
         }
+        ///GENMHASH:CD9D1A4AC3ED441D00B98B9B320AC09D:BF1BB51B936203E7C498DE394C7D6437
+        public VirtualNetworkGatewayImpl WithPolicyBasedVpn()
+        {
+            Inner.GatewayType = VirtualNetworkGatewayType.Vpn.Value;
+            Inner.VpnType = Models.VpnType.PolicyBased.Value;
+            return this;
+        }
 
+        ///GENMHASH:7BCFE88DA79B70F3091D2820BC2AD538:235D0452060ED10B1F26C762062BDAC8
+        public VirtualNetworkGatewayImpl WithRouteBasedVpn()
+        {
+            Inner.GatewayType = VirtualNetworkGatewayType.Vpn.Value;
+            Inner.VpnType = Models.VpnType.RouteBased.Value;
+            return this;
+        }
         ///GENMHASH:5F33673C89B8C86CEB000C662B79A4D9:6EC0094C76D2A9C5B6105BABB8EAA58C
         public string GatewayDefaultSiteResourceId()
         {
@@ -256,36 +261,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return await virtualNetworkGatewayInnerTask.Result;
         }
 
-        ///GENMHASH:F99E854D8AAB8BF785315F056C8E5841:F8CE870B2409B36218704067B16D0893
-        public bool ActiveActive()
-        {
-            //$ return Utils.ToPrimitiveBoolean(Inner.ActiveActive());
-
-            return false;
-        }
-
-        ///GENMHASH:CD9D1A4AC3ED441D00B98B9B320AC09D:BF1BB51B936203E7C498DE394C7D6437
-        public VirtualNetworkGatewayImpl WithPolicyBasedVpn()
-        {
-            Inner.GatewayType = VirtualNetworkGatewayType.Vpn.Value;
-            Inner.VpnType = Models.VpnType.PolicyBased.Value;
-            return this;
-        }
-
-        ///GENMHASH:7BCFE88DA79B70F3091D2820BC2AD538:235D0452060ED10B1F26C762062BDAC8
-        public VirtualNetworkGatewayImpl WithRouteBasedVpn()
-        {
-            Inner.GatewayType = VirtualNetworkGatewayType.Vpn.Value;
-            Inner.VpnType = Models.VpnType.RouteBased.Value;
-            return this;
-        }
-
-        ///GENMHASH:F157B95CCB8CF0DA53120069F9F2C22E:AC1F1618AD3F0F9E28C72955671856B0
-        public BgpSettings BgpSettings()
-        {
-            return Inner.BgpSettings;
-        }
-
         ///GENMHASH:6D9F740D6D73C56877B02D9F1C96F6E7:AAE687D87772A524C1EDF3A8BE3E97C4
         protected override void InitializeChildrenFromInner()
         {
@@ -311,6 +286,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             EnsureDefaultIPConfig().WithExistingPublicIPAddress(resourceId);
             return this;
+        }
+
+        ///GENMHASH:AC21A10EE2E745A89E94E447800452C1:166EA5FAEBD8EF7829C0875573231D79
+        protected override void BeforeCreating()
+        {
+            // Reset and update IP configs
+            EnsureDefaultIPConfig();
+            this.Inner.IpConfigurations = InnersFromWrappers<VirtualNetworkGatewayIPConfigurationInner, IVirtualNetworkGatewayIPConfiguration>(this.ipConfigs.Values);
+        }
+
+        ///GENMHASH:6EBB2EF319A59A13633F5A0954A40EF9:5E1483B1F2AC819468AF87C89BCDB29C
+        private VirtualNetworkGatewayIPConfigurationImpl EnsureDefaultIPConfig()
+        {
+            VirtualNetworkGatewayIPConfigurationImpl ipConfig = (VirtualNetworkGatewayIPConfigurationImpl)DefaultIPConfiguration();
+            if (ipConfig == null)
+            {
+                string name = SdkContext.RandomResourceName("ipcfg", 11);
+                ipConfig = DefineIPConfiguration(name);
+                ipConfig.Attach();
+            }
+            return ipConfig;
         }
 
         ///GENMHASH:1CF7458570EB3183A47A71F08EA5D0DA:9ABE9FDD63D8CCC22EA023A49D808C8A

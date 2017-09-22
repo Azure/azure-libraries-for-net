@@ -55,15 +55,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:7F5BEBF638B801886F5E13E6CCFF6A4E:6F60801C39F5AD18497B65AF050BF8D8
         public async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IVirtualNetworkGateway>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return this.Manager().ResourceManager().ResourceGroups().ListAsync()
-            //$ .FlatMap(new Func1<ResourceGroup, Observable<VirtualNetworkGateway>>() {
-            //$ @Override
-            //$ public Observable<VirtualNetworkGateway> call(ResourceGroup resourceGroup) {
-            //$ return wrapPageAsync(Inner.ListByResourceGroupAsync(resourceGroup.Name()));
-            //$ }
-            //$ });
-
-            return null;
+            return await PagedCollection<IVirtualNetworkGateway, VirtualNetworkGatewayInner>.LoadPage(async (cancellation) =>
+            {
+                var resourceGroups = await Manager.ResourceManager.ResourceGroups.ListAsync(true, cancellation);
+                var virtualNetworkGateways = await Task.WhenAll(resourceGroups.Select(async (rg) => await Inner.ListAsync(rg.Name, cancellation)));
+                return virtualNetworkGateways.SelectMany(x => x);
+            }, WrapModel, cancellationToken);
         }
 
         ///GENMHASH:0FEF45F7011A46EAF6E2D15139AE631D:A606C608C6616DA4F865A57B39DF3F12
