@@ -120,9 +120,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:73203B0122B445623F23F6D2CB886925
         protected override VirtualNetworkGatewayConnectionImpl WrapModel(string name)
         {
-            return new VirtualNetworkGatewayConnectionImpl(name, parent, new VirtualNetworkGatewayConnectionInner())
-            .WithRegion(parent.RegionName)
-            .WithExistingResourceGroup(parent.ResourceGroupName);
+            return null;
+//            return new VirtualNetworkGatewayConnectionImpl(name, parent, new VirtualNetworkGatewayConnectionInner())
+//            .WithRegion(parent.RegionName)
+//            .WithExistingResourceGroup(parent.ResourceGroupName);
         }
 
         ///GENMHASH:7CA9D2D08231720108B87FAE980BBE06:29E5BF1D5E06E1B153E83931DB971CFE

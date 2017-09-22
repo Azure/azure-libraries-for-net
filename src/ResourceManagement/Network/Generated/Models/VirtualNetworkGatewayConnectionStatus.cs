@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     public class VirtualNetworkGatewayConnectionStatus : ExpandableStringEnum<VirtualNetworkGatewayConnectionStatus>
     {
         public static readonly VirtualNetworkGatewayConnectionStatus Unknown = Parse("Unknown");
-        public static readonly VirtualNetworkGatewayConnectionStatus Connecting = Parse("Connecting";
+        public static readonly VirtualNetworkGatewayConnectionStatus Connecting = Parse("Connecting");
         public static readonly VirtualNetworkGatewayConnectionStatus Connected = Parse("Connected");
         public static readonly VirtualNetworkGatewayConnectionStatus NotConnected = Parse("NotConnected");
     }

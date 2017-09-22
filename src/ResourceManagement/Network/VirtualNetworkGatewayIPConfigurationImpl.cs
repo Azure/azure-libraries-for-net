@@ -1,5 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using Microsoft.Azure.Management.ResourceManager.Fluent;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using Microsoft.Azure.Management.Network.Fluent.Models;
@@ -13,69 +17,67 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Models.SubResource;
 
     /// <summary>
     /// Implementation for VirtualNetworkGatewayIPConfiguration.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5SVBDb25maWd1cmF0aW9uSW1wbA==
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5SVBDb25maWd1cmF0aW9uSW1wbA==
     internal partial class VirtualNetworkGatewayIPConfigurationImpl  :
-        ChildResourceImpl<Models.VirtualNetworkGatewayIPConfigurationInner,Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayImpl,Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway>,
+        ChildResource<VirtualNetworkGatewayIPConfigurationInner,
+            VirtualNetworkGatewayImpl,
+            IVirtualNetworkGateway>,
         IVirtualNetworkGatewayIPConfiguration,
-        IDefinition<VirtualNetworkGateway.Definition.IWithCreate>,
+        IDefinition<IWithCreate>,
         IUpdateDefinition<VirtualNetworkGateway.Update.IUpdate>,
         VirtualNetworkGatewayIPConfiguration.Update.IUpdate
     {
+        VirtualNetworkGateway.Update.IUpdate ISettable<VirtualNetworkGateway.Update.IUpdate>.Parent()
+        {
+            return Parent;
+        }
+
         ///GENMHASH:777AE9B7CB4EA1B471FA1957A07DF81F:447635D831A0A80A464ADA6413BED58F
         public ISubnet GetSubnet()
         {
-            //$ return this.Parent().Manager().GetAssociatedSubnet(this.Inner.Subnet());
-
-            return null;
+            return Parent.Manager.GetAssociatedSubnet(Inner.Subnet);
         }
 
         ///GENMHASH:FCB784E90DCC27EAC6AD4B4C988E2752:AD76D34D3002AB3E39DB6F1AF087B2A7
         public IPAllocationMethod PrivateIPAllocationMethod()
         {
-            //$ return Inner.PrivateIPAllocationMethod();
-
-            return null;
+            return IPAllocationMethod.Parse(Inner.PrivateIPAllocationMethod);
         }
 
         ///GENMHASH:5EF934D4E2CF202DF23C026435D9F6D6:E2FB3C470570EB032EC48D6BFD6A7AFF
         public string PublicIPAddressId()
         {
-            //$ if (this.Inner.PublicIPAddress() != null) {
-            //$ return this.Inner.PublicIPAddress().Id();
-            //$ } else {
-            //$ return null;
-            //$ }
-
+            if (this.Inner.PublicIPAddress != null) {
+                return this.Inner.PublicIPAddress.Id;
+            }
             return null;
         }
 
         ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:61C1065B307679F3800C701AE0D87070
-        public string Name()
+        public override string Name()
         {
-            //$ return this.Inner.Name();
-
-            return null;
+            return Inner.Name;
         }
 
         ///GENMHASH:BE684C4F4845D0C09A9399569DFB7A42:096D95C5168036459198B2B1F15EC515
         public VirtualNetworkGatewayIPConfigurationImpl WithExistingPublicIPAddress(IPublicIPAddress pip)
         {
-            //$ return this.WithExistingPublicIPAddress(pip.Id());
-
-            return this;
+            return this.WithExistingPublicIPAddress(pip.Id);
         }
 
         ///GENMHASH:3C078CA3D79C59C878B566E6BDD55B86:6DC78F2FD590C56E6AA5064DDBA6DD44
         public VirtualNetworkGatewayIPConfigurationImpl WithExistingPublicIPAddress(string resourceId)
         {
-            //$ SubResource pipRef = new SubResource().WithId(resourceId);
-            //$ this.Inner.WithPublicIPAddress(pipRef);
-            //$ return this;
-
+            SubResource pipRef = new SubResource()
+            {
+                Id = resourceId
+            };
+            Inner.PublicIPAddress = pipRef;
             return this;
         }
 
@@ -95,17 +97,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:4174C1298FBF6ABE50F5AB6DA4F03B10
         public VirtualNetworkGatewayImpl Attach()
         {
-            //$ return this.Parent().WithConfig(this);
-
-            return null;
+            return Parent.WithConfig(this);
         }
 
         ///GENMHASH:94AC8838A3A2280C2029702434306F7D:C0847EA0CDA78F6D91EFD239C70F0FA7
-        internal  VirtualNetworkGatewayIPConfigurationImpl(VirtualNetworkGatewayIPConfigurationInner inner, VirtualNetworkGatewayImpl parent)
+        internal  VirtualNetworkGatewayIPConfigurationImpl(VirtualNetworkGatewayIPConfigurationInner inner, VirtualNetworkGatewayImpl parent) : base(inner, parent)
         {
-            //$ super(inner, parent);
-            //$ }
-
         }
 
         ///GENMHASH:C57133CD301470A479B3BA07CD283E86:AF6B5F15AE40A0AA08ADA331F3C75492
@@ -134,17 +131,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:EE79C3B68C4C6A99234BB004EDCAD67A:7289832C1662E22EA7E068290C483F1B
         public VirtualNetworkGatewayIPConfigurationImpl WithExistingSubnet(ISubnet subnet)
         {
-            //$ return this.WithExistingSubnet(subnet.Parent().Id(), subnet.Name());
-
-            return this;
+            return this.WithExistingSubnet(subnet.Parent.Id, subnet.Name);
         }
 
         ///GENMHASH:5647899224D30C7B5E1FDCD2D9AAB1DB:F08EFDCC8A8286B3C9226D19B2EA7889
         public VirtualNetworkGatewayIPConfigurationImpl WithExistingSubnet(INetwork network, string subnetName)
         {
-            //$ return this.WithExistingSubnet(network.Id(), subnetName);
-
-            return this;
+            return this.WithExistingSubnet(network.Id, subnetName);
         }
     }
 }
