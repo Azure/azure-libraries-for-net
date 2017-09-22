@@ -6,19 +6,16 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.Azure.Management.Network.Fluent;
-
     /// <summary>
     /// Defines values for VpnType.
     /// </summary>
-    public static class VpnType
+    public class VpnType : ExpandableStringEnum<VpnType>
     {
-        public const string PolicyBased = "PolicyBased";
-        public const string RouteBased = "RouteBased";
+        public static readonly VpnType PolicyBased = Parse("PolicyBased");
+        public static readonly VpnType RouteBased = Parse("RouteBased");
     }
 }

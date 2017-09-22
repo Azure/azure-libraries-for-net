@@ -6,6 +6,8 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
     using Microsoft.Azure;
@@ -16,14 +18,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     /// <summary>
     /// Defines values for VirtualNetworkGatewaySkuName.
     /// </summary>
-    public static class VirtualNetworkGatewaySkuName
+    public class VirtualNetworkGatewaySkuName : ExpandableStringEnum<VirtualNetworkGatewaySkuName>
     {
-        public const string Basic = "Basic";
-        public const string HighPerformance = "HighPerformance";
-        public const string Standard = "Standard";
-        public const string UltraPerformance = "UltraPerformance";
-        public const string VpnGw1 = "VpnGw1";
-        public const string VpnGw2 = "VpnGw2";
-        public const string VpnGw3 = "VpnGw3";
+        public static readonly VirtualNetworkGatewaySkuName Basic = Parse("Basic");
+        public static readonly VirtualNetworkGatewaySkuName HighPerformance = Parse("HighPerformance");
+        public static readonly VirtualNetworkGatewaySkuName Standard = Parse("Standard");
+        public static readonly VirtualNetworkGatewaySkuName UltraPerformance = Parse("UltraPerformance");
+        public static readonly VirtualNetworkGatewaySkuName VpnGw1 = Parse("VpnGw1");
+        public static readonly VirtualNetworkGatewaySkuName VpnGw2 = Parse("VpnGw2");
+        public static readonly VirtualNetworkGatewaySkuName VpnGw3 = Parse("VpnGw3");
     }
 }
