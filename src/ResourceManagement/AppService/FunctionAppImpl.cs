@@ -7,10 +7,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition;
     using Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Update;
     using Microsoft.Azure.Management.AppService.Fluent.Models;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Storage.Fluent.Models;
     using Microsoft.Azure.Management.Storage.Fluent;
     using System;
     using ResourceManager.Fluent.Core;
@@ -34,10 +31,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         INewAppServicePlanWithGroup,
         IUpdate
     {
+        private Fluent.IFunctionDeploymentSlots deploymentSlots;
         private ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> storageAccountCreatable;
         private IStorageAccount storageAccountToSet;
         private IStorageAccount currentStorageAccount;
         private KuduCredentials kuduCredentials;
+
+        public Fluent.IFunctionDeploymentSlots DeploymentSlots()
+        {
+            if (deploymentSlots == null)
+            {
+               deploymentSlots = new FunctionDeploymentSlotsImpl(this, Manager);
+            }
+            return deploymentSlots;
+        }
 
         public IStorageAccount StorageAccount()
         {

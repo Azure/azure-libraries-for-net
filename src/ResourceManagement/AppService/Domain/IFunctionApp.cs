@@ -17,6 +17,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<FunctionApp.Update.IUpdate>
     {
+        /// <summary>
+        /// Gets the entry point to deployment slot management API under the web app.
+        /// </summary>
+        Fluent.IFunctionDeploymentSlots DeploymentSlots { get; }
+
         /// <return>The master key for the function app.</return>
         string GetMasterKey();
 
