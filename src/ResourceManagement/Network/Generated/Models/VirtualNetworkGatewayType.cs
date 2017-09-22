@@ -6,19 +6,16 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.Azure.Management.Network.Fluent;
-
     /// <summary>
     /// Defines values for VirtualNetworkGatewayType.
     /// </summary>
-    public static class VirtualNetworkGatewayType
+    public class VirtualNetworkGatewayType : ExpandableStringEnum<VirtualNetworkGatewayType>
     {
-        public const string Vpn = "Vpn";
-        public const string ExpressRoute = "ExpressRoute";
+        public static readonly VirtualNetworkGatewayType Vpn = Parse("Vpn");
+        public static readonly VirtualNetworkGatewayType ExpressRoute = Parse("ExpressRoute");
     }
 }
