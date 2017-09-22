@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Models.SubResource;
 
     /// <summary>
     /// Implementation for VirtualNetworkGatewayIPConfiguration.
@@ -52,8 +51,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:5EF934D4E2CF202DF23C026435D9F6D6:E2FB3C470570EB032EC48D6BFD6A7AFF
         public string PublicIPAddressId()
         {
-            if (this.Inner.PublicIPAddress != null) {
-                return this.Inner.PublicIPAddress.Id;
+            if (Inner.PublicIPAddress != null) {
+                return Inner.PublicIPAddress.Id;
             }
             return null;
         }
@@ -84,13 +83,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:1C444C90348D7064AB23705C542DDF18:7C10C7860B6E28E6D17CB999015864B9
         public string NetworkId()
         {
-            //$ SubResource subnetRef = this.Inner.Subnet();
-            //$ if (subnetRef != null) {
-            //$ return ResourceUtils.ParentResourceIdFromResourceId(subnetRef.Id());
-            //$ } else {
-            //$ return null;
-            //$ }
-
+            SubResource subnetRef = this.Inner.Subnet;
+            if (subnetRef != null) {
+                return ResourceUtils.ParentResourcePathFromResourceId(subnetRef.Id);
+            }
             return null;
         }
 
@@ -108,23 +104,22 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:C57133CD301470A479B3BA07CD283E86:AF6B5F15AE40A0AA08ADA331F3C75492
         public string SubnetName()
         {
-            //$ SubResource subnetRef = this.Inner.Subnet();
-            //$ if (subnetRef != null) {
-            //$ return ResourceUtils.NameFromResourceId(subnetRef.Id());
-            //$ } else {
-            //$ return null;
-            //$ }
-
+            SubResource subnetRef = this.Inner.Subnet;
+            if (subnetRef != null)
+            {
+                return ResourceUtils.NameFromResourceId(subnetRef.Id);
+            }
             return null;
         }
 
         ///GENMHASH:E8683B20FED733D23930E96CCD1EB0A2:B9B4B506ED0B45772F0E2468D5E88107
         public VirtualNetworkGatewayIPConfigurationImpl WithExistingSubnet(string networkId, string subnetName)
         {
-            //$ SubResource subnetRef = new SubResource().WithId(networkId + "/subnets/" + subnetName);
-            //$ this.Inner.WithSubnet(subnetRef);
-            //$ return this;
-
+            SubResource subnetRef = new SubResource()
+            {
+                Id = networkId + "/subnets/" + subnetName
+            };
+            Inner.Subnet = subnetRef;
             return this;
         }
 

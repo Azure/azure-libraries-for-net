@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:9C5B42FF47E71D8582BAB26BBDEC1E0B:D21C20CB4507042130C1D13862BEE143
-        public async Task<IPagedCollection<ILocalNetworkGateway>> ListByResourceGroupAsync(string groupName, bool loadAllPages, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<ILocalNetworkGateway>> ListByResourceGroupAsync(string groupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             var innerLocalNetworkGateways = await Inner.ListAsync(groupName, cancellationToken);
             var result = innerLocalNetworkGateways.Select((innerVirtualGateway) => WrapModel(innerVirtualGateway));

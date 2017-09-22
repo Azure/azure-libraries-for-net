@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group to list the resources from.</param>
         /// <return>The list of resources.</return>
-        async Task<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway>.ListByResourceGroupAsync(string resourceGroupName, CancellationToken cancellationToken)
+        async Task<IPagedCollection<ILocalNetworkGateway>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway>.ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListByResourceGroupAsync(resourceGroupName, cancellationToken) as Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway;
+            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken);
         }
 
         /// <summary>

@@ -33,32 +33,74 @@ namespace Microsoft.Azure.Management.Network.Fluent
         private string GATEWAY_SUBNET = "GatewaySubnet";
         private Dictionary<string,Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayIPConfiguration> ipConfigs;
         private IVirtualNetworkGatewayConnections connections;
-        private ICreatable<Microsoft.Azure.Management.Network.Fluent.INetwork> creatableNetwork;
-        private ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> creatablePip;
+        private ICreatable<INetwork> creatableNetwork;
+        private ICreatable<IPublicIPAddress> creatablePip;
+
+        ///GENMHASH:7D08FA84C64E6E32E5C2ED4B63EE0731:3881994DCADCE14215F82F0CC81BDD88
+        internal VirtualNetworkGatewayImpl(string name, VirtualNetworkGatewayInner innerModel, INetworkManager networkManager)
+            : base(name, innerModel, networkManager)
+        {
+        }
+
+        ///GENMHASH:8535B0E23E6704558262509B5A55B45D:A38A2517ECAC89D37EAB01B83A00D407
+        public IReadOnlyDictionary<string, IVirtualNetworkGatewayIPConfiguration> IPConfigurations()
+        {
+            return ipConfigs;
+        }
+
+        ///GENMHASH:0BDDE35CB8B3DD88A33C6363C54C0AF4:A53FB902D8052D360814DFFA0B1CEB40
+        public VirtualNetworkGatewayType GatewayType()
+        {
+            return VirtualNetworkGatewayType.Parse(Inner.GatewayType);
+        }
+
+        ///GENMHASH:7B35A850EB3ED4D45443736E5DA5F56D:D1DF4B3C91F52A00A90DDD465919E483
+        public VpnClientConfiguration VpnClientConfiguration()
+        {
+            return Inner.VpnClientConfiguration;
+        }
+
+        ///GENMHASH:7F86C125A87D152FD762C431C7E77E76:8499787EA21C54ECB62EBA36A555DD42
+        public bool IsBgpEnabled()
+        {
+            if (Inner.EnableBgp.HasValue)
+            {
+                return Inner.EnableBgp.Value;
+            }
+            return false;
+        }
+
+        ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:43E446F640DC3345BDBD9A3378F2018A
+        public VirtualNetworkGatewaySku Sku()
+        {
+            return this.Inner.Sku;
+        }
+
+        ///GENMHASH:386C210EC4D5BBD8C3D394142B2C0750:D3617A465978379A3EFA4AC36D95F3B2
+        public IVirtualNetworkGatewayConnections Connections()
+        {
+            if (connections == null)
+            {
+                connections = new VirtualNetworkGatewayConnectionsImpl(this);
+            }
+            return connections;
+        }
+
         ///GENMHASH:3B2C34DD470793DBFE07EF485D8E35B3:3D625CD3BE33F1BDF4A380925C6BCAC2
         public async Task ResetAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             // TODO: gatewayVip is not null for Active-Active configuration
             await Manager.Inner.VirtualNetworkGateways.ResetAsync(ResourceGroupName, Name, null, cancellationToken) ;
             await RefreshAsync(cancellationToken);
-            //$ return this.Manager().Inner.VirtualNetworkGateways().ResetAsync(resourceGroupName(), name()).Map(new Func1<VirtualNetworkGatewayInner, Void>() {
-            //$ @Override
-            //$ public Void call(VirtualNetworkGatewayInner inner) {
-            //$ VirtualNetworkGatewayImpl.This.SetInner(inner);
-            //$ return null;
-            //$ }
-            //$ }).ToCompletable();
         }
 
         ///GENMHASH:E22C6898BD46DFC7E4BA741E47A25FCD:130D5B3A30C34F066046287000EF7300
         internal VirtualNetworkGatewayImpl WithConfig(VirtualNetworkGatewayIPConfigurationImpl config)
         {
-            //$ if (config != null) {
-            //$ this.ipConfigs.Put(config.Name(), config);
-            //$ }
-            //$ return this;
-            //$ }
-
+            if (config != null)
+            {
+                ipConfigs[config.Name()] = config;
+            }
             return this;
         }
 
@@ -111,15 +153,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:ED53F38CFE3724E460E65F33FB69C01D
         protected async override Task<Models.VirtualNetworkGatewayInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return this.Manager().Inner.VirtualNetworkGateways().GetByResourceGroupAsync(this.ResourceGroupName(), this.Name());
-
-            return null;
+            return await Manager.Inner.VirtualNetworkGateways.GetAsync(ResourceGroupName, Name);
         }
 
         ///GENMHASH:8477D6D598DD5DE7CFD64D231FD9BB43:35CBFE2D3067627F27C17685399D1852
         public IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> ListConnections()
         {
-            //$ return wrapConnectionsList(this.Manager().Inner.VirtualNetworkGateways().ListConnections(this.ResourceGroupName(), this.Name()));
+//            return WrapConnectionsList(Manager.Inner.VirtualNetworkGateways.ListConnections(this.ResourceGroupName, this.Name));
 
             return null;
         }
@@ -127,74 +167,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:D232B3BB0D86D13CC0B242F4000DBF07:A6337C672FE4D2497063C4689F0BFDAE
         private ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> EnsureDefaultPipDefinition()
         {
-            //$ if (this.creatablePip == null) {
-            //$ String pipName = SdkContext.RandomResourceName("pip", 9);
-            //$ this.creatablePip = this.Manager().PublicIPAddresses().Define(pipName)
-            //$ .WithRegion(this.RegionName())
-            //$ .WithExistingResourceGroup(this.ResourceGroupName());
-            //$ }
-            //$ return this.creatablePip;
-            //$ }
-
-            return null;
-        }
-
-        ///GENMHASH:8535B0E23E6704558262509B5A55B45D:A38A2517ECAC89D37EAB01B83A00D407
-        public IReadOnlyDictionary<string, IVirtualNetworkGatewayIPConfiguration> IPConfigurations()
-        {
-            return ipConfigs;
-        }
-
-        ///GENMHASH:0BDDE35CB8B3DD88A33C6363C54C0AF4:A53FB902D8052D360814DFFA0B1CEB40
-        public VirtualNetworkGatewayType GatewayType()
-        {
-            return VirtualNetworkGatewayType.Parse(Inner.GatewayType);
-        }
-
-        ///GENMHASH:7B35A850EB3ED4D45443736E5DA5F56D:D1DF4B3C91F52A00A90DDD465919E483
-        public VpnClientConfiguration VpnClientConfiguration()
-        {
-            return Inner.VpnClientConfiguration;
-        }
-
-        ///GENMHASH:7F86C125A87D152FD762C431C7E77E76:8499787EA21C54ECB62EBA36A555DD42
-        public bool IsBgpEnabled()
-        {
-            if (Inner.EnableBgp.HasValue)
-            {
-                return Inner.EnableBgp.Value;
+            if (creatablePip == null) {
+                string pipName = SdkContext.RandomResourceName("pip", 9);
+                creatablePip = Manager.PublicIPAddresses.Define(pipName)
+                    .WithRegion(this.RegionName)
+                    .WithExistingResourceGroup(this.ResourceGroupName);
             }
-            return false;
-        }
 
-        ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:43E446F640DC3345BDBD9A3378F2018A
-        public VirtualNetworkGatewaySku Sku()
-        {
-            return this.Inner.Sku;
-        }
-
-        ///GENMHASH:386C210EC4D5BBD8C3D394142B2C0750:D3617A465978379A3EFA4AC36D95F3B2
-        public IVirtualNetworkGatewayConnections Connections()
-        {
-            if (connections == null) {
-            connections = new VirtualNetworkGatewayConnectionsImpl(this);
-            }
-            return connections;
+            return creatablePip;
         }
 
         ///GENMHASH:F1D809E72100A32A88F33ADB2356893B:83A6444D89474D9E0A81484A4E69AE59
         private void InitializeIPConfigsFromInner()
         {
-            //$ this.ipConfigs = new TreeMap<>();
-            //$ List<VirtualNetworkGatewayIPConfigurationInner> inners = this.Inner.IpConfigurations();
-            //$ if (inners != null) {
-            //$ foreach(var inner in inners) {
-            //$ VirtualNetworkGatewayIPConfigurationImpl config = new VirtualNetworkGatewayIPConfigurationImpl(inner, this);
-            //$ this.ipConfigs.Put(inner.Name(), config);
-            //$ }
-            //$ }
-            //$ }
-
+            ipConfigs = new Dictionary<string, IVirtualNetworkGatewayIPConfiguration>();
+            var inners = this.Inner.IpConfigurations;
+            if (inners != null) {
+                foreach(var inner in inners) {
+                    var config = new VirtualNetworkGatewayIPConfigurationImpl(inner, this);
+                    ipConfigs[inner.Name] = config;
+                }
+            }
         }
 
         ///GENMHASH:EE424593047EC034E4F687A7D891306B:FB90A8FA59771F5D7A9F2D0152458B21
@@ -216,52 +209,51 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:359B78C1848B4A526D723F29D8C8C558:149EB760CEBAD953681C8A653E657563
         protected async override Task<Models.VirtualNetworkGatewayInner> CreateInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ // Determine if a default public frontend PIP should be created
-            //$ VirtualNetworkGatewayIPConfigurationImpl defaultIPConfig = ensureDefaultIPConfig();
-            //$ Observable<Resource> pipObservable;
-            //$ if (defaultIPConfig != null && defaultIPConfig.PublicIPAddressId() == null) {
-            //$ // If public ip not specified, then create a default PIP
-            //$ pipObservable = Utils.<PublicIPAddress>rootResource(ensureDefaultPipDefinition()
-            //$ .CreateAsync()).Map(new Func1<PublicIPAddress, Resource>() {
-            //$ @Override
-            //$ public Resource call(PublicIPAddress publicIPAddress) {
-            //$ defaultIPConfig.WithExistingPublicIPAddress(publicIPAddress);
-            //$ return publicIPAddress;
-            //$ }
-            //$ });
-            //$ } else {
-            //$ // If existing public ip address specified, skip creating the PIP
-            //$ pipObservable = Observable.Empty();
-            //$ }
-            //$ 
-            //$ Observable<Resource> networkObservable;
-            //$ // Determine if default VNet should be created
-            //$ if (defaultIPConfig.SubnetName() != null) {
-            //$ // ...And no need to create VNet
-            //$ networkObservable = Observable.Empty(); // ...And don't create another VNet
-            //$ } else {
-            //$ // But if default IP config does not have a subnet specified, then create a VNet
-            //$ networkObservable = Utils.<Network>rootResource(creatableNetwork
-            //$ .CreateAsync()).Map(new Func1<Network, Resource>() {
-            //$ @Override
-            //$ public Resource call(Network network) {
-            //$ //... and assign the created VNet to the default IP config
-            //$ defaultIPConfig.WithExistingSubnet(network, GATEWAY_SUBNET);
-            //$ return network;
-            //$ }
-            //$ });
-            //$ }
-            //$ 
-            //$ return Observable.Merge(networkObservable, pipObservable)
-            //$ .DefaultIfEmpty(null)
-            //$ .Last().FlatMap(new Func1<Resource, Observable<VirtualNetworkGatewayInner>>() {
-            //$ @Override
-            //$ public Observable<VirtualNetworkGatewayInner> call(Resource resource) {
-            //$ return VirtualNetworkGatewayImpl.This.Manager().Inner.VirtualNetworkGateways().CreateOrUpdateAsync(resourceGroupName(), name(), Inner);
-            //$ }
-            //$ });
+            var tasks = new List<Task>();
 
-            return null;
+            VirtualNetworkGatewayIPConfigurationImpl defaultIPConfig = EnsureDefaultIPConfig();
+            if (defaultIPConfig != null && defaultIPConfig.PublicIPAddressId() == null)
+            {
+                // If public ip not specified, then create a default PIP
+                Task pipTask = EnsureDefaultPipDefinition().CreateAsync(cancellationToken)
+                    .ContinueWith(
+                        antecedent =>
+                        {
+                            var publicIP = antecedent.Result;
+                            defaultIPConfig.WithExistingPublicIPAddress(publicIP);
+                        },
+                        cancellationToken,
+                        TaskContinuationOptions.ExecuteSynchronously,
+                        TaskScheduler.Default);
+                tasks.Add(pipTask);
+            }
+
+            // Determine if default VNet should be created
+            if (defaultIPConfig.SubnetName() == null)
+            {
+                // But if default IP config does not have a subnet specified, then create a VNet
+                Task networkTask = creatableNetwork.CreateAsync(cancellationToken)
+                    .ContinueWith(antecedent =>
+                        {
+                            //... and assign the created VNet to the default IP config
+                            var network = antecedent.Result;
+                            defaultIPConfig.WithExistingSubnet(network, GATEWAY_SUBNET);
+                        },
+                        cancellationToken,
+                        TaskContinuationOptions.ExecuteSynchronously,
+                        TaskScheduler.Default);
+                tasks.Add(networkTask);
+            }
+            var virtualNetworkGatewayInnerTask = Task.WhenAll(tasks.ToArray()).ContinueWith(
+                    antecedent =>
+                    {
+                        return Manager.Inner.VirtualNetworkGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
+                    },
+                    cancellationToken,
+                    TaskContinuationOptions.ExecuteSynchronously,
+                    TaskScheduler.Default);
+
+            return await virtualNetworkGatewayInnerTask.Result;
         }
 
         ///GENMHASH:F99E854D8AAB8BF785315F056C8E5841:F8CE870B2409B36218704067B16D0893
@@ -321,12 +313,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        ///GENMHASH:7D08FA84C64E6E32E5C2ED4B63EE0731:3881994DCADCE14215F82F0CC81BDD88
-        internal VirtualNetworkGatewayImpl(string name, VirtualNetworkGatewayInner innerModel, INetworkManager networkManager)
-            : base(name, innerModel, networkManager)
-        {
-        }
-
         ///GENMHASH:1CF7458570EB3183A47A71F08EA5D0DA:9ABE9FDD63D8CCC22EA023A49D808C8A
         public async Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> ListConnectionsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -372,7 +358,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:DE0F4E4D7BE6C2D424AD89F5B15B8C65:728DC4397D3FF615073A7E4F0B270949
-        public VirtualNetworkGatewayImpl WithNewNetwork(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetwork> creatable)
+        public VirtualNetworkGatewayImpl WithNewNetwork(ICreatable<INetwork> creatable)
         {
             this.creatableNetwork = creatable;
             return this;
@@ -447,14 +433,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             SetInner(inner);
             InitializeChildrenFromInner();
             return this;
-            //$ return super.RefreshAsync().Map(new Func1<VirtualNetworkGateway, VirtualNetworkGateway>() {
-            //$ @Override
-            //$ public VirtualNetworkGateway call(VirtualNetworkGateway virtualNetworkGateway) {
-            //$ VirtualNetworkGatewayImpl impl = (VirtualNetworkGatewayImpl) virtualNetworkGateway;
-            //$ impl.InitializeChildrenFromInner();
-            //$ return impl;
-            //$ }
-            //$ });
         }
 
         ///GENMHASH:EB9010098916DB0783BD4F8210557775:9DED2E4BB6BF3B4B59C279F025D54359
