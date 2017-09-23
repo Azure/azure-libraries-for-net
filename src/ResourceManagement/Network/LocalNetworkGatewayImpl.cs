@@ -1,5 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using System.Linq;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using System.Threading;
@@ -28,23 +31,22 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IUpdate
     {
         ///GENMHASH:0A630A9A81A6D7FB1D87E339FE830A51:12952E8CD5F552DB05A3C835C16FDB67
-        public ISet<string> AddressSpaces()
+        public IReadOnlyList<string> AddressSpaces()
         {
-            //$ Set<String> addressSpaces = new HashSet<>();
-            //$ if (this.Inner.LocalNetworkAddressSpace() != null && this.Inner.LocalNetworkAddressSpace().AddressPrefixes() != null) {
-            //$ addressSpaces.AddAll(this.Inner.LocalNetworkAddressSpace().AddressPrefixes());
-            //$ }
-            //$ return Collections.UnmodifiableSet(addressSpaces);
-
-            return null;
+            if (Inner.LocalNetworkAddressSpace == null)
+                return new List<string>();
+            else if (Inner.LocalNetworkAddressSpace.AddressPrefixes == null)
+                return new List<string>();
+            else
+                return Inner.LocalNetworkAddressSpace.AddressPrefixes?.ToList();
         }
 
         ///GENMHASH:EE424593047EC034E4F687A7D891306B:9F58304362D8DE3E42998AA81F3F26B7
         public LocalNetworkGatewayImpl WithBgp(long asn, string bgpPeeringAddress)
         {
-            //$ ensureBgpSettings().WithAsn(asn).WithBgpPeeringAddress(bgpPeeringAddress);
-            //$ return this;
-
+            var bgpSettings = EnsureBgpSettings();
+            bgpSettings.Asn = asn;
+            bgpSettings.BgpPeeringAddress = bgpPeeringAddress;
             return this;
         }
 
@@ -58,25 +60,19 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:EB9638E8F65D17F5F594E27D773A247D:76CB3404F2AA8C8A92105F19077E56E5
         public string IPAddress()
         {
-            //$ return Inner.GatewayIpAddress();
-
-            return null;
+            return Inner.GatewayIpAddress;
         }
 
         ///GENMHASH:F157B95CCB8CF0DA53120069F9F2C22E:AC1F1618AD3F0F9E28C72955671856B0
         public BgpSettings BgpSettings()
         {
-            //$ return Inner.BgpSettings();
-
-            return null;
+            return Inner.BgpSettings;
         }
 
         ///GENMHASH:944BF1730016EB109BA8A7D6EE074FD9:F74BB6BC059AFA1A1E3F924F48E56CEA
         public LocalNetworkGatewayImpl WithIPAddress(string ipAddress)
         {
-            //$ this.Inner.WithGatewayIpAddress(ipAddress);
-            //$ return this;
-
+            Inner.GatewayIpAddress = ipAddress;
             return this;
         }
 
@@ -109,20 +105,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:2DDC261430ADA2CF9ED379E7C096EA18:DC31209198DBB3C120D21921CEFF604C
         public LocalNetworkGatewayImpl WithoutAddressSpace(string cidr)
         {
-            //$ if (this.Inner.LocalNetworkAddressSpace() == null || this.Inner.LocalNetworkAddressSpace().AddressPrefixes() == null) {
-            //$ return this;
-            //$ }
-            //$ this.Inner.LocalNetworkAddressSpace().AddressPrefixes().Remove(cidr);
-            //$ return this;
-
+            if (Inner.LocalNetworkAddressSpace != null && Inner.LocalNetworkAddressSpace.AddressPrefixes != null) {
+                Inner.LocalNetworkAddressSpace.AddressPrefixes.Remove(cidr);
+            }
             return this;
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:D2A6D2A6D9D7D04639AA5B3E46602E45
         public async override Task<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var response = await Manager.Inner.LocalNetworkGateways.CreateOrUpdateAsync(
-                this.ResourceGroupName, this.Name, this.Inner);
+            var response = await Manager.Inner.LocalNetworkGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner);
             SetInner(response);
             return this;
         }
@@ -130,16 +122,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:BF356D3C256200922092FDECCE2AEA83:143AB2891351652F599BAE8243F35CE5
         public LocalNetworkGatewayImpl WithAddressSpace(string cidr)
         {
-            //$ if (this.Inner.LocalNetworkAddressSpace() == null) {
-            //$ this.Inner.WithLocalNetworkAddressSpace(new AddressSpace());
-            //$ }
-            //$ if (this.Inner.LocalNetworkAddressSpace().AddressPrefixes() == null) {
-            //$ this.Inner.LocalNetworkAddressSpace().WithAddressPrefixes(new ArrayList<String>());
-            //$ }
-            //$ 
-            //$ this.Inner.LocalNetworkAddressSpace().AddressPrefixes().Add(cidr);
-            //$ return this;
+            if (Inner.LocalNetworkAddressSpace == null)
+                Inner.LocalNetworkAddressSpace = new AddressSpace();
 
+            if (Inner.LocalNetworkAddressSpace.AddressPrefixes == null)
+                Inner.LocalNetworkAddressSpace.AddressPrefixes = new List<string>();
+
+            Inner.LocalNetworkAddressSpace.AddressPrefixes.Add(cidr);
             return this;
         }
     }
