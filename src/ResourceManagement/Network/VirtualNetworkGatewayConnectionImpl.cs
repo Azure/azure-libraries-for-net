@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 Id = parent.Id
             };
             Inner.VirtualNetworkGateway1 = virtualNetworkGatewayRef;
+            Inner.Location = Parent().RegionName;
         }
 
         ///GENMHASH:DC68CE09DB266400D8B7E08E0150F876:29C6CFED65DB9A6CE452F3BC85F8D71C
