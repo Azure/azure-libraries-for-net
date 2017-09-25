@@ -136,7 +136,7 @@ namespace ManageFunctionAppWithAuthentication
                 Utilities.Log("Deploying a local function app to " + app3Name + " throuh web deploy...");
 
                 app3.Deploy()
-                    .WithPackageUri("https://github.com/Azure/azure-sdk-for-net/raw/Fluent/Samples/Asset/square-function-app-function-auth.zip")
+                    .WithPackageUri("https://github.com/Azure/azure-libraries-for-net/raw/master/Samples/Asset/square-function-app-function-auth.zip")
                     .WithExistingDeploymentsDeleted(false)
                     .Execute();
 

@@ -39,7 +39,7 @@ namespace Fluent.Tests.WebApp
                 Assert.Equal(PricingTier.BasicB1, plan1.PricingTier);
 
                 IWebDeployment deployment = webApp1.Deploy()
-                    .WithPackageUri("https://github.com/Azure/azure-sdk-for-net/raw/Fluent/Tests/Fluent.Tests/Assets/bakery-webapp.zip")
+                    .WithPackageUri("https://github.com/Azure/azure-libraries-for-net/raw/master/Tests/Fluent.Tests/Assets/bakery-webapp.zip")
                     .WithExistingDeploymentsDeleted(true)
                     .Execute();
 

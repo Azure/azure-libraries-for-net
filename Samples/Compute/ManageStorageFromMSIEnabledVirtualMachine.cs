@@ -35,7 +35,7 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
             var password = "12NewPA34w0rd!";
             var region = Region.USWestCentral;
 
-            var installScript = "https://raw.githubusercontent.com/Azure/azure-sdk-for-net/Fluent/Samples/Asset/create_resources_with_msi.sh";
+            var installScript = "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/create_resources_with_msi.sh";
             var installCommand = "bash create_resources_with_msi.sh {stgName} {rgName} {location}";
             List<String> fileUris = new List<String>();
             fileUris.Add(installScript);

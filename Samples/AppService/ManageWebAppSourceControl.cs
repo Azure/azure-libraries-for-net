@@ -187,7 +187,7 @@ namespace ManageWebAppSourceControl
                 Utilities.Log("Deploying a bakery website to " + app5Name + " through web deploy...");
 
                 app5.Deploy()
-                    .WithPackageUri("https://github.com/Azure/azure-sdk-for-net/raw/Fluent/Tests/Fluent.Tests/Assets/bakery-webapp.zip")
+                    .WithPackageUri("https://github.com/Azure/azure-libraries-for-net/raw/master/Tests/Fluent.Tests/Assets/bakery-webapp.zip")
                     .WithExistingDeploymentsDeleted(true)
                     .Execute();
 
