@@ -26,12 +26,6 @@ namespace Fluent.Tests.Network
     public class VirtualNetworkGatewayTest
     {
         private static Region REGION = Region.USWest;
-        public VirtualNetworkGatewayTest(ITestOutputHelper output)
-        {
-             TestHelper.TestLogger = output;
-             ServiceClientTracing.IsEnabled = true;
-             ServiceClientTracing.AddTracingInterceptor(new XunitTracingInterceptor(output));
-        }
 
         [Fact]
         public void CreateUpdate()
