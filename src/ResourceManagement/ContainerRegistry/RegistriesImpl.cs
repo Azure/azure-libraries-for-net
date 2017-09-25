@@ -44,13 +44,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
 
         public override IEnumerable<IRegistry> List()
         {
-            // TODO - ans - We should try to check with service team if this is just missing API, if yes, then log a bug with swagger
-            // and make a code change in auto-generated to support this method directly, as this will help implementing async pattern.
-
-            // There is no API supporting listing of availability set across subscription so enumerate all RGs and then
-            // flatten the "list of list of availability sets" as "list of availability sets" .
-            return Manager.ResourceManager.ResourceGroups.List()
-                                          .SelectMany(rg => ListByResourceGroup(rg.Name));
+            return Extensions.Synchronize(() => Manager.ContainerRegistries.ListAsync());
         }
 
         public override async Task<IPagedCollection<IRegistry>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -65,19 +59,19 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         }
 
 
-        protected override Task<IPage<Models.RegistryInner>> ListInnerAsync(CancellationToken cancellationToken)
+        protected async override Task<IPage<Models.RegistryInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await Inner.ListAsync(cancellationToken);
         }
 
-        protected override Task<IPage<Models.RegistryInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
+        protected async override Task<IPage<Models.RegistryInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await Inner.ListNextAsync(nextLink, cancellationToken);
         }
 
-        protected override Task<IPage<Models.RegistryInner>> ListInnerByGroupAsync(string groupName, CancellationToken cancellationToken)
+        protected async override Task<IPage<Models.RegistryInner>> ListInnerByGroupAsync(string groupName, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await this.Inner.ListByResourceGroupAsync(groupName, cancellationToken);
         }
 
         protected async override Task<IPage<Models.RegistryInner>> ListInnerByGroupNextAsync(string nextLink, CancellationToken cancellationToken)

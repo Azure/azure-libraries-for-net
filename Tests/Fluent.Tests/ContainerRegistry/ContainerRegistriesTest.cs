@@ -7,6 +7,7 @@ using Fluent.Tests.Common;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.ContainerRegistry.Fluent;
 using Azure.Tests;
+using System.Linq;
 
 namespace Fluent.Tests
 {
@@ -36,7 +37,11 @@ namespace Fluent.Tests
                     Assert.True(registry.AdminUserEnabled);
                     Assert.Equal(registry.StorageAccountName, saName);
 
+                    var regs = registryManager.ContainerRegistries.List();
+                    Assert.True(regs.Count() > 0);
+
                     registry = registry.Update()
+                        .WithoutRegistryNameAsAdminUser()
                         .WithTag("tag2", "value2")
                         .WithTag("tag3", "value3")
                         .WithoutTag("tag1")
