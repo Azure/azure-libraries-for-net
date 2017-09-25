@@ -1,5 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using System.Linq;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using System.Threading;
@@ -43,11 +46,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:8535B0E23E6704558262509B5A55B45D:A38A2517ECAC89D37EAB01B83A00D407
-        public IReadOnlyDictionary<string, IVirtualNetworkGatewayIPConfiguration> IPConfigurations()
+        public IReadOnlyCollection<IVirtualNetworkGatewayIPConfiguration> IPConfigurations()
         {
-            return ipConfigs;
+            return ipConfigs.Values.ToList().AsReadOnly();
         }
 
+       
         ///GENMHASH:0BDDE35CB8B3DD88A33C6363C54C0AF4:A53FB902D8052D360814DFFA0B1CEB40
         public VirtualNetworkGatewayType GatewayType()
         {
@@ -145,14 +149,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         protected async override Task<Models.VirtualNetworkGatewayInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return await Manager.Inner.VirtualNetworkGateways.GetAsync(ResourceGroupName, Name);
-        }
-
-        ///GENMHASH:8477D6D598DD5DE7CFD64D231FD9BB43:35CBFE2D3067627F27C17685399D1852
-        public IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> ListConnections()
-        {
-//            return WrapConnectionsList(Manager.Inner.VirtualNetworkGateways.ListConnections(this.ResourceGroupName, this.Name));
-
-            return null;
         }
 
         ///GENMHASH:D232B3BB0D86D13CC0B242F4000DBF07:A6337C672FE4D2497063C4689F0BFDAE
@@ -271,7 +267,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:F91F57741BB7E185BF012523964DEED0:B855D73B977281A4DC1F154F5A7D4DC5
         protected override void AfterCreating()
         {
-            InitializeChildrenFromInner();
         }
 
         ///GENMHASH:BE684C4F4845D0C09A9399569DFB7A42:05B694DF2AF4DFEC5D2DC7534C0AD459
@@ -309,19 +304,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return ipConfig;
         }
 
-        ///GENMHASH:1CF7458570EB3183A47A71F08EA5D0DA:9ABE9FDD63D8CCC22EA023A49D808C8A
-        public async Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> ListConnectionsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        ///GENMHASH:8477D6D598DD5DE7CFD64D231FD9BB43:35CBFE2D3067627F27C17685399D1852
+        public IEnumerable<IVirtualNetworkGatewayConnection> ListConnections()
         {
-            //$ return ReadableWrappersImpl.ConvertPageToInnerAsync(this.Manager().Inner.VirtualNetworkGateways().ListConnectionsAsync(this.ResourceGroupName(), this.Name()))
-            //$ .Map(new Func1<VirtualNetworkGatewayConnectionListEntityInner, VirtualNetworkGatewayConnection>() {
-            //$ @Override
-            //$ public VirtualNetworkGatewayConnection call(VirtualNetworkGatewayConnectionListEntityInner connectionInner) {
-            //$ // will re-query to get full information for the connection
-            //$ return connections().GetById(connectionInner.Id());
-            //$ }
-            //$ });
+            return WrapConnectionsList(Extensions.Synchronize(() => Manager.Inner.VirtualNetworkGateways.ListConnectionsAsync(this.ResourceGroupName, this.Name)));
+        }
 
-            return null;
+        ///GENMHASH:1CF7458570EB3183A47A71F08EA5D0DA:9ABE9FDD63D8CCC22EA023A49D808C8A
+        public async Task<IPagedCollection<IVirtualNetworkGatewayConnection>> ListConnectionsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var connections = await Manager.Inner.VirtualNetworkGateways.ListConnectionsAsync(this.ResourceGroupName, this.Name);
+            var result = connections.Select((inner) => WrapConnection(inner));
+            return PagedCollection<IVirtualNetworkGatewayConnection, VirtualNetworkGatewayConnectionListEntityInner>.CreateFromEnumerable(result);
         }
 
         ///GENMHASH:FFC621DA0580E44927EBEA8D394C1105:84CEF0775356674F2DF43DA4215FAB0F
@@ -400,13 +394,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        ///GENMHASH:9C0E7D718A08B4C0A786388FB107D59D:7D5BABA29E5B9822D918808ECCADA379
-        private IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> WrapConnectionsList(IEnumerable<Models.VirtualNetworkGatewayConnectionListEntityInner> connectionListEntityInners)
-        {
-            //$ return connectionsConverter.Convert(connectionListEntityInners);
-            //$ }
 
-            return null;
+        ///GENMHASH:9C0E7D718A08B4C0A786388FB107D59D:7D5BABA29E5B9822D918808ECCADA379
+        private IEnumerable<IVirtualNetworkGatewayConnection> WrapConnectionsList(IEnumerable<VirtualNetworkGatewayConnectionListEntityInner> connectionListEntityInners)
+        {
+            return connectionListEntityInners.Select(inner => WrapConnection(inner));
+        }
+
+        private IVirtualNetworkGatewayConnection WrapConnection(VirtualNetworkGatewayConnectionListEntityInner inner)
+        {
+            return Connections().GetById(inner.Id);
         }
 
         ///GENMHASH:B54CAD7C3DE0D3C50B8DCF3D902BFB18:4F12E780C5065E3EB6FFCB437197D940

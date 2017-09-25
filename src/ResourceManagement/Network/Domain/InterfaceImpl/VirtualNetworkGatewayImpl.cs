@@ -191,9 +191,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Get all the connections associated with this virtual network gateway asynchronously.
         /// </summary>
         /// <return>All the connections associated with this virtual network gateway.</return>
-        async Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway.ListConnectionsAsync(CancellationToken cancellationToken)
+        async Task<IPagedCollection<IVirtualNetworkGatewayConnection>> Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway.ListConnectionsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListConnectionsAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection;
+            return await this.ListConnectionsAsync(cancellationToken) as IPagedCollection<IVirtualNetworkGatewayConnection>;
         }
 
         /// <summary>

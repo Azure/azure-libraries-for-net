@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Get all the connections associated with this virtual network gateway asynchronously.
         /// </summary>
         /// <return>All the connections associated with this virtual network gateway.</return>
-        Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> ListConnectionsAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<IPagedCollection<IVirtualNetworkGatewayConnection>> ListConnectionsAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets IP configurations for virtual network gateway.

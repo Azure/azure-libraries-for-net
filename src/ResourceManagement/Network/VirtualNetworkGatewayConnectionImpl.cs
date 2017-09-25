@@ -48,12 +48,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:F0389EF26F16D377233CEA0243D3C2D3:002AE7D0BF403F77853FCC09647B9C5D
         public string LocalNetworkGateway2Id()
         {
-            //$ if (Inner.LocalNetworkGateway2() == null) {
-            //$ return null;
-            //$ }
-            //$ return Inner.LocalNetworkGateway2().Id();
-
-            return null;
+            if (Inner.LocalNetworkGateway2 == null) {
+                return null;
+            }
+            return Inner.LocalNetworkGateway2.Id;
         }
 
         ///GENMHASH:CE19D6E1BE71E1233D9525A7E026BFC7:0DAA02A6E6149A594F1E611CEDA41775
@@ -87,17 +85,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:DC68CE09DB266400D8B7E08E0150F876:29C6CFED65DB9A6CE452F3BC85F8D71C
         public long IngressBytesTransferred()
         {
-            //$ return Utils.ToPrimitiveLong(Inner.IngressBytesTransferred());
-
-            return 0;
+            return Inner.IngressBytesTransferred.HasValue ? Inner.IngressBytesTransferred.Value : 0;
         }
 
         ///GENMHASH:3A31ACD3BD909199AC20F8F3E3739FBC:D7548BDC33746E38BAEB0C477D73EA03
         public int RoutingWeight()
         {
-            //$ return Utils.ToPrimitiveInt(Inner.RoutingWeight());
-
-            return 0;
+            return Inner.RoutingWeight.HasValue ? Inner.RoutingWeight.Value : 0;
         }
 
         ///GENMHASH:B0CEE06B3527C9FAA4A6F6BB52F2A301:62CA2860C467549EA3B59C449E9C2DA6
@@ -122,45 +116,41 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:04D6D858FF61D37F76DA127C20A5ABF9:DFC8C1E6C2A0BC0C3178B00DC329D6B7
         public VirtualNetworkGatewayConnectionImpl WithLocalNetworkGateway(ILocalNetworkGateway localNetworkGateway)
         {
-            //$ SubResource localNetworkGatewayRef = new SubResource().WithId(localNetworkGateway.Id());
-            //$ Inner.WithLocalNetworkGateway2(localNetworkGatewayRef);
-            //$ return this;
-
+            SubResource localNetworkGatewayRef = new SubResource()
+            {
+                Id = localNetworkGateway.Id
+            };
+            Inner.LocalNetworkGateway2 = localNetworkGatewayRef;
             return this;
         }
 
         ///GENMHASH:63E7CC3AA7BB3CB910E5D0EE8931223C:05BC5F2415598E47C21323CD8B084A89
         public bool UsePolicyBasedTrafficSelectors()
         {
-            //$ return Utils.ToPrimitiveBoolean(Inner.UsePolicyBasedTrafficSelectors());
-
-            return false;
+            return Inner.UsePolicyBasedTrafficSelectors.HasValue ? Inner.UsePolicyBasedTrafficSelectors.Value : false;
         }
 
         ///GENMHASH:1526F9C6D16D576524554408BA6A97AD:5EBA369C1D9EE8D92A96DC8E7D452DF1
         public VirtualNetworkGatewayConnectionImpl WithSecondVirtualNetworkGateway(IVirtualNetworkGateway virtualNetworkGateway2)
         {
-            //$ SubResource virtualNetworkGateway2Ref = new SubResource().WithId(virtualNetworkGateway2.Id());
-            //$ Inner.WithVirtualNetworkGateway2(virtualNetworkGateway2Ref);
-            //$ return this;
-
+            SubResource virtualNetworkGateway2Ref = new SubResource()
+            {
+                Id = virtualNetworkGateway2.Id
+            };
+            Inner.VirtualNetworkGateway2 = virtualNetworkGateway2Ref;
             return this;
         }
 
         ///GENMHASH:528DB5AE9087793672AA421058153271:CC4E0FCDD0B71DE7618242C10BC4A4C0
         public long EgressBytesTransferred()
         {
-            //$ return Utils.ToPrimitiveLong(Inner.EgressBytesTransferred());
-
-            return 0;
+            return Inner.EgressBytesTransferred.HasValue ? Inner.EgressBytesTransferred.Value : 0;
         }
 
         ///GENMHASH:7F86C125A87D152FD762C431C7E77E76:8499787EA21C54ECB62EBA36A555DD42
         public bool IsBgpEnabled()
         {
-            //$ return Utils.ToPrimitiveBoolean(Inner.EnableBgp());
-
-            return false;
+            return Inner.EnableBgp.HasValue ? Inner.EnableBgp.Value : false;
         }
 
         protected override Task<IVirtualNetworkGatewayConnection> CreateChildResourceAsync(CancellationToken cancellationToken = new CancellationToken())
@@ -171,12 +161,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:CD4C551113E5E3B4D9BB22FF3918F2C2
         public async override Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ beforeCreating();
-            //$ return myManager.Inner.VirtualNetworkGatewayConnections().CreateOrUpdateAsync(
-            //$ this.ResourceGroupName(), this.Name(), this.Inner)
-            //$ .Map(innerToFluentMap(this));
-
-            return null;
+            BeforeCreating();
+            var connectionInner = await this.Manager.Inner.VirtualNetworkGatewayConnections.CreateOrUpdateAsync(parent.ResourceGroupName, this.Name, Inner);
+            SetInner(connectionInner);
+            return this;
         }
 
         ///GENMHASH:BA5893FC2B54BDCAFF5340EE3F1D9D5D:0B239CD1935B35B49A325AE508F825DD
@@ -195,9 +183,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:629786B45F85F8E289D849497FF3EB84:328FF3B049F2421E1BB77C26A4256370
         public VirtualNetworkGatewayConnectionImpl WithVNetToVNet()
         {
-            //$ Inner.WithConnectionType(VirtualNetworkGatewayConnectionType.VNET2VNET);
-            //$ return this;
-
+            Inner.ConnectionType = VirtualNetworkGatewayConnectionType.Vnet2Vnet.Value;
             return this;
         }
 

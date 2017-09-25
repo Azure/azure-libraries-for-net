@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IUpdate
     {
         ///GENMHASH:0A630A9A81A6D7FB1D87E339FE830A51:12952E8CD5F552DB05A3C835C16FDB67
-        public IReadOnlyList<string> AddressSpaces()
+        public ISet<string> AddressSpaces()
         {
             if (Inner.LocalNetworkAddressSpace == null)
-                return new List<string>();
+                return new HashSet<string>();
             else if (Inner.LocalNetworkAddressSpace.AddressPrefixes == null)
-                return new List<string>();
+                return new HashSet<string>();
             else
-                return Inner.LocalNetworkAddressSpace.AddressPrefixes?.ToList();
+                return new HashSet<string>(Inner.LocalNetworkAddressSpace.AddressPrefixes?.ToArray());
         }
 
         ///GENMHASH:EE424593047EC034E4F687A7D891306B:9F58304362D8DE3E42998AA81F3F26B7
