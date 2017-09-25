@@ -61,19 +61,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
 
-        protected override Task<IPage<ContainerServiceInner>> ListInnerAsync(CancellationToken cancellationToken)
+        protected async override Task<IPage<ContainerServiceInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await Inner.ListAsync(cancellationToken);
         }
 
-        protected override Task<IPage<ContainerServiceInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
+        protected async override Task<IPage<ContainerServiceInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await Inner.ListNextAsync(nextLink, cancellationToken);
         }
 
         protected async override Task<IPage<ContainerServiceInner>> ListInnerByGroupAsync(string groupName, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await this.Inner.ListByResourceGroupAsync(groupName, cancellationToken);
         }
 
         protected async override Task<IPage<ContainerServiceInner>> ListInnerByGroupNextAsync(string nextLink, CancellationToken cancellationToken)
