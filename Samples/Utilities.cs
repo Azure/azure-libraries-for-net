@@ -2018,6 +2018,24 @@ namespace Microsoft.Azure.Management.Samples.Common
             Utilities.Log(sb.ToString());
         }
 
+        public static void Print(IVirtualNetworkGatewayConnection resource)
+        {
+            StringBuilder sb = new StringBuilder("Virtual network gateway connection: ")
+                .Append("\n\tId: ").Append(resource.Id)
+                .Append("\n\tName: ").Append(resource.Name)
+                .Append("\n\tResource group: ").Append(resource.ResourceGroupName)
+                .Append("\n\tRegion: ").Append(resource.RegionName)
+                .Append("\n\tConnection type: ").Append(resource.ConnectionType)
+                .Append("\n\tConnection status: ").Append(resource.ConnectionStatus.Value)
+                .Append("\n\tFirst virtual network gateway id: ").Append(resource.VirtualNetworkGateway1Id)
+                .Append("\n\tSecond virtual network gateway id: ").Append(resource.VirtualNetworkGateway2Id)
+                .Append("\n\tLocal network gateway id: ").Append(resource.LocalNetworkGateway2Id)
+                .Append("\n\tBgp enabled: ").Append(resource.IsBgpEnabled)
+                .Append("\n\tEgressBytesTransferred: ").Append(resource.EgressBytesTransferred)
+                .Append("\n\tIngressBytesTransferred: ").Append(resource.IngressBytesTransferred);
+            Utilities.Log(sb.ToString());
+        }
+
         public static void CreateCertificate(string domainName, string pfxPath, string password)
         {
             if (!IsRunningMocked)
