@@ -167,6 +167,15 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        /// <returns>entry point to managing Azure Virtual Network Gateways</returns>
+        public IVirtualNetworkGateways VirtualNetworkGateways
+        {
+            get
+            {
+                return networkManager.VirtualNetworkGateways;
+            }
+        }
+
         /// <returns>entry point to managing deployments</returns>
         public IDeployments Deployments
         {
@@ -611,6 +620,11 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Azure Network Watcher management
         /// </summary>
         INetworkWatchers NetworkWatchers { get; }
+
+        /// <summary>
+        /// Entry point to Azure Virtual Network Gateways management
+        /// </summary>
+        IVirtualNetworkGateways VirtualNetworkGateways { get; }
 
         /// <summary>
         /// Entry point to Azure Web App management.

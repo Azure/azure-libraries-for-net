@@ -98,9 +98,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         protected override VirtualNetworkGatewayConnectionImpl WrapModel(string name)
         {
             VirtualNetworkGatewayConnectionImpl connection = new VirtualNetworkGatewayConnectionImpl(name, parent, new VirtualNetworkGatewayConnectionInner());
-//            return new VirtualNetworkGatewayConnectionImpl(name, parent, new VirtualNetworkGatewayConnectionInner())
-//            .WithRegion(parent.RegionName)
-//            .WithExistingResourceGroup(parent.ResourceGroupName);
             return connection;
         }
 
