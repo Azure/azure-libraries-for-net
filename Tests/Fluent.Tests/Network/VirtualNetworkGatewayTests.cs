@@ -105,7 +105,7 @@ namespace Fluent.Tests.Network
                 vngw.Connections.DeleteByName(connectionName);
                 connections = vngw.ListConnections();
                 Assert.Empty(connections);
-                manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+                manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
             }
         }
 
@@ -151,7 +151,7 @@ namespace Fluent.Tests.Network
                 vngw1.Connections.DeleteByName(connectionName);
                 connections = vngw1.ListConnections();
                 Assert.Empty(connections);
-                manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+                manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
             }
         }
     }

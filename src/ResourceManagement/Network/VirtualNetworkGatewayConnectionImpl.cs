@@ -168,6 +168,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        protected override void SetParentName(VirtualNetworkGatewayConnectionInner inner)
+        {
+            this.parentName = Parent().Name;
+        }
+
         ///GENMHASH:BA5893FC2B54BDCAFF5340EE3F1D9D5D:0B239CD1935B35B49A325AE508F825DD
         public VirtualNetworkGatewayConnectionImpl WithBgp()
         {
