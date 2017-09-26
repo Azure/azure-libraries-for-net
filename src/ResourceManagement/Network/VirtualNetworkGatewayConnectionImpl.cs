@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System.Collections.ObjectModel;
 using Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
@@ -28,18 +29,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             IHasId,
             IUpdate,
             INetworkManager>,
-        //        CreatableUpdatable<IVirtualNetworkGatewayConnection,
-        //            VirtualNetworkGatewayConnectionInner,
-        //            VirtualNetworkGatewayConnectionImpl,
-        //            IVirtualNetworkGatewayConnection>,
-        //        GroupableResource<IVirtualNetworkGatewayConnection,
-        //            VirtualNetworkGatewayConnectionInner,
-        //            VirtualNetworkGatewayConnectionImpl,
-        //            INetworkManager,
-        //            IWithGroup,
-        //            ,
-        //            IWithCreate,
-        //            IUpdate>,
         IVirtualNetworkGatewayConnection,
         IDefinition,
         IUpdate
@@ -154,9 +143,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return Inner.EnableBgp.HasValue ? Inner.EnableBgp.Value : false;
         }
 
-        protected override Task<IVirtualNetworkGatewayConnection> CreateChildResourceAsync(CancellationToken cancellationToken = new CancellationToken())
+        protected async override Task<IVirtualNetworkGatewayConnection> CreateChildResourceAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            CreateResourceAsync(cancellationToken);
+            return this;
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:CD4C551113E5E3B4D9BB22FF3918F2C2
@@ -170,7 +160,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         protected override void SetParentName(VirtualNetworkGatewayConnectionInner inner)
         {
-            this.parentName = Parent().Name;
+//            this.parentName = Parent().Name;
         }
 
         ///GENMHASH:BA5893FC2B54BDCAFF5340EE3F1D9D5D:0B239CD1935B35B49A325AE508F825DD
@@ -200,11 +190,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:ACAE8064401EC62BFA5012E6FE5ADD0F:E2A95EE63056355B62101870AEDE47A6
-        public IReadOnlyCollection<Models.IpsecPolicy> IpsecPolicies()
+        public IReadOnlyCollection<IpsecPolicy> IpsecPolicies()
         {
-            //$ return Collections.UnmodifiableCollection(Inner.IpsecPolicies());
-
-            return null;
+            return new ReadOnlyCollection<IpsecPolicy>(Inner.IpsecPolicies);
         }
 
         ///GENMHASH:AD4AAD7D7CE972B5534D97A24606A18F:E35EF8A35A152BC71CE31BA0440B23C7
@@ -269,7 +257,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public IVirtualNetworkGatewayConnection Update()
         {
-            throw new System.NotImplementedException();
+            return this;
         }
 
         public IWithCreate WithTags(IDictionary<string, string> tags)
