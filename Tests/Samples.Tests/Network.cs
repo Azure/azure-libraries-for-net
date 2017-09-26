@@ -134,5 +134,14 @@ namespace Samples.Tests
                 this.GetType().FullName,
                 ManageNetworkWatcher.Program.RunSample);
         }
+
+        [Fact]
+        [Trait("Samples", "Network")]
+        public void ManageVpnGatewayVNet2VNetConnectionTest()
+        {
+            RunSampleAsTest(
+                this.GetType().FullName,
+                ManageVpnGatewayVNet2VNetConnection.Program.RunSample);
+        }
     }
 }
