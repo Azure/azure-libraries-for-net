@@ -160,7 +160,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         protected override void SetParentName(VirtualNetworkGatewayConnectionInner inner)
         {
-//            this.parentName = Parent().Name;
         }
 
         ///GENMHASH:BA5893FC2B54BDCAFF5340EE3F1D9D5D:0B239CD1935B35B49A325AE508F825DD
@@ -248,11 +247,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:AEC5916EA96BA85F7A39800471D3F359:729D419AA8EB92D8E2582EA1988A5D32
-        public IReadOnlyCollection<Models.TunnelConnectionHealth> TunnelConnectionStatus()
+        public IReadOnlyCollection<TunnelConnectionHealth> TunnelConnectionStatus()
         {
-            //$ return Collections.UnmodifiableCollection(Inner.TunnelConnectionStatus());
-
-            return null;
+            return new ReadOnlyCollection<TunnelConnectionHealth>(Inner.TunnelConnectionStatus);
         }
 
         public IVirtualNetworkGatewayConnection Update()
@@ -262,12 +259,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public IWithCreate WithTags(IDictionary<string, string> tags)
         {
-            throw new System.NotImplementedException();
+            base.WithTags(tags);
+            return this;
         }
 
         public IWithCreate WithTag(string key, string value)
         {
-            throw new System.NotImplementedException();
+            base.WithTag(key, value);
+            return this;
         }
     }
 }
