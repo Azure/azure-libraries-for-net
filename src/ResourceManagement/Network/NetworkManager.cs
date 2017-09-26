@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         private ApplicationGatewaysImpl appGateways;
         private IRouteTables routeTables;
         private NetworkWatchersImpl networkWatchers;
+        private VirtualNetworkGatewaysImpl virtualNetworkGateways;
+        private LocalNetworkGatewaysImpl localNetworkGateways;
 
         private NetworkManager(RestClient restClient, string subscriptionId) :
             base(restClient, subscriptionId, new NetworkManagementClient(new Uri(restClient.BaseUri),
@@ -204,7 +206,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// return entry point to network watchers management API entry point
+        /// return entry point to network watchers management
         /// </summary>
         public INetworkWatchers NetworkWatchers
         {
@@ -216,6 +218,38 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 }
 
                 return networkWatchers;
+            }
+        }
+
+        /// <summary>
+        /// return entry point to virtual network gateways management
+        /// </summary>
+        public IVirtualNetworkGateways VirtualNetworkGateways
+        {
+            get
+            {
+                if (virtualNetworkGateways == null)
+                {
+                    virtualNetworkGateways = new VirtualNetworkGatewaysImpl(this);
+                }
+
+                return virtualNetworkGateways;
+            }
+        }
+
+        /// <summary>
+        /// return entry point to local network gateways management
+        /// </summary>
+        public ILocalNetworkGateways LocalNetworkGateways
+        {
+            get
+            {
+                if (localNetworkGateways == null)
+                {
+                    localNetworkGateways = new LocalNetworkGatewaysImpl(this);
+                }
+
+                return localNetworkGateways;
             }
         }
     }
@@ -233,9 +267,19 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IApplicationGateways ApplicationGateways { get; }
 
         /// <summary>
-        /// return entry point to network watchers management API entry point
+        /// return entry point to network watchers management
         /// </summary>
         INetworkWatchers NetworkWatchers { get; }
+
+        /// <summary>
+        /// return entry point to virtual network gateways management
+        /// </summary>
+        IVirtualNetworkGateways VirtualNetworkGateways { get; }
+
+        /// <summary>
+        /// return entry point to virtual network gateways management
+        /// </summary>
+        ILocalNetworkGateways LocalNetworkGateways { get; }
     }
 
     public interface INetworkManager : INetworkManagerBeta, IManager<INetworkManagementClient>

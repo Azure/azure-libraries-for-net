@@ -6,21 +6,18 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.Azure.Management.Network.Fluent;
-
     /// <summary>
     /// Defines values for VirtualNetworkGatewayConnectionStatus.
     /// </summary>
-    public static class VirtualNetworkGatewayConnectionStatus
+    public class VirtualNetworkGatewayConnectionStatus : ExpandableStringEnum<VirtualNetworkGatewayConnectionStatus>
     {
-        public const string Unknown = "Unknown";
-        public const string Connecting = "Connecting";
-        public const string Connected = "Connected";
-        public const string NotConnected = "NotConnected";
+        public static readonly VirtualNetworkGatewayConnectionStatus Unknown = Parse("Unknown");
+        public static readonly VirtualNetworkGatewayConnectionStatus Connecting = Parse("Connecting");
+        public static readonly VirtualNetworkGatewayConnectionStatus Connected = Parse("Connected");
+        public static readonly VirtualNetworkGatewayConnectionStatus NotConnected = Parse("NotConnected");
     }
 }
