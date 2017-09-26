@@ -178,7 +178,7 @@ namespace ManageFunctionAppSourceControl
 
                 Utilities.Log("Deploying to " + app5Name + " through web deploy...");
                 app5.Deploy()
-                    .WithPackageUri("https://github.com/Azure/azure-sdk-for-net/raw/Fluent/Samples/Asset/square-function-app.zip")
+                    .WithPackageUri("https://github.com/Azure/azure-libraries-for-net/raw/master/Samples/Asset/square-function-app.zip")
                     .WithExistingDeploymentsDeleted(true)
                     .Execute();
 

@@ -301,7 +301,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             {
                 string rgName = TestUtilities.GenerateName("javacsmrg");
                 string vmssName = TestUtilities.GenerateName("vmss");
-                string apacheInstallScript = "https://raw.githubusercontent.com/Azure/azure-sdk-for-net/Fluent/Tests/Fluent.Tests/Assets/install_apache.sh";
+                string apacheInstallScript = "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Tests/Fluent.Tests/Assets/install_apache.sh";
                 string installCommand = "bash install_apache.sh";
                 List<string> fileUris = new List<string>();
                 fileUris.Add(apacheInstallScript);
@@ -1326,7 +1326,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             CloudBlockBlob blob = container.GetBlockBlobReference("install_apache.sh");
             using (HttpClient client = new HttpClient())
             {
-                blob.UploadFromStreamAsync(client.GetStreamAsync("https://raw.githubusercontent.com/Azure/azure-sdk-for-net/Fluent/Tests/Fluent.Tests/Assets/install_apache.sh").Result).Wait();
+                blob.UploadFromStreamAsync(client.GetStreamAsync("https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Tests/Fluent.Tests/Assets/install_apache.sh").Result).Wait();
             }
             return blob.Uri.ToString();
         }
