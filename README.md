@@ -1,11 +1,11 @@
 
 # Azure Management Libraries for .NET #
 
-This README is based on the released stable version (1.2). If you are looking for other releases, see [More Information](#more-information)
+This README is based on the released stable version (1.3). If you are looking for other releases, see [More Information](#more-information)
 
 The Azure Management Libraries for .NET is a higher-level, object-oriented API for managing Azure resources. Libraries are built on the lower-level, request-response style [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest) and can run side-by-side with [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest).
 
-## Feature Availability and Road Map as of Version 1.2 ##
+## Feature Availability and Road Map as of Version 1.3 ##
 
 <table>
   <tr>
@@ -17,7 +17,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
   <tr>
     <td>Compute</td>
     <td>Virtual machines and VM extensions<br>Virtual machine scale sets<br>Managed disks</td>
-    <td valign="top">Azure container service and registry</td>
+    <td valign="top">Azure container service + registry + instances<br>Availability Zones</td>
     <td valign="top">More Azure container registry features</td>
   </tr>
   <tr>
@@ -35,14 +35,14 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
   <tr>
     <td>Networking</td>
     <td>Virtual networks<br>Network interfaces<br>IP addresses<br>Routing table<br>Network security groups<br>Application gateways<br>DNS<br>Traffic managers</td>
-    <td valign="top">Load balancers<br>Network watchers</td>
+    <td valign="top">Load balancers<br>Network peering<br>Virtual Network Gateway<br>Network watchers</td>
     <td valign="top">VPN<br>More application gateway features</td>
   </tr>
   <tr>
     <td>More services</td>
     <td>Resource Manager<br>Key Vault<br>Redis<br>CDN<br>Batch</td>
     <td valign="top">Web apps<br>Function Apps<br>Service bus<br>Graph RBAC<br>Cosmos DB<br>Search</td>
-    <td valign="top">Monitor<br>Azure container instances<br>Data Lake</td>
+    <td valign="top">Monitor<br>Data Lake</td>
   </tr>
   <tr>
     <td>Fundamentals</td>
@@ -221,7 +221,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 # Sample Code #
 
-You can find plenty of sample code that illustrates management scenarios (80+ end-to-end scenarios) for Azure Virtual Machines, Virtual Machine Scale Sets, Managed Disks, Active Directory Azure Container Service and Registry, Storage, Networking, Resource Manager, SQL Database, Cosmos DB, App Service (Web Apps on Windows and Linux), Functions, Service Bus, Key Vault, Redis, CDN and Batch … 
+You can find plenty of sample code that illustrates management scenarios (95+ end-to-end scenarios) for Azure Virtual Machines, Virtual Machine Scale Sets, Managed Disks, Active Directory Azure Container Service and Registry, Storage, Networking, Resource Manager, SQL Database, Cosmos DB, App Service (Web Apps on Windows and Linux), Functions, Service Bus, Key Vault, Redis, CDN and Batch … 
 
 <table>
   <tr>
@@ -244,9 +244,10 @@ You can find plenty of sample code that illustrates management scenarios (80+ en
 <li><a href="https://github.com/Azure-Samples/managed-disk-dotnet-create-virtual-machine-using-specialized-disk-from-snapshot">Create virtual machine using specialized VHD from snapshot</a></li>
 <li><a href="https://github.com/Azure-Samples/managed-disk-dotnet-convert-existing-virtual-machines-to-use-managed-disks">Convert virtual machines to use managed disks</a></li>
 <li><a href="https://github.com/Azure-Samples/compute-dotnet-manage-virtual-machine-with-unmanaged-disks">Manage virtual machine with unmanaged disks</a></li>
-<li><a href="https://github.com/Azure-Samples/aad-dotnet-manage-resources-from-vm-with-msi">Manage Azure resources from a virtual machine with managed service identity (MSI)</a></li></ul></td>
-</ul>
-</td>
+<li><a href="https://github.com/Azure-Samples/aad-dotnet-manage-resources-from-vm-with-msi">Manage Azure resources from a virtual machine with managed service identity (MSI)</a></li>
+<li><a href="https://github.com/Azure-Samples/compute-dotnet-manage-vms-in-availability-zones">Manage virtual machines in availability zones</a></li>
+<li><a href="https://github.com/Azure-Samples/compute-dotnet-manage-vmss-in-availability-zones">Manage virtual machine scale sets in availability zones</a></li>
+</ul></td>
   </tr>
   <tr>
     <td>Virtual Machines - parallel execution</td>
@@ -273,7 +274,7 @@ You can find plenty of sample code that illustrates management scenarios (80+ en
 </ul></td>
   </tr>
 <tr>
-    <td>Container Service and Container Registry</td>
+    <td>Container Service<br>Container Registry and <br>Container Instances</td>
     <td><ul style="list-style-type:circle">
 <li><a href="https://github.com/Azure-Samples/acr-dotnet-manage-azure-container-registry">Manage container registry</a></li>
 <!-- <li><a href="https://github.com/Azure-Samples/acs-dotnet-deploy-image-from-acr-to-kubernetes">Deploy an image from container registry to Kubernetes cluster</a></li>
@@ -281,6 +282,13 @@ You can find plenty of sample code that illustrates management scenarios (80+ en
 <li><a href="https://github.com/Azure-Samples/acs-dotnet-deploy-image-from-docker-hub-to-kubernetes">Deploy an image from Docker hub to Kubernetes cluster</a></li>
 <li><a href="https://github.com/Azure-Samples/acs-dotnet-deploy-image-from-docker-hub-to-swarm">Deploy an image from Docker hub to Swarm cluster</li> -->
 <li><a href="https://github.com/Azure-Samples/acs-dotnet-manage-azure-container-service">Manage container service</li>
+<li><a href="https://github.com/Azure-Samples/aci-dotnet-manage-container-instances-1">Manage Azure Container Instances with new Azure File Share</li>
+<li><a href="https://github.com/Azure-Samples/aci-dotnet-manage-container-instances-2">Manage Azure Container Instances with an existing Azure File Share</li>
+<li><a href="https://github.com/Azure-Samples/aci-dotnet-create-container-groups">Create Container Group with multiple instances and container images</li>
+<li><a href="https://github.com/Azure-Samples/aci-dotnet-create-container-groups-using-private-registry">Create Container Group using images from a private registry</li>
+<!--  
+<li><a href="https://github.com/Azure-Samples/aci-dotnet-scale-up-containers-using-kubernetes-in-acs">Create Container Group and scale up containers using Kubernetes in ACS</li>  
+-->  
 </ul></td>
   </tr>
   <tr>
@@ -301,8 +309,12 @@ You can find plenty of sample code that illustrates management scenarios (80+ en
 <li><a href="https://github.com/Azure-Samples/network-dotnet-manage-ip-address">Manage IP address</a></li>
 <li><a href="https://github.com/Azure-Samples/network-dotnet-manage-internet-facing-load-balancers">Manage Internet facing load balancers</a></li>
 <li><a href="https://github.com/Azure-Samples/network-dotnet-manage-internal-load-balancers">Manage internal load balancers</a></li>
-<li><a href="https://github.com/Azure-Samples/network-dotnet-use-new-watcher">Use net watcher</a></li>
 <li><a href="https://github.com/Azure-Samples/network-dotnet-create-simple-internet-facing-load-balancer">Create simple Internet facing load balancer</a></li>
+<li><a href="https://github.com/Azure-Samples/network-dotnet-use-new-watcher">Use net watcher</a>
+<li><a href="https://github.com/Azure-Samples/network-dotnet-manage-network-peering">Manage network peering between two virtual networks</a></li>
+<li><a href="https://github.com/Azure-Samples/network-dotnet-use-network-watcher-to-check-connectivity">Use network watcher to check connectivity between virtual machines in peered networks</a></li>
+<li><a href="https://github.com/Azure-Samples/network-dotnet-manage-virtual-network-with-site-to-site-vpn-connection">Manage virtual network with site-to-site VPN connection</a></li>
+<li><a href="https://github.com/Azure-Samples/network-dotnet-manage-virtual-network-to-virtual-network-vpn-connection">Manage virtual network to virtual network VPN connection</a></li>
 </ul>
 </td>
   </tr>
@@ -448,15 +460,16 @@ You can find plenty of sample code that illustrates management scenarios (80+ en
 
 # Download #
 
-**1.2** release builds are available on NuGet:
+**1.3** release builds are available on NuGet:
 
-|Azure Management Library                     | Package name                                        | Stable (1.2 release) |
+|Azure Management Library                     | Package name                                        | Stable (1.3 release) |
 |---------------------------------------------|-----------------------------------------------------|------------------------|
 |Azure Management Client (wrapper package)    | `Microsoft.Azure.Management.Fluent`                 | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) |
 |App Service (Web Apps and Functions)         | `Microsoft.Azure.Management.AppService.Fluent`      | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.AppService.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.AppService.Fluent/) |
 |Batch                                        | `Microsoft.Azure.Management.Batch.Fluent`           | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Batch.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch.Fluent/) |
 |CDN                                          | `Microsoft.Azure.Management.Cdn.Fluent`             | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Cdn.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Cdn.Fluent/) |
 |Virtual Machines, Virtual Machine Scale Sets, Azure Container Services| `Microsoft.Azure.Management.Compute.Fluent`         | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Compute.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/) |
+|Container Instance                           | `Microsoft.Azure.Management.ContainerInstance.Fluent`| [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.ContainerInstance.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.ContainerInstance.Fluent/) |
 |Container Registry                           | `Microsoft.Azure.Management.ContainerRegistry.Fluent`| [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.ContainerRegistry.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.ContainerRegistry.Fluent/) |
 |Cosmos DB                                    | `Microsoft.Azure.Management.CosmosDB.Fluent`        | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.CosmosDB.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.CosmosDB.Fluent/) |
 |DNS                                          | `Microsoft.Azure.Management.Dns.Fluent`             | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Dns.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Dns.Fluent/) |
@@ -480,7 +493,7 @@ You can find plenty of sample code that illustrates management scenarios (80+ en
 
 # Help
 
-If you are migrating your code to 1.2, you can use these notes for [preparing your code for 1.2 from 1.1](./notes/prepare-for-1.2.md).
+If you are migrating your code to 1.3, you can use these notes for [preparing your code for 1.3 from 1.2](./notes/prepare-for-1.3.md).
 
 If you encounter any bugs with these libraries, please file issues via [Issues](https://github.com/Azure/azure-libraries-for-net/issues) or checkout [StackOverflow for Azure Management Libraries for .NET](http://stackoverflow.com/questions/tagged/azure-sdk).
 
