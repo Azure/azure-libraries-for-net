@@ -312,12 +312,12 @@ namespace Samples.Tests
 
         [Fact]
         [Trait("Samples", "Compute")]
-        public void ManageZoneRedundantVirtualMachineScaleSetTest()
+        public void ManageZonalVirtualMachineScaleSetTest()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var rollUpClient = TestHelper.CreateRollupClient();
-                ManageZoneRedundantVirtualMachineScaleSet.Program.RunSample(rollUpClient);
+                ManageZonalVirtualMachineScaleSet.Program.RunSample(rollUpClient);
             }
         }
     }
