@@ -54,6 +54,21 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 #endif
 
         /// <summary>
+        /// Creates a credentail object using token from local managed service identity endpoint.
+        /// </summary>
+        /// <param name="environment">the environment to authenticate to</param>
+        /// <param name="port">local port to query the MSI token</param>
+        /// <returns>an authenticated credentials object</returns>
+        public AzureCredentials FromMSI(AzureEnvironment environment, int port = 50342)
+        {
+            return new AzureCredentials(new MSILoginInformation
+            {
+                Port = port
+            },
+            environment);
+        }
+
+        /// <summary>
         /// Creates a credentials object from a service principal.
         /// </summary>
         /// <param name="clientId">the client ID of the application the service principal is associated with</param>
