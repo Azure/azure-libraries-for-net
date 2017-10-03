@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             msiRequest.Content = new FormUrlEncodedContent(parameters);
 
             var msiResponse = await (new HttpClient()).SendAsync(msiRequest, cancellationToken);
-            string content = msiResponse.Content.ToString();
+            string content = await msiResponse.Content.ReadAsStringAsync();
             dynamic loginInfo = JsonConvert.DeserializeObject(content);
             string tokenType = loginInfo.token_type;
             if (tokenType == null)
