@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     {
         private UserLoginInformation userLoginInformation;
         private ServicePrincipalLoginInformation servicePrincipalLoginInformation;
+        private MSITokenProvider msiTokenProvider;
+
         private IDictionary<Uri, ServiceClientCredentials> credentialsCache;
 #if PORTABLE
         private DeviceCredentialInformation deviceCredentialInformation;
@@ -56,6 +58,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             this.servicePrincipalLoginInformation = servicePrincipalLoginInformation;
         }
 
+        public AzureCredentials(MSILoginInformation msiLoginInformation, AzureEnvironment environment)
+            : this(tenantId: null, environment: environment)
+        {
+            this.msiTokenProvider = new MSITokenProvider(environment.ResourceManagerEndpoint, msiLoginInformation.Port);
+        }
+
         private AzureCredentials(string tenantId, AzureEnvironment environment)
         {
             TenantId = tenantId;
@@ -80,6 +88,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 
         public async override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
+            if (this.msiTokenProvider != null)
+            {
+                request.Headers.Authorization = await this.msiTokenProvider.GetAuthenticationHeaderAsync(cancellationToken);
+                return;
+            }
+
             var adSettings = new ActiveDirectoryServiceSettings
             {
                 AuthenticationEndpoint = new Uri(Environment.AuthenticationEndpoint),
