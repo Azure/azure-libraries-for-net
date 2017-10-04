@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     /// <summary>
     /// TokenProvider that can retrieve AD acess token from the local MSI port.
     /// </summary>
-    public class MSITokenProvider : ITokenProvider
+    public class MSITokenProvider : ITokenProvider, IBeta
     {
         private string resource;
         private int? port;
