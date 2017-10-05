@@ -255,9 +255,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                                 {
                                     environment.GraphEndpoint = matchedEnvironment.GraphEndpoint;
                                 }
-                                if (environment.ManagementEnpoint == null)
+                                if (environment.ManagementEndpoint == null)
                                 {
-                                    environment.ManagementEnpoint = matchedEnvironment.ManagementEnpoint;
+                                    environment.ManagementEndpoint = matchedEnvironment.ManagementEndpoint;
                                 }
                                 if (environment.StorageEndpointSuffix == null)
                                 {

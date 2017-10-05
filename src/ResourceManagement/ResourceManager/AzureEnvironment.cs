@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             {
                 AuthenticationEndpoint = "https://login.microsoftonline.com/",
                 ResourceManagerEndpoint = "https://management.azure.com/",
-                ManagementEnpoint = "https://management.core.windows.net/",
+                ManagementEndpoint = "https://management.core.windows.net/",
                 GraphEndpoint = "https://graph.windows.net/",
                 StorageEndpointSuffix = ".core.windows.net"
             };
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             {
                 AuthenticationEndpoint = "https://login.chinacloudapi.cn/",
                 ResourceManagerEndpoint = "https://management.chinacloudapi.cn/",
-                ManagementEnpoint = "https://management.core.chinacloudapi.cn/",
+                ManagementEndpoint = "https://management.core.chinacloudapi.cn/",
                 GraphEndpoint = "https://graph.chinacloudapi.cn/",
                 StorageEndpointSuffix = ".core.chinacloudapi.cn"
             };
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             {
                 AuthenticationEndpoint = "https://login.microsoftonline.us/",
                 ResourceManagerEndpoint = "https://management.usgovcloudapi.net/",
-                ManagementEnpoint = "https://management.usgovcloudapi.net/",
+                ManagementEndpoint = "https://management.core.usgovcloudapi.net",
                 GraphEndpoint = "https://graph.windows.net/",
                 StorageEndpointSuffix = ".core.usgovcloudapi.net"
             };
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             {
                 AuthenticationEndpoint = "https://login.microsoftonline.de/",
                 ResourceManagerEndpoint = "https://management.microsoftazure.de/",
-                ManagementEnpoint = "https://management.microsoftazure.de/",
+                ManagementEndpoint = "https://management.core.cloudapi.de",
                 GraphEndpoint = "https://graph.cloudapi.de/",
                 StorageEndpointSuffix = ".core.cloudapi.de"
             };
@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         public string GraphEndpoint { get; set; }
 
         /// <summary>
-        /// Base URL for calls to service management and authentications to Active Directory.
+        /// Base URL for calls to service management (aka RDFE) and authentications to Active Directory.
         /// </summary>
-        public string ManagementEnpoint { get; set; }
+        public string ManagementEndpoint { get; set; }
 
         /// <summary>
         /// The storage service url suffix.

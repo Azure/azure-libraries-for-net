@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             {
                 { "authurl", AzureEnvironment.AzureGlobalCloud.AuthenticationEndpoint },
                 { "baseurl", AzureEnvironment.AzureGlobalCloud.ResourceManagerEndpoint },
-                { "managementuri", AzureEnvironment.AzureGlobalCloud.ManagementEnpoint },
+                { "managementuri", AzureEnvironment.AzureGlobalCloud.ManagementEndpoint },
                 { "graphurl", AzureEnvironment.AzureGlobalCloud.GraphEndpoint }
             };
 
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             var env = new AzureEnvironment()
             {
                 AuthenticationEndpoint = config["authurl"].Replace("\\", ""),
-                ManagementEnpoint = config["managementuri"].Replace("\\", ""),
+                ManagementEndpoint = config["managementuri"].Replace("\\", ""),
                 ResourceManagerEndpoint = config["baseurl"].Replace("\\", ""),
                 GraphEndpoint = config["graphurl"].Replace("\\", "")
             };
