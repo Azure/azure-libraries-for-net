@@ -19,7 +19,7 @@ namespace Azure.Tests
                 var env = new AzureEnvironment()
                 {
                     AuthenticationEndpoint = "https://www.contoso.com",
-                    ManagementEnpoint = "https://www.contoso.com",
+                    ManagementEndpoint = "https://www.contoso.com",
                     ResourceManagerEndpoint = "https://www.contoso.com",
                     GraphEndpoint = "https://www.contoso.com"
                 };

@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 await authFile.WriteLineAsync(string.Format("  \"activeDirectoryEndpointUrl\": \"{0}\",", environment.AuthenticationEndpoint));
                 await authFile.WriteLineAsync(string.Format("  \"resourceManagerEndpointUrl\": \"{0}\",", environment.ResourceManagerEndpoint));
                 await authFile.WriteLineAsync(string.Format("  \"activeDirectoryGraphResourceId\": \"{0}\",", environment.GraphEndpoint));
-                await authFile.WriteLineAsync(string.Format("  \"managementEndpointUrl\": \"{0}\"", environment.ManagementEnpoint));
+                await authFile.WriteLineAsync(string.Format("  \"managementEndpointUrl\": \"{0}\"", environment.ManagementEndpoint));
                 await authFile.WriteLineAsync("}");
             }
             finally
