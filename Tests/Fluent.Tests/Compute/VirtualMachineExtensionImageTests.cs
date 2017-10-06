@@ -27,7 +27,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 // Lazy listing
                 var firstTwenty = extensionImages.Take(maxListing).ToList();
                 Assert.Equal(firstTwenty.Count(), maxListing);
-                Assert.False(firstTwenty.Any(image => image == null));
+                Assert.DoesNotContain(null, firstTwenty);
                 // Make sure all the elements are unique and we did not return any duplicates
                 Assert.Equal(firstTwenty.Distinct().Count(), maxListing);
             }

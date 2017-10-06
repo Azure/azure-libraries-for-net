@@ -41,8 +41,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             this.Inner.DnsPrefix = param0;
             return this;
-
-            return this;
         }
 
         public string VMSize()

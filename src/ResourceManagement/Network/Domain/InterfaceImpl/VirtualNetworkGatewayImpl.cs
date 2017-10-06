@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// virtual network gateway, it will be created with the specified address space and a subnet for virtual network gateway.
         /// </summary>
         /// <param name="name">The name of the new virtual network.</param>
-        /// <param name="addressSpace">The address space for rhe virtual network.</param>
+        /// <param name="addressSpace">The address space for the virtual network.</param>
+        /// <param name="subnetAddressSpaceCidr">The address space for the subnet.</param>
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithGatewayType VirtualNetworkGateway.Definition.IWithNetwork.WithNewNetwork(string name, string addressSpace, string subnetAddressSpaceCidr)
         {
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// it will be created with the specified address space and a default subnet for virtual network gateway.
         /// </summary>
         /// <param name="addressSpaceCidr">The address space for the virtual network.</param>
+        /// <param name="subnetAddressSpaceCidr">The address space for the subnet.</param>
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithGatewayType VirtualNetworkGateway.Definition.IWithNetwork.WithNewNetwork(string addressSpaceCidr, string subnetAddressSpaceCidr)
         {
@@ -283,24 +285,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         /// <param name="asn">The BGP speaker's ASN.</param>
         /// <param name="bgpPeeringAddress">The BGP peering address and BGP identifier of this BGP speaker.</param>
+        /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithCreate VirtualNetworkGateway.Definition.IWithBgp.WithBgp(long asn, string bgpPeeringAddress)
         {
             return this.WithBgp(asn, bgpPeeringAddress) as VirtualNetworkGateway.Definition.IWithCreate;
         }
 
         /// <summary>
-        /// Gets Disable BGP for this virtual network gateway.
+        /// Disables BGP for this virtual network gateway.
         /// </summary>
-        VirtualNetworkGateway.Update.IUpdate VirtualNetworkGateway.Update.IWithBgp.DisableBgp
+        /// <return>The next stage of the update.</return>
+        VirtualNetworkGateway.Update.IUpdate VirtualNetworkGateway.Update.IWithBgp.WithoutBgp()
         {
-            get
-            {
-                return this.DisableBgp() as VirtualNetworkGateway.Update.IUpdate;
-            }
+            return this.WithoutBgp() as VirtualNetworkGateway.Update.IUpdate;
         }
 
+        /// <summary>
+        /// Enables BGP.
+        /// </summary>
         /// <param name="asn">The BGP speaker's ASN.</param>
         /// <param name="bgpPeeringAddress">The BGP peering address and BGP identifier of this BGP speaker.</param>
+        /// <return>The next stage of the update.</return>
         VirtualNetworkGateway.Update.IUpdate VirtualNetworkGateway.Update.IWithBgp.WithBgp(long asn, string bgpPeeringAddress)
         {
             return this.WithBgp(asn, bgpPeeringAddress) as VirtualNetworkGateway.Update.IUpdate;

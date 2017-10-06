@@ -358,8 +358,6 @@ namespace Fluent.Tests
 
                 // Test transparent data encryption settings.
                 var transparentDataEncryption = sqlDatabase.GetTransparentDataEncryption();
-                Assert.NotNull(transparentDataEncryption.Status);
-
                 var transparentDataEncryptionActivities = transparentDataEncryption.ListActivities();
                 Assert.NotNull(transparentDataEncryptionActivities);
 
@@ -872,7 +870,6 @@ namespace Fluent.Tests
             Assert.Equal(elasticPoolName, sqlElasticPool.Name);
             Assert.Equal(SqlServerName, sqlElasticPool.SqlServerName);
             Assert.Equal(ElasticPoolEditions.Standard, sqlElasticPool.Edition);
-            Assert.NotNull(sqlElasticPool.CreationDate);
             Assert.NotEqual(0, sqlElasticPool.DatabaseDtuMax);
             Assert.NotEqual(0, sqlElasticPool.Dtu);
         }

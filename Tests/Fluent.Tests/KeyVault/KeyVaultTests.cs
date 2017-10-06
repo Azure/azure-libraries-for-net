@@ -97,7 +97,7 @@ namespace Fluent.Tests
                     manager.Vaults.DeleteById(vault2.Id);
 
                     vaults = manager.Vaults.ListByResourceGroup(rgName);
-                    Assert.Equal(0, vaults.Count());
+                    Assert.Empty(vaults);
                 }
                 finally
                 {
