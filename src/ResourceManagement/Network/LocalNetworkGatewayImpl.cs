@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        ///GENMHASH:D747AFA75EF01A631FD1E74DD4950F8C:CBF36D794E88BFED53AE4DC92C5109ED
-        public LocalNetworkGatewayImpl DisableBgp()
+        ///GENMHASH:6E2DB095301FA5F54EABD8841D651031:CBF36D794E88BFED53AE4DC92C5109ED
+        public LocalNetworkGatewayImpl WithoutBgp()
         {
             Inner.BgpSettings = null;
             return this;
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:D2A6D2A6D9D7D04639AA5B3E46602E45
-        public async override Task<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async override Task<ILocalNetworkGateway> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var response = await Manager.Inner.LocalNetworkGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner);
             SetInner(response);
