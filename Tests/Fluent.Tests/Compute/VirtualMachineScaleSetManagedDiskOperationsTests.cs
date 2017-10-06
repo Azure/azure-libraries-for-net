@@ -72,9 +72,9 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         Assert.False(vm.IsOSBasedOnStoredImage);
                         Assert.True(vm.IsManagedDiskEnabled);
                         Assert.NotNull(vm.UnmanagedDataDisks);
-                        Assert.Equal(vm.UnmanagedDataDisks.Count, 0);
+                        Assert.Empty(vm.UnmanagedDataDisks);
                         Assert.NotNull(vm.DataDisks);
-                        Assert.Equal(vm.DataDisks.Count, 3);
+                        Assert.Equal(3, vm.DataDisks.Count);
                     }
                     vmScaleSet.Update()
                             .WithoutDataDisk(0)
@@ -87,7 +87,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     foreach (var vm in virtualMachines)
                     {
                         Assert.NotNull(vm.DataDisks);
-                        Assert.Equal(vm.DataDisks.Count, 3);
+                        Assert.Equal(3, vm.DataDisks.Count);
                     }
                 }
                 finally
@@ -191,15 +191,15 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         Assert.False(vm1.IsOSBasedOnStoredImage);
                         Assert.True(vm1.IsManagedDiskEnabled);
                         Assert.NotNull(vm1.UnmanagedDataDisks);
-                        Assert.Equal(vm1.UnmanagedDataDisks.Count, 0);
+                        Assert.Empty(vm1.UnmanagedDataDisks);
                         Assert.NotNull(vm1.DataDisks);
-                        Assert.Equal(vm1.DataDisks.Count, 2); // Disks from data disk image from custom image
+                        Assert.Equal(2, vm1.DataDisks.Count); // Disks from data disk image from custom image
                         Assert.True(vm1.DataDisks.ContainsKey(1));
                         var disk = vm1.DataDisks[1];
-                        Assert.Equal(disk.Size, 100);
+                        Assert.Equal(100, disk.Size);
                         Assert.True(vm1.DataDisks.ContainsKey(2));
                         disk = vm1.DataDisks[2];
-                        Assert.Equal(disk.Size, 50);
+                        Assert.Equal(50, disk.Size);
                     }
 
                     vmScaleSet.Deallocate();

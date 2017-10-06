@@ -53,7 +53,7 @@ namespace Fluent.Tests.Miscellaneous
                        .WithNewResourceGroup(rgName)
                        .Create();
 
-                    Assert.True(string.Equals(storageAccount.ResourceGroupName, rgName));
+                    Assert.Equal(storageAccount.ResourceGroupName, rgName);
                 }
                 finally
                 {

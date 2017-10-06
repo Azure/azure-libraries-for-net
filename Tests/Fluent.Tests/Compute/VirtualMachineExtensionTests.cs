@@ -115,9 +115,9 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 IVirtualMachineExtension customScriptExtension;
                 Assert.True(vm.ListExtensions().TryGetValue("CustomScriptForLinux", out customScriptExtension));
                 Assert.NotNull(customScriptExtension);
-                Assert.Equal(customScriptExtension.PublisherName, "Microsoft.OSTCExtensions");
-                Assert.Equal(customScriptExtension.TypeName, "CustomScriptForLinux");
-                Assert.Equal(customScriptExtension.AutoUpgradeMinorVersionEnabled, true);
+                Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension.PublisherName);
+                Assert.Equal("CustomScriptForLinux", customScriptExtension.TypeName);
+                Assert.True(customScriptExtension.AutoUpgradeMinorVersionEnabled);
 
                 // Ensure the public settings are accessible, the protected settings won't be returned from the service.
                 //
@@ -128,7 +128,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.True(publicSettings.ContainsKey("commandToExecute"));
                 string commandToExecute = (string)publicSettings["commandToExecute"];
                 Assert.NotNull(commandToExecute);
-                Assert.True(commandToExecute.Equals(installCommand, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal(commandToExecute, installCommand, true);
 
                 // Remove the custom extension
                 //
@@ -288,9 +288,9 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 IVirtualMachineExtension customScriptExtension;
                 Assert.True(vm.ListExtensions().TryGetValue("CustomScriptForLinux", out customScriptExtension));
                 Assert.NotNull(customScriptExtension);
-                Assert.Equal(customScriptExtension.PublisherName, "Microsoft.OSTCExtensions");
-                Assert.Equal(customScriptExtension.TypeName, "CustomScriptForLinux");
-                Assert.Equal(customScriptExtension.AutoUpgradeMinorVersionEnabled, true);
+                Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension.PublisherName, true);
+                Assert.Equal("CustomScriptForLinux", customScriptExtension.TypeName, true);
+                Assert.True(customScriptExtension.AutoUpgradeMinorVersionEnabled);
 
                 // Special check for C# implementation, seems runtime changed the actual type
                 // of public settings from dictionary to Newtonsoft.Json.Linq.JObject.
@@ -312,7 +312,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string fileUrisString = (publicSettings["fileUris"]).ToString();
                 if (HttpMockServer.Mode != HttpRecorderMode.Playback)
                 {
-                    Assert.True(fileUrisString.Contains(uri));
+                    Assert.Contains(uri, fileUrisString);
                 }
 
                 /*** UPDATE THE EXTENSION WITH NEW PUBLIC AND PROTECTED SETTINGS **/
@@ -348,9 +348,9 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 IVirtualMachineExtension customScriptExtension2;
                 Assert.True(vm.ListExtensions().TryGetValue("CustomScriptForLinux", out customScriptExtension2));
                 Assert.NotNull(customScriptExtension2);
-                Assert.Equal(customScriptExtension2.PublisherName, "Microsoft.OSTCExtensions");
-                Assert.Equal(customScriptExtension2.TypeName, "CustomScriptForLinux");
-                Assert.Equal(customScriptExtension2.AutoUpgradeMinorVersionEnabled, true);
+                Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension2.PublisherName, true);
+                Assert.Equal("CustomScriptForLinux", customScriptExtension2.TypeName, true);
+                Assert.True(customScriptExtension2.AutoUpgradeMinorVersionEnabled);
 
                 var publicSettings2 = customScriptExtension2.PublicSettings;
                 Assert.NotNull(publicSettings2);
@@ -360,7 +360,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string fileUris2String = (publicSettings2["fileUris"]).ToString();
                 if (HttpMockServer.Mode != HttpRecorderMode.Playback)
                 {
-                    Assert.True(fileUris2String.Contains(uri2));
+                    Assert.Contains(uri2, fileUris2String);
                 }
             }
         }

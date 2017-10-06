@@ -9,11 +9,8 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     using System.Collections.Generic;
     using System;
     using Management.ServiceBus.Fluent.Models;
-    using ServiceBus.Fluent;
     using ResourceManager.Fluent.Core;
     using ResourceManager.Fluent.Core.ResourceActions;
-    using Management.ServiceBus.Fluent;
-    using System.Linq;
 
     /// <summary>
     /// Implementation for Queue.
@@ -31,7 +28,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         IDefinition,
         IUpdate
     {
-        private IList<ICreatable<Microsoft.Azure.Management.ServiceBus.Fluent.IQueueAuthorizationRule>> rulesToCreate;
+        private IList<ICreatable<IQueueAuthorizationRule>> rulesToCreate;
         private IList<string> rulesToDelete;
 
         ///GENMHASH:2E16A3C3DDA5707111D704BA0D4871AD:E384D1DC0323D2359E002A2334C75FD1

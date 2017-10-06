@@ -64,7 +64,6 @@ namespace Fluent.Tests
                             .Apply();
 
                     Assert.NotNull(batchAccount.AutoStorage.StorageAccountId);
-                    Assert.NotNull(batchAccount.AutoStorage.LastKeySync);
                     var lastSync = batchAccount.AutoStorage.LastKeySync;
 
                     batchAccount.SynchronizeAutoStorageKeys();

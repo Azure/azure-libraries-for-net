@@ -149,7 +149,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.True(powerState == PowerState.Running);
                     VirtualMachineInstanceView instanceView = foundedVM.InstanceView;
                     Assert.NotNull(instanceView);
-                    Assert.NotNull(instanceView.Statuses.Count > 0);
+                    Assert.NotEmpty(instanceView.Statuses);
 
                     // Capture the VM [Requires VM to be Poweroff and generalized]
                     foundedVM.PowerOff();
@@ -240,7 +240,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                     foreach (var virtualMachine in createdVirtualMachines)
                     {
-                        Assert.True(virtualMachineNames.Contains(virtualMachine.Name));
+                        Assert.Contains(virtualMachine.Name, virtualMachineNames);
                         Assert.NotNull(virtualMachine.Id);
                     }
 
@@ -254,7 +254,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     {
                         var createdNetwork = (INetwork)createdVirtualMachines.CreatedRelatedResource(networkCreatableKey);
                         Assert.NotNull(createdNetwork);
-                        Assert.True(networkNames.Contains(createdNetwork.Name));
+                        Assert.Contains(createdNetwork.Name, networkNames);
                     }
 
                     HashSet<string> publicIPAddressNames = new HashSet<string>();
@@ -267,7 +267,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     {
                         var createdPublicIPAddress = (IPublicIPAddress)createdVirtualMachines.CreatedRelatedResource(publicIPCreatableKey);
                         Assert.NotNull(createdPublicIPAddress);
-                        Assert.True(publicIPAddressNames.Contains(createdPublicIPAddress.Name));
+                        Assert.Contains(createdPublicIPAddress.Name, publicIPAddressNames);
                     }
                 }
                 finally
@@ -322,7 +322,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 {
                     var commandOutput = TestHelper.TrySsh(publicIPAddress.Fqdn, 22, username, password, "pwgen;");
 
-                    Assert.False(commandOutput.ToLowerInvariant().Contains("the program 'pwgen' is currently not installed"));
+                    Assert.DoesNotContain("the program 'pwgen' is currently not installed", commandOutput.ToLowerInvariant());
                 }
             }
         }
@@ -529,7 +529,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.Equal(1, unmanagedDataDisks.Count);
                 firstUnmanagedDataDisk = unmanagedDataDisks.First().Value;
                 Assert.NotNull(firstUnmanagedDataDisk.VhdUri);
-                Assert.True(firstUnmanagedDataDisk.VhdUri.Equals(createdVhdUri1, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal(firstUnmanagedDataDisk.VhdUri, createdVhdUri1, ignoreCase: true);
                 // Update the VM by attaching another existing data disk
                 //
                 virtualMachine.Update()

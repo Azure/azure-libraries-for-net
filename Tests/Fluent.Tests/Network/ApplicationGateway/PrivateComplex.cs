@@ -126,30 +126,30 @@ namespace Fluent.Tests.Network.ApplicationGateway
             Assert.NotNull(appGateway);
             Assert.Equal(ApplicationGatewayTier.Standard, appGateway.Tier);
             Assert.Equal(ApplicationGatewaySkuName.StandardMedium, appGateway.Size);
-            Assert.Equal(appGateway.InstanceCount, 2);
+            Assert.Equal(2, appGateway.InstanceCount);
             Assert.False(appGateway.IsPublic);
             Assert.True(appGateway.IsPrivate);
-            Assert.Equal(appGateway.IPConfigurations.Count, 1);
+            Assert.Equal(1, appGateway.IPConfigurations.Count);
 
             // Verify frontend ports
-            Assert.Equal(appGateway.FrontendPorts.Count, 3);
+            Assert.Equal(3, appGateway.FrontendPorts.Count);
             Assert.NotNull(appGateway.FrontendPortNameFromNumber(80));
             Assert.NotNull(appGateway.FrontendPortNameFromNumber(443));
             Assert.NotNull(appGateway.FrontendPortNameFromNumber(9000));
 
             // Verify frontends
-            Assert.Equal(appGateway.Frontends.Count, 1);
-            Assert.Equal(appGateway.PublicFrontends.Count, 0);
-            Assert.Equal(appGateway.PrivateFrontends.Count, 1);
+            Assert.Equal(1, appGateway.Frontends.Count);
+            Assert.Equal(0, appGateway.PublicFrontends.Count);
+            Assert.Equal(1, appGateway.PrivateFrontends.Count);
             IApplicationGatewayFrontend frontend = appGateway.PrivateFrontends.Values.First();
             Assert.False(frontend.IsPublic);
             Assert.True(frontend.IsPrivate);
 
             // Verify listeners
-            Assert.Equal(appGateway.Listeners.Count, 3);
+            Assert.Equal(3, appGateway.Listeners.Count);
             IApplicationGatewayListener listener = appGateway.Listeners["listener1"];
             Assert.NotNull(listener);
-            Assert.Equal(listener.FrontendPortNumber, 9000);
+            Assert.Equal(9000, listener.FrontendPortNumber);
             Assert.Equal(ApplicationGatewayProtocol.Http, listener.Protocol);
             Assert.NotNull(listener.Frontend);
             Assert.True(listener.Frontend.IsPrivate);
@@ -158,61 +158,61 @@ namespace Fluent.Tests.Network.ApplicationGateway
             Assert.NotNull(appGateway.ListenerByPortNumber(443));
 
             // Verify certificates
-            Assert.Equal(appGateway.SslCertificates.Count, 2);
+            Assert.Equal(2, appGateway.SslCertificates.Count);
             Assert.True(appGateway.SslCertificates.ContainsKey("cert1"));
 
             // Verify backend HTTP settings configs
-            Assert.Equal(appGateway.BackendHttpConfigurations.Count, 3);
+            Assert.Equal(3, appGateway.BackendHttpConfigurations.Count);
             IApplicationGatewayBackendHttpConfiguration config = appGateway.BackendHttpConfigurations["config1"];
             Assert.NotNull(config);
-            Assert.Equal(config.Port, 8081);
-            Assert.Equal(config.RequestTimeout, 45);
+            Assert.Equal(8081, config.Port);
+            Assert.Equal(45, config.RequestTimeout);
             Assert.True(appGateway.BackendHttpConfigurations.ContainsKey("config2"));
 
             // Verify backends
-            Assert.Equal(appGateway.Backends.Count, 3);
+            Assert.Equal(3, appGateway.Backends.Count);
             IApplicationGatewayBackend backend = appGateway.Backends["backend1"];
             Assert.NotNull(backend);
-            Assert.Equal(backend.Addresses.Count, 2);
+            Assert.Equal(2, backend.Addresses.Count);
             Assert.True(backend.ContainsIPAddress("11.1.1.3"));
             Assert.True(backend.ContainsIPAddress("11.1.1.4"));
             Assert.True(appGateway.Backends.ContainsKey("backend2"));
 
             // Verify request routing rules
-            Assert.Equal(appGateway.RequestRoutingRules.Count, 3);
+            Assert.Equal(3, appGateway.RequestRoutingRules.Count);
             IApplicationGatewayRequestRoutingRule rule;
 
             rule = appGateway.RequestRoutingRules["rule80"];
             Assert.NotNull(rule);
             Assert.Equal(vnet.Id, rule.Listener.Frontend.NetworkId);
-            Assert.Equal(rule.FrontendPort, 80);
-            Assert.Equal(rule.BackendPort, 8080);
+            Assert.Equal(80, rule.FrontendPort);
+            Assert.Equal(8080, rule.BackendPort);
             Assert.True(rule.CookieBasedAffinity);
-            Assert.Equal(rule.BackendAddresses.Count, 2);
+            Assert.Equal(2, rule.BackendAddresses.Count);
             Assert.True(rule.Backend.ContainsIPAddress("11.1.1.1"));
             Assert.True(rule.Backend.ContainsIPAddress("11.1.1.2"));
 
             rule = appGateway.RequestRoutingRules["rule443"];
             Assert.NotNull(rule);
             Assert.Equal(vnet.Id, rule.Listener.Frontend.NetworkId);
-            Assert.Equal(rule.FrontendPort, 443);
+            Assert.Equal(443, rule.FrontendPort);
             Assert.Equal(ApplicationGatewayProtocol.Https, rule.FrontendProtocol);
             Assert.NotNull(rule.SslCertificate);
             Assert.NotNull(rule.BackendHttpConfiguration);
-            Assert.Equal(rule.BackendHttpConfiguration.Name, "config1");
+            Assert.Equal("config1", rule.BackendHttpConfiguration.Name);
             Assert.NotNull(rule.Backend);
-            Assert.Equal(rule.Backend.Name, "backend1");
+            Assert.Equal("backend1", rule.Backend.Name);
 
             rule = appGateway.RequestRoutingRules["rule9000"];
             Assert.NotNull(rule);
             Assert.NotNull(rule.Listener);
-            Assert.Equal(rule.Listener.Name, "listener1");
+            Assert.Equal("listener1", rule.Listener.Name);
             Assert.NotNull(rule.Listener.SubnetName);
             Assert.NotNull(rule.Listener.NetworkId);
             Assert.NotNull(rule.BackendHttpConfiguration);
-            Assert.Equal(rule.BackendHttpConfiguration.Name, "config1");
+            Assert.Equal("config1", rule.BackendHttpConfiguration.Name);
             Assert.NotNull(rule.Backend);
-            Assert.Equal(rule.Backend.Name, "backend1");
+            Assert.Equal("backend1", rule.Backend.Name);
 
             creationThread.Join();
 
@@ -266,7 +266,7 @@ namespace Fluent.Tests.Network.ApplicationGateway
             Assert.True(resource.Tags.ContainsKey("tag1"));
             Assert.True(resource.Tags.ContainsKey("tag2"));
             Assert.Equal(ApplicationGatewaySkuName.StandardSmall, resource.Size);
-            Assert.Equal(resource.InstanceCount, 1);
+            Assert.Equal(1, resource.InstanceCount);
 
             // Verify frontend ports
             Assert.Equal(resource.FrontendPorts.Count, portCount - 1);
@@ -274,8 +274,8 @@ namespace Fluent.Tests.Network.ApplicationGateway
 
             // Verify frontends
             Assert.Equal(resource.Frontends.Count, frontendCount + 1);
-            Assert.Equal(resource.PublicFrontends.Count, 1);
-            Assert.Equal(resource.PrivateFrontends.Count, 1);
+            Assert.Equal(1, resource.PublicFrontends.Count);
+            Assert.Equal(1, resource.PrivateFrontends.Count);
             IApplicationGatewayFrontend frontend = resource.PrivateFrontends.Values.First();
             Assert.True(!frontend.IsPublic);
             Assert.True(frontend.IsPrivate);
@@ -289,7 +289,7 @@ namespace Fluent.Tests.Network.ApplicationGateway
             Assert.True(!resource.Backends.ContainsKey("backend2"));
             IApplicationGatewayBackend backend = resource.Backends["backend1"];
             Assert.NotNull(backend);
-            Assert.Equal(backend.Addresses.Count, 1);
+            Assert.Equal(1, backend.Addresses.Count);
             Assert.True(backend.ContainsIPAddress("11.1.1.5"));
             Assert.True(!backend.ContainsIPAddress("11.1.1.3"));
             Assert.True(!backend.ContainsIPAddress("11.1.1.4"));
@@ -298,8 +298,8 @@ namespace Fluent.Tests.Network.ApplicationGateway
             Assert.Equal(resource.BackendHttpConfigurations.Count, configCount - 1);
             Assert.True(!resource.BackendHttpConfigurations.ContainsKey("config2"));
             IApplicationGatewayBackendHttpConfiguration config = resource.BackendHttpConfigurations["config1"];
-            Assert.Equal(config.Port, 8082);
-            Assert.Equal(config.RequestTimeout, 20);
+            Assert.Equal(8082, config.Port);
+            Assert.Equal(20, config.RequestTimeout);
             Assert.True(config.CookieBasedAffinity);
 
             // Verify rules

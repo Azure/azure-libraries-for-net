@@ -57,7 +57,6 @@ namespace Fluent.Tests
                     Assert.True(nspace.Region.Equals(region));
                     Assert.NotNull(nspace.ResourceGroupName);
                     Assert.Equal(nspace.ResourceGroupName, rgName, ignoreCase: true);
-                    Assert.NotNull(nspace.CreatedAt);
                     Assert.NotNull(nspace.Queues);
                     Assert.Empty(nspace.Queues.List());
                     Assert.NotNull(nspace.Topics);
@@ -135,13 +134,11 @@ namespace Fluent.Tests
                     Assert.Equal(60, queue.LockDurationInSeconds);
 
                     var dupDetectionDuration = queue.DuplicateMessageDetectionHistoryDuration;
-                    Assert.NotNull(dupDetectionDuration);
                     Assert.Equal(10, dupDetectionDuration.TotalMinutes);
                     // Default message TTL is TimeSpan.Max, assert parsing
                     //
                     Assert.Equal("10675199.02:48:05.4775807", queue.Inner.DefaultMessageTimeToLive);
                     var msgTtlDuration = queue.DefaultMessageTtlDuration;
-                    Assert.NotNull(msgTtlDuration);
                     // Assert the default ttl TimeSpan("10675199.02:48:05.4775807") parsing
                     //
                     Assert.Equal(10675199, msgTtlDuration.Days);
@@ -291,13 +288,11 @@ namespace Fluent.Tests
                     Assert.Equal(topic.Name, topicName, ignoreCase: true);
 
                     var dupDetectionDuration = topic.DuplicateMessageDetectionHistoryDuration;
-                    Assert.NotNull(dupDetectionDuration);
                     Assert.Equal(10, dupDetectionDuration.TotalMinutes);
                     // Default message TTL is TimeSpan.Max, assert parsing
                     //
                     Assert.Equal("10675199.02:48:05.4775807", topic.Inner.DefaultMessageTimeToLive);
                     var msgTtlDuration = topic.DefaultMessageTtlDuration;
-                    Assert.NotNull(msgTtlDuration);
                     // Assert the default ttl TimeSpan("10675199.02:48:05.4775807") parsing
                     //
                     Assert.Equal(10675199, msgTtlDuration.Days);
@@ -318,10 +313,8 @@ namespace Fluent.Tests
                             .WithDeleteOnIdleDurationInMinutes(25)
                             .Apply();
                     var ttlDuration = foundTopic.DefaultMessageTtlDuration;
-                    Assert.NotNull(ttlDuration);
                     Assert.Equal(20, ttlDuration.Minutes);
                     var duplicateDetectDuration = foundTopic.DuplicateMessageDetectionHistoryDuration;
-                    Assert.NotNull(duplicateDetectDuration);
                     Assert.Equal(15, duplicateDetectDuration.Minutes);
                     Assert.Equal(25, foundTopic.DeleteOnIdleDurationInMinutes);
                     // Delete

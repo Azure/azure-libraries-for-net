@@ -75,7 +75,7 @@ namespace Fluent.Tests
                     {
                         Assert.True(false);
                     }
-                    Assert.Equal(1, redisCaches.Count());
+                    Assert.Single(redisCaches);
 
                     // List all Redis resources
                     redisCaches = redisManager.RedisCaches.List();

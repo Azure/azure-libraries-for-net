@@ -287,7 +287,6 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                         .Create();
 
                     string pipDnsLabel = TestUtilities.GenerateName("pip");
-                    string vmName = "javavm";
 
                     var subnets = network.Subnets.Values.GetEnumerator();
                     // Define first regional virtual machine
@@ -377,7 +376,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                     ILoadBalancerFrontend frontend = lb.Frontends.Values.First();
                     Assert.True(frontend.IsPublic);
                     ILoadBalancerPublicFrontend publicFrontend = (ILoadBalancerPublicFrontend)frontend;
-                    Assert.True(publicIPAddress.Id.Equals(publicFrontend.PublicIPAddressId, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(publicIPAddress.Id, publicFrontend.PublicIPAddressId, ignoreCase: true);
 
                     // Verify backends
                     Assert.Equal(1, lb.Backends.Count);
@@ -391,7 +390,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                     Assert.True(lb.LoadBalancingRules.ContainsKey("rule-1"));
                     ILoadBalancingRule rule = lb.LoadBalancingRules["rule-1"];
                     Assert.NotNull(rule.Backend);
-                    Assert.True(rule.Probe.Name.Equals("tcpProbe-1", StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal("tcpProbe-1", rule.Probe.Name, ignoreCase: true);
 
                     // Note that above configuration is not possible for BASIC LB, BASIC LB has following limitation
                     // It supports VMs only in a single availability Set in a backend pool, though multiple backend pool
@@ -440,7 +439,6 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                         .Create();
 
                     string pipDnsLabel = TestUtilities.GenerateName("pip");
-                    string vmName = "javavm";
 
                     var subnets = network.Subnets.Values.GetEnumerator();
                     // Define first regional virtual machine
@@ -532,7 +530,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                     ILoadBalancerFrontend frontend = lb.Frontends.Values.First();
                     Assert.True(frontend.IsPublic);
                     ILoadBalancerPublicFrontend publicFrontend = (ILoadBalancerPublicFrontend)frontend;
-                    Assert.True(publicIPAddress.Id.Equals(publicFrontend.PublicIPAddressId, StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal(publicIPAddress.Id, publicFrontend.PublicIPAddressId, ignoreCase: true);
 
                     // Verify backends
                     Assert.Equal(1, lb.Backends.Count);
@@ -546,7 +544,7 @@ namespace Fluent.Tests.Compute.VirtuaMachine
                     Assert.True(lb.LoadBalancingRules.ContainsKey("rule-1"));
                     ILoadBalancingRule rule = lb.LoadBalancingRules["rule-1"];
                     Assert.NotNull(rule.Backend);
-                    Assert.True(rule.Probe.Name.Equals("tcpProbe-1", StringComparison.OrdinalIgnoreCase));
+                    Assert.Equal("tcpProbe-1", rule.Probe.Name, ignoreCase: true);
                     // Zone resilient LB does not care VMs are zoned or regional, in the above cases VMs are zoned.
                     //
 

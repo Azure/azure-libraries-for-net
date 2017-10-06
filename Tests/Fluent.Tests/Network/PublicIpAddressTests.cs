@@ -43,7 +43,7 @@ namespace Fluent.Tests.Network
                         .WithTag("tag1", "value1")
                         .WithTag("tag2", "value2")
                         .Apply();
-                Assert.True(resource.LeafDomainLabel.Equals(updatedDnsName, StringComparison.OrdinalIgnoreCase));
+                Assert.Equal(resource.LeafDomainLabel, updatedDnsName, ignoreCase: true);
                 Assert.True(resource.IdleTimeoutInMinutes == updatedIdleTimeout);
 
                 manager.PublicIPAddresses.DeleteById(pip.Id);

@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         protected async override Task<IVirtualNetworkGatewayConnection> CreateChildResourceAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            CreateResourceAsync(cancellationToken);
+            await CreateResourceAsync(cancellationToken);
             return this;
         }
 
