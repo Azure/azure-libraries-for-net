@@ -2,29 +2,22 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.Network.Fluent.Subnet.Definition;
     using System.Collections.Generic;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
     using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
-    /// The stage of the public IP definition which contains all the minimum required inputs for
-    /// the resource to be created (via  WithCreate.create()), but also allows
-    /// for any other optional settings to be specified, including adding subnets.
+    /// The entirety of the virtual network definition.
     /// </summary>
-    public interface IWithCreateAndSubnet  :
+    public interface IDefinition  :
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IBlank,
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithGroup,
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithSubnet,
         Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreate,
-        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithSubnet
-    {
-    }
-
-    /// <summary>
-    /// The first stage of a virtual network definition.
-    /// </summary>
-    public interface IBlank  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithGroup>
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreateAndSubnet
     {
     }
 
@@ -61,14 +54,21 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
     }
 
     /// <summary>
-    /// The entirety of the virtual network definition.
+    /// The stage of the public IP definition which contains all the minimum required inputs for
+    /// the resource to be created (via  WithCreate.create()), but also allows
+    /// for any other optional settings to be specified, including adding subnets.
     /// </summary>
-    public interface IDefinition  :
-        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IBlank,
-        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithGroup,
-        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithSubnet,
+    public interface IWithCreateAndSubnet  :
         Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreate,
-        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreateAndSubnet
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithSubnet
+    {
+    }
+
+    /// <summary>
+    /// The first stage of a virtual network definition.
+    /// </summary>
+    public interface IBlank  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithGroup>
     {
     }
 

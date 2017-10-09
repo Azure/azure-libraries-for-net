@@ -11,8 +11,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Entry point for Virtual Network management API in Azure.
     /// </summary>
-    public interface INetwork  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.VirtualNetworkInner>,
+    public interface INetwork :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.VirtualNetworkInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.INetwork>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Network.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.INetworkBeta
@@ -32,6 +32,32 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Note that when a virtual network is created with no subnets explicitly defined, a default subnet is
         /// automatically created with the name "subnet1".
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ISubnet> Subnets { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ISubnet> Subnets { get; }
+    }
+
+    /// <summary>
+    /// Entry point for Virtual Network management API in Azure.
+    /// </summary>
+    public interface INetworkBeta :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Checks if the specified private IP address is available in this network.
+        /// </summary>
+        /// <param name="ipAddress">An IP address from this network's address space.</param>
+        /// <return>True if the address is within this network's address space and is available.</return>
+        bool IsPrivateIPAddressAvailable(string ipAddress);
+
+        /// <summary>
+        /// Checks if the specified private IP address is within this network's address space.
+        /// </summary>
+        /// <param name="ipAddress">An IP address.</param>
+        /// <return>True if the specified IP address is within this network's address space, otherwise false.</return>
+        bool IsPrivateIPAddressInNetwork(string ipAddress);
+
+        /// <summary>
+        /// Gets entry point to managing virtual network peerings for this network.
+        /// </summary>
+        Microsoft.Azure.Management.Network.Fluent.INetworkPeerings Peerings { get; }
     }
 }

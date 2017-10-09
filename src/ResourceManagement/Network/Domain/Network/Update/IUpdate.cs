@@ -10,6 +10,38 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Update
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
+    /// The stage of the virtual network update allowing to specify the DNS server.
+    /// </summary>
+    public interface IWithDnsServer 
+    {
+        /// <summary>
+        /// Specifies the IP address of the DNS server to associate with the virtual network.
+        /// Note this method's effect is additive, i.e. each time it is used, a new DNS server is
+        /// added to the network.
+        /// </summary>
+        /// <param name="ipAddress">The IP address of the DNS server.</param>
+        /// <return>The next stage of the virtual network update.</return>
+        Microsoft.Azure.Management.Network.Fluent.Network.Update.IUpdate WithDnsServer(string ipAddress);
+    }
+
+    /// <summary>
+    /// The stage of the virtual network update allowing to specify the address space.
+    /// </summary>
+    public interface IWithAddressSpace  :
+        Microsoft.Azure.Management.Network.Fluent.Network.Update.IWithAddressSpaceBeta
+    {
+        /// <summary>
+        /// Explicitly adds an address space to the virtual network.
+        /// Note this method's effect is additive, i.e. each time it is used, a new address space is added to the network.
+        /// This method does not check for conflicts or overlaps with other address spaces. If there is a conflict,
+        /// a cloud exception may be thrown after the update is applied.
+        /// </summary>
+        /// <param name="cidr">The CIDR representation of the address space.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.Network.Update.IUpdate WithAddressSpace(string cidr);
+    }
+
+    /// <summary>
     /// The stage of the virtual network update allowing to add or remove subnets.
     /// </summary>
     public interface IWithSubnet 
@@ -54,22 +86,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Update
     }
 
     /// <summary>
-    /// The stage of the virtual network update allowing to specify the address space.
-    /// </summary>
-    public interface IWithAddressSpace 
-    {
-        /// <summary>
-        /// Explicitly adds an address space to the virtual network.
-        /// Note this method's effect is additive, i.e. each time it is used, a new address space is added to the network.
-        /// This method does not check for conflicts or overlaps with other address spaces. If there is a conflict,
-        /// a cloud exception may be thrown after the update is applied.
-        /// </summary>
-        /// <param name="cidr">The CIDR representation of the address space.</param>
-        /// <return>The next stage of the virtual network update.</return>
-        Microsoft.Azure.Management.Network.Fluent.Network.Update.IUpdate WithAddressSpace(string cidr);
-    }
-
-    /// <summary>
     /// The template for a virtual network update operation, containing all the settings that
     /// can be modified.
     /// </summary>
@@ -83,17 +99,16 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Update
     }
 
     /// <summary>
-    /// The stage of the virtual network update allowing to specify the DNS server.
+    /// The stage of the virtual network update allowing to specify the address space.
     /// </summary>
-    public interface IWithDnsServer 
+    public interface IWithAddressSpaceBeta  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
-        /// Specifies the IP address of the DNS server to associate with the virtual network.
-        /// Note this method's effect is additive, i.e. each time it is used, a new DNS server is
-        /// added to the network.
+        /// Removes the specified address space from the virtual network, assuming it's not in use bu any of the subnets.
         /// </summary>
-        /// <param name="ipAddress">The IP address of the DNS server.</param>
-        /// <return>The next stage of the virtual network update.</return>
-        Microsoft.Azure.Management.Network.Fluent.Network.Update.IUpdate WithDnsServer(string ipAddress);
+        /// <param name="cidr">The address space to remove, in CIDR format, matching exactly one of the CIDRs associated with this network.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.Network.Update.IUpdate WithoutAddressSpace(string cidr);
     }
 }

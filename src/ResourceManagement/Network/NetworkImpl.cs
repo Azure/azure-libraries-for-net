@@ -243,6 +243,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (result != null) ? true : false;
         }
 
+        ///GENMHASH:2DDC261430ADA2CF9ED379E7C096EA18:B86A968ED1807214F1A8C9FB5538CA47
+        public NetworkImpl WithoutAddressSpace(string cidr)
+        {
+            if (cidr == null)
+            {
+                // Skip
+            }
+            else if (Inner.AddressSpace == null)
+            {
+                // Skip
+            }
+            else if (Inner.AddressSpace.AddressPrefixes == null)
+            {
+                // Skip
+            }
+            else
+            {
+                Inner.AddressSpace.AddressPrefixes.Remove(cidr);
+            }
+            return this;
+        }
+
         ///GENMHASH:6ACD1798F2E9D87878DA2A89A9C924EC:C881614C8CEC0248E97A20723E81741D
         public bool IsPrivateIPAddressAvailable(string ipAddress)
         {

@@ -149,12 +149,17 @@ namespace Fluent.Tests.Network
                         .WithRegion(region)
                         .WithNewResourceGroup(groupName)
                         .WithAddressSpace("10.0.0.0/28")
+                        .WithAddressSpace("10.1.0.0/28")
                         .WithSubnet("subnetA", "10.0.0.0/29")
                         .DefineSubnet("subnetB")
                             .WithAddressPrefix("10.0.0.8/29")
                             .WithExistingNetworkSecurityGroup(nsg)
                             .Attach()
                         .Create();
+
+                // Verify address spaces
+                Assert.Equal(2, network.AddressSpaces.Count);
+                Assert.Contains("10.1.0.0/28", network.AddressSpaces);
 
                 // Verify subnets
                 Assert.Equal(2, network.Subnets.Count);
@@ -180,6 +185,7 @@ namespace Fluent.Tests.Network
                     .WithTag("tag1", "value1")
                     .WithTag("tag2", "value2")
                     .WithAddressSpace("141.25.0.0/16")
+                    .WithoutAddressSpace("10.1.0.0/28")
                     .WithSubnet("subnetC", "141.25.0.0/29")
                     .WithoutSubnet("subnetA")
                     .UpdateSubnet("subnetB")
@@ -191,6 +197,10 @@ namespace Fluent.Tests.Network
                         .WithExistingNetworkSecurityGroup(nsg)
                         .Attach()
                     .Apply();
+
+                // Verify address spaces
+                Assert.Equal(2, network.AddressSpaces.Count);
+                Assert.DoesNotContain("10.1.0.0/28", network.AddressSpaces);
 
                 // Verify subnets
                 Assert.Equal(3, network.Subnets.Count);
