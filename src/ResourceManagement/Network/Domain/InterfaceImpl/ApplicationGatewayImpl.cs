@@ -7,6 +7,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.Definition;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.UpdateDefinition;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackend.Definition;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackend.Update;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackend.UpdateDefinition;
@@ -24,6 +26,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Update;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.UpdateDefinition;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.Definition;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.Update;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.UpdateDefinition;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.UpdateDefinition;
@@ -204,6 +209,47 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Begins the update of a redirect configuration.
+        /// </summary>
+        /// <param name="name">The name of an existing redirect configuration to update.</param>
+        /// <return>The next stage of the definition or null if the requested redirect configuration does not exist.</return>
+        ApplicationGatewayRedirectConfiguration.Update.IUpdate ApplicationGateway.Update.IWithRedirectConfigurationBeta.UpdateRedirectConfiguration(string name)
+        {
+            return this.UpdateRedirectConfiguration(name) as ApplicationGatewayRedirectConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Begins the definition of a new application gateway redirect configuration to be attached to the gateway.
+        /// </summary>
+        /// <param name="name">A unique name for the redirect configuration.</param>
+        /// <return>The first stage of the redirect configuration definition.</return>
+        ApplicationGatewayRedirectConfiguration.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithRedirectConfigurationBeta.DefineRedirectConfiguration(string name)
+        {
+            return this.DefineRedirectConfiguration(name) as ApplicationGatewayRedirectConfiguration.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Removes a redirect configuration from the application gateway.
+        /// Note that removing a redirect configuration referenced by other settings may break the application gateway.
+        /// </summary>
+        /// <param name="name">The name of the redirect configuration to remove.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithRedirectConfigurationBeta.WithoutRedirectConfiguration(string name)
+        {
+            return this.WithoutRedirectConfiguration(name) as ApplicationGateway.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Begins the definition of a new application gateway redirect configuration to be attached to the gateway.
+        /// </summary>
+        /// <param name="name">A unique name for the redirect configuration.</param>
+        /// <return>The first stage of the redirect configuration definition.</return>
+        ApplicationGatewayRedirectConfiguration.Definition.IBlank<ApplicationGateway.Definition.IWithCreate> ApplicationGateway.Definition.IWithRedirectConfigurationBeta.DefineRedirectConfiguration(string name)
+        {
+            return this.DefineRedirectConfiguration(name) as ApplicationGatewayRedirectConfiguration.Definition.IBlank<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
         /// Gets the private IP address allocation method within the associated subnet.
         /// </summary>
         Models.IPAllocationMethod Microsoft.Azure.Management.Network.Fluent.IHasPrivateIPAddress.PrivateIPAllocationMethod
@@ -287,6 +333,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
  
             this.Start();
+        }
+
+        /// <summary>
+        /// Gets redirect configurations, indexed by name.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.RedirectConfigurations
+        {
+            get
+            {
+                return this.RedirectConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration>;
+            }
         }
 
         /// <summary>
@@ -416,6 +473,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
             get
             {
                 return this.IsPublic();
+            }
+        }
+
+        /// <summary>
+        /// Gets authentication certificates.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.AuthenticationCertificates
+        {
+            get
+            {
+                return this.AuthenticationCertificates() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate>;
             }
         }
 
@@ -600,6 +668,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="name">The name of the certificate to remove.</param>
         /// <return>The next stage of the update.</return>
+        ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithSslCert.WithoutSslCertificate(string name)
+        {
+            return this.WithoutSslCertificate(name) as ApplicationGateway.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Removes the specified SSL certificate from the application gateway.
+        /// Note that removing a certificate referenced by other settings may break the application gateway.
+        /// </summary>
+        /// <param name="name">The name of the certificate to remove.</param>
+        /// <return>The next stage of the update.</return>
+        /// <deprecated>Use  .withoutSslCertificate instead.</deprecated>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithSslCert.WithoutCertificate(string name)
         {
             return this.WithoutCertificate(name) as ApplicationGateway.Update.IUpdate;
@@ -975,6 +1055,36 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ApplicationGatewayFrontend.Update.IUpdate ApplicationGateway.Update.IWithFrontend.UpdateFrontend(string frontendName)
         {
             return this.UpdateFrontend(frontendName) as ApplicationGatewayFrontend.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Begins the definition of a new application gateway authentication certificate to be attached to the gateway for use by the backends.
+        /// </summary>
+        /// <param name="name">A unique name for the certificate.</param>
+        /// <return>The first stage of the certificate definition.</return>
+        ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithAuthenticationCertificateBeta.DefineAuthenticationCertificate(string name)
+        {
+            return this.DefineAuthenticationCertificate(name) as ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Removes an existing application gateway authentication certificate.
+        /// </summary>
+        /// <param name="name">The name of an existing certificate.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithAuthenticationCertificateBeta.WithoutAuthenticationCertificate(string name)
+        {
+            return this.WithoutAuthenticationCertificate(name) as ApplicationGateway.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Begins the definition of a new application gateway authentication certificate to be attached to the gateway for use by the backends.
+        /// </summary>
+        /// <param name="name">A unique name for the certificate.</param>
+        /// <return>The first stage of the certificate definition.</return>
+        ApplicationGatewayAuthenticationCertificate.Definition.IBlank<ApplicationGateway.Definition.IWithCreate> ApplicationGateway.Definition.IWithAuthenticationCertificateBeta.DefineAuthenticationCertificate(string name)
+        {
+            return this.DefineAuthenticationCertificate(name) as ApplicationGatewayAuthenticationCertificate.Definition.IBlank<ApplicationGateway.Definition.IWithCreate>;
         }
 
         /// <summary>

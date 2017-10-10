@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        ///GENMHASH:E8683B20FED733D23930E96CCD1EB0A2:E6CC43D15A29B0635E7C303E592E8569
+        ///GENMHASH:E8683B20FED733D23930E96CCD1EB0A2:9BD654DDBDD539A635C896FC16E2469D
         internal LoadBalancerFrontendImpl WithExistingSubnet (string parentNetworkResourceId, string subnetName)
         {
             Inner.Subnet = new SubResource(parentNetworkResourceId + "/subnets/" + subnetName);
@@ -199,8 +199,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return WithExistingPublicIPAddress(pip.Id);
         }
 
-        
-        ///GENMHASH:3C078CA3D79C59C878B566E6BDD55B86:488D62DEC18443445C34B6C753A0435A
+
+        ///GENMHASH:3C078CA3D79C59C878B566E6BDD55B86:83A90EFEAD457402C1239221C836C923
         internal LoadBalancerFrontendImpl WithExistingPublicIPAddress (string resourceId)
         {
             var pipRef = new SubResource(id: resourceId);
@@ -221,8 +221,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
-        ///GENMHASH:26224359DA104EABE1EDF7F491D110F7:75F72179E2B63A55332B5241A9093C17
+
+        ///GENMHASH:26224359DA104EABE1EDF7F491D110F7:9EF63EDAF9D28C8CF319BF151B2FDAF7
         internal LoadBalancerFrontendImpl WithPrivateIPAddressDynamic ()
         {
             Inner.PrivateIPAddress = null;
@@ -233,8 +233,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
-        ///GENMHASH:9946B3475EBD5468D4462F188EEE86C2:C9B470E114F7550FEADF055B40E01B61
+
+        ///GENMHASH:9946B3475EBD5468D4462F188EEE86C2:76E76894C4E71898B4EA0B49F2876D23
         internal LoadBalancerFrontendImpl WithPrivateIPAddressStatic (string ipAddress)
         {
             Inner.PrivateIPAddress = ipAddress;

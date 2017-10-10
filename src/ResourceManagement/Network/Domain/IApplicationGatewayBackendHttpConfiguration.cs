@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 {
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Collections.Generic;
 
     /// <summary>
     /// A client-side representation of an application gateway's backend HTTP configuration.
@@ -25,5 +26,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         int RequestTimeout { get; }
 
+        /// <summary>
+        /// Gets the probe associated with this backend.
+        /// </summary>
+        Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe Probe { get; }
     }
 }

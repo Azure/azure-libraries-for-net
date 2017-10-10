@@ -3,40 +3,30 @@
 namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.Network.Fluent.Models;
-    using Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition;
+    using System.IO;
     using Microsoft.Azure.Management.Network.Fluent.HasPort.Definition;
+    using Microsoft.Azure.Management.Network.Fluent.Models;
 
     /// <summary>
-    /// The entirety of an application gateway backend HTTP configuration definition.
+    /// The first stage of an application gateway backend HTTP configuration.
     /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IDefinition<ParentT>  :
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IBlank<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ParentT>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IBlank<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT>
     {
     }
 
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to enable cookie based affinity.
     /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithAffinity<ParentT> 
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithAffinity<ReturnT> 
     {
         /// <summary>
         /// Enables cookie based affinity.
         /// </summary>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ParentT> WithCookieBasedAffinity();
-    }
-
-    /// <summary>
-    /// The stage of an application gateway backend HTTP configuration allowing to associate an existing probe.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithProbe<ParentT>  :
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithProbeBeta<ParentT>
-    {
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT> WithCookieBasedAffinity();
     }
 
     /// <summary>
@@ -44,64 +34,37 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// At this stage, any remaining optional settings can be specified, or the definition
     /// can be attached to the parent application gateway definition using  WithAttach.attach().
     /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithPort<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAffinity<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithProtocol<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithRequestTimeout<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithProbe<ParentT>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithAttach<ReturnT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithPort<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAffinity<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithProtocol<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithRequestTimeout<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithProbe<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithHostHeader<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithConnectionDraining<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithCookieName<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithPath<ReturnT>
     {
     }
 
     /// <summary>
-    /// The stage of an application gateway backend HTTP configuration allowing to specify the protocol.
+    /// The entirety of an application gateway backend HTTPS configuration definition.
     /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithProtocol<ParentT>  :
-        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ParentT>,Microsoft.Azure.Management.Network.Fluent.Models.ApplicationGatewayProtocol>
-    {
-    }
-
-    /// <summary>
-    /// The first stage of an application gateway backend HTTP configuration.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ParentT>
-    {
-    }
-
-    /// <summary>
-    /// The stage of an application gateway backend HTTP configuration allowing to specify the request timeout.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithRequestTimeout<ParentT> 
-    {
-        /// <summary>
-        /// Specifies the request timeout.
-        /// </summary>
-        /// <param name="seconds">A number of seconds.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ParentT> WithRequestTimeout(int seconds);
-    }
-
-    /// <summary>
-    /// The stage of an application gateway backend HTTP configuration allowing to specify the port number.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithPort<ParentT>  :
-        Microsoft.Azure.Management.Network.Fluent.HasPort.Definition.IWithPort<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ParentT>>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IDefinition<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IBlank<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ReturnT>
     {
     }
 
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to associate an existing probe.
     /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithProbeBeta<ParentT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithProbe<ReturnT> 
     {
         /// <summary>
         /// Specifies an existing probe on this application gateway to associate with this backend.
@@ -110,6 +73,223 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
         /// </summary>
         /// <param name="name">The name of an existing probe.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ParentT> WithProbe(string name);
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT> WithProbe(string name);
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to add an authentication certificate.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithAuthenticationCertificate<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAuthenticationCertificateBeta<ReturnT>
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to specify the host header.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithHostHeader<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithHostHeaderBeta<ReturnT>
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to specify the path to use as the prefix for all HTTP requests.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithPath<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithPathBeta<ReturnT>
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to control connection draining.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithConnectionDraining<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithConnectionDrainingBeta<ReturnT>
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to specify the port number.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithPort<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.HasPort.Definition.IWithPort<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT>>
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to add an authentication certificate,
+    /// specify other options or attach to the parent application gateway definition.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithAttachAndAuthCert<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAuthenticationCertificate<ReturnT>
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to specify the request timeout.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithRequestTimeout<ReturnT> 
+    {
+        /// <summary>
+        /// Specifies the request timeout.
+        /// </summary>
+        /// <param name="seconds">A number of seconds.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT> WithRequestTimeout(int seconds);
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to specify the protocol.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithProtocol<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithProtocolBeta<ReturnT>
+    {
+        /// <summary>
+        /// Specifies the transport protocol.
+        /// </summary>
+        /// <param name="protocol">A transport protocol.</param>
+        /// <return>The next stage of the definition.</return>
+        /// <deprecated>Use  .withHttps() instead (HTTP is the default).</deprecated>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT> WithProtocol(ApplicationGatewayProtocol protocol);
+
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to specify the name for the affinity cookie.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithCookieName<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithCookieNameBeta<ReturnT>
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to add an authentication certificate.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithAuthenticationCertificateBeta<ReturnT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration based on the specified data.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="derData">The DER-encoded data of an X.509 certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ReturnT> WithAuthenticationCertificateFromBytes(params byte[] derData);
+
+        /// <summary>
+        /// Associates the specified authentication certificate that exists on this application gateway with this backend HTTP confifuration.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="name">The name of an existing authentication certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ReturnT> WithAuthenticationCertificate(string name);
+
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration loaded from the specified file.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="base64Data">The base-64 encoded data of an X.509 certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ReturnT> WithAuthenticationCertificateFromBase64(string base64Data);
+
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration loaded from the specified file.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="certificateFile">A file containing the DER format representation of an X.509 certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        /// <throws>IOException when there are issues reading from the specified file.</throws>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ReturnT> WithAuthenticationCertificateFromFile(FileInfo certificateFile);
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to specify the host header.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithHostHeaderBeta<ReturnT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the host header.
+        /// </summary>
+        /// <param name="hostHeader">The host header.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT> WithHostHeader(string hostHeader);
+
+        /// <summary>
+        /// Specifies that the host header should come from the host name of the backend server.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT> WithHostHeaderFromBackend();
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to specify the path to use as the prefix for all HTTP requests.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithPathBeta<ReturnT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the path prefix for all HTTP requests.
+        /// </summary>
+        /// <param name="path">A path.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT> WithPath(string path);
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to control connection draining.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithConnectionDrainingBeta<ReturnT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the number of seconds when connection draining is active.
+        /// </summary>
+        /// <param name="seconds">A number of seconds between 1 and 3600.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT> WithConnectionDrainingTimeoutInSeconds(int seconds);
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to specify the protocol.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithProtocolBeta<ReturnT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies HTTPS as the protocol.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ReturnT> WithHttps();
+    }
+
+    /// <summary>
+    /// The stage of an application gateway backend HTTP configuration allowing to specify the name for the affinity cookie.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithCookieNameBeta<ReturnT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the name for the affinity cookie.
+        /// </summary>
+        /// <param name="name">A name.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ReturnT> WithAffinityCookieName(string name);
     }
 }

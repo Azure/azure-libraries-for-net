@@ -5,21 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Defi
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition;
-
-    /// <summary>
-    /// Stage of an application gateway probe definition allowing to specify the relative path to send the probe to.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithPath<ParentT> 
-    {
-        /// <summary>
-        /// Specifies the relative path for the probe to call.
-        /// A probe is sent to &lt;protocol&gt;://&lt;host&gt;:&lt;port&gt;&lt;path&gt;.
-        /// </summary>
-        /// <param name="path">A relative path.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithProtocol<ParentT> WithPath(string path);
-    }
+    using System.Collections.Generic;
 
     /// <summary>
     /// Stage of an application gateway probe definition allowing to specify the time interval between consecutive probes.
@@ -36,28 +22,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Defi
     }
 
     /// <summary>
-    /// The first stage of an application gateway probe definition.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithHost<ParentT>
-    {
-    }
-
-    /// <summary>
-    /// The final stage of an application gateway probe definition.
-    /// At this stage, any remaining optional settings can be specified, or the probe definition
-    /// can be attached to the parent application gateway definition.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.IInDefinitionAlt<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithInterval<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithRetries<ParentT>
-    {
-    }
-
-    /// <summary>
     /// Stage of an application gateway probe definition allowing to specify the amount of time to after which the probe is considered failed.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
@@ -69,6 +33,36 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Defi
         /// <param name="seconds">A number of seconds, between 1 and 86400.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithAttach<ParentT> WithTimeoutInSeconds(int seconds);
+    }
+
+    /// <summary>
+    /// The final stage of an application gateway probe definition.
+    /// At this stage, any remaining optional settings can be specified, or the probe definition
+    /// can be attached to the parent application gateway definition.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithAttach<ReturnT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.IInDefinitionAlt<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithInterval<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithRetries<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseStatusCodeRanges<ReturnT>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseBodyContents<ReturnT>
+    {
+    }
+
+    /// <summary>
+    /// Stage of an application gateway probe definition allowing to specify the relative path to send the probe to.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithPath<ParentT> 
+    {
+        /// <summary>
+        /// Specifies the relative path for the probe to call.
+        /// A probe is sent to &lt;protocol&gt;://&lt;host&gt;:&lt;port&gt;&lt;path&gt;.
+        /// </summary>
+        /// <param name="path">A relative path.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithProtocol<ParentT> WithPath(string path);
     }
 
     /// <summary>
@@ -106,6 +100,24 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Defi
     }
 
     /// <summary>
+    /// The stage of an application gateway probe definition allowing to specify the body contents of a healthy HTTP response to a probe.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithHealthyHttpResponseBodyContents<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseBodyContentsBeta<ReturnT>
+    {
+    }
+
+    /// <summary>
+    /// The first stage of an application gateway probe definition.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IBlank<ParentT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithHost<ParentT>
+    {
+    }
+
+    /// <summary>
     /// Stage of an application gateway probe definition allowing to specify the number of retries before the server is considered unhealthy.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
@@ -120,6 +132,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Defi
     }
 
     /// <summary>
+    /// The stage of an application gateway probe definition allowing to specify healthy HTTP response status code ranges.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithHealthyHttpResponseStatusCodeRanges<ReturnT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseStatusCodeRangesBeta<ReturnT>
+    {
+    }
+
+    /// <summary>
     /// Stage of an application gateway probe definition allowing to specify the host to send the probe to.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
@@ -131,5 +152,50 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Defi
         /// <param name="host">A host name.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithPath<ParentT> WithHost(string host);
+    }
+
+    /// <summary>
+    /// The stage of an application gateway probe definition allowing to specify the body contents of a healthy HTTP response to a probe.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithHealthyHttpResponseBodyContentsBeta<ReturnT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the content, if any, to look for in the body of an HTTP response to a probe to determine the health status of the backend.
+        /// </summary>
+        /// <param name="text">Contents to look for.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithAttach<ReturnT> WithHealthyHttpResponseBodyContents(string text);
+    }
+
+    /// <summary>
+    /// The stage of an application gateway probe definition allowing to specify healthy HTTP response status code ranges.
+    /// </summary>
+    /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithHealthyHttpResponseStatusCodeRangesBeta<ReturnT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Adds the specified range of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="range">A number range expressed in the format "###-###", for example "200-399", which is the default.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithAttach<ReturnT> WithHealthyHttpResponseStatusCodeRange(string range);
+
+        /// <summary>
+        /// Adds the specified range of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="from">The lowest number in the range.</param>
+        /// <param name="to">The highest number in the range.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithAttach<ReturnT> WithHealthyHttpResponseStatusCodeRange(int from, int to);
+
+        /// <summary>
+        /// Specifies the ranges of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="ranges">Number ranges expressed in the format "###-###", for example "200-399", which is the default.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Definition.IWithAttach<ReturnT> WithHealthyHttpResponseStatusCodeRanges(ISet<string> ranges);
     }
 }

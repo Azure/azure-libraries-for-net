@@ -18,7 +18,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.Network.Fluent.IHasBackendPort,
         Microsoft.Azure.Management.Network.Fluent.IHasHostName,
         Microsoft.Azure.Management.Network.Fluent.IHasCookieBasedAffinity,
-        Microsoft.Azure.Management.Network.Fluent.IHasServerNameIndication
+        Microsoft.Azure.Management.Network.Fluent.IHasServerNameIndication,
+        Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRuleBeta
     {
         /// <summary>
         /// Gets the associated backend HTTP settings configuration.
@@ -48,6 +49,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the addresses assigned to the associated backend.
         /// </summary>
-        System.Collections.Generic.IReadOnlyList<Models.ApplicationGatewayBackendAddress> BackendAddresses { get; }
+        System.Collections.Generic.IReadOnlyCollection<Models.ApplicationGatewayBackendAddress> BackendAddresses { get; }
     }
 }

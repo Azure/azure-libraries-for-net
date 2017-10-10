@@ -182,6 +182,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Removes the association with a redirect configuration, if any.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayRequestRoutingRule.Update.IUpdate ApplicationGatewayRequestRoutingRule.Update.IWithRedirectConfigBeta.WithoutRedirectConfiguration()
+        {
+            return this.WithoutRedirectConfiguration() as ApplicationGatewayRequestRoutingRule.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Associates the specified redirect configuration with this request routing rule.
+        /// Note that no backend can be associated with this request routing rule if it has a redirect configuration assigned to it,
+        /// so this will also remove any backend and backend HTTP settings configuration.
+        /// </summary>
+        /// <param name="name">The name of a redirect configuration on this application gateway.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayRequestRoutingRule.Update.IUpdate ApplicationGatewayRequestRoutingRule.Update.IWithRedirectConfigBeta.WithRedirectConfiguration(string name)
+        {
+            return this.WithRedirectConfiguration(name) as ApplicationGatewayRequestRoutingRule.Update.IUpdate;
+        }
+
+        /// <summary>
         /// Associates the request routing rule with an existing frontend listener.
         /// Also, note that a given listener can be used by no more than one request routing rule at a time.
         /// </summary>
@@ -329,11 +350,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the addresses assigned to the associated backend.
         /// </summary>
-        System.Collections.Generic.IReadOnlyList<Models.ApplicationGatewayBackendAddress> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule.BackendAddresses
+        System.Collections.Generic.IReadOnlyCollection<Models.ApplicationGatewayBackendAddress> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule.BackendAddresses
         {
             get
             {
-                return this.BackendAddresses() as System.Collections.Generic.IReadOnlyList<Models.ApplicationGatewayBackendAddress>;
+                return this.BackendAddresses() as System.Collections.Generic.IReadOnlyCollection<Models.ApplicationGatewayBackendAddress>;
             }
         }
 
@@ -345,6 +366,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
             get
             {
                 return this.FrontendProtocol() as Models.ApplicationGatewayProtocol;
+            }
+        }
+
+        /// <summary>
+        /// Gets the redirect configuration associated with this request routing rule, if any.
+        /// </summary>
+        Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRuleBeta.RedirectConfiguration
+        {
+            get
+            {
+                return this.RedirectConfiguration() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration;
             }
         }
 
@@ -431,9 +463,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="name">The name of a listener to reference.</param>
         /// <return>The next stage of the definition.</return>
-        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithListener<ApplicationGateway.Update.IUpdate>.FromListener(string name)
+        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithListener<ApplicationGateway.Update.IUpdate>.FromListener(string name)
         {
-            return this.FromListener(name) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate>;
+            return this.FromListener(name) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Update.IUpdate>;
         }
 
         /// <summary>
@@ -444,9 +476,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="name">The name of a listener to reference.</param>
         /// <return>The next stage of the definition.</return>
-        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithListener<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.FromListener(string name)
+        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithListener<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.FromListener(string name)
         {
-            return this.FromListener(name) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.FromListener(name) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
         }
 
         /// <summary>
@@ -461,15 +493,35 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Associates the specified redirect configuration with this request routing rule.
+        /// </summary>
+        /// <param name="name">The name of a redirect configuration on this application gateway.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithRedirectConfigBeta<ApplicationGateway.Update.IUpdate>.WithRedirectConfiguration(string name)
+        {
+            return this.WithRedirectConfiguration(name) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Associates the specified redirect configuration with this request routing rule.
+        /// </summary>
+        /// <param name="name">The name of a redirect configuration on this application gateway.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithRedirectConfigBeta<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.WithRedirectConfiguration(string name)
+        {
+            return this.WithRedirectConfiguration(name) as ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+        }
+
+        /// <summary>
         /// Specifies the PFX file to import the SSL certificate from to associated with this resource.
         /// The certificate will be named using an auto-generated name.
         /// </summary>
         /// <param name="pfxFile">An existing PFX file.</param>
         /// <throws>IOException when there are issues with the provided file.</throws>
         /// <return>The next stage of the definition.</return>
-        HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Update.IUpdate>> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Update.IUpdate>>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
+        HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
         {
-            return this.WithSslCertificateFromPfxFile(pfxFile) as HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Update.IUpdate>>;
+            return this.WithSslCertificateFromPfxFile(pfxFile) as HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>;
         }
 
         /// <summary>
@@ -478,9 +530,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="name">The name of an existing SSL certificate.</param>
         /// <return>The next stage of the definition.</return>
-        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Update.IUpdate>>.WithSslCertificate(string name)
+        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificate(string name)
         {
-            return this.WithSslCertificate(name) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Update.IUpdate>;
+            return this.WithSslCertificate(name) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>;
         }
 
         /// <summary>
@@ -490,9 +542,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="pfxFile">An existing PFX file.</param>
         /// <throws>IOException when there are issues with the provided file.</throws>
         /// <return>The next stage of the definition.</return>
-        HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
+        HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
         {
-            return this.WithSslCertificateFromPfxFile(pfxFile) as HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>;
+            return this.WithSslCertificateFromPfxFile(pfxFile) as HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>;
         }
 
         /// <summary>
@@ -501,9 +553,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="name">The name of an existing SSL certificate.</param>
         /// <return>The next stage of the definition.</return>
-        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificate(string name)
+        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificate(string name)
         {
-            return this.WithSslCertificate(name) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.WithSslCertificate(name) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
         }
 
         /// <summary>
@@ -559,9 +611,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="password">The password of the imported PFX file.</param>
         /// <return>The next stage of the definition.</return>
-        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Update.IUpdate>>.WithSslCertificatePassword(string password)
+        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificatePassword(string password)
         {
-            return this.WithSslCertificatePassword(password) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Update.IUpdate>;
+            return this.WithSslCertificatePassword(password) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>;
         }
 
         /// <summary>
@@ -569,9 +621,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="password">The password of the imported PFX file.</param>
         /// <return>The next stage of the definition.</return>
-        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificatePassword(string password)
+        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificatePassword(string password)
         {
-            return this.WithSslCertificatePassword(password) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigurationOrSni<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.WithSslCertificatePassword(password) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
         }
 
         /// <summary>
@@ -600,9 +652,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="portNumber">The port number to listen to.</param>
         /// <return>The next stage of the definition, or null if the specified port number is already used for a different protocol.</return>
-        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate>.FromFrontendHttpPort(int portNumber)
+        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate>.FromFrontendHttpPort(int portNumber)
         {
-            return this.FromFrontendHttpPort(portNumber) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate>;
+            return this.FromFrontendHttpPort(portNumber) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Update.IUpdate>;
         }
 
         /// <summary>
@@ -620,9 +672,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="portNumber">The port number to listen to.</param>
         /// <return>The next stage of the definition, or null if the specified port number is already used for a different protocol.</return>
-        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.FromFrontendHttpPort(int portNumber)
+        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.FromFrontendHttpPort(int portNumber)
         {
-            return this.FromFrontendHttpPort(portNumber) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.FromFrontendHttpPort(portNumber) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
         }
     }
 }
