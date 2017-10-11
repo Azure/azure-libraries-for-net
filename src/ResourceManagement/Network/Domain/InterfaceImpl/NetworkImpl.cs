@@ -23,10 +23,20 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// a cloud exception may be thrown after the update is applied.
         /// </summary>
         /// <param name="cidr">The CIDR representation of the address space.</param>
-        /// <return>The next stage of the virtual network update.</return>
+        /// <return>The next stage of the update.</return>
         Network.Update.IUpdate Network.Update.IWithAddressSpace.WithAddressSpace(string cidr)
         {
             return this.WithAddressSpace(cidr) as Network.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Removes the specified address space from the virtual network, assuming it's not in use bu any of the subnets.
+        /// </summary>
+        /// <param name="cidr">The address space to remove, in CIDR format, matching exactly one of the CIDRs associated with this network.</param>
+        /// <return>The next stage of the update.</return>
+        Network.Update.IUpdate Network.Update.IWithAddressSpaceBeta.WithoutAddressSpace(string cidr)
+        {
+            return this.WithoutAddressSpace(cidr) as Network.Update.IUpdate;
         }
 
         /// <summary>

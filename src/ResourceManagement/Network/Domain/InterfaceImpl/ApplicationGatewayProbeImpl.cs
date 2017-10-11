@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.HasProtocol.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
+    using System.Collections.Generic;
 
     internal partial class ApplicationGatewayProbeImpl 
     {
@@ -77,6 +78,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Gets the body contents of an HTTP response to a probe to check for to determine backend health, or null if none specified.
+        /// </summary>
+        string Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbeBeta.HealthyHttpResponseBodyContents
+        {
+            get
+            {
+                return this.HealthyHttpResponseBodyContents();
+            }
+        }
+
+        /// <summary>
         /// Gets the number of seconds waiting for a response after which the probe times out and it is marked as failed
         /// Acceptable values are from 1 to 86400 seconds.
         /// </summary>
@@ -85,6 +97,50 @@ namespace Microsoft.Azure.Management.Network.Fluent
             get
             {
                 return this.TimeoutInSeconds();
+            }
+        }
+
+        /// <summary>
+        /// Gets HTTP response code ranges in the format ###-### returned by the backend which the probe considers healthy.
+        /// </summary>
+        System.Collections.Generic.ISet<string> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbeBeta.HealthyHttpResponseStatusCodeRanges
+        {
+            get
+            {
+                return this.HealthyHttpResponseStatusCodeRanges() as System.Collections.Generic.ISet<string>;
+            }
+        }
+
+        /// <summary>
+        /// Gets host name to send the probe to.
+        /// </summary>
+        string Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe.Host
+        {
+            get
+            {
+                return this.Host();
+            }
+        }
+
+        /// <summary>
+        /// Gets the number of seconds between probe retries.
+        /// </summary>
+        int Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe.TimeBetweenProbesInSeconds
+        {
+            get
+            {
+                return this.TimeBetweenProbesInSeconds();
+            }
+        }
+
+        /// <summary>
+        /// Gets the relative path to be called by the probe.
+        /// </summary>
+        string Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe.Path
+        {
+            get
+            {
+                return this.Path();
             }
         }
 
@@ -101,36 +157,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets the number of seconds between probe retries.
+        /// Specifies HTTP as the probe protocol.
         /// </summary>
-        int Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe.TimeBetweenProbesInSeconds
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithProtocol<ApplicationGateway.Update.IUpdate>.WithHttp()
         {
-            get
-            {
-                return this.TimeBetweenProbesInSeconds();
-            }
-        }
-
-        /// <summary>
-        /// Gets host name to send the probe to.
-        /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe.Host
-        {
-            get
-            {
-                return this.Host();
-            }
-        }
-
-        /// <summary>
-        /// Gets the relative path to be called by the probe.
-        /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe.Path
-        {
-            get
-            {
-                return this.Path();
-            }
+            return this.WithHttp() as ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate>;
         }
 
         /// <summary>
@@ -146,9 +178,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Specifies HTTP as the probe protocol.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithProtocol<ApplicationGateway.Update.IUpdate>.WithHttp()
+        ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithProtocol<ApplicationGateway.Definition.IWithCreate>.WithHttp()
         {
-            return this.WithHttp() as ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate>;
+            return this.WithHttp() as ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate>;
         }
 
         /// <summary>
@@ -158,15 +190,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithProtocol<ApplicationGateway.Definition.IWithCreate>.WithHttps()
         {
             return this.WithHttps() as ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate>;
-        }
-
-        /// <summary>
-        /// Specifies HTTP as the probe protocol.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithProtocol<ApplicationGateway.Definition.IWithCreate>.WithHttp()
-        {
-            return this.WithHttp() as ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate>;
         }
 
         /// <summary>
@@ -240,6 +263,68 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Adds the specified range of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="range">A number range expressed in the format "###-###", for example "200-399", which is the default.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Update.IUpdate>.WithHealthyHttpResponseStatusCodeRange(string range)
+        {
+            return this.WithHealthyHttpResponseStatusCodeRange(range) as ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Adds the specified range of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="from">The lowest number in the range.</param>
+        /// <param name="to">The highest number in the range.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Update.IUpdate>.WithHealthyHttpResponseStatusCodeRange(int from, int to)
+        {
+            return this.WithHealthyHttpResponseStatusCodeRange(from, to) as ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the ranges of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="ranges">Number ranges expressed in the format "###-###", for example "200-399", which is the default.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Update.IUpdate>.WithHealthyHttpResponseStatusCodeRanges(ISet<string> ranges)
+        {
+            return this.WithHealthyHttpResponseStatusCodeRanges(ranges) as ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Adds the specified range of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="range">A number range expressed in the format "###-###", for example "200-399", which is the default.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Definition.IWithCreate>.WithHealthyHttpResponseStatusCodeRange(string range)
+        {
+            return this.WithHealthyHttpResponseStatusCodeRange(range) as ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Adds the specified range of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="from">The lowest number in the range.</param>
+        /// <param name="to">The highest number in the range.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Definition.IWithCreate>.WithHealthyHttpResponseStatusCodeRange(int from, int to)
+        {
+            return this.WithHealthyHttpResponseStatusCodeRange(from, to) as ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Specifies the ranges of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="ranges">Number ranges expressed in the format "###-###", for example "200-399", which is the default.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Definition.IWithCreate>.WithHealthyHttpResponseStatusCodeRanges(ISet<string> ranges)
+        {
+            return this.WithHealthyHttpResponseStatusCodeRanges(ranges) as ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
         /// Specifies the relative path for the probe to call.
         /// A probe is sent to &lt;protocol&gt;://&lt;host&gt;:&lt;port&gt;&lt;path&gt;.
         /// </summary>
@@ -248,6 +333,26 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithPath.WithPath(string path)
         {
             return this.WithPath(path) as ApplicationGatewayProbe.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the content, if any, to look for in the body of an HTTP response to a probe to determine the health status of the backend.
+        /// </summary>
+        /// <param name="text">Contents to look for.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithHealthyHttpResponseBodyContentsBeta<ApplicationGateway.Update.IUpdate>.WithHealthyHttpResponseBodyContents(string text)
+        {
+            return this.WithHealthyHttpResponseBodyContents(text) as ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the content, if any, to look for in the body of an HTTP response to a probe to determine the health status of the backend.
+        /// </summary>
+        /// <param name="text">Contents to look for.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseBodyContentsBeta<ApplicationGateway.Definition.IWithCreate>.WithHealthyHttpResponseBodyContents(string text)
+        {
+            return this.WithHealthyHttpResponseBodyContents(text) as ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
         }
 
         /// <summary>
@@ -273,21 +378,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Specifies HTTPS as the probe protocol.
-        /// </summary>
-        /// <return>The next stage of the update.</return>
-        ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithProtocol.WithHttps()
-        {
-            return this.WithHttps() as ApplicationGatewayProbe.Update.IUpdate;
-        }
-
-        /// <summary>
         /// Specifies HTTP as the probe protocol.
         /// </summary>
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithProtocol.WithHttp()
         {
             return this.WithHttp() as ApplicationGatewayProbe.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies HTTPS as the probe protocol.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithProtocol.WithHttps()
+        {
+            return this.WithHttps() as ApplicationGatewayProbe.Update.IUpdate;
         }
 
         /// <summary>
@@ -302,12 +407,62 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Specifies the content, if any, to look for in the body of an HTTP response to a probe to determine the health status of the backend.
+        /// </summary>
+        /// <param name="text">Contents to look for.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithHealthyHttpResponseBodyContentsBeta.WithHealthyHttpResponseBodyContents(string text)
+        {
+            return this.WithHealthyHttpResponseBodyContents(text) as ApplicationGatewayProbe.Update.IUpdate;
+        }
+
+        /// <summary>
         /// Attaches the child definition to the parent resource definition.
         /// </summary>
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.IInDefinitionAlt<ApplicationGateway.Definition.IWithCreate>.Attach()
         {
             return this.Attach() as ApplicationGateway.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Removes all healthy HTTP status response code ranges.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithHealthyHttpResponseStatusCodeRangesBeta.WithoutHealthyHttpResponseStatusCodeRanges()
+        {
+            return this.WithoutHealthyHttpResponseStatusCodeRanges() as ApplicationGatewayProbe.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Adds the specified range of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="range">A number range expressed in the format "###-###", for example "200-399", which is the default.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithHealthyHttpResponseStatusCodeRangesBeta.WithHealthyHttpResponseStatusCodeRange(string range)
+        {
+            return this.WithHealthyHttpResponseStatusCodeRange(range) as ApplicationGatewayProbe.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Adds the specified range of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="from">The lowest number in the range.</param>
+        /// <param name="to">The highest number in the range.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithHealthyHttpResponseStatusCodeRangesBeta.WithHealthyHttpResponseStatusCodeRange(int from, int to)
+        {
+            return this.WithHealthyHttpResponseStatusCodeRange(from, to) as ApplicationGatewayProbe.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the ranges of the backend's HTTP response status codes that are to be considered healthy.
+        /// </summary>
+        /// <param name="ranges">Number ranges expressed in the format "###-###", for example "200-399", which is the default.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithHealthyHttpResponseStatusCodeRangesBeta.WithHealthyHttpResponseStatusCodeRanges(ISet<string> ranges)
+        {
+            return this.WithHealthyHttpResponseStatusCodeRanges(ranges) as ApplicationGatewayProbe.Update.IUpdate;
         }
 
         /// <summary>
@@ -331,15 +486,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Attaches the child definition to the parent resource update.
-        /// </summary>
-        /// <return>The next stage of the parent definition.</return>
-        ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.IInUpdateAlt<ApplicationGateway.Update.IUpdate>.Attach()
-        {
-            return this.Attach() as ApplicationGateway.Update.IUpdate;
-        }
-
-        /// <summary>
         /// Gets the protocol.
         /// </summary>
         Models.ApplicationGatewayProtocol Microsoft.Azure.Management.Network.Fluent.IHasProtocol<Models.ApplicationGatewayProtocol>.Protocol
@@ -348,6 +494,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 return this.Protocol() as Models.ApplicationGatewayProtocol;
             }
+        }
+
+        /// <summary>
+        /// Attaches the child definition to the parent resource update.
+        /// </summary>
+        /// <return>The next stage of the parent definition.</return>
+        ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.IInUpdateAlt<ApplicationGateway.Update.IUpdate>.Attach()
+        {
+            return this.Attach() as ApplicationGateway.Update.IUpdate;
         }
     }
 }

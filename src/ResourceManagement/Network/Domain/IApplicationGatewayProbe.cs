@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 {
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Collections.Generic;
 
     /// <summary>
     /// A client-side representation of an application gateway probe.
@@ -11,7 +12,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     public interface IApplicationGatewayProbe  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ApplicationGatewayProbeInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>,
-        Microsoft.Azure.Management.Network.Fluent.IHasProtocol<Models.ApplicationGatewayProtocol>
+        Microsoft.Azure.Management.Network.Fluent.IHasProtocol<Models.ApplicationGatewayProtocol>,
+        Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbeBeta
     {
         /// <summary>
         /// Gets the number of failed retry probes before the backend server is marked as being down

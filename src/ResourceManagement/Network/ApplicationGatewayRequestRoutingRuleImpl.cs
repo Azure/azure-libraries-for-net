@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for ApplicationGatewayRequestRoutingRule.
     /// </summary>
-    
+
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uQXBwbGljYXRpb25HYXRld2F5UmVxdWVzdFJvdXRpbmdSdWxlSW1wbA==
     internal partial class ApplicationGatewayRequestRoutingRuleImpl :
         ChildResource<ApplicationGatewayRequestRoutingRuleInner, ApplicationGatewayImpl, IApplicationGateway>,
@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
     {
         private bool? associateWithPublicFrontend;
 
-        
         ///GENMHASH:BF497059E01321BD53A7DF19D85F4D8E:C0847EA0CDA78F6D91EFD239C70F0FA7
         internal ApplicationGatewayRequestRoutingRuleImpl(ApplicationGatewayRequestRoutingRuleInner inner, ApplicationGatewayImpl parent) : base(inner, parent)
         {
@@ -34,7 +33,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         #region Withers
 
-        
+        #region Backend
+
+        ///GENMHASH:C91CE0B00972007A115F692F7D876F49:ADEAE9F132075E8759871A4371ADDDF9
+        public ApplicationGatewayRequestRoutingRuleImpl ToBackendIPAddress(string ipAddress)
+        {
+            Parent.UpdateBackend(EnsureBackend().Name()).WithIPAddress(ipAddress);
+            return this;
+        }
+
         ///GENMHASH:75998168C8403D37D5B62BD1214010ED:C1A031BED4FEE36EA5917030CC573179
         public ApplicationGatewayRequestRoutingRuleImpl ToBackendFqdn(string fqdn)
         {
@@ -42,16 +49,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
-        ///GENMHASH:389A52ADE2A3CD0EC1D4345823ED3438:49DCB9A1FA027B67B2E9041AABC358E5
-        public ApplicationGatewayRequestRoutingRuleImpl WithCookieBasedAffinity()
-        {
-            Parent.UpdateBackendHttpConfiguration(EnsureBackendHttpConfig().Name())
-                .WithCookieBasedAffinity();
-            return this;
-        }
-
-        
         ///GENMHASH:ABF006C723CD07B4C16642781DD352C1:80A92C790A23B4858621E149898669CA
         public ApplicationGatewayRequestRoutingRuleImpl ToBackend(string name)
         {
@@ -64,7 +61,24 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
+        #endregion
+
+        #region BackendHttpPort
+
+        ///GENMHASH:3E9C9108A0B9643E9C6CCF35D944BFF5:124BE7697EDA0DEA9F68AB88B3FD072D
+        public ApplicationGatewayRequestRoutingRuleImpl ToBackendHttpPort(int portNumber)
+        {
+            string name = SdkContext.RandomResourceName("backcfg", 12);
+            Parent.DefineBackendHttpConfiguration(name)
+               .WithPort(portNumber)
+               .Attach();
+            return ToBackendHttpConfiguration(name);
+        }
+
+        #endregion
+
+        #region Frontend
+
         ///GENMHASH:61009120769572DC319DE0A706651D48:A9AAC19D1000F85AE80FFDF68E2B7657
         public ApplicationGatewayRequestRoutingRuleImpl FromPrivateFrontend()
         {
@@ -72,22 +86,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
-        ///GENMHASH:1D7C0E3D335976570E947F3D48437E66:21CFE894224FD9175DC687D7587C6B81
-        public ApplicationGatewayRequestRoutingRuleImpl WithSslCertificate(string name)
-        {
-            Parent.UpdateListener(EnsureListener().Name()).WithSslCertificate(name);
-            return this;
-        }
-
-        
-        ///GENMHASH:C9BEFCDC31CD90EB31575FB70FEC63EF:572F23F90AA511055CD97EF80750265B
-        public ApplicationGatewayRequestRoutingRuleImpl FromFrontendHttpsPort(int portNumber)
-        {
-            return FromFrontendPort(portNumber, ApplicationGatewayProtocol.Https, null);
-        }
-
-        
         ///GENMHASH:B3B3BBEB4388330056F367AFFE5E08E7:955135520FC3C8B79C3CC7BBD653E1D6
         public ApplicationGatewayRequestRoutingRuleImpl FromPublicFrontend()
         {
@@ -95,31 +93,22 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
-        ///GENMHASH:CB6B71434C2E17A82873B7892EE00D55:6699CF8695CA8CD4C78C07D022AFE500
-        public ApplicationGatewayRequestRoutingRuleImpl WithoutServerNameIndication()
+        #endregion
+
+        #region FrontendPort
+
+        ///GENMHASH:4364BC2E794A044FD930E465BFF31892:5F1B09727C6B0D98D3B91D719E4AF6B7
+        public ApplicationGatewayRequestRoutingRuleImpl FromFrontendHttpPort(int portNumber)
         {
-            Parent.UpdateListener(EnsureListener().Name()).WithoutServerNameIndication();
-            return this;
+            return FromFrontendPort(portNumber, ApplicationGatewayProtocol.Http, null);
         }
 
-        
-        ///GENMHASH:C91CE0B00972007A115F692F7D876F49:ADEAE9F132075E8759871A4371ADDDF9
-        public ApplicationGatewayRequestRoutingRuleImpl ToBackendIPAddress(string ipAddress)
+        ///GENMHASH:C9BEFCDC31CD90EB31575FB70FEC63EF:572F23F90AA511055CD97EF80750265B
+        public ApplicationGatewayRequestRoutingRuleImpl FromFrontendHttpsPort(int portNumber)
         {
-            Parent.UpdateBackend(EnsureBackend().Name()).WithIPAddress(ipAddress);
-            return this;
+            return FromFrontendPort(portNumber, ApplicationGatewayProtocol.Https, null);
         }
 
-        
-        ///GENMHASH:5ACBA6D500464D19A23A5A5A6A184B79:C49203B793C8E16B0A521362FC4A91D6
-        public ApplicationGatewayRequestRoutingRuleImpl WithHostName(string hostName)
-        {
-            Parent.UpdateListener(EnsureListener().Name()).WithHostName(hostName);
-            return this;
-        }
-
-        
         ///GENMHASH:DE88BB19D1C1507E6EAAD715D1F861E6:F2935D4C9878DFEC3D331B356A794987
         private ApplicationGatewayRequestRoutingRuleImpl FromFrontendPort(int portNumber, ApplicationGatewayProtocol protocol, string name)
         {
@@ -176,18 +165,86 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
         }
 
-        
-        ///GENMHASH:3E9C9108A0B9643E9C6CCF35D944BFF5:124BE7697EDA0DEA9F68AB88B3FD072D
-        public ApplicationGatewayRequestRoutingRuleImpl ToBackendHttpPort(int portNumber)
+        #endregion
+
+        #region RedirectConfiguration
+
+        ///GENMHASH:5001F205E38CA8E6C5CBCD9EE1D5D204:B84431EA1477149353ED08BFBB113D2C
+        public ApplicationGatewayRequestRoutingRuleImpl WithRedirectConfiguration(string name)
         {
-            string name = SdkContext.RandomResourceName("backcfg", 12);
-            Parent.DefineBackendHttpConfiguration(name)
-               .WithPort(portNumber)
-               .Attach();
-            return ToBackendHttpConfiguration(name);
+            if (name == null)
+            {
+                Inner.RedirectConfiguration = null;
+            }
+            else
+            {
+                SubResource r = new SubResource()
+                {
+                    Id = Parent.FutureResourceId() + "/redirectConfigurations/" + name
+                };
+                Inner.RedirectConfiguration = r;
+                Inner.BackendAddressPool = null;
+                Inner.BackendHttpSettings = null;
+            }
+            return this;
         }
 
-        
+        ///GENMHASH:4ACE2CA2D52EF9C7A6F5DD0EA21FC5A7:9ABBBFA99894116ACB0BB888A8A7F134
+        public ApplicationGatewayRequestRoutingRuleImpl WithoutRedirectConfiguration()
+        {
+            Inner.RedirectConfiguration = null;
+            return this;
+        }
+
+        #endregion
+
+        #region SslCertificate
+
+        ///GENMHASH:AFBFDB5617AA4227641C045CF9D86F66:E59D799F1DB4F9650C71EDC18FB6BFBB
+        public ApplicationGatewayRequestRoutingRuleImpl WithSslCertificateFromPfxFile(FileInfo pfxFile)
+        {
+            Parent.UpdateListener(EnsureListener().Name()).WithSslCertificateFromPfxFile(pfxFile);
+            return this;
+        }
+
+        ///GENMHASH:382D2BF4EBC04F5E7DF95B5EF5A97146:A2186495BD577CBC3FCDAFE065A38100
+        public ApplicationGatewayRequestRoutingRuleImpl WithSslCertificatePassword(string password)
+        {
+            Parent.UpdateListener(EnsureListener().Name()).WithSslCertificatePassword(password);
+            return this;
+        }
+
+        ///GENMHASH:1D7C0E3D335976570E947F3D48437E66:21CFE894224FD9175DC687D7587C6B81
+        public ApplicationGatewayRequestRoutingRuleImpl WithSslCertificate(string name)
+        {
+            Parent.UpdateListener(EnsureListener().Name()).WithSslCertificate(name);
+            return this;
+        }
+
+        #endregion
+
+        ///GENMHASH:389A52ADE2A3CD0EC1D4345823ED3438:49DCB9A1FA027B67B2E9041AABC358E5
+        public ApplicationGatewayRequestRoutingRuleImpl WithCookieBasedAffinity()
+        {
+            Parent.UpdateBackendHttpConfiguration(EnsureBackendHttpConfig().Name())
+                .WithCookieBasedAffinity();
+            return this;
+        }
+
+        ///GENMHASH:CB6B71434C2E17A82873B7892EE00D55:6699CF8695CA8CD4C78C07D022AFE500
+        public ApplicationGatewayRequestRoutingRuleImpl WithoutServerNameIndication()
+        {
+            Parent.UpdateListener(EnsureListener().Name()).WithoutServerNameIndication();
+            return this;
+        }
+
+        ///GENMHASH:5ACBA6D500464D19A23A5A5A6A184B79:C49203B793C8E16B0A521362FC4A91D6
+        public ApplicationGatewayRequestRoutingRuleImpl WithHostName(string hostName)
+        {
+            Parent.UpdateListener(EnsureListener().Name()).WithHostName(hostName);
+            return this;
+        }
+
         ///GENMHASH:64EFD8E5D6EE43236B119988348C8FE5:551C88DB1BFEC84D69F63E5B891BF1C9
         public ApplicationGatewayRequestRoutingRuleImpl FromListener(string name)
         {
@@ -199,30 +256,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
-        ///GENMHASH:4364BC2E794A044FD930E465BFF31892:5F1B09727C6B0D98D3B91D719E4AF6B7
-        public ApplicationGatewayRequestRoutingRuleImpl FromFrontendHttpPort(int portNumber)
-        {
-            return FromFrontendPort(portNumber, ApplicationGatewayProtocol.Http, null);
-        }
-
-        
-        ///GENMHASH:AFBFDB5617AA4227641C045CF9D86F66:E59D799F1DB4F9650C71EDC18FB6BFBB
-        public ApplicationGatewayRequestRoutingRuleImpl WithSslCertificateFromPfxFile(FileInfo pfxFile)
-        {
-            Parent.UpdateListener(EnsureListener().Name()).WithSslCertificateFromPfxFile(pfxFile);
-            return this;
-        }
-
-        
-        ///GENMHASH:382D2BF4EBC04F5E7DF95B5EF5A97146:A2186495BD577CBC3FCDAFE065A38100
-        public ApplicationGatewayRequestRoutingRuleImpl WithSslCertificatePassword(string password)
-        {
-            Parent.UpdateListener(EnsureListener().Name()).WithSslCertificatePassword(password);
-            return this;
-        }
-
-        
         ///GENMHASH:E5009D35A881840DCEE40214DFD5197F:C0E7624E9F0A1098FE7AC34D7DC81866
         public ApplicationGatewayRequestRoutingRuleImpl ToBackendHttpConfiguration(string name)
         {
@@ -234,7 +267,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
         ///GENMHASH:85408D425EF4341A6D39C75F68ED8A2B:D7EEEE46B8C5048ECEB42B103795D1F6
         public ApplicationGatewayRequestRoutingRuleImpl WithServerNameIndication()
         {
@@ -251,14 +283,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return Parent;
         }
 
-        
         ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:61C1065B307679F3800C701AE0D87070
         public override string Name()
         {
             return Inner.Name;
         }
 
-        
         ///GENMHASH:D457B9CDACC819681A8B8A61E22717C2:DF12139705045E06926F38A1DB38047A
         public ApplicationGatewayProtocol FrontendProtocol()
         {
@@ -266,7 +296,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (listener != null) ? listener.Protocol() : null;
         }
 
-        
         ///GENMHASH:5EF934D4E2CF202DF23C026435D9F6D6:05FE1E23D6B429BEA4CD7C9EE7596131
         public string PublicIPAddressId()
         {
@@ -274,7 +303,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (listener != null) ? listener.PublicIPAddressId() : null;
         }
 
-        
         ///GENMHASH:A80C3FC8655E547C3392C10C546FFF39:4178B96D859F693DD4C685D2EA97E3C1
         public bool RequiresServerNameIndication()
         {
@@ -282,7 +310,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (listener != null) ? listener.RequiresServerNameIndication() : false;
         }
 
-        
         ///GENMHASH:EB41BE025536B41812665B952EBF2040:31ACB997844CDB27FC8A75BA5FA0E687
         public int FrontendPort()
         {
@@ -290,7 +317,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (listener != null) ? listener.FrontendPortNumber() : 0;
         }
 
-        
         ///GENMHASH:B2F4F96855247681287878DA2BF26C8E:7BE0813A1F69908779DA5794AAE2BD13
         public ApplicationGatewayBackendHttpConfigurationImpl BackendHttpConfiguration()
         {
@@ -307,14 +333,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
         }
 
-        
         ///GENMHASH:597B4CCFA9884BBB039FE1B734196FBB:9BB7A8FF5376A1E35A43987311B73DC5
         public ApplicationGatewayRequestRoutingRuleType RuleType()
         {
             return ApplicationGatewayRequestRoutingRuleType.Parse(Inner.RuleType);
         }
 
-        
         ///GENMHASH:5AC5C38B890C28F2C14CCD5CC0A89B49:0B03E9DA7912B73A5E88BD6441153E80
         public IApplicationGatewayBackend Backend()
         {
@@ -331,7 +355,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
         }
 
-        
         ///GENMHASH:1AB1FD137FCAFECBC19E784B21600422:A8E447B9115965EC413B57E517B5DA3B
         public ApplicationGatewayRequestRoutingRuleImpl WithoutCookieBasedAffinity()
         {
@@ -340,7 +363,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
         ///GENMHASH:B7056D5E403DF443379DDF57BB0658A2:95CF36EF4D1A21EAD1633FD0A40F89C9
         public int BackendPort()
         {
@@ -348,7 +370,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (backendConfig != null) ? backendConfig.Port() : 0;
         }
 
-        
         ///GENMHASH:1207E16326E66DA6A51CBA6F0565D088:CB87CAA0875D78D6AC5C13AF9397F5C9
         public IApplicationGatewaySslCertificate SslCertificate()
         {
@@ -356,7 +377,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (listener != null) ? listener.SslCertificate() : null;
         }
 
-        
         ///GENMHASH:88B8E503CCDD1E57245F30B2FC889572:820DF50CEF634C47EBC86C7FEFE94C25
         public IReadOnlyCollection<ApplicationGatewayBackendAddress> BackendAddresses()
         {
@@ -365,13 +385,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
             if (backend != null && backend.Addresses != null)
             {
                 return backend.Addresses;
-            } else
+            }
+            else
             {
                 return addresses;
             }
         }
 
-        
         ///GENMHASH:0BBB3340617BD27DD6A3E851FD10BEE1:D28477BD31DAD54051BEAF76A9FCB4C7
         public bool CookieBasedAffinity()
         {
@@ -379,7 +399,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (backendConfig != null) ? backendConfig.CookieBasedAffinity() : false;
         }
 
-        
         ///GENMHASH:F8F8F11F485174C9B1CC3FA0197799B9:649DFFCBE23D4220949D8CA7A521D053
         internal ApplicationGatewayListenerImpl Listener()
         {
@@ -396,7 +415,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
         }
 
-        
         ///GENMHASH:A50A011CA652E846C1780DCE98D171DE:8DF47161E6AF3BB720FFC33F3FA597B2
         public string HostName()
         {
@@ -404,11 +422,22 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return (listener != null) ? listener.HostName() : null;
         }
 
+        ///GENMHASH:D5E00812BB08739BCD6D0F2DF92124A9:0AEB7EFD7127E8DCF73C7CF7661FF62C
+        public IApplicationGatewayRedirectConfiguration RedirectConfiguration()
+        {
+            SubResource r = Inner.RedirectConfiguration;
+            IApplicationGatewayRedirectConfiguration config = null;
+            if (r != null)
+            {
+                Parent.RedirectConfigurations().TryGetValue(ResourceUtils.NameFromResourceId(r.Id), out config);
+            }
+            return config;
+        }
+
         #endregion
 
         #region Actions
 
-        
         ///GENMHASH:B141413D05555CAF08A805C787576617:AA0180A4A065FA4ED289E4A294E92B4B
         private ApplicationGatewayBackendHttpConfigurationImpl EnsureBackendHttpConfig()
         {
@@ -424,7 +453,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return config;
         }
 
-        
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:086E96DC9677CE6EDD1F65C8128BAD7A
         public ApplicationGatewayImpl Attach()
         {
@@ -432,7 +460,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return Parent;
         }
 
-        
         ///GENMHASH:166583FE514624A3D800151836CD57C1:C21CB040ABF97E760528E399E710404E
         public IPublicIPAddress GetPublicIPAddress()
         {
@@ -444,7 +471,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         #region Helpers
 
-        
         ///GENMHASH:8CE04F0B10328CF0D4983442F418CB39:47F20B573156490489C531E75748B797
         private ApplicationGatewayListenerImpl EnsureListener()
         {
@@ -460,11 +486,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return listener;
         }
 
-        
         ///GENMHASH:DDD0EE7198E7BD6B745033E06D1924F5:D5AB941EF579322A74ACDAD720D29F7B
         private ApplicationGatewayBackendImpl EnsureBackend()
         {
-            ApplicationGatewayBackendImpl backend = (ApplicationGatewayBackendImpl) Backend();
+            ApplicationGatewayBackendImpl backend = (ApplicationGatewayBackendImpl)Backend();
             if (backend == null)
             {
                 string name = SdkContext.RandomResourceName("backend", 12);

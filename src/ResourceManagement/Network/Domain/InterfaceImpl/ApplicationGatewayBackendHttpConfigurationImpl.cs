@@ -11,15 +11,33 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.HasPort.Definition;
     using Microsoft.Azure.Management.Network.Fluent.HasPort.UpdateDefinition;
     using Microsoft.Azure.Management.Network.Fluent.HasPort.Update;
-    using Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition;
-    using Microsoft.Azure.Management.Network.Fluent.HasProtocol.UpdateDefinition;
-    using Microsoft.Azure.Management.Network.Fluent.HasProtocol.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
+    using System.IO;
+    using System.Collections.Generic;
 
     internal partial class ApplicationGatewayBackendHttpConfigurationImpl 
     {
+        /// <summary>
+        /// Specifies the number of seconds when connection draining is active.
+        /// </summary>
+        /// <param name="seconds">A number of seconds between 1 and 3600.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithConnectionDrainingBeta.WithConnectionDrainingTimeoutInSeconds(int seconds)
+        {
+            return this.WithConnectionDrainingTimeoutInSeconds(seconds) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Disables connection draining.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithConnectionDrainingBeta.WithoutConnectionDraining()
+        {
+            return this.WithoutConnectionDraining() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
         /// <summary>
         /// Specifies the port number.
         /// </summary>
@@ -51,201 +69,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets the protocol.
-        /// </summary>
-        Models.ApplicationGatewayProtocol Microsoft.Azure.Management.Network.Fluent.IHasProtocol<Models.ApplicationGatewayProtocol>.Protocol
-        {
-            get
-            {
-                return this.Protocol() as Models.ApplicationGatewayProtocol;
-            }
-        }
-
-        /// <summary>
-        /// Gets the name of the resource.
-        /// </summary>
-        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName.Name
-        {
-            get
-            {
-                return this.Name();
-            }
-        }
-
-        /// <summary>
-        /// Gets the port number.
-        /// </summary>
-        int Microsoft.Azure.Management.Network.Fluent.IHasPort.Port
-        {
-            get
-            {
-                return this.Port();
-            }
-        }
-
-        /// <summary>
-        /// Attaches the child definition to the parent resource update.
-        /// </summary>
-        /// <return>The next stage of the parent definition.</return>
-        ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ApplicationGateway.Update.IUpdate>.Attach()
-        {
-            return this.Attach() as ApplicationGateway.Update.IUpdate;
-        }
-
-        /// <summary>
-        /// Attaches the child definition to the parent resource definiton.
-        /// </summary>
-        /// <return>The next stage of the parent definition.</return>
-        ApplicationGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ApplicationGateway.Definition.IWithCreate>.Attach()
-        {
-            return this.Attach() as ApplicationGateway.Definition.IWithCreate;
-        }
-
-        /// <summary>
-        /// Specifies an existing probe on this application gateway to associate with this backend.
-        /// If the probe with the specified name does not yet exist, it must be defined separately in the optional part
-        /// of the application gateway definition. This only adds a reference to the probe by its name.
-        /// </summary>
-        /// <param name="name">The name of an existing probe.</param>
-        /// <return>The next stage of the update.</return>
-        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProbeBeta.WithProbe(string name)
-        {
-            return this.WithProbe(name) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
-        }
-
-        /// <summary>
-        /// Removes the association with a probe.
-        /// </summary>
-        /// <return>The next stage of the update.</return>
-        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProbeBeta.WithoutProbe()
-        {
-            return this.WithoutProbe() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
-        }
-
-        /// <summary>
-        /// Specifies the request timeout.
-        /// </summary>
-        /// <param name="seconds">A number of seconds.</param>
-        /// <return>The next stage of the definition.</return>
-        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithRequestTimeout.WithRequestTimeout(int seconds)
-        {
-            return this.WithRequestTimeout(seconds) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
-        }
-
-        /// <summary>
-        /// Specifies the transport protocol.
-        /// </summary>
-        /// <param name="protocol">A transport protocol.</param>
-        /// <return>The next stage of the definition.</return>
-        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasProtocol.UpdateDefinition.IWithProtocol<ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>,Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
-        {
-            return this.WithProtocol(protocol) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
-        }
-
-        /// <summary>
-        /// Specifies the transport protocol.
-        /// </summary>
-        /// <param name="protocol">A transport protocol.</param>
-        /// <return>The next stage of the update.</return>
-        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate HasProtocol.Update.IWithProtocol<ApplicationGatewayBackendHttpConfiguration.Update.IUpdate,Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
-        {
-            return this.WithProtocol(protocol) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
-        }
-
-        /// <summary>
-        /// Specifies the transport protocol.
-        /// </summary>
-        /// <param name="protocol">A transport protocol.</param>
-        /// <return>The next stage of the definition.</return>
-        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> HasProtocol.Definition.IWithProtocol<ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>,Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
-        {
-            return this.WithProtocol(protocol) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
-        }
-
-        /// <summary>
-        /// Gets HTTP request timeout in seconds. Requests will fail if no response is received within the specified time.
-        /// </summary>
-        int Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfiguration.RequestTimeout
-        {
-            get
-            {
-                return this.RequestTimeout();
-            }
-        }
-
-        /// <summary>
-        /// Gets the probe associated with this backend.
-        /// </summary>
-        Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationBeta.Probe
-        {
-            get
-            {
-                return this.Probe() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe;
-            }
-        }
-
-        /// <summary>
-        /// Gets true if cookie based affinity (sticky sessions) is enabled, else false.
-        /// </summary>
-        bool Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfiguration.CookieBasedAffinity
-        {
-            get
-            {
-                return this.CookieBasedAffinity();
-            }
-        }
-
-        /// <summary>
-        /// Specifies the request timeout.
-        /// </summary>
-        /// <param name="seconds">A number of seconds.</param>
-        /// <return>The next stage of the definition.</return>
-        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithRequestTimeout<ApplicationGateway.Update.IUpdate>.WithRequestTimeout(int seconds)
-        {
-            return this.WithRequestTimeout(seconds) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
-        }
-
-        /// <summary>
-        /// Specifies the request timeout.
-        /// </summary>
-        /// <param name="seconds">A number of seconds.</param>
-        /// <return>The next stage of the definition.</return>
-        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithRequestTimeout<ApplicationGateway.Definition.IWithCreate>.WithRequestTimeout(int seconds)
-        {
-            return this.WithRequestTimeout(seconds) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
-        }
-
-        /// <summary>
-        /// Disables cookie based affinity.
-        /// </summary>
-        /// <return>The next stage of the update.</return>
-        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAffinity.WithoutCookieBasedAffinity()
-        {
-            return this.WithoutCookieBasedAffinity() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
-        }
-
-        /// <summary>
-        /// Enables cookie based affinity.
-        /// </summary>
-        /// <return>The next stage of the update.</return>
-        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAffinity.WithCookieBasedAffinity()
-        {
-            return this.WithCookieBasedAffinity() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
-        }
-
-        /// <summary>
-        /// Specifies an existing probe on this application gateway to associate with this backend.
-        /// If the probe with the specified name does not yet exist, it must be defined separately in the optional part
-        /// of the application gateway definition. This only adds a reference to the probe by its name.
-        /// </summary>
-        /// <param name="name">The name of an existing probe.</param>
-        /// <return>The next stage of the definition.</return>
-        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithProbeBeta<ApplicationGateway.Definition.IWithCreate>.WithProbe(string name)
-        {
-            return this.WithProbe(name) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
-        }
-
-        /// <summary>
         /// Disables cookie based affinity.
         /// </summary>
         /// <return>The next stage of the update.</return>
@@ -270,6 +93,617 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithAffinity<ApplicationGateway.Definition.IWithCreate>.WithCookieBasedAffinity()
         {
             return this.WithCookieBasedAffinity() as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Specifies the host header.
+        /// </summary>
+        /// <param name="hostHeader">The host header.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithHostHeaderBeta<ApplicationGateway.Update.IUpdate>.WithHostHeader(string hostHeader)
+        {
+            return this.WithHostHeader(hostHeader) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies that the host header should come from the host name of the backend server.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithHostHeaderBeta<ApplicationGateway.Update.IUpdate>.WithHostHeaderFromBackend()
+        {
+            return this.WithHostHeaderFromBackend() as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the host header.
+        /// </summary>
+        /// <param name="hostHeader">The host header.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithHostHeaderBeta<ApplicationGateway.Definition.IWithCreate>.WithHostHeader(string hostHeader)
+        {
+            return this.WithHostHeader(hostHeader) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Specifies that the host header should come from the host name of the backend server.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithHostHeaderBeta<ApplicationGateway.Definition.IWithCreate>.WithHostHeaderFromBackend()
+        {
+            return this.WithHostHeaderFromBackend() as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Gets the port number.
+        /// </summary>
+        int Microsoft.Azure.Management.Network.Fluent.IHasPort.Port
+        {
+            get
+            {
+                return this.Port();
+            }
+        }
+
+        /// <summary>
+        /// Specifies the request timeout.
+        /// </summary>
+        /// <param name="seconds">A number of seconds.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithRequestTimeout<ApplicationGateway.Update.IUpdate>.WithRequestTimeout(int seconds)
+        {
+            return this.WithRequestTimeout(seconds) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the request timeout.
+        /// </summary>
+        /// <param name="seconds">A number of seconds.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithRequestTimeout<ApplicationGateway.Definition.IWithCreate>.WithRequestTimeout(int seconds)
+        {
+            return this.WithRequestTimeout(seconds) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Specifies the path prefix for all HTTP requests.
+        /// </summary>
+        /// <param name="path">A path.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithPathBeta<ApplicationGateway.Update.IUpdate>.WithPath(string path)
+        {
+            return this.WithPath(path) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the path prefix for all HTTP requests.
+        /// </summary>
+        /// <param name="path">A path.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithPathBeta<ApplicationGateway.Definition.IWithCreate>.WithPath(string path)
+        {
+            return this.WithPath(path) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Specifies an existing probe on this application gateway to associate with this backend.
+        /// If the probe with the specified name does not yet exist, it must be defined separately in the optional part
+        /// of the application gateway definition. This only adds a reference to the probe by its name.
+        /// </summary>
+        /// <param name="name">The name of an existing probe.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithProbe<ApplicationGateway.Definition.IWithCreate>.WithProbe(string name)
+        {
+            return this.WithProbe(name) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Attaches the child definition to the parent resource update.
+        /// </summary>
+        /// <return>The next stage of the parent definition.</return>
+        ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ApplicationGateway.Update.IUpdate>.Attach()
+        {
+            return this.Attach() as ApplicationGateway.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that no host header should be used.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithHostHeaderBeta.WithoutHostHeader()
+        {
+            return this.WithoutHostHeader() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the host header.
+        /// </summary>
+        /// <param name="hostHeader">The host header.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithHostHeaderBeta.WithHostHeader(string hostHeader)
+        {
+            return this.WithHostHeader(hostHeader) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that the host header should come from the host name of the backend server.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithHostHeaderBeta.WithHostHeaderFromBackend()
+        {
+            return this.WithHostHeaderFromBackend() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Attaches the child definition to the parent resource definiton.
+        /// </summary>
+        /// <return>The next stage of the parent definition.</return>
+        ApplicationGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ApplicationGateway.Definition.IWithCreate>.Attach()
+        {
+            return this.Attach() as ApplicationGateway.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies the path prefix for all HTTP requests.
+        /// </summary>
+        /// <param name="path">A path.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithPathBeta.WithPath(string path)
+        {
+            return this.WithPath(path) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration based on the specified data.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="derData">The DER encoded data of an X.509 certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAuthenticationCertificateBeta<ApplicationGateway.Update.IUpdate>.WithAuthenticationCertificateFromBytes(params byte[] derData)
+        {
+            return this.WithAuthenticationCertificateFromBytes(derData) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Associates the specified authentication certificate that exists on this application gateway with this backend HTTP confifuration.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="name">The name of an existing authentication certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAuthenticationCertificateBeta<ApplicationGateway.Update.IUpdate>.WithAuthenticationCertificate(string name)
+        {
+            return this.WithAuthenticationCertificate(name) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration loaded from the specified file.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="certificateFile">A file containing the DER representation of an X.509 certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        /// <throws>IOException when there are issues reading from the specified file.</throws>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAuthenticationCertificateBeta<ApplicationGateway.Update.IUpdate>.WithAuthenticationCertificateFromFile(FileInfo certificateFile)
+        {
+            return this.WithAuthenticationCertificateFromFile(certificateFile) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration loaded from the specified file.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="base64Data">The base-64 encoded data of an X.509 certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAuthenticationCertificateBeta<ApplicationGateway.Update.IUpdate>.WithAuthenticationCertificateFromBase64(string base64Data)
+        {
+            return this.WithAuthenticationCertificateFromBase64(base64Data) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration based on the specified data.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="derData">The DER-encoded data of an X.509 certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithAuthenticationCertificateBeta<ApplicationGateway.Definition.IWithCreate>.WithAuthenticationCertificateFromBytes(params byte[] derData)
+        {
+            return this.WithAuthenticationCertificateFromBytes(derData) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Associates the specified authentication certificate that exists on this application gateway with this backend HTTP confifuration.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="name">The name of an existing authentication certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithAuthenticationCertificateBeta<ApplicationGateway.Definition.IWithCreate>.WithAuthenticationCertificate(string name)
+        {
+            return this.WithAuthenticationCertificate(name) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration loaded from the specified file.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="certificateFile">A file containing the DER format representation of an X.509 certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        /// <throws>IOException when there are issues reading from the specified file.</throws>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithAuthenticationCertificateBeta<ApplicationGateway.Definition.IWithCreate>.WithAuthenticationCertificateFromFile(FileInfo certificateFile)
+        {
+            return this.WithAuthenticationCertificateFromFile(certificateFile) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration loaded from the specified file.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="base64Data">The base-64 encoded data of an X.509 certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithAuthenticationCertificateBeta<ApplicationGateway.Definition.IWithCreate>.WithAuthenticationCertificateFromBase64(string base64Data)
+        {
+            return this.WithAuthenticationCertificateFromBase64(base64Data) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Gets if 0 then connection draining is not enabled, otherwise if between 1 and 3600, then the number of seconds when connection draining is active.
+        /// </summary>
+        int Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationBeta.ConnectionDrainingTimeoutInSeconds
+        {
+            get
+            {
+                return this.ConnectionDrainingTimeoutInSeconds();
+            }
+        }
+
+        /// <summary>
+        /// Gets name used for the affinity cookie.
+        /// </summary>
+        string Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationBeta.AffinityCookieName
+        {
+            get
+            {
+                return this.AffinityCookieName();
+            }
+        }
+
+        /// <summary>
+        /// Gets authentication certificates associated with this backend HTTPS configuration.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationBeta.AuthenticationCertificates
+        {
+            get
+            {
+                return this.AuthenticationCertificates() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate>;
+            }
+        }
+
+        /// <summary>
+        /// Gets the probe associated with this backend.
+        /// </summary>
+        Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfiguration.Probe
+        {
+            get
+            {
+                return this.Probe() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe;
+            }
+        }
+
+        /// <summary>
+        /// Gets true if cookie based affinity (sticky sessions) is enabled, else false.
+        /// </summary>
+        bool Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfiguration.CookieBasedAffinity
+        {
+            get
+            {
+                return this.CookieBasedAffinity();
+            }
+        }
+
+        /// <summary>
+        /// Gets whether the host header should come from the host name of the backend server.
+        /// </summary>
+        bool Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationBeta.IsHostHeaderFromBackend
+        {
+            get
+            {
+                return this.IsHostHeaderFromBackend();
+            }
+        }
+
+        /// <summary>
+        /// Gets HTTP request timeout in seconds. Requests will fail if no response is received within the specified time.
+        /// </summary>
+        int Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfiguration.RequestTimeout
+        {
+            get
+            {
+                return this.RequestTimeout();
+            }
+        }
+
+        /// <summary>
+        /// Gets host header to be sent to the backend servers.
+        /// </summary>
+        string Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationBeta.HostHeader
+        {
+            get
+            {
+                return this.HostHeader();
+            }
+        }
+
+        /// <summary>
+        /// Gets the path, if any, used as a prefix for all HTTP requests.
+        /// </summary>
+        string Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationBeta.Path
+        {
+            get
+            {
+                return this.Path();
+            }
+        }
+
+        /// <summary>
+        /// Gets true if the probe is enabled.
+        /// </summary>
+        bool Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationBeta.IsProbeEnabled
+        {
+            get
+            {
+                return this.IsProbeEnabled();
+            }
+        }
+
+        /// <summary>
+        /// Specifies the name for the affinity cookie.
+        /// </summary>
+        /// <param name="name">A name.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithCookieNameBeta.WithAffinityCookieName(string name)
+        {
+            return this.WithAffinityCookieName(name) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Disables cookie based affinity.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAffinity.WithoutCookieBasedAffinity()
+        {
+            return this.WithoutCookieBasedAffinity() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Enables cookie based affinity.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAffinity.WithCookieBasedAffinity()
+        {
+            return this.WithCookieBasedAffinity() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration based on the specified data.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="derData">The DER-encoded data of an X.509 certificate.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithAuthenticationCertificateFromBytes(params byte[] derData)
+        {
+            return this.WithAuthenticationCertificateFromBytes(derData) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Removes the reference to the specified authentication certificate from this HTTP backend configuration.
+        /// Note the certificate will remain associated with the application gateway until removed from it explicitly.
+        /// </summary>
+        /// <param name="name">The name of an existing authentication certificate associated with this HTTP backend configuration.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithoutAuthenticationCertificate(string name)
+        {
+            return this.WithoutAuthenticationCertificate(name) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Associates the specified authentication certificate that exists on this application gateway with this backend HTTP confifuration.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="name">The name of an existing authentication certificate.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithAuthenticationCertificate(string name)
+        {
+            return this.WithAuthenticationCertificate(name) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Removes all references to any authentication certificates.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithoutAuthenticationCertificates()
+        {
+            return this.WithoutAuthenticationCertificates() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration loaded from the specified file.
+        /// </summary>
+        /// <param name="certificateFile">A file containing the DER representation of an X.509 certificate.</param>
+        /// <return>The next stage of the update.</return>
+        /// <throws>IOException when there are issues reading the specified file.</throws>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithAuthenticationCertificateFromFile(FileInfo certificateFile)
+        {
+            return this.WithAuthenticationCertificateFromFile(certificateFile) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Associates a new, automatically named certificate with this HTTP backend configuration loaded from the specified file.
+        /// Multiple calls to this method will add additional certificate references.
+        /// </summary>
+        /// <param name="base64Data">The base-64 encoded data of an X.509 certificate.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithAuthenticationCertificateFromBase64(string base64Data)
+        {
+            return this.WithAuthenticationCertificateFromBase64(base64Data) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies HTTP as the protocol.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProtocolBeta.WithHttp()
+        {
+            return this.WithHttp() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the transport protocol.
+        /// </summary>
+        /// <param name="protocol">A transport protocol.</param>
+        /// <return>The next stage of the update.</return>
+        /// <deprecated>Use  .withHttp() or  .withHttps() instead.</deprecated>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProtocol.WithProtocol(ApplicationGatewayProtocol protocol)
+        {
+            return this.WithProtocol(protocol) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies HTTPS as the protocol.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProtocolBeta.WithHttps()
+        {
+            return this.WithHttps() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the request timeout.
+        /// </summary>
+        /// <param name="seconds">A number of seconds.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithRequestTimeout.WithRequestTimeout(int seconds)
+        {
+            return this.WithRequestTimeout(seconds) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the number of seconds when connection draining is active.
+        /// </summary>
+        /// <param name="seconds">A number of seconds between 1 and 3600.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithConnectionDrainingBeta<ApplicationGateway.Update.IUpdate>.WithConnectionDrainingTimeoutInSeconds(int seconds)
+        {
+            return this.WithConnectionDrainingTimeoutInSeconds(seconds) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the number of seconds when connection draining is active.
+        /// </summary>
+        /// <param name="seconds">A number of seconds between 1 and 3600.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithConnectionDrainingBeta<ApplicationGateway.Definition.IWithCreate>.WithConnectionDrainingTimeoutInSeconds(int seconds)
+        {
+            return this.WithConnectionDrainingTimeoutInSeconds(seconds) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Specifies the transport protocol.
+        /// </summary>
+        /// <param name="protocol">A transport protocol.</param>
+        /// <return>The next stage of the definition.</return>
+        /// <deprecated>Use  .withHttps() instead (HTTP is the default).</deprecated>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithProtocol<ApplicationGateway.Update.IUpdate>.WithProtocol(ApplicationGatewayProtocol protocol)
+        {
+            return this.WithProtocol(protocol) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies HTTPS as the protocol.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithProtocolBeta<ApplicationGateway.Update.IUpdate>.WithHttps()
+        {
+            return this.WithHttps() as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the transport protocol.
+        /// </summary>
+        /// <param name="protocol">A transport protocol.</param>
+        /// <return>The next stage of the definition.</return>
+        /// <deprecated>Use  .withHttps() instead (HTTP is the default).</deprecated>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithProtocol<ApplicationGateway.Definition.IWithCreate>.WithProtocol(ApplicationGatewayProtocol protocol)
+        {
+            return this.WithProtocol(protocol) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Specifies HTTPS as the protocol.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithProtocolBeta<ApplicationGateway.Definition.IWithCreate>.WithHttps()
+        {
+            return this.WithHttps() as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Gets the name of the resource.
+        /// </summary>
+        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName.Name
+        {
+            get
+            {
+                return this.Name();
+            }
+        }
+
+        /// <summary>
+        /// Removes the association with a probe.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProbe.WithoutProbe()
+        {
+            return this.WithoutProbe() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies an existing probe on this application gateway to associate with this backend.
+        /// If the probe with the specified name does not yet exist, it must be defined separately in the optional part
+        /// of the application gateway definition. This only adds a reference to the probe by its name.
+        /// </summary>
+        /// <param name="name">The name of an existing probe.</param>
+        /// <return>The next stage of the update.</return>
+        ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProbe.WithProbe(string name)
+        {
+            return this.WithProbe(name) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the name for the affinity cookie.
+        /// </summary>
+        /// <param name="name">A name.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithCookieNameBeta<ApplicationGateway.Update.IUpdate>.WithAffinityCookieName(string name)
+        {
+            return this.WithAffinityCookieName(name) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the name for the affinity cookie.
+        /// </summary>
+        /// <param name="name">A name.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithCookieNameBeta<ApplicationGateway.Definition.IWithCreate>.WithAffinityCookieName(string name)
+        {
+            return this.WithAffinityCookieName(name) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Gets the protocol.
+        /// </summary>
+        Models.ApplicationGatewayProtocol Microsoft.Azure.Management.Network.Fluent.IHasProtocol<Models.ApplicationGatewayProtocol>.Protocol
+        {
+            get
+            {
+                return this.Protocol() as Models.ApplicationGatewayProtocol;
+            }
         }
     }
 }

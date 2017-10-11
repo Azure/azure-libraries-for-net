@@ -2,27 +2,126 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
 {
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.Update;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.UpdateDefinition;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewaySslCertificate.UpdateDefinition;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Update;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.UpdateDefinition;
-    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackend.Update;
-    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackend.UpdateDefinition;
-    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewaySslCertificate.UpdateDefinition;
     using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackend.Update;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackend.UpdateDefinition;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.UpdateDefinition;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Update;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.UpdateDefinition;
-    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update;
-    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.UpdateDefinition;
-    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.Update;
-    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.UpdateDefinition;
+    using Microsoft.Azure.Management.Network.Fluent.Models;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.Update;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.UpdateDefinition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Update;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.Update;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.UpdateDefinition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Update;
-    using Microsoft.Azure.Management.Network.Fluent.Models;
-    using Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update;
+    using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.UpdateDefinition;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfiguration.Update;
     using Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfiguration.UpdateDefinition;
+
+    /// <summary>
+    /// The stage of an application gateway update allowing to modify frontend listeners.
+    /// </summary>
+    public interface IWithListener 
+    {
+        /// <summary>
+        /// Begins the definition of a new application gateway listener to be attached to the gateway.
+        /// </summary>
+        /// <param name="name">A unique name for the listener.</param>
+        /// <return>The first stage of the listener definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate> DefineListener(string name);
+
+        /// <summary>
+        /// Begins the update of a listener.
+        /// </summary>
+        /// <param name="name">The name of an existing listener to update.</param>
+        /// <return>The next stage of the definition or null if the requested listener does not exist.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.Update.IUpdate UpdateListener(string name);
+
+        /// <summary>
+        /// Removes a frontend listener from the application gateway.
+        /// Note that removing a listener referenced by other settings may break the application gateway.
+        /// </summary>
+        /// <param name="name">The name of the listener to remove.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutListener(string name);
+    }
+
+    /// <summary>
+    /// The stage of an application gateway update allowing to modify front end ports.
+    /// </summary>
+    public interface IWithFrontendPort 
+    {
+        /// <summary>
+        /// Creates a front end port with an auto-generated name and the specified port number, unless one already exists.
+        /// </summary>
+        /// <param name="portNumber">A port number.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithFrontendPort(int portNumber);
+
+        /// <summary>
+        /// Creates a front end port with the specified name and port number, unless a port matching this name and/or number already exists.
+        /// </summary>
+        /// <param name="portNumber">A port number.</param>
+        /// <param name="name">The name to assign to the port.</param>
+        /// <return>The next stage of the definition, or null if a port matching either the name or the number, but not both, already exists.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithFrontendPort(int portNumber, string name);
+
+        /// <summary>
+        /// Removes the specified frontend port.
+        /// Note that removing a frontend port referenced by other settings may break the application gateway.
+        /// </summary>
+        /// <param name="name">The name of the frontend port to remove.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutFrontendPort(string name);
+
+        /// <summary>
+        /// Removes the specified frontend port.
+        /// Note that removing a frontend port referenced by other settings may break the application gateway.
+        /// </summary>
+        /// <param name="portNumber">The port number of the frontend port to remove.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutFrontendPort(int portNumber);
+    }
+
+    /// <summary>
+    /// The stage of an application gateway update allowing to modify SSL certificates.
+    /// </summary>
+    public interface IWithSslCert 
+    {
+        /// <summary>
+        /// Removes the specified SSL certificate from the application gateway.
+        /// Note that removing a certificate referenced by other settings may break the application gateway.
+        /// </summary>
+        /// <param name="name">The name of the certificate to remove.</param>
+        /// <return>The next stage of the update.</return>
+        /// <deprecated>Use  .WithoutSslCertificate() instead.</deprecated>
+        [System.Obsolete("Use  .WithoutSslCertificate() instead.")]
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutCertificate(string name);
+
+        /// <summary>
+        /// Removes the specified SSL certificate from the application gateway.
+        /// Note that removing a certificate referenced by other settings may break the application gateway.
+        /// </summary>
+        /// <param name="name">The name of the certificate to remove.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutSslCertificate(string name);
+
+        /// <summary>
+        /// Begins the definition of a new application gateway SSL certificate to be attached to the gateway for use in frontend HTTPS listeners.
+        /// </summary>
+        /// <param name="name">A unique name for the certificate.</param>
+        /// <return>The first stage of the certificate definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewaySslCertificate.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate> DefineSslCertificate(string name);
+    }
 
     /// <summary>
     /// The stage of an application gateway update allowing to modify probes.
@@ -50,6 +149,60 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
         /// <param name="name">The name of an existing probe.</param>
         /// <return>The first stage of a probe update.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Update.IUpdate UpdateProbe(string name);
+    }
+
+    /// <summary>
+    /// The template for an application gateway update operation, containing all the settings that
+    /// can be modified.
+    /// </summary>
+    public interface IUpdate  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithSize,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithInstanceCount,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithBackend,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithBackendHttpConfig,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithIPConfig,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithFrontend,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithPublicIPAddress,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithFrontendPort,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithSslCert,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithListener,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithRequestRoutingRule,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithExistingSubnet,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithProbe,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithDisabledSslProtocol,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithAuthenticationCertificate,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithRedirectConfiguration
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway update allowing to specify a public IP address for the public frontend.
+    /// </summary>
+    public interface IWithPublicIPAddress  :
+        Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update.IWithPublicIPAddressNoDnsLabel<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>
+    {
+    }
+
+    /// <summary>
+    /// The stage of an internal application gateway update allowing to make the application gateway accessible to its
+    /// virtual network.
+    /// </summary>
+    public interface IWithPrivateFrontend 
+    {
+        /// <summary>
+        /// Enables a private (internal) default front end in the subnet containing the application gateway.
+        /// A front end with an automatically generated name will be created if none exists.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithPrivateFrontend();
+
+        /// <summary>
+        /// Specifies that no private, or internal, front end should be enabled.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutPrivateFrontend();
     }
 
     /// <summary>
@@ -95,47 +248,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     }
 
     /// <summary>
-    /// The stage of an application gateway update allowing to modify SSL certificates.
+    /// The stage of an application gateway update allowing to manage authentication certificates for the backends to use.
     /// </summary>
-    public interface IWithSslCert 
-    {
-        /// <summary>
-        /// Removes the specified SSL certificate from the application gateway.
-        /// Note that removing a certificate referenced by other settings may break the application gateway.
-        /// </summary>
-        /// <param name="name">The name of the certificate to remove.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutCertificate(string name);
-
-        /// <summary>
-        /// Begins the definition of a new application gateway SSL certificate to be attached to the gateway for use in frontend HTTPS listeners.
-        /// </summary>
-        /// <param name="name">A unique name for the certificate.</param>
-        /// <return>The first stage of the certificate definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewaySslCertificate.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate> DefineSslCertificate(string name);
-    }
-
-    /// <summary>
-    /// The template for an application gateway update operation, containing all the settings that
-    /// can be modified.
-    /// </summary>
-    public interface IUpdate  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithSize,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithInstanceCount,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithBackend,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithBackendHttpConfig,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithIPConfig,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithFrontend,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithPublicIPAddress,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithFrontendPort,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithSslCert,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithListener,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithRequestRoutingRule,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithExistingSubnet,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithProbe,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithDisabledSslProtocol
+    public interface IWithAuthenticationCertificate  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithAuthenticationCertificateBeta
     {
     }
 
@@ -168,95 +284,73 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     }
 
     /// <summary>
-    /// The stage of an application gateway update allowing to modify request routing rules.
+    /// The stage of an application gateway update allowing to specify the capacity (number of instances) of
+    /// the application gateway.
     /// </summary>
-    public interface IWithRequestRoutingRule 
+    public interface IWithInstanceCount 
     {
         /// <summary>
-        /// Begins the update of a request routing rule.
+        /// Specifies the capacity (number of instances) for the application gateway.
         /// </summary>
-        /// <param name="name">The name of an existing request routing rule.</param>
-        /// <return>The first stage of a request routing rule update or null if the requested rule does not exist.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IUpdate UpdateRequestRoutingRule(string name);
-
-        /// <summary>
-        /// Begins the definition of a request routing rule for this application gateway.
-        /// </summary>
-        /// <param name="name">A unique name for the request routing rule.</param>
-        /// <return>The first stage of the request routing rule.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate> DefineRequestRoutingRule(string name);
-
-        /// <summary>
-        /// Removes a request routing rule from the application gateway.
-        /// </summary>
-        /// <param name="name">The name of the request routing rule to remove.</param>
+        /// <param name="instanceCount">The capacity as a number between 1 and 10 but also based on the limits imposed by the selected applicatiob gateway size.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutRequestRoutingRule(string name);
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithInstanceCount(int instanceCount);
     }
 
     /// <summary>
-    /// The stage of an application gateway update allowing to modify front end ports.
+    /// The stage of an application gateway update allowing to specify the size.
     /// </summary>
-    public interface IWithFrontendPort 
+    public interface IWithSize 
     {
         /// <summary>
-        /// Creates a front end port with an auto-generated name and the specified port number, unless one already exists.
+        /// Specifies the size of the application gateway to use within the context of the selected tier.
         /// </summary>
-        /// <param name="portNumber">A port number.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithFrontendPort(int portNumber);
-
-        /// <summary>
-        /// Creates a front end port with the specified name and port number, unless a port matching this name and/or number already exists.
-        /// </summary>
-        /// <param name="portNumber">A port number.</param>
-        /// <param name="name">The name to assign to the port.</param>
-        /// <return>The next stage of the definition, or null if a port matching either the name or the number, but not both, already exists.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithFrontendPort(int portNumber, string name);
-
-        /// <summary>
-        /// Removes the specified frontend port.
-        /// Note that removing a frontend port referenced by other settings may break the application gateway.
-        /// </summary>
-        /// <param name="name">The name of the frontend port to remove.</param>
+        /// <param name="size">An application gateway size name.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutFrontendPort(string name);
-
-        /// <summary>
-        /// Removes the specified frontend port.
-        /// Note that removing a frontend port referenced by other settings may break the application gateway.
-        /// </summary>
-        /// <param name="portNumber">The port number of the frontend port to remove.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutFrontendPort(int portNumber);
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithSize(ApplicationGatewaySkuName size);
     }
 
     /// <summary>
-    /// The stage of an application gateway update allowing to modify frontend listeners.
+    /// The stage of an application gateway definition allowing to add a redirect configuration.
     /// </summary>
-    public interface IWithListener 
+    public interface IWithRedirectConfiguration  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithRedirectConfigurationBeta
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway definition allowing to specify the SSL protocols to disable.
+    /// </summary>
+    public interface IWithDisabledSslProtocol  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithDisabledSslProtocolBeta
+    {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway update allowing to specify the subnet the app gateway is getting
+    /// its private IP address from.
+    /// </summary>
+    public interface IWithExistingSubnet  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Update.IWithSubnet<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>
     {
         /// <summary>
-        /// Begins the definition of a new application gateway listener to be attached to the gateway.
+        /// Specifies the subnet the application gateway gets its private IP address from.
+        /// This will create a new IP configuration, if it does not already exist.
+        /// Private (internal) frontends, if any have been enabled, will be configured to use this subnet as well.
         /// </summary>
-        /// <param name="name">A unique name for the listener.</param>
-        /// <return>The first stage of the listener definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate> DefineListener(string name);
-
-        /// <summary>
-        /// Begins the update of a listener.
-        /// </summary>
-        /// <param name="name">The name of an existing listener to update.</param>
-        /// <return>The next stage of the definition or null if the requested listener does not exist.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.Update.IUpdate UpdateListener(string name);
-
-        /// <summary>
-        /// Removes a frontend listener from the application gateway.
-        /// Note that removing a listener referenced by other settings may break the application gateway.
-        /// </summary>
-        /// <param name="name">The name of the listener to remove.</param>
+        /// <param name="subnet">An existing subnet.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutListener(string name);
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithExistingSubnet(ISubnet subnet);
+
+        /// <summary>
+        /// Specifies the subnet the application gateway gets its private IP address from.
+        /// This will create a new IP configuration, if it does not already exist.
+        /// Private (internal) front ends, if any have been enabled, will be configured to use this subnet as well.
+        /// </summary>
+        /// <param name="network">The virtual network the subnet is part of.</param>
+        /// <param name="subnetName">The name of a subnet within the selected network.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithExistingSubnet(INetwork network, string subnetName);
     }
 
     /// <summary>
@@ -314,93 +408,30 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     }
 
     /// <summary>
-    /// The stage of an internal application gateway update allowing to make the application gateway accessible to its
-    /// virtual network.
+    /// The stage of an application gateway update allowing to modify request routing rules.
     /// </summary>
-    public interface IWithPrivateFrontend 
+    public interface IWithRequestRoutingRule 
     {
         /// <summary>
-        /// Enables a private (internal) default front end in the subnet containing the application gateway.
-        /// A front end with an automatically generated name will be created if none exists.
+        /// Begins the update of a request routing rule.
         /// </summary>
+        /// <param name="name">The name of an existing request routing rule.</param>
+        /// <return>The first stage of a request routing rule update or null if the requested rule does not exist.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IUpdate UpdateRequestRoutingRule(string name);
+
+        /// <summary>
+        /// Begins the definition of a request routing rule for this application gateway.
+        /// </summary>
+        /// <param name="name">A unique name for the request routing rule.</param>
+        /// <return>The first stage of the request routing rule.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate> DefineRequestRoutingRule(string name);
+
+        /// <summary>
+        /// Removes a request routing rule from the application gateway.
+        /// </summary>
+        /// <param name="name">The name of the request routing rule to remove.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithPrivateFrontend();
-
-        /// <summary>
-        /// Specifies that no private, or internal, front end should be enabled.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutPrivateFrontend();
-    }
-
-    /// <summary>
-    /// The stage of an application gateway update allowing to specify the subnet the app gateway is getting
-    /// its private IP address from.
-    /// </summary>
-    public interface IWithExistingSubnet  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Update.IWithSubnet<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>
-    {
-        /// <summary>
-        /// Specifies the subnet the application gateway gets its private IP address from.
-        /// This will create a new IP configuration, if it does not already exist.
-        /// Private (internal) frontends, if any have been enabled, will be configured to use this subnet as well.
-        /// </summary>
-        /// <param name="subnet">An existing subnet.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithExistingSubnet(ISubnet subnet);
-
-        /// <summary>
-        /// Specifies the subnet the application gateway gets its private IP address from.
-        /// This will create a new IP configuration, if it does not already exist.
-        /// Private (internal) front ends, if any have been enabled, will be configured to use this subnet as well.
-        /// </summary>
-        /// <param name="network">The virtual network the subnet is part of.</param>
-        /// <param name="subnetName">The name of a subnet within the selected network.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithExistingSubnet(INetwork network, string subnetName);
-    }
-
-    /// <summary>
-    /// The stage of an application gateway update allowing to specify the size.
-    /// </summary>
-    public interface IWithSize 
-    {
-        /// <summary>
-        /// Specifies the size of the application gateway to use within the context of the selected tier.
-        /// </summary>
-        /// <param name="size">An application gateway size name.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithSize(ApplicationGatewaySkuName size);
-    }
-
-    /// <summary>
-    /// The stage of an application gateway definition allowing to specify the SSL protocols to disable.
-    /// </summary>
-    public interface IWithDisabledSslProtocol  :
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithDisabledSslProtocolBeta
-    {
-    }
-
-    /// <summary>
-    /// The stage of an application gateway update allowing to specify a public IP address for the public frontend.
-    /// </summary>
-    public interface IWithPublicIPAddress  :
-        Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update.IWithPublicIPAddressNoDnsLabel<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>
-    {
-    }
-
-    /// <summary>
-    /// The stage of an application gateway update allowing to specify the capacity (number of instances) of
-    /// the application gateway.
-    /// </summary>
-    public interface IWithInstanceCount 
-    {
-        /// <summary>
-        /// Specifies the capacity (number of instances) for the application gateway.
-        /// </summary>
-        /// <param name="instanceCount">The capacity as a number between 1 and 10 but also based on the limits imposed by the selected applicatiob gateway size.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithInstanceCount(int instanceCount);
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutRequestRoutingRule(string name);
     }
 
     /// <summary>
@@ -436,6 +467,56 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
         /// </summary>
         /// <return>The first stage of an IP configuration update.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfiguration.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate> DefineDefaultIPConfiguration();
+    }
+
+    /// <summary>
+    /// The stage of an application gateway update allowing to manage authentication certificates for the backends to use.
+    /// </summary>
+    public interface IWithAuthenticationCertificateBeta  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Begins the definition of a new application gateway authentication certificate to be attached to the gateway for use by the backends.
+        /// </summary>
+        /// <param name="name">A unique name for the certificate.</param>
+        /// <return>The first stage of the certificate definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate> DefineAuthenticationCertificate(string name);
+
+        /// <summary>
+        /// Removes an existing application gateway authentication certificate.
+        /// </summary>
+        /// <param name="name">The name of an existing certificate.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutAuthenticationCertificate(string name);
+    }
+
+    /// <summary>
+    /// The stage of an application gateway definition allowing to add a redirect configuration.
+    /// </summary>
+    public interface IWithRedirectConfigurationBeta  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Begins the definition of a new application gateway redirect configuration to be attached to the gateway.
+        /// </summary>
+        /// <param name="name">A unique name for the redirect configuration.</param>
+        /// <return>The first stage of the redirect configuration definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate> DefineRedirectConfiguration(string name);
+
+        /// <summary>
+        /// Begins the update of a redirect configuration.
+        /// </summary>
+        /// <param name="name">The name of an existing redirect configuration to update.</param>
+        /// <return>The next stage of the definition or null if the requested redirect configuration does not exist.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.Update.IUpdate UpdateRedirectConfiguration(string name);
+
+        /// <summary>
+        /// Removes a redirect configuration from the application gateway.
+        /// Note that removing a redirect configuration referenced by other settings may break the application gateway.
+        /// </summary>
+        /// <param name="name">The name of the redirect configuration to remove.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutRedirectConfiguration(string name);
     }
 
     /// <summary>

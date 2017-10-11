@@ -9,14 +9,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using ResourceManager.Fluent.Core.ChildResourceActions;
     using Models;
     using ResourceManager.Fluent.Core;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Implementation for ApplicationGatewayProbe.
     /// </summary>
-    
+
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uQXBwbGljYXRpb25HYXRld2F5UHJvYmVJbXBs
     internal partial class ApplicationGatewayProbeImpl  :
-        ChildResource<Models.ApplicationGatewayProbeInner, ApplicationGatewayImpl, IApplicationGateway>,
+        ChildResource<ApplicationGatewayProbeInner, ApplicationGatewayImpl, IApplicationGateway>,
         IApplicationGatewayProbe,
         IDefinition<ApplicationGateway.Definition.IWithCreate>,
         IUpdateDefinition<ApplicationGateway.Update.IUpdate>,
@@ -154,5 +155,150 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return Parent;
         }
+
+        ///GENMHASH:AB4C0DEA3E60B1709272DB87DB22E6FE:7DA6376986809ED7B44D70ABB25571EF
+        public ApplicationGatewayProbeImpl WithHealthyHttpResponseBodyContents(string text)
+        {
+            ApplicationGatewayProbeHealthResponseMatch match = Inner.Match;
+            if (text != null)
+            {
+                if (match == null)
+                {
+                    match = new ApplicationGatewayProbeHealthResponseMatch();
+                    Inner.Match = match;
+                }
+
+                match.Body = text;
+            }
+            else
+            {
+                if (match == null)
+                {
+                    // Nothing else to do
+                }
+                else if (match.StatusCodes == null || match.StatusCodes.Count == 0)
+                {
+                    // If match is becoming empty then remove altogether
+                    Inner.Match = null;
+                }
+                else
+                {
+                    match.Body = null;
+                }
+            }
+            return this;
+        }
+
+        ///GENMHASH:36FFC1794679A95ADD569EB2FC9322DA:282FB20217CD66292F7954326421D885
+        public ApplicationGatewayProbeImpl WithoutHealthyHttpResponseStatusCodeRanges()
+        {
+            ApplicationGatewayProbeHealthResponseMatch match = Inner.Match;
+            if (match != null)
+            {
+                match.StatusCodes = null;
+                if (match.Body == null)
+                {
+                    Inner.Match = null;
+                }
+            }
+            return this;
+        }
+
+        ///GENMHASH:1C6C29D35A93AEB4B4AC3C6FB0E5FA3E:71537D99C79886DC42E4A02464A3DC08
+        public ISet<string> HealthyHttpResponseStatusCodeRanges()
+        {
+            ISet<String> httpResponseStatusCodeRanges = new SortedSet<String>();
+            if (Inner.Match == null)
+            {
+                // Empty
+            }
+            else if (Inner.Match.StatusCodes == null)
+            {
+                // Empty
+            }
+            else
+            {
+                foreach (var c in Inner.Match.StatusCodes)
+                {
+                    httpResponseStatusCodeRanges.Add(c);
+                }
+            }
+
+            return httpResponseStatusCodeRanges;
+        }
+
+        ///GENMHASH:8B41D0AC3DA3F649F6CE5AD09CF4E59F:3B8D2209A667C5035D8982592163E70E
+        public string HealthyHttpResponseBodyContents()
+        {
+            ApplicationGatewayProbeHealthResponseMatch match = Inner.Match;
+            if (match == null)
+            {
+                return null;
+            }
+            else
+            {
+                return match.Body;
+            }
+        }
+
+        ///GENMHASH:07A0951502C4F892C280A438C1F8A45A:2DAB978C6E99035E33F8B2364B73DB44
+        public ApplicationGatewayProbeImpl WithHealthyHttpResponseStatusCodeRanges(ISet<string> ranges)
+        {
+            if (ranges != null)
+            {
+                foreach(var range in ranges)
+                {
+                    WithHealthyHttpResponseStatusCodeRange(range);
+                }
+            }
+            return this;
+        }
+
+        ///GENMHASH:4EAB69C3A8A3E444FF2E0BDEA921BEAE:193CF40A361F2762237E2562D2332A73
+        public ApplicationGatewayProbeImpl WithHealthyHttpResponseStatusCodeRange(int from, int to)
+        {
+            if (from < 0 || to < 0)
+            {
+                throw new ArgumentOutOfRangeException("The start and end of a range cannot be negative numbers.");
+            }
+            else if (to < from)
+            {
+                throw new ArgumentOutOfRangeException("The end of the range cannot be less than the start of the range.");
+            }
+            else
+            {
+                return WithHealthyHttpResponseStatusCodeRange(from.ToString() + "-" + to.ToString());
+            }
+        }
+
+        ///GENMHASH:DA22D5C179230CD44FED274A667DACB2:E460AC9EC7F5A04963D7A97967D5E235
+        public ApplicationGatewayProbeImpl WithHealthyHttpResponseStatusCodeRange(string range)
+        {
+            if (range != null)
+            {
+                ApplicationGatewayProbeHealthResponseMatch match = Inner.Match;
+                if (match == null)
+                {
+                    match = new ApplicationGatewayProbeHealthResponseMatch();
+                    Inner.Match = match;
+                }
+
+                var ranges = match.StatusCodes;
+                if (ranges == null)
+                {
+                    ranges = new List<string>();
+                    match.StatusCodes = ranges;
+                }
+
+                if (!ranges.Contains(range))
+                {
+                    ranges.Add(range);
+                }
+
+            }
+
+            return this;
+        }
+
     }
 }

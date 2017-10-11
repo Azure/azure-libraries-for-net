@@ -22,6 +22,38 @@ namespace Fluent.Tests.Network
         }
 
         [Fact]
+        public void StartStop()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var azure = TestHelper.CreateRollupClient();
+                string rgName = SdkContext.RandomResourceName("rg", 13);
+                Region region = Region.USEast;
+                string name = SdkContext.RandomResourceName("ag", 15);
+                IApplicationGateway appGateway = azure.ApplicationGateways.Define(name)
+                    .WithRegion(region)
+                    .WithNewResourceGroup(rgName)
+
+                // Request routing rules
+                .DefineRequestRoutingRule("rule1")
+                    .FromPrivateFrontend()
+                    .FromFrontendHttpPort(80)
+                    .ToBackendHttpPort(8080)
+                    .ToBackendIPAddress("11.1.1.1")
+                    .ToBackendIPAddress("11.1.1.2")
+                    .Attach()
+                .Create();
+
+                // Test stop/start
+                appGateway.Stop();
+                Assert.Equal(ApplicationGatewayOperationalState.Stopped, appGateway.OperationalState);
+                appGateway.Start();
+                Assert.Equal(ApplicationGatewayOperationalState.Running, appGateway.OperationalState);
+                azure.ResourceGroups.BeginDeleteByName(rgName);
+            }
+        }
+
+        [Fact]
         public void InParallel()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))

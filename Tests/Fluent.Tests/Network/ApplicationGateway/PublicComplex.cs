@@ -35,6 +35,8 @@ namespace Fluent.Tests.Network.ApplicationGateway
         public override IApplicationGateway CreateResource(IApplicationGateways resources)
         {
             testPips = new List<IPublicIPAddress>(applicationGatewayHelper.EnsurePIPs(resources.Manager.PublicIPAddresses));
+            var pip = resources.Manager.PublicIPAddresses.GetByResourceGroup(applicationGatewayHelper.GroupName, applicationGatewayHelper.PipNames[0]);
+            Assert.NotNull(pip);
 
             // Create an application gateway
             try
@@ -97,6 +99,16 @@ namespace Fluent.Tests.Network.ApplicationGateway
                         .WithTimeoutInSeconds(10)
                         .WithTimeBetweenProbesInSeconds(9)
                         .WithRetriesBeforeUnhealthy(5)
+                        .WithHealthyHttpResponseStatusCodeRange(200, 249)
+                        .Attach()
+                    .DefineProbe("probe2")
+                        .WithHost("microsoft.com")
+                        .WithPath("/")
+                        .WithHttps()
+                        .WithTimeoutInSeconds(11)
+                        .WithHealthyHttpResponseStatusCodeRange(600, 610)
+                        .WithHealthyHttpResponseStatusCodeRange(650, 660)
+                        .WithHealthyHttpResponseBodyContents("I am too healthy for this test.")
                         .Attach()
 
                     // Additional/explicit backend HTTP setting configs
@@ -104,6 +116,10 @@ namespace Fluent.Tests.Network.ApplicationGateway
                         .WithPort(8081)
                         .WithRequestTimeout(45)
                         .WithProbe("probe1")
+                        .WithHostHeader("foo")
+                        .WithConnectionDrainingTimeoutInSeconds(100)
+                        .WithPath("path")
+                        .WithAffinityCookieName("cookie")
                         .Attach()
 
                     .WithDisabledSslProtocols(ApplicationGatewaySslProtocol.TlsV1_0, ApplicationGatewaySslProtocol.TlsV1_1)
@@ -131,12 +147,12 @@ namespace Fluent.Tests.Network.ApplicationGateway
             Assert.NotNull(appGateway.FrontendPortNameFromNumber(9000));
 
             // Verify frontends
-            Assert.Equal(1, appGateway.Frontends.Count);
-            Assert.Equal(1, appGateway.PublicFrontends.Count);
-            Assert.Equal(0, appGateway.PrivateFrontends.Count);
+            Assert.Single(appGateway.Frontends);
+            Assert.Single(appGateway.PublicFrontends);
+            Assert.Empty(appGateway.PrivateFrontends);
             IApplicationGatewayFrontend frontend = appGateway.PublicFrontends.Values.First();
             Assert.True(frontend.IsPublic);
-            Assert.True(!frontend.IsPrivate);
+            Assert.False(frontend.IsPrivate);
 
             // Verify listeners
             Assert.Equal(3, appGateway.Listeners.Count);
@@ -146,14 +162,56 @@ namespace Fluent.Tests.Network.ApplicationGateway
             Assert.Equal("www.fabricam.com", listener.HostName);
             Assert.True(listener.RequiresServerNameIndication);
             Assert.NotNull(listener.Frontend);
-            Assert.True(!listener.Frontend.IsPrivate);
+            Assert.False(listener.Frontend.IsPrivate);
             Assert.True(listener.Frontend.IsPublic);
             Assert.Equal(ApplicationGatewayProtocol.Https, listener.Protocol);
             Assert.NotNull(appGateway.ListenerByPortNumber(80));
             Assert.NotNull(appGateway.ListenerByPortNumber(443));
 
-            // Verify certificates
+            // Verify SSL certificates
             Assert.Equal(2, appGateway.SslCertificates.Count);
+            
+            // Verify backends
+            Assert.Equal(2, appGateway.Backends.Count);
+            IApplicationGatewayBackend backend = appGateway.Backends["backend1"];
+            Assert.NotNull(backend);
+            Assert.Equal(2, backend.Addresses.Count);
+
+            // Verify request routing rules
+            Assert.Equal(3, appGateway.RequestRoutingRules.Count);
+            IApplicationGatewayRequestRoutingRule rule, rule80;
+
+            rule80 = appGateway.RequestRoutingRules["rule80"];
+            Assert.NotNull(rule80);
+            Assert.Equal(pip.Id, rule80.PublicIPAddressId, true);
+            Assert.Equal(80, rule80.FrontendPort);
+            Assert.Equal(8080, rule80.BackendPort);
+            Assert.True(rule80.CookieBasedAffinity);
+            Assert.Equal(4, rule80.BackendAddresses.Count);
+            Assert.True(rule80.Backend.ContainsIPAddress("11.1.1.2"));
+            Assert.True(rule80.Backend.ContainsIPAddress("11.1.1.1"));
+            Assert.True(rule80.Backend.ContainsFqdn("www.microsoft.com"));
+            Assert.True(rule80.Backend.ContainsFqdn("www.example.com"));
+
+            rule = appGateway.RequestRoutingRules["rule443"];
+            Assert.NotNull(rule);
+            Assert.Equal(pip.Id, rule.PublicIPAddressId);
+            Assert.Equal(443, rule.FrontendPort);
+            Assert.Equal(ApplicationGatewayProtocol.Https, rule.FrontendProtocol);
+            Assert.NotNull(rule.SslCertificate);
+            Assert.NotNull(rule.BackendHttpConfiguration);
+            Assert.Equal("config1", rule.BackendHttpConfiguration.Name, true);
+            Assert.NotNull(rule.Backend);
+            Assert.Equal("backend1", rule.Backend.Name, true);
+
+            rule = appGateway.RequestRoutingRules["rule9000"];
+            Assert.NotNull(rule);
+            Assert.NotNull(rule.Listener);
+            Assert.Equal("listener1", rule.Listener.Name);
+            Assert.NotNull(rule.BackendHttpConfiguration);
+            Assert.Equal("config1", rule.BackendHttpConfiguration.Name, true);
+            Assert.NotNull(rule.Backend);
+            Assert.Equal("backend1", rule.Backend.Name, true);
 
             // Verify backend HTTP settings configs
             Assert.Equal(2, appGateway.BackendHttpConfigurations.Count);
@@ -163,60 +221,34 @@ namespace Fluent.Tests.Network.ApplicationGateway
             Assert.Equal(45, config.RequestTimeout);
             Assert.NotNull(config.Probe);
             Assert.Equal("probe1", config.Probe.Name);
-
-            // Verify backends
-            Assert.Equal(2, appGateway.Backends.Count);
-            IApplicationGatewayBackend backend = appGateway.Backends["backend1"];
-            Assert.NotNull(backend);
-            Assert.Equal(2, backend.Addresses.Count);
-
-            // Verify request routing rules
-            Assert.Equal(3, appGateway.RequestRoutingRules.Count);
-            IApplicationGatewayRequestRoutingRule rule;
-
-            rule = appGateway.RequestRoutingRules["rule80"];
-            Assert.NotNull(rule);
-            Assert.Equal(testPips[0].Id, rule.PublicIPAddressId);
-            Assert.Equal(80, rule.FrontendPort);
-            Assert.Equal(8080, rule.BackendPort);
-            Assert.True(rule.CookieBasedAffinity);
-            Assert.Equal(4, rule.BackendAddresses.Count);
-            Assert.True(rule.Backend.ContainsIPAddress("11.1.1.2"));
-            Assert.True(rule.Backend.ContainsIPAddress("11.1.1.1"));
-            Assert.True(rule.Backend.ContainsFqdn("www.microsoft.com"));
-            Assert.True(rule.Backend.ContainsFqdn("www.example.com"));
-
-            rule = appGateway.RequestRoutingRules["rule443"];
-            Assert.NotNull(rule);
-            Assert.Equal(testPips[0].Id, rule.PublicIPAddressId);
-            Assert.Equal(443, rule.FrontendPort);
-            Assert.Equal(ApplicationGatewayProtocol.Https, rule.FrontendProtocol);
-            Assert.NotNull(rule.SslCertificate);
-            Assert.NotNull(rule.BackendHttpConfiguration);
-            Assert.Equal("config1", rule.BackendHttpConfiguration.Name);
-            Assert.NotNull(rule.Backend);
-            Assert.Equal("backend1", rule.Backend.Name);
-
-            rule = appGateway.RequestRoutingRules["rule9000"];
-            Assert.NotNull(rule);
-            Assert.NotNull(rule.Listener);
-            Assert.Equal("listener1", rule.Listener.Name);
-            Assert.NotNull(rule.BackendHttpConfiguration);
-            Assert.Equal("config1", rule.BackendHttpConfiguration.Name);
-            Assert.NotNull(rule.Backend);
-            Assert.Equal("backend1", rule.Backend.Name);
+            Assert.False(config.IsHostHeaderFromBackend);
+            Assert.Equal("foo", config.HostHeader, true);
+            Assert.Equal(100, config.ConnectionDrainingTimeoutInSeconds);
+            Assert.Equal("/path/", config.Path, true);
+            Assert.Equal("cookie", config.AffinityCookieName, true);
 
             // Verify probes
-            Assert.Equal(1, appGateway.Probes.Count);
+            Assert.Equal(2, appGateway.Probes.Count);
             IApplicationGatewayProbe probe;
             probe = appGateway.Probes["probe1"];
             Assert.NotNull(probe);
-            Assert.Equal("microsoft.com", probe.Host.ToLower());
+            Assert.Equal("microsoft.com", probe.Host, true);
             Assert.Equal(ApplicationGatewayProtocol.Http, probe.Protocol);
             Assert.Equal("/", probe.Path);
             Assert.Equal(5,  probe.RetriesBeforeUnhealthy);
             Assert.Equal(9, probe.TimeBetweenProbesInSeconds);
             Assert.Equal(10, probe.TimeoutInSeconds);
+            Assert.NotNull(probe.HealthyHttpResponseStatusCodeRanges);
+            Assert.Single(probe.HealthyHttpResponseStatusCodeRanges);
+            Assert.Contains("200-249", probe.HealthyHttpResponseStatusCodeRanges);
+
+            probe = appGateway.Probes["probe2"];
+            Assert.NotNull(probe);
+            Assert.Equal(ApplicationGatewayProtocol.Https, probe.Protocol);
+            Assert.Equal(2, probe.HealthyHttpResponseStatusCodeRanges.Count);
+            Assert.Contains("600-610", probe.HealthyHttpResponseStatusCodeRanges);
+            Assert.Contains("650-660", probe.HealthyHttpResponseStatusCodeRanges);
+            Assert.Equal("I am too healthy for this test.", probe.HealthyHttpResponseBodyContents, true);
 
             // Verify SSL policy - disabled protocols  
             Assert.Equal(2, appGateway.DisabledSslProtocols.Count);
@@ -230,6 +262,10 @@ namespace Fluent.Tests.Network.ApplicationGateway
         public override IApplicationGateway UpdateResource(IApplicationGateway resource)
         {
             int rulesCount = resource.RequestRoutingRules.Count;
+            Assert.Contains("rule80", resource.RequestRoutingRules.Keys);
+            var rule80 = resource.RequestRoutingRules["rule80"];
+            var backendConfig80 = rule80.BackendHttpConfiguration;
+            Assert.NotNull(backendConfig80);
 
             resource.Update()
                 .WithSize(ApplicationGatewaySkuName.StandardSmall)
@@ -240,8 +276,21 @@ namespace Fluent.Tests.Network.ApplicationGateway
                 .UpdateRequestRoutingRule("rule443")
                     .FromListener("listener1")
                     .Parent()
+                .UpdateBackendHttpConfiguration("config1")
+                    .WithoutHostHeader()
+                    .WithoutConnectionDraining()
+                    .WithAffinityCookieName(null)
+                    .WithPath(null)
+                    .Parent()
+                .UpdateBackendHttpConfiguration(backendConfig80.Name)
+                    .WithHostHeaderFromBackend()
+                    .Parent()
                 .WithoutRequestRoutingRule("rule9000")
                 .WithoutProbe("probe1")
+                .UpdateProbe("probe2")
+                    .WithoutHealthyHttpResponseStatusCodeRanges()
+                    .WithHealthyHttpResponseBodyContents(null)
+                    .Parent()
                 .WithoutDisabledSslProtocols(ApplicationGatewaySslProtocol.TlsV1_0, ApplicationGatewaySslProtocol.TlsV1_1)
                 .WithTag("tag1", "value1")
                 .WithTag("tag2", "value2")
@@ -256,20 +305,38 @@ namespace Fluent.Tests.Network.ApplicationGateway
 
             // Verify listeners
             IApplicationGatewayListener listener = resource.Listeners["listener1"];
-            Assert.Equal("www.contoso.com", listener.HostName);
+            Assert.Equal("www.contoso.com", listener.HostName, true);
 
             // Verify request routing rules
             Assert.Equal(resource.RequestRoutingRules.Count, rulesCount - 1);
-            Assert.True(!resource.RequestRoutingRules.ContainsKey("rule9000"));
+            Assert.DoesNotContain("rule9000", resource.RequestRoutingRules.Keys);
             IApplicationGatewayRequestRoutingRule rule = resource.RequestRoutingRules["rule443"];
             Assert.NotNull(rule);
-            Assert.Equal("listener1", rule.Listener.Name);
+            Assert.Equal("listener1", rule.Listener.Name, true);
 
             // Verify probes
-            Assert.Equal(0, resource.Probes.Count);
+            Assert.Single(resource.Probes);
+            var probe = resource.Probes["probe2"];
+            Assert.NotNull(probe);
+            Assert.Empty(probe.HealthyHttpResponseStatusCodeRanges);
+            Assert.Null(probe.HealthyHttpResponseBodyContents);
 
             // Verify backend configs
-            Assert.Null(resource.BackendHttpConfigurations["config1"].Probe);
+            var backendConfig = resource.BackendHttpConfigurations["config1"];
+            Assert.NotNull(backendConfig);
+            Assert.Null(backendConfig.Probe);
+            Assert.False(backendConfig.IsHostHeaderFromBackend);
+            Assert.Null(backendConfig.HostHeader);
+            Assert.Equal(0, backendConfig.ConnectionDrainingTimeoutInSeconds);
+            Assert.Null(backendConfig.AffinityCookieName);
+            Assert.Null(backendConfig.Path);
+
+            rule80 = resource.RequestRoutingRules["rule80"];
+            Assert.NotNull(rule80);
+            backendConfig80 = rule80.BackendHttpConfiguration;
+            Assert.NotNull(backendConfig80);
+            Assert.True(backendConfig80.IsHostHeaderFromBackend);
+            Assert.Null(backendConfig80.HostHeader);
 
             // Verify SSL policy - disabled protocols  
             Assert.Equal(0, resource.DisabledSslProtocols.Count);

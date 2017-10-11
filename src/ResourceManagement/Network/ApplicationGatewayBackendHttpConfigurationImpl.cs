@@ -8,6 +8,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using ResourceManager.Fluent;
     using ResourceManager.Fluent.Core;
     using ResourceManager.Fluent.Core.ChildResourceActions;
+    using System.Collections.Generic;
+    using System;
+    using System.IO;
 
     /// <summary>
     /// Implementation for ApplicationGatewayBackendHttpConfiguration.
@@ -28,6 +31,53 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         #region Accessors
+
+        ///GENMHASH:CBD5619B88DD95DAF0A3CF8BC5B3D92C:6147E08E9DB4B50DF4FFDC2AF2A42B50
+        public string AffinityCookieName()
+        {
+            return Inner.AffinityCookieName;
+        }
+
+        ///GENMHASH:4F2B8A33E08B4F75B92FC8A20F850BEB:1130E1FDC5A612FAE78D6B24DD71D43E
+        public string HostHeader()
+        {
+            return Inner.HostName;
+        }
+
+        ///GENMHASH:8DD7957DF346525387CB5260FCB137FA:9E96D894B08BF26B7839105F76681D56
+        public string Path()
+        {
+            return Inner.Path;
+        }
+
+        ///GENMHASH:24C641FB2387A4861E66C83590D3EF98:648638ADACA38C989546F4596185DB78
+        public bool IsHostHeaderFromBackend()
+        {
+            return (Inner.PickHostNameFromBackendAddress != null) ? Inner.PickHostNameFromBackendAddress.Value : false;
+        }
+
+        ///GENMHASH:14DD7EA1DCC055491882C09E4FEE4822:17D6F5197FC1375A5E7F5E5812582FC0
+        public bool IsProbeEnabled()
+        {
+            return (Inner.ProbeEnabled != null) ? Inner.ProbeEnabled.Value : false;
+        }
+
+        ///GENMHASH:2E2AC3A99EA3D6CABD90960D25C18DFF:6F2EDC3E1B0D68839C887FBB475C9FC5
+        public int ConnectionDrainingTimeoutInSeconds()
+        {
+            if (Inner.ConnectionDraining == null)
+            {
+                return 0;
+            }
+            else if (!Inner.ConnectionDraining.Enabled)
+            {
+                return 0;
+            }
+            else
+            {
+                return Inner.ConnectionDraining.DrainTimeoutInSec;
+            }
+        }
 
         ///GENMHASH:7C8DB8F49BE9ADE0ACDDE918992D9275:9905DA010A33007637D8302DD76D0464
         internal IApplicationGatewayProbe Probe()
@@ -101,7 +151,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         #region Withers
 
-        ///GENMHASH:E0DC5F5C03382BBF3A0349BC91DDC14F:7714B794D4354E4A2992F8B5A7DB6688
+        ///GENMHASH:E0DC5F5C03382BBF3A0349BC91DDC14F:2B335F3E25E8B33FD878F86BDFC8E03F
         internal ApplicationGatewayBackendHttpConfigurationImpl WithProbe(string name)
         {
             if (name == null)
@@ -119,7 +169,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
         }
 
-        ///GENMHASH:A3D4AA91AD97459B1911D4F17C8B14E9:6DEA3BB2D6FE24C09ED19C8B27692A2B
+        ///GENMHASH:A3D4AA91AD97459B1911D4F17C8B14E9:B88CC0ACCC1BD8E7A581B4D508B7DA4A
         internal ApplicationGatewayBackendHttpConfigurationImpl WithoutProbe()
         {
             Inner.Probe = null;
@@ -127,7 +177,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
 
-        ///GENMHASH:1B3DD32E4CACEF2636F8CF7212EEF52E:9E143B49CA62E36912E10621B5CA8F8C
+        ///GENMHASH:1B3DD32E4CACEF2636F8CF7212EEF52E:FC8C0EA002F6B85E131BB2C555A8F3D8
         internal ApplicationGatewayBackendHttpConfigurationImpl WithRequestTimeout(int seconds)
         {
             Inner.RequestTimeout = seconds;
@@ -135,15 +185,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
 
-        ///GENMHASH:A473E8C551A81C93BD8EA73FE99E314B:8E47A7551FAA8958BCB5314D0E665506
+        ///GENMHASH:A473E8C551A81C93BD8EA73FE99E314B:D6F3848D67AE407B04179F01B8D24165
         public ApplicationGatewayBackendHttpConfigurationImpl WithProtocol(ApplicationGatewayProtocol protocol)
         {
-            Inner.Protocol = (protocol != null) ? protocol.ToString() : null;
+            Inner.Protocol = protocol?.ToString();
             return this;
         }
 
 
-        ///GENMHASH:7884DB3A8071CC7B3FBB06615EBA996B:CA52EFCC70207EE737066999569A5D75
+        ///GENMHASH:7884DB3A8071CC7B3FBB06615EBA996B:0FD6C5C4BA833CCFCF251D843F409A11
         public ApplicationGatewayBackendHttpConfigurationImpl WithPort(int port)
         {
             Inner.Port = port;
@@ -151,7 +201,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
 
-        ///GENMHASH:1AB1FD137FCAFECBC19E784B21600422:6BB24B56EA50DCC3F395622096E46000
+        ///GENMHASH:1AB1FD137FCAFECBC19E784B21600422:10A96FEB729903AF130DD82C103101D1
         public ApplicationGatewayBackendHttpConfigurationImpl WithoutCookieBasedAffinity()
         {
             Inner.CookieBasedAffinity = ApplicationGatewayCookieBasedAffinity.Disabled;
@@ -159,11 +209,230 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
 
-        ///GENMHASH:389A52ADE2A3CD0EC1D4345823ED3438:F757DEFCD2347931069D56892B798728
+        ///GENMHASH:389A52ADE2A3CD0EC1D4345823ED3438:13D32358E52B5009580D8507FF729FC8
         public ApplicationGatewayBackendHttpConfigurationImpl WithCookieBasedAffinity()
         {
             Inner.CookieBasedAffinity = ApplicationGatewayCookieBasedAffinity.Enabled;
             return this;
+        }
+
+        ///GENMHASH:97A942481994526903BE02DCABFA02E2:B1BA994A46F6263EEC90776D84249F0C
+        public ApplicationGatewayBackendHttpConfigurationImpl WithHostHeaderFromBackend()
+        {
+            Inner.PickHostNameFromBackendAddress = true;
+            Inner.HostName = null;
+            return this;
+        }
+
+        ///GENMHASH:4E3EB4A448A6ABDF242218CB75923DB2:F5CDA6E82BA0EE1BD4A4BB934B982AA2
+        public ApplicationGatewayBackendHttpConfigurationImpl WithConnectionDrainingTimeoutInSeconds(int seconds)
+        {
+            if (Inner.ConnectionDraining == null)
+            {
+                Inner.ConnectionDraining = new ApplicationGatewayConnectionDraining();
+            }
+            if (seconds > 0)
+            {
+                Inner.ConnectionDraining.DrainTimeoutInSec = seconds;
+                Inner.ConnectionDraining.Enabled = true;
+            }
+            return this;
+        }
+
+        ///GENMHASH:5BE0305CB1C892A00BF8A1FB3C691F4E:0AA60007DE591D0F54FD4031B9E47EA0
+        public ApplicationGatewayBackendHttpConfigurationImpl WithAuthenticationCertificate(string name)
+        {
+            if (name == null)
+            {
+                return this;
+            }
+
+            SubResource certRef = new SubResource()
+            {
+                Id = Parent.FutureResourceId() + "/authenticationCertificates/" + name
+            };
+
+            var refs = Inner.AuthenticationCertificates;
+            if (refs == null)
+            {
+                refs = new List<SubResource>();
+                Inner.AuthenticationCertificates = refs;
+            }
+
+            foreach (var c in refs) 
+            {
+                if (c.Id.Equals(certRef.Id, StringComparison.OrdinalIgnoreCase)) {
+                    return this;
+                }
+            }
+
+            refs.Add(certRef);
+            return this.WithHttps();
+        }
+
+        ///GENMHASH:D89763E755D0DB99E48A9AB1BBD41135:6ABD4E87D5E0D91B7919E753C404F770
+        public ApplicationGatewayBackendHttpConfigurationImpl WithAffinityCookieName(string name)
+        {
+            Inner.AffinityCookieName = name;
+            return this;
+        }
+
+        ///GENMHASH:5A41F1C04C87A2000891EE6DED384815:920A1F7E5C1D312680456892F7B1DB27
+        public IReadOnlyDictionary<string, IApplicationGatewayAuthenticationCertificate> AuthenticationCertificates()
+        {
+            Dictionary<string, IApplicationGatewayAuthenticationCertificate> certs = new Dictionary<string, IApplicationGatewayAuthenticationCertificate>();
+            if (Inner.AuthenticationCertificates == null)
+            {
+                return certs;
+            }
+            else
+            {
+                foreach (var c in Inner.AuthenticationCertificates)
+                {
+                    IApplicationGatewayAuthenticationCertificate cert = null;
+                    if (Parent.AuthenticationCertificates().TryGetValue(ResourceUtils.NameFromResourceId(c.Id), out cert))
+                    {
+                        certs[cert.Name] = cert;
+                    }
+                }
+            }
+            return certs;
+        }
+
+        ///GENMHASH:A76FBD3FA61158B96AEAFA3D2B668A0F:1E230EF97513FA87FAFC6056A4AC29F5
+        public ApplicationGatewayBackendHttpConfigurationImpl WithoutConnectionDraining()
+        {
+            Inner.ConnectionDraining = null;
+            return this;
+        }
+
+        ///GENMHASH:EEDF992F7513A5EDB4C6ABA705C4BE66:D5512189ABC55838FF332B0C38684252
+        public ApplicationGatewayBackendHttpConfigurationImpl WithoutAuthenticationCertificate(string name)
+        {
+            if (name == null)
+            {
+                return this;
+            }
+
+            foreach (var c in Inner.AuthenticationCertificates)
+            {
+                if (ResourceUtils.NameFromResourceId(c.Id).Equals(name, StringComparison.OrdinalIgnoreCase))
+                {
+                    Inner.AuthenticationCertificates.Remove(c);
+                    break;
+                }
+            }
+            return this;
+        }
+
+        ///GENMHASH:94AEAD3A6B85DEA04678F7DA691082B1:AE2E7F836BF1B71A27832FB07777BC05
+        public ApplicationGatewayBackendHttpConfigurationImpl WithoutAuthenticationCertificates()
+        {
+            Inner.AuthenticationCertificates = null;
+            return this;
+        }
+
+        ///GENMHASH:FA888A1E446DDA9E368D1EF43B428BAC:E284CF01C0CAA27F5A90C3ABCFAC1A76
+        public ApplicationGatewayBackendHttpConfigurationImpl WithHttps()
+        {
+            return WithProtocol(ApplicationGatewayProtocol.Https);
+        }
+
+        ///GENMHASH:B84DDC1D7117A27DB5A5DFF71CFF86D0:9374E5D21B3799EDAF1823933B92B277
+        public ApplicationGatewayBackendHttpConfigurationImpl WithoutHostHeader()
+        {
+            Inner.HostName = null;
+            Inner.PickHostNameFromBackendAddress = false;
+            return this;
+        }
+
+        ///GENMHASH:5319363BA516693C02815523816AB844:402DF6E230AE7E19F224B7B81E3EB890
+        public ApplicationGatewayBackendHttpConfigurationImpl WithPath(string path)
+        {
+            if (path != null)
+            {
+                if (!path.StartsWith("/"))
+                {
+                    path = "/" + path;
+                }
+                if (!path.EndsWith("/"))
+                {
+                    path += "/";
+                }
+            }
+            Inner.Path = path;
+            return this;
+        }
+
+        ///GENMHASH:6F62B34CB3A912AA692DBF18C6F448CB:CEF72EC0F209FFC140240A2F69632039
+        public ApplicationGatewayBackendHttpConfigurationImpl WithHostHeader(string hostHeader)
+        {
+            Inner.HostName = hostHeader;
+            Inner.PickHostNameFromBackendAddress = false;
+            return this;
+        }
+
+        ///GENMHASH:93249EB17DAE215D40AC4D267DB3C6BD:A4F6024C710BD15A9E8D6A6ACA5D23BC
+        public ApplicationGatewayBackendHttpConfigurationImpl WithAuthenticationCertificateFromBase64(string base64Data)
+        {
+            if (base64Data == null)
+            {
+                return this;
+            }
+
+            string certName = null;
+            foreach (var cert in Parent.AuthenticationCertificates().Values)
+            {
+                if (cert.Data.Equals(base64Data))
+                {
+                    certName = cert.Name;
+                    break;
+                }
+            }
+
+            // If matching cert reference not found, create a new one
+            if (certName == null)
+            {
+                certName = SdkContext.RandomResourceName("cert", 20);
+                Parent.DefineAuthenticationCertificate(certName)
+                    .FromBase64(base64Data)
+                    .Attach();
+            }
+
+            return WithAuthenticationCertificate(certName).WithHttps();
+        }
+
+        ///GENMHASH:E1FA92658F1B92C66F2FDD601E75E424:960E9F85159C8B553E68FFD0B6E32452
+        public ApplicationGatewayBackendHttpConfigurationImpl WithAuthenticationCertificateFromFile(FileInfo certificateFile)
+        {
+            if (certificateFile == null)
+            {
+                return this;
+            }
+            else
+            {
+                byte[] content = File.ReadAllBytes(certificateFile.FullName);
+                return WithAuthenticationCertificateFromBytes(content);
+            }
+        }
+
+        ///GENMHASH:56C13893A2D98E37AE84BCEA0910F728:F96F659A9562AA4331E2A4A484A93C17
+        public ApplicationGatewayBackendHttpConfigurationImpl WithAuthenticationCertificateFromBytes(params byte[] derData)
+        {
+            if (derData == null)
+            {
+                return this;
+            }
+
+            string encoded = Convert.ToBase64String(derData);
+            return WithAuthenticationCertificateFromBase64(encoded);
+        }
+
+        ///GENMHASH:604F12B361C77B3E3AD5768A73BA6DCF:8AB2D8CE074B69C5402393587D90152D
+        public ApplicationGatewayBackendHttpConfigurationImpl WithHttp()
+        {
+            return WithoutAuthenticationCertificates()
+                .WithProtocol(ApplicationGatewayProtocol.Http);
         }
 
         #endregion
@@ -171,7 +440,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         #region Actions
 
 
-        ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:EA0F53B8E1A36EBC1DB975D85320CCC5
+        ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:C4B2E1F47C2D40EFC60B0A131C0D8A67
         public ApplicationGatewayImpl Attach()
         {
             Parent.WithBackendHttpConfiguration(this);

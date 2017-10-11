@@ -17,8 +17,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
+        /// Gets redirect configurations, indexed by name.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration> RedirectConfigurations { get; }
+
+        /// <summary>
         /// Gets disabled SSL protocols.
         /// </summary>
         System.Collections.Generic.IReadOnlyCollection<Models.ApplicationGatewaySslProtocol> DisabledSslProtocols { get; }
+
+        /// <summary>
+        /// Gets authentication certificates.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; }
     }
 }

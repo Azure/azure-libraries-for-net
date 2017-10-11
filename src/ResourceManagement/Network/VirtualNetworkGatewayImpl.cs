@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        ///GENMHASH:D747AFA75EF01A631FD1E74DD4950F8C:6ECEFC402E9AA9F35C569FFECCCFB74C
+        ///GENMHASH:6E2DB095301FA5F54EABD8841D651031:6ECEFC402E9AA9F35C569FFECCCFB74C
         public VirtualNetworkGatewayImpl WithoutBgp()
         {
             Inner.BgpSettings = null;

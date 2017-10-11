@@ -164,7 +164,12 @@ namespace Microsoft.Azure.Management.Samples.Common
                     .Append("\n\t\t\tCookie based affinity: ").Append(httpConfig.CookieBasedAffinity)
                     .Append("\n\t\t\tPort: ").Append(httpConfig.Port)
                     .Append("\n\t\t\tRequest timeout in seconds: ").Append(httpConfig.RequestTimeout)
-                    .Append("\n\t\t\tProtocol: ").Append(httpConfig.Protocol.ToString());
+                    .Append("\n\t\t\tProtocol: ").Append(httpConfig.Protocol.ToString())
+                    .Append("\n\t\tHost header: ").Append(httpConfig.HostHeader)
+                    .Append("\n\t\tHost header comes from backend? ").Append(httpConfig.IsHostHeaderFromBackend)
+                    .Append("\n\t\tConnection draining timeout in seconds: ").Append(httpConfig.ConnectionDrainingTimeoutInSeconds)
+                    .Append("\n\t\tAffinity cookie name: ").Append(httpConfig.AffinityCookieName)
+                    .Append("\n\t\tPath: ").Append(httpConfig.Path);
 
                 var probe = httpConfig.Probe;
                 if (probe != null)
@@ -180,6 +185,20 @@ namespace Microsoft.Azure.Management.Samples.Common
             {
                 info.Append("\n\t\tName: ").Append(cert.Name)
                     .Append("\n\t\t\tCert data: ").Append(cert.PublicData);
+            }
+
+            // Show redirect configurations
+            var redirects = resource.RedirectConfigurations;
+            info.Append("\n\tRedirect configurations: ").Append(redirects.Count);
+            foreach (IApplicationGatewayRedirectConfiguration redirect in redirects.Values)
+            {
+                info.Append("\n\t\tName: ").Append(redirect.Name)
+                    .Append("\n\t\tTarget URL: ").Append(redirect.Type)
+                    .Append("\n\t\tTarget URL: ").Append(redirect.TargetUrl)
+                    .Append("\n\t\tTarget listener: ").Append(redirect.TargetListener?.Name)
+                    .Append("\n\t\tIs path included? ").Append(redirect.IsPathIncluded)
+                    .Append("\n\t\tIs query string included? ").Append(redirect.IsQueryStringIncluded)
+                    .Append("\n\t\tReferencing request routing rules: ").Append(string.Join(", ", redirect.RequestRoutingRules.Keys.ToArray()));
             }
 
             // Show HTTP listeners
@@ -213,7 +232,8 @@ namespace Microsoft.Azure.Management.Samples.Common
                     .Append("\n\t\t\tFrontend port: ").Append(rule.FrontendPort)
                     .Append("\n\t\t\tFrontend protocol: ").Append(rule.FrontendProtocol.ToString())
                     .Append("\n\t\t\tBackend port: ").Append(rule.BackendPort)
-                    .Append("\n\t\t\tCookie based affinity enabled? ").Append(rule.CookieBasedAffinity);
+                    .Append("\n\t\t\tCookie based affinity enabled? ").Append(rule.CookieBasedAffinity)
+                    .Append("\n\t\tRedirect configuration: ").Append(rule.RedirectConfiguration?.Name ?? "(none)");
 
                 // Show backend addresses
                 var addresses = rule.BackendAddresses;
@@ -225,53 +245,19 @@ namespace Microsoft.Azure.Management.Samples.Common
                         .Append(" [").Append(address.IpAddress).Append("]");
                 }
 
-                // Show SSL cert
-                info.Append("\n\t\t\tSSL certificate name: ");
-                var cert = rule.SslCertificate;
-                if (cert == null)
-                {
-                    info.Append("(None)");
-                }
-                else
-                {
-                    info.Append(cert.Name);
-                }
+                
+                info
+                    // Show SSL cert
+                    .Append("\n\t\t\tSSL certificate name: ").Append(rule.SslCertificate?.Name ?? "(none)")
 
-                // Show backend
-                info.Append("\n\t\t\tAssociated backend address pool: ");
-                var backend = rule.Backend;
-                if (backend == null)
-                {
-                    info.Append("(None)");
-                }
-                else
-                {
-                    info.Append(backend.Name);
-                }
+                    // Show backend
+                    .Append("\n\t\t\tAssociated backend address pool: ").Append(rule.Backend?.Name ?? "(none)")
 
-                // Show backend HTTP settings config
-                info.Append("\n\t\t\tAssociated backend HTTP settings configuration: ");
-                var config = rule.BackendHttpConfiguration;
-                if (config == null)
-                {
-                    info.Append("(None)");
-                }
-                else
-                {
-                    info.Append(config.Name);
-                }
+                    // Show backend HTTP settings config
+                    .Append("\n\t\t\tAssociated backend HTTP settings configuration: ").Append(rule.BackendHttpConfiguration?.Name ?? "(none)")
 
-                // Show frontend listener
-                info.Append("\n\t\t\tAssociated frontend listener: ");
-                var listener = rule.Listener;
-                if (listener == null)
-                {
-                    info.Append("(None)");
-                }
-                else
-                {
-                    info.Append(config.Name);
-                }
+                    // Show frontend listener
+                    .Append("\n\t\t\tAssociated frontend listener: ").Append(rule.Listener?.Name ?? "(none)");
             }
 
             // Show probes  
@@ -284,7 +270,9 @@ namespace Microsoft.Azure.Management.Samples.Common
                     .Append("\n\t\tInterval in seconds: ").Append(probe.TimeBetweenProbesInSeconds)
                     .Append("\n\t\tRetries: ").Append(probe.RetriesBeforeUnhealthy)
                     .Append("\n\t\tTimeout: ").Append(probe.TimeoutInSeconds)
-                    .Append("\n\t\tHost: ").Append(probe.Host);
+                    .Append("\n\t\tHost: ").Append(probe.Host)
+                    .Append("\n\t\tHealthy HTTP response status code ranges: ").Append(probe.HealthyHttpResponseStatusCodeRanges)
+                    .Append("\n\t\tHealthy HTTP response body contents: ").Append(probe.HealthyHttpResponseBodyContents);
             }
 
             Utilities.Log(info.ToString());
