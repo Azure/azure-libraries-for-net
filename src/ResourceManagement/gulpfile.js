@@ -91,6 +91,10 @@ var codegen = function (project, cb) {
     if (mappings[project].fluent !== null && mappings[project].fluent === false) {
         generator = '';
     }
+    
+    const generatorPath = args['autorest-csharp']
+        ? `--use=${path.resolve(args['autorest-csharp'])} `
+        : '';
 
     cmd = autoRestExe + ' ' + specRoot + "/" + mappings[project].source +
         ' --csharp ' +
@@ -99,7 +103,9 @@ var codegen = function (project, cb) {
         ` --csharp.namespace=${mappings[project].package} ` +
         ` --csharp.output-folder=${outputDir} ` +
         ` --csharp.license-header=MICROSOFT_MIT_NO_CODEGEN ` +
-        regenManager;
+        generatorPath +
+        regenManager +
+        autoRestArgs;
 
     if (mappings[project].args !== undefined) {
         cmd = cmd + ' ' + mappings[project].args;
