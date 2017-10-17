@@ -272,7 +272,7 @@ var mappings = {
     },
     'containerregistry': {
         'dir': 'ContainerRegistry',
-        'source': 'arm-containerregistry/2017-03-01/swagger/containerregistry.json',
+        'source': 'arm-containerregistry/2017-10-01/swagger/containerregistry.json',
         'package': 'Microsoft.Azure.Management.ContainerRegistry.Fluent',
         'args': '-FT 1',
     },

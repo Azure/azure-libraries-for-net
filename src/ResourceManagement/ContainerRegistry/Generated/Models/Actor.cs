@@ -14,29 +14,27 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The definition of a container registry operation.
+    /// The agent that initiated the event. For most situations, this could be
+    /// from the authorization context of the request.
     /// </summary>
-    public partial class OperationDefinition
+    public partial class Actor
     {
         /// <summary>
-        /// Initializes a new instance of the OperationDefinition class.
+        /// Initializes a new instance of the Actor class.
         /// </summary>
-        public OperationDefinition()
+        public Actor()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the OperationDefinition class.
+        /// Initializes a new instance of the Actor class.
         /// </summary>
-        /// <param name="name">Operation name:
-        /// {provider}/{resource}/{operation}.</param>
-        /// <param name="display">The display information for the container
-        /// registry operation.</param>
-        public OperationDefinition(string name = default(string), OperationDisplayDefinition display = default(OperationDisplayDefinition))
+        /// <param name="name">The subject or username associated with the
+        /// request context that generated the event.</param>
+        public Actor(string name = default(string))
         {
             Name = name;
-            Display = display;
             CustomInit();
         }
 
@@ -46,17 +44,11 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets operation name: {provider}/{resource}/{operation}.
+        /// Gets or sets the subject or username associated with the request
+        /// context that generated the event.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the display information for the container registry
-        /// operation.
-        /// </summary>
-        [JsonProperty(PropertyName = "display")]
-        public OperationDisplayDefinition Display { get; set; }
 
     }
 }

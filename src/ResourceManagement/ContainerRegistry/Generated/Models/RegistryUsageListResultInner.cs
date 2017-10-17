@@ -11,30 +11,32 @@
 namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The login password for the container registry.
+    /// The result of a request to get container registry quota usages.
     /// </summary>
-    public partial class RegistryPassword
+    public partial class RegistryUsageListResultInner
     {
         /// <summary>
-        /// Initializes a new instance of the RegistryPassword class.
+        /// Initializes a new instance of the RegistryUsageListResultInner
+        /// class.
         /// </summary>
-        public RegistryPassword()
+        public RegistryUsageListResultInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RegistryPassword class.
+        /// Initializes a new instance of the RegistryUsageListResultInner
+        /// class.
         /// </summary>
-        /// <param name="name">The password name. Possible values include:
-        /// 'password', 'password2'</param>
-        /// <param name="value">The password value.</param>
-        public RegistryPassword(PasswordName? name = default(PasswordName?), string value = default(string))
+        /// <param name="value">The list of container registry quota
+        /// usages.</param>
+        public RegistryUsageListResultInner(IList<RegistryUsage> value = default(IList<RegistryUsage>))
         {
-            Name = name;
             Value = value;
             CustomInit();
         }
@@ -45,17 +47,10 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the password name. Possible values include:
-        /// 'password', 'password2'
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public PasswordName? Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the password value.
+        /// Gets or sets the list of container registry quota usages.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public string Value { get; set; }
+        public IList<RegistryUsage> Value { get; set; }
 
     }
 }
