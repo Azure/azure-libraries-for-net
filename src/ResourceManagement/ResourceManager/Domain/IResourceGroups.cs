@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     using Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.ResourceGroup.Definition;
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </summary>
         /// <param name="name">name The name of the resource group to check. The name is case insensitive</param>
         /// <returns>true if the resource group exists; false otherwise</returns>
+        [Obsolete("Use Contain() instead.")]
         bool CheckExistence (string name);
 
         /// <summary>
@@ -33,7 +35,21 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </summary>
         /// <param name="name">name The name of the resource group to check. The name is case insensitive</param>
         /// <returns>true if the resource group exists; false otherwise</returns>
-        Task<bool> CheckExistenceAsync(string name, CancellationToken cancellationToken = default(CancellationToken)
-);
+        bool Contain(string name);
+
+        /// <summary>
+        /// Checks whether resource group exists.
+        /// </summary>
+        /// <param name="name">name The name of the resource group to check. The name is case insensitive</param>
+        /// <returns>true if the resource group exists; false otherwise</returns>
+        [Obsolete("User ContgainAsync() instead.")]
+        Task<bool> CheckExistenceAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Checks whether resource group exists.
+        /// </summary>
+        /// <param name="name">name The name of the resource group to check. The name is case insensitive</param>
+        /// <returns>true if the resource group exists; false otherwise</returns>
+        Task<bool> ContainAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
