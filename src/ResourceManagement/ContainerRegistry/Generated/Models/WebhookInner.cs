@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Models
     /// An object that represents a webhook for a container registry.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class WebhookInner : Rest.Azure.Resource
+    public partial class WebhookInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the WebhookInner class.

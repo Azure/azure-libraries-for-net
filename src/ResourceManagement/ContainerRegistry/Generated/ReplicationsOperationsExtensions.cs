@@ -38,26 +38,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='replicationName'>
             /// The name of the replication.
             /// </param>
-            public static ReplicationInner Get(this IReplicationsOperations operations, string resourceGroupName, string registryName, string replicationName)
-            {
-                return operations.GetAsync(resourceGroupName, registryName, replicationName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the properties of the specified replication.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='replicationName'>
-            /// The name of the replication.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -67,30 +47,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Creates a replication for a container registry with the specified
-            /// parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='replicationName'>
-            /// The name of the replication.
-            /// </param>
-            /// <param name='replication'>
-            /// The parameters for creating a replication.
-            /// </param>
-            public static ReplicationInner Create(this IReplicationsOperations operations, string resourceGroupName, string registryName, string replicationName, ReplicationInner replication)
-            {
-                return operations.CreateAsync(resourceGroupName, registryName, replicationName, replication).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -138,56 +94,12 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='replicationName'>
             /// The name of the replication.
             /// </param>
-            public static void Delete(this IReplicationsOperations operations, string resourceGroupName, string registryName, string replicationName)
-            {
-                operations.DeleteAsync(resourceGroupName, registryName, replicationName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a replication from a container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='replicationName'>
-            /// The name of the replication.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this IReplicationsOperations operations, string resourceGroupName, string registryName, string replicationName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, registryName, replicationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Updates a replication for a container registry with the specified
-            /// parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='replicationName'>
-            /// The name of the replication.
-            /// </param>
-            /// <param name='tags'>
-            /// The tags for the replication.
-            /// </param>
-            public static ReplicationInner Update(this IReplicationsOperations operations, string resourceGroupName, string registryName, string replicationName, IDictionary<string, string> tags = default(IDictionary<string, string>))
-            {
-                return operations.UpdateAsync(resourceGroupName, registryName, replicationName, tags).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -232,23 +144,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='registryName'>
             /// The name of the container registry.
             /// </param>
-            public static IPage<ReplicationInner> List(this IReplicationsOperations operations, string resourceGroupName, string registryName)
-            {
-                return operations.ListAsync(resourceGroupName, registryName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the replications for the specified container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -258,30 +153,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Creates a replication for a container registry with the specified
-            /// parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='replicationName'>
-            /// The name of the replication.
-            /// </param>
-            /// <param name='replication'>
-            /// The parameters for creating a replication.
-            /// </param>
-            public static ReplicationInner BeginCreate(this IReplicationsOperations operations, string resourceGroupName, string registryName, string replicationName, ReplicationInner replication)
-            {
-                return operations.BeginCreateAsync(resourceGroupName, registryName, replicationName, replication).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -329,56 +200,12 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='replicationName'>
             /// The name of the replication.
             /// </param>
-            public static void BeginDelete(this IReplicationsOperations operations, string resourceGroupName, string registryName, string replicationName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, registryName, replicationName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a replication from a container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='replicationName'>
-            /// The name of the replication.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task BeginDeleteAsync(this IReplicationsOperations operations, string resourceGroupName, string registryName, string replicationName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, registryName, replicationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Updates a replication for a container registry with the specified
-            /// parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='replicationName'>
-            /// The name of the replication.
-            /// </param>
-            /// <param name='tags'>
-            /// The tags for the replication.
-            /// </param>
-            public static ReplicationInner BeginUpdate(this IReplicationsOperations operations, string resourceGroupName, string registryName, string replicationName, IDictionary<string, string> tags = default(IDictionary<string, string>))
-            {
-                return operations.BeginUpdateAsync(resourceGroupName, registryName, replicationName, tags).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -409,20 +236,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Lists all the replications for the specified container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<ReplicationInner> ListNext(this IReplicationsOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

@@ -32,22 +32,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='name'>
             /// The name of the container registry.
             /// </param>
-            public static RegistryNameStatusInner CheckNameAvailability(this IRegistriesOperations operations, string name)
-            {
-                return operations.CheckNameAvailabilityAsync(name).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Checks whether the container registry name is available for use. The name
-            /// must contain only alphanumeric characters, be globally unique, and between
-            /// 5 and 50 characters in length.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the container registry.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -57,23 +41,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets the properties of the specified container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            public static RegistryInner Get(this IRegistriesOperations operations, string resourceGroupName, string registryName)
-            {
-                return operations.GetAsync(resourceGroupName, registryName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -114,26 +81,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='registry'>
             /// The parameters for creating a container registry.
             /// </param>
-            public static RegistryInner Create(this IRegistriesOperations operations, string resourceGroupName, string registryName, RegistryInner registry)
-            {
-                return operations.CreateAsync(resourceGroupName, registryName, registry).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates a container registry with the specified parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='registry'>
-            /// The parameters for creating a container registry.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -143,23 +90,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes a container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            public static void Delete(this IRegistriesOperations operations, string resourceGroupName, string registryName)
-            {
-                operations.DeleteAsync(resourceGroupName, registryName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -197,26 +127,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='registryUpdateParameters'>
             /// The parameters for updating a container registry.
             /// </param>
-            public static RegistryInner Update(this IRegistriesOperations operations, string resourceGroupName, string registryName, RegistryUpdateParametersInner registryUpdateParameters)
-            {
-                return operations.UpdateAsync(resourceGroupName, registryName, registryUpdateParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a container registry with the specified parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='registryUpdateParameters'>
-            /// The parameters for updating a container registry.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -226,20 +136,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Lists all the container registries under the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            public static IPage<RegistryInner> ListByResourceGroup(this IRegistriesOperations operations, string resourceGroupName)
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -268,17 +164,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<RegistryInner> List(this IRegistriesOperations operations)
-            {
-                return operations.ListAsync().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the container registries under the specified subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -288,23 +173,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Lists the login credentials for the specified container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            public static RegistryListCredentialsResultInner ListCredentials(this IRegistriesOperations operations, string resourceGroupName, string registryName)
-            {
-                return operations.ListCredentialsAsync(resourceGroupName, registryName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -347,28 +215,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// Specifies name of the password which should be regenerated -- password or
             /// password2. Possible values include: 'password', 'password2'
             /// </param>
-            public static RegistryListCredentialsResultInner RegenerateCredential(this IRegistriesOperations operations, string resourceGroupName, string registryName, PasswordName name)
-            {
-                return operations.RegenerateCredentialAsync(resourceGroupName, registryName, name).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Regenerates one of the login credentials for the specified container
-            /// registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='name'>
-            /// Specifies name of the password which should be regenerated -- password or
-            /// password2. Possible values include: 'password', 'password2'
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -378,23 +224,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets the quota usages for the specified container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            public static RegistryUsageListResultInner ListUsages(this IRegistriesOperations operations, string resourceGroupName, string registryName)
-            {
-                return operations.ListUsagesAsync(resourceGroupName, registryName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -435,26 +264,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='registry'>
             /// The parameters for creating a container registry.
             /// </param>
-            public static RegistryInner BeginCreate(this IRegistriesOperations operations, string resourceGroupName, string registryName, RegistryInner registry)
-            {
-                return operations.BeginCreateAsync(resourceGroupName, registryName, registry).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates a container registry with the specified parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='registry'>
-            /// The parameters for creating a container registry.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -464,23 +273,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes a container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            public static void BeginDelete(this IRegistriesOperations operations, string resourceGroupName, string registryName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, registryName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -518,26 +310,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='registryUpdateParameters'>
             /// The parameters for updating a container registry.
             /// </param>
-            public static RegistryInner BeginUpdate(this IRegistriesOperations operations, string resourceGroupName, string registryName, RegistryUpdateParametersInner registryUpdateParameters)
-            {
-                return operations.BeginUpdateAsync(resourceGroupName, registryName, registryUpdateParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a container registry with the specified parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='registryUpdateParameters'>
-            /// The parameters for updating a container registry.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -558,20 +330,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<RegistryInner> ListByResourceGroupNext(this IRegistriesOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the container registries under the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -581,20 +339,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Lists all the container registries under the specified subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<RegistryInner> ListNext(this IRegistriesOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

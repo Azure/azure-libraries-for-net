@@ -36,26 +36,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='webhookName'>
             /// The name of the webhook.
             /// </param>
-            public static WebhookInner Get(this IWebhooksOperations operations, string resourceGroupName, string registryName, string webhookName)
-            {
-                return operations.GetAsync(resourceGroupName, registryName, webhookName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the properties of the specified webhook.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='webhookName'>
-            /// The name of the webhook.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -65,29 +45,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Creates a webhook for a container registry with the specified parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='webhookName'>
-            /// The name of the webhook.
-            /// </param>
-            /// <param name='webhookCreateParameters'>
-            /// The parameters for creating a webhook.
-            /// </param>
-            public static WebhookInner Create(this IWebhooksOperations operations, string resourceGroupName, string registryName, string webhookName, WebhookCreateParametersInner webhookCreateParameters)
-            {
-                return operations.CreateAsync(resourceGroupName, registryName, webhookName, webhookCreateParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -134,55 +91,12 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='webhookName'>
             /// The name of the webhook.
             /// </param>
-            public static void Delete(this IWebhooksOperations operations, string resourceGroupName, string registryName, string webhookName)
-            {
-                operations.DeleteAsync(resourceGroupName, registryName, webhookName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a webhook from a container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='webhookName'>
-            /// The name of the webhook.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this IWebhooksOperations operations, string resourceGroupName, string registryName, string webhookName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, registryName, webhookName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Updates a webhook with the specified parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='webhookName'>
-            /// The name of the webhook.
-            /// </param>
-            /// <param name='webhookUpdateParameters'>
-            /// The parameters for updating a webhook.
-            /// </param>
-            public static WebhookInner Update(this IWebhooksOperations operations, string resourceGroupName, string registryName, string webhookName, WebhookUpdateParametersInner webhookUpdateParameters)
-            {
-                return operations.UpdateAsync(resourceGroupName, registryName, webhookName, webhookUpdateParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -226,23 +140,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='registryName'>
             /// The name of the container registry.
             /// </param>
-            public static IPage<WebhookInner> List(this IWebhooksOperations operations, string resourceGroupName, string registryName)
-            {
-                return operations.ListAsync(resourceGroupName, registryName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the webhooks for the specified container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -252,26 +149,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Triggers a ping event to be sent to the webhook.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='webhookName'>
-            /// The name of the webhook.
-            /// </param>
-            public static EventInfoInner Ping(this IWebhooksOperations operations, string resourceGroupName, string registryName, string webhookName)
-            {
-                return operations.PingAsync(resourceGroupName, registryName, webhookName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -315,26 +192,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='webhookName'>
             /// The name of the webhook.
             /// </param>
-            public static CallbackConfigInner GetCallbackConfig(this IWebhooksOperations operations, string resourceGroupName, string registryName, string webhookName)
-            {
-                return operations.GetCallbackConfigAsync(resourceGroupName, registryName, webhookName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the configuration of service URI and custom headers for the webhook.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='webhookName'>
-            /// The name of the webhook.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -344,26 +201,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Lists recent events for the specified webhook.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='webhookName'>
-            /// The name of the webhook.
-            /// </param>
-            public static IPage<EventModel> ListEvents(this IWebhooksOperations operations, string resourceGroupName, string registryName, string webhookName)
-            {
-                return operations.ListEventsAsync(resourceGroupName, registryName, webhookName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -410,29 +247,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='webhookCreateParameters'>
             /// The parameters for creating a webhook.
             /// </param>
-            public static WebhookInner BeginCreate(this IWebhooksOperations operations, string resourceGroupName, string registryName, string webhookName, WebhookCreateParametersInner webhookCreateParameters)
-            {
-                return operations.BeginCreateAsync(resourceGroupName, registryName, webhookName, webhookCreateParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates a webhook for a container registry with the specified parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='webhookName'>
-            /// The name of the webhook.
-            /// </param>
-            /// <param name='webhookCreateParameters'>
-            /// The parameters for creating a webhook.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -442,26 +256,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes a webhook from a container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='webhookName'>
-            /// The name of the webhook.
-            /// </param>
-            public static void BeginDelete(this IWebhooksOperations operations, string resourceGroupName, string registryName, string webhookName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, registryName, webhookName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -505,29 +299,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='webhookUpdateParameters'>
             /// The parameters for updating a webhook.
             /// </param>
-            public static WebhookInner BeginUpdate(this IWebhooksOperations operations, string resourceGroupName, string registryName, string webhookName, WebhookUpdateParametersInner webhookUpdateParameters)
-            {
-                return operations.BeginUpdateAsync(resourceGroupName, registryName, webhookName, webhookUpdateParameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Updates a webhook with the specified parameters.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to which the container registry belongs.
-            /// </param>
-            /// <param name='registryName'>
-            /// The name of the container registry.
-            /// </param>
-            /// <param name='webhookName'>
-            /// The name of the webhook.
-            /// </param>
-            /// <param name='webhookUpdateParameters'>
-            /// The parameters for updating a webhook.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -548,20 +319,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<WebhookInner> ListNext(this IWebhooksOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all the webhooks for the specified container registry.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -571,20 +328,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Lists recent events for the specified webhook.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<EventModel> ListEventsNext(this IWebhooksOperations operations, string nextPageLink)
-            {
-                return operations.ListEventsNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
