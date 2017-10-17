@@ -66,13 +66,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             {
                 return null;
             }
+
             else if (tagValue == null)
             {
-                return $"tagname eq {tagName}";
+                return $"tagname eq '{tagName}'";
             }
             else
             {
-                return $"tagname eq {tagName} and tagvalue eq {tagValue}";
+                return $"tagname eq '{tagName}' and tagvalue eq '{tagValue}'";
             }
         }
     }
