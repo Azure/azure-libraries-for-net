@@ -39,15 +39,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Defini
     }
 
     /// <summary>
-    /// The stage of the probe definition allowing to specify the HTTP request path for the probe to monitor.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithRequestPath<ParentT> 
-    {
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Definition.IWithAttach<ParentT> WithRequestPath(string requestPath);
-    }
-
-    /// <summary>
     /// The stage of the HTTP probe definition allowing to specify the probe interval.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
@@ -59,6 +50,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Defini
         /// <param name="seconds">Number of seconds.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Definition.IWithAttach<ParentT> WithIntervalInSeconds(int seconds);
+    }
+
+    /// <summary>
+    /// The stage of the probe definition allowing to specify the HTTP request path for the probe to monitor.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithRequestPath<ParentT> 
+    {
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Definition.IWithAttach<ParentT> WithRequestPath(string requestPath);
     }
 
     /// <summary>

@@ -257,16 +257,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
     public interface INetworkManagerBeta : IBeta
     {
         /// <summary>
-        /// return entry point to load balancer management
-        /// </summary>
-        ILoadBalancers LoadBalancers { get; }
-
-        /// <summary>
-        /// Entry point to application gateway management.
-        /// </summary>
-        IApplicationGateways ApplicationGateways { get; }
-
-        /// <summary>
         /// return entry point to network watchers management
         /// </summary>
         INetworkWatchers NetworkWatchers { get; }
@@ -284,6 +274,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
     public interface INetworkManager : INetworkManagerBeta, IManager<INetworkManagementClient>
     {
+        /// <summary>
+        /// Entry point to application gateway management.
+        /// </summary>
+        IApplicationGateways ApplicationGateways { get; }
+
+        /// <summary>
+        /// return entry point to load balancer management
+        /// </summary>
+        ILoadBalancers LoadBalancers { get; }
+
         /// <summary>
         /// return entry point to virtual network management
         /// </summary>
