@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
         }
 
-    #region Withers
+        #region Withers
 
         #region WithAuthenticationCertificate
 
@@ -979,9 +979,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-    #endregion
+        #endregion
 
-    #region Accessors
+        #region Accessors
 
         ///GENMHASH:CD498C02D42C73AD0C1FF12493E2A9B8:CD5E24B4D8E0D679C5291E15ABECB279
         public int InstanceCount()
@@ -1250,9 +1250,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return backendConfigs;
         }
 
-    #endregion
+        #endregion
 
-    #region Actions
+        #region Actions
 
         #region InitializeChildren
 
@@ -1874,14 +1874,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:0F38250A3837DF9C2C345D4A038B654B:E0F8963F5DAB9A54987EBE382946F816
         public void Start()
         {
-            StartAsync().Wait();
+            Extensions.Synchronize(() => StartAsync());
         }
 
 
         ///GENMHASH:EB854F18026EDB6E01762FA4580BE789:5A2F4445DA73DB06DF8066E5B2B6EF28
         public void Stop()
         {
-            StopAsync().Wait();
+            Extensions.Synchronize(() => StopAsync());
         }
 
 
@@ -1909,5 +1909,59 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
     #endregion
+
+        ///GENMHASH:5961EF29B91233084DDE586640FCAF86:C8D820DCD1845E2AEC8FDB7B815F4CBB
+        public IReadOnlyDictionary<string, IApplicationGatewayBackendHealth> CheckBackendHealth()
+        {
+            return Extensions.Synchronize(() => CheckBackendHealthAsync());
+        }
+
+        ///GENMHASH:B8731D2E2E62238DEBE0CE572737E938:90C43EE6AF0C4E511DAD7DE9A61CF5D5
+        public async Task<IReadOnlyDictionary<string, IApplicationGatewayBackendHealth>> CheckBackendHealthAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            Dictionary<string, IApplicationGatewayBackendHealth> backendHealths = new Dictionary<string, IApplicationGatewayBackendHealth>();
+            var inner = await Manager.Inner.ApplicationGateways.BackendHealthAsync(ResourceGroupName, Name);
+            if (inner != null)
+            {
+                foreach (var healthInner in inner.BackendAddressPools)
+                {
+                    var backendHealth = new ApplicationGatewayBackendHealthImpl(healthInner, this);
+                    backendHealths[backendHealth.Name()] = backendHealth;
+                }
+            }
+
+            return backendHealths;
+        }
+
+        ///GENMHASH:A344A4F9D7CDC949D6AF4D6C2484309C:DCEBF1B4C62EB4BB703EA8539BED4C30
+        internal SubResource EnsureBackendRef(string name)
+        {
+            // Ensure existence of backend, creating one if needed
+            ApplicationGatewayBackendImpl backend;
+            if (name == null)
+            {
+                backend = EnsureUniqueBackend();
+            }
+            else
+            {
+                backend = DefineBackend(name);
+                backend.Attach();
+            }
+
+            // Return backend reference
+            return new SubResource()
+            {
+                Id = FutureResourceId() + "/backendAddressPools/" + backend.Name()
+            };
+        }
+
+        ///GENMHASH:51714851388882936938461B23BE6E15:71A6B15DE25017ECD45BBD4F3635B393
+        internal ApplicationGatewayBackendImpl EnsureUniqueBackend()
+        {
+            string name = SdkContext.RandomResourceName("backend", 20);
+            var backend = DefineBackend(name);
+            backend.Attach();
+            return backend;
+        }
     }
 }

@@ -49,15 +49,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        ///GENMHASH:ABF006C723CD07B4C16642781DD352C1:80A92C790A23B4858621E149898669CA
+        ///GENMHASH:ABF006C723CD07B4C16642781DD352C1:76EEE62DB8D8E7AD2E6EDFE9B668ADC5
         public ApplicationGatewayRequestRoutingRuleImpl ToBackend(string name)
         {
-            var backendRef = new SubResource()
-            {
-                Id = Parent.FutureResourceId() + "/backendAddressPools/" + name
-            };
-
-            Inner.BackendAddressPool = backendRef;
+            Inner.BackendAddressPool = Parent.EnsureBackendRef(name);
             return this;
         }
 
@@ -486,21 +481,32 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return listener;
         }
 
-        ///GENMHASH:DDD0EE7198E7BD6B745033E06D1924F5:D5AB941EF579322A74ACDAD720D29F7B
+        ///GENMHASH:DDD0EE7198E7BD6B745033E06D1924F5:5CAFA661A519AFF6D69DF8A5FD045B34
         private ApplicationGatewayBackendImpl EnsureBackend()
         {
-            ApplicationGatewayBackendImpl backend = (ApplicationGatewayBackendImpl)Backend();
+            ApplicationGatewayBackendImpl backend = (ApplicationGatewayBackendImpl) Backend();
             if (backend == null)
             {
-                string name = SdkContext.RandomResourceName("backend", 12);
-                backend = Parent.DefineBackend(name);
-                backend.Attach();
-                ToBackend(name);
+                backend = Parent.EnsureUniqueBackend();
+                ToBackend(backend.Name());
             }
 
             return backend;
         }
 
         #endregion
+
+        ///GENMHASH:95DE187F7A8A95751AF4DE54F052D10B:0662B50515E0139CBC7BCC57B1064FA5
+        public ApplicationGatewayRequestRoutingRuleImpl ToBackendIPAddresses(params string[] ipAddresses)
+        {
+            if (ipAddresses != null)
+            {
+                foreach(var ipAddress in ipAddresses)
+                {
+                    ToBackendIPAddress(ipAddress);
+                }
+            }
+            return this;
+        }
     }
 }

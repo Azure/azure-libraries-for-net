@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of an application gateway request routing rule.
     /// </summary>
-    public interface IApplicationGatewayRequestRoutingRuleBeta  :
+    public interface IApplicationGatewayRequestRoutingRuleBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

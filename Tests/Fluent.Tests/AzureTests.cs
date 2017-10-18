@@ -3,12 +3,16 @@
 
 using Azure.Tests;
 using Fluent.Tests.Common;
+using Microsoft.Azure.Management.Compute.Fluent;
 using Microsoft.Azure.Management.Network.Fluent;
 using Microsoft.Azure.Management.Network.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -19,6 +23,162 @@ namespace Fluent.Tests.Network
         public AppGateway(ITestOutputHelper output)
         {
             TestHelper.TestLogger = output;
+        }
+
+        [Fact]
+        public void BackendHealthCheck()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var testId = TestUtilities.GenerateName("");
+                Region region = Region.USEast;
+                string name = "ag" + testId;
+                var networkManager = TestHelper.CreateNetworkManager();
+                var computeManager = TestHelper.CreateComputeManager();
+
+                string password = SdkContext.RandomResourceName("Abc.123", 12);
+                string vnetName = "net" + testId;
+                string rgName = "rg" + testId;
+
+                // Create a vnet
+                INetwork network = networkManager.Networks.Define(vnetName)
+                            .WithRegion(region)
+                            .WithNewResourceGroup(rgName)
+                            .WithAddressSpace("10.0.0.0/28")
+                            .WithSubnet("subnet1", "10.0.0.0/29")
+                            .WithSubnet("subnet2", "10.0.0.8/29")
+                            .Create();
+
+                // Create VMs for the backend in the network to connect to
+                List<ICreatable<IVirtualMachine>> vmsDefinitions = new List<ICreatable<IVirtualMachine>>();
+                for (int i = 0; i < 2; i++)
+                {
+                    vmsDefinitions.Add(computeManager.VirtualMachines.Define("vm" + i + testId)
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(rgName)
+                            .WithExistingPrimaryNetwork(network)
+                            .WithSubnet("subnet2")
+                            .WithPrimaryPrivateIPAddressDynamic()
+                            .WithoutPrimaryPublicIPAddress()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                            .WithRootUsername("tester")
+                            .WithRootPassword(password));
+                }
+
+                var createdVms = computeManager.VirtualMachines.Create(vmsDefinitions);
+                IVirtualMachine[] vms = new IVirtualMachine[createdVms.Count()];
+                for (int i = 0; i < vmsDefinitions.Count; i++)
+                {
+                    vms[i] = createdVms.FirstOrDefault(o => o.Key == vmsDefinitions[i].Key);
+                }
+
+                string[] ipAddresses = new string[vms.Count()];
+                for (int i = 0; i < vms.Count(); i++)
+                {
+                    ipAddresses[i] = vms[i].GetPrimaryNetworkInterface().PrimaryPrivateIP;
+                }
+
+                // Create the app gateway in the other subnet of the same vnet and point the backend at the VMs
+                IApplicationGateway appGateway = networkManager.ApplicationGateways.Define(name)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .DefineRequestRoutingRule("rule1")
+                            .FromPrivateFrontend()
+                            .FromFrontendHttpPort(80)
+                            .ToBackendHttpPort(8080)
+                            .ToBackendIPAddresses(ipAddresses) // Connect the VMs via IP addresses
+                            .Attach()
+                        .DefineRequestRoutingRule("rule2")
+                            .FromPrivateFrontend()
+                            .FromFrontendHttpPort(25)
+                            .ToBackendHttpPort(22)
+                            .ToBackend("nicBackend")
+                            .Attach()
+                        .WithExistingSubnet(network.Subnets["subnet1"]) // Backend for connecting the VMs via NICs
+                        .Create();
+
+                // Connect the 1st VM via NIC IP config
+                var nic = vms[0].GetPrimaryNetworkInterface();
+                Assert.NotNull(nic);
+                var appGatewayBackend = appGateway.Backends["nicBackend"];
+                Assert.NotNull(appGatewayBackend);
+                nic.Update().UpdateIPConfiguration(nic.PrimaryIPConfiguration.Name)
+                    .WithExistingApplicationGatewayBackend(appGateway, appGatewayBackend.Name)
+                    .Parent()
+                .Apply();
+
+                // Get the health of the VMs
+                appGateway.Refresh();
+                var backendHealths = appGateway.CheckBackendHealth();
+
+                StringBuilder info = new StringBuilder();
+                info.Append("\nApplication gateway backend healths: ").Append(backendHealths.Count);
+                foreach (var backendHealth in backendHealths.Values)
+                {
+                    info.Append("\n\tApplication gateway backend name: ").Append(backendHealth.Name)
+                        .Append("\n\t\tHTTP configuration healths: ").Append(backendHealth.HttpConfigurationHealths.Count);
+                    Assert.NotNull(backendHealth.Backend);
+                    foreach (var backendConfigHealth in backendHealth.HttpConfigurationHealths.Values)
+                    {
+                        info.Append("\n\t\t\tHTTP configuration name: ").Append(backendConfigHealth.Name)
+                            .Append("\n\t\t\tServers: ").Append(backendConfigHealth.Inner.Servers.Count);
+                        Assert.NotNull(backendConfigHealth.BackendHttpConfiguration);
+                        foreach (var sh in backendConfigHealth.ServerHealths.Values)
+                        {
+                            var ipConfig = sh.GetNetworkInterfaceIPConfiguration();
+                            if (ipConfig != null)
+                            {
+                                info.Append("\n\t\t\t\tServer NIC ID: ").Append(ipConfig.Parent.Id)
+                                    .Append("\n\t\t\t\tIP Config name: ").Append(ipConfig.Name);
+                            }
+                            else
+                            {
+                                info.Append("\n\t\t\t\tServer IP: " + sh.IPAddress);
+                            }
+                            info.Append("\n\t\t\t\tHealth status: ").Append(sh.Status.ToString());
+                        }
+                    }
+                }
+
+                TestHelper.WriteLine(info.ToString());
+
+                // Verify app gateway
+                Assert.Equal(2, appGateway.Backends.Count);
+                var rule1 = appGateway.RequestRoutingRules["rule1"];
+                var backend1 = rule1.Backend;
+                Assert.NotNull(backend1);
+                var rule2 = appGateway.RequestRoutingRules["rule2"];
+                var backend2 = rule2.Backend;
+                Assert.NotNull(backend2);
+
+                Assert.Equal(2, backendHealths.Count);
+
+                // Verify first backend (IP address-based)
+                var backendHealth1 = backendHealths[backend1.Name];
+                Assert.NotNull(backendHealth1.Backend);
+                for (int i = 0; i < ipAddresses.Length; i++)
+                {
+                    Assert.True(backend1.ContainsIPAddress(ipAddresses[i]));
+                }
+
+                // Verify second backend (NIC based)
+                var backendHealth2 = backendHealths[backend2.Name];
+                Assert.NotNull(backendHealth2);
+                Assert.NotNull(backendHealth2.Backend);
+                Assert.Equal(backend2.Name, backendHealth2.Name, true);
+                Assert.Single(backendHealth2.HttpConfigurationHealths);
+                var httpConfigHealth2 = backendHealth2.HttpConfigurationHealths.Values.FirstOrDefault();
+                Assert.NotNull(httpConfigHealth2);
+                Assert.NotNull(httpConfigHealth2.BackendHttpConfiguration);
+                Assert.Single(httpConfigHealth2.ServerHealths);
+                var serverHealth = httpConfigHealth2.ServerHealths.Values.FirstOrDefault();
+                Assert.NotNull(serverHealth);
+                var ipConfig2 = serverHealth.GetNetworkInterfaceIPConfiguration();
+                Assert.Equal(nic.PrimaryIPConfiguration.Name, ipConfig2.Name, true);
+
+                // Cleanup
+                networkManager.ResourceManager.ResourceGroups.BeginDeleteByName(rgName);
+            }
         }
 
         [Fact]

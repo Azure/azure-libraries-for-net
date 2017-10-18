@@ -17,6 +17,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
+        /// Checks the backend health asynchronously.
+        /// </summary>
+        /// <return>A representation of the future computation of this call.</return>
+        Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>> CheckBackendHealthAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Checks the backend health.
+        /// </summary>
+        /// <return>Backend healths indexed by backend name.</return>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth> CheckBackendHealth();
+
+        /// <summary>
         /// Gets redirect configurations, indexed by name.
         /// </summary>
         System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration> RedirectConfigurations { get; }

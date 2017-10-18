@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of an application gateway request routing rule.
     /// </summary>
-    public interface IApplicationGatewayRequestRoutingRule  :
+    public interface IApplicationGatewayRequestRoutingRule :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ApplicationGatewayRequestRoutingRuleInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>,
         Microsoft.Azure.Management.Network.Fluent.IHasPublicIPAddress,

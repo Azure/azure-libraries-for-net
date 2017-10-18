@@ -103,8 +103,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
         /// </summary>
         /// <param name="name">The name of the certificate to remove.</param>
         /// <return>The next stage of the update.</return>
-        /// <deprecated>Use  .WithoutSslCertificate() instead.</deprecated>
-        [System.Obsolete("Use  .WithoutSslCertificate() instead.")]
+        /// <deprecated>Use  .withoutSslCertificate instead.</deprecated>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutCertificate(string name);
 
         /// <summary>
