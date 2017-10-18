@@ -212,17 +212,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (loadBalancer != null)
             {
-                foreach (var pool in loadBalancer.Inner.BackendAddressPools)
+                var pool = loadBalancer.Inner.BackendAddressPools.FirstOrDefault(p => p.Name.Equals(backendName, StringComparison.OrdinalIgnoreCase));
+                if (pool != null)
                 {
-                    if (pool.Name.Equals(backendName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        EnsureLoadBalancerBackendAddressPools().Add(pool);
-                        return this;
-                    }
+                    EnsureLoadBalancerBackendAddressPools().Add(pool);
+                    return this;
+                }
+                else
+                {
+                    throw new InvalidOperationException("Load balancer backend address pool not found.");
                 }
             }
-
-            return null;
+            else
+            {
+                throw new InvalidOperationException("Missing load balancer reference.");
+            }
         }
 
 
@@ -231,18 +235,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (loadBalancer != null)
             {
-                foreach (var rule in loadBalancer.Inner.InboundNatRules)
+                var rule = loadBalancer.Inner.InboundNatRules.FirstOrDefault(r => r.Name.Equals(inboundNatRuleName, StringComparison.OrdinalIgnoreCase));
+                if (rule != null)
                 {
-                    if (rule.Name.Equals(inboundNatRuleName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        EnsureInboundNatRules().Add(rule);
-                        return this;
-                    }
+                    EnsureInboundNatRules().Add(rule);
+                    return this;
+                } 
+                else
+                {
+                    throw new InvalidOperationException("Load balancer inbound NAT rule not found.");
                 }
-
             }
-
-            return null;
+            else
+            {
+                throw new InvalidOperationException("Missing load balancer reference.");
+            }
         }
 
         
@@ -435,8 +442,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
                     EnsureAppGatewayBackendAddressPools().Add(pool);
                     return this;
                 }
+                else
+                {
+                    throw new InvalidOperationException("Application gateway backend not found.");
+                }
             }
-            return null;
+            else
+            {
+                throw new InvalidOperationException("Missing application gateway reference.");
+            }
         }
 
         ///GENMHASH:96F361243DC52D09D92B82A4480228B7:03A275DAD040D9C179FC6ACCCB43DE36
