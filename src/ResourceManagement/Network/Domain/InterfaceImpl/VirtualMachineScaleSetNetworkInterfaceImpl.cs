@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets true if accelerated networkin is enabled for this network interface.
+        /// Gets true if accelerated networking is enabled for this network interface.
         /// </summary>
-        bool Microsoft.Azure.Management.Network.Fluent.INetworkInterfaceBaseBeta.IsAcceleratedNetworkingEnabled
+        bool Microsoft.Azure.Management.Network.Fluent.INetworkInterfaceBase.IsAcceleratedNetworkingEnabled
         {
             get
             {

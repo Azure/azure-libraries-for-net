@@ -12,8 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
     public interface INicIPConfigurationBase  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasSubnet,
-        Microsoft.Azure.Management.Network.Fluent.IHasPrivateIPAddress,
-        Microsoft.Azure.Management.Network.Fluent.INicIPConfigurationBaseBeta
+        Microsoft.Azure.Management.Network.Fluent.IHasPrivateIPAddress
     {
         /// <summary>
         /// Gets true if this is the primary IP configuration.
@@ -25,6 +24,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         /// <return>The load balancer backends associated with this network interface IP configuration.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> ListAssociatedLoadBalancerBackends();
+
+        /// <return>The application gateway backends associated with this network IP configuration.</return>
+        System.Collections.Generic.IReadOnlyCollection<Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackend> ListAssociatedApplicationGatewayBackends();
 
         /// <summary>
         /// Gets private IP address version.

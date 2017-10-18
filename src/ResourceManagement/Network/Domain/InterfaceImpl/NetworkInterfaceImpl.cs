@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Disables accelerated networking.
         /// </summary>
-        /// <return>The next stage of the definition.</return>
-        NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithAcceleratedNetworkingBeta.WithoutAcceleratedNetworking()
+        /// <return>The next stage of the update.</return>
+        NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithAcceleratedNetworking.WithoutAcceleratedNetworking()
         {
             return this.WithoutAcceleratedNetworking() as NetworkInterface.Update.IUpdate;
         }
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// It can be enabled only during the creation of a network interface, not during an update.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithAcceleratedNetworkingBeta.WithAcceleratedNetworking()
+        NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithAcceleratedNetworking.WithAcceleratedNetworking()
         {
             return this.WithAcceleratedNetworking() as NetworkInterface.Definition.IWithCreate;
         }
@@ -396,9 +396,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets true if accelerated networkin is enabled for this network interface.
+        /// Gets true if accelerated networking is enabled for this network interface.
         /// </summary>
-        bool Microsoft.Azure.Management.Network.Fluent.INetworkInterfaceBaseBeta.IsAcceleratedNetworkingEnabled
+        bool Microsoft.Azure.Management.Network.Fluent.INetworkInterfaceBase.IsAcceleratedNetworkingEnabled
         {
             get
             {
