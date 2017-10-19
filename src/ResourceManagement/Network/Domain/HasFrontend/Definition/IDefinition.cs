@@ -9,17 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasFrontend.Definition
     /// The stage of a definition allowing to specify a load balancer frontend.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithFrontend<ReturnT>  :
-        Microsoft.Azure.Management.Network.Fluent.HasFrontend.Definition.IWithFrontendBeta<ReturnT>
-    {
-    }
-
-    /// <summary>
-    /// The stage of a definition allowing to specify a load balancer frontend.
-    /// </summary>
-    /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithFrontendBeta<ReturnT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    public interface IWithFrontend<ReturnT> 
     {
         /// <summary>
         /// Specifies an existing private subnet to receive network traffic from.

@@ -7,16 +7,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definiti
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
 
     /// <summary>
-    /// The stage of a load balancer backend definition allowing to select a set of virtual machines to load balance
-    /// the network traffic among.
-    /// </summary>
-    /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithVirtualMachine<ReturnT>  :
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definition.IWithVirtualMachineBeta<ReturnT>
-    {
-    }
-
-    /// <summary>
     /// The entirety of a load balancer backend definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
@@ -36,24 +26,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definiti
     }
 
     /// <summary>
-    /// The final stage of a load balancer backend definition.
-    /// At this stage, any remaining optional settings can be specified, or the definition
-    /// can be attached to the parent load balancer definition.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definition.IWithVirtualMachine<ParentT>
-    {
-    }
-
-    /// <summary>
     /// The stage of a load balancer backend definition allowing to select a set of virtual machines to load balance
     /// the network traffic among.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithVirtualMachineBeta<ReturnT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    public interface IWithVirtualMachine<ReturnT> 
     {
         /// <summary>
         /// Adds the specified set of virtual machines, assuming they are from the same
@@ -80,5 +57,17 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definiti
         /// <param name="vms">Existing virtual machines.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definition.IWithAttach<ReturnT> WithExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms);
+    }
+
+    /// <summary>
+    /// The final stage of a load balancer backend definition.
+    /// At this stage, any remaining optional settings can be specified, or the definition
+    /// can be attached to the parent load balancer definition.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithAttach<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definition.IWithVirtualMachine<ParentT>
+    {
     }
 }

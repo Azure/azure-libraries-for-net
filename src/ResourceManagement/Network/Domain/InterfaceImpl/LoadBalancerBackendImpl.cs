@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="vms">Existing virtual machines.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerBackend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate> LoadBalancerBackend.Definition.IWithVirtualMachineBeta<LoadBalancer.Definition.IWithCreate>.WithExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
+        LoadBalancerBackend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate> LoadBalancerBackend.Definition.IWithVirtualMachine<LoadBalancer.Definition.IWithCreate>.WithExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
         {
             return this.WithExistingVirtualMachines(vms) as LoadBalancerBackend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate>;
         }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="vms">Existing virtual machines.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerBackend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate> LoadBalancerBackend.Definition.IWithVirtualMachineBeta<LoadBalancer.Definition.IWithCreate>.WithExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
+        LoadBalancerBackend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate> LoadBalancerBackend.Definition.IWithVirtualMachine<LoadBalancer.Definition.IWithCreate>.WithExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
         {
             return this.WithExistingVirtualMachines(vms) as LoadBalancerBackend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate>;
         }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="vms">Existing virtual machines.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerBackend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> LoadBalancerBackend.UpdateDefinition.IWithVirtualMachineBeta<LoadBalancer.Update.IUpdate>.WithExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
+        LoadBalancerBackend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> LoadBalancerBackend.UpdateDefinition.IWithVirtualMachine<LoadBalancer.Update.IUpdate>.WithExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
         {
             return this.WithExistingVirtualMachines(vms) as LoadBalancerBackend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
         }
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="vms">Existing virtual machines.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerBackend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> LoadBalancerBackend.UpdateDefinition.IWithVirtualMachineBeta<LoadBalancer.Update.IUpdate>.WithExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
+        LoadBalancerBackend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> LoadBalancerBackend.UpdateDefinition.IWithVirtualMachine<LoadBalancer.Update.IUpdate>.WithExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
         {
             return this.WithExistingVirtualMachines(vms) as LoadBalancerBackend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
         }

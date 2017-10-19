@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
-    internal partial class LoadBalancerFrontendImpl
+    internal partial class LoadBalancerFrontendImpl 
     {
         /// <summary>
         /// Gets the name of the subnet associated with this resource.
@@ -35,14 +35,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             get
             {
                 return this.SubnetName();
-            }
-        }
-
-        System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPrivateFrontendBeta.AvailabilityZones
-        {
-            get
-            {
-                return this.AvailabilityZones();
             }
         }
 
@@ -86,6 +78,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.Network.Fluent.ISubnet Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPrivateFrontend.GetSubnet()
         {
             return this.GetSubnet() as Microsoft.Azure.Management.Network.Fluent.ISubnet;
+        }
+
+        /// <summary>
+        /// Gets the availability zones assigned to private frontend.
+        /// </summary>
+        System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPrivateFrontendBeta.AvailabilityZones
+        {
+            get
+            {
+                return this.AvailabilityZones() as System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>;
+            }
         }
 
         /// <summary>

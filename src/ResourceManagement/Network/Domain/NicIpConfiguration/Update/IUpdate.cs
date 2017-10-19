@@ -2,20 +2,12 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update
 {
-    using Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update;
     using Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
-    using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Update;
-
-    /// <summary>
-    /// The stage of the network interface IP configuration update allowing to specify public IP address.
-    /// </summary>
-    public interface IWithPublicIPAddress  :
-        Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update.IWithPublicIPAddress<Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate>
-    {
-    }
+    using Microsoft.Azure.Management.Network.Fluent;
+    using Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update;
 
     /// <summary>
     /// The entirety of a network interface IP configuration update as part of a network interface update.
@@ -25,7 +17,52 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IWithSubnet,
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IWithPrivateIP,
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IWithPublicIPAddress,
-        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IWithLoadBalancer
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IWithLoadBalancer,
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IWithApplicationGateway
+    {
+    }
+
+    /// <summary>
+    /// The stage of the network interface IP configuration update allowing to specify private IP.
+    /// </summary>
+    public interface IWithPrivateIP  :
+        Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Update.IWithPrivateIPAddress<Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate>
+    {
+        /// <summary>
+        /// Specifies the IP version for the private IP address.
+        /// </summary>
+        /// <param name="ipVersion">An IP version.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate WithPrivateIPVersion(IPVersion ipVersion);
+    }
+
+    /// <summary>
+    /// The stage of the network interface IP configuration update allowing to specify the load balancer
+    /// to associate this IP configuration with.
+    /// </summary>
+    public interface IWithApplicationGateway  :
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IWithApplicationGatewayBeta
+    {
+    }
+
+    /// <summary>
+    /// The stage of the network interface IP configuration update allowing to specify subnet.
+    /// </summary>
+    public interface IWithSubnet 
+    {
+        /// <summary>
+        /// Associate a subnet with the network interface IP configuration.
+        /// </summary>
+        /// <param name="name">The subnet name.</param>
+        /// <return>The next stage of the network interface IP configuration update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate WithSubnet(string name);
+    }
+
+    /// <summary>
+    /// The stage of the network interface IP configuration update allowing to specify public IP address.
+    /// </summary>
+    public interface IWithPublicIPAddress  :
+        Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update.IWithPublicIPAddress<Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate>
     {
     }
 
@@ -65,29 +102,24 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update
     }
 
     /// <summary>
-    /// The stage of the network interface IP configuration update allowing to specify subnet.
+    /// The stage of the network interface IP configuration update allowing to specify the load balancer
+    /// to associate this IP configuration with.
     /// </summary>
-    public interface IWithSubnet 
+    public interface IWithApplicationGatewayBeta  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
-        /// Associate a subnet with the network interface IP configuration.
+        /// Removes all existing associations with application gateway backends.
         /// </summary>
-        /// <param name="name">The subnet name.</param>
-        /// <return>The next stage of the network interface IP configuration update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate WithSubnet(string name);
-    }
-
-    /// <summary>
-    /// The stage of the network interface IP configuration update allowing to specify private IP.
-    /// </summary>
-    public interface IWithPrivateIP  :
-        Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Update.IWithPrivateIPAddress<Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate>
-    {
-        /// <summary>
-        /// Specifies the IP version for the private IP address.
-        /// </summary>
-        /// <param name="ipVersion">An IP version.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate WithPrivateIPVersion(IPVersion ipVersion);
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate WithoutApplicationGatewayBackends();
+
+        /// <summary>
+        /// Specifies the application gateway backend to associate this IP configuration with.
+        /// </summary>
+        /// <param name="appGateway">An existing application gateway.</param>
+        /// <param name="backendName">The name of an existing backend on the application gateway.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate WithExistingApplicationGatewayBackend(IApplicationGateway appGateway, string backendName);
     }
 }

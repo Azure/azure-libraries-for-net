@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// A new backend will be created if none is associated with this rule yet.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackendAddress<ParentT> 
+    public interface IWithBackendAddress<ParentT>  :
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressBeta<ParentT>
     {
         /// <summary>
         /// Adds an IP address to the backend associated with this rule.
@@ -198,8 +199,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     {
         /// <summary>
         /// Associates the request routing rule with a backend on this application gateway.
-        /// If the backend does not yet exist, it must be defined in the optional part of the application gateway definition.
-        /// The request routing rule references it only by name.
+        /// If the backend does not yet exist, it will be automatically created.
         /// </summary>
         /// <param name="name">The name of an existing backend.</param>
         /// <return>The next stage of the definition.</return>
@@ -305,6 +305,22 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddress<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ParentT>
     {
+    }
+
+    /// <summary>
+    /// The stage of an application gateway request routing rule definition allowing to add an address to the backend used by this request routing rule.
+    /// A new backend will be created if none is associated with this rule yet.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
+    public interface IWithBackendAddressBeta<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Adds the specified IP addresses to the backend associated with this rule.
+        /// </summary>
+        /// <param name="ipAddresses">IP addresses to add.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressOrAttach<ParentT> ToBackendIPAddresses(params string[] ipAddresses);
     }
 
     /// <summary>

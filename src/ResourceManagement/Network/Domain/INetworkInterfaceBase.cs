@@ -11,8 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
     public interface INetworkInterfaceBase  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.Network.Fluent.INetworkManager>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.NetworkInterfaceInner>,
-        Microsoft.Azure.Management.Network.Fluent.INetworkInterfaceBaseBeta
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.NetworkInterfaceInner>
     {
         /// <summary>
         /// Gets the resource ID of the associated virtual machine, or null if none.
@@ -57,6 +56,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Gets the private IP addresses.
         /// </summary>
         string PrimaryPrivateIP { get; }
+
+        /// <summary>
+        /// Gets true if accelerated networking is enabled for this network interface.
+        /// </summary>
+        bool IsAcceleratedNetworkingEnabled { get; }
 
         /// <summary>
         /// Gets applied DNS servers.

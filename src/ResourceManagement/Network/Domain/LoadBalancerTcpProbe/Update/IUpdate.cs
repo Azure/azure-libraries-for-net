@@ -19,6 +19,17 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerTcpProbe.Update
     }
 
     /// <summary>
+    /// The entirety of a probe update as part of a load balancer update.
+    /// </summary>
+    public interface IUpdate  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>,
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerTcpProbe.Update.IWithPort,
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerTcpProbe.Update.IWithIntervalInSeconds,
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerTcpProbe.Update.IWithNumberOfProbes
+    {
+    }
+
+    /// <summary>
     /// The stage of the TCP probe update allowing to modify the probe interval.
     /// </summary>
     public interface IWithIntervalInSeconds 
@@ -42,16 +53,5 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerTcpProbe.Update
         /// <param name="port">A port number.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerTcpProbe.Update.IUpdate WithPort(int port);
-    }
-
-    /// <summary>
-    /// The entirety of a probe update as part of a load balancer update.
-    /// </summary>
-    public interface IUpdate  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancerTcpProbe.Update.IWithPort,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancerTcpProbe.Update.IWithIntervalInSeconds,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancerTcpProbe.Update.IWithNumberOfProbes
-    {
     }
 }
