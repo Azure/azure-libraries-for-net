@@ -105,7 +105,7 @@ var codegen = function (project, cb) {
         ` --csharp.license-header=MICROSOFT_MIT_NO_CODEGEN ` +
         generatorPath +
         regenManager +
-        ' --package-version=1.3.1 ' +
+        ' --package-version=1.3.0 ' +
         ' --runtime-version=3.3.10 ' +
         autoRestArgs;
 
