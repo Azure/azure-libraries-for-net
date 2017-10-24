@@ -100,6 +100,7 @@ var codegen = function (project, cb) {
         ' --csharp ' +
         ' --azure-arm ' +
         generator +
+        ' --csharp.sync-methods=none ' +
         ` --csharp.namespace=${mappings[project].package} ` +
         ` --csharp.output-folder=${outputDir} ` +
         ` --csharp.license-header=MICROSOFT_MIT_NO_CODEGEN ` +

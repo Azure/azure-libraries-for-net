@@ -37,29 +37,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='parameters'>
             /// The parameters to provide for cluster creation.
             /// </param>
-            public static ClusterInner Create(this IClustersOperations operations, string resourceGroupName, string clusterName, ClusterCreateParametersInner parameters)
-            {
-                return operations.CreateAsync(resourceGroupName, clusterName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Adds a cluster. A cluster is a collection of compute nodes. Multiple jobs
-            /// can be run on the same cluster.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='clusterName'>
-            /// The name of the cluster within the specified resource group. Cluster names
-            /// can only contain a combination of alphanumeric characters along with dash
-            /// (-) and underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
-            /// <param name='parameters'>
-            /// The parameters to provide for cluster creation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -69,28 +46,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Update the properties of a given cluster.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='clusterName'>
-            /// The name of the cluster within the specified resource group. Cluster names
-            /// can only contain a combination of alphanumeric characters along with dash
-            /// (-) and underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
-            /// <param name='parameters'>
-            /// Additional parameters for cluster update.
-            /// </param>
-            public static ClusterInner Update(this IClustersOperations operations, string resourceGroupName, string clusterName, ClusterUpdateParametersInner parameters)
-            {
-                return operations.UpdateAsync(resourceGroupName, clusterName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -135,50 +90,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// can only contain a combination of alphanumeric characters along with dash
             /// (-) and underscore (_). The name must be from 1 through 64 characters long.
             /// </param>
-            public static void Delete(this IClustersOperations operations, string resourceGroupName, string clusterName)
-            {
-                operations.DeleteAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a Cluster.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='clusterName'>
-            /// The name of the cluster within the specified resource group. Cluster names
-            /// can only contain a combination of alphanumeric characters along with dash
-            /// (-) and underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this IClustersOperations operations, string resourceGroupName, string clusterName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets information about the specified Cluster.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='clusterName'>
-            /// The name of the cluster within the specified resource group. Cluster names
-            /// can only contain a combination of alphanumeric characters along with dash
-            /// (-) and underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
-            public static ClusterInner Get(this IClustersOperations operations, string resourceGroupName, string clusterName)
-            {
-                return operations.GetAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -220,25 +137,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// can only contain a combination of alphanumeric characters along with dash
             /// (-) and underscore (_). The name must be from 1 through 64 characters long.
             /// </param>
-            public static IPage<RemoteLoginInformation> ListRemoteLoginInformation(this IClustersOperations operations, string resourceGroupName, string clusterName)
-            {
-                return operations.ListRemoteLoginInformationAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Get the IP address, port of all the compute nodes in the cluster.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='clusterName'>
-            /// The name of the cluster within the specified resource group. Cluster names
-            /// can only contain a combination of alphanumeric characters along with dash
-            /// (-) and underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -248,20 +146,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets information about the Clusters associated with the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='clustersListOptions'>
-            /// Additional parameters for the operation
-            /// </param>
-            public static IPage<ClusterInner> List(this IClustersOperations operations, ClustersListOptionsInner clustersListOptions = default(ClustersListOptionsInner))
-            {
-                return operations.ListAsync(clustersListOptions).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -297,24 +181,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='clustersListByResourceGroupOptions'>
             /// Additional parameters for the operation
             /// </param>
-            public static IPage<ClusterInner> ListByResourceGroup(this IClustersOperations operations, string resourceGroupName, ClustersListByResourceGroupOptionsInner clustersListByResourceGroupOptions = default(ClustersListByResourceGroupOptionsInner))
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName, clustersListByResourceGroupOptions).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about the Clusters associated within the specified
-            /// resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='clustersListByResourceGroupOptions'>
-            /// Additional parameters for the operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -324,29 +190,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Adds a cluster. A cluster is a collection of compute nodes. Multiple jobs
-            /// can be run on the same cluster.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='clusterName'>
-            /// The name of the cluster within the specified resource group. Cluster names
-            /// can only contain a combination of alphanumeric characters along with dash
-            /// (-) and underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
-            /// <param name='parameters'>
-            /// The parameters to provide for cluster creation.
-            /// </param>
-            public static ClusterInner BeginCreate(this IClustersOperations operations, string resourceGroupName, string clusterName, ClusterCreateParametersInner parameters)
-            {
-                return operations.BeginCreateAsync(resourceGroupName, clusterName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -392,45 +235,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// can only contain a combination of alphanumeric characters along with dash
             /// (-) and underscore (_). The name must be from 1 through 64 characters long.
             /// </param>
-            public static void BeginDelete(this IClustersOperations operations, string resourceGroupName, string clusterName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a Cluster.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='clusterName'>
-            /// The name of the cluster within the specified resource group. Cluster names
-            /// can only contain a combination of alphanumeric characters along with dash
-            /// (-) and underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task BeginDeleteAsync(this IClustersOperations operations, string resourceGroupName, string clusterName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Get the IP address, port of all the compute nodes in the cluster.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<RemoteLoginInformation> ListRemoteLoginInformationNext(this IClustersOperations operations, string nextPageLink)
-            {
-                return operations.ListRemoteLoginInformationNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -462,20 +272,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<ClusterInner> ListNext(this IClustersOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about the Clusters associated with the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -485,21 +281,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets information about the Clusters associated within the specified
-            /// resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<ClusterInner> ListByResourceGroupNext(this IClustersOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

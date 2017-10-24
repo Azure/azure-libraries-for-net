@@ -37,29 +37,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='parameters'>
             /// The parameters to provide for file server creation.
             /// </param>
-            public static FileServerInner Create(this IFileServersOperations operations, string resourceGroupName, string fileServerName, FileServerCreateParametersInner parameters)
-            {
-                return operations.CreateAsync(resourceGroupName, fileServerName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates a file server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='fileServerName'>
-            /// The name of the file server within the specified resource group. File
-            /// server names can only contain a combination of alphanumeric characters
-            /// along with dash (-) and underscore (_). The name must be from 1 through 64
-            /// characters long.
-            /// </param>
-            /// <param name='parameters'>
-            /// The parameters to provide for file server creation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -69,26 +46,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Delete a file Server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='fileServerName'>
-            /// The name of the file server within the specified resource group. File
-            /// server names can only contain a combination of alphanumeric characters
-            /// along with dash (-) and underscore (_). The name must be from 1 through 64
-            /// characters long.
-            /// </param>
-            public static void Delete(this IFileServersOperations operations, string resourceGroupName, string fileServerName)
-            {
-                operations.DeleteAsync(resourceGroupName, fileServerName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -129,26 +86,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// along with dash (-) and underscore (_). The name must be from 1 through 64
             /// characters long.
             /// </param>
-            public static FileServerInner Get(this IFileServersOperations operations, string resourceGroupName, string fileServerName)
-            {
-                return operations.GetAsync(resourceGroupName, fileServerName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about the specified Cluster.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='fileServerName'>
-            /// The name of the file server within the specified resource group. File
-            /// server names can only contain a combination of alphanumeric characters
-            /// along with dash (-) and underscore (_). The name must be from 1 through 64
-            /// characters long.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -158,21 +95,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// To list all the file servers available under the given subscription (and
-            /// across all resource groups within that subscription)
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='fileServersListOptions'>
-            /// Additional parameters for the operation
-            /// </param>
-            public static IPage<FileServerInner> List(this IFileServersOperations operations, FileServersListOptionsInner fileServersListOptions = default(FileServersListOptionsInner))
-            {
-                return operations.ListAsync(fileServersListOptions).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -209,24 +131,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='fileServersListByResourceGroupOptions'>
             /// Additional parameters for the operation
             /// </param>
-            public static IPage<FileServerInner> ListByResourceGroup(this IFileServersOperations operations, string resourceGroupName, FileServersListByResourceGroupOptionsInner fileServersListByResourceGroupOptions = default(FileServersListByResourceGroupOptionsInner))
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName, fileServersListByResourceGroupOptions).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a formatted list of file servers and their properties associated
-            /// within the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='fileServersListByResourceGroupOptions'>
-            /// Additional parameters for the operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -236,29 +140,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Creates a file server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='fileServerName'>
-            /// The name of the file server within the specified resource group. File
-            /// server names can only contain a combination of alphanumeric characters
-            /// along with dash (-) and underscore (_). The name must be from 1 through 64
-            /// characters long.
-            /// </param>
-            /// <param name='parameters'>
-            /// The parameters to provide for file server creation.
-            /// </param>
-            public static FileServerInner BeginCreate(this IFileServersOperations operations, string resourceGroupName, string fileServerName, FileServerCreateParametersInner parameters)
-            {
-                return operations.BeginCreateAsync(resourceGroupName, fileServerName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -305,47 +186,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// along with dash (-) and underscore (_). The name must be from 1 through 64
             /// characters long.
             /// </param>
-            public static void BeginDelete(this IFileServersOperations operations, string resourceGroupName, string fileServerName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, fileServerName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Delete a file Server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='fileServerName'>
-            /// The name of the file server within the specified resource group. File
-            /// server names can only contain a combination of alphanumeric characters
-            /// along with dash (-) and underscore (_). The name must be from 1 through 64
-            /// characters long.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task BeginDeleteAsync(this IFileServersOperations operations, string resourceGroupName, string fileServerName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, fileServerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// To list all the file servers available under the given subscription (and
-            /// across all resource groups within that subscription)
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<FileServerInner> ListNext(this IFileServersOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -367,21 +213,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Gets a formatted list of file servers and their properties associated
-            /// within the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<FileServerInner> ListByResourceGroupNext(this IFileServersOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>

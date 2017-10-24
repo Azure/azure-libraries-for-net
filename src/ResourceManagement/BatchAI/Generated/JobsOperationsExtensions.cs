@@ -36,28 +36,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='parameters'>
             /// The parameters to provide for job creation.
             /// </param>
-            public static JobInner Create(this IJobsOperations operations, string resourceGroupName, string jobName, JobCreateParametersInner parameters)
-            {
-                return operations.CreateAsync(resourceGroupName, jobName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Adds a Job that gets executed on a cluster.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job within the specified resource group. Job names can only
-            /// contain a combination of alphanumeric characters along with dash (-) and
-            /// underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
-            /// <param name='parameters'>
-            /// The parameters to provide for job creation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -83,50 +61,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// contain a combination of alphanumeric characters along with dash (-) and
             /// underscore (_). The name must be from 1 through 64 characters long.
             /// </param>
-            public static void Delete(this IJobsOperations operations, string resourceGroupName, string jobName)
-            {
-                operations.DeleteAsync(resourceGroupName, jobName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes the specified Batch AI job.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job within the specified resource group. Job names can only
-            /// contain a combination of alphanumeric characters along with dash (-) and
-            /// underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task DeleteAsync(this IJobsOperations operations, string resourceGroupName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets information about the specified Batch AI job.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job within the specified resource group. Job names can only
-            /// contain a combination of alphanumeric characters along with dash (-) and
-            /// underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
-            public static JobInner Get(this IJobsOperations operations, string resourceGroupName, string jobName)
-            {
-                return operations.GetAsync(resourceGroupName, jobName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -169,26 +109,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// contain a combination of alphanumeric characters along with dash (-) and
             /// underscore (_). The name must be from 1 through 64 characters long.
             /// </param>
-            public static IPage<RemoteLoginInformation> ListRemoteLoginInformation(this IJobsOperations operations, string resourceGroupName, string jobName)
-            {
-                return operations.ListRemoteLoginInformationAsync(resourceGroupName, jobName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the IP address and port information of all the compute nodes which are
-            /// used for job execution.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job within the specified resource group. Job names can only
-            /// contain a combination of alphanumeric characters along with dash (-) and
-            /// underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -214,45 +134,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// contain a combination of alphanumeric characters along with dash (-) and
             /// underscore (_). The name must be from 1 through 64 characters long.
             /// </param>
-            public static void Terminate(this IJobsOperations operations, string resourceGroupName, string jobName)
-            {
-                operations.TerminateAsync(resourceGroupName, jobName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Terminates a job.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job within the specified resource group. Job names can only
-            /// contain a combination of alphanumeric characters along with dash (-) and
-            /// underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task TerminateAsync(this IJobsOperations operations, string resourceGroupName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.TerminateWithHttpMessagesAsync(resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets information about the jobs associated with the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='jobsListOptions'>
-            /// Additional parameters for the operation
-            /// </param>
-            public static IPage<JobInner> List(this IJobsOperations operations, JobsListOptionsInner jobsListOptions = default(JobsListOptionsInner))
-            {
-                return operations.ListAsync(jobsListOptions).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -288,24 +175,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='jobsListByResourceGroupOptions'>
             /// Additional parameters for the operation
             /// </param>
-            public static IPage<JobInner> ListByResourceGroup(this IJobsOperations operations, string resourceGroupName, JobsListByResourceGroupOptionsInner jobsListByResourceGroupOptions = default(JobsListByResourceGroupOptionsInner))
-            {
-                return operations.ListByResourceGroupAsync(resourceGroupName, jobsListByResourceGroupOptions).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about the Batch AI jobs associated within the specified
-            /// resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobsListByResourceGroupOptions'>
-            /// Additional parameters for the operation
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -315,29 +184,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// List all files inside the given output directory (Only if the output
-            /// directory is on Azure File Share or Azure Storage container).
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job within the specified resource group. Job names can only
-            /// contain a combination of alphanumeric characters along with dash (-) and
-            /// underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
-            /// <param name='jobsListOutputFilesOptions'>
-            /// Additional parameters for the operation
-            /// </param>
-            public static IPage<File> ListOutputFiles(this IJobsOperations operations, string resourceGroupName, string jobName, JobsListOutputFilesOptionsInner jobsListOutputFilesOptions)
-            {
-                return operations.ListOutputFilesAsync(resourceGroupName, jobName, jobsListOutputFilesOptions).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -386,28 +232,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='parameters'>
             /// The parameters to provide for job creation.
             /// </param>
-            public static JobInner BeginCreate(this IJobsOperations operations, string resourceGroupName, string jobName, JobCreateParametersInner parameters)
-            {
-                return operations.BeginCreateAsync(resourceGroupName, jobName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Adds a Job that gets executed on a cluster.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job within the specified resource group. Job names can only
-            /// contain a combination of alphanumeric characters along with dash (-) and
-            /// underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
-            /// <param name='parameters'>
-            /// The parameters to provide for job creation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -417,25 +241,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Deletes the specified Batch AI job.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job within the specified resource group. Job names can only
-            /// contain a combination of alphanumeric characters along with dash (-) and
-            /// underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
-            public static void BeginDelete(this IJobsOperations operations, string resourceGroupName, string jobName)
-            {
-                operations.BeginDeleteAsync(resourceGroupName, jobName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -474,46 +279,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// contain a combination of alphanumeric characters along with dash (-) and
             /// underscore (_). The name must be from 1 through 64 characters long.
             /// </param>
-            public static void BeginTerminate(this IJobsOperations operations, string resourceGroupName, string jobName)
-            {
-                operations.BeginTerminateAsync(resourceGroupName, jobName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Terminates a job.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job within the specified resource group. Job names can only
-            /// contain a combination of alphanumeric characters along with dash (-) and
-            /// underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task BeginTerminateAsync(this IJobsOperations operations, string resourceGroupName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginTerminateWithHttpMessagesAsync(resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets the IP address and port information of all the compute nodes which are
-            /// used for job execution.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<RemoteLoginInformation> ListRemoteLoginInformationNext(this IJobsOperations operations, string nextPageLink)
-            {
-                return operations.ListRemoteLoginInformationNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -546,20 +317,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<JobInner> ListNext(this IJobsOperations operations, string nextPageLink)
-            {
-                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about the jobs associated with the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -581,21 +338,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<JobInner> ListByResourceGroupNext(this IJobsOperations operations, string nextPageLink)
-            {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets information about the Batch AI jobs associated within the specified
-            /// resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
@@ -605,21 +347,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// List all files inside the given output directory (Only if the output
-            /// directory is on Azure File Share or Azure Storage container).
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<File> ListOutputFilesNext(this IJobsOperations operations, string nextPageLink)
-            {
-                return operations.ListOutputFilesNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
