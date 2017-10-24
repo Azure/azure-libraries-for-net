@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Fluent", "src\ResourceManagement\Azure.Fluent\Microsoft.Azure.Management.Fluent.csproj", "{63C863DD-68A6-461D-8BA8-4A1E8EB85D0D}"
 EndProject
@@ -72,6 +72,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Scheduler.Fluent", "src\ResourceManagement\Scheduler\Microsoft.Azure.Management.Scheduler.Fluent.csproj", "{A49A03EA-43F2-418C-A261-CA72EFE16B31}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.ContainerInstance.Fluent", "src\ResourceManagement\ContainerInstance\Microsoft.Azure.Management.ContainerInstance.Fluent.csproj", "{0F35F73F-C8FD-4F2B-8089-C7205D641EE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.BatchAI.Fluent", "src\ResourceManagement\BatchAI\Microsoft.Azure.Management.BatchAI.Fluent.csproj", "{AE561553-8DB6-45F8-BD11-2AF917AFB00A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -219,8 +221,15 @@ Global
 		{0F35F73F-C8FD-4F2B-8089-C7205D641EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F35F73F-C8FD-4F2B-8089-C7205D641EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F35F73F-C8FD-4F2B-8089-C7205D641EE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE561553-8DB6-45F8-BD11-2AF917AFB00A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE561553-8DB6-45F8-BD11-2AF917AFB00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE561553-8DB6-45F8-BD11-2AF917AFB00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE561553-8DB6-45F8-BD11-2AF917AFB00A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD321CC7-8204-43CD-B838-3806887A40E7}
 	EndGlobalSection
 EndGlobal

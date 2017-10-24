@@ -29,6 +29,12 @@
     "package": "Microsoft.Azure.Management.Batch.Fluent",
     "args": "--payload-flattening-threshold=1 --tag=package-2017-05"
   },
+  "batchai": {
+    "dir": "BatchAI",
+    "source": "specification/batchai/resource-manager/readme.md",
+    "package": "Microsoft.Azure.Management.BatchAI.Fluent",
+    "args": "--payload-flattening-threshold=1 --tag=package-2017-09-preview"
+  },
   "billing": {
     "dir": "Billing",
     "source": "specification/billing/resource-manager/readme.md",
