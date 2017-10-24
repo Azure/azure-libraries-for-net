@@ -11,9 +11,6 @@ using System.Linq;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.BatchAI;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     public class BatchAIManager : Manager<IBatchAIManagementClient>, IBatchAIManager

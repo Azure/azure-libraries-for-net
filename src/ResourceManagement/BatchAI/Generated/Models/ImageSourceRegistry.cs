@@ -8,10 +8,6 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.BatchAI;
-    using Microsoft.Azure.Management.BatchAI.Fluent;
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
@@ -26,7 +22,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// </summary>
         public ImageSourceRegistry()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

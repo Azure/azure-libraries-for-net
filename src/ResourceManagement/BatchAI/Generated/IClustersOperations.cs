@@ -8,9 +8,6 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.BatchAI;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;

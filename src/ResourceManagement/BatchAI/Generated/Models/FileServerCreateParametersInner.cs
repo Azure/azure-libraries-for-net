@@ -8,10 +8,6 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.BatchAI;
-    using Microsoft.Azure.Management.BatchAI.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
@@ -31,7 +27,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// </summary>
         public FileServerCreateParametersInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

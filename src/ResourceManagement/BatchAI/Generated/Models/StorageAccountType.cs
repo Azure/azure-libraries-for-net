@@ -8,10 +8,6 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.BatchAI;
-    using Microsoft.Azure.Management.BatchAI.Fluent;
 
     /// <summary>
     /// Defines values for StorageAccountType.

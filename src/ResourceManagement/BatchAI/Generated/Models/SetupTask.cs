@@ -8,10 +8,6 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.BatchAI;
-    using Microsoft.Azure.Management.BatchAI.Fluent;
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
@@ -29,7 +25,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// </summary>
         public SetupTask()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>
