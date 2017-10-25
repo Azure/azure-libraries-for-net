@@ -405,10 +405,6 @@ namespace ManageInternalLoadBalancer
                 azure.LoadBalancers.DeleteById(loadBalancer4.Id);
                 Utilities.Log("Deleted load balancer" + loadBalancerName4);
             }
-            catch (Exception ex)
-            {
-                Utilities.Log(ex);
-            }
             finally
             {
                 try
