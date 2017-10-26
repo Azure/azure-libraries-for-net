@@ -93,10 +93,6 @@ namespace ManageResource
 
                 Utilities.Log("Deleted storage account: " + resourceName2);
             }
-            catch (Exception ex)
-            {
-                Utilities.Log(ex);
-            }
             finally
             {
                 try
