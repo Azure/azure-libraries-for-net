@@ -14,11 +14,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IExpressRouteCircuitStats
     {
         ///GENMHASH:4B16EC2596F7A0EABFF36EFE6C116770:C0C35E00AF4E17F141675A2C05C7067B
-        internal  ExpressRouteCircuitStatsImpl(ExpressRouteCircuitStatsInner innerObject)
+        internal  ExpressRouteCircuitStatsImpl(ExpressRouteCircuitStatsInner innerObject) : base(innerObject)
         {
-            //$ super(innerObject);
-            //$ }
-
         }
 
         ///GENMHASH:E84DF3BA83A660A10D265835FA5AAAC7:B4A707C415C0FF5B80966AC53E85466D

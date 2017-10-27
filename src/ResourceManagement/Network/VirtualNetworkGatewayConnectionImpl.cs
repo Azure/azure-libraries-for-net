@@ -3,6 +3,8 @@
 
 using System.Collections.ObjectModel;
 using Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
 namespace Microsoft.Azure.Management.Network.Fluent
@@ -252,5 +254,56 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return new ReadOnlyCollection<TunnelConnectionHealth>(Inner.TunnelConnectionStatus);
         }
 
+        public VirtualNetworkGatewayConnectionImpl WithTags(IDictionary<string, string> tags)
+        {
+            base.WithTags(tags);
+            return this;
+        }
+
+        IWithCreate IDefinitionWithTags<IWithCreate>.WithTag(string key, string value)
+        {
+            return WithTag(key, value);
+        }
+
+        public IUpdate WithoutTag(string key)
+        {
+            throw new System.NotImplementedException();
+        }
+
+//        IUpdate IUpdateWithTags<IUpdate>.WithTag(string key, string value)
+//        {
+//            throw new System.NotImplementedException();
+//        }
+//
+//        public IUpdate WithoutTag(string key)
+//        {
+//            throw new System.NotImplementedException();
+//        }
+//
+//        IUpdate IUpdateWithTags<IUpdate>.WithTags(IDictionary<string, string> tags)
+//        {
+//            throw new System.NotImplementedException();
+//        }
+
+        public VirtualNetworkGatewayConnectionImpl WithTag(string key, string value)
+        {
+            base.WithTag(key, value);
+            return this;
+        }
+
+        IUpdate IUpdateWithTags<IUpdate>.WithTags(IDictionary<string, string> tags)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IUpdate IUpdateWithTags<IUpdate>.WithTag(string key, string value)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IWithCreate IDefinitionWithTags<IWithCreate>.WithTags(IDictionary<string, string> tags)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
