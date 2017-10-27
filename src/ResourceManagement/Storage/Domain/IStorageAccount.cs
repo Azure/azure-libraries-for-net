@@ -15,11 +15,10 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure storage account.
     /// </summary>
-    public interface IStorageAccount  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Storage.Fluent.IStorageManager,Models.StorageAccountInner>,
+    public interface IStorageAccount :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Storage.Fluent.IStorageManager, Models.StorageAccountInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<StorageAccount.Update.IUpdate>,
-        Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<StorageAccount.Update.IUpdate>
     {
         /// <summary>
         /// Gets the creation date and time of the storage account in UTC.
@@ -87,6 +86,11 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         Task<System.Collections.Generic.IReadOnlyList<Models.StorageAccountKey>> RegenerateKeyAsync(string keyName, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// Gets the encryption statuses indexed by storage service type.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.Storage.Fluent.StorageService, Microsoft.Azure.Management.Storage.Fluent.IStorageAccountEncryptionStatus> EncryptionStatuses { get; }
+
+        /// <summary>
         /// Gets the encryption settings on the account.
         /// TODO: This getter should be deprecated and removed (the new fully fluent encryption replaces this).
         /// </summary>
@@ -98,6 +102,11 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// 'Premium_LRS'. Possible tiers include: 'Standard', 'Premium'.
         /// </summary>
         Models.Sku Sku { get; }
+
+        /// <summary>
+        /// Gets the source of the key used for encryption.
+        /// </summary>
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccountEncryptionKeySource EncryptionKeySource { get; }
 
         /// <summary>
         /// Regenerates the access keys for this storage account.

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using System.Collections.Generic;
     using System;
 
-    internal partial class StorageAccountImpl 
+    internal partial class StorageAccountImpl
     {
         /// <summary>
         /// Gets the status indicating whether the primary and secondary location of
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the source of the key used for encryption.
         /// </summary>
-        Microsoft.Azure.Management.Storage.Fluent.StorageAccountEncryptionKeySource Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.EncryptionKeySource
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccountEncryptionKeySource Microsoft.Azure.Management.Storage.Fluent.IStorageAccount.EncryptionKeySource
         {
             get
             {
@@ -146,11 +146,11 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the encryption statuses indexed by storage service type.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.Storage.Fluent.StorageService,Microsoft.Azure.Management.Storage.Fluent.IStorageAccountEncryptionStatus> Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.EncryptionStatuses
+        System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.Storage.Fluent.StorageService, Microsoft.Azure.Management.Storage.Fluent.IStorageAccountEncryptionStatus> Microsoft.Azure.Management.Storage.Fluent.IStorageAccount.EncryptionStatuses
         {
             get
             {
-                return this.EncryptionStatuses() as System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.Storage.Fluent.StorageService,Microsoft.Azure.Management.Storage.Fluent.IStorageAccountEncryptionStatus>;
+                return this.EncryptionStatuses() as System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.Storage.Fluent.StorageService, Microsoft.Azure.Management.Storage.Fluent.IStorageAccountEncryptionStatus>;
             }
         }
 
@@ -202,22 +202,10 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         }
 
         /// <summary>
-        /// Specifies the encryption setting on the account.
-        /// The default setting is unencrypted.
-        /// TODO: This overload should be deprecated and removed (the new fully fluent encryption withers replaces this).
-        /// </summary>
-        /// <param name="encryption">The encryption setting.</param>
-        /// <return>The nest stage of storage account update.</return>
-        StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithEncryption(Encryption encryption)
-        {
-            return this.WithEncryption(encryption) as StorageAccount.Update.IUpdate;
-        }
-
-        /// <summary>
         /// Enables encryption for all storage services in the account that supports encryption.
         /// </summary>
         /// <return>The next stage of storage account update.</return>
-        StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithEncryption()
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryption.WithEncryption()
         {
             return this.WithEncryption() as StorageAccount.Update.IUpdate;
         }
@@ -226,28 +214,16 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// Disables encryption for all storage services in the account that supports encryption.
         /// </summary>
         /// <return>The next stage of storage account update.</return>
-        StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithoutEncryption()
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryption.WithoutEncryption()
         {
             return this.WithoutEncryption() as StorageAccount.Update.IUpdate;
-        }
-
-        /// <summary>
-        /// Specifies the encryption settings on the account. The default
-        /// setting is unencrypted.
-        /// TODO: This overload should be deprecated and removed (the new fully fluent encryption withers replaces this).
-        /// </summary>
-        /// <param name="encryption">The encryption setting.</param>
-        /// <return>The next stage of storage account definition.</return>
-        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithEncryption(Encryption encryption)
-        {
-            return this.WithEncryption(encryption) as StorageAccount.Definition.IWithCreate;
         }
 
         /// <summary>
         /// Enables encryption for all storage services in the account that supports encryption.
         /// </summary>
         /// <return>The next stage of storage account definition.</return>
-        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithEncryption()
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryption.WithEncryption()
         {
             return this.WithEncryption() as StorageAccount.Definition.IWithCreate;
         }
