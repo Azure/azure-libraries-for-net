@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// The first stage of a traffic manager profile Azure endpoint definition.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IAzureTargetEndpointBlank<ParentT>  :
+    public interface IAzureTargetEndpointBlank<ParentT> :
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithAzureResource<ParentT>
     {
     }
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// The stage of the traffic manager endpoint definition allowing to disable the endpoint.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithTrafficDisabled<ParentT> 
+    public interface IWithTrafficDisabled<ParentT>
     {
         /// <summary>
         /// Specifies that this endpoint should be excluded from receiving traffic.
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// The stage of the traffic manager endpoint definition allowing to specify the endpoint weight.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithRoutingWeight<ParentT> 
+    public interface IWithRoutingWeight<ParentT>
     {
         /// <summary>
         /// Specifies the weight for the endpoint that will be used when the weight-based routing method
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// The stage of the traffic manager endpoint definition allowing to specify the endpoint priority.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithRoutingPriority<ParentT> 
+    public interface IWithRoutingPriority<ParentT>
     {
         /// <summary>
         /// Specifies the weight for the endpoint that will be used when priority-based routing method
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// The first stage of a traffic manager profile external endpoint definition.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IExternalTargetEndpointBlank<ParentT>  :
+    public interface IExternalTargetEndpointBlank<ParentT> :
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithFqdn<ParentT>
     {
     }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// The stage of the traffic manager nested profile endpoint definition allowing to specify the profile.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithNestedProfile<ParentT> 
+    public interface IWithNestedProfile<ParentT>
     {
         /// <summary>
         /// Specifies a nested traffic manager profile for the endpoint.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// endpoint.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithSourceTrafficRegion<ParentT> 
+    public interface IWithSourceTrafficRegion<ParentT>
     {
         /// <summary>
         /// Specifies the location of the endpoint that will be used when the parent profile is configured with
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// The entirety of a traffic manager profile endpoint definition as a part of parent update.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IAzureTargetEndpointBlank<ParentT>,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IExternalTargetEndpointBlank<ParentT>,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.INestedProfileTargetEndpointBlank<ParentT>,
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// the FQDN.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithFqdn<ParentT> 
+    public interface IWithFqdn<ParentT>
     {
         /// <summary>
         /// Specifies the FQDN of an external endpoint.
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// of the target Azure resource.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithAzureResource<ParentT> 
+    public interface IWithAzureResource<ParentT>
     {
         /// <summary>
         /// Specifies the resource ID of an Azure resource.
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// endpoints to be online in the nested profile to consider it as not degraded.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithEndpointThreshold<ParentT>  :
+    public interface IWithEndpointThreshold<ParentT> :
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithAttach<ParentT>
     {
         /// <summary>
@@ -171,13 +171,52 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// definition can be attached to the parent traffic manager profile update using  TrafficManagerEndpoint.DefinitionStages.WithAttach.attach().
     /// </summary>
     /// <typeparam name="ParentT">The return type of  TrafficManagerEndpoint.DefinitionStages.WithAttach.attach().</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithRoutingWeight<ParentT>,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithRoutingPriority<ParentT>,
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithTrafficDisabled<ParentT>,
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithGeographicLocationBeta<ParentT>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithGeographicLocation<ParentT>,
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithTrafficDisabled<ParentT>
     {
+    }
+
+    /// <summary>
+    /// The stage of the traffic manager endpoint definition allowing to specify the geographic region.
+    /// </summary>
+    /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
+    public interface IWithGeographicLocation<ParentT>
+    {
+        /// <summary>
+        /// Specifies the list of geographic location for the endpoint that will be used when the parent profile is
+        /// configured with geographic based routing method.
+        /// </summary>
+        /// <param name="geographicLocations">The geographic locations.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithAttach<ParentT> WithGeographicLocations(IList<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation> geographicLocations);
+
+        /// <summary>
+        /// Specifies the list of geographic location for the endpoint that will be used when the parent profile is
+        /// configured with geographic based routing method.
+        /// </summary>
+        /// <param name="geographicLocationCodes">The geographic location codes.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithAttach<ParentT> WithGeographicLocations(IList<string> geographicLocationCodes);
+
+        /// <summary>
+        /// Specifies the geographic location for the endpoint that will be used when the parent profile is configured
+        /// with geographic based routing method.
+        /// </summary>
+        /// <param name="geographicLocation">The geographic location.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithAttach<ParentT> WithGeographicLocation(IGeographicLocation geographicLocation);
+
+        /// <summary>
+        /// Specifies the geographic location for the endpoint that will be used when the parent profile is configured
+        /// with geographic based routing method.
+        /// </summary>
+        /// <param name="geographicLocationCode">The geographic location code.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithAttach<ParentT> WithGeographicLocation(string geographicLocationCode);
     }
 
     /// <summary>
@@ -185,7 +224,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// endpoint.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithSourceTrafficRegionThenThreshold<ParentT> 
+    public interface IWithSourceTrafficRegionThenThreshold<ParentT>
     {
         /// <summary>
         /// Specifies the location of the endpoint that will be used when the parent profile is configured with
@@ -200,48 +239,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// The first stage of a traffic manager profile nested profile endpoint definition.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface INestedProfileTargetEndpointBlank<ParentT>  :
+    public interface INestedProfileTargetEndpointBlank<ParentT> :
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithNestedProfile<ParentT>
     {
-    }
-
-    /// <summary>
-    /// The stage of the traffic manager endpoint definition allowing to specify the geographic region.
-    /// </summary>
-    /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithGeographicLocationBeta<ParentT> :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-        /// <summary>
-        /// Specifies the list of geographic location for the endpoint that will be used when the parent profile is
-        /// configured with Geographic based routing method  TrafficRoutingMethod.GEOGRAPHIC.
-        /// </summary>
-        /// <param name="geographicLocations">The geographic locations.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithAttach<ParentT> WithGeographicLocations(IList<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation> geographicLocations);
-
-        /// <summary>
-        /// Specifies the list of geographic location for the endpoint that will be used when the parent profile is
-        /// configured with Geographic based routing method  TrafficRoutingMethod.GEOGRAPHIC.
-        /// </summary>
-        /// <param name="geographicLocationCodes">The geographic location codes.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithAttach<ParentT> WithGeographicLocations(IList<string> geographicLocationCodes);
-
-        /// <summary>
-        /// Specifies the geographic location for the endpoint that will be used when the parent profile is configured
-        /// with Geographic based routing method  TrafficRoutingMethod.GEOGRAPHIC.
-        /// </summary>
-        /// <param name="geographicLocation">The geographic location.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithAttach<ParentT> WithGeographicLocation(IGeographicLocation geographicLocation);
-
-        /// <summary>
-        /// Specifies the geographic location for the endpoint that will be used when the parent profile is configured
-        /// with Geographic based routing method  TrafficRoutingMethod.GEOGRAPHIC.
-        /// </summary>
-        /// <param name="geographicLocationCode">The geographic location code.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.UpdateDefinition.IWithAttach<ParentT> WithGeographicLocation(string geographicLocationCode);
     }
 }

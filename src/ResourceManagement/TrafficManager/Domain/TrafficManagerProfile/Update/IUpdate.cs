@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
     /// <summary>
     /// The stage of the traffic manager profile update allowing to specify the endpoint monitoring configuration.
     /// </summary>
-    public interface IWithMonitoringConfiguration 
+    public interface IWithMonitoringConfiguration
     {
         /// <summary>
         /// Specify to use HTTP monitoring for the endpoints that checks for HTTP 200 response from the path '/'
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
     /// <summary>
     /// The stage of the traffic manager profile update allowing to specify the DNS TTL.
     /// </summary>
-    public interface IWithTtl 
+    public interface IWithTtl
     {
         /// <summary>
         /// Specify the DNS TTL in seconds.
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
     /// The template for an update operation, containing all the settings that can be modified.
     /// Call  Update.apply() to apply the changes to the resource in Azure.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfile>,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithTrafficRoutingMethod,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithMonitoringConfiguration,
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
     /// <summary>
     /// The stage of the traffic manager profile update allowing to specify endpoints.
     /// </summary>
-    public interface IWithEndpoint 
+    public interface IWithEndpoint
     {
         /// <summary>
         /// Begins the description of an update of an existing Azure endpoint in this profile.
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
     /// <summary>
     /// The stage of the traffic manager profile update allowing to disable or enable the profile.
     /// </summary>
-    public interface IWithProfileStatus 
+    public interface IWithProfileStatus
     {
         /// <summary>
         /// Specify that the profile needs to be disabled.
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
     /// The stage of the traffic manager profile update allowing to specify the traffic routing method
     /// for the profile.
     /// </summary>
-    public interface IWithTrafficRoutingMethod : Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithTrafficRoutingMethodBeta
+    public interface IWithTrafficRoutingMethod
     {
         /// <summary>
         /// Specifies that end user traffic should be distributed to the endpoints based on the weight assigned
@@ -181,25 +181,17 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithTrafficRoutingMethod(TrafficRoutingMethod routingMethod);
 
         /// <summary>
-        /// Specifies that end user traffic should be routed based on the geographic location of the endpoint
-        /// close to user.
+        /// Specifies that end user traffic should be routed based on the closest available endpoint in terms
+        /// of the lowest network latency.
         /// </summary>
-        /// <return>The next stage of the traffic manager profile update.</return>
+        /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithPerformanceBasedRouting();
-    }
 
-    /// <summary>
-    /// The stage of the traffic manager profile definition allowing to specify the traffic routing method
-    /// for the profile.
-    /// </summary>
-    public interface IWithTrafficRoutingMethodBeta :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
         /// <summary>
         /// Specifies that end user traffic should be routed to the endpoint that is designated to serve users
         /// geographic region.
         /// </summary>
-        /// <return>The next stage of the definition.</return>
+        /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate WithGeographicBasedRouting();
     }
 }
