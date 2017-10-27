@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the SKU type.
         /// </summary>
-        Models.ExpressRouteCircuitSkuType Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit.Sku
+        ExpressRouteCircuitSkuType Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit.Sku
         {
             get
             {
-                return this.Sku() as Models.ExpressRouteCircuitSkuType;
+                return this.Sku() as ExpressRouteCircuitSkuType;
             }
         }
 

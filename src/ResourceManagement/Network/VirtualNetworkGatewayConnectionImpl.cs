@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:C6001AE2B48A1402A8313022A5CF5590
-        protected async override Task<VirtualNetworkGatewayConnectionInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<VirtualNetworkGatewayConnectionInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return await parent.Manager.Inner.VirtualNetworkGatewayConnections.GetAsync(ResourceGroupName, Name, cancellationToken);
         }
@@ -252,21 +252,5 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return new ReadOnlyCollection<TunnelConnectionHealth>(Inner.TunnelConnectionStatus);
         }
 
-        public IVirtualNetworkGatewayConnection Update()
-        {
-            return this;
-        }
-
-        public IWithCreate WithTags(IDictionary<string, string> tags)
-        {
-            base.WithTags(tags);
-            return this;
-        }
-
-        public IWithCreate WithTag(string key, string value)
-        {
-            base.WithTag(key, value);
-            return this;
-        }
     }
 }
