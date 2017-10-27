@@ -8,8 +8,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// <summary>
     /// The result of checking for Service Bus namespace name availability.
     /// </summary>
-    public interface ICheckNameAvailabilityResult  :
-        IBeta,
+    public interface ICheckNameAvailabilityResult :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.ServiceBus.Fluent.Models.CheckNameAvailabilityResultInner>
     {
         /// <summary>

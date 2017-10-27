@@ -9,8 +9,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Entry point to authorization rules management API.
     /// </summary>
     /// <typeparam name="RuleT">The specific rule type.</typeparam>
-    public interface IAuthorizationRules<RuleT>  :
-        IBeta,
+    public interface IAuthorizationRules<RuleT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<RuleT>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<RuleT>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingByName,

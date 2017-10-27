@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Up
     /// <summary>
     /// The entirety of the topic authorization rule update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.ServiceBus.Fluent.ITopicAuthorizationRule>,
         Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update.IWithListenOrSendOrManage<Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Update.IUpdate>
     {

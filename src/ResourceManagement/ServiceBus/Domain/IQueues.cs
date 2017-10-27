@@ -11,7 +11,6 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Entry point to service bus queue management API in Azure.
     /// </summary>
     public interface IQueues  :
-        IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Queue.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ServiceBus.Fluent.IQueue>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.ServiceBus.Fluent.IQueue>,
