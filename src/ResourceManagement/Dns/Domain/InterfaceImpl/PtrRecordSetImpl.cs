@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     using Microsoft.Azure.Management.Dns.Fluent.Models;
     using System.Collections.Generic;
 
-    internal partial class PtrRecordSetImpl 
+    internal partial class PtrRecordSetImpl
     {
         /// <summary>
         /// Gets the target domain names of PTR records in this record set.

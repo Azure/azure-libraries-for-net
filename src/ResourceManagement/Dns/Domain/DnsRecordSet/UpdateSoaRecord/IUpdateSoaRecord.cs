@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateSoaRecord
     /// <summary>
     /// The entirety of a SOA record update as a part of parent DNS zone update.
     /// </summary>
-    public interface IUpdateSoaRecord  :
+    public interface IUpdateSoaRecord :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IWithSoaRecordAttributes,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IUpdate
     {

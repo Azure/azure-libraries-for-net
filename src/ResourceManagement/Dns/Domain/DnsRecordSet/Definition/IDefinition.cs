@@ -104,9 +104,14 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition
     /// The stage of a CNAME record definition allowing to add alias.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithCNameRecordAlias<ParentT> :
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IWithCNameRecordAliasBeta<ParentT>
+    public interface IWithCNameRecordAlias<ParentT>
     {
+        /// <summary>
+        /// Creates a CNAME record with the provided alias.
+        /// </summary>
+        /// <param name="alias">The alias.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IWithCNameRecordSetAttachable<ParentT> WithAlias(string alias);
     }
 
     /// <summary>
@@ -128,9 +133,13 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition
     /// The stage of the record set definition allowing to enable ETag validation.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithETagCheck<ParentT> :
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IWithETagCheckBeta<ParentT>
+    public interface IWithETagCheck<ParentT>
     {
+        /// <summary>
+        /// Specifies that If-None-Match header needs to set to  to prevent updating an existing record set.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IWithAttach<ParentT> WithETagCheck();
     }
 
     /// <summary>
@@ -356,34 +365,5 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition
     public interface ITxtRecordSetBlank<ParentT> :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IWithTxtRecordTextValue<ParentT>
     {
-    }
-
-    /// <summary>
-    /// The stage of a CNAME record definition allowing to add alias.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithCNameRecordAliasBeta<ParentT> :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-        /// <summary>
-        /// Creates a CNAME record with the provided alias.
-        /// </summary>
-        /// <param name="alias">The alias.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IWithCNameRecordSetAttachable<ParentT> WithAlias(string alias);
-    }
-
-    /// <summary>
-    /// The stage of the record set definition allowing to enable ETag validation.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithETagCheckBeta<ParentT> :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-        /// <summary>
-        /// Specifies that If-None-Match header needs to set to  to prevent updating an existing record set.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IWithAttach<ParentT> WithETagCheck();
     }
 }
