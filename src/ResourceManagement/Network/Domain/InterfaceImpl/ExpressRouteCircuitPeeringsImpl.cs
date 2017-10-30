@@ -35,45 +35,30 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets Begins definition of Azure private peering.
+        /// Begins definition of Azure private peering.
         /// </summary>
-        /// <summary>
-        /// Gets next peering definition stage.
-        /// </summary>
-        ExpressRouteCircuitPeering.Definition.IBlank Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings.DefineAzurePrivatePeering
+        /// <return>Next peering definition stage.</return>
+        ExpressRouteCircuitPeering.Definition.IBlank Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings.DefineAzurePrivatePeering()
         {
-            get
-            {
-                return this.DefineAzurePrivatePeering() as ExpressRouteCircuitPeering.Definition.IBlank;
-            }
+            return this.DefineAzurePrivatePeering() as ExpressRouteCircuitPeering.Definition.IBlank;
         }
 
         /// <summary>
-        /// Gets Begins definition of Azure public peering.
+        /// Begins definition of Azure public peering.
         /// </summary>
-        /// <summary>
-        /// Gets next peering definition stage.
-        /// </summary>
-        ExpressRouteCircuitPeering.Definition.IBlank Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings.DefineAzurePublicPeering
+        /// <return>Next peering definition stage.</return>
+        ExpressRouteCircuitPeering.Definition.IBlank Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings.DefineAzurePublicPeering()
         {
-            get
-            {
-                return this.DefineAzurePublicPeering() as ExpressRouteCircuitPeering.Definition.IBlank;
-            }
+            return this.DefineAzurePublicPeering() as ExpressRouteCircuitPeering.Definition.IBlank;
         }
 
         /// <summary>
-        /// Gets Begins definition of Microsoft peering.
+        /// Begins definition of Microsoft peering.
         /// </summary>
-        /// <summary>
-        /// Gets next peering definition stage.
-        /// </summary>
-        ExpressRouteCircuitPeering.Definition.IWithAdvertisedPublicPrefixes Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings.DefineMicrosoftPeering
+        /// <return>Next peering definition stage.</return>
+        ExpressRouteCircuitPeering.Definition.IWithAdvertisedPublicPrefixes Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings.DefineMicrosoftPeering()
         {
-            get
-            {
-                return this.DefineMicrosoftPeering() as ExpressRouteCircuitPeering.Definition.IWithAdvertisedPublicPrefixes;
-            }
+            return this.DefineMicrosoftPeering() as ExpressRouteCircuitPeering.Definition.IWithAdvertisedPublicPrefixes;
         }
 
         /// <summary>

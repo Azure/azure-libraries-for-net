@@ -24,25 +24,19 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets Begins definition of Microsoft peering.
         /// </summary>
-        /// <summary>
-        /// Gets next peering definition stage.
-        /// </summary>
-        ExpressRouteCircuitPeering.Definition.IWithAdvertisedPublicPrefixes DefineMicrosoftPeering { get; }
+        /// <return>Next peering definition stage.</return>
+        ExpressRouteCircuitPeering.Definition.IWithAdvertisedPublicPrefixes DefineMicrosoftPeering();
 
         /// <summary>
-        /// Gets Begins definition of Azure public peering.
+        /// Begins definition of Azure public peering.
         /// </summary>
-        /// <summary>
-        /// Gets next peering definition stage.
-        /// </summary>
-        ExpressRouteCircuitPeering.Definition.IBlank DefineAzurePublicPeering { get; }
+        /// <return>Next peering definition stage.</return>
+        ExpressRouteCircuitPeering.Definition.IBlank DefineAzurePublicPeering();
 
         /// <summary>
-        /// Gets Begins definition of Azure private peering.
+        /// Begins definition of Azure private peering.
         /// </summary>
-        /// <summary>
-        /// Gets next peering definition stage.
-        /// </summary>
-        ExpressRouteCircuitPeering.Definition.IBlank DefineAzurePrivatePeering { get; }
+        /// <return>Next peering definition stage.</return>
+        ExpressRouteCircuitPeering.Definition.IBlank DefineAzurePrivatePeering();
     }
 }

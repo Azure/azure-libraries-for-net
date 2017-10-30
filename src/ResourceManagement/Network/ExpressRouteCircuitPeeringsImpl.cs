@@ -5,9 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using System.Collections.Generic;
-    using Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.Definition;
-    using Microsoft.Azure.Management.Network.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
+    using Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
 
@@ -40,15 +38,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:885F10CFCF9E6A9547B0702B4BBD8C9E:C9F03D33742DDC970FAC4D8DB1A57D4A
         public async Task<IExpressRouteCircuitPeering> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return Inner.GetAsync(parent.ResourceGroupName(), parent.Name(), name)
-            //$ .Map(new Func1<ExpressRouteCircuitPeeringInner, ExpressRouteCircuitPeering>() {
-            //$ @Override
-            //$ public ExpressRouteCircuitPeering call(ExpressRouteCircuitPeeringInner inner) {
-            //$ return wrapModel(inner);
-            //$ }
-            //$ });
-
-            return null;
+            return await GetByParentAsync(parent, name, cancellationToken);
         }
 
         ///GENMHASH:C2DC9CFAB6C291D220DD4F29AFF1BBEC:7459D8B9F8BB0A1EBD2FC4702A86F2F5
@@ -121,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:90E449BE53BE2022DD4BD866D5A6C29C:DD8B5257C314F4DDE0536EE2BF670307
         protected override IExpressRouteCircuitPeering WrapModel(ExpressRouteCircuitPeeringInner inner)
         {
-            return (inner != null) ? new ExpressRouteCircuitPeeringImpl(parent, inner, Inner, ExpressRouteCircuitPeeringType.Parse(inner.PeeringType)) : null;
+            return inner != null ? new ExpressRouteCircuitPeeringImpl(parent, inner, Inner, ExpressRouteCircuitPeeringType.Parse(inner.PeeringType)) : null;
         }
 
         /// <summary>
@@ -137,7 +127,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:971272FEE209B8A9A552B92179C1F926:E5B162BD6005B3BA236ADFAE6CA0A4CF
         public async Task DeleteByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Inner.DeleteAsync(parent.ResourceGroupName, parent.Name, name);
+            await Inner.DeleteAsync(parent.ResourceGroupName, parent.Name, name, cancellationToken);
         }
     }
 }

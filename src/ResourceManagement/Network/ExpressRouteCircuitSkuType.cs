@@ -18,11 +18,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /** Static value for Standard sku tier and MeteredData sku family. */
         public static readonly ExpressRouteCircuitSkuType StandardMeteredData = new ExpressRouteCircuitSkuType(ExpressRouteCircuitSkuTier.Standard, ExpressRouteCircuitSkuFamily.MeteredData);
         /** Static value for Standard sku tier and UnlimitedData sku family. */
-        public ExpressRouteCircuitSkuType StandardUnlimitedData;
+        public static readonly ExpressRouteCircuitSkuType StandardUnlimitedData = new ExpressRouteCircuitSkuType(ExpressRouteCircuitSkuTier.Standard, ExpressRouteCircuitSkuFamily.UnlimitedData);
         /** Static value for Premium sku tier and MeteredData sku family. */
-        public ExpressRouteCircuitSkuType PremiumMeteredData;
+        public static readonly ExpressRouteCircuitSkuType PremiumMeteredData = new ExpressRouteCircuitSkuType(ExpressRouteCircuitSkuTier.Premium, ExpressRouteCircuitSkuFamily.MeteredData);
         /** Static value for Premium sku tier and UnlimitedData sku family. */
-        public ExpressRouteCircuitSkuType PremiumUnlimitedData;
+        public static readonly ExpressRouteCircuitSkuType PremiumUnlimitedData = new ExpressRouteCircuitSkuType(ExpressRouteCircuitSkuTier.Premium, ExpressRouteCircuitSkuFamily.UnlimitedData);
         private ExpressRouteCircuitSku sku;
         private string value;
         /// <summary>
@@ -125,6 +125,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             // by the user.
             
             this.sku = CreateCopy(sku);
+            value = sku.Tier + "_" + sku.Family;
             if (ValuesByName == null)
             {
                 ValuesByName = new Dictionary<string, ExpressRouteCircuitSkuType>();

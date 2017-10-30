@@ -82,6 +82,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         }
 
+        public override async Task<IExpressRouteCircuit> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await base.RefreshAsync(cancellationToken);
+            InitializeChildrenFromInner();
+            return this;
+        }
+
         ///GENMHASH:2DA41BC231DAB49CE5C371D81589EE4C:33F0C10B83F076BDC2D44F79C1C586E1
         public string ServiceProviderNotes()
         {
