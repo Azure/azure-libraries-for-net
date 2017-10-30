@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Type representing authorization rule.
     /// </summary>
     /// <typeparam name="RuleT">The specific rule type.</typeparam>
-    public interface IAuthorizationRule<RuleT>  :
-        IBeta,
+    public interface IAuthorizationRule<RuleT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IIndependentChildResource<Microsoft.Azure.Management.ServiceBus.Fluent.IServiceBusManager,Microsoft.Azure.Management.ServiceBus.Fluent.Models.SharedAccessAuthorizationRuleInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<RuleT>
     {

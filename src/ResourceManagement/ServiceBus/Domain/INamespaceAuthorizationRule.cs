@@ -9,8 +9,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// <summary>
     /// Type representing authorization rule defined for namespace.
     /// </summary>
-    public interface INamespaceAuthorizationRule  :
-        IBeta,
+    public interface INamespaceAuthorizationRule :
         Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationRule<Microsoft.Azure.Management.ServiceBus.Fluent.INamespaceAuthorizationRule>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<NamespaceAuthorizationRule.Update.IUpdate>
     {

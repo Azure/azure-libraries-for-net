@@ -10,8 +10,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// <summary>
     /// Entry point to namespace authorization rules management API.
     /// </summary>
-    public interface INamespaceAuthorizationRules  :
-        IBeta,
+    public interface INamespaceAuthorizationRules :
         Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationRules<Microsoft.Azure.Management.ServiceBus.Fluent.INamespaceAuthorizationRule>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<NamespaceAuthorizationRule.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.ServiceBus.Fluent.INamespacesOperations>

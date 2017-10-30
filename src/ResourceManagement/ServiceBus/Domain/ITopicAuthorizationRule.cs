@@ -10,7 +10,6 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Type representing authorization rule defined for topic.
     /// </summary>
     public interface ITopicAuthorizationRule  :
-        IBeta,
         Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationRule<Microsoft.Azure.Management.ServiceBus.Fluent.ITopicAuthorizationRule>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<TopicAuthorizationRule.Update.IUpdate>
     {
