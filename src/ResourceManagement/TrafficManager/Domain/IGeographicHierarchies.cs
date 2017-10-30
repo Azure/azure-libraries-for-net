@@ -8,8 +8,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// <summary>
     /// Entry point to Azure traffic manager geographic hierarchy management API in Azure.
     /// </summary>
-    public interface IGeographicHierarchiesBeta  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
+    public interface IGeographicHierarchies :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManager>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicHierarchiesOperations>
     {

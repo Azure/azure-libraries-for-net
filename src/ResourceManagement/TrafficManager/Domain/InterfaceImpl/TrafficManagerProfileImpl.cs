@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// geographic region.
         /// </summary>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithTrafficRoutingMethodBeta.WithGeographicBasedRouting()
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IUpdate Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Update.IWithTrafficRoutingMethod.WithGeographicBasedRouting()
         {
             return this.WithGeographicBasedRouting() as TrafficManagerProfile.Update.IUpdate;
         }
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// geographic region.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithEndpoint Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTrafficRoutingMethodBeta.WithGeographicBasedRouting()
+        Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithEndpoint Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition.IWithTrafficRoutingMethod.WithGeographicBasedRouting()
         {
             return this.WithGeographicBasedRouting() as TrafficManagerProfile.Definition.IWithEndpoint;
         }

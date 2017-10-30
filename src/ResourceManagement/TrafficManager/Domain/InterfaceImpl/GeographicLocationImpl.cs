@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class GeographicLocationImpl 
+    internal partial class GeographicLocationImpl
     {
         /// <summary>
         /// Gets the name of the resource.

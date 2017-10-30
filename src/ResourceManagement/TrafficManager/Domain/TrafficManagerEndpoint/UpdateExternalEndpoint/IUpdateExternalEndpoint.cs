@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// <summary>
     /// The entirety of an external endpoint update as a part of parent traffic manager profile profile update.
     /// </summary>
-    public interface IUpdateExternalEndpoint  :
+    public interface IUpdateExternalEndpoint :
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IWithFqdn,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IWithSourceTrafficRegion,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IUpdate

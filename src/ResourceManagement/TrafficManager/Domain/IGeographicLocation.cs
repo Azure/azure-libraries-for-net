@@ -8,8 +8,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// <summary>
     /// Type representing Geographic Hierarchy region (location).
     /// </summary>
-    public interface IGeographicLocation  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
+    public interface IGeographicLocation :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.TrafficManager.Fluent.Models.RegionInner>
     {
