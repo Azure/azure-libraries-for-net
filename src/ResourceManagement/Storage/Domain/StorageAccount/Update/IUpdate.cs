@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update
     /// <summary>
     /// A storage account update stage allowing to change the parameters.
     /// </summary>
-    public interface IWithCustomDomain 
+    public interface IWithCustomDomain
     {
         /// <summary>
         /// Specifies the user domain assigned to the storage account.
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update
     /// <summary>
     /// The template for a storage account update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount>,
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IWithSku,
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IWithCustomDomain,
@@ -51,15 +51,25 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update
     /// <summary>
     /// A storage account update allowing encryption to be specified.
     /// </summary>
-    public interface IWithEncryption  :
-        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IWithEncryptionBeta
+    public interface IWithEncryption
     {
+        /// <summary>
+        /// Disables encryption for all storage services in the account that supports encryption.
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate WithoutEncryption();
+
+        /// <summary>
+        /// Enables encryption for all storage services in the account that supports encryption.
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate WithEncryption();
     }
 
     /// <summary>
     /// A storage account update stage allowing to change the parameters.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Specifies the sku of the storage account. This used to be called
@@ -73,7 +83,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update
     /// <summary>
     /// A blob storage account update stage allowing access tier to be specified.
     /// </summary>
-    public interface IWithAccessTier 
+    public interface IWithAccessTier
     {
         /// <summary>
         /// Specifies the access tier used for billing.
@@ -84,33 +94,5 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update
         /// <param name="accessTier">The access tier value.</param>
         /// <return>The next stage of storage account update.</return>
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate WithAccessTier(AccessTier accessTier);
-    }
-
-    /// <summary>
-    /// A storage account update allowing encryption to be specified.
-    /// </summary>
-    public interface IWithEncryptionBeta  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-        /// <summary>
-        /// Disables encryption for all storage services in the account that supports encryption.
-        /// </summary>
-        /// <return>The next stage of storage account update.</return>
-        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate WithoutEncryption();
-
-        /// <summary>
-        /// Specifies the encryption setting on the account.
-        /// The default setting is unencrypted.
-        /// TODO: This overload should be deprecated and removed (the new fully fluent encryption withers replaces this).
-        /// </summary>
-        /// <param name="encryption">The encryption setting.</param>
-        /// <return>The nest stage of storage account update.</return>
-        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate WithEncryption(Encryption encryption);
-
-        /// <summary>
-        /// Enables encryption for all storage services in the account that supports encryption.
-        /// </summary>
-        /// <return>The next stage of storage account update.</return>
-        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate WithEncryption();
     }
 }

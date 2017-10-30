@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using Microsoft.Azure.Management.Storage.Fluent.Models;
     using Microsoft.Rest;
 
-    internal partial class StorageAccountsImpl 
+    internal partial class StorageAccountsImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.
