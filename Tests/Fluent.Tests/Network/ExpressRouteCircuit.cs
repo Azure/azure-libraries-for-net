@@ -47,7 +47,7 @@ namespace Fluent.Tests.Network
                 Assert.True(!erc.Tags.ContainsKey("tag1"));
                 Assert.Equal(200, erc.ServiceProviderProperties.BandwidthInMbps);
                 Assert.Equal(ExpressRouteCircuitSkuType.PremiumUnlimitedData, erc.Sku);
-                manager.VirtualNetworkGateways.DeleteById(erc.Id);
+                manager.ExpressRouteCircuits.DeleteById(erc.Id);
                 manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
             }
         }
