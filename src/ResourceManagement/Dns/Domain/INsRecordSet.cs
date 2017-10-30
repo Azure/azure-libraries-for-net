@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// An immutable client-side representation of an NS (name server) record set in Azure DNS Zone.
     /// </summary>
-    public interface INSRecordSet  :
+    public interface INSRecordSet :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet
     {
         /// <summary>

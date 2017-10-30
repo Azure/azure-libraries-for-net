@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// An immutable client-side representation of an SVR (service) record set in Azure DNS Zone.
     /// </summary>
-    public interface ISrvRecordSet  :
+    public interface ISrvRecordSet :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet
     {
         /// <summary>

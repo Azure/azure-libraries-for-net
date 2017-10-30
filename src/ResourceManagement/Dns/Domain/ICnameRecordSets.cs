@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// Entry point to CNAME record sets in a DNS zone.
     /// </summary>
-    public interface ICNameRecordSets  :
+    public interface ICNameRecordSets :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<Microsoft.Azure.Management.Dns.Fluent.ICNameRecordSet>
     {
     }
