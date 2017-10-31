@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
-    /// A client-side reperesentation allowing to verify IP packet flow from specific vm
+    /// A client-side representation allowing to verify IP packet flow from specific VM
     /// based on direction, protocol, local IP, remote IP, local port and remote port.
     /// </summary>
     public interface IVerificationIPFlow  :
