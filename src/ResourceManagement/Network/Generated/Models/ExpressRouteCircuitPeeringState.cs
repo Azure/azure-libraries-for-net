@@ -6,19 +6,16 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.Azure.Management.Network.Fluent;
-
     /// <summary>
     /// Defines values for ExpressRouteCircuitPeeringState.
     /// </summary>
-    public static class ExpressRouteCircuitPeeringState
+    public class ExpressRouteCircuitPeeringState : ExpandableStringEnum<ExpressRouteCircuitPeeringState>
     {
-        public const string Disabled = "Disabled";
-        public const string Enabled = "Enabled";
+        public static readonly ExpressRouteCircuitPeeringState Disabled = Parse("Disabled");
+        public static readonly ExpressRouteCircuitPeeringState Enabled = Parse("Enabled");
     }
 }

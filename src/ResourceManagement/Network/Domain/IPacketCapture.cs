@@ -67,8 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         System.Collections.Generic.IReadOnlyList<Models.PacketCaptureFilter> Filters { get; }
 
         /// <summary>
-        /// Gets the provisioning state of the packet capture session. Possible values
-        /// include: 'Succeeded', 'Updating', 'Deleting', 'Failed'.
+        /// Gets the provisioning state of the packet capture session.
         /// </summary>
         /// <summary>
         /// Gets the provisioningState value.
