@@ -19,6 +19,27 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
+        /// Gets the type of Managed Service Identity used for the virtual machine scale set.
+        /// </summary>
+        Models.ResourceIdentityType? ManagedServiceIdentityType { get; }
+
+        /// <summary>
+        /// Gets true if boot diagnostics is enabled for the virtual machine scale set.
+        /// </summary>
+        bool IsBootDiagnosticsEnabled { get; }
+
+        /// <summary>
+        /// Gets the storage blob endpoint uri if boot diagnostics is enabled for the virtual machine scale set.
+        /// </summary>
+        string BootDiagnosticsStorageUri { get; }
+
+        /// <summary>
+        /// Gets the storage account type of the OS managed disk. A null value will be returned if the
+        /// virtual machine scale set is based on un-managed disk.
+        /// </summary>
+        Models.StorageAccountTypes? ManagedOSDiskStorageAccountType { get; }
+
+        /// <summary>
         /// Gets the Managed Service Identity specific Active Directory service principal ID assigned
         /// to the virtual machine scale set.
         /// </summary>

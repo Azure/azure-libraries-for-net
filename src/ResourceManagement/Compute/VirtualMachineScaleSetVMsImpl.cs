@@ -61,5 +61,50 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 Inner.ListNextAsync,
                 WrapModel, loadAllPages, cancellationToken);
         }
+
+        ///GENMHASH:A32993171DE4825D6197C78D815A8070:59E051D5E822932B078C7F0F184254DB
+        public async Task DeleteInstancesAsync(IList<string> instanceIds, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (instanceIds == null || instanceIds.Count == 0) {
+                return;
+            }
+            var scaleSetInnerManager = this.scaleSet.Manager.VirtualMachineScaleSets.Inner;
+            await scaleSetInnerManager.DeleteInstancesAsync(this.scaleSet.ResourceGroupName, this.scaleSet.Name, instanceIds, cancellationToken);
+        }
+
+        ///GENMHASH:8614677E9F33F649DA97FEA11832F507:F1FA4FC3202537ADF1E8F7F846D49B62
+        public async Task UpdateInstancesAsync(IList<string> instanceIds, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (instanceIds == null || instanceIds.Count == 0)
+            {
+                return;
+            }
+            var scaleSetInnerManager = this.scaleSet.Manager.VirtualMachineScaleSets.Inner;
+            await scaleSetInnerManager.UpdateInstancesAsync(this.scaleSet.ResourceGroupName, this.scaleSet.Name, instanceIds, cancellationToken);
+        }
+
+        ///GENMHASH:BF0243215BA9143B56ED25983393E69B:E85071D55AA027B278E4E85CA4BC6B0D
+        public void DeleteInstances(IList<string> instanceIds)
+        {
+            this.DeleteInstancesAsync(instanceIds).Wait();
+        }
+
+        ///GENMHASH:BF0243215BA9143B56ED25983393E69B:E85071D55AA027B278E4E85CA4BC6B0D
+        public void DeleteInstances(params string[] instanceIds)
+        {
+            this.DeleteInstancesAsync(instanceIds).Wait();
+        }
+
+        ///GENMHASH:192081DA3B0538D0043A32038FB0F341:EAFA9C00FF9BD97500B291BEA8F839D5
+        public void UpdateInstances(params string[] instanceIds)
+        {
+            this.UpdateInstancesAsync(instanceIds).Wait();
+        }
+
+        ///GENMHASH:192081DA3B0538D0043A32038FB0F341:EAFA9C00FF9BD97500B291BEA8F839D5
+        public void UpdateInstances(IList<string> instanceIds)
+        {
+            this.UpdateInstancesAsync(instanceIds).Wait();
+        }
     }
 }

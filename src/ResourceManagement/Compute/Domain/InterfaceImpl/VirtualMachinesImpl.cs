@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
         /// <param name="name">The virtual machine name.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.StartAsync(string groupName, string name, CancellationToken cancellationToken)
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.StartAsync(string groupName, string name, CancellationToken cancellationToken)
         {
 
             await this.StartAsync(groupName, name, cancellationToken);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Restarts the virtual machine asynchronously.
         /// </summary>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RestartAsync(string groupName, string name, CancellationToken cancellationToken)
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.RestartAsync(string groupName, string name, CancellationToken cancellationToken)
         {
 
             await this.RestartAsync(groupName, name, cancellationToken);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
         /// <param name="name">The virtual machine name.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RedeployAsync(string groupName, string name, CancellationToken cancellationToken)
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.RedeployAsync(string groupName, string name, CancellationToken cancellationToken)
         {
 
             await this.RedeployAsync(groupName, name, cancellationToken);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vhdPrefix">The prefix for the VHD holding captured image.</param>
         /// <param name="overwriteVhd">Whether to overwrites destination VHD if it exists.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task<string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.CaptureAsync(string groupName, string name, string containerName, string vhdPrefix, bool overwriteVhd, CancellationToken cancellationToken)
+        async Task<string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.CaptureAsync(string groupName, string name, string containerName, string vhdPrefix, bool overwriteVhd, CancellationToken cancellationToken)
         {
             return await this.CaptureAsync(groupName, name, containerName, vhdPrefix, overwriteVhd, cancellationToken);
         }
@@ -110,7 +110,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.MigrateToManaged(string groupName, string name)
         {
-
             this.MigrateToManaged(groupName, name);
         }
 
@@ -120,9 +119,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="groupName">The resource group name.</param>
         /// <param name="name">The virtual machine name.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.MigrateToManagedAsync(string groupName, string name, CancellationToken cancellationToken)
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.MigrateToManagedAsync(string groupName, string name, CancellationToken cancellationToken)
         {
-
             await this.MigrateToManagedAsync(groupName, name, cancellationToken);
         }
 
@@ -132,9 +130,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
         /// <param name="name">The virtual machine name.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.DeallocateAsync(string groupName, string name, CancellationToken cancellationToken)
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.DeallocateAsync(string groupName, string name, CancellationToken cancellationToken)
         {
-
             await this.DeallocateAsync(groupName, name, cancellationToken);
         }
 
@@ -145,7 +142,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.PowerOff(string groupName, string name)
         {
-
             this.PowerOff(groupName, name);
         }
 
@@ -156,7 +152,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Generalize(string groupName, string name)
         {
-
             this.Generalize(groupName, name);
         }
 
@@ -167,7 +162,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Redeploy(string groupName, string name)
         {
-
             this.Redeploy(groupName, name);
         }
 
@@ -177,9 +171,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
         /// <param name="name">The virtual machine name.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.PowerOffAsync(string groupName, string name, CancellationToken cancellationToken)
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.PowerOffAsync(string groupName, string name, CancellationToken cancellationToken)
         {
-
             await this.PowerOffAsync(groupName, name, cancellationToken);
         }
 
@@ -205,7 +198,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Restart(string groupName, string name)
         {
-
             this.Restart(groupName, name);
         }
 
@@ -216,7 +208,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="name">The virtual machine name.</param>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Deallocate(string groupName, string name)
         {
-
             this.Deallocate(groupName, name);
         }
 
@@ -226,9 +217,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
         /// <param name="name">The virtual machine name.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.GeneralizeAsync(string groupName, string name, CancellationToken cancellationToken)
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.GeneralizeAsync(string groupName, string name, CancellationToken cancellationToken)
         {
-
             await this.GeneralizeAsync(groupName, name, cancellationToken);
         }
 
