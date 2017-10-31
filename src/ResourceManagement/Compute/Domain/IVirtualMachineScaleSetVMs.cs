@@ -10,7 +10,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// </summary>
     public interface IVirtualMachineScaleSetVMs  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMsOperations>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMsOperations>, 
+        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMsBeta
     {
     }
 }
