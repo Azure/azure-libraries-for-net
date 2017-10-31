@@ -1355,6 +1355,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the type of Managed Service Identity used for the virtual machine.
+        /// </summary>
+        Models.ResourceIdentityType? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.ManagedServiceIdentityType
+        {
+            get
+            {
+                return this.ManagedServiceIdentityType();
+            }
+        }
+
+        /// <summary>
         /// Gets true if boot diagnostics is enabled for the virtual machine.
         /// </summary>
         bool Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.IsBootDiagnosticsEnabled
