@@ -846,6 +846,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCustomData,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithExtension,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithManagedServiceIdentity,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithBootDiagnostics,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate>
     {
     }
@@ -895,6 +896,40 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         /// <param name="tokenPort">The port on the virtual machine scale set instance where access token is available.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithRoleAndScopeOrCreate WithManagedServiceIdentity(int tokenPort);
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine scale set definition allowing to enable boot diagnostics.
+    /// </summary>
+    public interface IWithBootDiagnostics :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate WithBootDiagnostics();
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="creatable">The storage account to be created and used for store the boot diagnostics.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate WithBootDiagnostics(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> creatable);
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="storageAccount">An existing storage account to be uses to store the boot diagnostics.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate WithBootDiagnostics(IStorageAccount storageAccount);
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="storageAccountBlobEndpointUri">A storage account blob endpoint to store the boot diagnostics.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate WithBootDiagnostics(string storageAccountBlobEndpointUri);
     }
 
     /// <summary>

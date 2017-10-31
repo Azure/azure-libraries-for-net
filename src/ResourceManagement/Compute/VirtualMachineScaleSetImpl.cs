@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using VirtualMachineScaleSet.Update;
     using System.Threading;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition;
 
     /// <summary>
     /// Implementation of VirtualMachineScaleSet.
@@ -91,6 +92,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private bool isUnmanagedDiskSelected;
         private ManagedDataDiskCollection managedDataDisks;
         private VirtualMachineScaleSetMsiHelper virtualMachineScaleSetMsiHelper;
+        // To manage boot diagnostics specific operations
+        private BootDiagnosticsHandler bootDiagnosticsHandler;
 
         ///GENMHASH:F0C80BE7722CB6620CCF10F060FE486B:C5CB976F0B76FD0A094017AD226F4439
         internal VirtualMachineScaleSetImpl(
@@ -107,6 +110,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.namer = SdkContext.CreateResourceNamer(this.Name);
             this.managedDataDisks = new ManagedDataDiskCollection(this);
             this.virtualMachineScaleSetMsiHelper = new VirtualMachineScaleSetMsiHelper(rbacManager);
+            this.bootDiagnosticsHandler = new BootDiagnosticsHandler(this);
         }
 
         ///GENMHASH:AAC1F72971316317A21BEC14F977DEDE:ABC059395726B5D6BEB36206C2DDA144
@@ -609,6 +613,46 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        ///GENMHASH:BC4103A90A606609FAB346997701A4DE:F96317098E1E2EA0D5CD8D759145745A
+        public ResourceIdentityType? ManagedServiceIdentityType()
+        {
+            if (this.Inner.Identity != null)
+            {
+                return this.Inner.Identity.Type;
+            }
+            return null;
+        }
+
+        ///GENMHASH:D8D324B42ED7B0976032110E0D5D3320:9939C56F8394598297EC15BC4F6CCF06
+        public bool IsBootDiagnosticsEnabled()
+        {
+            return this.bootDiagnosticsHandler.IsBootDiagnosticsEnabled();
+        }
+
+        ///GENMHASH:F842C1987E811B219C87CFA14349A00B:AA3FE04060414CB0A10C5B6C55E7EC2B
+        public string BootDiagnosticsStorageUri()
+        {
+            return this.bootDiagnosticsHandler.BootDiagnosticsStorageUri();
+        }
+
+
+        ///GENMHASH:02A68214692E8DA4CC34E5FE55E3C918:150375C199EA874367AE081B87D5F2FD
+        public StorageAccountTypes? ManagedOSDiskStorageAccountType()
+        {
+            if (this.Inner.VirtualMachineProfile != null
+                && this.Inner.VirtualMachineProfile.StorageProfile != null
+                && this.Inner.VirtualMachineProfile.StorageProfile.OsDisk != null
+                && this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk != null) {
+                return this.Inner
+                .VirtualMachineProfile
+                .StorageProfile
+                .OsDisk
+                .ManagedDisk
+                .StorageAccountType;
+            }
+            return null;
+        }
+
         ///GENMHASH:1D38DD2A6D3BB89ECF81A51A4906BE8C:412BD8EB9EA1AA5A85C0515A53ACF43C
         public string ManagedServiceIdentityPrincipalId()
         {
@@ -1074,7 +1118,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:90924DCFADE551C6E90B738982E6C2F7:8E8BCFD08143E85B586E9D48D32AF4E0
         public VirtualMachineScaleSetImpl WithOSDiskStorageAccountType(StorageAccountTypes accountType)
         {
-            this.managedDataDisks.SetDefaultStorageAccountType(accountType);
+            // withers is limited to VMSS based on ManagedDisk.
+            this.Inner
+                    .VirtualMachineProfile
+                    .StorageProfile
+                    .OsDisk
+                    .ManagedDisk = new VirtualMachineScaleSetManagedDiskParameters
+                    {
+                        StorageAccountType = accountType
+                    };
             return this;
         }
 
@@ -2013,6 +2065,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 VirtualMachineScaleSetUnmanagedDataDiskImpl.SetDataDisksDefaults(dataDisks, Name);
             }
             await HandleOSDiskContainersAsync(cancellationToken);
+            await this.bootDiagnosticsHandler.HandleDiagnosticsSettingsAsync(cancellationToken);
+
             var scalesetInner = await Manager.Inner.VirtualMachineScaleSets.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
             // Inner has to be updated so that virtualMachineScaleSetMsiHelper can fetch MSI identity
             this.SetInner(scalesetInner);
@@ -2178,6 +2232,36 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 this.Inner.Zones = new List<string>();
             }
             this.Inner.Zones.Add(zoneId.ToString());
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithBootDiagnostics()
+        {
+            this.bootDiagnosticsHandler.WithBootDiagnostics();
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithBootDiagnostics(ICreatable<IStorageAccount> creatable)
+        {
+            this.bootDiagnosticsHandler.WithBootDiagnostics(creatable);
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithBootDiagnostics(IStorageAccount storageAccount)
+        {
+            this.bootDiagnosticsHandler.WithBootDiagnostics(storageAccount);
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithBootDiagnostics(string storageAccountBlobEndpointUri)
+        {
+            this.bootDiagnosticsHandler.WithBootDiagnostics(storageAccountBlobEndpointUri);
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithoutBootDiagnostics()
+        {
+            this.bootDiagnosticsHandler.WithoutBootDiagnostics();
             return this;
         }
 
@@ -2436,6 +2520,166 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return implicitDisksToAssociate.Count > 0
                     || diskLunsToRemove.Count > 0
                     || newDisksFromImage.Count > 0;
+            }
+        }
+
+        /// <summary>
+        ///  Class to manage VMSS boot diagnostics settings.
+        /// </summary>
+        internal partial class BootDiagnosticsHandler
+        {
+            private readonly VirtualMachineScaleSetImpl vmssImpl;
+            private string creatableDiagnosticsStorageAccountKey;
+            private string creatableStorageAccountKey;
+            private IStorageAccount existingStorageAccountToAssociate;
+
+            internal BootDiagnosticsHandler(VirtualMachineScaleSetImpl vmssImpl)
+            {
+                this.vmssImpl = vmssImpl;
+            }
+
+            internal bool IsBootDiagnosticsEnabled()
+            {
+                DiagnosticsProfile diagnosticsProfile = this.VMSSInner.VirtualMachineProfile.DiagnosticsProfile;
+                if (diagnosticsProfile != null
+                        && diagnosticsProfile.BootDiagnostics != null
+                        && diagnosticsProfile.BootDiagnostics.Enabled != null)
+                {
+                    return diagnosticsProfile.BootDiagnostics.Enabled.Value;
+                }
+                return false;
+            }
+
+            internal String BootDiagnosticsStorageUri()
+            {
+                DiagnosticsProfile diagnosticsProfile = this.VMSSInner.VirtualMachineProfile.DiagnosticsProfile;
+                // Even though diagnostics can disabled azure still keep the storage uri
+                if (diagnosticsProfile != null
+                        && diagnosticsProfile.BootDiagnostics != null)
+                {
+                    return diagnosticsProfile.BootDiagnostics.StorageUri;
+                }
+                return null;
+            }
+
+            internal BootDiagnosticsHandler WithBootDiagnostics()
+            {
+                // Diagnostics storage uri will be set later by this.handleDiagnosticsSettings(..)
+                //
+                this.EnableDisable(true);
+                return this;
+            }
+
+            internal BootDiagnosticsHandler WithBootDiagnostics(ICreatable<IStorageAccount> creatable)
+            {
+                // Diagnostics storage uri will be set later by this.handleDiagnosticsSettings(..)
+                //
+                this.EnableDisable(true);
+                this.creatableDiagnosticsStorageAccountKey = creatable.Key;
+                this.vmssImpl.AddCreatableDependency(creatable as IResourceCreator<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId>);
+                return this;
+            }
+
+            internal BootDiagnosticsHandler WithBootDiagnostics(String storageAccountBlobEndpointUri)
+            {
+                this.EnableDisable(true);
+                this.VMSSInner
+                        .VirtualMachineProfile
+                        .DiagnosticsProfile
+                        .BootDiagnostics
+                        .StorageUri = storageAccountBlobEndpointUri;
+                return this;
+            }
+
+            internal BootDiagnosticsHandler WithBootDiagnostics(IStorageAccount storageAccount)
+            {
+                return this.WithBootDiagnostics(storageAccount.EndPoints.Primary.Blob);
+            }
+
+            internal BootDiagnosticsHandler WithoutBootDiagnostics()
+            {
+                this.EnableDisable(false);
+                return this;
+            }
+
+            internal async Task HandleDiagnosticsSettingsAsync(CancellationToken cancellation)
+            {
+                DiagnosticsProfile diagnosticsProfile = this.VMSSInner.VirtualMachineProfile.DiagnosticsProfile;
+                if (diagnosticsProfile == null
+                        || diagnosticsProfile.BootDiagnostics == null
+                        || diagnosticsProfile.BootDiagnostics.StorageUri != null)
+                {
+                    return;
+                }
+                bool enableBD = diagnosticsProfile.BootDiagnostics.Enabled == null ? false : diagnosticsProfile.BootDiagnostics.Enabled.Value;
+                if (!enableBD)
+                {
+                    return;
+                }
+
+                string bootDiagnosticsStorageUri = null;
+                if (creatableDiagnosticsStorageAccountKey != null)
+                {
+                    IStorageAccount storageAccount = (IStorageAccount) this.vmssImpl.CreatedResource(creatableDiagnosticsStorageAccountKey);
+                    bootDiagnosticsStorageUri = storageAccount.EndPoints.Primary.Blob;
+                }
+                else if (this.VMSSInner.VirtualMachineProfile.StorageProfile != null
+                    && this.VMSSInner.VirtualMachineProfile.StorageProfile.OsDisk != null
+                    && this.VMSSInner.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers != null
+                    && this.VMSSInner.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers.Count > 0)
+                {
+                    var firstVhdContainer = this.VMSSInner.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers[0];
+                    var url = new Uri(firstVhdContainer);
+                    var host = url.Host;
+                    bootDiagnosticsStorageUri = url.Scheme + "://" + url.Host;
+                }
+                else
+                {
+                    var accountName = this.vmssImpl.namer.RandomName("stg", 24).Replace("-", "");
+                    IStorageAccount storageAccount = await this.vmssImpl.storageManager.StorageAccounts
+                        .Define(accountName)
+                        .WithRegion(this.vmssImpl.Region)
+                        .WithExistingResourceGroup(this.vmssImpl.ResourceGroupName)
+                        .CreateAsync(cancellation);
+                    bootDiagnosticsStorageUri = storageAccount.EndPoints.Primary.Blob;
+                }
+
+                VMSSInner
+                    .VirtualMachineProfile
+                    .DiagnosticsProfile
+                    .BootDiagnostics
+                    .StorageUri = bootDiagnosticsStorageUri;
+            }
+
+            private VirtualMachineScaleSetInner VMSSInner
+            {
+                get
+                {
+                    // Inner cannot be cached as parent VirtualMachineScaleSetImpl can refresh the inner in various cases
+                    //
+                    return this.vmssImpl.Inner;
+                }
+            }
+
+            private void EnableDisable(bool enable)
+            {
+                if (this.VMSSInner.VirtualMachineProfile.DiagnosticsProfile == null)
+                {
+                    this.VMSSInner.VirtualMachineProfile.DiagnosticsProfile = new DiagnosticsProfile();
+                }
+                if (this.VMSSInner.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics == null)
+                {
+                    this.VMSSInner.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics = new BootDiagnostics();
+                }
+                if (enable)
+                {
+                    this.VMSSInner.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.Enabled = true;
+                }
+                else
+                {
+                    this.VMSSInner.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.Enabled = false;
+                    this.VMSSInner.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.StorageUri = null;
+                }
             }
         }
     }
