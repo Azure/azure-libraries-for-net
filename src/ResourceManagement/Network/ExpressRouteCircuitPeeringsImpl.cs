@@ -6,8 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Rest;
+    using ResourceManager.Fluent.Core;
 
     /// <summary>
     /// Represents Express Route Circuit Peerings collection associated with Network Watcher.
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public void DeleteByName(string name)
         {
             Extensions.Synchronize(() => DeleteByNameAsync(name));
-
         }
 
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:720D92FD5E31F427626DBAEEEBF372F1
@@ -94,11 +92,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         /// <return>An observable emits packet captures in this collection.</return>
         ///GENMHASH:7F5BEBF638B801886F5E13E6CCFF6A4E:DBC1BFDB73D33E089DF6B74E82CCBAA9
-        public async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IExpressRouteCircuitPeering>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<IExpressRouteCircuitPeering>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return wrapPageAsync(Inner.ListAsync(parent.ResourceGroupName(), parent.Name()));
-
-            return null;
+            return await PagedCollection<IExpressRouteCircuitPeering, ExpressRouteCircuitPeeringInner>.LoadPage(
+                async (cancellation) => await Inner.ListAsync(parent.ResourceGroupName, parent.Name, cancellation), WrapModel, cancellationToken);
         }
 
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:B587CE64B62DCF93404FA1B6C5D51EC7
