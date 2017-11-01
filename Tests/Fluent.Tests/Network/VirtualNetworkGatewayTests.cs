@@ -23,7 +23,7 @@ using Xunit.Abstractions;
 
 namespace Fluent.Tests.Network
 {
-    public class VirtualNetworkGatewayTest
+    public class VirtualNetworkGateway
     {
         private static Region REGION = Region.USWest;
 
@@ -143,6 +143,13 @@ namespace Fluent.Tests.Network
                     .WithSecondVirtualNetworkGateway(vngw2)
                     .WithSharedKey("MySecretKey")
                     .Create();
+                vngw2.Connections
+                    .Define(connectionName + "2")
+                    .WithVNetToVNet()
+                    .WithSecondVirtualNetworkGateway(vngw1)
+                    .WithSharedKey("MySecretKey")
+                    .Create();
+
                 var connections = vngw1.ListConnections();
                 Assert.Single(connections);
                 Assert.Equal(vngw1.Id, connections.First().VirtualNetworkGateway1Id);
