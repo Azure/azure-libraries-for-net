@@ -130,6 +130,12 @@
     "package": "Microsoft.Azure.Management.KeyVault.Fluent",
     "args": "--payload-flattening-threshold=1 --tag=package-2015-06"
   },
+  "locks": {
+    "dir": "Locks",
+    "source": "specification/resources/resource-manager/readme.md",
+    "package": "Microsoft.Azure.Management.Locks.Fluent",
+    "args": "--payload-flattening-threshold=1 --tag=package-locks-2016-09"
+  },
   "logic": {
     "dir": "Logic",
     "source": "specification/logic/resource-manager/readme.md",
@@ -145,13 +151,13 @@
   "monitor": {
     "dir": "Monitor",
     "source": "specification/monitor/resource-manager/readme.md",
-    "package": "Microsoft.Azure.Management.Fluent.ServiceBus",
+    "package": "Microsoft.Azure.Management.Monitor.Fluent",
     "args": "--payload-flattening-threshold=1 --tag=package-2017-08"
   },
   "monitor-dataplane": {
     "dir": "Monitor",
     "source": "specification/monitor/data-plane/readme.md",
-    "package": "Microsoft.Azure.Management.Fluent.ServiceBus",
+    "package": "Microsoft.Azure.Management.Monitor.Fluent",
     "args": "--payload-flattening-threshold=1 --service-name=Monitor --tag=package-2016-09"
   },
   "network": {
@@ -222,7 +228,7 @@
   "servicebus": {
     "dir": "ServiceBus",
     "source": "specification/servicebus/resource-manager/readme.md",
-    "package": "Microsoft.Azure.Management.Fluent.ServiceBus",
+    "package": "Microsoft.Azure.Management.ServiceBus.Fluent",
     "args": "--payload-flattening-threshold=1 --tag=package-2015-08"
   },
   "servicefabric": {

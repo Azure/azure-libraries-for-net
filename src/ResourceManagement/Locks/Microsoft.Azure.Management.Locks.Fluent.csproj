@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PackageId>Microsoft.Azure.Management.Locks.Fluent</PackageId>
@@ -7,9 +7,9 @@
     <RootNamespace>Microsoft.Azure.Management.Locks.Fluent</RootNamespace>
     <AssemblyTitle>Microsoft Azure Locks Management Library</AssemblyTitle>
     <Authors>Microsoft</Authors>
-    <Description>Provides Locks management (Fluent) capabilities for Microsoft Azure.</Description>
+    <Description>Provides Locks service management (Fluent) capabilities for Microsoft Azure.</Description>
     <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</PackageIconUrl>
-    <PackageTags>Microsoft Azure Locks management;dnszone;network;REST HTTP client;azureofficial;windowsazureofficial;Fluent</PackageTags>
+    <PackageTags>Microsoft Azure Locks management;locks;REST HTTP client;azureofficial;windowsazureofficial;Fluent</PackageTags>
     <PackageProjectUrl>https://github.com/Azure/azure-libraries-for-net/tree/master</PackageProjectUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/Microsoft/dotnet/master/LICENSE</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -58,4 +58,5 @@
   <ItemGroup>
     <ProjectReference Include="..\ResourceManager\Microsoft.Azure.Management.ResourceManager.Fluent.csproj" />
   </ItemGroup>
+  
 </Project>
