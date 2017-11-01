@@ -79,6 +79,13 @@ namespace ManageVpnGatewayVNet2VNetConnection
                     .WithSecondVirtualNetworkGateway(vngw2)
                     .WithSharedKey("MySecretKey")
                     .Create();
+                vngw2.Connections
+                    .Define(connectionName + "2")
+                    .WithVNetToVNet()
+                    .WithSecondVirtualNetworkGateway(vngw1)
+                    .WithSharedKey("MySecretKey")
+                    .Create();
+
                 Utilities.Log("Created virtual network gateway connection");
 
                 //============================================================

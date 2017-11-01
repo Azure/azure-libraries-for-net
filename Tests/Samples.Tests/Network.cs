@@ -143,5 +143,14 @@ namespace Samples.Tests
                 this.GetType().FullName,
                 ManageVpnGatewayVNet2VNetConnection.Program.RunSample);
         }
+
+        [Fact]
+        [Trait("Samples", "Network")]
+        public void ManageVpnGatewaySite2SiteConnectionTest()
+        {
+            RunSampleAsTest(
+                this.GetType().FullName,
+                ManageVpnGatewaySite2SiteConnection.Program.RunSample);
+        }
     }
 }

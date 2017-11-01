@@ -24,7 +24,7 @@ namespace ManageVpnGatewaySite2SiteConnection
          *  - List VPN Gateway connections for particular gateway
          *  - Reset virtual network gateway
          */
-        public static void RunSample(IAzure azure, INetworkManager networkManager)
+        public static void RunSample(IAzure azure)
         {
             string rgName = SdkContext.RandomResourceName("rgNEMV", 24);
             string vnetName = SdkContext.RandomResourceName("vnet", 20);
@@ -62,7 +62,7 @@ namespace ManageVpnGatewaySite2SiteConnection
                 //============================================================
                 // Create local network gateway
                 Utilities.Log("Creating virtual network gateway...");
-                ILocalNetworkGateway lngw = networkManager.LocalNetworkGateways.Define(localGatewayName)
+                ILocalNetworkGateway lngw = azure.LocalNetworkGateways.Define(localGatewayName)
                     .WithRegion(region)
                     .WithExistingResourceGroup(rgName)
                     .WithIPAddress("40.71.184.214")
@@ -124,11 +124,10 @@ namespace ManageVpnGatewaySite2SiteConnection
                     .WithLogLevel(HttpLoggingDelegatingHandler.Level.Basic)
                     .Authenticate(credentials)
                     .WithDefaultSubscription();
-                var networkManager = NetworkManager.Authenticate(credentials, azure.SubscriptionId);
 
                 // Print selected subscription
                 Utilities.Log("Selected subscription: " + azure.SubscriptionId);
-                RunSample(azure, networkManager);
+                RunSample(azure);
             }
             catch (Exception ex)
             {

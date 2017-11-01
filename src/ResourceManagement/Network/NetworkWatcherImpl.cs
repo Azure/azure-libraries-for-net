@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:6ADE0CC8B76996D06BE85035269E8EC9:8852F6E8948BB93D289E3C993AA4F3B7
-        public IToDestination CheckConnectivity()
+        public ConnectivityCheckImpl CheckConnectivity()
         {
             return new ConnectivityCheckImpl(this);
         }
@@ -95,6 +95,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return new VerificationIPFlowImpl(this);
         }
 
+        ///GENMHASH:51DE54583E09DB26EDE4D4AFC37B768E:9FEF863720522C36E187D60DBDE933AE
+        public TroubleshootingImpl Troubleshoot()
+        {
+            return new TroubleshootingImpl(this);
+        }
         
         ///GENMHASH:45B21E1285D8F8B4EDB1C12C6E80097B:EB7D34365F1B3B24BC2A133D30D583EF
         public async Task<Microsoft.Azure.Management.Network.Fluent.IFlowLogSettings> GetFlowLogSettingsAsync(

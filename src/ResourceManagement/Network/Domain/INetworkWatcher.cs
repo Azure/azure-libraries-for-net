@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition;
     using Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Update;
     using Microsoft.Azure.Management.Network.Fluent.NextHop.Definition;
+    using Microsoft.Azure.Management.Network.Fluent.Troubleshooting.Definition;
     using Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definition;
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
@@ -21,6 +22,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<NetworkWatcher.Update.IUpdate>
     {
+        /// <summary>
+        /// Initiate troubleshooting on a specified resource (virtual network gateway or virtual network gateway connection).
+        /// </summary>
+        /// <return>Troubleshooting result information.</return>
+        Troubleshooting.Definition.IWithTargetResource Troubleshoot();
+
         /// <summary>
         /// First step specifying the parameters to get next hop for the VM.
         /// </summary>
