@@ -6,20 +6,17 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.Azure.Management.Network.Fluent;
-
     /// <summary>
     /// Defines values for ExpressRouteCircuitPeeringType.
     /// </summary>
-    public static class ExpressRouteCircuitPeeringType
+    public class ExpressRouteCircuitPeeringType : ExpandableStringEnum<ExpressRouteCircuitPeeringType>
     {
-        public const string AzurePublicPeering = "AzurePublicPeering";
-        public const string AzurePrivatePeering = "AzurePrivatePeering";
-        public const string MicrosoftPeering = "MicrosoftPeering";
+        public static readonly  ExpressRouteCircuitPeeringType AzurePublicPeering = Parse("AzurePublicPeering");
+        public static readonly ExpressRouteCircuitPeeringType AzurePrivatePeering = Parse("AzurePrivatePeering");
+        public static readonly ExpressRouteCircuitPeeringType MicrosoftPeering = Parse("MicrosoftPeering");
     }
 }

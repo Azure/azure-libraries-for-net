@@ -412,6 +412,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     .WithUnmanagedDisks()
                     .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
                     .WithNewStorageAccount(TestUtilities.GenerateName("stg3"))
+                    .WithUpgradeMode(UpgradeMode.Manual)
                     .Create();
 
                 Assert.Null(virtualMachineScaleSet.GetPrimaryInternalLoadBalancer());
@@ -479,7 +480,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.Equal(2, virtualMachineScaleSet.VhdContainers.Count());
                 Assert.Equal(virtualMachineScaleSet.Sku, VirtualMachineScaleSetSkuTypes.StandardA0);
                 // Check defaults
-                Assert.True(virtualMachineScaleSet.UpgradeModel == UpgradeMode.Automatic);
+                Assert.True(virtualMachineScaleSet.UpgradeModel == UpgradeMode.Manual);
                 Assert.Equal(2, virtualMachineScaleSet.Capacity);
                 // Fetch the primary Virtual network
                 primaryNetwork = virtualMachineScaleSet.GetPrimaryNetwork();
@@ -500,7 +501,8 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 ILoadBalancer internalLoadBalancer = CreateInternalLoadBalancer(azure, resourceGroup,
                     primaryNetwork,
-                    "1");
+                    "1", 
+                    Location);
 
                 virtualMachineScaleSet
                     .Update()
@@ -745,6 +747,9 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
                         .WithRoleBasedAccessTo(storageAccount.Id, BuiltInRole.Contributor)
                         .Create();
+
+                    Assert.NotNull(virtualMachineScaleSet.ManagedServiceIdentityType);
+                    Assert.True(virtualMachineScaleSet.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssigned));
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
                     //
@@ -1046,6 +1051,9 @@ namespace Fluent.Tests.Compute.VirtualMachine
             var virtualMachineScaleSetVMs = vmScaleSet.VirtualMachines;
             var virtualMachines = virtualMachineScaleSetVMs.List();
             Assert.Equal(virtualMachines.Count(), vmScaleSet.Capacity);
+            Assert.True(virtualMachines.Count() > 0);
+            virtualMachineScaleSetVMs.UpdateInstances(virtualMachines.First().InstanceId);
+
             foreach (var vm in virtualMachines)
             {
                 Assert.NotNull(vm.Size);
@@ -1085,9 +1093,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 Assert.NotNull(vm.ListNetworkInterfaces());
             }
         }
-
-
-        private ILoadBalancer CreateInternetFacingLoadBalancer(IAzure azure,
+        public static ILoadBalancer CreateInternetFacingLoadBalancer(IAzure azure,
             IResourceGroup resourceGroup,
             string id,
             LoadBalancerSkuType lbSkuType,
@@ -1176,11 +1182,12 @@ namespace Fluent.Tests.Compute.VirtualMachine
             return loadBalancer;
         }
 
-        private ILoadBalancer CreateInternalLoadBalancer(
+        public static ILoadBalancer CreateInternalLoadBalancer(
             IAzure azure,
             IResourceGroup resourceGroup,
             INetwork network,
             string id,
+            Region location,
             [CallerMemberName] string methodName = "testframework_failed")
         {
             string loadBalancerName = TestUtilities.GenerateName("InternalLb" + id + "-", methodName);
@@ -1192,7 +1199,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             string subnetName = "subnet1";
 
             ILoadBalancer loadBalancer = azure.LoadBalancers.Define(loadBalancerName)
-                .WithRegion(Location)
+                .WithRegion(location)
                 .WithExistingResourceGroup(resourceGroup)
                 // Add two rules that uses above backend and probe
                 .DefineLoadBalancingRule("httpRule")

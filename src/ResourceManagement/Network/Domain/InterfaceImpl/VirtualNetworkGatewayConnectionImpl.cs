@@ -74,9 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets the Virtual Network Gateway connection status. Possible values are
-        /// 'Unknown', 'Connecting', 'Connected' and 'NotConnected'. Possible values
-        /// include: 'Unknown', 'Connecting', 'Connected', 'NotConnected'.
+        /// Gets the Virtual Network Gateway connection status.
         /// </summary>
         /// <summary>
         /// Gets the connectionStatus value.

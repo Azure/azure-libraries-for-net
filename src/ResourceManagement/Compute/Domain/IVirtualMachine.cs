@@ -23,6 +23,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta
     {
         /// <summary>
+        /// Gets true if boot diagnostics is enabled for the virtual machine.
+        /// </summary>
+        bool IsBootDiagnosticsEnabled { get; }
+
+        /// <summary>
+        /// Gets the storage blob endpoint uri if boot diagnostics is enabled for the virtual machine.
+        /// </summary>
+        string BootDiagnosticsStorageUri { get; }
+
+        /// <summary>
         /// Gets true if managed disks are used for the virtual machine's disks (OS, data).
         /// </summary>
         bool IsManagedDiskEnabled { get; }
@@ -254,6 +264,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <return>A representation of the deferred computation of this call.</return>
         Task DeallocateAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Captures the virtual machine by copying virtual hard disks of the VM asynchronously.
+        /// </summary>
+        /// <param name="containerName">Destination container name to store the captured VHD.</param>
+        /// <param name="vhdPrefix">The prefix for the VHD holding captured image.</param>
+        /// <param name="overwriteVhd">Whether to overwrites destination VHD if it exists.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        Task<string> CaptureAsync(string containerName, string vhdPrefix, bool overwriteVhd, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets the operating system profile.

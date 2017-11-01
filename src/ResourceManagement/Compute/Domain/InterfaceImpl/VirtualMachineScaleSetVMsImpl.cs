@@ -28,5 +28,61 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IVirtualMachineScaleSetVM>;
         }
+
+        /// <summary>
+        /// Deletes the specified virtual machine instances from the scale set.
+        /// </summary>
+        /// <param name="instanceIds">Instance IDs of the virtual machine scale set instances to be deleted.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMsBeta.DeleteInstancesAsync(IList<string> instanceIds, CancellationToken cancellationToken)
+        {
+            return this.DeleteInstancesAsync(instanceIds, cancellationToken);
+        }
+
+        /// <summary>
+        /// Updates the specified virtual machine instances from the scale set.
+        /// </summary>
+        /// <param name="instanceIds">Instance IDs of the virtual machine scale set instances to be updated.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMsBeta.UpdateInstancesAsync(IList<string> instanceIds, CancellationToken cancellationToken)
+        {
+            return this.UpdateInstancesAsync(instanceIds, cancellationToken);
+        }
+
+        /// <summary>
+        /// Deletes the specified virtual machine instances from the scale set.
+        /// </summary>
+        /// <param name="instanceIds">Instance IDs of the virtual machine scale set instances to be deleted.</param>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMsBeta.DeleteInstances(IList<string> instanceIds)
+        {
+            this.DeleteInstances(instanceIds);
+        }
+
+        /// <summary>
+        /// Deletes the specified virtual machine instances from the scale set.
+        /// </summary>
+        /// <param name="instanceIds">Instance IDs of the virtual machine scale set instances to be deleted.</param>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMsBeta.DeleteInstances(params string[] instanceIds)
+        {
+            this.DeleteInstances(instanceIds);
+        }
+
+        /// <summary>
+        /// Updates the specified virtual machine instances from the scale set.
+        /// </summary>
+        /// <param name="instanceIds">Instance IDs of the virtual machine scale set instances to be updated.</param>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMsBeta.UpdateInstances(IList<string> instanceIds)
+        {
+            this.UpdateInstances(instanceIds);
+        }
+
+        /// <summary>
+        /// Updates the specified virtual machine instances from the scale set.
+        /// </summary>
+        /// <param name="instanceIds">Instance IDs of the virtual machine scale set instances to be updated.</param>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMsBeta.UpdateInstances(params string[] instanceIds)
+        {
+            this.UpdateInstances(instanceIds);
+        }
     }
 }

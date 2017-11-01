@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="skuName">SKU name.</param>
         /// <param name="version">Version name.</param>
         /// <return>The virtual machine image.</return>
-        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImagesBeta.GetImage(string region, string publisherName, string offerName, string skuName, string version)
+        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImages.GetImage(string region, string publisherName, string offerName, string skuName, string version)
         {
             return this.GetImage(region, publisherName, offerName, skuName, version) as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage;
         }

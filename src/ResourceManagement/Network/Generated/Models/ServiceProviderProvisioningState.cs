@@ -6,21 +6,18 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.Azure.Management.Network.Fluent;
-
     /// <summary>
     /// Defines values for ServiceProviderProvisioningState.
     /// </summary>
-    public static class ServiceProviderProvisioningState
+    public class ServiceProviderProvisioningState : ExpandableStringEnum<ServiceProviderProvisioningState>
     {
-        public const string NotProvisioned = "NotProvisioned";
-        public const string Provisioning = "Provisioning";
-        public const string Provisioned = "Provisioned";
-        public const string Deprovisioning = "Deprovisioning";
+        public static readonly ServiceProviderProvisioningState NotProvisioned = Parse("NotProvisioned");
+        public static readonly ServiceProviderProvisioningState Provisioning = Parse("Provisioning");
+        public static readonly ServiceProviderProvisioningState Provisioned = Parse("Provisioned");
+        public static readonly ServiceProviderProvisioningState Deprovisioning = Parse("Deprovisioning");
     }
 }

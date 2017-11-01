@@ -1505,6 +1505,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return Fluent.PowerState.FromInstanceView(this.InstanceView());
         }
 
+        ///GENMHASH:BC4103A90A606609FAB346997701A4DE:F96317098E1E2EA0D5CD8D759145745A
+        public ResourceIdentityType? ManagedServiceIdentityType()
+        {
+            if (this.Inner.Identity != null) {
+                return this.Inner.Identity.Type;
+            }
+            return null;
+        }
+
         ///GENMHASH:D8D324B42ED7B0976032110E0D5D3320:32345B0AB329E6E420804CD852C47627
         public bool IsBootDiagnosticsEnabled()
         {
