@@ -31,7 +31,7 @@ gulp.task('default', function () {
     console.log("\tThe version of AutoRest. E.g. 2.0.9, or the location of AutoRest repo, e.g. E:\\repo\\autorest");
 
     console.log("--autorest-csharp");
-    console.log("\tPath to an autorest.csharp generator to pass as a --use argument to AutoRest.");
+    console.log("\tThe NPM version number for the autorest.csharp generator, e.g. @2.1.28 or @preview, or a file path to a local autorest.csharp generator.");
     console.log("\tUsually you'll only need to provide this and not a --autorest argument in order to work on C# code generation.");
     console.log("\tSee https://github.com/Azure/autorest/blob/master/docs/developer/autorest-extension.md");
 
