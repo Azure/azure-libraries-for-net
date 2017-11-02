@@ -93,13 +93,10 @@ var codegen = function (project, cb) {
     }
 
     const autorestCSArg = args['autorest-csharp'] || "@preview";
-    const autorestCSPath = path.resolve(autorestCSArg);
-    let generatorPath;
-    if (autorestCSArg.startsWith("@")) {
-        generatorPath = "@microsoft.azure/autorest.csharp" + autorestCSArg;
-    } else {
-        generatorPath = autorestCSPath;
-    }
+    const generatorPath = autorestCSArg.startsWith("@")
+        ? "@microsoft.azure/autorest.csharp" + autorestCSArg
+        : path.resolve(autorestCSArg);
+
     const autorestUseArg = `--use=${generatorPath}`;
 
     cmd = autoRestExe + ' ' + specRoot + "/" + mappings[project].source +
