@@ -69,11 +69,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
             else if (tagValue == null)
             {
-                return $"tagname eq '{tagName}'";
+                return $"tagname eq '{tagName.Trim('\'')}'";
             }
             else
             {
-                return $"tagname eq '{tagName}' and tagvalue eq '{tagValue}'";
+                return $"tagname eq '{tagName.Trim('\'')}' and tagvalue eq '{tagValue.Trim('\'')}'";
             }
         }
     }
