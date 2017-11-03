@@ -17,7 +17,7 @@ gulp.task('default', function () {
         "[--autorest-csharp <autorest.csharp info>] " +
         "[--debug] " +
         "[--autorest-args <AutoRest arguments>]\n");
-        
+
     console.log("--spec-root");
     console.log(`\tRoot location of Swagger API specs, default value is "${defaultSpecRoot}"`);
 
@@ -29,15 +29,15 @@ gulp.task('default', function () {
 
     console.log("--autorest");
     console.log("\tThe version of AutoRest. E.g. 2.0.9, or the location of AutoRest repo, e.g. E:\\repo\\autorest");
-    
+
     console.log("--autorest-csharp");
-    console.log("\tPath to an autorest.csharp generator to pass as a --use argument to AutoRest.");
+    console.log("\tThe NPM version number for the autorest.csharp generator, e.g. @2.1.28 or @preview, or a file path to a local autorest.csharp generator.");
     console.log("\tUsually you'll only need to provide this and not a --autorest argument in order to work on C# code generation.");
     console.log("\tSee https://github.com/Azure/autorest/blob/master/docs/developer/autorest-extension.md");
-    
+
     console.log("--debug");
     console.log("\tFlag that allows you to attach a debugger to the autorest.csharp generator.");
-    
+
     console.log("--autorest-args");
     console.log("\tPasses additional argument to AutoRest generator");
 });
@@ -91,10 +91,13 @@ var codegen = function (project, cb) {
     if (mappings[project].fluent !== null && mappings[project].fluent === false) {
         generator = '';
     }
-    
-    const generatorPath = args['autorest-csharp']
-        ? `--use=${path.resolve(args['autorest-csharp'])} `
-        : '';
+
+    const autorestCSArg = args['autorest-csharp'] || "@preview";
+    const generatorPath = autorestCSArg.startsWith("@")
+        ? "@microsoft.azure/autorest.csharp" + autorestCSArg
+        : path.resolve(autorestCSArg);
+
+    const autorestUseArg = `--use=${generatorPath}`;
 
     cmd = autoRestExe + ' ' + specRoot + "/" + mappings[project].source +
         ' --csharp ' +
@@ -104,7 +107,7 @@ var codegen = function (project, cb) {
         ` --csharp.namespace=${mappings[project].package} ` +
         ` --csharp.output-folder=${outputDir} ` +
         ` --csharp.license-header=MICROSOFT_MIT_NO_CODEGEN ` +
-        generatorPath +
+        autorestUseArg +
         regenManager +
         ' --package-version=1.3.0 ' +
         ' --runtime-version=3.3.10 ' +
@@ -113,7 +116,7 @@ var codegen = function (project, cb) {
     if (mappings[project].args !== undefined) {
         cmd = cmd + ' ' + mappings[project].args;
     }
-    
+
     if (debug) {
         cmd += ' --csharp.debugger';
     }
