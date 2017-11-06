@@ -7,6 +7,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
+using System.Linq;
 using Xunit;
 
 namespace Fluent.Tests.ResourceManager
@@ -47,6 +48,18 @@ namespace Fluent.Tests.ResourceManager
                     resourceGroup = resourceManager.ResourceGroups.GetByName(rgName);
                     checkResourceGroup(resourceGroup);
 
+                    // check tag list 
+                    var resourceGroups = resourceManager.ResourceGroups.ListByTag("t3", "v3").ToList();
+
+                    Assert.Single(resourceGroups);
+                    checkResourceGroup(resourceGroups.ElementAt(0));
+
+                    // check tag list with single quotes also works
+                    resourceGroups = resourceManager.ResourceGroups.ListByTag("'t2'", "'v2'").ToList();
+
+                    Assert.Single(resourceGroups);
+                    checkResourceGroup(resourceGroups.ElementAt(0));
+
                     resourceGroup.Update()
                         .WithoutTag("t1")
                         .WithTag("t4", "v4")
@@ -59,7 +72,7 @@ namespace Fluent.Tests.ResourceManager
                 {
                     try
                     {
-                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(rgName);
+                        TestHelper.CreateResourceManager().ResourceGroups.BeginDeleteByName(rgName);
                     }
                     catch
                     { }
