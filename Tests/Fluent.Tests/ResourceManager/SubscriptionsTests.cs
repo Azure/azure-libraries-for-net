@@ -7,6 +7,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Fluent.Tests.ResourceManager
@@ -49,6 +50,19 @@ namespace Fluent.Tests.ResourceManager
                 var uswest = subscription.GetLocationByRegion(Region.USWest);
                 Assert.NotNull(uswest);
                 Assert.Equal(Region.USWest.Name.ToLowerInvariant(), uswest.Name);
+            }
+        }
+
+        [Fact]
+        public async Task CanGetByIdAsync()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var azure = TestHelper.CreateRollupClient();
+                var subscription = await azure.Subscriptions.GetByIdAsync(azure.SubscriptionId);
+
+                Assert.NotNull(subscription);
+                Assert.Equal(subscription.SubscriptionId.ToLowerInvariant(), azure.SubscriptionId.ToLowerInvariant());
             }
         }
     }
