@@ -43,9 +43,17 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             }
         }
 
-        public Task<ISubscription> GetByIdAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<ISubscription> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            var inner = await innerCollection.GetAsync(id, cancellationToken);
+            if (inner == null)
+            {
+                return null;
+            }
+            else
+            {
+                return WrapModel(inner);
+            }
         }
 
         private ISubscription WrapModel(SubscriptionInner innerModel)
