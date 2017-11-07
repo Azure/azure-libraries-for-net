@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             }
             else
             {
-                return new SubscriptionImpl(inner, innerCollection);
+                return WrapModel(inner);
             }
         }
 
