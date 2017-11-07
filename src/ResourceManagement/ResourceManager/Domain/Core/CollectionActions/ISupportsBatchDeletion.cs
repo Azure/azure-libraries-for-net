@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
         /// </summary>
         /// <param name="ids">Resource IDs of the resources to be deleted.</param>
         /// <return>An observable from which all of the successfully deleted resources can be observed.</return>
-        Task<System.Collections.Generic.IEnumerable<string>> DeleteByIdsAsync(IList<string> ids, CancellationToken cancellationToken = default(CancellationToken));
+        Task<IEnumerable<string>> DeleteByIdsAsync(IList<string> ids, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes the specified resources from Azure asynchronously and in parallel.
         /// </summary>
         /// <param name="ids">Resource IDs of the resources to be deleted.</param>
         /// <return>An observable from which all of the successfully deleted resources can be observed.</return>
-        Task<System.Collections.Generic.IEnumerable<string>> DeleteByIdsAsync(string[] ids, CancellationToken cancellationToken = default(CancellationToken));
+        Task<IEnumerable<string>> DeleteByIdsAsync(string[] ids, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes the specified resources from Azure.

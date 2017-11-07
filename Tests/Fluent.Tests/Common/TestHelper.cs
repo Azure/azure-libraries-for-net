@@ -11,6 +11,7 @@ using Microsoft.Azure.Management.CosmosDB.Fluent;
 using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.KeyVault.Fluent;
+using Microsoft.Azure.Management.Locks.Fluent;
 using Microsoft.Azure.Management.Network.Fluent;
 using Microsoft.Azure.Management.Redis.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
@@ -123,6 +124,15 @@ namespace Fluent.Tests.Common
         public static IComputeManager CreateComputeManager()
         {
             return CreateMockedManager(c => ComputeManager
+                .Configure()
+                .WithDelegatingHandlers(GetHandlers())
+                .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)
+                .Authenticate(c, c.DefaultSubscriptionId));
+        }
+
+        public static IAuthorizationManager CreateAuthorizationManager()
+        {
+            return CreateMockedManager(c => AuthorizationManager
                 .Configure()
                 .WithDelegatingHandlers(GetHandlers())
                 .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)

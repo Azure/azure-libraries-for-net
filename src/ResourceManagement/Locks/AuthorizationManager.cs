@@ -1,26 +1,26 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using Microsoft.Azure.Management.ServiceBus.Fluent;
+using Microsoft.Azure.Management.Locks.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using System;
 using System.Linq;
 
-namespace Microsoft.Azure.Management.ServiceBus.Fluent
+namespace Microsoft.Azure.Management.Locks.Fluent
 {
     /// <summary>
-    /// Entry point to Azure Service Bus management.
+    /// Entry point to managing Azure management locks.
     /// </summary>
-    public class ServiceBusManager : Manager<IServiceBusManagementClient>, IServiceBusManager
+    public class AuthorizationManager : Manager<IManagementLockClient>, IAuthorizationManager
     {
         #region Fluent private collections
-        private IServiceBusNamespaces namespaces;
+        private IManagementLocks locks;
         #endregion
 
 
-        public ServiceBusManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new ServiceBusManagementClient(new Uri(restClient.BaseUri),
+        public AuthorizationManager(RestClient restClient, string subscriptionId) :
+            base(restClient, subscriptionId, new ManagementLockClient(new Uri(restClient.BaseUri),
                 restClient.Credentials,
                 restClient.RootHttpHandler,
                 restClient.Handlers.ToArray())
@@ -30,20 +30,20 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
         }
 
-        #region ServiceBusManager builder
+        #region AuthorizationManager builder
 
-        public static IServiceBusManager Authenticate(AzureCredentials credentials, string subscriptionId)
+        public static IAuthorizationManager Authenticate(AzureCredentials credentials, string subscriptionId)
         {
-            return new ServiceBusManager(RestClient.Configure()
+            return new AuthorizationManager(RestClient.Configure()
                     .WithEnvironment(credentials.Environment)
                     .WithCredentials(credentials)
                     .WithDelegatingHandler(new ProviderRegistrationDelegatingHandler(credentials))
                     .Build(), subscriptionId);
         }
 
-        public static IServiceBusManager Authenticate(RestClient restClient, string subscriptionId)
+        public static IAuthorizationManager Authenticate(RestClient restClient, string subscriptionId)
         {
-            return new ServiceBusManager(restClient, subscriptionId);
+            return new AuthorizationManager(restClient, subscriptionId);
         }
 
         public static IConfigurable Configure()
@@ -58,37 +58,37 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
 
         public interface IConfigurable : IAzureConfigurable<IConfigurable>
         {
-            IServiceBusManager Authenticate(AzureCredentials credentials, string subscriptionId);
+            IAuthorizationManager Authenticate(AzureCredentials credentials, string subscriptionId);
         }
 
         protected class Configurable :
             AzureConfigurable<IConfigurable>,
             IConfigurable
         {
-            public IServiceBusManager Authenticate(AzureCredentials credentials, string subscriptionId)
+            public IAuthorizationManager Authenticate(AzureCredentials credentials, string subscriptionId)
             {
-                return new ServiceBusManager(BuildRestClient(credentials), subscriptionId);
+                return new AuthorizationManager(BuildRestClient(credentials), subscriptionId);
             }
         }
 
         #endregion
 
-        public IServiceBusNamespaces Namespaces
+        public IManagementLocks ManagementLocks
         {
             get
             {
-                if (namespaces == null)
+                if (locks == null)
                 {
-                    namespaces = new ServiceBusNamespacesImpl(this);
+                    locks = new ManagementLocksImpl(this);
                 }
-                return namespaces;
+                return locks;
             }
         }
     }
 
-    public interface IServiceBusManager : IManager<IServiceBusManagementClient>
+    public interface IAuthorizationManager : IManager<IManagementLockClient>, IBeta
     {
-        IServiceBusNamespaces Namespaces { get; }
+        IManagementLocks ManagementLocks { get; }
     }
 }
 
