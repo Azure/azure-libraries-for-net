@@ -49,13 +49,13 @@ namespace ManageContainerRegistry
                 IRegistry azureRegistry = azure.ContainerRegistries.Define(acrName)
                         .WithRegion(region)
                         .WithNewResourceGroup(rgName)
-                        .WithNewStorageAccount(saName)
+                        .WithBasicSku()
                         .WithRegistryNameAsAdminUser()
                         .Create();
 
                 Utilities.Print(azureRegistry);
 
-                RegistryListCredentials acrCredentials = azureRegistry.ListCredentials();
+                var acrCredentials = azureRegistry.GetCredentials();
 
                 //=============================================================
                 // Create a Docker client that will be used to push/pull images to/from the Azure Container Registry
@@ -124,7 +124,7 @@ namespace ManageContainerRegistry
                         new Docker.DotNet.Models.AuthConfig()
                         {
                             Username = acrCredentials.Username,
-                            Password = acrCredentials.Passwords[0].Value,
+                            Password = acrCredentials.AccessKeys[AccessKeyType.Primary],
                             ServerAddress = azureRegistry.LoginServerUrl
                         });
 
@@ -140,7 +140,7 @@ namespace ManageContainerRegistry
                         new Docker.DotNet.Models.AuthConfig()
                         {
                             Username = acrCredentials.Username,
-                            Password = acrCredentials.Passwords[0].Value,
+                            Password = acrCredentials.AccessKeys[AccessKeyType.Primary],
                             ServerAddress = azureRegistry.LoginServerUrl
                         });
 

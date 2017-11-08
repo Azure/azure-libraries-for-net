@@ -49,13 +49,13 @@ namespace ManageLinuxWebAppWithContainerRegistry
                 IRegistry azureRegistry = azure.ContainerRegistries.Define(acrName)
                         .WithRegion(region)
                         .WithNewResourceGroup(rgName)
-                        .WithNewStorageAccount(saName)
+                        .WithBasicSku()
                         .WithRegistryNameAsAdminUser()
                         .Create();
 
                 Utilities.Print(azureRegistry);
 
-                var acrCredentials = azureRegistry.ListCredentials();
+                var acrCredentials = azureRegistry.GetCredentials();
 
                 //=============================================================
                 // Create a Docker client that will be used to push/pull images to/from the Azure Container Registry
@@ -124,7 +124,7 @@ namespace ManageLinuxWebAppWithContainerRegistry
                         new Docker.DotNet.Models.AuthConfig()
                         {
                             Username = acrCredentials.Username,
-                            Password = acrCredentials.Passwords[0].Value,
+                            Password = acrCredentials.AccessKeys[AccessKeyType.Primary],
                             ServerAddress = azureRegistry.LoginServerUrl
                         });
 
@@ -138,7 +138,7 @@ namespace ManageLinuxWebAppWithContainerRegistry
                             .WithExistingResourceGroup(rgName)
                             .WithNewLinuxPlan(PricingTier.StandardS1)
                             .WithPrivateRegistryImage(privateRepoUrl + ":latest", "http://" + azureRegistry.LoginServerUrl)
-                            .WithCredentials(acrCredentials.Username, acrCredentials.Passwords[0].Value)
+                            .WithCredentials(acrCredentials.Username, acrCredentials.AccessKeys[AccessKeyType.Primary])
                             .WithAppSetting("PORT", "8080")
                             .Create();
 

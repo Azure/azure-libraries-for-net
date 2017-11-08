@@ -6,13 +6,17 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition;
     using Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Update;
+    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Models;
+    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Definition;
+    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition;
+    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Storage.Fluent;
+    using System.Collections.Generic;
     using System;
-    using Models;
 
-    public partial class RegistryImpl 
+    internal partial class RegistryImpl 
     {
         /// <summary>
         /// The parameters of a storage account for the container registry.
@@ -26,12 +30,23 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         }
 
         /// <summary>
-        /// The parameters for a storage account for the container registry.
+        /// The ID of an existing storage account for the container registry.
         /// If specified, the storage account must be in the same physical location as the container registry.
+        /// </summary>
+        /// <param name="id">The resource ID of the storage account; must be in the same physical location as the container registry.</param>
+        /// <return>The next stage.</return>
+        Registry.Definition.IWithCreate Registry.Definition.IWithStorageAccountBeta.WithExistingStorageAccount(string id)
+        {
+            return this.WithExistingStorageAccount(id) as Registry.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// The parameters for a storage account for the container registry.
+        /// A new storage account with default setting and specified name will be created.
         /// </summary>
         /// <param name="storageAccountName">The name of the storage account.</param>
         /// <return>The next stage.</return>
-        Registry.Definition.IWithCreate Registry.Definition.IWithStorageAccount.WithNewStorageAccount(string storageAccountName)
+        Registry.Definition.IWithCreate Registry.Definition.IWithStorageAccountBeta.WithNewStorageAccount(string storageAccountName)
         {
             return this.WithNewStorageAccount(storageAccountName) as Registry.Definition.IWithCreate;
         }
@@ -57,6 +72,46 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         Registry.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Registry.Update.IUpdate>.Update()
         {
             return this.Update() as Registry.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Begins the definition of a new webhook to be added to this container registry.
+        /// </summary>
+        /// <param name="name">The name of the new webhook.</param>
+        /// <return>The first stage of the new webhook definition.</return>
+        Webhook.Definition.IBlank<Registry.Definition.IWithCreate> Registry.Definition.IWithWebhook.DefineWebhook(string name)
+        {
+            return this.DefineWebhook(name) as Webhook.Definition.IBlank<Registry.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Begins the definition of a new webhook to be added to this container registry.
+        /// </summary>
+        /// <param name="name">The name of the new webhook.</param>
+        /// <return>The first stage of the new webhook definition.</return>
+        Webhook.UpdateDefinition.IBlank<Registry.Update.IUpdate> Registry.Update.IWithWebhook.DefineWebhook(string name)
+        {
+            return this.DefineWebhook(name) as Webhook.UpdateDefinition.IBlank<Registry.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Begins the description of an update of an existing webhook of this container registry.
+        /// </summary>
+        /// <param name="name">The name of an existing webhook.</param>
+        /// <return>The first stage of the webhook update description.</return>
+        Webhook.UpdateResource.IBlank<Registry.Update.IUpdate> Registry.Update.IWithWebhook.UpdateWebhook(string name)
+        {
+            return this.UpdateWebhook(name) as Webhook.UpdateResource.IBlank<Registry.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Removes a webhook from the container registry.
+        /// </summary>
+        /// <param name="name">Name of the webhook to remove.</param>
+        /// <return>The next stage of the container registry update.</return>
+        Registry.Update.IUpdate Registry.Update.IWithWebhook.WithoutWebhook(string name)
+        {
+            return this.WithoutWebhook(name) as Registry.Update.IUpdate;
         }
 
         /// <summary>
@@ -87,6 +142,15 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         }
 
         /// <summary>
+        /// Lists the quota usages for the specified container registry.
+        /// </summary>
+        /// <return>A representation of the future computation of this call.</return>
+        async Task<Models.RegistryUsage> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.ListQuotaUsagesAsync(CancellationToken cancellationToken)
+        {
+            return await this.ListQuotaUsagesAsync(cancellationToken) as Models.RegistryUsage;
+        }
+
+        /// <summary>
         /// Gets the creation date of the container registry in ISO8601 format.
         /// </summary>
         System.DateTime Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.CreationDate
@@ -98,7 +162,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         }
 
         /// <summary>
-        /// Gets the name of the storage account for the container registry.
+        /// Gets the name of the storage account for the container registry; 'null' if container register SKU a managed tier.
         /// </summary>
         string Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.StorageAccountName
         {
@@ -109,7 +173,27 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         }
 
         /// <summary>
-        /// Gets the value that indicates whether the admin user is enabled. This value is false by default.
+        /// Lists the quota usages for the specified container registry.
+        /// </summary>
+        /// <return>The list of container registry's quota usages.</return>
+        System.Collections.Generic.IReadOnlyCollection<Models.RegistryUsage> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.ListQuotaUsages()
+        {
+            return this.ListQuotaUsages() as System.Collections.Generic.IReadOnlyCollection<Models.RegistryUsage>;
+        }
+
+        /// <summary>
+        /// Gets the ID of the storage account for the container registry; 'null' if container register SKU a managed tier.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.StorageAccountId
+        {
+            get
+            {
+                return this.StorageAccountId();
+            }
+        }
+
+        /// <summary>
+        /// Gets the value that indicates whether the admin user is enabled.
         /// </summary>
         bool Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.AdminUserEnabled
         {
@@ -119,21 +203,32 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             }
         }
 
-        /// <return>The login credentials for the specified container registry.</return>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.ListCredentials()
+        /// <summary>
+        /// Gets returns entry point to manage container registry webhooks.
+        /// </summary>
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhookOperations Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.Webhooks
         {
-            return this.ListCredentials() as Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials;
+            get
+            {
+                return this.Webhooks() as Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhookOperations;
+            }
         }
 
         /// <summary>
         /// Gets the SKU of the container registry.
         /// </summary>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.Sku Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.Sku
+        Models.Sku Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.Sku
         {
             get
             {
-                return this.Sku() as Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.Sku;
+                return this.Sku() as Models.Sku;
             }
+        }
+
+        /// <return>The login credentials for the specified container registry.</return>
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.GetCredentials()
+        {
+            return this.GetCredentials() as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
         }
 
         /// <summary>
@@ -147,30 +242,93 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             }
         }
 
-        /// <return>The login credentials for the specified container registry.</return>
-        async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.ListCredentialsAsync(CancellationToken cancellationToken)
+        /// <summary>
+        /// Regenerates one of the login credentials for the specified container registry.
+        /// </summary>
+        /// <param name="accessKeyType">The admin user access key name to regenerate the value for.</param>
+        /// <return>A representation of the future computation of this call.</return>
+        async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.RegenerateCredentialAsync(AccessKeyType accessKeyType, CancellationToken cancellationToken)
         {
-            return await this.ListCredentialsAsync(cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials;
+            return await this.RegenerateCredentialAsync(accessKeyType, cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
+        }
+
+        /// <return>A representation of the future computation of this call.</return>
+        async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.GetCredentialsAsync(CancellationToken cancellationToken)
+        {
+            return await this.GetCredentialsAsync(cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
         }
 
         /// <summary>
         /// Regenerates one of the login credentials for the specified container registry.
         /// </summary>
-        /// <param name="passwordName">The password name.</param>
+        /// <param name="accessKeyType">The admin user access key name to regenerate the value for.</param>
         /// <return>The result of the regeneration.</return>
-        async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.RegenerateCredentialAsync(PasswordName passwordName, CancellationToken cancellationToken)
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.RegenerateCredential(AccessKeyType accessKeyType)
         {
-            return await this.RegenerateCredentialAsync(passwordName, cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials;
+            return this.RegenerateCredential(accessKeyType) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
         }
 
         /// <summary>
-        /// Regenerates one of the login credentials for the specified container registry.
+        /// Creates a container registry with a 'Classic' SKU type.
         /// </summary>
-        /// <param name="passwordName">The password name.</param>
-        /// <return>The result of the regeneration.</return>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry.RegenerateCredential(PasswordName passwordName)
+        /// <return>The next stage of the definition.</return>
+        Registry.Definition.IWithStorageAccount Registry.Definition.IWithSkuBeta.WithClassicSku()
         {
-            return this.RegenerateCredential(passwordName) as Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials;
+            return this.WithClassicSku() as Registry.Definition.IWithStorageAccount;
+        }
+
+        /// <summary>
+        /// Creates a 'managed' registry with a 'Basic' SKU type.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Registry.Definition.IWithCreate Registry.Definition.IWithSkuBeta.WithBasicSku()
+        {
+            return this.WithBasicSku() as Registry.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Creates a 'managed' registry with a 'Standard' SKU type.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Registry.Definition.IWithCreate Registry.Definition.IWithSkuBeta.WithStandardSku()
+        {
+            return this.WithStandardSku() as Registry.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Creates a 'managed' registry with a 'Premium' SKU type.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Registry.Definition.IWithCreate Registry.Definition.IWithSkuBeta.WithPremiumSku()
+        {
+            return this.WithPremiumSku() as Registry.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Updates the current container registry to a 'managed' registry with a 'Basic' SKU type.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Registry.Update.IUpdate Registry.Update.IWithSkuBeta.WithBasicSku()
+        {
+            return this.WithBasicSku() as Registry.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Updates the current container registry to a 'managed' registry with a 'Standard' SKU type.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Registry.Update.IUpdate Registry.Update.IWithSkuBeta.WithStandardSku()
+        {
+            return this.WithStandardSku() as Registry.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Updates the current container registry to a 'managed' registry with a 'Premium' SKU type.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Registry.Update.IUpdate Registry.Update.IWithSkuBeta.WithPremiumSku()
+        {
+            return this.WithPremiumSku() as Registry.Update.IUpdate;
         }
     }
 }
