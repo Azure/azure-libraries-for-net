@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:2252977E8E81E15955133EF4D9829EDE
         protected override async Task<ManagementLockObjectInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await manager.Inner.ManagementLocks.GetByScopeAsync(LockedResourceId(), Name);
+            return await manager.Inner.ManagementLocks.GetByScopeAsync(LockedResourceId(), Name, cancellationToken);
         }
 
         ///GENMHASH:3513A533142751151F1DDB6B852F4240:71F7EAA1F4FF7E923EAB47041E86EE95
@@ -125,13 +125,13 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         ///GENMHASH:ACA2D5620579D8158A29586CA1FF4BC6:899F2B088BBBD76CCBC31221756265BC
         public string Id()
         {
-            return this.Inner.Id;
+            return Inner.Id;
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:B25D1A2293FFAAEA018C81BC35FAA9F3
         public override async Task<IManagementLock> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inner = await Manager().Inner.ManagementLocks.CreateOrUpdateByScopeAsync(lockedResourceId, Name, Inner);
+            var inner = await Manager().Inner.ManagementLocks.CreateOrUpdateByScopeAsync(lockedResourceId, Name, Inner, cancellationToken);
             SetInner(inner);
             return this;
         }

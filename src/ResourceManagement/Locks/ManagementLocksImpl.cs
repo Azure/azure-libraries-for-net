@@ -9,6 +9,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Text;
     using System;
+    using System.Linq;
 
     /// <summary>
     /// Implementation for ManagementLocks.
@@ -59,19 +60,10 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         {
             string resourceId = ResourceIdFromLockId(id);
             string lockName = ResourceUtils.NameFromResourceId(id);
-            IManagementLock l;
-            ManagementLockObjectInner inner = null;
-            if (resourceId == null || lockName == null)
+            IManagementLock l = null;
+            if (resourceId != null && lockName != null)
             {
-                l = null;
-            }
-            else if (null == (inner = await Inner().GetByScopeAsync(resourceId, lockName)))
-            {
-                l = null;
-            }
-            else
-            {
-                l = WrapModel(inner);
+                l = WrapModel(await Inner().GetByScopeAsync(resourceId, lockName));
             }
             return l;
         }
@@ -120,10 +112,11 @@ namespace Microsoft.Azure.Management.Locks.Fluent
                 string scopeName = ResourceIdFromLockId(id);
                 if (lockName != null && scopeName != null)
                 {
-                    Task t = Inner().DeleteByScopeAsync(scopeName, lockName).ContinueWith((Task parent) =>
-                    {
-                        ids1.Add(id);
-                    });
+                    Task t = Inner().DeleteByScopeAsync(scopeName, lockName, cancellationToken).ContinueWith(
+                        (Task parent) => { ids1.Add(id); },
+                        cancellationToken, 
+                        TaskContinuationOptions.ExecuteSynchronously,
+                        TaskScheduler.Default);
                     tts.Add(t);
                 }
             }
@@ -159,7 +152,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         ///GENMHASH:9D38835F71DF2C39BF88CBB588420D30:FD7FA95DB661326602615F08FEA599EC
         public async Task DeleteByResourceGroupAsync(string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Inner().DeleteAtResourceGroupLevelAsync(resourceGroupName, name);
+            await Inner().DeleteAtResourceGroupLevelAsync(resourceGroupName, name, cancellationToken);
         }
 
         #endregion
@@ -183,8 +176,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         public async Task<IPagedCollection<IManagementLock>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IManagementLock, ManagementLockObjectInner>.LoadPage(
-                async (cancellation) => await Inner().ListAtResourceGroupLevelAsync(
-                    resourceGroupName, null, cancellationToken),
+                async (cancellation) => await Inner().ListAtResourceGroupLevelAsync(resourceGroupName, null, cancellationToken),
                 Inner().ListAtResourceLevelNextAsync,
                 WrapModel,
                 loadAllPages,
@@ -243,16 +235,17 @@ namespace Microsoft.Azure.Management.Locks.Fluent
                 // ID too short to be possibly a lock ID
                 return null;
             }
-
-            if (!parts[parts.Length - 2].Equals("locks", System.StringComparison.OrdinalIgnoreCase)
-                || !parts[parts.Length - 3].Equals("Microsoft.Authorization", System.StringComparison.OrdinalIgnoreCase)
-                || !parts[parts.Length - 4].Equals("providers", System.StringComparison.OrdinalIgnoreCase))
+            else if (!parts[parts.Length - 2].Equals("locks", StringComparison.OrdinalIgnoreCase)
+                || !parts[parts.Length - 3].Equals("Microsoft.Authorization", StringComparison.OrdinalIgnoreCase)
+                || !parts[parts.Length - 4].Equals("providers", StringComparison.OrdinalIgnoreCase))
             {
                 // Not a lock ID
                 return null;
             }
-
-            return parts;
+            else
+            {
+                return parts;
+            }
         }
 
         /// <summary>
@@ -272,12 +265,10 @@ namespace Microsoft.Azure.Management.Locks.Fluent
             StringBuilder resourceId = new StringBuilder();
             for (int i = 0; i < lockIdParts.Length - 4; i++)
             {
-                if (lockIdParts[i] != string.Empty)
-                {
+                if (lockIdParts[i] != string.Empty) {
                     resourceId.Append("/").Append(lockIdParts[i]);
                 }
             }
-
             return resourceId.ToString();
         }
 
