@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     {
         private WebhookCreateParametersInner webhookCreateParametersInner;
         private WebhookUpdateParametersInner webhookUpdateParametersInner;
-        private IDictionary<string,string> tags;
-        private IDictionary<string,string> customHeaders;
+        private IDictionary<string, string> tags;
+        private IDictionary<string, string> customHeaders;
         private string serviceUri;
         private bool isInCreateMode;
         private IRegistryManager containerRegistryManager;
@@ -264,7 +264,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 if (this.isInCreateMode)
                 {
                     this.EnsureWebhookCreateParametersInner().CustomHeaders = this.customHeaders;
-                } else
+                }
+                else
                 {
                     this.EnsureWebhookUpdateParametersInner().CustomHeaders = this.customHeaders;
                 }
@@ -281,7 +282,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 if (this.isInCreateMode)
                 {
                     this.EnsureWebhookCreateParametersInner().Tags = this.tags;
-                } else
+                }
+                else
                 {
                     this.EnsureWebhookUpdateParametersInner().Tags = this.tags;
                 }
@@ -298,7 +300,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             {
                 this.customHeaders = new Dictionary<string, string>();
             }
- 
+
             return this;
         }
 
@@ -342,7 +344,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             {
                 this.webhookCreateParametersInner = new WebhookCreateParametersInner();
                 this.webhookCreateParametersInner.Location = this.Parent.RegionName;
-            } else
+            }
+            else
             {
                 this.webhookUpdateParametersInner = new WebhookUpdateParametersInner();
             }
@@ -478,7 +481,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
                 if (this.isInCreateMode)
                 {
                     this.EnsureWebhookCreateParametersInner().Scope = repositoriesScope;
-                } else
+                }
+                else
                 {
                     this.EnsureWebhookUpdateParametersInner().Scope = repositoriesScope;
                 }
@@ -494,7 +498,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             if (this.isInCreateMode)
             {
                 this.EnsureWebhookCreateParametersInner().Status = status;
-            } else
+            }
+            else
             {
                 this.EnsureWebhookUpdateParametersInner().Status = status;
             }
@@ -503,7 +508,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         }
 
         ///GENMHASH:32E35A609CF1108D0FC5FAAF9277C1AA:ADF6158E0BD084081912CE99A59CD733
-        public WebhookImpl WithTags(IDictionary<string,string> tags)
+        public WebhookImpl WithTags(IDictionary<string, string> tags)
         {
             this.tags = tags;
             if (this.isInCreateMode)

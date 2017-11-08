@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// Represents a webhook collection associated with a container registry.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLldlYmhvb2tzQ2xpZW50SW1wbA==
-    internal partial class WebhooksClientImpl  :
+    internal partial class WebhooksClientImpl :
         IWebhooksClient
     {
         private IRegistryManager containerRegistryManager;

@@ -9,14 +9,14 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// <summary>
     /// Implementation for RegistryCredentials.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLlJlZ2lzdHJ5Q3JlZGVudGlhbHNJbXBs
-    internal partial class RegistryCredentialsImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLlJlZ2lzdHJ5Q3JlZGVudGlhbHNJbXBs
+    internal partial class RegistryCredentialsImpl :
         Wrapper<Models.RegistryListCredentialsResultInner>,
         IRegistryCredentials
     {
-        private Dictionary<Microsoft.Azure.Management.ContainerRegistry.Fluent.AccessKeyType,string> accessKeys;
+        private Dictionary<Microsoft.Azure.Management.ContainerRegistry.Fluent.AccessKeyType, string> accessKeys;
         ///GENMHASH:F6689097E1B9BC16B53ACA7675E327BD:603A3E60C8411D55FF2F69556CAD694C
-        public IReadOnlyDictionary<Microsoft.Azure.Management.ContainerRegistry.Fluent.AccessKeyType,string> AccessKeys()
+        public IReadOnlyDictionary<Microsoft.Azure.Management.ContainerRegistry.Fluent.AccessKeyType, string> AccessKeys()
         {
             return this.accessKeys;
         }
