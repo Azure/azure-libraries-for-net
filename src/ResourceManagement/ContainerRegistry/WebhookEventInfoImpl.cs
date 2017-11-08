@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// <summary>
     /// Response containing the webhook event info.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLldlYmhvb2tFdmVudEluZm9JbXBs
-    internal partial class WebhookEventInfoImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLldlYmhvb2tFdmVudEluZm9JbXBs
+    internal partial class WebhookEventInfoImpl :
         Wrapper<Models.EventModel>,
         IWebhookEventInfo
     {

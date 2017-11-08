@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// <summary>
     /// Implementation for CheckNameAvailabilityResult.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLkNoZWNrTmFtZUF2YWlsYWJpbGl0eVJlc3VsdEltcGw=
-    internal partial class CheckNameAvailabilityResultImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLkNoZWNrTmFtZUF2YWlsYWJpbGl0eVJlc3VsdEltcGw=
+    internal partial class CheckNameAvailabilityResultImpl :
         Wrapper<Models.RegistryNameStatusInner>,
         ICheckNameAvailabilityResult
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// </summary>
         /// <param name="inner">The inner object.</param>
         ///GENMHASH:E5AF0EA7E8C7D9DA59B43D01D7005C57:B0DF93AB45A1550B74A2BFD026E1B756
-        internal  CheckNameAvailabilityResultImpl(RegistryNameStatusInner inner) : base(inner)
+        internal CheckNameAvailabilityResultImpl(RegistryNameStatusInner inner) : base(inner)
         {
         }
     }

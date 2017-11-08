@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// <summary>
     /// Represents a webhook collection associated with a container registry.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLldlYmhvb2tzSW1wbA==
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLldlYmhvb2tzSW1wbA==
     internal partial class WebhooksImpl :
         ExternalChildResourcesNonCached<Microsoft.Azure.Management.ContainerRegistry.Fluent.WebhookImpl,
             Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook,

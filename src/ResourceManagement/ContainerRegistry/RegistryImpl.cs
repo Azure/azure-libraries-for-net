@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// Implementation for Registry and its create and update interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLlJlZ2lzdHJ5SW1wbA==
-    internal partial class RegistryImpl  :
+    internal partial class RegistryImpl :
         GroupableResource<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry,
             Models.RegistryInner,
             Microsoft.Azure.Management.ContainerRegistry.Fluent.RegistryImpl,
@@ -148,14 +148,16 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             {
                 if (this.creatableStorageAccountKey != null)
                 {
-                    IStorageAccount storageAccount = this.CreatedResource(this.creatableStorageAccountKey) as IStorageAccount;
+                    var storageAccount = this.CreatedResource(this.creatableStorageAccountKey);
                     this.Inner.StorageAccount = new StorageAccountProperties() { Id = storageAccount.Id };
-                } else
+                }
+                else
                 {
                     if (this.storageAccountId != null)
                     {
                         this.Inner.StorageAccount = new StorageAccountProperties() { Id = this.storageAccountId };
-                    } else
+                    }
+                    else
                     {
                         this.Inner.StorageAccount = null;
                     }
@@ -163,7 +165,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
 
                 var registryInner = await this.Manager.Inner.Registries.CreateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken);
                 this.SetInner(registryInner);
-            } else
+            }
+            else
             {
                 this.EnsureUpdateParameters().Tags = this.Inner.Tags;
                 var updatedRegistryInner = await this.Manager.Inner.Registries.UpdateAsync(this.ResourceGroupName, this.Name, this.updateParameters, cancellationToken);
@@ -303,7 +306,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             if (this.IsInCreateMode)
             {
                 this.Inner.AdminUserEnabled = false;
-            } else
+            }
+            else
             {
                 this.EnsureUpdateParameters().AdminUserEnabled = false;
             }

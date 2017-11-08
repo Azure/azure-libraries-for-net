@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// Implementation for Registries.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLlJlZ2lzdHJpZXNJbXBs
-    internal partial class RegistriesImpl  :
+    internal partial class RegistriesImpl :
         TopLevelModifiableResources<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry,
             Microsoft.Azure.Management.ContainerRegistry.Fluent.RegistryImpl,
             Models.RegistryInner,
@@ -77,7 +77,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             if (registryUsageListResultInner != null)
             {
                 return new ReadOnlyCollection<Models.RegistryUsage>(registryUsageListResultInner.Value);
-            } else
+            }
+            else
             {
                 return new List<RegistryUsage>().AsReadOnly();
             }
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         ///GENMHASH:CB30AC7B9ED01655BDAFC504C752C36B:3BA76E0C8296F6CDA0AB13C8919C2265
         public async Task<IReadOnlyCollection<Models.RegistryUsage>> ListQuotaUsagesAsync(string resourceGroupName, string registryName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var registryUsageListResultInner = await this.Inner.ListUsagesAsync(resourceGroupName, registryName);
+            var registryUsageListResultInner = await this.Inner.ListUsagesAsync(resourceGroupName, registryName, cancellationToken);
             if (registryUsageListResultInner != null)
             {
                 return new ReadOnlyCollection<Models.RegistryUsage>(registryUsageListResultInner.Value);
@@ -118,7 +119,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         ///GENMHASH:5B0E9060E6A010D9AEC0DEE8C817853F:81A8B8E3661A768A3015CC178EFC3516
         public async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials> RegenerateCredentialAsync(string resourceGroupName, string registryName, AccessKeyType accessKeyType, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return new RegistryCredentialsImpl(await this.Inner.RegenerateCredentialAsync(resourceGroupName, registryName, accessKeyType.ToPasswordName()));
+            return new RegistryCredentialsImpl(await this.Inner.RegenerateCredentialAsync(resourceGroupName, registryName, accessKeyType.ToPasswordName(), cancellationToken));
         }
 
         ///GENMHASH:33AB8152BAD8DC92B90BBF1EE75AA2E4:6B2A22FE2735E021977722837B52DF1E

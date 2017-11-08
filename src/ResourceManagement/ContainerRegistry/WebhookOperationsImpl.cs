@@ -12,19 +12,20 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// Represents a webhook collection associated with a container registry.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnJlZ2lzdHJ5LmltcGxlbWVudGF0aW9uLldlYmhvb2tPcGVyYXRpb25zSW1wbA==
-    internal partial class WebhookOperationsImpl  :
+    internal partial class WebhookOperationsImpl :
         IWebhookOperations
     {
         private RegistryImpl containerRegistry;
         private WebhooksClientImpl webhooksClient;
         ///GENMHASH:E7EF4818FCB5238BA8C15964B9D45DA8:A40E3B70909E8E38B28A47FB40E4072F
-        internal  WebhookOperationsImpl(RegistryImpl containerRegistry)
+        internal WebhookOperationsImpl(RegistryImpl containerRegistry)
         {
             this.containerRegistry = containerRegistry;
             if (containerRegistry != null)
             {
                 this.webhooksClient = new WebhooksClientImpl(containerRegistry.Manager, containerRegistry);
-            } else
+            }
+            else
             {
                 this.webhooksClient = null;
             }
@@ -76,7 +77,8 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             if (this.containerRegistry != null)
             {
                 return this.webhooksClient.List(this.containerRegistry.ResourceGroupName, this.containerRegistry.Name);
-            } else
+            }
+            else
             {
                 return new List<IWebhook>().AsReadOnly();
             }
@@ -91,7 +93,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             }
             else
             {
-                var task = new Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IWebhook>>(() => 
+                var task = new Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IWebhook>>(() =>
                 {
                     return PagedCollection<IWebhook, Models.WebhookInner>.CreateFromEnumerable(new List<IWebhook>());
                 });
