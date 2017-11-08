@@ -2,24 +2,14 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition
 {
+    using Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.ServiceBus.Fluent;
-    using Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Definition;
-
-    /// <summary>
-    /// The stage of the definition which contains all the minimum required inputs for
-    /// the resource to be created (via  WithCreate.create()), but also allows
-    /// for any other optional settings to be specified.
-    /// </summary>
-    public interface IWithCreate  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.ServiceBus.Fluent.ITopicAuthorizationRule>
-    {
-    }
 
     /// <summary>
     /// The first stage of topic authorization rule definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Definition.IWithListenOrSendOrManage<Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IWithCreate>
     {
     }
@@ -27,9 +17,19 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.De
     /// <summary>
     /// The entirety of the topic authorization rule definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IBlank,
         Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IWithCreate
+    {
+    }
+
+    /// <summary>
+    /// The stage of the definition which contains all the minimum required inputs for
+    /// the resource to be created (via  WithCreate.create()), but also allows
+    /// for any other optional settings to be specified.
+    /// </summary>
+    public interface IWithCreate :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.ServiceBus.Fluent.ITopicAuthorizationRule>
     {
     }
 }

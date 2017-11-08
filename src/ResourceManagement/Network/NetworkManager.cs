@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         private NetworkWatchersImpl networkWatchers;
         private VirtualNetworkGatewaysImpl virtualNetworkGateways;
         private LocalNetworkGatewaysImpl localNetworkGateways;
+        private ExpressRouteCircuitsImpl expressRouteCircuits;
 
         private NetworkManager(RestClient restClient, string subscriptionId) :
             base(restClient, subscriptionId, new NetworkManagementClient(new Uri(restClient.BaseUri),
@@ -252,20 +253,26 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 return localNetworkGateways;
             }
         }
+
+        /// <summary>
+        /// return entry point to express route circuits management
+        /// </summary>
+        public IExpressRouteCircuits ExpressRouteCircuits
+        {
+            get
+            {
+                if (expressRouteCircuits == null)
+                {
+                    expressRouteCircuits = new ExpressRouteCircuitsImpl(this);
+                }
+
+                return expressRouteCircuits;
+            }
+        }
     }
 
     public interface INetworkManagerBeta : IBeta
     {
-        /// <summary>
-        /// return entry point to load balancer management
-        /// </summary>
-        ILoadBalancers LoadBalancers { get; }
-
-        /// <summary>
-        /// Entry point to application gateway management.
-        /// </summary>
-        IApplicationGateways ApplicationGateways { get; }
-
         /// <summary>
         /// return entry point to network watchers management
         /// </summary>
@@ -277,13 +284,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IVirtualNetworkGateways VirtualNetworkGateways { get; }
 
         /// <summary>
-        /// return entry point to virtual network gateways management
+        /// return entry point to local network gateways management
         /// </summary>
         ILocalNetworkGateways LocalNetworkGateways { get; }
+
+        /// <summary>
+        /// return entry point to express route circuits management
+        /// </summary>
+        IExpressRouteCircuits ExpressRouteCircuits { get; }
     }
 
     public interface INetworkManager : INetworkManagerBeta, IManager<INetworkManagementClient>
     {
+        /// <summary>
+        /// Entry point to application gateway management.
+        /// </summary>
+        IApplicationGateways ApplicationGateways { get; }
+
+        /// <summary>
+        /// return entry point to load balancer management
+        /// </summary>
+        ILoadBalancers LoadBalancers { get; }
+
         /// <summary>
         /// return entry point to virtual network management
         /// </summary>

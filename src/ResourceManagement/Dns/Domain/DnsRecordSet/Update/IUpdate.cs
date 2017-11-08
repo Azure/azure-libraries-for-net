@@ -168,9 +168,14 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the CNAME record set update allowing to update the CNAME record.
     /// </summary>
-    public interface IWithCNameRecordAlias :
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IWithCNameRecordAliasBeta
+    public interface IWithCNameRecordAlias
     {
+        /// <summary>
+        /// The new alias for the CNAME record set.
+        /// </summary>
+        /// <param name="alias">The alias.</param>
+        /// <return>The next stage of the record set update.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateCNameRecordSet.IUpdateCNameRecordSet WithAlias(string alias);
     }
 
     /// <summary>
@@ -196,16 +201,27 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the record set update allowing to enable ETag validation.
     /// </summary>
-    public interface IWithETagCheck :
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IWithETagCheckBeta
+    public interface IWithETagCheck
     {
+        /// <summary>
+        /// Specifies that If-Match header needs to set to the current eTag value associated
+        /// with the record set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IUpdate WithETagCheck();
+
+        /// <summary>
+        /// Specifies that if-Match header needs to set to the given eTag value.
+        /// </summary>
+        /// <param name="eTagValue">The eTag value.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IUpdate WithETagCheck(string eTagValue);
     }
 
     /// <summary>
     /// The stage of the SRV record definition allowing to add or remove TXT record.
     /// </summary>
-    public interface IWithTxtRecordTextValue :
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IWithTxtRecordTextValueBeta
+    public interface IWithTxtRecordTextValue
     {
         /// <summary>
         /// Removes a Txt record with the given text from this record set.
@@ -213,6 +229,13 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
         /// <param name="text">The text value.</param>
         /// <return>The next stage of the record set update.</return>
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateTxtRecordSet.IUpdateTxtRecordSet WithoutText(string text);
+
+        /// <summary>
+        /// Removes a Txt record with the given text (split into 255 char chunks) from this record set.
+        /// </summary>
+        /// <param name="textChunks">The text value as list.</param>
+        /// <return>The next stage of the record set update.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateTxtRecordSet.IUpdateTxtRecordSet WithoutText(IList<string> textChunks);
 
         /// <summary>
         /// Creates a Txt record with the given text in this record set.
@@ -274,54 +297,5 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
         /// <param name="ipv4Address">An IPv4 address.</param>
         /// <return>The next stage of the record set update.</return>
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateARecordSet.IUpdateARecordSet WithIPv4Address(string ipv4Address);
-    }
-
-    /// <summary>
-    /// The stage of the CNAME record set update allowing to update the CNAME record.
-    /// </summary>
-    public interface IWithCNameRecordAliasBeta :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-        /// <summary>
-        /// The new alias for the CNAME record set.
-        /// </summary>
-        /// <param name="alias">The alias.</param>
-        /// <return>The next stage of the record set update.</return>
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateCNameRecordSet.IUpdateCNameRecordSet WithAlias(string alias);
-    }
-
-    /// <summary>
-    /// The stage of the record set update allowing to enable ETag validation.
-    /// </summary>
-    public interface IWithETagCheckBeta :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-        /// <summary>
-        /// Specifies that If-Match header needs to set to the current eTag value associated
-        /// with the record set.
-        /// </summary>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IUpdate WithETagCheck();
-
-        /// <summary>
-        /// Specifies that if-Match header needs to set to the given eTag value.
-        /// </summary>
-        /// <param name="eTagValue">The eTag value.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IUpdate WithETagCheck(string eTagValue);
-    }
-
-    /// <summary>
-    /// The stage of the SRV record definition allowing to add or remove TXT record.
-    /// </summary>
-    public interface IWithTxtRecordTextValueBeta :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-        /// <summary>
-        /// Removes a Txt record with the given text (split into 255 char chunks) from this record set.
-        /// </summary>
-        /// <param name="textChunks">The text value as list.</param>
-        /// <return>The next stage of the record set update.</return>
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateTxtRecordSet.IUpdateTxtRecordSet WithoutText(IList<string> textChunks);
     }
 }

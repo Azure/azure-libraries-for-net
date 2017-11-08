@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <return>The application gateway backends associated with this network IP configuration.</return>
-        System.Collections.Generic.IReadOnlyCollection<Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackend> Microsoft.Azure.Management.Network.Fluent.INicIPConfigurationBaseBeta.ListAssociatedApplicationGatewayBackends()
+        System.Collections.Generic.IReadOnlyCollection<Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackend> Microsoft.Azure.Management.Network.Fluent.INicIPConfigurationBase.ListAssociatedApplicationGatewayBackends()
         {
             return this.ListAssociatedApplicationGatewayBackends() as System.Collections.Generic.IReadOnlyCollection<Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackend>;
         }

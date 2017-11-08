@@ -9,16 +9,34 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     using Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition;
 
     /// <summary>
-    /// The stage of the network interface update allowing to specify subnet.
+    /// The template for an update operation, containing all the settings that
+    /// can be modified.
     /// </summary>
-    public interface IWithPrimaryNetworkSubnet 
+    public interface IUpdate  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate>,
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithPrimaryNetworkSubnet,
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithPrimaryPrivateIP,
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithPrimaryPublicIPAddress,
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithNetworkSecurityGroup,
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithIPForwarding,
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithDnsServer,
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithIPConfiguration,
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithLoadBalancer,
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithAcceleratedNetworking
+    {
+    }
+
+    /// <summary>
+    /// The stage of the network interface definition allowing to disable accelerated networking.
+    /// </summary>
+    public interface IWithAcceleratedNetworking 
     {
         /// <summary>
-        /// Associate a subnet with the network interface.
+        /// Disables accelerated networking.
         /// </summary>
-        /// <param name="name">The subnet name.</param>
-        /// <return>The next stage of the network interface update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithSubnet(string name);
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutAcceleratedNetworking();
     }
 
     /// <summary>
@@ -44,115 +62,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
         /// </param>
         /// <return>The next stage of network interface update.</return>
         Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithPrimaryPrivateIPAddressStatic(string staticPrivateIPAddress);
-    }
-
-    /// <summary>
-    /// The template for an update operation, containing all the settings that
-    /// can be modified.
-    /// </summary>
-    public interface IUpdate  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate>,
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithPrimaryNetworkSubnet,
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithPrimaryPrivateIP,
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithPrimaryPublicIPAddress,
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithNetworkSecurityGroup,
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithIPForwarding,
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithDnsServer,
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithIPConfiguration,
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithLoadBalancer,
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithAcceleratedNetworking
-    {
-    }
-
-    /// <summary>
-    /// The stage of the network interface update allowing to associate it with a load balancer.
-    /// </summary>
-    public interface IWithLoadBalancer 
-    {
-        /// <summary>
-        /// Associates the network interface's primary IP configuration with a backend of an existing load balancer.
-        /// </summary>
-        /// <param name="loadBalancer">An existing load balancer.</param>
-        /// <param name="backendName">The name of an existing backend on that load balancer.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithExistingLoadBalancerBackend(ILoadBalancer loadBalancer, string backendName);
-
-        /// <summary>
-        /// Associates the network interface's primary IP configuration with an inbound NAT rule of an existing load balancer.
-        /// </summary>
-        /// <param name="loadBalancer">An existing load balancer.</param>
-        /// <param name="inboundNatRuleName">The name of an existing inbound NAT rule on the selected load balancer.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithExistingLoadBalancerInboundNatRule(ILoadBalancer loadBalancer, string inboundNatRuleName);
-
-        /// <summary>
-        /// Removes all the existing associations with any load balancer inbound NAT rules.
-        /// </summary>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutLoadBalancerInboundNatRules();
-
-        /// <summary>
-        /// Removes all the existing associations with any load balancer backends.
-        /// </summary>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutLoadBalancerBackends();
-    }
-
-    /// <summary>
-    /// The stage of the network interface update allowing to configure IP configuration.
-    /// </summary>
-    public interface IWithIPConfiguration 
-    {
-        /// <summary>
-        /// Starts definition of a secondary IP configuration.
-        /// </summary>
-        /// <param name="name">Name for the IP configuration.</param>
-        /// <return>The first stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate> DefineSecondaryIPConfiguration(string name);
-
-        /// <summary>
-        /// Starts update of an IP configuration.
-        /// </summary>
-        /// <param name="name">Name of the IP configuration.</param>
-        /// <return>The first stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate UpdateIPConfiguration(string name);
-
-        /// <summary>
-        /// Removes the specified IP configuration.
-        /// </summary>
-        /// <param name="name">The name of an existing IP configuration.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutIPConfiguration(string name);
-    }
-
-    /// <summary>
-    /// The stage of the network interface update allowing to specify DNS servers.
-    /// </summary>
-    public interface IWithDnsServer 
-    {
-        /// <summary>
-        /// Specifies the IP address of the custom DNS server to associate with the network interface.
-        /// Note this method's effect is additive, i.e. each time it is used, the new dns server is
-        /// added to the network interface.
-        /// </summary>
-        /// <param name="ipAddress">The IP address of the DNS server.</param>
-        /// <return>The next stage of the network interface update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithDnsServer(string ipAddress);
-
-        /// <summary>
-        /// Removes a DNS server associated with the network interface.
-        /// </summary>
-        /// <param name="ipAddress">The IP address of the DNS server.</param>
-        /// <return>The next stage of the network interface update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutDnsServer(string ipAddress);
-
-        /// <summary>
-        /// Specifies to use the default Azure DNS server for the network interface.
-        /// Using azure DNS server will remove any custom DNS server associated with this network interface.
-        /// </summary>
-        /// <return>The next stage of the network interface update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithAzureDnsServer();
     }
 
     /// <summary>
@@ -206,6 +115,51 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     }
 
     /// <summary>
+    /// The stage of the network interface update allowing to configure IP configuration.
+    /// </summary>
+    public interface IWithIPConfiguration 
+    {
+        /// <summary>
+        /// Starts definition of a secondary IP configuration.
+        /// </summary>
+        /// <param name="name">Name for the IP configuration.</param>
+        /// <return>The first stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IBlank<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate> DefineSecondaryIPConfiguration(string name);
+
+        /// <summary>
+        /// Starts update of an IP configuration.
+        /// </summary>
+        /// <param name="name">Name of the IP configuration.</param>
+        /// <return>The first stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate UpdateIPConfiguration(string name);
+
+        /// <summary>
+        /// Removes the specified IP configuration.
+        /// </summary>
+        /// <param name="name">The name of an existing IP configuration.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutIPConfiguration(string name);
+    }
+
+    /// <summary>
+    /// The stage of the network interface update allowing to enable or disable IP forwarding.
+    /// </summary>
+    public interface IWithIPForwarding 
+    {
+        /// <summary>
+        /// Enable IP forwarding in the network interface.
+        /// </summary>
+        /// <return>The next stage of the network interface update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithIPForwarding();
+
+        /// <summary>
+        /// Disable IP forwarding in the network interface.
+        /// </summary>
+        /// <return>The next stage of the network interface update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutIPForwarding();
+    }
+
+    /// <summary>
     /// The stage of the network interface update allowing to associate network security group.
     /// </summary>
     public interface IWithNetworkSecurityGroup 
@@ -232,41 +186,78 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     }
 
     /// <summary>
-    /// The stage of the network interface update allowing to enable or disable IP forwarding.
+    /// The stage of the network interface update allowing to specify DNS servers.
     /// </summary>
-    public interface IWithIPForwarding 
+    public interface IWithDnsServer 
     {
         /// <summary>
-        /// Enable IP forwarding in the network interface.
+        /// Specifies the IP address of the custom DNS server to associate with the network interface.
+        /// Note this method's effect is additive, i.e. each time it is used, the new dns server is
+        /// added to the network interface.
         /// </summary>
+        /// <param name="ipAddress">The IP address of the DNS server.</param>
         /// <return>The next stage of the network interface update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithIPForwarding();
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithDnsServer(string ipAddress);
 
         /// <summary>
-        /// Disable IP forwarding in the network interface.
+        /// Removes a DNS server associated with the network interface.
+        /// </summary>
+        /// <param name="ipAddress">The IP address of the DNS server.</param>
+        /// <return>The next stage of the network interface update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutDnsServer(string ipAddress);
+
+        /// <summary>
+        /// Specifies to use the default Azure DNS server for the network interface.
+        /// Using azure DNS server will remove any custom DNS server associated with this network interface.
         /// </summary>
         /// <return>The next stage of the network interface update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutIPForwarding();
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithAzureDnsServer();
     }
 
     /// <summary>
-    /// The stage of the network interface definition allowing to disable accelerated networking.
+    /// The stage of the network interface update allowing to associate it with a load balancer.
     /// </summary>
-    public interface IWithAcceleratedNetworking  :
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithAcceleratedNetworkingBeta
+    public interface IWithLoadBalancer 
     {
+        /// <summary>
+        /// Associates the network interface's primary IP configuration with a backend of an existing load balancer.
+        /// </summary>
+        /// <param name="loadBalancer">An existing load balancer.</param>
+        /// <param name="backendName">The name of an existing backend on that load balancer.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithExistingLoadBalancerBackend(ILoadBalancer loadBalancer, string backendName);
+
+        /// <summary>
+        /// Associates the network interface's primary IP configuration with an inbound NAT rule of an existing load balancer.
+        /// </summary>
+        /// <param name="loadBalancer">An existing load balancer.</param>
+        /// <param name="inboundNatRuleName">The name of an existing inbound NAT rule on the selected load balancer.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithExistingLoadBalancerInboundNatRule(ILoadBalancer loadBalancer, string inboundNatRuleName);
+
+        /// <summary>
+        /// Removes all the existing associations with any load balancer inbound NAT rules.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutLoadBalancerInboundNatRules();
+
+        /// <summary>
+        /// Removes all the existing associations with any load balancer backends.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutLoadBalancerBackends();
     }
 
     /// <summary>
-    /// The stage of the network interface definition allowing to disable accelerated networking.
+    /// The stage of the network interface update allowing to specify subnet.
     /// </summary>
-    public interface IWithAcceleratedNetworkingBeta  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    public interface IWithPrimaryNetworkSubnet 
     {
         /// <summary>
-        /// Disables accelerated networking.
+        /// Associate a subnet with the network interface.
         /// </summary>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithoutAcceleratedNetworking();
+        /// <param name="name">The subnet name.</param>
+        /// <return>The next stage of the network interface update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate WithSubnet(string name);
     }
 }

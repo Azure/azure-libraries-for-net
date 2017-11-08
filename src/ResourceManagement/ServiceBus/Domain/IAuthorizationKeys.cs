@@ -8,15 +8,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// <summary>
     /// Authorization key and connection string of authorization rule associated with Service Bus entities.
     /// </summary>
-    public interface IAuthorizationKeys  :
-        IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.ServiceBus.Fluent.Models.ResourceListKeysInner>
+    public interface IAuthorizationKeys :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ResourceListKeysInner>
     {
-        /// <summary>
-        /// Gets primary key associated with the rule.
-        /// </summary>
-        string PrimaryKey { get; }
-
         /// <summary>
         /// Gets secondary key associated with the rule.
         /// </summary>
@@ -31,5 +25,10 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// Gets secondary connection string.
         /// </summary>
         string SecondaryConnectionString { get; }
+
+        /// <summary>
+        /// Gets primary key associated with the rule.
+        /// </summary>
+        string PrimaryKey { get; }
     }
 }

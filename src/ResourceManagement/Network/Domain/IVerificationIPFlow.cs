@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
-    /// A client-side reperesentation allowing to verify IP packet flow from specific vm
+    /// A client-side representation allowing to verify IP packet flow from specific VM
     /// based on direction, protocol, local IP, remote IP, local port and remote port.
     /// </summary>
     public interface IVerificationIPFlow  :
@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>
     {
         /// <summary>
-        /// Gets the access value. Indicates whether the traffic is allowed or denied. Possible values
-        /// include: 'Allow', 'Deny'.
+        /// Gets the access value. Indicates whether the traffic is allowed or denied.
         /// </summary>
         /// <summary>
         /// Gets the access value.

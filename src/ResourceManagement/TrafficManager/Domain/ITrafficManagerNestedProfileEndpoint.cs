@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure traffic manager profile nested profile endpoint.
     /// </summary>
-    public interface ITrafficManagerNestedProfileEndpoint  :
+    public interface ITrafficManagerNestedProfileEndpoint :
         Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerEndpoint
     {
         /// <summary>

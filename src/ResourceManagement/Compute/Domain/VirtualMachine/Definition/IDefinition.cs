@@ -840,8 +840,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of the virtual machine definition allowing to enable boot diagnostics.
     /// </summary>
-    public interface IWithBootDiagnostics  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    public interface IWithBootDiagnostics
     {
         /// <summary>
         /// Specifies that boot diagnostics needs to be enabled in the virtual machine.

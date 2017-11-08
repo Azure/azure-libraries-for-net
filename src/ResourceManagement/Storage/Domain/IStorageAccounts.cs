@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     /// <summary>
     /// Entry point for storage accounts management API.
     /// </summary>
-    public interface IStorageAccounts  :
+    public interface IStorageAccounts :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<StorageAccount.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingById,

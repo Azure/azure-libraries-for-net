@@ -31,9 +31,20 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public bool CheckExistence(string name)
         {
-            return Extensions.Synchronize(() => CheckExistenceAsync(name));
+            return Contain(name);
         }
+        
         public async Task<bool> CheckExistenceAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await ContainAsync(name, cancellationToken);
+        }
+
+        public bool Contain(string name)
+        {
+            return Extensions.Synchronize(() => ContainAsync(name));
+        }
+
+        public async Task<bool> ContainAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await Inner.CheckExistenceAsync(name, cancellationToken);
         }

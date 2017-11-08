@@ -2,8 +2,17 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerPublicFrontend.UpdateDefinition
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.UpdateDefinition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
+
+    /// <summary>
+    /// The stage of a public frontend definition allowing to specify an existing public IP address.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithPublicIPAddress<ParentT>  :
+        Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.UpdateDefinition.IWithPublicIPAddress<Microsoft.Azure.Management.Network.Fluent.LoadBalancerPublicFrontend.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>>
+    {
+    }
 
     /// <summary>
     /// The first stage of a public frontend definition.
@@ -22,15 +31,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerPublicFrontend.U
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithAttach<ParentT>  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>
-    {
-    }
-
-    /// <summary>
-    /// The stage of a public frontend definition allowing to specify an existing public IP address.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithPublicIPAddress<ParentT>  :
-        Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.UpdateDefinition.IWithPublicIPAddress<Microsoft.Azure.Management.Network.Fluent.LoadBalancerPublicFrontend.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>>
     {
     }
 

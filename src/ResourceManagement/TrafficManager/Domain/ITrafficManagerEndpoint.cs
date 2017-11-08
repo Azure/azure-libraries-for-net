@@ -4,14 +4,14 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.TrafficManager.Fluent.Models;
+    using System.Collections.Generic;
 
     /// <summary>
     /// An immutable client-side representation of an Azure traffic manager profile endpoint.
     /// </summary>
-    public interface ITrafficManagerEndpoint  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerEndpoint,Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfile>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.EndpointInner>, 
-        Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerEndpointBeta
+    public interface ITrafficManagerEndpoint :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerEndpoint, Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfile>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.EndpointInner>
     {
         /// <summary>
         /// Gets the priority of the endpoint which is used when traffic manager profile is configured with
@@ -34,6 +34,11 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// Weighted traffic-routing method.
         /// </summary>
         long RoutingWeight { get; }
+
+        /// <summary>
+        /// Gets the geographic location codes indicating the locations to which traffic will be distributed.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<string> GeographicLocationCodes { get; }
 
         /// <summary>
         /// Gets the monitor status of the endpoint.

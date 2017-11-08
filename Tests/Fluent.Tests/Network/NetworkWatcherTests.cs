@@ -163,6 +163,79 @@ namespace Fluent.Tests.Network
             }
         }
 
+        [Fact]
+        public void CanTroubleshootConnection()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string newName = SdkContext.RandomResourceName("nw", 6);
+                var groupName = SdkContext.RandomResourceName("rg", 6);
+                String gatewayName = SdkContext.RandomResourceName("vngw", 8);
+                String connectionName = SdkContext.RandomResourceName("vngwc", 8);
+
+                // Create network watcher
+                var manager = TestHelper.CreateNetworkManager();
+
+                // make sure Network Watcher is disabled in current subscription and region as only one can exist
+                EnsureNetworkWatcherNotExists(manager.NetworkWatchers);
+
+                var nw = manager.NetworkWatchers.Define(newName)
+                    .WithRegion(REGION)
+                    .WithNewResourceGroup(groupName)
+                    .Create();
+
+                IVirtualNetworkGateway vngw1 = manager.VirtualNetworkGateways.Define(gatewayName)
+                    .WithRegion(REGION)
+                    .WithExistingResourceGroup(groupName)
+                    .WithNewNetwork("10.11.0.0/16", "10.11.255.0/27")
+                    .WithRouteBasedVpn()
+                    .WithSku(VirtualNetworkGatewaySkuName.VpnGw1)
+                    .Create();
+
+                IVirtualNetworkGateway vngw2 = manager.VirtualNetworkGateways.Define(gatewayName + "2")
+                    .WithRegion(REGION)
+                    .WithExistingResourceGroup(groupName)
+                    .WithNewNetwork("10.41.0.0/16", "10.41.255.0/27")
+                    .WithRouteBasedVpn()
+                    .WithSku(VirtualNetworkGatewaySkuName.VpnGw1)
+                    .Create();
+                IVirtualNetworkGatewayConnection connection1 = vngw1.Connections
+                    .Define(connectionName)
+                    .WithVNetToVNet()
+                    .WithSecondVirtualNetworkGateway(vngw2)
+                    .WithSharedKey("MySecretKey")
+                    .Create();
+
+                // Create storage account to store troubleshooting information
+                IStorageAccount storageAccount = EnsureStorageAccount(groupName);
+
+                // Troubleshoot connection
+                ITroubleshooting troubleshooting = nw.Troubleshoot()
+                    .WithTargetResourceId(connection1.Id)
+                    .WithStorageAccount(storageAccount.Id)
+                    .WithStoragePath(storageAccount.EndPoints.Primary.Blob + "results")
+                    .Execute();
+                Assert.Equal("UnHealthy", troubleshooting.Code);
+
+                // Create corresponding connection on second gateway to make it work
+                vngw2.Connections
+                    .Define(connectionName + "2")
+                    .WithVNetToVNet()
+                    .WithSecondVirtualNetworkGateway(vngw1)
+                    .WithSharedKey("MySecretKey")
+                    .Create();
+                TestHelper.Delay(250000);
+                troubleshooting = nw.Troubleshoot()
+                    .WithTargetResourceId(connection1.Id)
+                    .WithStorageAccount(storageAccount.Id)
+                    .WithStoragePath(storageAccount.EndPoints.Primary.Blob + "results")
+                    .Execute();
+                Assert.Equal("Healthy", troubleshooting.Code);
+
+                manager.ResourceManager.ResourceGroups.DeleteByName(nw.ResourceGroupName);
+            }
+        }
+
         // Helper method to pre-create infrastructure to test Network Watcher
         ICreatedResources<IVirtualMachine> EnsureNetwork(INetworkManager networkManager, IComputeManager computeManager, String groupName)
         {

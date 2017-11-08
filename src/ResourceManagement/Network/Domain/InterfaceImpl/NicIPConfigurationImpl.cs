@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
-    internal partial class NicIPConfigurationImpl 
+    internal partial class NicIPConfigurationImpl
     {
         /// <return>The associated public IP address.</return>
         Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress Microsoft.Azure.Management.Network.Fluent.IHasPublicIPAddress.GetPublicIPAddress()
@@ -202,6 +202,26 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Specifies the application gateway backend to associate this IP configuration with.
+        /// </summary>
+        /// <param name="appGateway">An existing application gateway.</param>
+        /// <param name="backendName">The name of an existing backend on the application gateway.</param>
+        /// <return>The next stage of the update.</return>
+        NicIPConfiguration.Update.IUpdate NicIPConfiguration.Update.IWithApplicationGatewayBeta.WithExistingApplicationGatewayBackend(IApplicationGateway appGateway, string backendName)
+        {
+            return this.WithExistingApplicationGatewayBackend(appGateway, backendName) as NicIPConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Removes all existing associations with application gateway backends.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        NicIPConfiguration.Update.IUpdate NicIPConfiguration.Update.IWithApplicationGatewayBeta.WithoutApplicationGatewayBackends()
+        {
+            return this.WithoutApplicationGatewayBackends() as NicIPConfiguration.Update.IUpdate;
+        }
+
+        /// <summary>
         /// Attaches the child definition to the parent resource update.
         /// </summary>
         /// <return>The next stage of the parent definition.</return>
@@ -322,6 +342,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="loadBalancer">An existing load balancer.</param>
         /// <param name="inboundNatRuleName">The name of an existing inbound NAT rule on the selected load balancer.</param>
         /// <return>The next stage of the update.</return>
+        NicIPConfiguration.UpdateDefinition.IWithAttach<NetworkInterface.Update.IUpdate> NicIPConfiguration.UpdateDefinition.IWithLoadBalancer<NetworkInterface.Update.IUpdate>.WithExistingLoadBalancerInboundNatRule(ILoadBalancer loadBalancer, string inboundNatRuleName)
+        {
+            return this.WithExistingLoadBalancerInboundNatRule(loadBalancer, inboundNatRuleName) as NicIPConfiguration.UpdateDefinition.IWithAttach<NetworkInterface.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the load balancer to associate this IP configuration with.
+        /// </summary>
+        /// <param name="loadBalancer">An existing load balancer.</param>
+        /// <param name="backendName">The name of an existing backend on that load balancer.</param>
+        /// <return>The next stage of the update.</return>
+        NicIPConfiguration.UpdateDefinition.IWithAttach<NetworkInterface.Update.IUpdate> NicIPConfiguration.UpdateDefinition.IWithLoadBalancer<NetworkInterface.Update.IUpdate>.WithExistingLoadBalancerBackend(ILoadBalancer loadBalancer, string backendName)
+        {
+            return this.WithExistingLoadBalancerBackend(loadBalancer, backendName) as NicIPConfiguration.UpdateDefinition.IWithAttach<NetworkInterface.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the load balancer inbound NAT rule to associate this IP configuration with.
+        /// </summary>
+        /// <param name="loadBalancer">An existing load balancer.</param>
+        /// <param name="inboundNatRuleName">The name of an existing inbound NAT rule on the selected load balancer.</param>
+        /// <return>The next stage of the definition.</return>
         NicIPConfiguration.Definition.IWithAttach<NetworkInterface.Definition.IWithCreate> NicIPConfiguration.Definition.IWithLoadBalancer<NetworkInterface.Definition.IWithCreate>.WithExistingLoadBalancerInboundNatRule(ILoadBalancer loadBalancer, string inboundNatRuleName)
         {
             return this.WithExistingLoadBalancerInboundNatRule(loadBalancer, inboundNatRuleName) as NicIPConfiguration.Definition.IWithAttach<NetworkInterface.Definition.IWithCreate>;
@@ -332,7 +374,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="loadBalancer">An existing load balancer.</param>
         /// <param name="backendName">The name of an existing backend on that load balancer.</param>
-        /// <return>The next stage of the update.</return>
+        /// <return>The next stage of the definition.</return>
         NicIPConfiguration.Definition.IWithAttach<NetworkInterface.Definition.IWithCreate> NicIPConfiguration.Definition.IWithLoadBalancer<NetworkInterface.Definition.IWithCreate>.WithExistingLoadBalancerBackend(ILoadBalancer loadBalancer, string backendName)
         {
             return this.WithExistingLoadBalancerBackend(loadBalancer, backendName) as NicIPConfiguration.Definition.IWithAttach<NetworkInterface.Definition.IWithCreate>;
@@ -396,6 +438,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
         NicIPConfiguration.Definition.IWithAttach<NetworkInterface.Definition.IWithCreate> HasPublicIPAddress.Definition.IWithNewPublicIPAddressNoDnsLabel<NicIPConfiguration.Definition.IWithAttach<NetworkInterface.Definition.IWithCreate>>.WithNewPublicIPAddress()
         {
             return this.WithNewPublicIPAddress() as NicIPConfiguration.Definition.IWithAttach<NetworkInterface.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Specifies the application gateway backend to associate this IP configuration with.
+        /// </summary>
+        /// <param name="appGateway">An existing application gateway.</param>
+        /// <param name="backendName">The name of an existing backend on the application gateway.</param>
+        /// <return>The next stage of the definition.</return>
+        NicIPConfiguration.UpdateDefinition.IWithAttach<NetworkInterface.Update.IUpdate> NicIPConfiguration.UpdateDefinition.IWithApplicationGatewayBeta<NetworkInterface.Update.IUpdate>.WithExistingApplicationGatewayBackend(IApplicationGateway appGateway, string backendName)
+        {
+            return this.WithExistingApplicationGatewayBackend(appGateway, backendName) as NicIPConfiguration.UpdateDefinition.IWithAttach<NetworkInterface.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the application gateway backend to associate this IP configuration with.
+        /// </summary>
+        /// <param name="appGateway">An existing application gateway.</param>
+        /// <param name="backendName">The name of an existing backend on the application gateway.</param>
+        /// <return>The next stage of the definition.</return>
+        NicIPConfiguration.Definition.IWithAttach<NetworkInterface.Definition.IWithCreate> NicIPConfiguration.Definition.IWithApplicationGatewayBeta<NetworkInterface.Definition.IWithCreate>.WithExistingApplicationGatewayBackend(IApplicationGateway appGateway, string backendName)
+        {
+            return this.WithExistingApplicationGatewayBackend(appGateway, backendName) as NicIPConfiguration.Definition.IWithAttach<NetworkInterface.Definition.IWithCreate>;
         }
 
         /// <summary>

@@ -510,6 +510,24 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Checks the backend health.
+        /// </summary>
+        /// <return>Backend healths indexed by backend name.</return>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.CheckBackendHealth()
+        {
+            return this.CheckBackendHealth() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>;
+        }
+
+        /// <summary>
+        /// Checks the backend health asynchronously.
+        /// </summary>
+        /// <return>A representation of the future computation of this call.</return>
+        async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.CheckBackendHealthAsync(CancellationToken cancellationToken)
+        {
+            return await this.CheckBackendHealthAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>;
+        }
+
+        /// <summary>
         /// Gets frontend listeners, indexed by name.
         /// </summary>
         System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayListener> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.Listeners

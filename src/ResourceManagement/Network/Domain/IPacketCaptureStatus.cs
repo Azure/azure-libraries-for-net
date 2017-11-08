@@ -35,8 +35,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         string Id { get; }
 
         /// <summary>
-        /// Gets the status of the packet capture session. Possible values include:
-        /// 'NotStarted', 'Running', 'Stopped', 'Error', 'Unknown'.
+        /// Gets the status of the packet capture session.
         /// </summary>
         /// <summary>
         /// Gets the packetCaptureStatus value.

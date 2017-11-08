@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition;
     using Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Update;
     using Microsoft.Azure.Management.Network.Fluent.NextHop.Definition;
+    using Microsoft.Azure.Management.Network.Fluent.Troubleshooting.Definition;
     using Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definition;
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
@@ -51,6 +52,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         async Task<Microsoft.Azure.Management.Network.Fluent.ITopology> Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.GetTopologyAsync(string targetResourceGroup, CancellationToken cancellationToken)
         {
             return await this.GetTopologyAsync(targetResourceGroup, cancellationToken) as Microsoft.Azure.Management.Network.Fluent.ITopology;
+        }
+
+        /// <summary>
+        /// Initiate troubleshooting on a specified resource (virtual network gateway or virtual network gateway connection).
+        /// </summary>
+        /// <return>Troubleshooting result information.</return>
+        Troubleshooting.Definition.IWithTargetResource Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.Troubleshoot()
+        {
+            return this.Troubleshoot() as Troubleshooting.Definition.IWithTargetResource;
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoin
     /// <summary>
     /// The entirety of a nested profile endpoint update as a part of parent traffic manager profile profile update.
     /// </summary>
-    public interface IUpdateNestedProfileEndpoint  :
+    public interface IUpdateNestedProfileEndpoint :
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IWithNestedProfileConfig,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IWithSourceTrafficRegion,
         Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerEndpoint.Update.IUpdate

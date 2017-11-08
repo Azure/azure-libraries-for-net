@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// Entry point to MX record sets in an Azure DNS zone.
     /// </summary>
-    public interface IMXRecordSets  :
+    public interface IMXRecordSets :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<Microsoft.Azure.Management.Dns.Fluent.IMXRecordSet>
     {
     }

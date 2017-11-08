@@ -2,20 +2,10 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.Update
 {
+    using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update;
     using Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
-    using Microsoft.Azure.Management.Network.Fluent;
-
-    /// <summary>
-    /// The entirety of a private frontend update as part of a load balancer update.
-    /// </summary>
-    public interface IUpdate  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>,
-        Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.Update.IWithSubnet,
-        Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Update.IWithPrivateIPAddress<Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.Update.IUpdate>
-    {
-    }
 
     /// <summary>
     /// The stage of a private frontend update allowing to specify a subnet from the selected network.
@@ -29,5 +19,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.
         /// <param name="subnetName">The name of a subnet.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.Update.IUpdate WithExistingSubnet(INetwork network, string subnetName);
+    }
+
+    /// <summary>
+    /// The entirety of a private frontend update as part of a load balancer update.
+    /// </summary>
+    public interface IUpdate  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>,
+        Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.Update.IWithSubnet,
+        Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Update.IWithPrivateIPAddress<Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.Update.IUpdate>
+    {
     }
 }

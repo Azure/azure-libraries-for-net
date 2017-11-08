@@ -1277,7 +1277,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the storage blob endpoint uri if boot diagnostics is enabled for the virtual machine.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.BootDiagnosticsStorageUri
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.BootDiagnosticsStorageUri
         {
             get
             {
@@ -1338,7 +1338,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="vhdPrefix">The prefix for the VHD holding captured image.</param>
         /// <param name="overwriteVhd">Whether to overwrites destination VHD if it exists.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task<string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.CaptureAsync(string containerName, string vhdPrefix, bool overwriteVhd, CancellationToken cancellationToken)
+        async Task<string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.CaptureAsync(string containerName, string vhdPrefix, bool overwriteVhd, CancellationToken cancellationToken)
         {
             return await this.CaptureAsync(containerName, vhdPrefix, overwriteVhd, cancellationToken);
         }
@@ -1355,9 +1355,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the type of Managed Service Identity used for the virtual machine.
+        /// </summary>
+        Models.ResourceIdentityType? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.ManagedServiceIdentityType
+        {
+            get
+            {
+                return this.ManagedServiceIdentityType();
+            }
+        }
+
+        /// <summary>
         /// Gets true if boot diagnostics is enabled for the virtual machine.
         /// </summary>
-        bool Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.IsBootDiagnosticsEnabled
+        bool Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.IsBootDiagnosticsEnabled
         {
             get
             {

@@ -23,9 +23,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     public interface IWithBackend 
     {
         /// <summary>
-        /// Associates the request routing rule with an existing backend on this application gateway.
+        /// Associates the request routing rule with a backend on this application gateway.
+        /// If the specified backend does not yet exist, it will be automatically created.
         /// </summary>
-        /// <param name="name">The name of an existing backend.</param>
+        /// <param name="name">The name of a backend.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IUpdate ToBackend(string name);
     }

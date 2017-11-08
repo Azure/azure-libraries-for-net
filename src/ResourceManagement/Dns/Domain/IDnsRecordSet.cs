@@ -9,8 +9,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// An immutable client-side representation of a record set in Azure DNS Zone.
     /// </summary>
-    public interface IDnsRecordSet  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet,Microsoft.Azure.Management.Dns.Fluent.IDnsZone>,
+    public interface IDnsRecordSet :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet, Microsoft.Azure.Management.Dns.Fluent.IDnsZone>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.RecordSetInner>
     {
         /// <summary>
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <summary>
         /// Gets the metadata associated with this record set.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Metadata { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Metadata { get; }
 
         /// <summary>
         /// Gets the type of records in this record set.

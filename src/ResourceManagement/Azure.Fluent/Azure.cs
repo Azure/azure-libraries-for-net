@@ -176,6 +176,15 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        /// <returns>entry point to managing Azure Local Network Gateways</returns>
+        public ILocalNetworkGateways LocalNetworkGateways
+        {
+            get
+            {
+                return networkManager.LocalNetworkGateways;
+            }
+        }
+
         /// <returns>entry point to managing deployments</returns>
         public IDeployments Deployments
         {
@@ -625,6 +634,11 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Azure Virtual Network Gateways management
         /// </summary>
         IVirtualNetworkGateways VirtualNetworkGateways { get; }
+
+        /// <summary>
+        /// Entry point to Azure Local Network Gateways management
+        /// </summary>
+        ILocalNetworkGateways LocalNetworkGateways { get; }
 
         /// <summary>
         /// Entry point to Azure Web App management.

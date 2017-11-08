@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="frontendName">An existing frontend name from this load balancer.</param>
         /// <return>The next stage of the update.</return>
-        LoadBalancerInboundNatPool.Update.IUpdate HasFrontend.Update.IWithFrontendBeta<LoadBalancerInboundNatPool.Update.IUpdate>.FromFrontend(string frontendName)
+        LoadBalancerInboundNatPool.Update.IUpdate HasFrontend.Update.IWithFrontend<LoadBalancerInboundNatPool.Update.IUpdate>.FromFrontend(string frontendName)
         {
             return this.FromFrontend(frontendName) as LoadBalancerInboundNatPool.Update.IUpdate;
         }
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="frontendName">An existing frontend name.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontendBeta<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromFrontend(string frontendName)
+        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromFrontend(string frontendName)
         {
             return this.FromFrontend(frontendName) as LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
         }
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="networkResourceId">The resource ID of an existing network.</param>
         /// <param name="subnetName">The name of an existing subnet within the specified network.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontendBeta<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromExistingSubnet(string networkResourceId, string subnetName)
+        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromExistingSubnet(string networkResourceId, string subnetName)
         {
             return this.FromExistingSubnet(networkResourceId, subnetName) as LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
         }
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="network">An existing network.</param>
         /// <param name="subnetName">The name of an existing subnet within the specified network.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontendBeta<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromExistingSubnet(INetwork network, string subnetName)
+        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromExistingSubnet(INetwork network, string subnetName)
         {
             return this.FromExistingSubnet(network, subnetName) as LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
         }
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="subnet">An existing subnet.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontendBeta<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromExistingSubnet(ISubnet subnet)
+        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromExistingSubnet(ISubnet subnet)
         {
             return this.FromExistingSubnet(subnet) as LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
         }
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="publicIPAddress">An existing public IP address.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontendBeta<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
+        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
             return this.FromExistingPublicIPAddress(publicIPAddress) as LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
         }
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="resourceId">The resource ID of an existing public IP address.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontendBeta<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromExistingPublicIPAddress(string resourceId)
+        LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.FromExistingPublicIPAddress(string resourceId)
         {
             return this.FromExistingPublicIPAddress(resourceId) as LoadBalancerInboundNatPool.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
         }
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="frontendName">An existing frontend name on this load balancer.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontendBeta<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromFrontend(string frontendName)
+        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontend<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromFrontend(string frontendName)
         {
             return this.FromFrontend(frontendName) as LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>;
         }
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="networkResourceId">The resource ID of an existing network.</param>
         /// <param name="subnetName">The name of an existing subnet within the specified network.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontendBeta<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromExistingSubnet(string networkResourceId, string subnetName)
+        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontend<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromExistingSubnet(string networkResourceId, string subnetName)
         {
             return this.FromExistingSubnet(networkResourceId, subnetName) as LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>;
         }
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="network">An existing network.</param>
         /// <param name="subnetName">The name of an existing subnet within the specified network.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontendBeta<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromExistingSubnet(INetwork network, string subnetName)
+        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontend<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromExistingSubnet(INetwork network, string subnetName)
         {
             return this.FromExistingSubnet(network, subnetName) as LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>;
         }
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="subnet">An existing subnet.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontendBeta<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromExistingSubnet(ISubnet subnet)
+        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontend<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromExistingSubnet(ISubnet subnet)
         {
             return this.FromExistingSubnet(subnet) as LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>;
         }
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="leafDnsLabel">A unique leaf DNS label to create the public IP address under.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontendBeta<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromNewPublicIPAddress(string leafDnsLabel)
+        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontend<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromNewPublicIPAddress(string leafDnsLabel)
         {
             return this.FromNewPublicIPAddress(leafDnsLabel) as LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>;
         }
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="pipDefinition">A definition for the new public IP.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontendBeta<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromNewPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> pipDefinition)
+        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontend<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromNewPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> pipDefinition)
         {
             return this.FromNewPublicIPAddress(pipDefinition) as LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>;
         }
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// A new automatically-named public frontend will be implicitly created on this load balancer for each such new public IP address.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontendBeta<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromNewPublicIPAddress()
+        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontend<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromNewPublicIPAddress()
         {
             return this.FromNewPublicIPAddress() as LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>;
         }
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="publicIPAddress">An existing public IP address.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontendBeta<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
+        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontend<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
             return this.FromExistingPublicIPAddress(publicIPAddress) as LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>;
         }
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="resourceId">The resource ID of an existing public IP address.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontendBeta<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromExistingPublicIPAddress(string resourceId)
+        LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool> HasFrontend.Definition.IWithFrontend<LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>>.FromExistingPublicIPAddress(string resourceId)
         {
             return this.FromExistingPublicIPAddress(resourceId) as LoadBalancerInboundNatPool.Definition.IWithFrontendPortRange<LoadBalancer.Definition.IWithCreateAndInboundNatPool>;
         }

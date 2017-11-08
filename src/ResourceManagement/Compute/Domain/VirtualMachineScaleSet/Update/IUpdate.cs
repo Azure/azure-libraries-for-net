@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.Storage.Fluent;
 
     /// <summary>
     /// The stage of the virtual machine definition allowing to specify extensions.
@@ -199,6 +200,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancerBackend,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancerNatPool,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithManagedServiceIdentity,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithBootDiagnostics,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithAvailabilityZone
     {
     }
@@ -306,6 +308,46 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     /// </summary>
     public interface IWithUnmanagedDataDisk
     {
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine scale set definition allowing to enable boot diagnostics.
+    /// </summary>
+    public interface IWithBootDiagnostics :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be disabled in the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate WithoutBootDiagnostics();
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate WithBootDiagnostics();
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="creatable">The storage account to be created and used for store the boot diagnostics.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate WithBootDiagnostics(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> creatable);
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="storageAccount">An existing storage account to be uses to store the boot diagnostics.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate WithBootDiagnostics(IStorageAccount storageAccount);
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="storageAccountBlobEndpointUri">A storage account blob endpoint to store the boot diagnostics.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate WithBootDiagnostics(string storageAccountBlobEndpointUri);
     }
 
     /// <summary>

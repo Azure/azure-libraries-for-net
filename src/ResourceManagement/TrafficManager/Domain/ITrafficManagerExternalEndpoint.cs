@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure traffic manager profile external endpoint.
     /// </summary>
-    public interface ITrafficManagerExternalEndpoint  :
+    public interface ITrafficManagerExternalEndpoint :
         Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerEndpoint
     {
         /// <summary>

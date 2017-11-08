@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// Entry point to TXT record sets in a DNS zone.
     /// </summary>
-    public interface ITxtRecordSets  :
+    public interface ITxtRecordSets :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<Microsoft.Azure.Management.Dns.Fluent.ITxtRecordSet>
     {
     }

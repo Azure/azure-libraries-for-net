@@ -10,7 +10,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// A client-side representation of a load balancer backend address pool.
     /// </summary>
     public interface ILoadBalancerBackend  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.BackendAddressPoolInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Network.Fluent.ILoadBalancer>,
         Microsoft.Azure.Management.Network.Fluent.IHasLoadBalancingRules,

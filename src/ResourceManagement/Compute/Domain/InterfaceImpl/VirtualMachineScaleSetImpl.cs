@@ -867,6 +867,51 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the type of Managed Service Identity used for the virtual machine scale set.
+        /// </summary>
+        Models.ResourceIdentityType? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.ManagedServiceIdentityType
+        {
+            get
+            {
+                return this.ManagedServiceIdentityType();
+            }
+        }
+
+        /// <summary>
+        /// Gets true if boot diagnostics is enabled for the virtual machine scale set.
+        /// </summary>
+        bool Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.IsBootDiagnosticsEnabled
+        {
+            get
+            {
+                return this.IsBootDiagnosticsEnabled();
+            }
+        }
+
+        /// <summary>
+        /// Gets the storage blob endpoint uri if boot diagnostics is enabled for the virtual machine scale set.
+        /// </summary>
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.BootDiagnosticsStorageUri
+        {
+            get
+            {
+                return this.BootDiagnosticsStorageUri();
+            }
+        }
+
+        /// <summary>
+        /// Gets the storage account type of the OS managed disk. A null value will be returned if the
+        /// virtual machine scale set is based on un-managed disk.
+        /// </summary>
+        Models.StorageAccountTypes? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.ManagedOSDiskStorageAccountType
+        {
+            get
+            {
+                return this.ManagedOSDiskStorageAccountType();
+            }
+        }
+
+        /// <summary>
         /// Gets the Managed Service Identity specific Active Directory service principal ID assigned
         /// to the virtual machine scale set.
         /// </summary>
@@ -1626,6 +1671,93 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachineScaleSet.Update.IWithRoleAndScopeOrApply VirtualMachineScaleSet.Update.IWithRoleAndScopeOrApply.WithRoleDefinitionBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
             return this.WithRoleDefinitionBasedAccessToCurrentResourceGroup(roleDefinitionId) as VirtualMachineScaleSet.Update.IWithRoleAndScopeOrApply;
+        }
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithBootDiagnostics.WithBootDiagnostics()
+        {
+            return this.WithBootDiagnostics() as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="creatable">The storage account to be created and used for store the boot diagnostics.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithBootDiagnostics.WithBootDiagnostics(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> creatable)
+        {
+            return this.WithBootDiagnostics(creatable) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="storageAccount">An existing storage account to be uses to store the boot diagnostics.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithBootDiagnostics.WithBootDiagnostics(IStorageAccount storageAccount)
+        {
+            return this.WithBootDiagnostics(storageAccount) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="storageAccountBlobEndpointUri">A storage account blob endpoint to store the boot diagnostics.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithBootDiagnostics.WithBootDiagnostics(string storageAccountBlobEndpointUri)
+        {
+            return this.WithBootDiagnostics(storageAccountBlobEndpointUri) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be disabled in the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        VirtualMachineScaleSet.Update.IUpdate VirtualMachineScaleSet.Update.IWithBootDiagnostics.WithoutBootDiagnostics()
+        {
+           return this.WithoutBootDiagnostics() as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        VirtualMachineScaleSet.Update.IUpdate VirtualMachineScaleSet.Update.IWithBootDiagnostics.WithBootDiagnostics()
+        {
+            return this.WithBootDiagnostics() as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="creatable">The storage account to be created and used for store the boot diagnostics.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachineScaleSet.Update.IUpdate VirtualMachineScaleSet.Update.IWithBootDiagnostics.WithBootDiagnostics(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> creatable)
+        {
+            return this.WithBootDiagnostics(creatable) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="storageAccount">An existing storage account to be uses to store the boot diagnostics.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachineScaleSet.Update.IUpdate VirtualMachineScaleSet.Update.IWithBootDiagnostics.WithBootDiagnostics(IStorageAccount storageAccount)
+        {
+            return this.WithBootDiagnostics(storageAccount) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
+        /// </summary>
+        /// <param name="storageAccountBlobEndpointUri">A storage account blob endpoint to store the boot diagnostics.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachineScaleSet.Update.IUpdate VirtualMachineScaleSet.Update.IWithBootDiagnostics.WithBootDiagnostics(string storageAccountBlobEndpointUri)
+        {
+            return this.WithBootDiagnostics(storageAccountBlobEndpointUri) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate;
         }
     }
 

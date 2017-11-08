@@ -36,9 +36,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Associates the request routing rule with an existing backend on this application gateway.
+        /// Associates the request routing rule with a backend on this application gateway.
+        /// If the specified backend does not yet exist, it will be automatically created.
         /// </summary>
-        /// <param name="name">The name of an existing backend.</param>
+        /// <param name="name">The name of a backend.</param>
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRequestRoutingRule.Update.IUpdate ApplicationGatewayRequestRoutingRule.Update.IWithBackend.ToBackend(string name)
         {
@@ -238,6 +239,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Adds the specified IP addresses to the backend associated with this rule.
+        /// </summary>
+        /// <param name="ipAddresses">IP addresses to add.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressOrAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressBeta<ApplicationGateway.Update.IUpdate>.ToBackendIPAddresses(params string[] ipAddresses)
+        {
+            return this.ToBackendIPAddresses(ipAddresses) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressOrAttach<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
         /// Adds an FQDN (fully qualified domain name) to the backend associated with this rule.
         /// If no backend has been associated with this rule yet, a new one will be created with an auto-generated name.
         /// This call can be used in a sequence to add multiple FQDNs.
@@ -259,6 +270,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressOrAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddress<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.ToBackendIPAddress(string ipAddress)
         {
             return this.ToBackendIPAddress(ipAddress) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressOrAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+        }
+
+        /// <summary>
+        /// Adds the specified IP addresses to the backend associated with this rule.
+        /// </summary>
+        /// <param name="ipAddresses">IP addresses to add.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressOrAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressBeta<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.ToBackendIPAddresses(params string[] ipAddresses)
+        {
+            return this.ToBackendIPAddresses(ipAddresses) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressOrAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
         }
 
         /// <summary>
@@ -292,8 +313,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         /// <summary>
         /// Associates the request routing rule with a backend on this application gateway.
-        /// If the backend does not yet exist, it must be defined in the optional part of the application gateway definition.
-        /// The request routing rule references it only by name.
+        /// If the backend does not yet exist, it will be automatically created.
         /// </summary>
         /// <param name="name">The name of an existing backend.</param>
         /// <return>The next stage of the definition.</return>
@@ -304,8 +324,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         /// <summary>
         /// Associates the request routing rule with a backend on this application gateway.
-        /// If the backend does not yet exist, it must be defined in the optional part of the application gateway definition.
-        /// The request routing rule references it only by name.
+        /// If the backend does not yet exist, it will be automatically created.
         /// </summary>
         /// <param name="name">The name of an existing backend.</param>
         /// <return>The next stage of the definition.</return>

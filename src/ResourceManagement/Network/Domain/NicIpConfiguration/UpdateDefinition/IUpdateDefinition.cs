@@ -4,24 +4,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
 {
     using Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.UpdateDefinition;
     using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.UpdateDefinition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-
-    /// <summary>
-    /// The stage of the network interface IP configuration definition allowing to specify subnet.
-    /// </summary>
-    /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IWithSubnet<ParentT> 
-    {
-        /// <summary>
-        /// Associate a subnet with the network interface IP configuration.
-        /// </summary>
-        /// <param name="name">The subnet name.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithPrivateIP<ParentT> WithSubnet(string name);
-    }
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
     /// The entirety of a network interface IP configuration definition as part of a network interface update.
@@ -41,18 +27,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// The stage of the network interface IP configuration definition allowing to associate it with
     /// a public IP address.
     /// </summary>
-    /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
+    /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
     public interface IWithPublicIPAddress<ParentT>  :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.UpdateDefinition.IWithPublicIPAddress<Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate>>
-    {
-    }
-
-    /// <summary>
-    /// The first stage of network interface IP configuration definition.
-    /// </summary>
-    /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IBlank<ParentT>  :
-        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithNetwork<ParentT>
     {
     }
 
@@ -60,30 +37,69 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// The stage of the network interface IP configuration definition allowing to specify the load balancer
     /// to associate this IP configuration with.
     /// </summary>
-    /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IWithLoadBalancer<ParentT> 
+    /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
+    public interface IWithApplicationGateway<ParentT>  :
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithApplicationGatewayBeta<ParentT>
+    {
+    }
+
+    /// <summary>
+    /// The first stage of network interface IP configuration definition.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
+    public interface IBlank<ParentT>  :
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithNetwork<ParentT>
+    {
+    }
+
+    /// <summary>
+    /// The stage of the network interface IP configuration definition allowing to specify subnet.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
+    public interface IWithSubnet<ParentT> 
     {
         /// <summary>
-        /// Specifies the load balancer to associate this IP configuration with.
+        /// Associate a subnet with the network interface IP configuration.
         /// </summary>
-        /// <param name="loadBalancer">An existing load balancer.</param>
-        /// <param name="backendName">The name of an existing backend on that load balancer.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<ParentT> WithExistingLoadBalancerBackend(ILoadBalancer loadBalancer, string backendName);
+        /// <param name="name">The subnet name.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithPrivateIP<ParentT> WithSubnet(string name);
+    }
 
+    /// <summary>
+    /// The stage of the network interface IP configuration definition allowing to specify private IP address
+    /// within a virtual network subnet.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
+    public interface IWithPrivateIP<ParentT>  :
+        Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.UpdateDefinition.IWithPrivateIPAddress<Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate>>
+    {
         /// <summary>
-        /// Specifies the load balancer inbound NAT rule to associate this IP configuration with.
+        /// Specifies the IP version for the private IP address.
         /// </summary>
-        /// <param name="loadBalancer">An existing load balancer.</param>
-        /// <param name="inboundNatRuleName">The name of an existing inbound NAT rule on the selected load balancer.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<ParentT> WithExistingLoadBalancerInboundNatRule(ILoadBalancer loadBalancer, string inboundNatRuleName);
+        /// <param name="ipVersion">An IP version.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<ParentT> WithPrivateIPVersion(IPVersion ipVersion);
+    }
+
+    /// <summary>
+    /// The final stage of network interface IP configuration.
+    /// At this stage, any remaining optional settings can be specified, or the network interface IP configuration
+    /// definition can be attached to the parent network interface definition using  WithAttach.attach().
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
+    public interface IWithAttach<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>,
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithPublicIPAddress<ParentT>,
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithLoadBalancer<ParentT>,
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithApplicationGateway<ParentT>
+    {
     }
 
     /// <summary>
     /// The stage of the network interface IP configuration definition allowing to specify the virtual network.
     /// </summary>
-    /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
+    /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
     public interface IWithNetwork<ParentT> 
     {
         /// <summary>
@@ -124,30 +140,43 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     }
 
     /// <summary>
-    /// The stage of the network interface IP configuration definition allowing to specify private IP address
-    /// within a virtual network subnet.
+    /// The stage of the network interface IP configuration definition allowing to specify the load balancer
+    /// to associate this IP configuration with.
     /// </summary>
-    /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IWithPrivateIP<ParentT>  :
-        Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.UpdateDefinition.IWithPrivateIPAddress<Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate>>
+    /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
+    public interface IWithLoadBalancer<ParentT> 
     {
         /// <summary>
-        /// Specifies the IP version for the private IP address.
+        /// Specifies the load balancer to associate this IP configuration with.
         /// </summary>
-        /// <param name="ipVersion">An IP version.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<ParentT> WithPrivateIPVersion(IPVersion ipVersion);
+        /// <param name="loadBalancer">An existing load balancer.</param>
+        /// <param name="backendName">The name of an existing backend on that load balancer.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<ParentT> WithExistingLoadBalancerBackend(ILoadBalancer loadBalancer, string backendName);
+
+        /// <summary>
+        /// Specifies the load balancer inbound NAT rule to associate this IP configuration with.
+        /// </summary>
+        /// <param name="loadBalancer">An existing load balancer.</param>
+        /// <param name="inboundNatRuleName">The name of an existing inbound NAT rule on the selected load balancer.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<ParentT> WithExistingLoadBalancerInboundNatRule(ILoadBalancer loadBalancer, string inboundNatRuleName);
     }
 
     /// <summary>
-    /// The final stage of network interface IP configuration.
-    /// At this stage, any remaining optional settings can be specified, or the network interface IP configuration
-    /// definition can be attached to the parent network interface definition using  WithAttach.attach().
+    /// The stage of the network interface IP configuration definition allowing to specify the load balancer
+    /// to associate this IP configuration with.
     /// </summary>
-    /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IWithAttach<ParentT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithPublicIPAddress<ParentT>
+    /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
+    public interface IWithApplicationGatewayBeta<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
+        /// <summary>
+        /// Specifies the application gateway backend to associate this IP configuration with.
+        /// </summary>
+        /// <param name="appGateway">An existing application gateway.</param>
+        /// <param name="backendName">The name of an existing backend on the application gateway.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<ParentT> WithExistingApplicationGatewayBackend(IApplicationGateway appGateway, string backendName);
     }
 }
