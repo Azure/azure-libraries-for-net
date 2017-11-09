@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
             IManagementLock l = null;
             if (resourceId != null && lockName != null)
             {
-                l = WrapModel(await Inner().GetByScopeAsync(resourceId, lockName));
+                l = WrapModel(await Inner().GetByScopeAsync(resourceId, lockName, cancellationToken));
             }
             return l;
         }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
             string lockName = ResourceUtils.NameFromResourceId(id);
             if (scope != null && lockName != null)
             {
-                await Inner().DeleteByScopeAsync(scope, lockName);
+                await Inner().DeleteByScopeAsync(scope, lockName, cancellationToken);
             }
         }
 
