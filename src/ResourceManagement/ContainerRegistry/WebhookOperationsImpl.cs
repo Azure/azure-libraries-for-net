@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         {
             if (this.containerRegistry != null)
             {
-                return await this.webhooksClient.ListAsync(this.containerRegistry.ResourceGroupName, this.containerRegistry.Name);
+                return await this.webhooksClient.ListAsync(this.containerRegistry.ResourceGroupName, this.containerRegistry.Name, cancellationToken);
             }
             else
             {
