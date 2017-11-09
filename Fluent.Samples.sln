@@ -43,6 +43,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Search.Fluent", "src\ResourceManagement\Search\Microsoft.Azure.Management.Search.Fluent.csproj", "{D8725E3A-DBDF-4392-8F59-8B6C496AFED4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.ContainerInstance.Fluent", "src\ResourceManagement\ContainerInstance\Microsoft.Azure.Management.ContainerInstance.Fluent.csproj", "{9F243841-FE48-425C-92E1-5AE6C64937A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Locks.Fluent", "src\ResourceManagement\Locks\Microsoft.Azure.Management.Locks.Fluent.csproj", "{C6CDAC36-043D-42F0-871B-FAF1C55E2C30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +129,14 @@ Global
 		{D8725E3A-DBDF-4392-8F59-8B6C496AFED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8725E3A-DBDF-4392-8F59-8B6C496AFED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8725E3A-DBDF-4392-8F59-8B6C496AFED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F243841-FE48-425C-92E1-5AE6C64937A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F243841-FE48-425C-92E1-5AE6C64937A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F243841-FE48-425C-92E1-5AE6C64937A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F243841-FE48-425C-92E1-5AE6C64937A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6CDAC36-043D-42F0-871B-FAF1C55E2C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6CDAC36-043D-42F0-871B-FAF1C55E2C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6CDAC36-043D-42F0-871B-FAF1C55E2C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6CDAC36-043D-42F0-871B-FAF1C55E2C30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,5 +160,7 @@ Global
 		{C84A6250-31F7-4C49-A6D5-396B0B6496B0} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 		{3459BCDB-4763-48BB-895C-40A9AF696803} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 		{D8725E3A-DBDF-4392-8F59-8B6C496AFED4} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
+		{9F243841-FE48-425C-92E1-5AE6C64937A1} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
+		{C6CDAC36-043D-42F0-871B-FAF1C55E2C30} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 	EndGlobalSection
 EndGlobal

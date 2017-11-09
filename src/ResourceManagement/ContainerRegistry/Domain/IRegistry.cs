@@ -5,30 +5,61 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Update;
+    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using System.Collections.Generic;
     using System;
 
     /// <summary>
     /// An immutable client-side representation of an Azure registry.
     /// </summary>
-    /// <remarks>
-    /// (Beta: This functionality is in preview and as such is subject to change in non-backwards compatible ways in
-    /// future releases, including removal, regardless of any compatibility expectations set by the containing library
-    /// version number.).
-    /// </remarks>
     public interface IRegistry  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryManager,Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryManager,Models.RegistryInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Registry.Update.IUpdate>
     {
         /// <summary>
+        /// Gets the URL that can be used to log into the container registry.
+        /// </summary>
+        string LoginServerUrl { get; }
+
+        /// <summary>
+        /// Gets the ID of the storage account for the container registry; 'null' if container register SKU a managed tier.
+        /// </summary>
+        string StorageAccountId { get; }
+
+        /// <summary>
+        /// Lists the quota usages for the specified container registry.
+        /// </summary>
+        /// <return>The list of container registry's quota usages.</return>
+        System.Collections.Generic.IReadOnlyCollection<Models.RegistryUsage> ListQuotaUsages();
+
+        /// <return>A representation of the future computation of this call.</return>
+        Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials> GetCredentialsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// Regenerates one of the login credentials for the specified container registry.
         /// </summary>
-        /// <param name="passwordName">The password name.</param>
+        /// <param name="accessKeyType">The admin user access key name to regenerate the value for.</param>
         /// <return>The result of the regeneration.</return>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials RegenerateCredential(Models.PasswordName passwordName);
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials RegenerateCredential(AccessKeyType accessKeyType);
+
+        /// <summary>
+        /// Gets the name of the storage account for the container registry; 'null' if container register SKU a managed tier.
+        /// </summary>
+        string StorageAccountName { get; }
+
+        /// <return>The login credentials for the specified container registry.</return>
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials GetCredentials();
+
+        /// <summary>
+        /// Regenerates one of the login credentials for the specified container registry.
+        /// </summary>
+        /// <param name="accessKeyType">The admin user access key name to regenerate the value for.</param>
+        /// <return>A representation of the future computation of this call.</return>
+        Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials> RegenerateCredentialAsync(AccessKeyType accessKeyType, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets the creation date of the container registry in ISO8601 format.
@@ -36,36 +67,24 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         System.DateTime CreationDate { get; }
 
         /// <summary>
-        /// Gets the name of the storage account for the container registry.
-        /// </summary>
-        string StorageAccountName { get; }
-
-        /// <return>The login credentials for the specified container registry.</return>
-        Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials> ListCredentialsAsync(CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <return>The login credentials for the specified container registry.</return>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials ListCredentials();
-
-        /// <summary>
-        /// Regenerates one of the login credentials for the specified container registry.
-        /// </summary>
-        /// <param name="passwordName">The password name.</param>
-        /// <return>The result of the regeneration.</return>
-        Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials> RegenerateCredentialAsync(Models.PasswordName passwordName, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// Gets the SKU of the container registry.
-        /// </summary>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.Sku Sku { get; }
-
-        /// <summary>
-        /// Gets the value that indicates whether the admin user is enabled. This value is false by default.
+        /// Gets the value that indicates whether the admin user is enabled.
         /// </summary>
         bool AdminUserEnabled { get; }
 
         /// <summary>
-        /// Gets the URL that can be used to log into the container registry.
+        /// Lists the quota usages for the specified container registry.
         /// </summary>
-        string LoginServerUrl { get; }
+        /// <return>A representation of the future computation of this call.</return>
+        Task<Models.RegistryUsage> ListQuotaUsagesAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets returns entry point to manage container registry webhooks.
+        /// </summary>
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhookOperations Webhooks { get; }
+
+        /// <summary>
+        /// Gets the SKU of the container registry.
+        /// </summary>
+        Models.Sku Sku { get; }
     }
 }

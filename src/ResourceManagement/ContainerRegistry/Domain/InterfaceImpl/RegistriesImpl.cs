@@ -5,13 +5,14 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using System.Collections.Generic;
+    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Registries.WebhooksClient;
     using Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition;
+    using Microsoft.Azure.Management.ContainerRegistry.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.Storage.Fluent;
-    using Models;
 
-    public partial class RegistriesImpl 
+    internal partial class RegistriesImpl 
     {
         /// <summary>
         /// Begins a definition for a new resource.
@@ -71,49 +72,102 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         }
 
         /// <summary>
-        /// Lists the login credentials for the specified container registry.
+        /// Lists the quota usages for the specified container registry.
         /// </summary>
-        /// <param name="groupName">The group name.</param>
+        /// <param name="resourceGroupName">The resource group name.</param>
         /// <param name="registryName">The registry name.</param>
-        /// <return>The list of credentials.</return>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.ListCredentials(string groupName, string registryName)
+        /// <return>A representation of the future computation of this call, returning the list of container registry's quota usages.</return>
+        async Task<IReadOnlyCollection<Models.RegistryUsage>> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.ListQuotaUsagesAsync(string resourceGroupName, string registryName, CancellationToken cancellationToken)
         {
-            return this.ListCredentials(groupName, registryName) as Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials;
+            return await this.ListQuotaUsagesAsync(resourceGroupName, registryName, cancellationToken) as IReadOnlyCollection<Models.RegistryUsage>;
         }
 
         /// <summary>
-        /// Lists the login credentials for the specified container registry.
+        /// Checks if container registry name is valid and is not in use asynchronously.
         /// </summary>
-        /// <param name="groupName">The group name.</param>
-        /// <param name="registryName">The registry name.</param>
-        /// <return>The list of credentials.</return>
-        async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.ListCredentialsAsync(string groupName, string registryName, CancellationToken cancellationToken)
+        /// <param name="name">The container registry name to check.</param>
+        /// <return>A representation of the future computation of this call, returning whether the name is available or other info if not.</return>
+        async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.ICheckNameAvailabilityResult> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.CheckNameAvailabilityAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.ListCredentialsAsync(groupName, registryName, cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials;
+            return await this.CheckNameAvailabilityAsync(name, cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.ICheckNameAvailabilityResult;
         }
 
         /// <summary>
-        /// Regenerates one of the login credentials for the specified container registry.
+        /// Lists the quota usages for the specified container registry.
         /// </summary>
-        /// <param name="groupName">The group name.</param>
+        /// <param name="resourceGroupName">The resource group name.</param>
         /// <param name="registryName">The registry name.</param>
-        /// <param name="passwordName">The password name to regenerate login credentials for.</param>
-        /// <return>The list of credentials.</return>
-        async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.RegenerateCredentialAsync(string groupName, string registryName, PasswordName passwordName, CancellationToken cancellationToken)
+        /// <return>The list of container registry's quota usages.</return>
+        System.Collections.Generic.IReadOnlyCollection<Models.RegistryUsage> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.ListQuotaUsages(string resourceGroupName, string registryName)
         {
-            return await this.RegenerateCredentialAsync(groupName, registryName, passwordName, cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials;
+            return this.ListQuotaUsages(resourceGroupName, registryName) as System.Collections.Generic.IReadOnlyCollection<Models.RegistryUsage>;
         }
 
         /// <summary>
-        /// Regenerates one of the login credentials for the specified container registry.
+        /// Checks if the specified container registry name is valid and available.
         /// </summary>
-        /// <param name="groupName">The group name.</param>
-        /// <param name="registryName">The registry name.</param>
-        /// <param name="passwordName">The password name to regenerate login credentials for.</param>
-        /// <return>The list of credentials.</return>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.RegenerateCredential(string groupName, string registryName, PasswordName passwordName)
+        /// <param name="name">The container registry name to check.</param>
+        /// <return>Whether the name is available and other info if not.</return>
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.ICheckNameAvailabilityResult Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.CheckNameAvailability(string name)
         {
-            return this.RegenerateCredential(groupName, registryName, passwordName) as Microsoft.Azure.Management.ContainerRegistry.Fluent.Models.RegistryListCredentials;
+            return this.CheckNameAvailability(name) as Microsoft.Azure.Management.ContainerRegistry.Fluent.ICheckNameAvailabilityResult;
+        }
+
+        /// <summary>
+        /// Gets returns entry point to manage container registry webhooks.
+        /// </summary>
+        Registries.WebhooksClient.IWebhooksClient Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.Webhooks
+        {
+            get
+            {
+                return this.Webhooks() as Registries.WebhooksClient.IWebhooksClient;
+            }
+        }
+
+        /// <summary>
+        /// Gets the login credentials for the specified container registry.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name.</param>
+        /// <param name="registryName">The registry name.</param>
+        /// <return>The container registry's login credentials.</return>
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.GetCredentials(string resourceGroupName, string registryName)
+        {
+            return this.GetCredentials(resourceGroupName, registryName) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
+        }
+
+        /// <summary>
+        /// Regenerates the value for one of the admin user access key for the specified container registry.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name.</param>
+        /// <param name="registryName">The registry name.</param>
+        /// <param name="accessKeyType">The admin user access key name to regenerate the value for.</param>
+        /// <return>A representation of the future computation of this call, returning the container registry's login credentials.</return>
+        async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.RegenerateCredentialAsync(string resourceGroupName, string registryName, AccessKeyType accessKeyType, CancellationToken cancellationToken)
+        {
+            return await this.RegenerateCredentialAsync(resourceGroupName, registryName, accessKeyType, cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
+        }
+
+        /// <summary>
+        /// Gets the login credentials for the specified container registry.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name.</param>
+        /// <param name="registryName">The registry name.</param>
+        /// <return>A representation of the future computation of this call, returning the container registry's login credentials.</return>
+        async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.GetCredentialsAsync(string resourceGroupName, string registryName, CancellationToken cancellationToken)
+        {
+            return await this.GetCredentialsAsync(resourceGroupName, registryName, cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
+        }
+
+        /// <summary>
+        /// Regenerates the value for one of the admin user access key for the specified container registry.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name.</param>
+        /// <param name="registryName">The registry name.</param>
+        /// <param name="accessKeyType">The admin user access key name to regenerate the value for.</param>
+        /// <return>The container registry's login credentials.</return>
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.RegenerateCredential(string resourceGroupName, string registryName, AccessKeyType accessKeyType)
+        {
+            return this.RegenerateCredential(resourceGroupName, registryName, accessKeyType) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
         }
     }
 }

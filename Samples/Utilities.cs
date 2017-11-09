@@ -1571,13 +1571,13 @@ namespace Microsoft.Azure.Management.Samples.Common
         {
             StringBuilder info = new StringBuilder();
 
-            RegistryListCredentials acrCredentials = azureRegistry.ListCredentials();
+            var acrCredentials = azureRegistry.GetCredentials();
             info.Append("Azure Container Registry: ").Append(azureRegistry.Id)
                 .Append("\n\tName: ").Append(azureRegistry.Name)
                 .Append("\n\tServer Url: ").Append(azureRegistry.LoginServerUrl)
                 .Append("\n\tUser: ").Append(acrCredentials.Username)
-                .Append("\n\tFirst Password: ").Append(acrCredentials.Passwords[0].Value)
-                .Append("\n\tSecond Password: ").Append(acrCredentials.Passwords[1].Value);
+                .Append("\n\tFirst Password: ").Append(acrCredentials.AccessKeys[AccessKeyType.Primary])
+                .Append("\n\tSecond Password: ").Append(acrCredentials.AccessKeys[AccessKeyType.Secondary]);
             Log(info.ToString());
         }
 
