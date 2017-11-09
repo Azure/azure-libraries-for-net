@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         {
             this.storageManager = StorageManager.Authenticate(restClient, subscriptionId);
         }
-        
+
         public static IRegistryManager Authenticate(AzureCredentials credentials, string subscriptionId)
         {
             return new RegistryManager(RestClient.Configure()
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         {
             return new Configurable();
         }
-        
+
 
         #region IConfigurable and it's implementation
 
@@ -83,6 +83,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
 
     public interface IRegistryManager : IManager<IContainerRegistryManagementClient>
     {
-       IRegistries ContainerRegistries { get; }
+        IRegistries ContainerRegistries { get; }
     }
 }
