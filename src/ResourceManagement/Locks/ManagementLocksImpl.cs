@@ -169,7 +169,11 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         public async Task<IPagedCollection<IManagementLock>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IManagementLock, ManagementLockObjectInner>.LoadPage(
-                async (cancellation) => await Inner().ListAtSubscriptionLevelAsync(null, cancellationToken), WrapModel, cancellationToken);
+                async (cancellation) => await Inner().ListAtSubscriptionLevelAsync(null, cancellationToken),
+                Inner().ListAtSubscriptionLevelNextAsync,
+                WrapModel,
+                loadAllPages,
+                cancellationToken);
         }
 
         ///GENMHASH:9C5B42FF47E71D8582BAB26BBDEC1E0B:6A20423BC9EF8328BE93DB0B8D897A58
@@ -206,7 +210,11 @@ namespace Microsoft.Azure.Management.Locks.Fluent
                     ResourceUtils.ResourceTypeFromResourceId(resourceId),
                     ResourceUtils.NameFromResourceId(resourceId),
                     null,
-                    cancellationToken), WrapModel, cancellationToken);
+                    cancellationToken),
+                Inner().ListAtResourceLevelNextAsync,
+                WrapModel,
+                false,
+                cancellationToken);
         }
 
         ///GENMHASH:178BF162835B0E3978203EDEF988B6EB:2AF1AED874591A3A597F23BBE3B7C5CD
