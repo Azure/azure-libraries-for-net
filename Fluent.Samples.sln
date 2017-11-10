@@ -47,6 +47,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Locks.Fluent", "src\ResourceManagement\Locks\Microsoft.Azure.Management.Locks.Fluent.csproj", "{C6CDAC36-043D-42F0-871B-FAF1C55E2C30}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.ContainerService.Fluent", "src\ResourceManagement\ContainerService\Microsoft.Azure.Management.ContainerService.Fluent.csproj", "{F81455F5-0CB3-4A7A-A13D-077F594CBD75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +139,10 @@ Global
 		{C6CDAC36-043D-42F0-871B-FAF1C55E2C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6CDAC36-043D-42F0-871B-FAF1C55E2C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6CDAC36-043D-42F0-871B-FAF1C55E2C30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F81455F5-0CB3-4A7A-A13D-077F594CBD75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F81455F5-0CB3-4A7A-A13D-077F594CBD75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F81455F5-0CB3-4A7A-A13D-077F594CBD75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F81455F5-0CB3-4A7A-A13D-077F594CBD75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -162,5 +168,6 @@ Global
 		{D8725E3A-DBDF-4392-8F59-8B6C496AFED4} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 		{9F243841-FE48-425C-92E1-5AE6C64937A1} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 		{C6CDAC36-043D-42F0-871B-FAF1C55E2C30} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
+		{F81455F5-0CB3-4A7A-A13D-077F594CBD75} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 	EndGlobalSection
 EndGlobal
