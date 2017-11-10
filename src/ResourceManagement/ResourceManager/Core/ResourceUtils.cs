@@ -37,6 +37,30 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             return (!string.IsNullOrWhiteSpace(id)) ? ResourceId.FromString(id)?.Parent?.Id : null;
         }
 
+        /// <summary>
+        /// Extracts parent resource path from a resource ID string.
+        /// </summary>
+        /// <example>
+        /// "subscriptions/SSS/resourcegroups/RRR/foos/foo/bars/bar" will return "foos/foo".
+        /// </example>
+        /// <param name="id">a resource ID</param>
+        /// <returns>relative parent path</returns>
+        public static string ParentRelativePathFromResourceId(string id)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+
+            ResourceId parent = ResourceId.FromString(id).Parent;
+            if (parent != null)
+            {
+                return parent.ResourceType + "/" + parent.Name;
+            }
+
+            return "";
+        }
+
         public static string ConstructResourceId(
             string subscriptionId,
             string resourceGroupName,

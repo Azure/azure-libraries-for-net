@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
     /// </summary>
     /// <typeparam name="T">The type of the resource collection.</typeparam>
     public interface ISupportsGettingByNameAsync<T>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<T>
+        ISupportsGettingByName<T>
     {
         /// <summary>
         /// Gets the information about a resource based on the resource name.

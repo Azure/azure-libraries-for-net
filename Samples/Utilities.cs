@@ -41,6 +41,7 @@ using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent.Models;
 using Microsoft.Azure.Management.Network.Fluent.Models;
 using Microsoft.Azure.Management.ContainerInstance.Fluent;
+using Microsoft.Azure.Management.Locks.Fluent;
 
 namespace Microsoft.Azure.Management.Samples.Common
 {
@@ -298,7 +299,7 @@ namespace Microsoft.Azure.Management.Samples.Common
             Log(builder.ToString());
         }
 
-        public static void Print(Search.Fluent.ISearchService searchService)
+        public static void Print(ISearchService searchService)
         {
             var adminKeys = searchService.GetAdminKeys();
             var queryKeys = searchService.ListQueryKeys();
@@ -445,6 +446,15 @@ namespace Microsoft.Azure.Management.Samples.Common
                     .Append("\n\tTransferDeadLetterMessageCount: ").Append(queue.TransferDeadLetterMessageCount);
 
             Utilities.Log(builder.ToString());
+        }
+
+        public static void Print(IManagementLock l)
+        {
+            StringBuilder info = new StringBuilder();
+            info.Append("\nLock ID: ").Append(l.Id)
+            .Append("\nLocked resource ID: ").Append(l.LockedResourceId)
+            .Append("\nLevel: ").Append(l.Level);
+            Utilities.Log(info.ToString());
         }
 
         public static void Print(IServiceBusNamespace serviceBusNamespace)

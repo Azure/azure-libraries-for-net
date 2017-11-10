@@ -25,6 +25,7 @@ using Microsoft.Azure.Management.ContainerInstance.Fluent;
 using Microsoft.Azure.Management.ContainerRegistry.Fluent;
 using Microsoft.Azure.Management.CosmosDB.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+using Microsoft.Azure.Management.Locks.Fluent;
 
 namespace Microsoft.Azure.Management.Fluent
 {
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Management.Fluent
         private IContainerInstanceManager containerInstanceManager;
         private IRegistryManager registryManager;
         private ICosmosDBManager cosmosDBManager;
+        private IAuthorizationManager authorizationManager;
 
         #endregion Service Managers
 
@@ -66,6 +68,15 @@ namespace Microsoft.Azure.Management.Fluent
         public ISubscription GetCurrentSubscription()
         {
             return Subscriptions.GetById(SubscriptionId);
+        }
+
+        /// <returns>entry point to managing locks</returns>
+        public IManagementLocks ManagementLocks
+        {
+            get
+            {
+                return authorizationManager.ManagementLocks;
+            }
         }
 
         /// <returns>entry point to managing resource groups</returns>
@@ -414,6 +425,7 @@ namespace Microsoft.Azure.Management.Fluent
             containerInstanceManager = ContainerInstanceManager.Authenticate(restClient, subscriptionId);
             registryManager = RegistryManager.Authenticate(restClient, subscriptionId);
             cosmosDBManager = CosmosDBManager.Authenticate(restClient, subscriptionId);
+            authorizationManager = AuthorizationManager.Authenticate(restClient, subscriptionId);
 
             SubscriptionId = subscriptionId;
             this.authenticated = authenticated;
@@ -621,11 +633,6 @@ namespace Microsoft.Azure.Management.Fluent
     public interface IAzureBeta : IBeta
     {
         /// <summary>
-        /// Entry point to load balancer management.
-        /// </summary>
-        ILoadBalancers LoadBalancers { get; }
-
-        /// <summary>
         /// Entry point to Azure Network Watcher management
         /// </summary>
         INetworkWatchers NetworkWatchers { get; }
@@ -656,11 +663,6 @@ namespace Microsoft.Azure.Management.Fluent
         ISearchServices SearchServices { get; }
 
         /// <summary>
-        /// Entry point to Azure Service Bus namespace management.
-        /// </summary>
-        IServiceBusNamespaces ServiceBusNamespaces { get; }
-
-        /// <summary>
         /// Entry point to Azure Container Services management.
         /// </summary>
         IContainerServices ContainerServices { get; }
@@ -679,11 +681,26 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Azure container registry management.
         /// </summary>
         IRegistries ContainerRegistries { get; }
+
+        /// <summary>
+        /// Entry point to managing locks.
+        /// </summary>
+        IManagementLocks ManagementLocks { get; }
     }
 
     public interface IAzure : IAzureBeta
     {
         string SubscriptionId { get; }
+
+        /// <summary>
+        /// Entry point to Azure Service Bus namespace management.
+        /// </summary>
+        IServiceBusNamespaces ServiceBusNamespaces { get; }
+
+        /// <summary>
+        /// Entry point to load balancer management.
+        /// </summary>
+        ILoadBalancers LoadBalancers { get; }
 
         /// <summary>
         /// Entry point to authentication and authorization management in Azure
