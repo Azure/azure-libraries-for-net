@@ -11,6 +11,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
     /// <summary>
     /// The implementation for FunctionApps.
@@ -25,11 +27,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             IAppServiceManager>,
         IFunctionApps
     {
-        ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691
-        public FunctionAppImpl Define(string name)
-        {
-            return WrapModel(name);
-        }
 
         ///GENMHASH:95834C6C7DA388E666B705A62A7D02BF:437A8ECA353AAE23242BFC82A5066CC3
         public override IEnumerable<IFunctionApp> ListByResourceGroup(string resourceGroupName)
@@ -82,7 +79,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             var siteConfig = await Inner.GetConfigurationAsync(inner.ResourceGroup, inner.Name, cancellationToken);
             var FunctionApp = WrapModel(inner, siteConfig);
-            await ((FunctionAppImpl)FunctionApp).CacheSiteProperties(cancellationToken);
             return FunctionApp;
         }
 
@@ -143,6 +139,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         protected override async Task<SiteInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
         {
             return await Inner.GetAsync(groupName, name, cancellationToken);
+        }
+
+        IBlank ISupportsCreating<IBlank>.Define(string name)
+        {
+            return WrapModel(name);
         }
     }
 }

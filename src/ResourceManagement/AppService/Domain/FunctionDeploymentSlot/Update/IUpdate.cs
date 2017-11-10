@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.Up
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
-    /// The template for a function app update operation, containing all the settings that can be modified.
+    /// The template for a web app update operation, containing all the settings that can be modified.
     /// </summary>
     public interface IUpdate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.AppService.Fluent.IFunctionDeploymentSlot>,

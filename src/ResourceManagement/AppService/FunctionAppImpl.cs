@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private IStorageAccount currentStorageAccount;
         private KuduCredentials kuduCredentials;
 
+        Task IFunctionApp.SyncTriggersAsync => throw new NotImplementedException();
+
         public Fluent.IFunctionDeploymentSlots DeploymentSlots()
         {
             if (deploymentSlots == null)

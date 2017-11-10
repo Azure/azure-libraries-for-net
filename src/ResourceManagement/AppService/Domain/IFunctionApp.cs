@@ -5,8 +5,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Update;
+    using Microsoft.Azure.Management.AppService.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Storage.Fluent;
+    using System.Collections.Generic;
 
     /// <summary>
     /// An immutable client-side representation of an Azure Function App.
@@ -18,12 +20,59 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<FunctionApp.Update.IUpdate>
     {
         /// <summary>
-        /// Gets the entry point to deployment slot management API under the web app.
+        /// Adds a key to a function in this function app.
         /// </summary>
-        Fluent.IFunctionDeploymentSlots DeploymentSlots { get; }
+        /// <param name="functionName">The name of the function.</param>
+        /// <param name="keyName">The name of the key to add.</param>
+        /// <param name="keyValue">Optional. If not provided, a value will be generated.</param>
+        /// <return>The added function key.</return>
+        Task<Models.NameValuePair> AddFunctionKeyAsync(string functionName, string keyName, string keyValue, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <return>The master key for the function app.</return>
         string GetMasterKey();
+
+        /// <summary>
+        /// Retrieve the function key for a specific function.
+        /// </summary>
+        /// <param name="functionName">The name of the function.</param>
+        /// <return>The function key.</return>
+        System.Collections.Generic.IReadOnlyDictionary<string,string> ListFunctionKeys(string functionName);
+
+        /// <summary>
+        /// Removes a key to a function in this function app.
+        /// </summary>
+        /// <param name="functionName">The name of the function.</param>
+        /// <param name="keyName">The name of the key to remove.</param>
+        void RemoveFunctionKey(string functionName, string keyName);
+
+        /// <summary>
+        /// Retrieve the function key for a specific function.
+        /// </summary>
+        /// <param name="functionName">The name of the function.</param>
+        /// <return>The function key.</return>
+        Task<System.Collections.Generic.IReadOnlyDictionary<string,string>> ListFunctionKeysAsync(string functionName, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Adds a key to a function in this function app.
+        /// </summary>
+        /// <param name="functionName">The name of the function.</param>
+        /// <param name="keyName">The name of the key to add.</param>
+        /// <param name="keyValue">Optional. If not provided, a value will be generated.</param>
+        /// <return>The added function key.</return>
+        Models.NameValuePair AddFunctionKey(string functionName, string keyName, string keyValue);
+
+        /// <summary>
+        /// Gets the entry point to deployment slot management API under the function app.
+        /// </summary>
+        Microsoft.Azure.Management.AppService.Fluent.IFunctionDeploymentSlots DeploymentSlots { get; }
+
+        /// <summary>
+        /// Removes a key to a function in this function app.
+        /// </summary>
+        /// <param name="functionName">The name of the function.</param>
+        /// <param name="keyName">The name of the key to remove.</param>
+        /// <return>The completable of the operation.</return>
+        Task RemoveFunctionKeyAsync(string functionName, string keyName, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <return>The master key for the function app.</return>
         Task<string> GetMasterKeyAsync(CancellationToken cancellationToken = default(CancellationToken));
@@ -36,55 +85,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets Syncs the triggers on the function app.
         /// </summary>
-        /// <returns>a completable for the operation</returns>
-        Task SyncTriggersAsync(CancellationToken cancellationToken = default(CancellationToken));
-
         /// <summary>
-        /// Retrive the function key for a specific function.
+        /// Gets a completable for the operation.
         /// </summary>
-        /// <param name="functionName">the name of the function</param>
-        /// <returns>the function key</returns>
-        System.Collections.Generic.IReadOnlyDictionary<string, string> ListFunctionKeys(string functionName);
-
-        /// <summary>
-        /// Retrive the function key for a specific function.
-        /// </summary>
-        /// <param name="functionName">the name of the function</param>
-        /// <returns>the function key</returns>
-        Task<System.Collections.Generic.IReadOnlyDictionary<string, string>> ListFunctionKeysAsync(string functionName, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// Adds a key to a function in this function app.
-        /// </summary>
-        /// <param name="functionName">the name of the function</param>
-        /// <param name="keyName">the name of the key to add</param>
-        /// <param name="keyValue">optional. If not provided, a value will be generated</param>
-        /// <returns>the added function key</returns>
-        Microsoft.Azure.Management.AppService.Fluent.Models.NameValuePair AddFunctionKey(string functionName, string keyName, string keyValue = null);
-
-        /// <summary>
-        /// Adds a key to a function in this function app.
-        /// </summary>
-        /// <param name="functionName">the name of the function</param>
-        /// <param name="keyName">the name of the key to add</param>
-        /// <param name="keyValue">optional. If not provided, a value will be generated</param>
-        /// <returns>the added function key</returns>
-        Task<Microsoft.Azure.Management.AppService.Fluent.Models.NameValuePair> AddFunctionKeyAsync(string functionName, string keyName, string keyValue = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// Removes a key from a function in this function app.
-        /// </summary>
-        /// <param name="functionName">the name of the function</param>
-        /// <param name="keyName">the name of the key to add</param>
-        void RemoveFunctionKey(string functionName, string keyName);
-
-        /// <summary>
-        /// Removes a key from a function in this function app.
-        /// </summary>
-        /// <param name="functionName">the name of the function</param>
-        /// <param name="keyName">the name of the key to add</param>
-        /// <returns>a completable for the operation</returns>
-        Task RemoveFunctionKeyAsync(string functionName, string keyName, CancellationToken cancellationToken = default(CancellationToken));
+        Task SyncTriggersAsync { get; }
 
         /// <summary>
         /// Gets the storage account associated with the function app.

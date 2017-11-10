@@ -4,13 +4,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 {
     using Microsoft.Azure.Management.AppService.Fluent.WebApp.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using ResourceManager.Fluent.Core;
 
     /// <summary>
     /// An immutable client-side representation of an Azure Web App.
     /// </summary>
-    public interface IWebApp  : 
-        IBeta,
+    public interface IWebApp  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.AppService.Fluent.IWebAppBase,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.AppService.Fluent.IWebApp>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<WebApp.Update.IUpdate>

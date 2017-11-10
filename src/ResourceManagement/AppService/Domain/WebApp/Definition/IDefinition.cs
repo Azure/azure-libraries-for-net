@@ -3,58 +3,11 @@
 namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
 {
     using Microsoft.Azure.Management.AppService.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition;
-
-    /// <summary>
-    /// A web app definition allowing app service plan to be set.
-    /// </summary>
-    public interface IWithNewAppServicePlan 
-    {
-        /// <summary>
-        /// Creates a new shared app service plan.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewSharedAppServicePlan();
-
-        /// <summary>
-        /// Creates a new app service plan to use.
-        /// </summary>
-        /// <param name="pricingTier">The sku of the app service plan.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithNewLinuxPlan(PricingTier pricingTier);
-
-        /// <summary>
-        /// Creates a new app service plan to use.
-        /// </summary>
-        /// <param name="appServicePlanCreatable">The new app service plan creatable.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithNewLinuxPlan(ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan> appServicePlanCreatable);
-
-        /// <summary>
-        /// Creates a new app service plan to use.
-        /// </summary>
-        /// <param name="pricingTier">The sku of the app service plan.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewWindowsPlan(PricingTier pricingTier);
-
-        /// <summary>
-        /// Creates a new app service plan to use.
-        /// </summary>
-        /// <param name="appServicePlanCreatable">The new app service plan creatable.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewWindowsPlan(ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan> appServicePlanCreatable);
-
-        /// <summary>
-        /// Creates a new free app service plan. This will fail if there are 10 or more
-        /// free plans in the current subscription.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewFreeAppServicePlan();
-    }
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
 
     /// <summary>
     /// A web app definition allowing docker registry credentials to be set.
@@ -68,14 +21,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
         /// <param name="password">The password for Docker Hub or the docker registry.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithStartUpCommand WithCredentials(string username, string password);
-    }
-
-    /// <summary>
-    /// A web app definition allowing resource group to be specified when an existing app service plan is used.
-    /// </summary>
-    public interface INewAppServicePlanWithGroup  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithNewAppServicePlan>
-    {
     }
 
     /// <summary>
@@ -94,46 +39,96 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     }
 
     /// <summary>
-    /// A web app definition allowing resource group to be specified when a new app service plan is to be created.
+    /// The first stage of the web app definition.
     /// </summary>
-    public interface IExistingLinuxPlanWithGroup 
+    public interface IBlank  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.INewAppServicePlanWithGroup>
     {
         /// <summary>
-        /// Creates a new resource group to put the resource in.
-        /// The group will be created in the same location as the resource.
+        /// Uses an existing app service plan for the web app.
         /// </summary>
-        /// <param name="name">The name of the new group.</param>
+        /// <param name="appServicePlan">The existing app service plan.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithNewResourceGroup(string name);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IExistingLinuxPlanWithGroup WithExistingLinuxPlan(IAppServicePlan appServicePlan);
 
         /// <summary>
-        /// Creates a new resource group to put the resource in.
-        /// The group will be created in the same location as the resource.
-        /// The group's name is automatically derived from the resource's name.
+        /// Uses an existing app service plan for the web app.
         /// </summary>
+        /// <param name="appServicePlan">The existing app service plan.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithNewResourceGroup();
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IExistingWindowsPlanWithGroup WithExistingWindowsPlan(IAppServicePlan appServicePlan);
+    }
+
+    /// <summary>
+    /// A site definition with sufficient inputs to create a new web app /
+    /// deployments slot in the cloud, but exposing additional optional
+    /// inputs to specify.
+    /// </summary>
+    public interface IWithCreate  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.AppService.Fluent.IWebApp>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IWebApp>
+    {
+    }
+
+    /// <summary>
+    /// A web app definition allowing app service plan to be set.
+    /// </summary>
+    public interface IWithNewAppServicePlan 
+    {
+        /// <summary>
+        /// Creates a new app service plan to use.
+        /// </summary>
+        /// <param name="pricingTier">The sku of the app service plan.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithNewLinuxPlan(PricingTier pricingTier);
 
         /// <summary>
-        /// Creates a new resource group to put the resource in, based on the definition specified.
+        /// Creates a new app service plan to use.
         /// </summary>
-        /// <param name="groupDefinition">A creatable definition for a new resource group.</param>
+        /// <param name="appServicePlanCreatable">The new app service plan creatable.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithNewResourceGroup(ICreatable<Microsoft.Azure.Management.ResourceManager.Fluent.IResourceGroup> groupDefinition);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithNewLinuxPlan(ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan> appServicePlanCreatable);
 
         /// <summary>
-        /// Associates the resource with an existing resource group.
+        /// Creates a new free app service plan. This will fail if there are 10 or more
+        /// free plans in the current subscription.
         /// </summary>
-        /// <param name="groupName">The name of an existing resource group to put this resource in.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithExistingResourceGroup(string groupName);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewFreeAppServicePlan();
 
         /// <summary>
-        /// Associates the resource with an existing resource group.
+        /// Creates a new app service plan to use.
         /// </summary>
-        /// <param name="group">An existing resource group to put the resource in.</param>
+        /// <param name="pricingTier">The sku of the app service plan.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithExistingResourceGroup(IResourceGroup group);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewWindowsPlan(PricingTier pricingTier);
+
+        /// <summary>
+        /// Creates a new app service plan to use.
+        /// </summary>
+        /// <param name="appServicePlanCreatable">The new app service plan creatable.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewWindowsPlan(ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan> appServicePlanCreatable);
+
+        /// <summary>
+        /// Creates a new shared app service plan.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithNewSharedAppServicePlan();
+    }
+
+    /// <summary>
+    /// Container interface for all the definitions that need to be implemented.
+    /// </summary>
+    public interface IDefinition  :
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IBlank,
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.INewAppServicePlanWithGroup,
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithNewAppServicePlan,
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage,
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCredentials,
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithStartUpCommand,
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate
+    {
     }
 
     /// <summary>
@@ -180,37 +175,53 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     }
 
     /// <summary>
-    /// The first stage of the web app definition.
+    /// A web app definition allowing resource group to be specified when a new app service plan is to be created.
     /// </summary>
-    public interface IBlank  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.INewAppServicePlanWithGroup>
+    public interface IExistingLinuxPlanWithGroup 
     {
         /// <summary>
-        /// Uses an existing app service plan for the web app.
+        /// Creates a new resource group to put the resource in.
+        /// The group will be created in the same location as the resource.
         /// </summary>
-        /// <param name="appServicePlan">The existing app service plan.</param>
+        /// <param name="name">The name of the new group.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IExistingLinuxPlanWithGroup WithExistingLinuxPlan(IAppServicePlan appServicePlan);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithNewResourceGroup(string name);
 
         /// <summary>
-        /// Uses an existing app service plan for the web app.
+        /// Creates a new resource group to put the resource in.
+        /// The group will be created in the same location as the resource.
+        /// The group's name is automatically derived from the resource's name.
         /// </summary>
-        /// <param name="appServicePlan">The existing app service plan.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IExistingWindowsPlanWithGroup WithExistingWindowsPlan(IAppServicePlan appServicePlan);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithNewResourceGroup();
+
+        /// <summary>
+        /// Creates a new resource group to put the resource in, based on the definition specified.
+        /// </summary>
+        /// <param name="groupDefinition">A creatable definition for a new resource group.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithNewResourceGroup(ICreatable<Microsoft.Azure.Management.ResourceManager.Fluent.IResourceGroup> groupDefinition);
+
+        /// <summary>
+        /// Associates the resource with an existing resource group.
+        /// </summary>
+        /// <param name="groupName">The name of an existing resource group to put this resource in.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithExistingResourceGroup(string groupName);
+
+        /// <summary>
+        /// Associates the resource with an existing resource group.
+        /// </summary>
+        /// <param name="group">An existing resource group to put the resource in.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage WithExistingResourceGroup(IResourceGroup group);
     }
 
     /// <summary>
-    /// Container interface for all the definitions that need to be implemented.
+    /// A web app definition allowing resource group to be specified when an existing app service plan is used.
     /// </summary>
-    public interface IDefinition  :
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IBlank,
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.INewAppServicePlanWithGroup,
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithNewAppServicePlan,
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithDockerContainerImage,
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCredentials,
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithStartUpCommand,
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate
+    public interface INewAppServicePlanWithGroup  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithNewAppServicePlan>
     {
     }
 
@@ -220,11 +231,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     public interface IWithDockerContainerImage 
     {
         /// <summary>
-        /// Specifies the docker container image to be a built in one.
+        /// Specifies the docker container image to be one from Docker Hub.
         /// </summary>
-        /// <param name="runtimeStack">The runtime stack installed on the image.</param>
+        /// <param name="imageAndTag">Image and optional tag (eg 'image:tag').</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithBuiltInImage(RuntimeStack runtimeStack);
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithStartUpCommand WithPublicDockerHubImage(string imageAndTag);
 
         /// <summary>
         /// Specifies the docker container image to be one from Docker Hub.
@@ -234,29 +245,18 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCredentials WithPrivateDockerHubImage(string imageAndTag);
 
         /// <summary>
-        /// Specifies the docker container image to be one from Docker Hub.
-        /// </summary>
-        /// <param name="imageAndTag">Image and optional tag (eg 'image:tag').</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithStartUpCommand WithPublicDockerHubImage(string imageAndTag);
-
-        /// <summary>
         /// Specifies the docker container image to be one from a private registry.
         /// </summary>
         /// <param name="imageAndTag">Image and optional tag (eg 'image:tag').</param>
         /// <param name="serverUrl">The URL to the private registry server.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCredentials WithPrivateRegistryImage(string imageAndTag, string serverUrl);
-    }
 
-    /// <summary>
-    /// A site definition with sufficient inputs to create a new web app /
-    /// deployments slot in the cloud, but exposing additional optional
-    /// inputs to specify.
-    /// </summary>
-    public interface IWithCreate  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.AppService.Fluent.IWebApp>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IWebApp>
-    {
+        /// <summary>
+        /// Specifies the docker container image to be a built in one.
+        /// </summary>
+        /// <param name="runtimeStack">The runtime stack installed on the image.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WithBuiltInImage(RuntimeStack runtimeStack);
     }
 }
