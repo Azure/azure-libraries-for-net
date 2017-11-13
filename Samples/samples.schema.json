@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Sample Repository Generator Tool - Samples Schema",
+  "description": "The schema for the samples.json file that is used by the Sample Repository Generator Tool.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "enum": [
+        "./samples.schema.json"
+      ]
+    },
+    "dotnetSamples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "filePath": {
+            "type": "string",
+            "pattern": "^Samples/([a-zA-Z]+)/([a-zA-Z0-9]+).cs$",
+            "description": "The path to the sample's .NET source code, relative to the local azure-libraries-for-net repository."
+          },
+          "owner": {
+            "enum": [
+              "alvadb",
+              "anuchandy",
+              "anudeepsharma",
+              "daschult",
+              "hovsepm",
+              "jianghaolu",
+              "lenala",
+              "martinsawicki",
+              "milismsft",
+              "selvasingh"
+            ],
+            "description": "The GitHub username of the owner of this sample."
+          },
+          "githubPath": {
+            "type": "string",
+            "pattern": "^Azure-Samples/([a-zA-Z]+-)+dotnet(-[a-zA-Z0-9]+)+$",
+            "description": "The GitHub path to this sample's repository."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The description that will be used in the GitHub sample repository."
+          }
+        },
+        "required": [
+          "filePath",
+          "owner",
+          "githubPath",
+          "description"
+        ]
+      }
+    }
+  },
+  "required": [
+    "$schema",
+    "dotnetSamples"
+  ],
+  "additionalProperties": false
+}
