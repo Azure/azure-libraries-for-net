@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Use Express route gateway type.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        VirtualNetworkGateway.Definition.IWithPublicIPAddress VirtualNetworkGateway.Definition.IWithGatewayType.WithExpressRoute()
+        VirtualNetworkGateway.Definition.IWithSku VirtualNetworkGateway.Definition.IWithGatewayType.WithExpressRoute()
         {
-            return this.WithExpressRoute() as VirtualNetworkGateway.Definition.IWithPublicIPAddress;
+            return this.WithExpressRoute() as VirtualNetworkGateway.Definition.IWithSku;
         }
 
         /// <summary>

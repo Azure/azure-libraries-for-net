@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit>
     {
         /// <summary>
-        /// Gets Begins definition of Microsoft peering.
+        /// Begins definition of Microsoft peering.
         /// </summary>
         /// <return>Next peering definition stage.</return>
         ExpressRouteCircuitPeering.Definition.IWithAdvertisedPublicPrefixes DefineMicrosoftPeering();

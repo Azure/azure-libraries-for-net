@@ -8,13 +8,21 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update
     using Microsoft.Azure.Management.Network.Fluent.Models;
 
     /// <summary>
-    /// The stage of express route circuit definition allowing to enable/disable classic operations.
+    /// The stage of express route circuit update allowing to enable/disable classic operations.
     /// </summary>
     public interface IWithAllowClassicOperations 
     {
-        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IUpdate EnableClassicOperations { get; }
+        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IUpdate WithoutClassicOperations();
 
-        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IUpdate DisableClassicOperations { get; }
+        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IUpdate WithClassicOperations();
+    }
+
+    /// <summary>
+    /// The stage of express route circuit update allowing to add authorization.
+    /// </summary>
+    public interface IWithAuthorization
+    {
+        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IUpdate WithAuthorization(string authorizationName);
     }
 
     /// <summary>
@@ -26,12 +34,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IWithBandwidth,
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IWithSku,
-        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IWithAllowClassicOperations
+        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IWithAllowClassicOperations,
+        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IWithAuthorization
     {
     }
 
     /// <summary>
-    /// The stage of express route circuit definition allowing to specify SKU tier and family.
+    /// The stage of express route circuit update allowing to specify SKU tier and family.
     /// </summary>
     public interface IWithSku 
     {
@@ -39,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update
     }
 
     /// <summary>
-    /// The stage of express route circuit definition allowing to specify service provider bandwidth.
+    /// The stage of express route circuit update allowing to specify service provider bandwidth.
     /// </summary>
     public interface IWithBandwidth 
     {

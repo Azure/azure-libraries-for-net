@@ -8,37 +8,38 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update;
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
     internal partial class ExpressRouteCircuitImpl 
     {
+        /// <summary>
+        /// Refreshes the resource to sync with Azure.
+        /// </summary>
+        /// <return>The Observable to refreshed resource.</return>
+        async Task<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit>.RefreshAsync(CancellationToken cancellationToken)
+        {
+            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit;
+        }
+
         ExpressRouteCircuit.Definition.IWithBandwidth ExpressRouteCircuit.Definition.IWithPeeringLocation.WithPeeringLocation(string location)
         {
             return this.WithPeeringLocation(location) as ExpressRouteCircuit.Definition.IWithBandwidth;
         }
 
-        ExpressRouteCircuit.Update.IUpdate ExpressRouteCircuit.Update.IWithAllowClassicOperations.EnableClassicOperations
+        ExpressRouteCircuit.Update.IUpdate ExpressRouteCircuit.Update.IWithAllowClassicOperations.WithoutClassicOperations()
         {
-            get
-            {
-                return this.EnableClassicOperations() as ExpressRouteCircuit.Update.IUpdate;
-            }
+            return this.WithoutClassicOperations() as ExpressRouteCircuit.Update.IUpdate;
         }
 
-        ExpressRouteCircuit.Update.IUpdate ExpressRouteCircuit.Update.IWithAllowClassicOperations.DisableClassicOperations
+        ExpressRouteCircuit.Update.IUpdate ExpressRouteCircuit.Update.IWithAllowClassicOperations.WithClassicOperations()
         {
-            get
-            {
-                return this.DisableClassicOperations() as ExpressRouteCircuit.Update.IUpdate;
-            }
+            return this.WithClassicOperations() as ExpressRouteCircuit.Update.IUpdate;
         }
 
-        ExpressRouteCircuit.Definition.IWithCreate ExpressRouteCircuit.Definition.IWithAllowClassicOperations.EnableClassicOperations
+        ExpressRouteCircuit.Definition.IWithCreate ExpressRouteCircuit.Definition.IWithAllowClassicOperations.WithClassicOperations()
         {
-            get
-            {
-                return this.EnableClassicOperations() as ExpressRouteCircuit.Definition.IWithCreate;
-            }
+            return this.WithClassicOperations() as ExpressRouteCircuit.Definition.IWithCreate;
         }
 
         /// <summary>
@@ -100,9 +101,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <return>Entry point to manage express route peerings associated with express route circuit.</return>
-        Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit.Peerings()
+        Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit.Peerings
         {
-            return this.Peerings() as Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings;
+            get
+            {
+                return this.Peerings() as Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings;
+            }
         }
 
         /// <summary>
@@ -160,6 +164,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ExpressRouteCircuit.Definition.IWithSku ExpressRouteCircuit.Definition.IWithBandwidth.WithBandwidthInMbps(int bandwidthInMbps)
         {
             return this.WithBandwidthInMbps(bandwidthInMbps) as ExpressRouteCircuit.Definition.IWithSku;
+        }
+
+        ExpressRouteCircuit.Update.IUpdate ExpressRouteCircuit.Update.IWithAuthorization.WithAuthorization(string authorizationName)
+        {
+            return this.WithAuthorization(authorizationName) as ExpressRouteCircuit.Update.IUpdate;
+        }
+
+        ExpressRouteCircuit.Definition.IWithCreate ExpressRouteCircuit.Definition.IWithAuthorization.WithAuthorization(string authorizationName)
+        {
+            return this.WithAuthorization(authorizationName) as ExpressRouteCircuit.Definition.IWithCreate;
         }
 
         ExpressRouteCircuit.Definition.IWithPeeringLocation ExpressRouteCircuit.Definition.IWithServiceProvider.WithServiceProvider(string serviceProviderName)

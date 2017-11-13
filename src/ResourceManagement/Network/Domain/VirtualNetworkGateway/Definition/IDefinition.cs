@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Defini
         /// Use Express route gateway type.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Definition.IWithPublicIPAddress WithExpressRoute();
+        Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Definition.IWithSku WithExpressRoute();
 
         /// <summary>
         /// Use Policy-based VPN type. Note: this is available only for Basic SKU.

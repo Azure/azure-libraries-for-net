@@ -17,11 +17,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definiti
     }
 
     /// <summary>
+    /// The stage of definition allowing to add authorization.
+    /// </summary>
+    public interface IWithAuthorization
+    {
+        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithCreate WithAuthorization(string authorizationName);
+    }
+
+    /// <summary>
     /// The stage of express route circuit definition allowing to enable/disable classic operations.
     /// </summary>
     public interface IWithAllowClassicOperations 
     {
-        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithCreate EnableClassicOperations { get; }
+        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithCreate WithClassicOperations();
     }
 
     /// <summary>
@@ -70,7 +78,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definiti
     public interface IWithCreate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithCreate>,
-        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithAllowClassicOperations
+        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithAllowClassicOperations,
+        Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithAuthorization
     {
     }
 
