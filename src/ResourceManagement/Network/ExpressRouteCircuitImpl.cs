@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return Inner.AllowClassicOperations.HasValue ? Inner.AllowClassicOperations.Value : false;
         }
 
-        ///GENMHASH:F04E137633EC331554E748A2DF9F1C63:E5F6F8BB59C66FDE984B44E1C54B5DD4
-        public ExpressRouteCircuitImpl EnableClassicOperations()
+        ///GENMHASH:7D488BE33CCD12206E12A6B47456B78C:E5F6F8BB59C66FDE984B44E1C54B5DD4
+        public ExpressRouteCircuitImpl WithClassicOperations()
         {
             Inner.AllowClassicOperations = true;
             return this;
@@ -58,12 +58,29 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        ///GENMHASH:85C0B0BDE138F3DA3DA30727277F9168:07F188A54813492D83103B14B8C862DE
-        public IUpdate DisableClassicOperations()
+        ///GENMHASH:6B82EEC805F951CDABC1A552B8029E74:07F188A54813492D83103B14B8C862DE
+        public ExpressRouteCircuitImpl WithoutClassicOperations()
         {
             Inner.AllowClassicOperations = false;
             return this;
         }
+
+        ///GENMHASH:07B3D80A2B51CD1129DBD008D4FD771E:F87366D7A13E559B06D81AD82352A6E8
+        public ExpressRouteCircuitImpl WithAuthorization(string authorizationName)
+        {
+            EnsureAuthorizations().Add(new ExpressRouteCircuitAuthorizationInner()
+            {
+                Name =  authorizationName
+            });
+            return this;
+        }
+
+    private IList<ExpressRouteCircuitAuthorizationInner> EnsureAuthorizations() {
+         if (Inner.Authorizations == null) {
+             Inner.Authorizations = new List<ExpressRouteCircuitAuthorizationInner>();
+            }
+         return Inner.Authorizations;
+     }
 
         ///GENMHASH:F91F57741BB7E185BF012523964DEED0:27E486AB74A10242FF421C0798DDC450
         protected override void AfterCreating()

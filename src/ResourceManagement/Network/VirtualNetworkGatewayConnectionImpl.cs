@@ -205,10 +205,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return Inner.VirtualNetworkGateway2.Id;
         }
 
-        ///GENMHASH:E40693A780061FC1A156598B974969F1:D0A28D861F54F2F5A4F869CE37D6ABB2
-        public VirtualNetworkGatewayConnectionImpl WithExpressRoute()
+        ///GENMHASH:C70D23F4587F98FF6D0A29A186DD0C1E:7AD73DFFC315FFB18F7BA235DFC6F4ED
+        public VirtualNetworkGatewayConnectionImpl WithExpressRoute(string circuitId)
         {
             Inner.ConnectionType = VirtualNetworkGatewayConnectionType.ExpressRoute.Value;
+            Inner.Peer = new SubResource()
+            {
+                Id = circuitId
+            };
+            return this;
+        }
+
+        ///GENMHASH:6C56ED8B9268C869E730DCC2AA432590:E6D2C0ECA74E9925CAF40C55749D0EB1
+        public VirtualNetworkGatewayConnectionImpl WithExpressRoute(IExpressRouteCircuit circuit)
+        {
+            return WithExpressRoute(circuit.Id);
+        }
+
+        ///GENMHASH:07B3D80A2B51CD1129DBD008D4FD771E:8F1916B6FE6A9A2F468F118EFB9F7036
+        public VirtualNetworkGatewayConnectionImpl WithAuthorization(string authorizationKey)
+        {
+            Inner.AuthorizationKey = authorizationKey;
             return this;
         }
 

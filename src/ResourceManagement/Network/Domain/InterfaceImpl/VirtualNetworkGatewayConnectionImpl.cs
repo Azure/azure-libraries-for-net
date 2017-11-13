@@ -13,11 +13,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
     internal partial class VirtualNetworkGatewayConnectionImpl 
     {
+        /// <summary>
+        /// Specify shared key.
+        /// </summary>
+        /// <param name="sharedKey">Shared key.</param>
+        /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayConnection.Definition.IWithCreate VirtualNetworkGatewayConnection.Definition.IWithSharedKey.WithSharedKey(string sharedKey)
         {
             return this.WithSharedKey(sharedKey) as VirtualNetworkGatewayConnection.Definition.IWithCreate;
         }
 
+        /// <summary>
+        /// Specify shared key.
+        /// </summary>
+        /// <param name="sharedKey">Shared key.</param>
+        /// <return>The next stage of the update.</return>
         VirtualNetworkGatewayConnection.Update.IUpdate VirtualNetworkGatewayConnection.Update.IWithSharedKey.WithSharedKey(string sharedKey)
         {
             return this.WithSharedKey(sharedKey) as VirtualNetworkGatewayConnection.Update.IUpdate;
@@ -143,8 +153,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets the gateway connection type. Possible values are:
-        /// 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient.
+        /// Gets the gateway connection type.
         /// </summary>
         /// <summary>
         /// Gets the connectionType value.
@@ -223,41 +232,102 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
         }
 
+        /// <param name="localNetworkGateway">Local network gateway to connect to.</param>
+        /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayConnection.Definition.IWithSharedKey VirtualNetworkGatewayConnection.Definition.IWithLocalNetworkGateway.WithLocalNetworkGateway(ILocalNetworkGateway localNetworkGateway)
         {
             return this.WithLocalNetworkGateway(localNetworkGateway) as VirtualNetworkGatewayConnection.Definition.IWithSharedKey;
         }
 
+        /// <summary>
+        /// Specify authorization key.
+        /// This is required in case of Express Route connection if Express Route circuit and virtual network gateway reside in different subscriptions.
+        /// </summary>
+        /// <param name="authorizationKey">Authorization key to use.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualNetworkGatewayConnection.Definition.IWithCreate VirtualNetworkGatewayConnection.Definition.IWithAuthorization.WithAuthorization(string authorizationKey)
+        {
+            return this.WithAuthorization(authorizationKey) as VirtualNetworkGatewayConnection.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specify authorization key.
+        /// This is required in case of Express Route connection if Express Route circuit and virtual network gateway reside in different subscriptions.
+        /// </summary>
+        /// <param name="authorizationKey">Authorization key to use.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualNetworkGatewayConnection.Update.IUpdate VirtualNetworkGatewayConnection.Update.IWithAuthorization.WithAuthorization(string authorizationKey)
+        {
+            return this.WithAuthorization(authorizationKey) as VirtualNetworkGatewayConnection.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Enable BGP for the connection.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayConnection.Definition.IWithCreate VirtualNetworkGatewayConnection.Definition.IWithBgp.WithBgp()
         {
             return this.WithBgp() as VirtualNetworkGatewayConnection.Definition.IWithCreate;
         }
 
+        /// <summary>
+        /// Disable BGP for the connection.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
         VirtualNetworkGatewayConnection.Update.IUpdate VirtualNetworkGatewayConnection.Update.IWithBgp.WithoutBgp()
         {
             return this.WithoutBgp() as VirtualNetworkGatewayConnection.Update.IUpdate;
         }
 
+        /// <summary>
+        /// Enable BGP for the connection.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
         VirtualNetworkGatewayConnection.Update.IUpdate VirtualNetworkGatewayConnection.Update.IWithBgp.WithBgp()
         {
             return this.WithBgp() as VirtualNetworkGatewayConnection.Update.IUpdate;
         }
 
+        /// <summary>
+        /// Create Site-to-Site connection.
+        /// </summary>
+        /// <return>Next stage of definition, allowing to specify local network gateway.</return>
         VirtualNetworkGatewayConnection.Definition.IWithLocalNetworkGateway VirtualNetworkGatewayConnection.Definition.IWithConnectionType.WithSiteToSite()
         {
             return this.WithSiteToSite() as VirtualNetworkGatewayConnection.Definition.IWithLocalNetworkGateway;
         }
 
+        /// <summary>
+        /// Create VNet-to-VNet connection.
+        /// </summary>
+        /// <return>The next stage of the definition, allowing to specify virtual network gateway to connect to.</return>
         VirtualNetworkGatewayConnection.Definition.IWithSecondVirtualNetworkGateway VirtualNetworkGatewayConnection.Definition.IWithConnectionType.WithVNetToVNet()
         {
             return this.WithVNetToVNet() as VirtualNetworkGatewayConnection.Definition.IWithSecondVirtualNetworkGateway;
         }
 
-        VirtualNetworkGatewayConnection.Definition.IWithExpressRoute VirtualNetworkGatewayConnection.Definition.IWithConnectionType.WithExpressRoute()
+        /// <summary>
+        /// Create Express Route connection.
+        /// </summary>
+        /// <param name="circuitId">Id of Express Route circuit used for connection.</param>
+        /// <return>Next stage of definition.</return>
+        VirtualNetworkGatewayConnection.Definition.IWithCreate VirtualNetworkGatewayConnection.Definition.IWithConnectionType.WithExpressRoute(string circuitId)
         {
-            return this.WithExpressRoute() as VirtualNetworkGatewayConnection.Definition.IWithExpressRoute;
+            return this.WithExpressRoute(circuitId) as VirtualNetworkGatewayConnection.Definition.IWithCreate;
         }
 
+        /// <summary>
+        /// Create Express Route connection.
+        /// </summary>
+        /// <param name="circuit">Express Route circuit used for connection.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualNetworkGatewayConnection.Definition.IWithCreate VirtualNetworkGatewayConnection.Definition.IWithConnectionType.WithExpressRoute(IExpressRouteCircuit circuit)
+        {
+            return this.WithExpressRoute(circuit) as VirtualNetworkGatewayConnection.Definition.IWithCreate;
+        }
+
+        /// <param name="virtualNetworkGateway2">Virtual network gateway to connect to.</param>
+        /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayConnection.Definition.IWithSharedKey VirtualNetworkGatewayConnection.Definition.IWithSecondVirtualNetworkGateway.WithSecondVirtualNetworkGateway(IVirtualNetworkGateway virtualNetworkGateway2)
         {
             return this.WithSecondVirtualNetworkGateway(virtualNetworkGateway2) as VirtualNetworkGatewayConnection.Definition.IWithSharedKey;

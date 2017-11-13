@@ -61,8 +61,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         System.Collections.Generic.IReadOnlyCollection<Models.IpsecPolicy> IpsecPolicies { get; }
 
         /// <summary>
-        /// Gets the gateway connection type. Possible values are:
-        /// 'Ipsec','Vnet2Vnet','ExpressRoute', and 'VPNClient.
+        /// Gets the gateway connection type.
         /// </summary>
         /// <summary>
         /// Gets the connectionType value.
@@ -80,9 +79,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         string VirtualNetworkGateway1Id { get; }
 
         /// <summary>
-        /// Gets the Virtual Network Gateway connection status. Possible values are
-        /// 'Unknown', 'Connecting', 'Connected' and 'NotConnected'. Possible values
-        /// include: 'Unknown', 'Connecting', 'Connected', 'NotConnected'.
+        /// Gets the Virtual Network Gateway connection status.
         /// </summary>
         /// <summary>
         /// Gets the connectionStatus value.

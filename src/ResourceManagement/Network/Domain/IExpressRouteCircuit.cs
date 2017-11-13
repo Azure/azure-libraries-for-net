@@ -37,8 +37,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         string ServiceProviderNotes { get; }
 
-        /// <return>Entry point to manage express route peerings associated with express route circuit.</return>
-        Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings Peerings();
+        /// <summary>
+        /// Gets entry point to manage express route peerings associated with express route circuit.
+        /// </summary>
+        Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings Peerings { get; }
 
         /// <summary>
         /// Gets The ServiceProviderProvisioningState state of the resource.
