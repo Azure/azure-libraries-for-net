@@ -71,7 +71,7 @@ namespace Fluent.Tests.Network
                     .WithSku(ExpressRouteCircuitSkuType.PremiumMeteredData)
                     .WithTag("tag1", "value1")
                     .Create();
-                erc.Peerings().DefineMicrosoftPeering()
+                erc.Peerings.DefineMicrosoftPeering()
                     .WithAdvertisedPublicPrefixes("123.1.0.0/24")
                     .WithPrimaryPeerAddressPrefix("123.0.0.0/30")
                     .WithSecondaryPeerAddressPrefix("123.0.0.4/30")
