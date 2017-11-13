@@ -1268,5 +1268,33 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return this.WithExistingSubnet(parentNetworkResourceId, subnetName) as ApplicationGateway.Definition.IWithCreate;
         }
+
+        /// <summary>
+        /// Specifies the availability zone for the application gateway.
+        /// Note, this functionality is not enabled for most subscriptions and is subject to significant redesign
+        /// and/or removal in the future.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            return this.WithAvailabilityZone(zoneId) as ApplicationGateway.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Gets The availability zones assigned to the application gateway.
+        /// Note, this functionality is not enabled for most subscriptions and is subject to significant redesign
+        /// and/or removal in the future.
+        /// </summary>
+        /// <summary>
+        /// Gets the availability zones assigned to the application gateway.
+        /// </summary>
+        System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.AvailabilityZones
+        {
+            get
+            {
+                return this.AvailabilityZones() as System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>;
+            }
+        }
     }
 }

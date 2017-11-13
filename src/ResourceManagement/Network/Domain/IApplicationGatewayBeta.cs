@@ -42,5 +42,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Gets authentication certificates.
         /// </summary>
         System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; }
+
+        /// <summary>
+        /// Gets The availability zones assigned to the application gateway.
+        /// Note, this functionality is not enabled for most subscriptions and is subject to significant redesign
+        /// and/or removal in the future.
+        /// </summary>
+        /// <summary>
+        /// Gets the availability zones assigned to the application gateway.
+        /// </summary>
+        System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> AvailabilityZones { get; }
     }
 }

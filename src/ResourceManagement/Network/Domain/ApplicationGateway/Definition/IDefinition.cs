@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Network.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
     /// The stage of an application gateway definition allowing to add a new Internet-facing frontend with a public IP address.
@@ -209,6 +210,23 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithFrontendPort(int portNumber, string name);
     }
 
+
+    /// <summary>
+    /// The stage of the application gateway definition allowing to specify availability zone.
+    /// </summary>
+    public interface IWithAvailabilityZone :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the availability zone for the application gateway.
+        /// Note, this functionality is not enabled for most subscriptions and is subject to significant redesign
+        /// and/or removal in the future.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithAvailabilityZone(AvailabilityZoneId zoneId);
+    }
+
     /// <summary>
     /// The stage of an application gateway definition allowing to add an authentication certificate for the backends to use.
     /// </summary>
@@ -276,7 +294,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithProbe,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithDisabledSslProtocol,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithAuthenticationCertificate,
-        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithRedirectConfiguration
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithRedirectConfiguration,
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithAvailabilityZone
     {
     }
 
