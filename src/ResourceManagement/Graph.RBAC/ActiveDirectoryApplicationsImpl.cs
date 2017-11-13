@@ -32,10 +32,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryApplication> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            IEnumerable<ApplicationInner> inners = await manager.Inner.Applications.ListAsync(string.Format("displayName eq '{0}'", name), cancellationToken);
-            if (inners == null || !inners.Any())
+            var trimmedName = name.Trim('\'');
+            IEnumerable<ApplicationInner> inners = await manager.Inner.Applications.ListAsync(string.Format("displayName eq '{0}'", trimmedName), cancellationToken);
+            if (Guid.TryParse(trimmedName, out Guid convertedGuid) && (inners == null || !inners.Any()))
             {
-                inners = await manager.Inner.Applications.ListAsync(string.Format("appId eq '{0}'", name), cancellationToken);
+                inners = await manager.Inner.Applications.ListAsync(string.Format("appId eq '{0}'", trimmedName), cancellationToken);
             }
             if (inners == null || !inners.Any())
             {
