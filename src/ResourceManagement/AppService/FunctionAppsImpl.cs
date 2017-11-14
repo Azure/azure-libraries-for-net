@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 Inner.ListByResourceGroupNextAsync,
                 async (inner, cancellation) => await PopulateModelAsync(inner, cancellation),
                 loadAllPages, cancellationToken);
-            return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(w => w.Inner.Kind == "app"));
+            return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(w => "functionapp".Equals(w.Inner.Kind, StringComparison.OrdinalIgnoreCase)));
         }
 
         public override async Task<IPagedCollection<IFunctionApp>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 Inner.ListNextAsync,
                 async (inner, cancellation) => await PopulateModelAsync(inner, cancellation),
                 loadAllPages, cancellationToken);
-            return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(w => w.Inner.Kind == "app"));
+            return PagedCollection<IFunctionApp, SiteInner>.CreateFromEnumerable(collection.Where(w => "functionapp".Equals(w.Inner.Kind, StringComparison.OrdinalIgnoreCase)));
         }
 
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:586E2B084878E8767487234B852D8D20
