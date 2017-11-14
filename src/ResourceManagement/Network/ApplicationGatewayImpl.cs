@@ -943,6 +943,24 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         #endregion
 
+        #region WithAvailabilityZone
+
+        ///GENMHASH:5D8D71845C83EB59F52EB2C4B1C05618:0AA367931507CEA23E4115AE01B4EE41
+        public ApplicationGatewayImpl WithAvailabilityZone(AvailabilityZoneId zoneId)
+        {
+            if (this.Inner.Zones == null)
+            {
+                this.Inner.Zones = new List<string>();
+            }
+            if (!this.Inner.Zones.Contains(zoneId.ToString()))
+            {
+                this.Inner.Zones.Add(zoneId.ToString());
+            }
+            return this;
+        }
+
+        #endregion
+
         ///GENMHASH:0A25F8D30AF64565545B20B215964E6B:7FF7C66C33A802B8668BFAC46B248EE8
         public ApplicationGatewayImpl WithSize(ApplicationGatewaySkuName skuName)
         {
@@ -1248,6 +1266,20 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public IReadOnlyDictionary<string, IApplicationGatewayBackendHttpConfiguration> BackendHttpConfigurations()
         {
             return backendConfigs;
+        }
+
+        ///GENMHASH:F856C02184EB290DC74E5823D4280D7C:2E646A9F2FBAA3AFBE73DA6741052E7B
+        public ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> AvailabilityZones()
+        {
+            var zones = new HashSet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>();
+            if (this.Inner.Zones != null)
+            {
+                foreach (var zone in this.Inner.Zones)
+                {
+                    zones.Add(AvailabilityZoneId.Parse(zone));
+                }
+            }
+            return zones;
         }
 
         #endregion
