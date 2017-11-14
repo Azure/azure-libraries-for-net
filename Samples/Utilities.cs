@@ -1207,12 +1207,12 @@ namespace Microsoft.Azure.Management.Samples.Common
                 }
             }
             builder = builder.Append("\n\tApp settings: ");
-            foreach (var setting in resource.AppSettings.Values)
+            foreach (var setting in resource.GetAppSettings().Values)
             {
                 builder = builder.Append("\n\t\t" + setting.Key + ": " + setting.Value + (setting.Sticky ? " - slot setting" : ""));
             }
             builder = builder.Append("\n\tConnection strings: ");
-            foreach (var conn in resource.ConnectionStrings.Values)
+            foreach (var conn in resource.GetConnectionStrings().Values)
             {
                 builder = builder.Append("\n\t\t" + conn.Name + ": " + conn.Value + " - " + conn.Type + (conn.Sticky ? " - slot setting" : ""));
             }

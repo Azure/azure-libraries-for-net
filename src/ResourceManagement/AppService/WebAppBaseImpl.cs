@@ -474,7 +474,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             // App settings && connection strings
-            SetInner(site);
             await Task.WhenAll(SubmitAppSettingsAsync(Inner, cancellationToken), SubmitConnectionStringsAsync(Inner, cancellationToken));
 
             // app setting and connection string stickiness

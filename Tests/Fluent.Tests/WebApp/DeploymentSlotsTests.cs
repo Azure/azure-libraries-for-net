@@ -51,10 +51,10 @@ namespace Fluent.Tests.WebApp
                 Assert.NotNull(slot1);
                 Assert.NotEqual(JavaVersion.V7_51, slot1.JavaVersion);
                 Assert.Equal(PythonVersion.V27, slot1.PythonVersion);
-                var appSettingMap = slot1.AppSettings;
+                var appSettingMap = slot1.GetAppSettings();
                 Assert.False(appSettingMap.ContainsKey("appkey"));
                 Assert.False(appSettingMap.ContainsKey("stickykey"));
-                var connectionStringMap = slot1.ConnectionStrings;
+                var connectionStringMap = slot1.GetConnectionStrings();
                 Assert.False(connectionStringMap.ContainsKey("connectionName"));
                 Assert.False(connectionStringMap.ContainsKey("stickyName"));
 
@@ -64,12 +64,12 @@ namespace Fluent.Tests.WebApp
                     .Create();
                 Assert.NotNull(slot2);
                 Assert.Equal(JavaVersion.V7_51, slot2.JavaVersion);
-                appSettingMap = slot2.AppSettings;
+                appSettingMap = slot2.GetAppSettings();
                 Assert.Equal("appvalue", appSettingMap["appkey"].Value);
                 Assert.False(appSettingMap["appkey"].Sticky);
                 Assert.Equal("stickyvalue", appSettingMap["stickykey"].Value);
                 Assert.True(appSettingMap["stickykey"].Sticky);
-                connectionStringMap = slot2.ConnectionStrings;
+                connectionStringMap = slot2.GetConnectionStrings();
                 Assert.Equal("connectionValue", connectionStringMap["connectionName"].Value);
                 Assert.False(connectionStringMap["connectionName"].Sticky);
                 Assert.Equal("stickyValue", connectionStringMap["stickyName"].Value);
@@ -85,7 +85,7 @@ namespace Fluent.Tests.WebApp
                 Assert.NotNull(slot2);
                 Assert.Equal(JavaVersion.Off, slot2.JavaVersion);
                 Assert.Equal(PythonVersion.V34, slot2.PythonVersion);
-                appSettingMap = slot2.AppSettings;
+                appSettingMap = slot2.GetAppSettings();
                 Assert.Equal("slot2value", appSettingMap["slot2key"].Value);
 
                 // Create 3rd deployment slot with configuration from slot 2
@@ -95,7 +95,7 @@ namespace Fluent.Tests.WebApp
                 Assert.NotNull(slot3);
                 Assert.Equal(JavaVersion.Off, slot3.JavaVersion);
                 Assert.Equal(PythonVersion.V34, slot3.PythonVersion);
-                appSettingMap = slot3.AppSettings;
+                appSettingMap = slot3.GetAppSettings();
                 Assert.Equal("slot2value", appSettingMap["slot2key"].Value);
 
                 // Get
@@ -112,10 +112,12 @@ namespace Fluent.Tests.WebApp
                 Assert.Equal(JavaVersion.Off, slot1.JavaVersion);
                 Assert.Equal(PythonVersion.V34, slot1.PythonVersion);
                 Assert.Equal(PythonVersion.V27, slot3.PythonVersion);
-                Assert.Equal("appvalue", slot1.AppSettings["appkey"].Value);
-                Assert.Equal("slot2value", slot1.AppSettings["slot2key"].Value);
-                Assert.Equal("sticky2value", slot3.AppSettings["sticky2key"].Value);
-                Assert.Equal("stickyvalue", slot3.AppSettings["stickykey"].Value);
+                var appSettings1 = slot1.GetAppSettings();
+                var appSettings3 = slot3.GetAppSettings();
+                Assert.Equal("appvalue", appSettings1["appkey"].Value);
+                Assert.Equal("slot2value", appSettings1["slot2key"].Value);
+                Assert.Equal("sticky2value", appSettings3["sticky2key"].Value);
+                Assert.Equal("stickyvalue", appSettings3["stickykey"].Value);
             }
         }
     }
