@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -59,8 +60,39 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         #endregion
 
         #region Government Cloud
+        /// <summary>
+        /// U.S. government cloud in Virginia.
+        /// </summary>
         public static readonly Region GovernmentUSVirginia = new Region("usgovvirginia");
-        public static readonly Region GovernmnetUSIowa = new Region("usgoviowa");
+
+        /// <summary>
+        /// U.S. government cloud in Iowa.
+        /// </summary>
+        public static readonly Region GovernmentUSIowa = new Region("usgoviowa");
+
+        [Obsolete("Use GovernmentUSIowa instead.")]
+        public static readonly Region GovernmnetUSIowa = GovernmentUSIowa;
+
+        /// <summary>
+        /// U.S. government cloud in Arizona.
+        /// </summary>
+        public static readonly Region GovernmentUSArizona = new Region("usgovarizona");
+
+        /// <summary>
+        /// U.S. government cloud in Texas.
+        /// </summary>
+        public static readonly Region GovernmentUSTexas = new Region("usgovtexas");
+
+        /// <summary>
+        /// U.S. Department of Defense cloud - East.
+        /// </summary>
+        public static readonly Region GovernmentUSDodEast = new Region("usdodeast");
+
+        /// <summary>
+        /// U.S. Department of Defense cloud - Central.
+        /// </summary>
+        public static readonly Region GovernmentUSDodCentral = new Region("usdodcentral");
+ 
         #endregion
 
         public static IReadOnlyCollection<Region> Values
