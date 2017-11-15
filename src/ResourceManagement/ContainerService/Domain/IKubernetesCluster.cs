@@ -18,40 +18,64 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<KubernetesCluster.Update.IUpdate>,
         Microsoft.Azure.Management.ContainerService.Fluent.IOrchestratorServiceBase
     {
-        /// <return>The Linux root username.</return>
-        string LinuxRootUsername();
+        /// <summary>
+        /// Gets the Linux root username.
+        /// </summary>
+        string LinuxRootUsername { get; }
 
-        /// <return>The Kubernetes configuration file content with user-level privileges to the cluster.</return>
-        byte[] UserKubeConfigContent();
+        /// <summary>
+        /// Gets the Kubernetes configuration file content with user-level privileges to the cluster.
+        /// </summary>
+        byte[] UserKubeConfigContent { get; }
 
-        /// <return>The FQDN for the master pool.</return>
-        string Fqdn();
+        /// <summary>
+        /// Gets the FQDN for the master pool.
+        /// </summary>
+        string Fqdn { get; }
 
-        /// <return>The Linux SSH key.</return>
-        string SshKey();
+        /// <summary>
+        /// Gets the Linux SSH key.
+        /// </summary>
+        string SshKey { get; }
 
-        /// <return>The key vault reference to the service principal secret.</return>
-        Models.KeyVaultSecretRef KeyVaultSecretReference();
+        /// <summary>
+        /// Gets the key vault reference to the service principal secret.
+        /// </summary>
+        Models.KeyVaultSecretRef KeyVaultSecretReference { get; }
 
-        /// <return>The DNS prefix which was specified at creation time.</return>
-        string DnsPrefix();
+        /// <summary>
+        /// Gets the DNS prefix which was specified at creation time.
+        /// </summary>
+        string DnsPrefix { get; }
 
-        /// <return>The provisioning state of the Kubernetes cluster.</return>
-        string ProvisioningState();
+        /// <summary>
+        /// Gets the provisioning state of the Kubernetes cluster.
+        /// </summary>
+        string ProvisioningState { get; }
 
-        /// <return>The service principal client ID.</return>
-        string ServicePrincipalClientId();
+        /// <summary>
+        /// Gets the service principal client ID.
+        /// </summary>
+        string ServicePrincipalClientId { get; }
 
-        /// <return>The service principal secret.</return>
-        string ServicePrincipalSecret();
+        /// <summary>
+        /// Gets the service principal secret.
+        /// </summary>
+        string ServicePrincipalSecret { get; }
 
-        /// <return>The agent pools in the Kubernetes cluster.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool> AgentPools();
+        /// <summary>
+        /// Gets the agent pools in the Kubernetes cluster.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool> AgentPools { get; }
 
-        /// <return>The Kubernetes version.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesVersion Version();
+        /// <summary>
+        /// Gets the Kubernetes version.
+        /// </summary>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesVersion Version { get; }
 
-        /// <return>The Kubernetes configuration file content with administrative privileges to the cluster.</return>
-        byte[] AdminKubeConfigContent();
+        /// <summary>
+        /// Gets the Kubernetes configuration file content with administrative privileges to the cluster.
+        /// </summary>
+        byte[] AdminKubeConfigContent { get; }
     }
 }

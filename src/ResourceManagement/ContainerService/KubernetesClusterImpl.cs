@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:B389D978FF5A3275B275BA4DE9FA4FB3:B7E8C8BCFE6B53ABB94D49F2C205309A
-        public KubernetesClusterImpl WithAgentVMCount(string agentPoolName, int agentCount)
+        public KubernetesClusterImpl WithAgentVirtualMachineCount(string agentPoolName, int agentCount)
         {
             if (this.Inner.AgentPoolProfiles != null && this.Inner.AgentPoolProfiles.Count > 0)
             {
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:B629860592BCA4958E12BD85ED1476A1:9FF3FBA51C1ABED8D77125A4AD0F78DD
-        public KubernetesClusterImpl WithAgentVMCount(int agentCount)
+        public KubernetesClusterImpl WithAgentVirtualMachineCount(int agentCount)
         {
             if (this.Inner.AgentPoolProfiles != null && this.Inner.AgentPoolProfiles.Count > 0)
             {

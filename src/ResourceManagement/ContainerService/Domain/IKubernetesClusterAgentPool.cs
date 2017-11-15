@@ -13,19 +13,29 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.ContainerService.Fluent.IOrchestratorServiceBase>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ContainerServiceAgentPoolProfile>
     {
-        /// <return>The storage kind (managed or classic) set for each virtual machine in the agent pool.</return>
-        StorageProfileTypes StorageProfile();
+        /// <summary>
+        /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.
+        /// </summary>
+        StorageProfileTypes StorageProfile { get; }
 
-        /// <return>The number of agents (virtual machines) to host docker containers.</return>
-        int Count();
+        /// <summary>
+        /// Gets the number of agents (virtual machines) to host docker containers.
+        /// </summary>
+        int Count { get; }
 
-        /// <return>OS of each virtual machine in the agent pool.</return>
-        ContainerServiceOSTypes OSType();
+        /// <summary>
+        /// Gets OS of each virtual machine in the agent pool.
+        /// </summary>
+        ContainerServiceOSTypes OSType { get; }
 
-        /// <return>Size of each agent virtual machine in the agent pool.</return>
-        ContainerServiceVirtualMachineSizeTypes VMSize();
+        /// <summary>
+        /// Gets size of each agent virtual machine in the agent pool.
+        /// </summary>
+        ContainerServiceVirtualMachineSizeTypes VMSize { get; }
 
-        /// <return>OS disk size in GB set for each virtual machine in the agent pool.</return>
-        int OSDiskSizeInGB();
+        /// <summary>
+        /// Gets OS disk size in GB set for each virtual machine in the agent pool.
+        /// </summary>
+        int OSDiskSizeInGB { get; }
     }
 }

@@ -13,34 +13,54 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.ContainerService.Fluent.IOrchestratorServiceBase>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ContainerServiceAgentPoolProfile>
     {
-        /// <return>FDQN for the agent pool.</return>
-        string Fqdn();
+        /// <summary>
+        /// Gets FDQN for the agent pool.
+        /// </summary>
+        string Fqdn { get; }
 
-        /// <return>The storage kind (managed or classic) set for each virtual machine in the agent pool.</return>
-        StorageProfileTypes StorageProfile();
+        /// <summary>
+        /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.
+        /// </summary>
+        StorageProfileTypes StorageProfile { get; }
 
-        /// <return>The number of agents (virtual machines) to host docker containers.</return>
-        int Count();
+        /// <summary>
+        /// Gets the number of agents (virtual machines) to host docker containers.
+        /// </summary>
+        int Count { get; }
 
-        /// <return>OS of each virtual machine in the agent pool.</return>
-        ContainerServiceOSTypes OSType();
+        /// <summary>
+        /// Gets OS of each virtual machine in the agent pool.
+        /// </summary>
+        ContainerServiceOSTypes OSType { get; }
 
-        /// <return>DNS prefix to be used to create the FQDN for the agent pool.</return>
-        string DnsPrefix();
+        /// <summary>
+        /// Gets DNS prefix to be used to create the FQDN for the agent pool.
+        /// </summary>
+        string DnsPrefix { get; }
 
-        /// <return>The ID of the virtual network used by each virtual machine in the agent pool.</return>
-        string NetworkId();
+        /// <summary>
+        /// Gets the ID of the virtual network used by each virtual machine in the agent pool.
+        /// </summary>
+        string NetworkId { get; }
 
-        /// <return>The size of each virtual machine in the agent pool.</return>
-        ContainerServiceVirtualMachineSizeTypes VMSize();
+        /// <summary>
+        /// Gets the size of each virtual machine in the agent pool.
+        /// </summary>
+        ContainerServiceVirtualMachineSizeTypes VMSize { get; }
 
-        /// <return>Array of ports opened on this agent pool.</return>
-        int[] Ports();
+        /// <summary>
+        /// Gets array of ports opened on this agent pool.
+        /// </summary>
+        int[] Ports { get; }
 
-        /// <return>OS disk size in GB set for each virtual machine in the agent pool.</return>
-        int OSDiskSizeInGB();
+        /// <summary>
+        /// Gets OS disk size in GB set for each virtual machine in the agent pool.
+        /// </summary>
+        int OSDiskSizeInGB { get; }
 
-        /// <return>The name of the subnet used by each virtual machine in the agent pool.</return>
-        string SubnetName();
+        /// <summary>
+        /// Gets the name of the subnet used by each virtual machine in the agent pool.
+        /// </summary>
+        string SubnetName { get; }
     }
 }

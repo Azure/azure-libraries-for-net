@@ -27,13 +27,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.U
         /// <param name="agentPoolName">The name of the agent pool to be updated.</param>
         /// <param name="agentCount">The number of agents (virtual machines) to host docker containers.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithAgentVMCount(string agentPoolName, int agentCount);
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithAgentVirtualMachineCount(string agentPoolName, int agentCount);
 
         /// <summary>
         /// Updates all the agent pools virtual machine count.
         /// </summary>
         /// <param name="agentCount">The number of agents (virtual machines) to host docker containers.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithAgentVMCount(int agentCount);
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update.IUpdate WithAgentVirtualMachineCount(int agentCount);
     }
 }

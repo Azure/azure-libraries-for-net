@@ -108,9 +108,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <param name="agentPoolName">The name of the agent pool to be updated.</param>
         /// <param name="agentCount">The number of agents (virtual machines) to host docker containers.</param>
         /// <return>The next stage of the update.</return>
-        KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithUpdateAgentPoolCount.WithAgentVMCount(string agentPoolName, int agentCount)
+        KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithUpdateAgentPoolCount.WithAgentVirtualMachineCount(string agentPoolName, int agentCount)
         {
-            return this.WithAgentVMCount(agentPoolName, agentCount) as KubernetesCluster.Update.IUpdate;
+            return this.WithAgentVirtualMachineCount(agentPoolName, agentCount) as KubernetesCluster.Update.IUpdate;
         }
 
         /// <summary>
@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="agentCount">The number of agents (virtual machines) to host docker containers.</param>
         /// <return>The next stage of the update.</return>
-        KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithUpdateAgentPoolCount.WithAgentVMCount(int agentCount)
+        KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithUpdateAgentPoolCount.WithAgentVirtualMachineCount(int agentCount)
         {
-            return this.WithAgentVMCount(agentCount) as KubernetesCluster.Update.IUpdate;
+            return this.WithAgentVirtualMachineCount(agentCount) as KubernetesCluster.Update.IUpdate;
         }
 
         /// <summary>
@@ -143,76 +143,136 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this.WithKeyVaultReference(vaultId) as KubernetesCluster.Definition.IWithKeyVaultSecret;
         }
 
-        /// <return>The Linux root username.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.LinuxRootUsername()
+        /// <summary>
+        /// Gets the Linux root username.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.LinuxRootUsername
         {
-            return this.LinuxRootUsername();
+            get
+            {
+                return this.LinuxRootUsername();
+            }
         }
 
-        /// <return>The service principal secret.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.ServicePrincipalSecret()
+        /// <summary>
+        /// Gets the service principal secret.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.ServicePrincipalSecret
         {
-            return this.ServicePrincipalSecret();
+            get
+            {
+                return this.ServicePrincipalSecret();
+            }
         }
 
-        /// <return>The key vault reference to the service principal secret.</return>
-        Models.KeyVaultSecretRef Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.KeyVaultSecretReference()
+        /// <summary>
+        /// Gets the key vault reference to the service principal secret.
+        /// </summary>
+        Models.KeyVaultSecretRef Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.KeyVaultSecretReference
         {
-            return this.KeyVaultSecretReference() as Models.KeyVaultSecretRef;
+            get
+            {
+                return this.KeyVaultSecretReference() as Models.KeyVaultSecretRef;
+            }
         }
 
-        /// <return>The Kubernetes version.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesVersion Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.Version()
+        /// <summary>
+        /// Gets the Kubernetes version.
+        /// </summary>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesVersion Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.Version
         {
-            return this.Version() as Microsoft.Azure.Management.ContainerService.Fluent.KubernetesVersion;
+            get
+            {
+                return this.Version() as Microsoft.Azure.Management.ContainerService.Fluent.KubernetesVersion;
+            }
         }
 
-        /// <return>The DNS prefix which was specified at creation time.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.DnsPrefix()
+        /// <summary>
+        /// Gets the DNS prefix which was specified at creation time.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.DnsPrefix
         {
-            return this.DnsPrefix();
+            get
+            {
+                return this.DnsPrefix();
+            }
         }
 
-        /// <return>The FQDN for the master pool.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.Fqdn()
+        /// <summary>
+        /// Gets the FQDN for the master pool.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.Fqdn
         {
-            return this.Fqdn();
+            get
+            {
+                return this.Fqdn();
+            }
         }
 
-        /// <return>The agent pools in the Kubernetes cluster.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.AgentPools()
+        /// <summary>
+        /// Gets the agent pools in the Kubernetes cluster.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.AgentPools
         {
-            return this.AgentPools() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool>;
+            get
+            {
+                return this.AgentPools() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool>;
+            }
         }
 
-        /// <return>The provisioning state of the Kubernetes cluster.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.ProvisioningState()
+        /// <summary>
+        /// Gets the provisioning state of the Kubernetes cluster.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.ProvisioningState
         {
-            return this.ProvisioningState();
+            get
+            {
+                return this.ProvisioningState();
+            }
         }
 
-        /// <return>The Kubernetes configuration file content with administrative privileges to the cluster.</return>
-        byte[] Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.AdminKubeConfigContent()
+        /// <summary>
+        /// Gets the Kubernetes configuration file content with administrative privileges to the cluster.
+        /// </summary>
+        byte[] Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.AdminKubeConfigContent
         {
-            return this.AdminKubeConfigContent();
+            get
+            {
+                return this.AdminKubeConfigContent();
+            }
         }
 
-        /// <return>The Kubernetes configuration file content with user-level privileges to the cluster.</return>
-        byte[] Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.UserKubeConfigContent()
+        /// <summary>
+        /// Gets the Kubernetes configuration file content with user-level privileges to the cluster.
+        /// </summary>
+        byte[] Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.UserKubeConfigContent
         {
-            return this.UserKubeConfigContent();
+            get
+            {
+                return this.UserKubeConfigContent();
+            }
         }
 
-        /// <return>The service principal client ID.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.ServicePrincipalClientId()
+        /// <summary>
+        /// Gets the service principal client ID.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.ServicePrincipalClientId
         {
-            return this.ServicePrincipalClientId();
+            get
+            {
+                return this.ServicePrincipalClientId();
+            }
         }
 
-        /// <return>The Linux SSH key.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.SshKey()
+        /// <summary>
+        /// Gets the Linux SSH key.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.SshKey
         {
-            return this.SshKey();
+            get
+            {
+                return this.SshKey();
+            }
         }
     }
 }

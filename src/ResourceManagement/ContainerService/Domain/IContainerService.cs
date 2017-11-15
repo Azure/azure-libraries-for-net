@@ -18,46 +18,74 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<ContainerService.Update.IUpdate>,
         Microsoft.Azure.Management.ContainerService.Fluent.IOrchestratorServiceBase
     {
-        /// <return>The type of the orchestrator.</return>
-        Models.ContainerServiceOrchestratorTypes OrchestratorType();
+        /// <summary>
+        /// Gets the type of the orchestrator.
+        /// </summary>
+        Models.ContainerServiceOrchestratorTypes OrchestratorType { get; }
 
-        /// <return>The master node count.</return>
-        int MasterNodeCount();
+        /// <summary>
+        /// Gets the master node count.
+        /// </summary>
+        int MasterNodeCount { get; }
 
-        /// <return>OS disk size in GB set for every machine in the master pool.</return>
-        int MasterOSDiskSizeInGB();
+        /// <summary>
+        /// Gets OS disk size in GB set for every machine in the master pool.
+        /// </summary>
+        int MasterOSDiskSizeInGB { get; }
 
-        /// <return>The storage kind set for every machine in the master pool.</return>
-        StorageProfileTypes MasterStorageProfile();
+        /// <summary>
+        /// Gets the storage kind set for every machine in the master pool.
+        /// </summary>
+        StorageProfileTypes MasterStorageProfile { get; }
 
-        /// <return>True if diagnostics are enabled.</return>
-        bool IsDiagnosticsEnabled();
+        /// <summary>
+        /// Gets true if diagnostics are enabled.
+        /// </summary>
+        bool IsDiagnosticsEnabled { get; }
 
-        /// <return>The master DNS prefix which was specified at creation time.</return>
-        string MasterDnsPrefix();
+        /// <summary>
+        /// Gets the master DNS prefix which was specified at creation time.
+        /// </summary>
+        string MasterDnsPrefix { get; }
 
-        /// <return>The name of the subnet used by every machine in the master pool.</return>
-        string MasterSubnetName();
+        /// <summary>
+        /// Gets the name of the subnet used by every machine in the master pool.
+        /// </summary>
+        string MasterSubnetName { get; }
 
-        /// <return>The Linux root username.</return>
-        string LinuxRootUsername();
+        /// <summary>
+        /// Gets the Linux root username.
+        /// </summary>
+        string LinuxRootUsername { get; }
 
-        /// <return>The Linux SSH key.</return>
-        string SshKey();
+        /// <summary>
+        /// Gets the Linux SSH key.
+        /// </summary>
+        string SshKey { get; }
 
-        /// <return>The master FQDN.</return>
-        string MasterFqdn();
+        /// <summary>
+        /// Gets the master FQDN.
+        /// </summary>
+        string MasterFqdn { get; }
 
-        /// <return>The ID of the virtual network used by every machine in the master and agent pools.</return>
-        string NetworkId();
+        /// <summary>
+        /// Gets the ID of the virtual network used by every machine in the master and agent pools.
+        /// </summary>
+        string NetworkId { get; }
 
-        /// <return>The service principal client ID.</return>
-        string ServicePrincipalClientId();
+        /// <summary>
+        /// Gets the service principal client ID.
+        /// </summary>
+        string ServicePrincipalClientId { get; }
 
-        /// <return>The agent pools map.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool> AgentPools();
+        /// <summary>
+        /// Gets the agent pools map.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool> AgentPools { get; }
 
-        /// <return>The service principal secret.</return>
-        string ServicePrincipalSecret();
+        /// <summary>
+        /// Gets the service principal secret.
+        /// </summary>
+        string ServicePrincipalSecret { get; }
     }
 }

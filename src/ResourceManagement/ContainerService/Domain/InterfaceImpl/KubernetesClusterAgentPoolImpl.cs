@@ -52,34 +52,59 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this.WithVirtualMachineSize(vmSize) as KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate>;
         }
 
-        /// <return>Size of each agent virtual machine in the agent pool.</return>
-        ContainerServiceVirtualMachineSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.VMSize()
+        /// <summary>
+        /// Gets size of each agent virtual machine in the agent pool.
+        /// </summary>
+        ContainerServiceVirtualMachineSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.VMSize
         {
-            return this.VMSize() as ContainerServiceVirtualMachineSizeTypes;
+            get
+            {
+                return this.VMSize() as ContainerServiceVirtualMachineSizeTypes;
+            }
         }
 
-        /// <return>OS of each virtual machine in the agent pool.</return>
-        ContainerServiceOSTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.OSType()
+        /// <summary>
+        /// Gets OS of each virtual machine in the agent pool.
+        /// </summary>
+        ContainerServiceOSTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.OSType
         {
-            return this.OSType() as ContainerServiceOSTypes;
+            get
+            {
+                return this.OSType() as ContainerServiceOSTypes;
+            }
         }
 
-        /// <return>OS disk size in GB set for each virtual machine in the agent pool.</return>
-        int Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.OSDiskSizeInGB()
+        /// <summary>
+        /// Gets OS disk size in GB set for each virtual machine in the agent pool.
+        /// </summary>
+        int Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.OSDiskSizeInGB
         {
-            return this.OSDiskSizeInGB();
+            get
+            {
+                return this.OSDiskSizeInGB();
+            }
         }
 
-        /// <return>The number of agents (virtual machines) to host docker containers.</return>
-        int Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.Count()
+        /// <summary>
+        /// Gets the number of agents (virtual machines) to host docker containers.
+        /// </summary>
+        int Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.Count
         {
-            return this.Count();
+            get
+            {
+                return this.Count();
+            }
         }
 
-        /// <return>The storage kind (managed or classic) set for each virtual machine in the agent pool.</return>
-        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.StorageProfile()
+        /// <summary>
+        /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.
+        /// </summary>
+        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.StorageProfile
         {
-            return this.StorageProfile() as StorageProfileTypes;
+            get
+            {
+                return this.StorageProfile() as StorageProfileTypes;
+            }
         }
 
         /// <summary>

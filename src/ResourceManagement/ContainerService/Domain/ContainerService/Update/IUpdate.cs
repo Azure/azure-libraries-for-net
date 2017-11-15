@@ -46,6 +46,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Up
         /// </summary>
         /// <param name="agentCount">The number of agents (virtual machines) to host docker containers.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Update.IUpdate WithAgentVMCount(int agentCount);
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Update.IUpdate WithAgentVirtualMachineCount(int agentCount);
     }
 }

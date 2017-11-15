@@ -102,64 +102,114 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this.WithDnsPrefix(dnsPrefix) as ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate>;
         }
 
-        /// <return>DNS prefix to be used to create the FQDN for the agent pool.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.DnsPrefix()
+        /// <summary>
+        /// Gets DNS prefix to be used to create the FQDN for the agent pool.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.DnsPrefix
         {
-            return this.DnsPrefix();
+            get
+            {
+                return this.DnsPrefix();
+            }
         }
 
-        /// <return>The number of agents (virtual machines) to host docker containers.</return>
-        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.Count()
+        /// <summary>
+        /// Gets the number of agents (virtual machines) to host docker containers.
+        /// </summary>
+        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.Count
         {
-            return this.Count();
+            get
+            {
+                return this.Count();
+            }
         }
 
-        /// <return>FDQN for the agent pool.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.Fqdn()
+        /// <summary>
+        /// Gets FDQN for the agent pool.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.Fqdn
         {
-            return this.Fqdn();
+            get
+            {
+                return this.Fqdn();
+            }
         }
 
-        /// <return>The storage kind (managed or classic) set for each virtual machine in the agent pool.</return>
-        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.StorageProfile()
+        /// <summary>
+        /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.
+        /// </summary>
+        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.StorageProfile
         {
-            return this.StorageProfile() as StorageProfileTypes;
+            get
+            {
+                return this.StorageProfile() as StorageProfileTypes;
+            }
         }
 
-        /// <return>The size of each virtual machine in the agent pool.</return>
-        ContainerServiceVirtualMachineSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.VMSize()
+        /// <summary>
+        /// Gets the size of each virtual machine in the agent pool.
+        /// </summary>
+        ContainerServiceVirtualMachineSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.VMSize
         {
-            return this.VMSize() as ContainerServiceVirtualMachineSizeTypes;
+            get
+            {
+                return this.VMSize() as ContainerServiceVirtualMachineSizeTypes;
+            }
         }
 
-        /// <return>OS disk size in GB set for each virtual machine in the agent pool.</return>
-        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.OSDiskSizeInGB()
+        /// <summary>
+        /// Gets OS disk size in GB set for each virtual machine in the agent pool.
+        /// </summary>
+        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.OSDiskSizeInGB
         {
-            return this.OSDiskSizeInGB();
+            get
+            {
+                return this.OSDiskSizeInGB();
+            }
         }
 
-        /// <return>Array of ports opened on this agent pool.</return>
-        int[] Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.Ports()
+        /// <summary>
+        /// Gets array of ports opened on this agent pool.
+        /// </summary>
+        int[] Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.Ports
         {
-            return this.Ports();
+            get
+            {
+                return this.Ports();
+            }
         }
 
-        /// <return>The name of the subnet used by each virtual machine in the agent pool.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.SubnetName()
+        /// <summary>
+        /// Gets the name of the subnet used by each virtual machine in the agent pool.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.SubnetName
         {
-            return this.SubnetName();
+            get
+            {
+                return this.SubnetName();
+            }
         }
 
-        /// <return>The ID of the virtual network used by each virtual machine in the agent pool.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.NetworkId()
+        /// <summary>
+        /// Gets the ID of the virtual network used by each virtual machine in the agent pool.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.NetworkId
         {
-            return this.NetworkId();
+            get
+            {
+                return this.NetworkId();
+            }
         }
 
-        /// <return>OS of each virtual machine in the agent pool.</return>
-        ContainerServiceOSTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.OSType()
+        /// <summary>
+        /// Gets OS of each virtual machine in the agent pool.
+        /// </summary>
+        ContainerServiceOSTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool.OSType
         {
-            return this.OSType() as ContainerServiceOSTypes;
+            get
+            {
+                return this.OSType() as ContainerServiceOSTypes;
+            }
         }
 
         /// <summary>

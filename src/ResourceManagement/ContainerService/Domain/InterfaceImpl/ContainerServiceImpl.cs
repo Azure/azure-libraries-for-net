@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </summary>
         /// <param name="agentCount">The number of agents (virtual machines) to host docker containers.</param>
         /// <return>The next stage of the update.</return>
-        ContainerService.Update.IUpdate ContainerService.Update.IWithUpdateAgentPoolCount.WithAgentVMCount(int agentCount)
+        ContainerService.Update.IUpdate ContainerService.Update.IWithUpdateAgentPoolCount.WithAgentVirtualMachineCount(int agentCount)
         {
-            return this.WithAgentVMCount(agentCount) as ContainerService.Update.IUpdate;
+            return this.WithAgentVirtualMachineCount(agentCount) as ContainerService.Update.IUpdate;
         }
 
         /// <summary>
@@ -159,88 +159,158 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this.WithMasterNodeCount(count) as ContainerService.Definition.IWithAgentPool;
         }
 
-        /// <return>The name of the subnet used by every machine in the master pool.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterSubnetName()
+        /// <summary>
+        /// Gets the name of the subnet used by every machine in the master pool.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterSubnetName
         {
-            return this.MasterSubnetName();
+            get
+            {
+                return this.MasterSubnetName();
+            }
         }
 
-        /// <return>The master FQDN.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterFqdn()
+        /// <summary>
+        /// Gets the master FQDN.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterFqdn
         {
-            return this.MasterFqdn();
+            get
+            {
+                return this.MasterFqdn();
+            }
         }
 
-        /// <return>The Linux root username.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.LinuxRootUsername()
+        /// <summary>
+        /// Gets the Linux root username.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.LinuxRootUsername
         {
-            return this.LinuxRootUsername();
+            get
+            {
+                return this.LinuxRootUsername();
+            }
         }
 
-        /// <return>The master node count.</return>
-        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterNodeCount()
+        /// <summary>
+        /// Gets the master node count.
+        /// </summary>
+        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterNodeCount
         {
-            return this.MasterNodeCount();
+            get
+            {
+                return this.MasterNodeCount();
+            }
         }
 
-        /// <return>True if diagnostics are enabled.</return>
-        bool Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.IsDiagnosticsEnabled()
+        /// <summary>
+        /// Gets true if diagnostics are enabled.
+        /// </summary>
+        bool Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.IsDiagnosticsEnabled
         {
-            return this.IsDiagnosticsEnabled();
+            get
+            {
+                return this.IsDiagnosticsEnabled();
+            }
         }
 
-        /// <return>The master DNS prefix which was specified at creation time.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterDnsPrefix()
+        /// <summary>
+        /// Gets the master DNS prefix which was specified at creation time.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterDnsPrefix
         {
-            return this.MasterDnsPrefix();
+            get
+            {
+                return this.MasterDnsPrefix();
+            }
         }
 
-        /// <return>The agent pools map.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool> Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.AgentPools()
+        /// <summary>
+        /// Gets the agent pools map.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool> Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.AgentPools
         {
-            return this.AgentPools() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool>;
+            get
+            {
+                return this.AgentPools() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool>;
+            }
         }
 
-        /// <return>The service principal client ID.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.ServicePrincipalClientId()
+        /// <summary>
+        /// Gets the service principal client ID.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.ServicePrincipalClientId
         {
-            return this.ServicePrincipalClientId();
+            get
+            {
+                return this.ServicePrincipalClientId();
+            }
         }
 
-        /// <return>The service principal secret.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.ServicePrincipalSecret()
+        /// <summary>
+        /// Gets the service principal secret.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.ServicePrincipalSecret
         {
-            return this.ServicePrincipalSecret();
+            get
+            {
+                return this.ServicePrincipalSecret();
+            }
         }
 
-        /// <return>The ID of the virtual network used by every machine in the master and agent pools.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.NetworkId()
+        /// <summary>
+        /// Gets the ID of the virtual network used by every machine in the master and agent pools.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.NetworkId
         {
-            return this.NetworkId();
+            get
+            {
+                return this.NetworkId();
+            }
         }
 
-        /// <return>The type of the orchestrator.</return>
-        Models.ContainerServiceOrchestratorTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.OrchestratorType()
+        /// <summary>
+        /// Gets the type of the orchestrator.
+        /// </summary>
+        Models.ContainerServiceOrchestratorTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.OrchestratorType
         {
-            return this.OrchestratorType();
+            get
+            {
+                return this.OrchestratorType();
+            }
         }
 
-        /// <return>OS disk size in GB set for every machine in the master pool.</return>
-        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterOSDiskSizeInGB()
+        /// <summary>
+        /// Gets OS disk size in GB set for every machine in the master pool.
+        /// </summary>
+        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterOSDiskSizeInGB
         {
-            return this.MasterOSDiskSizeInGB();
+            get
+            {
+                return this.MasterOSDiskSizeInGB();
+            }
         }
 
-        /// <return>The Linux SSH key.</return>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.SshKey()
+        /// <summary>
+        /// Gets the Linux SSH key.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.SshKey
         {
-            return this.SshKey();
+            get
+            {
+                return this.SshKey();
+            }
         }
 
-        /// <return>The storage kind set for every machine in the master pool.</return>
-        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterStorageProfile()
+        /// <summary>
+        /// Gets the storage kind set for every machine in the master pool.
+        /// </summary>
+        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterStorageProfile
         {
-            return this.MasterStorageProfile() as StorageProfileTypes;
+            get
+            {
+                return this.MasterStorageProfile() as StorageProfileTypes;
+            }
         }
 
         /// <summary>
