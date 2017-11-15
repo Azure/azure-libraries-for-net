@@ -161,10 +161,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:4F0DD1E3F09332DAEE78A7163765E0EA:DC09185D93597A9B3912ED6CC825299E
         public override async Task<Microsoft.Azure.Management.AppService.Fluent.IPublishingProfile> GetPublishingProfileAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            Stream stream = await Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsSlotAsync(ResourceGroupName, parent.Name, new CsmPublishingProfileOptionsInner(), Name, cancellationToken);
-            StreamReader reader = new StreamReader(stream);
-            string xml = reader.ReadToEnd();
-            return new PublishingProfileImpl(xml);
+            using (var stream = await Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsSlotAsync(ResourceGroupName, parent.Name, new CsmPublishingProfileOptionsInner(), Name, cancellationToken))
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    string xml = reader.ReadToEnd();
+                    return new PublishingProfileImpl(xml);
+                }
+            }
         }
 
         ///GENMHASH:21D1748197F7ECC1EFA9660DF579B414:5C0A7336725B7FB6E200C1ED27F5CB4C
@@ -195,10 +199,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:3F0152723C985A22C1032733AB942C96:6FCE951A1B9813960CE8873DF107297F
         public override IPublishingProfile GetPublishingProfile()
         {
-            Stream stream = Extensions.Synchronize(() => Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsSlotAsync(ResourceGroupName, Parent().Name, new CsmPublishingProfileOptionsInner(), Name));
-            StreamReader reader = new StreamReader(stream);
-            string xml = reader.ReadToEnd();
-            return new PublishingProfileImpl(xml);
+            using (var stream = Extensions.Synchronize(() => Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsSlotAsync(ResourceGroupName, Parent().Name, new CsmPublishingProfileOptionsInner(), Name)))
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    string xml = reader.ReadToEnd();
+                    return new PublishingProfileImpl(xml);
+                }
+            }
         }
 
         ///GENMHASH:2BE74359D5F3E0281DC4391F52057FEB:1D9B01843585E3C1B592B91174E4A646
