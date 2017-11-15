@@ -11,8 +11,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     public class ContainerServiceManager : Manager<IContainerServiceManagementClient>, IContainerServiceManager
     {
         #region Fluent private collections
-        //private IContainerServices containerServices;
-        //private IKubernetesClusters kubernetesClusters;
+        private IContainerServices containerServices;
+        private IKubernetesClusters kubernetesClusters;
         #endregion
 
         public ContainerServiceManager(RestClient restClient, string subscriptionId) :
@@ -66,14 +66,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
 
         #endregion
 
-/*
         public IContainerServices ContainerServices
         {
             get
             {
                 if (containerServices == null)
                 {
-                    containerServices = new ContainerServicesImpl(this, this.storageManager);
+                    containerServices = new ContainerServicesImpl(this);
                 }
                 return containerServices;
             }
@@ -85,18 +84,17 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             {
                 if (kubernetesClusters == null)
                 {
-                    kubernetesClusters = new KubernetesClustersImpl(this, this.storageManager);
+                    kubernetesClusters = new KubernetesClustersImpl(this);
                 }
                 return kubernetesClusters;
             }
         }
-*/
     }
 
     public interface IContainerServiceManager : IManager<IContainerServiceManagementClient>
     {
-//        IContainerServices ContainerServices { get; }
-//        IKubernetesClusters KubernetesClusters { get; }
+        IContainerServices ContainerServices { get; }
+        IKubernetesClusters KubernetesClusters { get; }
     }
 
 }
