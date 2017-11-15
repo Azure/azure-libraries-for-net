@@ -18,7 +18,7 @@ namespace ManageVpnGatewayVNet2VNetConnection
 {
     public class Program
     {
-        private static readonly Region region = Region.USWestCentral;
+        private static readonly Region region = Region.USWest2;
 
         /**
          * Azure Network sample for managing virtual network gateway.
@@ -139,6 +139,7 @@ namespace ManageVpnGatewayVNet2VNetConnection
                         .WithSecondVirtualNetworkGateway(vngw1)
                         .WithSharedKey("MySecretKey")
                         .Create();
+                // Delay before running troubleshooting to wait for connection settings to propagate
                 SdkContext.DelayProvider.Delay(250000);
                 troubleshooting = nw.Troubleshoot()
                         .WithTargetResourceId(connection.Id)
