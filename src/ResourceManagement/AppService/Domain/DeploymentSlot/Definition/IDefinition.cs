@@ -17,14 +17,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition
     }
 
     /// <summary>
-    /// The first stage of the deployment slot definition.
-    /// </summary>
-    public interface IBlank  :
-        Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithConfiguration
-    {
-    }
-
-    /// <summary>
     /// A deployment slot definition allowing the configuration to clone from to be specified.
     /// </summary>
     public interface IWithConfiguration 
@@ -35,12 +27,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition
         /// <param name="webApp">The web app to copy the configurations from.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithCreate WithConfigurationFromWebApp(IWebApp webApp);
-
-        /// <summary>
-        /// Creates the deployment slot with brand new site configurations.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithCreate WithBrandNewConfiguration();
 
         /// <summary>
         /// Copies the site configurations from the web app the deployment slot belongs to.
@@ -54,6 +40,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition
         /// <param name="deploymentSlot">The deployment slot to copy the configurations from.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithCreate WithConfigurationFromDeploymentSlot(IDeploymentSlot deploymentSlot);
+
+        /// <summary>
+        /// Creates the deployment slot with brand new site configurations.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithCreate WithBrandNewConfiguration();
     }
 
     /// <summary>
@@ -64,6 +56,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition
     public interface IWithCreate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.AppService.Fluent.IDeploymentSlot>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IDeploymentSlot>
+    {
+    }
+
+    /// <summary>
+    /// The first stage of the deployment slot definition.
+    /// </summary>
+    public interface IBlank  :
+        Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithConfiguration
     {
     }
 }

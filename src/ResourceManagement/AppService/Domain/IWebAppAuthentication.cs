@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// A web app authentication configuration in a web app.
     /// </summary>
     public interface IWebAppAuthentication  :
-        IBeta,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.SiteAuthSettingsInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IIndexable,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.AppService.Fluent.IWebAppBase>
