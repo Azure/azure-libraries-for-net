@@ -7,6 +7,7 @@ using Microsoft.Azure.Management.Cdn.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent;
 using Microsoft.Azure.Management.ContainerInstance.Fluent;
 using Microsoft.Azure.Management.ContainerRegistry.Fluent;
+using Microsoft.Azure.Management.ContainerService.Fluent;
 using Microsoft.Azure.Management.CosmosDB.Fluent;
 using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
@@ -233,6 +234,15 @@ namespace Fluent.Tests.Common
         public static IRegistryManager CreateRegistryManager()
         {
             return CreateMockedManager(c => RegistryManager
+                .Configure()
+                .WithDelegatingHandlers(GetHandlers())
+                .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)
+                .Authenticate(c, c.DefaultSubscriptionId));
+        }
+
+        public static IContainerServiceManager CreateContainerServiceManager()
+        {
+            return CreateMockedManager(c => ContainerServiceManager
                 .Configure()
                 .WithDelegatingHandlers(GetHandlers())
                 .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)

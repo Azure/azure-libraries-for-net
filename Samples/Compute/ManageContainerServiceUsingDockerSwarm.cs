@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using Microsoft.Azure.Management.Compute.Fluent;
-using Microsoft.Azure.Management.Compute.Fluent.Models;
+using Microsoft.Azure.Management.ContainerService.Fluent;
+using Microsoft.Azure.Management.ContainerService.Fluent.Models;
 using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
@@ -47,12 +47,12 @@ namespace ManageContainerServiceUsingDockerSwarm
                     .WithRootUsername(rootUserName)
                     .WithSshKey(sshPublicKey)
                     .WithMasterNodeCount(ContainerServiceMasterProfileCount.MIN)
-                    .WithMasterLeafDomainLabel("dns-" + acsName)
-                        .DefineAgentPool("agentpool")
-                        .WithVMCount(1)
-                        .WithVMSize(ContainerServiceVMSizeTypes.StandardD1V2)
-                        .WithLeafDomainLabel("dns-ap-" + acsName)
+                    .DefineAgentPool("agentpool")
+                        .WithVirtualMachineCount(1)
+                        .WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes.StandardD1V2)
+                        .WithDnsPrefix("dns-ap-" + acsName)
                         .Attach()
+                    .WithMasterDnsPrefix("dns-" + acsName)
                     .Create();
 
                 Utilities.Log("Created Azure Container Service: " + azureContainerService.Id);
@@ -64,7 +64,7 @@ namespace ManageContainerServiceUsingDockerSwarm
                 Utilities.Log("Updating a Docker Swarm Azure Container Service with two agents (virtual machines)");
 
                 azureContainerService.Update()
-                    .WithAgentVMCount(2)
+                    .WithAgentVirtualMachineCount(2)
                     .Apply();
 
                 Utilities.Log("Updated Azure Container Service: " + azureContainerService.Id);

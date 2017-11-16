@@ -2,18 +2,16 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.ContainerService.Fluent
 {
-    using System.Threading;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Definition;
     using Microsoft.Azure.Management.ContainerService.Fluent.ContainerService.Update;
-    using Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition;
     using Microsoft.Azure.Management.ContainerService.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using System.Collections.ObjectModel;
-    using System;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// The implementation for ContainerService and its create and update interfaces.
@@ -378,7 +376,10 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         ///GENMHASH:B629860592BCA4958E12BD85ED1476A1:098628D3A0B75FA79DF40EC0AFFFA051
         public ContainerServiceImpl WithAgentVirtualMachineCount(int agentCount)
         {
-            this.Inner.AgentPoolProfiles[0].Count = agentCount;
+            foreach (var agent in this.Inner.AgentPoolProfiles)
+            {
+                agent.Count = agentCount;
+            }
 
             return this;
         }

@@ -10,7 +10,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using Microsoft.Azure.Management.ContainerService.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
 
     internal partial class ContainerServiceImpl 
     {

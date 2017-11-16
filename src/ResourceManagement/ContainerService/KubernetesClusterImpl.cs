@@ -316,9 +316,14 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             if (this.Inner.AgentPoolProfiles != null && this.Inner.AgentPoolProfiles.Count > 0)
             {
-                this.Inner.AgentPoolProfiles
-                    .Where(agent => agent.Name.Equals(agentPoolName))
-                    .Select(agent => agent.Count = agentCount);
+                foreach (var agent in this.Inner.AgentPoolProfiles)
+                {
+                    if (agent.Name.Equals(agentPoolName))
+                    {
+                        agent.Count = agentCount;
+                        break;
+                    }
+                }
             }
 
             return this;
@@ -329,8 +334,10 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             if (this.Inner.AgentPoolProfiles != null && this.Inner.AgentPoolProfiles.Count > 0)
             {
-                this.Inner.AgentPoolProfiles
-                    .Select(agent => agent.Count = agentCount);
+                foreach (var agent in this.Inner.AgentPoolProfiles)
+                {
+                    agent.Count = agentCount;
+                }
             }
 
             return this;
