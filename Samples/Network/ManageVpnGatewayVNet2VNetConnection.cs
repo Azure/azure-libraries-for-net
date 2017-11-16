@@ -46,6 +46,7 @@ namespace ManageVpnGatewayVNet2VNetConnection
             string vm2Name = SdkContext.RandomResourceName("vm2", 20);
             string rootname = "tirekicker";
             string password = SdkContext.RandomResourceName("pWd!", 15);
+            string containerName = "results";
 
             try
             {
@@ -123,11 +124,16 @@ namespace ManageVpnGatewayVNet2VNetConnection
                         .WithRegion(region)
                         .WithExistingResourceGroup(rgName)
                         .Create();
+                // Create storage container to store troubleshooting results
+                string accountKey = storageAccount.GetKeys()[0].Value;
+                string connectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccount.Name, accountKey);
+                Utilities.CreateContainer(connectionString, containerName);
+
                 // Run troubleshooting for the connection - result will be 'UnHealthy' as need to create symmetrical connection from second gateway to the first
                 ITroubleshooting troubleshooting = nw.Troubleshoot()
                         .WithTargetResourceId(connection.Id)
                         .WithStorageAccount(storageAccount.Id)
-                        .WithStoragePath(storageAccount.EndPoints.Primary.Blob + "results")
+                        .WithStoragePath(storageAccount.EndPoints.Primary.Blob + containerName)
                         .Execute();
                 Utilities.Log("Troubleshooting status is: " + troubleshooting.Code);
 
@@ -144,7 +150,7 @@ namespace ManageVpnGatewayVNet2VNetConnection
                 troubleshooting = nw.Troubleshoot()
                         .WithTargetResourceId(connection.Id)
                         .WithStorageAccount(storageAccount.Id)
-                        .WithStoragePath(storageAccount.EndPoints.Primary.Blob + "results")
+                        .WithStoragePath(storageAccount.EndPoints.Primary.Blob + containerName)
                         .Execute();
                 Utilities.Log("Troubleshooting status is: " + troubleshooting.Code);
 
