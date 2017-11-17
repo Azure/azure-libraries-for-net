@@ -8,19 +8,17 @@ using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Samples.Common;
 using System;
-using System.IO;
 
-namespace ManageContainerServiceUsingKubernetes
+namespace ManageContainerServiceWithDockerSwarmOrchestrator
 {
     public class Program
     {
         /**
          * An Azure Container Services sample for managing a container service with Docker Swarm orchestration.
-         *    - Create an Azure Container Service with Docker Swarm orchestration
-         *    - Create a SSH private/public key
+         *    - Create an Azure Container Service with Docker Swarm orchestrator
          *    - Update the number of agent virtual machines in an Azure Container Service
          */
-        public static void RunSample(IAzure azure, string clientId, string secret)
+        public static void RunSample(IAzure azure)
         {
             string rgName = SdkContext.RandomResourceName("rgACS", 15);
             string acsName = SdkContext.RandomResourceName("acssample", 30);
@@ -32,42 +30,18 @@ namespace ManageContainerServiceUsingKubernetes
                 + "Y1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C"
                 + "4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwK"
                 + "Y2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com";
-            string servicePrincipalClientId = clientId; // replace with a real service principal client id
-            string servicePrincipalSecret = secret; // and corresponding secret
 
             try
             {
                 //=============================================================
-                // ...
-                //=============================================================
-                // If service principal client id and secret are not set via the local variables, attempt to read the service
-                //     principal client id and secret from a secondary ".azureauth" file set through an environment variable.
-                //
-                //     If the environment variable was not set then reuse the main service principal set for running this sample.
+                // Create an Azure Container Service with Docker Swarm orchestration
 
-                if (String.IsNullOrWhiteSpace(servicePrincipalClientId) || String.IsNullOrWhiteSpace(servicePrincipalSecret))
-                {
-                    string envSecondaryServicePrincipal = Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION_2");
-
-                    if (String.IsNullOrWhiteSpace(envSecondaryServicePrincipal) || !File.Exists(envSecondaryServicePrincipal))
-                    {
-                        envSecondaryServicePrincipal = Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION");
-                    }
-
-                    servicePrincipalClientId = Utilities.GetSecondaryServicePrincipalClientID(envSecondaryServicePrincipal);
-                    servicePrincipalSecret = Utilities.GetSecondaryServicePrincipalSecret(envSecondaryServicePrincipal);
-                }
-
-                //=============================================================
-                // Create an Azure Container Service with Kubernetes orchestration
-
-                Utilities.Log("Creating an Azure Container Service with Kubernetes ochestration and one agent (virtual machine)");
+                Utilities.Log("Creating an Azure Container Service with Docker Swarm ochestration and one agent (virtual machine)");
 
                 IContainerService azureContainerService = azure.ContainerServices.Define(acsName)
                     .WithRegion(region)
                     .WithNewResourceGroup(rgName)
-                    .WithKubernetesOrchestration()
-                    .WithServicePrincipal(servicePrincipalClientId, servicePrincipalSecret)
+                    .WithSwarmOrchestration()
                     .WithLinux()
                     .WithRootUsername(rootUserName)
                     .WithSshKey(sshPublicKey)
@@ -86,7 +60,7 @@ namespace ManageContainerServiceUsingKubernetes
                 //=============================================================
                 // Update a Docker Swarm Azure Container Service with two agents (virtual machines)
 
-                Utilities.Log("Updating a Kubernetes Azure Container Service with two agents (virtual machines)");
+                Utilities.Log("Updating a Docker Swarm Azure Container Service with two agents (virtual machines)");
 
                 azureContainerService.Update()
                     .WithAgentVirtualMachineCount(2)
@@ -131,7 +105,7 @@ namespace ManageContainerServiceUsingKubernetes
                 // Print selected subscription
                 Utilities.Log("Selected subscription: " + azure.SubscriptionId);
 
-                RunSample(azure, "", "");
+                RunSample(azure);
             }
             catch (Exception ex)
             {

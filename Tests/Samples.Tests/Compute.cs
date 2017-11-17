@@ -251,34 +251,6 @@ namespace Samples.Tests
 
         [Fact]
         [Trait("Samples", "Compute")]
-        public void ManageContainerServiceUsingDockerSwarmTest()
-        {
-            using (var context = FluentMockContext.Start(this.GetType().FullName))
-            {
-                var rollUpClient = TestHelper.CreateRollupClient();
-                ManageContainerServiceUsingDockerSwarm.Program.RunSample(rollUpClient);
-            }
-        }
-
-        [Fact]
-        [Trait("Samples", "Compute")]
-        public void ManageContainerServiceUsingKubernetesTest()
-        {
-            using (var context = FluentMockContext.Start(this.GetType().FullName))
-            {
-                var rollUpClient = TestHelper.CreateRollupClient();
-                if (Microsoft.Azure.Test.HttpRecorder.HttpMockServer.Mode == Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode.Playback)
-                {
-                    ManageContainerServiceUsingKubernetes.Program.RunSample(rollUpClient, "clientId", "secret");
-                } else
-                {
-                    ManageContainerServiceUsingKubernetes.Program.RunSample(rollUpClient, "", "");
-                }
-            }
-        }
-
-        [Fact]
-        [Trait("Samples", "Compute")]
         public void ManageStorageFromMSIEnabledVirtualMachineTest()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))

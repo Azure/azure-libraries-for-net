@@ -1692,8 +1692,30 @@ namespace Microsoft.Azure.Management.Samples.Common
                 .Append("\n\tSSH key: ").Append(containerService.SshKey);
             if (containerService.OrchestratorType == ContainerService.Fluent.Models.ContainerServiceOrchestratorTypes.Kubernetes)
             {
-                info.Append("\n\tName: ").Append(containerService.ServicePrincipalClientId);
+                info.Append("\n\tService Principal ID: ").Append(containerService.ServicePrincipalClientId);
             }
+
+            Log(info.ToString());
+        }
+
+        /**
+         * Print a Kubernetes cluster.
+         * @param kubernetesCluster a Kubernetes cluster instance
+         */
+        public static void Print(ContainerService.Fluent.IKubernetesCluster kubernetesCluster)
+        {
+            StringBuilder info = new StringBuilder();
+
+            info.Append("Azure Container Service: ").Append(kubernetesCluster.Id)
+                .Append("\n\tName: ").Append(kubernetesCluster.Name)
+                .Append("\n\tFQDN: ").Append(kubernetesCluster.Fqdn)
+                .Append("\n\tDNS prefix: ").Append(kubernetesCluster.DnsPrefix)
+                .Append("\n\t\tWith Agent pool name: ").Append(kubernetesCluster.AgentPools.First().Value.Name)
+                .Append("\n\t\tAgent pool count: ").Append(kubernetesCluster.AgentPools.First().Value.Count)
+                .Append("\n\t\tAgent virtual machine size: ").Append(kubernetesCluster.AgentPools.First().Value.VMSize.ToString())
+                .Append("\n\tLinux user name: ").Append(kubernetesCluster.LinuxRootUsername)
+                .Append("\n\tSSH key: ").Append(kubernetesCluster.SshKey)
+                .Append("\n\tService principal ID: ").Append(kubernetesCluster.ServicePrincipalClientId);
 
             Log(info.ToString());
         }
