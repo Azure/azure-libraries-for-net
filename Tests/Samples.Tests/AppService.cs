@@ -161,7 +161,7 @@ namespace Samples.Tests
                 ManageFunctionAppBasic.Program.RunSample);
         }
 
-        [Fact]
+        [Fact(Skip = "Service regression")]
         [Trait("Samples", "AppService")]
         public void ManageFunctionAppSourceControlTest()
         {

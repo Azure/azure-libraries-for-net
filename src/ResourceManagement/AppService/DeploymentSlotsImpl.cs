@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Text.RegularExpressions;
     using System.Threading;
     using System.Threading.Tasks;
+    using System;
 
     /// <summary>
     /// The implementation for DeploymentSlots.
@@ -26,6 +27,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         IDeploymentSlots
     {
         private WebAppImpl parent;
+
+        IWebApp IHasParent<IWebApp>.Parent => parent;
 
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691
         public IBlank Define(string name)
@@ -124,7 +127,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             var siteConfig = await Inner.GetConfigurationSlotAsync(resourceGroup, parentName, name, cancellationToken);
 
             var result = WrapModel(siteInner, siteConfig);
-            await ((DeploymentSlotImpl)result).CacheSiteProperties(cancellationToken);
 
             return result;
         }
@@ -134,16 +136,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return await GetByParentAsync(parent.ResourceGroupName, parent.Name, name, cancellationToken);
         }
 
-        private WebAppImpl Parent()
-        {
-            return this.parent;
-        } 
-
         private async Task<IDeploymentSlot> PopulateModelAsync(SiteInner inner, IWebApp parent, CancellationToken cancellationToken = default(CancellationToken))
         {
             var siteConfig = await Inner.GetConfigurationSlotAsync(inner.ResourceGroup, parent.Name, Regex.Replace(inner.Name, ".*/", ""), cancellationToken);
             var slot = WrapModel(inner, siteConfig);
-            await ((DeploymentSlotImpl)slot).CacheSiteProperties(cancellationToken);
             return slot;
         }
 

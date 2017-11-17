@@ -10,17 +10,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Definition;
     using Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.UpdateDefinition;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Update;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.UpdateDefinition;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.UpdateDefinition;
+    using Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Collections.Generic;
     using System;
 
-    internal abstract partial class WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> 
+    internal abstract partial class WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>
     {
         /// <summary>
         /// Removes source control for deployment from the web app.
@@ -203,20 +203,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAuthentication<FluentT>.WithoutAuthentication()
         {
             return this.WithoutAuthentication() as WebAppBase.Update.IUpdate<FluentT>;
-        }
-
-        /// <summary>
-        /// Gets Updates the authentication configuration of the web app.
-        /// </summary>
-        /// <summary>
-        /// Gets the first stage of an authentication update.
-        /// </summary>
-        WebAppAuthentication.Update.IUpdate<WebAppBase.Update.IUpdate<FluentT>> WebAppBase.Update.IWithAuthentication<FluentT>.UpdateAuthentication
-        {
-            get
-            {
-                return this.UpdateAuthentication() as WebAppAuthentication.Update.IUpdate<WebAppBase.Update.IUpdate<FluentT>>;
-            }
         }
 
         /// <summary>
@@ -530,16 +516,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Specifies the Visual Studio version for remote debugging.
-        /// </summary>
-        /// <param name="remoteVisualStudioVersion">The Visual Studio version for remote debugging.</param>
-        /// <return>The next stage of web app update.</return>
-        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithRemoteDebuggingEnabled(RemoteVisualStudioVersion remoteVisualStudioVersion)
-        {
-            return this.WithRemoteDebuggingEnabled(remoteVisualStudioVersion) as WebAppBase.Update.IUpdate<FluentT>;
-        }
-
-        /// <summary>
         /// Specifies the slot name to auto-swap when a deployment is completed in this web app / deployment slot.
         /// </summary>
         /// <param name="slotName">The name of the slot, or 'production', to auto-swap.</param>
@@ -547,6 +523,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithAutoSwapSlotName(string slotName)
         {
             return this.WithAutoSwapSlotName(slotName) as WebAppBase.Update.IUpdate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies the Visual Studio version for remote debugging.
+        /// </summary>
+        /// <param name="remoteVisualStudioVersion">The Visual Studio version for remote debugging.</param>
+        /// <return>The next stage of web app update.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithRemoteDebuggingEnabled(RemoteVisualStudioVersion remoteVisualStudioVersion)
+        {
+            return this.WithRemoteDebuggingEnabled(remoteVisualStudioVersion) as WebAppBase.Update.IUpdate<FluentT>;
         }
 
         /// <summary>
@@ -678,16 +664,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Specifies the Visual Studio version for remote debugging.
-        /// </summary>
-        /// <param name="remoteVisualStudioVersion">The Visual Studio version for remote debugging.</param>
-        /// <return>The next stage of the definition.</return>
-        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithRemoteDebuggingEnabled(RemoteVisualStudioVersion remoteVisualStudioVersion)
-        {
-            return this.WithRemoteDebuggingEnabled(remoteVisualStudioVersion) as WebAppBase.Definition.IWithCreate<FluentT>;
-        }
-
-        /// <summary>
         /// Specifies the slot name to auto-swap when a deployment is completed in this web app / deployment slot.
         /// </summary>
         /// <param name="slotName">The name of the slot, or 'production', to auto-swap.</param>
@@ -695,6 +671,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithAutoSwapSlotName(string slotName)
         {
             return this.WithAutoSwapSlotName(slotName) as WebAppBase.Definition.IWithCreate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies the Visual Studio version for remote debugging.
+        /// </summary>
+        /// <param name="remoteVisualStudioVersion">The Visual Studio version for remote debugging.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithRemoteDebuggingEnabled(RemoteVisualStudioVersion remoteVisualStudioVersion)
+        {
+            return this.WithRemoteDebuggingEnabled(remoteVisualStudioVersion) as WebAppBase.Definition.IWithCreate<FluentT>;
         }
 
         /// <summary>
@@ -777,6 +763,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this.WithWebContainer(webContainer) as WebAppBase.Definition.IWithCreate<FluentT>;
         }
 
+        /// <return>The connection strings defined on the web app.</return>
+        async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStringsAsync(CancellationToken cancellationToken)
+        {
+            return await this.GetConnectionStringsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
+        }
+
         /// <summary>
         /// Gets management information availability state for the web app.
         /// </summary>
@@ -818,6 +810,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             get
             {
                 return this.WebSocketsEnabled();
+            }
+        }
+
+        /// <summary>
+        /// Gets the Linux app framework and version if this is a Linux web app.
+        /// </summary>
+        string Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.LinuxFxVersion
+        {
+            get
+            {
+                return this.LinuxFxVersion();
             }
         }
 
@@ -945,6 +948,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
+        /// <return>The connection strings defined on the web app.</return>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStrings()
+        {
+            return this.GetConnectionStrings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
+        }
+
         /// <summary>
         /// Gets state indicating whether web app has exceeded its quota usage.
         /// </summary>
@@ -1004,9 +1013,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// First step specifying the parameters to make a web deployment (MS Deploy) to the web app.
         /// </summary>
         /// <return>A stage to create web deployment.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition.IWithPackageUri Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.Deploy()
+        WebDeployment.Definition.IWithPackageUri Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.Deploy()
         {
-            return this.Deploy() as Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition.IWithPackageUri;
+            return this.Deploy() as WebDeployment.Definition.IWithPackageUri;
         }
 
         /// <summary>
@@ -1031,6 +1040,18 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
+        /// <return>The app settings defined on the web app.</return>
+        async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAppSettingsAsync(CancellationToken cancellationToken)
+        {
+            return await this.GetAppSettingsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
+        }
+
+        /// <return>The app settings defined on the web app.</return>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAppSettings()
+        {
+            return this.GetAppSettings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
+        }
+
         /// <summary>
         /// Gets Java container.
         /// </summary>
@@ -1042,6 +1063,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
+        /// <return>The authentication configuration defined on the web app.</return>
+        Microsoft.Azure.Management.AppService.Fluent.IWebAppAuthentication Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAuthenticationConfig()
+        {
+            return this.GetAuthenticationConfig() as Microsoft.Azure.Management.AppService.Fluent.IWebAppAuthentication;
+        }
+
         /// <summary>
         /// Gets the .NET Framework version.
         /// </summary>
@@ -1050,17 +1077,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             get
             {
                 return this.NetFrameworkVersion() as Microsoft.Azure.Management.AppService.Fluent.NetFrameworkVersion;
-            }
-        }
-
-        /// <summary>
-        /// Gets the connection strings defined on the web app.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.ConnectionStrings
-        {
-            get
-            {
-                return this.ConnectionStrings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
             }
         }
 
@@ -1089,17 +1105,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets the Linux app framework and version if this is a Linux web app.
-        /// </summary>
-        string Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.LinuxFxVersion
-        {
-            get
-            {
-                return this.LinuxFxVersion() as string;
-            }
-        }
-
-        /// <summary>
         /// Gets list of Azure Traffic manager host names associated with web
         /// app.
         /// </summary>
@@ -1123,17 +1128,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets the architecture of the platform, either 32 bit (x86) or 64 bit (x64).
-        /// </summary>
-        Microsoft.Azure.Management.AppService.Fluent.PlatformArchitecture Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.PlatformArchitecture
-        {
-            get
-            {
-                return this.PlatformArchitecture();
-            }
-        }
-
-        /// <summary>
         /// Gets if the client affinity is enabled when load balancing http
         /// request for multiple instances of the web app.
         /// </summary>
@@ -1146,13 +1140,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets Java version.
+        /// Gets the architecture of the platform, either 32 bit (x86) or 64 bit (x64).
         /// </summary>
-        Microsoft.Azure.Management.AppService.Fluent.JavaVersion Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.JavaVersion
+        Microsoft.Azure.Management.AppService.Fluent.PlatformArchitecture Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.PlatformArchitecture
         {
             get
             {
-                return this.JavaVersion() as Microsoft.Azure.Management.AppService.Fluent.JavaVersion;
+                return this.PlatformArchitecture();
             }
         }
 
@@ -1164,6 +1158,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             get
             {
                 return this.ClientCertEnabled();
+            }
+        }
+
+        /// <summary>
+        /// Gets Java version.
+        /// </summary>
+        Microsoft.Azure.Management.AppService.Fluent.JavaVersion Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.JavaVersion
+        {
+            get
+            {
+                return this.JavaVersion() as Microsoft.Azure.Management.AppService.Fluent.JavaVersion;
             }
         }
 
@@ -1186,17 +1191,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             get
             {
                 return this.EnabledHostNames() as System.Collections.Generic.ISet<string>;
-            }
-        }
-
-        /// <summary>
-        /// Gets the app settings defined on the web app.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.AppSettings
-        {
-            get
-            {
-                return this.AppSettings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
             }
         }
 
@@ -1247,7 +1241,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets Last time web app was modified in UTC.
         /// </summary>
-        System.DateTime? Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.LastModifiedTime
+        System.DateTime Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.LastModifiedTime
         {
             get
             {
@@ -1264,6 +1258,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 return this.ContainerSize();
             }
+        }
+
+        /// <return>The authentication configuration defined on the web app.</return>
+        async Task<Microsoft.Azure.Management.AppService.Fluent.IWebAppAuthentication> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAuthenticationConfigAsync(CancellationToken cancellationToken)
+        {
+            return await this.GetAuthenticationConfigAsync(cancellationToken) as Microsoft.Azure.Management.AppService.Fluent.IWebAppAuthentication;
         }
     }
 }

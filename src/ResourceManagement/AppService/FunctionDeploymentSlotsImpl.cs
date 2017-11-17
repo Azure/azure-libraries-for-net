@@ -10,8 +10,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Text.RegularExpressions;
     using System.Threading;
     using System.Threading.Tasks;
+    using System;
 
-   
+
     /// <summary>
     /// The implementation for FunctionDeploymentSlots.
     /// </summary>
@@ -26,6 +27,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         IFunctionDeploymentSlots
     {
         private FunctionAppImpl parent;
+
+        IFunctionApp IHasParent<IFunctionApp>.Parent => parent;
 
         public IBlank Define(string name)
         {
@@ -111,7 +114,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             var siteConfig = await Inner.GetConfigurationSlotAsync(resourceGroup, parentName, name, cancellationToken);
 
             var result = WrapModel(siteInner, siteConfig);
-            await ((FunctionDeploymentSlotImpl)result).CacheSiteProperties(cancellationToken);
 
             return result;
         }
@@ -121,16 +123,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return await GetByParentAsync(parent.ResourceGroupName, parent.Name, name, cancellationToken);
         }
 
-        private FunctionAppImpl Parent()
-        {
-            return this.parent;
-        }
-
         private async Task<IFunctionDeploymentSlot> PopulateModelAsync(SiteInner inner, IFunctionApp parent, CancellationToken cancellationToken = default(CancellationToken))
         {
             var siteConfig = await Inner.GetConfigurationSlotAsync(inner.ResourceGroup, parent.Name, Regex.Replace(inner.Name, ".*/", ""), cancellationToken);
             var slot = WrapModel(inner, siteConfig);
-            await ((FunctionDeploymentSlotImpl)slot).CacheSiteProperties(cancellationToken);
             return slot;
         }
 

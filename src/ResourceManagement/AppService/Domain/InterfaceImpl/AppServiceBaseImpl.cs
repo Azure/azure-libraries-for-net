@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
-    internal abstract partial class AppServiceBaseImpl<FluentT,FluentImplT,FluentWithCreateT,FluentUpdateT> 
+    internal abstract partial class AppServiceBaseImpl<FluentT, FluentImplT, FluentWithCreateT, DefAfterRegionT, DefAfterGroupT, UpdateT> 
     {
     }
 }
