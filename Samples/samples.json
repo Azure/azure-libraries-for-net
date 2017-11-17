@@ -2,118 +2,10 @@
   "$schema": "./samples.schema.json",
   "dotnetSamples": [
     {
-      "owner": "anudeepsharma",
-      "filePath": "Samples/Batch/ManageBatchAccount.cs",
-      "githubPath": "Azure-Samples/batch-dotnet-manage-batch-accounts",
-      "description": "Getting started on managing batch accounts in C#"
-    },
-    {
-      "owner": "anuchandy",
-      "filePath": "Samples/Compute/ManageVirtualMachineFromMSIEnabledVirtualMachine.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-vm-from-vm-with-msi-credentials",
-      "description": "Getting started on managing Azure VM from a virtual machine using with managed service identity (MSI) credentials"
-    },
-    {
-      "owner": "anuchandy",
-      "filePath": "Samples/Compute/ListVirtualMachineExtensionImages.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-list-vm-extension-images",
-      "description": "Getting started on listing virtual machine extension images in C#"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Compute/ListVirtualMachineImages.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-list-vm-images",
-      "description": "Getting started on listing virtual machine images in C#"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Compute/ManageAvailabilitySet.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-availability-sets",
-      "description": "Getting started on managing availability sets in C#"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Compute/ManageVirtualMachine.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-vm",
-      "description": "This sample demonstrates how to manage your Azure virtual machines using a .NET client"
-    },
-    {
-      "owner": "anuchandy",
-      "filePath": "Samples/Compute/ManageVirtualMachineExtension.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machine-using-vm-extensions",
-      "description": "Getting started on managing virtual machines using vm extensions in C#"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Compute/ManageVirtualMachineScaleSet.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machine-scale-sets",
-      "description": "Getting started on managing virtual machine scale sets in C#"
-    },
-    {
-      "owner": "anuchandy",
-      "filePath": "Samples/Compute/ManageVirtualMachinesInParallel.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machines-in-parallel",
-      "description": "Getting started on managing virtual machines in parallel in C#"
-    },
-    {
-      "owner": "jianghaolu",
-      "filePath": "Samples/KeyVault/ManageKeyVault.cs",
-      "githubPath": "Azure-Samples/key-vault-dotnet-manage-key-vaults",
-      "description": "Getting started on managing key vaults in C#"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Network/ManageInternalLoadBalancer.cs",
-      "githubPath": "Azure-Samples/network-dotnet-manage-internal-load-balancers",
-      "description": "An example illustrating how to use .NET to manage your Azure load balancers"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Network/ManageInternetFacingLoadBalancer.cs",
-      "githubPath": "Azure-Samples/network-dotnet-manage-internet-facing-load-balancers",
-      "description": "Getting started on managing load balancers in C#"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Network/ManageIPAddress.cs",
-      "githubPath": "Azure-Samples/network-dotnet-manage-ip-address",
-      "description": "Getting started on managing network user defined routes in C#"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Network/ManageNetworkInterface.cs",
-      "githubPath": "Azure-Samples/network-dotnet-manage-network-interface",
-      "description": "Getting started on managing network interface in C#"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Network/ManageNetworkSecurityGroup.cs",
-      "githubPath": "Azure-Samples/network-dotnet-manage-network-security-group",
-      "description": "Getting started on managing network security groups in C#"
-    },
-    {
-      "owner": "anuchandy",
-      "filePath": "Samples/Compute/ManageVirtualMachinesInParallelWithNetwork.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machines-with-network-in-parallel",
-      "description": "Getting started on managing virtual machines within subnets in parallel in C#"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Network/ManageVirtualNetwork.cs",
-      "githubPath": "Azure-Samples/network-dotnet-manage-virtual-network",
-      "description": "Getting started on managing virtual network in C#"
-    },
-    {
       "owner": "alvadb",
       "filePath": "Samples/ResourceManager/DeployUsingARMTemplate.cs",
       "githubPath": "Azure-Samples/resources-dotnet-deploy-using-arm-template",
       "description": "Getting started on deploying using an ARM template in C#"
-    },
-    {
-      "owner": "anudeepsharma",
-      "filePath": "Samples/ResourceManager/DeployUsingARMTemplateWithProgress.cs",
-      "githubPath": "Azure-Samples/resources-dotnet-deploy-using-arm-template-with-progress",
-      "description": "Getting started on deploying using an ARM template and show progress in C#"
     },
     {
       "owner": "alvadb",
@@ -128,46 +20,60 @@
       "description": "Getting started on managing resource groups in C#"
     },
     {
-      "owner": "selvasingh",
-      "filePath": "Samples/Storage/ManageStorageAccount.cs",
-      "githubPath": "Azure-Samples/storage-dotnet-manage-storage-accounts",
-      "description": "Getting started on managing storage accounts in C#"
+      "owner": "alvadb",
+      "filePath": "Samples/CosmosDB/ManageHACosmosDB.cs",
+      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-for-high-availability",
+      "description": "Create a DocumentDB and configure it for high availability using C#"
     },
     {
-      "owner": "anudeepsharma",
-      "filePath": "Samples/Sql/ManageSqlDatabase.cs",
-      "githubPath": "Azure-Samples/sql-database-dotnet-manage-db",
-      "description": "Getting started on managing SQL databases in C#"
+      "owner": "alvadb",
+      "filePath": "Samples/CosmosDB/CreateCosmosDBWithEventualConsistency.cs",
+      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-for-eventual-consistency",
+      "description": "Create a DocumentDB and configure it with eventual consistency using C#"
     },
     {
-      "owner": "anudeepsharma",
-      "filePath": "Samples/Sql/ManageSqlDatabaseInElasticPool.cs",
-      "githubPath": "Azure-Samples/sql-database-dotnet-manage-sql-dbs-in-elastic-pool",
-      "description": "Getting started on managing SQL databases in elastic pools in C#"
+      "owner": "alvadb",
+      "filePath": "Samples/CosmosDB/CreateCosmosDBWithIPRange.cs",
+      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-firewall",
+      "description": "Create a DocumentDB, configure it for high availability and create a firewall by limiting access to DocumentDB from an approved set of IP addresses using C#"
     },
     {
-      "owner": "anudeepsharma",
-      "filePath": "Samples/Sql/ManageSqlFirewallRules.cs",
-      "githubPath": "Azure-Samples/sql-database-dotnet-manage-firewalls-for-sql-databases",
-      "description": "Getting started on managing firewalls for sql databases in C#"
+      "owner": "alvadb",
+      "filePath": "Samples/CosmosDB/CreateCosmosDBWithKindMongoDB.cs",
+      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-get-mongodb-connection-string",
+      "description": "Create a DocumentDB and get MongoDB connection string using C#"
+    },
+
+
+    {
+      "owner": "anuchandy",
+      "filePath": "Samples/Compute/ManageVirtualMachineFromMSIEnabledVirtualMachine.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-vm-from-vm-with-msi-credentials",
+      "description": "Getting started on managing Azure VM from a virtual machine using with managed service identity (MSI) credentials"
     },
     {
-      "owner": "anudeepsharma",
-      "filePath": "Samples/Sql/ManageSqlDatabasesAcrossDifferentDataCenters.cs",
-      "githubPath": "Azure-Samples/sql-database-dotnet-manage-sql-databases-across-regions",
-      "description": "Getting started on managing SQL databases across regions in C#"
+      "owner": "anuchandy",
+      "filePath": "Samples/Compute/ListVirtualMachineExtensionImages.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-list-vm-extension-images",
+      "description": "Getting started on listing virtual machine extension images in C#"
     },
     {
-      "owner": "hovsepm",
-      "filePath": "Samples/RedisCache/ManageRedis.cs",
-      "githubPath": "Azure-Samples/redis-cache-dotnet-manage-cache",
-      "description": "Getting started on managing Redis Cache in C#"
+      "owner": "anuchandy",
+      "filePath": "Samples/Compute/ManageVirtualMachineExtension.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machine-using-vm-extensions",
+      "description": "Getting started on managing virtual machines using vm extensions in C#"
     },
     {
-      "owner": "selvasingh",
-      "filePath": "Samples/Compute/CreateVirtualMachinesInParallel.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-create-virtual-machines-across-regions-in-parallel",
-      "description": "Getting started on creating several virtual machines across regions in parallel in C#"
+      "owner": "anuchandy",
+      "filePath": "Samples/Compute/ManageVirtualMachinesInParallel.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machines-in-parallel",
+      "description": "Getting started on managing virtual machines in parallel in C#"
+    },
+    {
+      "owner": "anuchandy",
+      "filePath": "Samples/Compute/ManageVirtualMachinesInParallelWithNetwork.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machines-with-network-in-parallel",
+      "description": "Getting started on managing virtual machines within subnets in parallel in C#"
     },
     {
       "owner": "anuchandy",
@@ -176,70 +82,10 @@
       "description": "Getting started on managing Traffic Manager Profiles in C#"
     },
     {
-      "owner": "hovsepm",
-      "filePath": "Samples/Cdn/ManageCdn.cs",
-      "githubPath": "Azure-Samples/cdn-dotnet-manage-cdn",
-      "description": "Getting started on managing CDN in C#"
-    },
-    {
-      "owner": "jianghaolu",
-      "filePath": "Samples/AppService/ManageWebAppBasic.cs",
-      "githubPath": "Azure-Samples/app-service-dotnet-manage-web-apps",
-      "description": "Getting started on managing Web Apps in C#"
-    },
-    {
-      "owner": "jianghaolu",
-      "filePath": "Samples/AppService/ManageWebAppSlots.cs",
-      "githubPath": "Azure-Samples/app-service-dotnet-manage-staging-and-production-slots-for-web-apps",
-      "description": "Getting started on managing staging and product slots for Web Apps in C#"
-    },
-    {
-      "owner": "jianghaolu",
-      "filePath": "Samples/AppService/ManageWebAppSourceControl.cs",
-      "githubPath": "Azure-Samples/app-service-dotnet-configure-deployment-sources-for-web-apps",
-      "description": "Getting started on configuring deployment sources for Web Apps in C#"
-    },
-    {
-      "owner": "jianghaolu",
-      "filePath": "Samples/AppService/ManageWebAppSqlConnection.cs",
-      "githubPath": "Azure-Samples/app-service-dotnet-manage-data-connections-for-web-apps",
-      "description": "Getting started on managing data connections (such as SQL Database and Redis Cache) for Web Apps in C#"
-    },
-    {
-      "owner": "jianghaolu",
-      "filePath": "Samples/AppService/ManageWebAppWithDomainSsl.cs",
-      "githubPath": "Azure-Samples/app-service-dotnet-manage-web-apps-with-custom-domains",
-      "description": "Getting started on managing Web Apps with custom domains in C#"
-    },
-    {
-      "owner": "jianghaolu",
-      "filePath": "Samples/AppService/ManageWebAppWithTrafficManager.cs",
-      "githubPath": "Azure-Samples/app-service-dotnet-scale-web-apps",
-      "description": "Getting started on scaling Web Apps in C#"
-    },
-    {
-      "owner": "jianghaolu",
-      "filePath": "Samples/AppService/ManageWebAppStorageAccountConnection.cs",
-      "githubPath": "Azure-Samples/app-service-dotnet-manage-storage-connections-for-web-apps",
-      "description": "Getting started on managing storage connections for Web Apps in C#"
-    },
-    {
       "owner": "anuchandy",
       "filePath": "Samples/Dns/ManageDns.cs",
       "githubPath": "Azure-Samples/dns-dotnet-host-and-manage-your-domains",
       "description": "Getting started on hosting and managing your domains in C#"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Network/ManageSimpleApplicationGateway.cs",
-      "githubPath": "Azure-Samples/application-gateway-dotnet-manage-simple-application-gateways",
-      "description": "Getting started on managing simple Application Gateways in C#"
-    },
-    {
-      "owner": "selvasingh",
-      "filePath": "Samples/Network/ManageApplicationGateway.cs",
-      "githubPath": "Azure-Samples/application-gateway-dotnet-manage-application-gateways",
-      "description": "Getting started on managing Application Gateways with backend pools in C#"
     },
     {
       "owner": "anuchandy",
@@ -294,6 +140,192 @@
       "filePath": "Samples/ResourceManager/DeployVirtualMachineUsingARMTemplate.cs",
       "githubPath": "Azure-Samples/resources-dotnet-deploy-virtual-machine-with-managed-disks-using-arm-template",
       "description": "Getting started with deploying a Virtual Machine with managed disks using an ARM Template in C#"
+    },
+    {
+      "owner": "anuchandy",
+      "filePath": "Samples/Compute/ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-resources-from-vm-with-msi-in-aad-group",
+      "description": "Getting started on managing Azure resources from a managed service identity (MSI) enabled virtual machine that belongs to an Azure Active Directory (AAD) security group using C#"
+    },
+    {
+      "owner": "anuchandy",
+      "filePath": "Samples/Compute/ManageStorageFromMSIEnabledVirtualMachine.cs",
+      "githubPath": "Azure-Samples/aad-dotnet-manage-resources-from-vm-with-msi",
+      "description": "Getting started on managing Azure resources from a virtual machine with managed service identity (MSI) using C#"
+    },
+    {
+      "owner": "anuchandy",
+      "filePath": "Samples/Compute/ManageZonalVirtualMachine.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-vms-in-availability-zones",
+      "description": "Manage virtual machines in availability zones"
+    },
+    {
+      "owner": "anuchandy",
+      "filePath": "Samples/Compute/ManageZonalVirtualMachineScaleSet.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-vmss-in-availability-zones",
+      "description": "Manage virtual machine scale sets in availability zones"
+    },
+
+
+    {
+      "owner": "anudeepsharma",
+      "filePath": "Samples/ResourceManager/DeployUsingARMTemplateWithProgress.cs",
+      "githubPath": "Azure-Samples/resources-dotnet-deploy-using-arm-template-with-progress",
+      "description": "Getting started on deploying using an ARM template and show progress in C#"
+    },
+    {
+      "owner": "anudeepsharma",
+      "filePath": "Samples/Batch/ManageBatchAccount.cs",
+      "githubPath": "Azure-Samples/batch-dotnet-manage-batch-accounts",
+      "description": "Getting started on managing batch accounts in C#"
+    },
+    {
+      "owner": "anudeepsharma",
+      "filePath": "Samples/Sql/ManageSqlDatabase.cs",
+      "githubPath": "Azure-Samples/sql-database-dotnet-manage-db",
+      "description": "Getting started on managing SQL databases in C#"
+    },
+    {
+      "owner": "anudeepsharma",
+      "filePath": "Samples/Sql/ManageSqlDatabaseInElasticPool.cs",
+      "githubPath": "Azure-Samples/sql-database-dotnet-manage-sql-dbs-in-elastic-pool",
+      "description": "Getting started on managing SQL databases in elastic pools in C#"
+    },
+    {
+      "owner": "anudeepsharma",
+      "filePath": "Samples/Sql/ManageSqlFirewallRules.cs",
+      "githubPath": "Azure-Samples/sql-database-dotnet-manage-firewalls-for-sql-databases",
+      "description": "Getting started on managing firewalls for sql databases in C#"
+    },
+    {
+      "owner": "anudeepsharma",
+      "filePath": "Samples/Sql/ManageSqlDatabasesAcrossDifferentDataCenters.cs",
+      "githubPath": "Azure-Samples/sql-database-dotnet-manage-sql-databases-across-regions",
+      "description": "Getting started on managing SQL databases across regions in C#"
+    },
+    {
+      "owner": "anudeepsharma",
+      "filePath": "Samples/ServiceBus/ServiceBusQueueBasic.cs",
+      "githubPath": "Azure-Samples/service-bus-dotnet-manage-queue-with-basic-features",
+      "description": "Getting started on managing Service Bus Queues with basic features in C#"
+    },
+    {
+      "owner": "anudeepsharma",
+      "filePath": "Samples/ServiceBus/ServiceBusPublishSubscribeBasic.cs",
+      "githubPath": "Azure-Samples/service-bus-dotnet-manage-publish-subscribe-with-basic-features",
+      "description": "Getting started on managing Service Bus Publish-Subscribe with basic features in C#"
+    },
+    {
+      "owner": "anudeepsharma",
+      "filePath": "Samples/ServiceBus/ServiceBusWithClaimBasedAuthorization.cs",
+      "githubPath": "Azure-Samples/service-bus-dotnet-manage-with-claims-based-authorization",
+      "description": "Getting started on managing Service Bus with claims based authorization in C#"
+    },
+    {
+      "owner": "anudeepsharma",
+      "filePath": "Samples/ServiceBus/ServiceBusPublishSubscribeAdvanceFeatures.cs",
+      "githubPath": "Azure-Samples/service-bus-dotnet-manage-publish-subscribe-with-advanced-features",
+      "description": "Getting started on managing Service Bus Publish-Subscribe with advanced features in C# - sessions, dead-lettering, de-duplication and auto-deletion of idle entries"
+    },
+    {
+      "owner": "anudeepsharma",
+      "filePath": "Samples/ServiceBus/ServiceBusQueueAdvanceFeatures.cs",
+      "githubPath": "Azure-Samples/service-bus-dotnet-manage-queue-with-advanced-features",
+      "description": "Getting started on managing Service Bus Queues with advanced features in C# - sessions, dead-lettering, de-duplication and auto-deletion of idle entries"
+    },
+
+
+    {
+      "owner": "hovsepm",
+      "filePath": "Samples/RedisCache/ManageRedis.cs",
+      "githubPath": "Azure-Samples/redis-cache-dotnet-manage-cache",
+      "description": "Getting started on managing Redis Cache in C#"
+    },
+    {
+      "owner": "hovsepm",
+      "filePath": "Samples/Cdn/ManageCdn.cs",
+      "githubPath": "Azure-Samples/cdn-dotnet-manage-cdn",
+      "description": "Getting started on managing CDN in C#"
+    },
+    {
+      "owner": "hovsepm",
+      "filePath": "Samples/Compute/ManageVirtualMachineAsync.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-vm-async",
+      "description": "Getting Started with Compute - Manage Virtual Machines - in C# asynchronously"
+    },
+    {
+      "owner": "hovsepm",
+      "filePath": "Samples/Storage/ManageStorageAccountAsync.cs",
+      "githubPath": "Azure-Samples/storage-dotnet-manage-storage-accounts-async",
+      "description": "Getting started on managing storage accounts in C# asynchronously"
+    },
+    {
+      "owner": "hovsepm",
+      "filePath": "Samples/Compute/ManageVirtualMachineScaleSetAsync.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machine-scale-sets-async",
+      "description": "Getting started on managing virtual machine scale sets in C# asynchronously"
+    },
+    {
+      "owner": "hovsepm",
+      "filePath": "Samples/Network/ManageVirtualNetworkAsync.cs",
+      "githubPath": "Azure-Samples/network-dotnet-manage-virtual-network-async",
+      "description": "Manage virtual networks in C# asynchronously - create a virtual network, create a virtual network with subnets, update a virtual network, list virtual networks, delete a virtual network"
+    },
+    {
+      "owner": "hovsepm",
+      "filePath": "Samples/AppService/ManageWebAppSourceControlAsync.cs",
+      "githubPath": "Azure-Samples/app-service-dotnet-configure-deployment-sources-for-web-apps-async",
+      "description": "Getting started on configuring deployment sources for Web Apps in C# asynchronously"
+    },
+
+
+    {
+      "owner": "jianghaolu",
+      "filePath": "Samples/KeyVault/ManageKeyVault.cs",
+      "githubPath": "Azure-Samples/key-vault-dotnet-manage-key-vaults",
+      "description": "Getting started on managing key vaults in C#"
+    },
+    {
+      "owner": "jianghaolu",
+      "filePath": "Samples/AppService/ManageWebAppBasic.cs",
+      "githubPath": "Azure-Samples/app-service-dotnet-manage-web-apps",
+      "description": "Getting started on managing Web Apps in C#"
+    },
+    {
+      "owner": "jianghaolu",
+      "filePath": "Samples/AppService/ManageWebAppSlots.cs",
+      "githubPath": "Azure-Samples/app-service-dotnet-manage-staging-and-production-slots-for-web-apps",
+      "description": "Getting started on managing staging and product slots for Web Apps in C#"
+    },
+    {
+      "owner": "jianghaolu",
+      "filePath": "Samples/AppService/ManageWebAppSourceControl.cs",
+      "githubPath": "Azure-Samples/app-service-dotnet-configure-deployment-sources-for-web-apps",
+      "description": "Getting started on configuring deployment sources for Web Apps in C#"
+    },
+    {
+      "owner": "jianghaolu",
+      "filePath": "Samples/AppService/ManageWebAppSqlConnection.cs",
+      "githubPath": "Azure-Samples/app-service-dotnet-manage-data-connections-for-web-apps",
+      "description": "Getting started on managing data connections (such as SQL Database and Redis Cache) for Web Apps in C#"
+    },
+    {
+      "owner": "jianghaolu",
+      "filePath": "Samples/AppService/ManageWebAppWithDomainSsl.cs",
+      "githubPath": "Azure-Samples/app-service-dotnet-manage-web-apps-with-custom-domains",
+      "description": "Getting started on managing Web Apps with custom domains in C#"
+    },
+    {
+      "owner": "jianghaolu",
+      "filePath": "Samples/AppService/ManageWebAppWithTrafficManager.cs",
+      "githubPath": "Azure-Samples/app-service-dotnet-scale-web-apps",
+      "description": "Getting started on scaling Web Apps in C#"
+    },
+    {
+      "owner": "jianghaolu",
+      "filePath": "Samples/AppService/ManageWebAppStorageAccountConnection.cs",
+      "githubPath": "Azure-Samples/app-service-dotnet-manage-storage-connections-for-web-apps",
+      "description": "Getting started on managing storage connections for Web Apps in C#"
     },
     {
       "owner": "jianghaolu",
@@ -362,102 +394,6 @@
       "description": "Getting started on managing authentication for Functions using C#"
     },
     {
-      "owner": "hovsepm",
-      "filePath": "Samples/Compute/ManageVirtualMachineAsync.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-vm-async",
-      "description": "Getting Started with Compute - Manage Virtual Machines - in C# asynchronously"
-    },
-    {
-      "owner": "hovsepm",
-      "filePath": "Samples/Storage/ManageStorageAccountAsync.cs",
-      "githubPath": "Azure-Samples/storage-dotnet-manage-storage-accounts-async",
-      "description": "Getting started on managing storage accounts in C# asynchronously"
-    },
-    {
-      "owner": "hovsepm",
-      "filePath": "Samples/Compute/ManageVirtualMachineScaleSetAsync.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machine-scale-sets-async",
-      "description": "Getting started on managing virtual machine scale sets in C# asynchronously"
-    },
-    {
-      "owner": "hovsepm",
-      "filePath": "Samples/Network/ManageVirtualNetworkAsync.cs",
-      "githubPath": "Azure-Samples/network-dotnet-manage-virtual-network-async",
-      "description": "Manage virtual networks in C# asynchronously - create a virtual network, create a virtual network with subnets, update a virtual network, list virtual networks, delete a virtual network"
-    },
-    {
-      "owner": "hovsepm",
-      "filePath": "Samples/AppService/ManageWebAppSourceControlAsync.cs",
-      "githubPath": "Azure-Samples/app-service-dotnet-configure-deployment-sources-for-web-apps-async",
-      "description": "Getting started on configuring deployment sources for Web Apps in C# asynchronously"
-    },
-    {
-      "owner": "anudeepsharma",
-      "filePath": "Samples/ServiceBus/ServiceBusQueueBasic.cs",
-      "githubPath": "Azure-Samples/service-bus-dotnet-manage-queue-with-basic-features",
-      "description": "Getting started on managing Service Bus Queues with basic features in C#"
-    },
-    {
-      "owner": "anudeepsharma",
-      "filePath": "Samples/ServiceBus/ServiceBusPublishSubscribeBasic.cs",
-      "githubPath": "Azure-Samples/service-bus-dotnet-manage-publish-subscribe-with-basic-features",
-      "description": "Getting started on managing Service Bus Publish-Subscribe with basic features in C#"
-    },
-    {
-      "owner": "anudeepsharma",
-      "filePath": "Samples/ServiceBus/ServiceBusWithClaimBasedAuthorization.cs",
-      "githubPath": "Azure-Samples/service-bus-dotnet-manage-with-claims-based-authorization",
-      "description": "Getting started on managing Service Bus with claims based authorization in C#"
-    },
-    {
-      "owner": "anudeepsharma",
-      "filePath": "Samples/ServiceBus/ServiceBusPublishSubscribeAdvanceFeatures.cs",
-      "githubPath": "Azure-Samples/service-bus-dotnet-manage-publish-subscribe-with-advanced-features",
-      "description": "Getting started on managing Service Bus Publish-Subscribe with advanced features in C# - sessions, dead-lettering, de-duplication and auto-deletion of idle entries"
-    },
-    {
-      "owner": "anudeepsharma",
-      "filePath": "Samples/ServiceBus/ServiceBusQueueAdvanceFeatures.cs",
-      "githubPath": "Azure-Samples/service-bus-dotnet-manage-queue-with-advanced-features",
-      "description": "Getting started on managing Service Bus Queues with advanced features in C# - sessions, dead-lettering, de-duplication and auto-deletion of idle entries"
-    },
-    {
-      "owner": "milismsft",
-      "filePath": "Samples/ContainerRegistry/ManageContainerRegistry.cs",
-      "githubPath": "Azure-Samples/acr-dotnet-manage-azure-container-registry",
-      "description": "Getting started on managing Azure Container Registry using C#"
-    },
-    {
-      "owner": "milismsft",
-      "filePath": "Samples/Compute/ManageContainerServiceUsingKubernetes.cs",
-      "githubPath": "Azure-Samples/acs-dotnet-manage-azure-container-service",
-      "description": "Getting started on managing Azure Container Service using C#"
-    },
-    {
-      "owner": "alvadb",
-      "filePath": "Samples/CosmosDB/ManageHACosmosDB.cs",
-      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-for-high-availability",
-      "description": "Create a DocumentDB and configure it for high availability using C#"
-    },
-    {
-      "owner": "alvadb",
-      "filePath": "Samples/CosmosDB/CreateCosmosDBWithEventualConsistency.cs",
-      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-for-eventual-consistency",
-      "description": "Create a DocumentDB and configure it with eventual consistency using C#"
-    },
-    {
-      "owner": "alvadb",
-      "filePath": "Samples/CosmosDB/CreateCosmosDBWithIPRange.cs",
-      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-configure-firewall",
-      "description": "Create a DocumentDB, configure it for high availability and create a firewall by limiting access to DocumentDB from an approved set of IP addresses using C#"
-    },
-    {
-      "owner": "alvadb",
-      "filePath": "Samples/CosmosDB/CreateCosmosDBWithKindMongoDB.cs",
-      "githubPath": "Azure-Samples/cosmosdb-dotnet-create-documentdb-and-get-mongodb-connection-string",
-      "description": "Create a DocumentDB and get MongoDB connection string using C#"
-    },
-    {
       "owner": "jianghaolu",
       "filePath": "Samples/GraphRbac/ManageServicePrincipal.cs",
       "githubPath": "Azure-Samples/aad-dotnet-manage-service-principals",
@@ -481,18 +417,8 @@
       "githubPath": "Azure-Samples/app-service-dotnet-deploy-image-from-acr-to-linux",
       "description": "Deploy a container image from Azure Container Registry to Linux containers in App Service using C#"
     },
-    {
-      "owner": "anuchandy",
-      "filePath": "Samples/Compute/ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-resources-from-vm-with-msi-in-aad-group",
-      "description": "Getting started on managing Azure resources from a managed service identity (MSI) enabled virtual machine that belongs to an Azure Active Directory (AAD) security group using C#"
-    },
-    {
-      "owner": "anuchandy",
-      "filePath": "Samples/Compute/ManageStorageFromMSIEnabledVirtualMachine.cs",
-      "githubPath": "Azure-Samples/aad-dotnet-manage-resources-from-vm-with-msi",
-      "description": "Getting started on managing Azure resources from a virtual machine with managed service identity (MSI) using C#"
-    },
+
+
     {
       "owner": "lenala",
       "filePath": "Samples/Network/ManageNetworkWatcher.cs",
@@ -500,28 +426,30 @@
       "description": "Getting started on using network watcher in C#"
     },
     {
-      "owner": "milismsft",
-      "filePath": "Samples/Search/ManageSearch.cs",
-      "githubPath": "Azure-Samples/search-dotnet-manage-search-service",
-      "description": "Getting started on managing Azure search service using C#"
+      "owner": "lenala",
+      "filePath": "Samples/Network/ManageVpnGatewaySite2SiteConnection.cs",
+      "githubPath": "Azure-Samples/network-dotnet-manage-virtual-network-with-site-to-site-vpn-connection",
+      "description": "Manage virtual network with site-to-site VPN connection"
     },
+    {
+      "owner": "lenala",
+      "filePath": "Samples/Network/ManageVpnGatewayVNet2VNetConnection.cs",
+      "githubPath": "Azure-Samples/network-dotnet-manage-virtual-network-to-virtual-network-vpn-connection",
+      "description": "Manage virtual network to virtual network VPN connection"
+    },
+    {
+      "owner": "lenala",
+      "filePath": "Samples/Network/ManageExpressRoute.cs",
+      "githubPath": "Azure-Samples/network-dotnet-manage-express-route",
+      "description": "Create and configure Express Route circuit"
+    },
+
+
     {
       "owner": "martinsawicki",
       "filePath": "Samples/Network/ManageInternetFacingLoadBalancer.cs",
       "githubPath": "Azure-Samples/network-dotnet-create-simple-internet-facing-load-balancer",
       "description": "Create a simple Internet Facing load balancer using C#"
-    },
-    {
-      "owner": "anuchandy",
-      "filePath": "Samples/Compute/ManageZonalVirtualMachine.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-vms-in-availability-zones",
-      "description": "Manage virtual machines in availability zones"
-    },
-    {
-      "owner": "anuchandy",
-      "filePath": "Samples/Compute/ManageZonalVirtualMachineScaleSet.cs",
-      "githubPath": "Azure-Samples/compute-dotnet-manage-vmss-in-availability-zones",
-      "description": "Manage virtual machine scale sets in availability zones"
     },
     {
       "owner": "martinsawicki",
@@ -536,16 +464,36 @@
       "description": "Use network watcher to check connectivity between virtual machines in peered networks"
     },
     {
-      "owner": "lenala",
-      "filePath": "Samples/Network/ManageVpnGatewaySite2SiteConnection.cs",
-      "githubPath": "Azure-Samples/network-dotnet-manage-virtual-network-with-site-to-site-vpn-connection",
-      "description": "Manage virtual network with site-to-site VPN connection"
+      "owner": "martinsawicki",
+      "filePath": "Samples/Network/ManageSimpleApplicationGateway.cs",
+      "githubPath": "Azure-Samples/application-gateway-dotnet-manage-simple-application-gateways",
+      "description": "Getting started on managing simple Application Gateways in C#"
     },
     {
-      "owner": "lenala",
-      "filePath": "Samples/Network/ManageVpnGatewayVNet2VNetConnection.cs",
-      "githubPath": "Azure-Samples/network-dotnet-manage-virtual-network-to-virtual-network-vpn-connection",
-      "description": "Manage virtual network to virtual network VPN connection"
+      "owner": "martinsawicki",
+      "filePath": "Samples/Locks/ManageLocks.cs",
+      "githubPath": "Azure-Samples/locks-dotnet-manage-locks",
+      "description": "Getting started with managing resource locks in .NET"
+    },
+
+
+    {
+      "owner": "milismsft",
+      "filePath": "Samples/Search/ManageSearch.cs",
+      "githubPath": "Azure-Samples/search-dotnet-manage-search-service",
+      "description": "Getting started on managing Azure search service using C#"
+    },
+    {
+      "owner": "milismsft",
+      "filePath": "Samples/ContainerRegistry/ManageContainerRegistry.cs",
+      "githubPath": "Azure-Samples/acr-dotnet-manage-azure-container-registry",
+      "description": "Getting started on managing Azure Container Registry using C#"
+    },
+    {
+      "owner": "milismsft",
+      "filePath": "Samples/Compute/ManageContainerServiceUsingKubernetes.cs",
+      "githubPath": "Azure-Samples/acs-dotnet-manage-azure-container-service",
+      "description": "Getting started on managing Azure Container Service using C#"
     },
     {
       "owner": "milismsft",
@@ -571,11 +519,85 @@
       "githubPath": "Azure-Samples/aci-dotnet-create-container-groups-using-private-registry",
       "description": "Create Container Group using images from a private registry"
     },
+
+
     {
-      "owner": "lenala",
-      "filePath": "Samples/Network/ManageExpressRoute.cs",
-      "githubPath": "Azure-Samples/network-dotnet-manage-express-route",
-      "description": "Create and configure Express Route circuit"
+      "owner": "selvasingh",
+      "filePath": "Samples/Compute/ListVirtualMachineImages.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-list-vm-images",
+      "description": "Getting started on listing virtual machine images in C#"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Compute/ManageAvailabilitySet.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-availability-sets",
+      "description": "Getting started on managing availability sets in C#"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Compute/ManageVirtualMachine.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-vm",
+      "description": "This sample demonstrates how to manage your Azure virtual machines using a .NET client"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Compute/ManageVirtualMachineScaleSet.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-manage-virtual-machine-scale-sets",
+      "description": "Getting started on managing virtual machine scale sets in C#"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Network/ManageInternalLoadBalancer.cs",
+      "githubPath": "Azure-Samples/network-dotnet-manage-internal-load-balancers",
+      "description": "An example illustrating how to use .NET to manage your Azure load balancers"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Network/ManageInternetFacingLoadBalancer.cs",
+      "githubPath": "Azure-Samples/network-dotnet-manage-internet-facing-load-balancers",
+      "description": "Getting started on managing load balancers in C#"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Network/ManageIPAddress.cs",
+      "githubPath": "Azure-Samples/network-dotnet-manage-ip-address",
+      "description": "Getting started on managing network user defined routes in C#"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Network/ManageNetworkInterface.cs",
+      "githubPath": "Azure-Samples/network-dotnet-manage-network-interface",
+      "description": "Getting started on managing network interface in C#"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Network/ManageNetworkSecurityGroup.cs",
+      "githubPath": "Azure-Samples/network-dotnet-manage-network-security-group",
+      "description": "Getting started on managing network security groups in C#"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Network/ManageVirtualNetwork.cs",
+      "githubPath": "Azure-Samples/network-dotnet-manage-virtual-network",
+      "description": "Getting started on managing virtual network in C#"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Storage/ManageStorageAccount.cs",
+      "githubPath": "Azure-Samples/storage-dotnet-manage-storage-accounts",
+      "description": "Getting started on managing storage accounts in C#"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Compute/CreateVirtualMachinesInParallel.cs",
+      "githubPath": "Azure-Samples/compute-dotnet-create-virtual-machines-across-regions-in-parallel",
+      "description": "Getting started on creating several virtual machines across regions in parallel in C#"
+    },
+    {
+      "owner": "selvasingh",
+      "filePath": "Samples/Network/ManageApplicationGateway.cs",
+      "githubPath": "Azure-Samples/application-gateway-dotnet-manage-application-gateways",
+      "description": "Getting started on managing Application Gateways with backend pools in C#"
     }
   ]
 }
