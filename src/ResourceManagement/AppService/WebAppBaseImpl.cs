@@ -14,6 +14,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using ResourceManager.Fluent.Core.Resource.Update;
     using System.Text.RegularExpressions;
     using System.Collections.ObjectModel;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
     /// The implementation for WebAppBase.
@@ -42,8 +43,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         where UpdateT : class, IUpdate<FluentT>
     {
         private SiteConfigResourceInner _siteConfig;
-        private IDictionary<string, IAppSetting> cachedAppSettings;
-        private IDictionary<string, IConnectionString> cachedConnectionStrings;
         private ISet<string> hostNamesSet;
         private ISet<string> enabledHostNamesSet;
         private ISet<string> trafficManagerHostNamesSet;
@@ -232,7 +231,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             ///GENMHASH:256905D5B839C64BFE9830503CB5607B:27E486AB74A10242FF421C0798DDC450
             this.SiteConfig = await GetConfigInnerAsync(cancellationToken);
             SetInner(inner);
-            await CacheSiteProperties(cancellationToken);
             return this as FluentT;
         }
 
@@ -273,49 +271,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 return (int)Inner.ContainerSize;
             }
-        }
-
-        ///GENMHASH:A0391A0E086361AE06DB925568A86EB3:C70FCB6ABBA310D8130B4F53160A0440
-
-        public async Task CacheSiteProperties(CancellationToken cancellationToken = default(CancellationToken))
-        {
-            Task<StringDictionaryInner> appSettingsTask = ListAppSettingsAsync(cancellationToken);
-            Task<ConnectionStringDictionaryInner> connectionStringsTask = ListConnectionStringsAsync(cancellationToken);
-            Task<SlotConfigNamesResourceInner> slotConfigsTask = ListSlotConfigurationsAsync(cancellationToken);
-            Task<SiteAuthSettingsInner> authenticationTask = GetAuthenticationAsync(cancellationToken);
-
-            await Task.WhenAll(appSettingsTask, connectionStringsTask, slotConfigsTask, authenticationTask);
-
-            StringDictionaryInner appSettings = appSettingsTask.Result;
-            ConnectionStringDictionaryInner connectionStrings = connectionStringsTask.Result;
-            SlotConfigNamesResourceInner slotConfigs = slotConfigsTask.Result;
-            SiteAuthSettingsInner authInner = authenticationTask.Result;
-
-            if (appSettings == null || appSettings.Properties == null)
-            {
-                cachedAppSettings = new Dictionary<string, IAppSetting>();
-            }
-            else
-            {
-                cachedAppSettings = appSettings.Properties
-                    .Select(p => (IAppSetting)new AppSettingImpl(p.Key, p.Value,
-                        slotConfigs.AppSettingNames != null && slotConfigs.AppSettingNames.Contains(p.Key)))
-                    .ToDictionary(s => s.Key);
-            }
-
-            if (connectionStrings == null || connectionStrings.Properties == null)
-            {
-                cachedConnectionStrings = new Dictionary<string, IConnectionString>();
-            }
-            else
-            {
-                cachedConnectionStrings = connectionStrings.Properties
-                    .Select(p => (IConnectionString)new ConnectionStringImpl(p.Key, p.Value,
-                        slotConfigs.ConnectionStringNames != null && slotConfigs.ConnectionStringNames.Contains(p.Key)))
-                    .ToDictionary(s => s.Name);
-            }
-
-            authentication = new WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(authInner, this);
         }
 
         ///GENMHASH:21FDAEDB996672BE017C01C5DD8758D4:27E486AB74A10242FF421C0798DDC450
@@ -518,31 +473,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 this.SiteConfig = configInner;
             }
 
-            // App settings
-            await SubmitAppSettingsAsync(site, cancellationToken);
-
-            // Connection strings
-            if (connectionStringsToAdd.Count > 0 || connectionStringsToRemove.Count > 0)
-            {
-                ConnectionStringDictionaryInner connectionStrings = await ListConnectionStringsAsync(cancellationToken);
-                if (connectionStrings == null)
-                {
-                    connectionStrings = new ConnectionStringDictionaryInner();
-                }
-                if (connectionStrings.Properties == null)
-                {
-                    connectionStrings.Properties = new Dictionary<string, ConnStringValueTypePair>();
-                }
-                foreach (var connectionString in connectionStringsToAdd)
-                {
-                    connectionStrings.Properties[connectionString.Key] = connectionString.Value;
-                }
-                foreach (var connectionString in connectionStringsToRemove)
-                {
-                    connectionStrings.Properties.Remove(connectionString);
-                }
-                connectionStrings = await UpdateConnectionStringsAsync(connectionStrings, cancellationToken);
-            }
+            // App settings && connection strings
+            await Task.WhenAll(SubmitAppSettingsAsync(Inner, cancellationToken), SubmitConnectionStringsAsync(Inner, cancellationToken));
 
             // app setting and connection string stickiness
             if (appSettingStickiness.Count > 0 || connectionStringStickiness.Count > 0)
@@ -619,7 +551,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             // convert from Inner
             SetInner(site);
             NormalizeProperties();
-            await CacheSiteProperties(cancellationToken);
 
             return this as FluentT;
         }
@@ -646,6 +577,32 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                     appSettings.Properties[appSetting.Key] = appSetting.Value;
                 }
                 await UpdateAppSettingsAsync(appSettings, cancellationToken);
+            }
+            return site;
+        }
+
+        internal virtual async Task<SiteInner> SubmitConnectionStringsAsync(SiteInner site, CancellationToken cancellationToken)
+        {
+            if (connectionStringsToAdd.Count > 0 || connectionStringsToRemove.Count > 0)
+            {
+                ConnectionStringDictionaryInner connectionStrings = await ListConnectionStringsAsync(cancellationToken);
+                if (connectionStrings == null)
+                {
+                    connectionStrings = new ConnectionStringDictionaryInner();
+                }
+                if (connectionStrings.Properties == null)
+                {
+                    connectionStrings.Properties = new Dictionary<string, ConnStringValueTypePair>();
+                }
+                foreach (var connectionString in connectionStringsToAdd)
+                {
+                    connectionStrings.Properties[connectionString.Key] = connectionString.Value;
+                }
+                foreach (var connectionString in connectionStringsToRemove)
+                {
+                    connectionStrings.Properties.Remove(connectionString);
+                }
+                await UpdateConnectionStringsAsync(connectionStrings, cancellationToken);
             }
             return site;
         }
@@ -816,9 +773,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         ///GENMHASH:5ED618DE41DCDE9DBC9F8179EF143BC3:557EA663C067393DFFE5A95D51F6FABC
-        public DateTime? LastModifiedTime()
+        public DateTime LastModifiedTime()
         {
-            return Inner.LastModifiedTimeUtc;
+            return Inner.LastModifiedTimeUtc ?? DateTime.MinValue;
         }
 
         ///GENMHASH:B37CF91380CE58F97FF98F833D067DB4:2902F3307D1294D3293754828C3C2392
@@ -924,9 +881,30 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         internal abstract Task<SlotConfigNamesResourceInner> UpdateSlotConfigurationsAsync(SlotConfigNamesResourceInner inner, CancellationToken cancellationToken = default(CancellationToken));
 
         ///GENMHASH:3BE74CEDB189CF13F08D5268649B73D7:FBDC4182C8802269267E808E13D08A16
-        public IReadOnlyDictionary<string, IAppSetting> AppSettings()
+        public IReadOnlyDictionary<string, IAppSetting> GetAppSettings()
         {
-            return new ReadOnlyDictionary<string, IAppSetting>(cachedAppSettings);
+            return Extensions.Synchronize(() => GetAppSettingsAsync());
+        }
+
+        public async Task<IReadOnlyDictionary<string, IAppSetting>> GetAppSettingsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var appSettingsInnerTask = ListAppSettingsAsync(cancellationToken);
+            var slotConfigsTask = ListSlotConfigurationsAsync(cancellationToken);
+
+            await Task.WhenAll(appSettingsInnerTask, slotConfigsTask);
+
+            var appSettings = appSettingsInnerTask.Result;
+            var slotConfigs = slotConfigsTask.Result;
+
+            if (appSettings == null || appSettings.Properties == null)
+            {
+                return null;
+            }
+
+            var ret = appSettings.Properties.Select(p => new AppSettingImpl(p.Key, p.Value, slotConfigs.AppSettingNames != null && slotConfigs.AppSettingNames.Contains(p.Key)))
+                .ToDictionary<IAppSetting, string>(setting => setting.Key);
+
+            return new ReadOnlyDictionary<string, IAppSetting>(ret);
         }
 
         internal abstract Task<SiteConfigResourceInner> GetConfigInnerAsync(CancellationToken cancellationToken = default(CancellationToken));
@@ -1003,9 +981,41 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         internal abstract Task<SiteInner> CreateOrUpdateInnerAsync(SiteInner site, CancellationToken cancellationToken = default(CancellationToken));
 
         ///GENMHASH:FA07D0476A4A7B9F0FDA17B8DF0095F1:FC345DE9B0C87952B3DE42BCE0488ECD
-        public IReadOnlyDictionary<string, IConnectionString> ConnectionStrings()
+        public IReadOnlyDictionary<string, IConnectionString> GetConnectionStrings()
         {
-            return new ReadOnlyDictionary<string, IConnectionString>(cachedConnectionStrings);
+            return Extensions.Synchronize(() => GetConnectionStringsAsync());
+        }
+
+        public async Task<IReadOnlyDictionary<string, IConnectionString>> GetConnectionStringsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var connectionStringsInnerTask = ListConnectionStringsAsync(cancellationToken);
+            var slotConfigsTask = ListSlotConfigurationsAsync(cancellationToken);
+
+            await Task.WhenAll(connectionStringsInnerTask, slotConfigsTask);
+
+            var connectionStrings = connectionStringsInnerTask.Result;
+            var slotConfigs = slotConfigsTask.Result;
+
+            if (connectionStrings == null || connectionStrings.Properties == null)
+            {
+                return null;
+            }
+
+            var ret = connectionStrings.Properties.Select(p => new ConnectionStringImpl(p.Key, p.Value, slotConfigs.ConnectionStringNames != null && slotConfigs.ConnectionStringNames.Contains(p.Key)))
+                .ToDictionary<IConnectionString, string>(conn => conn.Name);
+
+            return new ReadOnlyDictionary<string, IConnectionString>(ret);
+        }
+
+        public IWebAppAuthentication GetAuthenticationConfig()
+        {
+            return Extensions.Synchronize(() => GetAuthenticationConfigAsync());
+        }
+
+        public async Task<IWebAppAuthentication> GetAuthenticationConfigAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var auth = await GetAuthenticationAsync(cancellationToken);
+            return new WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(auth, this);
         }
 
         internal abstract Task<SiteSourceControlInner> CreateOrUpdateSourceControlAsync(SiteSourceControlInner inner, CancellationToken cancellationToken = default(CancellationToken));

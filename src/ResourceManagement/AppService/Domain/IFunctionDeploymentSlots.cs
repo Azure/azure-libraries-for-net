@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
@@ -9,8 +9,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// Entry point for Azure function app deployment slot management API.
     /// </summary>
-    public interface IFunctionDeploymentSlots :
-        IBeta,
+    public interface IFunctionDeploymentSlots  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<FunctionDeploymentSlot.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.AppService.Fluent.IFunctionDeploymentSlot>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.AppService.Fluent.IFunctionDeploymentSlot>,

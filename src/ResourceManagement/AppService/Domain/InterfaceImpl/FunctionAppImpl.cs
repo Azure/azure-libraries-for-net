@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Definition;
     using Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.UpdateDefinition;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Update;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.UpdateDefinition;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update;
@@ -770,12 +769,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets the app settings defined on the web app.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.AppSettings
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAppSettings()
         {
-            get
-            {
-                return this.AppSettings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
-            }
+            return this.GetAppSettings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
         }
 
         /// <summary>
@@ -986,12 +982,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets the connection strings defined on the web app.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.ConnectionStrings
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStrings()
         {
-            get
-            {
-                return this.ConnectionStrings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
-            }
+            return this.GetConnectionStrings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
         }
 
         /// <summary>
@@ -1246,7 +1239,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets Last time web app was modified in UTC.
         /// </summary>
-        System.DateTime? Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.LastModifiedTime
+        System.DateTime Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.LastModifiedTime
         {
             get
             {
@@ -1683,21 +1676,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             return this.DefineAuthentication() as WebAppAuthentication.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>>;
         }
-
-        /// <summary>
-        /// Gets Updates the authentication configuration of the web app.
-        /// </summary>
-        /// <summary>
-        /// Gets the first stage of an authentication update.
-        /// </summary>
-        WebAppAuthentication.Update.IUpdate<WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>> WebAppBase.Update.IWithAuthentication<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>.UpdateAuthentication
-        {
-            get
-            {
-                return this.UpdateAuthentication() as WebAppAuthentication.Update.IUpdate<WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>>;
-            }
-        }
-
 
         /// <summary>
         /// Gets the entry point to function deployment slot management API under the function app.

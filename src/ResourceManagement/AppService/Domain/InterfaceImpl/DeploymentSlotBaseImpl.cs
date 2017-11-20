@@ -4,12 +4,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
     using Microsoft.Azure.Management.AppService.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Rest;
+    using System.Collections.Generic;
 
-    internal partial class FunctionDeploymentSlotsImpl 
+    internal partial class DeploymentSlotBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT, ParentT, ParentImplT, ParentWithCreateT, ParentDefAfterRegionT, ParentDefAfterGroupT, ParentUpdateT> 
     {
     }
 }

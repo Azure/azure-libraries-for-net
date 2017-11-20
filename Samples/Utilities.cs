@@ -1217,12 +1217,12 @@ namespace Microsoft.Azure.Management.Samples.Common
                 }
             }
             builder = builder.Append("\n\tApp settings: ");
-            foreach (var setting in resource.AppSettings.Values)
+            foreach (var setting in resource.GetAppSettings().Values)
             {
                 builder = builder.Append("\n\t\t" + setting.Key + ": " + setting.Value + (setting.Sticky ? " - slot setting" : ""));
             }
             builder = builder.Append("\n\tConnection strings: ");
-            foreach (var conn in resource.ConnectionStrings.Values)
+            foreach (var conn in resource.GetConnectionStrings().Values)
             {
                 builder = builder.Append("\n\t\t" + conn.Name + ": " + conn.Value + " - " + conn.Type + (conn.Sticky ? " - slot setting" : ""));
             }
@@ -2225,6 +2225,37 @@ namespace Microsoft.Azure.Management.Samples.Common
                 }
             }
         }
+
+        public static void CreateContainer(string connectionString, string containerName)
+        {
+            if (!IsRunningMocked)
+            {
+                CloudStorageAccount storageAccount;
+                try
+                {
+                    storageAccount = CloudStorageAccount.Parse(connectionString);
+                }
+                catch (FormatException)
+                {
+                    Utilities.Log("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the sample.");
+                    Utilities.ReadLine();
+                    throw;
+                }
+                catch (ArgumentException)
+                {
+                    Utilities.Log("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the sample.");
+                    Utilities.ReadLine();
+                    throw;
+                }
+                // Create a blob client for interacting with the blob service.
+                var blobClient = storageAccount.CreateCloudBlobClient();
+                // Create a container for organizing blobs within the storage account.
+                Utilities.Log("Creating Container");
+                var container = blobClient.GetContainerReference(containerName);
+                container.CreateIfNotExistsAsync().GetAwaiter().GetResult();
+            }
+        }
+
 
         public static void DeployByGit(IPublishingProfile profile, string repository)
         {

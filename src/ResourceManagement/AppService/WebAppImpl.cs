@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebApp.Update.IUpdate,
         WebApp.Definition.IExistingWindowsPlanWithGroup,
         WebApp.Definition.IExistingLinuxPlanWithGroup,
-        WebApp.Update.IWithAppServicePlan,
+        IWithAppServicePlan,
         WebApp.Update.IWithCredentials,
         WebApp.Update.IWithStartUpCommand
     {

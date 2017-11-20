@@ -69,7 +69,7 @@ namespace Fluent.Tests.WebApp
                         .WithStickyAppSetting("stickykey", "stickyvalue")
                         .Apply();
                 webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
-                var appSettingMap = webApp.AppSettings;
+                var appSettingMap = webApp.GetAppSettings();
                 Assert.Equal("appvalue", appSettingMap["appkey"].Value);
                 Assert.False(appSettingMap["appkey"].Sticky);
                 Assert.Equal("stickyvalue", appSettingMap["stickykey"].Value);
@@ -81,7 +81,7 @@ namespace Fluent.Tests.WebApp
                         .WithStickyConnectionString("stickyName", "stickyValue", ConnectionStringType.Custom)
                         .Apply();
                 webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
-                var connectionStringMap = webApp.ConnectionStrings;
+                var connectionStringMap = webApp.GetConnectionStrings();
                 Assert.Equal("connectionValue", connectionStringMap["connectionName"].Value);
                 Assert.False(connectionStringMap["connectionName"].Sticky);
                 Assert.Equal("stickyValue", connectionStringMap["stickyName"].Value);
