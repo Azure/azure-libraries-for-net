@@ -54,7 +54,7 @@ var autoRestExe;
 
 gulp.task('codegen', function (cb) {
     if (autoRestVersion.match(/[0-9]+\.[0-9]+\.[0-9]+.*/) ||
-        autoRestVersion == 'latest') {
+        autoRestVersion == 'latest' || autoRestVersion == 'preview') {
         autoRestExe = 'autorest ---version=' + autoRestVersion;
         handleInput(projects, cb);
     } else {
@@ -82,7 +82,7 @@ var handleInput = function (projects, cb) {
 
 var codegen = function (project, cb) {
     const regenManager = args['regenerate-manager'] ? ' --regenerate-manager=true ' : '';
-    var outputDir = path.resolve(mappings[project].dir);
+    var outputDir = path.resolve(mappings[project].dir) + '/Generated';
     if (!args['preserve']) {
         deleteFolderRecursive(outputDir);
     }
@@ -92,7 +92,7 @@ var codegen = function (project, cb) {
         generator = '';
     }
 
-    const autorestCSArg = args['autorest-csharp'] || "@preview";
+    const autorestCSArg = args['autorest-csharp'] || "@latest";
     const generatorPath = autorestCSArg.startsWith("@")
         ? "@microsoft.azure/autorest.csharp" + autorestCSArg
         : path.resolve(autorestCSArg);

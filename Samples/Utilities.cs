@@ -7,6 +7,8 @@ using Microsoft.Azure.Management.Batch.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent;
 using Microsoft.Azure.Management.ContainerRegistry.Fluent;
 using Microsoft.Azure.Management.ContainerRegistry.Fluent.Models;
+using Microsoft.Azure.Management.ContainerService.Fluent;
+using Microsoft.Azure.Management.ContainerService.Fluent.Models;
 using Microsoft.Azure.Management.KeyVault.Fluent;
 using Microsoft.Azure.Management.Network.Fluent;
 using Microsoft.Azure.Management.Redis.Fluent;
@@ -1681,7 +1683,7 @@ namespace Microsoft.Azure.Management.Samples.Common
          * Print an Azure Container Service.
          * @param containerService an Azure Container Service
          */
-        public static void Print(IContainerService containerService)
+        public static void Print(ContainerService.Fluent.IContainerService containerService)
         {
             StringBuilder info = new StringBuilder();
 
@@ -1690,18 +1692,40 @@ namespace Microsoft.Azure.Management.Samples.Common
                 .Append("\n\tWith orchestration: ").Append(containerService.OrchestratorType.ToString())
                 .Append("\n\tMaster FQDN: ").Append(containerService.MasterFqdn)
                 .Append("\n\tMaster node count: ").Append(containerService.MasterNodeCount)
-                .Append("\n\tMaster leaf domain label: ").Append(containerService.MasterLeafDomainLabel)
-                .Append("\n\t\tWith Agent pool name: ").Append(containerService.AgentPoolName)
-                .Append("\n\t\tAgent pool count: ").Append(containerService.AgentPoolCount)
-                .Append("\n\t\tAgent pool count: ").Append(containerService.AgentPoolVMSize.ToString())
-                .Append("\n\t\tAgent pool FQDN: ").Append(containerService.AgentPoolFqdn)
-                .Append("\n\t\tAgent pool leaf domain label: ").Append(containerService.AgentPoolLeafDomainLabel)
+                .Append("\n\tMaster leaf domain label: ").Append(containerService.MasterDnsPrefix)
+                .Append("\n\t\tWith Agent pool name: ").Append(containerService.AgentPools.First().Value.Name)
+                .Append("\n\t\tAgent pool count: ").Append(containerService.AgentPools.First().Value.Count)
+                .Append("\n\t\tAgent virtual machine size: ").Append(containerService.AgentPools.First().Value.VMSize.ToString())
+                .Append("\n\t\tAgent pool FQDN: ").Append(containerService.AgentPools.First().Value.Fqdn)
+                .Append("\n\t\tAgent DNS prefix: ").Append(containerService.AgentPools.First().Value.DnsPrefix)
                 .Append("\n\tLinux user name: ").Append(containerService.LinuxRootUsername)
                 .Append("\n\tSSH key: ").Append(containerService.SshKey);
-            if (containerService.OrchestratorType == ContainerServiceOrchestratorTypes.Kubernetes)
+            if (containerService.OrchestratorType == ContainerService.Fluent.Models.ContainerServiceOrchestratorTypes.Kubernetes)
             {
-                info.Append("\n\tName: ").Append(containerService.ServicePrincipalClientId);
+                info.Append("\n\tService Principal ID: ").Append(containerService.ServicePrincipalClientId);
             }
+
+            Log(info.ToString());
+        }
+
+        /**
+         * Print a Kubernetes cluster.
+         * @param kubernetesCluster a Kubernetes cluster instance
+         */
+        public static void Print(ContainerService.Fluent.IKubernetesCluster kubernetesCluster)
+        {
+            StringBuilder info = new StringBuilder();
+
+            info.Append("Azure Container Service: ").Append(kubernetesCluster.Id)
+                .Append("\n\tName: ").Append(kubernetesCluster.Name)
+                .Append("\n\tFQDN: ").Append(kubernetesCluster.Fqdn)
+                .Append("\n\tDNS prefix: ").Append(kubernetesCluster.DnsPrefix)
+                .Append("\n\t\tWith Agent pool name: ").Append(kubernetesCluster.AgentPools.First().Value.Name)
+                .Append("\n\t\tAgent pool count: ").Append(kubernetesCluster.AgentPools.First().Value.Count)
+                .Append("\n\t\tAgent virtual machine size: ").Append(kubernetesCluster.AgentPools.First().Value.VMSize.ToString())
+                .Append("\n\tLinux user name: ").Append(kubernetesCluster.LinuxRootUsername)
+                .Append("\n\tSSH key: ").Append(kubernetesCluster.SshKey)
+                .Append("\n\tService principal ID: ").Append(kubernetesCluster.ServicePrincipalClientId);
 
             Log(info.ToString());
         }

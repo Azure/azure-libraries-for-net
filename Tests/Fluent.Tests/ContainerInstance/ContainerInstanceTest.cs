@@ -14,7 +14,7 @@ namespace Fluent.Tests
     public class ContainerInstanceTest
     {
         [Fact]
-        public void ContainerRegistryCRD()
+        public void ContainerInstanceCRD()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
@@ -26,8 +26,6 @@ namespace Fluent.Tests
 
                 try
                 {
-                    var temp = containerInstanceManager.ContainerGroups.Define(cgName);
-
                     containerGroup = containerInstanceManager.ContainerGroups.Define(cgName)
                             .WithRegion(Region.USEast)
                             .WithNewResourceGroup(rgName)

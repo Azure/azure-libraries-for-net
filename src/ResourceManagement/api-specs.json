@@ -77,6 +77,12 @@
     "package": "Microsoft.Azure.Management.ContainerRegistry.Fluent",
     "args": "--payload-flattening-threshold=1 --tag=package-2017-10"
   },
+  "containerservice": {
+    "dir": "ContainerService",
+    "source": "specification/compute/resource-manager/readme.md",
+    "package": "Microsoft.Azure.Management.ContainerService.Fluent",
+    "args": "--payload-flattening-threshold=1 --tag=package-container-service-2017-09 --title=ContainerServiceManagementClient --description=\"Container Service Client\""
+  },
   "customerinsights": {
     "dir": "CustomerInsights",
     "source": "specification/customer-insights/resource-manager/readme.md",
