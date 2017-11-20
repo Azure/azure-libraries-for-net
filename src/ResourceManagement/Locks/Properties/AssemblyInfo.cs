@@ -1,13 +1,12 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for
 // license information.
 
 using System.Reflection;
 using System.Resources;
-using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Container Instance Management Library")]
-[assembly: AssemblyDescription("Provides Microsoft Azure Container Instance management APIs.")]
+[assembly: AssemblyTitle("Microsoft Azure Locks Management Library")]
+[assembly: AssemblyDescription("Provides Microsoft Locks service management APIs.")]
 
 [assembly: AssemblyVersion("1.0.0.60")]
 [assembly: AssemblyFileVersion("1.4.0.0")]

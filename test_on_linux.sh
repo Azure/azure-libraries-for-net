@@ -17,6 +17,7 @@ echo Building... $netcore11
 
 dotnet build src/ResourceManagement/ResourceManager/Microsoft.Azure.Management.ResourceManager.Fluent.csproj -f $netstd13
 dotnet build src/ResourceManagement/Storage/Microsoft.Azure.Management.Storage.Fluent.csproj -f $netstd13 
+
 dotnet build src/ResourceManagement/Graph.RBAC/Microsoft.Azure.Management.Graph.RBAC.Fluent.csproj -f $netstd13
 dotnet build src/ResourceManagement/Network/Microsoft.Azure.Management.Network.Fluent.csproj -f $netstd13
 dotnet build src/ResourceManagement/AppService/Microsoft.Azure.Management.AppService.Fluent.csproj -f $netstd13
@@ -32,6 +33,9 @@ dotnet build src/ResourceManagement/Search/Microsoft.Azure.Management.Search.Flu
 dotnet build src/ResourceManagement/ServiceBus/Microsoft.Azure.Management.ServiceBus.Fluent.csproj -f $netstd13
 dotnet build src/ResourceManagement/Sql/Microsoft.Azure.Management.Sql.Fluent.csproj -f $netstd13
 dotnet build src/ResourceManagement/TrafficManager/Microsoft.Azure.Management.TrafficManager.Fluent.csproj -f $netstd13
+dotnet build src/ResourceManagement/ContainerService/Microsoft.Azure.Management.ContainerService.Fluent.csproj -f $netstd13
+dotnet build src/ResourceManagement/ContainerInstance/Microsoft.Azure.Management.ContainerInstance.Fluent.csproj -f $netstd13
+dotnet build src/ResourceManagement/Locks/Microsoft.Azure.Management.Locks.Fluent.csproj -f $netstd13
 dotnet build src/ResourceManagement/Azure.Fluent/Microsoft.Azure.Management.Fluent.csproj -f $netstd13
 dotnet build Samples/Samples.csproj  -f $netstd16
 dotnet build Tests/Fluent.Tests/Fluent.Tests.csproj -f $netcore11
