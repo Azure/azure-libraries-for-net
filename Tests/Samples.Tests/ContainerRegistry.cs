@@ -26,5 +26,16 @@ namespace Samples.Tests
                 ManageContainerRegistry.Program.RunSample(rollUpClient);
             }
         }
+
+        [Fact(Skip = "Docker .Net client and SSHShell require real network connections to be made")]
+        [Trait("Samples", "ContainerRegistry")]
+        public void ManageContainerRegistryWithWebhooksTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ManageContainerRegistryWithWebhooks.Program.RunSample(rollUpClient);
+            }
+        }
     }
 }

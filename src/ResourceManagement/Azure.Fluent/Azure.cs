@@ -23,6 +23,7 @@ using ISubscriptions = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscr
 using ISubscription = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscription;
 using Microsoft.Azure.Management.ContainerInstance.Fluent;
 using Microsoft.Azure.Management.ContainerRegistry.Fluent;
+using Microsoft.Azure.Management.ContainerService.Fluent;
 using Microsoft.Azure.Management.CosmosDB.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.Locks.Fluent;
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Management.Fluent
         private IServiceBusManager serviceBusManager;
         private IContainerInstanceManager containerInstanceManager;
         private IRegistryManager registryManager;
+        private IContainerServiceManager containerServiceManager;
         private ICosmosDBManager cosmosDBManager;
         private IAuthorizationManager authorizationManager;
 
@@ -371,11 +373,19 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        public IContainerServices ContainerServices
+        public ContainerService.Fluent.IContainerServices ContainerServices
         {
             get
             {
-                return computeManager.ContainerServices;
+                return containerServiceManager.ContainerServices;
+            }
+        }
+
+        public ContainerService.Fluent.IKubernetesClusters KubernetesClusters
+        {
+            get
+            {
+                return containerServiceManager.KubernetesClusters;
             }
         }
 
@@ -433,6 +443,7 @@ namespace Microsoft.Azure.Management.Fluent
             serviceBusManager = ServiceBusManager.Authenticate(restClient, subscriptionId);
             containerInstanceManager = ContainerInstanceManager.Authenticate(restClient, subscriptionId);
             registryManager = RegistryManager.Authenticate(restClient, subscriptionId);
+            containerServiceManager = ContainerServiceManager.Authenticate(restClient, subscriptionId);
             cosmosDBManager = CosmosDBManager.Authenticate(restClient, subscriptionId);
             authorizationManager = AuthorizationManager.Authenticate(restClient, subscriptionId);
 
@@ -679,7 +690,12 @@ namespace Microsoft.Azure.Management.Fluent
         /// <summary>
         /// Entry point to Azure Container Services management.
         /// </summary>
-        IContainerServices ContainerServices { get; }
+        ContainerService.Fluent.IContainerServices ContainerServices { get; }
+
+        /// <summary>
+        /// Entry point to Azure Container Services (AKS) management.
+        /// </summary>
+        ContainerService.Fluent.IKubernetesClusters KubernetesClusters { get; }
 
         /// <summary>
         /// Entry point to CosmosDB account management
