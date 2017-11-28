@@ -60,8 +60,8 @@ Some of the IContainerService API's have been renamed or removed:
     <td><a href="https://github.com/Azure/azure-libraries-for-net/pull/96">PR #96</a></td>
   </tr>
   <tr>
-    <td><code>ContainerService</code></td>
-    <td><code>.agentPoolCount()</code></td>
+    <td><code>IContainerService</code></td>
+    <td><code>.AgentPoolCount</code></td>
     <td><i>Removed</i></td>
     <td>Use <code>.AgentPools.First().Value.Count</code> instead</td>
     <td><a href="https://github.com/Azure/azure-libraries-for-net/pull/96">PR #96</a></td>
