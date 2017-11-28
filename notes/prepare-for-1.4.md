@@ -31,7 +31,12 @@ The following methods and/or types have been either renamed or removed in V1.4 c
     <td><i>Removed</i></td>
     <td>Please remove and re-define authentication instead</td>
   </tr>
-</table>
+  <tr>
+    <td><code>IComputeManager</code></td>
+    <td><code>.ContainerServices</code></td>
+    <td><i>Deprecated</i></td>
+    <td>Use <code>IContainerServiceManager.ContainerServices</code> instead</td>
+  </tr></table>
 
 ## Azure Container Services
 
