@@ -94,9 +94,9 @@ namespace ManageVirtualMachineScaleSet
                 // Two backend address pools which contain network interfaces for the virtual
                 //  machines to receive HTTP and HTTPS network traffic from the load balancer
                 // Two load balancing rules for HTTP and HTTPS to map public ports on the load
-                //  balancer to portsinthe backend address pool
+                //  balancer to ports in the backend address pool
                 // Two probes which contain HTTP and HTTPS health probes used to check availability
-                //  of virtual machinesinthe backend address pool
+                //  of virtual machines in the backend address pool
                 // Three inbound NAT rules which contain rules that map a public port on the load
                 //  balancer to a port for a specific virtual machineinthe backend address pool
                 //  - this provides direct VM connectivity for SSH to port 22 and TELNET to port 23
