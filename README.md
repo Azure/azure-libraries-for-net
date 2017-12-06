@@ -461,18 +461,14 @@ var database = sqlServer.Databases.Define(databaseName)
     <td>Container Service<br>Container Registry and <br>Container Instances</td>
     <td><ul style="list-style-type:circle">
 <li><a href="https://github.com/Azure-Samples/acr-dotnet-manage-azure-container-registry">Manage container registry</a></li>
-<!-- <li><a href="https://github.com/Azure-Samples/acs-dotnet-deploy-image-from-acr-to-kubernetes">Deploy an image from container registry to Kubernetes cluster</a></li>
-<li><a href="https://github.com/Azure-Samples/acs-dotnet-deploy-image-from-acr-to-swarm">Deploy an image from container registry to Swarm cluster</li>
-<li><a href="https://github.com/Azure-Samples/acs-dotnet-deploy-image-from-docker-hub-to-kubernetes">Deploy an image from Docker hub to Kubernetes cluster</a></li>
-<li><a href="https://github.com/Azure-Samples/acs-dotnet-deploy-image-from-docker-hub-to-swarm">Deploy an image from Docker hub to Swarm cluster</li> -->
-<li><a href="https://github.com/Azure-Samples/acs-dotnet-manage-azure-container-service">Manage container service</li>
+<li><a href="https://github.com/Azure-Samples/acr-dotnet-manage-azure-container-registry-with-webhooks">Manage container registry with Web hooks</a></li>
+<li><a href="https://github.com/Azure-Samples/aks-dotnet-manage-kubernetes-cluster">Manage Kubernetes cluster (AKS)</a></li>
+<li><a href="https://github.com/Azure-Samples/acs-dotnet-manage-azure-container-service-with-kubernetes-orchestrator">Manage container service with Kubernetes orchestration</li>
+<li><a href="https://github.com/Azure-Samples/acs-dotnet-manage-azure-container-service-with-docker-swarm-orchestrator">Manage container service with Docker Swarm orchestration</li>
+<li><a href="https://github.com/Azure-Samples/aci-dotnet-create-container-groups-using-private-registry">Create Container Group using images from a private registry</li>
 <li><a href="https://github.com/Azure-Samples/aci-dotnet-manage-container-instances-1">Manage Azure Container Instances with new Azure File Share</li>
 <li><a href="https://github.com/Azure-Samples/aci-dotnet-manage-container-instances-2">Manage Azure Container Instances with an existing Azure File Share</li>
 <li><a href="https://github.com/Azure-Samples/aci-dotnet-create-container-groups">Create Container Group with multiple instances and container images</li>
-<li><a href="https://github.com/Azure-Samples/aci-dotnet-create-container-groups-using-private-registry">Create Container Group using images from a private registry</li>
-<!--  
-<li><a href="https://github.com/Azure-Samples/aci-dotnet-scale-up-containers-using-kubernetes-in-acs">Create Container Group and scale up containers using Kubernetes in ACS</li>  
--->  
 </ul></td>
   </tr>
 
