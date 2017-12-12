@@ -32,6 +32,25 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// Lists resources of the specified type in the specified resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group to list the resources from.</param>
+        /// <return>The list of resources.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>.ListByResourceGroup(string resourceGroupName)
+        {
+            return this.ListByResourceGroup(resourceGroupName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>;
+        }
+
+        /// <summary>
+        /// Lists all operations for Azure Container Instance service.
+        /// </summary>
+        /// <return>A representation of the future computation of this call.</return>
+        async Task<System.Collections.Generic.IReadOnlyCollection<Models.Operation>> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.ListOperationsAsync(CancellationToken cancellationToken)
+        {
+            return await this.ListOperationsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyCollection<Models.Operation>;
+        }
+
+        /// <summary>
         /// Get the log content for the specified container instance within a container group.
         /// </summary>
         /// <param name="resourceGroupName">The Azure resource group name.</param>
@@ -59,6 +78,15 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// Lists all operations for Azure Container Instance service.
+        /// </summary>
+        /// <return>All operations for Azure Container Instance service.</return>
+        System.Collections.Generic.IReadOnlyCollection<Models.Operation> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.ListOperations()
+        {
+            return this.ListOperations() as System.Collections.Generic.IReadOnlyCollection<Models.Operation>;
+        }
+
+        /// <summary>
         /// Get the log content for the specified container instance within a container group.
         /// </summary>
         /// <param name="resourceGroupName">The Azure resource group name.</param>
@@ -83,6 +111,24 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         async Task<string> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.GetLogContentAsync(string resourceGroupName, string containerName, string containerGroupName, int tailLineCount, CancellationToken cancellationToken)
         {
             return await this.GetLogContentAsync(resourceGroupName, containerName, containerGroupName, tailLineCount, cancellationToken);
+        }
+
+        /// <summary>
+        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// </summary>
+        /// <return>List of resources.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>.List()
+        {
+            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>;
+        }
+
+        /// <summary>
+        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// </summary>
+        /// <return>List of resources.</return>
+        async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IContainerGroup>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
+        {
+            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IContainerGroup>;
         }
     }
 }

@@ -6,8 +6,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using System.Collections.Generic;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Grouping of volume definition stages.
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     /// (via  WithCreate.create()), but also allows for any other optional settings to be specified.
     /// </summary>
     public interface IWithCreate  :
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithRestartPolicy,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithCreate>
     {
@@ -375,6 +377,14 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     }
 
     /// <summary>
+    /// The stage of the container group definition allowing to specify the container group restart policy.
+    /// </summary>
+    public interface IWithRestartPolicy  :
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithRestartPolicyBeta
+    {
+    }
+
+    /// <summary>
     /// The stage of the container group definition allowing to specify a volume that can be mounted by a container instance.
     /// </summary>
     public interface IWithVolume  :
@@ -565,5 +575,19 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         /// <param name="environmentVariables">The environment variables in a name and value pair to be set after the container gets initialized.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithContainerInstanceAttach<ParentT> WithEnvironmentVariables(IDictionary<string,string> environmentVariables);
+    }
+
+    /// <summary>
+    /// The stage of the container group definition allowing to specify the container group restart policy.
+    /// </summary>
+    public interface IWithRestartPolicyBeta  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the restart policy for all the container instances within the container group.
+        /// </summary>
+        /// <param name="restartPolicy">The restart policy for all the container instances within the container group.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithCreate WithRestartPolicy(ContainerGroupRestartPolicy restartPolicy);
     }
 }

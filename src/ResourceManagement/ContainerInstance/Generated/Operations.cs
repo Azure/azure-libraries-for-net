@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ContainerLogsOperations operations.
+    /// Operations operations.
     /// </summary>
-    internal partial class ContainerLogsOperations : IServiceOperations<ContainerInstanceManagementClient>, IContainerLogsOperations
+    internal partial class Operations : IServiceOperations<ContainerInstanceManagementClient>, IOperations
     {
         /// <summary>
-        /// Initializes a new instance of the ContainerLogsOperations class.
+        /// Initializes a new instance of the Operations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal ContainerLogsOperations(ContainerInstanceManagementClient client)
+        internal Operations(ContainerInstanceManagementClient client)
         {
             if (client == null)
             {
@@ -49,25 +49,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         public ContainerInstanceManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Get the logs for a specified container instance.
+        /// List the operations for Azure Container Instance service.
         /// </summary>
-        /// <remarks>
-        /// Get the logs for a specified container instance in a specified resource
-        /// group and container group.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='containerGroupName'>
-        /// The name of the container group.
-        /// </param>
-        /// <param name='containerName'>
-        /// The name of the container instance.
-        /// </param>
-        /// <param name='tail'>
-        /// The number of lines to show from the tail of the container instance log. If
-        /// not provided, all available logs are shown up to 4mb.
-        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -89,27 +72,11 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<LogsInner>> ListWithHttpMessagesAsync(string resourceGroupName, string containerGroupName, string containerName, int? tail = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<OperationListResultInner>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (resourceGroupName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (containerGroupName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "containerGroupName");
-            }
-            if (containerName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "containerName");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -118,28 +85,16 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("containerGroupName", containerGroupName);
-                tracingParameters.Add("containerName", containerName);
-                tracingParameters.Add("tail", tail);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/containers/{containerName}/logs").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{containerGroupName}", System.Uri.EscapeDataString(containerGroupName));
-            _url = _url.Replace("{containerName}", System.Uri.EscapeDataString(containerName));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.ContainerInstance/operations").ToString();
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (tail != null)
-            {
-                _queryParameters.Add(string.Format("tail={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(tail, Client.SerializationSettings).Trim('"'))));
             }
             if (_queryParameters.Count > 0)
             {
@@ -234,7 +189,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<LogsInner>();
+            var _result = new AzureOperationResponse<OperationListResultInner>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -247,7 +202,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<LogsInner>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<OperationListResultInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

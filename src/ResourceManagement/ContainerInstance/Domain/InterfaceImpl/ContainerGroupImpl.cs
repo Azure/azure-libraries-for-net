@@ -26,6 +26,16 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// Specifies the restart policy for all the container instances within the container group.
+        /// </summary>
+        /// <param name="restartPolicy">The restart policy for all the container instances within the container group.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithCreate ContainerGroup.Definition.IWithRestartPolicyBeta.WithRestartPolicy(ContainerGroupRestartPolicy restartPolicy)
+        {
+            return this.WithRestartPolicy(restartPolicy) as ContainerGroup.Definition.IWithCreate;
+        }
+
+        /// <summary>
         /// Specifies a new Azure file share name to be created.
         /// </summary>
         /// <param name="volumeName">The name of the volume.</param>
@@ -143,6 +153,17 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// Gets the container group events.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyCollection<Models.EventModel> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.Events
+        {
+            get
+            {
+                return this.Events() as System.Collections.Generic.IReadOnlyCollection<Models.EventModel>;
+            }
+        }
+
+        /// <summary>
         /// Gets the TCP ports publicly exposed for this container group.
         /// </summary>
         int[] Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.ExternalTcpPorts
@@ -154,13 +175,13 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
-        /// Gets `always` Always restart.
+        /// Gets the container group restart policy.
         /// </summary>
-        bool Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.isAlwaysRestart
+        Models.ContainerGroupRestartPolicy Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.RestartPolicy
         {
             get
             {
-                return this.IsAlwaysRestart();
+                return this.RestartPolicy() as Models.ContainerGroupRestartPolicy;
             }
         }
 
