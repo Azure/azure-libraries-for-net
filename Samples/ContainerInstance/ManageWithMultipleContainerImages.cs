@@ -45,14 +45,15 @@ namespace ManageWithMultipleContainerImages
                         .WithImage(containerImageName1)
                         .WithExternalTcpPort(80)
                         .WithCpuCoreCount(.5)
-                        .WithMemorySizeInGB(.75)
+                        .WithMemorySizeInGB(1)
                         .Attach()
                     .DefineContainerInstance(aciName + "-2")
                         .WithImage(containerImageName2)
                         .WithoutPorts()
                         .WithCpuCoreCount(.5)
-                        .WithMemorySizeInGB(.75)
+                        .WithMemorySizeInGB(1)
                         .Attach()
+                    .WithRestartPolicy(ContainerGroupRestartPolicy.Never)
                     .Create();
 
                 Utilities.Print(containerGroup);

@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:AEE17FD09F624712647F5EBCEC141EA5:99ECDF2C7D842BA7D2742AC2953EDA92
         public string State()
         {
-            return this.Inner.State;
+            return this.Inner.InstanceView != null ? this.Inner.InstanceView.State : null;
         }
 
         ///GENMHASH:59B08BD03F2496BDEFB0CB87748CB717:75DE4FE44AED6C1A4FA25A3E81685E01
@@ -109,9 +109,17 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return Fluent.OSTypeName.Parse(this.Inner.OsType);
         }
 
-        public bool IsAlwaysRestart()
+        ///GENMHASH:72D8F838766D2FA789A06DBB8ACE4C8C:6688B3D6EDBA6430DBE60C201714B737
+        public ContainerGroupRestartPolicy RestartPolicy()
         {
-            return this.Inner.RestartPolicy.Equals("Always");
+            return ContainerGroupRestartPolicy.Parse(this.Inner.RestartPolicy);
+        }
+
+        ///GENMHASH:43FFE67ED1E08092A08C7E35A3244CB2:E6719DA498FFBEA871EB1D1A559ABB37
+        public IReadOnlyCollection<Models.EventModel> Events()
+        {
+            return new ReadOnlyCollection<Models.EventModel>(this.Inner.InstanceView != null && this.Inner.InstanceView.Events != null ?
+                this.Inner.InstanceView.Events : new List<Models.EventModel>());
         }
 
 
@@ -347,31 +355,42 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
                 .Attach();
         }
 
+        ///GENMHASH:1C73260E17F72F996B485F399B1A7E02:93461D0A597F2906607068C9C6F891F6
+        public ContainerGroupImpl WithRestartPolicy(ContainerGroupRestartPolicy restartPolicy)
+        {
+            this.Inner.RestartPolicy = restartPolicy.Value;
+
+            return this;
+        }
+
+
 
         ///GENMHASH:5539452FF37A2039D171B77EAB519674:F662BD68539B03381406F317464C0B00
         public string GetLogContent(string containerName)
         {
-            return Extensions.Synchronize(() => this.Manager.Inner.ContainerLogs.ListAsync(this.ResourceGroupName, containerName, this.Name)).Content;
+            return Extensions.Synchronize(() => this.GetLogContentAsync(containerName));
         }
 
         ///GENMHASH:E56134B3DD31D67F07D4B5EDC1D24FD7:137080B7ED8C37E287C17CC77224DECA
         public string GetLogContent(string containerName, int tailLineCount)
         {
-            return Extensions.Synchronize(() => this.Manager.Inner.ContainerLogs.ListAsync(this.ResourceGroupName, containerName, this.Name, tailLineCount)).Content;
+            return Extensions.Synchronize(() => this.GetLogContentAsync(containerName, tailLineCount));
         }
 
         ///GENMHASH:68FA359B278647E097B20441389A58FC:3119C16FFA0F521767097C339920EE47
         public async Task<string> GetLogContentAsync(string containerName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var log = await this.Manager.Inner.ContainerLogs.ListAsync(this.ResourceGroupName, containerName, this.Name, cancellationToken: cancellationToken);
-            return log.Content;
+            var log = await this.Manager.Inner.ContainerLogs.ListAsync(this.ResourceGroupName, this.Name, containerName, cancellationToken: cancellationToken);
+
+            return (log != null) ? log.Content : "";
         }
 
         ///GENMHASH:FF17FE4F8B9A7B52DB8052C65778E9B1:62A00FD4D8AED790BA6A5B89296698FF
         public async Task<string> GetLogContentAsync(string containerName, int tailLineCount, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var log = await this.Manager.Inner.ContainerLogs.ListAsync(this.ResourceGroupName, containerName, this.Name, tailLineCount, cancellationToken);
-            return log.Content;
+            var log = await this.Manager.Inner.ContainerLogs.ListAsync(this.ResourceGroupName, this.Name, containerName, tailLineCount, cancellationToken);
+
+            return (log != null) ? log.Content : "";
         }
 
     }

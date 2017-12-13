@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         int[] ExternalTcpPorts { get; }
 
         /// <summary>
-        /// Gets `always` Always restart.
+        /// Gets the container group restart policy.
         /// </summary>
-        bool isAlwaysRestart { get; }
+        Models.ContainerGroupRestartPolicy RestartPolicy { get; }
 
         /// <summary>
         /// Gets true if IP address is public.
@@ -110,5 +110,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
         /// <return>A representation of the future computation of this call.</return>
         Task<string> GetLogContentAsync(string containerName, int tailLineCount, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets the container group events.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyCollection<Models.EventModel> Events { get; }
     }
 }

@@ -10,11 +10,11 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
 {
 
     /// <summary>
-    /// Defines values for ContainerGroupNetworkProtocol.
+    /// Defines values for ContainerInstanceOperationsOrigin.
     /// </summary>
-    public static class ContainerGroupNetworkProtocol
+    public static class ContainerInstanceOperationsOrigin
     {
-        public const string TCP = "TCP";
-        public const string UDP = "UDP";
+        public const string User = "User";
+        public const string System = "System";
     }
 }

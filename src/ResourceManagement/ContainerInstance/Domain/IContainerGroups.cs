@@ -5,8 +5,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition;
+    using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Entry point to the container instance management API.
@@ -25,6 +27,18 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>
     {
+        /// <summary>
+        /// Lists all operations for Azure Container Instance service.
+        /// </summary>
+        /// <return>A representation of the future computation of this call.</return>
+        Task<System.Collections.Generic.IReadOnlyCollection<Models.Operation>> ListOperationsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Lists all operations for Azure Container Instance service.
+        /// </summary>
+        /// <return>All operations for Azure Container Instance service.</return>
+        System.Collections.Generic.IReadOnlyCollection<Models.Operation> ListOperations();
+
         /// <summary>
         /// Get the log content for the specified container instance within a container group.
         /// </summary>

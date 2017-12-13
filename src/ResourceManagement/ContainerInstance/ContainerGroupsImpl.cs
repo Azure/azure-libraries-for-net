@@ -2,15 +2,18 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 {
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition;
     using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.Storage.Fluent;
     using Microsoft.Rest.Azure;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Implementation for ContainerGroups.
@@ -110,5 +113,67 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             return (await this.Manager.Inner.ContainerLogs.ListAsync(resourceGroupName, containerName, containerGroupName, tailLineCount, cancellationToken: cancellationToken)).Content;
         }
+
+        ///GENMHASH:2CEB6E35574F5C7F1D19ADAC97C93D65:D6B0D66B56D133541C412BA68B7CE4EA
+        public IReadOnlyCollection<Models.Operation> ListOperations()
+        {
+            return Extensions.Synchronize(() => this.ListOperationsAsync());
+        }
+
+        ///GENMHASH:B1063F1468B82C4392D0981460DF0EE4:E80AB2C00804277BD5EACDC2F3A6B264
+        public async Task<IReadOnlyCollection<Models.Operation>> ListOperationsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var result = await this.Manager.Inner.Operations.ListAsync(cancellationToken: cancellationToken);
+
+            return new ReadOnlyCollection<Models.Operation>(result.Value);
+        }
+
+        public override IEnumerable<IContainerGroup> List()
+        {
+
+            return WrapList(Extensions.Synchronize(() => this.ListInnerAsync(default(CancellationToken)))
+                .AsContinuousCollection(link => Extensions.Synchronize(() => ListInnerNextAsync(link, default(CancellationToken)))))
+                .Select(x =>
+                {
+                    return x.Refresh();
+                });
+        }
+
+        public override IEnumerable<IContainerGroup> ListByResourceGroup(string resourceGroupName)
+        {
+            return WrapList(Extensions.Synchronize(() => this.ListInnerByGroupAsync(resourceGroupName, default(CancellationToken)))
+                .AsContinuousCollection(link => Extensions.Synchronize(() => ListInnerByGroupNextAsync(link, default(CancellationToken)))))
+                .Select(x =>
+                {
+                    return x.Refresh();
+                });
+        }
+
+        public override async Task<IPagedCollection<IContainerGroup>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await PagedCollection<IContainerGroup, Models.ContainerGroupInner>.LoadPageWithWrapModelAsync(ListInnerAsync, ListInnerNextAsync, WrapModelForListAsync, loadAllPages, cancellationToken);
+        }
+
+        public override async Task<IPagedCollection<IContainerGroup>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await PagedCollection<IContainerGroup, Models.ContainerGroupInner>.LoadPageWithWrapModelAsync(
+                async (cancellation) => await ListInnerByGroupAsync(resourceGroupName, cancellation),
+                ListInnerByGroupNextAsync, WrapModelForListAsync, loadAllPages, cancellationToken);
+        }
+
+        protected async Task<IContainerGroup> WrapModelForListAsync(ContainerGroupInner inner, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (inner != null)
+            {
+                var result = new ContainerGroupImpl(inner.Name, inner, this.Manager, this.storageManager);
+
+                return await result.RefreshAsync(cancellationToken);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 }

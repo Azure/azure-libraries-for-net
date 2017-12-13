@@ -7,6 +7,7 @@ using Microsoft.Azure.Management.ContainerInstance.Fluent;
 using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.Linq;
 using Xunit;
 
 namespace Fluent.Tests
@@ -41,6 +42,7 @@ namespace Fluent.Tests
                                 .WithImage("nginx")
                                 .WithExternalTcpPort(80)
                                 .Attach()
+                            .WithRestartPolicy(ContainerGroupRestartPolicy.Never)
                             .WithTag("tag1", "value1")
                             .Create();
 
@@ -81,12 +83,18 @@ namespace Fluent.Tests
                     Assert.NotNull(nginxContainer.EnvironmentVariables);
                     Assert.Empty(nginxContainer.EnvironmentVariables);
                     Assert.True(containerGroup.Tags.ContainsKey("tag1"));
+                    Assert.Equal(ContainerGroupRestartPolicy.Never, containerGroup.RestartPolicy);
 
                     IContainerGroup containerGroup2 = containerInstanceManager.ContainerGroups.GetByResourceGroup(rgName, cgName);
 
                     var containerGroupList = containerInstanceManager.ContainerGroups.ListByResourceGroup(rgName);
+                    Assert.True(containerGroupList.Count() > 0);
+                    Assert.NotNull(containerGroupList.First().State);
 
                     containerGroup.Refresh();
+
+                    var containerOperationsList = containerInstanceManager.ContainerGroups.ListOperations();
+                    Assert.Equal(4, containerOperationsList.Count());
 
                     containerInstanceManager.ContainerGroups.DeleteById(containerGroup.Id);
                 }
