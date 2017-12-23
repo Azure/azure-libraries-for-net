@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// The parameters of a managed disk.
     /// </summary>
-    public partial class ManagedDiskParametersInner : Rest.Azure.SubResource
+    public partial class ManagedDiskParametersInner : Microsoft.Azure.Management.ResourceManager.Fluent.SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ManagedDiskParametersInner class.

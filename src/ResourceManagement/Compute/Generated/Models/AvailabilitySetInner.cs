@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// set.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AvailabilitySetInner : Rest.Azure.Resource
+    public partial class AvailabilitySetInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the AvailabilitySetInner class.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// machines in the availability set.</param>
         /// <param name="statuses">The resource status information.</param>
         /// <param name="sku">Sku of the availability set</param>
-        public AvailabilitySetInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Rest.Azure.SubResource> virtualMachines = default(IList<Rest.Azure.SubResource>), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
+        public AvailabilitySetInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource> virtualMachines = default(IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource>), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
             : base(location, id, name, type, tags)
         {
             PlatformUpdateDomainCount = platformUpdateDomainCount;
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// availability set.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualMachines")]
-        public IList<Rest.Azure.SubResource> VirtualMachines { get; set; }
+        public IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource> VirtualMachines { get; set; }
 
         /// <summary>
         /// Gets the resource status information.

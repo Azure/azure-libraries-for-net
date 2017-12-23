@@ -16,14 +16,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uVmlydHVhbE1hY2hpbmVTY2FsZVNldEV4dGVuc2lvbkltcGw=
     internal partial class VirtualMachineScaleSetExtensionImpl :
-        ChildResource<Models.VirtualMachineScaleSetExtension, VirtualMachineScaleSetImpl, IVirtualMachineScaleSet>,
+        ChildResource<Models.VirtualMachineScaleSetExtensionInner, VirtualMachineScaleSetImpl, IVirtualMachineScaleSet>,
         IVirtualMachineScaleSetExtension,
         IDefinition<VirtualMachineScaleSet.Definition.IWithCreate>,
         IUpdateDefinition<VirtualMachineScaleSet.Update.IWithApply>,
         VirtualMachineScaleSetExtension.Update.IUpdate
     {
         ///GENMHASH:F8C651BFA96A5C2B1BE72B024FE8AEEF:815BF11DE6127502A0AFCB14BE98F20E
-        internal VirtualMachineScaleSetExtensionImpl(Models.VirtualMachineScaleSetExtension inner, VirtualMachineScaleSetImpl parent) : base(inner, parent)
+        internal VirtualMachineScaleSetExtensionImpl(Models.VirtualMachineScaleSetExtensionInner inner, VirtualMachineScaleSetImpl parent) : base(inner, parent)
         {
         }
 
