@@ -20,7 +20,7 @@ namespace CreateVMsUsingCustomImageOrSpecializedVHD
         private static readonly string Password = "12NewPA$$w0rd!";
         private readonly static List<string> ApacheInstallScriptUris = new List<string>()
         {
-            "https://raw.githubusercontent.com/Azure/azure-sdk-for-java/master/azure-samples/src/main/resources/install_apache.sh"
+            "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/install_apache.sh"
         };
         private static readonly string ApacheInstallCommand = "bash install_apache.sh";
 

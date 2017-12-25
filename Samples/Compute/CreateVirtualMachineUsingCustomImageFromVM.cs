@@ -38,7 +38,7 @@ namespace CreateVirtualMachineUsingCustomImageFromVM
             var customImageName = Utilities.CreateRandomName("img");
             var rgName = Utilities.CreateRandomName("rgCOMV");
             var publicIpDnsLabel = Utilities.CreateRandomName("pip");
-            var apacheInstallScript = "https://raw.githubusercontent.com/Azure/azure-sdk-for-java/master/azure-samples/src/main/resources/install_apache.sh";
+            var apacheInstallScript = "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/install_apache.sh";
             var apacheInstallCommand = "bash install_apache.sh";
             var apacheInstallScriptUris = new List<string>();
             apacheInstallScriptUris.Add(apacheInstallScript);

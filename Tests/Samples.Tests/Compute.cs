@@ -238,7 +238,7 @@ namespace Samples.Tests
                             .GetResult());
         }
 
-        [Fact]
+        [Fact(Skip = "Service Bug: Disks or snapshot cannot be resized down [Starting from compute-2017-12-01]")]
         [Trait("Samples", "Compute")]
         public void ManageManagedDisksTest()
         {
