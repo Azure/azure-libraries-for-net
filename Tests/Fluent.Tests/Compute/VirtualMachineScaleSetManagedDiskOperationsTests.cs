@@ -101,7 +101,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Service Bug: Disks or snapshot cannot be resized down [Starting from compute-2017-12-01]")]
         public void CanCreateFromCustomImageWithManagedDisk()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
