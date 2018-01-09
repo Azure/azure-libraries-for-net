@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         /// </summary>
         /// <param name="username">the user name</param>
         /// <param name="password">the associated password</param>
-        /// <param name="clientId">the client ID of the application</param>
+        /// <param name="clientId">the client ID of the application. Also known as Application Id which Identifies the application that is using the token.</param>
         /// <param name="tenantId">the tenant ID or domain the user is in</param>
         /// <param name="environment">the environment to authenticate to</param>
         /// <returns>an authenticated credentials object</returns>
