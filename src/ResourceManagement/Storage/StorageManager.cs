@@ -97,6 +97,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
 
         private IStorageAccounts storageAccounts;
         private IUsages usages;
+        private IStorageSkus storageSkus;
 
         public IStorageAccounts StorageAccounts
         {
@@ -115,9 +116,21 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             {
                 if (usages == null)
                 {
-                    usages = new UsagesImpl(Inner.Usage);
+                    usages = new UsagesImpl(this);
                 }
                 return usages;
+            }
+        }
+
+        public IStorageSkus StorageSkus
+        {
+            get
+            {
+                if (storageSkus == null)
+                {
+                    storageSkus = new StorageSkusImpl(this);
+                }
+                return storageSkus;
             }
         }
 
@@ -138,5 +151,10 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// Gets the storage resource usage management API entry point.
         /// </summary>
         IUsages Usages { get; }
+
+        /// <summary>
+        /// Gets the storage service SKU management API entry point
+        /// </summary>
+        IStorageSkus StorageSkus { get; }
     }
 }

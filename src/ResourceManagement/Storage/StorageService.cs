@@ -3,12 +3,11 @@
 namespace Microsoft.Azure.Management.Storage.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Azure storage service types.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnN0b3JhZ2UuU3RvcmFnZVNlcnZpY2U=
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnN0b3JhZ2UuU3RvcmFnZVNlcnZpY2U=
     public class StorageService  : ExpandableStringEnum<Microsoft.Azure.Management.Storage.Fluent.StorageService>
     {
         /// <summary>
@@ -25,5 +24,10 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// Static value Queue for StorageService.
         /// </summary>
         public static readonly StorageService Queue = Parse("Queue");
+
+        /// <summary>
+        /// Static value Queue for StorageService.
+        /// </summary>
+        public static readonly StorageService File = Parse("File");
     }
 }

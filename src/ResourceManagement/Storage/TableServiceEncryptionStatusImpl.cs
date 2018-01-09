@@ -5,18 +5,18 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using Microsoft.Azure.Management.Storage.Fluent.Models;
 
     /// <summary>
-    /// Implementation of StorageAccountEncryptionStatus for Blob service.
+    /// Implementation of StorageAccountEncryptionStatus for Table service.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnN0b3JhZ2UuaW1wbGVtZW50YXRpb24uQmxvYlNlcnZpY2VFbmNyeXB0aW9uU3RhdHVzSW1wbA==
-    internal partial class BlobServiceEncryptionStatusImpl  :
+///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnN0b3JhZ2UuaW1wbGVtZW50YXRpb24uVGFibGVTZXJ2aWNlRW5jcnlwdGlvblN0YXR1c0ltcGw=
+    internal partial class TableServiceEncryptionStatusImpl  :
         StorageAccountEncryptionStatusImpl
     {
-        ///GENMHASH:DAB5602D433411FC81DD4AE9FB169399:8A39EA79F0EAA32E3B9637298A785CD9
-        internal  BlobServiceEncryptionStatusImpl(EncryptionServices encryptionServices) : base(encryptionServices)
+        ///GENMHASH:1BBD5AA11DE417618F6FD5C9F77A4121:8A39EA79F0EAA32E3B9637298A785CD9
+        internal TableServiceEncryptionStatusImpl(EncryptionServices encryptionServices) : base(encryptionServices)
         {
         }
 
-        ///GENMHASH:D97A6A22274011CC9F2DE9E7287AE1CE:5F296BBF9823F08BDC308F9A5164B5BE
+        ///GENMHASH:D97A6A22274011CC9F2DE9E7287AE1CE:710934CB805D465755C619E1C691E1FE
         protected override EncryptionService EncryptionService()
         {
             if (this.encryptionServices == null)
@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
             else
             {
-                return  this.encryptionServices.Blob;
+                return this.encryptionServices.Table;
             }
         }
 
-        ///GENMHASH:37A0EE464EE2C3F32288E8C35E06F1EA:A33D634F8782BF7783613105DEEC75A4
+        ///GENMHASH:37A0EE464EE2C3F32288E8C35E06F1EA:55CB18B464239801AAD97F01970B3810
         public override StorageService StorageService
         {
             get

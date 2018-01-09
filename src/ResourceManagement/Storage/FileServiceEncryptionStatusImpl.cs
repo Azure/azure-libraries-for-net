@@ -5,18 +5,18 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using Microsoft.Azure.Management.Storage.Fluent.Models;
 
     /// <summary>
-    /// Implementation of StorageAccountEncryptionStatus for Blob service.
+    /// Implementation of StorageAccountEncryptionStatus for File service.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnN0b3JhZ2UuaW1wbGVtZW50YXRpb24uQmxvYlNlcnZpY2VFbmNyeXB0aW9uU3RhdHVzSW1wbA==
-    internal partial class BlobServiceEncryptionStatusImpl  :
+///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnN0b3JhZ2UuaW1wbGVtZW50YXRpb24uRmlsZVNlcnZpY2VFbmNyeXB0aW9uU3RhdHVzSW1wbA==
+    internal partial class FileServiceEncryptionStatusImpl  :
         StorageAccountEncryptionStatusImpl
     {
-        ///GENMHASH:DAB5602D433411FC81DD4AE9FB169399:8A39EA79F0EAA32E3B9637298A785CD9
-        internal  BlobServiceEncryptionStatusImpl(EncryptionServices encryptionServices) : base(encryptionServices)
+        ///GENMHASH:3BF269643D6DD700597D4C8FA71BE0FE:8A39EA79F0EAA32E3B9637298A785CD9
+        internal  FileServiceEncryptionStatusImpl(EncryptionServices encryptionServices) : base(encryptionServices)
         {
         }
 
-        ///GENMHASH:D97A6A22274011CC9F2DE9E7287AE1CE:5F296BBF9823F08BDC308F9A5164B5BE
+        ///GENMHASH:D97A6A22274011CC9F2DE9E7287AE1CE:7EB9967F82AB29847D3BDF37F05B3DEB
         protected override EncryptionService EncryptionService()
         {
             if (this.encryptionServices == null)
@@ -25,16 +25,16 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
             else
             {
-                return  this.encryptionServices.Blob;
+                return this.encryptionServices.File;
             }
         }
 
-        ///GENMHASH:37A0EE464EE2C3F32288E8C35E06F1EA:A33D634F8782BF7783613105DEEC75A4
+        ///GENMHASH:37A0EE464EE2C3F32288E8C35E06F1EA:5D5EFBFE420966F3B6BAC9791861AF84
         public override StorageService StorageService
         {
             get
             {
-                return StorageService.Blob;
+                return StorageService.File;
             }
         }
     }
