@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// include: 'Hot', 'Cool'</param>
         /// <param name="enableHttpsTrafficOnly">Allows https traffic only to
         /// storage service if sets to true.</param>
-        public StorageAccountCreateParametersInner(Sku sku, Kind kind, string location, IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), bool? enableHttpsTrafficOnly = default(bool?))
+        public StorageAccountCreateParametersInner(SkuInner sku, Kind kind, string location, IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), bool? enableHttpsTrafficOnly = default(bool?))
         {
             Sku = sku;
             Kind = kind;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// Gets or sets required. Gets or sets the sku name.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public Sku Sku { get; set; }
+        public SkuInner Sku { get; set; }
 
         /// <summary>
         /// Gets or sets required. Indicates the type of storage account.

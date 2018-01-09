@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// <param name="kind">Optional. Indicates the type of storage account.
         /// Currently only StorageV2 value supported by server. Possible values
         /// include: 'Storage', 'StorageV2', 'BlobStorage'</param>
-        public StorageAccountUpdateParametersInner(Sku sku = default(Sku), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), Kind? kind = default(Kind?))
+        public StorageAccountUpdateParametersInner(SkuInner sku = default(SkuInner), IDictionary<string, string> tags = default(IDictionary<string, string>), Identity identity = default(Identity), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), Kind? kind = default(Kind?))
         {
             Sku = sku;
             Tags = tags;
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// be updated to any other value.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public Sku Sku { get; set; }
+        public SkuInner Sku { get; set; }
 
         /// <summary>
         /// Gets or sets a list of key value pairs that describe the resource.

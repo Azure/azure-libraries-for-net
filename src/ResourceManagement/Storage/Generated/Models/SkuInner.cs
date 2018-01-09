@@ -9,19 +9,17 @@
 namespace Microsoft.Azure.Management.Storage.Fluent.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// The SKU of the storage account.
     /// </summary>
-    public partial class Sku
+    public partial class SkuInner
     {
         /// <summary>
         /// Initializes a new instance of the Sku class.
         /// </summary>
-        public Sku()
+        public SkuInner()
         {
             CustomInit();
         }
@@ -48,7 +46,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.Models
         /// notification, etc.</param>
         /// <param name="restrictions">The restrictions because of which SKU
         /// cannot be used. This is empty if there are no restrictions.</param>
-        public Sku(SkuName name, SkuTier? tier = default(SkuTier?), string resourceType = default(string), Kind? kind = default(Kind?), IList<string> locations = default(IList<string>), IList<SKUCapability> capabilities = default(IList<SKUCapability>), IList<Restriction> restrictions = default(IList<Restriction>))
+        public SkuInner(SkuName name, SkuTier? tier = default(SkuTier?), string resourceType = default(string), Kind? kind = default(Kind?), IList<string> locations = default(IList<string>), IList<SKUCapability> capabilities = default(IList<SKUCapability>), IList<Restriction> restrictions = default(IList<Restriction>))
         {
             Name = name;
             Tier = tier;
