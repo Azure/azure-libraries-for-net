@@ -2,16 +2,9 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Storage.Fluent
 {
+    using Microsoft.Azure.Management.Storage.Fluent.Models;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Storage.Fluent.Models;
-    using Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition;
-    using Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update;
-    using Microsoft.Rest;
-    using System.Collections.Generic;
-    using System;
 
     internal partial class StorageAccountImpl
     {
@@ -105,10 +98,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
         }
 
+        /// <return>Gets the sku of this storage account.</return>
         /// <summary>
-        /// Gets the sku of this storage account. Possible names include:
-        /// 'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', 'Standard_RAGRS',
-        /// 'Premium_LRS'. Possible tiers include: 'Standard', 'Premium'.
+        /// Use StorageAccount.skuType() instead.
         /// </summary>
         Models.Sku Microsoft.Azure.Management.Storage.Fluent.IStorageAccount.Sku
         {
@@ -118,9 +110,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent
             }
         }
 
+        /// <return>Gets the encryption settings on the account.</return>
         /// <summary>
-        /// Gets the encryption settings on the account.
-        /// TODO: This getter should be deprecated and removed (the new fully fluent encryption replaces this).
+        /// Use  StorageAccount.encryptionKeySource(),  StorageAccount.encryptionStatuses() instead.
         /// </summary>
         Models.Encryption Microsoft.Azure.Management.Storage.Fluent.IStorageAccount.Encryption
         {
@@ -202,8 +194,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         }
 
         /// <summary>
-        /// Enables encryption for all storage services in the account that supports encryption.
+        /// Enables encryption for blob service.
         /// </summary>
+        /// <deprecated>Use  WithEncryption.WithBlobEncryption() instead.</deprecated>
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryption.WithEncryption()
         {
@@ -211,8 +204,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         }
 
         /// <summary>
-        /// Disables encryption for all storage services in the account that supports encryption.
+        /// Disables encryption for blob service.
         /// </summary>
+        /// <deprecated>Use  WithEncryption.withoutBlobEncryption() instead.</deprecated>
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryption.WithoutEncryption()
         {
@@ -220,8 +214,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         }
 
         /// <summary>
-        /// Enables encryption for all storage services in the account that supports encryption.
+        /// Specifies that encryption needs be enabled for blob service.
         /// </summary>
+        /// <deprecated>Use  WithEncryption.withBlobEncryption() instead.</deprecated>
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryption.WithEncryption()
         {
@@ -274,9 +269,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         }
 
         /// <summary>
-        /// Specifies the sku of the storage account. This used to be called
-        /// account types.
+        /// Specifies the sku of the storage account.
         /// </summary>
+        /// <deprecated>Use  WithSku.withSku(StorageAccountSkuType) instead.</deprecated>
         /// <param name="skuName">The sku.</param>
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithSku.WithSku(SkuName skuName)
@@ -285,14 +280,548 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         }
 
         /// <summary>
-        /// Specifies the sku of the storage account. This used to be called
-        /// account types.
+        /// Specifies the sku of the storage account.
         /// </summary>
+        /// <param name="sku">The sku.</param>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithSkuBeta.WithSku(StorageAccountSkuType sku)
+        {
+            return this.WithSku(sku) as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the sku of the storage account.
+        /// </summary>
+        /// <deprecated>Use  WithSku.withSku(StorageAccountSkuType) instead.</deprecated>
         /// <param name="skuName">The sku.</param>
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithSku.WithSku(SkuName skuName)
         {
             return this.WithSku(skuName) as StorageAccount.Definition.IWithCreate;
+        }
+
+
+
+
+        /// <summary>
+        /// Gets Checks storage account can be accessed from applications running on azure.
+        /// </summary>
+        /// <summary>
+        /// Gets true if storage can be accessed from application running on azure, false otherwise.
+        /// </summary>
+        bool Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.CanAccessFromAzureServices
+        {
+            get
+            {
+                return this.CanAccessFromAzureServices();
+            }
+        }
+
+        /// <summary>
+        /// Gets the sku of this storage account.
+        /// </summary>
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccountSkuType Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.SkuType
+        {
+            get
+            {
+                return this.SkuType() as Microsoft.Azure.Management.Storage.Fluent.StorageAccountSkuType;
+            }
+        }
+
+        /// <summary>
+        /// Gets the list of ip address ranges having access to the storage account.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<string> Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.IPAddressRangesWithAccess
+        {
+            get
+            {
+                return this.IPAddressRangesWithAccess() as System.Collections.Generic.IReadOnlyList<string>;
+            }
+        }
+
+
+        /// <summary>
+        /// Gets Checks storage metrics can be read from any network.
+        /// </summary>
+        /// <summary>
+        /// Gets true if storage metrics can be read from any network, false otherwise.
+        /// </summary>
+        bool Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.CanReadMetricsFromAnyNetwork
+        {
+            get
+            {
+                return this.CanReadMetricsFromAnyNetwork();
+            }
+        }
+
+        /// <summary>
+        /// Gets the list of ip addresses having access to the storage account.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<string> Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.IPAddressesWithAccess
+        {
+            get
+            {
+                return this.IPAddressesWithAccess() as System.Collections.Generic.IReadOnlyList<string>;
+            }
+        }
+
+        /// <summary>
+        /// Gets true if authenticated application from any network is allowed to access the
+        /// storage account, false if only application from whitelisted network (subnet, ip address,
+        /// ip address range) can access the storage account.
+        /// </summary>
+        bool Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.IsAccessAllowedFromAllNetworks
+        {
+            get
+            {
+                return this.IsAccessAllowedFromAllNetworks();
+            }
+        }
+
+        /// <summary>
+        /// Gets Checks storage log entries can be read from any network.
+        /// </summary>
+        /// <summary>
+        /// Gets true if storage log entries can be read from any network, false otherwise.
+        /// </summary>
+        bool Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.CanReadLogEntriesFromAnyNetwork
+        {
+            get
+            {
+                return this.CanReadLogEntriesFromAnyNetwork();
+            }
+        }
+
+        /// <summary>
+        /// Gets the Managed Service Identity specific Active Directory service principal ID assigned
+        /// to the storage account.
+        /// </summary>
+        string Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.SystemAssignedManagedServiceIdentityPrincipalId
+        {
+            get
+            {
+                return this.SystemAssignedManagedServiceIdentityPrincipalId();
+            }
+        }
+
+        /// <summary>
+        /// Gets the list of resource id of virtual network subnet having access to the storage account.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<string> Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.NetworkSubnetsWithAccess
+        {
+            get
+            {
+                return this.NetworkSubnetsWithAccess() as System.Collections.Generic.IReadOnlyList<string>;
+            }
+        }
+
+        /// <summary>
+        /// Gets the Managed Service Identity specific Active Directory tenant ID assigned to the
+        /// storage account.
+        /// </summary>
+        string Microsoft.Azure.Management.Storage.Fluent.IStorageAccountBeta.SystemAssignedManagedServiceIdentityTenantId
+        {
+            get
+            {
+                return this.SystemAssignedManagedServiceIdentityTenantId();
+            }
+        }
+
+        /// <summary>
+        /// Specifies that previously allowed access from specific ip address should be removed.
+        /// </summary>
+        /// <param name="ipAddress">The ip address.</param>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutIpAddressAccess(string ipAddress)
+        {
+            return this.WithoutIpAddressAccess(ipAddress) as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that previously added read access exception to the storage metrics from any network
+        /// should be removed.
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutReadAccessToMetricsFromAnyNetwork()
+        {
+            return this.WithoutReadAccessToMetricsFromAnyNetwork() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that access to the storage account from a specific ip range should be allowed.
+        /// </summary>
+        /// <param name="ipAddressCidr">The ip address range expressed in cidr format.</param>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromIpAddressRange(string ipAddressCidr)
+        {
+            return this.WithAccessFromIpAddressRange(ipAddressCidr) as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that by default access to storage account should be denied from
+        /// all networks except from those networks specified via
+        /// WithNetworkAccess.withAccessFromNetworkSubnet(String),
+        /// WithNetworkAccess.withAccessFromIpAddress(String) and
+        /// WithNetworkAccess.withAccessFromIpAddressRange(String).
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromSelectedNetworks()
+        {
+            return this.WithAccessFromSelectedNetworks() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that previously added read access exception to the storage logging from any network
+        /// should be removed.
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutReadAccessToLoggingFromAnyNetwork()
+        {
+            return this.WithoutReadAccessToLoggingFromAnyNetwork() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that read access to the storage metrics should be allowed from any network.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithReadAccessToMetricsFromAnyNetwork()
+        {
+            return this.WithReadAccessToMetricsFromAnyNetwork() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that access to the storage account from a specific ip address should be allowed.
+        /// </summary>
+        /// <param name="ipAddress">The ip address.</param>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromIpAddress(string ipAddress)
+        {
+            return this.WithAccessFromIpAddress(ipAddress) as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that access to the storage account should be allowed from applications running on
+        /// Microsoft Azure services.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromAzureServices()
+        {
+            return this.WithAccessFromAzureServices() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that previously allowed access from specific virtual network subnet should be removed.
+        /// </summary>
+        /// <param name="subnetId">The virtual network subnet id.</param>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutNetworkSubnetAccess(string subnetId)
+        {
+            return this.WithoutNetworkSubnetAccess(subnetId) as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that previously allowed access from specific ip range should be removed.
+        /// </summary>
+        /// <param name="ipAddressCidr">The ip address range expressed in cidr format.</param>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutIpAddressRangeAccess(string ipAddressCidr)
+        {
+            return this.WithoutIpAddressRangeAccess(ipAddressCidr) as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that read access to the storage logging should be allowed from any network.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithReadAccessToLogEntriesFromAnyNetwork()
+        {
+            return this.WithReadAccessToLogEntriesFromAnyNetwork() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that access to the storage account from a specific virtual network
+        /// subnet should be allowed.
+        /// </summary>
+        /// <param name="subnetId">The virtual network subnet id.</param>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromNetworkSubnet(string subnetId)
+        {
+            return this.WithAccessFromNetworkSubnet(subnetId) as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that previously added access exception to the storage account from application
+        /// running on azure should be removed.
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutAccessFromAzureServices()
+        {
+            return this.WithoutAccessFromAzureServices() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that by default access to storage account should be allowed from
+        /// all networks.
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromAllNetworks()
+        {
+            return this.WithAccessFromAllNetworks() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that access to the storage account from the specific ip range should be allowed.
+        /// </summary>
+        /// <param name="ipAddressCidr">The ip address range expressed in cidr format.</param>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromIpAddressRange(string ipAddressCidr)
+        {
+            return this.WithAccessFromIpAddressRange(ipAddressCidr) as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that by default access to storage account should be denied from
+        /// all networks except from those networks specified via
+        /// WithNetworkAccess.withAccessFromNetworkSubnet(String)
+        /// WithNetworkAccess.withAccessFromIpAddress(String) and
+        /// WithNetworkAccess.withAccessFromIpAddressRange(String).
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromSelectedNetworks()
+        {
+            return this.WithAccessFromSelectedNetworks() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that read access to the storage metrics should be allowed from any network.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithReadAccessToMetricsFromAnyNetwork()
+        {
+            return this.WithReadAccessToMetricsFromAnyNetwork() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that access to the storage account from the specific ip address should be allowed.
+        /// </summary>
+        /// <param name="ipAddress">The ip address.</param>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromIpAddress(string ipAddress)
+        {
+            return this.WithAccessFromIpAddress(ipAddress) as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that access to the storage account should be allowed from applications running
+        /// on Microsoft Azure services.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromAzureServices()
+        {
+            return this.WithAccessFromAzureServices() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that read access to the storage logging should be allowed from any network.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithReadAccessToLogEntriesFromAnyNetwork()
+        {
+            return this.WithReadAccessToLogEntriesFromAnyNetwork() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that access to the storage account from the specific virtual network subnet should be allowed.
+        /// </summary>
+        /// <param name="subnetId">The virtual network subnet id.</param>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromNetworkSubnet(string subnetId)
+        {
+            return this.WithAccessFromNetworkSubnet(subnetId) as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that by default access to storage account should be allowed from all networks.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromAllNetworks()
+        {
+            return this.WithAccessFromAllNetworks() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Gets Specifies that the storage account should be upgraded to V2 kind.
+        /// </summary>
+        /// <summary>
+        /// Gets the next stage of storage account update.
+        /// </summary>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithUpgrade.UpgradeToGeneralPurposeAccountKindV2
+        {
+            get
+            {
+                return this.UpgradeToGeneralPurposeAccountKindV2() as StorageAccount.Update.IUpdate;
+            }
+        }
+
+        /// <summary>
+        /// Enables encryption for file service.
+        /// </summary>
+        /// <return>He next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithFileEncryption()
+        {
+            return this.WithFileEncryption() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Disables encryption for file service.
+        /// </summary>
+        /// <return>He next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithoutFileEncryption()
+        {
+            return this.WithoutFileEncryption() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Enables encryption for blob service.
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithBlobEncryption()
+        {
+            return this.WithBlobEncryption() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Disables encryption for blob service.
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithoutBlobEncryption()
+        {
+            return this.WithoutBlobEncryption() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the KeyVault key to be used as key for encryption.
+        /// </summary>
+        /// <param name="keyVaultUri">The uri to KeyVault.</param>
+        /// <param name="keyName">The KeyVault key name.</param>
+        /// <param name="keyVersion">The KeyVault key version.</param>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithEncryptionKeyFromKeyVault(string keyVaultUri, string keyName, string keyVersion)
+        {
+            return this.WithEncryptionKeyFromKeyVault(keyVaultUri, keyName, keyVersion) as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that encryption needs be enabled for file service.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithFileEncryption()
+        {
+            return this.WithFileEncryption() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Disables encryption for file service.
+        /// </summary>
+        /// <return>He next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithoutFileEncryption()
+        {
+            return this.WithoutFileEncryption() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that encryption needs be enabled for blob service.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithBlobEncryption()
+        {
+            return this.WithBlobEncryption() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Disables encryption for blob service.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithoutBlobEncryption()
+        {
+            return this.WithoutBlobEncryption() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies the KeyVault key to be used as encryption key.
+        /// </summary>
+        /// <param name="keyVaultUri">The uri to KeyVault.</param>
+        /// <param name="keyName">The KeyVault key name.</param>
+        /// <param name="keyVersion">The KeyVault key version.</param>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithEncryptionKeyFromKeyVault(string keyVaultUri, string keyName, string keyVersion)
+        {
+            return this.WithEncryptionKeyFromKeyVault(keyVaultUri, keyName, keyVersion) as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies the storage account kind to be "StorageV2", the kind for
+        /// general purposes.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithGeneralPurposeAccountKind.WithGeneralPurposeAccountKindV2()
+        {
+            return this.WithGeneralPurposeAccountKindV2() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that implicit managed service identity (MSI) needs to be enabled.
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithManagedServiceIdentityBeta.WithSystemAssignedManagedServiceIdentity()
+        {
+            return this.WithSystemAssignedManagedServiceIdentity() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that implicit managed service identity (MSI) needs to be enabled.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithManagedServiceIdentityBeta.WithSystemAssignedManagedServiceIdentity()
+        {
+            return this.WithSystemAssignedManagedServiceIdentity() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies that both http and https traffic should be allowed to storage account.
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithAccessTraffic.WithHttpAndHttpsTraffic()
+        {
+            return this.WithHttpAndHttpsTraffic() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that only https traffic should be allowed to storage account.
+        /// </summary>
+        /// <return>The next stage of storage account update.</return>
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithAccessTraffic.WithOnlyHttpsTraffic()
+        {
+            return this.WithOnlyHttpsTraffic() as StorageAccount.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that only https traffic should be allowed to storage account.
+        /// </summary>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithAccessTraffic.WithOnlyHttpsTraffic()
+        {
+            return this.WithOnlyHttpsTraffic() as StorageAccount.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies the sku of the storage account.
+        /// </summary>
+        /// <param name="sku">The sku.</param>
+        /// <return>The next stage of storage account definition.</return>
+        StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithSkuBeta.WithSku(StorageAccountSkuType sku)
+        {
+            return this.WithSku(sku) as StorageAccount.Definition.IWithCreate;
         }
 
         /// <summary>

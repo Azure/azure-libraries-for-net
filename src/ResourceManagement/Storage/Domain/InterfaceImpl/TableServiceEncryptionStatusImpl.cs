@@ -4,7 +4,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
 {
     using Microsoft.Azure.Management.Storage.Fluent.Models;
 
-    internal partial class BlobServiceEncryptionStatusImpl 
+    internal partial class TableServiceEncryptionStatusImpl 
     {
     }
 }

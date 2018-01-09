@@ -4,29 +4,25 @@ namespace Microsoft.Azure.Management.Storage.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
-    using Microsoft.Azure.Management.Storage.Fluent.Models;
 
-    internal partial class UsagesImpl
+    internal partial class StorageSkusImpl 
     {
         /// <summary>
         /// Lists all the resources of the specified type in the currently selected subscription.
         /// </summary>
         /// <return>List of resources.</return>
-        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Storage.Fluent.IStorageUsage> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Storage.Fluent.IStorageUsage>.List()
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Storage.Fluent.IStorageSku> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Storage.Fluent.IStorageSku>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Storage.Fluent.IStorageUsage>;
+            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Storage.Fluent.IStorageSku>;
         }
 
         /// <summary>
         /// Lists all the resources of the specified type in the currently selected subscription.
         /// </summary>
         /// <return>List of resources.</return>
-        async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IStorageUsage>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Storage.Fluent.IStorageUsage>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
+        async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IStorageSku>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Storage.Fluent.IStorageSku>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IStorageUsage>;
+            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IStorageSku>;
         }
 
         /// <summary>
