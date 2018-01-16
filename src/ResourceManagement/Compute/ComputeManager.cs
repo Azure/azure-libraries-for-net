@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private IDisks disks;
         private ISnapshots snapshots;
         private IVirtualMachineCustomImages virtualMachineCustomImages;
+        private IComputeSkus computeSkus;
         #endregion
 
         #region ctrs
@@ -214,6 +215,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return virtualMachineCustomImages;
             }
         }
+
+        public IComputeSkus ComputeSkus
+        {
+            get
+            {
+                if (computeSkus == null)
+                {
+                    computeSkus = new ComputeSkusImpl(this);
+                }
+                return computeSkus;
+            }
+        }
+
         #endregion
     }
 
@@ -236,5 +250,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ISnapshots Snapshots { get; }
 
         IVirtualMachineCustomImages VirtualMachineCustomImages { get; }
+
+        IComputeSkus ComputeSkus { get; }
     }
 }

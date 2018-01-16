@@ -431,6 +431,14 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IComputeSkus ComputeSkus
+        {
+            get
+            {
+                return computeManager.ComputeSkus;
+            }
+        }
+
         #endregion Getters
 
         #region ctrs
@@ -875,5 +883,10 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to virtual machine managed disk snapshot management.
         /// </summary>
         ISnapshots Snapshots { get; }
+
+        /// <summary>
+        /// Entry point to compute service SKU management.
+        /// </summary>
+        IComputeSkus ComputeSkus { get; }
     }
 }
