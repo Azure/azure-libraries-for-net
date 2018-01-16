@@ -12,6 +12,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     public class BatchAIManager : Manager<IBatchAIManagementClient>, IBatchAIManager
     {
+        #region Fluent private collections
+        private IBatchAIClusters batchAIClusters;
+        private IBatchAIFileServers batchAIFileServers;
+        #endregion
+
         #region ctrs
         private BatchAIManager(RestClient restClient, string subscriptionId) :
             base(restClient, subscriptionId, new BatchAIManagementClient(new Uri(restClient.BaseUri),
@@ -88,5 +93,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// </summary>
     public interface IBatchAIManager : IManager<IBatchAIManagementClient>
     {
+        IBatchAIClusters BatchAiClusters { get; }
+        IBatchAIFileServers BatchAiFileServers { get; }
     }
 }
