@@ -14,9 +14,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// </summary>
     public interface IBatchAIJob  :
         IBeta,
-        IIndependentChildResource<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIManager,Microsoft.Azure.Management.BatchAI.Fluent.Models.JobInner>,
-        IRefreshable<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob>,
-        IHasParent<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster>
+        IIndependentChildResource<IBatchAIManager,Models.JobInner>,
+        IRefreshable<IBatchAIJob>
     {
         /// <summary>
         /// Gets the Id of the cluster on which this job will run.

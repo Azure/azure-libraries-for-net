@@ -11,17 +11,17 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// </summary>
     public interface IBatchAIFileServers  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<BatchAIFileServer.Definition.IBlank>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByResourceGroup<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingById,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingByResourceGroup,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsBatchCreation<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsBatchDeletion,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIManager>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.BatchAI.Fluent.IFileServersOperations>
+        ISupportsCreating<BatchAIFileServer.Definition.IBlank>,
+        ISupportsListing<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
+        ISupportsListingByResourceGroup<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
+        ISupportsGettingByResourceGroup<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
+        ISupportsGettingById<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
+        ISupportsDeletingById,
+        ISupportsDeletingByResourceGroup,
+        ISupportsBatchCreation<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
+        ISupportsBatchDeletion,
+        IHasManager<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIManager>,
+        IHasInner<Microsoft.Azure.Management.BatchAI.Fluent.IFileServersOperations>
     {
     }
 }

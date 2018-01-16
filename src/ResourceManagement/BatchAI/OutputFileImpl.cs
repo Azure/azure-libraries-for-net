@@ -15,7 +15,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         IndexableWrapper<File>,
         IOutputFile
     {
-        public string DownloadUrl => Inner.DownloadUrl;
+        public string DownloadUrl()
+        {
+            return Inner.DownloadUrl;
+        }
+   
 
         public string Name => Inner.Name;
 

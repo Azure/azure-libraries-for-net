@@ -87,6 +87,30 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             }
         }
         #endregion
+
+        public IBatchAIClusters BatchAiClusters
+        {
+            get
+            {
+                if (batchAIClusters == null)
+                {
+                    batchAIClusters = new BatchAIClustersImpl(this);
+                }
+                return batchAIClusters;
+            }
+        }
+
+        public IBatchAIFileServers BatchAiFileServers
+        {
+            get
+            {
+                if (batchAIFileServers == null)
+                {
+                    batchAIFileServers = new BatchAIFileServersImpl(this);
+                }
+                return batchAIFileServers;
+            }
+        }
     }
     /// <summary>
     /// Entry point to Azure BatchAI resource management.
@@ -94,6 +118,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     public interface IBatchAIManager : IManager<IBatchAIManagementClient>
     {
         IBatchAIClusters BatchAiClusters { get; }
-        IBatchAIFileServers BatchAiFileServers { get; }
+        IBatchAIFileServers BatchAiFileServers { get;  }
     }
 }

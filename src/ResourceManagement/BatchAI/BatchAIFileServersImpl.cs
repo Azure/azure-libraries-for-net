@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             BatchAIFileServerImpl,
             FileServerInner,
             IFileServersOperations,
-            BatchAIManager>,
+            IBatchAIManager>,
         IBatchAIFileServers
     {
-        internal  BatchAIFileServersImpl(BatchAIManager batchAIManager)
+        internal  BatchAIFileServersImpl(IBatchAIManager batchAIManager)
             : base(batchAIManager.Inner.FileServers, batchAIManager)
         {
         }
