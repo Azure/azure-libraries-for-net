@@ -340,12 +340,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             }
         }
 
-        ToolTypeSettings.Caffe.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCaffe
+        ToolTypeSettings.Caffe.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCaffe()
         {
-            get
-            {
-                return this.DefineCaffe() as ToolTypeSettings.Caffe.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
-            }
+            return this.DefineCaffe() as ToolTypeSettings.Caffe.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
         }
 
         BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithToolType.WithCustomCommandLine(string commandLine)
@@ -353,36 +350,24 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this.WithCustomCommandLine(commandLine) as BatchAIJob.Definition.IWithCreate;
         }
 
-        ToolTypeSettings.Chainer.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineChainer
+        ToolTypeSettings.Chainer.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineChainer()
         {
-            get
-            {
-                return this.DefineChainer() as ToolTypeSettings.Chainer.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
-            }
+            return this.DefineChainer() as ToolTypeSettings.Chainer.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
         }
 
-        ToolTypeSettings.Caffe2.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCaffe2
+        ToolTypeSettings.Caffe2.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCaffe2()
         {
-            get
-            {
-                return this.DefineCaffe2() as ToolTypeSettings.Caffe2.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
-            }
+            return this.DefineCaffe2() as ToolTypeSettings.Caffe2.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
         }
 
-        ToolTypeSettings.CognitiveToolkit.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCognitiveToolkit
+        ToolTypeSettings.CognitiveToolkit.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCognitiveToolkit()
         {
-            get
-            {
-                return this.DefineCognitiveToolkit() as ToolTypeSettings.CognitiveToolkit.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
-            }
+            return this.DefineCognitiveToolkit() as ToolTypeSettings.CognitiveToolkit.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
         }
 
-        ToolTypeSettings.TensorFlow.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineTensorflow
+        ToolTypeSettings.TensorFlow.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineTensorflow()
         {
-            get
-            {
-                return this.DefineTensorflow() as ToolTypeSettings.TensorFlow.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
-            }
+            return this.DefineTensorflow() as ToolTypeSettings.TensorFlow.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
         }
 
         /// <param name="image">The name of the image in image repository.</param>

@@ -25,12 +25,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <summary>
         /// Gets the first stage of the setup task definition.
         /// </summary>
-        NodeSetupTask.Definition.IBlank<BatchAICluster.Definition.IWithCreate> BatchAICluster.Definition.IWithSetupTask.DefineSetupTask
+        NodeSetupTask.Definition.IBlank<BatchAICluster.Definition.IWithCreate> BatchAICluster.Definition.IWithSetupTask.DefineSetupTask()
         {
-            get
-            {
-                return this.DefineSetupTask() as NodeSetupTask.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
-            }
+            return this.DefineSetupTask() as NodeSetupTask.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
         }
 
         /// <param name="password">Admin user password (linux only).</param>
@@ -170,12 +167,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <summary>
         /// Gets the first stage of Azure blob file system reference definition.
         /// </summary>
-        AzureBlobFileSystem.Definition.IBlank<BatchAICluster.Definition.IWithCreate> BatchAICluster.Definition.IWithMountVolumes.DefineAzureBlobFileSystem
+        AzureBlobFileSystem.Definition.IBlank<BatchAICluster.Definition.IWithCreate> BatchAICluster.Definition.IWithMountVolumes.DefineAzureBlobFileSystem()
         {
-            get
-            {
-                return this.DefineAzureBlobFileSystem() as AzureBlobFileSystem.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
-            }
+            return this.DefineAzureBlobFileSystem() as AzureBlobFileSystem.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
         }
 
         /// <summary>
@@ -195,12 +189,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <summary>
         /// Gets the first stage of file server reference definition.
         /// </summary>
-        FileServer.Definition.IBlank<BatchAICluster.Definition.IWithCreate> BatchAICluster.Definition.IWithMountVolumes.DefineFileServer
+        FileServer.Definition.IBlank<BatchAICluster.Definition.IWithCreate> BatchAICluster.Definition.IWithMountVolumes.DefineFileServer()
         {
-            get
-            {
-                return this.DefineFileServer() as FileServer.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
-            }
+            return this.DefineFileServer() as FileServer.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
         }
 
         /// <summary>
@@ -209,12 +200,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <summary>
         /// Gets the first stage of file share reference definition.
         /// </summary>
-        AzureFileShare.Definition.IBlank<BatchAICluster.Definition.IWithCreate> BatchAICluster.Definition.IWithMountVolumes.DefineAzureFileShare
+        AzureFileShare.Definition.IBlank<BatchAICluster.Definition.IWithCreate> BatchAICluster.Definition.IWithMountVolumes.DefineAzureFileShare()
         {
-            get
-            {
-                return this.DefineAzureFileShare() as AzureFileShare.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
-            }
+            return this.DefineAzureFileShare() as AzureFileShare.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
         }
 
         /// <summary>

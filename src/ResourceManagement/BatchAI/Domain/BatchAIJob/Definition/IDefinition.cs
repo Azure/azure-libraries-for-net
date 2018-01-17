@@ -70,19 +70,19 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate WithExperimentName(string experimentName);
     }
 
-    public interface IWithToolType 
+    public interface IWithToolType
     {
-        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Chainer.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineChainer { get; }
+        ToolTypeSettings.Chainer.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineChainer();
 
-        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe2.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineCaffe2 { get; }
+        ToolTypeSettings.Caffe2.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineCaffe2();
 
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate WithCustomCommandLine(string commandLine);
 
-        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.CognitiveToolkit.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineCognitiveToolkit { get; }
+        ToolTypeSettings.CognitiveToolkit.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineCognitiveToolkit();
 
-        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.TensorFlow.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineTensorflow { get; }
+        ToolTypeSettings.TensorFlow.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineTensorflow();
 
-        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineCaffe { get; }
+        ToolTypeSettings.Caffe.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineCaffe();
     }
 
     /// <summary>

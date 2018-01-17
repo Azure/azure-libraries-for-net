@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
     /// <summary>
     /// Defines the volumes to mount on the cluster.
     /// </summary>
-    public interface IWithMountVolumes 
+    public interface IWithMountVolumes
     {
         /// <summary>
         /// Gets Begins the definition of Azure file share reference to be mounted on each cluster node.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
         /// <summary>
         /// Gets the first stage of file share reference definition.
         /// </summary>
-        Microsoft.Azure.Management.BatchAI.Fluent.AzureFileShare.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineAzureFileShare { get; }
+        AzureFileShare.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineAzureFileShare();
 
         /// <summary>
         /// Gets Begins the definition of Azure blob file system reference to be mounted on each cluster node.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
         /// <summary>
         /// Gets the first stage of Azure blob file system reference definition.
         /// </summary>
-        Microsoft.Azure.Management.BatchAI.Fluent.AzureBlobFileSystem.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineAzureBlobFileSystem { get; }
+       AzureBlobFileSystem.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineAzureBlobFileSystem();
 
         /// <summary>
         /// Gets Begins the definition of Azure file server reference.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
         /// <summary>
         /// Gets the first stage of file server reference definition.
         /// </summary>
-        Microsoft.Azure.Management.BatchAI.Fluent.FileServer.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineFileServer { get; }
+        FileServer.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineFileServer();
 
         /// <summary>
         /// Specifies the details of the file system to mount on the compute cluster nodes.
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
     /// NOTE: The volumes specified in mountVolumes are mounted first and then the setupTask is run.
     /// Therefore the setup task can use local mountPaths in its execution.
     /// </summary>
-    public interface IWithSetupTask 
+    public interface IWithSetupTask
     {
         /// <summary>
         /// Gets Begins the definition of setup task.
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
         /// <summary>
         /// Gets the first stage of the setup task definition.
         /// </summary>
-        Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineSetupTask { get; }
+        NodeSetupTask.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineSetupTask();
     }
 
     /// <summary>

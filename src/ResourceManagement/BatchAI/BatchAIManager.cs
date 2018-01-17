@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         }
         #endregion
 
-        public IBatchAIClusters BatchAiClusters
+        public IBatchAIClusters BatchAIClusters
         {
             get
             {
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             }
         }
 
-        public IBatchAIFileServers BatchAiFileServers
+        public IBatchAIFileServers BatchAIFileServers
         {
             get
             {
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// </summary>
     public interface IBatchAIManager : IManager<IBatchAIManagementClient>
     {
-        IBatchAIClusters BatchAiClusters { get; }
-        IBatchAIFileServers BatchAiFileServers { get;  }
+        IBatchAIClusters BatchAIClusters { get; }
+        IBatchAIFileServers BatchAIFileServers { get;  }
     }
 }
