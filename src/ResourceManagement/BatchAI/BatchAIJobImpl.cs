@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             JobInner,
             BatchAIJobImpl,
             IBatchAIManager,
-            IBlank,
+            IWithNodeCount,
             IWithNodeCount,
             IWithCreate,
             IWithCreate>,

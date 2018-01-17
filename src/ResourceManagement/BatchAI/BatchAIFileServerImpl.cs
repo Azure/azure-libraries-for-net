@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             FileServerInner,
             BatchAIFileServerImpl,
             IBatchAIManager,
-            IBlank,
+            IWithGroup,
             IWithDataDisks,
             IWithCreate,
             IWithCreate>,

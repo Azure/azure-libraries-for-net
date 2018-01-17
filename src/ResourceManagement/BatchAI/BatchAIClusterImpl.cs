@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             ClusterInner,
             BatchAIClusterImpl,
             IBatchAIManager,
-            IBlank,
+            IWithGroup,
             IWithVMSize,
             IWithCreate,
             IUpdate
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        public IWithCreate WithLowPriority()
+        public BatchAIClusterImpl WithLowPriority()
         {
             createParameters.VmPriority = VmPriority.Lowpriority;
             return this;

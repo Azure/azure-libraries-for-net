@@ -10,6 +10,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     public partial class NodeSetupTaskImpl 
     {
         /// <summary>
+        /// Attaches the child definition to the parent resource update.
+        /// </summary>
+        /// <returns>the next stage of the parent definition</returns>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate>.Attach()
+        {
+            return this.Attach() as Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate;
+        }
+        /// <summary>
         /// Specifies that the setup task should run in elevated mode.
         /// </summary>
         /// <return>The next stage of the definition.</return>

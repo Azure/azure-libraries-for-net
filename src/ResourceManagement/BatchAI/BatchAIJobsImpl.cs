@@ -100,5 +100,15 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             await Inner.DeleteAsync(parent.ResourceGroupName, name);
         }
+
+        protected override async Task<JobInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
+        {
+            return await Inner.GetAsync(groupName, name, cancellationToken);
+        }
+
+        protected override async Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
+        {
+            await Inner.DeleteAsync(groupName, name, cancellationToken);
+        }
     }
 }

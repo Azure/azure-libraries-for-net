@@ -107,8 +107,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
     /// <summary>
     /// The first stage of a Batch AI cluster definition.
     /// </summary>
-    public interface IBlank  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithGroup>
+    public interface IBlank  :  IDefinitionWithRegion<IWithGroup>
     {
     }
 

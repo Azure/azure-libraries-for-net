@@ -20,10 +20,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         IDefinition<BatchAICluster.Definition.IWithCreate>
     {
         private BatchAIClusterImpl parent;
-        public IBatchAICluster Parent()
-        {
-            return parent;
-        }
 
         public NodeSetupTaskImpl WithStdOutErrPath(string stdOutErrPathPrefix)
         {
