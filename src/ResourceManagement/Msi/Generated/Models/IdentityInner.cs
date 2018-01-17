@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent.Models
     /// Describes an identity resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class IdentityInner
+    public partial class IdentityInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the IdentityInner class.
@@ -49,16 +49,12 @@ namespace Microsoft.Azure.Management.Msi.Fluent.Models
         /// Microsoft.ManagedIdentity/userAssignedIdentities. Possible values
         /// include: 'Microsoft.ManagedIdentity/userAssignedIdentities'</param>
         public IdentityInner(string id = default(string), string name = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.Guid? tenantId = default(System.Guid?), System.Guid? principalId = default(System.Guid?), System.Guid? clientId = default(System.Guid?), string clientSecretUrl = default(string), string type = default(string))
+            : base(location, id, name, type, tags)
         {
-            Id = id;
-            Name = name;
-            Location = location;
-            Tags = tags;
             TenantId = tenantId;
             PrincipalId = principalId;
             ClientId = clientId;
             ClientSecretUrl = clientSecretUrl;
-            Type = type;
             CustomInit();
         }
 
@@ -66,30 +62,6 @@ namespace Microsoft.Azure.Management.Msi.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets the id of the created identity.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Gets the name of the created identity.
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the Azure region where the identity lives.
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets resource tags
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Gets the id of the tenant which the identity belongs to.
@@ -117,14 +89,5 @@ namespace Microsoft.Azure.Management.Msi.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.clientSecretUrl")]
         public string ClientSecretUrl { get; private set; }
-
-        /// <summary>
-        /// Gets the type of resource i.e.
-        /// Microsoft.ManagedIdentity/userAssignedIdentities. Possible values
-        /// include: 'Microsoft.ManagedIdentity/userAssignedIdentities'
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
-
     }
 }
