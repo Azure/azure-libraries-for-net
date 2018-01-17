@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.TensorFlow.Definition
 {
-    using Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.DefinitionStages;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
 
     /// <summary>
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.TensorFlow.
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithAttach<ParentT>  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
-        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.DefinitionStages.IWithPythonInterpreter<Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.TensorFlow.Definition.IWithAttach<ParentT>>
+        HasPythonInterpreter.Definition.IWithPythonInterpreter<Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.TensorFlow.Definition.IWithAttach<ParentT>>
     {
         /// <param name="workerCount">
         /// The number of worker tasks.

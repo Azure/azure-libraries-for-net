@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe2.Definition
 {
-    using Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.DefinitionStages;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
 
     /// <summary>
@@ -13,7 +12,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe2.Defi
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithAttach<ParentT>  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
-        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.DefinitionStages.IWithCommandLineArgs<Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe2.Definition.IWithAttach<ParentT>>
+        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.HasCommandLineArgs.Definition.IWithCommandLineArgs<Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe2.Definition.IWithAttach<ParentT>>
     {
     }
 
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe2.Defi
 
     public interface IWithAttachAndPythonInterpreter<ParentT>  :
         Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe2.Definition.IWithAttach<ParentT>,
-        Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.DefinitionStages.IWithPythonInterpreter<Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe2.Definition.IWithAttach<ParentT>>
+        HasPythonInterpreter.Definition.IWithPythonInterpreter<Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.Caffe2.Definition.IWithAttach<ParentT>>
     {
     }
 

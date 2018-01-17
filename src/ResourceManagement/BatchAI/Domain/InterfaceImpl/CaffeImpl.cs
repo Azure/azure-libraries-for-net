@@ -1,5 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.HasPythonInterpreter.Definition;
+
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
     using Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition;
@@ -21,6 +24,26 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         ToolTypeSettings.Caffe.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.Caffe.Definition.IWithFileType<BatchAIJob.Definition.IWithCreate>.WithConfigFile(string configFilePath)
         {
             return this.WithConfigFile(configFilePath) as ToolTypeSettings.Caffe.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+        }
+
+        public IWithAttach<IWithCreate> withPythonInterpreterPath(string path)
+        {
+            return this.WithPythonInterpreterPath(path) as ToolTypeSettings.Caffe.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+        }
+
+        IWithAttach<IWithCreate> ToolTypeSettings.HasCommandLineArgs.Definition.IWithCommandLineArgs<IWithAttach<IWithCreate>>.WithCommandLineArgs(string commandLineArgs)
+        {
+            return this.WithCommandLineArgs(commandLineArgs) as ToolTypeSettings.Caffe.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+        }
+
+        IWithAttach<IWithCreate> ToolTypeSettings.HasProcessCount.Definition.IWithProcessCount<IWithAttach<IWithCreate>>.WithProcessCount(int processCount)
+        {
+            return this.WithProcessCount(processCount) as ToolTypeSettings.Caffe.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+        }
+
+        IWithAttach<IWithCreate> IWithPythonInterpreter<IWithAttach<IWithCreate>>.WithPythonInterpreterPath(string path)
+        {
+            return this.WithPythonInterpreterPath(path) as ToolTypeSettings.Caffe.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
         }
     }
 }

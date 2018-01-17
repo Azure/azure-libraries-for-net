@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
     using Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition;
     using Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings;
+    using Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.HasPythonInterpreter.Definition;
     using Microsoft.Azure.Management.BatchAI.Fluent.ToolTypeSettings.TensorFlow.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
