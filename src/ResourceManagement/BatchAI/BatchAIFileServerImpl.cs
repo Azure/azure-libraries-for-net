@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         IBatchAIFileServer,
         IDefinition
     {
-        private FileServerCreateParametersInner createParameters;
+        private FileServerCreateParametersInner createParameters = new FileServerCreateParametersInner();
         internal  BatchAIFileServerImpl(string name, FileServerInner innerObject, IBatchAIManager manager)
             : base(name, innerObject, manager)
         {

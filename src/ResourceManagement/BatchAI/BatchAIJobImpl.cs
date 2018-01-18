@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         IDefinition
     {
         private IBatchAICluster parent;
-        private JobCreateParametersInner createParameters;
+        private JobCreateParametersInner createParameters = new JobCreateParametersInner();
         public IBatchAICluster Parent()
         {
             return parent;

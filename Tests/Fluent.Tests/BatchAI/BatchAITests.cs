@@ -11,16 +11,25 @@ using Microsoft.Azure.Management.BatchAI.Fluent.Models;
 using Microsoft.Azure.Management.Network.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Microsoft.Rest;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.File;
 using Xunit;
+using Xunit.Abstractions;
 
-namespace Fluent.Tests.BatchAI
+namespace Fluent.Tests
 {
     public class BatchAI
     {
-        private static Region REGION = Region.USWest;
+
+         public BatchAI(ITestOutputHelper output)
+         {
+             TestHelper.TestLogger = output;
+             ServiceClientTracing.IsEnabled = true;
+             ServiceClientTracing.AddTracingInterceptor(new XunitTracingInterceptor(output));
+         }
+        private static Region REGION = Region.USWest2;
 
         [Fact]
         public void CreateUpdate()

@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         IDefinition,
         IUpdate
     {
-        private ClusterCreateParametersInner createParameters;
-        private ClusterUpdateParametersInner updateParameters;
+        private ClusterCreateParametersInner createParameters = new ClusterCreateParametersInner();
+        private ClusterUpdateParametersInner updateParameters = new ClusterUpdateParametersInner();
         private BatchAIJobsImpl jobs;
         public Models.ResourceId Subnet()
         {
@@ -197,9 +197,16 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
          public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            createParameters.Location = RegionName;
-            createParameters.Tags = Inner.Tags;
-            SetInner(await Manager.Inner.Clusters.CreateAsync(ResourceGroupName, Name, createParameters));
+            if (IsInCreateMode)
+            {
+                createParameters.Location = RegionName;
+                createParameters.Tags = Inner.Tags;
+                SetInner(await Manager.Inner.Clusters.CreateAsync(ResourceGroupName, Name, createParameters, cancellationToken));
+            }
+            else
+            {
+                await UpdateResourceAsync(cancellationToken);
+            }
             return this;
         }
 
