@@ -647,8 +647,8 @@ namespace Microsoft.Azure.Management.Samples.Common
 
             var msi = new StringBuilder().Append("\n\tMSI: ");
             msi.Append("\n\t\tMSI enabled:").Append(virtualMachine.IsManagedServiceIdentityEnabled);
-            msi.Append("\n\t\tMSI Active Directory Service Principal Id:").Append(virtualMachine.ManagedServiceIdentityPrincipalId);
-            msi.Append("\n\t\tMSI Active Directory Tenant Id:").Append(virtualMachine.ManagedServiceIdentityTenantId);
+            msi.Append("\n\t\tMSI Active Directory Service Principal Id:").Append(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+            msi.Append("\n\t\tMSI Active Directory Tenant Id:").Append(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
 
             Utilities.Log(new StringBuilder().Append("Virtual Machine: ").Append(virtualMachine.Id)
                     .Append("Name: ").Append(virtualMachine.Name)

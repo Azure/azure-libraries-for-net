@@ -96,7 +96,7 @@ namespace ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup
                     .WithRootPassword(password)
                     .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
                     .WithOSDiskCaching(CachingTypes.ReadWrite)
-                    .WithManagedServiceIdentity()
+                    .WithSystemAssignedManagedServiceIdentity()
                     .Create();
 
                 Utilities.Log("Created virtual machine with MSI enabled");
@@ -108,7 +108,7 @@ namespace ManageResourceFromMSIEnabledVirtualMachineBelongsToAADGroup
                 Utilities.Log("Adding virtual machine MSI service principal to the AAD group");
 
                 activeDirectoryGroup.Update()
-                        .WithMember(virtualMachine.ManagedServiceIdentityPrincipalId)
+                        .WithMember(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId)
                         .Apply();
 
                 Utilities.Log("Added virtual machine MSI service principal to the AAD group");

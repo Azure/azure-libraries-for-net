@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithExtension,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithPlan,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithBootDiagnostics,
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedServiceIdentity
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithSystemAssignedManagedServiceIdentity
     {
     }
 
@@ -1033,72 +1033,71 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithLinuxCreateUnmanaged WithSsh(string publicKey);
     }
 
-
-
     /// <summary>
-    /// The stage of the virtual machine definition allowing to enable Managed Service Identity.
+    /// The stage of the virtual machine definition allowing to enable System Assigned (Local) Managed Service Identity.
     /// </summary>
-    public interface IWithManagedServiceIdentity :
+    public interface IWithSystemAssignedManagedServiceIdentity :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
-        /// Specifies that Managed Service Identity needs to be enabled in the virtual machine.
+        /// Specifies that System Assigned (Local) Managed Service Identity needs to be enabled in the virtual machine.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithRoleAndScopeOrCreate WithManagedServiceIdentity();
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedManagedServiceIdentity();
 
         /// <summary>
-        /// Specifies that Managed Service Identity needs to be enabled in the virtual machine.
+        /// Specifies that System Assigned (Local) Managed Service Identity needs to be enabled in the virtual machine.
         /// </summary>
         /// <param name="tokenPort">The port on the virtual machine where access token is available.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithRoleAndScopeOrCreate WithManagedServiceIdentity(int tokenPort);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedManagedServiceIdentity(int tokenPort);
     }
 
     /// <summary>
-    /// The stage of the Managed Service Identity enabled virtual machine allowing to set role
-    /// assignment for a scope.
+    /// The stage of the System Assigned (Local) Managed Service Identity enabled virtual machine allowing to
+    /// set access role for the identity.
     /// </summary>
-    public interface IWithRoleAndScopeOrCreate :
+    public interface IWithSystemAssignedIdentityBasedAccessOrCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate
     {
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the access described
-        /// in the given role definition with scope of access limited to the ARM resource identified
-        /// by the resource ID specified in the scope parameter.
+        /// Specifies that virtual machine's system assigned (local) identity should have the access
+        /// (described by the role definition) on an ARM resource identified by the resource ID.
+        /// Applications running on the virtual machine will have the same permission (role) on the ARM resource.
         /// </summary>
-        /// <param name="scope">Scope of the access represented in ARM resource ID format.</param>
-        /// <param name="roleDefinitionId">Access role definition to assigned to the virtual machine.</param>
+        /// <param name="resourceId">Scope of the access represented in ARM resource ID format.</param>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the virtual machine's local identity.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithRoleAndScopeOrCreate WithRoleDefinitionBasedAccessTo(string scope, string roleDefinitionId);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId);
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the given access role
-        /// with scope of access limited to the current resource group that the virtual machine
-        /// resides.
+        /// Specifies that virtual machine's system assigned (local) identity should have the given access
+        /// (described by the role) on the resource group that virtual machine resides. Applications running
+        /// on the virtual machine will have the same permission (role) on the resource group.
         /// </summary>
-        /// <param name="asRole">Access role to assigned to the virtual machine.</param>
+        /// <param name="role">Access role to assigned to the virtual machine's local identity.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithRoleAndScopeOrCreate WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole asRole);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole asRole);
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the given access role
-        /// with scope of access limited to the ARM resource identified by the resource ID specified
-        /// in the scope parameter.
+        /// Specifies that virtual machine's system assigned (local) identity should have the given access
+        /// (described by the role) on an ARM resource identified by the resource ID. Applications running
+        /// on the virtual machine will have the same permission (role) on the ARM resource.
         /// </summary>
-        /// <param name="scope">Scope of the access represented in ARM resource ID format.</param>
-        /// <param name="asRole">Access role to assigned to the virtual machine.</param>
+        /// <param name="resourceId">The ARM identifier of the resource.</param>
+        /// <param name="role">Access role to assigned to the virtual machine's local identity.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithRoleAndScopeOrCreate WithRoleBasedAccessTo(string scope, BuiltInRole asRole);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole asRole);
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the access described
-        /// in the given role definition with scope of access limited to the current resource group that
-        /// the virtual machine resides.
+        /// Specifies that virtual machine's system assigned (local) identity should have the access
+        /// (described by the role definition) on the resource group that virtual machine resides.
+        /// Applications running on the virtual machine will have the same permission (role) on the
+        /// resource group.
         /// </summary>
-        /// <param name="roleDefinitionId">Access role definition to assigned to the virtual machine.</param>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the virtual machine's local identity.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithRoleAndScopeOrCreate WithRoleDefinitionBasedAccessToCurrentResourceGroup(string roleDefinitionId);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId);
     }
 }

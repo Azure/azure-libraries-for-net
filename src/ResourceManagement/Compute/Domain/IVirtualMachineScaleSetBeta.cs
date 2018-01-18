@@ -40,21 +40,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Models.StorageAccountTypes? ManagedOSDiskStorageAccountType { get; }
 
         /// <summary>
-        /// Gets the Managed Service Identity specific Active Directory service principal ID assigned
-        /// to the virtual machine scale set.
+        /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory service principal ID
+        /// assigned to the virtual machine scale set.
         /// </summary>
-        string ManagedServiceIdentityPrincipalId { get; }
+        string SystemAssignedManagedServiceIdentityPrincipalId { get; }
 
         /// <summary>
-        /// Gets true if Managed Service Identity is enabled for the virtual machine scale set.
+        /// Check whether Managed Service Identity is enabled for the virtual machine scale set.
         /// </summary>
         bool IsManagedServiceIdentityEnabled { get; }
 
         /// <summary>
-        /// Gets the Managed Service Identity specific Active Directory tenant ID assigned to the
-        /// virtual machine scale set.
+        /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory tenant ID
+        /// assigned to the virtual machine scale set.
         /// </summary>
-        string ManagedServiceIdentityTenantId { get; }
+        string SystemAssignedManagedServiceIdentityTenantId { get; }
 
         /// <summary>
         /// Gets the availability zones assigned to virtual machine scale set.

@@ -50,26 +50,26 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// the given access role with scope of access limited to the current resource group that
         /// the identity resides.
         /// </summary>
-        /// <param name="asRole">Access role to assigned to the identity.</param>
+        /// <param name="role">Access role to assigned to the identity.</param>
         /// <return>RoleAssignmentHelper.</return>
-        public RoleAssignmentHelper WithAccessToCurrentResourceGroup(BuiltInRole asRole)
+        public RoleAssignmentHelper WithAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            return this.WithAccessTo(CURRENT_RESOURCE_GROUP_SCOPE, asRole);
+            return this.WithAccessTo(CURRENT_RESOURCE_GROUP_SCOPE, role);
         }
 
         /// <summary>
         /// Specifies that applications running on an Azure service with this identity requires
         /// the access role with scope of access limited to an ARM resource.
         /// </summary>
-        /// <param name="scope">scope of the access represented in ARM resource ID format.</param>
-        /// <param name="asRole">Access role to assigned to the virtual machine.</param>
+        /// <param name="resourceId">scope of the access represented in ARM resource ID format.</param>
+        /// <param name="role">Access role to assigned to the virtual machine.</param>
         /// <return>RoleAssignmentHelper.</return>
-        public RoleAssignmentHelper WithAccessTo(string scope, BuiltInRole asRole)
+        public RoleAssignmentHelper WithAccessTo(string resourceId, BuiltInRole role)
         {
-            string key = scope.ToLower() + "_" + asRole.ToString().ToLower();
+            string key = resourceId.ToLower() + "_" + role.ToString().ToLower();
             if (!this.rolesToAssign.ContainsKey(key))
             {
-                this.rolesToAssign.Add(key, new System.Tuple<string, BuiltInRole>(scope, asRole));
+                this.rolesToAssign.Add(key, new System.Tuple<string, BuiltInRole>(resourceId, role));
             }
             return this;
         }
@@ -91,15 +91,15 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// the access described in the given role definition with scope of access limited
         /// to an ARM resource.
         /// </summary>
-        /// <param name="scope">scope of the access represented in ARM resource ID format</param>
+        /// <param name="resourceId">scope of the access represented in ARM resource ID format</param>
         /// <param name="roleDefinitionId">access role definition to assigned to the identity</param>
         /// <returns>RoleAssignmentHelper</returns>
-        public RoleAssignmentHelper WithAccessTo(string scope, string roleDefinitionId)
+        public RoleAssignmentHelper WithAccessTo(string resourceId, string roleDefinitionId)
         {
-            string key = scope.ToLower() + "_" + roleDefinitionId.ToLower();
+            string key = resourceId.ToLower() + "_" + roleDefinitionId.ToLower();
             if (!this.roleDefinitionsToAssign.ContainsKey(key))
             {
-                this.roleDefinitionsToAssign.Add(key, new System.Tuple<string, string>(scope, roleDefinitionId));
+                this.roleDefinitionsToAssign.Add(key, new System.Tuple<string, string>(resourceId, roleDefinitionId));
             }
             return this;
         }
@@ -126,17 +126,28 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <summary>
         /// Specifies that an access role assigned to the identity should be removed.
         /// </summary>
-        /// <param name="scope">the scope of role assignment</param>
-        /// <param name="asRole">the role of role assignment</param>
+        /// <param name="resourceId">the scope of role assignment</param>
+        /// <param name="role">the role of role assignment</param>
         /// <returns>RoleAssignmentHelper</returns>
-        public RoleAssignmentHelper WithoutAccessTo(string scope, BuiltInRole asRole)
+        public RoleAssignmentHelper WithoutAccessTo(string resourceId, BuiltInRole role)
         {
-            string key = scope.ToLower() + "_" + asRole.ToString().ToLower();
+            string key = resourceId.ToLower() + "_" + role.ToString().ToLower();
             if (!this.roleAssignmentsToRemove.ContainsKey(key))
             {
-                this.roleAssignmentsToRemove.Add(key, new System.Tuple<string, BuiltInRole>(scope, asRole));
+                this.roleAssignmentsToRemove.Add(key, new System.Tuple<string, BuiltInRole>(resourceId, role));
             }
             return this;
+        }
+
+        /// <summary>
+        /// True if there is role assigments pending to be commited.
+        /// </summary>
+        public bool HasPendingRoleAssignments
+        {
+            get
+            {
+                return this.rolesToAssign.Any() || this.roleDefinitionsToAssign.Any();
+            }
         }
 
         /// <summary>
@@ -144,7 +155,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task CommitsRoleAssignmensPendingActionAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task CommitsRoleAssignmentsPendingActionAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             await CreateRbacRoleAssignmentsAsync(cancellationToken);
             await RemoveRbacRoleAssignmentsAsync(cancellationToken);

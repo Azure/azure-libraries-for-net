@@ -58,8 +58,8 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
                     .WithRootPassword(password)
                     .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
                     .WithOSDiskCaching(CachingTypes.ReadWrite)
-                    .WithManagedServiceIdentity()
-                    .WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
+                    .WithSystemAssignedManagedServiceIdentity()
+                    .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
                     .Create();
 
                 Utilities.Log("Created virtual machine with MSI enabled");

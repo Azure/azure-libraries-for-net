@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
             // proceeding with next operation.
             //
             await Task.Delay(30 * 1000);
-            await this.roleAssignmentHelper.CommitsRoleAssignmensPendingActionAsync(cancellationToken);
+            await this.roleAssignmentHelper.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
 
             return this;
         }
