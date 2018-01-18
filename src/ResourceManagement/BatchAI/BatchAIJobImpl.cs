@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             createParameters.Cluster = new Models.ResourceId(parent.Id);
             createParameters.Location = Inner.Location;
-            await Manager.Inner.Jobs.CreateAsync(this.ResourceGroupName, this.Name, createParameters);
+            await Manager.Inner.Jobs.CreateAsync(parent.ResourceGroupName, this.Name, createParameters);
             return this;
         }
 

@@ -22,13 +22,6 @@ namespace Fluent.Tests
 {
     public class BatchAI
     {
-
-         public BatchAI(ITestOutputHelper output)
-         {
-             TestHelper.TestLogger = output;
-             ServiceClientTracing.IsEnabled = true;
-             ServiceClientTracing.AddTracingInterceptor(new XunitTracingInterceptor(output));
-         }
         private static Region REGION = Region.USWest2;
 
         [Fact]
@@ -38,7 +31,7 @@ namespace Fluent.Tests
             {
                 string groupName = SdkContext.RandomResourceName("rg", 10);
                 string clusterName = SdkContext.RandomResourceName("cluster", 15);
-                string saName = SdkContext.RandomResourceName("cluster", 15);
+                string saName = SdkContext.RandomResourceName("sa", 15);
                 string shareName = "myfileshare";
                 string shareMountPath = "azurefileshare";
                 string blobFileSystemPath = "myblobsystem";
@@ -92,6 +85,82 @@ namespace Fluent.Tests
                 Assert.True(cluster.Tags.TryGetValue("tag1", out tag1));
                 Assert.Equal("value2", tag1);
 
+                manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+            }
+        }
+
+        [Fact]
+        public void CanCreateJob()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string groupName = SdkContext.RandomResourceName("rg", 10);
+                string clusterName = SdkContext.RandomResourceName("cluster", 15);
+                string saName = SdkContext.RandomResourceName("sa", 15);
+                string shareName = "myfileshare";
+                string shareMountPath = "azurefileshare";
+                string blobFileSystemPath = "myblobsystem";
+                string containerName = "mycontainer";
+                string userName = "tirekicker";
+                string storageAccountKey = "dummy_key";
+                string fileShareUri = "dummy_uri";
+
+                var manager = TestHelper.CreateBatchAIManager();
+
+                IBatchAICluster cluster = manager.BatchAIClusters.Define(clusterName)
+                    .WithRegion(REGION)
+                    .WithNewResourceGroup(groupName)
+                    .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
+                    .WithUserName(userName)
+                    .WithPassword("MyPassword")
+                    .WithAutoScale(1, 1)
+                    .Create();
+                Assert.Equal(AllocationState.Steady, cluster.AllocationState);
+                Assert.Equal(userName, cluster.AdminUserName);
+                cluster.Jobs.Define("myJob")
+                    .WithRegion(REGION)
+                    .WithNodeCount(1)
+                    .WithStdOutErrPathPrefix("$AZ_BATCHAI_MOUNT_ROOT/azurefileshare")
+                    .DefineCognitiveToolkit()
+                        .WithPythonScriptFile("$AZ_BATCHAI_INPUT_SAMPLE/ConvNet_MNIST.py")
+                        .WithCommandLineArgs("$AZ_BATCHAI_INPUT_SAMPLE $AZ_BATCHAI_OUTPUT_MODEL")
+                        .Attach()
+                    .WithInputDirectory("SAMPLE", "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/mnistcntksample")
+                    .WithOutputDirectory("MODEL", "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/model")
+                    .WithContainerImage("microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0")
+                    .Create();
+
+                manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+            }
+        }
+
+        [Fact]
+        public void CanCreateFileServer()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string groupName = SdkContext.RandomResourceName("rg", 10);
+                string clusterName = SdkContext.RandomResourceName("cluster", 15);
+                string fsName = SdkContext.RandomResourceName("fs", 15);
+                string shareName = "myfileshare";
+                string shareMountPath = "azurefileshare";
+                string blobFileSystemPath = "myblobsystem";
+                string containerName = "mycontainer";
+                string userName = "tirekicker";
+                string storageAccountKey = "dummy_key";
+                string fileShareUri = "dummy_uri";
+
+                var manager = TestHelper.CreateBatchAIManager();
+
+                IBatchAIFileServer fileServer = manager.BatchAIFileServers.Define(fsName)
+                    .WithRegion(REGION)
+                    .WithNewResourceGroup(groupName)
+                    .WithDataDisks(10, 2, StorageAccountType.StandardLRS)
+                    .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
+                    .WithUserName(userName)
+                    .WithPassword("MyPassword!")
+                    .Create();
+               
                 manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
             }
         }
