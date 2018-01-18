@@ -149,14 +149,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         
         public FluentResourceT WithTag(string key, string value)
         {
-            if (!Inner.Tags.ContainsKey(key))
-            {
-                Inner.Tags.Add(key, value);
-            }
-            else
-            {
-                Inner.Tags[key] = value;
-            }
+            Inner.Tags[key] = value;
             return this as FluentResourceT;
         }
 
