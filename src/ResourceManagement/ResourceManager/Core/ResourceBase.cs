@@ -153,6 +153,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             {
                 Inner.Tags.Add(key, value);
             }
+            else
+            {
+                Inner.Tags[key] = value;
+            }
             return this as FluentResourceT;
         }
 
