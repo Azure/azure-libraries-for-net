@@ -28,6 +28,7 @@ using Microsoft.Azure.Management.CosmosDB.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.Locks.Fluent;
 using Microsoft.Azure.Management.Msi.Fluent;
+using Microsoft.Azure.Management.BatchAI.Fluent;
 
 namespace Microsoft.Azure.Management.Fluent
 {
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Management.Fluent
         private ICosmosDBManager cosmosDBManager;
         private IAuthorizationManager authorizationManager;
         private IMsiManager msiManager;
+        private IBatchAIManager batchAIManager;
 
         #endregion Service Managers
 
@@ -431,6 +433,22 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IBatchAIClusters BatchAIClusters
+        {
+            get
+            {
+                return batchAIManager.BatchAIClusters;
+            }
+        }
+
+        public IBatchAIFileServers BatchAIFileServers
+        {
+            get
+            {
+                return batchAIManager.BatchAIFileServers;
+            }
+        }
+
         #endregion Getters
 
         #region ctrs
@@ -457,6 +475,7 @@ namespace Microsoft.Azure.Management.Fluent
             cosmosDBManager = CosmosDBManager.Authenticate(restClient, subscriptionId);
             authorizationManager = AuthorizationManager.Authenticate(restClient, subscriptionId);
             msiManager = MsiManager.Authenticate(restClient, subscriptionId);
+            batchAIManager = BatchAIManager.Authenticate(restClient, subscriptionId);
 
             SubscriptionId = subscriptionId;
             this.authenticated = authenticated;
@@ -732,6 +751,15 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Managed Service Identity (MSI) management.
         /// </summary>
         IIdentities Identities { get; }
+
+        /// <summary>
+        /// Entry point to Batch AI clusters management.
+        /// </summary>
+        IBatchAIClusters BatchAIClusters { get; }
+        /// <summary>
+        /// Entry point to Batch AI file servers management.
+        /// </summary>
+        IBatchAIFileServers BatchAIFileServers { get; }
     }
 
     public interface IAzure : IAzureBeta
