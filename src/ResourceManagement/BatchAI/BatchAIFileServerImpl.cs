@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent
@@ -100,6 +101,46 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             createParameters.Tags = this.Inner.Tags;
             await Manager.Inner.FileServers.CreateAsync(ResourceGroupName, Name, createParameters);
             return this;
+        }
+
+        public DateTime CreationTime()
+        {
+            return Inner.CreationTime.GetValueOrDefault();
+        }
+
+        public DateTime ProvisioningStateTransitionTime()
+        {
+            return Inner.ProvisioningStateTransitionTime.GetValueOrDefault();
+        }
+
+        public FileServerProvisioningState ProvisioningState()
+        {
+            return Inner.ProvisioningState;
+        }
+
+        public SshConfiguration SshConfiguration()
+        {
+            return Inner.SshConfiguration;
+        }
+
+        public MountSettings MountSettings()
+        {
+            return Inner.MountSettings;
+        }
+
+        public DataDisks DataDisks()
+        {
+            return Inner.DataDisks;
+        }
+
+        public string VMSize()
+        {
+            return Inner.VmSize;
+        }
+
+        public ResourceId Subnet()
+        {
+            return Inner.Subnet;
         }
     }
 }
