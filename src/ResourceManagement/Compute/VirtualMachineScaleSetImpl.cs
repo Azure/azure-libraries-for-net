@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using System.Threading;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition;
+    using Microsoft.Azure.Management.Msi.Fluent;
 
     /// <summary>
     /// Implementation of VirtualMachineScaleSet.
@@ -613,14 +614,23 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        ///GENMHASH:54F48C4A15522D8E87E76E69BFD089CA:67C5008B7D86A1EA0300776CDD220599
+        public ISet<string> UserAssignedManagedServiceIdentityIds()
+        {
+            if (this.Inner.Identity != null && this.Inner.Identity.IdentityIds != null)
+            {
+                return new HashSet<string>(this.Inner.Identity.IdentityIds);
+            }
+            else
+            {
+                return new HashSet<string>();
+            }
+        }
+
         ///GENMHASH:BC4103A90A606609FAB346997701A4DE:F96317098E1E2EA0D5CD8D759145745A
         public ResourceIdentityType? ManagedServiceIdentityType()
         {
-            if (this.Inner.Identity != null)
-            {
-                return this.Inner.Identity.Type;
-            }
-            return null;
+            return VirtualMachineScaleSetMsiHelper.ManagedServiceIdentityType(this.Inner);
         }
 
         ///GENMHASH:D8D324B42ED7B0976032110E0D5D3320:9939C56F8394598297EC15BC4F6CCF06
@@ -666,8 +676,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:9019C44FB9C28F62603D9972D45A9522:04EA2CF2FF84B5C44179285E14BA0FF0
         public bool IsManagedServiceIdentityEnabled()
         {
-            return this.SystemAssignedManagedServiceIdentityPrincipalId() != null
-             && this.SystemAssignedManagedServiceIdentityTenantId() != null;
+            ResourceIdentityType? type = this.ManagedServiceIdentityType();
+            if (type == null)
+            {
+                return false;
+            }
+            else
+            {
+                return !type.Value.Equals(ResourceIdentityType.None);
+            }
         }
 
         ///GENMHASH:D19E7D61822C4048249EC4B57FA6F59B:E55E888BE3583ADCF1863F5A9DC47299
@@ -733,6 +750,27 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineScaleSetImpl WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
             this.virtualMachineScaleSetMsiHelper.WithAccessToCurrentResourceGroup(roleDefinitionId);
+            return this;
+        }
+
+        ///GENMHASH:8239AEDA70F925E7A1DCD8BDB2803956:6A2804975F58F97B4F610E2DE8E8AACA
+        public VirtualMachineScaleSetImpl WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
+        {
+            this.virtualMachineScaleSetMsiHelper.WithNewUserAssignedManagedServiceIdentity(this.Inner, this.CreatorTaskGroup, creatableIdentity);
+            return this;
+        }
+
+        ///GENMHASH:77198B23BCB8BA2F0DDF3A8A0E85805C:F68FE87A8E9ADCA783F40FB45364544F
+        public VirtualMachineScaleSetImpl WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            this.virtualMachineScaleSetMsiHelper.WithoutUserAssignedManagedServiceIdentity(identityId);
+            return this;
+        }
+
+        ///GENMHASH:6836D267A7B5AB07D80A2EFAF13B9F3E:8504B108F30E0AC9DC210A1D9CFA85F3
+        public VirtualMachineScaleSetImpl WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            this.virtualMachineScaleSetMsiHelper.WithExistingUserAssignedManagedServiceIdentity(this.Inner, identity);
             return this;
         }
 
@@ -2066,6 +2104,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
             await HandleOSDiskContainersAsync(cancellationToken);
             await this.bootDiagnosticsHandler.HandleDiagnosticsSettingsAsync(cancellationToken);
+
+            virtualMachineScaleSetMsiHelper.HandleUserAssignedIdentities(this.Inner, this.CreatorTaskGroup);
 
             var scalesetInner = await Manager.Inner.VirtualMachineScaleSets.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
             // Inner has to be updated so that virtualMachineScaleSetMsiHelper can fetch MSI identity using IIdentityProvider

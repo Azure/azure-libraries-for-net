@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.Storage.Fluent;
+    using Microsoft.Azure.Management.Msi.Fluent;
 
     /// <summary>
     /// The stage of the virtual machine definition allowing to specify extensions.
@@ -200,6 +201,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancerBackend,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancerNatPool,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedManagedServiceIdentity,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithUserAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithBootDiagnostics,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithAvailabilityZone
     {
@@ -386,6 +388,36 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         /// <param name="tokenPort">The port on the virtual machine scale set instance where access token is available.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithSystemAssignedManagedServiceIdentity(int tokenPort);
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine update allowing to add or remove User Assigned (External)
+    /// Managed Service Identities.
+    /// </summary>
+    public interface IWithUserAssignedManagedServiceIdentity :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated
+        /// with the virtual machine.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the virtual machine scale set update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity);
+
+        /// <summary>
+        /// Specifies that an user assigned identity associated with the virtual machine should be removed.
+        /// </summary>
+        /// <param name="identityId">ARM resource id of the identity.</param>
+        /// <return>The next stage of the virtual machine scale set update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutUserAssignedManagedServiceIdentity(string identityId);
+
+        /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the virtual machine scale set update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithExistingUserAssignedManagedServiceIdentity(IIdentity identity);
     }
 
     /// <summary>

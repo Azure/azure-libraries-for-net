@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.Msi.Fluent;
 
     /// <summary>
     /// The stage of the Linux virtual machine scale set definition allowing to specify SSH root user name.
@@ -846,6 +847,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCustomData,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithExtension,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithSystemAssignedManagedServiceIdentity,
+                Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithUserAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithBootDiagnostics,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate>
     {
@@ -898,6 +900,29 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         /// <param name="tokenPort">The port on the virtual machine scale set instance where access token is available.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate WithSystemAssignedManagedServiceIdentity(int tokenPort);
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine scale set definition allowing to specify User Assigned (External)
+    /// Managed Service Identities.
+    /// </summary>
+    public interface IWithUserAssignedManagedServiceIdentity :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the
+        /// virtual machine scale set.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the virtual machine scale set definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity);
+
+        /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the virtual machine scale set.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the virtual machine scale set definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate WithExistingUserAssignedManagedServiceIdentity(IIdentity identity);
     }
 
     /// <summary>

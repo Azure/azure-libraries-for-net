@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Rest;
     using System;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.Msi.Fluent;
 
     internal partial class VirtualMachineScaleSetImpl
     {
@@ -912,6 +913,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the resource ids of User Assigned Managed Service Identities associated with the virtual machine scale set.
+        /// </summary>
+        System.Collections.Generic.ISet<string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.UserAssignedManagedServiceIdentityIds
+        {
+            get
+            {
+                return this.UserAssignedManagedServiceIdentityIds() as System.Collections.Generic.ISet<string>;
+            }
+        }
+
+
+        /// <summary>
         /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory service principal ID
         /// assigned to the virtual machine scale set.
         /// </summary>
@@ -1536,6 +1549,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the virtual machine scale set.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the virtual machine scale set definition.</return>
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithUserAssignedManagedServiceIdentity.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity) as VirtualMachineScaleSet.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the virtual machine scale set.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the virtual machine scale set definition.</return>
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithUserAssignedManagedServiceIdentity.WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity)
+        {
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity) as VirtualMachineScaleSet.Definition.IWithCreate;
+        }
+
+        /// <summary>
         /// Specifies that System assigned (Local) Managed Service Identity needs to be enabled in the
         /// virtual machine scale set.
         /// </summary>
@@ -1554,6 +1587,36 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachineScaleSet.Definition.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity(int tokenPort)
         {
             return this.WithSystemAssignedManagedServiceIdentity(tokenPort) as VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+        }
+
+        /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the virtual machine scale set.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the virtual machine scale setupdate.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithUserAssignedManagedServiceIdentity.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity) as VirtualMachineScaleSet.Update.IWithApply;
+        }
+
+        /// <summary>
+        /// Specifies that an user assigned identity associated with the virtual machine scale setshould be removed.
+        /// </summary>
+        /// <param name="identityId">ARM resource id of the identity.</param>
+        /// <return>The next stage of the virtual machine scale setupdate.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithUserAssignedManagedServiceIdentity.WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            return this.WithoutUserAssignedManagedServiceIdentity(identityId) as VirtualMachineScaleSet.Update.IWithApply;
+        }
+
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the virtual machinescale set.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the virtual machine scale setupdate.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithUserAssignedManagedServiceIdentity.WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity)
+        {
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity) as VirtualMachineScaleSet.Update.IWithApply;
         }
 
         /// <summary>

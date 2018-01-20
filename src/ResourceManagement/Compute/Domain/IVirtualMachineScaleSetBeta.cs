@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
+        /// Gets the resource ids of User Assigned Managed Service Identities associated with the virtual machine scale set.
+        /// </summary>
+        ISet<string> UserAssignedManagedServiceIdentityIds { get; }
+
+        /// <summary>
         /// Gets the type of Managed Service Identity used for the virtual machine scale set.
         /// </summary>
         Models.ResourceIdentityType? ManagedServiceIdentityType { get; }
