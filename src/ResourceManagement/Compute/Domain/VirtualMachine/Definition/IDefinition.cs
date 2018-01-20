@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.Msi.Fluent;
 
     /// <summary>
     /// The stage of a virtual machine definition containing various settings when virtual machine is created from image.
@@ -372,7 +373,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithExtension,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithPlan,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithBootDiagnostics,
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithSystemAssignedManagedServiceIdentity
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithSystemAssignedManagedServiceIdentity,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithUserAssignedManagedServiceIdentity
     {
     }
 
@@ -1031,6 +1033,27 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// <param name="publicKey">An SSH public key in the PEM format.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithLinuxCreateUnmanaged WithSsh(string publicKey);
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine definition allowing to specify User Assigned (External) Managed Service Identities.
+    /// </summary>
+    public interface IWithUserAssignedManagedServiceIdentity :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the virtual machine definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity);
+
+        /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the virtual machine definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate WithExistingUserAssignedManagedServiceIdentity(IIdentity identity);
     }
 
     /// <summary>

@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
     using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition;
     using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.Msi.Fluent;
 
     /// <summary>
     /// The template for an update operation, containing all the settings that can be modified.
@@ -25,7 +26,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithSecondaryNetworkInterface,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithExtension,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithBootDiagnostics,
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithSystemAssignedManagedServiceIdentity
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithSystemAssignedManagedServiceIdentity,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity
     {
         /// <summary>
         /// Specifies the encryption settings for the OS Disk.
@@ -306,6 +308,34 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         /// <param name="creatable">A creatable definition for a new network interface.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithNewSecondaryNetworkInterface(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface> creatable);
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine update allowing to add or remove User Assigned (External) Managed Service Identities.
+    /// </summary>
+    public interface IWithUserAssignedManagedServiceIdentity :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity);
+
+        /// <summary>
+        /// Specifies that an user assigned identity associated with the virtual machine should be removed.
+        /// </summary>
+        /// <param name="identityId">ARM resource id of the identity.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithoutUserAssignedManagedServiceIdentity(string identityId);
+
+        /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithExistingUserAssignedManagedServiceIdentity(IIdentity identity);
     }
 
     /// <summary>

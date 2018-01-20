@@ -4,6 +4,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.Msi.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.DAG;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -21,6 +25,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private readonly IGraphRbacManager rbacManager;
         private int? tokenPort;
         private bool installExtensionIfNotInstalled;
+        private ISet<string> userAssignedIdentityCreatableKeys;
+        private ISet<string> userAssignedIdentityIdsToAssociate;
+        private ISet<string> userAssignedIdentityIdsToRemove;
 
         /// <summary>
         /// Creates VirtualMachineMsiHelper.
@@ -30,6 +37,23 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         internal VirtualMachineMsiHelper(IGraphRbacManager rbacManager, IIdProvider idProvider) : base(rbacManager, idProvider)
         {
             this.rbacManager = rbacManager;
+            this.userAssignedIdentityCreatableKeys = new HashSet<string>();
+            this.userAssignedIdentityIdsToAssociate = new HashSet<string>();
+            this.userAssignedIdentityIdsToRemove = new HashSet<string>();
+        }
+
+        /// <summary>
+        /// Gets the MSI identity type.
+        /// </summary>
+        /// <param name="inner">the virtual machine inner</param>
+        /// <returns>the MSI identity type</returns>
+        internal static ResourceIdentityType? ManagedServiceIdentityType(VirtualMachineInner inner)
+        {
+            if (inner.Identity != null)
+            {
+                return ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(inner.Identity.Type);
+            }
+            return null;
         }
 
         /// <summary>
@@ -52,16 +76,116 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             this.installExtensionIfNotInstalled = true;
             this.tokenPort = port;
-            if (virtualMachineInner.Identity == null)
+            InitVMIdentity(virtualMachineInner, ResourceIdentityType.SystemAssigned);
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="virtualMachineInner">The virtual machine to set the identity.</param>
+        /// <param name="vmTaskGroup">the task group of the virtual machine</param>
+        /// <param name="creatableIdentity">the creatable user assigned identity</param>
+        /// <returns>VirtualMachineMsiHelper.</returns>
+        internal VirtualMachineMsiHelper WithNewUserAssignedManagedServiceIdentity(VirtualMachineInner virtualMachineInner, CreatorTaskGroup<IHasId> vmTaskGroup, ICreatable<IIdentity> creatableIdentity)
+        {
+            if (!this.userAssignedIdentityCreatableKeys.Contains(creatableIdentity.Key))
             {
-                virtualMachineInner.Identity = new VirtualMachineIdentity();
-            }
-            if (virtualMachineInner.Identity.Type == null)
-            {
-                virtualMachineInner.Identity.Type = ResourceIdentityType.SystemAssigned;
+                InitVMIdentity(virtualMachineInner, ResourceIdentityType.UserAssigned);
+                this.userAssignedIdentityCreatableKeys.Add(creatableIdentity.Key);
+                ((creatableIdentity as IResourceCreator<IHasId>).CreatorTaskGroup).Merge(vmTaskGroup);
             }
             return this;
         }
+
+        /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="identity">an existing user assigned identity</param>
+        /// <returns>VirtualMachineMsiHelper.</returns>
+        internal VirtualMachineMsiHelper WithExistingUserAssignedManagedServiceIdentity(VirtualMachineInner virtualMachineInner, IIdentity identity)
+        {
+            if (!this.userAssignedIdentityIdsToAssociate.Contains(identity.Id))
+            {
+                InitVMIdentity(virtualMachineInner, ResourceIdentityType.UserAssigned);
+                this.userAssignedIdentityIdsToAssociate.Add(identity.Id);
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies that an user assigned identity associated with the virtual machine should be removed.
+        /// </summary>
+        /// <param name="identityId">ARM resource id of the identity.</param>
+        /// <return>VirtualMachineMsiHelper.</return>
+        internal VirtualMachineMsiHelper WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            if (!this.userAssignedIdentityIdsToRemove.Contains(identityId))
+            {
+                this.userAssignedIdentityIdsToRemove.Add(identityId);
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Set user assigned identity ids to the given virtual machine inner model
+        /// </summary>
+        /// <param name="virtualMachineInner">the virtual machine inner model</param>
+        /// <param name="vmTaskGroup">the virtual machine task group</param>
+        internal void HandleUserAssignedIdentities(VirtualMachineInner virtualMachineInner, CreatorTaskGroup<IHasId> vmTaskGroup)
+        {
+            try
+            {
+                if (virtualMachineInner.Identity == null || virtualMachineInner.Identity.Type == null)
+                {
+                    return;
+                }
+                 var parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(virtualMachineInner.Identity.Type);
+                if (parsedIdentityType.Equals(ResourceIdentityType.None)
+                    || parsedIdentityType.Equals(ResourceIdentityType.SystemAssigned))
+                {
+                    return;
+                }
+                foreach (var key in this.userAssignedIdentityCreatableKeys)
+                {
+                    var identity = (IIdentity)vmTaskGroup.CreatedResource(key);
+                    if (!this.userAssignedIdentityIdsToAssociate.Contains(identity.Id))
+                    {
+                        this.userAssignedIdentityIdsToAssociate.Add(identity.Id);
+                    }
+                }
+                if (virtualMachineInner.Identity.IdentityIds == null)
+                {
+                    virtualMachineInner.Identity.IdentityIds = new List<string>();
+                }
+                foreach (var identityId in this.userAssignedIdentityIdsToAssociate)
+                {
+                    if (!virtualMachineInner.Identity.IdentityIds.Contains(identityId))
+                    {
+                        virtualMachineInner.Identity.IdentityIds.Add(identityId);
+                    }
+                }
+                foreach (var identityId in this.userAssignedIdentityIdsToRemove)
+                {
+                    if (virtualMachineInner.Identity.IdentityIds.Contains(identityId))
+                    {
+                        virtualMachineInner.Identity.IdentityIds.Remove(identityId);
+                    }
+                }
+                if (virtualMachineInner.Identity.IdentityIds.Any())
+                {
+                    this.installExtensionIfNotInstalled = true;
+                }
+            }
+            finally
+            {
+                this.userAssignedIdentityCreatableKeys.Clear();
+                this.userAssignedIdentityIdsToAssociate.Clear();
+                this.userAssignedIdentityIdsToRemove.Clear();
+            }
+
+        }
+
 
         /// <summary>
         /// Install or update the MSI extension in the virtual machine and creates a RBAC role assignment for the System Assigned Service Principal.
@@ -123,13 +247,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 return false;
             }
-            else if (VMInner.Identity.Type == null || VMInner.Identity.Type.Equals(ResourceIdentityType.None))
+            ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(VMInner.Identity.Type);
+            if (parsedIdentityType == null || parsedIdentityType.Equals(ResourceIdentityType.None))
             {
                 return false;
             }
             else
             {
-                return VMInner.Identity.Type.Equals(ResourceIdentityType.SystemAssigned) || VMInner.Identity.Type.Equals(ResourceIdentityType.SystemAssignedUserAssigned);
+                return parsedIdentityType.Equals(ResourceIdentityType.SystemAssigned) || parsedIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned);
             }
         }
 
@@ -208,6 +333,39 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             extension.Inner.Settings = publicSettings;
             await virtualMachine.Manager.Inner.VirtualMachineExtensions.CreateOrUpdateAsync(virtualMachine.ResourceGroupName, virtualMachine.Name, typeName, extension.Inner, cancellationToken);
             return true;
+        }
+
+        private static void InitVMIdentity(VirtualMachineInner vmInner, ResourceIdentityType identityType)
+        {
+            if (!identityType.Equals(ResourceIdentityType.UserAssigned)
+                    && !identityType.Equals(ResourceIdentityType.SystemAssigned))
+            {
+                throw new ArgumentException("Invalid argument: " + identityType);
+            }
+            if (vmInner.Identity == null)
+            {
+                vmInner.Identity = new VirtualMachineIdentity();
+            }
+
+            ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(vmInner.Identity.Type);
+            if (parsedIdentityType == null
+                    || parsedIdentityType.Equals(ResourceIdentityType.None)
+                    || parsedIdentityType.Equals(identityType))
+            {
+                vmInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(identityType);
+            }
+            else
+            {
+                vmInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssignedUserAssigned);
+            }
+            if (vmInner.Identity.IdentityIds == null)
+            {
+                if (identityType.Equals(ResourceIdentityType.UserAssigned)
+                        || identityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned))
+                {
+                    vmInner.Identity.IdentityIds = new List<string>();
+                }
+            }
         }
     }
 }

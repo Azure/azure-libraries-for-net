@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using System;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.Msi.Fluent;
 
     internal partial class VirtualMachineImpl
     {
@@ -1355,6 +1356,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the resource ids of User Assigned Managed Service Identities associated with the virtual machine.
+        /// </summary>
+        System.Collections.Generic.ISet<string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.UserAssignedManagedServiceIdentityIds
+        {
+            get
+            {
+                return this.UserAssignedManagedServiceIdentityIds() as System.Collections.Generic.ISet<string>;
+            }
+        }
+
+        /// <summary>
         /// Gets the type of Managed Service Identity used for the virtual machine.
         /// </summary>
         Models.ResourceIdentityType? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.ManagedServiceIdentityType
@@ -1987,6 +1999,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the virtual machine definition.</return>
+        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithUserAssignedManagedServiceIdentity.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity) as VirtualMachine.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the virtual machine definition.</return>
+        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithUserAssignedManagedServiceIdentity.WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity)
+        {
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity) as VirtualMachine.Definition.IWithCreate;
+        }
+
+        /// <summary>
         /// Specifies that System Assigned (Local) Managed Service Identity needs to be enabled in the virtual machine.
         /// </summary>
         /// <return>The next stage of the update.</return>
@@ -2102,6 +2134,36 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithBootDiagnostics.WithBootDiagnostics(IStorageAccount storageAccount)
         {
             return this.WithBootDiagnostics(storageAccount) as VirtualMachine.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity) as VirtualMachine.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that an user assigned identity associated with the virtual machine should be removed.
+        /// </summary>
+        /// <param name="identityId">ARM resource id of the identity.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity.WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            return this.WithoutUserAssignedManagedServiceIdentity(identityId) as VirtualMachine.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity.WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity)
+        {
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity) as VirtualMachine.Update.IUpdate;
         }
     }
 }
