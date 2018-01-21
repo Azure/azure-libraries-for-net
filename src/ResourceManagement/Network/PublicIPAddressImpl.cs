@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:4FD71958F542A872CEE597B1CEA332F8:AB2BC7CCCA80EFA2219ABEAE56789805
         internal PublicIPAddressImpl WithLeafDomainLabel(string dnsName)
         {
-            Inner.DnsSettings.DomainNameLabel = dnsName.ToLower();
+            Inner.DnsSettings.DomainNameLabel = dnsName?.ToLower();
             return this;
         }
 
