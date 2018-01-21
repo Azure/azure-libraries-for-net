@@ -42,6 +42,23 @@ namespace Fluent.Tests.Storage
                     Assert.NotNull(storageAccount);
                     Assert.NotNull(storageAccount.Inner);
 
+                    if (storageAccount.Inner.NetworkRuleSet != null)
+                    {
+                        if (storageAccount.Inner.NetworkRuleSet.VirtualNetworkRules != null)
+                        {
+                            Assert.Empty(storageAccount.Inner.NetworkRuleSet.VirtualNetworkRules);
+                        }
+                        if (storageAccount.Inner.NetworkRuleSet.IpRules != null)
+                        {
+                            Assert.Empty(storageAccount.Inner.NetworkRuleSet.IpRules);
+                        }
+                        if (storageAccount.Inner.NetworkRuleSet.DefaultAction != null)
+                        {
+                             bool isDefaultActionAllow = storageAccount.Inner.NetworkRuleSet.DefaultAction.Equals("Allow", StringComparison.OrdinalIgnoreCase);
+                            Assert.True(isDefaultActionAllow);
+                        }
+                    }
+
                     // Check the defaults
                     //
                     Assert.Equal(SkuName.StandardGRS, storageAccount.Sku.Name);

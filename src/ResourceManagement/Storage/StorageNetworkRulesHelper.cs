@@ -575,7 +575,8 @@ namespace Microsoft.Azure.Management.Storage.Fluent
                     if (createParameters.NetworkRuleSet.VirtualNetworkRules != null && createParameters.NetworkRuleSet.VirtualNetworkRules.Count() > 0)
                     {
                         hasAtLeastOneRule = true;
-                    } else if (createParameters.NetworkRuleSet.IpRules != null && createParameters.NetworkRuleSet.IpRules.Count() > 0)
+                    }
+                    else if (createParameters.NetworkRuleSet.IpRules != null && createParameters.NetworkRuleSet.IpRules.Count() > 0)
                     {
                         hasAtLeastOneRule = true;
                     }
