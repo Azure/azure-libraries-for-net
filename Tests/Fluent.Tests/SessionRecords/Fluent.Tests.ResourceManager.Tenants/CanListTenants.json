@@ -7,17 +7,18 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bbca7290-8ea2-4fc4-ade1-0945b47638ef"
+          "3e535917-9299-489c-9f19-30eb3302baf8"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.24214.01",
-          "Microsoft.Azure.Management.Resource.Fluent.SubscriptionClient/1.0.0-beta4.1"
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.SubscriptionClient/1.4.1.0",
+          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\r\n      \"tenantId\": \"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -29,7 +30,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 07 Jan 2017 08:17:53 GMT"
+          "Tue, 09 Jan 2018 23:58:47 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -44,13 +45,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "c29aca57-7dd9-419a-84d8-1fe598c30e7a"
+          "547fd536-a697-41ac-9258-7c2865fa39b1"
         ],
         "x-ms-correlation-request-id": [
-          "c29aca57-7dd9-419a-84d8-1fe598c30e7a"
+          "547fd536-a697-41ac-9258-7c2865fa39b1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170107T081753Z:c29aca57-7dd9-419a-84d8-1fe598c30e7a"
+          "WESTUS2:20180109T235847Z:547fd536-a697-41ac-9258-7c2865fa39b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -61,6 +62,8 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "9657ab5d-4a4a-4fd2-ae7a-4cd9fbd030ef"
+    "ServicePrincipal": "a971e5df-eeb7-4481-9bf7-e72e66a2ba12",
+    "AADTenant": "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a",
+    "SubscriptionId": "0b1f6471-1bf0-4dda-aec3-cb9272f09590"
   }
 }
