@@ -60,6 +60,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.ContainerService.Fluent", "src\ResourceManagement\ContainerService\Microsoft.Azure.Management.ContainerService.Fluent.csproj", "{E829C631-00B6-43D0-801B-5E0D10F0FF05}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Msi.Fluent", "src\ResourceManagement\Msi\Microsoft.Azure.Management.Msi.Fluent.csproj", "{F3941234-4321-428F-A164-7379B41D2757}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -162,6 +164,10 @@ Global
 		{E829C631-00B6-43D0-801B-5E0D10F0FF05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E829C631-00B6-43D0-801B-5E0D10F0FF05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E829C631-00B6-43D0-801B-5E0D10F0FF05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3941234-4321-428F-A164-7379B41D2757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3941234-4321-428F-A164-7379B41D2757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3941234-4321-428F-A164-7379B41D2757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3941234-4321-428F-A164-7379B41D2757}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -189,6 +195,7 @@ Global
 		{DB2C0D40-8DC4-4A84-AF40-4946DE7031F8} = {6861600A-FFF3-49C3-8A91-7174F754EAED}
 		{3F14EA6B-94EC-45E7-88CD-0F4F608E1FCC} = {6861600A-FFF3-49C3-8A91-7174F754EAED}
 		{E829C631-00B6-43D0-801B-5E0D10F0FF05} = {6861600A-FFF3-49C3-8A91-7174F754EAED}
+		{F3941234-4321-428F-A164-7379B41D2757} = {6861600A-FFF3-49C3-8A91-7174F754EAED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {297937BE-B6D0-42C0-A465-5B6487EB66F1}

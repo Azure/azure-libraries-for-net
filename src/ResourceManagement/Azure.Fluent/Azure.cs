@@ -27,6 +27,7 @@ using Microsoft.Azure.Management.ContainerService.Fluent;
 using Microsoft.Azure.Management.CosmosDB.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.Locks.Fluent;
+using Microsoft.Azure.Management.Msi.Fluent;
 
 namespace Microsoft.Azure.Management.Fluent
 {
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Management.Fluent
         private IContainerServiceManager containerServiceManager;
         private ICosmosDBManager cosmosDBManager;
         private IAuthorizationManager authorizationManager;
+        private IMsiManager msiManager;
 
         #endregion Service Managers
 
@@ -421,6 +423,14 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IIdentities Identities
+        {
+            get
+            {
+                return msiManager.Identities;
+            }
+        }
+
         #endregion Getters
 
         #region ctrs
@@ -446,6 +456,7 @@ namespace Microsoft.Azure.Management.Fluent
             containerServiceManager = ContainerServiceManager.Authenticate(restClient, subscriptionId);
             cosmosDBManager = CosmosDBManager.Authenticate(restClient, subscriptionId);
             authorizationManager = AuthorizationManager.Authenticate(restClient, subscriptionId);
+            msiManager = MsiManager.Authenticate(restClient, subscriptionId);
 
             SubscriptionId = subscriptionId;
             this.authenticated = authenticated;
@@ -716,6 +727,11 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to managing locks.
         /// </summary>
         IManagementLocks ManagementLocks { get; }
+
+        /// <summary>
+        /// Entry point to Managed Service Identity (MSI) management.
+        /// </summary>
+        IIdentities Identities { get; }
     }
 
     public interface IAzure : IAzureBeta
