@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.Storage.Fluent.Models;
 
-    internal partial class UsageImpl 
+    internal partial class UsageImpl
     {
         /// <summary>
         /// Gets the maximum count of the resources that can be allocated in the

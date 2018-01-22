@@ -3,46 +3,39 @@
 namespace Microsoft.Azure.Management.Storage.Fluent
 {
     using Microsoft.Azure.Management.Storage.Fluent.Models;
-    using System;
 
     /// <summary>
     /// Implementation of StorageAccountEncryptionStatus for Blob service.
     /// </summary>
 ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnN0b3JhZ2UuaW1wbGVtZW50YXRpb24uQmxvYlNlcnZpY2VFbmNyeXB0aW9uU3RhdHVzSW1wbA==
-    internal partial class BlobServiceEncryptionStatusImpl : IStorageAccountEncryptionStatus
+    internal partial class BlobServiceEncryptionStatusImpl  :
+        StorageAccountEncryptionStatusImpl
     {
-        private readonly EncryptionServices encryptionServices;
-
-        ///GENMHASH:DAB5602D433411FC81DD4AE9FB169399:1AACE820D8910F7BD0F84AAA4D78CCA7
-        internal  BlobServiceEncryptionStatusImpl(EncryptionServices encryptionServices)
+        ///GENMHASH:DAB5602D433411FC81DD4AE9FB169399:8A39EA79F0EAA32E3B9637298A785CD9
+        internal  BlobServiceEncryptionStatusImpl(EncryptionServices encryptionServices) : base(encryptionServices)
         {
-            this.encryptionServices = encryptionServices;
+        }
+
+        ///GENMHASH:D97A6A22274011CC9F2DE9E7287AE1CE:5F296BBF9823F08BDC308F9A5164B5BE
+        protected override EncryptionService EncryptionService()
+        {
+            if (this.encryptionServices == null)
+            {
+                return null;
+            }
+            else
+            {
+                return  this.encryptionServices.Blob;
+            }
         }
 
         ///GENMHASH:37A0EE464EE2C3F32288E8C35E06F1EA:A33D634F8782BF7783613105DEEC75A4
-        public StorageService StorageService()
+        public override StorageService StorageService
         {
-            return Microsoft.Azure.Management.Storage.Fluent.StorageService.Blob;
-        }
-
-        ///GENMHASH:3F2076D33F84FDFAB700A1F0C8C41647:CC6968668CFE462E08B722E80135BB36
-        public bool IsEnabled()
-        {
-            if (this.encryptionServices.Blob != null && this.encryptionServices.Blob.Enabled.HasValue)
+            get
             {
-                return this.encryptionServices.Blob.Enabled.Value;
+                return StorageService.Blob;
             }
-            return false;
-        }
-
-        ///GENMHASH:383E4E95C2764D4EF94A2DE388852F09:CE1C414F974A62AA7E3EC6809EF477EC
-        public DateTime? LastEnabledTime()
-        {
-            if (this.encryptionServices.Blob != null && this.encryptionServices.Blob.LastEnabledTime.HasValue)
-            {
-                return this.encryptionServices.Blob.LastEnabledTime.Value;
-            }
-            return null;
         }
     }
 }

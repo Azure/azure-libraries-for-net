@@ -1,10 +1,10 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.ServiceBus/CheckNameAvailability?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9DaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ServiceBus/CheckNameAvailability?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9DaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"jvsbns9063\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"jvsbns7689\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -13,14 +13,15 @@
           "28"
         ],
         "x-ms-client-request-id": [
-          "0404e6b4-9ae4-48a6-a638-86214cfdc39c"
+          "63534b27-6f41-40e8-8fa8-b30f649a93d8"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.25009.01",
-          "Microsoft.Azure.Management.Fluent.ServiceBus.ServiceBusManagementClient/1.0.0-beta51"
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusManagementClient/1.4.1.0",
+          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
         ]
       },
       "ResponseBody": "{\r\n  \"nameAvailable\": true,\r\n  \"reason\": \"None\",\r\n  \"message\": null\r\n}",
@@ -35,7 +36,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 26 Mar 2017 20:32:21 GMT"
+          "Wed, 10 Jan 2018 06:44:48 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -51,19 +52,19 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "a039cd92-4e43-47d8-b9b4-be3ef32f3ea8_M6_M6"
+          "03c28858-737b-451c-a0b4-801d275b85b8_M7SN1_M7SN1"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1159"
         ],
         "x-ms-correlation-request-id": [
-          "a5228c49-4498-4b27-af84-e13b8b3f2e2d"
+          "1a6a12d5-f13c-4708-a8d4-bbac641133ba"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20170326T203222Z:a5228c49-4498-4b27-af84-e13b8b3f2e2d"
+          "WESTUS2:20180110T064448Z:1a6a12d5-f13c-4708-a8d4-bbac641133ba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -74,12 +75,12 @@
   ],
   "Names": {
     "CanPerformOnNamespaceActions": [
-      "jvsbns9063"
+      "jvsbns7689"
     ]
   },
   "Variables": {
-    "ServicePrincipal": "057183f4-9902-4697-9d58-4a2b42711ccd",
-    "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "SubscriptionId": "1c638cf4-608f-4ee6-b680-c329e824c3a8"
+    "ServicePrincipal": "a971e5df-eeb7-4481-9bf7-e72e66a2ba12",
+    "AADTenant": "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a",
+    "SubscriptionId": "0b1f6471-1bf0-4dda-aec3-cb9272f09590"
   }
 }

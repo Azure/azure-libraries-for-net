@@ -2,13 +2,10 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Storage.Fluent
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.Storage.Fluent.Models;
-
     /// <summary>
     /// An immutable client-side representation of an Azure storage resource usage info object.
     /// </summary>
-    public interface IStorageUsage  :
+    public interface IStorageUsage :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.Usage>
     {
         /// <summary>

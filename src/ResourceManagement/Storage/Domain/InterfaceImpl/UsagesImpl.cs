@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.Storage.Fluent.Models;
 
-    internal partial class UsagesImpl 
+    internal partial class UsagesImpl
     {
         /// <summary>
         /// Lists all the resources of the specified type in the currently selected subscription.
@@ -27,6 +27,17 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IStorageUsage>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Storage.Fluent.IStorageUsage>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
             return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IStorageUsage>;
+        }
+
+        /// <summary>
+        /// Gets the manager client of this resource type.
+        /// </summary>
+        Microsoft.Azure.Management.Storage.Fluent.IStorageManager Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.Storage.Fluent.IStorageManager>.Manager
+        {
+            get
+            {
+                return this.Manager() as Microsoft.Azure.Management.Storage.Fluent.IStorageManager;
+            }
         }
     }
 }
