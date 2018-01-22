@@ -3,6 +3,7 @@
 namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Update
 {
     using Microsoft.Azure.Management.Network.Fluent;
+    using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.Network.Fluent.Network.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
 
@@ -33,12 +34,35 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Update
     }
 
     /// <summary>
+    /// The stage of a subnet definition allowing to enable or disable access from a service endpoint
+    /// to the subnet.
+    /// </summary>
+    public interface IWithServiceEndpoint :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies a service endpoint to enable access from.
+        /// </summary>
+        /// <param name="service">The service type.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IUpdate WithAccessFromService(ServiceEndpointType service);
+
+        /// <summary>
+        /// Specifies that existing access from a service endpoint should be removed.
+        /// </summary>
+        /// <param name="service">The service type.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IUpdate WithoutAccessFromService(ServiceEndpointType service);
+    }
+
+    /// <summary>
     /// The entirety of a subnet update as part of a network update.
     /// </summary>
     public interface IUpdate  :
         Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IWithAddressPrefix,
         Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IWithNetworkSecurityGroup,
         Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IWithRouteTable,
+        Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IWithServiceEndpoint,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.Network.Update.IUpdate>
     {
     }

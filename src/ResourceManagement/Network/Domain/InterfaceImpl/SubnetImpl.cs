@@ -16,6 +16,57 @@ namespace Microsoft.Azure.Management.Network.Fluent
     internal partial class SubnetImpl 
     {
         /// <summary>
+        /// Gets the services that has access to the subnet.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<Models.ServiceEndpointType, System.Collections.Generic.List<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region>> Microsoft.Azure.Management.Network.Fluent.ISubnetBeta.ServicesWithAccess
+        {
+            get
+            {
+                return this.ServicesWithAccess() as System.Collections.Generic.IReadOnlyDictionary<Models.ServiceEndpointType, System.Collections.Generic.List<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region>>;
+            }
+        }
+
+        /// <summary>
+        /// Specifies a service endpoint to enable access from.
+        /// </summary>
+        /// <param name="service">The service type.</param>
+        /// <return>The next stage of the definition.</return>
+        Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet> Subnet.Definition.IWithServiceEndpoint<Network.Definition.IWithCreateAndSubnet>.WithAccessFromService(ServiceEndpointType service)
+        {
+            return this.WithAccessFromService(service) as Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet>;
+        }
+
+        /// <summary>
+        /// Specifies a service endpoint to enable access from.
+        /// </summary>
+        /// <param name="service">The service type.</param>
+        /// <return>The next stage of the definition.</return>
+        Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate> Subnet.UpdateDefinition.IWithServiceEndpoint<Network.Update.IUpdate>.WithAccessFromService(ServiceEndpointType service)
+        {
+            return this.WithAccessFromService(service) as Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies a service endpoint to enable access from.
+        /// </summary>
+        /// <param name="service">The service type.</param>
+        /// <return>The next stage of the definition.</return>
+        Subnet.Update.IUpdate Subnet.Update.IWithServiceEndpoint.WithAccessFromService(ServiceEndpointType service)
+        {
+            return this.WithAccessFromService(service) as Subnet.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that existing access from a service endpoint should be removed.
+        /// </summary>
+        /// <param name="service">The service type.</param>
+        /// <return>The next stage of the definition.</return>
+        Subnet.Update.IUpdate Subnet.Update.IWithServiceEndpoint.WithoutAccessFromService(ServiceEndpointType service)
+        {
+            return this.WithoutAccessFromService(service) as Subnet.Update.IUpdate;
+        }
+
+        /// <summary>
         /// Specifies an existing route table to associate with the subnet.
         /// </summary>
         /// <param name="resourceId">The resource ID of an existing route table.</param>
