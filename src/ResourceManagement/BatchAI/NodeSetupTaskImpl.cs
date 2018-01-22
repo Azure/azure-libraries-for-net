@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Implementation for NodeSetupTask and its create interface.
     /// </summary>
-    public partial class NodeSetupTaskImpl  :
+    public partial class NodeSetupTaskImpl :
         IndexableWrapper<SetupTask>,
         INodeSetupTask,
         IDefinition<BatchAICluster.Definition.IWithCreate>
@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-         public BatchAIClusterImpl Attach()
+        public BatchAIClusterImpl Attach()
         {
             return this.parent.WithSetupTask(this);
         }
 
-        internal  NodeSetupTaskImpl(SetupTask inner, BatchAIClusterImpl parent)
+        internal NodeSetupTaskImpl(SetupTask inner, BatchAIClusterImpl parent)
             : base(inner)
         {
             this.parent = parent;

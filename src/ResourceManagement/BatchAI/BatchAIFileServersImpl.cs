@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Implementation for BatchAIFileServers.
     /// </summary>
-    public partial class BatchAIFileServersImpl  :
+    public partial class BatchAIFileServersImpl :
         TopLevelModifiableResources<
             IBatchAIFileServer,
             BatchAIFileServerImpl,
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             IBatchAIManager>,
         IBatchAIFileServers
     {
-        internal  BatchAIFileServersImpl(IBatchAIManager batchAIManager)
+        internal BatchAIFileServersImpl(IBatchAIManager batchAIManager)
             : base(batchAIManager.Inner.FileServers, batchAIManager)
         {
         }
@@ -40,9 +40,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return new BatchAIFileServerImpl(name, inner, Manager);
         }
 
-        protected override  IBatchAIFileServer WrapModel(FileServerInner inner)
+        protected override IBatchAIFileServer WrapModel(FileServerInner inner)
         {
-            if (inner == null) {
+            if (inner == null)
+            {
                 return null;
             }
             return new BatchAIFileServerImpl(inner.Name, inner, this.Manager);
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected override async Task<IPage<FileServerInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
-            return await Inner.ListAsync(cancellationToken:cancellationToken);
+            return await Inner.ListAsync(cancellationToken: cancellationToken);
         }
 
         protected override async Task<IPage<FileServerInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected async override Task<IPage<FileServerInner>> ListInnerByGroupAsync(string groupName, CancellationToken cancellationToken)
         {
-            return await Inner.ListByResourceGroupAsync(groupName, cancellationToken:cancellationToken);
+            return await Inner.ListByResourceGroupAsync(groupName, cancellationToken: cancellationToken);
         }
 
         protected override async Task<IPage<FileServerInner>> ListInnerByGroupNextAsync(string nextLink, CancellationToken cancellationToken)

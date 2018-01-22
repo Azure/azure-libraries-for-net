@@ -14,13 +14,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Represents TensorFlow settings.
     /// </summary>
-    public partial class TensorFlowImpl  :
+    public partial class TensorFlowImpl :
         IndexableWrapper<TensorFlowSettings>,
         ITensorFlow,
         IDefinition<BatchAIJob.Definition.IWithCreate>
     {
         private BatchAIJobImpl parent;
-        internal  TensorFlowImpl(TensorFlowSettings inner, BatchAIJobImpl parent)
+        internal TensorFlowImpl(TensorFlowSettings inner, BatchAIJobImpl parent)
             : base(inner)
         {
             this.parent = parent;

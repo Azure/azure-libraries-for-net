@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Implementation for BatchAIJob and its create interface.
     /// </summary>
-    public partial class BatchAIJobImpl  :
+    public partial class BatchAIJobImpl :
         GroupableResource<
             IBatchAIJob,
             JobInner,
@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public BatchAIJobImpl WithContainerImage(string image)
         {
-            if (EnsureContainerSettings().ImageSourceRegistry == null) {
+            if (EnsureContainerSettings().ImageSourceRegistry == null)
+            {
                 createParameters.ContainerSettings.ImageSourceRegistry = new ImageSourceRegistry();
             }
             createParameters.ContainerSettings.ImageSourceRegistry.Image = image;
@@ -68,7 +69,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public BatchAIJobImpl WithOutputDirectory(string id, string pathPrefix)
         {
-            if (createParameters.OutputDirectories == null) {
+            if (createParameters.OutputDirectories == null)
+            {
                 createParameters.OutputDirectories = new List<OutputDirectory>();
             }
             createParameters.OutputDirectories.Add(new OutputDirectory()
@@ -91,7 +93,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         private ContainerSettings EnsureContainerSettings()
         {
-            if (createParameters.ContainerSettings == null) {
+            if (createParameters.ContainerSettings == null)
+            {
                 createParameters.ContainerSettings = new ContainerSettings();
             }
             return createParameters.ContainerSettings;
@@ -166,8 +169,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.Priority.GetValueOrDefault();
         }
 
-        public ToolType ToolType() {
-            if (Inner.ToolType == null) {
+        public ToolType ToolType()
+        {
+            if (Inner.ToolType == null)
+            {
                 return null;
             }
             return Models.ToolType.Parse(Inner.ToolType);
@@ -175,7 +180,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         private List<InputDirectory> EnsureInputDirectories()
         {
-            if (createParameters.InputDirectories == null) {
+            if (createParameters.InputDirectories == null)
+            {
                 createParameters.InputDirectories = new List<InputDirectory>();
             }
             return createParameters.InputDirectories.ToList();
@@ -280,8 +286,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             {
                 CommandLine = commandLine
             };
-        return this;
-    }
+            return this;
+        }
 
         public ToolTypeSettings.Chainer.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefineChainer()
         {
@@ -308,7 +314,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        internal  BatchAIJobImpl(string name, BatchAIClusterImpl parent, JobInner inner)
+        internal BatchAIJobImpl(string name, BatchAIClusterImpl parent, JobInner inner)
             : base(name, inner, parent.Manager)
         {
             this.parent = parent;

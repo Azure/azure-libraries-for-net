@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Represents Chainer settings.
     /// </summary>
-    public partial class ChainerImpl  :
+    public partial class ChainerImpl :
         IndexableWrapper<ChainerSettings>,
         IChainer,
         IDefinition<BatchAIJob.Definition.IWithCreate>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        internal  ChainerImpl(ChainerSettings inner, BatchAIJobImpl parent)
+        internal ChainerImpl(ChainerSettings inner, BatchAIJobImpl parent)
             : base(inner)
         {
             this.parent = parent;

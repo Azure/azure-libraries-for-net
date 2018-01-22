@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Represents Caffe2 settings.
     /// </summary>
-    public partial class Caffe2Impl  :
+    public partial class Caffe2Impl :
         IndexableWrapper<Caffe2Settings>,
         ICaffe2,
         IDefinition<BatchAIJob.Definition.IWithCreate>
@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return parent;
         }
 
-         internal  Caffe2Impl(Caffe2Settings inner, BatchAIJobImpl parent)
-            : base(inner)
+        internal Caffe2Impl(Caffe2Settings inner, BatchAIJobImpl parent)
+           : base(inner)
         {
             this.parent = parent;
         }

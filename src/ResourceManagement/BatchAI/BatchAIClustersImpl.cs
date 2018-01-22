@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Implementation for BatchAIClusters.
     /// </summary>
-    public partial class BatchAIClustersImpl  :
+    public partial class BatchAIClustersImpl :
         TopLevelModifiableResources<
             IBatchAICluster,
             BatchAIClusterImpl,
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             IBatchAIManager>,
         IBatchAIClusters
     {
-        internal  BatchAIClustersImpl(BatchAIManager batchAIManager)
+        internal BatchAIClustersImpl(BatchAIManager batchAIManager)
             : base(batchAIManager.Inner.Clusters, batchAIManager)
         {
         }
@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected override IBatchAICluster WrapModel(ClusterInner inner)
         {
-            if (inner == null) {
+            if (inner == null)
+            {
                 return null;
             }
             return new BatchAIClusterImpl(inner.Name, inner, Manager);
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected override async Task<IPage<ClusterInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
-            return await Inner.ListAsync(cancellationToken:cancellationToken);
+            return await Inner.ListAsync(cancellationToken: cancellationToken);
         }
 
         protected override async Task<IPage<ClusterInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected override async Task<IPage<ClusterInner>> ListInnerByGroupAsync(string resourceGroupName, CancellationToken cancellationToken)
         {
-            return await Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken:cancellationToken);
+            return await Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellationToken);
         }
 
         protected override async Task<IPage<ClusterInner>> ListInnerByGroupNextAsync(string nextLink, CancellationToken cancellationToken)

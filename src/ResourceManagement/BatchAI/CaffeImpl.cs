@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Represents Caffe settings.
     /// </summary>
-    public partial class CaffeImpl  :
+    public partial class CaffeImpl :
         IndexableWrapper<CaffeSettings>,
         ICaffe,
         IDefinition<BatchAIJob.Definition.IWithCreate>
     {
         private BatchAIJobImpl parent;
-        internal  CaffeImpl(CaffeSettings inner, BatchAIJobImpl parent)
+        internal CaffeImpl(CaffeSettings inner, BatchAIJobImpl parent)
             : base(inner)
         {
             this.parent = parent;

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Implementation for  OutputFile.
     /// </summary>
-    public sealed partial class OutputFileImpl  :
+    public sealed partial class OutputFileImpl :
         IndexableWrapper<File>,
         IOutputFile
     {
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             return Inner.DownloadUrl;
         }
-   
+
 
         public string Name => Inner.Name;
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.LastModified.GetValueOrDefault();
         }
 
-        internal  OutputFileImpl(File innerModel)
+        internal OutputFileImpl(File innerModel)
             : base(innerModel)
         {
         }

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// The implementation of Jobs.
     /// </summary>
-    public partial class BatchAIJobsImpl  :
+    public partial class BatchAIJobsImpl :
         GroupableResources<
             IBatchAIJob,
             BatchAIJobImpl,
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this.parent;
         }
 
-        internal  BatchAIJobsImpl(BatchAIClusterImpl parent)
+        internal BatchAIJobsImpl(BatchAIClusterImpl parent)
             : base(parent.Manager.Inner.Jobs, parent.Manager)
         {
             this.parent = parent;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IBatchAIJob>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var innerJobs = await Inner.ListAsync(cancellationToken:cancellationToken);
+            var innerJobs = await Inner.ListAsync(cancellationToken: cancellationToken);
             var result = innerJobs.Select((innerJob) => WrapModel(innerJob));
             return PagedCollection<IBatchAIJob, JobInner>.CreateFromEnumerable(result);
         }
@@ -85,7 +85,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected override IBatchAIJob WrapModel(JobInner inner)
         {
-            if (inner == null) {
+            if (inner == null)
+            {
                 return null;
             }
             return new BatchAIJobImpl(inner.Name, parent, inner);

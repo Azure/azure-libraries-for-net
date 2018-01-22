@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Implementation for BatchAIFileServer and its create and update interfaces.
     /// </summary>
-    public partial class BatchAIFileServerImpl  :
+    public partial class BatchAIFileServerImpl :
         ResourceManager.Fluent.GroupableResource<
             IBatchAIFileServer,
             FileServerInner,
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         IDefinition
     {
         private FileServerCreateParametersInner createParameters = new FileServerCreateParametersInner();
-        internal  BatchAIFileServerImpl(string name, FileServerInner innerObject, IBatchAIManager manager)
+        internal BatchAIFileServerImpl(string name, FileServerInner innerObject, IBatchAIManager manager)
             : base(name, innerObject, manager)
         {
         }
@@ -68,7 +68,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         private UserAccountSettings EnsureUserAccountSettings()
         {
-            if (EnsureSshConfiguration().UserAccountSettings == null) {
+            if (EnsureSshConfiguration().UserAccountSettings == null)
+            {
                 createParameters.SshConfiguration.UserAccountSettings = new UserAccountSettings();
             }
             return createParameters.SshConfiguration.UserAccountSettings;
@@ -81,7 +82,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         private SshConfiguration EnsureSshConfiguration()
         {
-            if (createParameters.SshConfiguration == null) {
+            if (createParameters.SshConfiguration == null)
+            {
                 createParameters.SshConfiguration = new SshConfiguration();
             }
             return createParameters.SshConfiguration;
@@ -89,7 +91,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         private DataDisks EnsureDataDisks()
         {
-            if (createParameters.DataDisks == null) {
+            if (createParameters.DataDisks == null)
+            {
                 createParameters.DataDisks = new DataDisks();
             }
             return createParameters.DataDisks;

@@ -11,6 +11,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition;
     using Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Update;
+    using Microsoft.Azure.Management.BatchAI.Fluent.FileServer.Definition;
+    using Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Collections.Generic;
     using System;

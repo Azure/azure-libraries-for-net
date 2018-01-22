@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Represents file server reference.
     /// </summary>
-    public partial class FileServerImpl  :
+    public partial class FileServerImpl :
         IndexableWrapper<FileServerReference>,
         IFileServer,
         IDefinition<BatchAICluster.Definition.IWithCreate>
@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             Inner.SourceDirectory = sourceDirectory;
             return this;
         }
-        
+
         public FileServerImpl WithMountOptions(string mountOptions)
         {
             Inner.MountOptions = mountOptions;
             return this;
         }
 
-        internal  FileServerImpl(FileServerReference inner, BatchAIClusterImpl parent)
+        internal FileServerImpl(FileServerReference inner, BatchAIClusterImpl parent)
             : base(inner)
         {
             this.parent = parent;

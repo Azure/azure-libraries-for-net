@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Represents Microsoft Cognitive Toolkit settings.
     /// </summary>
-    public partial class CognitiveToolkitImpl  :
+    public partial class CognitiveToolkitImpl :
         IndexableWrapper<CNTKsettings>,
         ICognitiveToolkit,
         IDefinition<IWithCreate>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return parent;
         }
 
-        internal  CognitiveToolkitImpl(CNTKsettings inner, BatchAIJobImpl parent)
+        internal CognitiveToolkitImpl(CNTKsettings inner, BatchAIJobImpl parent)
             : base(inner)
         {
             this.parent = parent;
