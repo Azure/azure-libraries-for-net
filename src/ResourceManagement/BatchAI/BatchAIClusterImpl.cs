@@ -9,13 +9,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Management.BatchAI.Fluent.AzureBlobFileSystem.Definition;
-    using Microsoft.Azure.Management.BatchAI.Fluent.AzureFileShare.Definition;
     using Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition;
     using Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Update;
-    using Microsoft.Azure.Management.BatchAI.Fluent.FileServer.Definition;
-    using Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Collections.Generic;
     using System;
@@ -23,7 +18,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Implementation for Cluster and its create and update interfaces.
     /// </summary>
-    public partial class BatchAIClusterImpl  :
+    public partial class BatchAIClusterImpl :
         GroupableResource<
             IBatchAICluster,
             ClusterInner,
@@ -54,7 +49,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         internal void AttachAzureFileShare(AzureFileShareImpl azureFileShare)
         {
             MountVolumes mountVolumes = EnsureMountVolumes();
-            if (mountVolumes.AzureFileShares == null) {
+            if (mountVolumes.AzureFileShares == null)
+            {
                 mountVolumes.AzureFileShares = new List<AzureFileShareReference>();
             }
             mountVolumes.AzureFileShares.Add(azureFileShare.Inner);
@@ -86,9 +82,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             {
                 TargetNodeCount = targetNodeCount
             };
-            if (IsInCreateMode) {
+            if (IsInCreateMode)
+            {
                 EnsureScaleSettings().Manual = manualScaleSettings;
-            } else {
+            }
+            else
+            {
                 updateParameters.ScaleSettings = new ScaleSettings
                 {
                     Manual = manualScaleSettings
@@ -97,16 +96,19 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-         public BatchAIClusterImpl WithManualScale(int targetNodeCount, DeallocationOption deallocationOption)
-         {
-             ManualScaleSettings manualScaleSettings = new ManualScaleSettings()
-             {
-                 TargetNodeCount = targetNodeCount,
-                 NodeDeallocationOption = deallocationOption
-             };
-            if (IsInCreateMode) {
+        public BatchAIClusterImpl WithManualScale(int targetNodeCount, DeallocationOption deallocationOption)
+        {
+            ManualScaleSettings manualScaleSettings = new ManualScaleSettings()
+            {
+                TargetNodeCount = targetNodeCount,
+                NodeDeallocationOption = deallocationOption
+            };
+            if (IsInCreateMode)
+            {
                 EnsureScaleSettings().Manual = manualScaleSettings;
-            } else {
+            }
+            else
+            {
                 updateParameters.ScaleSettings = new ScaleSettings
                 {
                     Manual = manualScaleSettings
@@ -122,7 +124,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         private UserAccountSettings EnsureUserAccountSettings()
         {
-            if (createParameters.UserAccountSettings == null) {
+            if (createParameters.UserAccountSettings == null)
+            {
                 createParameters.UserAccountSettings = new UserAccountSettings();
             }
             return createParameters.UserAccountSettings;
@@ -130,7 +133,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         private MountVolumes EnsureMountVolumes()
         {
-            if (EnsureNodeSetup().MountVolumes == null) {
+            if (EnsureNodeSetup().MountVolumes == null)
+            {
                 createParameters.NodeSetup.MountVolumes = new MountVolumes();
             }
             return createParameters.NodeSetup.MountVolumes;
@@ -146,8 +150,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.NodeSetup;
         }
 
-        internal  BatchAIClusterImpl(string name, ClusterInner innerObject, IBatchAIManager manager)
-            : base(name,innerObject, manager)
+        internal BatchAIClusterImpl(string name, ClusterInner innerObject, IBatchAIManager manager)
+            : base(name, innerObject, manager)
         {
         }
 
@@ -160,7 +164,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         internal void AttachFileServer(IFileServer fileServer)
         {
             MountVolumes mountVolumes = EnsureMountVolumes();
-            if (mountVolumes.FileServers == null) {
+            if (mountVolumes.FileServers == null)
+            {
                 mountVolumes.FileServers = new List<FileServerReference>();
             }
             mountVolumes.FileServers.Add(fileServer.Inner);
@@ -195,7 +200,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-         public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             if (IsInCreateMode)
             {
@@ -227,7 +232,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public IBatchAIJobs Jobs()
         {
-            if (jobs == null) {
+            if (jobs == null)
+            {
                 jobs = new BatchAIJobsImpl(this);
             }
             return jobs;
@@ -235,7 +241,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         private ScaleSettings EnsureScaleSettings()
         {
-            if (createParameters.ScaleSettings == null) {
+            if (createParameters.ScaleSettings == null)
+            {
                 createParameters.ScaleSettings = new ScaleSettings();
             }
             return createParameters.ScaleSettings;
@@ -244,8 +251,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public BatchAIClusterImpl WithUnmanagedFileSystem(string mountCommand, string relativeMountPath)
         {
             MountVolumes mountVolumes = EnsureMountVolumes();
-            if (mountVolumes.UnmanagedFileSystems == null) {
-                mountVolumes.UnmanagedFileSystems= new List<UnmanagedFileSystemReference>();
+            if (mountVolumes.UnmanagedFileSystems == null)
+            {
+                mountVolumes.UnmanagedFileSystems = new List<UnmanagedFileSystemReference>();
             }
             mountVolumes.UnmanagedFileSystems.Add(new UnmanagedFileSystemReference()
             {
@@ -274,7 +282,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         internal void AttachAzureBlobFileSystem(IAzureBlobFileSystem azureBlobFileSystem)
         {
             MountVolumes mountVolumes = EnsureMountVolumes();
-            if (mountVolumes.AzureBlobFileSystems == null) {
+            if (mountVolumes.AzureBlobFileSystems == null)
+            {
                 mountVolumes.AzureBlobFileSystems = new List<AzureBlobFileSystemReference>();
             }
             mountVolumes.AzureBlobFileSystems.Add(azureBlobFileSystem.Inner);
@@ -304,9 +313,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 MinimumNodeCount = minimumNodeCount,
                 MaximumNodeCount = maximumNodeCount
             };
-            if (IsInCreateMode) {
+            if (IsInCreateMode)
+            {
                 EnsureScaleSettings().AutoScale = autoScaleSettings;
-            } else {
+            }
+            else
+            {
                 updateParameters.ScaleSettings = new ScaleSettings()
                 {
                     AutoScale = autoScaleSettings
@@ -323,9 +335,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 MaximumNodeCount = maximumNodeCount,
                 InitialNodeCount = initialNodeCount
             };
-            if (IsInCreateMode) {
+            if (IsInCreateMode)
+            {
                 EnsureScaleSettings().AutoScale = autoScaleSettings;
-            } else {
+            }
+            else
+            {
                 updateParameters.ScaleSettings = new ScaleSettings()
                 {
                     AutoScale = autoScaleSettings
@@ -336,7 +351,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         private NodeSetup EnsureNodeSetup()
         {
-            if (createParameters.NodeSetup == null) {
+            if (createParameters.NodeSetup == null)
+            {
                 createParameters.NodeSetup = new NodeSetup();
             }
             return createParameters.NodeSetup;
