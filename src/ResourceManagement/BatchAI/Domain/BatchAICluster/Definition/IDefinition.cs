@@ -38,27 +38,21 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
     public interface IWithMountVolumes
     {
         /// <summary>
-        /// Gets Begins the definition of Azure file share reference to be mounted on each cluster node.
+        /// Begins the definition of Azure file share reference to be mounted on each cluster node.
         /// </summary>
-        /// <summary>
-        /// Gets the first stage of file share reference definition.
-        /// </summary>
+        /// <return>The first stage of file share reference definition.</return>
         AzureFileShare.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineAzureFileShare();
 
         /// <summary>
-        /// Gets Begins the definition of Azure blob file system reference to be mounted on each cluster node.
+        /// Begins the definition of Azure blob file system reference to be mounted on each cluster node.
         /// </summary>
-        /// <summary>
-        /// Gets the first stage of Azure blob file system reference definition.
-        /// </summary>
+        /// <return>The first stage of Azure blob file system reference definition.</return>
        AzureBlobFileSystem.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineAzureBlobFileSystem();
 
         /// <summary>
-        /// Gets Begins the definition of Azure file server reference.
+        /// Begins the definition of Azure file server reference.
         /// </summary>
-        /// <summary>
-        /// Gets the first stage of file server reference definition.
-        /// </summary>
+        /// <return>The first stage of file server reference definition.</return>
         FileServer.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineFileServer();
 
         /// <summary>
@@ -96,11 +90,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
     public interface IWithSetupTask
     {
         /// <summary>
-        /// Gets Begins the definition of setup task.
+        /// Begins the definition of setup task.
         /// </summary>
-        /// <summary>
-        /// Gets the first stage of the setup task definition.
-        /// </summary>
+        /// <return>The first stage of the setup task definition.</return>
         NodeSetupTask.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineSetupTask();
     }
 

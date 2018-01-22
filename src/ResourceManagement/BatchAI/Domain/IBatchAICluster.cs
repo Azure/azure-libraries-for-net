@@ -40,9 +40,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <summary>
         /// Gets Indicates whether the cluster is resizing.
         /// </summary>
-        /// <summary>
-        /// Gets cluster allocation state.
-        /// </summary>
         Microsoft.Azure.Management.BatchAI.Fluent.Models.AllocationState AllocationState { get; }
 
         /// <summary>
@@ -81,23 +78,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         Microsoft.Azure.Management.BatchAI.Fluent.Models.VirtualMachineConfiguration VirtualMachineConfiguration { get; }
 
         /// <summary>
-        /// Gets All virtual machines in a cluster are the same size. For information
-        /// about available VM sizes for clusters using images from the Virtual
-        /// Machines Marketplace (see Sizes for Virtual Machines (Linux) or Sizes
-        /// for Virtual Machines (Windows). Batch AI service supports all Azure VM
-        /// sizes except STANDARD_A0 and those with premium storage (STANDARD_GS,
-        /// STANDARD_DS, and STANDARD_DSV2 series).
-        /// </summary>
-        /// <summary>
         /// Gets the size of the virtual machines in the cluster.
         /// </summary>
         string VMSize { get; }
 
-        /// <summary>
-        /// Gets The default value is dedicated. The node can get preempted while the
-        /// task is running if lowpriority is choosen. This is best suited if the
-        /// workload is checkpointing and can be restarted.
-        /// </summary>
         /// <summary>
         /// Gets virtual machine priority status.
         /// </summary>

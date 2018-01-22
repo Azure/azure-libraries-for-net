@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         System.DateTime CreationTime { get; }
 
         /// <summary>
-        /// Gets The time at which the job entered its current provisioning state.
-        /// </summary>
-        /// <summary>
         /// Gets the time at which the job entered its current provisioning state.
         /// </summary>
         System.DateTime ProvisioningStateTransitionTime { get; }
@@ -114,9 +111,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// finished unsuccessfully (failed with a non-zero exit code) and has
         /// exhausted its retry limit. A job is also marked as failed if an error
         /// occurred launching the job.
-        /// </summary>
-        /// <summary>
-        /// Gets the current state of the job.
         /// </summary>
         Microsoft.Azure.Management.BatchAI.Fluent.Models.ExecutionState ExecutionState { get; }
 
