@@ -1,0 +1,202 @@
+[1mdiff --git a/Fluent.Tests.sln b/Fluent.Tests.sln[m
+[1mindex cb8662f7..e08b7276 100644[m
+[1m--- a/Fluent.Tests.sln[m
+[1m+++ b/Fluent.Tests.sln[m
+[36m@@ -1,7 +1,7 @@[m
+ ﻿[m
+ Microsoft Visual Studio Solution File, Format Version 12.00[m
+ # Visual Studio 15[m
+[31m-VisualStudioVersion = 15.0.27004.2009[m
+[32m+[m[32mVisualStudioVersion = 15.0.26730.10[m
+ MinimumVisualStudioVersion = 10.0.40219.1[m
+ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluent.Tests", "Tests\Fluent.Tests\Fluent.Tests.csproj", "{448C82C0-173D-4987-AF7B-FA2E35860909}"[m
+ 	ProjectSection(ProjectDependencies) = postProject[m
+[36m@@ -60,6 +60,8 @@[m [mProject("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.[m
+ EndProject[m
+ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.ContainerService.Fluent", "src\ResourceManagement\ContainerService\Microsoft.Azure.Management.ContainerService.Fluent.csproj", "{E829C631-00B6-43D0-801B-5E0D10F0FF05}"[m
+ EndProject[m
+[32m+[m[32mProject("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Msi.Fluent", "src\ResourceManagement\Msi\Microsoft.Azure.Management.Msi.Fluent.csproj", "{4905ADAA-5DE1-4130-9B8D-2AA46DE121AE}"[m
+[32m+[m[32mEndProject[m
+ Global[m
+ 	GlobalSection(SolutionConfigurationPlatforms) = preSolution[m
+ 		Debug|Any CPU = Debug|Any CPU[m
+[36m@@ -162,6 +164,10 @@[m [mGlobal[m
+ 		{E829C631-00B6-43D0-801B-5E0D10F0FF05}.Debug|Any CPU.Build.0 = Debug|Any CPU[m
+ 		{E829C631-00B6-43D0-801B-5E0D10F0FF05}.Release|Any CPU.ActiveCfg = Release|Any CPU[m
+ 		{E829C631-00B6-43D0-801B-5E0D10F0FF05}.Release|Any CPU.Build.0 = Release|Any CPU[m
+[32m+[m		[32m{4905ADAA-5DE1-4130-9B8D-2AA46DE121AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU[m
+[32m+[m		[32m{4905ADAA-5DE1-4130-9B8D-2AA46DE121AE}.Debug|Any CPU.Build.0 = Debug|Any CPU[m
+[32m+[m		[32m{4905ADAA-5DE1-4130-9B8D-2AA46DE121AE}.Release|Any CPU.ActiveCfg = Release|Any CPU[m
+[32m+[m		[32m{4905ADAA-5DE1-4130-9B8D-2AA46DE121AE}.Release|Any CPU.Build.0 = Release|Any CPU[m
+ 	EndGlobalSection[m
+ 	GlobalSection(SolutionProperties) = preSolution[m
+ 		HideSolutionNode = FALSE[m
+[36m@@ -189,6 +195,7 @@[m [mGlobal[m
+ 		{DB2C0D40-8DC4-4A84-AF40-4946DE7031F8} = {6861600A-FFF3-49C3-8A91-7174F754EAED}[m
+ 		{3F14EA6B-94EC-45E7-88CD-0F4F608E1FCC} = {6861600A-FFF3-49C3-8A91-7174F754EAED}[m
+ 		{E829C631-00B6-43D0-801B-5E0D10F0FF05} = {6861600A-FFF3-49C3-8A91-7174F754EAED}[m
+[32m+[m		[32m{4905ADAA-5DE1-4130-9B8D-2AA46DE121AE} = {6861600A-FFF3-49C3-8A91-7174F754EAED}[m
+ 	EndGlobalSection[m
+ 	GlobalSection(ExtensibilityGlobals) = postSolution[m
+ 		SolutionGuid = {297937BE-B6D0-42C0-A465-5B6487EB66F1}[m
+[1mdiff --git a/src/ResourceManagement/Azure.Fluent/Azure.cs b/src/ResourceManagement/Azure.Fluent/Azure.cs[m
+[1mindex 6eecb8b6..7519c33a 100644[m
+[1m--- a/src/ResourceManagement/Azure.Fluent/Azure.cs[m
+[1m+++ b/src/ResourceManagement/Azure.Fluent/Azure.cs[m
+[36m@@ -27,6 +27,7 @@[m
+ using Microsoft.Azure.Management.CosmosDB.Fluent;[m
+ using Microsoft.Azure.Management.Graph.RBAC.Fluent;[m
+ using Microsoft.Azure.Management.Locks.Fluent;[m
+[32m+[m[32musing Microsoft.Azure.Management.Msi.Fluent;[m
+ [m
+ namespace Microsoft.Azure.Management.Fluent[m
+ {[m
+[36m@@ -55,6 +56,7 @@[m [mpublic class Azure : IAzure[m
+         private IContainerServiceManager containerServiceManager;[m
+         private ICosmosDBManager cosmosDBManager;[m
+         private IAuthorizationManager authorizationManager;[m
+[32m+[m[32m        private IMsiManager msiManager;[m
+ [m
+         #endregion Service Managers[m
+ [m
+[36m@@ -421,6 +423,14 @@[m [mpublic IAccessManagement AccessManagement[m
+             }[m
+         }[m
+ [m
+[32m+[m[32m        public IIdentities Identities[m
+[32m+[m[32m        {[m
+[32m+[m[32m            get[m
+[32m+[m[32m            {[m
+[32m+[m[32m                return msiManager.Identities;[m
+[32m+[m[32m            }[m
+[32m+[m[32m        }[m
+[32m+[m
+         #endregion Getters[m
+ [m
+         #region ctrs[m
+[36m@@ -446,6 +456,7 @@[m [mprivate Azure(RestClient restClient, string subscriptionId, string tenantId, IAu[m
+             containerServiceManager = ContainerServiceManager.Authenticate(restClient, subscriptionId);[m
+             cosmosDBManager = CosmosDBManager.Authenticate(restClient, subscriptionId);[m
+             authorizationManager = AuthorizationManager.Authenticate(restClient, subscriptionId);[m
+[32m+[m[32m            msiManager = MsiManager.Authenticate(restClient, subscriptionId);[m
+ [m
+             SubscriptionId = subscriptionId;[m
+             this.authenticated = authenticated;[m
+[36m@@ -716,6 +727,11 @@[m [mpublic interface IAzureBeta : IBeta[m
+         /// Entry point to managing locks.[m
+         /// </summary>[m
+         IManagementLocks ManagementLocks { get; }[m
+[32m+[m
+[32m+[m[32m        /// <summary>[m
+[32m+[m[32m        /// Entry point to Managed Service Identity (MSI) management.[m
+[32m+[m[32m        /// </summary>[m
+[32m+[m[32m        IIdentities Identities { get; }[m
+     }[m
+ [m
+     public interface IAzure : IAzureBeta[m
+[1mdiff --git a/src/ResourceManagement/Graph.RBAC/Domain/IRoleAssignments.cs b/src/ResourceManagement/Graph.RBAC/Domain/IRoleAssignments.cs[m
+[1mindex 17360b7d..5b7b8a6e 100644[m
+[1m--- a/src/ResourceManagement/Graph.RBAC/Domain/IRoleAssignments.cs[m
+[1m+++ b/src/ResourceManagement/Graph.RBAC/Domain/IRoleAssignments.cs[m
+[36m@@ -35,7 +35,7 @@[m [mpublic interface IRoleAssignments  :[m
+         /// </summary>[m
+         /// <param name="scope">The scope of the role assignments.</param>[m
+         /// <return>An observable of role assignments.</return>[m
+[31m-        Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment> ListByScopeAsync(string scope, CancellationToken cancellationToken = default(CancellationToken));[m
+[32m+[m[32m        Task<IPagedCollection<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment>> ListByScopeAsync(string scope, CancellationToken cancellationToken = default(CancellationToken));[m
+ [m
+         /// <summary>[m
+         /// List role assignments in a scope.[m
+[1mdiff --git a/src/ResourceManagement/Graph.RBAC/Domain/InterfaceImpl/RoleAssignmentsImpl.cs b/src/ResourceManagement/Graph.RBAC/Domain/InterfaceImpl/RoleAssignmentsImpl.cs[m
+[1mindex e16e7936..aaed161f 100644[m
+[1m--- a/src/ResourceManagement/Graph.RBAC/Domain/InterfaceImpl/RoleAssignmentsImpl.cs[m
+[1m+++ b/src/ResourceManagement/Graph.RBAC/Domain/InterfaceImpl/RoleAssignmentsImpl.cs[m
+[36m@@ -37,9 +37,9 @@[m [mSystem.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Graph.RBAC.Flu[m
+         /// </summary>[m
+         /// <param name="scope">The scope of the role assignments.</param>[m
+         /// <return>An observable of role assignments.</return>[m
+[31m-        async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment> Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignments.ListByScopeAsync(string scope, CancellationToken cancellationToken)[m
+[32m+[m[32m        async Task<IPagedCollection<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment>> Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignments.ListByScopeAsync(string scope, CancellationToken cancellationToken)[m
+         {[m
+[31m-            return await this.ListByScopeAsync(scope, cancellationToken) as Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment;[m
+[32m+[m[32m            return await this.ListByScopeAsync(scope, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment>;[m
+         }[m
+ [m
+         /// <summary>[m
+[1mdiff --git a/src/ResourceManagement/Msi/Generated/Models/IdentityInner.cs b/src/ResourceManagement/Msi/Generated/Models/IdentityInner.cs[m
+[1mindex 8426dd9d..ce36263c 100644[m
+[1m--- a/src/ResourceManagement/Msi/Generated/Models/IdentityInner.cs[m
+[1m+++ b/src/ResourceManagement/Msi/Generated/Models/IdentityInner.cs[m
+[36m@@ -19,7 +19,7 @@[m [mnamespace Microsoft.Azure.Management.Msi.Fluent.Models[m
+     /// Describes an identity resource.[m
+     /// </summary>[m
+     [Rest.Serialization.JsonTransformation][m
+[31m-    public partial class IdentityInner[m
+[32m+[m[32m    public partial class IdentityInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource[m
+     {[m
+         /// <summary>[m
+         /// Initializes a new instance of the IdentityInner class.[m
+[36m@@ -49,16 +49,12 @@[m [mpublic IdentityInner()[m
+         /// Microsoft.ManagedIdentity/userAssignedIdentities. Possible values[m
+         /// include: 'Microsoft.ManagedIdentity/userAssignedIdentities'</param>[m
+         public IdentityInner(string id = default(string), string name = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.Guid? tenantId = default(System.Guid?), System.Guid? principalId = default(System.Guid?), System.Guid? clientId = default(System.Guid?), string clientSecretUrl = default(string), string type = default(string))[m
+[32m+[m[32m            : base(location, id, name, type, tags)[m
+         {[m
+[31m-            Id = id;[m
+[31m-            Name = name;[m
+[31m-            Location = location;[m
+[31m-            Tags = tags;[m
+             TenantId = tenantId;[m
+             PrincipalId = principalId;[m
+             ClientId = clientId;[m
+             ClientSecretUrl = clientSecretUrl;[m
+[31m-            Type = type;[m
+             CustomInit();[m
+         }[m
+ [m
+[36m@@ -67,30 +63,6 @@[m [mpublic IdentityInner(string id = default(string), string name = default(string),[m
+         /// </summary>[m
+         partial void CustomInit();[m
+ [m
+[31m-        /// <summary>[m
+[31m-        /// Gets the id of the created identity.[m
+[31m-        /// </summary>[m
+[31m-        [JsonProperty(PropertyName = "id")][m
+[31m-        public string Id { get; private set; }[m
+[31m-[m
+[31m-        /// <summary>[m
+[31m-        /// Gets the name of the created identity.[m
+[31m-        /// </summary>[m
+[31m-        [JsonProperty(PropertyName = "name")][m
+[31m-        public string Name { get; private set; }[m
+[31m-[m
+[31m-        /// <summary>[m
+[31m-        /// Gets or sets the Azure region where the identity lives.[m
+[31m-        /// </summary>[m
+[31m-        [JsonProperty(PropertyName = "location")][m
+[31m-        public string Location { get; set; }[m
+[31m-[m
+[31m-        /// <summary>[m
+[31m-        /// Gets or sets resource tags[m
+[31m-        /// </summary>[m
+[31m-        [JsonProperty(PropertyName = "tags")][m
+[31m-        public IDictionary<string, string> Tags { get; set; }[m
+[31m-[m
+         /// <summary>[m
+         /// Gets the id of the tenant which the identity belongs to.[m
+         /// </summary>[m
+[36m@@ -117,14 +89,5 @@[m [mpublic IdentityInner(string id = default(string), string name = default(string),[m
+         /// </summary>[m
+         [JsonProperty(PropertyName = "properties.clientSecretUrl")][m
+         public string ClientSecretUrl { get; private set; }[m
+[31m-[m
+[31m-        /// <summary>[m
+[31m-        /// Gets the type of resource i.e.[m
+[31m-        /// Microsoft.ManagedIdentity/userAssignedIdentities. Possible values[m
+[31m-        /// include: 'Microsoft.ManagedIdentity/userAssignedIdentities'[m
+[31m-        /// </summary>[m
+[31m-        [JsonProperty(PropertyName = "type")][m
+[31m-        public string Type { get; private set; }[m
+[31m-[m
+     }[m
+ }[m

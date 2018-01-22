@@ -4,10 +4,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Definition;
-    using Microsoft.Rest;
 
     /// <summary>
     /// Entry point for storage accounts management API.

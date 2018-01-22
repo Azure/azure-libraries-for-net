@@ -75,7 +75,7 @@ namespace ManageStorageAccount
                 Utilities.Log($"Enabling encryption for the storage account: {storageAccount2.Name}");
 
                 storageAccount2.Update()
-                        .WithEncryption()
+                        .WithBlobEncryption()
                         .Apply();
 
                 foreach (var encryptionStatus in storageAccount2.EncryptionStatuses)

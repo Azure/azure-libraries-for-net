@@ -2,12 +2,10 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Storage.Fluent
 {
-    using System;
-
     /// <summary>
     /// Type representing the encryption status of a storage service.
     /// </summary>
-    public interface IStorageAccountEncryptionStatus 
+    public interface IStorageAccountEncryptionStatus
     {
         /// <summary>
         /// Gets the storage service type.
