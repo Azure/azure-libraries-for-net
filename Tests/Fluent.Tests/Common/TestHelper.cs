@@ -3,6 +3,7 @@
 
 using Microsoft.Azure.Management.AppService.Fluent;
 using Microsoft.Azure.Management.Batch.Fluent;
+using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.Cdn.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent;
 using Microsoft.Azure.Management.ContainerInstance.Fluent;
@@ -275,6 +276,15 @@ namespace Fluent.Tests.Common
                 .WithDelegatingHandlers(GetHandlers())
                 .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)
                 .Authenticate(c, c.TenantId));
+        }
+
+        public static IBatchAIManager CreateBatchAIManager()
+        {
+            return CreateMockedManager(c => BatchAIManager
+                .Configure()
+                .WithDelegatingHandlers(GetHandlers())
+                .WithLogLevel(HttpLoggingDelegatingHandler.Level.BodyAndHeaders)
+                .Authenticate(c, c.DefaultSubscriptionId));
         }
 
         public static Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManager.IAuthenticated Authenticate()

@@ -32,6 +32,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.AppService.Fluent" Version="1.4.1" />
     <PackageReference Include="Microsoft.Azure.Management.Batch.Fluent" Version="1.4.1" />
+    <PackageReference Include="Microsoft.Azure.Management.BatchAI.Fluent" Version="1.4.1" />
     <PackageReference Include="Microsoft.Azure.Management.Cdn.Fluent" Version="1.4.1" />
     <PackageReference Include="Microsoft.Azure.Management.Compute.Fluent" Version="1.4.1" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance.Fluent" Version="1.4.1" />
@@ -75,6 +76,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AppService\Microsoft.Azure.Management.AppService.Fluent.csproj" />
+    <ProjectReference Include="..\BatchAI\Microsoft.Azure.Management.BatchAI.Fluent.csproj" />
     <ProjectReference Include="..\Batch\Microsoft.Azure.Management.Batch.Fluent.csproj" />
     <ProjectReference Include="..\Cdn\Microsoft.Azure.Management.Cdn.Fluent.csproj" />
     <ProjectReference Include="..\Compute\Microsoft.Azure.Management.Compute.Fluent.csproj" />
