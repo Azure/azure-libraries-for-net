@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using System;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.Msi.Fluent;
 
     internal partial class VirtualMachineImpl
     {
@@ -1355,6 +1356,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the resource ids of User Assigned Managed Service Identities associated with the virtual machine.
+        /// </summary>
+        System.Collections.Generic.ISet<string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.UserAssignedManagedServiceIdentityIds
+        {
+            get
+            {
+                return this.UserAssignedManagedServiceIdentityIds() as System.Collections.Generic.ISet<string>;
+            }
+        }
+
+        /// <summary>
         /// Gets the type of Managed Service Identity used for the virtual machine.
         /// </summary>
         Models.ResourceIdentityType? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.ManagedServiceIdentityType
@@ -1548,11 +1560,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the Managed Service Identity specific Active Directory service principal ID assigned
         /// to the virtual machine.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.ManagedServiceIdentityPrincipalId
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.SystemAssignedManagedServiceIdentityPrincipalId
         {
             get
             {
-                return this.ManagedServiceIdentityPrincipalId();
+                return this.SystemAssignedManagedServiceIdentityPrincipalId();
             }
         }
 
@@ -1571,11 +1583,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the Managed Service Identity specific Active Directory tenant ID assigned to the
         /// virtual machine.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.ManagedServiceIdentityTenantId
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineBeta.SystemAssignedManagedServiceIdentityTenantId
         {
             get
             {
-                return this.ManagedServiceIdentityTenantId();
+                return this.SystemAssignedManagedServiceIdentityTenantId();
             }
         }
 
@@ -1917,139 +1929,164 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Specifies that Managed Service Identity needs to be enabled in the virtual machine.
+        /// Specifies that System Assigned (Local) Managed Service Identity needs to be enabled in the virtual machine.
         /// </summary>
-        /// <returns>The next stage of the definition.</returns>
-        VirtualMachine.Definition.IWithRoleAndScopeOrCreate VirtualMachine.Definition.IWithManagedServiceIdentity.WithManagedServiceIdentity()
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithManagedServiceIdentity() as VirtualMachine.Definition.IWithRoleAndScopeOrCreate;
+            return this.WithSystemAssignedManagedServiceIdentity() as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
         }
 
         /// <summary>
-        /// Specifies that Managed Service Identity needs to be enabled in the virtual machine.
+        /// Specifies that System Assigned (Local) Managed Service Identity needs to be enabled in the virtual machine.
         /// </summary>
-        /// <param name="tokenPort">the port on the virtual machine where access token is available</param>
-        /// <returns>The next stage of the definition.</returns>
-        VirtualMachine.Definition.IWithRoleAndScopeOrCreate VirtualMachine.Definition.IWithManagedServiceIdentity.WithManagedServiceIdentity(int tokenPort)
+        /// <param name="tokenPort">The port on the virtual machine where access token is available.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity(int tokenPort)
         {
-            return this.WithManagedServiceIdentity(tokenPort) as VirtualMachine.Definition.IWithRoleAndScopeOrCreate;
+            return this.WithSystemAssignedManagedServiceIdentity(tokenPort) as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
         }
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the access described in the given role definition with 
-        /// scope of access limited to the ARM resource identified by the resource ID specified in the scope parameter.
+        /// Specifies that virtual machine's system assigned (local) identity should have the access
+        /// (described by the role definition) on an ARM resource identified by the resource ID.
+        /// Applications running on the virtual machine will have the same permission (role) on
+        /// the ARM resource.
         /// </summary>
-        /// <param name="scope">scope of the access represented in ARM resource ID format</param>
-        /// <param name="roleDefinitionId">access role definition to assigned to the virtual machine</param>
-        /// <returns>The next stage of the definition.</returns>
-        VirtualMachine.Definition.IWithRoleAndScopeOrCreate VirtualMachine.Definition.IWithRoleAndScopeOrCreate.WithRoleDefinitionBasedAccessTo(string scope, string roleDefinitionId)
+        /// <param name="resourceId">Scope of the access represented in ARM resource ID format.</param>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the virtual machine's local identity.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
-            return this.WithRoleDefinitionBasedAccessTo(scope, roleDefinitionId) as VirtualMachine.Definition.IWithRoleAndScopeOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId) as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
         }
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the given access role
-        /// with scope of access limited to the current resource group that the virtual machine
-        /// resides.
+        /// Specifies that virtual machine's system assigned (local) identity should have the given access
+        /// (described by the role) on the resource group that virtual machine resides. Applications running
+        /// on the virtual machine will have the same permission (role) on the resource group.
         /// </summary>
-        /// <param name="asRole">access role to assigned to the virtual machine</param>
-        /// <returns>the next stage of the definition</returns>
-        VirtualMachine.Definition.IWithRoleAndScopeOrCreate VirtualMachine.Definition.IWithRoleAndScopeOrCreate.WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole asRole)
+        /// <param name="role">Access role to assigned to the virtual machine's local identity.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            return this.WithRoleBasedAccessToCurrentResourceGroup(asRole) as VirtualMachine.Definition.IWithRoleAndScopeOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role) as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
         }
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the given access role
-        /// with scope of access limited to the ARM resource identified by the resource ID specified
-        /// in the scope parameter.
+        /// Specifies that virtual machine's system assigned (local) identity should have the given access
+        /// (described by the role) on an ARM resource identified by the resource ID. Applications running
+        /// on the virtual machine will have the same permission (role) on the ARM resource.
         /// </summary>
-        /// <param name="scope">scope of the access represented in ARM resource ID format</param>
-        /// <param name="asRole">access role to assigned to the virtual machine</param>
-        /// <returns>the next stage of the definition</returns>
-        VirtualMachine.Definition.IWithRoleAndScopeOrCreate VirtualMachine.Definition.IWithRoleAndScopeOrCreate.WithRoleBasedAccessTo(string scope, BuiltInRole asRole)
+        /// <param name="resourceId">The ARM identifier of the resource.</param>
+        /// <param name="role">Access role to assigned to the virtual machine's local identity.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
         {
-            return this.WithRoleBasedAccessTo(scope, asRole) as VirtualMachine.Definition.IWithRoleAndScopeOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role) as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
         }
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the access described
-        /// in the given role definition with scope of access limited to the current resource group that
-        /// the virtual machine resides.
+        /// Specifies that virtual machine's system assigned (local) identity should have the access (described by the
+        /// role definition) on the resource group that virtual machine resides. Applications running
+        /// on the virtual machine will have the same permission (role) on the resource group.
         /// </summary>
-        /// <param name="roleDefinitionId">access role definition to assigned to the virtual machine</param>
-        /// <returns>the next stage of the definition</returns>
-        VirtualMachine.Definition.IWithRoleAndScopeOrCreate VirtualMachine.Definition.IWithRoleAndScopeOrCreate.WithRoleDefinitionBasedAccessToCurrentResourceGroup(string roleDefinitionId)
+        /// <param name="roleDefinitionId">Access role definition to assigned to the virtual machine's local identity.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
-            return this.WithRoleDefinitionBasedAccessToCurrentResourceGroup(roleDefinitionId) as VirtualMachine.Definition.IWithRoleAndScopeOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId) as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
         }
 
         /// <summary>
-        /// Specifies that Managed Service Identity needs to be enabled in the virtual machine.
+        /// Specifies an existing user assigned identity to be associated with the virtual machine.
         /// </summary>
-        /// <returns>The next stage of the update.</returns>
-        VirtualMachine.Update.IWithRoleAndScopeOrUpdate VirtualMachine.Update.IWithManagedServiceIdentity.WithManagedServiceIdentity()
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the virtual machine definition.</return>
+        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithUserAssignedManagedServiceIdentity.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
         {
-            return this.WithManagedServiceIdentity() as VirtualMachine.Update.IWithRoleAndScopeOrUpdate;
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity) as VirtualMachine.Definition.IWithCreate;
         }
 
         /// <summary>
-        /// Specifies that Managed Service Identity needs to be enabled in the virtual machine.
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the virtual machine.
         /// </summary>
-        /// <param name="tokenPort">the port on the virtual machine where access token is available</param>
-        /// <returns>The next stage of the update.</returns>
-        VirtualMachine.Update.IWithRoleAndScopeOrUpdate VirtualMachine.Update.IWithManagedServiceIdentity.WithManagedServiceIdentity(int tokenPort)
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the virtual machine definition.</return>
+        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithUserAssignedManagedServiceIdentity.WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity)
         {
-            return this.WithManagedServiceIdentity(tokenPort) as VirtualMachine.Update.IWithRoleAndScopeOrUpdate;
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity) as VirtualMachine.Definition.IWithCreate;
         }
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the access described
-        /// in the given role definition with scope of access limited to the current resource group that
-        /// the virtual machine resides.
+        /// Specifies that System Assigned (Local) Managed Service Identity needs to be enabled in the virtual machine.
         /// </summary>
-        /// <param name="roleDefinitionId">access role definition to assigned to the virtual machine</param>
-        /// <returns>the next stage of the definition</returns>
-        VirtualMachine.Update.IWithRoleAndScopeOrUpdate VirtualMachine.Update.IWithRoleAndScopeOrUpdate.WithRoleDefinitionBasedAccessTo(string scope, string roleDefinitionId)
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithRoleDefinitionBasedAccessTo(scope, roleDefinitionId) as VirtualMachine.Update.IWithRoleAndScopeOrUpdate;
+            return this.WithSystemAssignedManagedServiceIdentity() as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
         }
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the given access role
-        /// with scope of access limited to the current resource group that the virtual machine
-        /// resides.
+        /// Specifies that System Assigned (Local) Managed Service Identity needs to be enabled in the virtual machine.
         /// </summary>
-        /// <param name="asRole">access role to assigned to the virtual machine</param>
-        /// <returns>the next stage of the update</returns>
-        VirtualMachine.Update.IWithRoleAndScopeOrUpdate VirtualMachine.Update.IWithRoleAndScopeOrUpdate.WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole asRole)
+        /// <param name="tokenPort">The port on the virtual machine where access token is available.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity(int tokenPort)
         {
-            return this.WithRoleBasedAccessToCurrentResourceGroup(asRole) as VirtualMachine.Update.IWithRoleAndScopeOrUpdate;
+            return this.WithSystemAssignedManagedServiceIdentity(tokenPort) as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
         }
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the given access role
-        /// with scope of access limited to the ARM resource identified by the resource ID specified
-        /// in the scope parameter.
+        /// Specifies that virtual machine's system assigned (local) identity should have the access
+        /// (described by the role definition) on an ARM resource identified by the resource ID.
+        /// Applications running on the virtual machine will have the same permission (role) on
+        /// the ARM resource.
         /// </summary>
-        /// <param name="scope">scope of the access represented in ARM resource ID format</param>
-        /// <param name="asRole">access role to assigned to the virtual machine</param>
-        /// <returns>the next stage of the update</returns>
-        VirtualMachine.Update.IWithRoleAndScopeOrUpdate VirtualMachine.Update.IWithRoleAndScopeOrUpdate.WithRoleBasedAccessTo(string scope, BuiltInRole asRole)
+        /// <param name="resourceId">Scope of the access represented in ARM resource ID format.</param>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the virtual machine's local identity.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
-            return this.WithRoleBasedAccessTo(scope, asRole) as VirtualMachine.Update.IWithRoleAndScopeOrUpdate;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId) as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
         }
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine requires the access described
-        /// in the given role definition with scope of access limited to the current resource group that
-        /// the virtual machine resides.
+        /// Specifies that virtual machine's system assigned (local) identity should have the given access
+        /// (described by the role) on the resource group that virtual machine resides. Applications running
+        /// on the virtual machine will have the same permission (role) on the resource group.
         /// </summary>
-        /// <param name="roleDefinitionId">access role definition to assigned to the virtual machine</param>
-        /// <returns>the next stage of the update</returns>
-        VirtualMachine.Update.IWithRoleAndScopeOrUpdate VirtualMachine.Update.IWithRoleAndScopeOrUpdate.WithRoleDefinitionBasedAccessToCurrentResourceGroup(string roleDefinitionId)
+        /// <param name="role">Access role to assigned to the virtual machine's local identity.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            return this.WithRoleDefinitionBasedAccessToCurrentResourceGroup(roleDefinitionId) as VirtualMachine.Update.IWithRoleAndScopeOrUpdate;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role) as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that virtual machine's system assigned (local) identity should have the access
+        /// (described by the role definition) on an ARM resource identified by the resource ID.
+        /// Applications running on the virtual machine will have the same permission (role) on
+        /// the ARM resource.
+        /// </summary>
+        /// <param name="resourceId">Scope of the access represented in ARM resource ID format.</param>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the virtual machine's local identity.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessTo(string scope, BuiltInRole asRole)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessTo(scope, asRole) as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that virtual machine's system assigned (local) identity should have the access (described by the
+        /// role definition) on the resource group that virtual machine resides. Applications running
+        /// on the virtual machine will have the same permission (role) on the resource group.
+        /// </summary>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the virtual machine's local identity.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId) as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
         }
         /// <summary>
         /// Specifies that boot diagnostics needs to be disabled in the virtual machine.
@@ -2097,6 +2134,36 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithBootDiagnostics.WithBootDiagnostics(IStorageAccount storageAccount)
         {
             return this.WithBootDiagnostics(storageAccount) as VirtualMachine.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity) as VirtualMachine.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies that an user assigned identity associated with the virtual machine should be removed.
+        /// </summary>
+        /// <param name="identityId">ARM resource id of the identity.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity.WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            return this.WithoutUserAssignedManagedServiceIdentity(identityId) as VirtualMachine.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the virtual machine update.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity.WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity)
+        {
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity) as VirtualMachine.Update.IUpdate;
         }
     }
 }

@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 using Microsoft.Azure.Management.Compute.Fluent.Models;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+using Microsoft.Azure.Management.Msi.Fluent;
 using Microsoft.Azure.Management.Network.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
@@ -35,8 +36,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.DefinitionManaged.IDefinitionManaged,
         VirtualMachine.DefinitionUnmanaged.IDefinitionUnmanaged,
         VirtualMachine.Update.IUpdate,
-        VirtualMachine.Definition.IWithRoleAndScopeOrCreate,
-        VirtualMachine.Update.IWithRoleAndScopeOrUpdate
+        VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate,
+        VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate
     {
         private readonly IStorageManager storageManager;
         private readonly INetworkManager networkManager;
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             InitializeExtensions();
             this.managedDataDisks = new ManagedDataDiskCollection(this);
             InitializeDataDisks();
-            this.virtualMachineMsiHelper = new VirtualMachineMsiHelper(rbacManager);
+            this.virtualMachineMsiHelper = new VirtualMachineMsiHelper(rbacManager, new IdProvider(this));
         }
 
         ///GENMHASH:4002186478A1CB0B59732EBFB18DEB3A:4C74CDEFBB89F8ADB720DB2B740C1AB3
@@ -1505,13 +1506,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return Fluent.PowerState.FromInstanceView(this.InstanceView());
         }
 
+        ///GENMHASH:54F48C4A15522D8E87E76E69BFD089CA:67C5008B7D86A1EA0300776CDD220599
+        public ISet<string> UserAssignedManagedServiceIdentityIds()
+        {
+            if (this.Inner.Identity != null && this.Inner.Identity.IdentityIds != null)
+            {
+                return new HashSet<string>(this.Inner.Identity.IdentityIds);
+            } else
+            {
+                return new HashSet<string>();
+            }
+        }
+
         ///GENMHASH:BC4103A90A606609FAB346997701A4DE:F96317098E1E2EA0D5CD8D759145745A
         public ResourceIdentityType? ManagedServiceIdentityType()
         {
-            if (this.Inner.Identity != null) {
-                return this.Inner.Identity.Type;
-            }
-            return null;
+            return VirtualMachineMsiHelper.ManagedServiceIdentityType(this.Inner);
         }
 
         ///GENMHASH:D8D324B42ED7B0976032110E0D5D3320:32345B0AB329E6E420804CD852C47627
@@ -1540,7 +1550,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:9019C44FB9C28F62603D9972D45A9522:04EA2CF2FF84B5C44179285E14BA0FF0
-        public string ManagedServiceIdentityPrincipalId()
+        public string SystemAssignedManagedServiceIdentityPrincipalId()
         {
             if (this.Inner.Identity != null)
             {
@@ -1552,12 +1562,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:9019C44FB9C28F62603D9972D45A9522:04EA2CF2FF84B5C44179285E14BA0FF0
         public bool IsManagedServiceIdentityEnabled()
         {
-            return this.ManagedServiceIdentityPrincipalId() != null
-                && this.ManagedServiceIdentityTenantId() != null;
+            ResourceIdentityType? type = this.ManagedServiceIdentityType();
+            if (type == null)
+            {
+                return false;
+            }
+            else
+            {
+                return !type.Value.Equals(ResourceIdentityType.None);
+            }
         }
 
         ///GENMHASH:D19E7D61822C4048249EC4B57FA6F59B:E55E888BE3583ADCF1863F5A9DC47299
-        public string ManagedServiceIdentityTenantId()
+        public string SystemAssignedManagedServiceIdentityTenantId()
         {
             if (this.Inner.Identity != null)
             {
@@ -1581,44 +1598,65 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:E059E91FE0CBE4B6875986D1B46994D2:AF3425B1B2ADC5865D8191FBE2FE4BBC
-        public VirtualMachineImpl WithManagedServiceIdentity()
+        public VirtualMachineImpl WithSystemAssignedManagedServiceIdentity()
         {
-            this.virtualMachineMsiHelper.WithManagedServiceIdentity(this.Inner);
+            this.virtualMachineMsiHelper.WithSystemAssignedManagedServiceIdentity(this.Inner);
             return this;
         }
 
         ///GENMHASH:D9244CA3B3398B7594B546247D593343:FE0DBB208E366B7AD2F00C67E391FED1
-        public VirtualMachineImpl WithManagedServiceIdentity(int tokenPort)
+        public VirtualMachineImpl WithSystemAssignedManagedServiceIdentity(int tokenPort)
         {
-            this.virtualMachineMsiHelper.WithManagedServiceIdentity(tokenPort, this.Inner);
+            this.virtualMachineMsiHelper.WithSystemAssignedManagedServiceIdentity(tokenPort, this.Inner);
             return this;
         }
 
         ///GENMHASH:DEF511724D2CC8CA91F24E084BC9AA22:72F0234D4EBEB820BB2E8EB0ED1665A6
-        public VirtualMachineImpl WithRoleDefinitionBasedAccessTo(string scope, string roleDefinitionId)
+        public VirtualMachineImpl WithSystemAssignedIdentityBasedAccessTo(string scope, string roleDefinitionId)
         {
-            this.virtualMachineMsiHelper.WithRoleDefinitionBasedAccessTo(scope, roleDefinitionId);
+            this.virtualMachineMsiHelper.WithAccessTo(scope, roleDefinitionId);
             return this;
         }
 
         ///GENMHASH:F6C5721A84FA825F62951BE51537DD36:8A9263C84F0D839E6FAFC22D8AA1C9C4
-        public VirtualMachineImpl WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole asRole)
+        public VirtualMachineImpl WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            this.virtualMachineMsiHelper.WithRoleBasedAccessToCurrentResourceGroup(asRole);
+            this.virtualMachineMsiHelper.WithAccessToCurrentResourceGroup(role);
             return this;
         }
 
         ///GENMHASH:5FD7E26022EAFDACD062A87DDA8FD39A:7E679ACDB7E20973F54635A194130E55
-        public VirtualMachineImpl WithRoleDefinitionBasedAccessToCurrentResourceGroup(string roleDefinitionId)
+        public VirtualMachineImpl WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
-            this.virtualMachineMsiHelper.WithRoleDefinitionBasedAccessToCurrentResourceGroup(roleDefinitionId);
+            this.virtualMachineMsiHelper.WithAccessToCurrentResourceGroup(roleDefinitionId);
             return this;
         }
 
         ///GENMHASH:EFFF7ECD982913DB369E1EF1644031CB:C9A5FE940311449954FA688A4B3D8333
-        public VirtualMachineImpl WithRoleBasedAccessTo(string scope, BuiltInRole asRole)
+        public VirtualMachineImpl WithSystemAssignedIdentityBasedAccessTo(string scope, BuiltInRole role)
         {
-            this.virtualMachineMsiHelper.WithRoleBasedAccessTo(scope, asRole);
+            this.virtualMachineMsiHelper.WithAccessTo(scope, role);
+            return this;
+        }
+
+        ///GENMHASH:8239AEDA70F925E7A1DCD8BDB2803956:6A2804975F58F97B4F610E2DE8E8AACA
+        public VirtualMachineImpl WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
+        {
+            this.virtualMachineMsiHelper.WithNewUserAssignedManagedServiceIdentity(this.Inner, this.CreatorTaskGroup, creatableIdentity);
+            return this;
+        }
+
+        ///GENMHASH:77198B23BCB8BA2F0DDF3A8A0E85805C:F68FE87A8E9ADCA783F40FB45364544F
+        public VirtualMachineImpl WithoutUserAssignedManagedServiceIdentity(string identityId)
+        {
+            this.virtualMachineMsiHelper.WithoutUserAssignedManagedServiceIdentity(identityId);
+            return this;
+        }
+
+        ///GENMHASH:6836D267A7B5AB07D80A2EFAF13B9F3E:8504B108F30E0AC9DC210A1D9CFA85F3
+        public VirtualMachineImpl WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
+        {
+            this.virtualMachineMsiHelper.WithExistingUserAssignedManagedServiceIdentity(this.Inner, identity);
             return this;
         }
 
@@ -1643,6 +1681,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             await HandleBootDiagnosticsStorageSettingsAsync(diskStorageAccount, cancellationToken);
             HandleNetworkSettings();
             HandleAvailabilitySettings();
+            this.virtualMachineMsiHelper.HandleUserAssignedIdentities(this.Inner, this.CreatorTaskGroup);
             var response = await Manager.Inner.VirtualMachines.CreateOrUpdateAsync(ResourceGroupName, vmName, Inner, cancellationToken);
             var extensionsCommited = await this.virtualMachineExtensions.CommitAndGetAllAsync(cancellationToken);
             if (extensionsCommited.Any())
@@ -1652,8 +1691,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 response = await Manager.Inner.VirtualMachines.GetAsync(ResourceGroupName, vmName, null, cancellationToken);
             }
             this.Reset(response);
-            MSIResourcesSetupResult msiResourceSetupResult = await virtualMachineMsiHelper.SetupVirtualMachineMSIResourcesAsync(this, cancellationToken);
-            if (msiResourceSetupResult.IsExtensionInstalledOrUpdated)
+            var isMsiExtensionInstalledOrUpdated = await virtualMachineMsiHelper.SetMSIExtensionIfRequiredAndHandleSystemAssignedMSIRoleAssignmentsAsync(this, cancellationToken);
+            if (isMsiExtensionInstalledOrUpdated)
             {
                 // Another get to fetch vm inner with extensions list reflecting MSI extension changes.
                 //
@@ -2555,6 +2594,46 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 this.ImplicitDisksToAssociate = new List<DataDisk>();
                 this.NewDisksFromImage = new List<DataDisk>();
                 this.DiskLunsToRemove = new List<int>();
+            }
+        }
+
+        internal class IdProvider : IIdProvider
+        {
+            private readonly VirtualMachineImpl vm;
+
+            internal IdProvider(VirtualMachineImpl vm)
+            {
+                this.vm = vm;
+            }
+
+            public string PrincipalId
+            {
+                get
+                {
+                    if (this.vm.Inner != null && this.vm.Inner.Identity != null)
+                    {
+                        return this.vm.Inner.Identity.PrincipalId;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+
+            public string ResourceId
+            {
+                get
+                {
+                    if (this.vm.Inner != null)
+                    {
+                        return this.vm.Inner.Id;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
             }
         }
     }

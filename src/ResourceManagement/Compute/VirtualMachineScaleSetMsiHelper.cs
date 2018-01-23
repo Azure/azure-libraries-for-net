@@ -2,283 +2,198 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
-    using System.Threading;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.Graph.RBAC.Fluent.Models;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.Msi.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.DAG;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
-    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Utility class to set Managed Service Identity (MSI) and MSI related resources for a virtual machine scale set.
     /// </summary>
-    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uVmlydHVhbE1hY2hpbmVTY2FsZVNldE1zaUhlbHBlcg==
-    public partial class VirtualMachineScaleSetMsiHelper  :
-        object
+    public partial class VirtualMachineScaleSetMsiHelper  : RoleAssignmentHelper
     {
-        private readonly string CURRENT_RESOURCE_GROUP_SCOPE = "CURRENT_RESOURCE_GROUP";
         private readonly int DEFAULT_TOKEN_PORT = 50342;
         private readonly string MSI_EXTENSION_PUBLISHER_NAME = "Microsoft.ManagedIdentity";
-        private readonly string LINUX_MSI_EXTENSION = "ManagedIdentityExtensionForLinux";
-        private readonly string WINDOWS_MSI_EXTENSION = "ManagedIdentityExtensionForWindows";
-        private IGraphRbacManager rbacManager;
         private int? tokenPort;
-        private bool requireSetup;
-        private IDictionary<string, System.Tuple<string, BuiltInRole>> rolesToAssign;
-        private IDictionary<string, System.Tuple<string, string>> roleDefinitionsToAssign;
-
-        /// <summary>
-        /// Creates RBAC role assignments for the virtual machine scale set MSI service principal.
-        /// </summary>
-        /// <param name="scaleSet">The virtual machine scale set.</param>
-        /// <return>An observable that emits the created role assignments.</return>
-        ///GENMHASH:2E7E577AEA0C43B5B8D7B57BEFEF1E29:DDAE54B3372466B701A29E3B6A6362B2
-        internal async Task<List<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment>> CreateMSIRbacRoleAssignmentsAsync(IVirtualMachineScaleSet scaleSet, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (!requireSetup)
-            {
-                return new List<IRoleAssignment>();
-            }
-            else if (!scaleSet.IsManagedServiceIdentityEnabled)
-            {
-                return new List<IRoleAssignment>();
-            }
-            else if (!this.rolesToAssign.Any() && !this.roleDefinitionsToAssign.Any())
-            {
-                return new List<IRoleAssignment>();
-            }
-
-            try
-            {
-                var servicePrincipal = await rbacManager
-                    .ServicePrincipals
-                    .GetByIdAsync(scaleSet.Inner.Identity.PrincipalId, cancellationToken);
-
-                await ResolveCurrentResourceGroupScopeAsync(scaleSet);
-
-                List<IRoleAssignment> roleAssignments = new List<IRoleAssignment>();
-                var roleAssignments1 = await Task.WhenAll(rolesToAssign.Values.Select(async (scopeAndRole) =>
-                {
-                    BuiltInRole role = scopeAndRole.Item2;
-                    string scope = scopeAndRole.Item1;
-                    return await CreateRbacRoleAssignmentIfNotExistsAsync(servicePrincipal, role.ToString(), scope, true, cancellationToken);
-                }));
-                roleAssignments.AddRange(roleAssignments1);
-
-                var roleAssignments2 = await Task.WhenAll(roleDefinitionsToAssign.Values.Select(async (scopeAndRole) =>
-                {
-                    string roleDefinition = scopeAndRole.Item2;
-                    string scope = scopeAndRole.Item1;
-                    return await CreateRbacRoleAssignmentIfNotExistsAsync(servicePrincipal, roleDefinition, scope, false, cancellationToken);
-                }));
-                roleAssignments.AddRange(roleAssignments2);
-
-                return roleAssignments.FindAll(roleAssignment => roleAssignment != null);
-            }
-            finally
-            {
-                Clear();
-            }
-        }
+        private bool installExtensionIfNotInstalled;
+        private ISet<string> userAssignedIdentityCreatableKeys;
+        private ISet<string> userAssignedIdentityIdsToAssociate;
+        private ISet<string> userAssignedIdentityIdsToRemove;
 
         /// <summary>
         /// Creates VirtualMachineScaleSetMsiHelper.
         /// </summary>
         /// <param name="rbacManager">The graph rbac manager.</param>
-        ///GENMHASH:0BDA99FBDDE9E5E56C04FBD8624B1659:3E04D74F93A4BF712A2E5D50102895B8
-        internal  VirtualMachineScaleSetMsiHelper(IGraphRbacManager rbacManager)
+        /// <param name="idProvider">Provider that exposes MSI service principal id and resource id.</param>
+        internal VirtualMachineScaleSetMsiHelper(IGraphRbacManager rbacManager, IIdProvider idProvider) : base(rbacManager, idProvider)
         {
-            this.rbacManager = rbacManager;
-            this.rolesToAssign = new Dictionary<string, Tuple<string, BuiltInRole>>();
-            this.roleDefinitionsToAssign = new Dictionary<string, Tuple<string, string>>();
-            Clear();
+            this.userAssignedIdentityCreatableKeys = new HashSet<string>();
+            this.userAssignedIdentityIdsToAssociate = new HashSet<string>();
+            this.userAssignedIdentityIdsToRemove = new HashSet<string>();
         }
 
         /// <summary>
-        /// If any of the scope in  this.rolesToAssign is marked with CURRENT_RESOURCE_GROUP_SCOPE placeholder then
-        /// resolve it and replace the placeholder with actual resource group scope (id).
+        /// Gets the MSI identity type.
         /// </summary>
-        /// <param name="scaleSet">The virtual machine scale set.</param>
-        /// <return>An observable that emits true once if there was a scope to resolve, otherwise emits false once.</return>
-        ///GENMHASH:1830FCA3FFF54663B3A5702EF2F5721B:F61A8EF35EDD42D392559C585A71073F
-        private async Task<bool> ResolveCurrentResourceGroupScopeAsync(IVirtualMachineScaleSet scaleSet, CancellationToken cancellationToken = default(CancellationToken))
+        /// <param name="inner">the virtual machine scale set inner</param>
+        /// <returns>the MSI identity type</returns>
+        internal static ResourceIdentityType? ManagedServiceIdentityType(VirtualMachineScaleSetInner inner)
         {
-            IEnumerable<string> keysWithCurrentResourceGroupScopeForRoles = this.rolesToAssign
-                .Where(role => role.Value.Item1.Equals(CURRENT_RESOURCE_GROUP_SCOPE, System.StringComparison.OrdinalIgnoreCase))
-                .Select(role => role.Key)
-                .ToList();  // ToList() is required as we are going to modify the same source collection below
-
-            IEnumerable<string> keysWithCurrentResourceGroupScopeForRoleDefinitions = this.roleDefinitionsToAssign
-                .Where(role => role.Value.Item1.Equals(CURRENT_RESOURCE_GROUP_SCOPE, System.StringComparison.OrdinalIgnoreCase))
-                .Select(role => role.Key)
-                .ToList();
-
-            if (!keysWithCurrentResourceGroupScopeForRoles.Any()
-                && !keysWithCurrentResourceGroupScopeForRoleDefinitions.Any())
+            if (inner.Identity != null)
             {
-                return false;
+                return ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(inner.Identity.Type);
             }
-
-            var resourceGroup = await scaleSet.Manager.ResourceManager
-                .ResourceGroups
-                .GetByNameAsync(scaleSet.ResourceGroupName, cancellationToken);
-
-            foreach (string key in keysWithCurrentResourceGroupScopeForRoles)
-            {
-                rolesToAssign[key] = new System.Tuple<string, BuiltInRole>(resourceGroup.Id, rolesToAssign[key].Item2);
-            }
-
-            foreach (string key in keysWithCurrentResourceGroupScopeForRoleDefinitions)
-            {
-                roleDefinitionsToAssign[key] = new System.Tuple<string, string>(resourceGroup.Id, roleDefinitionsToAssign[key].Item2);
-            }
-            return true;
+            return null;
         }
 
         /// <summary>
-        /// Specifies that Managed Service Identity property needs to be set in the virtual machine scale set.
-        /// If MSI extension is already installed then the access token will be available in the virtual machine
-        /// scale set instance at port specified in the extension public setting, otherwise the port for
-        /// new extension will be 50342.
+        /// Specifies that System Assigned Managed Service Identity needs to be enabled in the virtual machine scale set.
         /// </summary>
-        /// <param name="scaleSetInner">The virtual machine scale set to set the identity.</param>
+        /// <param name="scaleSetInner">The virtual machine scale set to enable System Assigned MSI.</param>
         /// <return>VirtualMachineScaleSetMsiHelper.</return>
-        ///GENMHASH:1D02816AA567687856A358E81DB99773:E64D1862840D63C171CB834051EF21E8
-        internal VirtualMachineScaleSetMsiHelper WithManagedServiceIdentity(VirtualMachineScaleSetInner scaleSetInner)
+        internal VirtualMachineScaleSetMsiHelper WithSystemAssignedManagedServiceIdentity(VirtualMachineScaleSetInner scaleSetInner)
         {
-            return WithManagedServiceIdentity(null, scaleSetInner);
+            return WithSystemAssignedManagedServiceIdentity(null, scaleSetInner);
         }
 
         /// <summary>
-        /// Specifies that Managed Service Identity property needs to be set in the virtual machine scale set.
-        /// The access token will be available in the virtual machine at given port.
+        /// Specifies that System Assigned Managed Service Identity needs to be enabled in the virtual machine scale set.
         /// </summary>
         /// <param name="port">The port in the virtual machine scale set instance to get the access token from.</param>
-        /// <param name="scaleSetInner">The virtual machine scale set to set the identity.</param>
+        /// <param name="vmssInner">The virtual machine scale set to enable System Assigned MSI.</param>
         /// <return>VirtualMachineScaleSetMsiHelper.</return>
-        ///GENMHASH:5241398EC0DF56AB83CB75D6856D17A8:B16DB3B1494A86E6266A914618A6D036
-        internal VirtualMachineScaleSetMsiHelper WithManagedServiceIdentity(int? port, VirtualMachineScaleSetInner scaleSetInner)
+        internal VirtualMachineScaleSetMsiHelper WithSystemAssignedManagedServiceIdentity(int? port, VirtualMachineScaleSetInner vmssInner)
         {
-            this.requireSetup = true;
+            this.installExtensionIfNotInstalled = true;
             this.tokenPort = port;
-            if (scaleSetInner.Identity == null) {
-                scaleSetInner.Identity = new VirtualMachineScaleSetIdentity();
-            }
-            if (scaleSetInner.Identity.Type == null) {
-                scaleSetInner.Identity.Type = ResourceIdentityType.SystemAssigned;
-            }
+            InitVMIdentity(vmssInner, ResourceIdentityType.SystemAssigned);
             return this;
         }
 
         /// <summary>
-        /// Given the OS type, gets the Managed Service Identity extension type.
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the VMSS.
         /// </summary>
-        /// <param name="osType">The os type.</param>
-        /// <return>The extension type.</return>
-        ///GENMHASH:347A8526F0F1F396CA3E182F37C2C503:276F60357BD496C24A92D647654BF343
-        private string MsiExtensionType(OperatingSystemTypes osType)
+        /// <param name="vmssInner">The VMSS to set the identity.</param>
+        /// <param name="vmTaskGroup">the task group of the virtual machine</param>
+        /// <param name="creatableIdentity">the creatable user assigned identity</param>
+        /// <returns>VirtualMachineScaleSetMsiHelper.</returns>
+        internal VirtualMachineScaleSetMsiHelper WithNewUserAssignedManagedServiceIdentity(VirtualMachineScaleSetInner vmssInner, CreatorTaskGroup<IHasId> vmTaskGroup, ICreatable<IIdentity> creatableIdentity)
         {
-            return osType == OperatingSystemTypes.Linux ? LINUX_MSI_EXTENSION : WINDOWS_MSI_EXTENSION;
-        }
-
-        /// <summary>
-        /// Clear internal properties.
-        /// </summary>
-        ///GENMHASH:BDEEEC08EF65465346251F0F99D16258:4E2732AAF7CB45D14823B96A3FD27379
-        private void Clear()
-        {
-            this.requireSetup = false;
-            this.tokenPort = null;
-            this.rolesToAssign.Clear();
-            this.roleDefinitionsToAssign.Clear();
-
-        }
-
-        /// <summary>
-        /// Specifies that applications running on the virtual machine scale set instance requires the
-        /// given access role with scope of access limited to the arm resource identified by the resource
-        /// id specified in the scope parameter.
-        /// </summary>
-        /// <param name="scope">Scope of the access represented in arm resource id format.</param>
-        /// <param name="asRole">Access role to assigned to the virtual machine scale set.</param>
-        /// <return>VirtualMachineScaleSetMsiHelper.</return>
-        ///GENMHASH:EFFF7ECD982913DB369E1EF1644031CB:9F5B63517E99FAB38D9622B261E856C1
-        internal VirtualMachineScaleSetMsiHelper WithRoleBasedAccessTo(string scope, BuiltInRole asRole)
-        {
-            this.requireSetup = true;
-            string key = scope.ToLower() + "_" + asRole.ToString().ToLower();
-            if (!this.rolesToAssign.ContainsKey(key))
+            if (!this.userAssignedIdentityCreatableKeys.Contains(creatableIdentity.Key))
             {
-                this.rolesToAssign.Add(key, new System.Tuple<string, BuiltInRole>(scope, asRole));
+                this.installExtensionIfNotInstalled = true;
+                InitVMIdentity(vmssInner, ResourceIdentityType.UserAssigned);
+                this.userAssignedIdentityCreatableKeys.Add(creatableIdentity.Key);
+                ((creatableIdentity as IResourceCreator<IHasId>).CreatorTaskGroup).Merge(vmTaskGroup);
             }
             return this;
         }
 
         /// <summary>
-        /// Gets the Managed Service Identity extension from the given extensions.
+        /// Specifies an existing user assigned identity to be associated with the VMSS.
         /// </summary>
-        /// <param name="extensions">The extensions.</param>
-        /// <param name="typeName">The extension type.</param>
-        /// <return>The MSI extension if exists, null otherwise.</return>
-        ///GENMHASH:4FEDAFC9FF189A3AE2D0023895BD9967:94C04C6B7F4FB16948D8C34B232E7692
-        private IVirtualMachineScaleSetExtension GetMSIExtension(IReadOnlyDictionary<string,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetExtension> extensions, string typeName)
+        /// <param name="identity">an existing user assigned identity</param>
+        /// <returns>VirtualMachineScaleSetMsiHelper.</returns>
+        internal VirtualMachineScaleSetMsiHelper WithExistingUserAssignedManagedServiceIdentity(VirtualMachineScaleSetInner vmssInner, IIdentity identity)
         {
-            return extensions.Values.FirstOrDefault(extension => 
-                extension.PublisherName.Equals(MSI_EXTENSION_PUBLISHER_NAME, System.StringComparison.OrdinalIgnoreCase) && extension.TypeName.Equals(typeName, System.StringComparison.OrdinalIgnoreCase));
-        }
-
-        /// <summary>
-        /// Specifies that applications running on the virtual machine scale set instance requires
-        /// the access described in the given role definition with scope of access limited to the
-        /// arm resource identified by the resource id specified in the scope parameter.
-        /// </summary>
-        /// <param name="scope">Scope of the access represented in arm resource id format.</param>
-        /// <param name="roleDefinition">Access role definition to assigned to the virtual machine scale set.</param>
-        /// <return>VirtualMachineMsiHelper.</return>
-        ///GENMHASH:DEF511724D2CC8CA91F24E084BC9AA22:988B0602BFE7029EF703F401D29118A0
-        internal VirtualMachineScaleSetMsiHelper WithRoleDefinitionBasedAccessTo(string scope, string roleDefinition)
-        {
-            this.requireSetup = true;
-            string key = scope.ToLower() + "_" + roleDefinition.ToLower();
-            if (!this.roleDefinitionsToAssign.ContainsKey(key))
+            if (!this.userAssignedIdentityIdsToAssociate.Contains(identity.Id))
             {
-                this.roleDefinitionsToAssign.Add(key, new System.Tuple<string, string>(scope, roleDefinition));
+                this.installExtensionIfNotInstalled = true;
+                InitVMIdentity(vmssInner, ResourceIdentityType.UserAssigned);
+                this.userAssignedIdentityIdsToAssociate.Add(identity.Id);
             }
             return this;
         }
 
         /// <summary>
-        /// Specifies that applications running on the virtual machine scale set instance requires
-        /// the given access role with scope of access limited to the current resource group that
-        /// the virtual machine resides.
+        /// Specifies that an user assigned identity associated with the VMSS should be removed.
         /// </summary>
-        /// <param name="asRole">Access role to assigned to the virtual machine.</param>
+        /// <param name="identityId">ARM resource id of the identity.</param>
         /// <return>VirtualMachineScaleSetMsiHelper.</return>
-        ///GENMHASH:F6C5721A84FA825F62951BE51537DD36:3B28EC7DC783C825B70ABCF4EB8FC542
-        internal VirtualMachineScaleSetMsiHelper WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole asRole)
+        internal VirtualMachineScaleSetMsiHelper WithoutUserAssignedManagedServiceIdentity(string identityId)
         {
-            return this.WithRoleBasedAccessTo(CURRENT_RESOURCE_GROUP_SCOPE, asRole);
+            if (!this.userAssignedIdentityIdsToRemove.Contains(identityId))
+            {
+                this.userAssignedIdentityIdsToRemove.Add(identityId);
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Set user assigned identity ids to the given VMSS inner model
+        /// </summary>
+        /// <param name="vmssInner">the VMSS inner model</param>
+        /// <param name="vmTaskGroup">the VMSS task group</param>
+        internal void HandleUserAssignedIdentities(VirtualMachineScaleSetInner vmssInner, CreatorTaskGroup<IHasId> vmTaskGroup)
+        {
+            try
+            {
+                if (vmssInner.Identity == null || vmssInner.Identity.Type == null)
+                {
+                    return;
+                }
+                var parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(vmssInner.Identity.Type);
+                if (parsedIdentityType.Equals(ResourceIdentityType.None)
+                    || parsedIdentityType.Equals(ResourceIdentityType.SystemAssigned))
+                {
+                    return;
+                }
+                foreach (var key in this.userAssignedIdentityCreatableKeys)
+                {
+                    var identity = (IIdentity)vmTaskGroup.CreatedResource(key);
+                    if (!this.userAssignedIdentityIdsToAssociate.Contains(identity.Id))
+                    {
+                        this.userAssignedIdentityIdsToAssociate.Add(identity.Id);
+                    }
+                }
+                if (vmssInner.Identity.IdentityIds == null)
+                {
+                    vmssInner.Identity.IdentityIds = new List<string>();
+                }
+                foreach (var identityId in this.userAssignedIdentityIdsToAssociate)
+                {
+                    if (!vmssInner.Identity.IdentityIds.Contains(identityId))
+                    {
+                        vmssInner.Identity.IdentityIds.Add(identityId);
+                    }
+                }
+                foreach (var identityId in this.userAssignedIdentityIdsToRemove)
+                {
+                    if (vmssInner.Identity.IdentityIds.Contains(identityId))
+                    {
+                        vmssInner.Identity.IdentityIds.Remove(identityId);
+                    }
+                }
+            }
+            finally
+            {
+                this.userAssignedIdentityCreatableKeys.Clear();
+                this.userAssignedIdentityIdsToAssociate.Clear();
+                this.userAssignedIdentityIdsToRemove.Clear();
+            }
+
         }
 
         /// <summary>
         /// Add or update the Managed Service Identity extension for the given virtual machine scale set.
         /// </summary>
         /// <param name="scaleSetImpl">The scale set.</param>
-        ///GENMHASH:997210D729E5BF9AFDCB591B758BDA05:D5712C2936A1D66C353AD2D485B40474
         internal void AddOrUpdateMSIExtension(VirtualMachineScaleSetImpl scaleSetImpl)
         {
-            if (!requireSetup) {
+            if (!this.installExtensionIfNotInstalled) {
                 return;
             }
+
             // To add or update MSI extension, we relay on methods exposed from interfaces instead of from
             // impl so that any breaking change in the contract cause a compile time error here. So do not
             // change the below 'updateExtension' or 'defineNewExtension' to use impls.
             //
-            String msiExtensionType = MsiExtensionType(scaleSetImpl.OSTypeIntern());
+            String msiExtensionType = scaleSetImpl.OSTypeIntern() == OperatingSystemTypes.Linux? "ManagedIdentityExtensionForLinux" : "ManagedIdentityExtensionForWindows";
             IVirtualMachineScaleSetExtension msiExtension = GetMSIExtension(scaleSetImpl.Extensions(), msiExtensionType);
             if (msiExtension != null)
             {
@@ -339,66 +254,54 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         .Attach();
                 }
             }
+
+            this.installExtensionIfNotInstalled = false;
+            this.tokenPort = null;
         }
 
         /// <summary>
-        /// Creates a RBAC role assignment (using role or role definition) for the given service principal.
+        /// Gets the Managed Service Identity extension from the given extensions.
         /// </summary>
-        /// <param name="servicePrincipal">The service principal.</param>
-        /// <param name="roleOrRoleDefinition">The role or role definition.</param>
-        /// <param name="scope">The scope for the role assignment.</param>
-        /// <return>An observable that emits the role assignment if it is created, null if assignment already exists.</return>
-        ///GENMHASH:85AA7846D5642A1F7125332B46A901BE:A2437532CFAD0C7032A34C1FD573957E
-        private async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment> CreateRbacRoleAssignmentIfNotExistsAsync(IServicePrincipal servicePrincipal, string roleOrRoleDefinition, string scope, bool isRole, CancellationToken cancellationToken = default(CancellationToken))
+        /// <param name="extensions">The extensions.</param>
+        /// <param name="typeName">The extension type.</param>
+        /// <return>The MSI extension if exists, null otherwise.</return>
+        private IVirtualMachineScaleSetExtension GetMSIExtension(IReadOnlyDictionary<string, IVirtualMachineScaleSetExtension> extensions, string typeName)
         {
-            string roleAssignmentName = SdkContext.RandomGuid();
-            try
-            {
-                if (isRole)
-                {
-                    return await rbacManager
-                        .RoleAssignments
-                        .Define(roleAssignmentName)
-                        .ForServicePrincipal(servicePrincipal)
-                        .WithBuiltInRole(BuiltInRole.Parse(roleOrRoleDefinition))
-                        .WithScope(scope)
-                        .CreateAsync(cancellationToken);
-                }
-                else
-                {
-                    return await rbacManager
-                        .RoleAssignments
-                        .Define(roleAssignmentName)
-                        .ForServicePrincipal(servicePrincipal)
-                        .WithRoleDefinition(roleOrRoleDefinition)
-                        .WithScope(scope)
-                        .CreateAsync(cancellationToken);
-                }
-            }
-            catch (CloudException cloudException)
-            {
-                if (cloudException.Body != null && cloudException.Body.Code != null && cloudException.Body.Code.Equals("RoleAssignmentExists", StringComparison.OrdinalIgnoreCase))
-                {
-                    // NOTE: We are unable to lookup the role assignment from principal.RoleAssignments() list
-                    // because role assignment object does not contain 'role' name (the roleDefinitionId refer
-                    // 'role' using id with GUID).
-                    return null;
-                }
-                throw cloudException;
-            }
+            return extensions.Values.FirstOrDefault(extension =>
+                extension.PublisherName.Equals(MSI_EXTENSION_PUBLISHER_NAME, System.StringComparison.OrdinalIgnoreCase) && extension.TypeName.Equals(typeName, System.StringComparison.OrdinalIgnoreCase));
         }
 
-        /// <summary>
-        /// Specifies that applications running on the virtual machine scale set instance requires
-        /// the access described in the given role definition with scope of access limited to the
-        /// current resource group that the virtual machine resides.
-        /// </summary>
-        /// <param name="roleDefintionId">The role definition to assigned to the virtual machine.</param>
-        /// <return>VirtualMachineScaleSetMsiHelper.</return>
-        ///GENMHASH:5FD7E26022EAFDACD062A87DDA8FD39A:87F0A1C8FDB24F2D4D644CFD5D02802D
-        internal VirtualMachineScaleSetMsiHelper WithRoleDefinitionBasedAccessToCurrentResourceGroup(string roleDefintionId)
+        private static void InitVMIdentity(VirtualMachineScaleSetInner vmssInner, ResourceIdentityType identityType)
         {
-            return this.WithRoleDefinitionBasedAccessTo(CURRENT_RESOURCE_GROUP_SCOPE, roleDefintionId);
+            if (!identityType.Equals(ResourceIdentityType.UserAssigned)
+                    && !identityType.Equals(ResourceIdentityType.SystemAssigned))
+            {
+                throw new ArgumentException("Invalid argument: " + identityType);
+            }
+            if (vmssInner.Identity == null)
+            {
+                vmssInner.Identity = new VirtualMachineScaleSetIdentity();
+            }
+
+            ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(vmssInner.Identity.Type);
+            if (parsedIdentityType == null
+                    || parsedIdentityType.Equals(ResourceIdentityType.None)
+                    || parsedIdentityType.Equals(identityType))
+            {
+                vmssInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(identityType);
+            }
+            else
+            {
+                vmssInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssignedUserAssigned);
+            }
+            if (vmssInner.Identity.IdentityIds == null)
+            {
+                if (identityType.Equals(ResourceIdentityType.UserAssigned)
+                        || identityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned))
+                {
+                    vmssInner.Identity.IdentityIds = new List<string>();
+                }
+            }
         }
     }
 }

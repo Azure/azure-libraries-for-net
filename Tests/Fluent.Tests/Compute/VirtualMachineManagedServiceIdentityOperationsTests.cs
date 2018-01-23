@@ -12,8 +12,6 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Fluent.Tests.Compute.VirtualMachine
@@ -47,14 +45,14 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRootPassword("abc!@#F0orL")
                             .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
-                            .WithManagedServiceIdentity()
+                            .WithSystemAssignedManagedServiceIdentity()
                             .Create();
 
                     Assert.NotNull(virtualMachine);
                     Assert.NotNull(virtualMachine.Inner);
                     Assert.True(virtualMachine.IsManagedServiceIdentityEnabled);
-                    Assert.NotNull(virtualMachine.ManagedServiceIdentityPrincipalId);
-                    Assert.NotNull(virtualMachine.ManagedServiceIdentityTenantId);
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
 
                     // Ensure the MSI extension is set
                     //
@@ -93,7 +91,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     bool found = false;
                     foreach (var roleAssignment in rgRoleAssignments1)
                     {
-                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.ManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
+                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
                         {
                             found = true;
                             break;
@@ -102,14 +100,14 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.False(found, "Resource group should not have a role assignment with virtual machine MSI principal");
 
                     virtualMachine = virtualMachine.Update()
-                        .WithManagedServiceIdentity(50343)
+                        .WithSystemAssignedManagedServiceIdentity(50343)
                         .Apply();
 
                     Assert.NotNull(virtualMachine);
                     Assert.NotNull(virtualMachine.Inner);
                     Assert.True(virtualMachine.IsManagedServiceIdentityEnabled);
-                    Assert.NotNull(virtualMachine.ManagedServiceIdentityPrincipalId);
-                    Assert.NotNull(virtualMachine.ManagedServiceIdentityTenantId);
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
 
                     extensions = virtualMachine.ListExtensions();
                     msiExtension = null;
@@ -140,7 +138,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     found = false;
                     foreach (var roleAssignment in rgRoleAssignments1)
                     {
-                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.ManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
+                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
                         {
                             found = true;
                             break;
@@ -188,15 +186,15 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithRootPassword("abc!@#F0orL")
                         .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
                         .WithOSDiskCaching(CachingTypes.ReadWrite)
-                        .WithManagedServiceIdentity()
-                        .WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
+                        .WithSystemAssignedManagedServiceIdentity()
+                        .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
                         .Create();
 
                     Assert.NotNull(virtualMachine);
                     Assert.NotNull(virtualMachine.Inner);
                     Assert.True(virtualMachine.IsManagedServiceIdentityEnabled);
-                    Assert.NotNull(virtualMachine.ManagedServiceIdentityPrincipalId);
-                    Assert.NotNull(virtualMachine.ManagedServiceIdentityTenantId);
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
 
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
@@ -204,7 +202,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     //
                     IServicePrincipal servicePrincipal = authenticatedClient
                             .ServicePrincipals
-                            .GetById(virtualMachine.ManagedServiceIdentityPrincipalId);
+                            .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
 
                     Assert.NotNull(servicePrincipal);
                     Assert.NotNull(servicePrincipal.Inner);
@@ -231,7 +229,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     bool found = false;
                     foreach (var roleAssignment in roleAssignments)
                     {
-                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.ManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
+                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
                         {
                             found = true;
                             break;
@@ -288,9 +286,9 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithRootPassword("abc!@#F0orL")
                             .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
                             .WithOSDiskCaching(CachingTypes.ReadWrite)
-                            .WithManagedServiceIdentity()
-                            .WithRoleBasedAccessTo(resourceGroup.Id, BuiltInRole.Contributor)
-                            .WithRoleBasedAccessTo(storageAccount.Id, BuiltInRole.Contributor)
+                            .WithSystemAssignedManagedServiceIdentity()
+                            .WithSystemAssignedIdentityBasedAccessTo(resourceGroup.Id, BuiltInRole.Contributor)
+                            .WithSystemAssignedIdentityBasedAccessTo(storageAccount.Id, BuiltInRole.Contributor)
                             .Create();
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
@@ -298,7 +296,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     //
                     IServicePrincipal servicePrincipal = authenticatedClient
                             .ServicePrincipals
-                            .GetById(virtualMachine.ManagedServiceIdentityPrincipalId);
+                            .GetById(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
 
                     Assert.NotNull(servicePrincipal);
                     Assert.NotNull(servicePrincipal.Inner);
@@ -327,7 +325,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     bool found = false;
                     foreach (var roleAssignment in rgRoleAssignments)
                     {
-                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.ManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
+                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
                         {
                             found = true;
                             break;
@@ -342,7 +340,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     found = false;
                     foreach (var roleAssignment in stgRoleAssignments)
                     {
-                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.ManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
+                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
                         {
                             found = true;
                             break;
@@ -389,14 +387,14 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithRootPassword("abc!@#F0orL")
                         .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
                         .WithOSDiskCaching(CachingTypes.ReadWrite)
-                        .WithManagedServiceIdentity()
+                        .WithSystemAssignedManagedServiceIdentity()
                         .Create();
 
                     Assert.NotNull(virtualMachine);
                     Assert.NotNull(virtualMachine.Inner);
                     Assert.True(virtualMachine.IsManagedServiceIdentityEnabled);
-                    Assert.NotNull(virtualMachine.ManagedServiceIdentityPrincipalId);
-                    Assert.NotNull(virtualMachine.ManagedServiceIdentityTenantId);
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
 
                     // Ensure the MSI extension is set
                     //
@@ -422,7 +420,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     bool found = false;
                     foreach (var roleAssignment in rgRoleAssignments1)
                     {
-                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.ManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
+                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
                         {
                             found = true;
                             break;
@@ -431,8 +429,8 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.False(found, "Resource group should not have a role assignment with virtual machine MSI principal");
 
                     virtualMachine.Update()
-                            .WithManagedServiceIdentity()
-                            .WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
+                            .WithSystemAssignedManagedServiceIdentity()
+                            .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
                             .Apply();
 
                     // Ensure role assigned for resource group
@@ -441,7 +439,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.NotNull(roleAssignments2);
                     foreach (var roleAssignment in roleAssignments2)
                     {
-                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.ManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
+                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
                         {
                             found = true;
                             break;
@@ -452,8 +450,8 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     // Try adding the same role again, implementation should handle 'RoleAlreadyExists' error code and resume
                     //
                     virtualMachine.Update()
-                        .WithManagedServiceIdentity()
-                        .WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
+                        .WithSystemAssignedManagedServiceIdentity()
+                        .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
                         .Apply();
                 }
                 finally

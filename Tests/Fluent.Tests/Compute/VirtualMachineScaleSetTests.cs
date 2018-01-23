@@ -632,14 +632,14 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
                         .WithRootPassword("123OData!@#123")
-                        .WithManagedServiceIdentity()
+                        .WithSystemAssignedManagedServiceIdentity()
                         .Create();
 
                     var authenticatedClient = TestHelper.CreateAuthenticatedClient();
                     //
                     IServicePrincipal servicePrincipal = authenticatedClient
                             .ServicePrincipals
-                            .GetById(virtualMachineScaleSet.ManagedServiceIdentityPrincipalId);
+                            .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
 
                     Assert.NotNull(servicePrincipal);
                     Assert.NotNull(servicePrincipal.Inner);
@@ -666,7 +666,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     bool found = false;
                     foreach (var roleAssignment in rgRoleAssignments)
                     {
-                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachineScaleSet.ManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
+                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
                         {
                             found = true;
                             break;
@@ -743,9 +743,9 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
                         .WithRootUsername("jvuser")
                         .WithRootPassword("123OData!@#123")
-                        .WithManagedServiceIdentity()
-                        .WithRoleBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
-                        .WithRoleBasedAccessTo(storageAccount.Id, BuiltInRole.Contributor)
+                        .WithSystemAssignedManagedServiceIdentity()
+                        .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
+                        .WithSystemAssignedIdentityBasedAccessTo(storageAccount.Id, BuiltInRole.Contributor)
                         .Create();
 
                     Assert.NotNull(virtualMachineScaleSet.ManagedServiceIdentityType);
@@ -755,7 +755,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     //
                     IServicePrincipal servicePrincipal = authenticatedClient
                             .ServicePrincipals
-                            .GetById(virtualMachineScaleSet.ManagedServiceIdentityPrincipalId);
+                            .GetById(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId);
 
                     Assert.NotNull(servicePrincipal);
                     Assert.NotNull(servicePrincipal.Inner);
@@ -782,7 +782,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     bool found = false;
                     foreach (var roleAssignment in rgRoleAssignments)
                     {
-                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachineScaleSet.ManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
+                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
                         {
                             found = true;
                             break;
@@ -797,7 +797,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     found = false;
                     foreach (var roleAssignment in stgRoleAssignments)
                     {
-                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachineScaleSet.ManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
+                        if (roleAssignment.PrincipalId != null && roleAssignment.PrincipalId.Equals(virtualMachineScaleSet.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase))
                         {
                             found = true;
                             break;
