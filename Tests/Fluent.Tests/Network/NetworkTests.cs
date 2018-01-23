@@ -230,6 +230,96 @@ namespace Fluent.Tests.Network
             }
         }
 
+        [Fact]
+        public void CreateUpdateSubnetServiceAccess()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var testId = TestUtilities.GenerateName("");
+                string nwName = "net" + testId;
+                var region = Region.USWest;
+                var groupName = "rg" + testId;
+
+                var manager = TestHelper.CreateNetworkManager();
+
+                // Create a network
+                INetwork network = manager.Networks.Define(nwName)
+                        .WithRegion(region)
+                        .WithNewResourceGroup(groupName)
+                        .WithAddressSpace("10.0.0.0/28")
+                        .WithSubnet("subnetA", "10.0.0.0/29")
+                        .DefineSubnet("subnetB")
+                            .WithAddressPrefix("10.0.0.8/29")
+                            .WithAccessFromService(ServiceEndpointType.MicrosoftStorage)
+                            .Attach()
+                        .Create();
+
+                // Verify address spaces
+                Assert.Single(network.AddressSpaces);
+                Assert.Contains("10.0.0.0/28", network.AddressSpaces);
+
+                // Verify subnets
+                Assert.Equal(2, network.Subnets.Count);
+                Assert.True(network.Subnets.ContainsKey("subnetA"));
+
+                ISubnet subnet = network.Subnets["subnetA"];
+                Assert.Equal("10.0.0.0/29", subnet.AddressPrefix);
+
+                Assert.True(network.Subnets.ContainsKey("subnetB"));
+                subnet = network.Subnets["subnetB"];
+                Assert.Equal("10.0.0.8/29", subnet.AddressPrefix);
+                Assert.NotNull(subnet.ServicesWithAccess);
+                Assert.True(subnet.ServicesWithAccess.ContainsKey(ServiceEndpointType.MicrosoftStorage));
+                Assert.True(subnet.ServicesWithAccess[ServiceEndpointType.MicrosoftStorage].Count > 0);
+
+                network = network.Update()
+                    .WithTag("tag1", "value1")
+                    .WithTag("tag2", "value2")
+                    .WithAddressSpace("141.25.0.0/16")
+                    .WithoutAddressSpace("10.1.0.0/28")
+                    .WithSubnet("subnetC", "141.25.0.0/29")
+                    .WithoutSubnet("subnetA")
+                    .UpdateSubnet("subnetB")
+                        .WithAddressPrefix("141.25.0.8/29")
+                        .WithoutAccessFromService(ServiceEndpointType.MicrosoftStorage)
+                        .Parent()
+                    .DefineSubnet("subnetD")
+                        .WithAddressPrefix("141.25.0.16/29")
+                        .WithAccessFromService(ServiceEndpointType.MicrosoftStorage)
+                        .Attach()
+                    .Apply();
+
+                Assert.True(network.Tags.ContainsKey("tag1"));
+
+                // Verify address spaces
+                Assert.Equal(2, network.AddressSpaces.Count);
+                Assert.DoesNotContain("10.1.0.0/28", network.AddressSpaces);
+
+                // Verify subnets
+                Assert.Equal(3, network.Subnets.Count);
+                Assert.False(network.Subnets.ContainsKey("subnetA"));
+
+                Assert.True(network.Subnets.ContainsKey("subnetB"));
+                subnet = network.Subnets["subnetB"];
+                Assert.NotNull(subnet);
+                Assert.Equal("141.25.0.8/29", subnet.AddressPrefix);
+                Assert.NotNull(subnet.ServicesWithAccess);
+                Assert.Empty(subnet.ServicesWithAccess);
+
+                Assert.True(network.Subnets.ContainsKey("subnetC"));
+                subnet = network.Subnets["subnetC"];
+                Assert.NotNull(subnet);
+                Assert.Equal("141.25.0.0/29", subnet.AddressPrefix);
+
+                Assert.True(network.Subnets.ContainsKey("subnetD"));
+                subnet = network.Subnets["subnetD"];
+                Assert.NotNull(subnet);
+                Assert.Equal("141.25.0.16/29", subnet.AddressPrefix);
+                Assert.NotNull(subnet.ServicesWithAccess);
+                Assert.True(subnet.ServicesWithAccess.ContainsKey(ServiceEndpointType.MicrosoftStorage));
+                manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+            }
+        }
 
         public void print(INetwork resource)
         {
@@ -266,6 +356,20 @@ namespace Fluent.Tests.Network
                 else
                 {
                     info.Append(nsg.ResourceGroupName + "/" + nsg.Name);
+                }
+
+                // Output services with access
+                //
+                var services = subnet.ServicesWithAccess;
+                if (services.Count() > 0)
+                {
+                    info.Append("\n\tServices with access");
+                    foreach (var service in services)
+                    {
+                        info.Append("\n\t\tService: ")
+                                .Append(service.Key.ToString())
+                                .Append(" Regions: " + service.Value + "");
+                    }
                 }
             }
 

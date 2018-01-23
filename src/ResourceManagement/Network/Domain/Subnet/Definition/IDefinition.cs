@@ -3,6 +3,7 @@
 namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Definition
 {
     using Microsoft.Azure.Management.Network.Fluent;
+    using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
 
     /// <summary>
@@ -62,6 +63,21 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Definition
     }
 
     /// <summary>
+    /// The stage of a subnet definition allowing to enable access from a service endpoint to the subnet.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithServiceEndpoint<ParentT> :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies a service endpoint to enable access from.
+        /// </summary>
+        /// <param name="service">The service type.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.Subnet.Definition.IWithAttach<ParentT> WithAccessFromService(ServiceEndpointType service);
+    }
+
+    /// <summary>
     /// The first stage of the subnet definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
@@ -90,7 +106,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Definition
     public interface IWithAttach<ParentT>  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.Subnet.Definition.IWithNetworkSecurityGroup<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.Subnet.Definition.IWithRouteTable<ParentT>
+        Microsoft.Azure.Management.Network.Fluent.Subnet.Definition.IWithRouteTable<ParentT>,
+        Microsoft.Azure.Management.Network.Fluent.Subnet.Definition.IWithServiceEndpoint<ParentT>
     {
     }
 }

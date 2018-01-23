@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using Microsoft.Azure.Management.Network.Fluent;
+    using Microsoft.Azure.Management.Network.Fluent.Models;
 
     /// <summary>
     /// The final stage of the subnet definition.
@@ -14,7 +15,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition
     public interface IWithAttach<ParentT>  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IWithNetworkSecurityGroup<ParentT>,
-        Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IWithRouteTable<ParentT>
+        Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IWithRouteTable<ParentT>,
+        Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IWithServiceEndpoint<ParentT>
     {
     }
 
@@ -58,6 +60,21 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition
         /// <param name="nsg">The network security group to assign.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IWithAttach<ParentT> WithExistingNetworkSecurityGroup(INetworkSecurityGroup nsg);
+    }
+
+    /// <summary>
+    /// The stage of a subnet definition allowing to enable access from a service endpoint to the subnet.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithServiceEndpoint<ParentT> :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies a service endpoint to enable access from.
+        /// </summary>
+        /// <param name="service">The service type.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IWithAttach<ParentT> WithAccessFromService(ServiceEndpointType service);
     }
 
     /// <summary>

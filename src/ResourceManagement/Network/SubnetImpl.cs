@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using ResourceManager.Fluent;
     using ResourceManager.Fluent.Core;
     using ResourceManager.Fluent.Core.ChildResourceActions;
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -94,7 +95,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 : null;
         }
 
-        
+        ///GENMHASH:33C1C987DF52CFF94EDF2633458514E4:DE74936B83C8416C09839259665F2BD2
+        public IReadOnlyDictionary<Models.ServiceEndpointType, System.Collections.Generic.List<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region>> ServicesWithAccess()
+        {
+            var services = new Dictionary<ServiceEndpointType, List<Region>>();
+            if (this.Inner.ServiceEndpoints != null) {
+                foreach(var endpoint in this.Inner.ServiceEndpoints) {
+                    ServiceEndpointType serviceEndpointType = ServiceEndpointType.Parse(endpoint.Service);
+                    if (!services.ContainsKey(serviceEndpointType)) {
+                        services.Add(serviceEndpointType, new List<Region>());
+                    }
+                    if (endpoint.Locations != null) {
+                        List<Region> regions = new List<Region>();
+                        foreach(var location in endpoint.Locations) {
+                            regions.Add(Region.Create(location));
+                        }
+                        services[serviceEndpointType].AddRange(regions);
+                    }
+                }
+            }
+            return services;
+        }
+
         ///GENMHASH:749BD8C1D070A6DAE2D9F29DAE294FAE:9DD0E90F3B1A067185751A1074341EAF
         internal SubnetImpl WithExistingNetworkSecurityGroup(string resourceId)
         {
@@ -140,7 +162,58 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
+        ///GENMHASH:4BBEC5095F134F13806627750ADC9D39:94AECEF6A2216225A2656ED6B352544E
+        public SubnetImpl WithAccessFromService(ServiceEndpointType service)
+        {
+                if (this.Inner.ServiceEndpoints == null) {
+                this.Inner.ServiceEndpoints = new List<ServiceEndpointPropertiesFormat>();
+                }
+                bool found = false;
+                foreach(var endpoint in this.Inner.ServiceEndpoints)
+                {
+                    if (endpoint.Service.Equals(service.ToString(), StringComparison.OrdinalIgnoreCase))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+            if (!found)
+            {
+                this.Inner
+                    .ServiceEndpoints
+                    .Add(new ServiceEndpointPropertiesFormat
+                    {
+                        Service = service.ToString(),
+                        Locations = new List<string>()
+                    });
+            }
+            return this;
+        }
+
+        ///GENMHASH:4BF88A9FA8C6CBDE8C9FB8F2E36F2042:2364D37AC0E056BCEDF007BC6849ADD1
+        public Subnet.Update.IUpdate WithoutAccessFromService(ServiceEndpointType service)
+        {
+            if (this.Inner.ServiceEndpoints != null) {
+                int foundIndex = -1;
+                int i = 0;
+                foreach(var endpoint in this.Inner.ServiceEndpoints)
+                {
+                    if (endpoint.Service.Equals(service.ToString(), StringComparison.OrdinalIgnoreCase))
+                    {
+                        foundIndex = i;
+                        break;
+                    }
+                    i++;
+                }
+                if (foundIndex != -1)
+                {
+                    this.Inner.ServiceEndpoints.RemoveAt(foundIndex);
+                }
+            }
+            return this;
+        }
+
+
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:3EB15D579457E999436D02A2F8EEB291
         internal NetworkImpl Attach()
         {
@@ -152,7 +225,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return Parent;
         }
 
-        
+
         ///GENMHASH:31626FBDA69232B7DD9945ADF14E191A:245758B25F0370039EC9345CF6DFAC4C
         internal SubnetImpl WithoutNetworkSecurityGroup()
         {
