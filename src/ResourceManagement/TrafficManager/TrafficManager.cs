@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         private ITrafficManagerProfiles profiles;
         #endregion
 
-        public TrafficManager(RestClient restClient, string subscriptionId) : 
+        public TrafficManager(RestClient restClient, string subscriptionId) :
             base(restClient, subscriptionId, new TrafficManagerManagementClient(new Uri(restClient.BaseUri),
                 restClient.Credentials,
                 restClient.RootHttpHandler,

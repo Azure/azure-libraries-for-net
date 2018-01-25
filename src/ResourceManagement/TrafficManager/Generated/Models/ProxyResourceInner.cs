@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         /// </summary>
         public ProxyResourceInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// Implementation for TrafficManagerProfile.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnRyYWZmaWNtYW5hZ2VyLmltcGxlbWVudGF0aW9uLlRyYWZmaWNNYW5hZ2VyUHJvZmlsZUltcGw=
-    internal partial class TrafficManagerProfileImpl  :
+    internal partial class TrafficManagerProfileImpl :
         GroupableResource<ITrafficManagerProfile,
             ProfileInner,
             TrafficManagerProfileImpl,
@@ -45,13 +45,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         }
 
         ///GENMHASH:6C28BB464B795DC8681442F876749A3D:57455B1D83CC1849A88FF401A87B3652
-        public IReadOnlyDictionary<string,ITrafficManagerExternalEndpoint> ExternalEndpoints()
+        public IReadOnlyDictionary<string, ITrafficManagerExternalEndpoint> ExternalEndpoints()
         {
             return this.endpoints.ExternalEndpointsAsMap();
         }
 
         ///GENMHASH:0C153B8A8223F6B3602B8C639E43B1A2:4B04E200B529E471D39F93CEBC5617FA
-        public IReadOnlyDictionary<string,ITrafficManagerNestedProfileEndpoint> NestedProfileEndpoints()
+        public IReadOnlyDictionary<string, ITrafficManagerNestedProfileEndpoint> NestedProfileEndpoints()
         {
             return this.endpoints.NestedProfileEndpointsAsMap();
         }
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:2C0DB6B1F104247169DC6BCC9246747C:D88E948223FB86124BBB6F6774621201
         public int TimeToLive()
         {
-            return (int) Inner.DnsConfig.Ttl.Value;
+            return (int)Inner.DnsConfig.Ttl.Value;
         }
 
         ///GENMHASH:5E218AF13EC4B07DD7170E0991E64373:B45FF059EA30EB01427BCCB27086FEBF
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         }
 
         ///GENMHASH:3E133DCD07354DCF10F28C2FA07E1C8C:59E6C148DC851CD612F81A3DF8325AAF
-        public IReadOnlyDictionary<string,ITrafficManagerAzureEndpoint> AzureEndpoints()
+        public IReadOnlyDictionary<string, ITrafficManagerAzureEndpoint> AzureEndpoints()
         {
             return this.endpoints.AzureEndpointsAsMap();
         }
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:CBED4DBEF4FE611072BC440D90324271:80930CC778C5ED77B07A0B587D7C5950
         public int MonitoringPort()
         {
-            return (int) Inner.MonitorConfig.Port.Value;
+            return (int)Inner.MonitorConfig.Port.Value;
         }
 
         ///GENMHASH:C69FFBA25D969C2C45775433EBFD49EA:01BC02A541C8C945111AEC0AF9DB6FF1

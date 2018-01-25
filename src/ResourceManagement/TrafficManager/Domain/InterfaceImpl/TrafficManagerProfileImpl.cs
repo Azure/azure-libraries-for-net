@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     using Microsoft.Azure.Management.TrafficManager.Fluent.Models;
     using System.Collections.Generic;
 
-    internal partial class TrafficManagerProfileImpl 
+    internal partial class TrafficManagerProfileImpl
     {
         /// <summary>
         /// Specify the DNS TTL in seconds.
@@ -193,11 +193,11 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <summary>
         /// Gets Azure endpoints in the traffic manager profile, indexed by the name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerAzureEndpoint> Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfile.AzureEndpoints
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerAzureEndpoint> Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfile.AzureEndpoints
         {
             get
             {
-                return this.AzureEndpoints() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerAzureEndpoint>;
+                return this.AzureEndpoints() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerAzureEndpoint>;
             }
         }
 
@@ -248,11 +248,11 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <summary>
         /// Gets external endpoints in the traffic manager profile, indexed by the name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerExternalEndpoint> Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfile.ExternalEndpoints
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerExternalEndpoint> Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfile.ExternalEndpoints
         {
             get
             {
-                return this.ExternalEndpoints() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerExternalEndpoint>;
+                return this.ExternalEndpoints() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerExternalEndpoint>;
             }
         }
 
@@ -282,11 +282,11 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <summary>
         /// Gets nested traffic manager profile endpoints in this traffic manager profile, indexed by the name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerNestedProfileEndpoint> Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfile.NestedProfileEndpoints
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerNestedProfileEndpoint> Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfile.NestedProfileEndpoints
         {
             get
             {
-                return this.NestedProfileEndpoints() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerNestedProfileEndpoint>;
+                return this.NestedProfileEndpoints() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerNestedProfileEndpoint>;
             }
         }
 

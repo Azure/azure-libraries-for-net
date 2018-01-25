@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         /// </summary>
         public TrafficManagerNameAvailabilityInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

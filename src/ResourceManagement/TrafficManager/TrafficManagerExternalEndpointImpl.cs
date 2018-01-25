@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// Implementation for  TrafficManagerExternalEndpoint.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnRyYWZmaWNtYW5hZ2VyLmltcGxlbWVudGF0aW9uLlRyYWZmaWNNYW5hZ2VyRXh0ZXJuYWxFbmRwb2ludEltcGw=
-    internal partial class TrafficManagerExternalEndpointImpl  :
+    internal partial class TrafficManagerExternalEndpointImpl :
         TrafficManagerEndpointImpl,
         ITrafficManagerExternalEndpoint
     {

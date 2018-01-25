@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// Implementation for TrafficManagerProfiles.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnRyYWZmaWNtYW5hZ2VyLmltcGxlbWVudGF0aW9uLlRyYWZmaWNNYW5hZ2VyUHJvZmlsZXNJbXBs
-    internal partial class TrafficManagerProfilesImpl  :
+    internal partial class TrafficManagerProfilesImpl :
         TopLevelModifiableResources<ITrafficManagerProfile, TrafficManagerProfileImpl, ProfileInner, IProfilesOperations, ITrafficManager>,
         ITrafficManagerProfiles
     {
@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         }
 
         public async Task<CheckProfileDnsNameAvailabilityResult> CheckDnsNameAvailabilityAsync(
-            string dnsNameLabel, 
+            string dnsNameLabel,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             return new CheckProfileDnsNameAvailabilityResult(
                 await Inner.CheckTrafficManagerRelativeDnsNameAvailabilityAsync(
-                    dnsNameLabel, 
+                    dnsNameLabel,
                     "Microsoft.Network/trafficManagerProfiles"));
         }
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:12B839BC780AC48D63D16C362B5E2FF5
         protected override TrafficManagerProfileImpl WrapModel(string name)
         {
-             return new TrafficManagerProfileImpl(name, new ProfileInner(), Manager);
+            return new TrafficManagerProfileImpl(name, new ProfileInner(), Manager);
         }
 
         ///GENMHASH:96AD55F2D1A183F1EF3F3859FC90630B:3C2F1C0167F4F4C255F6C1FD907E64F4

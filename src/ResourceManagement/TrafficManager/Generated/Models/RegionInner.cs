@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         /// </summary>
         public RegionInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

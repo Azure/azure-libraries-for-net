@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         /// </summary>
         public EndpointInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

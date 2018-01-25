@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         /// </summary>
         public DnsConfig()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

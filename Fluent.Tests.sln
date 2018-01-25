@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluent.Tests", "Tests\Fluent.Tests\Fluent.Tests.csproj", "{448C82C0-173D-4987-AF7B-FA2E35860909}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -63,6 +63,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Msi.Fluent", "src\ResourceManagement\Msi\Microsoft.Azure.Management.Msi.Fluent.csproj", "{F3941234-4321-428F-A164-7379B41D2757}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.BatchAI.Fluent", "src\ResourceManagement\BatchAI\Microsoft.Azure.Management.BatchAI.Fluent.csproj", "{FF542BA8-2FD5-469C-A5A2-2C953F2D1D92}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Monitor.Fluent", "src\ResourceManagement\Monitor\Microsoft.Azure.Management.Monitor.Fluent.csproj", "{A7EBA2AF-493A-4261-819B-190856E347E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -174,6 +176,10 @@ Global
 		{FF542BA8-2FD5-469C-A5A2-2C953F2D1D92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF542BA8-2FD5-469C-A5A2-2C953F2D1D92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF542BA8-2FD5-469C-A5A2-2C953F2D1D92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7EBA2AF-493A-4261-819B-190856E347E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7EBA2AF-493A-4261-819B-190856E347E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7EBA2AF-493A-4261-819B-190856E347E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7EBA2AF-493A-4261-819B-190856E347E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -203,6 +209,7 @@ Global
 		{E829C631-00B6-43D0-801B-5E0D10F0FF05} = {6861600A-FFF3-49C3-8A91-7174F754EAED}
 		{F3941234-4321-428F-A164-7379B41D2757} = {6861600A-FFF3-49C3-8A91-7174F754EAED}
 		{FF542BA8-2FD5-469C-A5A2-2C953F2D1D92} = {6861600A-FFF3-49C3-8A91-7174F754EAED}
+		{A7EBA2AF-493A-4261-819B-190856E347E9} = {6861600A-FFF3-49C3-8A91-7174F754EAED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {297937BE-B6D0-42C0-A465-5B6487EB66F1}

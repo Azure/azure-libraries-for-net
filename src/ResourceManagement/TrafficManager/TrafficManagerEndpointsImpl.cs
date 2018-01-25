@@ -11,8 +11,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// Represents an endpoint collection associated with a traffic manager profile.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnRyYWZmaWNtYW5hZ2VyLmltcGxlbWVudGF0aW9uLlRyYWZmaWNNYW5hZ2VyRW5kcG9pbnRzSW1wbA==
-    internal partial class TrafficManagerEndpointsImpl  :
-        ExternalChildResourcesCached<TrafficManagerEndpointImpl, ITrafficManagerEndpoint,EndpointInner, ITrafficManagerProfile, TrafficManagerProfileImpl>
+    internal partial class TrafficManagerEndpointsImpl :
+        ExternalChildResourcesCached<TrafficManagerEndpointImpl, ITrafficManagerEndpoint, EndpointInner, ITrafficManagerProfile, TrafficManagerProfileImpl>
     {
         /// <summary>
         /// Adds the endpoint to the collection.
@@ -39,12 +39,14 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <return>The nested profile endpoints as a map indexed by name.</return>
 
         ///GENMHASH:B49B27ECF031E10A22023E6336E734E5:CE6855352C0CC1F5B88859811F7E2029
-        internal IReadOnlyDictionary<string,ITrafficManagerNestedProfileEndpoint> NestedProfileEndpointsAsMap()
+        internal IReadOnlyDictionary<string, ITrafficManagerNestedProfileEndpoint> NestedProfileEndpointsAsMap()
         {
             Dictionary<string, ITrafficManagerNestedProfileEndpoint> result = new Dictionary<string, ITrafficManagerNestedProfileEndpoint>();
-            foreach (var entry in this.Collection) {
+            foreach (var entry in this.Collection)
+            {
                 TrafficManagerEndpointImpl endpoint = entry.Value;
-                if (endpoint.EndpointType() == EndpointType.NestedProfile) {
+                if (endpoint.EndpointType() == EndpointType.NestedProfile)
+                {
                     ITrafficManagerNestedProfileEndpoint nestedProfileEndpoint = new TrafficManagerNestedProfileEndpointImpl(
                         entry.Key,
                         Parent,
@@ -69,7 +71,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <return>The external endpoints as a map indexed by name.</return>
 
         ///GENMHASH:9E9CCBF47923D34FC60535C1BF252975:241C2E97F7493232FD204964162A4C4D
-        internal IReadOnlyDictionary<string,ITrafficManagerExternalEndpoint> ExternalEndpointsAsMap()
+        internal IReadOnlyDictionary<string, ITrafficManagerExternalEndpoint> ExternalEndpointsAsMap()
         {
             Dictionary<string, ITrafficManagerExternalEndpoint> result = new Dictionary<string, ITrafficManagerExternalEndpoint>();
             foreach (var entry in this.Collection)
@@ -91,8 +93,10 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         protected override IList<TrafficManagerEndpointImpl> ListChildResources()
         {
             List<TrafficManagerEndpointImpl> childResources = new List<TrafficManagerEndpointImpl>();
-            if (Parent.Inner.Endpoints != null) {
-                foreach(var inner in Parent.Inner.Endpoints)  {
+            if (Parent.Inner.Endpoints != null)
+            {
+                foreach (var inner in Parent.Inner.Endpoints)
+                {
                     childResources.Add(new TrafficManagerEndpointImpl(
                         inner.Name,
                         Parent,
@@ -105,7 +109,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <return>The azure endpoints as a map indexed by name.</return>
 
         ///GENMHASH:6ADF0039F06A892E8F3B1C405F538F3C:9442957E47473D025199992BF235E603
-        internal IReadOnlyDictionary<string,ITrafficManagerAzureEndpoint> AzureEndpointsAsMap()
+        internal IReadOnlyDictionary<string, ITrafficManagerAzureEndpoint> AzureEndpointsAsMap()
         {
             Dictionary<string, ITrafficManagerAzureEndpoint> result = new Dictionary<string, ITrafficManagerAzureEndpoint>();
             foreach (var entry in this.Collection)
@@ -133,7 +137,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         public TrafficManagerEndpointImpl UpdateExternalEndpoint(string name)
         {
             TrafficManagerEndpointImpl endpoint = base.PrepareUpdate(name);
-            if (endpoint.EndpointType() != EndpointType.External) {
+            if (endpoint.EndpointType() != EndpointType.External)
+            {
                 throw new ArgumentException($"An external endpoint with name {name} not found in the profile");
             }
             return endpoint;
@@ -177,7 +182,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         public TrafficManagerEndpointImpl UpdateAzureEndpoint(string name)
         {
             TrafficManagerEndpointImpl endpoint = base.PrepareUpdate(name);
-            if (endpoint.EndpointType() != EndpointType.Azure) {
+            if (endpoint.EndpointType() != EndpointType.Azure)
+            {
                 throw new ArgumentException($"An azure endpoint with name { name } not found in the profile");
             }
             return endpoint;
@@ -218,7 +224,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         public TrafficManagerEndpointImpl UpdateNestedProfileEndpoint(string name)
         {
             TrafficManagerEndpointImpl endpoint = base.PrepareUpdate(name);
-            if (endpoint.EndpointType() != EndpointType.NestedProfile) {
+            if (endpoint.EndpointType() != EndpointType.NestedProfile)
+            {
                 throw new ArgumentException($"A nested profile endpoint with name { name } not found in the profile");
             }
             return endpoint;
