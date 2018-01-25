@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         public AzureCredentials(MSILoginInformation msiLoginInformation, AzureEnvironment environment)
             : this(tenantId: null, environment: environment)
         {
-            this.msiTokenProvider = new MSITokenProvider(environment.ResourceManagerEndpoint, msiLoginInformation.Port);
+            this.msiTokenProvider = new MSITokenProvider(environment.ResourceManagerEndpoint, msiLoginInformation);
         }
 
         private AzureCredentials(string tenantId, AzureEnvironment environment)
