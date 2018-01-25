@@ -399,6 +399,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public IDeployment BeginCreate()
         {
+            if (creatableResourceGroup != null)
+            {
+                creatableResourceGroup.Create();
+            }
             DeploymentInner inner = new DeploymentInner()
             {
                 Properties = new DeploymentProperties
