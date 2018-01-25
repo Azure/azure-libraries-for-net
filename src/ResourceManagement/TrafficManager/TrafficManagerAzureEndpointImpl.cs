@@ -9,12 +9,12 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// Implementation for TrafficManagerAzureEndpoint.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnRyYWZmaWNtYW5hZ2VyLmltcGxlbWVudGF0aW9uLlRyYWZmaWNNYW5hZ2VyQXp1cmVFbmRwb2ludEltcGw=
-    internal partial class TrafficManagerAzureEndpointImpl  :
+    internal partial class TrafficManagerAzureEndpointImpl :
         TrafficManagerEndpointImpl,
         ITrafficManagerAzureEndpoint
     {
         ///GENMHASH:ADDA04C7700D3A4F0C913857C08BC9EB:2682BD2661D3A018D6E09706819D354F
-        internal  TrafficManagerAzureEndpointImpl(string name, TrafficManagerProfileImpl parent, EndpointInner inner)
+        internal TrafficManagerAzureEndpointImpl(string name, TrafficManagerProfileImpl parent, EndpointInner inner)
             : base(name, parent, inner)
         {
         }

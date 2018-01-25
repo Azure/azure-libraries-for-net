@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     using Microsoft.Azure.Management.TrafficManager.Fluent.Models;
     using System.Collections.Generic;
 
-    internal partial class TrafficManagerEndpointImpl 
+    internal partial class TrafficManagerEndpointImpl
     {
         /// <summary>
         /// Specifies the geographic location for the endpoint that will be used when the parent profile is configured

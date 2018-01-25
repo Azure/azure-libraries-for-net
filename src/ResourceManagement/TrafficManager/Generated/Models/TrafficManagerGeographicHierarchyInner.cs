@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         /// </summary>
         public TrafficManagerGeographicHierarchyInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

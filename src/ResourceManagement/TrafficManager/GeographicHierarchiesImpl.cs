@@ -8,14 +8,14 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// <summary>
     /// Implementation for GeographicHierarchies.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnRyYWZmaWNtYW5hZ2VyLmltcGxlbWVudGF0aW9uLkdlb2dyYXBoaWNIaWVyYXJjaGllc0ltcGw=
-    internal partial class GeographicHierarchiesImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnRyYWZmaWNtYW5hZ2VyLmltcGxlbWVudGF0aW9uLkdlb2dyYXBoaWNIaWVyYXJjaGllc0ltcGw=
+    internal partial class GeographicHierarchiesImpl :
         Wrapper<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicHierarchiesOperations>,
         IGeographicHierarchies
     {
         private ITrafficManager manager;
         ///GENMHASH:0A1A0463CFC77314424EC4A0283ED5A4:431E308A3744A61C1195798E3EE20640
-        internal  GeographicHierarchiesImpl(ITrafficManager trafficManager, IGeographicHierarchiesOperations inner) : base(inner)
+        internal GeographicHierarchiesImpl(ITrafficManager trafficManager, IGeographicHierarchiesOperations inner) : base(inner)
         {
             this.manager = trafficManager;
         }

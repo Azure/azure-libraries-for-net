@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// <summary>
     /// Implementation for GeographicLocation.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnRyYWZmaWNtYW5hZ2VyLmltcGxlbWVudGF0aW9uLkdlb2dyYXBoaWNMb2NhdGlvbkltcGw=
-    internal partial class GeographicLocationImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnRyYWZmaWNtYW5hZ2VyLmltcGxlbWVudGF0aW9uLkdlb2dyYXBoaWNMb2NhdGlvbkltcGw=
+    internal partial class GeographicLocationImpl :
         Wrapper<Microsoft.Azure.Management.TrafficManager.Fluent.Models.RegionInner>,
         IGeographicLocation
     {
@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:9C54BB8204CECFD9D4623AA9EDB80CB5:E5F3C3CAF25E9571C4C8F320A95B9A32
         public IReadOnlyList<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation> DescendantLocations()
         {
-            var descendantsLocations = new List<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation> ();
+            var descendantsLocations = new List<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation>();
             var childLocations = ChildLocations();
             descendantsLocations.AddRange(childLocations);
-            foreach(var childLocation in childLocations)
+            foreach (var childLocation in childLocations)
             {
                 descendantsLocations.AddRange(childLocation.DescendantLocations);
             }
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
                 return new List<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation>();
             }
             var subLocations = new List<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation>();
-            foreach(var innerRegion in this.Inner.Regions)
+            foreach (var innerRegion in this.Inner.Regions)
             {
                 subLocations.Add(new GeographicLocationImpl(innerRegion));
             }
@@ -55,6 +55,6 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
 
         ///GENMHASH:E8EC13929422DA79B0B116D6563434FC:D848E871267ECCC2026BC54C7D939143
         internal GeographicLocationImpl(Microsoft.Azure.Management.TrafficManager.Fluent.Models.RegionInner innerRegion) : base(innerRegion)
-        {}
+        { }
     }
 }

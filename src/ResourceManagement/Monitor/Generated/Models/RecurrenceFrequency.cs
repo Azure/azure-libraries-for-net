@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this RecurrenceFrequency value)
         {
-            switch( value )
+            switch (value)
             {
                 case RecurrenceFrequency.None:
                     return "None";
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static RecurrenceFrequency? ParseRecurrenceFrequency(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "None":
                     return RecurrenceFrequency.None;

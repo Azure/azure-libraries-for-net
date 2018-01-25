@@ -4,7 +4,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
 {
     using Microsoft.Azure.Management.TrafficManager.Fluent.Models;
 
-    internal partial class TrafficManagerAzureEndpointImpl 
+    internal partial class TrafficManagerAzureEndpointImpl
     {
         /// <summary>
         /// Gets the type of the target Azure resource.

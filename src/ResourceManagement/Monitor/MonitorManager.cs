@@ -10,8 +10,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 {
     public class MonitorManager : Manager<IMonitorManagementClient>, IMonitorManager, IBeta
     {
-        // public IMonitorClient InnerEx { get; }
-        
         #region ctrs
 
         private static IMonitorManagementClient GetInnerClient(RestClient restClient, string subscriptionId)
@@ -24,23 +22,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 SubscriptionId = subscriptionId
             };
         }
-        
+
         private MonitorManager(RestClient restClient, string subscriptionId) :
             base(restClient, subscriptionId, GetInnerClient(restClient, subscriptionId))
         {
-            /**
-            InnerEx = new MonitorClient(new Uri(restClient.BaseUri),
-                restClient.Credentials,
-                restClient.RootHttpHandler,
-                restClient.Handlers.ToArray())
-            {
-                SubscriptionId = subscriptionId
-            };
-            **/
         }
-        
+
         #endregion
-        
+
         #region MonitorManager builder
         /// <summary>
         /// Creates an instance of MonitorManager that exposes storage resource management API entry points.
@@ -56,7 +45,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                         .WithDelegatingHandler(new ProviderRegistrationDelegatingHandler(credentials))
                     .Build(), subscriptionId);
         }
-        
+
         /// <summary>
         /// Creates an instance of MonitorManager that exposes storage resource management API entry points.
         /// </summary>
@@ -67,7 +56,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             return new MonitorManager(restClient, subscriptionId);
         }
-        
+
         /// <summary>
         /// Get a Configurable instance that can be used to create StorageManager with optional configuration.
         /// </summary>
@@ -77,7 +66,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return new Configurable();
         }
         #endregion
-        
+
         #region IConfigurable and it's implementation
         /// <summary>
         /// The inteface allowing configurations to be set.
@@ -86,7 +75,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             IMonitorManager Authenticate(AzureCredentials credentials, string subscriptionId);
         }
-        
+
         protected class Configurable :
             AzureConfigurable<IConfigurable>,
             IConfigurable
@@ -104,12 +93,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
         #endregion
     }
-    
+
     /// <summary>
     /// Entry point to Azure Monitor.
     /// </summary>
     public interface IMonitorManager : IManager<IMonitorManagementClient>
     {
-       //  IMonitorClient InnerEx { get; }
     }
 }

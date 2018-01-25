@@ -19,22 +19,22 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public static partial class OperationsExtensions
     {
-            /// <summary>
-            /// Lists all of the available operations from Microsoft.Insights provider.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<OperationListResultInner> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Lists all of the available operations from Microsoft.Insights provider.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<OperationListResultInner> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

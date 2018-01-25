@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         /// </summary>
         public DeleteOperationResultInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

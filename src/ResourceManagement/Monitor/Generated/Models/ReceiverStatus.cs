@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this ReceiverStatus value)
         {
-            switch( value )
+            switch (value)
             {
                 case ReceiverStatus.NotSpecified:
                     return "NotSpecified";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static ReceiverStatus? ParseReceiverStatus(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "NotSpecified":
                     return ReceiverStatus.NotSpecified;

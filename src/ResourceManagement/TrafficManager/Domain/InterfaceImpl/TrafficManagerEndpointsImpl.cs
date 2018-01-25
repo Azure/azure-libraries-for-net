@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     using Microsoft.Azure.Management.TrafficManager.Fluent.Models;
     using System.Collections.Generic;
 
-    internal partial class TrafficManagerEndpointsImpl 
+    internal partial class TrafficManagerEndpointsImpl
     {
     }
 }

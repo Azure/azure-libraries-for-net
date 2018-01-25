@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         /// </summary>
         public MonitorConfig()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

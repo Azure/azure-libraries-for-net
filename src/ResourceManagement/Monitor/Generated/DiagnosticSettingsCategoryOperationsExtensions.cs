@@ -19,48 +19,48 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public static partial class DiagnosticSettingsCategoryOperationsExtensions
     {
-            /// <summary>
-            /// Gets the diagnostic settings category for the specified resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceUri'>
-            /// The identifier of the resource.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the diagnostic setting.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DiagnosticSettingsCategoryResourceInner> GetAsync(this IDiagnosticSettingsCategoryOperations operations, string resourceUri, string name, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets the diagnostic settings category for the specified resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceUri'>
+        /// The identifier of the resource.
+        /// </param>
+        /// <param name='name'>
+        /// The name of the diagnostic setting.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DiagnosticSettingsCategoryResourceInner> GetAsync(this IDiagnosticSettingsCategoryOperations operations, string resourceUri, string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceUri, name, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceUri, name, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Lists the diagnostic settings categories for the specified resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceUri'>
-            /// The identifier of the resource.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DiagnosticSettingsCategoryResourceCollectionInner> ListAsync(this IDiagnosticSettingsCategoryOperations operations, string resourceUri, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Lists the diagnostic settings categories for the specified resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceUri'>
+        /// The identifier of the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DiagnosticSettingsCategoryResourceCollectionInner> ListAsync(this IDiagnosticSettingsCategoryOperations operations, string resourceUri, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceUri, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceUri, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

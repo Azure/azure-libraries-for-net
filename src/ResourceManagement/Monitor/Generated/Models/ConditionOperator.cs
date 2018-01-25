@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this ConditionOperator value)
         {
-            switch( value )
+            switch (value)
             {
                 case ConditionOperator.GreaterThan:
                     return "GreaterThan";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static ConditionOperator? ParseConditionOperator(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "GreaterThan":
                     return ConditionOperator.GreaterThan;

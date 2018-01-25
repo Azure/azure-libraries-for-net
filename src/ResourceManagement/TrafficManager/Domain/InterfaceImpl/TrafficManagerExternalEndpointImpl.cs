@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.TrafficManager.Fluent.Models;
 
-    internal partial class TrafficManagerExternalEndpointImpl 
+    internal partial class TrafficManagerExternalEndpointImpl
     {
         /// <summary>
         /// Gets the priority of the endpoint which is used when traffic manager profile is configured with

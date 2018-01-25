@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// The com.microsoft.azure.management.trafficmanager.TrafficManagerProfiles.checkDnsNameAvailability action result.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnRyYWZmaWNtYW5hZ2VyLkNoZWNrUHJvZmlsZURuc05hbWVBdmFpbGFiaWxpdHlSZXN1bHQ=
-    public partial class CheckProfileDnsNameAvailabilityResult 
+    public partial class CheckProfileDnsNameAvailabilityResult
     {
         private TrafficManagerNameAvailabilityInner inner;
         /// <return>
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// </summary>
         /// <param name="inner">The inner object.</param>
         ///GENMHASH:9DB00CCE0DA7D08C2634E2FEDA4635F7:BC4B1282CA708DC220050F834F17A184
-        public  CheckProfileDnsNameAvailabilityResult(TrafficManagerNameAvailabilityInner inner)
+        public CheckProfileDnsNameAvailabilityResult(TrafficManagerNameAvailabilityInner inner)
         {
             this.inner = inner;
         }

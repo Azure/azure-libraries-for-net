@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     /// Implementation for TrafficManagerEndpoint.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnRyYWZmaWNtYW5hZ2VyLmltcGxlbWVudGF0aW9uLlRyYWZmaWNNYW5hZ2VyRW5kcG9pbnRJbXBs
-    internal partial class TrafficManagerEndpointImpl  :
+    internal partial class TrafficManagerEndpointImpl :
         ExternalChildResource<ITrafficManagerEndpoint, EndpointInner, ITrafficManagerProfile, TrafficManagerProfileImpl>,
         ITrafficManagerEndpoint,
         IDefinition<TrafficManagerProfile.Definition.IWithCreate>,
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:7E4D6CD4225C7C45A2617BA279790518:CDE1537547721862503F9A0FA1A322D4
         public int RoutingPriority()
         {
-            return (int) Inner.Priority.Value;
+            return (int)Inner.Priority.Value;
         }
 
         ///GENMHASH:01C4B6E26D53E1762A443721CECB5D96:43F1F30B8E8EB5054939168766D4F5BE
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:3A31ACD3BD909199AC20F8F3E3739FBC:74F3955C06F9B8A4E58621607D351E22
         public int RoutingWeight()
         {
-            return (int) Inner.Weight.Value;
+            return (int)Inner.Weight.Value;
         }
 
         ///GENMHASH:4002186478A1CB0B59732EBFB18DEB3A:C47C4325FAE65E493A947196909A8664
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:32A8B56FE180FA4429482D706189DEA2:456A0329D077009BC6D9D0C6B91ADA12
         public async override Task<ITrafficManagerEndpoint> CreateAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            EndpointInner endpointInner =  await Parent.Manager.Inner.Endpoints.CreateOrUpdateAsync(
+            EndpointInner endpointInner = await Parent.Manager.Inner.Endpoints.CreateOrUpdateAsync(
                 Parent.ResourceGroupName,
                 Parent.Name,
                 EndpointType().LocalName,
@@ -182,7 +182,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:A547F59734E4765D7E8C66BD9DEABC48:4394EC74F5644573990215653DA5A2D5
         public TrafficManagerEndpointImpl WithGeographicLocations(IList<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation> geographicLocations)
         {
-            foreach(var location in geographicLocations) {
+            foreach (var location in geographicLocations)
+            {
                 this.WithGeographicLocation(location);
             }
             return this;
@@ -191,7 +192,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:2B09C0B6E5A6C9EB0FD5F8E5B6F64071:10487097C091DC4BD14341EFE97436FA
         public TrafficManagerEndpointImpl WithGeographicLocations(IList<string> geographicLocationCodes)
         {
-            foreach(var locationCode in geographicLocationCodes) {
+            foreach (var locationCode in geographicLocationCodes)
+            {
                 this.WithGeographicLocation(locationCode);
             }
             return this;
@@ -201,7 +203,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:D941F2842B927A4DB3CBC5C46BF0FB8C:3758D276108819137AC1BAC3E4F73D66
         public TrafficManagerEndpointImpl WithGeographicLocation(string geographicLocationCode)
         {
-            if (this.Inner.GeoMapping == null) {
+            if (this.Inner.GeoMapping == null)
+            {
                 this.Inner.GeoMapping = new List<string>();
             }
             if (!this.Inner.GeoMapping.Any(code => code.Equals(geographicLocationCode, System.StringComparison.OrdinalIgnoreCase)))
@@ -220,7 +223,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:B75C241BF5B6DE548F6D8E4910E12E09:EC93F846A74453DA3A4CBDF41628EF0F
         public TrafficManagerEndpointImpl WithoutGeographicLocation(string geographicLocationCode)
         {
-            if (this.Inner.GeoMapping == null) {
+            if (this.Inner.GeoMapping == null)
+            {
                 return this;
             }
             this.Inner.GeoMapping = this.Inner.GeoMapping
@@ -247,7 +251,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ///GENMHASH:F507C7F84BADE3B2935D09B0602D7DE3:645998E0C566D23B620982BEA38A808C
         public IReadOnlyList<string> GeographicLocationCodes()
         {
-            if (this.Inner.GeoMapping == null || this.Inner.GeoMapping.Count == 0) {
+            if (this.Inner.GeoMapping == null || this.Inner.GeoMapping.Count == 0)
+            {
                 return new List<string>();
             }
             return new ReadOnlyCollection<string>(this.Inner.GeoMapping);

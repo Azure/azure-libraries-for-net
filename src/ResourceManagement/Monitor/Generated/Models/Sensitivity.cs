@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this Sensitivity value)
         {
-            switch( value )
+            switch (value)
             {
                 case Sensitivity.Low:
                     return "Low";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static Sensitivity? ParseSensitivity(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Low":
                     return Sensitivity.Low;

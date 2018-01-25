@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.TrafficManager.Fluent.Models;
 
-    internal partial class TrafficManagerNestedProfileEndpointImpl 
+    internal partial class TrafficManagerNestedProfileEndpointImpl
     {
         /// <summary>
         /// Gets the monitor status of the endpoint.
