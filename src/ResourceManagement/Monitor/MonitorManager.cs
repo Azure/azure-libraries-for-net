@@ -4,14 +4,13 @@
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using System;
 using System.Linq;
-using Microsoft.Azure.Management.Fluent.ServiceBus;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 
 namespace Microsoft.Azure.Management.Monitor.Fluent
 {
     public class MonitorManager : Manager<IMonitorManagementClient>, IMonitorManager, IBeta
     {
-        public IMonitorClient InnerEx { get; }
+        // public IMonitorClient InnerEx { get; }
         
         #region ctrs
 
@@ -29,6 +28,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         private MonitorManager(RestClient restClient, string subscriptionId) :
             base(restClient, subscriptionId, GetInnerClient(restClient, subscriptionId))
         {
+            /**
             InnerEx = new MonitorClient(new Uri(restClient.BaseUri),
                 restClient.Credentials,
                 restClient.RootHttpHandler,
@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 SubscriptionId = subscriptionId
             };
+            **/
         }
         
         #endregion
@@ -109,6 +110,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IMonitorManager : IManager<IMonitorManagementClient>
     {
-        IMonitorClient InnerEx { get; }
+       //  IMonitorClient InnerEx { get; }
     }
 }
