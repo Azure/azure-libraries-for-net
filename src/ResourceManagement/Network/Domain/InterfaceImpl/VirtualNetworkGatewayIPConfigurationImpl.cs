@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
 
-    internal partial class VirtualNetworkGatewayIPConfigurationImpl 
+    internal partial class VirtualNetworkGatewayIPConfigurationImpl
     {
         /// <summary>
         /// Gets the resource id of associated public IP address.

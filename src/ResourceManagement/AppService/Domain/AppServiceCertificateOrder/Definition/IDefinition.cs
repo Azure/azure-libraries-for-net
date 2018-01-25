@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrde
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrder.Definition.IBlank,
         Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrder.Definition.IWithHostName,
         Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrder.Definition.IWithCertificateSku,
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrde
     /// <summary>
     /// An app service certificate order definition allowing hostname to be set.
     /// </summary>
-    public interface IWithHostName 
+    public interface IWithHostName
     {
         /// <summary>
         /// Specifies the hostname the certificate binds to.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrde
     /// app service certificate order in the cloud, but exposing additional optional inputs to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateOrder>,
         Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrder.Definition.IWithValidYears,
         Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrder.Definition.IWithAutoRenew,
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrde
     /// <summary>
     /// An app service certificate order definition allowing resource group to be set.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithExistingResourceGroup<Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrder.Definition.IWithHostName>
     {
     }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrde
     /// <summary>
     /// An app service certificate order definition allowing valid years to be set.
     /// </summary>
-    public interface IWithValidYears 
+    public interface IWithValidYears
     {
         /// <summary>
         /// Specifies the valid years of the certificate.
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrde
     /// <summary>
     /// An app service certificate order definition allowing SKU to be set.
     /// </summary>
-    public interface IWithCertificateSku 
+    public interface IWithCertificateSku
     {
         /// <summary>
         /// Specifies the SKU of the certificate to be wildcard. It will provide
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrde
     /// <summary>
     /// An app service certificate order definition allowing auto-renew settings to be set.
     /// </summary>
-    public interface IWithAutoRenew 
+    public interface IWithAutoRenew
     {
         /// <summary>
         /// Specifies if the certificate should be auto-renewed.
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrde
     /// <summary>
     /// An app service certificate order definition allowing domain verification method to be set.
     /// </summary>
-    public interface IWithDomainVerification 
+    public interface IWithDomainVerification
     {
         /// <summary>
         /// Specifies the Azure managed domain to verify the ownership of the domain.
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrde
     /// <summary>
     /// An app service certificate order definition allowing more domain verification methods to be set.
     /// </summary>
-    public interface IWithKeyVault 
+    public interface IWithKeyVault
     {
         /// <summary>
         /// Creates a new key vault to store the certificate private key.
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrde
     /// <summary>
     /// An app service certificate order definition allowing more domain verification methods to be set.
     /// </summary>
-    public interface IWithDomainVerificationFromWebApp  :
+    public interface IWithDomainVerificationFromWebApp :
         Microsoft.Azure.Management.AppService.Fluent.AppServiceCertificateOrder.Definition.IWithDomainVerification
     {
         /// <summary>

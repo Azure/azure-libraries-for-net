@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    public partial class ActiveDirectoryGroupImpl 
+    public partial class ActiveDirectoryGroupImpl
     {
         /// <summary>
         /// Lists the members in the group.

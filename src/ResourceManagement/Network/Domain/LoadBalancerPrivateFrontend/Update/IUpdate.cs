@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.
     /// <summary>
     /// The stage of a private frontend update allowing to specify a subnet from the selected network.
     /// </summary>
-    public interface IWithSubnet 
+    public interface IWithSubnet
     {
         /// <summary>
         /// Assigns the specified subnet to this private frontend of the internal load balancer.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.
     /// <summary>
     /// The entirety of a private frontend update as part of a load balancer update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.Update.IWithSubnet,
         Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Update.IWithPrivateIPAddress<Microsoft.Azure.Management.Network.Fluent.LoadBalancerPrivateFrontend.Update.IUpdate>

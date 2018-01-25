@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Application.UpdateDefinition
     /// The first stage of a Batch application definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent Batch account definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Batch.Fluent.Application.UpdateDefinition.IWithAttach<ParentT>
     {
     }
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Application.UpdateDefinition
     /// can be attached to the parent batch Account update.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent Batch account update to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>,
         Microsoft.Azure.Management.Batch.Fluent.Application.UpdateDefinition.IWithApplicationPackage<ParentT>
     {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Application.UpdateDefinition
     /// The stage of a Batch application definition allowing the creation of an application package.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent Batch account definition to return to after attaching this definition.</typeparam>
-    public interface IWithApplicationPackage<ParentT> 
+    public interface IWithApplicationPackage<ParentT>
     {
         /// <summary>
         /// First stage to create new application package in Batch account application.
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Application.UpdateDefinition
     /// The entirety of a Batch application definition as a part of parent update.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent Batch account update to return to after attaching this definition.</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.Batch.Fluent.Application.UpdateDefinition.IBlank<ParentT>,
         Microsoft.Azure.Management.Batch.Fluent.Application.UpdateDefinition.IWithAttach<ParentT>
     {

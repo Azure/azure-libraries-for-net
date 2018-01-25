@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackend.Up
     /// <summary>
     /// The stage of an application gateway backend update allowing to add an address to the backend.
     /// </summary>
-    public interface IWithAddress 
+    public interface IWithAddress
     {
         /// <summary>
         /// Ensures the specified fully qualified domain name (FQDN) is not associated with this backend.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackend.Up
     /// <summary>
     /// The entirety of an application gateway backend update as part of an application gateway update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackend.Update.IWithAddress
     {

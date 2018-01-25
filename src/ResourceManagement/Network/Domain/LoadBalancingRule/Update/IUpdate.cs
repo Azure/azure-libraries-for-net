@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update
     /// <summary>
     /// The stage of a load balancing rule update allowing to modify the connection timeout for idle connections.
     /// </summary>
-    public interface IWithIdleTimeoutInMinutes 
+    public interface IWithIdleTimeoutInMinutes
     {
         /// <summary>
         /// Specifies the number of minutes before an idle connection is closed.
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update
     /// <summary>
     /// The stage of a load balancing rule update allowing to modify the frontend port.
     /// </summary>
-    public interface IWithFrontendPort  :
+    public interface IWithFrontendPort :
         Microsoft.Azure.Management.Network.Fluent.HasFrontendPort.Update.IWithFrontendPort<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IUpdate>
     {
     }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update
     /// <summary>
     /// The stage of a load balancing rule update allowing to modify the backend port.
     /// </summary>
-    public interface IWithBackendPort  :
+    public interface IWithBackendPort :
         Microsoft.Azure.Management.Network.Fluent.HasBackendPort.Update.IWithBackendPort<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IUpdate>
     {
     }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update
     /// <summary>
     /// The stage of a load balancing rule update allowing to modify the load distribution.
     /// </summary>
-    public interface IWithLoadDistribution 
+    public interface IWithLoadDistribution
     {
         /// <summary>
         /// Specifies the load distribution mode.
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update
     /// <summary>
     /// The entirety of a load balancing rule update as part of a load balancer update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IWithFrontendPort,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IWithFrontend,
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update
     /// <summary>
     /// The stage of a load balancing rule update allowing to specify the probe to associate with the rule.
     /// </summary>
-    public interface IWithProbe 
+    public interface IWithProbe
     {
         /// <summary>
         /// Associates the specified existing HTTP or TCP probe of this load balancer with the load balancing rule.
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update
     /// <summary>
     /// The stage of a load balancing rule update allowing to modify the frontend reference.
     /// </summary>
-    public interface IWithFrontend  :
+    public interface IWithFrontend :
         Microsoft.Azure.Management.Network.Fluent.HasFrontend.Update.IWithFrontend<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IUpdate>
     {
     }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update
     /// <summary>
     /// The stage of a load balancing rule update allowing to enable the floating IP functionality.
     /// </summary>
-    public interface IWithFloatingIP  :
+    public interface IWithFloatingIP :
         Microsoft.Azure.Management.Network.Fluent.HasFloatingIP.Update.IWithFloatingIP<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IUpdate>
     {
     }
@@ -107,8 +107,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update
     /// <summary>
     /// The stage of a load balancing rule update allowing to modify the transport protocol the rule applies to.
     /// </summary>
-    public interface IWithProtocol  :
-        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Update.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IUpdate,Microsoft.Azure.Management.Network.Fluent.Models.TransportProtocol>
+    public interface IWithProtocol :
+        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Update.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.Update.IUpdate, Microsoft.Azure.Management.Network.Fluent.Models.TransportProtocol>
     {
     }
 }

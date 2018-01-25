@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// The stage of the virtual machine extension update allowing to enable or disable auto upgrade of the
     /// extension when when a new minor version of virtual machine extension image gets published.
     /// </summary>
-    public interface IWithAutoUpgradeMinorVersion 
+    public interface IWithAutoUpgradeMinorVersion
     {
         /// <summary>
         /// Enables auto upgrade of the extension.
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// <summary>
     /// The stage of the virtual machine extension update allowing to add or update public and private settings.
     /// </summary>
-    public interface IWithSettings 
+    public interface IWithSettings
     {
         /// <summary>
         /// Specifies a private settings entry.
@@ -51,20 +51,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
         /// </summary>
         /// <param name="settings">The public settings.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithPublicSettings(IDictionary<string,object> settings);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithPublicSettings(IDictionary<string, object> settings);
 
         /// <summary>
         /// Specifies private settings.
         /// </summary>
         /// <param name="settings">The private settings.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithProtectedSettings(IDictionary<string,object> settings);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithProtectedSettings(IDictionary<string, object> settings);
     }
 
     /// <summary>
     /// The entirety of virtual machine extension update as a part of parent virtual machine update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IWithAutoUpgradeMinorVersion,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IWithSettings,
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// <summary>
     /// The stage of the virtual machine extension update allowing to add or update tags.
     /// </summary>
-    public interface IWithTags 
+    public interface IWithTags
     {
         /// <summary>
         /// Adds a tag to the virtual machine extension.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
         /// </summary>
         /// <param name="tags">Tags indexed by name.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithTags(IDictionary<string,string> tags);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithTags(IDictionary<string, string> tags);
 
         /// <summary>
         /// Removes a tag from the virtual machine extension.

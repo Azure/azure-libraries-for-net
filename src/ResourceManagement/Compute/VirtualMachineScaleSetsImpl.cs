@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// The implementation for VirtualMachineScaleSets.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uVmlydHVhbE1hY2hpbmVTY2FsZVNldHNJbXBs
-    internal partial class VirtualMachineScaleSetsImpl  :
+    internal partial class VirtualMachineScaleSetsImpl :
         TopLevelModifiableResources<
             IVirtualMachineScaleSet,
             VirtualMachineScaleSetImpl,
@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private IGraphRbacManager rbacManager;
 
         ///GENMHASH:D153EE3A7098DCC0FDE502B79387242D:20D58C6F0677BACCE2BBFE4994C6C570
-        internal VirtualMachineScaleSetsImpl (
+        internal VirtualMachineScaleSetsImpl(
             IComputeManager computeManager,
             IStorageManager storageManager,
-            INetworkManager networkManager, 
+            INetworkManager networkManager,
             IGraphRbacManager rbacManager) : base(computeManager.Inner.VirtualMachineScaleSets, computeManager)
         {
             this.storageManager = storageManager;

@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class MSDeployLogEntryTypeEnumExtension
     {
-        internal static string ToSerializedValue(this MSDeployLogEntryType? value)  =>
+        internal static string ToSerializedValue(this MSDeployLogEntryType? value) =>
             value == null ? null : ((MSDeployLogEntryType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this MSDeployLogEntryType value)
         {
-            switch( value )
+            switch (value)
             {
                 case MSDeployLogEntryType.Message:
                     return "Message";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static MSDeployLogEntryType? ParseMSDeployLogEntryType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Message":
                     return MSDeployLogEntryType.Message;

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
     /// <typeparam name="Manager">The manager type for this resource provider type.</typeparam>
 
     public abstract partial class IndependentChildResourcesImpl<T, ImplT, InnerT, InnerCollectionT, ManagerT, ParentT> :
-        IndependentChildrenImpl<T,ImplT,InnerT, InnerCollectionT, ManagerT, ParentT>
+        IndependentChildrenImpl<T, ImplT, InnerT, InnerCollectionT, ManagerT, ParentT>
         where T : class, IHasId
         where ImplT : T
         where ParentT : IResource, IHasResourceGroup

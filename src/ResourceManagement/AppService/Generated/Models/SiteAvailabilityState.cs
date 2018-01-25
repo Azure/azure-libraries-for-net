@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class SiteAvailabilityStateEnumExtension
     {
-        internal static string ToSerializedValue(this SiteAvailabilityState? value)  =>
+        internal static string ToSerializedValue(this SiteAvailabilityState? value) =>
             value == null ? null : ((SiteAvailabilityState)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this SiteAvailabilityState value)
         {
-            switch( value )
+            switch (value)
             {
                 case SiteAvailabilityState.Normal:
                     return "Normal";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static SiteAvailabilityState? ParseSiteAvailabilityState(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Normal":
                     return SiteAvailabilityState.Normal;

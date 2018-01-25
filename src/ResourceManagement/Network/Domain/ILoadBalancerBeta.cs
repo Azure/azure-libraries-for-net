@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Entry point for load balancer management API in Azure.
     /// </summary>
-    public interface ILoadBalancerBeta  :
+    public interface ILoadBalancerBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

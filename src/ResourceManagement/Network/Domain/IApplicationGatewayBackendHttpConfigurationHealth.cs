@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of the health information of an application gateway backend HTTP settings configuration.
     /// </summary>
-    public interface IApplicationGatewayBackendHttpConfigurationHealth  :
+    public interface IApplicationGatewayBackendHttpConfigurationHealth :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ApplicationGatewayBackendHealthHttpSettings>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>,
@@ -23,6 +23,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets information about the health of each backend server, indexed by the server's IP address.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendServerHealth> ServerHealths { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendServerHealth> ServerHealths { get; }
     }
 }

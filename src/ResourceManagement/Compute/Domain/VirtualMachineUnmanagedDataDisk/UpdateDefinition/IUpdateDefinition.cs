@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
     /// The stage that allows configure the disk based on existing VHD.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithVhdAttachedDiskSettings<ParentT>  :
+    public interface IWithVhdAttachedDiskSettings<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithAttach<ParentT>
     {
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
     /// The stage of the data disk definition allowing to choose the source.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithDiskSource<ParentT> 
+    public interface IWithDiskSource<ParentT>
     {
         /// <summary>
         /// Specifies the existing source VHD of the disk.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
     /// The first stage of a  data disk definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithDiskSource<ParentT>
     {
     }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
     /// The final stage of the data disk definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>
     {
     }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
     /// The stage that allows configure the disk based on new VHD.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithNewVhdDiskSettings<ParentT>  :
+    public interface IWithNewVhdDiskSettings<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithAttach<ParentT>
     {
         /// <summary>

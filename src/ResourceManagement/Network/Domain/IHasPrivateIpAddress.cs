@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An interface representing a model's ability to reference a private IP address.
     /// </summary>
-    public interface IHasPrivateIPAddress 
+    public interface IHasPrivateIPAddress
     {
         /// <summary>
         /// Gets the private IP address allocation method within the associated subnet.

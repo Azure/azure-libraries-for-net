@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// A domain contact definition.
     /// </summary>
-    public interface IDomainContact  :
+    public interface IDomainContact :
         IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.Contact>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.AppService.Fluent.IAppServiceDomain>

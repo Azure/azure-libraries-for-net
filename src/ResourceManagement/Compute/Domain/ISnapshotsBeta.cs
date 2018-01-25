@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Entry point to managed snapshot management API in Azure.
     /// </summary>
-    public interface ISnapshotsBeta  :
+    public interface ISnapshotsBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

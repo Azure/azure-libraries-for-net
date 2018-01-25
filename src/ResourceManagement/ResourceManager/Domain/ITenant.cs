@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure tenant.
     /// </summary>
-    public interface ITenant  :
+    public interface ITenant :
         IIndexable,
         IHasInner<TenantIdDescription>
     {

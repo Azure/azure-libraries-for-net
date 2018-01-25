@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for Networks.
     /// </summary>
-    
+
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uTmV0d29ya3NJbXBs
-    internal partial class NetworksImpl  :
+    internal partial class NetworksImpl :
         TopLevelModifiableResources<
             INetwork,
             NetworkImpl,
@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
             INetworkManager>,
         INetworks
     {
-        
+
         ///GENMHASH:3A6A0751052AB516180B0159DB204F6D:6EDFD09151C46F1D2C3B423AC05A1639
-        internal  NetworksImpl (NetworkManager networkManager)
+        internal NetworksImpl(NetworkManager networkManager)
             : base(networkManager.Inner.VirtualNetworks, networkManager)
         {
         }
 
-        
+
         protected async override Task<IPage<VirtualNetworkInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
             return await Inner.ListAllAsync(cancellationToken);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return await Inner.ListAllNextAsync(nextLink, cancellationToken);
         }
 
-        
+
         protected async override Task<IPage<VirtualNetworkInner>> ListInnerByGroupAsync(string groupName, CancellationToken cancellationToken)
         {
             return await Inner.ListAsync(groupName, cancellationToken);
@@ -53,28 +53,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return await Inner.ListNextAsync(nextLink, cancellationToken);
         }
 
-        
+
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691
-        internal NetworkImpl Define (string name)
+        internal NetworkImpl Define(string name)
         {
             return WrapModel(name);
         }
 
-        
+
         protected async override Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
         {
             await Inner.DeleteAsync(groupName, name, cancellationToken);
         }
 
-        
+
         protected async override Task<VirtualNetworkInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
         {
             return await Inner.GetAsync(groupName, name, cancellationToken: cancellationToken);
         }
 
-        
+
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:8923589BAA698713A3D55DA89CCA0561
-        override protected NetworkImpl WrapModel (string name)
+        override protected NetworkImpl WrapModel(string name)
         {
             VirtualNetworkInner inner = new VirtualNetworkInner();
             // Initialize address space
@@ -112,9 +112,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         //$TODO: this should return NetworkImpl
 
-        
+
         ///GENMHASH:95C9E8EAF4F740DFFF516E71ABF00C42:7A8F66C1BE7268F607FE53906E378ECA
-        override protected INetwork WrapModel (VirtualNetworkInner inner)
+        override protected INetwork WrapModel(VirtualNetworkInner inner)
         {
             return new NetworkImpl(inner.Name, inner, Manager);
         }

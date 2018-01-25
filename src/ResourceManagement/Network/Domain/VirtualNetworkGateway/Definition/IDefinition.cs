@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Defini
     /// <summary>
     /// The stage of virtual network gateway definition allowing to specify SKU.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Definition.IWithCreate WithSku(VirtualNetworkGatewaySkuName skuName);
     }
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Defini
     /// <summary>
     /// The stage of virtual network gateway definition allowing to specify public IP address for IP configuration.
     /// </summary>
-    public interface IWithPublicIPAddress  :
+    public interface IWithPublicIPAddress :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definition.IWithPublicIPAddressNoDnsLabel<Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Definition.IWithCreate>
     {
     }
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Defini
     /// <summary>
     /// The stage of the virtual network gateway definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Definition.IWithNetwork>
     {
     }
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Defini
     /// <summary>
     /// The entirety of the virtual network gateway definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Definition.IWithGroup,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Definition.IWithGatewayType,
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Defini
     /// <summary>
     /// The first stage of a virtual network gateway definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Definition.IWithGroup>
     {
     }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Defini
     /// The stage of definition allowing to specify virtual network gateway's BGP speaker settings.
     /// Note: BGP is supported on Route-Based VPN gateways only.
     /// </summary>
-    public interface IWithBgp 
+    public interface IWithBgp
     {
         /// <param name="asn">The BGP speaker's ASN.</param>
         /// <param name="bgpPeeringAddress">The BGP peering address and BGP identifier of this BGP speaker.</param>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Defini
     /// <summary>
     /// The stage of virtual network gateway definition allowing to specify virtual network gateway type.
     /// </summary>
-    public interface IWithGatewayType 
+    public interface IWithGatewayType
     {
         /// <summary>
         /// Use Express route gateway type.
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Defini
     /// the resource to be created, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Definition.IWithCreate>,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Definition.IWithPublicIPAddress,
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Defini
     /// <summary>
     /// The stage of the virtual network gateway definition allowing to specify the virtual network.
     /// </summary>
-    public interface IWithNetwork 
+    public interface IWithNetwork
     {
         /// <summary>
         /// Create a new virtual network to associate with the virtual network gateway,

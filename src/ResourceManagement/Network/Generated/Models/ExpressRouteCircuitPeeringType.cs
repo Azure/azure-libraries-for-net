@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     /// </summary>
     public class ExpressRouteCircuitPeeringType : ExpandableStringEnum<ExpressRouteCircuitPeeringType>
     {
-        public static readonly  ExpressRouteCircuitPeeringType AzurePublicPeering = Parse("AzurePublicPeering");
+        public static readonly ExpressRouteCircuitPeeringType AzurePublicPeering = Parse("AzurePublicPeering");
         public static readonly ExpressRouteCircuitPeeringType AzurePrivatePeering = Parse("AzurePrivatePeering");
         public static readonly ExpressRouteCircuitPeeringType MicrosoftPeering = Parse("MicrosoftPeering");
     }

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// A type representing a SKU available for virtual machines in a scale set.
     /// </summary>
-    public interface IVirtualMachineScaleSetSku 
+    public interface IVirtualMachineScaleSetSku
     {
         /// <summary>
         /// Gets the SKU type.

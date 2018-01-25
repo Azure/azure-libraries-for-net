@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class CdnEndpointsImpl 
+    internal partial class CdnEndpointsImpl
     {
     }
 }

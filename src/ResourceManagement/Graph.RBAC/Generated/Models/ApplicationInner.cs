@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// </summary>
         public ApplicationInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

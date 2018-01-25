@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// </summary>
         public DeploymentExtendedFilterInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

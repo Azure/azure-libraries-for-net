@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         public DatabaseAccountCreateUpdateParametersInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

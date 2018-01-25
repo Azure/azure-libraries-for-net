@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Implementation of DnsRecordSet.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5EbnNSZWNvcmRTZXRJbXBs
-    internal partial class DnsRecordSetImpl  :
+    internal partial class DnsRecordSetImpl :
         ExternalChildResource<IDnsRecordSet, RecordSetInner, IDnsZone, DnsZoneImpl>,
         IDnsRecordSet,
         IDefinition<DnsZone.Definition.IWithCreate>,
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             {
                 if (resource.Metadata != null)
                 {
-                    foreach(var key in this.recordSetRemoveInfo.Metadata.Keys)
+                    foreach (var key in this.recordSetRemoveInfo.Metadata.Keys)
                     {
                         if (resource.Metadata.ContainsKey(key))
                         {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 }
                 Inner.Metadata.Clear();
             }
-             
+
             if (Inner.TTL != null)
             {
                 resource.TTL = Inner.TTL;
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         }
 
         ///GENMHASH:12F281B8230A0FD8CE8A0DF277EF885D:DF7D49CE4CC74DB0E5D593989B78CB8D
-        public IReadOnlyDictionary<string,string> Metadata()
+        public IReadOnlyDictionary<string, string> Metadata()
         {
             if (Inner.Metadata == null)
             {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             RecordSetInner inner = await Parent.Manager.Inner.RecordSets.CreateOrUpdateAsync(
                 Parent.ResourceGroupName,
-                Parent.Name, 
+                Parent.Name,
                 Name(),
                 RecordType(),
                 resource,
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         internal DnsRecordSetImpl WithIPv6Address(string ipv6Address)
         {
             Inner.AaaaRecords
-                .Add(new AaaaRecord { Ipv6Address =ipv6Address });
+                .Add(new AaaaRecord { Ipv6Address = ipv6Address });
             return this;
         }
 
@@ -305,7 +305,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:B9A12A61DE5C3FD7372657598F28C736:C0E78FE3325BAB97993FBD6D1EC3DD20
         public DnsRecordSetImpl WithoutText(string text)
         {
-            if (text == null) {
+            if (text == null)
+            {
                 return this;
             }
             List<string> chunks = new List<string>();

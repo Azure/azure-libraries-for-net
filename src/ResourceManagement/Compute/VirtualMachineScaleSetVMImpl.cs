@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:7A41C20BB6F19CCDAC03072604BF281B:10AB7511A9B5C284B8E2E1F35126DD60
         public string WindowsTimeZone()
         {
-            if (Inner.OsProfile.WindowsConfiguration != null) {
+            if (Inner.OsProfile.WindowsConfiguration != null)
+            {
                 return Inner.OsProfile.WindowsConfiguration.TimeZone;
             }
             return null;
@@ -39,8 +40,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public bool BootDiagnosticEnabled()
         {
             if (Inner.DiagnosticsProfile != null
-                && Inner.DiagnosticsProfile.BootDiagnostics != null) {
-                    return Inner.DiagnosticsProfile.BootDiagnostics.Enabled.Value;
+                && Inner.DiagnosticsProfile.BootDiagnostics != null)
+            {
+                return Inner.DiagnosticsProfile.BootDiagnostics.Enabled.Value;
             }
             return false;
         }
@@ -59,7 +61,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 Parent.Name,
                 InstanceId()));
 
-            if (instanceViewInner != null) {
+            if (instanceViewInner != null)
+            {
                 this.virtualMachineInstanceView = new VirtualMachineInstanceView()
                 {
                     BootDiagnostics = instanceViewInner.BootDiagnostics,
@@ -84,7 +87,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:C6D786A0345B2C4ADB349E573A0BF6C7:424FABAED1A1FB32529BDB97BA59F68B
         public string OSDiskId()
         {
-            if (this.StorageProfile().OsDisk.ManagedDisk != null) {
+            if (this.StorageProfile().OsDisk.ManagedDisk != null)
+            {
                 return this.StorageProfile().OsDisk.ManagedDisk.Id;
             }
             return null;
@@ -99,8 +103,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public bool IsOSBasedOnStoredImage()
         {
             if (Inner.StorageProfile.OsDisk != null
-                && Inner.StorageProfile.OsDisk.Image != null) {
-                    return Inner.StorageProfile.OsDisk.Image.Uri != null;
+                && Inner.StorageProfile.OsDisk.Image != null)
+            {
+                return Inner.StorageProfile.OsDisk.Image.Uri != null;
             }
             return false;
         }
@@ -119,8 +124,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 && imageReference.Publisher != null
                 && imageReference.Sku != null
                 && imageReference.Offer != null
-                && imageReference.Version != null) {
-                    return true;
+                && imageReference.Version != null)
+            {
+                return true;
             }
             return false;
         }
@@ -162,10 +168,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk> UnmanagedDataDisks()
         {
             var dataDisks = new Dictionary<int, IVirtualMachineUnmanagedDataDisk>();
-            if (!IsManagedDiskEnabled()) {
+            if (!IsManagedDiskEnabled())
+            {
                 var innerDataDisks = Inner.StorageProfile.DataDisks;
-                 if (innerDataDisks != null) {
-                    foreach(var innerDataDisk in innerDataDisks)  {
+                if (innerDataDisks != null)
+                {
+                    foreach (var innerDataDisk in innerDataDisks)
+                    {
                         dataDisks.Add(innerDataDisk.Lun, new UnmanagedDataDiskImpl(innerDataDisk, null));
                     }
                 }
@@ -207,17 +216,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return new Dictionary<string, IVirtualMachineScaleSetVMInstanceExtension>();
             }
             return Inner.Resources
-                .ToDictionary(r => r.Name, 
+                .ToDictionary(r => r.Name,
                               r => (new VirtualMachineScaleSetVMInstanceExtensionImpl(r, this) as IVirtualMachineScaleSetVMInstanceExtension));
         }
 
         ///GENMHASH:C19382933BDE655D0F0F95CD9474DFE7:DB5E59650C351CEA1A8047EAB8DFA902
         public VirtualMachineSizeTypes Size()
         {
-            if (Inner.HardwareProfile != null && Inner.HardwareProfile.VmSize != null) {
+            if (Inner.HardwareProfile != null && Inner.HardwareProfile.VmSize != null)
+            {
                 return VirtualMachineSizeTypes.Parse(Inner.HardwareProfile.VmSize);
             }
-            if (Sku() != null && Sku().Name != null) {
+            if (Sku() != null && Sku().Name != null)
+            {
                 return VirtualMachineSizeTypes.Parse(Sku().Name);
             }
             return null;
@@ -226,13 +237,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:61C1065B307679F3800C701AE0D87070
         public override string Name()
         {
-           return Inner.Name;
+            return Inner.Name;
         }
 
         ///GENMHASH:F54E5F59629E7189DFAA84B469430E3E:C91262C6EFD95C4E63C8AE6648458189
         public bool IsLinuxPasswordAuthenticationEnabled()
         {
-            if (Inner.OsProfile.LinuxConfiguration != null) {
+            if (Inner.OsProfile.LinuxConfiguration != null)
+            {
                 return !Inner.OsProfile.LinuxConfiguration.DisablePasswordAuthentication ?? false;
             }
             return false;
@@ -242,10 +254,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk> DataDisks()
         {
             var dataDisks = new Dictionary<int, IVirtualMachineDataDisk>();
-            if (IsManagedDiskEnabled()) {
+            if (IsManagedDiskEnabled())
+            {
                 var innerDataDisks = Inner.StorageProfile.DataDisks;
-                if (innerDataDisks != null) {
-                    foreach(var innerDataDisk in innerDataDisks)  {
+                if (innerDataDisks != null)
+                {
+                    foreach (var innerDataDisk in innerDataDisks)
+                    {
                         dataDisks.Add(innerDataDisk.Lun, new VirtualMachineDataDiskImpl(innerDataDisk));
                     }
                 }
@@ -262,7 +277,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:AE4C4EDD69D8398105E588BB437DB52F:03C423E26F1CAEDC60B8BCBB1D78DBE6
         public string AvailabilitySetId()
         {
-            if (Inner.AvailabilitySet != null) {
+            if (Inner.AvailabilitySet != null)
+            {
                 return Inner.AvailabilitySet.Id;
             }
             return null;
@@ -287,15 +303,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:C81171F34FA85CED80852E725FF8B7A4:DC67B5E3F89220C14D74534C08A18508
         public bool IsManagedDiskEnabled()
         {
-            if (IsOSBasedOnCustomImage()) {
+            if (IsOSBasedOnCustomImage())
+            {
                 return true;
             }
-            if (IsOSBasedOnStoredImage()) {
+            if (IsOSBasedOnStoredImage())
+            {
                 return false;
             }
-            if (IsOSBasedOnPlatformImage()) {
+            if (IsOSBasedOnPlatformImage())
+            {
                 if (Inner.StorageProfile.OsDisk != null
-                    && Inner.StorageProfile.OsDisk.Vhd != null) {
+                    && Inner.StorageProfile.OsDisk.Vhd != null)
+                {
                     return false;
                 }
             }
@@ -307,7 +327,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             ImageReferenceInner imageReference = Inner.StorageProfile.ImageReference;
             if (imageReference != null
-                && imageReference.Id != null) {
+                && imageReference.Id != null)
+            {
                 return true;
             }
             return false;
@@ -315,7 +336,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:128FD79E8DC783A2FF49FDFCCE4187DD:343C0BEE1A4B7107E587437CC211D9EC
         public string CustomImageVhdUri()
         {
-            if (Inner.StorageProfile.OsDisk.Image != null) {
+            if (Inner.StorageProfile.OsDisk.Image != null)
+            {
                 return Inner.StorageProfile.OsDisk.Image.Uri;
             }
             return null;
@@ -340,7 +362,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:C17430880D0D3E4CD7536005368289EE:5B9C55C0C450DF2195470AEEB28D0F94
         public IVirtualMachineCustomImage GetOSCustomImage()
         {
-            if (this.IsOSBasedOnCustomImage()) {
+            if (this.IsOSBasedOnCustomImage())
+            {
                 ImageReferenceInner imageReference = Inner.StorageProfile.ImageReference;
                 return Parent.Manager.VirtualMachineCustomImages.GetById(imageReference.Id);
             }
@@ -371,7 +394,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:84A1C38F299C7713046CF6F1527D8F63:1B67F25B1C5584321081FAB1AF143179
         public int OSDiskSizeInGB()
         {
-            if (Inner.StorageProfile.OsDisk.DiskSizeGB != null) {
+            if (Inner.StorageProfile.OsDisk.DiskSizeGB != null)
+            {
                 return Inner.StorageProfile.OsDisk.DiskSizeGB ?? 0;
             }
             // Its a known issue that size of OS disk based on platform image is sometimes null
@@ -382,8 +406,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public string BootDiagnosticStorageAccountUri()
         {
             if (Inner.DiagnosticsProfile != null
-                && Inner.DiagnosticsProfile.BootDiagnostics != null) {
-                    return Inner.DiagnosticsProfile.BootDiagnostics.StorageUri;
+                && Inner.DiagnosticsProfile.BootDiagnostics != null)
+            {
+                return Inner.DiagnosticsProfile.BootDiagnostics.StorageUri;
             }
             return null;
         }
@@ -391,7 +416,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:9F6C057D1401DFDC309A6553A712FD5F:D2CFA0DA4C386F7509555F3479BBB036
         public bool IsWindowsVMAgentProvisioned()
         {
-            if (Inner.OsProfile.WindowsConfiguration != null) {
+            if (Inner.OsProfile.WindowsConfiguration != null)
+            {
                 return Inner.OsProfile.WindowsConfiguration.ProvisionVMAgent ?? false;
             }
             return false;
@@ -400,7 +426,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:E21E3E6E61153DDD23E28BC18B49F1AC:1C335DE060E2C5BE410D8822875D2876
         public VirtualMachineInstanceView InstanceView()
         {
-            if (this.virtualMachineInstanceView == null) {
+            if (this.virtualMachineInstanceView == null)
+            {
                 RefreshInstanceView();
             }
             return this.virtualMachineInstanceView;
@@ -439,7 +466,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:3ABC41CDC1AC150E4431F11073623E1A:CE1EF18259254D728183B6023A6CBE91
         public ImageReference PlatformImageReference()
         {
-            if (IsOSBasedOnPlatformImage()) {
+            if (IsOSBasedOnPlatformImage())
+            {
                 return new ImageReference(Inner.StorageProfile.ImageReference);
             }
             return null;
@@ -448,7 +476,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:E6371CFFB9CB09E08DD4757D639CBF27:8AE50992E9627A3D3844895445A18A8D
         public string OSUnmanagedDiskVhdUri()
         {
-            if (Inner.StorageProfile.OsDisk.Vhd != null) {
+            if (Inner.StorageProfile.OsDisk.Vhd != null)
+            {
                 return Inner.StorageProfile.OsDisk.Vhd.Uri;
             }
             return null;
@@ -460,7 +489,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             await Parent.Manager.Inner.VirtualMachineScaleSetVMs.PowerOffAsync(
                 Parent.ResourceGroupName,
                 Parent.Name,
-                InstanceId(), 
+                InstanceId(),
                 cancellationToken);
         }
 
@@ -495,7 +524,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:882F1CC2224D95370B7A4269ED87EC4F:FA558C03B2F8DB0C8883E9CE9D380464
         public bool IsWindowsAutoUpdateEnabled()
         {
-            if (Inner.OsProfile.WindowsConfiguration != null) {
+            if (Inner.OsProfile.WindowsConfiguration != null)
+            {
                 return Inner.OsProfile.WindowsConfiguration.EnableAutomaticUpdates ?? false;
             }
             return false;
@@ -547,7 +577,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:D97CA4262C0C853895BFF5AD2FE910FE:8AE50992E9627A3D3844895445A18A8D
         public string OsDiskVhdUri()
         {
-            if (Inner.StorageProfile.OsDisk.Vhd != null) {
+            if (Inner.StorageProfile.OsDisk.Vhd != null)
+            {
                 return Inner.StorageProfile.OsDisk.Vhd.Uri;
             }
             return null;
@@ -556,8 +587,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:8149ED362968AEDB6044CB62BAB0373B:4C59C3CF7F7CCFC21F5209A58AA3CE06
         public string PrimaryNetworkInterfaceId()
         {
-            foreach(var reference in Inner.NetworkProfile.NetworkInterfaces)  {
-                if (reference.Primary ?? false) {
+            foreach (var reference in Inner.NetworkProfile.NetworkInterfaces)
+            {
+                if (reference.Primary ?? false)
+                {
                     return reference.Id;
                 }
             }

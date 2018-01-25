@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5EbnNSZWNvcmRTZXRzSW1wbA==
     internal partial class DnsRecordSetsImpl :
-        ExternalChildResourcesNonCached<DnsRecordSetImpl,IDnsRecordSet,RecordSetInner, IDnsZone, DnsZoneImpl>
+        ExternalChildResourcesNonCached<DnsRecordSetImpl, IDnsRecordSet, RecordSetInner, IDnsZone, DnsZoneImpl>
     {
         private const long defaultTtlInSeconds = 3600;
 

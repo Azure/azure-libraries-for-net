@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayIPConfi
     /// <summary>
     /// The entirety of an application gateway IP configuration update as part of a virtual network gateway update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update.IUpdate>
     {
     }

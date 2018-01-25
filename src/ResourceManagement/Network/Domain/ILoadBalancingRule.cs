@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of an HTTP load balancing rule.
     /// </summary>
-    public interface ILoadBalancingRule  :
+    public interface ILoadBalancingRule :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.LoadBalancingRuleInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Network.Fluent.ILoadBalancer>,
         Microsoft.Azure.Management.Network.Fluent.IHasBackendPort,

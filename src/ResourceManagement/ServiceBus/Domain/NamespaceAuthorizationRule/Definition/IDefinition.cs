@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent.NamespaceAuthorizationRul
     /// the resource to be created (via  WithCreate.create()), but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.ServiceBus.Fluent.INamespaceAuthorizationRule>
     {
     }
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent.NamespaceAuthorizationRul
     /// <summary>
     /// The first stage of namespace authorization rule definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Definition.IWithListenOrSendOrManage<Microsoft.Azure.Management.ServiceBus.Fluent.NamespaceAuthorizationRule.Definition.IWithCreate>
     {
     }
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent.NamespaceAuthorizationRul
     /// <summary>
     /// The entirety of the namespace authorization rule definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.ServiceBus.Fluent.NamespaceAuthorizationRule.Definition.IBlank,
         Microsoft.Azure.Management.ServiceBus.Fluent.NamespaceAuthorizationRule.Definition.IWithCreate
     {

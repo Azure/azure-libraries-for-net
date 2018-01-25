@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public VirtualNetworkGatewayConnectionInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

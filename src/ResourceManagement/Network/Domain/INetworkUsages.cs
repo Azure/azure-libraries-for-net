@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Entry point for network resource usage management API.
     /// </summary>
-    public interface INetworkUsages  :
+    public interface INetworkUsages :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Network.Fluent.INetworkUsage>
     {
     }

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Implementation of NSRecordSets.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5OU1JlY29yZFNldHNJbXBs
-    internal partial class NSRecordSetsImpl  :
+    internal partial class NSRecordSetsImpl :
         DnsRecordSetsBaseImpl<INSRecordSet, NSRecordSetImpl>,
         INSRecordSets
     {

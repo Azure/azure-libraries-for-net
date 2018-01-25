@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Virtual machine scale set network interface.
     /// </summary>
-    public interface IVirtualMachineScaleSetNetworkInterface  :
+    public interface IVirtualMachineScaleSetNetworkInterface :
         Microsoft.Azure.Management.Network.Fluent.INetworkInterfaceBase,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface>
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the IP configurations of this network interface, indexed by their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNicIPConfiguration> IPConfigurations { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNicIPConfiguration> IPConfigurations { get; }
 
         /// <summary>
         /// Gets the primary IP configuration of this network interface.

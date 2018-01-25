@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
-    internal partial class AppServiceCertificateKeyVaultBindingImpl 
+    internal partial class AppServiceCertificateKeyVaultBindingImpl
     {
         /// <summary>
         /// Gets the key vault resource Id.
@@ -62,11 +62,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets the tags for the resource.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
         {
             get
             {
-                return this.Tags as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.Tags as System.Collections.Generic.IReadOnlyDictionary<string, string>;
             }
         }
 

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.UpdateStandardEndpoi
     /// <summary>
     /// The stage of an CDN profile endpoint update allowing to specify endpoint properties.
     /// </summary>
-    public interface IUpdateStandardEndpoint  :
+    public interface IUpdateStandardEndpoint :
         Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Update.IUpdate
     {
         /// <summary>

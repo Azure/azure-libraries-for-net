@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKind>
     {
     }
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing to set the database account kind.
     /// </summary>
-    public interface IWithKind 
+    public interface IWithKind
     {
         /// <summary>
         /// The database account kind for the CosmosDB account.
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// the resource to be created, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount>,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithReadReplication,
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing the definition of a write location.
     /// </summary>
-    public interface IWithReadReplication 
+    public interface IWithReadReplication
     {
         /// <summary>
         /// A georeplication location for the CosmosDB account.
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing to set the IP range filter.
     /// </summary>
-    public interface IWithIpRangeFilter 
+    public interface IWithIpRangeFilter
     {
         /// <summary>
         /// CosmosDB Firewall Support: This value specifies the set of IP addresses or IP address ranges in CIDR
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing the definition of a read location.
     /// </summary>
-    public interface IWithWriteReplication 
+    public interface IWithWriteReplication
     {
         /// <summary>
         /// A georeplication location for the CosmosDB account.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// Grouping of cosmos db definition stages.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IBlank,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithGroup,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKind,
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The first stage of a cosmos db definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithGroup>
     {
     }
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing to set the consistency policy.
     /// </summary>
-    public interface IWithConsistencyPolicy 
+    public interface IWithConsistencyPolicy
     {
         /// <summary>
         /// The bounded staleness consistency policy for the CosmosDB account.

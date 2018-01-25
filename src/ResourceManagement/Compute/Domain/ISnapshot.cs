@@ -13,8 +13,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure managed snapshot.
     /// </summary>
-    public interface ISnapshot  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Compute.Fluent.IComputeManager,Models.SnapshotInner>,
+    public interface ISnapshot :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Compute.Fluent.IComputeManager, Models.SnapshotInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.ISnapshot>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Snapshot.Update.IUpdate>
     {

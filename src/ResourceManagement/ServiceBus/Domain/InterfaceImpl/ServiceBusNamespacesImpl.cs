@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     using Microsoft.Azure.Management.ServiceBus.Fluent;
     using Microsoft.Rest;
 
-    internal partial class ServiceBusNamespacesImpl 
+    internal partial class ServiceBusNamespacesImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.

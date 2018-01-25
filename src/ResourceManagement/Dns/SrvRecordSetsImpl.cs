@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Implementation of SrvRecordSets.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5TcnZSZWNvcmRTZXRzSW1wbA==
-    internal partial class SrvRecordSetsImpl  :
+    internal partial class SrvRecordSetsImpl :
         DnsRecordSetsBaseImpl<ISrvRecordSet, SrvRecordSetImpl>,
         ISrvRecordSets
     {

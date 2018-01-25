@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// The implementation for DiskVolumeEncryptionStatus for Linux virtual machine.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uTGludXhEaXNrVm9sdW1lRW5jcnlwdGlvbk1vbml0b3JJbXBs
-    internal partial class LinuxDiskVolumeEncryptionMonitorImpl  :
+    internal partial class LinuxDiskVolumeEncryptionMonitorImpl :
         IDiskVolumeEncryptionMonitor
     {
         private string rgName;
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="virtualMachineId">Resource id of Linux virtual machine to retrieve encryption status from.</param>
         /// <param name="computeManager">Compute manager.</param>
         ///GENMHASH:A42CB27228CC0FEEF184DFCCC4F8DCB2:0C2BFB2332C823A9307222D73EFBAF83
-        internal  LinuxDiskVolumeEncryptionMonitorImpl(string virtualMachineId, IComputeManager computeManager)
+        internal LinuxDiskVolumeEncryptionMonitorImpl(string virtualMachineId, IComputeManager computeManager)
         {
             this.rgName = ResourceUtils.GroupFromResourceId(virtualMachineId);
             this.vmName = ResourceUtils.NameFromResourceId(virtualMachineId);
@@ -44,12 +44,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:DF6D090576A3266E52582EE3F48781B1:FE003BD6635A94757D4D94620D2271C0
         private IList<Models.InstanceViewStatus> InstanceViewStatuses()
         {
-            if (!HasEncryptionExtension()) {
+            if (!HasEncryptionExtension())
+            {
                 return new List<InstanceViewStatus>();
             }
             VirtualMachineExtensionInstanceView instanceView = this.encryptionExtension.InstanceView;
             if (instanceView == null
-            || instanceView.Statuses == null) {
+            || instanceView.Statuses == null)
+            {
                 return new List<InstanceViewStatus>();
             }
             return instanceView.Statuses;
@@ -73,11 +75,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:CFF730CD005B7D5386D59ADCF7C33D0C:80F0D0455B27E848B9196C7D1768B4DB
         public EncryptionStatus DataDiskStatus()
         {
-            if (!HasEncryptionExtension()) {
+            if (!HasEncryptionExtension())
+            {
                 return EncryptionStatus.NotEncrypted;
             }
             string subStatusJson = InstanceViewFirstSubStatus();
-            if (subStatusJson == null) {
+            if (subStatusJson == null)
+            {
                 return EncryptionStatus.Unknown;
             }
             if (subStatusJson == null)
@@ -99,16 +103,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:41E2F45F0E1CC7217B8CEF67918CFBD9:327967FA4D7F005F7016223268CC352F
         private string InstanceViewFirstSubStatus()
         {
-            if (!HasEncryptionExtension()) {
+            if (!HasEncryptionExtension())
+            {
                 return null;
             }
             VirtualMachineExtensionInstanceView instanceView = this.encryptionExtension.InstanceView;
             if (instanceView == null
-                || instanceView.Substatuses == null) {
+                || instanceView.Substatuses == null)
+            {
                 return null;
             }
             IList<InstanceViewStatus> instanceViewSubStatuses = instanceView.Substatuses;
-            if (instanceViewSubStatuses.Count == 0) {
+            if (instanceViewSubStatuses.Count == 0)
+            {
                 return null;
             }
             return instanceViewSubStatuses[0].Message;
@@ -123,7 +130,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:D1037603B1F11C451DD830F07021E503:1E738399F355D89FDD840DEFB7CAE473
         public EncryptionStatus OSDiskStatus()
         {
-            if (!HasEncryptionExtension()) {
+            if (!HasEncryptionExtension())
+            {
                 return EncryptionStatus.NotEncrypted;
             }
             if (!HasEncryptionExtension())
@@ -162,11 +170,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:0D7229D8D998BA64BC9507355D492994:3CAE38CC4AFCD502C95C2524E812168D
         private async Task<Models.VirtualMachineExtensionInner> RetrieveEncryptExtensionWithInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (encryptionExtension != null) {
+            if (encryptionExtension != null)
+            {
                 // If there is already a cached extension simply retrieve it again with instance view.
                 //
                 return await RetrieveExtensionWithInstanceViewAsync(encryptionExtension, cancellationToken);
-            } else {
+            }
+            else
+            {
                 // Extension is not cached already so retrieve name from the virtual machine and
                 // then get the extension with instance view.
                 //
@@ -187,7 +198,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 .Inner
                 .VirtualMachines
                 .GetAsync(rgName, vmName, cancellationToken: cancellationToken);
-                
+
             if (virtualMachine == null)
             {
                 new Exception($"VM with name '{vmName}' not found (resource group '{rgName}')");
@@ -209,11 +220,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:6BC2D312A9C6A52A192D8C5304AB76C7:8D5351CEBDDEA6C608931050B58B3338
         public string ProgressMessage()
         {
-            if (!HasEncryptionExtension()) {
+            if (!HasEncryptionExtension())
+            {
                 return null;
             }
             IList<InstanceViewStatus> statuses = InstanceViewStatuses();
-            if (statuses.Count == 0) {
+            if (statuses.Count == 0)
+            {
                 return null;
             }
             return statuses[0].Message;

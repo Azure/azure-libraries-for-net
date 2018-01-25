@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.DAG
         private int toBeResolved;
         internal object LockObject = new object();
 
-        public DAGNode(string key, DataT data) 
+        public DAGNode(string key, DataT data)
             : base(key, data)
         {
             dependentKeys = new HashSet<string>();

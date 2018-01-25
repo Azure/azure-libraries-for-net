@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.ResourceGroup.Update
     /// <p>
     /// Call {@link Update#apply()} to apply the changes to the resource group in Azure.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         IAppliable<IResourceGroup>,
         IUpdateWithTags<IUpdate>
     {

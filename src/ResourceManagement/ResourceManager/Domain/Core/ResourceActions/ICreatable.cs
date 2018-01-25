@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
     /// 
     /// @param <T> the fluent type of the resource to be created
     /// </summary>
-    public interface ICreatable<T>  :
+    public interface ICreatable<T> :
         IIndexable
     {
         /// <summary>
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
         /// Execute the create request.
         /// </summary>
         /// <returns>the create resource</returns>
-        T Create ();
+        T Create();
 
         /// <summary>
         /// Puts the request into the queue and allow the HTTP client to execute
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
         /// <param name="cancellationToken">cancellationToken the cancellation token</param>
         /// <param name="multiThreaded">multiThreaded use mutli-threading</param>
         /// <returns>a handle to cancel the request</returns>
-        Task<T> CreateAsync (CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true);
+        Task<T> CreateAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true);
 
     }
 }

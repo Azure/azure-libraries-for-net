@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Troubleshooting.Definition
     /// The stage of the definition which contains all the minimum required inputs for execution, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithExecute  :
+    public interface IWithExecute :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IExecutable<Microsoft.Azure.Management.Network.Fluent.ITroubleshooting>
     {
     }
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Troubleshooting.Definition
     /// <summary>
     /// Sets the storage account to save the troubleshoot result.
     /// </summary>
-    public interface IWithStorageAccount 
+    public interface IWithStorageAccount
     {
         /// <summary>
         /// Set the storageAccounId value.
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Troubleshooting.Definition
     /// <summary>
     /// Sets the path to the blob to save the troubleshoot result in.
     /// </summary>
-    public interface IWithStoragePath 
+    public interface IWithStoragePath
     {
         Microsoft.Azure.Management.Network.Fluent.Troubleshooting.Definition.IWithExecute WithStoragePath(string storagePath);
     }
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Troubleshooting.Definition
     /// <summary>
     /// The first stage of troubleshooting parameters definition.
     /// </summary>
-    public interface IWithTargetResource 
+    public interface IWithTargetResource
     {
         /// <summary>
         /// Set the targetResourceId value (virtual network gateway or virtual network gateway connecyion id).
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Troubleshooting.Definition
     /// <summary>
     /// The entirety of troubleshooting parameters definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.Troubleshooting.Definition.IWithTargetResource,
         Microsoft.Azure.Management.Network.Fluent.Troubleshooting.Definition.IWithStorageAccount,
         Microsoft.Azure.Management.Network.Fluent.Troubleshooting.Definition.IWithStoragePath,

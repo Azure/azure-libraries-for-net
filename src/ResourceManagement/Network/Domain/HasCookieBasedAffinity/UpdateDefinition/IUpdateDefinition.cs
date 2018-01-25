@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasCookieBasedAffinity.Updat
     /// The stage of a definition allowing to enable or disable cookie based affinity.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithCookieBasedAffinity<ReturnT> 
+    public interface IWithCookieBasedAffinity<ReturnT>
     {
         /// <summary>
         /// Disables cookie based affinity.

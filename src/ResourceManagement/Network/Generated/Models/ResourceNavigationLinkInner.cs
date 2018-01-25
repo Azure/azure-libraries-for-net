@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public ResourceNavigationLinkInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable client-side representation of an app setting on a web app.
     /// </summary>
-    public interface IAppSetting  :
+    public interface IAppSetting :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

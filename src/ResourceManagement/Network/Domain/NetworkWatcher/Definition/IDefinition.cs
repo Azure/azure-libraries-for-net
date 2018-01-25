@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition
     /// <summary>
     /// Container interface for all the definitions.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition.IWithGroup,
         Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition.IWithCreate
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition
     /// <summary>
     /// The stage of the network watcher definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition.IWithCreate>
     {
     }
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition
     /// A network watcher with sufficient inputs to create a new network watcher in the cloud,
     /// but exposing additional optional inputs to specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition.IWithCreate>
     {
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition
     /// <summary>
     /// The first stage of a network watcher definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Definition.IWithGroup>
     {
     }

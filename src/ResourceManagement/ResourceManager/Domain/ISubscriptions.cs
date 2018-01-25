@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// Entry point to subscription management API.
     /// </summary>
-    public interface ISubscriptions  :
+    public interface ISubscriptions :
         ISupportsListing<ISubscription>,
         ISupportsGettingById<ISubscription>
     {

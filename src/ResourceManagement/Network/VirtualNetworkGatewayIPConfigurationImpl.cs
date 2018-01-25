@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// Implementation for VirtualNetworkGatewayIPConfiguration.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5SVBDb25maWd1cmF0aW9uSW1wbA==
-    internal partial class VirtualNetworkGatewayIPConfigurationImpl  :
+    internal partial class VirtualNetworkGatewayIPConfigurationImpl :
         ChildResource<VirtualNetworkGatewayIPConfigurationInner,
             VirtualNetworkGatewayImpl,
             IVirtualNetworkGateway>,
@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:5EF934D4E2CF202DF23C026435D9F6D6:E2FB3C470570EB032EC48D6BFD6A7AFF
         public string PublicIPAddressId()
         {
-            if (Inner.PublicIPAddress != null) {
+            if (Inner.PublicIPAddress != null)
+            {
                 return Inner.PublicIPAddress.Id;
             }
             return null;
@@ -84,7 +85,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public string NetworkId()
         {
             SubResource subnetRef = this.Inner.Subnet;
-            if (subnetRef != null) {
+            if (subnetRef != null)
+            {
                 return ResourceUtils.ParentResourcePathFromResourceId(subnetRef.Id);
             }
             return null;
@@ -97,7 +99,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:94AC8838A3A2280C2029702434306F7D:C0847EA0CDA78F6D91EFD239C70F0FA7
-        internal  VirtualNetworkGatewayIPConfigurationImpl(VirtualNetworkGatewayIPConfigurationInner inner, VirtualNetworkGatewayImpl parent) : base(inner, parent)
+        internal VirtualNetworkGatewayIPConfigurationImpl(VirtualNetworkGatewayIPConfigurationInner inner, VirtualNetworkGatewayImpl parent) : base(inner, parent)
         {
         }
 

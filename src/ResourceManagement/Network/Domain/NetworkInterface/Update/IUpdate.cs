@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     /// The template for an update operation, containing all the settings that
     /// can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IWithPrimaryNetworkSubnet,
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     /// <summary>
     /// The stage of the network interface definition allowing to disable accelerated networking.
     /// </summary>
-    public interface IWithAcceleratedNetworking 
+    public interface IWithAcceleratedNetworking
     {
         /// <summary>
         /// Disables accelerated networking.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     /// The stage of the network interface update allowing to specify private IP address within
     /// a virtual network subnet.
     /// </summary>
-    public interface IWithPrimaryPrivateIP 
+    public interface IWithPrimaryPrivateIP
     {
         /// <summary>
         /// Enables dynamic private IP address allocation within the specified existing virtual network
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     /// The stage of the network interface update allowing to associate public IP address with it's primary
     /// IP configuration.
     /// </summary>
-    public interface IWithPrimaryPublicIPAddress 
+    public interface IWithPrimaryPublicIPAddress
     {
         /// <summary>
         /// Associates an existing public IP address with the network interface's primary IP configuration.
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     /// <summary>
     /// The stage of the network interface update allowing to configure IP configuration.
     /// </summary>
-    public interface IWithIPConfiguration 
+    public interface IWithIPConfiguration
     {
         /// <summary>
         /// Starts definition of a secondary IP configuration.
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     /// <summary>
     /// The stage of the network interface update allowing to enable or disable IP forwarding.
     /// </summary>
-    public interface IWithIPForwarding 
+    public interface IWithIPForwarding
     {
         /// <summary>
         /// Enable IP forwarding in the network interface.
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     /// <summary>
     /// The stage of the network interface update allowing to associate network security group.
     /// </summary>
-    public interface IWithNetworkSecurityGroup 
+    public interface IWithNetworkSecurityGroup
     {
         /// <summary>
         /// Specifies that remove any network security group associated with the network interface.
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     /// <summary>
     /// The stage of the network interface update allowing to specify DNS servers.
     /// </summary>
-    public interface IWithDnsServer 
+    public interface IWithDnsServer
     {
         /// <summary>
         /// Specifies the IP address of the custom DNS server to associate with the network interface.
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     /// <summary>
     /// The stage of the network interface update allowing to associate it with a load balancer.
     /// </summary>
-    public interface IWithLoadBalancer 
+    public interface IWithLoadBalancer
     {
         /// <summary>
         /// Associates the network interface's primary IP configuration with a backend of an existing load balancer.
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update
     /// <summary>
     /// The stage of the network interface update allowing to specify subnet.
     /// </summary>
-    public interface IWithPrimaryNetworkSubnet 
+    public interface IWithPrimaryNetworkSubnet
     {
         /// <summary>
         /// Associate a subnet with the network interface.

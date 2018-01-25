@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     /// Implementation for CdnProfile.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNkbi5pbXBsZW1lbnRhdGlvbi5DZG5Qcm9maWxlSW1wbA==
-    internal partial class CdnProfileImpl  :
+    internal partial class CdnProfileImpl :
         GroupableResource<
             ICdnProfile,
             ProfileInner,
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         ///GENMHASH:636F3D57A21F57280580F7C29A78FFAD:9DF5985197AB928F69A541F4FD70E843
         public bool IsPremiumVerizon()
         {
-            if (Sku() != null && Sku().Name != null && 
+            if (Sku() != null && Sku().Name != null &&
                 Sku().Name.Equals(SkuName.PremiumVerizon, System.StringComparison.OrdinalIgnoreCase))
             {
                 return true;
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         }
 
         ///GENMHASH:354CBBDA97F05BB45365CF6ACDACFE6A:8FB5265E82D3754CF30BC19DF6A29958
-		internal  CdnProfileImpl(string name, ProfileInner innerModel, ICdnManager cdnManager)
+		internal CdnProfileImpl(string name, ProfileInner innerModel, ICdnManager cdnManager)
             : base(name, innerModel, cdnManager)
         {
             endpointsImpl = new CdnEndpointsImpl(this);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         ///GENMHASH:DEAE39A7D24B41C1AF6ABFA406FD058B:D168A69FDBBD9E3F4C438F385B147840
         public string ResourceState()
         {
-			return Inner.ResourceState;
+            return Inner.ResourceState;
         }
 
         ///GENMHASH:1813B9F987B61B140F89FFDE640AC0CA:A6F445874DBD721BE222ABA208139C51
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:43E446F640DC3345BDBD9A3378F2018A
         public Sku Sku()
         {
-			return Inner.Sku;
+            return Inner.Sku;
         }
 
         ///GENMHASH:507A92D4DCD93CE9595A78198DEBDFCF:3668B82086C37B508A9B15A557F5DDEE
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         }
 
         ///GENMHASH:857966B02726928CA3D093D0F7C49139:1171147ED7EBE016D5632FA8DC5C7846
-        public IReadOnlyDictionary<string,Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint> Endpoints()
+        public IReadOnlyDictionary<string, Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint> Endpoints()
         {
             return endpointsImpl.EndpointsAsMap();
         }
@@ -247,8 +247,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
 
         ///GENMHASH:B28D1284FE563994BFA76F228D2B2A7F:E514E11A2681970AA9465DBE8004FA44
         public async Task LoadEndpointContentAsync(
-            string endpointName, 
-            ISet<string> contentPaths, 
+            string endpointName,
+            ISet<string> contentPaths,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             await Manager.Inner.Endpoints.LoadContentAsync(ResourceGroupName, Name, endpointName, contentPaths?.ToList(), cancellationToken);
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
 
         ///GENMHASH:4A77B038EBB7E9DE574EA985E8BA5BAA:962058C8B6B9E50D658B4196CD77F173
         public async Task<CustomDomainValidationResult> ValidateEndpointCustomDomainAsync(
-            string endpointName, 
+            string endpointName,
             string hostName,
             CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -306,11 +306,11 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
 
         ///GENMHASH:BE0AA68DCF3FABA9207DD0D1087D157E:4432A0AE945945A7628130BCDDABF55E
         public async Task PurgeEndpointContentAsync(
-            string endpointName, 
-            ISet<string> contentPaths, 
+            string endpointName,
+            ISet<string> contentPaths,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Manager.Inner.Endpoints.PurgeContentAsync(ResourceGroupName, Name, endpointName, contentPaths?.ToList() ,cancellationToken);
-        }		
+            await Manager.Inner.Endpoints.PurgeContentAsync(ResourceGroupName, Name, endpointName, contentPaths?.ToList(), cancellationToken);
+        }
     }
 }

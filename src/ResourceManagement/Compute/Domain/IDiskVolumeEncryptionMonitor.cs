@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Type that can be used to monitor encryption enable and disable status of a virtual machine.
     /// </summary>
-    public interface IDiskVolumeEncryptionMonitor  :
+    public interface IDiskVolumeEncryptionMonitor :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor>
     {
         /// <summary>

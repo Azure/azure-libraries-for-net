@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of a private frontend of an internal load balancer.
     /// </summary>
-    public interface ILoadBalancerPrivateFrontendBeta  :
+    public interface ILoadBalancerPrivateFrontendBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

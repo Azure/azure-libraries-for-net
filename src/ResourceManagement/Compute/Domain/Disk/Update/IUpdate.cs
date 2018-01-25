@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Update
     /// <summary>
     /// The stage of the managed disk definition allowing to specify new size.
     /// </summary>
-    public interface IWithSize 
+    public interface IWithSize
     {
         /// <summary>
         /// Specifies the disk size.
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Update
     /// <summary>
     /// The stage of the managed disk update allowing to choose the SKU type.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Specifies the SKU.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Update
     /// <summary>
     /// The stage of the managed disk update allowing to specify OS settings.
     /// </summary>
-    public interface IWithOSSettings 
+    public interface IWithOSSettings
     {
         /// <summary>
         /// Specifies the operating system.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Update
     /// The template for an update operation, containing all the settings that
     /// can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Compute.Fluent.IDisk>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Compute.Fluent.Disk.Update.IUpdate>,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Update.IWithSku,

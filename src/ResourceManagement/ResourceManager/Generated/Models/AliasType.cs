@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// </summary>
         public AliasType()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

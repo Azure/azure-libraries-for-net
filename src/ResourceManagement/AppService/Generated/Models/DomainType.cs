@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class DomainTypeEnumExtension
     {
-        internal static string ToSerializedValue(this DomainType? value)  =>
+        internal static string ToSerializedValue(this DomainType? value) =>
             value == null ? null : ((DomainType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this DomainType value)
         {
-            switch( value )
+            switch (value)
             {
                 case DomainType.Regular:
                     return "Regular";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static DomainType? ParseDomainType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Regular":
                     return DomainType.Regular;

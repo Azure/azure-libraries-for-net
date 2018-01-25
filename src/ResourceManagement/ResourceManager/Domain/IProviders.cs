@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// Entry point to providers management API.
     /// </summary>
-    public interface IProviders  :
+    public interface IProviders :
         ISupportsListing<IProvider>,
         ISupportsGettingByName<IProvider>
     {
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </summary>
         /// <param name="resourceProviderNamespace">resourceProviderNamespace Namespace of the resource provider</param>
         /// <returns>the ProviderInner object wrapped in {@link ServiceResponse} if successful</returns>
-        IProvider Unregister (string resourceProviderNamespace);
+        IProvider Unregister(string resourceProviderNamespace);
 
         /// <summary>
         /// Unregisters provider from a subscription.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </summary>
         /// <param name="resourceProviderNamespace">resourceProviderNamespace Namespace of the resource provider</param>
         /// <returns>the ProviderInner object wrapped in {@link ServiceResponse} if successful</returns>
-        IProvider Register (string resourceProviderNamespace);
+        IProvider Register(string resourceProviderNamespace);
 
         /// <summary>
         /// Registers provider to be used with a subscription.

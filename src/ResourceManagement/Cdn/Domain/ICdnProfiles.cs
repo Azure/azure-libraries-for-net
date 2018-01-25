@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     /// <summary>
     /// Entry point for CDN profile management API.
     /// </summary>
-    public interface ICdnProfiles  :
+    public interface ICdnProfiles :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<CdnProfile.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile>,

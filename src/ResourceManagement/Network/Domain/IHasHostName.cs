@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An interface representing a model's ability to reference a host name.
     /// </summary>
-    public interface IHasHostName 
+    public interface IHasHostName
     {
         /// <summary>
         /// Gets the associated host name.

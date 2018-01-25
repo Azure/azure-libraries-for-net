@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public EffectiveNetworkSecurityRule()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

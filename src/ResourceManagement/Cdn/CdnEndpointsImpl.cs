@@ -13,21 +13,21 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNkbi5pbXBsZW1lbnRhdGlvbi5DZG5FbmRwb2ludHNJbXBs
     internal partial class CdnEndpointsImpl :
-        ExternalChildResourcesCached<CdnEndpointImpl,ICdnEndpoint,EndpointInner,ICdnProfile,CdnProfileImpl>
+        ExternalChildResourcesCached<CdnEndpointImpl, ICdnEndpoint, EndpointInner, ICdnProfile, CdnProfileImpl>
     {
         ///GENMHASH:6A122C62EB559D6E6E53725061B422FB:1A09B80DD67CEC237690A0EA7E905104
         protected override IList<CdnEndpointImpl> ListChildResources()
         {
             List<CdnEndpointImpl> childResources = new List<CdnEndpointImpl>();
 
-            foreach(var innerEndpoint in Extensions.Synchronize(() => Parent.Manager.Inner.Endpoints.ListByProfileAsync(Parent.ResourceGroupName, Parent.Name)))
+            foreach (var innerEndpoint in Extensions.Synchronize(() => Parent.Manager.Inner.Endpoints.ListByProfileAsync(Parent.ResourceGroupName, Parent.Name)))
             {
                 var endpoint = new CdnEndpointImpl(innerEndpoint.Name, Parent, innerEndpoint);
 
-                foreach (var customDomain in 
+                foreach (var customDomain in
                     Extensions.Synchronize(() => Parent.Manager.Inner.CustomDomains.ListByEndpointAsync(
-                        Parent.ResourceGroupName, 
-                        Parent.Name, 
+                        Parent.ResourceGroupName,
+                        Parent.Name,
                         innerEndpoint.Name)))
                 {
                     endpoint.WithCustomDomain(customDomain.HostName);
@@ -60,10 +60,10 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The azure endpoints as a map indexed by name.</return>
 
         ///GENMHASH:B9E22CF70550E9F6850854C8E614BD8A:0B2B1F221703C7AE9B8FCB1CA33B02DE
-        internal IReadOnlyDictionary<string,Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint> EndpointsAsMap()
+        internal IReadOnlyDictionary<string, Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint> EndpointsAsMap()
         {
             var result = new Dictionary<string, ICdnEndpoint>();
-            foreach(var entry in this.Collection)
+            foreach (var entry in this.Collection)
             {
                 CdnEndpointImpl endpoint = entry.Value;
                 result.Add(entry.Key, endpoint);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         }
 
         ///GENMHASH:0E17135F576ED293506D3C5D4AB3CC33:0A9C82E8F2ECF2EDFD1BDEA306B57C31
-        internal  CdnEndpointsImpl(CdnProfileImpl parent) : base(parent, "Endpoint")
+        internal CdnEndpointsImpl(CdnProfileImpl parent) : base(parent, "Endpoint")
         {
             if (parent.Id != null)
             {

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Client-side representation of express route circuit peering object, associated with express route circuit.
     /// </summary>
-    public interface IExpressRouteCircuitPeering  :
+    public interface IExpressRouteCircuitPeering :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IIndependentChild<Microsoft.Azure.Management.Network.Fluent.INetworkManager>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ExpressRouteCircuitPeeringInner>,

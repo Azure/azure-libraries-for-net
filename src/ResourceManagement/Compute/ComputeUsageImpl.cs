@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:9D196E486CC1E35756FD0BEDAB3F3BE4:C4C8970BE357CD0ECDFA60C67B17D51F
         public int Limit()
         {
-            return (int) Inner.Limit;
+            return (int)Inner.Limit;
         }
 
         ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:0EDBC6F12844C2F2056BFF916F51853B
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:4CC577A7C618816C07F6CE452B96D1E6:45736D55DD750DB588D0BFED6A1C9F6E
         public int CurrentValue()
         {
-            return  Inner.CurrentValue;
+            return Inner.CurrentValue;
         }
     }
 }

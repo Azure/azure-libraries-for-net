@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Upda
     /// <summary>
     /// Stage of an application gateway probe update allowing to specify the path to send the probe to.
     /// </summary>
-    public interface IWithPath 
+    public interface IWithPath
     {
         /// <summary>
         /// Specifies the relative path for the probe to call.
@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Upda
     /// <summary>
     /// Stage of an application gateway probe update allowing to specify the protocol of the probe.
     /// </summary>
-    public interface IWithProtocol  :
-        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Update.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Update.IUpdate,Microsoft.Azure.Management.Network.Fluent.Models.ApplicationGatewayProtocol>
+    public interface IWithProtocol :
+        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Update.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Update.IUpdate, Microsoft.Azure.Management.Network.Fluent.Models.ApplicationGatewayProtocol>
     {
         /// <summary>
         /// Specifies HTTP as the probe protocol.
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Upda
     /// <summary>
     /// Stage of an application gateway probe update allowing to specify the number of retries before the server is considered unhealthy.
     /// </summary>
-    public interface IWithRetries 
+    public interface IWithRetries
     {
         /// <summary>
         /// Specifies the number of retries before the server is considered unhealthy.
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Upda
     /// <summary>
     /// Stage of an application gateway probe update allowing to specify the host to send the probe to.
     /// </summary>
-    public interface IWithHost 
+    public interface IWithHost
     {
         /// <summary>
         /// Specifies the host name to send the probe to.
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Upda
     /// <summary>
     /// The stage of an application gateway probe update allowing to specify the body contents of a healthy HTTP response to a probe.
     /// </summary>
-    public interface IWithHealthyHttpResponseBodyContents  :
+    public interface IWithHealthyHttpResponseBodyContents :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Update.IWithHealthyHttpResponseBodyContentsBeta
     {
     }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Upda
     /// <summary>
     /// Stage of an application gateway probe update allowing to specify the time interval between consecutive probes.
     /// </summary>
-    public interface IWithInterval 
+    public interface IWithInterval
     {
         /// <summary>
         /// Specifies the time interval in seconds between consecutive probes.
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Upda
     /// <summary>
     /// Stage of an application gateway probe update allowing to specify the amount of time to after which the probe is considered failed.
     /// </summary>
-    public interface IWithTimeout 
+    public interface IWithTimeout
     {
         /// <summary>
         /// Specifies the amount of time in seconds waiting for a response before the probe is considered failed.
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Upda
     /// <summary>
     /// The stage of an application gateway probe update allowing to specify healthy HTTP response status code ranges.
     /// </summary>
-    public interface IWithHealthyHttpResponseStatusCodeRanges  :
+    public interface IWithHealthyHttpResponseStatusCodeRanges :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Update.IWithHealthyHttpResponseStatusCodeRangesBeta
     {
     }
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Upda
     /// <summary>
     /// The entirety of an application gateway probe update as part of an application gateway update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Update.IWithProtocol,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Update.IWithPath,
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Upda
     /// <summary>
     /// The stage of an application gateway probe update allowing to specify the body contents of a healthy HTTP response to a probe.
     /// </summary>
-    public interface IWithHealthyHttpResponseBodyContentsBeta  :
+    public interface IWithHealthyHttpResponseBodyContentsBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayProbe.Upda
     /// <summary>
     /// The stage of an application gateway probe update allowing to specify healthy HTTP response status code ranges.
     /// </summary>
-    public interface IWithHealthyHttpResponseStatusCodeRangesBeta  :
+    public interface IWithHealthyHttpResponseStatusCodeRangesBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

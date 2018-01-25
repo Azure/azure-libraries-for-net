@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public ExpressRouteCircuitsArpTableListResultInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

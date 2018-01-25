@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definiti
     /// <summary>
     /// A service principal definition allowing role assignments to be added.
     /// </summary>
-    public interface IWithRoleAssignment  :
+    public interface IWithRoleAssignment :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definition.IWithRoleAssignmentBeta
     {
     }
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definiti
     /// <summary>
     /// A service principal definition allowing credentials to be specified.
     /// </summary>
-    public interface IWithCredential  :
+    public interface IWithCredential :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definition.IWithCredentialBeta
     {
     }
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definiti
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definition.IBlank,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definition.IWithCreate
     {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definiti
     /// <summary>
     /// A service principal definition allowing application to be specified.
     /// </summary>
-    public interface IWithApplication  :
+    public interface IWithApplication :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definition.IWithApplicationBeta
     {
     }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definiti
     /// service principal in the cloud, but exposing additional optional inputs to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IServicePrincipal>,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definition.IWithCredential,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definition.IWithRoleAssignment
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definiti
     /// <summary>
     /// The first stage of the service principal definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definition.IWithApplication
     {
     }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definiti
     /// <summary>
     /// A service principal definition allowing role assignments to be added.
     /// </summary>
-    public interface IWithRoleAssignmentBeta  :
+    public interface IWithRoleAssignmentBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definiti
     /// <summary>
     /// A service principal definition allowing credentials to be specified.
     /// </summary>
-    public interface IWithCredentialBeta  :
+    public interface IWithCredentialBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Definiti
     /// <summary>
     /// A service principal definition allowing application to be specified.
     /// </summary>
-    public interface IWithApplicationBeta  :
+    public interface IWithApplicationBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

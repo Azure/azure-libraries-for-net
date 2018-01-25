@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class AppServicePlanRestrictionsEnumExtension
     {
-        internal static string ToSerializedValue(this AppServicePlanRestrictions? value)  =>
+        internal static string ToSerializedValue(this AppServicePlanRestrictions? value) =>
             value == null ? null : ((AppServicePlanRestrictions)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this AppServicePlanRestrictions value)
         {
-            switch( value )
+            switch (value)
             {
                 case AppServicePlanRestrictions.None:
                     return "None";
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static AppServicePlanRestrictions? ParseAppServicePlanRestrictions(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "None":
                     return AppServicePlanRestrictions.None;

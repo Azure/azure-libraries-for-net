@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update
     /// <summary>
     /// A Redis Cache update allowing Redis configuration to be modified.
     /// </summary>
-    public interface IWithRedisConfiguration 
+    public interface IWithRedisConfiguration
     {
         /// <summary>
         /// Cleans all the configuration settings being set on Redis Cache.
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update
         /// </summary>
         /// <param name="redisConfiguration">Configuration of Redis Cache as a map indexed by configuration name.</param>
         /// <return>The next stage of Redis Cache update.</return>
-        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update.IUpdate WithRedisConfiguration(IDictionary<string,string> redisConfiguration);
+        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update.IUpdate WithRedisConfiguration(IDictionary<string, string> redisConfiguration);
 
         /// <summary>
         /// Specifies Redis Setting.
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update
     /// <summary>
     /// The template for a Redis Cache update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Redis.Fluent.IRedisCache>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update.IUpdate>,
         Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update.IWithSku,
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update
     /// <summary>
     /// A Redis Cache update allowing non SSL port to be enabled or disabled.
     /// </summary>
-    public interface IWithNonSslPort 
+    public interface IWithNonSslPort
     {
         /// <summary>
         /// Enables non-ssl Redis server port (6379).
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update
     /// <summary>
     /// A Redis Cache update stage allowing to change the parameters.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Updates Redis Cache to Premium sku.

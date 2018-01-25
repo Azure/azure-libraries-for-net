@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             {
                 if (resource.PtrRecords != null)
                 {
-                    foreach(var recordToRemove in this.recordSetRemoveInfo.PtrRecords)
+                    foreach (var recordToRemove in this.recordSetRemoveInfo.PtrRecords)
                     {
-                        foreach(var record in resource.PtrRecords)
+                        foreach (var record in resource.PtrRecords)
                         {
                             if (record.Ptrdname.Equals(recordToRemove.Ptrdname, StringComparison.OrdinalIgnoreCase))
                             {
@@ -57,8 +57,9 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         public IReadOnlyList<string> TargetDomainNames()
         {
             List<string> targetDomainNames = new List<string>();
-            if (Inner.PtrRecords != null) {
-                foreach(var ptrRecord in Inner.PtrRecords)
+            if (Inner.PtrRecords != null)
+            {
+                foreach (var ptrRecord in Inner.PtrRecords)
                 {
                     targetDomainNames.Add(ptrRecord.Ptrdname);
                 }
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         }
 
         ///GENMHASH:626ADA7635E8C9E10AE63FDF8E70C4FE:3F5F2CC7F3C4A3B943EC7C1953A9D2E5
-        internal  PtrRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
+        internal PtrRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
         {
         }
 
@@ -75,7 +76,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         internal static PtrRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
         {
             return new PtrRecordSetImpl(parent,
-                new RecordSetInner { 
+                new RecordSetInner
+                {
                     Name = name,
                     Type = Enum.GetName(typeof(RecordType), Models.RecordType.PTR),
                     PtrRecords = new List<PtrRecord>()

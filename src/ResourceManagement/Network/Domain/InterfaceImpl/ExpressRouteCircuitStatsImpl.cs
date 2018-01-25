@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class ExpressRouteCircuitStatsImpl 
+    internal partial class ExpressRouteCircuitStatsImpl
     {
         /// <summary>
         /// Gets outbound bytes through secondary channel of the peering.

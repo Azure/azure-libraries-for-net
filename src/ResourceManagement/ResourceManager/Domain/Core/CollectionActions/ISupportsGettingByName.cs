@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
     /// 
     /// @param <T> the type of the resource collection
     /// </summary>
-    public interface ISupportsGettingByName<T> 
+    public interface ISupportsGettingByName<T>
     {
         /// <summary>
         /// Gets the information about a resource from Azure based on the resource name within the current resource group.
         /// </summary>
         /// <param name="name">name the name of the resource. (Note, this is not the resource ID.)</param>
         /// <returns>an immutable representation of the resource</returns>
-        T GetByName (string name);
+        T GetByName(string name);
 
         /// <summary>
         /// Gets the information about a resource from Azure based on the resource name within the current resource group.
@@ -27,6 +27,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
         /// <param name="name">name the name of the resource. (Note, this is not the resource ID.)</param>
         /// <param name="cancellationToken">cancellationToken the cancellation token</param>
         /// <returns>an immutable representation of the resource</returns>
-        Task<T> GetByNameAsync (string name, CancellationToken cancellationToken = default(CancellationToken));
+        Task<T> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

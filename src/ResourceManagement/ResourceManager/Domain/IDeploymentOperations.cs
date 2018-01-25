@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// Entry point to deployment operation management API.
     /// </summary>
-    public interface IDeploymentOperationsFluent  :
+    public interface IDeploymentOperationsFluent :
         ISupportsListing<IDeploymentOperation>,
         ISupportsGettingById<IDeploymentOperation>
     {

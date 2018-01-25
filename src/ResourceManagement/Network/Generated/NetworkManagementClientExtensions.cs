@@ -22,29 +22,29 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
     public static partial class NetworkManagementClientExtensions
     {
-            /// <summary>
-            /// Checks whether a domain name in the cloudapp.net zone is available for use.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The location of the domain name.
-            /// </param>
-            /// <param name='domainNameLabel'>
-            /// The domain name to be verified. It must conform to the following regular
-            /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DnsNameAvailabilityResultInner> CheckDnsNameAvailabilityAsync(this INetworkManagementClient operations, string location, string domainNameLabel = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Checks whether a domain name in the cloudapp.net zone is available for use.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The location of the domain name.
+        /// </param>
+        /// <param name='domainNameLabel'>
+        /// The domain name to be verified. It must conform to the following regular
+        /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DnsNameAvailabilityResultInner> CheckDnsNameAvailabilityAsync(this INetworkManagementClient operations, string location, string domainNameLabel = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.CheckDnsNameAvailabilityWithHttpMessagesAsync(location, domainNameLabel, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.CheckDnsNameAvailabilityWithHttpMessagesAsync(location, domainNameLabel, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

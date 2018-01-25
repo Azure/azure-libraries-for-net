@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class VirtualMachineExtensionImageVersionImpl 
+    internal partial class VirtualMachineExtensionImageVersionImpl
     {
         /// <summary>
         /// Gets the name of the resource.

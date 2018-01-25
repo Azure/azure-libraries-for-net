@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.Storage.Fluent;
 
-    internal partial class RegistriesImpl 
+    internal partial class RegistriesImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.

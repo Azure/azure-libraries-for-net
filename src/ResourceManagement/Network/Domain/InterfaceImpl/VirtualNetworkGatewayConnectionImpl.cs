@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Collections.Generic;
 
-    internal partial class VirtualNetworkGatewayConnectionImpl 
+    internal partial class VirtualNetworkGatewayConnectionImpl
     {
         /// <summary>
         /// Specify shared key.

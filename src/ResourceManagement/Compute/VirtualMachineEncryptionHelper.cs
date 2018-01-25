@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// Helper type to enable or disable virtual machine disk (OS, Data) encryption.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uVmlydHVhbE1hY2hpbmVFbmNyeXB0aW9uSGVscGVy
-    internal partial class VirtualMachineEncryptionHelper  :
+    internal partial class VirtualMachineEncryptionHelper :
         object
     {
         private string encryptionExtensionPublisher = "Microsoft.Azure.Security";
@@ -82,11 +82,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private async Task<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor> GetDiskVolumeEncryptDecryptStatusAsync(IVirtualMachine virtualMachine, CancellationToken cancellationToken = default(CancellationToken))
         {
             IDiskVolumeEncryptionMonitor monitor = null;
-            if (osType == OperatingSystemTypes.Linux) 
+            if (osType == OperatingSystemTypes.Linux)
             {
                 monitor = new LinuxDiskVolumeEncryptionMonitorImpl(virtualMachine.Id, virtualMachine.Manager);
-            } 
-            else 
+            }
+            else
             {
                 monitor = new WindowsVolumeEncryptionMonitorImpl(virtualMachine.Id, virtualMachine.Manager);
             }
@@ -117,7 +117,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             VirtualMachineExtensionInstanceView instanceView = await encryptionExtension.GetInstanceViewAsync(cancellationToken);
             if (instanceView == null
                 || instanceView.Statuses == null
-                || instanceView.Statuses.Count == 0) {
+                || instanceView.Statuses.Count == 0)
+            {
                 throw new Exception(ERROR_EXPECTED_ENCRYPTION_EXTENSION_STATUS_NOT_FOUND);
             }
             string extensionStatus = instanceView.Statuses[0].Message;
@@ -163,11 +164,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:C6B6A6BE7125F3222921978BAAAD158C:DA7BCCD8F3EBB8DF30FE3B09A51993F0
         private string EncryptionExtensionVersion()
         {
-            if (this.osType == OperatingSystemTypes.Linux) 
+            if (this.osType == OperatingSystemTypes.Linux)
             {
                 return "0.1";
-            } 
-            else 
+            }
+            else
             {
                 return "1.1";
             }
@@ -177,9 +178,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:EB5E4873902883B7A5D561248699E59F:0697EDE3B59F3C8FC56609ECBD880CD3
         private string EncryptionExtensionType()
         {
-            if (this.osType == OperatingSystemTypes.Linux) {
+            if (this.osType == OperatingSystemTypes.Linux)
+            {
                 return "AzureDiskEncryptionForLinux";
-            } else {
+            }
+            else
+            {
                 return "AzureDiskEncryption";
             }
         }
@@ -191,7 +195,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="">The Windows or Linux encryption settings.</param>
         /// <return>An observable that emits the encryption status.</return>
         ///GENMHASH:FB7DBA27A41CC76685F21AB0A9729C82:D88D73A86520940C4EA57E9CEEA1516F
-        internal async Task<IDiskVolumeEncryptionMonitor> EnableEncryptionAsync<T>(VirtualMachineEncryptionConfiguration<T> encryptionSettings, 
+        internal async Task<IDiskVolumeEncryptionMonitor> EnableEncryptionAsync<T>(VirtualMachineEncryptionConfiguration<T> encryptionSettings,
             CancellationToken cancellationToken = default(CancellationToken)) where T : VirtualMachineEncryptionConfiguration<T>
         {
             var encryptConfig = new EnableEncryptConfig<T>(encryptionSettings);
@@ -257,7 +261,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     throw new Exception(ERROR_ON_LINUX_DATA_DISK_DECRYPT_NOT_ALLOWED_IF_OS_DISK_IS_ENCRYPTED);
                 }
             }
-                return true;
+            return true;
         }
 
         /// <summary>
@@ -331,12 +335,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public override DiskEncryptionSettings StorageProfileEncryptionSettings()
         {
             KeyVaultKeyReference keyEncryptionKey = null;
-            if (settings.KeyEncryptionKeyURL() != null) {
+            if (settings.KeyEncryptionKeyURL() != null)
+            {
                 keyEncryptionKey = new KeyVaultKeyReference()
                 {
                     KeyUrl = settings.KeyEncryptionKeyURL()
                 };
-                if (settings.KeyEncryptionKeyVaultId() != null) {
+                if (settings.KeyEncryptionKeyVaultId() != null)
+                {
                     keyEncryptionKey.SourceVault = new ResourceManager.Fluent.SubResource()
                     {
                         Id = settings.KeyEncryptionKeyVaultId()
@@ -368,7 +374,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             publicSettings.Add("KeyVaultURL", settings.KeyVaultUrl());
             publicSettings.Add("VolumeType", settings.VolumeType().ToString());
             publicSettings.Add("SequenceVersion", Guid.NewGuid().ToString());
-            if (settings.KeyEncryptionKeyURL() != null) {
+            if (settings.KeyEncryptionKeyURL() != null)
+            {
                 publicSettings.Add("KeyEncryptionKeyURL", settings.KeyEncryptionKeyURL());
             }
             return publicSettings;
@@ -380,7 +387,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             var protectedSettings = new Dictionary<string, object>();
             protectedSettings.Add("AADClientSecret", settings.AadSecret());
             if (settings.OsType() == OperatingSystemTypes.Linux
-                && settings.LinuxPassPhrase() != null) {
+                && settings.LinuxPassPhrase() != null)
+            {
                 protectedSettings.Add("Passphrase", settings.LinuxPassPhrase());
             }
             return protectedSettings;

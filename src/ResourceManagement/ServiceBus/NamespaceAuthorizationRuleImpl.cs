@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Implementation for NamespaceAuthorizationRule.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuaW1wbGVtZW50YXRpb24uTmFtZXNwYWNlQXV0aG9yaXphdGlvblJ1bGVJbXBs
-    internal partial class NamespaceAuthorizationRuleImpl  :
+    internal partial class NamespaceAuthorizationRuleImpl :
             AuthorizationRuleBaseImpl<Microsoft.Azure.Management.ServiceBus.Fluent.INamespaceAuthorizationRule,
             Microsoft.Azure.Management.ServiceBus.Fluent.ServiceBusNamespaceImpl,
             SharedAccessAuthorizationRuleInner,

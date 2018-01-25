@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.IO;
 
-    internal partial class ApplicationGatewaySslCertificateImpl 
+    internal partial class ApplicationGatewaySslCertificateImpl
     {
         /// <summary>
         /// Gets the name of the resource.

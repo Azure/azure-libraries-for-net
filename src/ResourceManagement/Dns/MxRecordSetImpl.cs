@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             {
                 if (resource.MxRecords != null)
                 {
-                    foreach(var recordToRemove in this.recordSetRemoveInfo.MxRecords)
+                    foreach (var recordToRemove in this.recordSetRemoveInfo.MxRecords)
                     {
-                        foreach(var record in resource.MxRecords)
+                        foreach (var record in resource.MxRecords)
                         {
                             if (record.Exchange.Equals(recordToRemove.Exchange, StringComparison.OrdinalIgnoreCase)
                                 && (record.Preference == recordToRemove.Preference))
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         }
 
         ///GENMHASH:274A275E58B0BA3B1ED50C81170E88FC:3F5F2CC7F3C4A3B943EC7C1953A9D2E5
-        internal  MXRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
+        internal MXRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
         {
         }
 
@@ -81,7 +81,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         internal static MXRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
         {
             return new MXRecordSetImpl(parent,
-                new RecordSetInner {
+                new RecordSetInner
+                {
                     Name = name,
                     Type = Enum.GetName(typeof(RecordType), Models.RecordType.MX),
                     MxRecords = new List<MxRecord>()

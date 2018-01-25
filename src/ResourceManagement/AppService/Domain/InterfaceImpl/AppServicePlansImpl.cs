@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
-    internal partial class AppServicePlansImpl 
+    internal partial class AppServicePlansImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.

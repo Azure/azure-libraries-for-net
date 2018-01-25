@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definitio
     /// <summary>
     /// The first stage of a container service definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition.IWithGroup>
     {
     }
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definitio
     /// <summary>
     /// The stage of the container service definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition.IWithSku>
     {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definitio
     /// <summary>
     /// The stage of the container registry definition allowing to add or remove a webhook.
     /// </summary>
-    public interface IWithWebhook 
+    public interface IWithWebhook
     {
         /// <summary>
         /// Begins the definition of a new webhook to be added to this container registry.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definitio
     /// <summary>
     /// Container interface for all the definitions related to a registry.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition.IBlank,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition.IWithGroup,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition.IWithSku,
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definitio
     /// <summary>
     /// The stage of the registry definition allowing to specify the SKU type.
     /// </summary>
-    public interface IWithSku  :
+    public interface IWithSku :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition.IWithSkuBeta
     {
     }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definitio
     /// The stage of the definition which contains all the minimum required inputs for the resource to be created,
     /// but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry>,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition.IWithAdminUserEnabled,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition.IWithWebhook,
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definitio
     /// <summary>
     /// The stage of the registry definition allowing to enable admin user.
     /// </summary>
-    public interface IWithAdminUserEnabled 
+    public interface IWithAdminUserEnabled
     {
         /// <summary>
         /// Enable admin user.
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definitio
     /// <summary>
     /// The stage of the registry definition allowing to specify the storage account.
     /// </summary>
-    public interface IWithStorageAccount  :
+    public interface IWithStorageAccount :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definition.IWithStorageAccountBeta
     {
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definitio
     /// <summary>
     /// The stage of the registry definition allowing to specify the SKU type.
     /// </summary>
-    public interface IWithSkuBeta  :
+    public interface IWithSkuBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Definitio
     /// <summary>
     /// The stage of the registry definition allowing to specify the storage account.
     /// </summary>
-    public interface IWithStorageAccountBeta  :
+    public interface IWithStorageAccountBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

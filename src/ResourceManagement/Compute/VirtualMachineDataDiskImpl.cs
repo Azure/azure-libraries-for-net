@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:529D413DA27B62CF8FA74DD34751A761:2AB50F106A2C0F2D00579F7B1825D8B0
         public StorageAccountTypes? StorageAccountType()
         {
-            if (Inner.ManagedDisk == null) {
+            if (Inner.ManagedDisk == null)
+            {
                 return null;
             }
             return Inner.ManagedDisk.StorageAccountType;
@@ -58,7 +59,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:ACA2D5620579D8158A29586CA1FF4BC6:FBF1D26DE5D0CBA789F0BA74B22FDAAC
         public string Id()
         {
-            if (Inner.ManagedDisk == null) {
+            if (Inner.ManagedDisk == null)
+            {
                 return null;
             }
             return Inner.ManagedDisk.Id;

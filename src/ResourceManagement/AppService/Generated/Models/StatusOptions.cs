@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class StatusOptionsEnumExtension
     {
-        internal static string ToSerializedValue(this StatusOptions? value)  =>
+        internal static string ToSerializedValue(this StatusOptions? value) =>
             value == null ? null : ((StatusOptions)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this StatusOptions value)
         {
-            switch( value )
+            switch (value)
             {
                 case StatusOptions.Ready:
                     return "Ready";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static StatusOptions? ParseStatusOptions(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Ready":
                     return StatusOptions.Ready;

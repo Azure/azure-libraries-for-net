@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         private string userPrincipalName;
         private string servicePrincipalName;
         ///GENMHASH:DB1CD9648996DA10B58423DFABD976E4:BC7BE29DA61C7F6594944FD23512AD2F
-        internal AccessPolicyImpl (AccessPolicyEntry innerObject, VaultImpl parent) : base(innerObject, parent)
+        internal AccessPolicyImpl(AccessPolicyEntry innerObject, VaultImpl parent) : base(innerObject, parent)
         {
             Inner.TenantId = Guid.Parse(parent.TenantId);
         }
@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             get
             {
-                if (Inner.TenantId == null) {
+                if (Inner.TenantId == null)
+                {
                     return null;
                 }
                 return Inner.TenantId.ToString();
@@ -109,18 +110,20 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:2548489FEC6DEDA375BB14337408C32F:F98681659352BAAE0C36842A9939C2C0
-        private void InitializeKeyPermissions ()
+        private void InitializeKeyPermissions()
         {
-            if (Inner.Permissions == null) {
+            if (Inner.Permissions == null)
+            {
                 Inner.Permissions = new Permissions();
             }
-            if (Inner.Permissions.Keys == null) {
+            if (Inner.Permissions.Keys == null)
+            {
                 Inner.Permissions.Keys = new List<string>();
             }
         }
 
         ///GENMHASH:E016D80945C42D59D0AEF2D38ECB30DB:5F47B75D080175C69CF7CF370856DC63
-        private void InitializeSecretPermissions ()
+        private void InitializeSecretPermissions()
         {
             if (Inner.Permissions == null)
             {
@@ -133,13 +136,13 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:CAED6C15F9B42B76A5AC64F370A3FD5B:53E624BA383B922224605FF351DC75E1
-        public AccessPolicyImpl AllowKeyPermissions (params KeyPermissions[] permissions)
+        public AccessPolicyImpl AllowKeyPermissions(params KeyPermissions[] permissions)
         {
             return AllowKeyPermissions(new List<KeyPermissions>(permissions));
         }
 
         ///GENMHASH:4285C26105D2CACA3EB31944C49CADB1:4EA7EF6F19835FEDF776325D20842BA6
-        public AccessPolicyImpl AllowKeyPermissions (IList<KeyPermissions> permissions)
+        public AccessPolicyImpl AllowKeyPermissions(IList<KeyPermissions> permissions)
         {
             InitializeKeyPermissions();
             foreach (var permission in permissions)
@@ -150,7 +153,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:3B24D44CFE59D6F67A1E749291E41B8F:A4770BCE1DF8EF5C1DC58FB5ECE21BC9
-        public AccessPolicyImpl AllowSecretPermissions (params SecretPermissions[] permissions)
+        public AccessPolicyImpl AllowSecretPermissions(params SecretPermissions[] permissions)
         {
             return AllowSecretPermissions(new List<SecretPermissions>(permissions));
         }
@@ -167,62 +170,62 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:B7963E82870A365FD51B673F0B0274AC
-        public VaultImpl Attach ()
+        public VaultImpl Attach()
         {
             Parent.WithAccessPolicy(this);
             return Parent;
         }
 
         ///GENMHASH:458BF8ACE4D00DD896B7979D96F7C2EB:225E1D92A92E81E1982C4A483BC88058
-        public AccessPolicyImpl ForObjectId (Guid objectId)
+        public AccessPolicyImpl ForObjectId(Guid objectId)
         {
             Inner.ObjectId = objectId.ToString();
             return this;
         }
 
         ///GENMHASH:9D8D39171FFFFE2517D8100304C11862:6A48AA5D0D2710F0A8787D34676538E1
-        public AccessPolicyImpl ForUser (IActiveDirectoryUser user)
+        public AccessPolicyImpl ForUser(IActiveDirectoryUser user)
         {
             Inner.ObjectId = user.Id;
             return this;
         }
 
         ///GENMHASH:8E6D48BCE723A76A602CE321050BFECB:57A825FB9FC082E89AA8F17B8DEB7486
-        public AccessPolicyImpl ForUser (string userPrincipalName)
+        public AccessPolicyImpl ForUser(string userPrincipalName)
         {
             this.userPrincipalName = userPrincipalName;
             return this;
         }
 
         ///GENMHASH:498DF2FE8CE61E58CF671C4DCDF1A6D1:B99DEC951B47738BA49B5FC2B737021E
-        public AccessPolicyImpl ForGroup (IActiveDirectoryGroup group)
+        public AccessPolicyImpl ForGroup(IActiveDirectoryGroup group)
         {
             Inner.ObjectId = group.Id;
             return this;
         }
 
         ///GENMHASH:7B10596856964977EC5E018A031EE6E9:AA2717CDA7300E14A15599831EE2375F
-        public AccessPolicyImpl ForServicePrincipal (IServicePrincipal servicePrincipal)
+        public AccessPolicyImpl ForServicePrincipal(IServicePrincipal servicePrincipal)
         {
             Inner.ObjectId = servicePrincipal.Id;
             return this;
         }
 
         ///GENMHASH:A5A82E0B3718195704CB5A3CC0F635D9:7F5AA729AD0F3F93063692EA32AF9FD8
-        public AccessPolicyImpl ForServicePrincipal (string servicePrincipalName)
+        public AccessPolicyImpl ForServicePrincipal(string servicePrincipalName)
         {
             this.servicePrincipalName = servicePrincipalName;
             return this;
         }
 
         ///GENMHASH:01ABB2A8A169AF9132F24847F24D56E9:6BD265DE8D6EB0AF71D7E13104A95DB5
-        public AccessPolicyImpl AllowKeyAllPermissions ()
+        public AccessPolicyImpl AllowKeyAllPermissions()
         {
             return AllowKeyPermissions(KeyPermissions.All);
         }
 
         ///GENMHASH:A03FAAD8A56A117F1C5B4D0165E18038:2886FCB58861FDE2A5A0722CF95F02F8
-        public AccessPolicyImpl DisallowKeyAllPermissions ()
+        public AccessPolicyImpl DisallowKeyAllPermissions()
         {
             InitializeKeyPermissions();
             Inner.Permissions.Keys.Clear();
@@ -230,7 +233,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:0379078579ABB5B0C7747DE0FCD150CE:32E7054731C3AF1FE28D7D4F657764E5
-        public AccessPolicyImpl DisallowKeyPermissions (params KeyPermissions[] permissions)
+        public AccessPolicyImpl DisallowKeyPermissions(params KeyPermissions[] permissions)
         {
             return DisallowKeyPermissions(new List<KeyPermissions>(permissions));
         }
@@ -247,13 +250,13 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:23EFE82E8A7FB33D4BEAF74B70CE1367:3E60726A1B82A5D46BD83ECBDA666DAC
-        public AccessPolicyImpl AllowSecretAllPermissions ()
+        public AccessPolicyImpl AllowSecretAllPermissions()
         {
             return AllowSecretPermissions(SecretPermissions.All);
         }
 
         ///GENMHASH:034BD24F1EDCEF94C2B612E26745EC84:3DEB6E41E02F3F5DD756AAD51E9D5A41
-        public AccessPolicyImpl DisallowSecretAllPermissions ()
+        public AccessPolicyImpl DisallowSecretAllPermissions()
         {
             InitializeKeyPermissions();
             Inner.Permissions.Keys.Clear();
@@ -261,7 +264,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:0BE789A9F7F46772A48AE4DEF539ED9B:C45089A07841C467C39B8B11526C860C
-        public AccessPolicyImpl DisallowSecretPermissions (params SecretPermissions[] permissions)
+        public AccessPolicyImpl DisallowSecretPermissions(params SecretPermissions[] permissions)
         {
             return DisallowSecretPermissions(new List<SecretPermissions>(permissions));
         }

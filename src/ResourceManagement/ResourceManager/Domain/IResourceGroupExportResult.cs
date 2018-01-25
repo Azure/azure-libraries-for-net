@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure deployment template export result.
     /// </summary>
-    public interface IResourceGroupExportResult  :
+    public interface IResourceGroupExportResult :
         IHasInner<ResourceGroupExportResultInner>
     {
         /// <returns>the template content</returns>

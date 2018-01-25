@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     using Microsoft.Azure.Management.ContainerRegistry.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class CheckNameAvailabilityResultImpl 
+    internal partial class CheckNameAvailabilityResultImpl
     {
         /// <summary>
         /// Gets true if the specified name is valid and available for use, otherwise false.

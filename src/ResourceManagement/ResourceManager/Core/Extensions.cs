@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         {
             var page = new Page<InnerResourceT>();
             typeof(Page<InnerResourceT>).GetProperty(
-                    "Items", 
+                    "Items",
                     BindingFlags.NonPublic | BindingFlags.Instance)
                 .SetValue(page, list.ToList());
 

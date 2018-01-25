@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An interface representing a model's ability to reference a backend port.
     /// </summary>
-    public interface IHasBackendPort 
+    public interface IHasBackendPort
     {
         /// <summary>
         /// Gets the backend port number the network traffic is sent to.

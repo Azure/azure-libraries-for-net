@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
     /// <summary>
     /// The stage of a load balancer update allowing to define, remove or edit Internet-facing frontends.
     /// </summary>
-    public interface IWithPublicFrontend 
+    public interface IWithPublicFrontend
     {
         /// <summary>
         /// Begins the update of a load balancer frontend.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
     /// <summary>
     /// The stage of a load balancer update allowing to create a new inbound NAT pool for a virtual machine scale set.
     /// </summary>
-    public interface IWithInboundNatPool 
+    public interface IWithInboundNatPool
     {
         /// <summary>
         /// Begins the description of an update to an existing inbound NAT pool.
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
     /// The template for a load balancer update operation, containing all the settings that
     /// can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.ILoadBalancer>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IWithProbe,
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
     /// <summary>
     /// The stage of the load balancer update allowing to add, remove or modify probes.
     /// </summary>
-    public interface IWithProbe 
+    public interface IWithProbe
     {
         /// <summary>
         /// Begins the description of an update to an existing HTTP probe on this load balancer.
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
     /// <summary>
     /// The stage of the load balancer update allowing to add or remove backends.
     /// </summary>
-    public interface IWithBackend 
+    public interface IWithBackend
     {
         /// <summary>
         /// Begins the definition of a new backend as part of this load balancer update.
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
     /// <summary>
     /// The stage of a load balancer update allowing to define one or more private frontends.
     /// </summary>
-    public interface IWithPrivateFrontend 
+    public interface IWithPrivateFrontend
     {
         /// <summary>
         /// Begins the description of an update to an existing internal frontend.
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
     /// <summary>
     /// The stage of the load balancer update allowing to add, remove or modify load balancing rules.
     /// </summary>
-    public interface IWithLoadBalancingRule 
+    public interface IWithLoadBalancingRule
     {
         /// <summary>
         /// Begins the definition of a new load balancing rule to add to the load balancer.
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update
     /// <summary>
     /// The stage of a load balancer update allowing to define, remove or edit inbound NAT rules.
     /// </summary>
-    public interface IWithInboundNatRule 
+    public interface IWithInboundNatRule
     {
         /// <summary>
         /// Begins the description of an update to an existing inbound NAT rule.

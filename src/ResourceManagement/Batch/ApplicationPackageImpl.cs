@@ -56,10 +56,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         public async override Task<IApplicationPackage> CreateAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var applicationPackageInner = await client.CreateAsync(
-                Parent.Parent.ResourceGroupName, 
-                Parent.Parent.Name, 
-                Parent.Name(), 
-                Name(), 
+                Parent.Parent.ResourceGroupName,
+                Parent.Parent.Name,
+                Parent.Name(),
+                Name(),
                 cancellationToken);
 
             SetInner(applicationPackageInner);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         ///GENMHASH:0FEDA307DAD2022B36843E8905D26EAD:9B272804AD473CBF3C5DEE818D16023C
         public async override Task DeleteAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            await client.DeleteAsync(Parent.Parent.ResourceGroupName, Parent.Parent.Name,Parent.Name(), Name(), cancellationToken);
+            await client.DeleteAsync(Parent.Parent.ResourceGroupName, Parent.Parent.Name, Parent.Name(), Name(), cancellationToken);
         }
 
         ///GENMHASH:4F85B844C04DBCB78637929FBE0113B6:495A62BBEF55F48ED4E08DBDE110BCC1

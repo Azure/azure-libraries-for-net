@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public ApplicationGatewayRedirectConfigurationInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

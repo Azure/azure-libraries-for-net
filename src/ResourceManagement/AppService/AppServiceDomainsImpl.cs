@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// The implementation for AppServiceDomains.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmFwcHNlcnZpY2UuaW1wbGVtZW50YXRpb24uQXBwU2VydmljZURvbWFpbnNJbXBs
-    internal partial class AppServiceDomainsImpl  :
+    internal partial class AppServiceDomainsImpl :
         TopLevelModifiableResources<
             IAppServiceDomain,
             AppServiceDomainImpl,
@@ -81,8 +81,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         ///GENMHASH:9303C19C6745E77DCF648A0A5F603980:6058FD68A2D3CB7431C37FFF30958B5E
 
-        internal  AppServiceDomainsImpl(AppServiceManager manager)
-            : base (manager.Inner.Domains, manager)
+        internal AppServiceDomainsImpl(AppServiceManager manager)
+            : base(manager.Inner.Domains, manager)
         {
         }
 
@@ -95,7 +95,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:D46619B18B9E2DF548FE051B5E4AA581:B2349B8AC556881EB5FF1F67AC6E2BB3
         protected override IAppServiceDomain WrapModel(DomainInner inner)
         {
-            if (inner == null) {
+            if (inner == null)
+            {
                 return null;
             }
             return new AppServiceDomainImpl(inner.Name, inner, Manager);

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Update
     /// <summary>
     /// The stage of the webhook definition allowing to specify the service URI for post notifications.
     /// </summary>
-    public interface IWithServiceUri 
+    public interface IWithServiceUri
     {
         /// <summary>
         /// Specifies the service URI for post notifications.
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Update
     /// <summary>
     /// The stage of the webhook definition allowing to specify the scope of repositories where the event can be triggered.
     /// </summary>
-    public interface IWithRepositoriesScope 
+    public interface IWithRepositoriesScope
     {
         /// <summary>
         /// Specifies the scope of repositories where the event can be triggered.
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Update
     /// <summary>
     /// The stage of the webhook definition allowing to specify the default status of the webhook after being created.
     /// </summary>
-    public interface IWithDefaultStatus 
+    public interface IWithDefaultStatus
     {
         /// <summary>
         /// Specifies the default status of the webhook; default is "enabled".
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Update
     /// <summary>
     /// The entirety of a webhook update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Update.IWithTriggerWhen,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Update.IWithServiceUri,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Update.IWithCustomHeaders,
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Update
     {
     }
 
-    public interface IWithTriggerWhen 
+    public interface IWithTriggerWhen
     {
         /// <summary>
         /// Specifies the actions that will trigger the webhook notifications.
@@ -75,14 +75,14 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Update
     /// <summary>
     /// The stage of the webhook definition allowing to specify the custom headers that will be added to the notifications.
     /// </summary>
-    public interface IWithCustomHeaders 
+    public interface IWithCustomHeaders
     {
         /// <summary>
         /// Specifies custom headers that will be added to the notifications.
         /// </summary>
         /// <param name="customHeaders">The "Name=Value" custom headers.</param>
         /// <return>The next stage of the resource update.</return>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Update.IUpdate WithCustomHeaders(IDictionary<string,string> customHeaders);
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Update.IUpdate WithCustomHeaders(IDictionary<string, string> customHeaders);
 
         /// <summary>
         /// Specifies a custom header that will be added to notifications.

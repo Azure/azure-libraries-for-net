@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// </summary>
         public AccessPolicyEntry()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

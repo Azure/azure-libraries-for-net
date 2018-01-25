@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// <summary>
     /// The stage of an application gateway redirect configuration allowing to specify the type of the redirection.
     /// </summary>
-    public interface IWithType 
+    public interface IWithType
     {
         /// <summary>
         /// Specifies the redirection type.
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// <summary>
     /// The stage of an application gateway redirect configuration allowing to specify whether the path should be included in the redirected URL.
     /// </summary>
-    public interface IWithPathIncluded 
+    public interface IWithPathIncluded
     {
         /// <summary>
         /// Specifies that the path should be included in the redirected URL.
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// <summary>
     /// The stage of an application gateway redirect configuration allowing to specify the target URL or listener for the redirection.
     /// </summary>
-    public interface IWithTarget 
+    public interface IWithTarget
     {
         /// <summary>
         /// Removes the reference to the target listener.
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// <summary>
     /// The stage of an application gateway redirect configuration allowing to specify whether the query string should be included in the redirected URL.
     /// </summary>
-    public interface IWithQueryStringIncluded 
+    public interface IWithQueryStringIncluded
     {
         /// <summary>
         /// Specifies that the query string should be included in the redirected URL.
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// <summary>
     /// The entirety of an application gateway redirect configuration update as part of an application gateway update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.Update.IWithTarget,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.Update.IWithType,

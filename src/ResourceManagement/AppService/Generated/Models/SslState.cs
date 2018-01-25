@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class SslStateEnumExtension
     {
-        internal static string ToSerializedValue(this SslState? value)  =>
+        internal static string ToSerializedValue(this SslState? value) =>
             value == null ? null : ((SslState)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this SslState value)
         {
-            switch( value )
+            switch (value)
             {
                 case SslState.Disabled:
                     return "Disabled";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static SslState? ParseSslState(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Disabled":
                     return SslState.Disabled;

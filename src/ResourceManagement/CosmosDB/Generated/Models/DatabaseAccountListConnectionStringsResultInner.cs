@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         public DatabaseAccountListConnectionStringsResultInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

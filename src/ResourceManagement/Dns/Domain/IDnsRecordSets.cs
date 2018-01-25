@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Base interface for all record sets.
     /// </summary>
     /// <typeparam name="RecordSetT">The record set type.</typeparam>
-    public interface IDnsRecordSets<RecordSetT>  :
+    public interface IDnsRecordSets<RecordSetT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<RecordSetT>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<RecordSetT>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Dns.Fluent.IDnsZone>

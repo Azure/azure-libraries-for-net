@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public RestoreRequestInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

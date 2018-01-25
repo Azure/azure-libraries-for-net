@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// </summary>
         public DeepCreatedOrigin()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

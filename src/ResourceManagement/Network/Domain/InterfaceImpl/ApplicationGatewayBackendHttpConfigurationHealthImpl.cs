@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class ApplicationGatewayBackendHttpConfigurationHealthImpl 
+    internal partial class ApplicationGatewayBackendHttpConfigurationHealthImpl
     {
         /// <summary>
         /// Gets the name of the resource.
@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets information about the health of each backend server, indexed by the server's IP address.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendServerHealth> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationHealth.ServerHealths
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendServerHealth> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationHealth.ServerHealths
         {
             get
             {
-                return this.ServerHealths() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendServerHealth>;
+                return this.ServerHealths() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendServerHealth>;
             }
         }
 

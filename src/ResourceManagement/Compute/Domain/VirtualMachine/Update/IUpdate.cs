@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
     /// <summary>
     /// The template for an update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IWithUnmanagedDataDisk,
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
     /// <summary>
     /// The stage of a virtual machine update allowing to specify a managed data disk.
     /// </summary>
-    public interface IWithManagedDataDisk 
+    public interface IWithManagedDataDisk
     {
         /// <summary>
         /// Associates an existing source managed disk with the VM.
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify unmanaged data disk configuration.
     /// </summary>
-    public interface IWithUnmanagedDataDisk 
+    public interface IWithUnmanagedDataDisk
     {
         /// <summary>
         /// Specifies an existing VHD that needs to be attached to the virtual machine as data disk.
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
     /// <summary>
     /// The stage of a virtual machine update allowing to specify extensions.
     /// </summary>
-    public interface IWithExtension 
+    public interface IWithExtension
     {
         /// <summary>
         /// Begins the description of an update of an existing extension of this virtual machine.
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
     /// <summary>
     /// The stage of a virtual machine update allowing to specify additional network interfaces.
     /// </summary>
-    public interface IWithSecondaryNetworkInterface 
+    public interface IWithSecondaryNetworkInterface
     {
         /// <summary>
         /// Removes a secondary network interface from the virtual machine.

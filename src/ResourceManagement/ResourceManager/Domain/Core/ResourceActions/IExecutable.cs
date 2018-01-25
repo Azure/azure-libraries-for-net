@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
     /// The base interface for all template interfaces that support execute operations.
     /// </summary>
     /// <typeparam name="T">The type of the resource returned from the execution.</typeparam>
-    public interface IExecutable<T>  :
+    public interface IExecutable<T> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IIndexable
     {
         /// <summary>

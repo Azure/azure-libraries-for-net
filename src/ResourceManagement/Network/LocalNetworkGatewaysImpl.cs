@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for LocalNetworkGateways.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uTG9jYWxOZXR3b3JrR2F0ZXdheXNJbXBs
-    internal partial class LocalNetworkGatewaysImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uTG9jYWxOZXR3b3JrR2F0ZXdheXNJbXBs
+    internal partial class LocalNetworkGatewaysImpl :
         GroupableResources<ILocalNetworkGateway,
             LocalNetworkGatewayImpl,
             LocalNetworkGatewayInner,
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ILocalNetworkGateways
     {
         ///GENMHASH:65F9F8F498352BBE79897954DDC4983B:483F7E7D6F61A4ECEBF12761F166A376
-        internal  LocalNetworkGatewaysImpl(INetworkManager networkManager)
+        internal LocalNetworkGatewaysImpl(INetworkManager networkManager)
             : base(networkManager.Inner.LocalNetworkGateways, networkManager)
         {
         }
@@ -78,14 +78,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:7B29DA142EEAE9C0CEA820616FAF8EBB
         protected override LocalNetworkGatewayImpl WrapModel(string name)
         {
-            LocalNetworkGatewayInner inner = new LocalNetworkGatewayInner(); 
+            LocalNetworkGatewayInner inner = new LocalNetworkGatewayInner();
             return new LocalNetworkGatewayImpl(name, inner, Manager);
         }
 
         ///GENMHASH:4530DB9CAA4E6B05E73B8EC48AEA0560:9366AD687720FCC97C68ABECA05A4CF3
         protected override ILocalNetworkGateway WrapModel(LocalNetworkGatewayInner inner)
         {
-            if (inner == null) {
+            if (inner == null)
+            {
                 return null;
             }
             return new LocalNetworkGatewayImpl(inner.Name, inner, Manager);

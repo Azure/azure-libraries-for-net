@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Key Vault.
     /// </summary>
-    public interface IVault  :
+    public interface IVault :
         IGroupableResource<IKeyVaultManager, VaultInner>,
         IRefreshable<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
         IUpdatable<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>

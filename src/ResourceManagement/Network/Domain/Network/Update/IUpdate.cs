@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Update
     /// <summary>
     /// The stage of the virtual network update allowing to specify the DNS server.
     /// </summary>
-    public interface IWithDnsServer 
+    public interface IWithDnsServer
     {
         /// <summary>
         /// Specifies the IP address of the DNS server to associate with the virtual network.
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Update
     /// <summary>
     /// The stage of the virtual network update allowing to specify the address space.
     /// </summary>
-    public interface IWithAddressSpace  :
+    public interface IWithAddressSpace :
         Microsoft.Azure.Management.Network.Fluent.Network.Update.IWithAddressSpaceBeta
     {
         /// <summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Update
     /// <summary>
     /// The stage of the virtual network update allowing to add or remove subnets.
     /// </summary>
-    public interface IWithSubnet 
+    public interface IWithSubnet
     {
         /// <summary>
         /// Removes a subnet from the virtual network.
@@ -82,14 +82,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Update
         /// </summary>
         /// <param name="nameCidrPairs">A  Map of CIDR addresses for the subnets, indexed by the name of each subnet to be added.</param>
         /// <return>The next stage of the virtual network update.</return>
-        Microsoft.Azure.Management.Network.Fluent.Network.Update.IUpdate WithSubnets(IDictionary<string,string> nameCidrPairs);
+        Microsoft.Azure.Management.Network.Fluent.Network.Update.IUpdate WithSubnets(IDictionary<string, string> nameCidrPairs);
     }
 
     /// <summary>
     /// The template for a virtual network update operation, containing all the settings that
     /// can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.INetwork>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.Network.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.Network.Update.IWithSubnet,
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Update
     /// <summary>
     /// The stage of the virtual network update allowing to specify the address space.
     /// </summary>
-    public interface IWithAddressSpaceBeta  :
+    public interface IWithAddressSpaceBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

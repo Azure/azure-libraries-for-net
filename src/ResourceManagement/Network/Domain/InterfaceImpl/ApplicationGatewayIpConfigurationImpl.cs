@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
 
-    internal partial class ApplicationGatewayIPConfigurationImpl 
+    internal partial class ApplicationGatewayIPConfigurationImpl
     {
         /// <summary>
         /// Assigns the specified subnet to this resource.

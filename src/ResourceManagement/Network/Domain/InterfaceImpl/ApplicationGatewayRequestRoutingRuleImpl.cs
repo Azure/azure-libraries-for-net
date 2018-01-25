@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.IO;
     using System.Collections.Generic;
 
-    internal partial class ApplicationGatewayRequestRoutingRuleImpl 
+    internal partial class ApplicationGatewayRequestRoutingRuleImpl
     {
         /// <summary>
         /// Gets the associated host name.

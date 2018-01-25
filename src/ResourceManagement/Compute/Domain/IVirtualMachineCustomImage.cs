@@ -10,8 +10,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure virtual machine custom image.
     /// </summary>
-    public interface IVirtualMachineCustomImage  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Compute.Fluent.IComputeManager,Models.ImageInner>,
+    public interface IVirtualMachineCustomImage :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Compute.Fluent.IComputeManager, Models.ImageInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineCustomImage>
     {
         /// <summary>
@@ -32,6 +32,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets data disk images in this image, indexed by the disk LUN.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<int,Models.ImageDataDisk> DataDiskImages { get; }
+        System.Collections.Generic.IReadOnlyDictionary<int, Models.ImageDataDisk> DataDiskImages { get; }
     }
 }

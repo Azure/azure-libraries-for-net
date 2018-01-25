@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class SiteLoadBalancingEnumExtension
     {
-        internal static string ToSerializedValue(this SiteLoadBalancing? value)  =>
+        internal static string ToSerializedValue(this SiteLoadBalancing? value) =>
             value == null ? null : ((SiteLoadBalancing)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this SiteLoadBalancing value)
         {
-            switch( value )
+            switch (value)
             {
                 case SiteLoadBalancing.WeightedRoundRobin:
                     return "WeightedRoundRobin";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static SiteLoadBalancing? ParseSiteLoadBalancing(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "WeightedRoundRobin":
                     return SiteLoadBalancing.WeightedRoundRobin;

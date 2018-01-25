@@ -26,192 +26,192 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     /// </summary>
     public static partial class ServicePrincipalsOperationsExtensions
     {
-            
-            /// <summary>
-            /// Creates a service principal in the directory.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters to create a service principal.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ServicePrincipalInner> CreateAsync(this IServicePrincipalsOperations operations, ServicePrincipalCreateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateWithHttpMessagesAsync(parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
 
-            
-            /// <summary>
-            /// Gets a list of service principals from the current tenant.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<ServicePrincipalInner>> ListAsync(this IServicePrincipalsOperations operations, ODataQuery<ServicePrincipalInner> odataQuery = default(ODataQuery<ServicePrincipalInner>), CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Creates a service principal in the directory.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to create a service principal.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<ServicePrincipalInner> CreateAsync(this IServicePrincipalsOperations operations, ServicePrincipalCreateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.CreateWithHttpMessagesAsync(parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            
-            /// <summary>
-            /// Deletes a service principal from the directory.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='objectId'>
-            /// The object ID of the service principal to delete.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(objectId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
 
-            
-            /// <summary>
-            /// Gets service principal information from the directory.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='objectId'>
-            /// The object ID of the service principal to get.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ServicePrincipalInner> GetAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets a list of service principals from the current tenant.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='odataQuery'>
+        /// OData parameters to apply to the operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<ServicePrincipalInner>> ListAsync(this IServicePrincipalsOperations operations, ODataQuery<ServicePrincipalInner> odataQuery = default(ODataQuery<ServicePrincipalInner>), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(objectId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            
-            /// <summary>
-            /// Get the keyCredentials associated with the specified service principal.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='objectId'>
-            /// The object ID of the service principal for which to get keyCredentials.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IEnumerable<KeyCredential>> ListKeyCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListKeyCredentialsWithHttpMessagesAsync(objectId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
 
-            
-            /// <summary>
-            /// Update the keyCredentials associated with a service principal.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='objectId'>
-            /// The object ID for which to get service principal information.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters to update the keyCredentials of an existing service principal.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task UpdateKeyCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, KeyCredentialsUpdateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.UpdateKeyCredentialsWithHttpMessagesAsync(objectId, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
+        /// <summary>
+        /// Deletes a service principal from the directory.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='objectId'>
+        /// The object ID of the service principal to delete.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task DeleteAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(objectId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
 
-            
-            /// <summary>
-            /// Gets the passwordCredentials associated with a service principal.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='objectId'>
-            /// The object ID of the service principal.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IEnumerable<Models.PasswordCredential>> ListPasswordCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListPasswordCredentialsWithHttpMessagesAsync(objectId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
 
-            
-            /// <summary>
-            /// Updates the passwordCredentials associated with a service principal.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='objectId'>
-            /// The object ID of the service principal.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters to update the passwordCredentials of an existing service
-            /// principal.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task UpdatePasswordCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, PasswordCredentialsUpdateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets service principal information from the directory.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='objectId'>
+        /// The object ID of the service principal to get.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<ServicePrincipalInner> GetAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(objectId, null, cancellationToken).ConfigureAwait(false))
             {
-                (await operations.UpdatePasswordCredentialsWithHttpMessagesAsync(objectId, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                return _result.Body;
             }
+        }
 
-            
-            /// <summary>
-            /// Gets a list of service principals from the current tenant.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextLink'>
-            /// Next link for the list operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<ServicePrincipalInner>> ListNextAsync(this IServicePrincipalsOperations operations, string nextLink, CancellationToken cancellationToken = default(CancellationToken))
+
+        /// <summary>
+        /// Get the keyCredentials associated with the specified service principal.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='objectId'>
+        /// The object ID of the service principal for which to get keyCredentials.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IEnumerable<KeyCredential>> ListKeyCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListKeyCredentialsWithHttpMessagesAsync(objectId, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
+
+
+        /// <summary>
+        /// Update the keyCredentials associated with a service principal.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='objectId'>
+        /// The object ID for which to get service principal information.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to update the keyCredentials of an existing service principal.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task UpdateKeyCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, KeyCredentialsUpdateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            (await operations.UpdateKeyCredentialsWithHttpMessagesAsync(objectId, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+
+
+        /// <summary>
+        /// Gets the passwordCredentials associated with a service principal.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='objectId'>
+        /// The object ID of the service principal.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IEnumerable<Models.PasswordCredential>> ListPasswordCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListPasswordCredentialsWithHttpMessagesAsync(objectId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+
+        /// <summary>
+        /// Updates the passwordCredentials associated with a service principal.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='objectId'>
+        /// The object ID of the service principal.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to update the passwordCredentials of an existing service
+        /// principal.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task UpdatePasswordCredentialsAsync(this IServicePrincipalsOperations operations, string objectId, PasswordCredentialsUpdateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            (await operations.UpdatePasswordCredentialsWithHttpMessagesAsync(objectId, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+
+
+        /// <summary>
+        /// Gets a list of service principals from the current tenant.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextLink'>
+        /// Next link for the list operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<ServicePrincipalInner>> ListNextAsync(this IServicePrincipalsOperations operations, string nextLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
 
     }
 }

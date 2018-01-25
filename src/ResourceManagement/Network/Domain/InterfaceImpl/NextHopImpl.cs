@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class NextHopImpl 
+    internal partial class NextHopImpl
     {
         /// <summary>
         /// Gets the next hop IP Address.

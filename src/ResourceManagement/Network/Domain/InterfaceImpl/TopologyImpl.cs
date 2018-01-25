@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Collections.Generic;
     using System;
 
-    internal partial class TopologyImpl 
+    internal partial class TopologyImpl
     {
         /// <summary>
         /// Refreshes the resource to sync with Azure.
@@ -57,11 +57,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets The resources in this topology.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Models.TopologyResource> Microsoft.Azure.Management.Network.Fluent.ITopology.Resources
+        System.Collections.Generic.IReadOnlyDictionary<string, Models.TopologyResource> Microsoft.Azure.Management.Network.Fluent.ITopology.Resources
         {
             get
             {
-                return this.Resources() as System.Collections.Generic.IReadOnlyDictionary<string,Models.TopologyResource>;
+                return this.Resources() as System.Collections.Generic.IReadOnlyDictionary<string, Models.TopologyResource>;
             }
         }
 

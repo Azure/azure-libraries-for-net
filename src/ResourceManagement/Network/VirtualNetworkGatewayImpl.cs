@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for VirtualNetworkGateway and its create and update interfaces.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5SW1wbA==
-    internal partial class VirtualNetworkGatewayImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5SW1wbA==
+    internal partial class VirtualNetworkGatewayImpl :
         GroupableParentResource<IVirtualNetworkGateway,
             VirtualNetworkGatewayInner,
             VirtualNetworkGatewayImpl,
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IUpdate
     {
         private string GATEWAY_SUBNET = "GatewaySubnet";
-        private Dictionary<string,Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayIPConfiguration> ipConfigs;
+        private Dictionary<string, Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayIPConfiguration> ipConfigs;
         private IVirtualNetworkGatewayConnections connections;
         private ICreatable<INetwork> creatableNetwork;
         private ICreatable<IPublicIPAddress> creatablePip;
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return ipConfigs.Values.ToList().AsReadOnly();
         }
 
-       
+
         ///GENMHASH:0BDDE35CB8B3DD88A33C6363C54C0AF4:A53FB902D8052D360814DFFA0B1CEB40
         public VirtualNetworkGatewayType GatewayType()
         {
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public async Task ResetAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             // TODO: gatewayVip is not null for Active-Active configuration
-            await Manager.Inner.VirtualNetworkGateways.ResetAsync(ResourceGroupName, Name, null, cancellationToken) ;
+            await Manager.Inner.VirtualNetworkGateways.ResetAsync(ResourceGroupName, Name, null, cancellationToken);
             await RefreshAsync(cancellationToken);
         }
 
@@ -154,7 +154,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:D232B3BB0D86D13CC0B242F4000DBF07:A6337C672FE4D2497063C4689F0BFDAE
         private ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> EnsureDefaultPipDefinition()
         {
-            if (creatablePip == null) {
+            if (creatablePip == null)
+            {
                 string pipName = SdkContext.RandomResourceName("pip", 9);
                 creatablePip = Manager.PublicIPAddresses.Define(pipName)
                     .WithRegion(this.RegionName)
@@ -169,8 +170,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             ipConfigs = new Dictionary<string, IVirtualNetworkGatewayIPConfiguration>();
             var inners = this.Inner.IpConfigurations;
-            if (inners != null) {
-                foreach(var inner in inners) {
+            if (inners != null)
+            {
+                foreach (var inner in inners)
+                {
                     var config = new VirtualNetworkGatewayIPConfigurationImpl(inner, this);
                     ipConfigs[inner.Name] = config;
                 }
@@ -321,8 +324,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FFC621DA0580E44927EBEA8D394C1105:84CEF0775356674F2DF43DA4215FAB0F
         private BgpSettings EnsureBgpSettings()
         {
-            if (Inner.BgpSettings == null) {
-            Inner.BgpSettings = new BgpSettings();
+            if (Inner.BgpSettings == null)
+            {
+                Inner.BgpSettings = new BgpSettings();
             }
             return Inner.BgpSettings;
         }
@@ -338,7 +342,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
             return null;
         }
-    
+
 
         ///GENMHASH:E40693A780061FC1A156598B974969F1:BB97F4F4051A2B51D3862BFF3B7F9556
         public VirtualNetworkGatewayImpl WithExpressRoute()
@@ -371,7 +375,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 definitionAfterGroup = definitionWithGroup.WithExistingResourceGroup(ResourceGroupName);
             }
 
-            return WithNewNetwork(definitionAfterGroup.WithAddressSpace(addressSpace).WithSubnet(GATEWAY_SUBNET, subnetAddressSpaceCidr));      
+            return WithNewNetwork(definitionAfterGroup.WithAddressSpace(addressSpace).WithSubnet(GATEWAY_SUBNET, subnetAddressSpaceCidr));
         }
 
         ///GENMHASH:B5B394278E45FCA8B4503E2FCB31EF46:73855B85F080F7898FA413DCAC4083C7
@@ -409,7 +413,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:B54CAD7C3DE0D3C50B8DCF3D902BFB18:4F12E780C5065E3EB6FFCB437197D940
         public VirtualNetworkGatewayImpl WithExistingNetwork(INetwork network)
         {
-            EnsureDefaultIPConfig().WithExistingSubnet(network, GATEWAY_SUBNET); 
+            EnsureDefaultIPConfig().WithExistingSubnet(network, GATEWAY_SUBNET);
             return this;
         }
 
@@ -446,7 +450,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             IVirtualNetworkGatewayIPConfiguration value = null;
             if (this.ipConfigs.TryGetValue(name, out value))
             {
-                return (VirtualNetworkGatewayIPConfigurationImpl) value;
+                return (VirtualNetworkGatewayIPConfigurationImpl)value;
             }
             var inner = new VirtualNetworkGatewayIPConfigurationInner()
             {

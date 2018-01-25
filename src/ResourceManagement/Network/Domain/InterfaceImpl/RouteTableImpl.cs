@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
-    internal partial class RouteTableImpl 
+    internal partial class RouteTableImpl
     {
         /// <summary>
         /// Refreshes the resource to sync with Azure.
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the routes of this route table.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IRoute> Microsoft.Azure.Management.Network.Fluent.IRouteTable.Routes
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IRoute> Microsoft.Azure.Management.Network.Fluent.IRouteTable.Routes
         {
             get
             {
-                return this.Routes() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IRoute>;
+                return this.Routes() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IRoute>;
             }
         }
 

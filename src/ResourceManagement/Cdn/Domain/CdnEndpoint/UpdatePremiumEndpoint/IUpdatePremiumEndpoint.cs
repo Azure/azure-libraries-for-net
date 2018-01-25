@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.UpdatePremiumEndpoin
     /// <summary>
     /// The stage of an CDN profile endpoint update allowing to specify endpoint properties.
     /// </summary>
-    public interface IUpdatePremiumEndpoint  :
+    public interface IUpdatePremiumEndpoint :
         Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Update.IUpdate
     {
         /// <summary>

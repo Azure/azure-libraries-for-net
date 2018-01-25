@@ -11,9 +11,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Entry point for Express Route Circuit management API in Azure.
     /// </summary>
-    public interface IExpressRouteCircuit  :
+    public interface IExpressRouteCircuit :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.ExpressRouteCircuitInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.ExpressRouteCircuitInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<ExpressRouteCircuit.Update.IUpdate>
     {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the peerings associated with this express route circuit, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> PeeringsMap { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> PeeringsMap { get; }
 
         /// <summary>
         /// Gets the ServiceProviderNotes.

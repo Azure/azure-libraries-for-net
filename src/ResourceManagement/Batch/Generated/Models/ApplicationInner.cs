@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// </summary>
         public ApplicationInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
-    internal partial class ApplicationGatewayImpl 
+    internal partial class ApplicationGatewayImpl
     {
         /// <summary>
         /// Begins the update of an existing backend on this application gateway.
@@ -274,11 +274,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets frontend IP configurations with a private IP address within a subnet, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.PrivateFrontends
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.PrivateFrontends
         {
             get
             {
-                return this.PrivateFrontends() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend>;
+                return this.PrivateFrontends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend>;
             }
         }
 
@@ -307,11 +307,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets backend address pools of this application gateway, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackend> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.Backends
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackend> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.Backends
         {
             get
             {
-                return this.Backends() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackend>;
+                return this.Backends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackend>;
             }
         }
 
@@ -331,18 +331,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.Start()
         {
- 
+
             this.Start();
         }
 
         /// <summary>
         /// Gets redirect configurations, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.RedirectConfigurations
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.RedirectConfigurations
         {
             get
             {
-                return this.RedirectConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration>;
+                return this.RedirectConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration>;
             }
         }
 
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.StopAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.StopAsync(cancellationToken);
         }
 
@@ -402,11 +402,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets request routing rules, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.RequestRoutingRules
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.RequestRoutingRules
         {
             get
             {
-                return this.RequestRoutingRules() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule>;
+                return this.RequestRoutingRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule>;
             }
         }
 
@@ -424,33 +424,33 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets backend HTTP configurations of this application gateway, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfiguration> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.BackendHttpConfigurations
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfiguration> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.BackendHttpConfigurations
         {
             get
             {
-                return this.BackendHttpConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfiguration>;
+                return this.BackendHttpConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfiguration>;
             }
         }
 
         /// <summary>
         /// Gets IP configurations of this application gateway, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayIPConfiguration> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.IPConfigurations
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayIPConfiguration> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.IPConfigurations
         {
             get
             {
-                return this.IPConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayIPConfiguration>;
+                return this.IPConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayIPConfiguration>;
             }
         }
 
         /// <summary>
         /// Gets frontend IP configurations with a public IP address, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.PublicFrontends
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.PublicFrontends
         {
             get
             {
-                return this.PublicFrontends() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend>;
+                return this.PublicFrontends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend>;
             }
         }
 
@@ -479,11 +479,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets authentication certificates.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.AuthenticationCertificates
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.AuthenticationCertificates
         {
             get
             {
-                return this.AuthenticationCertificates() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate>;
+                return this.AuthenticationCertificates() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate>;
             }
         }
 
@@ -501,11 +501,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets named frontend ports of this application gateway, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,int> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.FrontendPorts
+        System.Collections.Generic.IReadOnlyDictionary<string, int> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.FrontendPorts
         {
             get
             {
-                return this.FrontendPorts() as System.Collections.Generic.IReadOnlyDictionary<string,int>;
+                return this.FrontendPorts() as System.Collections.Generic.IReadOnlyDictionary<string, int>;
             }
         }
 
@@ -513,28 +513,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Checks the backend health.
         /// </summary>
         /// <return>Backend healths indexed by backend name.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.CheckBackendHealth()
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.CheckBackendHealth()
         {
-            return this.CheckBackendHealth() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>;
+            return this.CheckBackendHealth() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>;
         }
 
         /// <summary>
         /// Checks the backend health asynchronously.
         /// </summary>
         /// <return>A representation of the future computation of this call.</return>
-        async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.CheckBackendHealthAsync(CancellationToken cancellationToken)
+        async Task<System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.CheckBackendHealthAsync(CancellationToken cancellationToken)
         {
-            return await this.CheckBackendHealthAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>;
+            return await this.CheckBackendHealthAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>;
         }
 
         /// <summary>
         /// Gets frontend listeners, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayListener> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.Listeners
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayListener> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.Listeners
         {
             get
             {
-                return this.Listeners() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayListener>;
+                return this.Listeners() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayListener>;
             }
         }
 
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.Stop()
         {
- 
+
             this.Stop();
         }
 
@@ -564,29 +564,29 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.StartAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.StartAsync(cancellationToken);
         }
 
         /// <summary>
         /// Gets frontend IP configurations, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.Frontends
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.Frontends
         {
             get
             {
-                return this.Frontends() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend>;
+                return this.Frontends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend>;
             }
         }
 
         /// <summary>
         /// Gets probes of this application gateway, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.Probes
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.Probes
         {
             get
             {
-                return this.Probes() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe>;
+                return this.Probes() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe>;
             }
         }
 
@@ -603,11 +603,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets SSL certificates, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewaySslCertificate> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.SslCertificates
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewaySslCertificate> Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.SslCertificates
         {
             get
             {
-                return this.SslCertificates() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewaySslCertificate>;
+                return this.SslCertificates() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewaySslCertificate>;
             }
         }
 

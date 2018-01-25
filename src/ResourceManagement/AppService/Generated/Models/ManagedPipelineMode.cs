@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class ManagedPipelineModeEnumExtension
     {
-        internal static string ToSerializedValue(this ManagedPipelineMode? value)  =>
+        internal static string ToSerializedValue(this ManagedPipelineMode? value) =>
             value == null ? null : ((ManagedPipelineMode)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this ManagedPipelineMode value)
         {
-            switch( value )
+            switch (value)
             {
                 case ManagedPipelineMode.Integrated:
                     return "Integrated";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static ManagedPipelineMode? ParseManagedPipelineMode(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Integrated":
                     return ManagedPipelineMode.Integrated;

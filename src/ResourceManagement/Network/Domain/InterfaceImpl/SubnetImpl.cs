@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.Collections.Generic;
 
-    internal partial class SubnetImpl 
+    internal partial class SubnetImpl
     {
         /// <summary>
         /// Gets the services that has access to the subnet.

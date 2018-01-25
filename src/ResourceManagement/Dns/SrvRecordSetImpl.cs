@@ -35,22 +35,22 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             {
                 if (resource.SrvRecords != null)
                 {
-                   foreach(var recordToRemove in this.recordSetRemoveInfo.SrvRecords)
+                    foreach (var recordToRemove in this.recordSetRemoveInfo.SrvRecords)
                     {
-                       foreach(var record in resource.SrvRecords)
+                        foreach (var record in resource.SrvRecords)
                         {
-                           if (record.Target.Equals(recordToRemove.Target, StringComparison.OrdinalIgnoreCase)
-                               && (record.Port == recordToRemove.Port)
-                               && (record.Weight == recordToRemove.Weight)
-                               && (record.Priority == recordToRemove.Priority))
-                           {
-                                   resource.SrvRecords.Remove(record);
-                                   break;
-                           }
-                       }
-                   }
-               }
-               this.recordSetRemoveInfo.SrvRecords.Clear();
+                            if (record.Target.Equals(recordToRemove.Target, StringComparison.OrdinalIgnoreCase)
+                                && (record.Port == recordToRemove.Port)
+                                && (record.Weight == recordToRemove.Weight)
+                                && (record.Priority == recordToRemove.Priority))
+                            {
+                                resource.SrvRecords.Remove(record);
+                                break;
+                            }
+                        }
+                    }
+                }
+                this.recordSetRemoveInfo.SrvRecords.Clear();
             }
             return resource;
         }
@@ -68,15 +68,16 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:AEA8C8A92DBF6D46B8137727B5EEFACA:CB203AB264B7FDA759C81987060D51B8
         internal static SrvRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
         {
-             return new SrvRecordSetImpl(parent,
-             new RecordSetInner {
+            return new SrvRecordSetImpl(parent,
+            new RecordSetInner
+            {
                 Name = name,
                 Type = Enum.GetName(typeof(RecordType), Models.RecordType.SRV),
-                 SrvRecords = new List<SrvRecord>()
-             });
+                SrvRecords = new List<SrvRecord>()
+            });
         }
 
-        internal  SrvRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
+        internal SrvRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
         {
         }
     }

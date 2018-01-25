@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// <summary>
     /// The stage of the network interface definition allowing to associate it with a load balancer.
     /// </summary>
-    public interface IWithLoadBalancer 
+    public interface IWithLoadBalancer
     {
         /// <summary>
         /// Associates the network interface's primary IP configuration with a backend of an existing load balancer.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// The stage of the network interface definition allowing to specify the virtual network for
     /// primary IP configuration.
     /// </summary>
-    public interface IWithPrimaryNetwork 
+    public interface IWithPrimaryNetwork
     {
         /// <summary>
         /// Associate an existing virtual network with the network interface's primary IP configuration.
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// <summary>
     /// The stage of the network interface definition allowing to associate a network security group.
     /// </summary>
-    public interface IWithNetworkSecurityGroup 
+    public interface IWithNetworkSecurityGroup
     {
         /// <summary>
         /// Create a new network security group to associate with network interface, based on the provided definition.
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// <summary>
     /// The stage of the network interface definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition.IWithPrimaryNetwork>
     {
     }
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// the resource to be created, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition.IWithCreate>,
         Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition.IWithPrimaryPublicIPAddress,
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// The stage of the network interface definition allowing to associate public IP address with it's primary
     /// IP configuration.
     /// </summary>
-    public interface IWithPrimaryPublicIPAddress 
+    public interface IWithPrimaryPublicIPAddress
     {
         /// <summary>
         /// Associates an existing public IP address with the network interface's primary IP configuration.
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// <summary>
     /// The stage of the network interface definition allowing to enable accelerated networking.
     /// </summary>
-    public interface IWithAcceleratedNetworking 
+    public interface IWithAcceleratedNetworking
     {
         /// <summary>
         /// Enables accelerated networking.
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// <summary>
     /// The stage of the network interface definition allowing to specify subnet.
     /// </summary>
-    public interface IWithPrimaryNetworkSubnet 
+    public interface IWithPrimaryNetworkSubnet
     {
         /// <summary>
         /// Associate a subnet with the network interface's primary IP configuration.
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// The stage of the network interface definition allowing to specify private IP address within
     /// a virtual network subnet.
     /// </summary>
-    public interface IWithPrimaryPrivateIP 
+    public interface IWithPrimaryPrivateIP
     {
         /// <summary>
         /// Enables dynamic private IP address allocation within the specified existing virtual network
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// <summary>
     /// The first stage of the network interface.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition.IWithGroup>
     {
     }
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// <summary>
     /// The stage of the network interface definition allowing to associate a secondary IP configurations.
     /// </summary>
-    public interface IWithSecondaryIPConfiguration 
+    public interface IWithSecondaryIPConfiguration
     {
         /// <summary>
         /// Starts definition of a secondary IP configuration.
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition
     /// <summary>
     /// The entirety of the network interface definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition.IWithGroup,
         Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Definition.IWithPrimaryNetwork,

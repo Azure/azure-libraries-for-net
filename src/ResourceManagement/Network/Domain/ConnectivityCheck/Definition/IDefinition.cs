@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition
     /// <summary>
     /// Sets the source property.
     /// </summary>
-    public interface IFromSourceVirtualMachine 
+    public interface IFromSourceVirtualMachine
     {
         /// <param name="resourceId">The ID of the virtual machine from which a connectivity check will be initiated.</param>
         /// <return>Next definition stage.</return>
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition
     /// The stage of the definition which contains all the minimum required inputs for execution, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithExecute  :
+    public interface IWithExecute :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IExecutable<Microsoft.Azure.Management.Network.Fluent.IConnectivityCheck>,
         Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition.IFromSourcePort
     {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition
     /// <summary>
     /// The entirety of connectivity check parameters definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition.IToDestination,
         Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition.IToDestinationPort,
         Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition.IFromSourceVirtualMachine,
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition
     /// <summary>
     /// Sets the source port from which a connectivity check will be performed.
     /// </summary>
-    public interface IFromSourcePort 
+    public interface IFromSourcePort
     {
         /// <param name="port">Source port.</param>
         /// <return>Next definition stage.</return>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition
     /// <summary>
     /// Sets the destination property.
     /// </summary>
-    public interface IToDestination 
+    public interface IToDestination
     {
         /// <param name="resourceId">The ID of the resource to which a connection attempt will be made.</param>
         /// <return>Next definition stage.</return>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition
     /// <summary>
     /// Sets the destination port on which check connectivity will be performed.
     /// </summary>
-    public interface IToDestinationPort 
+    public interface IToDestinationPort
     {
         /// <param name="port">Destination port.</param>
         /// <return>Next definition stage.</return>

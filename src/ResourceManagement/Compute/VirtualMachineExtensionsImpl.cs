@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="client">The client to perform REST calls on extensions.</param>
         /// <param name="parent">The parent virtual machine of the extensions.</param>
         ///GENMHASH:5FE619A4E78C738ABAB49088366D56E9:A3B8391A0D11DA58771A04AD80F595FB
-        internal VirtualMachineExtensionsImpl(VirtualMachineImpl parent) 
+        internal VirtualMachineExtensionsImpl(VirtualMachineImpl parent)
             : base(parent, "VirtualMachineExtension")
         {
             this.CacheCollection();
@@ -94,12 +94,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             List<VirtualMachineExtensionImpl> childResources = new List<VirtualMachineExtensionImpl>();
             if (this.Parent.Inner.Resources != null)
             {
-                foreach (VirtualMachineExtensionInner inner in this.Parent.Inner.Resources) {
+                foreach (VirtualMachineExtensionInner inner in this.Parent.Inner.Resources)
+                {
                     if (inner.Name == null)
                     {
                         inner.Location = this.Parent.RegionName;
                         childResources.Add(new VirtualMachineExtensionImpl(ResourceUtils.NameFromResourceId(inner.Id), Parent, inner));
-                    } else
+                    }
+                    else
                     {
                         childResources.Add(new VirtualMachineExtensionImpl(inner.Name, Parent, inner));
                     }

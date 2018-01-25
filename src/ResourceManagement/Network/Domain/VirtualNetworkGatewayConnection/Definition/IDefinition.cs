@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnect
     /// <summary>
     /// Stage of definition allowing to enable BGP for the connection.
     /// </summary>
-    public interface IWithBgp 
+    public interface IWithBgp
     {
         /// <summary>
         /// Enable BGP for the connection.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnect
     /// <summary>
     /// The first stage of virtual network gateway connection definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Definition.IWithConnectionType
     {
     }
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnect
     /// The stage of a virtual network gateway connection definition with sufficient inputs to create a new connection in the cloud,
     /// but exposing additional optional settings to specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Definition.IWithCreate>,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Definition.IWithBgp,
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnect
     /// <summary>
     /// The entirety of the virtual network gateway connection definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Definition.IWithConnectionType,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Definition.IWithLocalNetworkGateway,

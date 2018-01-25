@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.UpdateDefinition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
 
-    internal partial class ApplicationGatewayFrontendImpl 
+    internal partial class ApplicationGatewayFrontendImpl
     {
         /// <return>The associated public IP address.</return>
         Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress Microsoft.Azure.Management.Network.Fluent.IHasPublicIPAddress.GetPublicIPAddress()

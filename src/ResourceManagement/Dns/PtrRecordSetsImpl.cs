@@ -12,8 +12,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Implementation of PtrRecordSets.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5QdHJSZWNvcmRTZXRzSW1wbA==
-    internal partial class PtrRecordSetsImpl  :
-        DnsRecordSetsBaseImpl<IPtrRecordSet,PtrRecordSetImpl>,
+    internal partial class PtrRecordSetsImpl :
+        DnsRecordSetsBaseImpl<IPtrRecordSet, PtrRecordSetImpl>,
         IPtrRecordSets
     {
         ///GENMHASH:698FCAC9EA6BAA4A563CD91E904DAC5A:F8E87D142BE7B967C3D37E08C8777506

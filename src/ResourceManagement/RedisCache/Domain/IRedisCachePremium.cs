@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Redis cache with Premium SKU.
     /// </summary>
-    public interface IRedisCachePremium  :
+    public interface IRedisCachePremium :
         Microsoft.Azure.Management.Redis.Fluent.IRedisCache
     {
         /// <summary>

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this PassNames value)
         {
-            switch( value )
+            switch (value)
             {
                 case PassNames.OobeSystem:
                     return "OobeSystem";
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static PassNames? ParsePassNames(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "OobeSystem":
                     return PassNames.OobeSystem;

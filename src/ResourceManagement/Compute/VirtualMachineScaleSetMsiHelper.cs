@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Utility class to set Managed Service Identity (MSI) and MSI related resources for a virtual machine scale set.
     /// </summary>
-    public partial class VirtualMachineScaleSetMsiHelper  : RoleAssignmentHelper
+    public partial class VirtualMachineScaleSetMsiHelper : RoleAssignmentHelper
     {
         private readonly int DEFAULT_TOKEN_PORT = 50342;
         private readonly string MSI_EXTENSION_PUBLISHER_NAME = "Microsoft.ManagedIdentity";
@@ -185,7 +185,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="scaleSetImpl">The scale set.</param>
         internal void AddOrUpdateMSIExtension(VirtualMachineScaleSetImpl scaleSetImpl)
         {
-            if (!this.installExtensionIfNotInstalled) {
+            if (!this.installExtensionIfNotInstalled)
+            {
                 return;
             }
 
@@ -193,7 +194,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             // impl so that any breaking change in the contract cause a compile time error here. So do not
             // change the below 'updateExtension' or 'defineNewExtension' to use impls.
             //
-            String msiExtensionType = scaleSetImpl.OSTypeIntern() == OperatingSystemTypes.Linux? "ManagedIdentityExtensionForLinux" : "ManagedIdentityExtensionForWindows";
+            String msiExtensionType = scaleSetImpl.OSTypeIntern() == OperatingSystemTypes.Linux ? "ManagedIdentityExtensionForLinux" : "ManagedIdentityExtensionForWindows";
             IVirtualMachineScaleSetExtension msiExtension = GetMSIExtension(scaleSetImpl.Extensions(), msiExtensionType);
             if (msiExtension != null)
             {

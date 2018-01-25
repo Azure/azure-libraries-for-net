@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
-    internal partial class VirtualMachineOffersImpl 
+    internal partial class VirtualMachineOffersImpl
     {
         /// <summary>
         /// Lists all the resources of the specified type in the currently selected subscription.

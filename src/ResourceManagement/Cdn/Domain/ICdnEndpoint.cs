@@ -12,8 +12,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure CDN endpoint.
     /// </summary>
-    public interface ICdnEndpoint  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint,Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile>,
+    public interface ICdnEndpoint :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint, Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.EndpointInner>
     {
         /// <summary>

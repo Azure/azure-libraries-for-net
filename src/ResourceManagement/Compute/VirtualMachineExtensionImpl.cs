@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:712957B0CCD6FF08974D0F02498E499C:D9D3A1E2F88492FB40E494CFF83FC124
-        internal static VirtualMachineExtensionImpl NewVirtualMachineExtension (string name, VirtualMachineImpl parent)
+        internal static VirtualMachineExtensionImpl NewVirtualMachineExtension(string name, VirtualMachineImpl parent)
         {
             return new VirtualMachineExtensionImpl(name, parent,
                 new VirtualMachineExtensionInner { Location = parent.RegionName });
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:FCA44D692D2CBD47AF19A7B5D9CEB263:ACF3758115981B4301C26F8F01A9CEB3
-        public VirtualMachineExtensionImpl WithImage (IVirtualMachineExtensionImage image)
+        public VirtualMachineExtensionImpl WithImage(IVirtualMachineExtensionImage image)
         {
             Inner.Publisher = image.PublisherName;
             Inner.VirtualMachineExtensionType = image.TypeName;
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:4E0AB82616606C4EEBD304EE7CA95448:C69FF63CB6446E393F7AC97CBA0B0631
-        public VirtualMachineExtensionImpl WithProtectedSetting (string key, object value)
+        public VirtualMachineExtensionImpl WithProtectedSetting(string key, object value)
         {
             if (this.protectedSettings.ContainsKey(key))
             {
@@ -261,8 +261,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 string extensionName = ResourceUtils.NameFromResourceId(Inner.Id);
                 var resource = await Parent.Manager.Inner.VirtualMachineExtensions.GetAsync(
-                    this.Parent.ResourceGroupName, 
-                    this.Parent.Name, 
+                    this.Parent.ResourceGroupName,
+                    this.Parent.Name,
                     extensionName,
                     cancellationToken: cancellationToken);
                 Inner.Publisher = resource.Publisher;
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:1DE96DF05FCD164699FABE2722D3B823:DDB96B1018AF16195187204FD1A5F7F0
-        private void InitializeSettings ()
+        private void InitializeSettings()
         {
             if (Inner.Settings == null)
             {

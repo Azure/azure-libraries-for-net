@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// An immutable client-side representation of an extension associated with virtual machine.
     /// </summary>
-    public interface IVirtualMachineExtensionBase  :
+    public interface IVirtualMachineExtensionBase :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualMachineExtensionInner>
     {
         /// <summary>
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the public settings of the virtual machine extension as key value pairs.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,object> PublicSettings { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, object> PublicSettings { get; }
 
         /// <summary>
         /// Gets the type name of the virtual machine extension image this extension is created from.
@@ -51,6 +51,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the tags for this virtual machine extension.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Tags { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Tags { get; }
     }
 }

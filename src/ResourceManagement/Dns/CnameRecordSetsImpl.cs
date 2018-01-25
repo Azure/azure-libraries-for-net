@@ -12,8 +12,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Implementation of CNameRecordSets.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5DTmFtZVJlY29yZFNldHNJbXBs
-    internal partial class CNameRecordSetsImpl  :
-        DnsRecordSetsBaseImpl<ICNameRecordSet,CNameRecordSetImpl>,
+    internal partial class CNameRecordSetsImpl :
+        DnsRecordSetsBaseImpl<ICNameRecordSet, CNameRecordSetImpl>,
         ICNameRecordSets
     {
         ///GENMHASH:7FD3C6284190B406493F8F2FF172B5CE:F8E87D142BE7B967C3D37E08C8777506

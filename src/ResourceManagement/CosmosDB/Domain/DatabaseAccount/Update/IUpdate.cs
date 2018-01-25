@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     /// <summary>
     /// The stage of the cosmos db update allowing to set the consistency policy.
     /// </summary>
-    public interface IWithConsistencyPolicy 
+    public interface IWithConsistencyPolicy
     {
         /// <summary>
         /// The consistency policy for the CosmosDB account.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     /// <summary>
     /// The stage of the cosmos db definition allowing to set the IP range filter.
     /// </summary>
-    public interface IWithIpRangeFilter 
+    public interface IWithIpRangeFilter
     {
         /// <summary>
         /// CosmosDB Firewall Support: This value specifies the set of IP addresses or IP address ranges in CIDR
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     /// <summary>
     /// Grouping of cosmos db update stages.
     /// </summary>
-    public interface IWithOptionals  :
+    public interface IWithOptionals :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount>,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithConsistencyPolicy,
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     /// <summary>
     /// Grouping of cosmos db update stages.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithReadLocations,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update.IWithOptionals
     {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update
     /// <summary>
     /// The stage of the cosmos db definition allowing the definition of a write location.
     /// </summary>
-    public interface IWithReadLocations  :
+    public interface IWithReadLocations :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount>
     {
         /// <summary>

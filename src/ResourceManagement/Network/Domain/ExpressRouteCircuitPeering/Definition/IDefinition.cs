@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.D
     /// <summary>
     /// The entirety of the express route circuit peering definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.Definition.IWithAdvertisedPublicPrefixes,
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.Definition.IWithPrimaryPeerAddressPrefix,
@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.D
     {
     }
 
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering>
     {
     }
 
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.Definition.IWithPrimaryPeerAddressPrefix
     {
     }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.D
     /// <summary>
     /// The stage of Express Route Circuit Peering definition allowing to specify primary address prefix.
     /// </summary>
-    public interface IWithPrimaryPeerAddressPrefix 
+    public interface IWithPrimaryPeerAddressPrefix
     {
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.Definition.IWithSecondaryPeerAddressPrefix WithPrimaryPeerAddressPrefix(string addressPrefix);
     }
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.D
     /// <summary>
     /// The stage of Express Route Circuit Peering definition allowing to specify advertised address prefixes.
     /// </summary>
-    public interface IWithAdvertisedPublicPrefixes 
+    public interface IWithAdvertisedPublicPrefixes
     {
         /// <summary>
         /// Specify advertised prefixes: sets a list of all prefixes that are planned to advertise over the BGP session.
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.D
     /// <summary>
     /// The stage of Express Route Circuit Peering definition allowing to specify AS number for peering.
     /// </summary>
-    public interface IWithPeerAsn 
+    public interface IWithPeerAsn
     {
         /// <param name="peerAsn">AS number for peering. Both 2-byte and 4-byte AS numbers can be used.</param>
         /// <return>Next stage of definition.</return>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.D
     /// <summary>
     /// The stage of Express Route Circuit Peering definition allowing to specify secondary address prefix.
     /// </summary>
-    public interface IWithSecondaryPeerAddressPrefix 
+    public interface IWithSecondaryPeerAddressPrefix
     {
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.Definition.IWithVlanId WithSecondaryPeerAddressPrefix(string addressPrefix);
     }
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuitPeering.D
     /// <summary>
     /// The stage of Express Route Circuit Peering definition allowing to specify VLAN ID.
     /// </summary>
-    public interface IWithVlanId 
+    public interface IWithVlanId
     {
         /// <param name="vlanId">A valid VLAN ID to establish this peering on. No other peering in the circuit can use the same VLAN ID.</param>
         /// <return>Next stage of definition.</return>

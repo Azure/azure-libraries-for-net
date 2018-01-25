@@ -68,12 +68,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class DomainStatusEnumExtension
     {
-        internal static string ToSerializedValue(this DomainStatus? value)  =>
+        internal static string ToSerializedValue(this DomainStatus? value) =>
             value == null ? null : ((DomainStatus)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this DomainStatus value)
         {
-            switch( value )
+            switch (value)
             {
                 case DomainStatus.Active:
                     return "Active";
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static DomainStatus? ParseDomainStatus(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Active":
                     return DomainStatus.Active;

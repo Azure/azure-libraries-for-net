@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure virtual machine extension image type.
     /// </summary>
-    public interface IVirtualMachineExtensionImageType  :
+    public interface IVirtualMachineExtensionImageType :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualMachineExtensionImageInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName
     {

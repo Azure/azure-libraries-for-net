@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Contains stats associated with the peering.
     /// </summary>
-    public interface IExpressRouteCircuitStats  :
+    public interface IExpressRouteCircuitStats :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ExpressRouteCircuitStatsInner>
     {

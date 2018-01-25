@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class CertificateProductTypeEnumExtension
     {
-        internal static string ToSerializedValue(this CertificateProductType? value)  =>
+        internal static string ToSerializedValue(this CertificateProductType? value) =>
             value == null ? null : ((CertificateProductType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this CertificateProductType value)
         {
-            switch( value )
+            switch (value)
             {
                 case CertificateProductType.StandardDomainValidatedSsl:
                     return "StandardDomainValidatedSsl";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static CertificateProductType? ParseCertificateProductType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "StandardDomainValidatedSsl":
                     return CertificateProductType.StandardDomainValidatedSsl;

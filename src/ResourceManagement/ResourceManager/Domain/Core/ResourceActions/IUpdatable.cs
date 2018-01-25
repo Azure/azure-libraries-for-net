@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
     /// 
     /// @param <T> the fluent type of the resource
     /// </summary>
-    public interface IUpdatable<T> 
+    public interface IUpdatable<T>
     {
         /// <summary>
         /// Begins an update for a new resource.
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
         /// process in Azure is {@link Appliable#apply()}.
         /// </summary>
         /// <returns>the stage of new resource update</returns>
-        T Update ();
+        T Update();
 
     }
 }

@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Batch application package.
     /// </summary>
-    public interface IApplicationPackage  :
+    public interface IApplicationPackage :
         IApplicationPackageBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.Batch.Fluent.IApplicationPackage,Microsoft.Azure.Management.Batch.Fluent.IApplication>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.Batch.Fluent.IApplicationPackage, Microsoft.Azure.Management.Batch.Fluent.IApplication>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<ApplicationPackageInner>
     {
         /// <summary>

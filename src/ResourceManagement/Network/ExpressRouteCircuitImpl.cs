@@ -10,8 +10,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uRXhwcmVzc1JvdXRlQ2lyY3VpdEltcGw=
-    internal partial class ExpressRouteCircuitImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uRXhwcmVzc1JvdXRlQ2lyY3VpdEltcGw=
+    internal partial class ExpressRouteCircuitImpl :
         GroupableParentResource<
             IExpressRouteCircuit,
             ExpressRouteCircuitInner,
@@ -70,17 +70,19 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             EnsureAuthorizations().Add(new ExpressRouteCircuitAuthorizationInner()
             {
-                Name =  authorizationName
+                Name = authorizationName
             });
             return this;
         }
 
-    private IList<ExpressRouteCircuitAuthorizationInner> EnsureAuthorizations() {
-         if (Inner.Authorizations == null) {
-             Inner.Authorizations = new List<ExpressRouteCircuitAuthorizationInner>();
+        private IList<ExpressRouteCircuitAuthorizationInner> EnsureAuthorizations()
+        {
+            if (Inner.Authorizations == null)
+            {
+                Inner.Authorizations = new List<ExpressRouteCircuitAuthorizationInner>();
             }
-         return Inner.Authorizations;
-     }
+            return Inner.Authorizations;
+        }
 
         ///GENMHASH:F91F57741BB7E185BF012523964DEED0:27E486AB74A10242FF421C0798DDC450
         protected override void AfterCreating()
@@ -91,8 +93,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         protected override void InitializeChildrenFromInner()
         {
             expressRouteCircuitPeerings = new Dictionary<string, IExpressRouteCircuitPeering>();
-            if (Inner.Peerings != null) {
-                foreach(var peering in Inner.Peerings) {
+            if (Inner.Peerings != null)
+            {
+                foreach (var peering in Inner.Peerings)
+                {
                     expressRouteCircuitPeerings[peering.Name] = new ExpressRouteCircuitPeeringImpl(this, peering, Manager.Inner.ExpressRouteCircuitPeerings, ExpressRouteCircuitPeeringType.Parse(peering.PeeringType));
                 }
             }
@@ -125,7 +129,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:EBF5D7FCB8A0369CDDB6CE536441686B:B1BC50C86FFB2C345FDD74FE115FF7EB
-        internal  ExpressRouteCircuitImpl(string name, ExpressRouteCircuitInner innerObject, INetworkManager manager)
+        internal ExpressRouteCircuitImpl(string name, ExpressRouteCircuitInner innerObject, INetworkManager manager)
             : base(name, innerObject, manager)
         {
         }
@@ -146,7 +150,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:6156CBBE562DB102D30D00D0F72FF564:CC801AA6C2F51CD8A1E0CA4F52068A83
         private ExpressRouteCircuitServiceProviderProperties EnsureServiceProviderProperties()
         {
-            if (Inner.ServiceProviderProperties == null) {
+            if (Inner.ServiceProviderProperties == null)
+            {
                 Inner.ServiceProviderProperties = new ExpressRouteCircuitServiceProviderProperties();
             }
             return Inner.ServiceProviderProperties;
@@ -166,7 +171,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:66F5A03D7EB9E3E5BA184EFDB0178FFD:52BBC11095CBE139DC9FCE45CA978969
-        public IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> PeeringsMap()
+        public IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> PeeringsMap()
         {
             return expressRouteCircuitPeerings;
         }
@@ -174,7 +179,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:DAC0ADBD485D3FA7934FDCF3DF6AFB33:89CD7B3F148D44874EE77529B14FD49A
         public IExpressRouteCircuitPeerings Peerings()
         {
-            if (peerings == null) {
+            if (peerings == null)
+            {
                 peerings = new ExpressRouteCircuitPeeringsImpl(this);
             }
             return peerings;

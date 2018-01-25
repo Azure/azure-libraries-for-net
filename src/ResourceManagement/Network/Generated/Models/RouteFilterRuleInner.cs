@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public RouteFilterRuleInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public SkuDescription()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Definiti
     /// The stage of a definition allowing to specify the private IP address.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithPrivateIPAddress<ReturnT> 
+    public interface IWithPrivateIPAddress<ReturnT>
     {
         /// <summary>
         /// Enables dynamic private IP address allocation within the associated subnet.

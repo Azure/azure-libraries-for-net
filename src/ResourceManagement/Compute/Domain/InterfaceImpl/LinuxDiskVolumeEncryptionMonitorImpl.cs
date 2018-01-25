@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
-    internal partial class LinuxDiskVolumeEncryptionMonitorImpl 
+    internal partial class LinuxDiskVolumeEncryptionMonitorImpl
     {
         /// <summary>
         /// Refreshes the resource to sync with Azure.

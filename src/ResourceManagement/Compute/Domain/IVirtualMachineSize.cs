@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// A type representing virtual machine size available for a subscription in a region.
     /// </summary>
-    public interface IVirtualMachineSize  :
+    public interface IVirtualMachineSize :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName
     {
         /// <summary>

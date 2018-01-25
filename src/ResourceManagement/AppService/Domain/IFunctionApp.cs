@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Function App.
     /// </summary>
-    public interface IFunctionApp  :
+    public interface IFunctionApp :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.AppService.Fluent.IWebAppBase,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>,
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="functionName">The name of the function.</param>
         /// <return>The function key.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> ListFunctionKeys(string functionName);
+        System.Collections.Generic.IReadOnlyDictionary<string, string> ListFunctionKeys(string functionName);
 
         /// <summary>
         /// Removes a key to a function in this function app.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="functionName">The name of the function.</param>
         /// <return>The function key.</return>
-        Task<System.Collections.Generic.IReadOnlyDictionary<string,string>> ListFunctionKeysAsync(string functionName, CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IReadOnlyDictionary<string, string>> ListFunctionKeysAsync(string functionName, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Adds a key to a function in this function app.

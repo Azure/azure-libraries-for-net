@@ -22,27 +22,27 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     /// </summary>
     public static partial class LocationOperationsExtensions
     {
-            
-            /// <summary>
-            /// Gets the Batch service quotas for the specified subscription at the given
-            /// location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationName'>
-            /// The region for which to retrieve Batch service quotas.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<BatchLocationQuotaInner> GetQuotasAsync(this ILocationOperations operations, string locationName, CancellationToken cancellationToken = default(CancellationToken))
+
+        /// <summary>
+        /// Gets the Batch service quotas for the specified subscription at the given
+        /// location.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='locationName'>
+        /// The region for which to retrieve Batch service quotas.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<BatchLocationQuotaInner> GetQuotasAsync(this ILocationOperations operations, string locationName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetQuotasWithHttpMessagesAsync(locationName, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetQuotasWithHttpMessagesAsync(locationName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

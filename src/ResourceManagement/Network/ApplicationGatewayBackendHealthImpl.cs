@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// Implementation of application gateway backend health information.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uQXBwbGljYXRpb25HYXRld2F5QmFja2VuZEhlYWx0aEltcGw=
-    internal partial class ApplicationGatewayBackendHealthImpl  :  IApplicationGatewayBackendHealth
+    internal partial class ApplicationGatewayBackendHealthImpl : IApplicationGatewayBackendHealth
     {
         private ApplicationGatewayBackendHealthPool inner;
         private ApplicationGatewayImpl appGateway;
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 return null;
             }
-            
+
             string backendName = ResourceUtils.NameFromResourceId(inner.BackendAddressPool.Id);
             IApplicationGatewayBackend backend = null;
             return (appGateway.Backends().TryGetValue(backendName, out backend)) ? backend : null;
@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
             this.appGateway = appGateway;
             if (inner != null)
             {
-                foreach(var httpConfigInner in Inner.BackendHttpSettingsCollection)
+                foreach (var httpConfigInner in Inner.BackendHttpSettingsCollection)
                 {
-                    ApplicationGatewayBackendHttpConfigurationHealthImpl httpConfigHealth  = new ApplicationGatewayBackendHttpConfigurationHealthImpl(httpConfigInner, this);
+                    ApplicationGatewayBackendHttpConfigurationHealthImpl httpConfigHealth = new ApplicationGatewayBackendHttpConfigurationHealthImpl(httpConfigInner, this);
                     httpConfigHealths[httpConfigHealth.Name()] = httpConfigHealth;
                 }
             }

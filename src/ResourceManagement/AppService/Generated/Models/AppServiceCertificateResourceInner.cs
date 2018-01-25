@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public AppServiceCertificateResourceInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

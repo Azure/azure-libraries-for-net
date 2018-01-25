@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public ApplicationGatewayAvailableWafRuleSetsResultInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

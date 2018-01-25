@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// </summary>
         public GroupGetMemberGroupsParametersInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

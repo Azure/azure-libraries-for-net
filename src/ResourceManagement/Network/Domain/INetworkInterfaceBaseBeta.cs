@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// The base network interface shared across regular and virtual machine scale set network interface.
     /// </summary>
-    public interface INetworkInterfaceBaseBeta  :
+    public interface INetworkInterfaceBaseBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

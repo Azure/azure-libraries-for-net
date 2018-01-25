@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add a new Internet-facing frontend with a public IP address.
     /// </summary>
-    public interface IWithPublicIPAddress  :
+    public interface IWithPublicIPAddress :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definition.IWithPublicIPAddressNoDnsLabel<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate>
     {
     }
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to define one or more public, or Internet-facing, frontends.
     /// </summary>
-    public interface IWithPublicFrontend  :
+    public interface IWithPublicFrontend :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithPublicIPAddress
     {
         /// <summary>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// The stage of an internal application gateway definition allowing to make the application gateway accessible to its
     /// virtual network.
     /// </summary>
-    public interface IWithPrivateFrontend 
+    public interface IWithPrivateFrontend
     {
         /// <summary>
         /// Enables a private (internal) default frontend within the subnet containing the application gateway.
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The first stage of an application gateway definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithGroup>
     {
     }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add a request routing rule.
     /// </summary>
-    public interface IWithRequestRoutingRule 
+    public interface IWithRequestRoutingRule
     {
         /// <summary>
         /// Begins the definition of a request routing rule for this application gateway.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add an SSL certificate to be used by HTTPS listeners.
     /// </summary>
-    public interface IWithSslCert 
+    public interface IWithSslCert
     {
         /// <summary>
         /// Begins the definition of a new application gateway SSL certificate to be attached to the gateway for use in HTTPS listeners.
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add a probe.
     /// </summary>
-    public interface IWithProbe 
+    public interface IWithProbe
     {
         /// <summary>
         /// Begins the definition of a new probe.
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add a backend.
     /// </summary>
-    public interface IWithBackend 
+    public interface IWithBackend
     {
         /// <summary>
         /// Begins the definition of a new application gateway backend to be attached to the gateway.
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The entirety of the application gateway definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithGroup,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate,
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithRequestRoutingRule>
     {
     }
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add a listener.
     /// </summary>
-    public interface IWithListener 
+    public interface IWithListener
     {
         /// <summary>
         /// Begins the definition of a new application gateway listener to be attached to the gateway.
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to specify the capacity (number of instances) of the application gateway.
     /// </summary>
-    public interface IWithInstanceCount 
+    public interface IWithInstanceCount
     {
         /// <summary>
         /// Specifies the capacity (number of instances) for the application gateway.
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add a backend HTTP configuration.
     /// </summary>
-    public interface IWithBackendHttpConfig 
+    public interface IWithBackendHttpConfig
     {
         /// <summary>
         /// Begins the definition of a new application gateway backend HTTP configuration to be attached to the gateway.
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add a redirect configuration.
     /// </summary>
-    public interface IWithRedirectConfiguration  :
+    public interface IWithRedirectConfiguration :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithRedirectConfigurationBeta
     {
     }
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add a frontend port.
     /// </summary>
-    public interface IWithFrontendPort 
+    public interface IWithFrontendPort
     {
         /// <summary>
         /// Creates a frontend port with an auto-generated name and the specified port number, unless one already exists.
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add an authentication certificate for the backends to use.
     /// </summary>
-    public interface IWithAuthenticationCertificate  :
+    public interface IWithAuthenticationCertificate :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithAuthenticationCertificateBeta
     {
     }
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// The stage of an application gateway definition allowing to specify the default IP address the app gateway will be internally available at,
     /// if a default private frontend has been enabled.
     /// </summary>
-    public interface IWithPrivateIPAddress  :
+    public interface IWithPrivateIPAddress :
         Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Definition.IWithPrivateIPAddress<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate>
     {
     }
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// The stage of an application gateway definition allowing to specify the subnet the app gateway is getting
     /// its private IP address from.
     /// </summary>
-    public interface IWithExistingSubnet  :
+    public interface IWithExistingSubnet :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Definition.IWithSubnet<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate>
     {
         /// <summary>
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// the resource to be created, but also allowing
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithSize,
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// The stage of an application gateway definition allowing to continue adding more request routing rules,
     /// or start specifying optional settings, or create the application gateway.
     /// </summary>
-    public interface IWithRequestRoutingRuleOrCreate  :
+    public interface IWithRequestRoutingRuleOrCreate :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithRequestRoutingRule,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate
     {
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway update allowing to specify the size.
     /// </summary>
-    public interface IWithSize 
+    public interface IWithSize
     {
         /// <summary>
         /// Specifies the size of the application gateway to create within the context of the selected tier.
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to specify the SSL protocols to disable.
     /// </summary>
-    public interface IWithDisabledSslProtocol  :
+    public interface IWithDisabledSslProtocol :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithDisabledSslProtocolBeta
     {
     }
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add a redirect configuration.
     /// </summary>
-    public interface IWithRedirectConfigurationBeta  :
+    public interface IWithRedirectConfigurationBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to add an authentication certificate for the backends to use.
     /// </summary>
-    public interface IWithAuthenticationCertificateBeta  :
+    public interface IWithAuthenticationCertificateBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
     /// <summary>
     /// The stage of an application gateway definition allowing to specify the SSL protocols to disable.
     /// </summary>
-    public interface IWithDisabledSslProtocolBeta  :
+    public interface IWithDisabledSslProtocolBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

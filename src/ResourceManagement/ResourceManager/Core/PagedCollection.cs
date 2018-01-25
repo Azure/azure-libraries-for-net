@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             Func<InnerResourceT, IFluentResourceT> wrapModel,
             CancellationToken cancellationToken)
         {
-            return await LoadPage(async(cancellation) => Extensions.ConvertToPage(await listInnerAsync(cancellation)),
-                async(nextLink, cancellation) => await Task.FromResult<IPage<InnerResourceT>>(null),
+            return await LoadPage(async (cancellation) => Extensions.ConvertToPage(await listInnerAsync(cancellation)),
+                async (nextLink, cancellation) => await Task.FromResult<IPage<InnerResourceT>>(null),
                 wrapModel, false, cancellationToken);
         }
 
@@ -126,6 +126,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             }
         }
 
-        
+
     }
 }

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
-    internal partial class SecurityGroupViewImpl 
+    internal partial class SecurityGroupViewImpl
     {
         /// <summary>
         /// Refreshes the resource to sync with Azure.
@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets network interfaces on the specified VM.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Models.SecurityGroupNetworkInterface> Microsoft.Azure.Management.Network.Fluent.ISecurityGroupView.NetworkInterfaces
+        System.Collections.Generic.IReadOnlyDictionary<string, Models.SecurityGroupNetworkInterface> Microsoft.Azure.Management.Network.Fluent.ISecurityGroupView.NetworkInterfaces
         {
             get
             {
-                return this.NetworkInterfaces() as System.Collections.Generic.IReadOnlyDictionary<string,Models.SecurityGroupNetworkInterface>;
+                return this.NetworkInterfaces() as System.Collections.Generic.IReadOnlyDictionary<string, Models.SecurityGroupNetworkInterface>;
             }
         }
     }

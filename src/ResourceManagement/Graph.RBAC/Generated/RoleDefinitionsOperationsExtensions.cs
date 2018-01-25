@@ -24,146 +24,146 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     /// </summary>
     public static partial class RoleDefinitionsOperationsExtensions
     {
-            
-            /// <summary>
-            /// Deletes a role definition.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='scope'>
-            /// The scope of the role definition.
-            /// </param>
-            /// <param name='roleDefinitionId'>
-            /// The ID of the role definition to delete.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<RoleDefinitionInner> DeleteAsync(this IRoleDefinitionsOperations operations, string scope, string roleDefinitionId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.DeleteWithHttpMessagesAsync(scope, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
 
-            
-            /// <summary>
-            /// Get role definition by name (GUID).
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='scope'>
-            /// The scope of the role definition.
-            /// </param>
-            /// <param name='roleDefinitionId'>
-            /// The ID of the role definition.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<RoleDefinitionInner> GetAsync(this IRoleDefinitionsOperations operations, string scope, string roleDefinitionId, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Deletes a role definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='scope'>
+        /// The scope of the role definition.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The ID of the role definition to delete.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<RoleDefinitionInner> DeleteAsync(this IRoleDefinitionsOperations operations, string scope, string roleDefinitionId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(scope, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(scope, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            
-            /// <summary>
-            /// Creates or updates a role definition.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='scope'>
-            /// The scope of the role definition.
-            /// </param>
-            /// <param name='roleDefinitionId'>
-            /// The ID of the role definition.
-            /// </param>
-            /// <param name='roleDefinition'>
-            /// The values for the role definition.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<RoleDefinitionInner> CreateOrUpdateAsync(this IRoleDefinitionsOperations operations, string scope, string roleDefinitionId, RoleDefinitionInner roleDefinition, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(scope, roleDefinitionId, roleDefinition, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
 
-            
-            /// <summary>
-            /// Gets a role definition by ID.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='roleDefinitionId'>
-            /// The fully qualified role definition ID to get.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<RoleDefinitionInner> GetByIdAsync(this IRoleDefinitionsOperations operations, string roleDefinitionId, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Get role definition by name (GUID).
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='scope'>
+        /// The scope of the role definition.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The ID of the role definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<RoleDefinitionInner> GetAsync(this IRoleDefinitionsOperations operations, string scope, string roleDefinitionId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(scope, roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetByIdWithHttpMessagesAsync(roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            
-            /// <summary>
-            /// Get all role definitions that are applicable at scope and above.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='scope'>
-            /// The scope of the role definition.
-            /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<RoleDefinitionInner>> ListAsync(this IRoleDefinitionsOperations operations, string scope, ODataQuery<RoleDefinitionFilterInner> odataQuery = default(ODataQuery<RoleDefinitionFilterInner>), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(scope, odataQuery, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
 
-            
-            /// <summary>
-            /// Get all role definitions that are applicable at scope and above.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<RoleDefinitionInner>> ListNextAsync(this IRoleDefinitionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Creates or updates a role definition.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='scope'>
+        /// The scope of the role definition.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The ID of the role definition.
+        /// </param>
+        /// <param name='roleDefinition'>
+        /// The values for the role definition.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<RoleDefinitionInner> CreateOrUpdateAsync(this IRoleDefinitionsOperations operations, string scope, string roleDefinitionId, RoleDefinitionInner roleDefinition, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(scope, roleDefinitionId, roleDefinition, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
+
+
+        /// <summary>
+        /// Gets a role definition by ID.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='roleDefinitionId'>
+        /// The fully qualified role definition ID to get.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<RoleDefinitionInner> GetByIdAsync(this IRoleDefinitionsOperations operations, string roleDefinitionId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetByIdWithHttpMessagesAsync(roleDefinitionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+
+        /// <summary>
+        /// Get all role definitions that are applicable at scope and above.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='scope'>
+        /// The scope of the role definition.
+        /// </param>
+        /// <param name='odataQuery'>
+        /// OData parameters to apply to the operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<RoleDefinitionInner>> ListAsync(this IRoleDefinitionsOperations operations, string scope, ODataQuery<RoleDefinitionFilterInner> odataQuery = default(ODataQuery<RoleDefinitionFilterInner>), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(scope, odataQuery, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+
+        /// <summary>
+        /// Get all role definitions that are applicable at scope and above.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<RoleDefinitionInner>> ListNextAsync(this IRoleDefinitionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
 
     }
 }

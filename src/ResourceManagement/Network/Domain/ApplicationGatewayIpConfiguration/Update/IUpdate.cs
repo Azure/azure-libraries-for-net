@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfigur
     /// <summary>
     /// The stage of an application gateway IP configuration update allowing to modify the subnet the application gateway is part of.
     /// </summary>
-    public interface IWithSubnet  :
+    public interface IWithSubnet :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Update.IWithSubnet<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfiguration.Update.IUpdate>
     {
         /// <summary>
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfigur
     /// <summary>
     /// The entirety of an application gateway IP configuration update as part of an application gateway update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfiguration.Update.IWithSubnet
     {

@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class WorkerSizeOptionsEnumExtension
     {
-        internal static string ToSerializedValue(this WorkerSizeOptions? value)  =>
+        internal static string ToSerializedValue(this WorkerSizeOptions? value) =>
             value == null ? null : ((WorkerSizeOptions)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this WorkerSizeOptions value)
         {
-            switch( value )
+            switch (value)
             {
                 case WorkerSizeOptions.Default:
                     return "Default";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static WorkerSizeOptions? ParseWorkerSizeOptions(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Default":
                     return WorkerSizeOptions.Default;

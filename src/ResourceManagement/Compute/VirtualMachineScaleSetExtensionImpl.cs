@@ -153,7 +153,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineScaleSetExtensionImpl WithPublicSettings(IDictionary<string, object> settings)
         {
             this.EnsurePublicSettings().Clear();
-            foreach(var entry in settings) {
+            foreach (var entry in settings)
+            {
                 this.EnsurePublicSettings().Add(entry.Key, entry.Value);
             }
             return this;
@@ -203,7 +204,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             if (Inner.Settings == null)
             {
                 Inner.Settings = new Dictionary<string, object>();
-                return (Dictionary <string, object>)Inner.Settings;
+                return (Dictionary<string, object>)Inner.Settings;
             }
             else if (Inner.Settings is JObject)
             {
@@ -213,7 +214,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
             else
             {
-                return (Dictionary < string, object >)Inner.Settings;
+                return (Dictionary<string, object>)Inner.Settings;
             }
         }
 

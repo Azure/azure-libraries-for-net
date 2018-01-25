@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this DiskCreateOptionTypes value)
         {
-            switch( value )
+            switch (value)
             {
                 case DiskCreateOptionTypes.FromImage:
                     return "FromImage";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static DiskCreateOptionTypes? ParseDiskCreateOptionTypes(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "FromImage":
                     return DiskCreateOptionTypes.FromImage;

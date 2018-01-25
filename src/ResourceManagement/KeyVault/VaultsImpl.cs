@@ -15,14 +15,14 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// The implementation of Vaults and its parent interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLlZhdWx0c0ltcGw=
-    internal partial class VaultsImpl  :
+    internal partial class VaultsImpl :
         TopLevelModifiableResources<IVault, VaultImpl, VaultInner, IVaultsOperations, IKeyVaultManager>,
         IVaults
     {
         private IGraphRbacManager graphRbacManager;
         private string tenantId;
         ///GENMHASH:CDB7D4D816159A58F5240A4C88E5241C:4E00EDDBAADBA44B155253E3B63448A4
-        internal VaultsImpl (IKeyVaultManager keyVaultManager, IGraphRbacManager graphRbacManager, string tenantId)
+        internal VaultsImpl(IKeyVaultManager keyVaultManager, IGraphRbacManager graphRbacManager, string tenantId)
             : base(keyVaultManager.Inner.Vaults, keyVaultManager)
         {
             this.graphRbacManager = graphRbacManager;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:913702868132D01F4C836BBF3499B8CE
-        public VaultImpl Define (string name)
+        public VaultImpl Define(string name)
         {
             return WrapModel(name)
                 .WithSku(SkuName.Standard)
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:CF5D7C4F8C9C8500DA16344A95E02A83
-        protected override VaultImpl WrapModel (string name)
+        protected override VaultImpl WrapModel(string name)
         {
             VaultInner inner = new VaultInner()
             {
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:CA260E89048F01F05DD7D13D870D6A8F:92A42C7FBDAE00431C015493416F3C0F
-        protected override IVault WrapModel (VaultInner vaultInner)
+        protected override IVault WrapModel(VaultInner vaultInner)
         {
             return new VaultImpl(
                 vaultInner.Name,

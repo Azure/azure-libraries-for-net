@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
-    internal partial class VirtualMachineScaleSetNetworkInterfacesImpl 
+    internal partial class VirtualMachineScaleSetNetworkInterfacesImpl
     {
         /// <summary>
         /// Lists all the network interfaces associated with a virtual machine instance in the scale set.

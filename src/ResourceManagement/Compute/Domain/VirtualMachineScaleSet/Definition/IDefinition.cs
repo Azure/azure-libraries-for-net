@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The stage of the definition which contains all the minimum required inputs for the VM scale set to be
     /// created and optionally allow unmanaged data disks specific settings to be specified.
     /// </summary>
-    public interface IWithUnmanagedCreate  :
+    public interface IWithUnmanagedCreate :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithUnmanagedDataDisk,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate
     {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of a virtual machine scale set definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithSku>
     {
     }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The stage of a virtual machine scale set definition allowing to associate a backend pool and/or an inbound NAT pool
     /// of the selected Internet-facing load balancer with the primary network interface of the virtual machines in the scale set.
     /// </summary>
-    public interface IWithPrimaryInternetFacingLoadBalancerBackendOrNatPool  :
+    public interface IWithPrimaryInternetFacingLoadBalancerBackendOrNatPool :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithPrimaryInternetFacingLoadBalancerNatPool
     {
         /// <summary>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The stage of a virtual machine scale set definition allowing to associate an inbound NAT pool of the selected
     /// Internet-facing load balancer with the primary network interface of the virtual machines in the scale set.
     /// </summary>
-    public interface IWithPrimaryInternetFacingLoadBalancerNatPool  :
+    public interface IWithPrimaryInternetFacingLoadBalancerNatPool :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithPrimaryInternalLoadBalancer
     {
         /// <summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The stage of a virtual machine scale set definition allowing to associate backend pools and/or inbound NAT pools
     /// of the selected internal load balancer with the primary network interface of the virtual machines in the scale set.
     /// </summary>
-    public interface IWithInternalLoadBalancerBackendOrNatPool  :
+    public interface IWithInternalLoadBalancerBackendOrNatPool :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithInternalInternalLoadBalancerNatPool
     {
         /// <summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// inputs for the resource to be created, but also allows for any other
     /// optional settings to be specified.
     /// </summary>
-    public interface IWithWindowsCreateManaged  :
+    public interface IWithWindowsCreateManaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithManagedCreate
     {
         /// <summary>
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// for the resource to be created, but also allows for any other optional
     /// settings to be specified.
     /// </summary>
-    public interface IWithLinuxCreateUnmanaged  :
+    public interface IWithLinuxCreateUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithUnmanagedCreate
     {
         /// <summary>
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The stage of the definition which contains all the minimum required inputs for the VM scale set to be
     /// created and optionally allow managed data disks specific settings to be specified.
     /// </summary>
-    public interface IWithManagedCreate  :
+    public interface IWithManagedCreate :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithManagedDataDisk,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithManagedDiskOptionals,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithAvailabilityZone,
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The first stage of a virtual machine scale set definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithGroup>
     {
     }
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// for the resource to be created, but also allows for any other optional
     /// settings to be specified.
     /// </summary>
-    public interface IWithLinuxCreateManagedOrUnmanaged  :
+    public interface IWithLinuxCreateManagedOrUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithManagedCreate
     {
         /// <return>The next stage of a unmanaged disk based virtual machine scale set definition.</return>
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The stage of the virtual machine scale set definition allowing to associate inbound NAT pools of the selected
     /// internal load balancer with the primary network interface of the virtual machines in the scale set.
     /// </summary>
-    public interface IWithInternalInternalLoadBalancerNatPool  :
+    public interface IWithInternalInternalLoadBalancerNatPool :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithOS
     {
         /// <summary>
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// inputs for the resource to be created, but also allows for any other
     /// optional settings to be specified.
     /// </summary>
-    public interface IWithWindowsCreateManagedOrUnmanaged  :
+    public interface IWithWindowsCreateManagedOrUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged
     {
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged WithUnmanagedDisks();
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// for the resource to be created, but also allows for any other optional
     /// settings to be specified.
     /// </summary>
-    public interface IWithLinuxCreateManaged  :
+    public interface IWithLinuxCreateManaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithManagedCreate
     {
         /// <summary>
@@ -788,7 +788,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// inputs for the resource to be created, but also allows for any other
     /// optional settings to be specified.
     /// </summary>
-    public interface IWithWindowsCreateUnmanaged  :
+    public interface IWithWindowsCreateUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithUnmanagedCreate
     {
         /// <summary>
@@ -836,7 +836,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// to be created, but also allowing for any other optional settings
     /// to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithOSDiskSettings,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithComputerNamePrefix,

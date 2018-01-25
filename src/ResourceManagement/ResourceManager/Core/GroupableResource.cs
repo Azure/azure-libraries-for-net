@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             ManagerT,
             IDefinitionAfterRegion,
             IDefinitionAfterResourceGroup,
-            DefTypeWithTags, 
+            DefTypeWithTags,
             UTypeWithTags>, IFluentResourceT
         where ManagerT : IManagerBase
         where IFluentResourceT : class, IResource
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         protected ICreatable<IResourceGroup> newGroup;
         private string groupName;
 
-        protected GroupableResource(string key, InnerResourceT innerObject, ManagerT manager) :base(key, innerObject)
+        protected GroupableResource(string key, InnerResourceT innerObject, ManagerT manager) : base(key, innerObject)
         {
             Manager = manager;
         }

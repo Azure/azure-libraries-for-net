@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Represents a virtual machine image offer.
     /// </summary>
-    public interface IVirtualMachineOffer  :
+    public interface IVirtualMachineOffer :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName
     {
         /// <summary>

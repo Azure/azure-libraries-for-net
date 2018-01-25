@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An interface representing a model's ability to support cookie based affinity.
     /// </summary>
-    public interface IHasCookieBasedAffinity 
+    public interface IHasCookieBasedAffinity
     {
         /// <summary>
         /// Gets the backend port number the network traffic is sent to.

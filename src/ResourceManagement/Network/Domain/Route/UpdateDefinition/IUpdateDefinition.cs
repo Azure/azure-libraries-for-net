@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Route.UpdateDefinition
     /// The stage of a route definition allowing to specify the destination address prefix.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithDestinationAddressPrefix<ParentT> 
+    public interface IWithDestinationAddressPrefix<ParentT>
     {
         /// <summary>
         /// Specifies the destination address prefix to apply the route to.
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Route.UpdateDefinition
     /// The first stage of a route definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.Route.UpdateDefinition.IWithDestinationAddressPrefix<ParentT>
     {
     }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Route.UpdateDefinition
     /// The entirety of a route definition as part of a route table update.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  UpdateDefinitionStages.WithAttach.attach().</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.Route.UpdateDefinition.IBlank<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.Route.UpdateDefinition.IWithAttach<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.Route.UpdateDefinition.IWithNextHopType<ParentT>,
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Route.UpdateDefinition
     /// can be attached to the parent route table definition using  WithAttach.attach().
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>
     {
     }
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Route.UpdateDefinition
     /// The stage of a route definition allowing to specify the next hop type.
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithNextHopType<ParentT> 
+    public interface IWithNextHopType<ParentT>
     {
         /// <summary>
         /// Specifies the IP address of the virtual appliance for the next hop to go to.

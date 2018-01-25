@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class ConnectivityCheckImpl 
+    internal partial class ConnectivityCheckImpl
     {
         /// <param name="port">Destination port.</param>
         /// <return>Next definition stage.</return>

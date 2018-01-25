@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Defi
     /// <summary>
     /// The first stage of the AD group definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Definition.IWithEmailAlias
     {
     }
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Defi
     /// <summary>
     /// An AD Group definition allowing mail nickname to be specified.
     /// </summary>
-    public interface IWithEmailAlias  :
+    public interface IWithEmailAlias :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Definition.IWithEmailAliasBeta
     {
     }
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Defi
     /// group in the cloud, but exposing additional optional inputs to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryGroup>,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Definition.IWithMember
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Defi
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Definition.IBlank,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Definition.IWithEmailAlias,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Definition.IWithCreate
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Defi
     /// <summary>
     /// An AD Group definition allowing members to be added.
     /// </summary>
-    public interface IWithMember  :
+    public interface IWithMember :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Definition.IWithMemberBeta
     {
     }
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Defi
     /// <summary>
     /// An AD Group definition allowing mail nickname to be specified.
     /// </summary>
-    public interface IWithEmailAliasBeta  :
+    public interface IWithEmailAliasBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Definition.IWithCreate WithEmailAlias(string mailNickname);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Defi
     /// <summary>
     /// An AD Group definition allowing members to be added.
     /// </summary>
-    public interface IWithMemberBeta  :
+    public interface IWithMemberBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

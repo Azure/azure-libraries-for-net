@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update
     /// The template for an update operation, containing all the settings that
     /// can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Compute.Fluent.ISnapshot>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update.IUpdate>,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update.IWithSku,
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update
     /// <summary>
     /// The stage of the managed snapshot update allowing to specify OS settings.
     /// </summary>
-    public interface IWithOSSettings 
+    public interface IWithOSSettings
     {
         /// <summary>
         /// Specifies the operating system type.
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update
     /// <summary>
     /// The stage of the managed snapshot update allowing to choose account type.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Specifies the account type.

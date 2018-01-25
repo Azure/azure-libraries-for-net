@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// The implementation for  ComputeSkus.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uQ29tcHV0ZVNrdXNJbXBs
-    internal sealed partial class ComputeSkusImpl  :
+    internal sealed partial class ComputeSkusImpl :
         ReadableWrappers<Microsoft.Azure.Management.Compute.Fluent.IComputeSku, Microsoft.Azure.Management.Compute.Fluent.ComputeSkuImpl, Models.ResourceSku>,
         IComputeSkus
     {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:AD27D3B464C617FF7BD739B06405A654:0A321A6C5FAF43B9081469690636C762
         internal ComputeSkusImpl(IComputeManager computeManager)
         {
-           this.manager = computeManager;
+            this.manager = computeManager;
         }
 
         ///GENMHASH:4318BDBAE10D86DA6726695F6F266DD0:B4E67A1F603F32204572EE549690656C

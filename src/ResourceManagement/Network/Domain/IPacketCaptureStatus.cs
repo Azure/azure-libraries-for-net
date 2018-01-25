@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Status of packet capture session.
     /// </summary>
-    public interface IPacketCaptureStatus  :
+    public interface IPacketCaptureStatus :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.PacketCaptureQueryStatusResultInner>
     {

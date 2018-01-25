@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    public partial class CosmosDBAccountsImpl 
+    public partial class CosmosDBAccountsImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The ServiceResponse object if successful.</return>
         async Task Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.FailoverPriorityChangeAsync(string groupName, string accountName, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location> failoverPolicies, CancellationToken cancellationToken)
         {
- 
+
             await this.FailoverPriorityChangeAsync(groupName, accountName, failoverPolicies, cancellationToken);
         }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="keyKind">The key kind.</param>
         void Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.RegenerateKey(string groupName, string accountName, string keyKind)
         {
- 
+
             this.RegenerateKey(groupName, accountName, keyKind);
         }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="failoverPolicies">The list of failover policies.</param>
         void Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.FailoverPriorityChange(string groupName, string accountName, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location> failoverPolicies)
         {
- 
+
             this.FailoverPriorityChange(groupName, accountName, failoverPolicies);
         }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The ServiceResponse object if successful.</return>
         async Task Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.RegenerateKeyAsync(string groupName, string accountName, string keyKind, CancellationToken cancellationToken)
         {
- 
+
             await this.RegenerateKeyAsync(groupName, accountName, keyKind, cancellationToken);
         }
 

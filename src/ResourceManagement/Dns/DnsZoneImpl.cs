@@ -16,10 +16,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Implementation for DnsZone.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5EbnNab25lSW1wbA==
-    internal partial class DnsZoneImpl  :
+    internal partial class DnsZoneImpl :
         GroupableResource<IDnsZone,
-            ZoneInner, 
-            DnsZoneImpl, 
+            ZoneInner,
+            DnsZoneImpl,
             IDnsZoneManager,
             DnsZone.Definition.IWithCreate,
             DnsZone.Definition.IWithCreate,
@@ -57,14 +57,14 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             return this.aRecordSets;
         }
-        
+
         ///GENMHASH:1F806E4CBC9AF647A64C1631E4524D83:F08C99E11B7048517EE726026B9D7B91
         public DnsZoneImpl WithCNameRecordSet(string name, string alias)
         {
             recordSetsImpl.WithCNameRecordSet(name, alias);
             return this;
         }
-        
+
         ///GENMHASH:2EBE0E253F1D6DB178F3433FF5310EA8:676B110D94D76F014EEEE150AEE3144F
         public IReadOnlyList<string> NameServers()
         {
@@ -246,7 +246,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:791593DE94E8D431FBB634CF0578A424:B9A84F7258ADA4688FCB65555E502356
         public DnsZoneImpl WithETagCheck()
         {
-            if (IsInCreateMode) {
+            if (IsInCreateMode)
+            {
                 this.dnsZoneETag = "*";
                 return this;
             }
@@ -279,8 +280,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             ZoneInner innerResource;
             if (IsInCreateMode)
             {
-                innerResource = await Manager.Inner.Zones.CreateOrUpdateAsync(ResourceGroupName, 
-                    Name, 
+                innerResource = await Manager.Inner.Zones.CreateOrUpdateAsync(ResourceGroupName,
+                    Name,
                     Inner,
                     ifMatch: null,
                     ifNoneMatch: this.dnsZoneETag,
@@ -320,7 +321,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         }
 
         ///GENMHASH:132875C15861A92E60F93E154E091602:F70AB38B6FDE85737888182B48E6B611
-        internal  DnsZoneImpl(string name, ZoneInner innerModel, IDnsZoneManager dnsZoneManager) : base(name, innerModel, dnsZoneManager)
+        internal DnsZoneImpl(string name, ZoneInner innerModel, IDnsZoneManager dnsZoneManager) : base(name, innerModel, dnsZoneManager)
         {
             recordSetsImpl = new DnsRecordSetsImpl(this);
             InitRecordSets();
@@ -344,7 +345,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 .Select(inner =>
                 {
                     var recordSet = new DnsRecordSetImpl(this, inner);
-                    switch(recordSet.RecordType())
+                    switch (recordSet.RecordType())
                     {
                         case RecordType.A:
                             return new ARecordSetImpl(this, inner);

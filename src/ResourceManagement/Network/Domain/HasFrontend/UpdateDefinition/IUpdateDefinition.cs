@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasFrontend.UpdateDefinition
     /// The stage of a definition allowing to specify a frontend from to associate.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithFrontend<ReturnT> 
+    public interface IWithFrontend<ReturnT>
     {
         /// <summary>
         /// Specifies an existing private subnet to receive network traffic from.

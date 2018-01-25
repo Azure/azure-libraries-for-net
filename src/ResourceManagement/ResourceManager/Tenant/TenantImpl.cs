@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         ITenant
     {
         internal TenantImpl(TenantIdDescription inner) : base(inner)
-        {}
+        { }
 
         public string TenantId
         {

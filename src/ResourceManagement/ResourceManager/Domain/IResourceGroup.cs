@@ -15,13 +15,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// Grouping of all the resource group update stages.
     /// </summary>
-    public interface IUpdateStages 
+    public interface IUpdateStages
     {
     }
     /// <summary>
     /// An immutable client-side representation of an Azure resource group.
     /// </summary>
-    public interface IResourceGroup  :
+    public interface IResourceGroup :
         IIndexable,
         IResource,
         IRefreshable<IResourceGroup>,
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// </summary>
         /// <param name="options">options the export options</param>
         /// <returns>the exported template result</returns>
-        IResourceGroupExportResult ExportTemplate (ResourceGroupExportTemplateOptions options);
+        IResourceGroupExportResult ExportTemplate(ResourceGroupExportTemplateOptions options);
 
         /// <summary>
         /// Captures the specified resource group as a template.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <returns>the exported template result</returns>
         Task<IResourceGroupExportResult> ExportTemplateAsync(ResourceGroupExportTemplateOptions options, CancellationToken cancellationToken = default(CancellationToken));
     }
-    public interface IDefinitionStages 
+    public interface IDefinitionStages
     {
     }
 }

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// Entry point to tenant management API.
     /// </summary>
-    public interface ITenants  :
+    public interface ITenants :
         ISupportsListing<ITenant>
     {
     }

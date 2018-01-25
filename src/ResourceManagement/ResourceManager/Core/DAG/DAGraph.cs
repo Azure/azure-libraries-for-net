@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.DAG
 {
-    public class DAGraph<NodeDataT, NodeT> : Graph<NodeDataT, NodeT> where NodeT : DAGNode<NodeDataT> 
+    public class DAGraph<NodeDataT, NodeT> : Graph<NodeDataT, NodeT> where NodeT : DAGNode<NodeDataT>
     {
         private ConcurrentQueue<string> queue;
         private NodeT rootNode;
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.DAG
         public void Merge(DAGraph<NodeDataT, NodeT> parent)
         {
             parent.rootNode.AddDependency(rootNode.Key.ToLowerInvariant());
-            foreach(KeyValuePair<string, NodeT> item in this.graph)
+            foreach (KeyValuePair<string, NodeT> item in this.graph)
             {
                 if (!parent.graph.ContainsKey(item.Key.ToLowerInvariant()))
                 {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.DAG
         {
             if (IsPreparer)
             {
-                foreach(NodeT node in graph.Values)
+                foreach (NodeT node in graph.Values)
                 {
                     node.Initialize(); // clear dependent and set ToBeResolved count
                     if (!this.IsRootNode(node))
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.DAG
             while (queue.TryDequeue(out s)) { }
 
             // push the leaf node keys
-            foreach(KeyValuePair<string ,NodeT> item in graph)
+            foreach (KeyValuePair<string, NodeT> item in graph)
             {
                 if (!item.Value.HasDependencies)
                 {

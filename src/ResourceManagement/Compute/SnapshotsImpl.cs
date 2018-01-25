@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     internal partial class SnapshotsImpl :
         TopLevelModifiableResources<ISnapshot,
             SnapshotImpl,
-            SnapshotInner, 
-            ISnapshotsOperations, 
+            SnapshotInner,
+            ISnapshotsOperations,
             IComputeManager>,
         ISnapshots
     {
@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         ///GENMHASH:C2E2A5650639245BC0993A33DCAA5D61:7697FA7DB7AB14465F345F0D9BFABB88
         public async Task<string> GrantAccessAsync(
-            string resourceGroupName, 
-            string snapshotName, 
-            AccessLevel accessLevel, 
+            string resourceGroupName,
+            string snapshotName,
+            AccessLevel accessLevel,
             int accessDuration,
             CancellationToken cancellationToken = default(CancellationToken))
         {

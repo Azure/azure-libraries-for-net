@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update
     /// <summary>
     /// The stage of a Batch account update allowing to specify a storage account.
     /// </summary>
-    public interface IWithStorageAccount 
+    public interface IWithStorageAccount
     {
         /// <summary>
         /// Removes the associated storage account.
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update
     /// <summary>
     /// The template for a Batch account update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Batch.Fluent.IBatchAccount>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IUpdate>,
         Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IWithStorageAccount,
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update
     /// <summary>
     /// The stage of a Batch account definition allowing the creation of a Batch application.
     /// </summary>
-    public interface IWithApplication 
+    public interface IWithApplication
     {
         /// <summary>
         /// Starts a definition of an application to be created in the Batch account.

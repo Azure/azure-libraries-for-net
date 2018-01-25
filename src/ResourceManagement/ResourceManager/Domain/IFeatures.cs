@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// Entry point to features management API.
     /// </summary>
-    public interface IFeatures  :
+    public interface IFeatures :
         ISupportsListing<IFeature>
     {
         /// <summary>

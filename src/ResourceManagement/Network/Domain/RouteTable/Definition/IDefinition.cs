@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition
     /// <summary>
     /// The stage of a route table definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IWithCreate>
     {
     }
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition
     /// <summary>
     /// The entirety of a route table definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IWithGroup,
         Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IWithCreate
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition
     /// <summary>
     /// The stage of the route table definition allowing to add routes.
     /// </summary>
-    public interface IWithRoute 
+    public interface IWithRoute
     {
         /// <summary>
         /// Creates a route via a virtual appliance.
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition
     /// the resource to be created (via  WithCreate.create()), but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.IRouteTable>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IWithCreate>,
         Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IWithRoute
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition
     /// <summary>
     /// The first stage of a route table definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IWithGroup>
     {
     }

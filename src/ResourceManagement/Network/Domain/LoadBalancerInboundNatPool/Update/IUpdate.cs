@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerInboundNatPool.U
     /// <summary>
     /// The entirety of an inbound NAT pool update as part of a load balancer update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerInboundNatPool.Update.IWithProtocol,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerInboundNatPool.Update.IWithFrontend,
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerInboundNatPool.U
     /// <summary>
     /// The stage of an inbound NAT pool update allowing to specify the frontend for the inbound NAT rules in the pool to apply to.
     /// </summary>
-    public interface IWithFrontend  :
+    public interface IWithFrontend :
         Microsoft.Azure.Management.Network.Fluent.HasFrontend.Update.IWithFrontend<Microsoft.Azure.Management.Network.Fluent.LoadBalancerInboundNatPool.Update.IUpdate>
     {
     }
@@ -32,15 +32,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerInboundNatPool.U
     /// <summary>
     /// The stage of an inbound NAT pool update allowing to specify the transport protocol for the pool to apply to.
     /// </summary>
-    public interface IWithProtocol  :
-        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Update.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.LoadBalancerInboundNatPool.Update.IUpdate,Microsoft.Azure.Management.Network.Fluent.Models.TransportProtocol>
+    public interface IWithProtocol :
+        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Update.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.LoadBalancerInboundNatPool.Update.IUpdate, Microsoft.Azure.Management.Network.Fluent.Models.TransportProtocol>
     {
     }
 
     /// <summary>
     /// The stage of an inbound NAT pool update allowing to specify the backend port.
     /// </summary>
-    public interface IWithBackendPort  :
+    public interface IWithBackendPort :
         Microsoft.Azure.Management.Network.Fluent.HasBackendPort.Update.IWithBackendPort<Microsoft.Azure.Management.Network.Fluent.LoadBalancerInboundNatPool.Update.IUpdate>
     {
     }
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerInboundNatPool.U
     /// <summary>
     /// The stage of an inbound NAT pool update allowing to specify the frontend port range.
     /// </summary>
-    public interface IWithFrontendPortRange 
+    public interface IWithFrontendPortRange
     {
         /// <summary>
         /// Specifies the frontend port range.

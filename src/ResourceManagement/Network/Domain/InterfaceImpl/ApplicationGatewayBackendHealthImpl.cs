@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class ApplicationGatewayBackendHealthImpl 
+    internal partial class ApplicationGatewayBackendHealthImpl
     {
         /// <summary>
         /// Gets the name of the resource.
@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the health information about each associated backend HTTP settings configuration, indexed by its name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationHealth> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth.HttpConfigurationHealths
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationHealth> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth.HttpConfigurationHealths
         {
             get
             {
-                return this.HttpConfigurationHealths() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationHealth>;
+                return this.HttpConfigurationHealths() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationHealth>;
             }
         }
 

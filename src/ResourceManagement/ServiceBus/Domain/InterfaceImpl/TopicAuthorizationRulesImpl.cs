@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     using Microsoft.Azure.Management.ServiceBus.Fluent;
     using Microsoft.Rest;
 
-    internal partial class TopicAuthorizationRulesImpl 
+    internal partial class TopicAuthorizationRulesImpl
     {
         /// <summary>
         /// Asynchronously delete a resource from Azure, identifying it by its resource name.
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingByName.DeleteByNameAsync(string name, CancellationToken cancellationToken)
         {
- 
+
             await this.DeleteByNameAsync(name, cancellationToken);
         }
 

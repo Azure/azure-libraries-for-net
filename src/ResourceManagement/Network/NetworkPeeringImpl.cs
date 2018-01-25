@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 // If network access is disabled on this peering, then it's disabled for both networks, regardless of what the remote peering says
                 return false;
             }
-            
+
             // Check the access setting on the remote peering
             INetworkPeering remotePeering = GetRemotePeering();
             if (remotePeering == null)

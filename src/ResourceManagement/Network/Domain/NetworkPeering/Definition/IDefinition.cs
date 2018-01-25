@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition
     /// network peering in the cloud, but exposing additional optional settings to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkPeering>,
         Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition.IWithGatewayUse,
         Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition.IWithTrafficForwarding,
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition
     /// <summary>
     /// The first stage of a network peering definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition.IWithRemoteNetwork
     {
     }
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition
     /// <summary>
     /// The entirety of the network peering definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition.IWithCreate,
         Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition.IWithRemoteNetwork
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition
     /// <summary>
     /// The stage of a network peering definition allowing to specify the remote virtual network.
     /// </summary>
-    public interface IWithRemoteNetwork 
+    public interface IWithRemoteNetwork
     {
         /// <summary>
         /// Specifies the remote network to peer with.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition
     /// <summary>
     /// The stage of a network peering definition allowing to control traffic forwarding from or to the remote network.
     /// </summary>
-    public interface IWithTrafficForwarding 
+    public interface IWithTrafficForwarding
     {
         /// <summary>
         /// Allows traffic forwarded from the remote network.
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition
     /// <summary>
     /// The stage of a network peering definition allowing to control the gateway use by or on the remote network.
     /// </summary>
-    public interface IWithGatewayUse 
+    public interface IWithGatewayUse
     {
         /// <summary>
         /// Allows the remote network to use this network's gateway (a.k.a. gateway transit), but does not start the use of the gateway by the remote network.
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Definition
     /// <summary>
     /// The stage of a network peering definition allowing to control access from and to the remote network.
     /// </summary>
-    public interface IWithAccess 
+    public interface IWithAccess
     {
         /// <summary>
         /// Disallows access to either peered network from the other.

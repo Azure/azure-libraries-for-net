@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
     /// The first stage of a security rule definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithDirectionAccess<ParentT>
     {
     }
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
     /// The stage of the network rule definition allowing the priority to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithPriority<ParentT> 
+    public interface IWithPriority<ParentT>
     {
         /// <summary>
         /// Specifies the priority to assign to this rule.
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
     /// The stage of the network rule definition allowing the destination port(s) to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDestinationPort<ParentT> 
+    public interface IWithDestinationPort<ParentT>
     {
         /// <summary>
         /// Specifies the destination port to which this rule applies.
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
     /// can be attached to the parent network security group definition using  WithAttach.attach().
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithPriority<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithDescription<ParentT>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
     /// The stage of the security rule definition allowing the protocol that the rule applies to to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithProtocol<ParentT> 
+    public interface IWithProtocol<ParentT>
     {
         /// <summary>
         /// Makes this rule apply to any supported protocol.
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
     /// The stage of the network rule definition allowing the source port(s) to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithSourcePort<ParentT> 
+    public interface IWithSourcePort<ParentT>
     {
         /// <summary>
         /// Specifies the source port to which this rule applies.
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
     /// The stage of the network rule definition allowing the description to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDescription<ParentT> 
+    public interface IWithDescription<ParentT>
     {
         /// <summary>
         /// Specifies a description for this security rule.
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
     /// The entirety of a network security rule definition.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithAttach<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithDirectionAccess<ParentT>,
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
     /// The stage of the network rule definition allowing the source address to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithSourceAddress<ParentT> 
+    public interface IWithSourceAddress<ParentT>
     {
         /// <summary>
         /// Specifies the traffic source address prefix to which this rule applies.
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
     /// The stage of the network rule definition allowing the direction and the access type to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDirectionAccess<ParentT> 
+    public interface IWithDirectionAccess<ParentT>
     {
         /// <summary>
         /// Allows outbound traffic.
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
     /// The stage of the network rule definition allowing the destination address to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDestinationAddress<ParentT> 
+    public interface IWithDestinationAddress<ParentT>
     {
         /// <summary>
         /// Makes the rule apply to any traffic destination address.

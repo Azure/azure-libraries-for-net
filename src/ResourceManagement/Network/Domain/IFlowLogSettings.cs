@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Client-side representation of the configuration of flow log, associated with network watcher and an Azure resource.
     /// </summary>
-    public interface IFlowLogSettings  :
+    public interface IFlowLogSettings :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.FlowLogInformationInner>,

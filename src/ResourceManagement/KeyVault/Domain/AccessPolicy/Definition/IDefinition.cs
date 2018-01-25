@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition
     /// using {@link WithAttach#attach()}.
     /// @param <ParentT> the return type of {@link WithAttach#attach()}
     /// </summary>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         IInUpdate<ParentT>,
         IWithPermissions<ParentT>
     {
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition
     /// 
     /// @param <ParentT> the return type of the final {@link WithAttach#attach()}
     /// </summary>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         IWithIdentity<ParentT>
     {
     }
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition
     /// The entirety of an access policy definition.
     /// @param <ParentT> the return type of the final {@link Attachable#attach()}
     /// </summary>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         IBlank<ParentT>,
         IWithAttach<ParentT>
     {
@@ -43,96 +43,96 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition
     /// The access policy definition stage allowing permissions to be added.
     /// @param <ParentT> the return type of the final {@link WithAttach#attach()}
     /// </summary>
-    public interface IWithPermissions<ParentT> 
+    public interface IWithPermissions<ParentT>
     {
         /// <summary>
         /// Allow all permissions for the AD identity to access keys.
         /// </summary>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> AllowKeyAllPermissions ();
+        IWithAttach<ParentT> AllowKeyAllPermissions();
 
         /// <summary>
         /// Allow a list of permissions for the AD identity to access keys.
         /// </summary>
         /// <param name="permissions">permissions the list of permissions allowed</param>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> AllowKeyPermissions (params KeyPermissions[] permissions);
+        IWithAttach<ParentT> AllowKeyPermissions(params KeyPermissions[] permissions);
 
         /// <summary>
         /// Allow a list of permissions for the AD identity to access keys.
         /// </summary>
         /// <param name="permissions">permissions the list of permissions allowed</param>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> AllowKeyPermissions (IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.KeyPermissions> permissions);
+        IWithAttach<ParentT> AllowKeyPermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.KeyPermissions> permissions);
 
         /// <summary>
         /// Allow all permissions for the AD identity to access secrets.
         /// </summary>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> AllowSecretAllPermissions ();
+        IWithAttach<ParentT> AllowSecretAllPermissions();
 
         /// <summary>
         /// Allow a list of permissions for the AD identity to access secrets.
         /// </summary>
         /// <param name="permissions">permissions the list of permissions allowed</param>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> AllowSecretPermissions (params SecretPermissions[] permissions);
+        IWithAttach<ParentT> AllowSecretPermissions(params SecretPermissions[] permissions);
 
         /// <summary>
         /// Allow a list of permissions for the AD identity to access secrets.
         /// </summary>
         /// <param name="permissions">permissions the list of permissions allowed</param>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> AllowSecretPermissions (IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.SecretPermissions> permissions);
+        IWithAttach<ParentT> AllowSecretPermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.SecretPermissions> permissions);
 
     }
     /// <summary>
     /// The access policy definition stage allowing the Active Directory identity to be specified.
     /// @param <ParentT> the return type of the final {@link WithAttach#attach()}
     /// </summary>
-    public interface IWithIdentity<ParentT> 
+    public interface IWithIdentity<ParentT>
     {
         /// <summary>
         /// Specifies the object ID of the Active Directory identity this access policy is for.
         /// </summary>
         /// <param name="objectId">objectId the object ID of the AD identity</param>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> ForObjectId (Guid objectId);
+        IWithAttach<ParentT> ForObjectId(Guid objectId);
 
         /// <summary>
         /// Specifies the Active Directory user this access policy is for.
         /// </summary>
         /// <param name="user">user the AD user object</param>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> ForUser (IActiveDirectoryUser user);
+        IWithAttach<ParentT> ForUser(IActiveDirectoryUser user);
 
         /// <summary>
         /// Specifies the Active Directory user this access policy is for.
         /// </summary>
         /// <param name="userPrincipalName">userPrincipalName the user principal name of the AD user</param>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> ForUser (string userPrincipalName);
+        IWithAttach<ParentT> ForUser(string userPrincipalName);
 
         /// <summary>
         /// Specifies the Active Directory group this access policy is for.
         /// </summary>
         /// <param name="group">group the AD group object</param>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> ForGroup (IActiveDirectoryGroup group);
+        IWithAttach<ParentT> ForGroup(IActiveDirectoryGroup group);
 
         /// <summary>
         /// Specifies the Active Directory service principal this access policy is for.
         /// </summary>
         /// <param name="servicePrincipal">servicePrincipal the AD service principal object</param>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> ForServicePrincipal (IServicePrincipal servicePrincipal);
+        IWithAttach<ParentT> ForServicePrincipal(IServicePrincipal servicePrincipal);
 
         /// <summary>
         /// Specifies the Active Directory service principal this access policy is for.
         /// </summary>
         /// <param name="servicePrincipalName">servicePrincipalName the service principal name of the AD user</param>
         /// <returns>the next stage of access policy definition</returns>
-        IWithAttach<ParentT> ForServicePrincipal (string servicePrincipalName);
+        IWithAttach<ParentT> ForServicePrincipal(string servicePrincipalName);
 
     }
 }

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Update
     /// <summary>
     /// A public IP address update allowing to change the IP allocation method (static or dynamic).
     /// </summary>
-    public interface IWithIPAddress 
+    public interface IWithIPAddress
     {
         /// <summary>
         /// Enables static IP address allocation.
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Update
     /// Container interface for all the updates.
     /// Use  Update.apply() to apply the changes to the resource in Azure.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress>,
         Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Update.IWithIPAddress,
         Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Update.IWithLeafDomainLabel,
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Update
     /// <summary>
     /// A public IP address update allowing the reverse FQDN to be changed.
     /// </summary>
-    public interface IWithReverseFQDN 
+    public interface IWithReverseFQDN
     {
         /// <summary>
         /// Specifies the reverse FQDN to assign to this public IP address.
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Update
     /// <summary>
     /// A public IP address update allowing the idle timeout to be changed.
     /// </summary>
-    public interface IWithIdleTimout 
+    public interface IWithIdleTimout
     {
         /// <summary>
         /// Specifies the timeout (in minutes) for an idle connection.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Update
     /// <summary>
     /// A public IP address update allowing to change the leaf domain label, if any.
     /// </summary>
-    public interface IWithLeafDomainLabel 
+    public interface IWithLeafDomainLabel
     {
         /// <summary>
         /// Ensures that no leaf domain label will be used.

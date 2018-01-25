@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public TunnelConnectionHealth()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of an virtual network gateway IP configuration.
     /// </summary>
-    public interface IVirtualNetworkGatewayIPConfiguration  :
+    public interface IVirtualNetworkGatewayIPConfiguration :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualNetworkGatewayIPConfigurationInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway>

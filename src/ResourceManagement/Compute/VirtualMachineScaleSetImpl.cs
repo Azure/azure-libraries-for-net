@@ -652,7 +652,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             if (this.Inner.VirtualMachineProfile != null
                 && this.Inner.VirtualMachineProfile.StorageProfile != null
                 && this.Inner.VirtualMachineProfile.StorageProfile.OsDisk != null
-                && this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk != null) {
+                && this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk != null)
+            {
                 return this.Inner
                 .VirtualMachineProfile
                 .StorageProfile
@@ -2661,7 +2662,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 string bootDiagnosticsStorageUri = null;
                 if (creatableDiagnosticsStorageAccountKey != null)
                 {
-                    IStorageAccount storageAccount = (IStorageAccount) this.vmssImpl.CreatedResource(creatableDiagnosticsStorageAccountKey);
+                    IStorageAccount storageAccount = (IStorageAccount)this.vmssImpl.CreatedResource(creatableDiagnosticsStorageAccountKey);
                     bootDiagnosticsStorageUri = storageAccount.EndPoints.Primary.Blob;
                 }
                 else if (this.VMSSInner.VirtualMachineProfile.StorageProfile != null

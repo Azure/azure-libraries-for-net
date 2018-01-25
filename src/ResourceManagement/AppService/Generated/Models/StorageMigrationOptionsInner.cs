@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public StorageMigrationOptionsInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

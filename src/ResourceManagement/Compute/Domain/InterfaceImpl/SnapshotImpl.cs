@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
 
-    internal partial class SnapshotImpl 
+    internal partial class SnapshotImpl
     {
         /// <summary>
         /// Specifies the operating system type.
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.ISnapshot.RevokeAccess()
         {
- 
+
             this.RevokeAccess();
         }
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.ISnapshot.RevokeAccessAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.RevokeAccessAsync(cancellationToken);
         }
 

@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.FlowLogSettings.Update
     /// <summary>
     /// The stage of the flow log information update allowing to configure retention policy.
     /// </summary>
-    public interface IWithRetentionPolicy 
+    public interface IWithRetentionPolicy
     {
         /// <summary>
         /// Disable retention policy.
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.FlowLogSettings.Update
     /// can be modified.
     /// Call  Update.apply() to apply the changes to the resource in Azure.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IFlowLogSettings>,
         Microsoft.Azure.Management.Network.Fluent.FlowLogSettings.Update.IWithEnabled,
         Microsoft.Azure.Management.Network.Fluent.FlowLogSettings.Update.IWithStorageAccount,
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.FlowLogSettings.Update
     /// <summary>
     /// The stage of the flow log information update allowing to specify storage account.
     /// </summary>
-    public interface IWithStorageAccount 
+    public interface IWithStorageAccount
     {
         /// <summary>
         /// Specifies the storage account to use for storing log.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.FlowLogSettings.Update
     /// <summary>
     /// The stage of the flow log information update allowing to set enable/disable property.
     /// </summary>
-    public interface IWithEnabled 
+    public interface IWithEnabled
     {
         /// <summary>
         /// Enable flow logging.

@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         private Region region;
 
         ///GENMHASH:98AC1A5C9A9130E6BB34288EC414EBC7:E76A8E1D3061342B4963F8D92782FAC2
-        internal QueuesImpl(string resourceGroupName, 
-            string namespaceName, 
-            Region region, 
+        internal QueuesImpl(string resourceGroupName,
+            string namespaceName,
+            Region region,
             IServiceBusManager manager) : base(manager.Inner.Queues, manager)
         {
             this.resourceGroupName = resourceGroupName;
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             return await this.Inner.ListByNamespaceAsync(this.resourceGroupName, this.namespaceName, cancellationToken);
         }
-        
+
         protected async override Task<IPage<QueueInner>> ListInnerNextPageAsync(string nextLink, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Inner.ListByNamespaceNextAsync(nextLink, cancellationToken);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             await this.Inner.DeleteAsync(this.resourceGroupName,
                 this.namespaceName,
-                name, 
+                name,
                 cancellationToken);
         }
 

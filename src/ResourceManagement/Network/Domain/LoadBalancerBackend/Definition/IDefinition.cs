@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definiti
     /// The entirety of a load balancer backend definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definition.IWithAttach<ParentT>
     {
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definiti
     /// The first stage of a load balancer backend definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definition.IWithAttach<ParentT>
     {
     }
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definiti
     /// the network traffic among.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithVirtualMachine<ReturnT> 
+    public interface IWithVirtualMachine<ReturnT>
     {
         /// <summary>
         /// Adds the specified set of virtual machines, assuming they are from the same
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definiti
     /// can be attached to the parent load balancer definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerBackend.Definition.IWithVirtualMachine<ParentT>
     {

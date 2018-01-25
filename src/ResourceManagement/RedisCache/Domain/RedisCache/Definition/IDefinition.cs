@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition
     /// Redis Cache in the cloud, but exposing additional optional inputs to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Redis.Fluent.IRedisCache>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithCreate>
     {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition
         /// </summary>
         /// <param name="redisConfiguration">Configuration of Redis Cache as a map indexed by configuration name.</param>
         /// <return>The next stage of Redis Cache definition.</return>
-        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithCreate WithRedisConfiguration(IDictionary<string,string> redisConfiguration);
+        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithCreate WithRedisConfiguration(IDictionary<string, string> redisConfiguration);
 
         /// <summary>
         /// Specifies Redis Setting.
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition
     /// <summary>
     /// The first stage of the Redis Cache definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithGroup>
     {
     }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition
     /// <summary>
     /// A Redis Cache definition allowing the sku to be set.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Specifies the Premium sku of the Redis Cache.
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition
     /// <summary>
     /// A Redis Cache definition allowing resource group to be set.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithSku>
     {
     }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition
     /// <summary>
     /// A Redis Cache definition with Premium Sku specific functionality.
     /// </summary>
-    public interface IWithPremiumSkuCreate  :
+    public interface IWithPremiumSkuCreate :
         Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithCreate
     {
         /// <summary>
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IBlank,
         Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithGroup,
         Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition.IWithSku,

@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         private Region region;
 
         ///GENMHASH:2543CEBBD96EF3380CE25AD8CFC5AFBE:5ACB456EFBF8C14B803104BBCC81344D
-        internal SubscriptionsImpl(string resourceGroupName, 
-            string namespaceName, 
-            string topicName, 
+        internal SubscriptionsImpl(string resourceGroupName,
+            string namespaceName,
+            string topicName,
             Region region,
             IServiceBusManager manager) : base(manager.Inner.Subscriptions, manager)
         {
@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
 
         protected async override Task<IPage<Management.ServiceBus.Fluent.Models.SubscriptionInner>> ListInnerFirstPageAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Inner.ListByTopicAsync(this.resourceGroupName, 
-                this.namespaceName, 
-                this.topicName, 
+            return await this.Inner.ListByTopicAsync(this.resourceGroupName,
+                this.namespaceName,
+                this.topicName,
                 cancellationToken);
         }
         protected async override Task<IPage<Management.ServiceBus.Fluent.Models.SubscriptionInner>> ListInnerNextPageAsync(string nextLink, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Inner.ListByTopicNextAsync(nextLink, 
+            return await this.Inner.ListByTopicNextAsync(nextLink,
                 cancellationToken);
 
         }
@@ -63,10 +63,10 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         ///GENMHASH:AD2F63EB9B7A81CCDA7E3A349748EDF7:AC7DA12A153C81BA0050657D342ADB13
         protected async override Task<Management.ServiceBus.Fluent.Models.SubscriptionInner> GetInnerByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Inner.GetAsync(this.resourceGroupName, 
-                this.namespaceName, 
-                this.topicName, 
-                name, 
+            return await this.Inner.GetAsync(this.resourceGroupName,
+                this.namespaceName,
+                this.topicName,
+                name,
                 cancellationToken);
         }
 

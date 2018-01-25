@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition
     /// <summary>
     /// The stage of a Batch account definition allowing the adding of a Batch application or creating the Batch account.
     /// </summary>
-    public interface IWithCreateAndApplication  :
+    public interface IWithCreateAndApplication :
         Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition.IWithCreate,
         Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition.IWithApplicationAndStorage
     {
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition
     /// <summary>
     /// The stage of a Batch account definition allowing to associate storage accounts with the Batch account.
     /// </summary>
-    public interface IWithStorage 
+    public interface IWithStorage
     {
         /// <summary>
         /// Specifies a new storage account to associate with the Batch account.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition
     /// A Batch account definition with sufficient inputs to create a new
     /// Batch account in the cloud, but exposing additional optional inputs to specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Batch.Fluent.IBatchAccount>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition.IWithCreate>
     {
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition
     /// <summary>
     /// The stage of a Batch account definition allowing adding an application and a storage account.
     /// </summary>
-    public interface IWithApplicationAndStorage  :
+    public interface IWithApplicationAndStorage :
         Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition.IWithStorage,
         Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition.IWithApplication
     {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition
     /// <summary>
     /// The first stage of a Batch account definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition.IWithGroup>
     {
     }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition
     /// <summary>
     /// The stage of a Batch account definition allowing the creation of a Batch application.
     /// </summary>
-    public interface IWithApplication 
+    public interface IWithApplication
     {
         /// <summary>
         /// The stage of a Batch account definition allowing to add a Batch application.
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition
     /// <summary>
     /// The stage of a Batch account definition allowing the resource group to be specified.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition.IWithCreateAndApplication>
     {
     }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition
     /// <summary>
     /// The entirety of a Batch account definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition.IBlank,
         Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition.IWithGroup,
         Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Definition.IWithCreate,

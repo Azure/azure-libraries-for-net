@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this DiskCreateOption value)
         {
-            switch( value )
+            switch (value)
             {
                 case DiskCreateOption.Empty:
                     return "Empty";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static DiskCreateOption? ParseDiskCreateOption(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Empty":
                     return DiskCreateOption.Empty;

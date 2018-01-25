@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.Collections.Generic;
 
-    internal partial class DnsRecordSetImpl 
+    internal partial class DnsRecordSetImpl
     {
         /// <summary>
         /// Specifies that If-None-Match header needs to set to  to prevent updating an existing record set.
@@ -458,11 +458,11 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <summary>
         /// Gets the metadata associated with this record set.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet.Metadata
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet.Metadata
         {
             get
             {
-                return this.Metadata() as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.Metadata() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
             }
         }
 

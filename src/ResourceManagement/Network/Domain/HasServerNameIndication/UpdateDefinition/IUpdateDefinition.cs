@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasServerNameIndication.Upda
     /// The stage of a definition allowing to require server name indication (SNI).
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithServerNameIndication<ReturnT> 
+    public interface IWithServerNameIndication<ReturnT>
     {
         /// <summary>
         /// Requires server name indication (SNI).

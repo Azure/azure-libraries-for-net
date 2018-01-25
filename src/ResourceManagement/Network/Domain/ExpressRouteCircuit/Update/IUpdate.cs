@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update
     /// <summary>
     /// The stage of express route circuit update allowing to enable/disable classic operations.
     /// </summary>
-    public interface IWithAllowClassicOperations 
+    public interface IWithAllowClassicOperations
     {
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IUpdate WithoutClassicOperations();
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update
     /// The template for a express route circuit update operation, containing all the settings that
     /// can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IWithBandwidth,
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update
     /// <summary>
     /// The stage of express route circuit update allowing to specify SKU tier and family.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IUpdate WithSku(ExpressRouteCircuitSkuType sku);
     }
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update
     /// <summary>
     /// The stage of express route circuit update allowing to specify service provider bandwidth.
     /// </summary>
-    public interface IWithBandwidth 
+    public interface IWithBandwidth
     {
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Update.IUpdate WithBandwidthInMbps(int bandwidthInMbps);
     }

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure virtual machine scale set.
     /// </summary>
-    public interface IVirtualMachineScaleSetBeta  :
+    public interface IVirtualMachineScaleSetBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

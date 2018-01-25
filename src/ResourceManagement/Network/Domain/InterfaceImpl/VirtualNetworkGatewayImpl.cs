@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
-    internal partial class VirtualNetworkGatewayImpl 
+    internal partial class VirtualNetworkGatewayImpl
     {
         /// <summary>
         /// Create a new virtual network to associate with the virtual network gateway,
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway.ResetAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.ResetAsync(cancellationToken);
         }
 
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway.Reset()
         {
- 
+
             this.Reset();
         }
 

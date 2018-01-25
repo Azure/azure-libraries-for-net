@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for LocalNetworkGateway and its create and update interfaces.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uTG9jYWxOZXR3b3JrR2F0ZXdheUltcGw=
-    internal partial class LocalNetworkGatewayImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uTG9jYWxOZXR3b3JrR2F0ZXdheUltcGw=
+    internal partial class LocalNetworkGatewayImpl :
         GroupableResource<ILocalNetworkGateway,
             LocalNetworkGatewayInner,
             LocalNetworkGatewayImpl,
@@ -91,21 +91,23 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FFC621DA0580E44927EBEA8D394C1105:84CEF0775356674F2DF43DA4215FAB0F
         private BgpSettings EnsureBgpSettings()
         {
-            if (Inner.BgpSettings == null) {
+            if (Inner.BgpSettings == null)
+            {
                 Inner.BgpSettings = new BgpSettings();
             }
             return Inner.BgpSettings;
         }
 
         ///GENMHASH:1F898F316F61076DCEA9CB72F400DA09:3881994DCADCE14215F82F0CC81BDD88
-        internal  LocalNetworkGatewayImpl(string name, LocalNetworkGatewayInner innerModel, INetworkManager networkManager) : base(name, innerModel, networkManager)
+        internal LocalNetworkGatewayImpl(string name, LocalNetworkGatewayInner innerModel, INetworkManager networkManager) : base(name, innerModel, networkManager)
         {
         }
 
         ///GENMHASH:2DDC261430ADA2CF9ED379E7C096EA18:DC31209198DBB3C120D21921CEFF604C
         public LocalNetworkGatewayImpl WithoutAddressSpace(string cidr)
         {
-            if (Inner.LocalNetworkAddressSpace != null && Inner.LocalNetworkAddressSpace.AddressPrefixes != null) {
+            if (Inner.LocalNetworkAddressSpace != null && Inner.LocalNetworkAddressSpace.AddressPrefixes != null)
+            {
                 Inner.LocalNetworkAddressSpace.AddressPrefixes.Remove(cidr);
             }
             return this;

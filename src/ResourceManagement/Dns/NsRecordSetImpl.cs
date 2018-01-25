@@ -18,27 +18,27 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:E6E1BF61694F9FB722424D294C6DFFA4
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
-             if (Inner.NsRecords != null && Inner.NsRecords.Count > 0)
+            if (Inner.NsRecords != null && Inner.NsRecords.Count > 0)
             {
                 if (resource.NsRecords == null)
                 {
                     resource.NsRecords = new List<NsRecord>();
                 }
 
-                foreach(var record in Inner.NsRecords)
+                foreach (var record in Inner.NsRecords)
                 {
                     resource.NsRecords.Add(record);
                 }
                 Inner.NsRecords.Clear();
-             }
-             
-             if (this.recordSetRemoveInfo.NsRecords.Count > 0)
+            }
+
+            if (this.recordSetRemoveInfo.NsRecords.Count > 0)
             {
                 if (resource.NsRecords != null)
                 {
-                    foreach(var recordToRemove in this.recordSetRemoveInfo.NsRecords)
+                    foreach (var recordToRemove in this.recordSetRemoveInfo.NsRecords)
                     {
-                        foreach(var record in resource.NsRecords)
+                        foreach (var record in resource.NsRecords)
                         {
                             if (record.Nsdname.Equals(recordToRemove.Nsdname, StringComparison.OrdinalIgnoreCase))
                             {
@@ -49,12 +49,12 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                     }
                 }
                 this.recordSetRemoveInfo.NsRecords.Clear();
-             }
+            }
             return resource;
         }
 
         ///GENMHASH:901E189AE86408AC3D4B4FC4B66B4701:3F5F2CC7F3C4A3B943EC7C1953A9D2E5
-        internal  NSRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
+        internal NSRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
         {
         }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             List<string> nameServers = new List<string>();
             if (Inner.NsRecords != null)
             {
-                foreach(var nsRecord in Inner.NsRecords)
+                foreach (var nsRecord in Inner.NsRecords)
                 {
                     nameServers.Add(nsRecord.Nsdname);
                 }
@@ -76,7 +76,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         internal static NSRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
         {
             return new NSRecordSetImpl(parent,
-            new RecordSetInner {
+            new RecordSetInner
+            {
                 Name = name,
                 Type = Enum.GetName(typeof(RecordType), Models.RecordType.NS),
                 NsRecords = new List<NsRecord>()

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class PacketCaptureImpl 
+    internal partial class PacketCaptureImpl
     {
         /// <summary>
         /// A valid local path on the targeting VM. Must include the name of the
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The handle to the REST call.</return>
         async Task Microsoft.Azure.Management.Network.Fluent.IPacketCapture.StopAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.StopAsync(cancellationToken);
         }
 
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Network.Fluent.IPacketCapture.Stop()
         {
- 
+
             this.Stop();
         }
 

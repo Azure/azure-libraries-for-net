@@ -11,8 +11,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Represents Express Route Circuit Peerings collection associated with Network Watcher.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uRXhwcmVzc1JvdXRlQ2lyY3VpdFBlZXJpbmdzSW1wbA==
-    internal partial class ExpressRouteCircuitPeeringsImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uRXhwcmVzc1JvdXRlQ2lyY3VpdFBlZXJpbmdzSW1wbA==
+    internal partial class ExpressRouteCircuitPeeringsImpl :
         IndependentChildrenImpl<IExpressRouteCircuitPeering,
             ExpressRouteCircuitPeeringImpl,
             ExpressRouteCircuitPeeringInner,
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="parent">The Express Route Circuit associated with ExpressRouteCircuitPeering.</param>
         ///GENMHASH:AF86E70E6B4EC7F54D9A1FE126AFCEF1:A2C4AF47D7DA8DBEF35F6EEE6412C5FA
-        internal  ExpressRouteCircuitPeeringsImpl(ExpressRouteCircuitImpl parent) : base(parent.Manager.Inner.ExpressRouteCircuitPeerings, parent.Manager)
+        internal ExpressRouteCircuitPeeringsImpl(ExpressRouteCircuitImpl parent) : base(parent.Manager.Inner.ExpressRouteCircuitPeerings, parent.Manager)
         {
             this.parent = parent;
         }

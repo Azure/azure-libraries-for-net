@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Represents a virtual machine image publisher.
     /// </summary>
-    public interface IVirtualMachinePublisher  :
+    public interface IVirtualMachinePublisher :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName
     {
         /// <summary>

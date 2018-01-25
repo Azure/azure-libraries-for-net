@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// <summary>
     /// The first stage of a image definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithGroup>
     {
     }
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// <summary>
     /// The entirety of the image definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IBlank,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithGroup,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskImageSourceAltVirtualMachineSource,
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// <summary>
     /// The stage of the image definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskImageSourceAltVirtualMachineSource>
     {
     }
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// The stage of the image definition that allows choosing between using a virtual machine as
     /// the source for OS and the data disk images or beginning an OS disk image definition.
     /// </summary>
-    public interface IWithOSDiskImageSourceAltVirtualMachineSource  :
+    public interface IWithOSDiskImageSourceAltVirtualMachineSource :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskImageSource,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithSourceVirtualMachine
     {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// <summary>
     /// The stage of the image definition allowing to choose source virtual machine.
     /// </summary>
-    public interface IWithSourceVirtualMachine 
+    public interface IWithSourceVirtualMachine
     {
         /// <summary>
         /// Uses the virtual machine's OS disk and data disks as the source for OS disk image and
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// the resource to be created, but also allowing
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineCustomImage>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreate>
     {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// <summary>
     /// The stage of the image definition allowing to choose an OS source and an OS state for the OS image.
     /// </summary>
-    public interface IWithOSDiskImageSource 
+    public interface IWithOSDiskImageSource
     {
         /// <summary>
         /// Specifies the Windows source native VHD for the OS disk image.
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// <summary>
     /// The stage of an image definition allowing to add a data disk image.
     /// </summary>
-    public interface IWithDataDiskImage 
+    public interface IWithDataDiskImage
     {
         /// <summary>
         /// Adds a data disk image with a virtual hard disk as the source.
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// The stage of an image definition allowing to specify configurations for the OS disk when it
     /// is created from the image's  OS disk image.
     /// </summary>
-    public interface IWithOSDiskSettings 
+    public interface IWithOSDiskSettings
     {
         /// <summary>
         /// Specifies the size in GB for OS disk.
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// The stage of an image definition allowing to create the image or add optional data disk images
     /// and configure OS disk settings.
     /// </summary>
-    public interface IWithCreateAndDataDiskImageOSDiskSettings  :
+    public interface IWithCreateAndDataDiskImageOSDiskSettings :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreate,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskSettings,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithDataDiskImage

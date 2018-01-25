@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// Implementation for Vault and its parent interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLlZhdWx0SW1wbA==
-    internal partial class VaultImpl  :
-        GroupableResource<IVault, 
+    internal partial class VaultImpl :
+        GroupableResource<IVault,
             VaultInner,
             VaultImpl,
             IKeyVaultManager,
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         private IGraphRbacManager graphRbacManager;
         private IList<AccessPolicyImpl> accessPolicies;
         ///GENMHASH:E75D6B887F703BA75910BF996B59E45B:30C9A572991D1AB6921DBD5E8344AFAF
-        internal VaultImpl (string name, VaultInner innerObject, IKeyVaultManager manager, IGraphRbacManager graphRbacManager)
+        internal VaultImpl(string name, VaultInner innerObject, IKeyVaultManager manager, IGraphRbacManager graphRbacManager)
             : base(name, innerObject, manager)
         {
             this.graphRbacManager = graphRbacManager;
@@ -141,14 +141,14 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:577E5E9CE0B513EB5189E6F44BB732C7:3949CE4CBC4994E8C88DF2E4815A8696
-        public VaultImpl WithEmptyAccessPolicy ()
+        public VaultImpl WithEmptyAccessPolicy()
         {
             this.accessPolicies = new List<AccessPolicyImpl>();
             return this;
         }
 
         ///GENMHASH:BF5C974C7992D71D59A8BE2B5FFA9735:2CCFBF766FF017AFE0634B508567A0A7
-        public VaultImpl WithoutAccessPolicy (string objectId)
+        public VaultImpl WithoutAccessPolicy(string objectId)
         {
             foreach (var entry in this.accessPolicies)
             {
@@ -162,20 +162,20 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:95F821073A967350F605DCFDEE9C4F36:0AA6BCED9B5EF30513E45E352F8ADD43
-        public VaultImpl WithAccessPolicy (IAccessPolicy accessPolicy)
+        public VaultImpl WithAccessPolicy(IAccessPolicy accessPolicy)
         {
-            accessPolicies.Add((AccessPolicyImpl) accessPolicy);
+            accessPolicies.Add((AccessPolicyImpl)accessPolicy);
             return this;
         }
 
         ///GENMHASH:BCF2D31DA6ACC2C1FE7BDC9DC74816C3:7CE2DCE276A093BBCE8B68236538DCEE
-        public AccessPolicyImpl DefineAccessPolicy ()
+        public AccessPolicyImpl DefineAccessPolicy()
         {
             return new AccessPolicyImpl(new AccessPolicyEntry(), this);
         }
 
         ///GENMHASH:3AEEB786F759E7AE4D1CDECFE914787F:6AD9D0D3F38CAC761595B7A99B53F17A
-        public AccessPolicyImpl UpdateAccessPolicy (string objectId)
+        public AccessPolicyImpl UpdateAccessPolicy(string objectId)
         {
             foreach (var entry in this.accessPolicies)
             {
@@ -188,49 +188,49 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:E1C93AA0BBBD8356E9DB1218E7724613:EA22EAA4A75A2D4E53AFD4BF45481AC9
-        public VaultImpl WithDeploymentEnabled ()
+        public VaultImpl WithDeploymentEnabled()
         {
             Inner.Properties.EnabledForDeployment = true;
             return this;
         }
 
         ///GENMHASH:22BA5A0B770282F6544D8D60FF1EB6B3:EA29FD68A346F94BA2C4B60B1973D9AA
-        public VaultImpl WithDiskEncryptionEnabled ()
+        public VaultImpl WithDiskEncryptionEnabled()
         {
             Inner.Properties.EnabledForDiskEncryption = true;
             return this;
         }
 
         ///GENMHASH:526C0B06DCB31F150274918FFB1642E2:8DB41F0F2AE630487FE7D9F880CE9C9D
-        public VaultImpl WithTemplateDeploymentEnabled ()
+        public VaultImpl WithTemplateDeploymentEnabled()
         {
             Inner.Properties.EnabledForTemplateDeployment = true;
             return this;
         }
 
         ///GENMHASH:5BB8550126BE75DAD0B2AB7A5CDB59B2:3A0134537AEECA49CA9AC2C85D82FFA9
-        public VaultImpl WithDeploymentDisabled ()
+        public VaultImpl WithDeploymentDisabled()
         {
             Inner.Properties.EnabledForDeployment = false;
             return this;
         }
 
         ///GENMHASH:7D19CF226982E29D18B8EBD4F54DC892:63C66769BC07A9D01F3B3AEAD827B8B2
-        public VaultImpl WithDiskEncryptionDisabled ()
+        public VaultImpl WithDiskEncryptionDisabled()
         {
             Inner.Properties.EnabledForDiskEncryption = false;
             return this;
         }
 
         ///GENMHASH:70F27F86F71ADC791D3B0F3867F86DED:E7AF7B9719E4E19ED550AE466CC34876
-        public VaultImpl WithTemplateDeploymentDisabled ()
+        public VaultImpl WithTemplateDeploymentDisabled()
         {
             Inner.Properties.EnabledForTemplateDeployment = false;
             return this;
         }
 
         ///GENMHASH:B5E3D903BDA1F2A62441339A3042D8F4:E59E1393C8B2F3C07E87C9F34E983726
-        public VaultImpl WithSku (SkuName skuName)
+        public VaultImpl WithSku(SkuName skuName)
         {
             if (Inner.Properties == null)
             {
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             var tasks = new List<Task>();
             foreach (var accessPolicy in accessPolicies)
             {
-                if (accessPolicy.ObjectId == null || accessPolicy.ObjectId == Guid.Empty.ToString()) 
+                if (accessPolicy.ObjectId == null || accessPolicy.ObjectId == Guid.Empty.ToString())
                 {
                     if (accessPolicy.UserPrincipalName != null)
                     {
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:6825C2C979F565D012F22FFCBBFAB9ED
-        public async override Task<IVault> CreateResourceAsync (CancellationToken cancellationToken = default(CancellationToken))
+        public async override Task<IVault> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             await PopulateAccessPolicies(cancellationToken);
             VaultCreateOrUpdateParametersInner parameters = new VaultCreateOrUpdateParametersInner()

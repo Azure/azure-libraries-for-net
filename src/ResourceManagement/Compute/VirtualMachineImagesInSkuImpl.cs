@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             List<IVirtualMachineImage> firstPage = new List<IVirtualMachineImage>();
             var innerImages = Extensions.Synchronize(() => innerCollection.ListAsync(sku.Region.Name, sku.Publisher.Name, sku.Offer.Name, sku.Name));
 
-            foreach(var innerImage in innerImages)
+            foreach (var innerImage in innerImages)
             {
                 var version = innerImage.Name;
                 firstPage.Add(new VirtualMachineImageImpl(sku.Region,

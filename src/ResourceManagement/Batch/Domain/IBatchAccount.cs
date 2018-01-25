@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Batch account.
     /// </summary>
-    public interface IBatchAccount  :
+    public interface IBatchAccount :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<IBatchManager, BatchAccountInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Batch.Fluent.IBatchAccount>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<BatchAccount.Update.IUpdate>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <summary>
         /// Gets applications in this Batch account, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Batch.Fluent.IApplication> Applications { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Batch.Fluent.IApplication> Applications { get; }
 
         /// <summary>
         /// Gets the properties and status of any auto storage account associated with the Batch account.

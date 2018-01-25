@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             {
                 return new DiskSkuTypes(value);
             }
-            else if(ValuesByName.TryGetValue(value.ToString().ToLower(), out result))
+            else if (ValuesByName.TryGetValue(value.ToString().ToLower(), out result))
             {
                 return result;
             }

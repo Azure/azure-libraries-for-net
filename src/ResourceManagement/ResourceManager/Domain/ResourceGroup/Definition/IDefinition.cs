@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.ResourceGroup.Defini
     /// resource group in the cloud, but exposing additional optional inputs to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         ICreatable<IResourceGroup>,
         IDefinitionWithTags<IWithCreate>
     {
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.ResourceGroup.Defini
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         IBlank,
         IWithCreate
     {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.ResourceGroup.Defini
     /// <summary>
     /// A resource group definition allowing location to be set.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         IDefinitionWithRegion<IWithCreate>
     {
     }

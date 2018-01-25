@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure feature.
     /// </summary>
-    public interface IFeature  :
+    public interface IFeature :
         IIndexable,
         IHasInner<FeatureResultInner>
     {

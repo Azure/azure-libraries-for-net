@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class VirtualMachineScaleSetVMInstanceExtensionImpl 
+    internal partial class VirtualMachineScaleSetVMInstanceExtensionImpl
     {
         /// <summary>
         /// Gets the name of the resource.
@@ -100,22 +100,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the public settings of the virtual machine extension as key value pairs.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,object> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.PublicSettings
+        System.Collections.Generic.IReadOnlyDictionary<string, object> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.PublicSettings
         {
             get
             {
-                return this.PublicSettings() as System.Collections.Generic.IReadOnlyDictionary<string,object>;
+                return this.PublicSettings() as System.Collections.Generic.IReadOnlyDictionary<string, object>;
             }
         }
 
         /// <summary>
         /// Gets the tags for this virtual machine extension.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.Tags
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.Tags
         {
             get
             {
-                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
             }
         }
     }

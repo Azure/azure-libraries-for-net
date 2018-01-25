@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
     using System.Collections.Generic;
 
-    internal partial class ApplicationGatewayProbeImpl 
+    internal partial class ApplicationGatewayProbeImpl
     {
         /// <summary>
         /// Specifies the time interval in seconds between consecutive probes.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="protocol">A transport protocol.</param>
         /// <return>The next stage of the update.</return>
-        ApplicationGatewayProbe.Update.IUpdate HasProtocol.Update.IWithProtocol<ApplicationGatewayProbe.Update.IUpdate,Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
+        ApplicationGatewayProbe.Update.IUpdate HasProtocol.Update.IWithProtocol<ApplicationGatewayProbe.Update.IUpdate, Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
         {
             return this.WithProtocol(protocol) as ApplicationGatewayProbe.Update.IUpdate;
         }
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="protocol">A transport protocol.</param>
         /// <return>The next stage of the definition.</return>
-        ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate> HasProtocol.UpdateDefinition.IWithProtocol<ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate>,Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
+        ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate> HasProtocol.UpdateDefinition.IWithProtocol<ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate>, Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
         {
             return this.WithProtocol(protocol) as ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate>;
         }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="protocol">A transport protocol.</param>
         /// <return>The next stage of the definition.</return>
-        ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate> HasProtocol.Definition.IWithProtocol<ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate>,Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
+        ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate> HasProtocol.Definition.IWithProtocol<ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate>, Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
         {
             return this.WithProtocol(protocol) as ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate>;
         }

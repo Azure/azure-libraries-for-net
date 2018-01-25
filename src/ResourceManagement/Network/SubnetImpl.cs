@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for Subnet and its create and update interfaces.
     /// </summary>
-    
+
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uU3VibmV0SW1wbA==
     internal partial class SubnetImpl :
         ChildResource<SubnetInner, NetworkImpl, INetwork>,
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Subnet.UpdateDefinition.IUpdateDefinition<Network.Update.IUpdate>,
         Subnet.Update.IUpdate
     {
-        
+
         ///GENMHASH:95294A80FBE609A8A5735E8840009FC0:C0847EA0CDA78F6D91EFD239C70F0FA7
         internal SubnetImpl(SubnetInner inner, NetworkImpl parent) : base(inner, parent)
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return (new SortedSet<INicIPConfiguration>(ListNetworkInterfaceIPConfigurations()));
         }
-        
+
         ///GENMHASH:965854F936E6686E5CF712FF5E950D9E:49D3D07DD88DEEA404C2173A84254C19
         internal int NetworkInterfaceIPConfigurationCount()
         {
@@ -48,35 +48,35 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
         }
 
-        
+
         ///GENMHASH:B9CBDB4C51BC9B92E1A239DE256FB5B6:8F0C59692A7F0EEB231DF5A0F980E52E
         internal string AddressPrefix()
         {
             return Inner.AddressPrefix;
         }
 
-        
+
         ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:61C1065B307679F3800C701AE0D87070
         public override string Name()
         {
             return Inner.Name;
         }
 
-        
+
         ///GENMHASH:A9777D8010E6AF7B603113E49858FE75:0A1C32015C3FE7888D450702542868EA
         public string NetworkSecurityGroupId()
         {
             return (Inner.NetworkSecurityGroup != null) ? Inner.NetworkSecurityGroup.Id : null;
         }
 
-        
+
         ///GENMHASH:A52B043B03F5F5DD10F6A96CBC569DBC:08C6FC794C26CE7AA9BBF95E8E59293F
         public string RouteTableId()
         {
             return (Inner.RouteTable != null) ? Inner.RouteTable.Id : null;
         }
 
-        
+
         ///GENMHASH:2E4015B29759BBD97527EBAE809B083C:92C42A9D6A5461310D3C0243B1847E84
         internal INetworkSecurityGroup GetNetworkSecurityGroup()
         {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 : null;
         }
 
-        
+
         ///GENMHASH:BA4A7979677C1D828E7871F45A6E05CC:E8989A21602F80AB9EDF762AAAC1EAEF
         public IRouteTable GetRouteTable()
         {
@@ -99,15 +99,20 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public IReadOnlyDictionary<Models.ServiceEndpointType, System.Collections.Generic.List<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region>> ServicesWithAccess()
         {
             var services = new Dictionary<ServiceEndpointType, List<Region>>();
-            if (this.Inner.ServiceEndpoints != null) {
-                foreach(var endpoint in this.Inner.ServiceEndpoints) {
+            if (this.Inner.ServiceEndpoints != null)
+            {
+                foreach (var endpoint in this.Inner.ServiceEndpoints)
+                {
                     ServiceEndpointType serviceEndpointType = ServiceEndpointType.Parse(endpoint.Service);
-                    if (!services.ContainsKey(serviceEndpointType)) {
+                    if (!services.ContainsKey(serviceEndpointType))
+                    {
                         services.Add(serviceEndpointType, new List<Region>());
                     }
-                    if (endpoint.Locations != null) {
+                    if (endpoint.Locations != null)
+                    {
                         List<Region> regions = new List<Region>();
-                        foreach(var location in endpoint.Locations) {
+                        foreach (var location in endpoint.Locations)
+                        {
                             regions.Add(Region.Create(location));
                         }
                         services[serviceEndpointType].AddRange(regions);
@@ -124,21 +129,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
+
         ///GENMHASH:9BCDEB79AFC04D55B9BC280847723DFC:3BACEC234E558FC90E41F9212B768D2E
         internal SubnetImpl WithExistingNetworkSecurityGroup(INetworkSecurityGroup nsg)
         {
             return WithExistingNetworkSecurityGroup(nsg.Id);
         }
 
-        
+
         ///GENMHASH:FCA489D9E7B6963A2EAC736958554ABD:772ECDA870E1C3E00E31EFE045675F09
         public SubnetImpl WithExistingRouteTable(IRouteTable routeTable)
         {
             return WithExistingRouteTable(routeTable.Id);
         }
 
-        
+
         ///GENMHASH:E65C5C625AF875FB82198BA44FB9C760:255A6ED505A38F6AAE7A10907F6CCDFC
         public Subnet.Update.IUpdate WithoutRouteTable()
         {
@@ -146,7 +151,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
+
         ///GENMHASH:C142A0234F22048E67709B65DD642261:61C2A1A23D6BCA62D6705980C8D1BECE
         public SubnetImpl WithExistingRouteTable(string resourceId)
         {
@@ -154,7 +159,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
+
         ///GENMHASH:E56906080D3615F5D04C5EFAC903C1FB:FE030A8DB000669434FF6335D5D2136F
         internal SubnetImpl WithAddressPrefix(string cidr)
         {
@@ -165,18 +170,19 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:4BBEC5095F134F13806627750ADC9D39:94AECEF6A2216225A2656ED6B352544E
         public SubnetImpl WithAccessFromService(ServiceEndpointType service)
         {
-                if (this.Inner.ServiceEndpoints == null) {
+            if (this.Inner.ServiceEndpoints == null)
+            {
                 this.Inner.ServiceEndpoints = new List<ServiceEndpointPropertiesFormat>();
-                }
-                bool found = false;
-                foreach(var endpoint in this.Inner.ServiceEndpoints)
+            }
+            bool found = false;
+            foreach (var endpoint in this.Inner.ServiceEndpoints)
+            {
+                if (endpoint.Service.Equals(service.ToString(), StringComparison.OrdinalIgnoreCase))
                 {
-                    if (endpoint.Service.Equals(service.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        found = true;
-                        break;
-                    }
+                    found = true;
+                    break;
                 }
+            }
             if (!found)
             {
                 this.Inner
@@ -193,10 +199,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:4BF88A9FA8C6CBDE8C9FB8F2E36F2042:2364D37AC0E056BCEDF007BC6849ADD1
         public Subnet.Update.IUpdate WithoutAccessFromService(ServiceEndpointType service)
         {
-            if (this.Inner.ServiceEndpoints != null) {
+            if (this.Inner.ServiceEndpoints != null)
+            {
                 int foundIndex = -1;
                 int i = 0;
-                foreach(var endpoint in this.Inner.ServiceEndpoints)
+                foreach (var endpoint in this.Inner.ServiceEndpoints)
                 {
                     if (endpoint.Service.Equals(service.ToString(), StringComparison.OrdinalIgnoreCase))
                     {
@@ -244,7 +251,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 return ipConfigs;
             }
 
-            foreach(var ipConfigRef in ipConfigRefs)
+            foreach (var ipConfigRef in ipConfigRefs)
             {
                 string nicID = ResourceUtils.ParentResourcePathFromResourceId(ipConfigRef.Id);
                 string ipConfigName = ResourceUtils.NameFromResourceId(ipConfigRef.Id);

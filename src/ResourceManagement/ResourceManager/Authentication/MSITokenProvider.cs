@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         /// </summary>
         /// <param name="resource">the resource to access using the MSI token</param>
         /// <param name="port">the local endpoint port to retrieve the token from</param>
-        public MSITokenProvider(string resource , int? port = 50342)
+        public MSITokenProvider(string resource, int? port = 50342)
         {
             this.resource = resource;
             this.port = port;

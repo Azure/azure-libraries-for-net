@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definiti
     /// <summary>
     /// A domain definition allowing billing contact to be set.
     /// </summary>
-    public interface IWithBillingContact 
+    public interface IWithBillingContact
     {
         /// <summary>
         /// Specify the billing contact.
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definiti
     /// <summary>
     /// A domain definition allowing registrant contact to be set.
     /// </summary>
-    public interface IWithRegistrantContact 
+    public interface IWithRegistrantContact
     {
         /// <summary>
         /// Specify the registrant contact. By default, this is also the contact for
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definiti
     /// <summary>
     /// A domain definition allowing domain privacy to be set.
     /// </summary>
-    public interface IWithDomainPrivacy 
+    public interface IWithDomainPrivacy
     {
         /// <summary>
         /// Specifies if the registrant contact information is exposed publicly.
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definiti
     /// <summary>
     /// The first stage of the domain definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithExistingResourceGroup<Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definition.IWithRegistrantContact>
     {
     }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definiti
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definition.IBlank,
         Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definition.IWithAdminContact,
         Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definition.IWithBillingContact,
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definiti
     /// <summary>
     /// A domain definition allowing auto-renew setting to be set.
     /// </summary>
-    public interface IWithAutoRenew 
+    public interface IWithAutoRenew
     {
         /// <summary>
         /// Specifies if the domain should be automatically renewed when it's
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definiti
     /// domain in the cloud, but exposing additional optional inputs to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definition.IWithDomainPrivacy,
         Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definition.IWithAutoRenew,
         Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definition.IWithAdminContact,
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definiti
     /// <summary>
     /// A domain definition allowing tech contact to be set.
     /// </summary>
-    public interface IWithTechContact 
+    public interface IWithTechContact
     {
         /// <summary>
         /// Specify the tech contact.
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Definiti
     /// <summary>
     /// A domain definition allowing admin contact to be set.
     /// </summary>
-    public interface IWithAdminContact 
+    public interface IWithAdminContact
     {
         /// <summary>
         /// Specify the admin contact.

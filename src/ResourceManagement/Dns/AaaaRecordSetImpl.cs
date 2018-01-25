@@ -18,8 +18,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:09F5D9EDC414E52781BD92550F31253C
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
-             if (Inner.AaaaRecords != null && Inner.AaaaRecords.Count > 0) {
-                if (resource.AaaaRecords == null) {
+            if (Inner.AaaaRecords != null && Inner.AaaaRecords.Count > 0)
+            {
+                if (resource.AaaaRecords == null)
+                {
                     resource.AaaaRecords = new List<AaaaRecord>();
                 }
 
@@ -28,13 +30,18 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                     resource.AaaaRecords.Add(record);
                 }
                 Inner.AaaaRecords.Clear();
-             }
-             
-             if (this.recordSetRemoveInfo.AaaaRecords.Count > 0) {
-                if (resource.AaaaRecords != null) {
-                    foreach(var recordToRemove in this.recordSetRemoveInfo.AaaaRecords)  {
-                        foreach(var record in resource.AaaaRecords)  {
-                            if (record.Ipv6Address.Equals(recordToRemove.Ipv6Address, StringComparison.OrdinalIgnoreCase)) {
+            }
+
+            if (this.recordSetRemoveInfo.AaaaRecords.Count > 0)
+            {
+                if (resource.AaaaRecords != null)
+                {
+                    foreach (var recordToRemove in this.recordSetRemoveInfo.AaaaRecords)
+                    {
+                        foreach (var record in resource.AaaaRecords)
+                        {
+                            if (record.Ipv6Address.Equals(recordToRemove.Ipv6Address, StringComparison.OrdinalIgnoreCase))
+                            {
                                 resource.AaaaRecords.Remove(record);
                                 break;
                             }
@@ -42,7 +49,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                     }
                 }
                 this.recordSetRemoveInfo.AaaaRecords.Clear();
-             }
+            }
             return resource;
         }
 
@@ -50,8 +57,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         internal IReadOnlyList<string> IPv6Addresses()
         {
             List<string> ipv6Addresses = new List<string>();
-            if (Inner.AaaaRecords != null) {
-                foreach(var aaaaRecord in Inner.AaaaRecords)  {
+            if (Inner.AaaaRecords != null)
+            {
+                foreach (var aaaaRecord in Inner.AaaaRecords)
+                {
                     ipv6Addresses.Add(aaaaRecord.Ipv6Address);
                 }
             }
@@ -68,7 +77,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             return new AaaaRecordSetImpl(
                 parent,
-                new RecordSetInner() {
+                new RecordSetInner()
+                {
                     Name = name,
                     Type = Enum.GetName(typeof(RecordType), Models.RecordType.AAAA),
                     AaaaRecords = new List<AaaaRecord>()

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.Storage.Fluent;
     using System.Collections.Generic;
 
-    internal partial class UnmanagedDataDiskImpl 
+    internal partial class UnmanagedDataDiskImpl
     {
         /// <summary>
         /// Specifies the size in GB the disk needs to be resized.

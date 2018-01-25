@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// </summary>
         public BatchAccountCreateParametersInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for VirtualNetworkGatewayConnection and its create and update interfaces.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5Q29ubmVjdGlvbkltcGw=
-    internal partial class VirtualNetworkGatewayConnectionImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5Q29ubmVjdGlvbkltcGw=
+    internal partial class VirtualNetworkGatewayConnectionImpl :
         IndependentChildResourceImpl<
             IVirtualNetworkGatewayConnection,
             IVirtualNetworkGateway,
@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:F0389EF26F16D377233CEA0243D3C2D3:002AE7D0BF403F77853FCC09647B9C5D
         public string LocalNetworkGateway2Id()
         {
-            if (Inner.LocalNetworkGateway2 == null) {
+            if (Inner.LocalNetworkGateway2 == null)
+            {
                 return null;
             }
             return Inner.LocalNetworkGateway2.Id;
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:B0CEE06B3527C9FAA4A6F6BB52F2A301:62CA2860C467549EA3B59C449E9C2DA6
-        internal  VirtualNetworkGatewayConnectionImpl(string name, VirtualNetworkGatewayImpl parent, VirtualNetworkGatewayConnectionInner inner)
+        internal VirtualNetworkGatewayConnectionImpl(string name, VirtualNetworkGatewayImpl parent, VirtualNetworkGatewayConnectionInner inner)
             : base(name, inner, parent.Manager)
         {
             this.parent = parent;
@@ -199,7 +200,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:AD4AAD7D7CE972B5534D97A24606A18F:E35EF8A35A152BC71CE31BA0440B23C7
         public string VirtualNetworkGateway2Id()
         {
-            if (Inner.VirtualNetworkGateway2 == null) {
+            if (Inner.VirtualNetworkGateway2 == null)
+            {
                 return null;
             }
             return Inner.VirtualNetworkGateway2.Id;
@@ -239,7 +241,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:1C40B7D65DDDB1CEAAD72DFB63629A65:AC41AE86773F8512C8D6E31D6F29A914
         public string VirtualNetworkGateway1Id()
         {
-            if (Inner.VirtualNetworkGateway1 == null) {
+            if (Inner.VirtualNetworkGateway1 == null)
+            {
                 return null;
             }
             return Inner.VirtualNetworkGateway1.Id;

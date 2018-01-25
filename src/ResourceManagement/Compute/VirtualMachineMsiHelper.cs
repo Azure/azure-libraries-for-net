@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return;
                 }
-                 var parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(virtualMachineInner.Identity.Type);
+                var parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(virtualMachineInner.Identity.Type);
                 if (parsedIdentityType.Equals(ResourceIdentityType.None)
                     || parsedIdentityType.Equals(ResourceIdentityType.SystemAssigned))
                 {

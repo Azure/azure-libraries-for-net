@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     /// future releases, including removal, regardless of any compatibility expectations set by the containing library
     /// version number.).
     /// </remarks>
-    public interface ICosmosDBAccounts  :
+    public interface ICosmosDBAccounts :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<CosmosDBAccount.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBManager>,

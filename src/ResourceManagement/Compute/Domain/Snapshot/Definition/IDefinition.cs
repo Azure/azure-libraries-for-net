@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose a source operating system image.
     /// </summary>
-    public interface IWithOSSnapshotFromImage 
+    public interface IWithOSSnapshotFromImage
     {
         /// <summary>
         /// Specifies an image containing an operating system.
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// the resource to be created, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.ISnapshot>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate>,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithSize,
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose managed disk containing data.
     /// </summary>
-    public interface IWithDataSnapshotFromDisk 
+    public interface IWithDataSnapshotFromDisk
     {
         /// <summary>
         /// Specifies the ID of source data managed disk.
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose account type.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Specifies the SKU type.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose managed snapshot containing data.
     /// </summary>
-    public interface IWithDataSnapshotFromSnapshot 
+    public interface IWithDataSnapshotFromSnapshot
     {
         /// <summary>
         /// Specifies the source data managed snapshot.
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed snapshot definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithSnapshotSource>
     {
     }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The first stage of a managed snapshot definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithGroup>
     {
     }
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed snapshot definition allowing to choose data source.
     /// </summary>
-    public interface IWithDataSnapshotSource  :
+    public interface IWithDataSnapshotSource :
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithDataSnapshotFromVhd,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithDataSnapshotFromDisk,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithDataSnapshotFromSnapshot
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed snapshot definition allowing to choose OS source or data source.
     /// </summary>
-    public interface IWithSnapshotSource  :
+    public interface IWithSnapshotSource :
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithWindowsSnapshotSource,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithLinuxSnapshotSource,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithDataSnapshotSource
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed snapshot allowing to specify the size.
     /// </summary>
-    public interface IWithSize 
+    public interface IWithSize
     {
         /// <summary>
         /// Specifies the disk size.
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed snapshot definition allowing to choose a Linux OS source.
     /// </summary>
-    public interface IWithLinuxSnapshotSource 
+    public interface IWithLinuxSnapshotSource
     {
         /// <summary>
         /// Specifies the source specialized or generalized Linux OS VHD.
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The entirety of the managed snapshot definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IBlank,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithGroup,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithSnapshotSource,
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed snapshot definition allowing to choose Windows OS source.
     /// </summary>
-    public interface IWithWindowsSnapshotSource 
+    public interface IWithWindowsSnapshotSource
     {
         /// <summary>
         /// Specifies the source specialized or generalized Windows OS VHD.
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose source data disk image.
     /// </summary>
-    public interface IWithDataSnapshotFromImage 
+    public interface IWithDataSnapshotFromImage
     {
         /// <summary>
         /// Specifies an image containing source data disk image.
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose source data disk VHD.
     /// </summary>
-    public interface IWithDataSnapshotFromVhd 
+    public interface IWithDataSnapshotFromVhd
     {
         /// <summary>
         /// Specifies the source data VHD.

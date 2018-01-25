@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     internal partial class SnapshotImpl :
         GroupableResource<ISnapshot,
             SnapshotInner,
-            SnapshotImpl, 
+            SnapshotImpl,
             IComputeManager,
             Snapshot.Definition.IWithGroup,
             Snapshot.Definition.IWithSnapshotSource,

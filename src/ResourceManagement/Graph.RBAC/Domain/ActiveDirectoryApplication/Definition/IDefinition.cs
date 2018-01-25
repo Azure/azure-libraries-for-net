@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The stage of application definition allowing specifying identifier URLs.
     /// </summary>
-    public interface IWithIdentifierUrl 
+    public interface IWithIdentifierUrl
     {
         /// <summary>
         /// Adds an identifier URL to the application.
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The first stage of the application definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Definition.IWithSignOnUrl
     {
     }
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// application in the cloud, but exposing additional optional inputs to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryApplication>,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Definition.IWithIdentifierUrl,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Definition.IWithReplyUrl,
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Definition.IBlank,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Definition.IWithCreate
     {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The stage of application definition allowing specifying the sign on URL.
     /// </summary>
-    public interface IWithSignOnUrl 
+    public interface IWithSignOnUrl
     {
         /// <summary>
         /// Specifies the sign on URL.
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The stage of application definition allowing specifying reply URLs.
     /// </summary>
-    public interface IWithReplyUrl 
+    public interface IWithReplyUrl
     {
         /// <summary>
         /// Adds a reply URL to the application.
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The stage of application definition allowing specifying if the application can be used in multiple tenants.
     /// </summary>
-    public interface IWithMultiTenant 
+    public interface IWithMultiTenant
     {
         /// <summary>
         /// Specifies if the application can be used in multiple tenants.
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The stage of application definition allowing specifying identifier keys.
     /// </summary>
-    public interface IWithCredential 
+    public interface IWithCredential
     {
         /// <summary>
         /// Starts the definition of a password credential.

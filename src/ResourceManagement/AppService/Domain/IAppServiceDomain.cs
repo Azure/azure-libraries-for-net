@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// Creatable.create() or  Creatable.createAsync() you agree to
     /// the agreements listed in  AppServiceDomains.listAgreements(String).
     /// </summary>
-    public interface IAppServiceDomain  :
+    public interface IAppServiceDomain :
         IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.AppService.Fluent.IAppServiceManager,Models.DomainInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.AppService.Fluent.IAppServiceManager, Models.DomainInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.AppService.Fluent.IAppServiceDomain>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<AppServiceDomain.Update.IUpdate>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets all hostnames derived from the domain and assigned to Azure resources.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Models.HostName> ManagedHostNames { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Models.HostName> ManagedHostNames { get; }
 
         /// <summary>
         /// Gets domain creation timestamp.

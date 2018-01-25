@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable representation of an host name SSL binding.
     /// </summary>
-    public interface IHostNameSslBinding  :
+    public interface IHostNameSslBinding :
         IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.HostNameSslState>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.AppService.Fluent.IWebAppBase>

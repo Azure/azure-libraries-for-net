@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     /// Result of the custom domain validation.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNkbi5DaGVja05hbWVBdmFpbGFiaWxpdHlSZXN1bHQ=
-    public class CheckNameAvailabilityResult 
+    public class CheckNameAvailabilityResult
     {
         private CheckNameAvailabilityOutputInner inner;
         /// <summary>

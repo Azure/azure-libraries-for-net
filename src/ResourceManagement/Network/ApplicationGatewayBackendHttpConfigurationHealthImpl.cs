@@ -10,21 +10,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// Implementation of application gateway backend HTTP configuration health information.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uQXBwbGljYXRpb25HYXRld2F5QmFja2VuZEh0dHBDb25maWd1cmF0aW9uSGVhbHRoSW1wbA==
-    internal partial class ApplicationGatewayBackendHttpConfigurationHealthImpl  : IApplicationGatewayBackendHttpConfigurationHealth
+    internal partial class ApplicationGatewayBackendHttpConfigurationHealthImpl : IApplicationGatewayBackendHttpConfigurationHealth
     {
         private ApplicationGatewayBackendHealthHttpSettings inner;
         private ApplicationGatewayBackendHealthImpl backendHealth;
         private Dictionary<string, IApplicationGatewayBackendServerHealth> serverHealths = new Dictionary<string, IApplicationGatewayBackendServerHealth>();
 
         ///GENMHASH:10749BB44908864C6A1D744957772062:CD7A6BCA2F3DB5AD98B22F463C776ECA
-        internal  ApplicationGatewayBackendHttpConfigurationHealthImpl(ApplicationGatewayBackendHealthHttpSettings inner, ApplicationGatewayBackendHealthImpl backendHealth)
+        internal ApplicationGatewayBackendHttpConfigurationHealthImpl(ApplicationGatewayBackendHealthHttpSettings inner, ApplicationGatewayBackendHealthImpl backendHealth)
         {
             this.inner = inner;
             this.backendHealth = backendHealth;
-            
+
             if (inner.Servers != null)
             {
-                foreach(var serverHealthInner in inner.Servers)
+                foreach (var serverHealthInner in inner.Servers)
                 {
                     IApplicationGatewayBackendServerHealth serverHealth = new ApplicationGatewayBackendServerHealthImpl(serverHealthInner, this);
                     serverHealths[serverHealth.IPAddress] = serverHealth;

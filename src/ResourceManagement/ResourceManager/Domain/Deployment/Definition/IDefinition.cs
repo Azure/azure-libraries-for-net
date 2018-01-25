@@ -12,28 +12,28 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Definitio
     /// <summary>
     /// The first stage of deployment definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         IWithGroup
     {
     }
     /// <summary>
     /// A deployment definition allowing the deployment mode to be specified.
     /// </summary>
-    public interface IWithMode 
+    public interface IWithMode
     {
         /// <summary>
         /// Specifies the deployment mode.
         /// </summary>
         /// <param name="mode">mode the mode of the deployment</param>
         /// <returns>the next stage of the deployment definition</returns>
-        IWithCreate WithMode (DeploymentMode mode);
+        IWithCreate WithMode(DeploymentMode mode);
 
     }
     /// <summary>
     /// A deployment definition with sufficient inputs to create a new
     /// deployment in the cloud, but exposing additional optional inputs to specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         ICreatable<IDeployment>
     {
         IDeployment BeginCreate();
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Definitio
     /// <summary>
     /// Container interface for all the deployment definitions.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         IBlank,
         IWithGroup,
         IWithTemplate,
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Definitio
     /// <summary>
     /// A deployment definition allowing resource group to be specified.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         IWithExistingResourceGroup<IWithTemplate>
     {
         /// <summary>
@@ -63,34 +63,34 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Definitio
         /// <param name="name">name the name of the new group</param>
         /// <param name="region">region the region to create the resource group in</param>
         /// <returns>the next stage of the deployment definition</returns>
-        IWithTemplate WithNewResourceGroup (string name, Region region);
+        IWithTemplate WithNewResourceGroup(string name, Region region);
 
         /// <summary>
         /// Creates a new resource group to put the resource in, based on the definition specified.
         /// </summary>
         /// <param name="groupDefinition">groupDefinition a creatable definition for a new resource group</param>
         /// <returns>the next stage of the deployment definition</returns>
-        IWithTemplate WithNewResourceGroup (ICreatable<IResourceGroup> groupDefinition);
+        IWithTemplate WithNewResourceGroup(ICreatable<IResourceGroup> groupDefinition);
 
     }
     /// <summary>
     /// A deployment definition allowing the parameters to be specified.
     /// </summary>
-    public interface IWithParameters 
+    public interface IWithParameters
     {
         /// <summary>
         /// Specifies the parameters as an object.
         /// </summary>
         /// <param name="parameters">the object</param>
         /// <returns>the next stage of the deployment definition</returns>
-        IWithMode WithParameters (object parameters);
+        IWithMode WithParameters(object parameters);
 
         /// <summary>
         /// Specifies the parameters as a JSON string.
         /// </summary>
         /// <param name="parametersJson">parametersJson the JSON string</param>
         /// <returns>the next stage of the deployment definition</returns>
-        IWithMode WithParameters (string parametersJson);
+        IWithMode WithParameters(string parametersJson);
 
         /// <summary>
         /// Specifies the parameters as a URL.
@@ -98,27 +98,27 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Definitio
         /// <param name="uri">uri the location of the remote parameters file</param>
         /// <param name="contentVersion">contentVersion the version of the parameters file</param>
         /// <returns>the next stage of the deployment definition</returns>
-        IWithMode WithParametersLink (string uri, string contentVersion);
+        IWithMode WithParametersLink(string uri, string contentVersion);
 
     }
     /// <summary>
     /// A deployment definition allowing the template to be specified.
     /// </summary>
-    public interface IWithTemplate 
+    public interface IWithTemplate
     {
         /// <summary>
         /// Specifies the template as an object.
         /// </summary>
         /// <param name="template">the object</param>
         /// <returns>the next stage of the deployment definition</returns>
-        IWithParameters WithTemplate (object template);
+        IWithParameters WithTemplate(object template);
 
         /// <summary>
         /// Specifies the template as a JSON string.
         /// </summary>
         /// <param name="templateJson">templateJson the JSON string</param>
         /// <returns>the next stage of the deployment definition</returns>
-        IWithParameters WithTemplate (string templateJson);
+        IWithParameters WithTemplate(string templateJson);
 
         /// <summary>
         /// Specifies the template as a URL.
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Definitio
         /// <param name="uri">uri the location of the remote template file</param>
         /// <param name="contentVersion">contentVersion the version of the template file</param>
         /// <returns>the next stage of the deployment definition</returns>
-        IWithParameters WithTemplateLink (string uri, string contentVersion);
+        IWithParameters WithTemplateLink(string uri, string contentVersion);
 
     }
 }

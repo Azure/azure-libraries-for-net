@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// </summary>
         public OperationDisplay()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

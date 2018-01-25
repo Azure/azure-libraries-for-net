@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     using Microsoft.Azure.Management.ServiceBus.Fluent.Models;
     using System.Collections.Generic;
 
-    internal partial class NamespaceAuthorizationRuleImpl 
+    internal partial class NamespaceAuthorizationRuleImpl
     {
         /// <summary>
         /// Gets the manager client of this resource type.
@@ -139,11 +139,11 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <summary>
         /// Gets the tags for the resource.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
         {
             get
             {
-                return this.Tags as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.Tags as System.Collections.Generic.IReadOnlyDictionary<string, string>;
             }
         }
 

@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Update
     /// The stage of an update allowing to modify the private IP address.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the update.</typeparam>
-    public interface IWithPrivateIPAddress<ReturnT> 
+    public interface IWithPrivateIPAddress<ReturnT>
     {
         /// <summary>
         /// Enables dynamic private IP address allocation within the associated subnet.

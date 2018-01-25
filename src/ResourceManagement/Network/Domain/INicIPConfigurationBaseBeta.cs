@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// The base IP configuration shared across IP configurations in regular and virtual machine scale set
     /// network interface.
     /// </summary>
-    public interface INicIPConfigurationBaseBeta  :
+    public interface INicIPConfigurationBaseBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <return>The application gateway backends associated with this network IP configuration.</return>

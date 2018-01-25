@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// A client-side representation allowing user to verify the possibility of establishing a direct TCP connection
     /// from a virtual machine to a given endpoint including another VM or an arbitrary remote server.
     /// </summary>
-    public interface IConnectivityCheck  :
+    public interface IConnectivityCheck :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IExecutable<Microsoft.Azure.Management.Network.Fluent.IConnectivityCheck>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// </summary>
         public EndpointInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

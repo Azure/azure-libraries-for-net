@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this OperatingSystemStateTypes value)
         {
-            switch( value )
+            switch (value)
             {
                 case OperatingSystemStateTypes.Generalized:
                     return "Generalized";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static OperatingSystemStateTypes? ParseOperatingSystemStateTypes(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Generalized":
                     return OperatingSystemStateTypes.Generalized;

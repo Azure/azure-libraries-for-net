@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class BuiltInAuthenticationProviderEnumExtension
     {
-        internal static string ToSerializedValue(this BuiltInAuthenticationProvider? value)  =>
+        internal static string ToSerializedValue(this BuiltInAuthenticationProvider? value) =>
             value == null ? null : ((BuiltInAuthenticationProvider)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this BuiltInAuthenticationProvider value)
         {
-            switch( value )
+            switch (value)
             {
                 case BuiltInAuthenticationProvider.AzureActiveDirectory:
                     return "AzureActiveDirectory";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static BuiltInAuthenticationProvider? ParseBuiltInAuthenticationProvider(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "AzureActiveDirectory":
                     return BuiltInAuthenticationProvider.AzureActiveDirectory;

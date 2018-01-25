@@ -9,8 +9,8 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Batch account application.
     /// </summary>
-    public interface IApplication  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.Batch.Fluent.IApplication,Microsoft.Azure.Management.Batch.Fluent.IBatchAccount>,
+    public interface IApplication :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.Batch.Fluent.IApplication, Microsoft.Azure.Management.Batch.Fluent.IBatchAccount>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<ApplicationInner>
     {
         /// <summary>
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <summary>
         /// Gets application packages.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Batch.Fluent.IApplicationPackage> ApplicationPackages { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Batch.Fluent.IApplicationPackage> ApplicationPackages { get; }
 
         /// <summary>
         /// Gets true if automatic updates are allowed, otherwise false.

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
     /// (Note this interface is not intended to be implemented by user code.).
     /// </summary>
     /// <typeparam name="T">The type of the resource collection.</typeparam>
-    public interface ISupportsGettingByNameAsync<T>  :
+    public interface ISupportsGettingByNameAsync<T> :
         ISupportsGettingByName<T>
     {
         /// <summary>

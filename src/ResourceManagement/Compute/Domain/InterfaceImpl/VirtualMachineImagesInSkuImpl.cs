@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
-    internal partial class VirtualMachineImagesInSkuImpl 
+    internal partial class VirtualMachineImagesInSkuImpl
     {
         /// <summary>
         /// Lists all the resources of the specified type in the currently selected subscription.

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     {
         ///GENMHASH:8CC9050C7F8D33DF867D6102B6152B2E:872A681ED7AE386A7C237A1C77E3E12A
         internal AvailabilitySetsImpl(IComputeManager computeManager) : base(computeManager.Inner.AvailabilitySets, computeManager)
-        {}
+        { }
 
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691
         public AvailabilitySetImpl Define(string name)
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return await PagedCollection<IAvailabilitySet, AvailabilitySetInner>.LoadPage(async (cancellation) =>
             {
                 var resourceGroups = await Manager.ResourceManager.ResourceGroups.ListAsync(true, cancellation);
-                var availabilitySet =  await Task.WhenAll(resourceGroups.Select(async (rg) => await ListInnerByGroupAsync(rg.Name, cancellation)));
+                var availabilitySet = await Task.WhenAll(resourceGroups.Select(async (rg) => await ListInnerByGroupAsync(rg.Name, cancellation)));
                 return availabilitySet.SelectMany(x => x);
             }, WrapModel, cancellationToken);
         }

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             return await this.Inner.ListByNamespaceAsync(this.resourceGroupName, this.namespaceName, cancellationToken);
         }
-        
+
         protected async override Task<IPage<TopicInner>> ListInnerNextPageAsync(string nextLink, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await this.Inner.ListByNamespaceNextAsync(nextLink, cancellationToken);

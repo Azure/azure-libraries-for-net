@@ -14,8 +14,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure CDN profile.
     /// </summary>
-    public interface ICdnProfile  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Cdn.Fluent.ICdnManager,Models.ProfileInner>,
+    public interface ICdnProfile :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Cdn.Fluent.ICdnManager, Models.ProfileInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<CdnProfile.Update.IUpdate>
     {
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <summary>
         /// Gets endpoints in the CDN manager profile, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint> Endpoints { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint> Endpoints { get; }
 
         /// <summary>
         /// Forcibly pre-loads CDN endpoint content in the CDN profile asynchronously.

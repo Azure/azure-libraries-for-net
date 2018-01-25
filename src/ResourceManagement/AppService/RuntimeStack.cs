@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="stack">The name of the language stack.</param>
         /// <param name="version">The version of the runtime.</param>
-        public  RuntimeStack(string stack, string version)
+        public RuntimeStack(string stack, string version)
         {
             this.stack = stack;
             this.version = version;

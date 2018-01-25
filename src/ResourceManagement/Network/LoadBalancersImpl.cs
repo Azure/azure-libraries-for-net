@@ -11,9 +11,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for LoadBalancers.
     /// </summary>
-    
+
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uTG9hZEJhbGFuY2Vyc0ltcGw=
-    internal partial class LoadBalancersImpl  :
+    internal partial class LoadBalancersImpl :
         TopLevelModifiableResources<
             ILoadBalancer,
             LoadBalancerImpl,
@@ -48,24 +48,24 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return await Inner.ListNextAsync(nextLink, cancellationToken);
         }
 
-        
+
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691
-        internal LoadBalancerImpl Define (string name)
+        internal LoadBalancerImpl Define(string name)
         {
             return WrapModel(name);
         }
 
-        
+
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:955ABA32605E2D033D085013B5575701
-        override protected LoadBalancerImpl WrapModel (string name)
+        override protected LoadBalancerImpl WrapModel(string name)
         {
             LoadBalancerInner inner = new LoadBalancerInner();
             return new LoadBalancerImpl(name, inner, Manager);
         }
 
-        
+
         ///GENMHASH:2B5A2E3F465A968F1950DAD37181F731:1ADEB39F57BD1687BFE8CBC48B389D64
-        override protected ILoadBalancer WrapModel (LoadBalancerInner inner) //$TODO: This needs to return LoadBalancerImpl
+        override protected ILoadBalancer WrapModel(LoadBalancerInner inner) //$TODO: This needs to return LoadBalancerImpl
         {
             return (inner != null) ? new LoadBalancerImpl(inner.Name, inner, Manager) : null;
         }

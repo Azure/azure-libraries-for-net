@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.Models
         /// </summary>
         public RedisPatchScheduleInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

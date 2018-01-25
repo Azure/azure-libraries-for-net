@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure location.
     /// </summary>
-    public interface ILocation  :
+    public interface ILocation :
         IIndexable,
         IHasInner<Location>
     {

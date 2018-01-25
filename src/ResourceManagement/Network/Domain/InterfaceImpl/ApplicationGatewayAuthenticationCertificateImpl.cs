@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.IO;
 
-    internal partial class ApplicationGatewayAuthenticationCertificateImpl 
+    internal partial class ApplicationGatewayAuthenticationCertificateImpl
     {
         /// <summary>
         /// Attaches the child definition to the parent resource update.

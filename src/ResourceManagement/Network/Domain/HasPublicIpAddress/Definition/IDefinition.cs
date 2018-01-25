@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definitio
     /// but not allowing to create one with a DNS leaf label.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithPublicIPAddressNoDnsLabel<ReturnT>  :
+    public interface IWithPublicIPAddressNoDnsLabel<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definition.IWithExistingPublicIPAddress<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definition.IWithNewPublicIPAddressNoDnsLabel<ReturnT>
     {
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definitio
     /// The stage of the definition allowing to associate the resource with a new public IP address.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithNewPublicIPAddress<ReturnT>  :
+    public interface IWithNewPublicIPAddress<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definition.IWithNewPublicIPAddressNoDnsLabel<ReturnT>
     {
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definitio
     /// The stage of the definition allowing to associate the resource with a new public IP address.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithNewPublicIPAddressNoDnsLabel<ReturnT> 
+    public interface IWithNewPublicIPAddressNoDnsLabel<ReturnT>
     {
         /// <summary>
         /// Creates a new public IP address to associate with the resource.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definitio
     /// The stage of the definition allowing to associate the resource with a public IP address.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithPublicIPAddress<ReturnT>  :
+    public interface IWithPublicIPAddress<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definition.IWithExistingPublicIPAddress<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definition.IWithNewPublicIPAddress<ReturnT>
     {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definitio
     /// The stage of the definition allowing to associate the resource with an existing public IP address.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithExistingPublicIPAddress<ReturnT> 
+    public interface IWithExistingPublicIPAddress<ReturnT>
     {
         /// <summary>
         /// Associates an existing public IP address with the resource.

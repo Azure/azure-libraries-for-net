@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
     /// <summary>
     /// Base interface for all models that can be indexed by a key.
     /// </summary>
-    public interface IIndexable 
+    public interface IIndexable
     {
         /// <returns>the index key.</returns>
         string Key { get; }

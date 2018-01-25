@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             {
                 return await GetByParentAsync(resourceId.ResourceGroupName, resourceId.Parent.Name, resourceId.Name, cancellationToken);
             }
-            catch(CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 return null;
             }

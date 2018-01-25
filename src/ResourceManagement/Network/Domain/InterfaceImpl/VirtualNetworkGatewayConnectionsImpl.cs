@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
 
-    internal partial class VirtualNetworkGatewayConnectionsImpl 
+    internal partial class VirtualNetworkGatewayConnectionsImpl
     {
         /// <summary>
         /// Asynchronously delete a resource from Azure, identifying it by its resource name.
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingByName.DeleteByNameAsync(string name, CancellationToken cancellationToken)
         {
- 
+
             await this.DeleteByNameAsync(name, cancellationToken);
         }
 
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="name">The name of the resource to delete.</param>
         void Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingByName.DeleteByName(string name)
         {
- 
+
             this.DeleteByName(name);
         }
 

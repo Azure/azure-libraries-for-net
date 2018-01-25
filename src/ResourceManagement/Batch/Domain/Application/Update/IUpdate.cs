@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Application.Update
     /// The stage of an application update allowing to enable or disable auto upgrade of the
     /// application.
     /// </summary>
-    public interface IWithOptionalProperties 
+    public interface IWithOptionalProperties
     {
         /// <summary>
         /// Specifies the display name for the application.
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Application.Update
     /// <summary>
     /// The stage of a Batch application update allowing the creation of an application package.
     /// </summary>
-    public interface IWithApplicationPackage 
+    public interface IWithApplicationPackage
     {
         /// <summary>
         /// Deletes specified application package from the application.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Application.Update
     /// <summary>
     /// The entirety of a Batch application update as a part of a Batch account update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Batch.Fluent.BatchAccount.Update.IUpdate>,
         Microsoft.Azure.Management.Batch.Fluent.Application.Update.IWithOptionalProperties,
         Microsoft.Azure.Management.Batch.Fluent.Application.Update.IWithApplicationPackage

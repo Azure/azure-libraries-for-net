@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class MSDeployProvisioningStateEnumExtension
     {
-        internal static string ToSerializedValue(this MSDeployProvisioningState? value)  =>
+        internal static string ToSerializedValue(this MSDeployProvisioningState? value) =>
             value == null ? null : ((MSDeployProvisioningState)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this MSDeployProvisioningState value)
         {
-            switch( value )
+            switch (value)
             {
                 case MSDeployProvisioningState.Accepted:
                     return "accepted";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static MSDeployProvisioningState? ParseMSDeployProvisioningState(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "accepted":
                     return MSDeployProvisioningState.Accepted;

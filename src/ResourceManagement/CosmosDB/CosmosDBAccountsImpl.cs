@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         TopLevelModifiableResources<ICosmosDBAccount,
             CosmosDBAccountImpl,
             Models.DatabaseAccountInner,
-            IDatabaseAccountsOperations, 
+            IDatabaseAccountsOperations,
             ICosmosDBManager>,
         ICosmosDBAccounts
     {
@@ -98,14 +98,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         public async Task FailoverPriorityChangeAsync(string groupName, string accountName, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location> failoverLocations, CancellationToken cancellationToken = default(CancellationToken))
         {
             List<Models.FailoverPolicyInner> policyInners = new List<Models.FailoverPolicyInner>();
-            for (int i = 0; i < failoverLocations.Count(); i++) {
-            Models.Location location  = failoverLocations[i];
-            Models.FailoverPolicyInner policyInner = new Models.FailoverPolicyInner();
-            policyInner.LocationName = location.LocationName;
-            policyInner.FailoverPriority = i;
-            policyInners.Add(policyInner);
+            for (int i = 0; i < failoverLocations.Count(); i++)
+            {
+                Models.Location location = failoverLocations[i];
+                Models.FailoverPolicyInner policyInner = new Models.FailoverPolicyInner();
+                policyInner.LocationName = location.LocationName;
+                policyInner.FailoverPriority = i;
+                policyInners.Add(policyInner);
             }
-            
+
             await this.Manager.Inner.DatabaseAccounts.FailoverPriorityChangeAsync(groupName, accountName, policyInners);
         }
 

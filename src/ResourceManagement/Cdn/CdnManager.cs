@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             })
         {
         }
-        
+
         public static ICdnManager Authenticate(AzureCredentials credentials, string subscriptionId)
         {
             return new CdnManager(RestClient.Configure()
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         {
             return new Configurable();
         }
-        
+
 
         #region IConfigurable and it's implementation
 

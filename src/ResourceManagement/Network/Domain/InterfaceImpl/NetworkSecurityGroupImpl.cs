@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
-    internal partial class NetworkSecurityGroupImpl 
+    internal partial class NetworkSecurityGroupImpl
     {
         /// <summary>
         /// Refreshes the resource to sync with Azure.
@@ -28,22 +28,22 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets default security rules associated with this network security group, indexed by their name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule> Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup.DefaultSecurityRules
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule> Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup.DefaultSecurityRules
         {
             get
             {
-                return this.DefaultSecurityRules() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule>;
+                return this.DefaultSecurityRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule>;
             }
         }
 
         /// <summary>
         /// Gets security rules associated with this network security group, indexed by their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule> Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup.SecurityRules
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule> Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup.SecurityRules
         {
             get
             {
-                return this.SecurityRules() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule>;
+                return this.SecurityRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule>;
             }
         }
 

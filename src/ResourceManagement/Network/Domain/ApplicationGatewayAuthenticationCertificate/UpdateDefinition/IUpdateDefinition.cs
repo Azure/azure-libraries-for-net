@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthentica
     /// The entirety of an application gateway authentication certificate definition as part of an application gateway update.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IUpdateDefinition<ReturnT>  :
+    public interface IUpdateDefinition<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IBlank<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithAttach<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithData<ReturnT>
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthentica
     /// The first stage of an application gateway authentication certificate definition.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ReturnT>  :
+    public interface IBlank<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithData<ReturnT>
     {
     }
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthentica
     /// The stage of an application gateway authentication certificate definition allowing to specify the data of the certificate.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway update to return to after attaching this definition.</typeparam>
-    public interface IWithData<ReturnT> 
+    public interface IWithData<ReturnT>
     {
         /// <summary>
         /// Specifies an X.509 certificate to upload.
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthentica
     /// can be attached to the parent application gateway definition.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ReturnT>  :
+    public interface IWithAttach<ReturnT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ReturnT>
     {
     }

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
-    internal partial class RedisCachesImpl 
+    internal partial class RedisCachesImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.

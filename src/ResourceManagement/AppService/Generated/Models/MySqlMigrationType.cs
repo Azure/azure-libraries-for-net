@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class MySqlMigrationTypeEnumExtension
     {
-        internal static string ToSerializedValue(this MySqlMigrationType? value)  =>
+        internal static string ToSerializedValue(this MySqlMigrationType? value) =>
             value == null ? null : ((MySqlMigrationType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this MySqlMigrationType value)
         {
-            switch( value )
+            switch (value)
             {
                 case MySqlMigrationType.LocalToRemote:
                     return "LocalToRemote";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static MySqlMigrationType? ParseMySqlMigrationType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "LocalToRemote":
                     return MySqlMigrationType.LocalToRemote;

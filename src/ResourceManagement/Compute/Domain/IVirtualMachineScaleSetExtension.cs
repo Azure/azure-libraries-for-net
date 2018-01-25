@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// An immutable client-side representation of an extension associated with virtual machines in a scale set.
     /// </summary>
-    public interface IVirtualMachineScaleSetExtension  :
+    public interface IVirtualMachineScaleSetExtension :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualMachineScaleSetExtensionInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet>
     {
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the public settings of the virtual machine scale set extension as key value pairs.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,object> PublicSettings { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, object> PublicSettings { get; }
 
         /// <summary>
         /// Gets the type name of the virtual machine scale set extension image this extension is created from.

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             {
                 return null;
             }
-            catch (AggregateException ex) when((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 return null;
             }

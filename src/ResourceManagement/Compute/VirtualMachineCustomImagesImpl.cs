@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// The implementation for VirtualMachineCustomImages.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uVmlydHVhbE1hY2hpbmVDdXN0b21JbWFnZXNJbXBs
-    internal partial class VirtualMachineCustomImagesImpl  :
+    internal partial class VirtualMachineCustomImagesImpl :
         TopLevelModifiableResources<
             IVirtualMachineCustomImage,
             VirtualMachineCustomImageImpl,
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         IVirtualMachineCustomImages
     {
         ///GENMHASH:6A8C3AA1368511D4E81A72BFE585DB51:872A681ED7AE386A7C237A1C77E3E12A
-        internal  VirtualMachineCustomImagesImpl(ComputeManager computeManager) : base(computeManager.Inner.Images, computeManager)
+        internal VirtualMachineCustomImagesImpl(ComputeManager computeManager) : base(computeManager.Inner.Images, computeManager)
         {
         }
 

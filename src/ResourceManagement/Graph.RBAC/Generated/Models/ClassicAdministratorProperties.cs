@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// </summary>
         public ClassicAdministratorProperties()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

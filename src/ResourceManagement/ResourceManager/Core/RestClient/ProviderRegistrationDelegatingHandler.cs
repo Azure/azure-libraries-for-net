@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         private AzureCredentials credentials;
         private JsonSerializerSettings settings;
 
-        public ProviderRegistrationDelegatingHandler(AzureCredentials credentials) 
+        public ProviderRegistrationDelegatingHandler(AzureCredentials credentials)
             : base()
         {
             this.credentials = credentials;
@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             settings.Converters.Add(new CloudErrorJsonConverter());
         }
 
-        public ProviderRegistrationDelegatingHandler(AzureCredentials credentials, HttpMessageHandler innerHandler) 
+        public ProviderRegistrationDelegatingHandler(AzureCredentials credentials, HttpMessageHandler innerHandler)
             : base(innerHandler)
         {
             this.credentials = credentials;
         }
-        
+
         protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                         response = await base.SendAsync(request, cancellationToken);
                     }
                 }
-                
+
             }
             return response;
         }

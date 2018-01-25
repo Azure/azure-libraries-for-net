@@ -1512,7 +1512,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             if (this.Inner.Identity != null && this.Inner.Identity.IdentityIds != null)
             {
                 return new HashSet<string>(this.Inner.Identity.IdentityIds);
-            } else
+            }
+            else
             {
                 return new HashSet<string>();
             }

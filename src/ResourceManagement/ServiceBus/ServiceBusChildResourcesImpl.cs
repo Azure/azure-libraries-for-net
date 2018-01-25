@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// <typeparam name="Manager">The manager.</typeparam>
     /// <typeparam name="Parent">The parent model interface type.</typeparam>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuaW1wbGVtZW50YXRpb24uU2VydmljZUJ1c0NoaWxkUmVzb3VyY2VzSW1wbA==
-    internal abstract partial class ServiceBusChildResourcesImpl<T,ImplT,InnerT,InnerCollectionT,ManagerT,ParentT>  :
-        IndependentChildResourcesImpl<T,ImplT,InnerT,InnerCollectionT,ManagerT,ParentT>,
+    internal abstract partial class ServiceBusChildResourcesImpl<T, ImplT, InnerT, InnerCollectionT, ManagerT, ParentT> :
+        IndependentChildResourcesImpl<T, ImplT, InnerT, InnerCollectionT, ManagerT, ParentT>,
         ISupportsGettingByName<T>,
         ISupportsListing<T>,
         ISupportsDeletingByName
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         where ParentT : Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource, IHasResourceGroup
     {
         ///GENMHASH:C091A12D2E54DEE92C5C0A51885174ED:0FCD47CBCD9128C3D4A03458C5796741
-        protected  ServiceBusChildResourcesImpl(InnerCollectionT innerCollection, 
+        protected ServiceBusChildResourcesImpl(InnerCollectionT innerCollection,
             ManagerT manager) : base(innerCollection, manager)
         {
         }

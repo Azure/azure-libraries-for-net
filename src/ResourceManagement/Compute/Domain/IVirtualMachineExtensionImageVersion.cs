@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure virtual machine extension image version.
     /// </summary>
-    public interface IVirtualMachineExtensionImageVersion  :
+    public interface IVirtualMachineExtensionImageVersion :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualMachineExtensionImageInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName
     {

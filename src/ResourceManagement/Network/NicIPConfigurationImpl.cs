@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 {
                     EnsureInboundNatRules().Add(rule);
                     return this;
-                } 
+                }
                 else
                 {
                     throw new InvalidOperationException("Load balancer inbound NAT rule not found.");
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
         }
 
-        
+
         ///GENMHASH:16FE220D08C6A172C95B9CD77E1507B6:580E52612CECAE1F93702F42EBA77132
         private IList<InboundNatRuleInner> EnsureInboundNatRules()
         {

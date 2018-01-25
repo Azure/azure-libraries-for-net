@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Implementation of DnsZones.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5EbnNab25lc0ltcGw=
-    internal partial class DnsZonesImpl  :
+    internal partial class DnsZonesImpl :
         TopLevelModifiableResources<IDnsZone, DnsZoneImpl, ZoneInner, IZonesOperations, IDnsZoneManager>,
         IDnsZones
     {

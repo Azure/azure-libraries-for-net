@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 databaseAccount = await this.Manager.CosmosDBAccounts.GetByResourceGroupAsync(
                     ResourceGroupName, Name);
 
-                if (maxDelayDueToMissingFailovers > currentDelayDueToMissingFailovers && 
+                if (maxDelayDueToMissingFailovers > currentDelayDueToMissingFailovers &&
                     (databaseAccount.Id == null
                     || databaseAccount.Id.Length == 0
                     || createUpdateParametersInner.Locations.Count >
@@ -151,11 +151,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         private void EnsureFailoverIsInitialized()
         {
-            if (this.IsInCreateMode) {
+            if (this.IsInCreateMode)
+            {
                 return;
             }
 
-            if (!this.hasFailoverPolicyChanges) {
+            if (!this.hasFailoverPolicyChanges)
+            {
                 this.initializeFailover();
             }
         }
@@ -234,7 +236,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public Models.DefaultConsistencyLevel DefaultConsistencyLevel()
         {
-            if (this.Inner.ConsistencyPolicy == null) {
+            if (this.Inner.ConsistencyPolicy == null)
+            {
                 throw new Exception("Consistency policy is missing!");
             }
 
@@ -284,7 +287,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private void AddLocationsForCreateUpdateParameters(Models.DatabaseAccountCreateUpdateParametersInner createUpdateParametersInner, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicyInner> failoverPolicies)
         {
             List<Models.Location> locations = new List<Models.Location>();
-            for (int i = 0; i < failoverPolicies.Count; i++) {
+            for (int i = 0; i < failoverPolicies.Count; i++)
+            {
                 Models.FailoverPolicyInner policyInner = failoverPolicies[i];
                 Models.Location location = new Models.Location();
                 location.FailoverPriority = i;
@@ -292,7 +296,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
                 locations.Add(location);
             }
 
-            if (locations.Count > 0) {
+            if (locations.Count > 0)
+            {
                 createUpdateParametersInner.Locations = locations;
             }
         }

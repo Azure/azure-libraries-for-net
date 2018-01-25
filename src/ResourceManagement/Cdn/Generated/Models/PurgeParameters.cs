@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// </summary>
         public PurgeParameters()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

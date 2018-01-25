@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     using System.Collections.Generic;
     using System;
 
-    internal partial class ServiceBusNamespaceImpl 
+    internal partial class ServiceBusNamespaceImpl
     {
         /// <summary>
         /// Creates a queue entity in the Service Bus namespace.

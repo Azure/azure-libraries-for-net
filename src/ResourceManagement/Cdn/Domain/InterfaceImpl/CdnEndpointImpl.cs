@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
 
-    internal partial class CdnEndpointImpl 
+    internal partial class CdnEndpointImpl
     {
         /// <summary>
         /// Attaches the endpoint definition to the parent CDN profile update.
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <param name="contentPaths">The paths to the content to be purged, which can be file paths or directory wild cards.</param>
         void Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.PurgeContent(ISet<string> contentPaths)
         {
- 
+
             this.PurgeContent(contentPaths);
         }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.Stop()
         {
- 
+
             this.Stop();
         }
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.Start()
         {
- 
+
             this.Start();
         }
 
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.StartAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.StartAsync(cancellationToken);
         }
 
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <param name="contentPaths">The file paths to the content to be loaded.</param>
         void Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.LoadContent(ISet<string> contentPaths)
         {
- 
+
             this.LoadContent(contentPaths);
         }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.StopAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.StopAsync(cancellationToken);
         }
 
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.PurgeContentAsync(ISet<string> contentPaths, CancellationToken cancellationToken)
         {
- 
+
             await this.PurgeContentAsync(contentPaths, cancellationToken);
         }
 
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.LoadContentAsync(ISet<string> contentPaths, CancellationToken cancellationToken)
         {
- 
+
             await this.LoadContentAsync(contentPaths, cancellationToken);
         }
 

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:1AA7BDC7AB6868AA92F095AC7974525B
         public IEnumerable<IVirtualMachineScaleSetVM> List()
         {
-            return WrapList(Extensions.Synchronize(() => Inner.ListAsync(scaleSet.ResourceGroupName,this.scaleSet.Name))
+            return WrapList(Extensions.Synchronize(() => Inner.ListAsync(scaleSet.ResourceGroupName, this.scaleSet.Name))
                 .AsContinuousCollection(link => Extensions.Synchronize(() => Inner.ListNextAsync(link))));
         }
 
@@ -65,7 +65,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:A32993171DE4825D6197C78D815A8070:59E051D5E822932B078C7F0F184254DB
         public async Task DeleteInstancesAsync(IList<string> instanceIds, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (instanceIds == null || instanceIds.Count == 0) {
+            if (instanceIds == null || instanceIds.Count == 0)
+            {
                 return;
             }
             var scaleSetInnerManager = this.scaleSet.Manager.VirtualMachineScaleSets.Inner;

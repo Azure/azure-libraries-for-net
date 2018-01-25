@@ -12,8 +12,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uRXhwcmVzc1JvdXRlQ2lyY3VpdFBlZXJpbmdJbXBs
-    internal partial class ExpressRouteCircuitPeeringImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uRXhwcmVzc1JvdXRlQ2lyY3VpdFBlZXJpbmdJbXBs
+    internal partial class ExpressRouteCircuitPeeringImpl :
         IndependentChildImpl<
             IExpressRouteCircuitPeering,
             IExpressRouteCircuit,
@@ -63,7 +63,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:F39264C98D411F14A45DA1D84E9F98DE:BE4F1022441334645B5E05DE48196994
         private ExpressRouteCircuitPeeringConfig EnsureMicrosoftPeeringConfig()
         {
-            if (Inner.MicrosoftPeeringConfig == null) {
+            if (Inner.MicrosoftPeeringConfig == null)
+            {
                 Inner.MicrosoftPeeringConfig = new ExpressRouteCircuitPeeringConfig();
             }
             return Inner.MicrosoftPeeringConfig;
@@ -197,7 +198,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:F1FF74FECF7AD81993920CCBF4D96B40:34F765B181E581705C5B1FEB895758A1
-        internal  ExpressRouteCircuitPeeringImpl(ExpressRouteCircuitImpl parent, ExpressRouteCircuitPeeringInner innerObject, IExpressRouteCircuitPeeringsOperations client, ExpressRouteCircuitPeeringType type)
+        internal ExpressRouteCircuitPeeringImpl(ExpressRouteCircuitImpl parent, ExpressRouteCircuitPeeringInner innerObject, IExpressRouteCircuitPeeringsOperations client, ExpressRouteCircuitPeeringType type)
             : base(type.Value, innerObject, parent.Manager)
         {
             this.client = client;

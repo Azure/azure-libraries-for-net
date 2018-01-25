@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public ApplicationGatewayUrlPathMapInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

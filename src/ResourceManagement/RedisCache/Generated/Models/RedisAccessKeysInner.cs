@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.Models
         /// </summary>
         public RedisAccessKeysInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

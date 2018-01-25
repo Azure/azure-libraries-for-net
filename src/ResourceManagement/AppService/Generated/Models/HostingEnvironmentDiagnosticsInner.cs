@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public HostingEnvironmentDiagnosticsInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public DomainInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

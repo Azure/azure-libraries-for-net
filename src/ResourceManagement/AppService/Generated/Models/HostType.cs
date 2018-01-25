@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class HostTypeEnumExtension
     {
-        internal static string ToSerializedValue(this HostType? value)  =>
+        internal static string ToSerializedValue(this HostType? value) =>
             value == null ? null : ((HostType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this HostType value)
         {
-            switch( value )
+            switch (value)
             {
                 case HostType.Standard:
                     return "Standard";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static HostType? ParseHostType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Standard":
                     return HostType.Standard;

@@ -8,10 +8,10 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// <summary>
     /// Defines values for NamespaceSku.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuTmFtZXNwYWNlU2t1
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuTmFtZXNwYWNlU2t1
     public partial class NamespaceSku
     {
-        public static readonly NamespaceSku Basic = new NamespaceSku(new Sku() { Name = SkuName.Basic.ToString(), Tier = SkuTier.Basic.ToString()});
+        public static readonly NamespaceSku Basic = new NamespaceSku(new Sku() { Name = SkuName.Basic.ToString(), Tier = SkuTier.Basic.ToString() });
         public static readonly NamespaceSku Standard = new NamespaceSku(new Sku() { Name = SkuName.Standard.ToString(), Tier = SkuTier.Standard.ToString() });
         public static readonly NamespaceSku PremiumCapacity1 = new NamespaceSku(new Sku() { Name = SkuName.Premium.ToString(), Tier = SkuTier.Premium.ToString(), Capacity = 1 });
         public static readonly NamespaceSku PremiumCapacity2 = new NamespaceSku(new Sku() { Name = SkuName.Premium.ToString(), Tier = SkuTier.Premium.ToString(), Capacity = 2 });
@@ -24,11 +24,12 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <param name="name">Sku name.</param>
         /// <param name="tier">Sku tier.</param>
         ///GENMHASH:B0461AE9E717F326AAD03E435B444E9F:1D2C378CEB85EF1064094C6C7A421238
-        public  NamespaceSku(string name, string tier) :this(new Sku {
-                Capacity = null,
-                Name = name,
-                Tier = tier
-            })
+        public NamespaceSku(string name, string tier) : this(new Sku
+        {
+            Capacity = null,
+            Name = name,
+            Tier = tier
+        })
         {
         }
 
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <param name="tier">Sku tier.</param>
         /// <param name="capacity">Factor of resources allocated to host Service Bus.</param>
         ///GENMHASH:2A3E3FADEDCAE903C5BB842CE0CE711B:FDBF08CB10EB0889FEE74433151F2D58
-        public  NamespaceSku(string name, string tier, int capacity) : this(new Sku {
+        public NamespaceSku(string name, string tier, int capacity) : this(new Sku
+        {
             Capacity = capacity,
             Name = name,
             Tier = tier
@@ -52,7 +54,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// </summary>
         /// <param name="sku">Inner sku model instance.</param>
         ///GENMHASH:83A4F9D017E89DEEE0BDB30D548A3099:016E3E87610C3ACE9D8B84AD2EBB420A
-        public  NamespaceSku(Sku sku)
+        public NamespaceSku(Sku sku)
         {
             this.sku = sku;
         }
@@ -94,9 +96,12 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         ///GENMHASH:9E6C2387B371ABFFE71039FB9CDF745F:0C2D0EB9EDCADCEEA186E28FD98F6699
         public override string ToString()
         {
-            if (this.sku.Capacity != null) {
+            if (this.sku.Capacity != null)
+            {
                 return $"{this.sku.Name}_{this.sku.Tier}_{this.sku.Capacity}";
-            } else {
+            }
+            else
+            {
                 return $"{this.sku.Name}_{this.sku.Tier}";
             }
         }

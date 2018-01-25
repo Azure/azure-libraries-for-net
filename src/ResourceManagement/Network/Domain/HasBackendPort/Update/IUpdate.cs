@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasBackendPort.Update
     /// The stage of an update allowing to modify the backend port.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the update.</typeparam>
-    public interface IWithBackendPort<ReturnT> 
+    public interface IWithBackendPort<ReturnT>
     {
         /// <summary>
         /// Specifies a backend port to send network traffic to.

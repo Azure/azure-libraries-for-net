@@ -23,21 +23,21 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public bool CheckExistence(string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, string apiVersion)
         {
-            return Extensions.Synchronize (() => CheckExistenceAsync(
-                resourceGroupName,
-                resourceProviderNamespace,
-                parentResourcePath,
-                resourceType,
-                resourceName,
-                apiVersion));
+            return Extensions.Synchronize(() => CheckExistenceAsync(
+               resourceGroupName,
+               resourceProviderNamespace,
+               parentResourcePath,
+               resourceType,
+               resourceName,
+               apiVersion));
         }
 
         public async Task<bool> CheckExistenceAsync(
-            string resourceGroupName, 
-            string resourceProviderNamespace, 
-            string parentResourcePath, 
-            string resourceType, 
-            string resourceName, 
+            string resourceGroupName,
+            string resourceProviderNamespace,
+            string parentResourcePath,
+            string resourceType,
+            string resourceName,
             string apiVersion,
             CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -62,20 +62,20 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         }
 
         public async Task DeleteAsync(
-            string resourceGroupName, 
-            string resourceProviderNamespace, 
-            string parentResourcePath, 
-            string resourceType, 
-            string resourceName, 
+            string resourceGroupName,
+            string resourceProviderNamespace,
+            string parentResourcePath,
+            string resourceType,
+            string resourceName,
             string apiVersion,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             await Inner.DeleteAsync(
-                resourceGroupName, 
-                resourceProviderNamespace, 
-                parentResourcePath, 
-                resourceType, 
-                resourceName, 
+                resourceGroupName,
+                resourceProviderNamespace,
+                parentResourcePath,
+                resourceType,
+                resourceName,
                 apiVersion,
                 cancellationToken);
         }
@@ -120,8 +120,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         }
 
         public async Task MoveResourcesAsync(
-            string sourceResourceGroupName, 
-            IResourceGroup targetResourceGroup, 
+            string sourceResourceGroupName,
+            IResourceGroup targetResourceGroup,
             IList<string> resources,
             CancellationToken cancellationToken = default(CancellationToken))
         {

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Virtual machine encryption related operations.
     /// </summary>
-    public interface IVirtualMachineEncryption 
+    public interface IVirtualMachineEncryption
     {
         /// <summary>
         /// Disable encryption for virtual machine disks.

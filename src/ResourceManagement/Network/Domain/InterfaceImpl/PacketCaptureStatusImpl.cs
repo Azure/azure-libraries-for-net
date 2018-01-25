@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Collections.Generic;
     using System;
 
-    internal partial class PacketCaptureStatusImpl 
+    internal partial class PacketCaptureStatusImpl
     {
         /// <summary>
         /// Gets the status of the packet capture session. Possible values include:

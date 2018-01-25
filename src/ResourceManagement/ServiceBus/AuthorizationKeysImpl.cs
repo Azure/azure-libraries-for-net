@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Implementation for AuthorizationKeys.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuaW1wbGVtZW50YXRpb24uQXV0aG9yaXphdGlvbktleXNJbXBs
-    internal partial class AuthorizationKeysImpl  :
+    internal partial class AuthorizationKeysImpl :
         Wrapper<ResourceListKeysInner>,
         IAuthorizationKeys
     {

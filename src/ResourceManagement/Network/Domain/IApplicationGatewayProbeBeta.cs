@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of an application gateway probe.
     /// </summary>
-    public interface IApplicationGatewayProbeBeta  :
+    public interface IApplicationGatewayProbeBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

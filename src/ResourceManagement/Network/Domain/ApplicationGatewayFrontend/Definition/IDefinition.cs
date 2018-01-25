@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.D
     /// The first stage of an application gateway frontend definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.Definition.IWithSubnet<ParentT>
     {
     }
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.D
     /// application gateway visible to.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithSubnet<ParentT>  :
+    public interface IWithSubnet<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Definition.IWithSubnet<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.Definition.IWithAttach<ParentT>>
     {
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.D
     /// the application gateway available at as Internet-facing.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithPublicIPAddress<ParentT>  :
+    public interface IWithPublicIPAddress<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Definition.IWithExistingPublicIPAddress<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.Definition.IWithAttach<ParentT>>
     {
     }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.D
     /// should be available at within the selected subnet.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithPrivateIP<ParentT>  :
+    public interface IWithPrivateIP<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Definition.IWithPrivateIPAddress<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.Definition.IWithAttach<ParentT>>
     {
     }
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.D
     /// The entirety of an application gateway frontend definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.Definition.IWithAttach<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.Definition.IWithPublicIPAddress<ParentT>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.D
     /// can be attached to the parent application gateway definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.IInDefinitionAlt<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.Definition.IWithSubnet<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayFrontend.Definition.IWithPrivateIP<ParentT>

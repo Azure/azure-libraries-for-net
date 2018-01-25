@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
     public interface IManagerBase
     {
         IResourceManager ResourceManager { get; }
-        string SubscriptionId { get;  }
+        string SubscriptionId { get; }
     }
 
     public abstract class ManagerBase : IManagerBase
@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             }
         }
 
-        public IResourceManager ResourceManager {
+        public IResourceManager ResourceManager
+        {
             get; protected set;
         }
 

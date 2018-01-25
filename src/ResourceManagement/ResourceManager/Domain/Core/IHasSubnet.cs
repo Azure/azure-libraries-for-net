@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
     /// <summary>
     /// An interface representing a model's ability to reference a subnet by its name and network's ID.
     /// </summary>
-    public interface IHasSubnet 
+    public interface IHasSubnet
     {
         /// <returns>the resource ID of the virtual network whose subnet is associated with this resource</returns>
         string NetworkId { get; }

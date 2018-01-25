@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
 
-    internal partial class DomainContactImpl 
+    internal partial class DomainContactImpl
     {
         Models.Contact DomainContact.Definition.IWithAttach<AppServiceDomain.Definition.IWithCreate>.Build
         {

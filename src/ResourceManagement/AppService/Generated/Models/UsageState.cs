@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class UsageStateEnumExtension
     {
-        internal static string ToSerializedValue(this UsageState? value)  =>
+        internal static string ToSerializedValue(this UsageState? value) =>
             value == null ? null : ((UsageState)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this UsageState value)
         {
-            switch( value )
+            switch (value)
             {
                 case UsageState.Normal:
                     return "Normal";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static UsageState? ParseUsageState(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Normal":
                     return UsageState.Normal;

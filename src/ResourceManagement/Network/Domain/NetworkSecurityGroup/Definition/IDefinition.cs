@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definit
     /// <summary>
     /// The entirety of the network security group definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definition.IWithGroup,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definition.IWithCreate
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definit
     /// the resource to be created (via  WithCreate.create()), but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definition.IWithCreate>,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definition.IWithRule
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definit
     /// <summary>
     /// The stage allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definition.IWithCreate>
     {
     }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definit
     /// When the security rule description is complete enough, use  Attachable.attach() to attach it to
     /// this network security group.
     /// </summary>
-    public interface IWithRule 
+    public interface IWithRule
     {
         /// <summary>
         /// Starts the definition of a new security rule.
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definit
     /// <summary>
     /// The first stage of the definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definition.IWithGroup>
     {
     }

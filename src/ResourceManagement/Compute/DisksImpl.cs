@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         TopLevelModifiableResources<IDisk,
             DiskImpl,
             DiskInner,
-            IDisksOperations, 
+            IDisksOperations,
             IComputeManager>,
         IDisks
     {
@@ -53,17 +53,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         ///GENMHASH:5E14BE5799A25FD072BFBD2635947666:F9F576DF5B4E696FFA8774883C7E48E2
         public async Task<string> GrantAccessAsync(
-            string resourceGroupName, 
-            string diskName, 
-            AccessLevel accessLevel, 
-            int accessDuration, 
+            string resourceGroupName,
+            string diskName,
+            AccessLevel accessLevel,
+            int accessDuration,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             GrantAccessDataInner grantAccessDataInner = new GrantAccessDataInner();
             grantAccessDataInner.Access = accessLevel;
             grantAccessDataInner.DurationInSeconds = accessDuration;
             AccessUriInner accessUriInner = await Inner.GrantAccessAsync(resourceGroupName,
-                diskName, 
+                diskName,
                 grantAccessDataInner,
                 cancellationToken);
             return accessUriInner.AccessSAS;

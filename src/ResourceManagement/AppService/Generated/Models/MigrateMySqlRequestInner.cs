@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public MigrateMySqlRequestInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

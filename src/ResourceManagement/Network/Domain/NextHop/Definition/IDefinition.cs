@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NextHop.Definition
     /// <summary>
     /// The entirety of next hop parameters definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.NextHop.Definition.IWithTargetResource,
         Microsoft.Azure.Management.Network.Fluent.NextHop.Definition.IWithSourceIP,
         Microsoft.Azure.Management.Network.Fluent.NextHop.Definition.IWithDestinationIP,
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NextHop.Definition
     /// <summary>
     /// Sets the destination IP address.
     /// </summary>
-    public interface IWithDestinationIP 
+    public interface IWithDestinationIP
     {
         /// <summary>
         /// Set the destinationIPAddress value.
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NextHop.Definition
     /// Sets the NIC ID. (If VM has multiple NICs and IP forwarding is enabled on any
     /// of the nics, then this parameter must be specified. Otherwise optional).
     /// </summary>
-    public interface IWithNetworkInterface 
+    public interface IWithNetworkInterface
     {
         /// <summary>
         /// Set the targetNetworkInterfaceId value.
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NextHop.Definition
     /// The stage of the definition which contains all the minimum required inputs for execution, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithExecute  :
+    public interface IWithExecute :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IExecutable<Microsoft.Azure.Management.Network.Fluent.INextHop>,
         Microsoft.Azure.Management.Network.Fluent.NextHop.Definition.IWithNetworkInterface
     {
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NextHop.Definition
     /// <summary>
     /// Sets the source IP address.
     /// </summary>
-    public interface IWithSourceIP 
+    public interface IWithSourceIP
     {
         /// <summary>
         /// Set the sourceIPAddress value.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NextHop.Definition
     /// <summary>
     /// The first stage of next hop parameters definition.
     /// </summary>
-    public interface IWithTargetResource 
+    public interface IWithTargetResource
     {
         /// <summary>
         /// Set the targetResourceId value.

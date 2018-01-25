@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public static readonly NetworkUsageUnit Count = Parse("Count");
         public static readonly NetworkUsageUnit Bytes = Parse("Bytes");
         public static readonly NetworkUsageUnit Seconds = Parse("Seconds");
-        public static readonly NetworkUsageUnit Percent= Parse("Percent");
+        public static readonly NetworkUsageUnit Percent = Parse("Percent");
         public static readonly NetworkUsageUnit CountsPerSecond = Parse("CountsPerSecond");
         public static readonly NetworkUsageUnit BytesPerSecond = Parse("BytesPerSecond");
     }

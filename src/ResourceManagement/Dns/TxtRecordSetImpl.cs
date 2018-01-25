@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ITxtRecordSet
     {
         ///GENMHASH:CDD40393B54202CD5F601C8951933BA5:3F5F2CC7F3C4A3B943EC7C1953A9D2E5
-        internal  TxtRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
+        internal TxtRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
         {
         }
 
@@ -29,22 +29,22 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 {
                     resource.TxtRecords = new List<TxtRecord>();
                 }
-             
+
                 foreach (var record in Inner.TxtRecords)
                 {
                     resource.TxtRecords.Add(record);
                 }
-             
+
                 Inner.TxtRecords.Clear();
-             }
-             
+            }
+
             if (this.recordSetRemoveInfo.TxtRecords.Count > 0)
             {
                 if (resource.TxtRecords != null)
                 {
-                    foreach(var recordToRemove in this.recordSetRemoveInfo.TxtRecords)
+                    foreach (var recordToRemove in this.recordSetRemoveInfo.TxtRecords)
                     {
-                        foreach(var record in resource.TxtRecords)
+                        foreach (var record in resource.TxtRecords)
                         {
                             if (record.Value.Count != 0 && record.Value[0].Equals(recordToRemove.Value[0], StringComparison.OrdinalIgnoreCase))
                             {
@@ -55,14 +55,15 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                     }
                 }
                 this.recordSetRemoveInfo.TxtRecords.Clear();
-             }
+            }
             return resource;
         }
 
         ///GENMHASH:4FC81B687476F8722014B0A4F98E1756:271F0595F800257FBA25E945FA53FCF5
         public IReadOnlyList<TxtRecord> Records()
         {
-            if (Inner.TxtRecords != null) {
+            if (Inner.TxtRecords != null)
+            {
                 return Inner.TxtRecords?.ToList();
             }
             return new List<TxtRecord>();
@@ -72,7 +73,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         internal static TxtRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
         {
             return new TxtRecordSetImpl(parent,
-            new RecordSetInner {
+            new RecordSetInner
+            {
                 Name = name,
                 Type = Enum.GetName(typeof(RecordType), Models.RecordType.TXT),
                 TxtRecords = new List<TxtRecord>()

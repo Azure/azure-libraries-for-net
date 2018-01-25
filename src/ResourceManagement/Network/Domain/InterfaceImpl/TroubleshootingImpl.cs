@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Collections.Generic;
     using System;
 
-    internal partial class TroubleshootingImpl 
+    internal partial class TroubleshootingImpl
     {
         /// <summary>
         /// Set the storageAccounId value.

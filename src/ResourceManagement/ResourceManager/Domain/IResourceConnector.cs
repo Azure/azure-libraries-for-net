@@ -11,9 +11,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// 
     /// @param <T> the type of the connector to create.
     /// </summary>
-    public interface IBuilder<T> 
+    public interface IBuilder<T>
     {
-        T Create (RestClient restClient, string subscriptionId, IResourceGroup resourceGroup);
+        T Create(RestClient restClient, string subscriptionId, IResourceGroup resourceGroup);
 
     }
     /// <summary>
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// Implementations of this class can let users browse resources inside a
     /// specific resource group.
     /// </summary>
-    public interface IResourceConnector 
+    public interface IResourceConnector
     {
     }
 }
