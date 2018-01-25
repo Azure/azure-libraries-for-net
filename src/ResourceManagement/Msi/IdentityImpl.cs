@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
             // after identity creation, so delaying here for some time before
             // proceeding with next operation.
             //
-            await Task.Delay(30 * 1000);
+            await SdkContext.DelayProvider.DelayAsync(30 * 1000, cancellationToken);
             await this.roleAssignmentHelper.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
 
             return this;
