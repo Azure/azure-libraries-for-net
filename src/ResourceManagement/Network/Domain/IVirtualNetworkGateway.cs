@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Entry point for Virtual Network Gateway management API in Azure.
     /// </summary>
-    public interface IVirtualNetworkGateway  :
+    public interface IVirtualNetworkGateway :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.VirtualNetworkGatewayInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.VirtualNetworkGatewayInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<VirtualNetworkGateway.Update.IUpdate>
     {

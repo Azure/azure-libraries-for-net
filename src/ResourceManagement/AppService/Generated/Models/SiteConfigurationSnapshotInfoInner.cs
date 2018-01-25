@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public SiteConfigurationSnapshotInfoInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

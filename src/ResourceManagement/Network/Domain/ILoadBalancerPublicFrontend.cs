@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of a public frontend of an Internet-facing load balancer.
     /// </summary>
-    public interface ILoadBalancerPublicFrontend  :
+    public interface ILoadBalancerPublicFrontend :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.Network.Fluent.ILoadBalancerFrontend,
         Microsoft.Azure.Management.Network.Fluent.IHasPublicIPAddress

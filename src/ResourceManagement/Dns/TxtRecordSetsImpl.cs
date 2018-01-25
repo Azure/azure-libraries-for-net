@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Implementation of TxtRecordSets.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5UeHRSZWNvcmRTZXRzSW1wbA==
-    internal partial class TxtRecordSetsImpl  :
+    internal partial class TxtRecordSetsImpl :
         DnsRecordSetsBaseImpl<ITxtRecordSet, TxtRecordSetImpl>,
         ITxtRecordSets
     {

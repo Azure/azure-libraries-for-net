@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Definition.Blank.Pre
     /// for the CDN profile with teh Premium Verizon SKU.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent CDN profile definition to return to after attaching this definition.</typeparam>
-    public interface IPremiumEndpoint<ParentT> 
+    public interface IPremiumEndpoint<ParentT>
     {
         /// <summary>
         /// Specifies the origin of the CDN endpoint.

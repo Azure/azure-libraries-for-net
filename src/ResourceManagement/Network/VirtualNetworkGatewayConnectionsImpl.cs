@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// The implementation of VirtualNetworkGatewayConnections.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5Q29ubmVjdGlvbnNJbXBs
-    internal partial class VirtualNetworkGatewayConnectionsImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5Q29ubmVjdGlvbnNJbXBs
+    internal partial class VirtualNetworkGatewayConnectionsImpl :
         GroupableResources<IVirtualNetworkGatewayConnection,
             VirtualNetworkGatewayConnectionImpl,
             VirtualNetworkGatewayConnectionInner,
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:269D67510C1F52A212C7338821114566:8BC410D1F211690FF9ADF477729D3C1E
-        internal  VirtualNetworkGatewayConnectionsImpl(VirtualNetworkGatewayImpl parent)
+        internal VirtualNetworkGatewayConnectionsImpl(VirtualNetworkGatewayImpl parent)
             : base(parent.Manager.Inner.VirtualNetworkGatewayConnections, parent.Manager)
         {
             this.parent = parent;

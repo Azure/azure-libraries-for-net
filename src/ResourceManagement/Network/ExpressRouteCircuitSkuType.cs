@@ -11,10 +11,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Express route circuit sku type.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuRXhwcmVzc1JvdXRlQ2lyY3VpdFNrdVR5cGU=
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuRXhwcmVzc1JvdXRlQ2lyY3VpdFNrdVR5cGU=
     public partial class ExpressRouteCircuitSkuType
     {
-        private static IDictionary<string,ExpressRouteCircuitSkuType> ValuesByName;
+        private static IDictionary<string, ExpressRouteCircuitSkuType> ValuesByName;
         /** Static value for Standard sku tier and MeteredData sku family. */
         public static readonly ExpressRouteCircuitSkuType StandardMeteredData = new ExpressRouteCircuitSkuType(ExpressRouteCircuitSkuTier.Standard, ExpressRouteCircuitSkuFamily.MeteredData);
         /** Static value for Standard sku tier and UnlimitedData sku family. */
@@ -33,10 +33,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:38408DF1B8F232AEBED1B12F2C1202F0:027E47FEFAA31D61D917E0DD4AC48C00
         public static ExpressRouteCircuitSkuType FromSku(ExpressRouteCircuitSku sku)
         {
-            if (sku == null) {
+            if (sku == null)
+            {
                 return null;
-            } 
-            String nameToLookFor = sku.Name; 
+            }
+            String nameToLookFor = sku.Name;
             ExpressRouteCircuitSkuType result; if (ValuesByName == null)
             {
                 return new ExpressRouteCircuitSkuType(sku);
@@ -110,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="skuTier">A SKU tier.</param>
         /// <param name="skuFamily">An SKU family.</param>
         ///GENMHASH:1C1AC2081EDF467E58696D79BFED26DF:7E16A0307E12AFD2D0B6FA7988E995EB
-        public  ExpressRouteCircuitSkuType (String skuTier, String skuFamily) : this(new ExpressRouteCircuitSku(skuTier + "_" + skuFamily, skuTier, skuFamily))
+        public ExpressRouteCircuitSkuType(String skuTier, String skuFamily) : this(new ExpressRouteCircuitSku(skuTier + "_" + skuFamily, skuTier, skuFamily))
         {
         }
 
@@ -119,11 +120,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="sku">The SKU.</param>
         ///GENMHASH:0762E3C06783B20D994901ACEEE8FBA2:A0902CB87BB5668B63DA725DD104430C
-        public  ExpressRouteCircuitSkuType(ExpressRouteCircuitSku sku)
+        public ExpressRouteCircuitSkuType(ExpressRouteCircuitSku sku)
         {
             // Store Sku copy since original user provided sku can be modified
             // by the user.
-            
+
             this.sku = CreateCopy(sku);
             value = sku.Tier + "_" + sku.Family;
             if (ValuesByName == null)

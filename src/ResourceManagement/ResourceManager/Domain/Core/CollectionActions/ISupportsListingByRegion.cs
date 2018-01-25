@@ -15,21 +15,21 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
     /// 
     /// @param <T> the fluent type of the resource
     /// </summary>
-    public interface ISupportsListingByRegion<T> 
+    public interface ISupportsListingByRegion<T>
     {
         /// <summary>
         /// Lists all the resources of the specified type in the specified region.
         /// </summary>
         /// <param name="region">region the selected Azure region</param>
         /// <returns>list of resources</returns>
-        IEnumerable<T> ListByRegion (Region region);
+        IEnumerable<T> ListByRegion(Region region);
 
         /// <summary>
         /// List all the resources of the specified type in the specified region.
         /// </summary>
         /// <param name="regionName">regionName the name of an Azure region</param>
         /// <returns>list of resources</returns>
-        IEnumerable<T> ListByRegion (string regionName);
+        IEnumerable<T> ListByRegion(string regionName);
 
         /// <summary>
         /// Lists all the resources of the specified type in the specified region.

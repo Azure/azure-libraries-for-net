@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public StatusCodesBasedTrigger()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition
     /// <summary>
     /// The entirety of a CDN profile definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IBlank,
         Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IWithGroup,
         Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IWithSku,
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition
     /// The stage of the definition which contains all the minimum required inputs for the resource to be created
     /// but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithStandardCreate  :
+    public interface IWithStandardCreate :
         Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IWithCreate,
         Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IWithStandardCreateBeta
     {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition
     /// <summary>
     /// The first stage of a CDN profile definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IWithGroup>
     {
     }
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition
     /// <summary>
     /// A CDN profile definition allowing the SKU to be specified.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Selects the Standard Verizon SKU.
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition
     /// <summary>
     /// The stage of a CDN profile definition allowing the resource group to be specified.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IWithSku>
     {
     }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition
     /// The stage of the definition which contains all the minimum required inputs for the resource to be created
     /// but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithPremiumVerizonCreate  :
+    public interface IWithPremiumVerizonCreate :
         Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IWithCreate,
         Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IWithPremiumVerizonCreateBeta
     {
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition
     /// The stage of the definition which contains all the minimum required inputs for the resource to be created
     /// but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition.IWithCreate>
     {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition
     /// The stage of the definition which contains all the minimum required inputs for the resource to be created
     /// but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithStandardCreateBeta  :
+    public interface IWithStandardCreateBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Definition
     /// The stage of the definition which contains all the minimum required inputs for the resource to be created
     /// but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithPremiumVerizonCreateBeta  :
+    public interface IWithPremiumVerizonCreateBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

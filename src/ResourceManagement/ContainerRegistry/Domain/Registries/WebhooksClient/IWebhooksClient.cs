@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registries.Webhook
     /// <summary>
     /// Grouping of registry webhook actions.
     /// </summary>
-    public interface IWebhooksClient  :
+    public interface IWebhooksClient :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Registries.WebhooksClient.IWebhooksClientBeta
     {
     }
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registries.Webhook
     /// <summary>
     /// Grouping of registry webhook actions.
     /// </summary>
-    public interface IWebhooksClientBeta  :
+    public interface IWebhooksClientBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

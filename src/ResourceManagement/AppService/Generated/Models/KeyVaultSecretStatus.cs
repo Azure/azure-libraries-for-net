@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class KeyVaultSecretStatusEnumExtension
     {
-        internal static string ToSerializedValue(this KeyVaultSecretStatus? value)  =>
+        internal static string ToSerializedValue(this KeyVaultSecretStatus? value) =>
             value == null ? null : ((KeyVaultSecretStatus)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this KeyVaultSecretStatus value)
         {
-            switch( value )
+            switch (value)
             {
                 case KeyVaultSecretStatus.Initialized:
                     return "Initialized";
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static KeyVaultSecretStatus? ParseKeyVaultSecretStatus(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Initialized":
                     return KeyVaultSecretStatus.Initialized;

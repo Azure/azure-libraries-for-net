@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Upda
     /// <summary>
     /// An AD Group definition allowing members to be added or removed.
     /// </summary>
-    public interface IWithMember  :
+    public interface IWithMember :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Update.IWithMemberBeta
     {
     }
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Upda
     /// <summary>
     /// The template for a group update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryGroup>,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Update.IWithMember
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryGroup.Upda
     /// <summary>
     /// An AD Group definition allowing members to be added or removed.
     /// </summary>
-    public interface IWithMemberBeta  :
+    public interface IWithMemberBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

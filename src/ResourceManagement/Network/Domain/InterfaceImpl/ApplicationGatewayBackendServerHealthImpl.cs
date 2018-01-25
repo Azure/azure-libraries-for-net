@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class ApplicationGatewayBackendServerHealthImpl 
+    internal partial class ApplicationGatewayBackendServerHealthImpl
     {
         /// <summary>
         /// Gets the IP configuration of the network interface this health information pertains to.

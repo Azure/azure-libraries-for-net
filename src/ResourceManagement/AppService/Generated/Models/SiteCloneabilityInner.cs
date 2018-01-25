@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public SiteCloneabilityInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

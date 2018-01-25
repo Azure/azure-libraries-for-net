@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public IPConfigurationInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

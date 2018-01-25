@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Defi
     /// The entirety of a web app authentication definition.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition.IWithDefaultAuthenticationProvider<ParentT>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition.IWithAttach<ParentT>
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Defi
     /// A web app authentication definition allowing the default authentication provider to be set.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IWithDefaultAuthenticationProvider<ParentT> 
+    public interface IWithDefaultAuthenticationProvider<ParentT>
     {
         /// <summary>
         /// Does not require login by default.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Defi
     /// The first stage of a web app authentication definition as part of a definition of a web app.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition.IWithDefaultAuthenticationProvider<ParentT>
     {
     }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Defi
     /// A web app authentication definition allowing token store to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithTokenStore<ParentT> 
+    public interface IWithTokenStore<ParentT>
     {
         /// <summary>
         /// Specifies if token store should be enabled.
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Defi
     /// A web app authentication definition allowing branch to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithExternalRedirectUrls<ParentT> 
+    public interface IWithExternalRedirectUrls<ParentT>
     {
         /// <summary>
         /// Adds an external redirect URL.
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Defi
     /// A web app authentication definition allowing detailed provider information to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithAuthenticationProvider<ParentT> 
+    public interface IWithAuthenticationProvider<ParentT>
     {
         /// <summary>
         /// Specifies the provider to be Active Directory and its client ID and issuer URL.
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Defi
     /// can be attached to the parent web app definition using  WithAttach.attach().
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition.IWithAuthenticationProvider<ParentT>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition.IWithTokenStore<ParentT>,

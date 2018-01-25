@@ -11,8 +11,8 @@ namespace Microsoft.Azure.Management.Redis.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Redis Cache.
     /// </summary>
-    public interface IRedisCache  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Redis.Fluent.IRedisManager,Models.RedisResourceInner>,
+    public interface IRedisCache :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Redis.Fluent.IRedisManager, Models.RedisResourceInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Redis.Fluent.IRedisCache>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<RedisCache.Update.IUpdate>
     {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// <summary>
         /// Gets the Redis configuration value.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> RedisConfiguration { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, string> RedisConfiguration { get; }
 
         /// <summary>
         /// Gets the port value.

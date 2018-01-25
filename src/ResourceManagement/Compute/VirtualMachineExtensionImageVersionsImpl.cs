@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:3823A118AF47AF7328798BEA74521A04:3A4CA90FBB86038062B022FC826008A2
-        protected override IVirtualMachineExtensionImageVersion WrapModel (VirtualMachineExtensionImageInner inner)
+        protected override IVirtualMachineExtensionImageVersion WrapModel(VirtualMachineExtensionImageInner inner)
         {
             return new VirtualMachineExtensionImageVersionImpl(client, type, inner);
         }

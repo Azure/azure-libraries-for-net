@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// The stage of the web app update allowing host name binding to be set.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithHostNameBinding<FluentT> 
+    public interface IWithHostNameBinding<FluentT>
     {
         /// <summary>
         /// Defines a list of host names of an Azure managed domain. The DNS record type is
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// after specifying Java version.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithWebContainer<FluentT> 
+    public interface IWithWebContainer<FluentT>
     {
         /// <summary>
         /// Specifies the Java web container.
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// can be cloned when creating or swapping with a deployment slot.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithSiteConfigs<FluentT> 
+    public interface IWithSiteConfigs<FluentT>
     {
         /// <summary>
         /// Specifies the managed pipeline mode.
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// The stage of the web app update allowing disabling the web app upon creation.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithSiteEnabled<FluentT> 
+    public interface IWithSiteEnabled<FluentT>
     {
         /// <summary>
         /// Disables the web app upon creation.
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// A web app update stage allowing connection strings to be set.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithConnectionString<FluentT> 
+    public interface IWithConnectionString<FluentT>
     {
         /// <summary>
         /// Changes the stickiness of a connection string.
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// A web app definition stage allowing authentication to be set.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithAuthentication<FluentT> 
+    public interface IWithAuthentication<FluentT>
     {
         /// <summary>
         /// Specifies the definition of a new authentication configuration.
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// A web app update stage allowing source control to be set.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithSourceControl<FluentT> 
+    public interface IWithSourceControl<FluentT>
     {
         /// <summary>
         /// Removes source control for deployment from the web app.
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// The stage of the web app update allowing setting if client cert is enabled.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithClientCertEnabled<FluentT> 
+    public interface IWithClientCertEnabled<FluentT>
     {
         /// <summary>
         /// Specifies if client cert is enabled.
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// The stage of the web app update allowing setting if SCM site is also stopped when the web app is stopped.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithScmSiteAlsoStopped<FluentT> 
+    public interface IWithScmSiteAlsoStopped<FluentT>
     {
         /// <summary>
         /// Specifies if SCM site is also stopped when the web app is stopped.
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// A web app update stage allowing app settings to be set.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithAppSettings<FluentT> 
+    public interface IWithAppSettings<FluentT>
     {
         /// <summary>
         /// Adds an app setting to the web app. This app setting
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the web app update.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithStickyAppSettings(IDictionary<string,string> settings);
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithStickyAppSettings(IDictionary<string, string> settings);
 
         /// <summary>
         /// Changes the stickiness of an app setting.
@@ -359,14 +359,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the web app update.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithAppSettings(IDictionary<string,string> settings);
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT> WithAppSettings(IDictionary<string, string> settings);
     }
 
     /// <summary>
     /// The template for a site update operation, containing all the settings that can be modified.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IUpdate<FluentT>  :
+    public interface IUpdate<FluentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<FluentT>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT>>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IWithClientAffinityEnabled<FluentT>,
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// The stage of the web app update allowing setting if client affinity is enabled.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithClientAffinityEnabled<FluentT> 
+    public interface IWithClientAffinityEnabled<FluentT>
     {
         /// <summary>
         /// Specifies if client affinity is enabled.
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update
     /// The stage of the web app update allowing SSL binding to be set.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithHostNameSslBinding<FluentT> 
+    public interface IWithHostNameSslBinding<FluentT>
     {
         /// <summary>
         /// Removes an SSL binding for a specific hostname.

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
             return await Inner.ListAsync(cancellationToken);
         }
 
-        protected async override Task<IPage<RedisResourceInner>>ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
+        protected async override Task<IPage<RedisResourceInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
         {
             return await Inner.ListNextAsync(nextLink, cancellationToken);
         }

@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal sealed partial class ComputeSkusImpl 
+    internal sealed partial class ComputeSkusImpl
     {
         /// <summary>
         /// List all the resources of the specified type in the specified region.

@@ -11,14 +11,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update
     /// 
     /// @param <T> the type of the next stage resource update
     /// </summary>
-    public interface IUpdateWithTags<T> 
+    public interface IUpdateWithTags<T>
     {
         /// <summary>
         /// Specifies tags for the resource as a {@link Map}.
         /// </summary>
         /// <param name="tags">tags a {@link Map} of tags</param>
         /// <returns>the next stage of the resource update</returns>
-        T WithTags (IDictionary<string,string> tags);
+        T WithTags(IDictionary<string, string> tags);
 
         /// <summary>
         /// Adds a tag to the resource.
@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update
         /// <param name="key">key the key for the tag</param>
         /// <param name="value">value the value for the tag</param>
         /// <returns>the next stage of the resource update</returns>
-        T WithTag (string key, string value);
+        T WithTag(string key, string value);
 
         /// <summary>
         /// Removes a tag from the resource.
         /// </summary>
         /// <param name="key">key the key of the tag to remove</param>
         /// <returns>the next stage of the resource update</returns>
-        T WithoutTag (string key);
+        T WithoutTag(string key);
 
     }
 }

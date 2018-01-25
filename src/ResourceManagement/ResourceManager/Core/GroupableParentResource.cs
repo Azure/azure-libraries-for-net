@@ -50,18 +50,18 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         where UTypeWithTags : class
 
     {
-        protected  GroupableParentResource (string name, InnerResourceT innerObject, ManagerT manager) : base(name, innerObject, manager)
+        protected GroupableParentResource(string name, InnerResourceT innerObject, ManagerT manager) : base(name, innerObject, manager)
         {
             InitializeChildrenFromInner();
         }
 
         protected abstract Task<InnerResourceT> CreateInnerAsync(CancellationToken cancellationToken);
 
-        protected abstract void InitializeChildrenFromInner ();
+        protected abstract void InitializeChildrenFromInner();
 
-        protected abstract void BeforeCreating ();
+        protected abstract void BeforeCreating();
 
-        protected abstract void AfterCreating ();
+        protected abstract void AfterCreating();
 
         public async override Task<IFluentResourceT> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             SetInner(inner);
             InitializeChildrenFromInner();
             AfterCreating();
-            return (FluentResourceT) this;
+            return (FluentResourceT)this;
         }
     }
 }

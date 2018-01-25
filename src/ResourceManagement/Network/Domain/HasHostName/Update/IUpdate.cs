@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasHostName.Update
     /// The stage of an update allowing to specify a host name.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the update.</typeparam>
-    public interface IWithHostName<ReturnT> 
+    public interface IWithHostName<ReturnT>
     {
         /// <summary>
         /// Specifies the host name.

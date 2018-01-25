@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An immutable client-side representation of an inbound NAT rule.
     /// </summary>
-    public interface ILoadBalancerInboundNatRule  :
+    public interface ILoadBalancerInboundNatRule :
         Microsoft.Azure.Management.Network.Fluent.IHasFrontend,
         Microsoft.Azure.Management.Network.Fluent.IHasBackendPort,
         Microsoft.Azure.Management.Network.Fluent.IHasProtocol<Models.TransportProtocol>,

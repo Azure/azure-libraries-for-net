@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmana
     /// <summary>
     /// The entirety of a unmanaged data disk update as part of a virtual machine scale set update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskSize,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskLun,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskCaching,
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmana
     /// <summary>
     /// The stage of the unmanaged data disk update allowing to set the disk LUN.
     /// </summary>
-    public interface IWithDiskLun 
+    public interface IWithDiskLun
     {
         /// <summary>
         /// Specifies the new logical unit number for the unmanaged data disk.
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmana
     /// <summary>
     /// The stage of the unmanaged data disk update allowing to set the disk caching type.
     /// </summary>
-    public interface IWithDiskCaching 
+    public interface IWithDiskCaching
     {
         /// <summary>
         /// Specifies the new caching type for the unmanaged data disk.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetUnmana
     /// <summary>
     /// The stage of the unmanaged data disk update allowing to set the disk size.
     /// </summary>
-    public interface IWithDiskSize 
+    public interface IWithDiskSize
     {
         /// <summary>
         /// Specifies the new size in GB for data disk.

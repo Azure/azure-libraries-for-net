@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     using Microsoft.Azure.Management.ContainerRegistry.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class WebhookEventInfoImpl 
+    internal partial class WebhookEventInfoImpl
     {
         /// <summary>
         /// Gets the event request object.

@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Implementation for ServiceBusNamespaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuaW1wbGVtZW50YXRpb24uU2VydmljZUJ1c05hbWVzcGFjZXNJbXBs
-    internal partial class ServiceBusNamespacesImpl  :
+    internal partial class ServiceBusNamespacesImpl :
         TopLevelModifiableResources<IServiceBusNamespace,
-            ServiceBusNamespaceImpl, 
+            ServiceBusNamespaceImpl,
             NamespaceModelInner,
             INamespacesOperations,
             IServiceBusManager>,

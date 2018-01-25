@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of an application gateway's HTTP listener.
     /// </summary>
-    public interface IApplicationGatewayListener  :
+    public interface IApplicationGatewayListener :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ApplicationGatewayHttpListenerInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>,
         Microsoft.Azure.Management.Network.Fluent.IHasSslCertificate<Microsoft.Azure.Management.Network.Fluent.IApplicationGatewaySslCertificate>,

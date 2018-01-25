@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class NetworkPeeringsImpl 
+    internal partial class NetworkPeeringsImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingByParent.DeleteByParentAsync(string groupName, string parentName, string name, CancellationToken cancellationToken)
         {
- 
+
             await this.DeleteByParentAsync(groupName, parentName, name, cancellationToken);
         }
 

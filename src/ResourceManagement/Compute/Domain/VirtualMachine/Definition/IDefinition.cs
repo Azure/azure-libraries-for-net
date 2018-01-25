@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition containing various settings when virtual machine is created from image.
     /// </summary>
-    public interface IWithFromImageCreateOptionsManagedOrUnmanaged  :
+    public interface IWithFromImageCreateOptionsManagedOrUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithFromImageCreateOptionsManaged
     {
         /// <summary>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// The stage of a Linux virtual machine definition which contains all the minimum required inputs for
     /// the resource to be created, but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithLinuxCreateManaged  :
+    public interface IWithLinuxCreateManaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithFromImageCreateOptionsManaged
     {
         /// <summary>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition containing various settings when virtual machine is created from image.
     /// </summary>
-    public interface IWithFromImageCreateOptionsManaged  :
+    public interface IWithFromImageCreateOptionsManaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedCreate
     {
         /// <summary>
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify a virtual network with the new primary network interface.
     /// </summary>
-    public interface IWithNetwork  :
+    public interface IWithNetwork :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithPrimaryNetworkInterface
     {
         /// <summary>
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// The stage of a Windows virtual machine definition which contains all the minimum required inputs for
     /// the resource to be created, but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithWindowsCreateManaged  :
+    public interface IWithWindowsCreateManaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithFromImageCreateOptionsManaged
     {
         /// <summary>
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// the resource to be created, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithOSDiskSettings,
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// The stage of the Windows virtual machine definition which contains all the minimum required inputs for
     /// the resource to be created, but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithWindowsCreateUnmanaged  :
+    public interface IWithWindowsCreateUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithFromImageCreateOptionsUnmanaged
     {
         /// <summary>
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// the VM to be created and optionally allow unmanaged data disk and settings specific to
     /// unmanaged OS disk to be specified.
     /// </summary>
-    public interface IWithUnmanagedCreate  :
+    public interface IWithUnmanagedCreate :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithUnmanagedDataDisk,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate
     {
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The first stage of a virtual machine definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithGroup>
     {
     }
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition containing various settings when virtual machine is created from image.
     /// </summary>
-    public interface IWithFromImageCreateOptionsUnmanaged  :
+    public interface IWithFromImageCreateOptionsUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithUnmanagedCreate
     {
         /// <summary>
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// The stage of the Windows virtual machine definition allowing to enable unmanaged disks
     /// or continue the definition of the VM with managed disks only.
     /// </summary>
-    public interface IWithWindowsCreateManagedOrUnmanaged  :
+    public interface IWithWindowsCreateManagedOrUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithWindowsCreateManaged
     {
         /// <summary>
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// the VM to be created and optionally allow managed data disks specific settings to
     /// be specified.
     /// </summary>
-    public interface IWithManagedCreate  :
+    public interface IWithManagedCreate :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithManagedDataDisk,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithAvailabilityZone,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// The stage of a Linux virtual machine definition which contains all the minimum required inputs for
     /// the resource to be created, but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithLinuxCreateUnmanaged  :
+    public interface IWithLinuxCreateUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithFromImageCreateOptionsUnmanaged
     {
         /// <summary>
@@ -877,7 +877,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// the resource to be created, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithLinuxCreateManagedOrUnmanaged  :
+    public interface IWithLinuxCreateManagedOrUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithFromImageCreateOptionsManagedOrUnmanaged
     {
         /// <summary>
@@ -1010,7 +1010,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithNetwork>
     {
     }

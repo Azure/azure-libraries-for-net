@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
     /// <summary>
     /// Entry point for Redis Cache management API.
     /// </summary>
-    public interface IRedisCaches  :
+    public interface IRedisCaches :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<RedisCache.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Redis.Fluent.IRedisCache>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Redis.Fluent.IRedisCache>,

@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class ConnectionStringTypeEnumExtension
     {
-        internal static string ToSerializedValue(this ConnectionStringType? value)  =>
+        internal static string ToSerializedValue(this ConnectionStringType? value) =>
             value == null ? null : ((ConnectionStringType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this ConnectionStringType value)
         {
-            switch( value )
+            switch (value)
             {
                 case ConnectionStringType.MySql:
                     return "MySql";
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static ConnectionStringType? ParseConnectionStringType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "MySql":
                     return ConnectionStringType.MySql;

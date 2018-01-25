@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition
     /// <summary>
     /// The first stage of a web deployment definition.
     /// </summary>
-    public interface IWithPackageUri 
+    public interface IWithPackageUri
     {
         /// <summary>
         /// Specifies the zipped package to deploy.
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition
     /// the resource to be created, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithExecute  :
+    public interface IWithExecute :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IExecutable<Microsoft.Azure.Management.AppService.Fluent.IWebDeployment>,
         Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition.IWithExistingDeploymentsDeleted,
         Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition.IWithAddOnPackage,
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition
     /// <summary>
     /// A web deployment definition stage allowing specifying whether to delete existing deployments.
     /// </summary>
-    public interface IWithExistingDeploymentsDeleted 
+    public interface IWithExistingDeploymentsDeleted
     {
         /// <summary>
         /// Specifies whether existing deployed files on the web app should be deleted.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition
     /// <summary>
     /// A web deployment definition stage allowing adding more packages.
     /// </summary>
-    public interface IWithAddOnPackage 
+    public interface IWithAddOnPackage
     {
         /// <summary>
         /// Adds an extra package to the deployment.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition
     /// <summary>
     /// A web deployment definition stage allowing specifying parameters.
     /// </summary>
-    public interface IWithSetParameters 
+    public interface IWithSetParameters
     {
         /// <summary>
         /// Specifies the XML file containing the parameters.
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition
     /// <summary>
     /// The entirety of web deployment parameters definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition.IWithPackageUri,
         Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition.IWithExecute
     {

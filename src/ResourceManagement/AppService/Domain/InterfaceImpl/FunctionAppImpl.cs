@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Collections.Generic;
     using System;
 
-    internal partial class FunctionAppImpl 
+    internal partial class FunctionAppImpl
     {
         /// <summary>
         /// Specifies the platform architecture to use.
@@ -769,9 +769,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets the app settings defined on the web app.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAppSettings()
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IAppSetting> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAppSettings()
         {
-            return this.GetAppSettings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
+            return this.GetAppSettings() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
         }
 
         /// <summary>
@@ -847,9 +847,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <return>The mapping from host names and the host name bindings.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetHostNameBindings()
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetHostNameBindings()
         {
-            return this.GetHostNameBindings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>;
+            return this.GetHostNameBindings() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>;
         }
 
         /// <summary>
@@ -862,7 +862,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </param>
         void Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.Swap(string slotName)
         {
- 
+
             this.Swap(slotName);
         }
 
@@ -879,7 +879,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name="slotName">The target slot to apply configurations from.</param>
         void Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.ApplySlotConfigurations(string slotName)
         {
- 
+
             this.ApplySlotConfigurations(slotName);
         }
 
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         void Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.Restart()
         {
- 
+
             this.Restart();
         }
 
@@ -922,7 +922,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name="domainVerificationToken">The domain verification token for the certificate order.</param>
         void Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.VerifyDomainOwnership(string certificateOrderName, string domainVerificationToken)
         {
- 
+
             this.VerifyDomainOwnership(certificateOrderName, domainVerificationToken);
         }
 
@@ -931,7 +931,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         void Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.ResetSlotConfigurations()
         {
- 
+
             this.ResetSlotConfigurations();
         }
 
@@ -949,11 +949,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets list of SSL states used to manage the SSL bindings for site's hostnames.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Models.HostNameSslState> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.HostNameSslStates
+        System.Collections.Generic.IReadOnlyDictionary<string, Models.HostNameSslState> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.HostNameSslStates
         {
             get
             {
-                return this.HostNameSslStates() as System.Collections.Generic.IReadOnlyDictionary<string,Models.HostNameSslState>;
+                return this.HostNameSslStates() as System.Collections.Generic.IReadOnlyDictionary<string, Models.HostNameSslState>;
             }
         }
 
@@ -982,9 +982,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets the connection strings defined on the web app.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStrings()
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IConnectionString> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStrings()
         {
-            return this.GetConnectionStrings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
+            return this.GetConnectionStrings() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
         }
 
         /// <summary>
@@ -1041,7 +1041,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.VerifyDomainOwnershipAsync(string certificateOrderName, string domainVerificationToken, CancellationToken cancellationToken)
         {
- 
+
             await this.VerifyDomainOwnershipAsync(certificateOrderName, domainVerificationToken, cancellationToken);
         }
 
@@ -1051,7 +1051,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.StartAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.StartAsync(cancellationToken);
         }
 
@@ -1078,9 +1078,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <return>The mapping from host names and the host name bindings.</return>
-        async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetHostNameBindingsAsync(CancellationToken cancellationToken)
+        async Task<System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetHostNameBindingsAsync(CancellationToken cancellationToken)
         {
-            return await this.GetHostNameBindingsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>;
+            return await this.GetHostNameBindingsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>;
         }
 
         /// <summary>
@@ -1089,7 +1089,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.StopAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.StopAsync(cancellationToken);
         }
 
@@ -1098,7 +1098,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         void Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.Stop()
         {
- 
+
             this.Stop();
         }
 
@@ -1130,7 +1130,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.RestartAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.RestartAsync(cancellationToken);
         }
 
@@ -1140,7 +1140,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.ResetSlotConfigurationsAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.ResetSlotConfigurationsAsync(cancellationToken);
         }
 
@@ -1297,7 +1297,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.SwapAsync(string slotName, CancellationToken cancellationToken)
         {
- 
+
             await this.SwapAsync(slotName, cancellationToken);
         }
 
@@ -1339,7 +1339,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         void Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.Start()
         {
- 
+
             this.Start();
         }
 
@@ -1351,7 +1351,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.ApplySlotConfigurationsAsync(string slotName, CancellationToken cancellationToken)
         {
- 
+
             await this.ApplySlotConfigurationsAsync(slotName, cancellationToken);
         }
 
@@ -1543,7 +1543,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the definition.</return>
-        WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp> WebAppBase.Definition.IWithAppSettings<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>.WithStickyAppSettings(IDictionary<string,string> settings)
+        WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp> WebAppBase.Definition.IWithAppSettings<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>.WithStickyAppSettings(IDictionary<string, string> settings)
         {
             return this.WithStickyAppSettings(settings) as WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>;
         }
@@ -1553,7 +1553,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the definition.</return>
-        WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp> WebAppBase.Definition.IWithAppSettings<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>.WithAppSettings(IDictionary<string,string> settings)
+        WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp> WebAppBase.Definition.IWithAppSettings<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>.WithAppSettings(IDictionary<string, string> settings)
         {
             return this.WithAppSettings(settings) as WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>;
         }
@@ -1598,7 +1598,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the web app update.</return>
-        WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp> WebAppBase.Update.IWithAppSettings<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>.WithStickyAppSettings(IDictionary<string,string> settings)
+        WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp> WebAppBase.Update.IWithAppSettings<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>.WithStickyAppSettings(IDictionary<string, string> settings)
         {
             return this.WithStickyAppSettings(settings) as WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>;
         }
@@ -1608,7 +1608,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the web app update.</return>
-        WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp> WebAppBase.Update.IWithAppSettings<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>.WithAppSettings(IDictionary<string,string> settings)
+        WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp> WebAppBase.Update.IWithAppSettings<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>.WithAppSettings(IDictionary<string, string> settings)
         {
             return this.WithAppSettings(settings) as WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>;
         }

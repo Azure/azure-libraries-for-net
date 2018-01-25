@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// </summary>
         public AliasPathType()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

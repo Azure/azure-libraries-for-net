@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Update
     /// The first stage of a hostname SSL binding definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.UpdateDefinition.IWithHostname<ParentT>
     {
     }
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Update
     /// The stage of a hostname SSL binding definition allowing key vault for certificate store to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithKeyVault<ParentT> 
+    public interface IWithKeyVault<ParentT>
     {
         /// <summary>
         /// Creates a new key vault to store the certificate.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Update
     /// can be attached to the parent web app update using  WithAttach.attach().
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>
     {
     }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Update
     /// The entirety of a hostname SSL binding definition as part of a web app update.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  UpdateDefinitionStages.WithAttach.attach().</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.UpdateDefinition.IBlank<ParentT>,
         Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.UpdateDefinition.IWithHostname<ParentT>,
         Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.UpdateDefinition.IWithCertificate<ParentT>,
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Update
     /// The stage of a hostname SSL binding definition allowing certificate information to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithCertificate<ParentT> 
+    public interface IWithCertificate<ParentT>
     {
         /// <summary>
         /// Specifies a ready-to-use certificate order to use. This is usually useful for reusing wildcard certificates.
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Update
     /// The stage of a hostname SSL binding definition allowing hostname to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithHostname<ParentT> 
+    public interface IWithHostname<ParentT>
     {
         /// <summary>
         /// Specifies the hostname to bind SSL certificate to.
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Update
     /// The stage of a hostname SSL binding definition allowing SSL type to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithSslType<ParentT> 
+    public interface IWithSslType<ParentT>
     {
         /// <summary>
         /// Uses IP based SSL. Only one hostname can be bound to IP based SSL.

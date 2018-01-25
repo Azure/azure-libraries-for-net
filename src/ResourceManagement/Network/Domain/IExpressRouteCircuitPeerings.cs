@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Entry point for express route circuit peerings management API in Azure.
     /// </summary>
-    public interface IExpressRouteCircuitPeerings  :
+    public interface IExpressRouteCircuitPeerings :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering>,

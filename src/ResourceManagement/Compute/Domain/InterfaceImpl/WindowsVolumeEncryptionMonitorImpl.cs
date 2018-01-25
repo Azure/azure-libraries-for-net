@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
-    internal partial class WindowsVolumeEncryptionMonitorImpl 
+    internal partial class WindowsVolumeEncryptionMonitorImpl
     {
         /// <summary>
         /// Refreshes the resource to sync with Azure.

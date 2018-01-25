@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     using System.Collections.Generic;
     using System;
 
-    internal partial class TopicImpl 
+    internal partial class TopicImpl
     {
         /// <summary>
         /// Gets the manager client of this resource type.
@@ -538,11 +538,11 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <summary>
         /// Gets the tags for the resource.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
         {
             get
             {
-                return this.Tags as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.Tags as System.Collections.Generic.IReadOnlyDictionary<string, string>;
             }
         }
 

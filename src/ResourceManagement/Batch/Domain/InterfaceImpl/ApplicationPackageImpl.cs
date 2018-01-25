@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     using System;
     using Models;
 
-    internal partial class ApplicationPackageImpl 
+    internal partial class ApplicationPackageImpl
     {
         /// <summary>
         /// Activates the application package.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Batch.Fluent.IApplicationPackageBeta.ActivateAsync(string format, CancellationToken cancellationToken)
         {
- 
+
             await this.ActivateAsync(format, cancellationToken);
         }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Batch.Fluent.IApplicationPackage.Delete()
         {
- 
+
             this.Delete();
         }
 

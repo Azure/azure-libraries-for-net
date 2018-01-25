@@ -14,13 +14,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// Implementation for network peerings.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uTmV0d29ya1BlZXJpbmdzSW1wbA==
-    internal partial class NetworkPeeringsImpl  :
+    internal partial class NetworkPeeringsImpl :
         IndependentChildrenImpl<
-            INetworkPeering, 
-            NetworkPeeringImpl, 
-            VirtualNetworkPeeringInner, 
-            IVirtualNetworkPeeringsOperations, 
-            INetworkManager, 
+            INetworkPeering,
+            NetworkPeeringImpl,
+            VirtualNetworkPeeringInner,
+            IVirtualNetworkPeeringsOperations,
+            INetworkManager,
             INetwork>,
         INetworkPeerings
     {
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 var peerings = await ListAsync();
                 return peerings.FirstOrDefault(p =>
                 {
-                    return (p.RemoteNetworkId != null) 
-                    ? (p.RemoteNetworkId.Equals(remoteNetworkResourceId, StringComparison.OrdinalIgnoreCase)) 
+                    return (p.RemoteNetworkId != null)
+                    ? (p.RemoteNetworkId.Equals(remoteNetworkResourceId, StringComparison.OrdinalIgnoreCase))
                     : false;
                 });
             }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
             // Then delete each peering (this will be called for each of the peerings, so at least once for the local peering, and second time for the remote one if any
             List<Task> peeringDeleteTasks = new List<Task>();
-            foreach(var peering in peeringsToDelete)
+            foreach (var peering in peeringsToDelete)
             {
                 string networkName = ResourceUtils.NameFromResourceId(peering.NetworkId);
                 peeringDeleteTasks.Add(peering.Manager.Inner.VirtualNetworkPeerings.DeleteAsync(
@@ -130,8 +130,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FEB11B34B6BD4D33F16FE39DA7586D7F:986665BCBCA0EEB0AA9F1D112AF0A6DD
         public INetworkPeering GetByRemoteNetwork(string remoteNetworkResourceId)
         {
-            return (remoteNetworkResourceId != null) 
-                ? List().FirstOrDefault(p => p.RemoteNetworkId.Equals(remoteNetworkResourceId, StringComparison.OrdinalIgnoreCase)) 
+            return (remoteNetworkResourceId != null)
+                ? List().FirstOrDefault(p => p.RemoteNetworkId.Equals(remoteNetworkResourceId, StringComparison.OrdinalIgnoreCase))
                 : null;
         }
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:5656FD013FB03DE151E2B9EF746A2384:C28B7FD5EBFFA3800C7C577610AB78BB
-        internal  NetworkPeeringsImpl(NetworkImpl parent) : base(parent.Manager.Inner.VirtualNetworkPeerings, parent.Manager)
+        internal NetworkPeeringsImpl(NetworkImpl parent) : base(parent.Manager.Inner.VirtualNetworkPeerings, parent.Manager)
         {
             network = parent;
         }

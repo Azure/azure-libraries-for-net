@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Update
     /// <summary>
     /// The stage of the subnet update allowing to change the network security group to assign to the subnet.
     /// </summary>
-    public interface IWithNetworkSecurityGroup 
+    public interface IWithNetworkSecurityGroup
     {
         /// <summary>
         /// Removes the association of this subnet with any network security group.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Update
     /// <summary>
     /// The entirety of a subnet update as part of a network update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IWithAddressPrefix,
         Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IWithNetworkSecurityGroup,
         Microsoft.Azure.Management.Network.Fluent.Subnet.Update.IWithRouteTable,
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Update
     /// <summary>
     /// The stage of the subnet update allowing to change the address space for the subnet.
     /// </summary>
-    public interface IWithAddressPrefix 
+    public interface IWithAddressPrefix
     {
         /// <summary>
         /// Specifies the IP address space of the subnet, within the address space of the network.
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.Update
     /// <summary>
     /// The stage of a subnet update allowing to specify a route table to associate with the subnet, or remove an existing association.
     /// </summary>
-    public interface IWithRouteTable 
+    public interface IWithRouteTable
     {
         /// <summary>
         /// Specifies an existing route table to associate with the subnet.

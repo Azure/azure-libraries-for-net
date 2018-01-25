@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
         public Level LogLevel { get; set; }
 
-        public HttpLoggingDelegatingHandler() 
+        public HttpLoggingDelegatingHandler()
             : base() { }
 
-        public HttpLoggingDelegatingHandler(HttpMessageHandler innerHandler) 
+        public HttpLoggingDelegatingHandler(HttpMessageHandler innerHandler)
             : base(innerHandler)
         { }
 

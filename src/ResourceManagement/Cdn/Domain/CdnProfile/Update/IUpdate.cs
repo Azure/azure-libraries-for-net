@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Update
     /// <summary>
     /// The stage of a CDN profile update allowing to modify the endpoints for the profile.
     /// </summary>
-    public interface IWithEndpoint  :
+    public interface IWithEndpoint :
         Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Update.IWithEndpointBeta
     {
         /// <summary>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Update
     /// <summary>
     /// The template for an update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Cdn.Fluent.ICdnProfile>,
         Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Update.IWithEndpoint,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Update.IUpdate>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Update
     /// <summary>
     /// The stage of a CDN profile update allowing to modify the endpoints for the profile.
     /// </summary>
-    public interface IWithEndpointBeta  :
+    public interface IWithEndpointBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

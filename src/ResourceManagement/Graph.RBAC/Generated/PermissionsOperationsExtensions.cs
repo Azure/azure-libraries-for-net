@@ -23,103 +23,103 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     /// </summary>
     public static partial class PermissionsOperationsExtensions
     {
-            
-            /// <summary>
-            /// Gets all permissions the caller has for a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group to get the permissions for. The name is case
-            /// insensitive.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Permission>> ListForResourceGroupAsync(this IPermissionsOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListForResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
 
-            
-            /// <summary>
-            /// Gets all permissions the caller has for a resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group containing the resource. The name is case
-            /// insensitive.
-            /// </param>
-            /// <param name='resourceProviderNamespace'>
-            /// The namespace of the resource provider.
-            /// </param>
-            /// <param name='parentResourcePath'>
-            /// The parent resource identity.
-            /// </param>
-            /// <param name='resourceType'>
-            /// The resource type of the resource.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the resource to get the permissions for.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Permission>> ListForResourceAsync(this IPermissionsOperations operations, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets all permissions the caller has for a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group to get the permissions for. The name is case
+        /// insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<Permission>> ListForResourceGroupAsync(this IPermissionsOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListForResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListForResourceWithHttpMessagesAsync(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            
-            /// <summary>
-            /// Gets all permissions the caller has for a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Permission>> ListForResourceGroupNextAsync(this IPermissionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListForResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
 
-            
-            /// <summary>
-            /// Gets all permissions the caller has for a resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Permission>> ListForResourceNextAsync(this IPermissionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets all permissions the caller has for a resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group containing the resource. The name is case
+        /// insensitive.
+        /// </param>
+        /// <param name='resourceProviderNamespace'>
+        /// The namespace of the resource provider.
+        /// </param>
+        /// <param name='parentResourcePath'>
+        /// The parent resource identity.
+        /// </param>
+        /// <param name='resourceType'>
+        /// The resource type of the resource.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the resource to get the permissions for.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<Permission>> ListForResourceAsync(this IPermissionsOperations operations, string resourceGroupName, string resourceProviderNamespace, string parentResourcePath, string resourceType, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListForResourceWithHttpMessagesAsync(resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListForResourceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
+
+
+        /// <summary>
+        /// Gets all permissions the caller has for a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<Permission>> ListForResourceGroupNextAsync(this IPermissionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListForResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+
+        /// <summary>
+        /// Gets all permissions the caller has for a resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<Permission>> ListForResourceNextAsync(this IPermissionsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListForResourceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
 
     }
 }

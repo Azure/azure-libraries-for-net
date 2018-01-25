@@ -10,8 +10,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Public IP address.
     /// </summary>
-    public interface IPublicIPAddress  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.PublicIPAddressInner>,
+    public interface IPublicIPAddress :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.PublicIPAddressInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<PublicIPAddress.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.IPublicIPAddressBeta

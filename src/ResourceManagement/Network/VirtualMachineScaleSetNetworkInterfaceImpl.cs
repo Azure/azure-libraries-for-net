@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             this.networkManager = networkManager;
         }
 
-        
+
         ///GENMHASH:FC029B56426CB2BA739B4DBD40ECED47:38C266FAF73EE2B36653A8316233F345
         public bool IsAcceleratedNetworkingEnabled()
         {
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             var inners = Inner.IpConfigurations;
             if (inners == null || inners.Count == 0)
             {
-                return new Dictionary<string, IVirtualMachineScaleSetNicIPConfiguration>(); 
+                return new Dictionary<string, IVirtualMachineScaleSetNicIPConfiguration>();
             }
             Dictionary<string, IVirtualMachineScaleSetNicIPConfiguration> nicIPConfigurations = new Dictionary<string, IVirtualMachineScaleSetNicIPConfiguration>();
             foreach (NetworkInterfaceIPConfigurationInner inner in inners)

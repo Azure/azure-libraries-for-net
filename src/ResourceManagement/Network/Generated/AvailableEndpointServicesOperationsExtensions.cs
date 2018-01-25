@@ -22,45 +22,45 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
     public static partial class AvailableEndpointServicesOperationsExtensions
     {
-            /// <summary>
-            /// List what values of endpoint services are available for use.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The location to check available endpoint services.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<EndpointServiceResultInner>> ListAsync(this IAvailableEndpointServicesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// List what values of endpoint services are available for use.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The location to check available endpoint services.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<EndpointServiceResultInner>> ListAsync(this IAvailableEndpointServicesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// List what values of endpoint services are available for use.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<EndpointServiceResultInner>> ListNextAsync(this IAvailableEndpointServicesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// List what values of endpoint services are available for use.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<EndpointServiceResultInner>> ListNextAsync(this IAvailableEndpointServicesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

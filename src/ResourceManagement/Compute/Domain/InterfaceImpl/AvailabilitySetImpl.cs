@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
-    internal partial class AvailabilitySetImpl 
+    internal partial class AvailabilitySetImpl
     {
         /// <summary>
         /// Gets the fault domain count of this availability set.

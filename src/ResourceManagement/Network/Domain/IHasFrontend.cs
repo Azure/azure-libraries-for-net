@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An interface representing a model's ability to references a frontend.
     /// </summary>
-    public interface IHasFrontend 
+    public interface IHasFrontend
     {
         /// <summary>
         /// Gets the associated frontend.

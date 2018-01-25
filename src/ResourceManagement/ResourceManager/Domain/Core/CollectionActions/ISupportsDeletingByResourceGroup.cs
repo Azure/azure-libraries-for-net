@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
     /// 
     /// (Note: this interface is not intended to be implemented by user code)
     /// </summary>
-    public interface ISupportsDeletingByResourceGroup 
+    public interface ISupportsDeletingByResourceGroup
     {
         /// <summary>
         /// Deletes a resource from Azure, identifying it by its name and its resource group.
         /// </summary>
         /// <param name="resourceGroupName">the group the resource is part of</param>
         /// <param name="name">the name of the resource</param>
-        void DeleteByResourceGroup (string resourceGroupName, string name);
+        void DeleteByResourceGroup(string resourceGroupName, string name);
 
         /// <summary>
         /// Deletes a resource from Azure, identifying it by its name and its resource group.
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
         /// <param name="resourceGroupName">the group the resource is part of</param>
         /// <param name="name">the name of the resource</param>
         /// <param name="cancellationToken">cancellationToken the cancellation token</param>
-        Task DeleteByResourceGroupAsync (string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken));
+        Task DeleteByResourceGroupAsync(string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }

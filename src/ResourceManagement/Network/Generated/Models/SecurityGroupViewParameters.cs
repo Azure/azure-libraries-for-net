@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public SecurityGroupViewParameters()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

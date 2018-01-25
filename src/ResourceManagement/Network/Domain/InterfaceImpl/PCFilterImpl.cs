@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using System.Collections.Generic;
 
-    internal partial class PCFilterImpl 
+    internal partial class PCFilterImpl
     {
         /// <summary>
         /// Gets local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5"? for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="protocol">A transport protocol.</param>
         /// <return>The next stage of the definition.</return>
-        PCFilter.Definition.IWithAttach<PacketCapture.Definition.IWithCreate> HasProtocol.Definition.IWithProtocol<PCFilter.Definition.IWithAttach<PacketCapture.Definition.IWithCreate>,Models.PcProtocol>.WithProtocol(PcProtocol protocol)
+        PCFilter.Definition.IWithAttach<PacketCapture.Definition.IWithCreate> HasProtocol.Definition.IWithProtocol<PCFilter.Definition.IWithAttach<PacketCapture.Definition.IWithCreate>, Models.PcProtocol>.WithProtocol(PcProtocol protocol)
         {
             return this.WithProtocol(protocol) as PCFilter.Definition.IWithAttach<PacketCapture.Definition.IWithCreate>;
         }

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// </summary>
         public DeploymentPropertiesExtended()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

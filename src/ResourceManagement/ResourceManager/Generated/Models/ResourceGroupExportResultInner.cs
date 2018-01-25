@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// </summary>
         public ResourceGroupExportResultInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

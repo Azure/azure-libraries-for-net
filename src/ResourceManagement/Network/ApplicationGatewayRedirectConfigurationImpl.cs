@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// Implementation for ApplicationGatewayRedirectConfiguration.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uQXBwbGljYXRpb25HYXRld2F5UmVkaXJlY3RDb25maWd1cmF0aW9uSW1wbA==
-    internal partial class ApplicationGatewayRedirectConfigurationImpl  :
+    internal partial class ApplicationGatewayRedirectConfigurationImpl :
         ChildResource<ApplicationGatewayRedirectConfigurationInner, Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayImpl, Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>,
         IApplicationGatewayRedirectConfiguration,
         IDefinition<ApplicationGateway.Definition.IWithCreate>,
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:B6971E69C4C31ECEC3589B53635834F3:C0847EA0CDA78F6D91EFD239C70F0FA7
-        internal  ApplicationGatewayRedirectConfigurationImpl(ApplicationGatewayRedirectConfigurationInner inner, ApplicationGatewayImpl parent) : base(inner, parent)
+        internal ApplicationGatewayRedirectConfigurationImpl(ApplicationGatewayRedirectConfigurationInner inner, ApplicationGatewayImpl parent) : base(inner, parent)
         {
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 return null;
             }
-            
+
             string name = ResourceUtils.NameFromResourceId(listenerRef.Id);
             IApplicationGatewayListener listener = null;
             Parent.Listeners().TryGetValue(name, out listener);

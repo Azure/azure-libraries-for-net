@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Type representing sku for an Azure compute resource.
     /// </summary>
-    public interface IComputeSku  :
+    public interface IComputeSku :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<ResourceSku>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the availability zones supported for this sku, index by region.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region,System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>> Zones { get; }
+        System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region, System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>> Zones { get; }
 
         /// <summary>
         /// Gets the scaling information of the sku.

@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class OperationStatusEnumExtension
     {
-        internal static string ToSerializedValue(this OperationStatus? value)  =>
+        internal static string ToSerializedValue(this OperationStatus? value) =>
             value == null ? null : ((OperationStatus)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this OperationStatus value)
         {
-            switch( value )
+            switch (value)
             {
                 case OperationStatus.InProgress:
                     return "InProgress";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static OperationStatus? ParseOperationStatus(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "InProgress":
                     return OperationStatus.InProgress;

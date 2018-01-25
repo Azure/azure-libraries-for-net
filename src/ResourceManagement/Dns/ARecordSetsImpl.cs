@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Implementation of ARecordSets.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5BUmVjb3JkU2V0c0ltcGw=
-    internal partial class ARecordSetsImpl  :
+    internal partial class ARecordSetsImpl :
         DnsRecordSetsBaseImpl<Microsoft.Azure.Management.Dns.Fluent.IARecordSet, Microsoft.Azure.Management.Dns.Fluent.ARecordSetImpl>,
         IARecordSets
     {

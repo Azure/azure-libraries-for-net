@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure AD application.
     /// </summary>
-    public interface IActiveDirectoryApplication  :
+    public interface IActiveDirectoryApplication :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryObject,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ApplicationInner>,
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <summary>
         /// Gets the mapping of certificate credentials from their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential> CertificateCredentials { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential> CertificateCredentials { get; }
 
         /// <summary>
         /// Gets whether the application is be available to other tenants.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <summary>
         /// Gets the mapping of password credentials from their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential> PasswordCredentials { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential> PasswordCredentials { get; }
 
         /// <summary>
         /// Gets the home page of the application.

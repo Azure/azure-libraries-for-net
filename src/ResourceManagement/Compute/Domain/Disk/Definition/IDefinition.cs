@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The first stage of a managed disk definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithGroup>
     {
     }
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of a managed disk definition allowing to choose OS source or data source.
     /// </summary>
-    public interface IWithDiskSource  :
+    public interface IWithDiskSource :
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithWindowsDiskSource,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithLinuxDiskSource,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithData
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to create the disk or optionally specify size.
     /// </summary>
-    public interface IWithCreateAndSize  :
+    public interface IWithCreateAndSize :
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreate
     {
         /// <summary>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of the managed disk definition allowing to choose data source.
     /// </summary>
-    public interface IWithDataDiskSource  :
+    public interface IWithDataDiskSource :
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromVhd,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromDisk,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromSnapshot
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The stage of a managed disk definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDiskSource>
     {
     }
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// <summary>
     /// The entirety of the managed disk definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IBlank,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithGroup,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDiskSource,
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// the resource to be created, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.IDisk>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreate>,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithSku,

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// <summary>
     /// Grouping of container registry webhook actions.
     /// </summary>
-    public interface IWebhookOperations  :
+    public interface IWebhookOperations :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

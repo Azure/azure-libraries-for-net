@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.Storage.Fluent;
 
-    internal partial class BatchAccountsImpl 
+    internal partial class BatchAccountsImpl
     {
         /// <summary>
         /// Looks up the number of Batch accounts that can be created in the specified region.

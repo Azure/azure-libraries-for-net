@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class LogLevelEnumExtension
     {
-        internal static string ToSerializedValue(this LogLevel? value)  =>
+        internal static string ToSerializedValue(this LogLevel? value) =>
             value == null ? null : ((LogLevel)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this LogLevel value)
         {
-            switch( value )
+            switch (value)
             {
                 case LogLevel.Off:
                     return "Off";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static LogLevel? ParseLogLevel(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Off":
                     return LogLevel.Off;

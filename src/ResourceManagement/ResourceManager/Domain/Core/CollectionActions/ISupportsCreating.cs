@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
     /// (Note: this interface is not intended to be implemented by user code)
     /// @param <T> the initial blank definition interface
     /// </summary>
-    public interface ISupportsCreating<T> 
+    public interface ISupportsCreating<T>
     {
         /// <summary>
         /// Begins a definition for a new resource.
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
         /// </summary>
         /// <param name="name">name the name of the new resource</param>
         /// <returns>the first stage of the new resource definition</returns>
-        T Define (string name);
+        T Define(string name);
 
     }
 }

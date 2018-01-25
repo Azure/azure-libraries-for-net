@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
-    internal partial class ExpressRouteCircuitsImpl 
+    internal partial class ExpressRouteCircuitsImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.

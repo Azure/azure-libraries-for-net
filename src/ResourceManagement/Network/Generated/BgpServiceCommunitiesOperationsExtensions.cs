@@ -22,42 +22,42 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
     public static partial class BgpServiceCommunitiesOperationsExtensions
     {
-            /// <summary>
-            /// Gets all the available bgp service communities.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<BgpServiceCommunityInner>> ListAsync(this IBgpServiceCommunitiesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets all the available bgp service communities.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<BgpServiceCommunityInner>> ListAsync(this IBgpServiceCommunitiesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Gets all the available bgp service communities.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<BgpServiceCommunityInner>> ListNextAsync(this IBgpServiceCommunitiesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets all the available bgp service communities.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<BgpServiceCommunityInner>> ListNextAsync(this IBgpServiceCommunitiesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

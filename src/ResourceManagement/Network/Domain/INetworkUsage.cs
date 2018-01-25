@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure compute resource usage info object.
     /// </summary>
-    public interface INetworkUsage  :
+    public interface INetworkUsage :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.Usage>
     {
         /// <summary>

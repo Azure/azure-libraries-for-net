@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of a subnet of a virtual network.
     /// </summary>
-    public interface ISubnet  :
+    public interface ISubnet :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.SubnetInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Network.Fluent.INetwork>,
         Microsoft.Azure.Management.Network.Fluent.ISubnetBeta

@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class HostingEnvironmentStatusEnumExtension
     {
-        internal static string ToSerializedValue(this HostingEnvironmentStatus? value)  =>
+        internal static string ToSerializedValue(this HostingEnvironmentStatus? value) =>
             value == null ? null : ((HostingEnvironmentStatus)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this HostingEnvironmentStatus value)
         {
-            switch( value )
+            switch (value)
             {
                 case HostingEnvironmentStatus.Preparing:
                     return "Preparing";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static HostingEnvironmentStatus? ParseHostingEnvironmentStatus(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Preparing":
                     return HostingEnvironmentStatus.Preparing;

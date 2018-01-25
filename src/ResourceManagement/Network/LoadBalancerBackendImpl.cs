@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for Backend.
     /// </summary>
-    
+
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uTG9hZEJhbGFuY2VyQmFja2VuZEltcGw=
     internal partial class LoadBalancerBackendImpl :
         ChildResource<BackendAddressPoolInner, LoadBalancerImpl, ILoadBalancer>,
@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IUpdateDefinition<LoadBalancer.Update.IUpdate>,
         IUpdate
     {
-        
+
         ///GENMHASH:EE2A508C800EC05294CBB5EAA90384AB:C0847EA0CDA78F6D91EFD239C70F0FA7
-        internal LoadBalancerBackendImpl (BackendAddressPoolInner inner, LoadBalancerImpl parent) : base(inner, parent)
+        internal LoadBalancerBackendImpl(BackendAddressPoolInner inner, LoadBalancerImpl parent) : base(inner, parent)
         {
         }
 
-        
+
         ///GENMHASH:660646CB1AAA13CCBA50483108FFFCBF:1DE7E24B5141F230DDAD34D53E6C0E04
         internal IReadOnlyDictionary<string, string> BackendNicIPConfigurationNames()
         {
@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
             return ipConfigNames;
         }
-   
-        
+
+
         ///GENMHASH:4EDB057B59A7F7BB0C722F8A1399C004:A2F94AF9792429D630DA94FCC75CFD8B
-        internal IDictionary<string, ILoadBalancingRule> LoadBalancingRules ()
+        internal IDictionary<string, ILoadBalancingRule> LoadBalancingRules()
         {
             IDictionary<string, ILoadBalancingRule> rules = new SortedDictionary<string, ILoadBalancingRule>();
             if (Inner.LoadBalancingRules != null)
@@ -69,16 +69,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return rules;
         }
 
-        
+
         ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:61C1065B307679F3800C701AE0D87070
         public override string Name()
         {
             return Inner.Name;
         }
 
-        
+
         ///GENMHASH:A2968EC81873609D937762599BD3CAF6:6FF87412F1B970C11ADDF4400C94B874
-        internal ISet<string> GetVirtualMachineIds ()
+        internal ISet<string> GetVirtualMachineIds()
         {
             ISet<string> vmIds = new HashSet<string>();
             var nicConfigs = BackendNicIPConfigurationNames();
@@ -102,9 +102,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return vmIds;
         }
 
-        
+
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:321924EA2E0782F0638FD1917D19DF54
-        internal LoadBalancerImpl Attach ()
+        internal LoadBalancerImpl Attach()
         {
             return Parent.WithBackend(this);
         }
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (vms != null)
             {
-                foreach(var vm in vms)
+                foreach (var vm in vms)
                 {
                     Parent.WithExistingVirtualMachine(vm, Name());
                 }
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
-        
+
         ///GENMHASH:DFE9D388863B0ACFAC02ED04C33B6964:32CC04CBC7A0600E8B42E01CB9CE142B
         internal LoadBalancerBackendImpl WithExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
         {

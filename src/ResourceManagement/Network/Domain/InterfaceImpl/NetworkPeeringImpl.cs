@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.IndependentChild.Definition;
 
-    internal partial class NetworkPeeringImpl 
+    internal partial class NetworkPeeringImpl
     {
         /// <summary>
         /// Gets the name of the resource.

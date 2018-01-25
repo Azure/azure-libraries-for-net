@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Collections.Generic;
 
-    internal partial class VirtualMachineCustomImageImpl 
+    internal partial class VirtualMachineCustomImageImpl
     {
         /// <summary>
         /// Uses the virtual machine's OS disk and data disks as the source for OS disk image and
@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets data disk images in this image, indexed by the disk LUN.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<int,Models.ImageDataDisk> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineCustomImage.DataDiskImages
+        System.Collections.Generic.IReadOnlyDictionary<int, Models.ImageDataDisk> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineCustomImage.DataDiskImages
         {
             get
             {
-                return this.DataDiskImages() as System.Collections.Generic.IReadOnlyDictionary<int,Models.ImageDataDisk>;
+                return this.DataDiskImages() as System.Collections.Generic.IReadOnlyDictionary<int, Models.ImageDataDisk>;
             }
         }
 

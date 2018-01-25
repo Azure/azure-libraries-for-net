@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// </summary>
     /// <typeparam name="FluentT">The fluent interface of the parent web app.</typeparam>
     /// <typeparam name="FluentImplT">The fluent implementation of the parent web app.</typeparam>
-    internal partial class WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>  :
+    internal partial class WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> :
         IndexableWrapper<Models.SiteAuthSettingsInner>,
         IWebAppAuthentication,
         WebAppAuthentication.Definition.IDefinition<IWithCreate<FluentT>>,
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return (FluentImplT)parent;
         }
 
-        internal  WebAppAuthenticationImpl(SiteAuthSettingsInner inner, WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> parent)
+        internal WebAppAuthenticationImpl(SiteAuthSettingsInner inner, WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> parent)
             : base(inner)
         {
             this.parent = parent;

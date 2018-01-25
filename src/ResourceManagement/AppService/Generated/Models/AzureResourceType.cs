@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class AzureResourceTypeEnumExtension
     {
-        internal static string ToSerializedValue(this AzureResourceType? value)  =>
+        internal static string ToSerializedValue(this AzureResourceType? value) =>
             value == null ? null : ((AzureResourceType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this AzureResourceType value)
         {
-            switch( value )
+            switch (value)
             {
                 case AzureResourceType.Website:
                     return "Website";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static AzureResourceType? ParseAzureResourceType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Website":
                     return AzureResourceType.Website;

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure AD group.
     /// </summary>
-    public interface IActiveDirectoryGroup  :
+    public interface IActiveDirectoryGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryObject,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ADGroupInner>,

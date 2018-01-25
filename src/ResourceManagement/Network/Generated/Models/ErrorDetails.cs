@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public ErrorDetails()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

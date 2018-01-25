@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Update
     /// <summary>
     /// The stage of a network peering update allowing to control traffic forwarding from or to the remote network.
     /// </summary>
-    public interface IWithTrafficForwarding 
+    public interface IWithTrafficForwarding
     {
         /// <summary>
         /// Prevents traffic forwarding from the remote network.
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Update
     /// <summary>
     /// The stage of a network peering update allowing to control access from and to the remote network.
     /// </summary>
-    public interface IWithAccess 
+    public interface IWithAccess
     {
         /// <summary>
         /// Disallows access to either peered network from the other.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Update
     /// <summary>
     /// The stage of a network peering update allowing to control the gateway use by or on the remote network.
     /// </summary>
-    public interface IWithGatewayUse 
+    public interface IWithGatewayUse
     {
         /// <summary>
         /// Allows the remote network to use this network's gateway (a.k.a. gateway transit), but does not start the use of the gateway by the remote network.
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Update
     /// The template for a load balancer update operation, containing all the settings that
     /// can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.INetworkPeering>,
         Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Update.IWithTrafficForwarding,
         Microsoft.Azure.Management.Network.Fluent.NetworkPeering.Update.IWithAccess,

@@ -12,7 +12,7 @@ using System;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent
 {
-    internal class ResourceGroupsImpl : 
+    internal class ResourceGroupsImpl :
         CreatableResources<IResourceGroup, ResourceGroupImpl, ResourceGroupInner>,
         IResourceGroups
     {
@@ -25,15 +25,15 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public IEnumerable<IResourceGroup> List()
         {
-           return WrapList(Extensions.Synchronize(() => Inner.ListAsync())
-                                .AsContinuousCollection(link => Extensions.Synchronize(() => Inner.ListNextAsync(link))));
+            return WrapList(Extensions.Synchronize(() => Inner.ListAsync())
+                                 .AsContinuousCollection(link => Extensions.Synchronize(() => Inner.ListNextAsync(link))));
         }
 
         public bool CheckExistence(string name)
         {
             return Contain(name);
         }
-        
+
         public async Task<bool> CheckExistenceAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await ContainAsync(name, cancellationToken);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             var resourceGroupInner = await Inner.GetAsync(name, cancellationToken);
             return WrapModel(resourceGroupInner);
         }
-        
+
         protected override ResourceGroupImpl WrapModel(string name)
         {
             return new ResourceGroupImpl(new ResourceGroupInner

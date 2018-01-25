@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// An interface representing a model's ability to reference a transport protocol.
     /// </summary>
     /// <typeparam name="ProtocolT">The protocol type of the value.</typeparam>
-    public interface IHasProtocol<ProtocolT> 
+    public interface IHasProtocol<ProtocolT>
     {
         /// <summary>
         /// Gets the protocol.

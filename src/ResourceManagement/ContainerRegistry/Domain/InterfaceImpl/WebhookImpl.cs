@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using Microsoft.Rest;
 
-    internal partial class WebhookImpl 
+    internal partial class WebhookImpl
     {
         /// <return>The webhook parent ID.</return>
         string Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook.ParentId()
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// </summary>
         void Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook.Disable()
         {
- 
+
             this.Disable();
         }
 
@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// </summary>
         void Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook.Enable()
         {
- 
+
             this.Enable();
         }
 
         /// <return>The Custom headers that will be added to the webhook notifications.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook.CustomHeaders()
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook.CustomHeaders()
         {
-            return this.CustomHeaders() as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+            return this.CustomHeaders() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
         }
 
         /// <return>The list of event info object.</return>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook.DisableAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.DisableAsync(cancellationToken);
         }
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook.EnableAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.EnableAsync(cancellationToken);
         }
 
@@ -184,11 +184,11 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <summary>
         /// Gets the tags for the resource.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
         {
             get
             {
-                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
             }
         }
 
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// </summary>
         /// <param name="customHeaders">The "Name=Value" custom headers.</param>
         /// <return>The next stage of the resource update.</return>
-        Webhook.Update.IUpdate Webhook.Update.IWithCustomHeaders.WithCustomHeaders(IDictionary<string,string> customHeaders)
+        Webhook.Update.IUpdate Webhook.Update.IWithCustomHeaders.WithCustomHeaders(IDictionary<string, string> customHeaders)
         {
             return this.WithCustomHeaders(customHeaders) as Webhook.Update.IUpdate;
         }
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// </summary>
         /// <param name="tags">A  Map of tags.</param>
         /// <return>The next stage of the resource update.</return>
-        Webhook.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Webhook.Update.IUpdate>.WithTags(IDictionary<string,string> tags)
+        Webhook.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Webhook.Update.IUpdate>.WithTags(IDictionary<string, string> tags)
         {
             return this.WithTags(tags) as Webhook.Update.IUpdate;
         }
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// </summary>
         /// <param name="tags">A  Map of tags.</param>
         /// <return>The next stage of the definition.</return>
-        Webhook.UpdateDefinition.IWithAttach<Registry.Update.IUpdate> Webhook.UpdateDefinition.IWithTags<Registry.Update.IUpdate>.WithTags(IDictionary<string,string> tags)
+        Webhook.UpdateDefinition.IWithAttach<Registry.Update.IUpdate> Webhook.UpdateDefinition.IWithTags<Registry.Update.IUpdate>.WithTags(IDictionary<string, string> tags)
         {
             return this.WithTags(tags) as Webhook.UpdateDefinition.IWithAttach<Registry.Update.IUpdate>;
         }
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// </summary>
         /// <param name="tags">A  Map of tags.</param>
         /// <return>The next stage of the resource update.</return>
-        Webhook.UpdateResource.IWithAttach<Registry.Update.IUpdate> Webhook.UpdateResource.IWithOrWithoutTags<Registry.Update.IUpdate>.WithTags(IDictionary<string,string> tags)
+        Webhook.UpdateResource.IWithAttach<Registry.Update.IUpdate> Webhook.UpdateResource.IWithOrWithoutTags<Registry.Update.IUpdate>.WithTags(IDictionary<string, string> tags)
         {
             return this.WithTags(tags) as Webhook.UpdateResource.IWithAttach<Registry.Update.IUpdate>;
         }
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// </summary>
         /// <param name="customHeaders">The "Name=Value" custom headers.</param>
         /// <return>The next stage of the definition.</return>
-        Webhook.UpdateDefinition.IWithAttach<Registry.Update.IUpdate> Webhook.UpdateDefinition.IWithCustomHeaders<Registry.Update.IUpdate>.WithCustomHeaders(IDictionary<string,string> customHeaders)
+        Webhook.UpdateDefinition.IWithAttach<Registry.Update.IUpdate> Webhook.UpdateDefinition.IWithCustomHeaders<Registry.Update.IUpdate>.WithCustomHeaders(IDictionary<string, string> customHeaders)
         {
             return this.WithCustomHeaders(customHeaders) as Webhook.UpdateDefinition.IWithAttach<Registry.Update.IUpdate>;
         }
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// </summary>
         /// <param name="customHeaders">The "Name=Value" custom headers.</param>
         /// <return>The next stage of the definition.</return>
-        Webhook.Definition.IWithAttach<Registry.Definition.IWithCreate> Webhook.Definition.IWithCustomHeaders<Registry.Definition.IWithCreate>.WithCustomHeaders(IDictionary<string,string> customHeaders)
+        Webhook.Definition.IWithAttach<Registry.Definition.IWithCreate> Webhook.Definition.IWithCustomHeaders<Registry.Definition.IWithCreate>.WithCustomHeaders(IDictionary<string, string> customHeaders)
         {
             return this.WithCustomHeaders(customHeaders) as Webhook.Definition.IWithAttach<Registry.Definition.IWithCreate>;
         }
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// </summary>
         /// <param name="customHeaders">The "Name=Value" custom headers.</param>
         /// <return>The next stage of the resource update.</return>
-        Webhook.UpdateResource.IWithAttach<Registry.Update.IUpdate> Webhook.UpdateResource.IWithCustomHeaders<Registry.Update.IUpdate>.WithCustomHeaders(IDictionary<string,string> customHeaders)
+        Webhook.UpdateResource.IWithAttach<Registry.Update.IUpdate> Webhook.UpdateResource.IWithCustomHeaders<Registry.Update.IUpdate>.WithCustomHeaders(IDictionary<string, string> customHeaders)
         {
             return this.WithCustomHeaders(customHeaders) as Webhook.UpdateResource.IWithAttach<Registry.Update.IUpdate>;
         }
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// </summary>
         /// <param name="tags">A  Map of tags.</param>
         /// <return>The next stage of the definition.</return>
-        Webhook.Definition.IWithAttach<Registry.Definition.IWithCreate> Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Webhook.Definition.IWithAttach<Registry.Definition.IWithCreate>>.WithTags(IDictionary<string,string> tags)
+        Webhook.Definition.IWithAttach<Registry.Definition.IWithCreate> Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Webhook.Definition.IWithAttach<Registry.Definition.IWithCreate>>.WithTags(IDictionary<string, string> tags)
         {
             return this.WithTags(tags) as Webhook.Definition.IWithAttach<Registry.Definition.IWithCreate>;
         }

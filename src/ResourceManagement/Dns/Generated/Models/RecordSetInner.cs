@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.Models
         /// </summary>
         public RecordSetInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

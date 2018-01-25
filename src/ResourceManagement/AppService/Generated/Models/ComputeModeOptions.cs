@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class ComputeModeOptionsEnumExtension
     {
-        internal static string ToSerializedValue(this ComputeModeOptions? value)  =>
+        internal static string ToSerializedValue(this ComputeModeOptions? value) =>
             value == null ? null : ((ComputeModeOptions)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this ComputeModeOptions value)
         {
-            switch( value )
+            switch (value)
             {
                 case ComputeModeOptions.Shared:
                     return "Shared";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static ComputeModeOptions? ParseComputeModeOptions(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Shared":
                     return ComputeModeOptions.Shared;

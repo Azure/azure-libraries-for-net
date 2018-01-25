@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:38030CBAE29B9F2F38D72F365E2E629A:E94F2D3DAC3B970EABC385A12F44BB26
         public bool AutoUpgradeMinorVersionEnabled()
         {
-            return Inner.AutoUpgradeMinorVersion?? false;
+            return Inner.AutoUpgradeMinorVersion ?? false;
         }
 
         ///GENMHASH:99D5BF64EA8AA0E287C9B6F77AAD6FC4:220D4662AAC7DF3BEFAF2B253278E85C
@@ -86,7 +86,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:4B19A5F1B35CA91D20F63FBB66E86252:9B2A27091279EF147C6847EBD7A52FA9
         public IReadOnlyDictionary<string, string> Tags()
         {
-            if (Inner.Tags == null) {
+            if (Inner.Tags == null)
+            {
                 return new Dictionary<string, string>();
             }
             return Inner.Tags as IReadOnlyDictionary<string, string>;

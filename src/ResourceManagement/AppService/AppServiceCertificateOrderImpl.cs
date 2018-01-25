@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:11AF5CEDE5EC5110A3D190463E690E16:0B6EB716D0098ABB085A80641A141FD0
         public AppServiceCertificateOrderImpl WithNewKeyVault(string vaultName, Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region region)
         {
-            this.bindingVault = async() =>
+            this.bindingVault = async () =>
                 await Manager.KeyVaultManager.Vaults.Define(vaultName)
                     .WithRegion(region)
                     .WithExistingResourceGroup(ResourceGroupName)

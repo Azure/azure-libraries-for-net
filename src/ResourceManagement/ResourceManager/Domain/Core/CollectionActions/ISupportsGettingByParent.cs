@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
     /// Provides access to getting a specific Azure resource based on its resource group and parent.
     /// </summary>
     /// <typeparam name="">The type of the resource collection.</typeparam>
-    public interface ISupportsGettingByParent<T, ParentT, ManagerT> where ParentT : IResource, IHasResourceGroup 
+    public interface ISupportsGettingByParent<T, ParentT, ManagerT> where ParentT : IResource, IHasResourceGroup
     {
         /// <summary>
         /// Gets the information about a resource from Azure based on the resource id.

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Update
     /// <summary>
     /// The stage of update allowing to specify local network gateway's BGP speaker settings.
     /// </summary>
-    public interface IWithBgp 
+    public interface IWithBgp
     {
         /// <summary>
         /// Enables BGP.
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Update
     /// <summary>
     /// The stage of the local network gateway update allowing to specify the address spaces.
     /// </summary>
-    public interface IWithAddressSpace 
+    public interface IWithAddressSpace
     {
         /// <summary>
         /// Remove address space. Note: address space will be removed only in case of exact cidr string match.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Update
     /// The template for a local network gateway update operation, containing all the settings that
     /// can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Update.IWithIPAddress,
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Update
     /// <summary>
     /// The stage of the local network gateway update allowing to change IP address of local network gateway.
     /// </summary>
-    public interface IWithIPAddress 
+    public interface IWithIPAddress
     {
         Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Update.IUpdate WithIPAddress(string ipAddress);
     }

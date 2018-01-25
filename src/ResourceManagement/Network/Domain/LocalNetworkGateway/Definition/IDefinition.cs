@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definiti
     /// <summary>
     /// The entirety of the local network gateway definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definition.IWithGroup,
         Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definition.IWithIPAddress,
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definiti
     /// <summary>
     /// The stage of definition allowing to specify local network gateway's BGP speaker settings.
     /// </summary>
-    public interface IWithBgp 
+    public interface IWithBgp
     {
         /// <summary>
         /// Enables BGP.
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definiti
     /// <summary>
     /// The stage of the local network gateway definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definition.IWithIPAddress>
     {
     }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definiti
     /// The stage of the local network gateway definition which contains all the minimum required inputs for
     /// the resource to be created (via  WithCreate.create()).
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definition.IWithCreate>,
         Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definition.IWithAddressSpace,
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definiti
     /// <summary>
     /// The stage of the local network gateway definition allowing to specify the address space.
     /// </summary>
-    public interface IWithAddressSpace 
+    public interface IWithAddressSpace
     {
         /// <summary>
         /// Adds address space.
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definiti
     /// <summary>
     /// The first stage of a local network gateway definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definition.IWithGroup>
     {
     }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definiti
     /// <summary>
     /// The stage of the local network gateway definition allowing to specify IP address of local network gateway.
     /// </summary>
-    public interface IWithIPAddress 
+    public interface IWithIPAddress
     {
         /// <summary>
         /// Specifies the IP address of the local network gateway.

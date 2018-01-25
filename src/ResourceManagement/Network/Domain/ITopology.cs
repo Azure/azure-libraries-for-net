@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Topology info object, associated with network watcher.
     /// </summary>
-    public interface ITopology  :
+    public interface ITopology :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.TopologyInner>,
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets The resources in this topology.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Models.TopologyResource> Resources { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Models.TopologyResource> Resources { get; }
 
         /// <summary>
         /// Gets GUID representing the id.

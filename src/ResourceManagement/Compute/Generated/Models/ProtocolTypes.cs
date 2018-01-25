@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this ProtocolTypes value)
         {
-            switch( value )
+            switch (value)
             {
                 case ProtocolTypes.Http:
                     return "Http";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static ProtocolTypes? ParseProtocolTypes(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Http":
                     return ProtocolTypes.Http;

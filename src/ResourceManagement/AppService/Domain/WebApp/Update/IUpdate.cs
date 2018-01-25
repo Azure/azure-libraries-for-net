@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Update
     /// <summary>
     /// A web app update allowing docker hub credentials to be set.
     /// </summary>
-    public interface IWithCredentials 
+    public interface IWithCredentials
     {
         /// <summary>
         /// Specifies the username and password for Docker Hub.
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Update
     /// <summary>
     /// A web app update allowing docker image source to be specified.
     /// </summary>
-    public interface IWithDockerContainerImage 
+    public interface IWithDockerContainerImage
     {
         /// <summary>
         /// Specifies the docker container image to be one from Docker Hub.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Update
     /// <summary>
     /// A web app update allowing app service plan to be set.
     /// </summary>
-    public interface IWithAppServicePlan 
+    public interface IWithAppServicePlan
     {
         /// <summary>
         /// Creates a new app service plan to use.
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Update
     /// A web app definition allowing docker startup command to be specified.
     /// This will replace the "CMD" section in the Dockerfile.
     /// </summary>
-    public interface IWithStartUpCommand  :
+    public interface IWithStartUpCommand :
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Update.IUpdate
     {
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Update
     /// <summary>
     /// The template for a web app update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.AppService.Fluent.IWebApp>,
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Update.IWithAppServicePlan,
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IWebApp>,

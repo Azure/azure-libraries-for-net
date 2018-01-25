@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasFloatingIP.Definition
     /// The stage of a definition allowing to control floating IP support.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithFloatingIP<ReturnT> 
+    public interface IWithFloatingIP<ReturnT>
     {
         /// <summary>
         /// Disables floating IP support.

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this CachingTypes value)
         {
-            switch( value )
+            switch (value)
             {
                 case CachingTypes.None:
                     return "None";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static CachingTypes? ParseCachingTypes(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "None":
                     return CachingTypes.None;

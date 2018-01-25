@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Definition
     /// The final stage of the Premium Verizon endpoint definition, at which it can be attached to the parent.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent CDN profile definition to return to after attaching this definition.</typeparam>
-    public interface IAttachablePremium<ParentT> 
+    public interface IAttachablePremium<ParentT>
     {
         /// <summary>
         /// Attaches the defined endpoint to the parent CDN profile.
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Definition
     /// <summary>
     /// The first stage of a CDN profile endpoint definition.
     /// </summary>
-    public interface IBlank 
+    public interface IBlank
     {
     }
 
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Definition
     /// definition can be attached to the parent CDN profile definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent CDN profile definition to return to after attaching this definition.</typeparam>
-    public interface IWithPremiumAttach<ParentT>  :
+    public interface IWithPremiumAttach<ParentT> :
         Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Definition.IAttachablePremium<ParentT>
     {
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Definition
     /// The final stage of a Standard endpoint definition, at which it can be attached to the parent.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent CDN profile definition to return to after attaching this definition.</typeparam>
-    public interface IAttachableStandard<ParentT> 
+    public interface IAttachableStandard<ParentT>
     {
         /// <summary>
         /// Attaches the defined endpoint to the parent CDN profile.
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Definition
     /// definition can be attached to the parent CDN profile definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent CDN profile definition to return to after attaching this definition.</typeparam>
-    public interface IWithStandardAttach<ParentT>  :
+    public interface IWithStandardAttach<ParentT> :
         Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Definition.IAttachableStandard<ParentT>
     {
         /// <summary>

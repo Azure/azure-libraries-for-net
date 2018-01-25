@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Definition.Blank.Sta
     /// The stage of a CDN profile endpoint definition allowing to specify the origin.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent CDN profile definition to return to after attaching this definition.</typeparam>
-    public interface IStandardEndpoint<ParentT> 
+    public interface IStandardEndpoint<ParentT>
     {
         /// <summary>
         /// Specifies the origin of the CDN endpoint.

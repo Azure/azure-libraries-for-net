@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.Models
         /// </summary>
         public RecordSetUpdateParameters()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

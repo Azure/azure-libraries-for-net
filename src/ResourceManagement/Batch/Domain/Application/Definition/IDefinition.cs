@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Application.Definition
     /// The first stage of a batch application definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent Batch account definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Batch.Fluent.Application.Definition.IWithAttach<ParentT>
     {
     }
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Application.Definition
     /// can be attached to the parent batch account definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent Batch account definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         Microsoft.Azure.Management.Batch.Fluent.Application.Definition.IWithApplicationPackage<ParentT>
     {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Application.Definition
     /// The stage of a Batch application definition that allows the creation of an application package.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent Batch account definition to return to after attaching this definition.</typeparam>
-    public interface IWithApplicationPackage<ParentT> 
+    public interface IWithApplicationPackage<ParentT>
     {
         /// <summary>
         /// The first stage of a new application package definition in a Batch account application.
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Application.Definition
     /// The entirety of a Batch application definition as a part of a Batch account definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent Batch account definition to return to after attaching this definition.</typeparam>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         Microsoft.Azure.Management.Batch.Fluent.Application.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.Batch.Fluent.Application.Definition.IWithAttach<ParentT>
     {

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public InnerT Inner
         {
             get; private set;
-            
+
         }
 
         public void SetInner(InnerT innerObject)

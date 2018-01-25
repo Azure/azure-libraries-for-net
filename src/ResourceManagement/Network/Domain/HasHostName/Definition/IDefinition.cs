@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasHostName.Definition
     /// The stage of a definition allowing to specify a host name.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithHostName<ReturnT> 
+    public interface IWithHostName<ReturnT>
     {
         /// <summary>
         /// Specifies the hostname to reference.

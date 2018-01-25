@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.IO;
 
-    internal partial class ApplicationGatewayListenerImpl 
+    internal partial class ApplicationGatewayListenerImpl
     {
         /// <summary>
         /// Gets the associated host name.

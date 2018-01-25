@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
     /// <summary>
     /// Provides access to getting a specific Azure resource based on its resource group and parent.
     /// </summary>
-    public interface ISupportsDeletingByParent 
+    public interface ISupportsDeletingByParent
     {
         /// <summary>
         /// Asynchronously delete a resource from Azure, identifying it by its name and its resource group.

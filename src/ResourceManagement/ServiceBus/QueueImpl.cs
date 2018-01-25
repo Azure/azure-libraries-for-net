@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Implementation for Queue.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuaW1wbGVtZW50YXRpb24uUXVldWVJbXBs
-    internal partial class QueueImpl  :
+    internal partial class QueueImpl :
         IndependentChildResourceImpl<IQueue,
             ServiceBusNamespaceImpl,
             QueueInner,
@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         private IList<string> rulesToDelete;
 
         ///GENMHASH:2E16A3C3DDA5707111D704BA0D4871AD:E384D1DC0323D2359E002A2334C75FD1
-        internal QueueImpl(string resourceGroupName, 
-            string namespaceName, 
-            string name, 
-            Region region, 
-            QueueInner inner, 
+        internal QueueImpl(string resourceGroupName,
+            string namespaceName,
+            string name,
+            Region region,
+            QueueInner inner,
             IServiceBusManager manager) : base(name, inner, manager)
         {
             this.WithExistingParentResource(resourceGroupName, namespaceName);
@@ -103,10 +103,11 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         public long TransferMessageCount()
         {
             if (this.Inner.CountDetails == null
-                || this.Inner.CountDetails.TransferMessageCount == null) {
+                || this.Inner.CountDetails.TransferMessageCount == null)
+            {
                 return 0;
             }
-            if (this.Inner.CountDetails.TransferMessageCount == null 
+            if (this.Inner.CountDetails.TransferMessageCount == null
                 || !this.Inner.CountDetails.TransferMessageCount.HasValue)
             {
                 return 0;
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             {
                 return 0;
             }
-            return (long) TimeSpan.Parse(this.Inner.LockDuration).TotalSeconds;
+            return (long)TimeSpan.Parse(this.Inner.LockDuration).TotalSeconds;
         }
 
         ///GENMHASH:DA1D6CD0EA6714E3CECEFA0F43674911:AE9119898216FD471C4241E3ADCCA164
@@ -185,10 +186,11 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         ///GENMHASH:92D1FA2E75A52DFA9843DFD2C5154FB3:2625AB68CBC1A5B9EC885AA0FC482AD1
         public long DeleteOnIdleDurationInMinutes()
         {
-            if (this.Inner.AutoDeleteOnIdle == null) {
+            if (this.Inner.AutoDeleteOnIdle == null)
+            {
                 return 0;
             }
-            return (long) TimeSpan.Parse(this.Inner.AutoDeleteOnIdle).TotalMinutes;
+            return (long)TimeSpan.Parse(this.Inner.AutoDeleteOnIdle).TotalMinutes;
         }
 
         ///GENMHASH:41482A7907F5C3C16FDB1A8E3CEB3B9F:B5BA3212E181BC7B599A722AEFAC04B4
@@ -202,7 +204,8 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         ///GENMHASH:2B55FDDC00E5EE76AD5C4B7D72CBA6F2:A53A238C2C751C27ED47B7783EACF7C6
         public TimeSpan DuplicateMessageDetectionHistoryDuration()
         {
-            if (this.Inner.DuplicateDetectionHistoryTimeWindow == null) {
+            if (this.Inner.DuplicateDetectionHistoryTimeWindow == null)
+            {
                 return TimeSpan.MaxValue;
             }
             return TimeSpan.Parse(this.Inner.DuplicateDetectionHistoryTimeWindow);
@@ -235,7 +238,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         ///GENMHASH:FAD58514475FBDD5ADFE0AFE4F821FA2:0E94794501F4861D7BC8CF1B8EC0F1E1
         public DateTime UpdatedAt()
         {
-            if (this.Inner.UpdatedAt == null || ! this.Inner.UpdatedAt.HasValue)
+            if (this.Inner.UpdatedAt == null || !this.Inner.UpdatedAt.HasValue)
             {
                 return DateTime.MinValue;
             }
@@ -268,8 +271,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             if (this.Inner.CountDetails == null
                 || this.Inner.CountDetails.TransferDeadLetterMessageCount == null
-                || !this.Inner.CountDetails.TransferDeadLetterMessageCount.HasValue) {
-                 return 0;
+                || !this.Inner.CountDetails.TransferDeadLetterMessageCount.HasValue)
+            {
+                return 0;
             }
             return this.Inner.CountDetails.TransferDeadLetterMessageCount.Value;
         }
@@ -375,7 +379,8 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         ///GENMHASH:3B2A360F977A78F31ACAD3AF5E995284:EC1F917ADA042B405846E5D213C2E58F
         public TimeSpan DefaultMessageTtlDuration()
         {
-            if (this.Inner.DefaultMessageTimeToLive == null) {
+            if (this.Inner.DefaultMessageTimeToLive == null)
+            {
                 return TimeSpan.MaxValue;
             }
             return TimeSpan.Parse(this.Inner.DefaultMessageTimeToLive);

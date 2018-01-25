@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure virtual machine.
     /// </summary>
-    public interface IVirtualMachineBeta  :
+    public interface IVirtualMachineBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -49,5 +49,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the availability zones assigned to the virtual machine.
         /// </summary>
         System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId> AvailabilityZones { get; }
-  }
+    }
 }

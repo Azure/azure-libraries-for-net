@@ -259,9 +259,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 Inner.AuthenticationCertificates = refs;
             }
 
-            foreach (var c in refs) 
+            foreach (var c in refs)
             {
-                if (c.Id.Equals(certRef.Id, StringComparison.OrdinalIgnoreCase)) {
+                if (c.Id.Equals(certRef.Id, StringComparison.OrdinalIgnoreCase))
+                {
                     return this;
                 }
             }

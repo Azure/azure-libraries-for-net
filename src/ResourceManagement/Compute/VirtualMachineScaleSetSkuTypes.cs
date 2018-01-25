@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Scale set virtual machine sku types.
     /// </summary>
-    public partial class VirtualMachineScaleSetSkuTypes 
+    public partial class VirtualMachineScaleSetSkuTypes
     {
         private static IDictionary<string, VirtualMachineScaleSetSkuTypes> ValuesByName;
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="skuName">skuName the sku name</param>
         /// <param name="skuTier">skuTier thr sku tier</param>
-        public  VirtualMachineScaleSetSkuTypes (string skuName, string skuTier) : this(new Sku { Name =skuName, Tier = skuTier })
+        public VirtualMachineScaleSetSkuTypes(string skuName, string skuTier) : this(new Sku { Name = skuName, Tier = skuTier })
         {
         }
 
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Creates a custom value for VirtualMachineSizeTypes.
         /// </summary>
         /// <param name="sku">sku the sku</param>
-        public  VirtualMachineScaleSetSkuTypes (Sku sku)
+        public VirtualMachineScaleSetSkuTypes(Sku sku)
         {
             this.sku = CreateCopy(sku);
             value = this.sku.Name;
@@ -306,19 +306,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this.value.GetHashCode();
         }
 
-        public override bool Equals (object obj)
+        public override bool Equals(object obj)
         {
 
             string value = this.ToString();
-            if (!(obj is VirtualMachineScaleSetSkuTypes)) {
+            if (!(obj is VirtualMachineScaleSetSkuTypes))
+            {
                 return false;
             }
 
-            if (obj == this) {
-            return true;
+            if (obj == this)
+            {
+                return true;
             }
-            VirtualMachineScaleSetSkuTypes rhs = (VirtualMachineScaleSetSkuTypes) obj;
-            if (value == null) {
+            VirtualMachineScaleSetSkuTypes rhs = (VirtualMachineScaleSetSkuTypes)obj;
+            if (value == null)
+            {
                 return rhs.value == null;
             }
             return value.Equals(rhs.value);

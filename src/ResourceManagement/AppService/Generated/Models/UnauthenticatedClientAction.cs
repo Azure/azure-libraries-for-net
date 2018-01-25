@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class UnauthenticatedClientActionEnumExtension
     {
-        internal static string ToSerializedValue(this UnauthenticatedClientAction? value)  =>
+        internal static string ToSerializedValue(this UnauthenticatedClientAction? value) =>
             value == null ? null : ((UnauthenticatedClientAction)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this UnauthenticatedClientAction value)
         {
-            switch( value )
+            switch (value)
             {
                 case UnauthenticatedClientAction.RedirectToLoginPage:
                     return "RedirectToLoginPage";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static UnauthenticatedClientAction? ParseUnauthenticatedClientAction(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "RedirectToLoginPage":
                     return UnauthenticatedClientAction.RedirectToLoginPage;

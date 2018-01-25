@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.De
     /// <summary>
     /// The first stage of the function deployment slot definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.Definition.IWithConfiguration
     {
     }
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.De
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.Definition.IBlank,
         Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.Definition.IWithConfiguration,
         Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.Definition.IWithCreate
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.De
     /// deployments slot in the cloud, but exposing additional optional
     /// inputs to specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.AppService.Fluent.IFunctionDeploymentSlot>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IFunctionDeploymentSlot>
     {
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.De
     /// <summary>
     /// A function deployment slot definition allowing the configuration to clone from to be specified.
     /// </summary>
-    public interface IWithConfiguration 
+    public interface IWithConfiguration
     {
         /// <summary>
         /// Copies the site configurations from the web app the function deployment slot belongs to.

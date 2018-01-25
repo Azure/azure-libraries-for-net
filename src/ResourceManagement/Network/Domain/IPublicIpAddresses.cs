@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Entry point to public IP address management.
     /// </summary>
-    public interface IPublicIPAddresses  :
+    public interface IPublicIPAddresses :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<PublicIPAddress.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingById,

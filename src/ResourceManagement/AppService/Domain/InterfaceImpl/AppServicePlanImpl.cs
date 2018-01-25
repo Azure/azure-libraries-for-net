@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Update;
     using Microsoft.Azure.Management.AppService.Fluent.Models;
 
-    internal partial class AppServicePlanImpl 
+    internal partial class AppServicePlanImpl
     {
         /// <summary>
         /// Gets maximum number of instances that can be assigned.

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.Collections.Generic;
 
-    internal partial class ApplicationImpl 
+    internal partial class ApplicationImpl
     {
         /// <summary>
         /// Allows automatic application updates.
@@ -139,11 +139,11 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <summary>
         /// Gets application packages.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Batch.Fluent.IApplicationPackage> Microsoft.Azure.Management.Batch.Fluent.IApplication.ApplicationPackages
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Batch.Fluent.IApplicationPackage> Microsoft.Azure.Management.Batch.Fluent.IApplication.ApplicationPackages
         {
             get
             {
-                return this.ApplicationPackages() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Batch.Fluent.IApplicationPackage>;
+                return this.ApplicationPackages() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Batch.Fluent.IApplicationPackage>;
             }
         }
 

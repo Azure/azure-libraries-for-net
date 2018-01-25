@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.RoleAssignment.Definition
     /// <summary>
     /// The first stage of the role assignment definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.RoleAssignment.Definition.IWithAssignee
     {
     }
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.RoleAssignment.Definition
     /// role assignment in the cloud, but exposing additional optional inputs to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment>
     {
     }
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.RoleAssignment.Definition
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.RoleAssignment.Definition.IBlank,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.RoleAssignment.Definition.IWithRole,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.RoleAssignment.Definition.IWithScope,
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.RoleAssignment.Definition
     /// <summary>
     /// The stage of role assignment definition allowing specifying the scope of the assignment.
     /// </summary>
-    public interface IWithScope 
+    public interface IWithScope
     {
         /// <summary>
         /// Specifies the scope of the role assignment to be a specific resource.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.RoleAssignment.Definition
     /// <summary>
     /// The stage of role assignment definition allowing specifying the role.
     /// </summary>
-    public interface IWithRole 
+    public interface IWithRole
     {
         /// <summary>
         /// Specifies the name of a built in role for this assignment.
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.RoleAssignment.Definition
     /// <summary>
     /// The stage of role assignment definition allowing specifying the assignee information.
     /// </summary>
-    public interface IWithAssignee 
+    public interface IWithAssignee
     {
         /// <summary>
         /// Specifies the assignee of the role assignment to be a user.

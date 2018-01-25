@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// An immutable client-side representation of an Azure virtual machine extension image.
     /// Note: Azure virtual machine extension image is also referred as virtual machine extension handler.
     /// </summary>
-    public interface IVirtualMachineExtensionImage  :
+    public interface IVirtualMachineExtensionImage :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualMachineExtensionImageInner>
     {
         /// <summary>

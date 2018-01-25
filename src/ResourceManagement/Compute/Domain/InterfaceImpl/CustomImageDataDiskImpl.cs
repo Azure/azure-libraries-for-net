@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
 
-    internal partial class CustomImageDataDiskImpl 
+    internal partial class CustomImageDataDiskImpl
     {
         /// <summary>
         /// Gets the name of the resource.

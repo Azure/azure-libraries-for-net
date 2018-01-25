@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Collections.Generic;
 
-    public partial class CosmosDBAccountImpl 
+    public partial class CosmosDBAccountImpl
     {
         /// <summary>
         /// The database account kind for the CosmosDB account.
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="keyKind">The key kind.</param>
         void Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.RegenerateKey(string keyKind)
         {
- 
+
             this.RegenerateKey(keyKind);
         }
 
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The ServiceResponse object if successful.</return>
         async Task Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.RegenerateKeyAsync(string keyKind, CancellationToken cancellationToken)
         {
- 
+
             await this.RegenerateKeyAsync(keyKind, cancellationToken);
         }
 

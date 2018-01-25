@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class AccessControlEntryActionEnumExtension
     {
-        internal static string ToSerializedValue(this AccessControlEntryAction? value)  =>
+        internal static string ToSerializedValue(this AccessControlEntryAction? value) =>
             value == null ? null : ((AccessControlEntryAction)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this AccessControlEntryAction value)
         {
-            switch( value )
+            switch (value)
             {
                 case AccessControlEntryAction.Permit:
                     return "Permit";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static AccessControlEntryAction? ParseAccessControlEntryAction(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Permit":
                     return AccessControlEntryAction.Permit;

@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of an HTTP load balancing probe.
     /// </summary>
-    public interface ILoadBalancerHttpProbe  :
+    public interface ILoadBalancerHttpProbe :
         Microsoft.Azure.Management.Network.Fluent.ILoadBalancerProbe
     {
         /// <summary>

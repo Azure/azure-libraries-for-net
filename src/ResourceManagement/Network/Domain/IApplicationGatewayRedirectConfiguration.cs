@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of an application gateway's redirect configuration.
     /// </summary>
-    public interface IApplicationGatewayRedirectConfiguration  :
+    public interface IApplicationGatewayRedirectConfiguration :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ApplicationGatewayRedirectConfigurationInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>
@@ -42,6 +42,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets request routing rules on this application referencing this redirect configuration, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; }
     }
 }

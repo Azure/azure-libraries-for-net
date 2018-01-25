@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
-    internal partial class AppSettingImpl 
+    internal partial class AppSettingImpl
     {
         /// <summary>
         /// Gets if the setting sticks to the slot during a swap.

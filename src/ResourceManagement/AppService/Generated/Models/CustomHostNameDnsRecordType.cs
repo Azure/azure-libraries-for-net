@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class CustomHostNameDnsRecordTypeEnumExtension
     {
-        internal static string ToSerializedValue(this CustomHostNameDnsRecordType? value)  =>
+        internal static string ToSerializedValue(this CustomHostNameDnsRecordType? value) =>
             value == null ? null : ((CustomHostNameDnsRecordType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this CustomHostNameDnsRecordType value)
         {
-            switch( value )
+            switch (value)
             {
                 case CustomHostNameDnsRecordType.CName:
                     return "CName";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static CustomHostNameDnsRecordType? ParseCustomHostNameDnsRecordType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "CName":
                     return CustomHostNameDnsRecordType.CName;

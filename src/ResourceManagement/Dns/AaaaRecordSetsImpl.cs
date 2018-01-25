@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Implementation of AaaaRecordSets.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5BYWFhUmVjb3JkU2V0c0ltcGw=
-    internal partial class AaaaRecordSetsImpl  :
+    internal partial class AaaaRecordSetsImpl :
         DnsRecordSetsBaseImpl<Microsoft.Azure.Management.Dns.Fluent.IAaaaRecordSet, Microsoft.Azure.Management.Dns.Fluent.AaaaRecordSetImpl>,
         IAaaaRecordSets
     {
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:B94D04B9D91F75559A6D8E405D4A72FD:2D7A98BB2BCAD1ACBF5B8624AD621EE4
         protected override IEnumerable<IAaaaRecordSet> ListIntern(string recordSetNameSuffix, int? pageSize)
         {
-            return WrapList(Extensions.Synchronize(() => dnsZone.Manager.Inner.RecordSets.ListByTypeAsync(dnsZone.ResourceGroupName, 
+            return WrapList(Extensions.Synchronize(() => dnsZone.Manager.Inner.RecordSets.ListByTypeAsync(dnsZone.ResourceGroupName,
                                                                     dnsZone.Name,
-                                                                    recordType, 
+                                                                    recordType,
                                                                     top: pageSize,
                                                                     recordsetnamesuffix: recordSetNameSuffix))
                                                                 .AsContinuousCollection(link => Extensions.Synchronize(() => dnsZone.Manager.Inner.RecordSets.ListByTypeNextAsync(link))));

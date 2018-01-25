@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
-    internal partial class LoadBalancersImpl 
+    internal partial class LoadBalancersImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.

@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.DefinitionMan
     /// <summary>
     /// The entirety of the virtual machine definition.
     /// </summary>
-    public interface IDefinitionManagedOrUnmanaged  :
+    public interface IDefinitionManagedOrUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.DefinitionShared.IDefinitionShared,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithLinuxRootUsernameManagedOrUnmanaged,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged,

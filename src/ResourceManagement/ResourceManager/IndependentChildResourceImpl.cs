@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         /// <return>The next stage of the resource definition/update.</return>
 
         ///GENMHASH:2345D3E100BA4B78504A2CC57A361F1E:F09D7F392261B6225D607D71947E5D4D
-        public  FluentResourceT WithoutTag(string key)
+        public FluentResourceT WithoutTag(string key)
         {
             Inner.Tags.Remove(key);
             return this as FluentResourceT;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         /// <param name="name">The name of the resource.</param>
         /// <param name="innerObject">The inner object.</param>
         ///GENMHASH:E0523E7DBA50D933E82FB55AEF0FEEE3:2572719AB7F9FA6EF015164D8E50629B
-        protected  IndependentChildResourceImpl(string name, InnerModelT innerObject, ManagerT manager) : base(name, innerObject, manager)
+        protected IndependentChildResourceImpl(string name, InnerModelT innerObject, ManagerT manager) : base(name, innerObject, manager)
         {
             if (Inner.Tags == null)
             {

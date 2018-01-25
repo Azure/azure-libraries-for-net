@@ -28,18 +28,20 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             this.dnsZone = dnsZone;
             this.recordType = recordType;
         }
-        
+
         public abstract Task<RecordSetT> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
 
         ///GENMHASH:64B3FB1F01DFC1156B75305640537ED6:27E486AB74A10242FF421C0798DDC450
         protected abstract Task<IPagedCollection<RecordSetT>> ListInternAsync(string recordSetNameSuffix, int? pageSize, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
-        
+
         ///GENMHASH:B94D04B9D91F75559A6D8E405D4A72FD:27E486AB74A10242FF421C0798DDC450
         protected abstract IEnumerable<RecordSetT> ListIntern(string recordSetNameSuffix, int? pageSize);
 
         ///GENMHASH:FD5D5A8D6904B467321E345BE1FA424E:E19B1A43B8D006D892A5880F9F29D599
-        public IDnsZone Parent {
-            get {
+        public IDnsZone Parent
+        {
+            get
+            {
                 return this.dnsZone;
             }
         }

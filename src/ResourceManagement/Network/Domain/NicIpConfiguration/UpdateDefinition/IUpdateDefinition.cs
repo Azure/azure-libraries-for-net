@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// The entirety of a network interface IP configuration definition as part of a network interface update.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  UpdateDefinitionStages.WithAttach.attach().</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IBlank<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithNetwork<ParentT>,
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// a public IP address.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
-    public interface IWithPublicIPAddress<ParentT>  :
+    public interface IWithPublicIPAddress<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.UpdateDefinition.IWithPublicIPAddress<Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate>>
     {
     }
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// to associate this IP configuration with.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
-    public interface IWithApplicationGateway<ParentT>  :
+    public interface IWithApplicationGateway<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithApplicationGatewayBeta<ParentT>
     {
     }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// The first stage of network interface IP configuration definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithNetwork<ParentT>
     {
     }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// The stage of the network interface IP configuration definition allowing to specify subnet.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
-    public interface IWithSubnet<ParentT> 
+    public interface IWithSubnet<ParentT>
     {
         /// <summary>
         /// Associate a subnet with the network interface IP configuration.
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// within a virtual network subnet.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
-    public interface IWithPrivateIP<ParentT>  :
+    public interface IWithPrivateIP<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.UpdateDefinition.IWithPrivateIPAddress<Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate>>
     {
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// definition can be attached to the parent network interface definition using  WithAttach.attach().
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithPublicIPAddress<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDefinition.IWithLoadBalancer<ParentT>,
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// The stage of the network interface IP configuration definition allowing to specify the virtual network.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
-    public interface IWithNetwork<ParentT> 
+    public interface IWithNetwork<ParentT>
     {
         /// <summary>
         /// Create a new virtual network to associate with the  network interface IP configuration,
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// to associate this IP configuration with.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
-    public interface IWithLoadBalancer<ParentT> 
+    public interface IWithLoadBalancer<ParentT>
     {
         /// <summary>
         /// Specifies the load balancer to associate this IP configuration with.
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.UpdateDef
     /// to associate this IP configuration with.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent network interface update to return to after attaching this definition.</typeparam>
-    public interface IWithApplicationGatewayBeta<ParentT>  :
+    public interface IWithApplicationGatewayBeta<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

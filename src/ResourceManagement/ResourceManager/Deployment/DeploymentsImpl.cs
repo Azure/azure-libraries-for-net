@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public void DeleteByResourceGroup(string groupName, string name)
         {
-            Extensions.Synchronize(() =>  DeleteByResourceGroupAsync(groupName, name, CancellationToken.None));
+            Extensions.Synchronize(() => DeleteByResourceGroupAsync(groupName, name, CancellationToken.None));
         }
 
         public async Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))

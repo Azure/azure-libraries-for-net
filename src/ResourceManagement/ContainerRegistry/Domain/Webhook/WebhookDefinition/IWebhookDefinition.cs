@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.WebhookDef
     /// Grouping of the container register webhook definitions.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWebhookDefinition<ParentT>  :
+    public interface IWebhookDefinition<ParentT> :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Definition.IWithTriggerWhen<ParentT>,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.Definition.IWithServiceUri<ParentT>,

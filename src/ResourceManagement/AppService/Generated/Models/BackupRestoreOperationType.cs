@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class BackupRestoreOperationTypeEnumExtension
     {
-        internal static string ToSerializedValue(this BackupRestoreOperationType? value)  =>
+        internal static string ToSerializedValue(this BackupRestoreOperationType? value) =>
             value == null ? null : ((BackupRestoreOperationType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this BackupRestoreOperationType value)
         {
-            switch( value )
+            switch (value)
             {
                 case BackupRestoreOperationType.Default:
                     return "Default";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static BackupRestoreOperationType? ParseBackupRestoreOperationType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Default":
                     return BackupRestoreOperationType.Default;

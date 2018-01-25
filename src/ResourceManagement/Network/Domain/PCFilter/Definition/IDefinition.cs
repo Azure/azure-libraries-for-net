@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition;
 
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition.IBlank<ParentT>
     {
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition
     /// Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5" for multiple entries.
     /// Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
     /// </summary>
-    public interface IWithRemoteIPAddress<ParentT> 
+    public interface IWithRemoteIPAddress<ParentT>
     {
         /// <summary>
         /// Set remote IP addresses range to be filtered on.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition
     /// Set local port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries.
     /// Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
     /// </summary>
-    public interface IWithLocalPort<ParentT> 
+    public interface IWithLocalPort<ParentT>
     {
         /// <summary>
         /// Set the local port to be filtered on.
@@ -77,13 +77,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition
     /// Definition of packet capture filter.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition.IWithAttach<ParentT>
     {
     }
 
-    public interface IBlank<ParentT>  :
-        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition.IWithAttach<Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithCreate>,Microsoft.Azure.Management.Network.Fluent.Models.PcProtocol>,
+    public interface IBlank<ParentT> :
+        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition.IWithAttach<Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithCreate>, Microsoft.Azure.Management.Network.Fluent.Models.PcProtocol>,
         Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition.IWithLocalIP<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition.IWithRemoteIPAddress<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition.IWithLocalPort<ParentT>,
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition
     /// Set local port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries.
     /// Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
     /// </summary>
-    public interface IWithRemotePort<ParentT> 
+    public interface IWithRemotePort<ParentT>
     {
         /// <summary>
         /// Set the remote port to be filtered on.
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PCFilter.Definition
     /// Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5" for multiple entries.
     /// Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
     /// </summary>
-    public interface IWithLocalIP<ParentT> 
+    public interface IWithLocalIP<ParentT>
     {
         /// <summary>
         /// Set local IP addresses range to be filtered on.

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Implementation for Subscription.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuaW1wbGVtZW50YXRpb24uU3Vic2NyaXB0aW9uSW1wbA==
-    internal partial class SubscriptionImpl  :
+    internal partial class SubscriptionImpl :
             IndependentChildResourceImpl<ISubscription,
                 TopicImpl,
                 SubscriptionInner,
@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             this.namespaceName = namespaceName;
             this.region = region;
             this.WithExistingParentResource(resourceGroupName, topicName);
-            if (inner.Location == null) {
+            if (inner.Location == null)
+            {
                 inner.Location = this.region.ToString();
             }
         }
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         ///GENMHASH:83451D169A4B33856A9C47EFB90A4598:2C99FB79A8C8F3BE1232EC22FA0E6912
         public bool IsDeadLetteringEnabledForFilterEvaluationFailedMessages()
         {
-            if (this.Inner.DeadLetteringOnFilterEvaluationExceptions == null 
+            if (this.Inner.DeadLetteringOnFilterEvaluationExceptions == null
                 || !this.Inner.DeadLetteringOnFilterEvaluationExceptions.HasValue)
             {
                 return false;
@@ -167,12 +168,12 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:749030CA5C22BFCBAE3439E2BC57EE23
         protected override async Task<SubscriptionInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-           return await this.Manager.Inner.Subscriptions
-                .GetAsync(this.ResourceGroupName,
-                this.namespaceName,
-                this.parentName,
-                this.Name, 
-                cancellationToken);
+            return await this.Manager.Inner.Subscriptions
+                 .GetAsync(this.ResourceGroupName,
+                 this.namespaceName,
+                 this.parentName,
+                 this.Name,
+                 cancellationToken);
         }
 
         ///GENMHASH:9157FD0110376DF53A83D529D7A1A4E1:385804CDAC891325C8D939BDF7A1D4FF

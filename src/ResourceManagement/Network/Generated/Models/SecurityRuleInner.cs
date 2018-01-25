@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public SecurityRuleInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -24,579 +24,579 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
     public static partial class NetworkWatchersOperationsExtensions
     {
-            /// <summary>
-            /// Creates or updates a network watcher in the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the network watcher resource.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<NetworkWatcherInner> CreateOrUpdateAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NetworkWatcherInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Creates or updates a network watcher in the specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters that define the network watcher resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<NetworkWatcherInner> CreateOrUpdateAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NetworkWatcherInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Gets the specified network watcher by resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<NetworkWatcherInner> GetAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets the specified network watcher by resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<NetworkWatcherInner> GetAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Deletes the specified network watcher resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
+        /// <summary>
+        /// Deletes the specified network watcher resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task DeleteAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
 
-            /// <summary>
-            /// Gets all network watchers by resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IEnumerable<NetworkWatcherInner>> ListAsync(this INetworkWatchersOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets all network watchers by resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IEnumerable<NetworkWatcherInner>> ListAsync(this INetworkWatchersOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Gets all network watchers by subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IEnumerable<NetworkWatcherInner>> ListAllAsync(this INetworkWatchersOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets all network watchers by subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IEnumerable<NetworkWatcherInner>> ListAllAsync(this INetworkWatchersOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Gets the current network topology by resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='targetResourceGroupName'>
-            /// The name of the target resource group to perform topology on.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<TopologyInner> GetTopologyAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets the current network topology by resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='targetResourceGroupName'>
+        /// The name of the target resource group to perform topology on.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<TopologyInner> GetTopologyAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetTopologyWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetTopologyWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceGroupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Verify IP flow from the specified VM to a location given the currently
-            /// configured NSG rules.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the IP flow to be verified.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VerificationIPFlowResultInner> VerifyIPFlowAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, VerificationIPFlowParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Verify IP flow from the specified VM to a location given the currently
+        /// configured NSG rules.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters that define the IP flow to be verified.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<VerificationIPFlowResultInner> VerifyIPFlowAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, VerificationIPFlowParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.VerifyIPFlowWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.VerifyIPFlowWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Gets the next hop from the specified VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the source and destination endpoint.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<NextHopResultInner> GetNextHopAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NextHopParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets the next hop from the specified VM.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters that define the source and destination endpoint.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<NextHopResultInner> GetNextHopAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NextHopParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetNextHopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetNextHopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Gets the configured and effective security group rules on the specified VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// ID of the target VM.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<SecurityGroupViewResultInner> GetVMSecurityRulesAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets the configured and effective security group rules on the specified VM.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='targetResourceId'>
+        /// ID of the target VM.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<SecurityGroupViewResultInner> GetVMSecurityRulesAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetVMSecurityRulesWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetVMSecurityRulesWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Initiate troubleshooting on a specified resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the resource to troubleshoot.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<TroubleshootingResultInner> GetTroubleshootingAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TroubleshootingParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Initiate troubleshooting on a specified resource
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters that define the resource to troubleshoot.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<TroubleshootingResultInner> GetTroubleshootingAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TroubleshootingParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetTroubleshootingWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetTroubleshootingWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Get the last completed troubleshooting result on a specified resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource ID to query the troubleshooting result.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<TroubleshootingResultInner> GetTroubleshootingResultAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Get the last completed troubleshooting result on a specified resource
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher resource.
+        /// </param>
+        /// <param name='targetResourceId'>
+        /// The target resource ID to query the troubleshooting result.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<TroubleshootingResultInner> GetTroubleshootingResultAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetTroubleshootingResultWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetTroubleshootingResultWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Configures flow log on a specified resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the configuration of flow log.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<FlowLogInformationInner> SetFlowLogConfigurationAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogInformationInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Configures flow log on a specified resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the network watcher resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters that define the configuration of flow log.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<FlowLogInformationInner> SetFlowLogConfigurationAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogInformationInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.SetFlowLogConfigurationWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.SetFlowLogConfigurationWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Queries status of flow log on a specified resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource where getting the flow logging status.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<FlowLogInformationInner> GetFlowLogStatusAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Queries status of flow log on a specified resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the network watcher resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher resource.
+        /// </param>
+        /// <param name='targetResourceId'>
+        /// The target resource where getting the flow logging status.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<FlowLogInformationInner> GetFlowLogStatusAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetFlowLogStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetFlowLogStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Verifies the possibility of establishing a direct TCP connection from a
-            /// virtual machine to a given endpoint including another VM or an arbitrary
-            /// remote server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that determine how the connectivity check will be performed.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ConnectivityInformationInner> CheckConnectivityAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, ConnectivityParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Verifies the possibility of establishing a direct TCP connection from a
+        /// virtual machine to a given endpoint including another VM or an arbitrary
+        /// remote server.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the network watcher resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters that determine how the connectivity check will be performed.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<ConnectivityInformationInner> CheckConnectivityAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, ConnectivityParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.CheckConnectivityWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.CheckConnectivityWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Deletes the specified network watcher resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginDeleteAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
+        /// <summary>
+        /// Deletes the specified network watcher resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task BeginDeleteAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
 
-            /// <summary>
-            /// Verify IP flow from the specified VM to a location given the currently
-            /// configured NSG rules.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the IP flow to be verified.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VerificationIPFlowResultInner> BeginVerifyIPFlowAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, VerificationIPFlowParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Verify IP flow from the specified VM to a location given the currently
+        /// configured NSG rules.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters that define the IP flow to be verified.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<VerificationIPFlowResultInner> BeginVerifyIPFlowAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, VerificationIPFlowParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginVerifyIPFlowWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.BeginVerifyIPFlowWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Gets the next hop from the specified VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the source and destination endpoint.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<NextHopResultInner> BeginGetNextHopAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NextHopParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets the next hop from the specified VM.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters that define the source and destination endpoint.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<NextHopResultInner> BeginGetNextHopAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NextHopParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginGetNextHopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.BeginGetNextHopWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Gets the configured and effective security group rules on the specified VM.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// ID of the target VM.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<SecurityGroupViewResultInner> BeginGetVMSecurityRulesAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets the configured and effective security group rules on the specified VM.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='targetResourceId'>
+        /// ID of the target VM.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<SecurityGroupViewResultInner> BeginGetVMSecurityRulesAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginGetVMSecurityRulesWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.BeginGetVMSecurityRulesWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Initiate troubleshooting on a specified resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the resource to troubleshoot.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<TroubleshootingResultInner> BeginGetTroubleshootingAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TroubleshootingParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Initiate troubleshooting on a specified resource
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters that define the resource to troubleshoot.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<TroubleshootingResultInner> BeginGetTroubleshootingAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TroubleshootingParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginGetTroubleshootingWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.BeginGetTroubleshootingWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Get the last completed troubleshooting result on a specified resource
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource ID to query the troubleshooting result.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<TroubleshootingResultInner> BeginGetTroubleshootingResultAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Get the last completed troubleshooting result on a specified resource
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher resource.
+        /// </param>
+        /// <param name='targetResourceId'>
+        /// The target resource ID to query the troubleshooting result.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<TroubleshootingResultInner> BeginGetTroubleshootingResultAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginGetTroubleshootingResultWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.BeginGetTroubleshootingResultWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Configures flow log on a specified resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that define the configuration of flow log.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<FlowLogInformationInner> BeginSetFlowLogConfigurationAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogInformationInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Configures flow log on a specified resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the network watcher resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters that define the configuration of flow log.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<FlowLogInformationInner> BeginSetFlowLogConfigurationAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogInformationInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginSetFlowLogConfigurationWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.BeginSetFlowLogConfigurationWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Queries status of flow log on a specified resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource where getting the flow logging status.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<FlowLogInformationInner> BeginGetFlowLogStatusAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Queries status of flow log on a specified resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the network watcher resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher resource.
+        /// </param>
+        /// <param name='targetResourceId'>
+        /// The target resource where getting the flow logging status.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<FlowLogInformationInner> BeginGetFlowLogStatusAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginGetFlowLogStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.BeginGetFlowLogStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Verifies the possibility of establishing a direct TCP connection from a
-            /// virtual machine to a given endpoint including another VM or an arbitrary
-            /// remote server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the network watcher resource group.
-            /// </param>
-            /// <param name='networkWatcherName'>
-            /// The name of the network watcher resource.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters that determine how the connectivity check will be performed.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ConnectivityInformationInner> BeginCheckConnectivityAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, ConnectivityParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Verifies the possibility of establishing a direct TCP connection from a
+        /// virtual machine to a given endpoint including another VM or an arbitrary
+        /// remote server.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the network watcher resource group.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters that determine how the connectivity check will be performed.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<ConnectivityInformationInner> BeginCheckConnectivityAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, ConnectivityParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginCheckConnectivityWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.BeginCheckConnectivityWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

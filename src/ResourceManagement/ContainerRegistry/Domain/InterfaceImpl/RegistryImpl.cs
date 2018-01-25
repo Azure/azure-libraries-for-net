@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     using System.Collections.Generic;
     using System;
 
-    internal partial class RegistryImpl 
+    internal partial class RegistryImpl
     {
         /// <summary>
         /// The parameters of a storage account for the container registry.

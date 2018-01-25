@@ -8,16 +8,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class VirtualMachineScaleSetNetworkInterfaceImpl 
+    internal partial class VirtualMachineScaleSetNetworkInterfaceImpl
     {
         /// <summary>
         /// Gets the IP configurations of this network interface, indexed by their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNicIPConfiguration> Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface.IPConfigurations
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNicIPConfiguration> Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface.IPConfigurations
         {
             get
             {
-                return this.IPConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNicIPConfiguration>;
+                return this.IPConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNicIPConfiguration>;
             }
         }
 

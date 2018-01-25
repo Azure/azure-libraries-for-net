@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Rest;
 
-    internal partial class FlowLogSettingsImpl 
+    internal partial class FlowLogSettingsImpl
     {
         /// <summary>
         /// Specifies the storage account to use for storing log.

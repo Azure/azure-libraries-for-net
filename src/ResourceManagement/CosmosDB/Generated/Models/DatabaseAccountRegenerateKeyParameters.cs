@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         public DatabaseAccountRegenerateKeyParameters()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

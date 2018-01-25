@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class AaaaRecordSetsImpl 
+    internal partial class AaaaRecordSetsImpl
     {
         /// <summary>
         /// Gets the parent of this child object.

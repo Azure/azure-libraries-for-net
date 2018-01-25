@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class BackupItemStatusEnumExtension
     {
-        internal static string ToSerializedValue(this BackupItemStatus? value)  =>
+        internal static string ToSerializedValue(this BackupItemStatus? value) =>
             value == null ? null : ((BackupItemStatus)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this BackupItemStatus value)
         {
-            switch( value )
+            switch (value)
             {
                 case BackupItemStatus.InProgress:
                     return "InProgress";
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static BackupItemStatus? ParseBackupItemStatus(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "InProgress":
                     return BackupItemStatus.InProgress;

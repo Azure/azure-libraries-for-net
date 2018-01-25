@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public VirtualApplication()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class ComputeUsageImpl 
+    internal partial class ComputeUsageImpl
     {
         /// <summary>
         /// Gets the maximum count of the resources that can be allocated in the

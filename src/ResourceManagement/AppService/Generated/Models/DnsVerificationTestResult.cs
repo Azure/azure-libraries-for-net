@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class DnsVerificationTestResultEnumExtension
     {
-        internal static string ToSerializedValue(this DnsVerificationTestResult? value)  =>
+        internal static string ToSerializedValue(this DnsVerificationTestResult? value) =>
             value == null ? null : ((DnsVerificationTestResult)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this DnsVerificationTestResult value)
         {
-            switch( value )
+            switch (value)
             {
                 case DnsVerificationTestResult.Passed:
                     return "Passed";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static DnsVerificationTestResult? ParseDnsVerificationTestResult(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Passed":
                     return DnsVerificationTestResult.Passed;

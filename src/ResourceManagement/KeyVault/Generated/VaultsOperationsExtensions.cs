@@ -22,168 +22,168 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// </summary>
     public static partial class VaultsOperationsExtensions
     {
-            
-            /// <summary>
-            /// Create or update a key vault in the specified subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the Resource Group to which the server belongs.
-            /// </param>
-            /// <param name='vaultName'>
-            /// Name of the vault
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters to create or update the vault
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VaultInner> CreateOrUpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
 
-            
-            /// <summary>
-            /// Deletes the specified Azure key vault.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the Resource Group to which the vault belongs.
-            /// </param>
-            /// <param name='vaultName'>
-            /// The name of the vault to delete
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Create or update a key vault in the specified subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the Resource Group to which the server belongs.
+        /// </param>
+        /// <param name='vaultName'>
+        /// Name of the vault
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters to create or update the vault
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<VaultInner> CreateOrUpdateAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, VaultCreateOrUpdateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                return _result.Body;
             }
+        }
 
-            
-            /// <summary>
-            /// Gets the specified Azure key vault.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the Resource Group to which the vault belongs.
-            /// </param>
-            /// <param name='vaultName'>
-            /// The name of the vault.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<VaultInner> GetAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
 
-            
-            /// <summary>
-            /// The List operation gets information about the vaults associated with the
-            /// subscription and within the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the Resource Group to which the vault belongs.
-            /// </param>
-            /// <param name='top'>
-            /// Maximum number of results to return.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<VaultInner>> ListByResourceGroupAsync(this IVaultsOperations operations, string resourceGroupName, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, top, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
+        /// <summary>
+        /// Deletes the specified Azure key vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the Resource Group to which the vault belongs.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the vault to delete
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task DeleteAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
 
-            
-            /// <summary>
-            /// The List operation gets information about the vaults associated with the
-            /// subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='top'>
-            /// Maximum number of results to return.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<VaultInner>> ListAsync(this IVaultsOperations operations, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(top, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
 
-            
-            /// <summary>
-            /// The List operation gets information about the vaults associated with the
-            /// subscription and within the specified resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<VaultInner>> ListByResourceGroupNextAsync(this IVaultsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets the specified Azure key vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the Resource Group to which the vault belongs.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the vault.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<VaultInner> GetAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            
-            /// <summary>
-            /// The List operation gets information about the vaults associated with the
-            /// subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<VaultInner>> ListNextAsync(this IVaultsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+
+        /// <summary>
+        /// The List operation gets information about the vaults associated with the
+        /// subscription and within the specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the Resource Group to which the vault belongs.
+        /// </param>
+        /// <param name='top'>
+        /// Maximum number of results to return.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<VaultInner>> ListByResourceGroupAsync(this IVaultsOperations operations, string resourceGroupName, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, top, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
+
+
+        /// <summary>
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='top'>
+        /// Maximum number of results to return.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<VaultInner>> ListAsync(this IVaultsOperations operations, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(top, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+
+        /// <summary>
+        /// The List operation gets information about the vaults associated with the
+        /// subscription and within the specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<VaultInner>> ListByResourceGroupNextAsync(this IVaultsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+
+        /// <summary>
+        /// The List operation gets information about the vaults associated with the
+        /// subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<VaultInner>> ListNextAsync(this IVaultsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
 
     }
 }

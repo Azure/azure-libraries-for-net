@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Update
     /// <summary>
     /// The template for update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.NetworkWatcher.Update.IUpdate>
     {

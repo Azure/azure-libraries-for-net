@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Update
     /// can be modified.
     /// Call  Update.apply() to apply the changes to the resource in Azure.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Update.IWithRule
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Update
     /// <summary>
     /// The stage of the resource definition allowing to add or remove security rules.
     /// </summary>
-    public interface IWithRule 
+    public interface IWithRule
     {
         /// <summary>
         /// Begins the definition of a new security rule to be added to this network security group.

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update
     /// <summary>
     /// A service principal update allowing credentials to be specified.
     /// </summary>
-    public interface IWithCredential  :
+    public interface IWithCredential :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update.IWithCredentialBeta
     {
     }
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update
     /// <summary>
     /// A service principal update allowing role assignments to be added.
     /// </summary>
-    public interface IWithRoleAssignment  :
+    public interface IWithRoleAssignment :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update.IWithRoleAssignmentBeta
     {
     }
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update
     /// <summary>
     /// The template for a service principal update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IServicePrincipal>,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update.IWithCredential,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update.IWithRoleAssignment
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update
     /// <summary>
     /// A service principal update allowing credentials to be specified.
     /// </summary>
-    public interface IWithCredentialBeta  :
+    public interface IWithCredentialBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipal.Update
     /// <summary>
     /// A service principal update allowing role assignments to be added.
     /// </summary>
-    public interface IWithRoleAssignmentBeta  :
+    public interface IWithRoleAssignmentBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

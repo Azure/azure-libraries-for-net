@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                 return vaults;
             }
         }
-        
+
         #endregion
     }
 

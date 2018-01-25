@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// <summary>
     /// An object that represents a webhook for a container registry.
     /// </summary>
-    public interface IWebhook  :
+    public interface IWebhook :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook,Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook, Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.WebhookInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook>,
@@ -81,6 +81,6 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IWebhookEventInfo>> ListEventsAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <return>The Custom headers that will be added to the webhook notifications.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> CustomHeaders();
+        System.Collections.Generic.IReadOnlyDictionary<string, string> CustomHeaders();
     }
 }

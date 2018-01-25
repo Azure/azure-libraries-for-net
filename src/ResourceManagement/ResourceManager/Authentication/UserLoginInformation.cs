@@ -9,6 +9,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 
         public string Password { get; set; }
 
-        public string ClientId {get; set;}
+        public string ClientId { get; set; }
     }
 }

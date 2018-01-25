@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
     /// <summary>
     /// Base interfaces for fluent resources.
     /// </summary>
-    public interface IResource  :
+    public interface IResource :
         IIndexable,
         IHasId,
         IHasName
@@ -24,6 +24,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         Region Region { get; }
 
         /// <returns>the tags for the resource</returns>
-        IReadOnlyDictionary<string,string> Tags { get; }
+        IReadOnlyDictionary<string, string> Tags { get; }
     }
 }

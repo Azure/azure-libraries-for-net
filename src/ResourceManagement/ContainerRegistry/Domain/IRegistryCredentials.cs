@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// <summary>
     /// Response containing the login credentials for a container registry.
     /// </summary>
-    public interface IRegistryCredentials  :
+    public interface IRegistryCredentials :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <summary>
         /// Gets the admin user access keys.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.ContainerRegistry.Fluent.AccessKeyType,string> AccessKeys { get; }
+        System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.ContainerRegistry.Fluent.AccessKeyType, string> AccessKeys { get; }
 
         /// <summary>
         /// Gets the username value which can be used to login into the container registry.

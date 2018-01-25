@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Implementation for QueueAuthorizationRule.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuaW1wbGVtZW50YXRpb24uUXVldWVBdXRob3JpemF0aW9uUnVsZUltcGw=
-    internal partial class QueueAuthorizationRuleImpl  :
+    internal partial class QueueAuthorizationRuleImpl :
         AuthorizationRuleBaseImpl<Microsoft.Azure.Management.ServiceBus.Fluent.IQueueAuthorizationRule,
             Microsoft.Azure.Management.ServiceBus.Fluent.QueueImpl,
             SharedAccessAuthorizationRuleInner,
@@ -31,18 +31,19 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         private Region region;
 
         ///GENMHASH:5F5FAFAB925F6F87A6D566574235368A:8E65EC5E447E2A36F6F4362F1FFB1E59
-        internal QueueAuthorizationRuleImpl(string resourceGroupName, 
-            string namespaceName, 
-            string queueName, 
-            string name, 
-            Region region, 
-            SharedAccessAuthorizationRuleInner inner, 
+        internal QueueAuthorizationRuleImpl(string resourceGroupName,
+            string namespaceName,
+            string queueName,
+            string name,
+            Region region,
+            SharedAccessAuthorizationRuleInner inner,
             IServiceBusManager manager) : base(name, inner, manager)
         {
             this.namespaceName = namespaceName;
             this.region = region;
             this.WithExistingParentResource(resourceGroupName, queueName);
-            if (inner.Location == null) {
+            if (inner.Location == null)
+            {
                 inner.Location = this.region.ToString();
             }
         }

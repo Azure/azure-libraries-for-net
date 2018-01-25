@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// The implementation for WebApps.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmFwcHNlcnZpY2UuaW1wbGVtZW50YXRpb24uV2ViQXBwc0ltcGw=
-    internal partial class WebAppsImpl  :
+    internal partial class WebAppsImpl :
         TopLevelModifiableResources<
             IWebApp,
             WebAppImpl,
@@ -77,7 +77,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return webapp;
         }
 
-        private async Task<IWebApp> PopulateModelAsync(SiteInner inner, CancellationToken cancellationToken = default(CancellationToken)) {
+        private async Task<IWebApp> PopulateModelAsync(SiteInner inner, CancellationToken cancellationToken = default(CancellationToken))
+        {
             var siteConfig = await Inner.GetConfigurationAsync(inner.ResourceGroup, inner.Name, cancellationToken);
             var webApp = WrapModel(inner, siteConfig);
             return webApp;
@@ -102,7 +103,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:64609469010BC4A501B1C3197AE4F243:546B78C6345DE4CB959015B4F5C52E0D
         protected override IWebApp WrapModel(SiteInner inner)
         {
-            if (inner == null) {
+            if (inner == null)
+            {
                 return null;
             }
             return new WebAppImpl(inner.Name, inner, null, Manager);

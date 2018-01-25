@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class NotificationLevelEnumExtension
     {
-        internal static string ToSerializedValue(this NotificationLevel? value)  =>
+        internal static string ToSerializedValue(this NotificationLevel? value) =>
             value == null ? null : ((NotificationLevel)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this NotificationLevel value)
         {
-            switch( value )
+            switch (value)
             {
                 case NotificationLevel.Critical:
                     return "Critical";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static NotificationLevel? ParseNotificationLevel(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Critical":
                     return NotificationLevel.Critical;

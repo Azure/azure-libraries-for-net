@@ -22,181 +22,181 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
     public static partial class InboundNatRulesOperationsExtensions
     {
-            /// <summary>
-            /// Gets all the inbound nat rules in a load balancer.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<InboundNatRuleInner>> ListAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets all the inbound nat rules in a load balancer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<InboundNatRuleInner>> ListAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, loadBalancerName, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, loadBalancerName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Deletes the specified load balancer inbound nat rule.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='inboundNatRuleName'>
-            /// The name of the inbound nat rule.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
+        /// <summary>
+        /// Deletes the specified load balancer inbound nat rule.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='inboundNatRuleName'>
+        /// The name of the inbound nat rule.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task DeleteAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
 
-            /// <summary>
-            /// Gets the specified load balancer inbound nat rule.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='inboundNatRuleName'>
-            /// The name of the inbound nat rule.
-            /// </param>
-            /// <param name='expand'>
-            /// Expands referenced resources.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<InboundNatRuleInner> GetAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets the specified load balancer inbound nat rule.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='inboundNatRuleName'>
+        /// The name of the inbound nat rule.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<InboundNatRuleInner> GetAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, expand, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Creates or updates a load balancer inbound nat rule.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='inboundNatRuleName'>
-            /// The name of the inbound nat rule.
-            /// </param>
-            /// <param name='inboundNatRuleParameters'>
-            /// Parameters supplied to the create or update inbound nat rule operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<InboundNatRuleInner> CreateOrUpdateAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, InboundNatRuleInner inboundNatRuleParameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Creates or updates a load balancer inbound nat rule.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='inboundNatRuleName'>
+        /// The name of the inbound nat rule.
+        /// </param>
+        /// <param name='inboundNatRuleParameters'>
+        /// Parameters supplied to the create or update inbound nat rule operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<InboundNatRuleInner> CreateOrUpdateAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, InboundNatRuleInner inboundNatRuleParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, inboundNatRuleParameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, inboundNatRuleParameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Deletes the specified load balancer inbound nat rule.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='inboundNatRuleName'>
-            /// The name of the inbound nat rule.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginDeleteAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
+        /// <summary>
+        /// Deletes the specified load balancer inbound nat rule.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='inboundNatRuleName'>
+        /// The name of the inbound nat rule.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task BeginDeleteAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
 
-            /// <summary>
-            /// Creates or updates a load balancer inbound nat rule.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='loadBalancerName'>
-            /// The name of the load balancer.
-            /// </param>
-            /// <param name='inboundNatRuleName'>
-            /// The name of the inbound nat rule.
-            /// </param>
-            /// <param name='inboundNatRuleParameters'>
-            /// Parameters supplied to the create or update inbound nat rule operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<InboundNatRuleInner> BeginCreateOrUpdateAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, InboundNatRuleInner inboundNatRuleParameters, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Creates or updates a load balancer inbound nat rule.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='inboundNatRuleName'>
+        /// The name of the inbound nat rule.
+        /// </param>
+        /// <param name='inboundNatRuleParameters'>
+        /// Parameters supplied to the create or update inbound nat rule operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<InboundNatRuleInner> BeginCreateOrUpdateAsync(this IInboundNatRulesOperations operations, string resourceGroupName, string loadBalancerName, string inboundNatRuleName, InboundNatRuleInner inboundNatRuleParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, inboundNatRuleParameters, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, inboundNatRuleName, inboundNatRuleParameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Gets all the inbound nat rules in a load balancer.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<InboundNatRuleInner>> ListNextAsync(this IInboundNatRulesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets all the inbound nat rules in a load balancer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<InboundNatRuleInner>> ListNextAsync(this IInboundNatRulesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

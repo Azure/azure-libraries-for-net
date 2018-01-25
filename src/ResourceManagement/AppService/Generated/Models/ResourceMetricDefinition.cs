@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public ResourceMetricDefinition()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

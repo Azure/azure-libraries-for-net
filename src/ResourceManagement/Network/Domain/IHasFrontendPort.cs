@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An interface representing a model's ability to reference a frontend port.
     /// </summary>
-    public interface IHasFrontendPort 
+    public interface IHasFrontendPort
     {
         /// <summary>
         /// Gets the frontend port number the inbound network traffic is received on.

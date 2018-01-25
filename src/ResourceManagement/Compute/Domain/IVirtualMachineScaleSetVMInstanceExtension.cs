@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// An immutable client-side representation of an extension associated with virtual machine instance
     /// in a scale set.
     /// </summary>
-    public interface IVirtualMachineScaleSetVMInstanceExtension  :
+    public interface IVirtualMachineScaleSetVMInstanceExtension :
         Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM>
     {

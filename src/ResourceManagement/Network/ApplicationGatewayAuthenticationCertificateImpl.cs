@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// Implementation for ApplicationGatewayAuthenticationCertificate.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uQXBwbGljYXRpb25HYXRld2F5QXV0aGVudGljYXRpb25DZXJ0aWZpY2F0ZUltcGw=
-    internal partial class ApplicationGatewayAuthenticationCertificateImpl  :
+    internal partial class ApplicationGatewayAuthenticationCertificateImpl :
         ChildResource<ApplicationGatewayAuthenticationCertificateInner, ApplicationGatewayImpl, IApplicationGateway>,
         IApplicationGatewayAuthenticationCertificate,
         IDefinition<ApplicationGateway.Definition.IWithCreate>,
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:7DFCEDE8B7263E2097B6A68AAB6AFBE5:C0847EA0CDA78F6D91EFD239C70F0FA7
-        internal  ApplicationGatewayAuthenticationCertificateImpl(ApplicationGatewayAuthenticationCertificateInner inner, ApplicationGatewayImpl parent) : base(inner, parent)
+        internal ApplicationGatewayAuthenticationCertificateImpl(ApplicationGatewayAuthenticationCertificateInner inner, ApplicationGatewayImpl parent) : base(inner, parent)
         {
         }
 

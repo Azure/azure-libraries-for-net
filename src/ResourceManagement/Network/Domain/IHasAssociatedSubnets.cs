@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An interface representing a model's ability to reference a list of associated subnets.
     /// </summary>
-    public interface IHasAssociatedSubnets 
+    public interface IHasAssociatedSubnets
     {
         /// <return>List of subnets associated with this resource.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Network.Fluent.ISubnet> ListAssociatedSubnets();

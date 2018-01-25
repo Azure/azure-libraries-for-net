@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Models
 
         internal static string ToSerializedValue(this PasswordName value)
         {
-            switch( value )
+            switch (value)
             {
                 case PasswordName.Password:
                     return "password";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Models
 
         internal static PasswordName? ParsePasswordName(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "password":
                     return PasswordName.Password;

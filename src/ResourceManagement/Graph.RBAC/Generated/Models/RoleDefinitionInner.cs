@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// </summary>
         public RoleDefinitionInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

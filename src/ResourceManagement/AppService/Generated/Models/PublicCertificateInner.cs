@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public PublicCertificateInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public IWithCreate WithClientIpAddress(string ipAddress)
         {
             clientIp = ipAddress;
-            return this; 
+            return this;
         }
     }
 }

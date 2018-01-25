@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to modify frontend listeners.
     /// </summary>
-    public interface IWithListener 
+    public interface IWithListener
     {
         /// <summary>
         /// Begins the definition of a new application gateway listener to be attached to the gateway.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to modify front end ports.
     /// </summary>
-    public interface IWithFrontendPort 
+    public interface IWithFrontendPort
     {
         /// <summary>
         /// Creates a front end port with an auto-generated name and the specified port number, unless one already exists.
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to modify SSL certificates.
     /// </summary>
-    public interface IWithSslCert 
+    public interface IWithSslCert
     {
         /// <summary>
         /// Removes the specified SSL certificate from the application gateway.
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to modify probes.
     /// </summary>
-    public interface IWithProbe 
+    public interface IWithProbe
     {
         /// <summary>
         /// Begins the definition of a new probe.
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// The template for an application gateway update operation, containing all the settings that
     /// can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithSize,
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to specify a public IP address for the public frontend.
     /// </summary>
-    public interface IWithPublicIPAddress  :
+    public interface IWithPublicIPAddress :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update.IWithPublicIPAddressNoDnsLabel<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>
     {
     }
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// The stage of an internal application gateway update allowing to make the application gateway accessible to its
     /// virtual network.
     /// </summary>
-    public interface IWithPrivateFrontend 
+    public interface IWithPrivateFrontend
     {
         /// <summary>
         /// Enables a private (internal) default front end in the subnet containing the application gateway.
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to modify backends.
     /// </summary>
-    public interface IWithBackend 
+    public interface IWithBackend
     {
         /// <summary>
         /// Begins the definition of a new application gateway backend to be attached to the gateway.
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to manage authentication certificates for the backends to use.
     /// </summary>
-    public interface IWithAuthenticationCertificate  :
+    public interface IWithAuthenticationCertificate :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithAuthenticationCertificateBeta
     {
     }
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to modify backend HTTP configurations.
     /// </summary>
-    public interface IWithBackendHttpConfig 
+    public interface IWithBackendHttpConfig
     {
         /// <summary>
         /// Removes the specified backend HTTP configuration from this application gateway.
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// The stage of an application gateway update allowing to specify the capacity (number of instances) of
     /// the application gateway.
     /// </summary>
-    public interface IWithInstanceCount 
+    public interface IWithInstanceCount
     {
         /// <summary>
         /// Specifies the capacity (number of instances) for the application gateway.
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to specify the size.
     /// </summary>
-    public interface IWithSize 
+    public interface IWithSize
     {
         /// <summary>
         /// Specifies the size of the application gateway to use within the context of the selected tier.
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway definition allowing to add a redirect configuration.
     /// </summary>
-    public interface IWithRedirectConfiguration  :
+    public interface IWithRedirectConfiguration :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithRedirectConfigurationBeta
     {
     }
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway definition allowing to specify the SSL protocols to disable.
     /// </summary>
-    public interface IWithDisabledSslProtocol  :
+    public interface IWithDisabledSslProtocol :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithDisabledSslProtocolBeta
     {
     }
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// The stage of an application gateway update allowing to specify the subnet the app gateway is getting
     /// its private IP address from.
     /// </summary>
-    public interface IWithExistingSubnet  :
+    public interface IWithExistingSubnet :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Update.IWithSubnet<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>
     {
         /// <summary>
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to modify frontend IP configurations.
     /// </summary>
-    public interface IWithFrontend 
+    public interface IWithFrontend
     {
         /// <summary>
         /// Begins the update of an existing front end IP configuration.
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to modify request routing rules.
     /// </summary>
-    public interface IWithRequestRoutingRule 
+    public interface IWithRequestRoutingRule
     {
         /// <summary>
         /// Begins the update of a request routing rule.
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to modify IP configurations.
     /// </summary>
-    public interface IWithIPConfig 
+    public interface IWithIPConfig
     {
         /// <summary>
         /// Begins the update of an existing IP configuration.
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway update allowing to manage authentication certificates for the backends to use.
     /// </summary>
-    public interface IWithAuthenticationCertificateBeta  :
+    public interface IWithAuthenticationCertificateBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway definition allowing to add a redirect configuration.
     /// </summary>
-    public interface IWithRedirectConfigurationBeta  :
+    public interface IWithRedirectConfigurationBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
     /// <summary>
     /// The stage of an application gateway definition allowing to specify the SSL protocols to disable.
     /// </summary>
-    public interface IWithDisabledSslProtocolBeta  :
+    public interface IWithDisabledSslProtocolBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

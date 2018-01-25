@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     using Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class BatchAccountImpl 
+    internal partial class BatchAccountImpl
     {
         /// <summary>
         /// Specifies an existing storage account to associate with the Batch account.
@@ -150,11 +150,11 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <summary>
         /// Gets applications in this Batch account, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Batch.Fluent.IApplication> Microsoft.Azure.Management.Batch.Fluent.IBatchAccount.Applications
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Batch.Fluent.IApplication> Microsoft.Azure.Management.Batch.Fluent.IBatchAccount.Applications
         {
             get
             {
-                return this.Applications() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Batch.Fluent.IApplication>;
+                return this.Applications() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Batch.Fluent.IApplication>;
             }
         }
 

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Implementation for CheckNameAvailabilityResult.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuaW1wbGVtZW50YXRpb24uQ2hlY2tOYW1lQXZhaWxhYmlsaXR5UmVzdWx0SW1wbA==
-    internal partial class CheckNameAvailabilityResultImpl  :
+    internal partial class CheckNameAvailabilityResultImpl :
         Wrapper<CheckNameAvailabilityResultInner>,
         ICheckNameAvailabilityResult
     {

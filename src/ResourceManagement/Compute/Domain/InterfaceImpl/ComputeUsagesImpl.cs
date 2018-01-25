@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
-    internal partial class ComputeUsagesImpl 
+    internal partial class ComputeUsagesImpl
     {
         /// <summary>
         /// Lists all the resources of the specified type in the specified region.
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return await this.ListByRegionAsync(region, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IComputeUsage>;
         }
 
-        
+
 
         /// <summary>
         /// List all the resources of the specified type in the specified region.

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
 {
-    public abstract class IndexableRefreshable<IFluentResourceT> : 
+    public abstract class IndexableRefreshable<IFluentResourceT> :
         Indexable,
         IRefreshable<IFluentResourceT>
     {
-        protected IndexableRefreshable() {}
+        protected IndexableRefreshable() { }
 
         public abstract IFluentResourceT Refresh();
 

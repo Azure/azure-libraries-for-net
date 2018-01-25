@@ -10,20 +10,20 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Update
     /// <summary>
     /// Grouping of all the deployment updates stages.
     /// </summary>
-    public interface IUpdateStages 
+    public interface IUpdateStages
     {
     }
     /// <summary>
     /// A deployment update allowing to change the deployment mode.
     /// </summary>
-    public interface IWithMode 
+    public interface IWithMode
     {
         /// <summary>
         /// Specifies the deployment mode.
         /// </summary>
         /// <param name="mode">mode the mode of the deployment</param>
         /// <returns>the next stage of the deployment update</returns>
-        IUpdate WithMode (DeploymentMode mode);
+        IUpdate WithMode(DeploymentMode mode);
 
     }
     /// <summary>
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Update
     /// <p>
     /// Call {@link Update#apply()} to apply the changes to the deployment in Azure.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         IAppliable<IDeployment>,
         IWithTemplate,
         IWithParameters,
@@ -42,21 +42,21 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Update
     /// <summary>
     /// A deployment update allowing to change the parameters.
     /// </summary>
-    public interface IWithParameters 
+    public interface IWithParameters
     {
         /// <summary>
         /// Specifies the parameters as an object.
         /// </summary>
         /// <param name="parameters">the object</param>
         /// <returns>the next stage of the deployment update</returns>
-        IUpdate WithParameters (object parameters);
+        IUpdate WithParameters(object parameters);
 
         /// <summary>
         /// Specifies the parameters as a JSON string.
         /// </summary>
         /// <param name="parametersJson">parametersJson the JSON string</param>
         /// <returns>the next stage of the deployment update</returns>
-        IUpdate WithParameters (string parametersJson);
+        IUpdate WithParameters(string parametersJson);
 
         /// <summary>
         /// Specifies the parameters as a URL.
@@ -64,27 +64,27 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Update
         /// <param name="uri">uri the location of the remote parameters file</param>
         /// <param name="contentVersion">contentVersion the version of the parameters file</param>
         /// <returns>the next stage of the deployment update</returns>
-        IUpdate WithParametersLink (string uri, string contentVersion);
+        IUpdate WithParametersLink(string uri, string contentVersion);
 
     }
     /// <summary>
     /// A deployment update allowing to change the template.
     /// </summary>
-    public interface IWithTemplate 
+    public interface IWithTemplate
     {
         /// <summary>
         /// Specifies the template as an object.
         /// </summary>
         /// <param name="template">the object</param>
         /// <returns>the next stage of the deployment update</returns>
-        IUpdate WithTemplate (object template);
+        IUpdate WithTemplate(object template);
 
         /// <summary>
         /// Specifies the template as a JSON string.
         /// </summary>
         /// <param name="templateJson">templateJson the JSON string</param>
         /// <returns>the next stage of the deployment update</returns>
-        IUpdate WithTemplate (string templateJson);
+        IUpdate WithTemplate(string templateJson);
 
         /// <summary>
         /// Specifies the template as a URL.
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Deployment.Update
         /// <param name="uri">uri the location of the remote template file</param>
         /// <param name="contentVersion">contentVersion the version of the template file</param>
         /// <returns>the next stage of the deployment update</returns>
-        IUpdate WithTemplateLink (string uri, string contentVersion);
+        IUpdate WithTemplateLink(string uri, string contentVersion);
 
     }
 }

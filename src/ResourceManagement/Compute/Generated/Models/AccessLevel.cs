@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this AccessLevel value)
         {
-            switch( value )
+            switch (value)
             {
                 case AccessLevel.None:
                     return "None";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static AccessLevel? ParseAccessLevel(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "None":
                     return AccessLevel.None;

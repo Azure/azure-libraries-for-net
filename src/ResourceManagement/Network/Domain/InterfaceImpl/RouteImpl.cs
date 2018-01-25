@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
 
-    internal partial class RouteImpl 
+    internal partial class RouteImpl
     {
         /// <summary>
         /// Gets the name of the resource.

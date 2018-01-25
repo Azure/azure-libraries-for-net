@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
 
-    internal partial class NetworkWatcherImpl 
+    internal partial class NetworkWatcherImpl
     {
         /// <summary>
         /// Gets the information on the configuration of flow log.

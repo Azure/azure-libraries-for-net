@@ -15,8 +15,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure virtual machine scale set.
     /// </summary>
-    public interface IVirtualMachineScaleSet  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Compute.Fluent.IComputeManager,Models.VirtualMachineScaleSetInner>,
+    public interface IVirtualMachineScaleSet :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Compute.Fluent.IComputeManager, Models.VirtualMachineScaleSetInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<VirtualMachineScaleSet.Update.IWithPrimaryLoadBalancer>,
         Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// of the virtual machines in the scale set, if any.
         /// </return>
         /// <throws>IOException the IO exception.</throws>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> ListPrimaryInternalLoadBalancerInboundNatPools();
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> ListPrimaryInternalLoadBalancerInboundNatPools();
 
         /// <summary>
         /// Gets entry point to manage virtual machine instances in the scale set.
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// of the virtual machines in the scale set.
         /// </return>
         /// <throws>IOException the IO exception.</throws>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> ListPrimaryInternalLoadBalancerBackends();
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> ListPrimaryInternalLoadBalancerBackends();
 
         /// <summary>
         /// Re-images (updates the version of the installed operating system) the virtual machines in the scale set.
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// of the virtual machines in the scale set.
         /// </return>
         /// <throws>IOException the IO exception.</throws>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> ListPrimaryInternetFacingLoadBalancerBackends();
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> ListPrimaryInternetFacingLoadBalancerBackends();
 
         /// <summary>
         /// Powers off (stops) the virtual machines in the scale set asynchronously.
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the extensions attached to the virtual machines in the scale set.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetExtension> Extensions { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetExtension> Extensions { get; }
 
         /// <summary>
         /// Gets the storage profile.
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// of the virtual machines in the scale set.
         /// </return>
         /// <throws>IOException the IO exception.</throws>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> ListPrimaryInternetFacingLoadBalancerInboundNatPools();
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> ListPrimaryInternetFacingLoadBalancerInboundNatPools();
 
         /// <summary>
         /// Gets the upgrade model.

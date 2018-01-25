@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An interface representing a model's ability to have a port number.
     /// </summary>
-    public interface IHasPort 
+    public interface IHasPort
     {
         /// <summary>
         /// Gets the port number.

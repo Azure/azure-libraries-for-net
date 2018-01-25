@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                             if (deleteTask.Exception.InnerException != null)
                             {
                                 exceptions.Add(deleteTask.Exception.InnerException);
-                            } 
+                            }
                             else
                             {
                                 exceptions.Add(deleteTask.Exception);

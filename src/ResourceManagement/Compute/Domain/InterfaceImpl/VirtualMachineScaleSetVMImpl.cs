@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
-    internal partial class VirtualMachineScaleSetVMImpl 
+    internal partial class VirtualMachineScaleSetVMImpl
     {
         /// <summary>
         /// Refreshes the resource to sync with Azure.
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the tags for the resource.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
         {
             get
             {
-                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
             }
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.RestartAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.RestartAsync(cancellationToken);
         }
 
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.PowerOff()
         {
- 
+
             this.PowerOff();
         }
 
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.ReimageAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.ReimageAsync(cancellationToken);
         }
 
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.PowerOffAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.PowerOffAsync(cancellationToken);
         }
 
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.DeleteAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.DeleteAsync(cancellationToken);
         }
 
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.Start()
         {
- 
+
             this.Start();
         }
 
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.Deallocate()
         {
- 
+
             this.Deallocate();
         }
 
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.Reimage()
         {
- 
+
             this.Reimage();
         }
 
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.StartAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.StartAsync(cancellationToken);
         }
 
@@ -395,22 +395,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the managed data disks associated with this virtual machine instance, indexed by LUN.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<int,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.DataDisks
+        System.Collections.Generic.IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.DataDisks
         {
             get
             {
-                return this.DataDisks() as System.Collections.Generic.IReadOnlyDictionary<int,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk>;
+                return this.DataDisks() as System.Collections.Generic.IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk>;
             }
         }
 
         /// <summary>
         /// Gets the unmanaged data disks associated with this virtual machine instance, indexed by LUN.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<int,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.UnmanagedDataDisks
+        System.Collections.Generic.IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.UnmanagedDataDisks
         {
             get
             {
-                return this.UnmanagedDataDisks() as System.Collections.Generic.IReadOnlyDictionary<int,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk>;
+                return this.UnmanagedDataDisks() as System.Collections.Generic.IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk>;
             }
         }
 
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.Delete()
         {
- 
+
             this.Delete();
         }
 
@@ -567,18 +567,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.DeallocateAsync(CancellationToken cancellationToken)
         {
- 
+
             await this.DeallocateAsync(cancellationToken);
         }
 
         /// <summary>
         /// Gets the extensions associated with the virtual machine instance, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMInstanceExtension> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.Extensions
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMInstanceExtension> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.Extensions
         {
             get
             {
-                return this.Extensions() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMInstanceExtension>;
+                return this.Extensions() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMInstanceExtension>;
             }
         }
 
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.Restart()
         {
- 
+
             this.Restart();
         }
 

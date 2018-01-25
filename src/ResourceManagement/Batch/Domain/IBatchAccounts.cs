@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     /// <summary>
     /// Entry point to Azure Batch account management API.
     /// </summary>
-    public interface IBatchAccounts  :
+    public interface IBatchAccounts :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<BatchAccount.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Batch.Fluent.IBatchAccount>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Batch.Fluent.IBatchAccount>,

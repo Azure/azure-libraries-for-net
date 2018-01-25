@@ -12,20 +12,20 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
     /// <p>
     /// (Note: this interface is not intended to be implemented by user code)
     /// </summary>
-    public interface ISupportsDeletingById 
+    public interface ISupportsDeletingById
     {
         /// <summary>
         /// Deletes a resource from Azure, identifying it by its resource ID.
         /// </summary>
         /// <param name="id">id the resource ID of the resource to delete</param>
-        void DeleteById (string id);
+        void DeleteById(string id);
 
         /// <summary>
         /// Deletes a resource from Azure, identifying it by its resource ID.
         /// </summary>
         /// <param name="id">id the resource ID of the resource to delete</param>
         /// <param name="cancellationToken">cancellationToken the cancellation token</param>
-        Task DeleteByIdAsync (string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }

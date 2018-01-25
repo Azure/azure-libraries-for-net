@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
-    internal partial class LoadBalancingRuleImpl 
+    internal partial class LoadBalancingRuleImpl
     {
         /// <summary>
         /// Specifies the transport protocol.
         /// </summary>
         /// <param name="protocol">A transport protocol.</param>
         /// <return>The next stage of the update.</return>
-        LoadBalancingRule.Update.IUpdate HasProtocol.Update.IWithProtocol<LoadBalancingRule.Update.IUpdate,Models.TransportProtocol>.WithProtocol(TransportProtocol protocol)
+        LoadBalancingRule.Update.IUpdate HasProtocol.Update.IWithProtocol<LoadBalancingRule.Update.IUpdate, Models.TransportProtocol>.WithProtocol(TransportProtocol protocol)
         {
             return this.WithProtocol(protocol) as LoadBalancingRule.Update.IUpdate;
         }
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="protocol">A transport protocol.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancingRule.Definition.IWithFrontend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasProtocol.Definition.IWithProtocol<LoadBalancingRule.Definition.IWithFrontend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>,Models.TransportProtocol>.WithProtocol(TransportProtocol protocol)
+        LoadBalancingRule.Definition.IWithFrontend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasProtocol.Definition.IWithProtocol<LoadBalancingRule.Definition.IWithFrontend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>, Models.TransportProtocol>.WithProtocol(TransportProtocol protocol)
         {
             return this.WithProtocol(protocol) as LoadBalancingRule.Definition.IWithFrontend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
         }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="protocol">A transport protocol.</param>
         /// <return>The next stage of the definition.</return>
-        LoadBalancingRule.UpdateDefinition.IWithFrontend<LoadBalancer.Update.IUpdate> HasProtocol.UpdateDefinition.IWithProtocol<LoadBalancingRule.UpdateDefinition.IWithFrontend<LoadBalancer.Update.IUpdate>,Models.TransportProtocol>.WithProtocol(TransportProtocol protocol)
+        LoadBalancingRule.UpdateDefinition.IWithFrontend<LoadBalancer.Update.IUpdate> HasProtocol.UpdateDefinition.IWithProtocol<LoadBalancingRule.UpdateDefinition.IWithFrontend<LoadBalancer.Update.IUpdate>, Models.TransportProtocol>.WithProtocol(TransportProtocol protocol)
         {
             return this.WithProtocol(protocol) as LoadBalancingRule.UpdateDefinition.IWithFrontend<LoadBalancer.Update.IUpdate>;
         }

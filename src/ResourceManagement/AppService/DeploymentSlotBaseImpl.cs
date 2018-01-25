@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// The implementation for DeploymentSlot.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmFwcHNlcnZpY2UuaW1wbGVtZW50YXRpb24uRGVwbG95bWVudFNsb3RCYXNlSW1wbA==
-    internal partial class DeploymentSlotBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT, ParentT, ParentImplT, ParentWithCreateT, ParentDefAfterRegionT, ParentDefAfterGroupT, ParentUpdateT>  :
+    internal partial class DeploymentSlotBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT, ParentT, ParentImplT, ParentWithCreateT, ParentDefAfterRegionT, ParentDefAfterGroupT, ParentUpdateT> :
         WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>
         where FluentImplT : DeploymentSlotBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT, ParentT, ParentImplT, ParentWithCreateT, ParentDefAfterRegionT, ParentDefAfterGroupT, ParentUpdateT>, FluentT
         where FluentT : class, IWebAppBase
@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         where ParentT : class, IWebAppBase
         where DefAfterRegionT : class
         where DefAfterGroupT : class
-        where ParentWithCreateT: class
-        where ParentDefAfterGroupT: class
-        where ParentDefAfterRegionT: class
+        where ParentWithCreateT : class
+        where ParentDefAfterGroupT : class
+        where ParentDefAfterRegionT : class
         where UpdateT : class, WebAppBase.Update.IUpdate<FluentT>
         where ParentUpdateT : class, WebAppBase.Update.IUpdate<ParentT>
     {
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         ///GENMHASH:8C5F8B18192B4F8FD7D43AB4D318EA69:3D9AAF779EB9D14F1D1CEB4D1C1D5CA2
-        public override IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding> GetHostNameBindings()
+        public override IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding> GetHostNameBindings()
         {
             return Extensions.Synchronize(() => GetHostNameBindingsAsync());
         }
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             Inner.SiteConfig = new Models.SiteConfig();
 
-            return (FluentImplT) this;
+            return (FluentImplT)this;
         }
 
         ///GENMHASH:DEC174D8970BF9488F3C635245A48467:C2605F11054FC66A805BECBAE7DAAB1F
@@ -289,12 +289,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         ///GENMHASH:E10A5B0FD0E95947B1A669D51E6BD5C9:D7D427883C2027A865C8AF45F16D7348
-        public override async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>> GetHostNameBindingsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task<System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>> GetHostNameBindingsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var bindingsList = await PagedCollection<IHostNameBinding, HostNameBindingInner>.LoadPage(
                 async (cancellation) => await Manager.Inner.WebApps.ListHostNameBindingsSlotAsync(ResourceGroupName, parent.Name, Name, cancellation),
                 Manager.Inner.WebApps.ListHostNameBindingsSlotNextAsync,
-                (inner) => new HostNameBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(inner, (FluentImplT) this),
+                (inner) => new HostNameBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(inner, (FluentImplT)this),
                 true, cancellationToken);
             return bindingsList.ToDictionary(binding => binding.Name.Replace(this.Name + "/", ""));
         }
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:81C5A75C912A5059487CAA454304B8FC:E174ECD1F459D4BCFB76BF0692F555C9
         public FluentImplT WithConfigurationFromDeploymentSlot(FluentT slot)
         {
-            this.SiteConfig = ((WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>) (IWebAppBase) slot).SiteConfig;
+            this.SiteConfig = ((WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>)(IWebAppBase)slot).SiteConfig;
             configurationSource = slot;
             return (FluentImplT)this;
         }
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             var siteSourceControlInner = Extensions.Synchronize(() => Manager.Inner.WebApps.GetSourceControlSlotAsync(ResourceGroupName, parent.Name, Name));
             return new WebAppSourceControlImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(
                 siteSourceControlInner,
-                (FluentImplT) this);
+                (FluentImplT)this);
         }
 
         ///GENMHASH:EB8C33DACE377CBB07C354F38C5BEA32:40B9A5AF5E2BAAC912A2E077A8B03C22

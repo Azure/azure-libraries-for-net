@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         IVirtualMachineScaleSetUnmanagedDataDisk
     {
         ///GENMHASH:617D48C9BF0FA6CD694A26538B906A7F:D1F3799D5CD797C8CC71EC10E206DBDA
-        internal VirtualMachineScaleSetUnmanagedDataDiskImpl(VirtualMachineScaleSetDataDisk innerObject, 
+        internal VirtualMachineScaleSetUnmanagedDataDiskImpl(VirtualMachineScaleSetDataDisk innerObject,
             VirtualMachineScaleSetImpl parent) : base(innerObject, parent)
         {
         }

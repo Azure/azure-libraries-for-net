@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthentica
     /// can be attached to the parent application gateway definition.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ReturnT>  :
+    public interface IWithAttach<ReturnT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ReturnT>
     {
     }
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthentica
     /// The entirety of an application gateway authentication certificate definition.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IDefinition<ReturnT>  :
+    public interface IDefinition<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.Definition.IBlank<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.Definition.IWithAttach<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.Definition.IWithData<ReturnT>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthentica
     /// The stage of an application gateway authentication certificate definition allowing to specify the data of the certificate.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithData<ReturnT> 
+    public interface IWithData<ReturnT>
     {
         /// <summary>
         /// Specifies an X.509 certificate to upload.
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthentica
     /// The first stage of an application gateway authentication certificate definition.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ReturnT>  :
+    public interface IBlank<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayAuthenticationCertificate.Definition.IWithData<ReturnT>
     {
     }

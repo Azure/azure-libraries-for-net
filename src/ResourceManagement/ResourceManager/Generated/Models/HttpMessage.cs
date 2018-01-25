@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// </summary>
         public HttpMessage()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

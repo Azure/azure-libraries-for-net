@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.Collections.Generic;
 
-    internal partial class ApplicationGatewayRedirectConfigurationImpl 
+    internal partial class ApplicationGatewayRedirectConfigurationImpl
     {
         /// <summary>
         /// Specifies the redirection type.
@@ -247,11 +247,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets request routing rules on this application referencing this redirect configuration, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration.RequestRoutingRules
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration.RequestRoutingRules
         {
             get
             {
-                return this.RequestRoutingRules() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule>;
+                return this.RequestRoutingRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule>;
             }
         }
 

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
-    internal partial class VirtualMachineCustomImagesImpl 
+    internal partial class VirtualMachineCustomImagesImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.

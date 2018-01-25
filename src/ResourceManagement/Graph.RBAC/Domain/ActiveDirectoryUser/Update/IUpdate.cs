@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Updat
     /// <summary>
     /// A user update allowing password to be specified.
     /// </summary>
-    public interface IWithPassword  :
+    public interface IWithPassword :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Update.IWithPasswordBeta
     {
     }
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Updat
     /// <summary>
     /// A user update allowing setting whether the user should change password on the next login.
     /// </summary>
-    public interface IWithPromptToChangePasswordOnLogin  :
+    public interface IWithPromptToChangePasswordOnLogin :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Update.IWithPromptToChangePasswordOnLoginBeta
     {
     }
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Updat
     /// <summary>
     /// A user update allowing usage location to be specified.
     /// </summary>
-    public interface IWithUsageLocation  :
+    public interface IWithUsageLocation :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Update.IWithUsageLocationBeta
     {
     }
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Updat
     /// <summary>
     /// A user update allowing specifying whether the account is enabled.
     /// </summary>
-    public interface IWithAccontEnabled  :
+    public interface IWithAccontEnabled :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Update.IWithAccontEnabledBeta
     {
     }
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Updat
     /// <summary>
     /// The template for a user update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryUser>,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Update.IWithAccontEnabled,
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Updat
     /// <summary>
     /// A user update allowing password to be specified.
     /// </summary>
-    public interface IWithPasswordBeta  :
+    public interface IWithPasswordBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Updat
     /// <summary>
     /// A user update allowing setting whether the user should change password on the next login.
     /// </summary>
-    public interface IWithPromptToChangePasswordOnLoginBeta  :
+    public interface IWithPromptToChangePasswordOnLoginBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Updat
     /// <summary>
     /// A user update allowing usage location to be specified.
     /// </summary>
-    public interface IWithUsageLocationBeta  :
+    public interface IWithUsageLocationBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Updat
     /// <summary>
     /// A user update allowing specifying whether the account is enabled.
     /// </summary>
-    public interface IWithAccontEnabledBeta  :
+    public interface IWithAccontEnabledBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.IndependentChil
     /// </summary>
     /// <typeparam name="">The resource type.</typeparam>
     /// <typeparam name="Parent">Parent resource type.</typeparam>
-    public interface IWithParentResource<T,ParentT> 
+    public interface IWithParentResource<T, ParentT>
     {
         /// <summary>
         /// Creates a new child resource under parent resource.

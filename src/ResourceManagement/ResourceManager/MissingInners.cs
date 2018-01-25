@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent
 {
-    public class TenantIdDescriptionInner {}
+    public class TenantIdDescriptionInner { }
 }

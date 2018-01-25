@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure AD service principal.
     /// </summary>
-    public interface IServicePrincipal  :
+    public interface IServicePrincipal :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryObject,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ServicePrincipalInner>,
@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <summary>
         /// Gets the mapping of certificate credentials from their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential> CertificateCredentials { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential> CertificateCredentials { get; }
 
         /// <summary>
         /// Gets the mapping of password credentials from their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential> PasswordCredentials { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential> PasswordCredentials { get; }
     }
 }

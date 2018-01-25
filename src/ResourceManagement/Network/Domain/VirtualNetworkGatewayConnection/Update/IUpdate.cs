@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnect
     /// <summary>
     /// Grouping of virtual network gateway connection update stages.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Update.IWithBgp,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Update.IWithSharedKey,

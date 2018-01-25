@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class FrequencyUnitEnumExtension
     {
-        internal static string ToSerializedValue(this FrequencyUnit? value)  =>
+        internal static string ToSerializedValue(this FrequencyUnit? value) =>
             value == null ? null : ((FrequencyUnit)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this FrequencyUnit value)
         {
-            switch( value )
+            switch (value)
             {
                 case FrequencyUnit.Day:
                     return "Day";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static FrequencyUnit? ParseFrequencyUnit(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Day":
                     return FrequencyUnit.Day;

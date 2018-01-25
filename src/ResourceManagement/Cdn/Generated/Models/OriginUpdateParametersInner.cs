@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// </summary>
         public OriginUpdateParametersInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

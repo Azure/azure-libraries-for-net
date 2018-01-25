@@ -30,19 +30,19 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         public async Task<IPagedCollection<IFeature>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IFeature, FeatureResultInner>.LoadPage(
-                async(cancellation) => await client.ListAllAsync(cancellation),
+                async (cancellation) => await client.ListAllAsync(cancellation),
                 client.ListNextAsync,
                 WrapModel, loadAllPages, cancellationToken);
         }
 
         public IFeature Register(string resourceProviderNamespace, string featureName)
         {
-            return Extensions.Synchronize(() =>  RegisterAsync(resourceProviderNamespace, featureName));
+            return Extensions.Synchronize(() => RegisterAsync(resourceProviderNamespace, featureName));
         }
 
         public async Task<IFeature> RegisterAsync(
-            string resourceProviderNamespace, 
-            string featureName, 
+            string resourceProviderNamespace,
+            string featureName,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             return WrapModel(await client.RegisterAsync(resourceProviderNamespace, featureName, cancellationToken));

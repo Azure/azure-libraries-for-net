@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// A user definition allowing setting whether the user should change password on the next login.
     /// </summary>
-    public interface IWithPromptToChangePasswordOnLogin  :
+    public interface IWithPromptToChangePasswordOnLogin :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Definition.IWithPromptToChangePasswordOnLoginBeta
     {
     }
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// A user definition allowing user principal name to be specified.
     /// </summary>
-    public interface IWithUserPrincipalName  :
+    public interface IWithUserPrincipalName :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Definition.IWithUserPrincipalNameBeta
     {
     }
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// user in the cloud, but exposing additional optional inputs to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryUser>,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Definition.IWithAccontEnabled,
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// A user definition allowing usage location to be specified.
     /// </summary>
-    public interface IWithUsageLocation  :
+    public interface IWithUsageLocation :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Definition.IWithUsageLocationBeta
     {
     }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// The first stage of the user definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Definition.IWithUserPrincipalName
     {
     }
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// A user definition allowing specifying whether the account is enabled.
     /// </summary>
-    public interface IWithAccontEnabled  :
+    public interface IWithAccontEnabled :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Definition.IWithAccontEnabledBeta
     {
     }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// A user definition allowing password to be specified.
     /// </summary>
-    public interface IWithPassword  :
+    public interface IWithPassword :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Definition.IWithPasswordBeta
     {
     }
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Definition.IBlank,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Definition.IWithUserPrincipalName,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Definition.IWithPassword,
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// A user definition allowing setting whether the user should change password on the next login.
     /// </summary>
-    public interface IWithPromptToChangePasswordOnLoginBeta  :
+    public interface IWithPromptToChangePasswordOnLoginBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// A user definition allowing user principal name to be specified.
     /// </summary>
-    public interface IWithUserPrincipalNameBeta  :
+    public interface IWithUserPrincipalNameBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// A user definition allowing usage location to be specified.
     /// </summary>
-    public interface IWithUsageLocationBeta  :
+    public interface IWithUsageLocationBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// A user definition allowing specifying whether the account is enabled.
     /// </summary>
-    public interface IWithAccontEnabledBeta  :
+    public interface IWithAccontEnabledBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryUser.Defin
     /// <summary>
     /// A user definition allowing password to be specified.
     /// </summary>
-    public interface IWithPasswordBeta  :
+    public interface IWithPasswordBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

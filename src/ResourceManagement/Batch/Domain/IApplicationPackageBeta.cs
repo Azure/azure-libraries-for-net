@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
     /// <summary>
     /// Contains members of IApplicationPackage that are in Beta.
     /// </summary>
-    public interface IApplicationPackageBeta  : IBeta
+    public interface IApplicationPackageBeta : IBeta
     {
         /// <summary>
         /// Activates the application package.

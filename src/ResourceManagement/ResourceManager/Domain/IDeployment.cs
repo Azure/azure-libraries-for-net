@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure deployment.
     /// </summary>
-    public interface IDeployment  :
+    public interface IDeployment :
         IRefreshable<IDeployment>,
         IUpdatable<IUpdate>,
         IHasInner<DeploymentExtendedInner>,

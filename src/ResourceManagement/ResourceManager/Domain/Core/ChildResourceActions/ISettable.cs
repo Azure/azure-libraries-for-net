@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceAc
     /// 
     /// @param <ParentT> the parent definition {@link Settable#parent()} returns to
     /// </summary>
-    public interface ISettable<ParentT> 
+    public interface ISettable<ParentT>
     {
         /// <summary>
         /// Begins an update for a child resource.
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceAc
         /// the actual parent resource update process in Azure is {@link Settable#parent()}.
         /// </summary>
         /// <returns>the stage of  parent resource update</returns>
-        ParentT Parent ();
+        ParentT Parent();
 
     }
 }

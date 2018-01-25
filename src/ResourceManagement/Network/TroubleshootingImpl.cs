@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation of Troubleshooting interface.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVHJvdWJsZXNob290aW5nSW1wbA==
-    internal partial class TroubleshootingImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVHJvdWJsZXNob290aW5nSW1wbA==
+    internal partial class TroubleshootingImpl :
         Executable<Microsoft.Azure.Management.Network.Fluent.ITroubleshooting>,
         ITroubleshooting,
         IDefinition
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:CC7472AC3252D1A440E780CC02E6671F:425AAA90FA44C25BF65D98CF87FB3E57
-        internal  TroubleshootingImpl(NetworkWatcherImpl parent)
+        internal TroubleshootingImpl(NetworkWatcherImpl parent)
         {
             this.parent = parent;
         }

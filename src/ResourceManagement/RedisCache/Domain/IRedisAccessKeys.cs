@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
     /// <summary>
     /// The <code>RedisCache.keys()</code> action result.
     /// </summary>
-    public interface IRedisAccessKeys 
+    public interface IRedisAccessKeys
     {
         /// <summary>
         /// Gets a secondary key value.

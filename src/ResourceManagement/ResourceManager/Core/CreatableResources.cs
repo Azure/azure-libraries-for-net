@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
     /// <typeparam name="IFluentResourceT">the fluent resource interface</typeparam>
     /// <typeparam name="FluentResourceT">the fluent resource implementation</typeparam>
     /// <typeparam name="InnerResourceT">the type that fluent resource wraps</typeparam>
-    public abstract class CreatableResources<IFluentResourceT, FluentResourceT, InnerResourceT> 
+    public abstract class CreatableResources<IFluentResourceT, FluentResourceT, InnerResourceT>
         : CreatableWrappers<IFluentResourceT, FluentResourceT, InnerResourceT>,
         ISupportsBatchCreation<IFluentResourceT>
         where IFluentResourceT : class, IHasId

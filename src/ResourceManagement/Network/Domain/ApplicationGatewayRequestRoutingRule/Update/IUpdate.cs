@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// <summary>
     /// The entirety of an application gateway request routing rule update as part of an application gateway update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IWithListener,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IWithBackend,
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// <summary>
     /// The stage of an application gateway request routing rule update allowing to specify the backend to associate the routing rule with.
     /// </summary>
-    public interface IWithBackend 
+    public interface IWithBackend
     {
         /// <summary>
         /// Associates the request routing rule with a backend on this application gateway.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// <summary>
     /// The stage of an application gateway request routing rule update allowing to associate the rule with a redirect configuration.
     /// </summary>
-    public interface IWithRedirectConfig  :
+    public interface IWithRedirectConfig :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Update.IWithRedirectConfigBeta
     {
     }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule update allowing to specify an existing listener to
     /// associate the routing rule with.
     /// </summary>
-    public interface IWithListener 
+    public interface IWithListener
     {
         /// <summary>
         /// Associates the request routing rule with an existing frontend listener.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule update allowing to specify the backend HTTP settings configuration
     /// to associate the routing rule with.
     /// </summary>
-    public interface IWithBackendHttpConfiguration 
+    public interface IWithBackendHttpConfiguration
     {
         /// <summary>
         /// Associates the specified backend HTTP settings configuration with this request routing rule.
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// <summary>
     /// The stage of an application gateway request routing rule update allowing to associate the rule with a redirect configuration.
     /// </summary>
-    public interface IWithRedirectConfigBeta  :
+    public interface IWithRedirectConfigBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

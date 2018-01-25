@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         public DatabaseAccountListReadOnlyKeysResultInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// Entry point to template deployment in Azure.
     /// </summary>
-    public interface IDeployments  :
+    public interface IDeployments :
         ISupportsCreating<IBlank>,
         ISupportsListing<IDeployment>,
         ISupportsListingByResourceGroup<IDeployment>,
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// <param name="resourceGroupName">resourceGroupName the resource group's name</param>
         /// <param name="deploymentName">deploymentName the deployment's name</param>
         /// <returns>true if the deployment exists; false otherwise</returns>
-        bool CheckExistence (string resourceGroupName, string deploymentName);
+        bool CheckExistence(string resourceGroupName, string deploymentName);
 
     }
 }

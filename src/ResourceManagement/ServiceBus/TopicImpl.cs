@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Implementation for Topic.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuaW1wbGVtZW50YXRpb24uVG9waWNJbXBs
-    internal partial class TopicImpl  :
+    internal partial class TopicImpl :
         IndependentChildResourceImpl<ITopic,
             ServiceBusNamespaceImpl,
             TopicInner,
@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             this.WithExistingParentResource(resourceGroupName, namespaceName);
             InitChildrenOperationsCache();
-            if (inner.Location == null) {
+            if (inner.Location == null)
+            {
                 inner.Location = region.ToString();
             }
         }
@@ -160,7 +161,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             return await this.Manager.Inner.Topics
                     .GetAsync(this.ResourceGroupName,
                         this.parentName,
-                        this.Name, 
+                        this.Name,
                         cancellationToken);
         }
 
@@ -293,7 +294,8 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         ///GENMHASH:839B23AF4843DCB6D8F2D31D8A415A72:AB2ABD4D61AAF3AA9963547A984E9961
         public int SubscriptionCount()
         {
-            if (this.Inner.SubscriptionCount == null || !this.Inner.SubscriptionCount.HasValue) {
+            if (this.Inner.SubscriptionCount == null || !this.Inner.SubscriptionCount.HasValue)
+            {
                 return 0;
             }
             return this.Inner.SubscriptionCount.Value;

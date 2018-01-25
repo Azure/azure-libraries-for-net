@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.Collections.Generic;
 
-    internal partial class VirtualMachineScaleSetUnmanagedDataDiskImpl 
+    internal partial class VirtualMachineScaleSetUnmanagedDataDiskImpl
     {
         /// <summary>
         /// Gets the name of the resource.

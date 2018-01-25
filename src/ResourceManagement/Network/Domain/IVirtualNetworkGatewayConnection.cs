@@ -10,9 +10,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Client-side representation of Virtual Network Gateway Connection object, associated with Virtual Network Gateway.
     /// </summary>
-    public interface IVirtualNetworkGatewayConnection  :
+    public interface IVirtualNetworkGatewayConnection :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IIndependentChildResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.VirtualNetworkGatewayConnectionInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IIndependentChildResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.VirtualNetworkGatewayConnectionInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<VirtualNetworkGatewayConnection.Update.IUpdate>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway>

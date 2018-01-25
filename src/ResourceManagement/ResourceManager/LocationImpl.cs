@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public Region Region
         {
-            get { return Region.Create(Name);  }
+            get { return Region.Create(Name); }
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.DAG
 {
-    public class Graph<NodeDataT, NodeT> 
+    public class Graph<NodeDataT, NodeT>
         where NodeT : Node<NodeDataT>
     {
         protected IDictionary<string, NodeT> graph;

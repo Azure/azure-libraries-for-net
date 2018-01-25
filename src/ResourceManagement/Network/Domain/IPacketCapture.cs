@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Client-side representation of Packet capture object, associated with Network Watcher.
     /// </summary>
-    public interface IPacketCapture  :
+    public interface IPacketCapture :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.PacketCaptureResultInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,

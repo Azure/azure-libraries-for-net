@@ -11,8 +11,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Network security group.
     /// </summary>
-    public interface INetworkSecurityGroup  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.NetworkSecurityGroupInner>,
+    public interface INetworkSecurityGroup :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.NetworkSecurityGroupInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<NetworkSecurityGroup.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.IHasAssociatedSubnets
@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets default security rules associated with this network security group, indexed by their name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule> DefaultSecurityRules { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule> DefaultSecurityRules { get; }
 
         /// <summary>
         /// Gets security rules associated with this network security group, indexed by their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule> SecurityRules { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule> SecurityRules { get; }
 
         /// <summary>
         /// Gets the IDs of the network interfaces associated with this network security group.

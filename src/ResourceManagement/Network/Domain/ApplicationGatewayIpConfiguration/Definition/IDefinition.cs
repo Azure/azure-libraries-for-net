@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfigur
     /// can be attached to the parent application gateway definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>
     {
     }
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfigur
     /// The entirety of an application gateway IP configuration definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfiguration.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfiguration.Definition.IWithSubnet<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfiguration.Definition.IWithAttach<ParentT>
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfigur
     /// The stage of an application gateway IP configuration definition allowing to specify the subnet the application gateway is on.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithSubnet<ParentT>  :
+    public interface IWithSubnet<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Definition.IWithSubnet<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfiguration.Definition.IWithAttach<ParentT>>
     {
         /// <summary>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfigur
     /// The first stage of an application gateway IP configuration definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayIPConfiguration.Definition.IWithSubnet<ParentT>
     {
     }

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of a subnet of a virtual network.
     /// </summary>
-    public interface ISubnetBeta  :
+    public interface ISubnetBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <return>Available private IP addresses within this network.</return>

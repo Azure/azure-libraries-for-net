@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Represents a virtual machine image SKU.
     /// </summary>
-    public interface IVirtualMachineSku  :
+    public interface IVirtualMachineSku :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName
     {
         /// <summary>

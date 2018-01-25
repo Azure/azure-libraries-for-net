@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The template for an application update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryApplication>,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Update.IWithSignOnUrl,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplication.Update.IWithIdentifierUrl,
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The stage of application update allowing specifying identifier URLs.
     /// </summary>
-    public interface IWithIdentifierUrl 
+    public interface IWithIdentifierUrl
     {
         /// <summary>
         /// Adds an identifier URL to the application.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The stage of application update allowing specifying reply URLs.
     /// </summary>
-    public interface IWithReplyUrl 
+    public interface IWithReplyUrl
     {
         /// <summary>
         /// Removes a reply URL.
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The stage of application update allowing specifying the sign on URL.
     /// </summary>
-    public interface IWithSignOnUrl 
+    public interface IWithSignOnUrl
     {
         /// <summary>
         /// Specifies the sign on URL.
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The stage of application update allowing specifying if the application can be used in multiple tenants.
     /// </summary>
-    public interface IWithMultiTenant 
+    public interface IWithMultiTenant
     {
         /// <summary>
         /// Specifies if the application can be used in multiple tenants.
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicatio
     /// <summary>
     /// The stage of application update allowing specifying identifier keys.
     /// </summary>
-    public interface IWithCredential 
+    public interface IWithCredential
     {
         /// <summary>
         /// Starts the definition of a password credential.

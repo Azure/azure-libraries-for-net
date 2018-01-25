@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 {
     public class DelegatingHandlerBase : DelegatingHandler
     {
-        public DelegatingHandlerBase() 
+        public DelegatingHandlerBase()
             : base()
         {
         }
 
-        public DelegatingHandlerBase(HttpMessageHandler innerHandler) 
+        public DelegatingHandlerBase(HttpMessageHandler innerHandler)
             : base(innerHandler)
         {
         }

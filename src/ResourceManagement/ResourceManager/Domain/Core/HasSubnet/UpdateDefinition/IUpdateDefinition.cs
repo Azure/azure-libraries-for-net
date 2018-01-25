@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Updat
     /// The stage of a definition allowing to associate a subnet with a resource.
     /// @param <ReturnT> the next stage of the definition
     /// </summary>
-    public interface IWithSubnet<ReturnT> 
+    public interface IWithSubnet<ReturnT>
     {
         /// <summary>
         /// Assigns the specified subnet to this resource.
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Updat
         /// <param name="parentNetworkResourceId">parentNetworkResourceId the resource ID of the virtual network the subnet is part of</param>
         /// <param name="subnetName">subnetName the name of the subnet</param>
         /// <returns>the next stage of the definition</returns>
-        ReturnT WithExistingSubnet (string parentNetworkResourceId, string subnetName);
+        ReturnT WithExistingSubnet(string parentNetworkResourceId, string subnetName);
 
     }
 }

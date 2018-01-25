@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure resource provider.
     /// </summary>
-    public interface IProvider  :
+    public interface IProvider :
         IIndexable,
         IHasInner<ProviderInner>
     {

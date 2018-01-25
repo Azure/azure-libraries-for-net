@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// </summary>
         public ValidateCustomDomainInput()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

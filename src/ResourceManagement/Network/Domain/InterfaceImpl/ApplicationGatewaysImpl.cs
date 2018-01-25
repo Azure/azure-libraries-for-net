@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using System.Collections.Generic;
 
-    internal partial class ApplicationGatewaysImpl 
+    internal partial class ApplicationGatewaysImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="ids">Application gateway resource ids.</param>
         void Microsoft.Azure.Management.Network.Fluent.IApplicationGateways.Stop(params string[] ids)
         {
- 
+
             this.Stop(ids);
         }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="ids">Application gateway resource ids.</param>
         void Microsoft.Azure.Management.Network.Fluent.IApplicationGateways.Stop(ICollection<string> ids)
         {
- 
+
             this.Stop(ids);
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="ids">Application gateway resource ids.</param>
         void Microsoft.Azure.Management.Network.Fluent.IApplicationGateways.Start(params string[] ids)
         {
- 
+
             this.Start(ids);
         }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="ids">Application gateway resource ids.</param>
         void Microsoft.Azure.Management.Network.Fluent.IApplicationGateways.Start(ICollection<string> ids)
         {
- 
+
             this.Start(ids);
         }
     }

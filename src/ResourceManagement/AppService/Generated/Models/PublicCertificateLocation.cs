@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class PublicCertificateLocationEnumExtension
     {
-        internal static string ToSerializedValue(this PublicCertificateLocation? value)  =>
+        internal static string ToSerializedValue(this PublicCertificateLocation? value) =>
             value == null ? null : ((PublicCertificateLocation)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this PublicCertificateLocation value)
         {
-            switch( value )
+            switch (value)
             {
                 case PublicCertificateLocation.CurrentUserMy:
                     return "CurrentUserMy";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static PublicCertificateLocation? ParsePublicCertificateLocation(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "CurrentUserMy":
                     return PublicCertificateLocation.CurrentUserMy;

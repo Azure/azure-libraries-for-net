@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// Type representing encryption settings to be applied to a Linux virtual machine.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuTGludXhWTURpc2tFbmNyeXB0aW9uQ29uZmlndXJhdGlvbg==
-    public sealed partial class LinuxVMDiskEncryptionConfiguration  :
+    public sealed partial class LinuxVMDiskEncryptionConfiguration :
         VirtualMachineEncryptionConfiguration<Microsoft.Azure.Management.Compute.Fluent.LinuxVMDiskEncryptionConfiguration>
     {
         /// <summary>
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="aadClientId">Client id of an AAD application which has permission to the key vault.</param>
         /// <param name="aadSecret">Client secret corresponding to the aadClientId.</param>
         ///GENMHASH:F60F63D0BCF461F87C8DDE2D7B55825B:D2C4BE9AEE50F40A54E843F13622A34E
-        public  LinuxVMDiskEncryptionConfiguration(string keyVaultId, string aadClientId, string aadSecret) : base(keyVaultId, aadClientId, aadSecret)
+        public LinuxVMDiskEncryptionConfiguration(string keyVaultId, string aadClientId, string aadSecret) : base(keyVaultId, aadClientId, aadSecret)
         {
         }
 

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Cu
     /// The stage of the image definition allowing to choose the source of the data disk image.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithImageSource<ParentT> 
+    public interface IWithImageSource<ParentT>
     {
         /// <summary>
         /// Specifies the source managed disk for the data disk image.
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Cu
     /// The stage of the image definition allowing to specify the LUN for the disk image.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDiskLun<ParentT> 
+    public interface IWithDiskLun<ParentT>
     {
         /// <summary>
         /// Specifies the LUN for the data disk to be created from the disk image.
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Cu
     /// is created from the same data disk image.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDiskSettings<ParentT> 
+    public interface IWithDiskSettings<ParentT>
     {
         /// <summary>
         /// Specifies the size in GB for data disk.
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Cu
     /// The first stage of the data disk image definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithDiskLun<ParentT>
     {
     }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Cu
     /// can be attached to the parent image definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithDiskSettings<ParentT>
     {
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Cu
     /// The entirety of a data disk image definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.CustomImageDataDisk.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithDiskLun<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithImageSource<ParentT>,

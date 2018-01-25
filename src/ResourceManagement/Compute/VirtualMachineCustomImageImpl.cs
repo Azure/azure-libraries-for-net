@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     internal partial class VirtualMachineCustomImageImpl :
         GroupableResource<IVirtualMachineCustomImage,
             ImageInner,
-            VirtualMachineCustomImageImpl, 
+            VirtualMachineCustomImageImpl,
             IComputeManager,
             VirtualMachineCustomImage.Definition.IWithGroup,
             VirtualMachineCustomImage.Definition.IWithOSDiskImageSourceAltVirtualMachineSource,
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:0E35B57E40F7013714501510E6A82763:FA0DA2D49BB19FB064747F80391EAE9A
         public CustomImageDataDiskImpl DefineDataDiskImage()
         {
-            return new CustomImageDataDiskImpl(new ImageDataDisk(),this);
+            return new CustomImageDataDiskImpl(new ImageDataDisk(), this);
         }
 
         ///GENMHASH:4B04B5578F522B6D67AC092ED5FBCE91:0D973F87F3643713E968DB6281AB091B
@@ -145,7 +145,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:9E984BEB4133DD0B3AA842B63D7D77AC:1C3F555F09D9102CFCAD04ADC6BBFE42
         public ImageOSDisk OSDiskImage()
         {
-            if (Inner.StorageProfile == null) {
+            if (Inner.StorageProfile == null)
+            {
                 return null;
             }
             return Inner.StorageProfile.OsDisk;
@@ -199,7 +200,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:333EAA45B1D1CC338A9F5F2890D1FCF7:3D915441151BB98BE34814C400261E58
         public string SourceVirtualMachineId()
         {
-            if (Inner.SourceVirtualMachine == null) {
+            if (Inner.SourceVirtualMachine == null)
+            {
                 return null;
             }
             return Inner.SourceVirtualMachine.Id;
@@ -208,10 +210,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:1C7A9AF7A9A2B672155EEEF5F6420E08:03573333EBFDEDB75330E6D42BEFE5F3
         internal VirtualMachineCustomImageImpl WithCustomImageDataDisk(CustomImageDataDiskImpl customImageDataDisk)
         {
-            if (Inner.StorageProfile == null) {
+            if (Inner.StorageProfile == null)
+            {
                 Inner.StorageProfile = new ImageStorageProfile();
             }
-            if (Inner.StorageProfile.DataDisks == null) {
+            if (Inner.StorageProfile.DataDisks == null)
+            {
                 Inner.StorageProfile.DataDisks = new List<ImageDataDisk>();
             }
             Inner.StorageProfile.DataDisks.Add(customImageDataDisk.Inner);
@@ -222,23 +226,30 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private void EnsureDefaultLuns()
         {
             if (Inner.StorageProfile != null
-                && Inner.StorageProfile.DataDisks != null) {
+                && Inner.StorageProfile.DataDisks != null)
+            {
                 var imageDisks = Inner.StorageProfile.DataDisks;
                 var usedLuns = new HashSet<int>();
-                foreach(var imageDisk in imageDisks)  {
-                    if (imageDisk.Lun != -1) {
+                foreach (var imageDisk in imageDisks)
+                {
+                    if (imageDisk.Lun != -1)
+                    {
                         usedLuns.Add(imageDisk.Lun);
                     }
                 }
-                if (usedLuns.Count == imageDisks.Count) {
+                if (usedLuns.Count == imageDisks.Count)
+                {
                     return;
                 }
-                foreach(var imageDisk in imageDisks)  {
-                    if (imageDisk.Lun != -1) {
+                foreach (var imageDisk in imageDisks)
+                {
+                    if (imageDisk.Lun != -1)
+                    {
                         continue;
                     }
                     int i = 0;
-                    while (usedLuns.Contains(i)) {
+                    while (usedLuns.Contains(i))
+                    {
                         i++;
                     }
                     imageDisk.Lun = i;
@@ -250,11 +261,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:467A5E1DBEFF6DFFFD3FD21A958498A3:C71F36C1B0B9950F5EC79B4A234987CC
         public IReadOnlyDictionary<int, Models.ImageDataDisk> DataDiskImages()
         {
-            if (Inner.StorageProfile == null || Inner.StorageProfile.DataDisks == null) {
+            if (Inner.StorageProfile == null || Inner.StorageProfile.DataDisks == null)
+            {
                 return new Dictionary<int, ImageDataDisk>();
             }
             Dictionary<int, ImageDataDisk> diskImages = new Dictionary<int, ImageDataDisk>();
-            foreach(var dataDisk in Inner.StorageProfile.DataDisks)  {
+            foreach (var dataDisk in Inner.StorageProfile.DataDisks)
+            {
                 diskImages.Add(dataDisk.Lun, dataDisk);
             }
             return diskImages;
@@ -291,10 +304,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:E625C1F29CDEA4A229F9F716CB068DE5:C82C3D88AD1345B17C97817FCB05C6D8
         private ImageOSDisk EnsureOsDiskImage()
         {
-            if (Inner.StorageProfile == null) {
+            if (Inner.StorageProfile == null)
+            {
                 Inner.StorageProfile = new ImageStorageProfile();
             }
-            if (Inner.StorageProfile.OsDisk == null) {
+            if (Inner.StorageProfile.OsDisk == null)
+            {
                 Inner
                     .StorageProfile
                     .OsDisk = new ImageOSDisk();

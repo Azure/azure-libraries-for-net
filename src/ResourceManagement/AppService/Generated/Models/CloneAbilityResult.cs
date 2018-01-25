@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class CloneAbilityResultEnumExtension
     {
-        internal static string ToSerializedValue(this CloneAbilityResult? value)  =>
+        internal static string ToSerializedValue(this CloneAbilityResult? value) =>
             value == null ? null : ((CloneAbilityResult)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this CloneAbilityResult value)
         {
-            switch( value )
+            switch (value)
             {
                 case CloneAbilityResult.Cloneable:
                     return "Cloneable";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static CloneAbilityResult? ParseCloneAbilityResult(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Cloneable":
                     return CloneAbilityResult.Cloneable;

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public ExpressRouteCircuitRoutesTable()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

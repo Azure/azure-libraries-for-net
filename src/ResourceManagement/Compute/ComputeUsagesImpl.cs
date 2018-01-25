@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:438AA0AEE9E5AB3F7FB0CB3404AB0062:347158454CE9D4F224065BB056903D09
         protected override IComputeUsage WrapModel(Usage usageInner)
         {
-            if (usageInner == null) {
+            if (usageInner == null)
+            {
                 return null;
             }
             return new ComputeUsageImpl(usageInner);

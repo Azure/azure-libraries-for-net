@@ -73,16 +73,16 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         public async override Task<IApplication> CreateAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var createParameter = new ApplicationCreateParametersInner
-                                    {
-                                        DisplayName = Inner.DisplayName,
-                                        AllowUpdates = Inner.AllowUpdates
-                                    };
+            {
+                DisplayName = Inner.DisplayName,
+                AllowUpdates = Inner.AllowUpdates
+            };
 
             var inner = await Parent.Manager.Inner.Application.CreateAsync(
                 Parent.ResourceGroupName,
                 Parent.Name,
-                Name(), 
-                createParameter, 
+                Name(),
+                createParameter,
                 cancellationToken);
 
             SetInner(inner);
@@ -94,10 +94,10 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         public async override Task<IApplication> UpdateAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var updateParameter = new ApplicationUpdateParametersInner
-                                    {
-                                        DisplayName = Inner.DisplayName,
-                                        AllowUpdates = Inner.AllowUpdates
-                                    };
+            {
+                DisplayName = Inner.DisplayName,
+                AllowUpdates = Inner.AllowUpdates
+            };
 
             await Parent.Manager.Inner.Application.UpdateAsync(Parent.ResourceGroupName, Parent.Name, Name(), updateParameter, cancellationToken);
             await applicationPackages.CommitAndGetAllAsync(cancellationToken);

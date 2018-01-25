@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of an inbound NAT pool.
     /// </summary>
-    public interface ILoadBalancerInboundNatPool  :
+    public interface ILoadBalancerInboundNatPool :
         Microsoft.Azure.Management.Network.Fluent.IHasFrontend,
         Microsoft.Azure.Management.Network.Fluent.IHasBackendPort,
         Microsoft.Azure.Management.Network.Fluent.IHasProtocol<Models.TransportProtocol>,

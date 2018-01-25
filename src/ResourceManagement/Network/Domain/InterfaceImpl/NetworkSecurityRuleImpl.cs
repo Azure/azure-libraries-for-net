@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
 
-    internal partial class NetworkSecurityRuleImpl 
+    internal partial class NetworkSecurityRuleImpl
     {
         /// <summary>
         /// Specifies the priority to assign to this rule.

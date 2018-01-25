@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class CertificateOrderStatusEnumExtension
     {
-        internal static string ToSerializedValue(this CertificateOrderStatus? value)  =>
+        internal static string ToSerializedValue(this CertificateOrderStatus? value) =>
             value == null ? null : ((CertificateOrderStatus)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this CertificateOrderStatus value)
         {
-            switch( value )
+            switch (value)
             {
                 case CertificateOrderStatus.Pendingissuance:
                     return "Pendingissuance";
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static CertificateOrderStatus? ParseCertificateOrderStatus(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Pendingissuance":
                     return CertificateOrderStatus.Pendingissuance;

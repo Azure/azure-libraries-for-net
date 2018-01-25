@@ -57,8 +57,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:D48BEF4BAC4C0112B6930D731FFC59BD:B688575CF0F2C7EE53245AA64EA89B5D
         protected override IVirtualMachinePublisher WrapModel(VirtualMachineImageResourceInner inner)
         {
-            return new VirtualMachinePublisherImpl(Region.Create(inner.Location), inner.Name, 
-                this.innerCollection, 
+            return new VirtualMachinePublisherImpl(Region.Create(inner.Location), inner.Name,
+                this.innerCollection,
                 this.extensionsInnerCollection);
         }
     }

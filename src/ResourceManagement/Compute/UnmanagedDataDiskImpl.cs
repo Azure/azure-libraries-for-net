@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         internal static void SetDataDisksDefaults(IList<IVirtualMachineUnmanagedDataDisk> dataDisks, string namePrefix)
         {
             var usedLuns = new HashSet<int>();
-            foreach(var dataDisk in dataDisks)
+            foreach (var dataDisk in dataDisks)
             {
                 if (dataDisk.Lun != -1)
                 {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 }
             }
         }
-        
+
         ///GENMHASH:5989C68B78A7796C5344EB1BA406F61C:CAE3210BD862043FDDDDDCEA6F38692E
         public UnmanagedDataDiskImpl WithExistingVhd(string storageAccountName, string containerName, string vhdName)
         {
@@ -117,11 +117,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:638DE13F1D4D90A0515B35BE7FE1BE5C:8FABD54B6B9CC34ECD0DAE095274C8FB
         internal static void EnsureDisksVhdUri(IList<IVirtualMachineUnmanagedDataDisk> dataDisks, IStorageAccount storageAccount, string namePrefix)
         {
-            foreach(var dataDisk in dataDisks)  {
+            foreach (var dataDisk in dataDisks)
+            {
                 if (dataDisk.CreationMethod == DiskCreateOptionTypes.Empty
-                    || dataDisk.CreationMethod == DiskCreateOptionTypes.FromImage) {
+                    || dataDisk.CreationMethod == DiskCreateOptionTypes.FromImage)
+                {
                     //New empty and from image data disk requires Vhd Uri to be set
-                    if (dataDisk.Inner.Vhd == null) {
+                    if (dataDisk.Inner.Vhd == null)
+                    {
                         dataDisk.Inner.Vhd = new VirtualHardDisk();
                         dataDisk.Inner.Vhd.Uri = storageAccount.EndPoints.Primary.Blob
                             + "vhds/"
@@ -135,8 +138,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         internal static void EnsureDisksVhdUri(IList<IVirtualMachineUnmanagedDataDisk> dataDisks, string namePrefix)
         {
             string containerUrl = null;
-            foreach(var dataDisk in dataDisks)  {
-                if (dataDisk.CreationMethod == DiskCreateOptionTypes.Empty && dataDisk.Inner.Vhd != null) {
+            foreach (var dataDisk in dataDisks)
+            {
+                if (dataDisk.CreationMethod == DiskCreateOptionTypes.Empty && dataDisk.Inner.Vhd != null)
+                {
                     int idx = dataDisk.Inner.Vhd.Uri.LastIndexOf('/');
                     containerUrl = dataDisk.Inner.Vhd.Uri.Substring(0, idx);
                     break;

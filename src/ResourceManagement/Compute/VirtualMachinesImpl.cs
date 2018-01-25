@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         internal VirtualMachinesImpl(
             IComputeManager computeManager,
             IStorageManager storageManager,
-            INetworkManager networkManager, 
+            INetworkManager networkManager,
             IGraphRbacManager rbacManager) :
             base(computeManager.Inner.VirtualMachines, computeManager)
         {
@@ -165,11 +165,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         ///GENMHASH:E5D7B16A7B6C705114CC71E8BB2B20E1:6975A84E6594FF8DEA88E6C992B0B500
         public async Task<string> CaptureAsync(
-            string groupName, 
-            string name, 
-            string containerName, 
-            string vhdPrefix, 
-            bool overwriteVhd, 
+            string groupName,
+            string name,
+            string containerName,
+            string vhdPrefix,
+            bool overwriteVhd,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             VirtualMachineCaptureParametersInner parameters = new VirtualMachineCaptureParametersInner();
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 inner,
                 base.Manager,
                 this.storageManager,
-                this.networkManager, 
+                this.networkManager,
                 this.rbacManager);
         }
 

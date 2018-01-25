@@ -14,13 +14,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
     /// <typeparam name="IFluentResourceT">The fluent wrapper interface for the resource</typeparam>
     /// <typeparam name="InnerResourceT">The autorest generated resource</typeparam>
     /// <typeparam name="FluentResourceT">The implementation for fluent wrapper interface</typeparam>
-    public abstract class ResourceBase<IFluentResourceT, InnerResourceT, FluentResourceT, IDefinitionAfterRegion, DefTypeWithTags, UTypeWithTags> : 
+    public abstract class ResourceBase<IFluentResourceT, InnerResourceT, FluentResourceT, IDefinitionAfterRegion, DefTypeWithTags, UTypeWithTags> :
         CreatableUpdatable<IFluentResourceT, InnerResourceT, FluentResourceT, IHasId, UTypeWithTags>,
         IResource, IDefinitionWithTags<DefTypeWithTags>, IUpdateWithTags<UTypeWithTags>
         where FluentResourceT : ResourceBase<IFluentResourceT, InnerResourceT, FluentResourceT, IDefinitionAfterRegion, DefTypeWithTags, UTypeWithTags>, IFluentResourceT
         where IFluentResourceT : class, IResource
         where InnerResourceT : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
-        where IDefinitionAfterRegion: class
+        where IDefinitionAfterRegion : class
         where DefTypeWithTags : class
         where UTypeWithTags : class
     {
@@ -85,8 +85,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         protected IList<InnerT> InnersFromWrappers<InnerT, IWrapperT>(
             ICollection<IWrapperT> wrappers,
             IList<InnerT> inners) where IWrapperT : IHasInner<InnerT>
-            {
-                if (wrappers != null && wrappers.Count > 0)
+        {
+            if (wrappers != null && wrappers.Count > 0)
             {
                 inners = inners ?? new List<InnerT>();
                 foreach (var wrapper in wrappers)
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             Inner.Tags = tags;
             return this as FluentResourceT;
         }
-        
+
         public FluentResourceT WithTag(string key, string value)
         {
             Inner.Tags[key] = value;

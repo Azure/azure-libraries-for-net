@@ -10,49 +10,49 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update
     /// <summary>
     /// A key vault update allowing various configurations to be set.
     /// </summary>
-    public interface IWithConfigurations 
+    public interface IWithConfigurations
     {
         /// <summary>
         /// Enable Azure Virtual Machines to retrieve certificates stored as secrets from the key vault.
         /// </summary>
         /// <returns>the key vault update stage</returns>
-        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithDeploymentEnabled ();
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithDeploymentEnabled();
 
         /// <summary>
         /// Enable Azure Disk Encryption to retrieve secrets from the vault and unwrap keys.
         /// </summary>
         /// <returns>the key vault update stage</returns>
-        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithDiskEncryptionEnabled ();
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithDiskEncryptionEnabled();
 
         /// <summary>
         /// Enable Azure Resource Manager to retrieve secrets from the key vault.
         /// </summary>
         /// <returns>the key vault update stage</returns>
-        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithTemplateDeploymentEnabled ();
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithTemplateDeploymentEnabled();
 
         /// <summary>
         /// Disable Azure Virtual Machines to retrieve certificates stored as secrets from the key vault.
         /// </summary>
         /// <returns>the key vault update stage</returns>
-        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithDeploymentDisabled ();
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithDeploymentDisabled();
 
         /// <summary>
         /// Disable Azure Disk Encryption to retrieve secrets from the vault and unwrap keys.
         /// </summary>
         /// <returns>the next stage of key vault definition</returns>
-        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithDiskEncryptionDisabled ();
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithDiskEncryptionDisabled();
 
         /// <summary>
         /// Disable Azure Resource Manager to retrieve secrets from the key vault.
         /// </summary>
         /// <returns>the key vault update stage</returns>
-        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithTemplateDeploymentDisabled ();
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithTemplateDeploymentDisabled();
 
     }
     /// <summary>
     /// The template for a key vault update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         IAppliable<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
         IWithAccessPolicy,
         IWithConfigurations
@@ -61,34 +61,34 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update
     /// <summary>
     /// A key vault update allowing access policies to be modified, attached, or removed.
     /// </summary>
-    public interface IWithAccessPolicy 
+    public interface IWithAccessPolicy
     {
         /// <summary>
         /// Remove an access policy from the access policy list.
         /// </summary>
         /// <param name="objectId">objectId the object ID of the Active Directory identity the access policy is for</param>
         /// <returns>the key vault update stage</returns>
-        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithoutAccessPolicy (string objectId);
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithoutAccessPolicy(string objectId);
 
         /// <summary>
         /// Attach an existing access policy.
         /// </summary>
         /// <param name="accessPolicy">accessPolicy the existing access policy</param>
         /// <returns>the key vault update stage</returns>
-        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithAccessPolicy (IAccessPolicy accessPolicy);
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithAccessPolicy(IAccessPolicy accessPolicy);
 
         /// <summary>
         /// Begins the definition of a new access policy to be added to this key vault.
         /// </summary>
         /// <returns>the first stage of the access policy definition</returns>
-        IBlank<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> DefineAccessPolicy ();
+        IBlank<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> DefineAccessPolicy();
 
         /// <summary>
         /// Begins the update of an existing access policy attached to this key vault.
         /// </summary>
         /// <param name="objectId">objectId the object ID of the Active Directory identity the access policy is for</param>
         /// <returns>the update stage of the access policy definition</returns>
-        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate UpdateAccessPolicy (string objectId);
+        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate UpdateAccessPolicy(string objectId);
 
     }
 }

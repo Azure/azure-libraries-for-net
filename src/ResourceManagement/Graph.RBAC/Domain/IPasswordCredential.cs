@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure AD credential.
     /// </summary>
-    public interface IPasswordCredential  :
+    public interface IPasswordCredential :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.Graph.RBAC.Fluent.ICredential,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.PasswordCredential>

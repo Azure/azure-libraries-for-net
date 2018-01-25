@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
     /// scale set extension version this extension is based on.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithVersion<ParentT> 
+    public interface IWithVersion<ParentT>
     {
         /// <summary>
         /// Specifies the version of the virtual machine scale set image extension.
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
     /// virtual machine extension publisher.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithImageOrPublisher<ParentT>  :
+    public interface IWithImageOrPublisher<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IWithPublisher<ParentT>
     {
         /// <summary>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
     /// The stage of a virtual machine scale set extension definition allowing to specify the public and private settings.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithSettings<ParentT> 
+    public interface IWithSettings<ParentT>
     {
         /// <summary>
         /// Specifies a private settings entry.
@@ -64,14 +64,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
         /// </summary>
         /// <param name="settings">The public settings.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IWithAttach<ParentT> WithPublicSettings(IDictionary<string,object> settings);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IWithAttach<ParentT> WithPublicSettings(IDictionary<string, object> settings);
 
         /// <summary>
         /// Specifies private settings.
         /// </summary>
         /// <param name="settings">The private settings.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IWithAttach<ParentT> WithProtectedSettings(IDictionary<string,object> settings);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IWithAttach<ParentT> WithProtectedSettings(IDictionary<string, object> settings);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
     /// virtual machine scale set extension image this extension is based on.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithPublisher<ParentT> 
+    public interface IWithPublisher<ParentT>
     {
         /// <summary>
         /// Specifies the name of the virtual machine scale set extension image publisher.
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
     /// The final stage of the virtual machine scale set extension definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IWithAutoUpgradeMinorVersion<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IWithSettings<ParentT>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
     /// The entirety of a virtual machine scale set extension definition as a part of parent update.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IBlank<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IWithImageOrPublisher<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IWithPublisher<ParentT>,
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
     /// The first stage of a virtual machine scale set extension definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IWithImageOrPublisher<ParentT>
     {
     }
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
     /// extension when when a new minor version of virtual machine scale set extension image gets published.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithAutoUpgradeMinorVersion<ParentT> 
+    public interface IWithAutoUpgradeMinorVersion<ParentT>
     {
         /// <summary>
         /// Enables auto upgrading of the extension with minor versions.
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
     /// scale set extension image this extension is based on.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithType<ParentT> 
+    public interface IWithType<ParentT>
     {
         /// <summary>
         /// Specifies the type of the virtual machine scale set extension image.

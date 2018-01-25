@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     using System.Threading.Tasks;
     using System.Collections.Generic;
 
-    internal partial class WebhookOperationsImpl 
+    internal partial class WebhookOperationsImpl
     {
         /// <summary>
         /// Gets the properties of the specified webhook.
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhookOperations.DeleteAsync(string webhookName, CancellationToken cancellationToken)
         {
- 
+
             await this.DeleteAsync(webhookName, cancellationToken);
         }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <param name="webhookName">The name of the webhook.</param>
         void Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhookOperations.Delete(string webhookName)
         {
- 
+
             this.Delete(webhookName);
         }
 

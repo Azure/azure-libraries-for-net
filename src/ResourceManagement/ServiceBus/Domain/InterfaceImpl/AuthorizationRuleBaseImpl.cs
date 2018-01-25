@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     using Microsoft.Azure.Management.ServiceBus.Fluent.Models;
     using System.Collections.Generic;
 
-    internal abstract partial class AuthorizationRuleBaseImpl<FluentModelT,FluentParentModelT,InnerModelT,FluentModelImplT,ManagerT> 
+    internal abstract partial class AuthorizationRuleBaseImpl<FluentModelT, FluentParentModelT, InnerModelT, FluentModelImplT, ManagerT>
     {
     }
 }

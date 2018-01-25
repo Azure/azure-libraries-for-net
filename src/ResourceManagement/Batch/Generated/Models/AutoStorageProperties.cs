@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent.Models
         /// </summary>
         public AutoStorageProperties()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

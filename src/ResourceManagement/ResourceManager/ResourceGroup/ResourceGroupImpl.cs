@@ -15,7 +15,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent
 {
-    internal class ResourceGroupImpl : 
+    internal class ResourceGroupImpl :
             CreatableUpdatable<IResourceGroup, ResourceGroupInner, ResourceGroupImpl, IHasId, ResourceGroup.Update.IUpdate>,
             IResourceGroup,
             ResourceGroup.Definition.IDefinition,

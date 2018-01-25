@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
     /// <summary>
     /// The entirety of the virtual network definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.Network.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithGroup,
         Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithSubnet,
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
     /// <summary>
     /// The stage of the virtual network definition allowing to add subnets.
     /// </summary>
-    public interface IWithSubnet 
+    public interface IWithSubnet
     {
         /// <summary>
         /// Begins the definition of a new subnet to add to the virtual network.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
         /// </summary>
         /// <param name="nameCidrPairs">A  Map of CIDR addresses for the subnets, indexed by the name of each subnet to be defined.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreateAndSubnet WithSubnets(IDictionary<string,string> nameCidrPairs);
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreateAndSubnet WithSubnets(IDictionary<string, string> nameCidrPairs);
     }
 
     /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
     /// the resource to be created (via  WithCreate.create()), but also allows
     /// for any other optional settings to be specified, including adding subnets.
     /// </summary>
-    public interface IWithCreateAndSubnet  :
+    public interface IWithCreateAndSubnet :
         Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreate,
         Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithSubnet
     {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
     /// <summary>
     /// The first stage of a virtual network definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithGroup>
     {
     }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
     /// <summary>
     /// The stage of the virtual network definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreate>
     {
     }
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
     /// for any other optional settings to be specified, except for adding subnets.
     /// Subnets can be added only right after the address space is explicitly specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.INetwork>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreate>
     {

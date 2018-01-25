@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
-{         
+{
     public class CosmosDBManager : Manager<IDocumentDB>, ICosmosDBManager
     {
         #region Fluent private collections
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             })
         {
         }
-        
+
         public static ICosmosDBManager Authenticate(AzureCredentials credentials, string subscriptionId)
         {
             return new CosmosDBManager(RestClient.Configure()
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             return new Configurable();
         }
-        
+
 
         #region IConfigurable and it's implementation
 
@@ -81,6 +81,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
     public interface ICosmosDBManager : IManager<IDocumentDB>
     {
-       ICosmosDBAccounts CosmosDBAccounts { get; }
+        ICosmosDBAccounts CosmosDBAccounts { get; }
     }
 }

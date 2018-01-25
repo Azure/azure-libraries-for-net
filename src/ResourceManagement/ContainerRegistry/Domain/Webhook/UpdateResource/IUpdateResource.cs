@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateReso
     /// The stage of the webhook definition allowing to specify the service URI for post notifications.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithServiceUri<ParentT> 
+    public interface IWithServiceUri<ParentT>
     {
         /// <summary>
         /// Specifies the service URI for post notifications.
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateReso
     /// can be attached to the parent container registry definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource.IWithTriggerWhen<ParentT>,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource.IWithServiceUri<ParentT>,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource.IWithCustomHeaders<ParentT>,
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateReso
     /// The first stage of the webhook definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this update definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource.IWithAttach<ParentT>
     {
     }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateReso
     /// The entirety of a webhook resource update as part of a container registry update.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IUpdateResource<ParentT>  :
+    public interface IUpdateResource<ParentT> :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource.IBlank<ParentT>,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource.IWithAttach<ParentT>
     {
@@ -59,14 +59,14 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateReso
     /// The stage of the webhook definition allowing to specify the custom headers that will be added to the notifications.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithCustomHeaders<ParentT> 
+    public interface IWithCustomHeaders<ParentT>
     {
         /// <summary>
         /// Specifies the custom headers that will be added to the notifications.
         /// </summary>
         /// <param name="customHeaders">The "Name=Value" custom headers.</param>
         /// <return>The next stage of the resource update.</return>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource.IWithAttach<ParentT> WithCustomHeaders(IDictionary<string,string> customHeaders);
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource.IWithAttach<ParentT> WithCustomHeaders(IDictionary<string, string> customHeaders);
 
         /// <summary>
         /// Specifies a custom header that will be added to notifications.
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateReso
     /// The stage of the webhook definition allowing to specify the scope of repositories where the event can be triggered.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithRepositoriesScope<ParentT> 
+    public interface IWithRepositoriesScope<ParentT>
     {
         /// <summary>
         /// Updates the scope of repositories where the event can be triggered.
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateReso
     /// The stage of the webhook definition allowing to specify the default status of the webhook after being created.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDefaultStatus<ParentT> 
+    public interface IWithDefaultStatus<ParentT>
     {
         /// <summary>
         /// Updates the default status of the webhook.
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateReso
     /// The stage of the webhook definition allowing to specify the tags.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithOrWithoutTags<ParentT> 
+    public interface IWithOrWithoutTags<ParentT>
     {
         /// <summary>
         /// Adds a tag to the webhook.
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateReso
         /// </summary>
         /// <param name="tags">A  Map of tags.</param>
         /// <return>The next stage of the resource update.</return>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource.IWithAttach<ParentT> WithTags(IDictionary<string,string> tags);
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource.IWithAttach<ParentT> WithTags(IDictionary<string, string> tags);
 
         /// <summary>
         /// Removes a tag from the resource.
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateReso
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateResource.IWithAttach<ParentT> WithoutTag(string key);
     }
 
-    public interface IWithTriggerWhen<ParentT> 
+    public interface IWithTriggerWhen<ParentT>
     {
         /// <summary>
         /// Specifies the actions that will trigger the webhook notifications.

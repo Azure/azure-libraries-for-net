@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of the health information of an application gateway backend server.
     /// </summary>
-    public interface IApplicationGatewayBackendServerHealth  :
+    public interface IApplicationGatewayBackendServerHealth :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ApplicationGatewayBackendHealthServer>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationHealth>

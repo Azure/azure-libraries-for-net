@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class VirtualMachineExtensionsImpl 
+    internal partial class VirtualMachineExtensionsImpl
     {
     }
 }

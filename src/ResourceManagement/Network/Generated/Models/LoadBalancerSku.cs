@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public LoadBalancerSku()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

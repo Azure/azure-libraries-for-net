@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Entry point to virtual machine image extension types.
     /// </summary>
-    public interface IVirtualMachineExtensionImageTypes  :
+    public interface IVirtualMachineExtensionImageTypes :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageType>
     {
     }

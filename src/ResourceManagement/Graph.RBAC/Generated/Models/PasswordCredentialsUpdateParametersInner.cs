@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// </summary>
         public PasswordCredentialsUpdateParametersInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

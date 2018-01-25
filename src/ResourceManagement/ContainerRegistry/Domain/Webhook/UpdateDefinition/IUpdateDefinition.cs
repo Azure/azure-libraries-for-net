@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefi
     /// Grouping of the container registry's webhook update definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition.IBlank<ParentT>,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition.IWithTriggerWhen<ParentT>,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition.IWithServiceUri<ParentT>,
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefi
     /// The stage of the webhook definition allowing to specify the tags.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithTags<ParentT> 
+    public interface IWithTags<ParentT>
     {
         /// <summary>
         /// Adds a tag to the webhook.
@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefi
         /// </summary>
         /// <param name="tags">A  Map of tags.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition.IWithAttach<ParentT> WithTags(IDictionary<string,string> tags);
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition.IWithAttach<ParentT> WithTags(IDictionary<string, string> tags);
     }
 
     /// <summary>
     /// The first stage of the webhook definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition.IWithTriggerWhen<ParentT>
     {
     }
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefi
     /// The stage of the webhook definition allowing to specify the default status of the webhook after being created.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDefaultStatus<ParentT> 
+    public interface IWithDefaultStatus<ParentT>
     {
         /// <summary>
         /// Specifies the default status of the webhook; default is "enabled".
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefi
     /// The stage of the webhook definition allowing to specify the actions that will trigger the webhook notifications.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithTriggerWhen<ParentT> 
+    public interface IWithTriggerWhen<ParentT>
     {
         /// <summary>
         /// Specifies the actions that will trigger the webhook notifications.
@@ -80,14 +80,14 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefi
     /// The stage of the webhook definition allowing to specify the custom headers that will be added to the notifications.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithCustomHeaders<ParentT> 
+    public interface IWithCustomHeaders<ParentT>
     {
         /// <summary>
         /// Specifies the custom headers that will be added to the notifications.
         /// </summary>
         /// <param name="customHeaders">The "Name=Value" custom headers.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition.IWithAttach<ParentT> WithCustomHeaders(IDictionary<string,string> customHeaders);
+        Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition.IWithAttach<ParentT> WithCustomHeaders(IDictionary<string, string> customHeaders);
 
         /// <summary>
         /// Specifies a custom header that will be added to notifications.
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefi
     /// can be attached to the parent container group definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition.IWithCustomHeaders<ParentT>,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition.IWithRepositoriesScope<ParentT>,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefinition.IWithDefaultStatus<ParentT>,
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefi
     /// The stage of the webhook definition allowing to specify the scope of repositories where the event can be triggered.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithRepositoriesScope<ParentT> 
+    public interface IWithRepositoriesScope<ParentT>
     {
         /// <summary>
         /// Specifies the scope of repositories where the event can be triggered.
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Webhook.UpdateDefi
     /// The stage of the webhook definition allowing to specify the service URI for post notifications.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithServiceUri<ParentT> 
+    public interface IWithServiceUri<ParentT>
     {
         /// <summary>
         /// Specifies the service URI for post notifications.

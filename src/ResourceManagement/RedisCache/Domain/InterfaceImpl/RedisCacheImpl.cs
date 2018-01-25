@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
     using System.Collections.Generic;
     using System;
 
-    internal partial class RedisCacheImpl 
+    internal partial class RedisCacheImpl
     {
         /// <summary>
         /// Sets Redis Cache static IP. Required when deploying a Redis Cache inside an existing Azure Virtual Network.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// </summary>
         /// <param name="redisConfiguration">Configuration of Redis Cache as a map indexed by configuration name.</param>
         /// <return>The next stage of Redis Cache definition.</return>
-        RedisCache.Definition.IWithCreate RedisCache.Definition.IWithCreate.WithRedisConfiguration(IDictionary<string,string> redisConfiguration)
+        RedisCache.Definition.IWithCreate RedisCache.Definition.IWithCreate.WithRedisConfiguration(IDictionary<string, string> redisConfiguration)
         {
             return this.WithRedisConfiguration(redisConfiguration) as RedisCache.Definition.IWithCreate;
         }
@@ -221,11 +221,11 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// <summary>
         /// Gets the Redis configuration value.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.Redis.Fluent.IRedisCache.RedisConfiguration
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.Redis.Fluent.IRedisCache.RedisConfiguration
         {
             get
             {
-                return this.RedisConfiguration() as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.RedisConfiguration() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
             }
         }
 
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// </summary>
         /// <param name="redisConfiguration">Configuration of Redis Cache as a map indexed by configuration name.</param>
         /// <return>The next stage of Redis Cache update.</return>
-        RedisCache.Update.IUpdate RedisCache.Update.IWithRedisConfiguration.WithRedisConfiguration(IDictionary<string,string> redisConfiguration)
+        RedisCache.Update.IUpdate RedisCache.Update.IWithRedisConfiguration.WithRedisConfiguration(IDictionary<string, string> redisConfiguration)
         {
             return this.WithRedisConfiguration(redisConfiguration) as RedisCache.Update.IUpdate;
         }
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// <param name="prefix">Prefix to use for exported files.</param>
         void Microsoft.Azure.Management.Redis.Fluent.IRedisCachePremium.ExportData(string containerSASUrl, string prefix)
         {
- 
+
             this.ExportData(containerSASUrl, prefix);
         }
 
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// <param name="fileFormat">Specifies file format.</param>
         void Microsoft.Azure.Management.Redis.Fluent.IRedisCachePremium.ExportData(string containerSASUrl, string prefix, string fileFormat)
         {
- 
+
             this.ExportData(containerSASUrl, prefix, fileFormat);
         }
 
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// <param name="files">Files to import.</param>
         void Microsoft.Azure.Management.Redis.Fluent.IRedisCachePremium.ImportData(IList<string> files)
         {
- 
+
             this.ImportData(files);
         }
 
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// <param name="fileFormat">Specifies file format.</param>
         void Microsoft.Azure.Management.Redis.Fluent.IRedisCachePremium.ImportData(IList<string> files, string fileFormat)
         {
- 
+
             this.ImportData(files, fileFormat);
         }
 
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// </summary>
         void Microsoft.Azure.Management.Redis.Fluent.IRedisCachePremium.DeletePatchSchedule()
         {
- 
+
             this.DeletePatchSchedule();
         }
 
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// </param>
         void Microsoft.Azure.Management.Redis.Fluent.IRedisCachePremium.ForceReboot(string rebootType)
         {
- 
+
             this.ForceReboot(rebootType);
         }
 
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// <param name="shardId">In case of cluster cache, this specifies shard id which should be rebooted.</param>
         void Microsoft.Azure.Management.Redis.Fluent.IRedisCachePremium.ForceReboot(string rebootType, int shardId)
         {
- 
+
             this.ForceReboot(rebootType, shardId);
         }
     }

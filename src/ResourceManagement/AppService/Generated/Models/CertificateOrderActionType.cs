@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class CertificateOrderActionTypeEnumExtension
     {
-        internal static string ToSerializedValue(this CertificateOrderActionType? value)  =>
+        internal static string ToSerializedValue(this CertificateOrderActionType? value) =>
             value == null ? null : ((CertificateOrderActionType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this CertificateOrderActionType value)
         {
-            switch( value )
+            switch (value)
             {
                 case CertificateOrderActionType.CertificateIssued:
                     return "CertificateIssued";
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static CertificateOrderActionType? ParseCertificateOrderActionType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "CertificateIssued":
                     return CertificateOrderActionType.CertificateIssued;

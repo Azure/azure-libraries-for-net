@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class ExpressRouteCircuitPeeringImpl 
+    internal partial class ExpressRouteCircuitPeeringImpl
     {
         /// <summary>
         /// Specify advertised prefixes: sets a list of all prefixes that are planned to advertise over the BGP session.

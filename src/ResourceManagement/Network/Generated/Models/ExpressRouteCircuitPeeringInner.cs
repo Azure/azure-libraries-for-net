@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         public ExpressRouteCircuitPeeringInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

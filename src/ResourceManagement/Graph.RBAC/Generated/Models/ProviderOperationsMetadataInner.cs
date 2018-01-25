@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// </summary>
         public ProviderOperationsMetadataInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// </summary>
         public IpAddressGroup()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

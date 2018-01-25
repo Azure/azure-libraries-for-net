@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class InternalLoadBalancingModeEnumExtension
     {
-        internal static string ToSerializedValue(this InternalLoadBalancingMode? value)  =>
+        internal static string ToSerializedValue(this InternalLoadBalancingMode? value) =>
             value == null ? null : ((InternalLoadBalancingMode)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this InternalLoadBalancingMode value)
         {
-            switch( value )
+            switch (value)
             {
                 case InternalLoadBalancingMode.None:
                     return "None";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static InternalLoadBalancingMode? ParseInternalLoadBalancingMode(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "None":
                     return InternalLoadBalancingMode.None;

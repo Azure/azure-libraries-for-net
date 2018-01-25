@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
     /// 
     /// @param <T> the fluent type of the resource
     /// </summary>
-    public interface IRefreshable<T> 
+    public interface IRefreshable<T>
     {
         /// <summary>
         /// Refreshes the resource to sync with Azure.

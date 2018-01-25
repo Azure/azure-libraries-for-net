@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerPublicFrontend.U
     /// <summary>
     /// The entirety of a public frontend update as part of an Internet-facing load balancer update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerPublicFrontend.Update.IWithPublicIPAddress
     {
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerPublicFrontend.U
     /// <summary>
     /// The stage of a public frontend update allowing to specify an existing public IP address.
     /// </summary>
-    public interface IWithPublicIPAddress  :
+    public interface IWithPublicIPAddress :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update.IWithPublicIPAddress<Microsoft.Azure.Management.Network.Fluent.LoadBalancerPublicFrontend.Update.IUpdate>
     {
     }

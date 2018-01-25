@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ResourceSku IHasInner<ResourceSku>.Inner => this.Inner();
 
         ///GENMHASH:8D9D2C9D2BDF48FE8D9C24EBA1CF6ACD:BC4B1282CA708DC220050F834F17A184
-        internal  ComputeSkuImpl(ResourceSku inner)
+        internal ComputeSkuImpl(ResourceSku inner)
         {
             this.inner = inner;
         }
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:60625ECBA02456ACAA508AE89C60D15A:538FA83196E649561A55A428573B44CE
         public AvailabilitySetSkuTypes AvailabilitySetSkuType()
         {
-            if (this.inner.ResourceType != null 
+            if (this.inner.ResourceType != null
                 && this.inner.ResourceType.Equals("availabilitySets", System.StringComparison.OrdinalIgnoreCase)
                 && this.inner.Name != null)
             {
@@ -54,8 +54,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public IReadOnlyList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> Regions()
         {
             var regions = new List<Region>();
-            if (this.inner.Locations != null) {
-                foreach(var location in this.inner.Locations) {
+            if (this.inner.Locations != null)
+            {
+                foreach (var location in this.inner.Locations)
+                {
                     regions.Add(Region.Create(location));
                 }
             }
@@ -89,7 +91,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:E087239423DB24947B067EFDA925648F:F36C060B935C63BD26B291576032CC5A
-        public IReadOnlyDictionary<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region,System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>> Zones()
+        public IReadOnlyDictionary<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region, System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>> Zones()
         {
             Dictionary<Region, ISet<AvailabilityZoneId>> regionToZones = new Dictionary<Region, ISet<AvailabilityZoneId>>();
             if (this.inner.LocationInfo != null)
@@ -204,7 +206,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public DiskSkuTypes DiskSkuType()
         {
             if (this.inner.ResourceType != null
-                && (this.inner.ResourceType.Equals("disks", System.StringComparison.OrdinalIgnoreCase) 
+                && (this.inner.ResourceType.Equals("disks", System.StringComparison.OrdinalIgnoreCase)
                 || this.inner.ResourceType.Equals("snapshots", System.StringComparison.OrdinalIgnoreCase))
                 && this.inner.Name != null)
             {

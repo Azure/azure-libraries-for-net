@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             FluentResourceT,
             IResourceT,
             IUpdatableT,
-            ManagerT>  :
+            ManagerT> :
         CreatableUpdatable<IFluentResourceT, InnerResourceT, FluentResourceT, IResourceT, IUpdatableT>,
         IIndependentChild<ManagerT>,
         IWithParentResource<IFluentResourceT, FluentParentModelT>
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         where IUpdatableT : class
         where IFluentResourceT : class, IResourceT
         where FluentResourceT : class
-        where FluentParentModelT: class, IResource, IHasResourceGroup
+        where FluentParentModelT : class, IResource, IHasResourceGroup
     {
         private string groupName;
         protected string parentName;
@@ -44,9 +44,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         {
             get
             {
-                if (groupName == null) {
+                if (groupName == null)
+                {
                     return ResourceUtils.GroupFromResourceId(Id);
-                } else {
+                }
+                else
+                {
                     return groupName;
                 }
             }
@@ -59,7 +62,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         ///GENMHASH:EFF5318E694B2A3BB5AEF7CA70DB29A5:7DCE188EC97FDEB5705826627CBEE021
         public ICreatable<IFluentResourceT> WithNewParentResource(ICreatable<FluentParentModelT> parentResourceCreatable)
         {
-            if (creatableParentResourceKey == null) {
+            if (creatableParentResourceKey == null)
+            {
                 creatableParentResourceKey = parentResourceCreatable.Key;
                 AddCreatableDependency(parentResourceCreatable as IResourceCreator<IResourceT>);
             }
@@ -96,7 +100,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:6D8EE54225EBDB9ED59F76D4F478809E
         public async override Task<IFluentResourceT> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (creatableParentResourceKey != null) {
+            if (creatableParentResourceKey != null)
+            {
                 FluentParentModelT parentResource = CreatedResource(creatableParentResourceKey) as FluentParentModelT;
                 WithExistingParentResource(parentResource);
             }
@@ -109,7 +114,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         /// <param name="name">The name of the resource.</param>
         /// <param name="innerObject">The inner object.</param>
         ///GENMHASH:58893D0094BDB88102F94E73ED2B35FA:2572719AB7F9FA6EF015164D8E50629B
-        protected  IndependentChildImpl(string name, InnerResourceT innerObject, ManagerT manager)
+        protected IndependentChildImpl(string name, InnerResourceT innerObject, ManagerT manager)
             : base(name, innerObject)
         {
             Manager = manager;

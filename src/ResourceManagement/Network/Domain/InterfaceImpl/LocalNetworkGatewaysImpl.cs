@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class LocalNetworkGatewaysImpl 
+    internal partial class LocalNetworkGatewaysImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.

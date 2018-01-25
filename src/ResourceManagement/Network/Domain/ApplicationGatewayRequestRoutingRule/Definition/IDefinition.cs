@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// associate the routing rule with.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithListener<ParentT> 
+    public interface IWithListener<ParentT>
     {
         /// <summary>
         /// Associates the request routing rule with a frontend listener.
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// for a specific port number and protocol.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithFrontendPort<ParentT> 
+    public interface IWithFrontendPort<ParentT>
     {
         /// <summary>
         /// Associates a new listener for the specified port number and the HTTPS protocol with this rule.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule allowing to specify backend HTTP settings, or SNI, or a redirect configuration.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackendHttpConfigOrSniOrRedirect<ParentT>  :
+    public interface IWithBackendHttpConfigOrSniOrRedirect<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigurationOrSni<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithRedirectConfig<ParentT>
     {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// for the listener to receive traffic for.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithHostName<ParentT>  :
+    public interface IWithHostName<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.HasHostName.Definition.IWithHostName<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ParentT>>
     {
     }
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// backend to associate with this request routing rule or create a new backend with an auto-generated name and addresses to it.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackendOrAddress<ParentT>  :
+    public interface IWithBackendOrAddress<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithBackend<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddress<ParentT>
     {
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The entirety of an application gateway request routing rule definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithFrontend<ParentT>,
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// application gateway is serving multiple websites in its backends and SSL is required.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackendHttpConfigurationOrSni<ParentT>  :
+    public interface IWithBackendHttpConfigurationOrSni<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.HasServerNameIndication.Definition.IWithServerNameIndication<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ParentT>>
     {
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule allowing to enable cookie based affinity.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithCookieBasedAffinity<ParentT>  :
+    public interface IWithCookieBasedAffinity<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.HasCookieBasedAffinity.Definition.IWithCookieBasedAffinity<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ParentT>>
     {
     }
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// start specifying optional settings, or finish the definition by attaching it to the parent application gateway.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackendAddressOrAttach<ParentT>  :
+    public interface IWithBackendAddressOrAttach<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddress<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ParentT>
     {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule definition allowing to specify the backend to associate the routing rule with.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackend<ParentT> 
+    public interface IWithBackend<ParentT>
     {
         /// <summary>
         /// Associates the request routing rule with a backend on this application gateway.
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule definition allowing to select either a backend or a redirect configuration.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackendHttpConfigOrRedirect<ParentT>  :
+    public interface IWithBackendHttpConfigOrRedirect<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithRedirectConfig<ParentT>
     {
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule allowing to specify an SSL certificate.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithSslPassword<ParentT>  :
+    public interface IWithSslPassword<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.HasSslCertificate.Definition.IWithSslPassword<ParentT>
     {
     }
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// with the rule, or create a new one implicitly by specifying the frontend to listen to.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithListenerOrFrontend<ParentT>  :
+    public interface IWithListenerOrFrontend<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithListener<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithFrontend<ParentT>
     {
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// can be attached to the parent application gateway definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithHostName<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithCookieBasedAffinity<ParentT>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule allowing to specify an SSL certificate.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithSslCertificate<ParentT>  :
+    public interface IWithSslCertificate<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.HasSslCertificate.Definition.IWithSslCertificate<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ParentT>>
     {
     }
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule definition allowing to require server name indication.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithServerNameIndication<ParentT>  :
+    public interface IWithServerNameIndication<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.HasServerNameIndication.Definition.IWithServerNameIndication<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ParentT>>
     {
     }
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// to associate the routing rule with.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackendHttpConfiguration<ParentT> 
+    public interface IWithBackendHttpConfiguration<ParentT>
     {
         /// <summary>
         /// Associates the specified backend HTTP settings configuration with this request routing rule.
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule definition allowing to associate the rule with a redirect configuration.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithRedirectConfig<ParentT>  :
+    public interface IWithRedirectConfig<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithRedirectConfigBeta<ParentT>
     {
     }
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The first stage of an application gateway request routing rule definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithListenerOrFrontend<ParentT>
     {
     }
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule definition allowing to specify the frontend for the rule to apply to.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithFrontend<ParentT> 
+    public interface IWithFrontend<ParentT>
     {
         /// <summary>
         /// Enables the rule to apply to the application gateway's private (internal) frontend.
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// A new backend will be created if none is associated with this rule yet.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackendAddress<ParentT>  :
+    public interface IWithBackendAddress<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressBeta<ParentT>
     {
         /// <summary>
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// The stage of an application gateway request routing rule definition allowing to associate the rule with a redirect configuration.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithRedirectConfigBeta<ParentT>  :
+    public interface IWithRedirectConfigBeta<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRequestRou
     /// A new backend will be created if none is associated with this rule yet.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackendAddressBeta<ParentT>  :
+    public interface IWithBackendAddressBeta<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasPort.Update
     /// The stage of a definition allowing to specify a port number.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the update.</typeparam>
-    public interface IWithPort<ReturnT> 
+    public interface IWithPort<ReturnT>
     {
         /// <summary>
         /// Specifies the port number.

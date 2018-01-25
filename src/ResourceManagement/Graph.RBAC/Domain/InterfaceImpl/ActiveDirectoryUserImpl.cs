@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     using Microsoft.Azure.Management.Graph.RBAC.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    public partial class ActiveDirectoryUserImpl 
+    public partial class ActiveDirectoryUserImpl
     {
         /// <summary>
         /// Specifies whether the user account is enabled.

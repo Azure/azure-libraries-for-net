@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasFrontendPort.UpdateDefini
     /// The stage of a definition allowing to specify the frontend port.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithFrontendPort<ReturnT> 
+    public interface IWithFrontendPort<ReturnT>
     {
         /// <summary>
         /// Specifies the frontend port to receive network traffic on.

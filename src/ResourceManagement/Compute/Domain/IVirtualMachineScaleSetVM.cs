@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// An immutable client-side representation of a virtual machine instance in an Azure virtual machine scale set.
     /// </summary>
-    public interface IVirtualMachineScaleSetVM  :
+    public interface IVirtualMachineScaleSetVM :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM>,
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the unmanaged data disks associated with this virtual machine instance, indexed by LUN.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<int,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk> UnmanagedDataDisks { get; }
+        System.Collections.Generic.IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk> UnmanagedDataDisks { get; }
 
         /// <summary>
         /// Starts the virtual machine instance.
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the extensions associated with the virtual machine instance, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMInstanceExtension> Extensions { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMInstanceExtension> Extensions { get; }
 
         /// <summary>
         /// Gets virtual machine instance size.
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the managed data disks associated with this virtual machine instance, indexed by LUN.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<int,Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk> DataDisks { get; }
+        System.Collections.Generic.IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk> DataDisks { get; }
 
         /// <summary>
         /// Gets the resource ID of the availability set that this virtual machine instance belongs to.

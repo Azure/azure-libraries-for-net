@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// <summary>
     /// Entry point to queue authorization rules management API.
     /// </summary>
-    public interface IQueueAuthorizationRules  :
+    public interface IQueueAuthorizationRules :
         Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationRules<Microsoft.Azure.Management.ServiceBus.Fluent.IQueueAuthorizationRule>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<QueueAuthorizationRule.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<IQueuesOperations>

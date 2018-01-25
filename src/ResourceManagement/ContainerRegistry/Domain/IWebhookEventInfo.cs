@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// <summary>
     /// Response containing the Webhook event details.
     /// </summary>
-    public interface IWebhookEventInfo  :
+    public interface IWebhookEventInfo :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

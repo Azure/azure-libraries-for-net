@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public ReissueCertificateOrderRequestInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

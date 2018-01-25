@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition
     /// <summary>
     /// The stage of the public IP address definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithCreate>
     {
     }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition
     /// <summary>
     /// Container interface for all the definitions.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithGroup,
         Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithCreate
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition
     /// the resource to be created (via  WithCreate.create()), but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress>,
         Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithLeafDomainLabel,
         Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithIPAddress,
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition
     /// <summary>
     /// The first stage of a public IP address definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.PublicIPAddress.Definition.IWithGroup>
     {
     }

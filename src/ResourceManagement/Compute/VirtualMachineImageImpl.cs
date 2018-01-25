@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             string offer,
             string sku,
             string version,
-            VirtualMachineImageInner inner) 
+            VirtualMachineImageInner inner)
             : base(inner)
         {
             this.location = location;
@@ -78,7 +78,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:ACA2D5620579D8158A29586CA1FF4BC6:7DECE31892F905458F7A5F7C5B963D8F
         public string Id()
         {
-            if (Inner == null) {
+            if (Inner == null)
+            {
                 return null;
             }
             return Inner.Id;

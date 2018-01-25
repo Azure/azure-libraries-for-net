@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         FluentResourceT,
         IDefinitionT,
         IUpdatableT,
-        ManagerT>  :
+        ManagerT> :
         IndependentChildResourceImpl<IFluentResourceT,
             FluentParentModelT,
             InnerModelT,
@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             IUpdatableT,
             ManagerT>
         where InnerModelT : SharedAccessAuthorizationRuleInner
-        where FluentResourceT : AuthorizationRuleBaseImpl<IFluentResourceT, 
-            FluentParentModelT, 
-            InnerModelT, 
-            FluentResourceT, 
-            IDefinitionT, 
-            IUpdatableT, 
+        where FluentResourceT : AuthorizationRuleBaseImpl<IFluentResourceT,
+            FluentParentModelT,
+            InnerModelT,
+            FluentResourceT,
+            IDefinitionT,
+            IUpdatableT,
             ManagerT>, IFluentResourceT
         where FluentParentModelT : class, IResource, IHasResourceGroup
         where IDefinitionT : class
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         where IFluentResourceT : class, IDefinitionT
     {
         ///GENMHASH:12060F5A32B0EDDCD1D39FED89E71CAF:B6C6A00BFC93336EDE90DB15B3BEA7B7
-        protected AuthorizationRuleBaseImpl(string name, InnerModelT innerObject, ManagerT manager) 
+        protected AuthorizationRuleBaseImpl(string name, InnerModelT innerObject, ManagerT manager)
             : base(name, innerObject, manager)
         {
         }
@@ -72,10 +72,12 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         ///GENMHASH:B5F20FEE4712239FEC489FA348B7432B:198551C7BC924C965FEFC5BB96B26EA0
         protected FluentResourceT WithListeningEnabled()
         {
-            if (this.Inner.Rights == null) {
+            if (this.Inner.Rights == null)
+            {
                 this.Inner.Rights = new List<AccessRights?>();
             }
-            if (!this.Inner.Rights.Contains(AccessRights.Listen)) {
+            if (!this.Inner.Rights.Contains(AccessRights.Listen))
+            {
                 this.Inner.Rights.Add(AccessRights.Listen);
             }
             return this as FluentResourceT;

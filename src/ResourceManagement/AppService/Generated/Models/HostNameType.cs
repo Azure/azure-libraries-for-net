@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class HostNameTypeEnumExtension
     {
-        internal static string ToSerializedValue(this HostNameType? value)  =>
+        internal static string ToSerializedValue(this HostNameType? value) =>
             value == null ? null : ((HostNameType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this HostNameType value)
         {
-            switch( value )
+            switch (value)
             {
                 case HostNameType.Verified:
                     return "Verified";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static HostNameType? ParseHostNameType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Verified":
                     return HostNameType.Verified;

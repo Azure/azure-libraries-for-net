@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class VirtualMachineSkuImpl 
+    internal partial class VirtualMachineSkuImpl
     {
         /// <summary>
         /// Gets the name of the resource.

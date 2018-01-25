@@ -10,8 +10,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uRXhwcmVzc1JvdXRlQ2lyY3VpdHNJbXBs
-    internal partial class ExpressRouteCircuitsImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uRXhwcmVzc1JvdXRlQ2lyY3VpdHNJbXBs
+    internal partial class ExpressRouteCircuitsImpl :
         TopLevelModifiableResources<
             IExpressRouteCircuit,
             ExpressRouteCircuitImpl,
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:74C147F51734F6E4EC03A356084B460C:E16DF8EB37E114D266AE190649DA3B11
-        internal  ExpressRouteCircuitsImpl(INetworkManager manager) : base(manager.Inner.ExpressRouteCircuits, manager)
+        internal ExpressRouteCircuitsImpl(INetworkManager manager) : base(manager.Inner.ExpressRouteCircuits, manager)
         {
         }
 
@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:F32389B8819CBE432743FBA0DF5A37FB:8233507747ADC00D20A4E6B1CCB583F7
         protected override IExpressRouteCircuit WrapModel(ExpressRouteCircuitInner inner)
         {
-            if (inner == null) {
+            if (inner == null)
+            {
                 return null;
             }
             return new ExpressRouteCircuitImpl(inner.Name, inner, Manager);

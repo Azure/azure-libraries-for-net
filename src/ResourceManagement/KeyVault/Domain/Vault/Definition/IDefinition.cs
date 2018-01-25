@@ -12,62 +12,62 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition
     /// <summary>
     /// A key vault definition allowing various configurations to be set.
     /// </summary>
-    public interface IWithConfigurations 
+    public interface IWithConfigurations
     {
         /// <summary>
         /// Enable Azure Virtual Machines to retrieve certificates stored as secrets from the key vault.
         /// </summary>
         /// <returns>the next stage of key vault definition</returns>
-        IWithCreate WithDeploymentEnabled ();
+        IWithCreate WithDeploymentEnabled();
 
         /// <summary>
         /// Enable Azure Disk Encryption to retrieve secrets from the vault and unwrap keys.
         /// </summary>
         /// <returns>the next stage of key vault definition</returns>
-        IWithCreate WithDiskEncryptionEnabled ();
+        IWithCreate WithDiskEncryptionEnabled();
 
         /// <summary>
         /// Enable Azure Resource Manager to retrieve secrets from the key vault.
         /// </summary>
         /// <returns>the next stage of key vault definition</returns>
-        IWithCreate WithTemplateDeploymentEnabled ();
+        IWithCreate WithTemplateDeploymentEnabled();
 
         /// <summary>
         /// Disable Azure Virtual Machines to retrieve certificates stored as secrets from the key vault.
         /// </summary>
         /// <returns>the next stage of key vault definition</returns>
-        IWithCreate WithDeploymentDisabled ();
+        IWithCreate WithDeploymentDisabled();
 
         /// <summary>
         /// Disable Azure Disk Encryption to retrieve secrets from the vault and unwrap keys.
         /// </summary>
         /// <returns>the next stage of key vault definition</returns>
-        IWithCreate WithDiskEncryptionDisabled ();
+        IWithCreate WithDiskEncryptionDisabled();
 
         /// <summary>
         /// Disable Azure Resource Manager to retrieve secrets from the key vault.
         /// </summary>
         /// <returns>the next stage of key vault definition</returns>
-        IWithCreate WithTemplateDeploymentDisabled ();
+        IWithCreate WithTemplateDeploymentDisabled();
 
     }
     /// <summary>
     /// A key vault definition allowing the sku to be set.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Specifies the sku of the key vault.
         /// </summary>
         /// <param name="skuName">skuName the sku</param>
         /// <returns>the next stage of key vault definition</returns>
-        IWithCreate WithSku (SkuName skuName);
+        IWithCreate WithSku(SkuName skuName);
 
     }
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IBlank,
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithGroup,
         IWithAccessPolicy,
@@ -77,39 +77,39 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition
     /// <summary>
     /// A key vault definition allowing access policies to be attached.
     /// </summary>
-    public interface IWithAccessPolicy 
+    public interface IWithAccessPolicy
     {
         /// <summary>
         /// Attach no access policy.
         /// </summary>
         /// <returns>the next stage of key vault definition</returns>
-        IWithCreate WithEmptyAccessPolicy ();
+        IWithCreate WithEmptyAccessPolicy();
 
         /// <summary>
         /// Attach an existing access policy.
         /// </summary>
         /// <param name="accessPolicy">accessPolicy the existing access policy</param>
         /// <returns>the next stage of key vault definition</returns>
-        IWithCreate WithAccessPolicy (IAccessPolicy accessPolicy);
+        IWithCreate WithAccessPolicy(IAccessPolicy accessPolicy);
 
         /// <summary>
         /// Begins the definition of a new access policy to be added to this key vault.
         /// </summary>
         /// <returns>the first stage of the access policy definition</returns>
-        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IBlank<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> DefineAccessPolicy ();
+        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IBlank<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> DefineAccessPolicy();
 
     }
     /// <summary>
     /// The first stage of the key vault definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         IDefinitionWithRegion<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithGroup>
     {
     }
     /// <summary>
     /// A key vault definition allowing resource group to be set.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithAccessPolicy>
     {
     }
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition
     /// storage account in the cloud, but exposing additional optional inputs to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         ICreatable<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
         IDefinitionWithTags<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>,
         IWithSku,

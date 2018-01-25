@@ -4,7 +4,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
 {
     using Microsoft.Azure.Management.Redis.Fluent.Models;
 
-    internal partial class RedisAccessKeysImpl 
+    internal partial class RedisAccessKeysImpl
     {
         /// <summary>
         /// Gets a secondary key value.

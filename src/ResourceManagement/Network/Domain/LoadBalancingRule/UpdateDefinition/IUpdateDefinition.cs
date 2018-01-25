@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// The stage of a load balancing rule definition allowing to specify the backend port to send the load-balanced traffic to.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackendPort<ReturnT>  :
+    public interface IWithBackendPort<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.HasBackendPort.UpdateDefinition.IWithBackendPort<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithAttach<ReturnT>>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithAttach<ReturnT>
     {
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// The stage of a load balancing rule definition allowing to specify the frontend to associate with the rule.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithFrontend<ReturnT>  :
+    public interface IWithFrontend<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.HasFrontend.UpdateDefinition.IWithFrontend<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithFrontendPort<ReturnT>>
     {
     }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// The stage of a load balancing rule definition allowing to specify the load distribution.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithLoadDistribution<ReturnT> 
+    public interface IWithLoadDistribution<ReturnT>
     {
         /// <summary>
         /// Specifies the load distribution mode.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// The stage of a load balancing rule definition allowing to specify the backend to associate the rule with.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithBackend<ReturnT>  :
+    public interface IWithBackend<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithVirtualMachine<ReturnT>
     {
         /// <summary>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// The stage of a load balancing rule definition allowing to enable the floating IP functionality.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithFloatingIP<ReturnT>  :
+    public interface IWithFloatingIP<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.HasFloatingIP.UpdateDefinition.IWithFloatingIP<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithAttach<ReturnT>>
     {
     }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// the network traffic among.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithVirtualMachine<ReturnT> 
+    public interface IWithVirtualMachine<ReturnT>
     {
         /// <summary>
         /// Adds the specified set of virtual machines, assuming they are from the same
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// The stage of a load balancing rule definition allowing to specify the probe to associate with the rule.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithProbe<ReturnT> 
+    public interface IWithProbe<ReturnT>
     {
         /// <summary>
         /// Associates the specified existing HTTP or TCP probe of this load balancer with the load balancing rule.
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// The entirety of a load balancing rule definition as part of a load balancer update.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IUpdateDefinition<ReturnT>  :
+    public interface IUpdateDefinition<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IBlank<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithAttach<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithProtocol<ReturnT>,
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// The first stage of the load balancing rule definition.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ReturnT>  :
+    public interface IBlank<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithProtocol<ReturnT>
     {
     }
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// The stage of a load balancing rule definition allowing to specify the connection timeout for idle connections.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithIdleTimeoutInMinutes<ReturnT> 
+    public interface IWithIdleTimeoutInMinutes<ReturnT>
     {
         /// <summary>
         /// Specifies the number of minutes before an idle connection is closed.
@@ -160,8 +160,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// The stage of a load balancing rule definition allowing to specify the transport protocol to apply the rule to.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithProtocol<ReturnT>  :
-        Microsoft.Azure.Management.Network.Fluent.HasProtocol.UpdateDefinition.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithFrontend<ReturnT>,Microsoft.Azure.Management.Network.Fluent.Models.TransportProtocol>
+    public interface IWithProtocol<ReturnT> :
+        Microsoft.Azure.Management.Network.Fluent.HasProtocol.UpdateDefinition.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithFrontend<ReturnT>, Microsoft.Azure.Management.Network.Fluent.Models.TransportProtocol>
     {
     }
 
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// can be attached to the parent load balancer definition.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ReturnT>  :
+    public interface IWithAttach<ReturnT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithFloatingIP<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithIdleTimeoutInMinutes<ReturnT>,
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefi
     /// The stage of a load balancing rule definition allowing to specify the frontend port to load balance.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithFrontendPort<ReturnT>  :
+    public interface IWithFrontendPort<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.HasFrontendPort.UpdateDefinition.IWithFrontendPort<Microsoft.Azure.Management.Network.Fluent.LoadBalancingRule.UpdateDefinition.IWithBackend<ReturnT>>
     {
     }

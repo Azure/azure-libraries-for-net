@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Collections.Generic;
 
-    internal partial class LocalNetworkGatewayImpl 
+    internal partial class LocalNetworkGatewayImpl
     {
         /// <summary>
         /// Remove address space. Note: address space will be removed only in case of exact cidr string match.

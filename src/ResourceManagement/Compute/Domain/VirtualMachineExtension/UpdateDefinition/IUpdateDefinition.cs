@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// The first stage of a virtual machine extension definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithImageOrPublisher<ParentT>
     {
     }
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// extension version this extension is based on.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithVersion<ParentT> 
+    public interface IWithVersion<ParentT>
     {
         /// <summary>
         /// Specifies the version of the virtual machine image extension.
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// virtual machine extension publisher.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithImageOrPublisher<ParentT>  :
+    public interface IWithImageOrPublisher<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithPublisher<ParentT>
     {
         /// <summary>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// virtual machine extension image this extension is based on.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithPublisher<ParentT> 
+    public interface IWithPublisher<ParentT>
     {
         /// <summary>
         /// Specifies the name of the virtual machine extension image publisher.
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// The entirety of a virtual machine extension definition as a part of parent update.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IBlank<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithImageOrPublisher<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithPublisher<ParentT>,
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// The stage of the virtual machine extension definition allowing to specify the public and private settings.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithSettings<ParentT> 
+    public interface IWithSettings<ParentT>
     {
         /// <summary>
         /// Specifies a private settings entry.
@@ -102,14 +102,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
         /// </summary>
         /// <param name="settings">The public settings.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithAttach<ParentT> WithPublicSettings(IDictionary<string,object> settings);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithAttach<ParentT> WithPublicSettings(IDictionary<string, object> settings);
 
         /// <summary>
         /// Specifies private settings.
         /// </summary>
         /// <param name="settings">The private settings.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithAttach<ParentT> WithProtectedSettings(IDictionary<string,object> settings);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithAttach<ParentT> WithProtectedSettings(IDictionary<string, object> settings);
     }
 
     /// <summary>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// extension when when a new minor version of virtual machine extension image gets published.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithAutoUpgradeMinorVersion<ParentT> 
+    public interface IWithAutoUpgradeMinorVersion<ParentT>
     {
         /// <summary>
         /// Enables auto upgrade of the extension.
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// The stage of the virtual machine extension definition allowing to specify the tags.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithTags<ParentT> 
+    public interface IWithTags<ParentT>
     {
         /// <summary>
         /// Adds a tag to the resource.
@@ -151,14 +151,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
         /// </summary>
         /// <param name="tags">Tags to associate with the resource.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithAttach<ParentT> WithTags(IDictionary<string,string> tags);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithAttach<ParentT> WithTags(IDictionary<string, string> tags);
     }
 
     /// <summary>
     /// The final stage of the virtual machine extension definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithAutoUpgradeMinorVersion<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.UpdateDefinition.IWithSettings<ParentT>,
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// extension image this extension is based on.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
-    public interface IWithType<ParentT> 
+    public interface IWithType<ParentT>
     {
         /// <summary>
         /// Specifies the type of the virtual machine extension image.

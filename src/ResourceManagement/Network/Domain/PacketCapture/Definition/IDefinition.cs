@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition
     using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
-    public interface IWithTarget 
+    public interface IWithTarget
     {
         /// <summary>
         /// Set target resource ID, only VM is currently supported.
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition
         Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithStorageLocation WithTarget(string target);
     }
 
-    public interface IWithCreateAndStoragePath  :
+    public interface IWithCreateAndStoragePath :
         Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithCreate
     {
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition
         Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithCreate WithStoragePath(string storagePath);
     }
 
-    public interface IWithStorageLocation 
+    public interface IWithStorageLocation
     {
         /// <summary>
         /// A valid local path on the targeting VM. Must include the name of the
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition
         Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithCreateAndStoragePath WithStorageAccountId(string storageId);
     }
 
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.IPacketCapture>
     {
         /// <summary>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition
     /// <summary>
     /// The entirety of the packet capture definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithTarget,
         Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithStorageLocation,
         Microsoft.Azure.Management.Network.Fluent.PacketCapture.Definition.IWithCreateAndStoragePath

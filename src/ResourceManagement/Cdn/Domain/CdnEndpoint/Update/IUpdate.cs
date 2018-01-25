@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.CdnEndpoint.Update
     /// <summary>
     /// The entirety of a CDN endpoint update as part of a CDN profile update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Cdn.Fluent.CdnProfile.Update.IUpdate>
     {
     }

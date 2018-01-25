@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definiti
     /// <summary>
     /// The stage of express route circuit definition allowing to specify service provider peering location.
     /// </summary>
-    public interface IWithPeeringLocation 
+    public interface IWithPeeringLocation
     {
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithBandwidth WithPeeringLocation(string location);
     }
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definiti
     /// <summary>
     /// The stage of express route circuit definition allowing to enable/disable classic operations.
     /// </summary>
-    public interface IWithAllowClassicOperations 
+    public interface IWithAllowClassicOperations
     {
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithCreate WithClassicOperations();
     }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definiti
     /// <summary>
     /// The first stage of express route circuit definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithGroup>
     {
     }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definiti
     /// <summary>
     /// The stage of express route circuit definition allowing to specify SKU tier and family.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithCreate WithSku(ExpressRouteCircuitSkuType skuType);
     }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definiti
     /// <summary>
     /// The entirety of the express route circuit definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IBlank,
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithGroup,
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithServiceProvider,
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definiti
     /// <summary>
     /// The stage of express route circuit definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithServiceProvider>
     {
     }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definiti
     /// the resource to be created, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithCreate>,
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithAllowClassicOperations,
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definiti
     /// <summary>
     /// The stage of express route circuit definition allowing to specify service provider name.
     /// </summary>
-    public interface IWithServiceProvider 
+    public interface IWithServiceProvider
     {
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithPeeringLocation WithServiceProvider(string serviceProviderName);
     }
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definiti
     /// <summary>
     /// The stage of express route circuit definition allowing to specify service provider bandwidth.
     /// </summary>
-    public interface IWithBandwidth 
+    public interface IWithBandwidth
     {
         Microsoft.Azure.Management.Network.Fluent.ExpressRouteCircuit.Definition.IWithSku WithBandwidthInMbps(int bandwidthInMbps);
     }

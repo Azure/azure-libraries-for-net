@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable representation of a web app source control configuration in a web app.
     /// </summary>
-    public interface IWebAppSourceControl  :
+    public interface IWebAppSourceControl :
         IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.SiteSourceControlInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.AppService.Fluent.IWebAppBase>

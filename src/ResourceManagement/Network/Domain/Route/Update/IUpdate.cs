@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Route.Update
     /// <summary>
     /// The entirety of a route update as part of a route table update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.RouteTable.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.Route.Update.IWithDestinationAddressPrefix,
         Microsoft.Azure.Management.Network.Fluent.Route.Update.IWithNextHopType
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Route.Update
     /// <summary>
     /// The stage of a route update allowing to specify the next hop type.
     /// </summary>
-    public interface IWithNextHopType 
+    public interface IWithNextHopType
     {
         /// <summary>
         /// Specifies the IP address of the virtual appliance for the next hop to go to.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Route.Update
     /// <summary>
     /// The stage of a route update allowing to modify the destination address prefix.
     /// </summary>
-    public interface IWithDestinationAddressPrefix 
+    public interface IWithDestinationAddressPrefix
     {
         /// <summary>
         /// Specifies the destination address prefix to apply the route to.

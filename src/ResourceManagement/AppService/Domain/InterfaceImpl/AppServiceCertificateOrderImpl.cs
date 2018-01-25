@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class AppServiceCertificateOrderImpl 
+    internal partial class AppServiceCertificateOrderImpl
     {
         /// <summary>
         /// Specifies the valid years of the certificate.
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>An Observable to the result.</return>
         async Task Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateOrder.VerifyDomainOwnershipAsync(IAppServiceDomain domain, CancellationToken cancellationToken)
         {
- 
+
             await this.VerifyDomainOwnershipAsync(domain, cancellationToken);
         }
 
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name="domain">The Azure managed domain.</param>
         void Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateOrder.VerifyDomainOwnership(IAppServiceDomain domain)
         {
- 
+
             this.VerifyDomainOwnership(domain);
         }
 

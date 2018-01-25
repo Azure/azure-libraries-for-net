@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// </summary>
         public CustomDomainParameters()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

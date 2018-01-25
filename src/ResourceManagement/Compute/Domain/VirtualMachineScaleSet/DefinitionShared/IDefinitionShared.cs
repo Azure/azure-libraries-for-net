@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// The virtual machine scale set stages shared between managed and unmanaged based
     /// virtual machine scale set definitions.
     /// </summary>
-    public interface IDefinitionShared  :
+    public interface IDefinitionShared :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IBlank,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithGroup,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithSku,

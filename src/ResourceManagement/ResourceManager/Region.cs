@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         /// U.S. Department of Defense cloud - Central.
         /// </summary>
         public static readonly Region GovernmentUSDodCentral = new Region("usdodcentral");
- 
+
         #endregion
 
         public static IReadOnlyCollection<Region> Values

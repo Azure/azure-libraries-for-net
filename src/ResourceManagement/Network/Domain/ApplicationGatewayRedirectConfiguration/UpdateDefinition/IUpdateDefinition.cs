@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// The stage of an application gateway redirect configuration allowing to specify whether the query string should be included in the redirected URL.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway update to return to after attaching this definition.</typeparam>
-    public interface IWithQueryStringIncluded<ReturnT> 
+    public interface IWithQueryStringIncluded<ReturnT>
     {
         /// <summary>
         /// Specifies that the query string should be included in the redirected URL.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// can be attached to the parent application gateway definition.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ReturnT>  :
+    public interface IWithAttach<ReturnT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithQueryStringIncluded<ReturnT>
     {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// The stage of an application gateway redirect configuration allowing to specify whether the query string should be included in the redirected URL or other optional settings.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway update to return to after attaching this definition.</typeparam>
-    public interface IWithAttachAndPath<ReturnT>  :
+    public interface IWithAttachAndPath<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithAttach<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithPathIncluded<ReturnT>
     {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// The stage of an application gateway redirect configuration allowing to specify the target URL or listener for the redirection.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway update to return to after attaching this definition.</typeparam>
-    public interface IWithTarget<ReturnT> 
+    public interface IWithTarget<ReturnT>
     {
         /// <summary>
         /// Specifies the URL to redirect to.
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// The first stage of an application gateway redirect configuration configuration definition.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ReturnT>  :
+    public interface IBlank<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithType<ReturnT>
     {
     }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// The entirety of an application gateway redirect configuration definition as part of an application gateway update.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IUpdateDefinition<ReturnT>  :
+    public interface IUpdateDefinition<ReturnT> :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.UpdateDefinition.IBlank<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithAttach<ReturnT>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithAttachAndPath<ReturnT>,
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// The stage of an application gateway redirect configuration allowing to specify whether the path should be included in the redirected URL.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway update to return to after attaching this definition.</typeparam>
-    public interface IWithPathIncluded<ReturnT> 
+    public interface IWithPathIncluded<ReturnT>
     {
         /// <summary>
         /// Specifies that the path should be included in the redirected URL.
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayRedirectCo
     /// The stage of an application gateway redirect configuration allowing to specify the type of the redirection.
     /// </summary>
     /// <typeparam name="ReturnT">The stage of the parent application gateway update to return to after attaching this definition.</typeparam>
-    public interface IWithType<ReturnT> 
+    public interface IWithType<ReturnT>
     {
         /// <summary>
         /// Specifies the redirection type.

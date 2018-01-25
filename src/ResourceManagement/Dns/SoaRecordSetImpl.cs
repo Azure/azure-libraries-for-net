@@ -17,43 +17,43 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:352DEB81080973F0DD8A640958597C6B
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
-             if (resource.SoaRecord == null)
-             {
+            if (resource.SoaRecord == null)
+            {
                 resource.SoaRecord = new SoaRecord();
-             }
+            }
 
-             if (Inner.SoaRecord.Email != null)
-             {
+            if (Inner.SoaRecord.Email != null)
+            {
                 resource.SoaRecord.Email = Inner.SoaRecord.Email;
-             }
-            
-             if (Inner.SoaRecord.ExpireTime != null)
-             {
-                resource.SoaRecord.ExpireTime = Inner.SoaRecord.ExpireTime;
-             }
-             
-             if (Inner.SoaRecord.MinimumTtl != null)
-             {
-                resource.SoaRecord.MinimumTtl = Inner.SoaRecord.MinimumTtl;
-             }
-             
-             if (Inner.SoaRecord.RefreshTime != null)
-             {
-                resource.SoaRecord.RefreshTime = Inner.SoaRecord.RefreshTime;
-             }
+            }
 
-             if (Inner.SoaRecord.RetryTime != null)
-             {
+            if (Inner.SoaRecord.ExpireTime != null)
+            {
+                resource.SoaRecord.ExpireTime = Inner.SoaRecord.ExpireTime;
+            }
+
+            if (Inner.SoaRecord.MinimumTtl != null)
+            {
+                resource.SoaRecord.MinimumTtl = Inner.SoaRecord.MinimumTtl;
+            }
+
+            if (Inner.SoaRecord.RefreshTime != null)
+            {
+                resource.SoaRecord.RefreshTime = Inner.SoaRecord.RefreshTime;
+            }
+
+            if (Inner.SoaRecord.RetryTime != null)
+            {
                 resource.SoaRecord.RetryTime = Inner.SoaRecord.RetryTime;
-             }
-             
-             if (Inner.SoaRecord.SerialNumber != null)
-             {
+            }
+
+            if (Inner.SoaRecord.SerialNumber != null)
+            {
                 resource.SoaRecord.SerialNumber = Inner.SoaRecord.SerialNumber;
-             }
-             
-             Inner.SoaRecord = new SoaRecord();
-             return resource;
+            }
+
+            Inner.SoaRecord = new SoaRecord();
+            return resource;
         }
 
         ///GENMHASH:336FEA01421A8435A2D03E2E622EC294:E42DE42A88E9C5F585C74E76DA54EF39
@@ -65,15 +65,16 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:95E0FEFA5B6425061BFC820775C7828F:CA299EA256F0BDA5FC1EAD032F4E9E7D
         internal static SoaRecordSetImpl NewRecordSet(DnsZoneImpl parent)
         {
-             return new SoaRecordSetImpl(parent,
-             new RecordSetInner {
+            return new SoaRecordSetImpl(parent,
+            new RecordSetInner
+            {
                 Name = "@",
                 Type = Enum.GetName(typeof(RecordType), Models.RecordType.SOA),
                 SoaRecord = new SoaRecord()
-             });
+            });
         }
 
-        internal  SoaRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
+        internal SoaRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
         {
         }
     }

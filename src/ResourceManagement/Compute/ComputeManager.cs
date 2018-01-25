@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     virtualMachineImages = new VirtualMachineImagesImpl(
                         new VirtualMachinePublishersImpl(
-                            Inner.VirtualMachineImages, 
+                            Inner.VirtualMachineImages,
                             Inner.VirtualMachineExtensionImages),
                         Inner.VirtualMachineImages);
                 }
@@ -153,13 +153,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
         }
 
-        public IVirtualMachineScaleSets VirtualMachineScaleSets {
+        public IVirtualMachineScaleSets VirtualMachineScaleSets
+        {
             get
             {
                 if (virtualMachineScaleSets == null)
                 {
                     virtualMachineScaleSets = new VirtualMachineScaleSetsImpl(
-                        this, 
+                        this,
                         storageManager,
                         networkManager,
                         rbacManager);

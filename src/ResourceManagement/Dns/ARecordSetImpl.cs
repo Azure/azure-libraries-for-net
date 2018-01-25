@@ -19,8 +19,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         public IReadOnlyList<string> IPv4Addresses()
         {
             List<string> ipv4Addresses = new List<string>();
-            if (Inner.ARecords != null) {
-                foreach(var aRecord in Inner.ARecords)  {
+            if (Inner.ARecords != null)
+            {
+                foreach (var aRecord in Inner.ARecords)
+                {
                     ipv4Addresses.Add(aRecord.Ipv4Address);
                 }
             }
@@ -30,21 +32,29 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:BFFE923AC1A74C33749D31F3CABB1EA2
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
-            if (Inner.ARecords != null && Inner.ARecords.Count > 0) {
-                if (resource.ARecords == null) {
+            if (Inner.ARecords != null && Inner.ARecords.Count > 0)
+            {
+                if (resource.ARecords == null)
+                {
                     resource.ARecords = new List<ARecord>();
                 }
-                foreach (var record in Inner.ARecords) {
+                foreach (var record in Inner.ARecords)
+                {
                     resource.ARecords.Add(record);
                 }
                 Inner.ARecords.Clear();
             }
 
-            if (this.recordSetRemoveInfo.ARecords.Count > 0) {
-                if (resource.ARecords != null) {
-                    foreach(var recordToRemove in this.recordSetRemoveInfo.ARecords)  {
-                        foreach(var record in resource.ARecords)  {
-                            if (record.Ipv4Address.Equals(recordToRemove.Ipv4Address, System.StringComparison.OrdinalIgnoreCase)) {
+            if (this.recordSetRemoveInfo.ARecords.Count > 0)
+            {
+                if (resource.ARecords != null)
+                {
+                    foreach (var recordToRemove in this.recordSetRemoveInfo.ARecords)
+                    {
+                        foreach (var record in resource.ARecords)
+                        {
+                            if (record.Ipv4Address.Equals(recordToRemove.Ipv4Address, System.StringComparison.OrdinalIgnoreCase))
+                            {
                                 resource.ARecords.Remove(record);
                                 break;
                             }
@@ -52,12 +62,12 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                     }
                 }
                 this.recordSetRemoveInfo.ARecords.Clear();
-             }
-             return resource;
+            }
+            return resource;
         }
 
         ///GENMHASH:E1426F341AA03829F8336FF9716A3A8D:3F5F2CC7F3C4A3B943EC7C1953A9D2E5
-        internal  ARecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
+        internal ARecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
         {
         }
 
@@ -65,7 +75,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         internal static ARecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
         {
             return new ARecordSetImpl(parent,
-                new RecordSetInner {
+                new RecordSetInner
+                {
                     Name = name,
                     Type = Enum.GetName(typeof(RecordType), Models.RecordType.A),
                     ARecords = new List<ARecord>()

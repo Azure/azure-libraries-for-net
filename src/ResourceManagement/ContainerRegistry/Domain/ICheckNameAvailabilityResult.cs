@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
     /// <summary>
     /// The result of checking for container registry name availability.
     /// </summary>
-    public interface ICheckNameAvailabilityResult  :
+    public interface ICheckNameAvailabilityResult :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.RegistryNameStatusInner>
     {

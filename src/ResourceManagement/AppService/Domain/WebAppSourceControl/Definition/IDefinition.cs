@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Defin
     /// The entirety of a web app source control definition.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IDefinition<ParentT>  :
+    public interface IDefinition<ParentT> :
         Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition.IWithAttach<ParentT>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition.IGitHubWithAttach<ParentT>,
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Defin
     /// can be attached to the parent web app definition using  WithAttach.attach().
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IGitHubWithAttach<ParentT>  :
+    public interface IGitHubWithAttach<ParentT> :
         Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition.IWithAttach<ParentT>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition.IWithGitHubAccessToken<ParentT>
     {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Defin
     /// A web app source control definition allowing GitHub access token to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithGitHubAccessToken<ParentT> 
+    public interface IWithGitHubAccessToken<ParentT>
     {
         /// <summary>
         /// Specifies the GitHub personal access token. You can acquire one from
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Defin
     /// A web app source control definition allowing repository type to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithRepositoryType<ParentT> 
+    public interface IWithRepositoryType<ParentT>
     {
         /// <summary>
         /// Specifies the repository to be a public external repository, either Git or Mercurial.
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Defin
     /// can be attached to the parent web app definition using  WithAttach.attach().
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>
     {
     }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Defin
     /// A web app source control definition allowing branch to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithGitHubBranch<ParentT> 
+    public interface IWithGitHubBranch<ParentT>
     {
         /// <summary>
         /// Specifies the branch in the repository to use.
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Defin
     /// A web app source control definition allowing branch to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithBranch<ParentT> 
+    public interface IWithBranch<ParentT>
     {
         /// <summary>
         /// Specifies the branch in the repository to use.
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Defin
     /// The first stage of a web app source control definition as part of a definition of a web app.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition.IWithRepositoryType<ParentT>
     {
     }

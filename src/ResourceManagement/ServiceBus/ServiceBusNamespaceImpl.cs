@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Implementation for ServiceBusNamespace.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuaW1wbGVtZW50YXRpb24uU2VydmljZUJ1c05hbWVzcGFjZUltcGw=
-    internal partial class ServiceBusNamespaceImpl  :
+    internal partial class ServiceBusNamespaceImpl :
             GroupableResource<IServiceBusNamespace,
             NamespaceModelInner,
             ServiceBusNamespaceImpl,
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             return await this.Manager.Inner.Namespaces.GetAsync(
                 this.ResourceGroupName,
-                this.Name, 
+                this.Name,
                 cancellationToken);
         }
 

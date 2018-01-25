@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal abstract partial class NicIPConfigurationBaseImpl<ParentImplT,ParentT> 
+    internal abstract partial class NicIPConfigurationBaseImpl<ParentImplT, ParentT>
     {
         /// <summary>
         /// Gets the name of the subnet associated with this resource.

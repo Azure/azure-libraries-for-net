@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasSslCertificate.Definition
     /// The stage of a resource definition allowing to specify the SSL certificate to associate with it.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithSslCertificate<ReturnT> 
+    public interface IWithSslCertificate<ReturnT>
     {
         /// <summary>
         /// Specifies the PFX file to import the SSL certificate from to associated with this resource.
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.HasSslCertificate.Definition
     /// The stage of a resource definition allowing to specify the password for the private key of the imported SSL certificate.
     /// </summary>
     /// <typeparam name="ReturnT">The next stage of the definition.</typeparam>
-    public interface IWithSslPassword<ReturnT> 
+    public interface IWithSslPassword<ReturnT>
     {
         /// <summary>
         /// Specifies the password for the specified PFX file containing the private key of the imported SSL certificate.

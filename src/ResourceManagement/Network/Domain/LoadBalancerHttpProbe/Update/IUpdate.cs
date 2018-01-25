@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Update
     /// <summary>
     /// The stage of the HTTP probe update allowing to modify the port number to monitor.
     /// </summary>
-    public interface IWithPort 
+    public interface IWithPort
     {
         /// <summary>
         /// Specifies the port number to call for health monitoring.
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Update
     /// <summary>
     /// The stage of the HTTP probe update allowing to modify the HTTP request path for the probe to monitor.
     /// </summary>
-    public interface IWithRequestPath 
+    public interface IWithRequestPath
     {
         /// <summary>
         /// Specifies the HTTP request path for the probe to monitor.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Update
     /// <summary>
     /// The stage of the HTTP probe update allowing to modify the probe interval.
     /// </summary>
-    public interface IWithIntervalInSeconds 
+    public interface IWithIntervalInSeconds
     {
         /// <summary>
         /// Specifies the interval between probes, in seconds.
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Update
     /// <summary>
     /// The stage of the HTTP probe update allowing to modify the number of unsuccessful probes before failure is determined.
     /// </summary>
-    public interface IWithNumberOfProbes 
+    public interface IWithNumberOfProbes
     {
         /// <summary>
         /// Specifies the number of unsuccessful probes before failure is determined.
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Update
     /// <summary>
     /// The entirety of a probe update as part of a load balancer update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.LoadBalancer.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Update.IWithIntervalInSeconds,
         Microsoft.Azure.Management.Network.Fluent.LoadBalancerHttpProbe.Update.IWithNumberOfProbes,

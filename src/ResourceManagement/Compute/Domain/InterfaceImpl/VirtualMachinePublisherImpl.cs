@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class VirtualMachinePublisherImpl 
+    internal partial class VirtualMachinePublisherImpl
     {
         /// <summary>
         /// Gets the name of the resource.

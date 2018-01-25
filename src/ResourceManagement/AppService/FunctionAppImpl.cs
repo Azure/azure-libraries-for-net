@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// The implementation for FunctionApp.
     /// </summary>
-    internal partial class FunctionAppImpl  :
-        AppServiceBaseImpl<IFunctionApp,FunctionAppImpl,IWithCreate, INewAppServicePlanWithGroup, IWithCreate, IUpdate>,
+    internal partial class FunctionAppImpl :
+        AppServiceBaseImpl<IFunctionApp, FunctionAppImpl, IWithCreate, INewAppServicePlanWithGroup, IWithCreate, IUpdate>,
         IFunctionApp,
         IDefinition,
         INewAppServicePlanWithGroup,
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             if (deploymentSlots == null)
             {
-               deploymentSlots = new FunctionDeploymentSlotsImpl(this, Manager);
+                deploymentSlots = new FunctionDeploymentSlotsImpl(this, Manager);
             }
             return deploymentSlots;
         }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this;
         }
 
-        internal  FunctionAppImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject, IAppServiceManager manager)
+        internal FunctionAppImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject, IAppServiceManager manager)
             : base(name, innerObject, configObject, manager)
         {
             kuduCredentials = new KuduCredentials(this);
@@ -90,11 +90,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             Storage.Fluent.StorageAccount.Definition.IWithGroup storageDefine = Manager.StorageManager.StorageAccounts
                 .Define(name)
                 .WithRegion(RegionName);
-            if (newGroup != null && IsInCreateMode) {
+            if (newGroup != null && IsInCreateMode)
+            {
                 storageAccountCreatable = storageDefine.WithNewResourceGroup(newGroup)
                     .WithGeneralPurposeAccountKind()
                     .WithSku(sku);
-            } else {
+            }
+            else
+            {
                 storageAccountCreatable = storageDefine.WithExistingResourceGroup(ResourceGroupName)
                     .WithGeneralPurposeAccountKind()
                     .WithSku(sku);
@@ -128,7 +131,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             if (storageAccountCreatable != null && CreatedResource(storageAccountCreatable.Key) != null)
             {
-                storageAccountToSet = (IStorageAccount) CreatedResource(storageAccountCreatable.Key);
+                storageAccountToSet = (IStorageAccount)CreatedResource(storageAccountCreatable.Key);
             }
             if (storageAccountToSet == null)
             {
@@ -252,7 +255,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await ((WebSiteManagementClient) Manager.Inner).HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await ((WebSiteManagementClient)Manager.Inner).HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);

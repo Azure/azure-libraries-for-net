@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// Implementation for TopicAuthorizationRule.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNlcnZpY2VidXMuaW1wbGVtZW50YXRpb24uVG9waWNBdXRob3JpemF0aW9uUnVsZUltcGw=
-    internal partial class TopicAuthorizationRuleImpl  :
+    internal partial class TopicAuthorizationRuleImpl :
             AuthorizationRuleBaseImpl<Microsoft.Azure.Management.ServiceBus.Fluent.ITopicAuthorizationRule,
             Microsoft.Azure.Management.ServiceBus.Fluent.TopicImpl,
             SharedAccessAuthorizationRuleInner,

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definitio
     /// The direction of the packet represented as a 5-tuple. Possible values
     /// include: 'Inbound', 'Outbound'.
     /// </summary>
-    public interface IWithDirection 
+    public interface IWithDirection
     {
         /// <summary>
         /// Set the direction value.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definitio
     /// (0-65535). Support for  for the source port, which depends on the
     /// direction.
     /// </summary>
-    public interface IWithLocalPort 
+    public interface IWithLocalPort
     {
         /// <summary>
         /// Set the localPort value.
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definitio
     /// <summary>
     /// The entirety of verification ip flow parameters definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definition.IWithTargetResource,
         Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definition.IWithDirection,
         Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definition.IWithProtocol,
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definitio
     /// The NIC ID. (If VM has multiple NICs and IP forwarding is enabled on any
     /// of them, then this parameter must be specified. Otherwise optional).
     /// </summary>
-    public interface IWithNetworkInterface 
+    public interface IWithNetworkInterface
     {
         /// <summary>
         /// Set the targetNetworkInterfaceId value.
@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definitio
     /// <summary>
     /// Protocol to be verified on. Possible values include: 'TCP', 'UDP'.
     /// </summary>
-    public interface IWithProtocol  :
-        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definition.IWithLocalIP,Microsoft.Azure.Management.Network.Fluent.Models.Protocol>
+    public interface IWithProtocol :
+        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definition.IWithLocalIP, Microsoft.Azure.Management.Network.Fluent.Models.Protocol>
     {
         /// <summary>
         /// Set TCP protocol.
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definitio
     /// <summary>
     /// The remote IP address. Acceptable values are valid IPv4 addresses.
     /// </summary>
-    public interface IWithRemoteIP 
+    public interface IWithRemoteIP
     {
         /// <summary>
         /// Set the remoteIPAddress value.
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definitio
     /// to execute an action, but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithExecute  :
+    public interface IWithExecute :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IExecutable<Microsoft.Azure.Management.Network.Fluent.IVerificationIPFlow>,
         Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definition.IWithNetworkInterface
     {
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definitio
     /// <summary>
     /// The local IP address. Acceptable values are valid IPv4 addresses.
     /// </summary>
-    public interface IWithLocalIP 
+    public interface IWithLocalIP
     {
         /// <summary>
         /// Set the localIPAddress value.
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definitio
     /// <summary>
     /// The ID of the target resource to perform next-hop on.
     /// </summary>
-    public interface IWithTargetResource 
+    public interface IWithTargetResource
     {
         /// <summary>
         /// Set the targetResourceId value.
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definitio
     /// (0-65535). Support for  for the source port, which depends on the
     /// direction.
     /// </summary>
-    public interface IWithRemotePort 
+    public interface IWithRemotePort
     {
         /// <summary>
         /// Set the remotePort value.

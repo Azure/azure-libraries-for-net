@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.Collections.Generic;
 
-    internal partial class LoadBalancerBackendImpl 
+    internal partial class LoadBalancerBackendImpl
     {
         /// <summary>
         /// Attaches the child definition to the parent resource update.
@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Gets a map of names of the IP configurations of network interfaces assigned to this backend,
         /// indexed by their NIC's resource id.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.Network.Fluent.IHasBackendNics.BackendNicIPConfigurationNames
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.Network.Fluent.IHasBackendNics.BackendNicIPConfigurationNames
         {
             get
             {
-                return this.BackendNicIPConfigurationNames() as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.BackendNicIPConfigurationNames() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
             }
         }
 
@@ -114,11 +114,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the associated load balancing rules from this load balancer, indexed by their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ILoadBalancingRule> Microsoft.Azure.Management.Network.Fluent.IHasLoadBalancingRules.LoadBalancingRules
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancingRule> Microsoft.Azure.Management.Network.Fluent.IHasLoadBalancingRules.LoadBalancingRules
         {
             get
             {
-                return this.LoadBalancingRules() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ILoadBalancingRule>;
+                return this.LoadBalancingRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancingRule>;
             }
         }
 

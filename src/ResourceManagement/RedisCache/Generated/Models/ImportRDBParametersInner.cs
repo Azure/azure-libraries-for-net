@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.Models
         /// </summary>
         public ImportRDBParametersInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

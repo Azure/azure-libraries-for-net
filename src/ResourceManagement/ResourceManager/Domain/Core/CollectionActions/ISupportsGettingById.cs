@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
     /// 
     /// @param <T> the type of the resource collection
     /// </summary>
-    public interface ISupportsGettingById<T> 
+    public interface ISupportsGettingById<T>
     {
         /// <summary>
         /// Gets the information about a resource from Azure based on the resource id.
         /// </summary>
         /// <param name="id">id the id of the resource.</param>
         /// <returns>an immutable representation of the resource</returns>
-        T GetById (string id);
+        T GetById(string id);
 
         /// <summary>
         /// Gets the information about a resource from Azure based on the resource id.
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
         /// <param name="id">id the id of the resource.</param>
         /// <param name="cancellationToken">cancellationToken the cancellation token</param>
         /// <returns>an immutable representation of the resource</returns>
-        Task<T> GetByIdAsync (string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<T> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }

@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update
     /// The stage of the Service Bus authorization rule update allowing to enable send policy.
     /// </summary>
     /// <typeparam name="T">The next stage of the update.</typeparam>
-    public interface IWithSend<T> 
+    public interface IWithSend<T>
     {
         /// <return>The next stage of the update.</return>
         T WithSendingEnabled();
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update
     /// The stage of the Service Bus authorization rule update allowing to enable listen, send or manage policy.
     /// </summary>
     /// <typeparam name="T">The next stage of the update.</typeparam>
-    public interface IWithListenOrSendOrManage<T>  :
+    public interface IWithListenOrSendOrManage<T> :
         Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update.IWithListen<T>,
         Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update.IWithSendOrManage<T>
     {
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update
     /// The stage of the Service Bus authorization rule update allowing to enable send or manage policy.
     /// </summary>
     /// <typeparam name="T">The next stage of the update.</typeparam>
-    public interface IWithSendOrManage<T>  :
+    public interface IWithSendOrManage<T> :
         Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update.IWithSend<T>,
         Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update.IWithManage<T>
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update
     /// The stage of the Service Bus authorization rule update allowing to enable listen policy.
     /// </summary>
     /// <typeparam name="T">The next stage of the update.</typeparam>
-    public interface IWithListen<T> 
+    public interface IWithListen<T>
     {
         /// <return>The next stage of the update.</return>
         T WithListeningEnabled();
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update
     /// The stage of Service Bus authorization rule update allowing to enable manage policy.
     /// </summary>
     /// <typeparam name="T">The next stage of the update.</typeparam>
-    public interface IWithManage<T> 
+    public interface IWithManage<T>
     {
         /// <return>The next stage of the update.</return>
         T WithManagementEnabled();

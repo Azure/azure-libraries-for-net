@@ -142,9 +142,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             this.collection.Clear();
             foreach (FluentModelTImpl childResource in this.ListChildResources())
             {
-                this.collection.AddOrUpdate(childResource.ChildResourceKey, 
-                    key => childResource, 
-                    (string key, FluentModelTImpl oldVal) => { return childResource;});
+                this.collection.AddOrUpdate(childResource.ChildResourceKey,
+                    key => childResource,
+                    (string key, FluentModelTImpl oldVal) => { return childResource; });
             }
         }
 

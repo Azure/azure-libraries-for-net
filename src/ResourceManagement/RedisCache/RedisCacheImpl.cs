@@ -251,9 +251,9 @@ namespace Microsoft.Azure.Management.Redis.Fluent
             {
                 patchSchedules = Extensions.Synchronize(() => Manager.Inner.PatchSchedules.GetAsync(ResourceGroupName, Name));
             }
-            catch(CloudException ex)
+            catch (CloudException ex)
             {
-                if(ex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                if (ex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
                     throw;
                 }
@@ -266,15 +266,15 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         }
 
         ///GENMHASH:83D353023D85D6E91BB9A3E8AC689039:DF02D821D2252D83CC2CDE0D9667F24E
-        public IReadOnlyDictionary<string,string> RedisConfiguration()
+        public IReadOnlyDictionary<string, string> RedisConfiguration()
         {
-            return new ReadOnlyDictionary<string,string>(Inner.RedisConfiguration);
+            return new ReadOnlyDictionary<string, string>(Inner.RedisConfiguration);
         }
 
         ///GENMHASH:6D1D6050A5B64D726B268700D1D5B76A:B617C9AF570BA31ABDF18E43D8A277EA
         public bool NonSslPort()
         {
-            return (Inner.EnableNonSslPort.HasValue)?
+            return (Inner.EnableNonSslPort.HasValue) ?
                 Inner.EnableNonSslPort.Value : false;
         }
 
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:8E06C1A19EE798AB8D863FD70174E162:EB25F0BF011FB476ED48A193129040E2
         public int SslPort()
         {
-            return (Inner.SslPort.HasValue)?
+            return (Inner.SslPort.HasValue) ?
                 Inner.SslPort.Value : 0;
         }
 
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:BF1200B4E784F046AF04467F35BAC1C4:F0090A6ECB1B91C3BCFD966232A4C1D4
         public int Port()
         {
-            return (Inner.Port.HasValue)?
+            return (Inner.Port.HasValue) ?
                 Inner.Port.Value : 0;
         }
 
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:246CCD739A2C2D6763D6C1A7A4C3F1B3:FCB76FD3E14B5306E0C0D9C582A496EF
         public int ShardCount()
         {
-            return (Inner.ShardCount.HasValue)?
+            return (Inner.ShardCount.HasValue) ?
                 Inner.ShardCount.Value : 0;
         }
 
@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         public RedisCacheImpl WithPatchSchedule(Models.DayOfWeek dayOfWeek, int startHourUtc, System.TimeSpan? maintenanceWindow)
         {
             return this.WithPatchSchedule(
-                new ScheduleEntry( 
+                new ScheduleEntry(
                     new ScheduleEntryInner(dayOfWeek, startHourUtc, maintenanceWindow)));
         }
 

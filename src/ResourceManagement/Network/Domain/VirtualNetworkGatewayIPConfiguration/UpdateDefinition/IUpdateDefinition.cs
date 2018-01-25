@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayIPConfi
     /// The first stage of a virtual network gateway IP configuration definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT> 
+    public interface IBlank<ParentT>
     {
     }
 
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayIPConfi
     /// The entirety of an application gateway IP configuration definition as part of a virtual network gateway update.
     /// </summary>
     /// <typeparam name="ParentT">The parent type.</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayIPConfiguration.UpdateDefinition.IBlank<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayIPConfiguration.UpdateDefinition.IWithAttach<ParentT>
     {
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayIPConfi
     /// can be attached to the parent application gateway definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent application gateway definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>
     {
     }

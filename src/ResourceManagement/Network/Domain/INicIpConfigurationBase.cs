@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// The base IP configuration shared across IP configurations in regular and virtual machine scale set
     /// network interface.
     /// </summary>
-    public interface INicIPConfigurationBase  :
+    public interface INicIPConfigurationBase :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasSubnet,
         Microsoft.Azure.Management.Network.Fluent.IHasPrivateIPAddress
     {

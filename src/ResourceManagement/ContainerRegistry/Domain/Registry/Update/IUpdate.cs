@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Update
     /// <summary>
     /// The stage of the container registry update allowing to add or remove a webhook.
     /// </summary>
-    public interface IWithWebhook 
+    public interface IWithWebhook
     {
         /// <summary>
         /// Begins the definition of a new webhook to be added to this container registry.
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Update
     /// <summary>
     /// The template for an update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Update.IUpdate>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry>,
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Update.IWithAdminUserEnabled,
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Update
     /// <summary>
     /// The stage of the registry update allowing to enable admin user.
     /// </summary>
-    public interface IWithAdminUserEnabled 
+    public interface IWithAdminUserEnabled
     {
         /// <summary>
         /// Disable admin user.
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Update
     /// <summary>
     /// The stage of the registry definition allowing to specify the SKU type.
     /// </summary>
-    public interface IWithSku  :
+    public interface IWithSku :
         Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Update.IWithSkuBeta
     {
     }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent.Registry.Update
     /// <summary>
     /// The stage of the registry definition allowing to specify the SKU type.
     /// </summary>
-    public interface IWithSkuBeta  :
+    public interface IWithSkuBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

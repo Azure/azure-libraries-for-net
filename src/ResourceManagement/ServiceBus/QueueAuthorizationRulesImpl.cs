@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
 
         protected async override Task<IPage<SharedAccessAuthorizationRuleInner>> ListInnerFirstPageAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Inner.ListAuthorizationRulesAsync(this.resourceGroupName, 
+            return await this.Inner.ListAuthorizationRulesAsync(this.resourceGroupName,
                 this.namespaceName,
-                this.queueName, 
+                this.queueName,
                 cancellationToken);
         }
         protected async override Task<IPage<SharedAccessAuthorizationRuleInner>> ListInnerNextPageAsync(string nextLink, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Inner.ListAuthorizationRulesNextAsync(nextLink, 
+            return await this.Inner.ListAuthorizationRulesNextAsync(nextLink,
                 cancellationToken);
 
         }
@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         ///GENMHASH:AD2F63EB9B7A81CCDA7E3A349748EDF7:EF91C0DDA8BEC01982B7D92EFBC0621D
         protected async override Task<SharedAccessAuthorizationRuleInner> GetInnerByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Inner.GetAuthorizationRuleAsync(this.resourceGroupName, 
-                this.namespaceName, 
+            return await this.Inner.GetAuthorizationRuleAsync(this.resourceGroupName,
+                this.namespaceName,
                 this.queueName,
-                name, 
+                name,
                 cancellationToken);
         }
 

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure virtual machine image.
     /// </summary>
-    public interface IVirtualMachineImage  :
+    public interface IVirtualMachineImage :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualMachineImageInner>
     {
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets data disk images in the virtual machine image, indexed by the disk LUN.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<int,Models.DataDiskImage> DataDiskImages { get; }
+        System.Collections.Generic.IReadOnlyDictionary<int, Models.DataDiskImage> DataDiskImages { get; }
 
         /// <summary>
         /// Gets the version of the virtual machine image.

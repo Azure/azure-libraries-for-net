@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class ProvisioningStateEnumExtension
     {
-        internal static string ToSerializedValue(this ProvisioningState? value)  =>
+        internal static string ToSerializedValue(this ProvisioningState? value) =>
             value == null ? null : ((ProvisioningState)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this ProvisioningState value)
         {
-            switch( value )
+            switch (value)
             {
                 case ProvisioningState.Succeeded:
                     return "Succeeded";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static ProvisioningState? ParseProvisioningState(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Succeeded":
                     return ProvisioningState.Succeeded;

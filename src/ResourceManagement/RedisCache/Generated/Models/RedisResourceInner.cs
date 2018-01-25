@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.Models
         /// </summary>
         public RedisResourceInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

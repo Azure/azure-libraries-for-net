@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// The implementation for WebApp.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmFwcHNlcnZpY2UuaW1wbGVtZW50YXRpb24uV2ViQXBwSW1wbA==
-    internal partial class WebAppImpl  :
+    internal partial class WebAppImpl :
         AppServiceBaseImpl<
             IWebApp,
             WebAppImpl,
@@ -205,17 +205,21 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             EnsureLinuxPlan();
             CleanUpContainerSettings();
-            if (SiteConfig == null) {
+            if (SiteConfig == null)
+            {
                 SiteConfig = new SiteConfigResourceInner();
             }
             SiteConfig.LinuxFxVersion = string.Format("{0}|{1}", runtimeStack.Stack(), runtimeStack.Version());
-            if (runtimeStack.Stack().Equals("NODE")) {
+            if (runtimeStack.Stack().Equals("NODE"))
+            {
                 SiteConfig.NodeVersion = runtimeStack.Version();
             }
-            if (runtimeStack.Stack().Equals("PHP")) {
+            if (runtimeStack.Stack().Equals("PHP"))
+            {
                 SiteConfig.PhpVersion = runtimeStack.Version();
             }
-            if (runtimeStack.Stack().Equals("DOTNETCORE")) {
+            if (runtimeStack.Stack().Equals("DOTNETCORE"))
+            {
                 SiteConfig.NetFrameworkVersion = runtimeStack.Version();
             }
             return this;

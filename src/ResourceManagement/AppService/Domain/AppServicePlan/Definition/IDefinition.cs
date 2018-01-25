@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition
     /// <summary>
     /// An app service plan definition allowing resource group to be set.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition.IWithPricingTier>
     {
     }
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition
     /// <summary>
     /// An app service plan definition allowing pricing tier to be set.
     /// </summary>
-    public interface IWithPricingTier 
+    public interface IWithPricingTier
     {
         /// <summary>
         /// Specifies the pricing tier for the app service plan.
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition
     /// website in the cloud, but exposing additional optional inputs to
     /// specify.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition.IWithPerSiteScaling,
         Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition.IWithCapacity,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan>,
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition
     /// <summary>
     /// An app service plan definition allowing the operating system to be set.
     /// </summary>
-    public interface IWithOperatingSystem 
+    public interface IWithOperatingSystem
     {
         /// <summary>
         /// Specifies the operating system of the app service plan.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition
     /// <summary>
     /// An app service plan definition allowing instance capacity to be set.
     /// </summary>
-    public interface IWithCapacity 
+    public interface IWithCapacity
     {
         /// <summary>
         /// Specifies the maximum number of instances running for this app service plan.
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition
     /// <summary>
     /// The first stage of the app service plan definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition.IWithGroup>
     {
     }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition
     /// <summary>
     /// An app service plan definition allowing per site scaling configuration to be set.
     /// </summary>
-    public interface IWithPerSiteScaling 
+    public interface IWithPerSiteScaling
     {
         /// <summary>
         /// Specifies whether per-site scaling will be turned on.
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition.IBlank,
         Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition.IWithGroup,
         Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Definition.IWithPricingTier,

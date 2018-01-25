@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal sealed partial class DomainLegalAgreementImpl 
+    internal sealed partial class DomainLegalAgreementImpl
     {
         /// <summary>
         /// Gets url where a copy of the agreement details is hosted.

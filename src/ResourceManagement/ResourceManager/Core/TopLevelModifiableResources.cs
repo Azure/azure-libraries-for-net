@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
         public virtual IEnumerable<IFluentResourceT> List()
         {
-            
+
             return WrapList(Extensions.Synchronize(() => this.ListInnerAsync(default(CancellationToken)))
                 .AsContinuousCollection(link => Extensions.Synchronize(() => ListInnerNextAsync(link, default(CancellationToken)))));
         }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public virtual async Task<IPagedCollection<IFluentResourceT>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IFluentResourceT, InnerResourceT>.LoadPage(
-                async(cancellation) => await ListInnerByGroupAsync(resourceGroupName, cancellation),
+                async (cancellation) => await ListInnerByGroupAsync(resourceGroupName, cancellation),
                 ListInnerByGroupNextAsync, WrapModel, loadAllPages, cancellationToken);
         }
 

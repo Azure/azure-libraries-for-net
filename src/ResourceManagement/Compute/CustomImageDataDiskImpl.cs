@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uQ3VzdG9tSW1hZ2VEYXRhRGlza0ltcGw=
     internal partial class CustomImageDataDiskImpl :
         ChildResource<
-            ImageDataDisk, 
+            ImageDataDisk,
             VirtualMachineCustomImageImpl,
             IVirtualMachineCustomImage>,
         ICustomImageDataDisk,

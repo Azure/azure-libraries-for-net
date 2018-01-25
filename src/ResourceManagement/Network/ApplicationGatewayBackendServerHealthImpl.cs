@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:C852FF1A7022E39B3C33C4B996B5E6D6:7F78D90F6498B472DCB9BE14FD336BC9
-        public ApplicationGatewayBackendHealthServer Inner {
+        public ApplicationGatewayBackendHealthServer Inner
+        {
             get
             {
                 return inner;
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:0111B1B788C0A6D6F89D0D62738FE9F1:17F95124EAAABC2941AA1F50645599B2
-        internal  ApplicationGatewayBackendServerHealthImpl(ApplicationGatewayBackendHealthServer inner, ApplicationGatewayBackendHttpConfigurationHealthImpl httpConfigHealth)
+        internal ApplicationGatewayBackendServerHealthImpl(ApplicationGatewayBackendHealthServer inner, ApplicationGatewayBackendHttpConfigurationHealthImpl httpConfigHealth)
         {
             this.inner = inner;
             this.httpConfigHealth = httpConfigHealth;

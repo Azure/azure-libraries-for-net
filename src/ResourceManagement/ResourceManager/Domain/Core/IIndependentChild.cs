@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
     /// <summary>
     /// Interface for the child resource which can be CRUDed independently from the parent resource.
     /// </summary>
-    public interface IIndependentChild<ManagerT>  :
+    public interface IIndependentChild<ManagerT> :
         IHasName,
         IHasId,
         IHasResourceGroup,

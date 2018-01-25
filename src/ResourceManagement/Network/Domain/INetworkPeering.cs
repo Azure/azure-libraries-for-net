@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An client-side representation of a network peering.
     /// </summary>
-    public interface INetworkPeering  :
+    public interface INetworkPeering :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IIndependentChild<Microsoft.Azure.Management.Network.Fluent.INetworkManager>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualNetworkPeeringInner>,

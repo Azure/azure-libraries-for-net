@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class NetworkSecurityGroupsImpl 
+    internal partial class NetworkSecurityGroupsImpl
     {
         /// <summary>
         /// Asynchronously delete a resource from Azure, identifying it by its name and its resource group.
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingByResourceGroup.DeleteByResourceGroupAsync(string resourceGroupName, string name, CancellationToken cancellationToken)
         {
- 
+
             await this.DeleteByResourceGroupAsync(resourceGroupName, name, cancellationToken);
         }
 

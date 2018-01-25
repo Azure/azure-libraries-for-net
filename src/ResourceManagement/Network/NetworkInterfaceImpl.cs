@@ -152,11 +152,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
             else
             {
                 // If multiple IP configs, then find the one marked as primary
-                foreach(var ipConfig in nicIPConfigurations.Values)
+                foreach (var ipConfig in nicIPConfigurations.Values)
                 {
                     if (ipConfig.IsPrimary)
                     {
-                        primaryIPConfig = (NicIPConfigurationImpl) ipConfig;
+                        primaryIPConfig = (NicIPConfigurationImpl)ipConfig;
                         break;
                     }
                 }

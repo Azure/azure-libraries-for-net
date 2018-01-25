@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="aadClientId">AAD application client id to access the key vault.</param>
         /// <param name="aadSecret">AAD application client secret to access the key vault.</param>
         ///GENMHASH:16CC6D6D92E86033409CE9320681B7F7:07C7F8E8A1CE0AC6E561967196C06719
-        protected  VirtualMachineEncryptionConfiguration(string keyVaultId, string aadClientId, string aadSecret)
+        protected VirtualMachineEncryptionConfiguration(string keyVaultId, string aadClientId, string aadSecret)
         {
             this.keyVaultId = keyVaultId;
             this.aadClientId = aadClientId;
@@ -151,7 +151,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return self();
         }
 
-        private T self() {
+        private T self()
+        {
             return this as T;
         }
     }

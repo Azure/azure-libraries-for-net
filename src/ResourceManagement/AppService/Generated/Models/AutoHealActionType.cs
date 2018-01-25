@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class AutoHealActionTypeEnumExtension
     {
-        internal static string ToSerializedValue(this AutoHealActionType? value)  =>
+        internal static string ToSerializedValue(this AutoHealActionType? value) =>
             value == null ? null : ((AutoHealActionType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this AutoHealActionType value)
         {
-            switch( value )
+            switch (value)
             {
                 case AutoHealActionType.Recycle:
                     return "Recycle";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static AutoHealActionType? ParseAutoHealActionType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Recycle":
                     return AutoHealActionType.Recycle;

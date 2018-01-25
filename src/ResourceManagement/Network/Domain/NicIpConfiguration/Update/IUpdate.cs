@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update
     /// <summary>
     /// The entirety of a network interface IP configuration update as part of a network interface update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.NetworkInterface.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IWithSubnet,
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IWithPrivateIP,
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update
     /// <summary>
     /// The stage of the network interface IP configuration update allowing to specify private IP.
     /// </summary>
-    public interface IWithPrivateIP  :
+    public interface IWithPrivateIP :
         Microsoft.Azure.Management.Network.Fluent.HasPrivateIPAddress.Update.IWithPrivateIPAddress<Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate>
     {
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update
     /// The stage of the network interface IP configuration update allowing to specify the load balancer
     /// to associate this IP configuration with.
     /// </summary>
-    public interface IWithApplicationGateway  :
+    public interface IWithApplicationGateway :
         Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IWithApplicationGatewayBeta
     {
     }
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update
     /// <summary>
     /// The stage of the network interface IP configuration update allowing to specify subnet.
     /// </summary>
-    public interface IWithSubnet 
+    public interface IWithSubnet
     {
         /// <summary>
         /// Associate a subnet with the network interface IP configuration.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update
     /// <summary>
     /// The stage of the network interface IP configuration update allowing to specify public IP address.
     /// </summary>
-    public interface IWithPublicIPAddress  :
+    public interface IWithPublicIPAddress :
         Microsoft.Azure.Management.Network.Fluent.HasPublicIPAddress.Update.IWithPublicIPAddress<Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update.IUpdate>
     {
     }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update
     /// The stage of the network interface's IP configuration allowing to specify the load balancer
     /// to associate this IP configuration with.
     /// </summary>
-    public interface IWithLoadBalancer 
+    public interface IWithLoadBalancer
     {
         /// <summary>
         /// Specifies the load balancer to associate this IP configuration with.
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NicIPConfiguration.Update
     /// The stage of the network interface IP configuration update allowing to specify the load balancer
     /// to associate this IP configuration with.
     /// </summary>
-    public interface IWithApplicationGatewayBeta  :
+    public interface IWithApplicationGatewayBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

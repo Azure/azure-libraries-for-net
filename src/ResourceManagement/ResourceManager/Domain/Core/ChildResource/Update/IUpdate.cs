@@ -8,9 +8,9 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.U
     /// The final stage of the child object definition, as which it can be attached to the parent.
     /// @param <ParentT> the parent definition
     /// </summary>
-    public interface IInUpdate<ParentT> 
+    public interface IInUpdate<ParentT>
     {
-        ParentT Attach ();
+        ParentT Attach();
 
     }
 }

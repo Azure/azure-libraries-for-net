@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
-    internal partial class NetworkImpl 
+    internal partial class NetworkImpl
     {
         /// <summary>
         /// Explicitly adds an address space to the virtual network.
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="nameCidrPairs">A  Map of CIDR addresses for the subnets, indexed by the name of each subnet to be added.</param>
         /// <return>The next stage of the virtual network update.</return>
-        Network.Update.IUpdate Network.Update.IWithSubnet.WithSubnets(IDictionary<string,string> nameCidrPairs)
+        Network.Update.IUpdate Network.Update.IWithSubnet.WithSubnets(IDictionary<string, string> nameCidrPairs)
         {
             return this.WithSubnets(nameCidrPairs) as Network.Update.IUpdate;
         }
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="nameCidrPairs">A  Map of CIDR addresses for the subnets, indexed by the name of each subnet to be defined.</param>
         /// <return>The next stage of the definition.</return>
-        Network.Definition.IWithCreateAndSubnet Network.Definition.IWithSubnet.WithSubnets(IDictionary<string,string> nameCidrPairs)
+        Network.Definition.IWithCreateAndSubnet Network.Definition.IWithSubnet.WithSubnets(IDictionary<string, string> nameCidrPairs)
         {
             return this.WithSubnets(nameCidrPairs) as Network.Definition.IWithCreateAndSubnet;
         }
@@ -185,11 +185,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Note that when a virtual network is created with no subnets explicitly defined, a default subnet is
         /// automatically created with the name "subnet1".
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ISubnet> Microsoft.Azure.Management.Network.Fluent.INetwork.Subnets
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ISubnet> Microsoft.Azure.Management.Network.Fluent.INetwork.Subnets
         {
             get
             {
-                return this.Subnets() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.ISubnet>;
+                return this.Subnets() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ISubnet>;
             }
         }
 

@@ -15,13 +15,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActio
     /// 
     /// @param <T> the fluent type of the resource
     /// </summary>
-    public interface ISupportsListing<T> 
+    public interface ISupportsListing<T>
     {
         /// <summary>
         /// Lists all the resources of the specified type in the currently selected subscription.
         /// </summary>
         /// <returns>list of resources</returns>
-        IEnumerable<T> List ();
+        IEnumerable<T> List();
 
         /// <summary>
         /// Lists all the resources of the specified type in the currently selected subscription.

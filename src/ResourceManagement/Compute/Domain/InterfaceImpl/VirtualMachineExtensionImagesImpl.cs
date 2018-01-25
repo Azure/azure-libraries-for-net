@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
-    internal partial class VirtualMachineExtensionImagesImpl 
+    internal partial class VirtualMachineExtensionImagesImpl
     {
         /// <summary>
         /// Gets entry point to virtual machine extension image publishers.

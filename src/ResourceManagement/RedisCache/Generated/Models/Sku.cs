@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent.Models
         /// </summary>
         public Sku()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

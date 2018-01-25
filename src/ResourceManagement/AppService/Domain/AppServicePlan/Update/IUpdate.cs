@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Update
     /// <summary>
     /// An app service plan update allowing per site scaling configuration to be set.
     /// </summary>
-    public interface IWithPerSiteScaling 
+    public interface IWithPerSiteScaling
     {
         /// <summary>
         /// Specifies whether per-site scaling will be turned on.
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Update
     /// <summary>
     /// The template for a site update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan>,
         Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Update.IWithCapacity,
         Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Update.IWithPerSiteScaling,
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Update
     /// <summary>
     /// An app service plan definition allowing pricing tier to be set.
     /// </summary>
-    public interface IWithPricingTier 
+    public interface IWithPricingTier
     {
         /// <summary>
         /// Specifies the pricing tier for the app service plan.
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServicePlan.Update
     /// <summary>
     /// An app service plan definition allowing instance capacity to be set.
     /// </summary>
-    public interface IWithCapacity 
+    public interface IWithCapacity
     {
         /// <summary>
         /// Specifies the maximum number of instances running for this app service plan.

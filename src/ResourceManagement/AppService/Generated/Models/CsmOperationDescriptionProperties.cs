@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public CsmOperationDescriptionProperties()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDe
     /// The stage of the network rule definition allowing the destination address to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDestinationAddress<ParentT> 
+    public interface IWithDestinationAddress<ParentT>
     {
         /// <summary>
         /// Makes the rule apply to any traffic destination address.
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDe
     /// can be attached to the parent network security group definition using  WithAttach.attach().
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>
     {
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDe
     /// The stage of the network rule definition allowing the source address to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithSourceAddress<ParentT> 
+    public interface IWithSourceAddress<ParentT>
     {
         /// <summary>
         /// Specifies the traffic source address prefix to which this rule applies.
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDe
     /// The stage of the network rule description allowing the direction and the access type to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDirectionAccess<ParentT> 
+    public interface IWithDirectionAccess<ParentT>
     {
         /// <summary>
         /// Allows outbound traffic.
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDe
     /// The entirety of a network security rule definition as part of a network security group update.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  UpdateDefinitionStages.WithAttach.attach().</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDefinition.IBlank<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDefinition.IWithDirectionAccess<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDefinition.IWithSourceAddress<ParentT>,
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDe
     /// The stage of the security rule definition allowing the protocol that the rule applies to to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithProtocol<ParentT> 
+    public interface IWithProtocol<ParentT>
     {
         /// <summary>
         /// Makes this rule apply to any supported protocol.
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDe
     /// The stage of the network rule definition allowing the destination port(s) to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDestinationPort<ParentT> 
+    public interface IWithDestinationPort<ParentT>
     {
         /// <summary>
         /// Specifies the destination port to which this rule applies.
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDe
     /// The stage of the network rule definition allowing the source port(s) to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithSourcePort<ParentT> 
+    public interface IWithSourcePort<ParentT>
     {
         /// <summary>
         /// Specifies the source port to which this rule applies.
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDe
     /// The first stage of a security rule description as part of an update of a networking security group.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDefinition.IWithDirectionAccess<ParentT>
     {
     }

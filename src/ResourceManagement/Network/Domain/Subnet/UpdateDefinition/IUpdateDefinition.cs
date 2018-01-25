@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition
     /// can be attached to the parent virtual network definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithAttach<ParentT>  :
+    public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IWithNetworkSecurityGroup<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IWithRouteTable<ParentT>,
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition
     /// The stage of a subnet definition allowing to specify a route table to associate with the subnet.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithRouteTable<ParentT> 
+    public interface IWithRouteTable<ParentT>
     {
         /// <summary>
         /// Specifies an existing route table to associate with the subnet.
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition
     /// The stage of the subnet definition allowing to specify the network security group to assign to the subnet.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithNetworkSecurityGroup<ParentT> 
+    public interface IWithNetworkSecurityGroup<ParentT>
     {
         /// <summary>
         /// Assigns an existing network security group to this subnet.
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition
     /// The entirety of a subnet definition as part of a virtual network update.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IUpdateDefinition<ParentT>  :
+    public interface IUpdateDefinition<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IBlank<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IWithAddressPrefix<ParentT>,
         Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IWithNetworkSecurityGroup<ParentT>,
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition
     /// The first stage of the subnet definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT>  :
+    public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition.IWithAddressPrefix<ParentT>
     {
     }
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Subnet.UpdateDefinition
     /// The stage of the subnet definition allowing to specify the address space for the subnet.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithAddressPrefix<ParentT> 
+    public interface IWithAddressPrefix<ParentT>
     {
         /// <summary>
         /// Specifies the IP address space of the subnet, within the address space of the network.

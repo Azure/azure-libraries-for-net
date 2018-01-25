@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to control connection draining.
     /// </summary>
-    public interface IWithConnectionDraining  :
+    public interface IWithConnectionDraining :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Update.IWithConnectionDrainingBeta
     {
     }
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to specify the port number.
     /// </summary>
-    public interface IWithPort  :
+    public interface IWithPort :
         Microsoft.Azure.Management.Network.Fluent.HasPort.Update.IWithPort<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Update.IUpdate>
     {
     }
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to associate an existing probe.
     /// </summary>
-    public interface IWithProbe 
+    public interface IWithProbe
     {
         /// <summary>
         /// Specifies an existing probe on this application gateway to associate with this backend.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to enable or disable cookie based affinity.
     /// </summary>
-    public interface IWithAffinity 
+    public interface IWithAffinity
     {
         /// <summary>
         /// Disables cookie based affinity.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to specify the name for the affinity cookie.
     /// </summary>
-    public interface IWithCookieName  :
+    public interface IWithCookieName :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Update.IWithCookieNameBeta
     {
     }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The entirety of an application gateway backend HTTPS configuration update as part of an application gateway update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Update.IWithPort,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Update.IWithAffinity,
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to specify the protocol.
     /// </summary>
-    public interface IWithProtocol  :
+    public interface IWithProtocol :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Update.IWithProtocolBeta
     {
         /// <summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to specify the path to use as the prefix for all HTTP requests.
     /// </summary>
-    public interface IWithPath  :
+    public interface IWithPath :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Update.IWithPathBeta
     {
     }
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to specify the request timeout.
     /// </summary>
-    public interface IWithRequestTimeout 
+    public interface IWithRequestTimeout
     {
         /// <summary>
         /// Specifies the request timeout.
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to add an authentication certificate.
     /// </summary>
-    public interface IWithAuthenticationCertificate  :
+    public interface IWithAuthenticationCertificate :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta
     {
     }
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to specify the host header.
     /// </summary>
-    public interface IWithHostHeader  :
+    public interface IWithHostHeader :
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHttpConfiguration.Update.IWithHostHeaderBeta
     {
     }
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to control connection draining.
     /// </summary>
-    public interface IWithConnectionDrainingBeta  :
+    public interface IWithConnectionDrainingBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to specify the name for the affinity cookie.
     /// </summary>
-    public interface IWithCookieNameBeta  :
+    public interface IWithCookieNameBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to specify the protocol.
     /// </summary>
-    public interface IWithProtocolBeta  :
+    public interface IWithProtocolBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to specify the path to use as the prefix for all HTTP requests.
     /// </summary>
-    public interface IWithPathBeta  :
+    public interface IWithPathBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to add an authentication certificate.
     /// </summary>
-    public interface IWithAuthenticationCertificateBeta  :
+    public interface IWithAuthenticationCertificateBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayBackendHtt
     /// <summary>
     /// The stage of an application gateway backend HTTP configuration allowing to specify the host header.
     /// </summary>
-    public interface IWithHostHeaderBeta  :
+    public interface IWithHostHeaderBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

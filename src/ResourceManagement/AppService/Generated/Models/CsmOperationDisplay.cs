@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         public CsmOperationDisplay()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

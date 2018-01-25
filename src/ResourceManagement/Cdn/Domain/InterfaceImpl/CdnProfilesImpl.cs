@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Rest;
 
-    internal partial class CdnProfilesImpl 
+    internal partial class CdnProfilesImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <param name="contentPaths">The path to the content to be purged. Can describe a file path or a wild card directory.</param>
         void Microsoft.Azure.Management.Cdn.Fluent.ICdnProfiles.PurgeEndpointContent(string resourceGroupName, string profileName, string endpointName, IList<string> contentPaths)
         {
- 
+
             this.PurgeEndpointContent(resourceGroupName, profileName, endpointName, contentPaths);
         }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <param name="endpointName">Name of the endpoint under the profile which is unique globally.</param>
         void Microsoft.Azure.Management.Cdn.Fluent.ICdnProfiles.StartEndpoint(string resourceGroupName, string profileName, string endpointName)
         {
- 
+
             this.StartEndpoint(resourceGroupName, profileName, endpointName);
         }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <param name="endpointName">Name of the endpoint under the profile which is unique globally.</param>
         void Microsoft.Azure.Management.Cdn.Fluent.ICdnProfiles.StopEndpoint(string resourceGroupName, string profileName, string endpointName)
         {
- 
+
             this.StopEndpoint(resourceGroupName, profileName, endpointName);
         }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <param name="contentPaths">The path to the content to be loaded. Should describe a file path.</param>
         void Microsoft.Azure.Management.Cdn.Fluent.ICdnProfiles.LoadEndpointContent(string resourceGroupName, string profileName, string endpointName, IList<string> contentPaths)
         {
- 
+
             this.LoadEndpointContent(resourceGroupName, profileName, endpointName, contentPaths);
         }
     }

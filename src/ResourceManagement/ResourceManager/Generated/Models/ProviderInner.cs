@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// </summary>
         public ProviderInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

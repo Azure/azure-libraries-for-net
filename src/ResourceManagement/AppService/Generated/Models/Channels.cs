@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class ChannelsEnumExtension
     {
-        internal static string ToSerializedValue(this Channels? value)  =>
+        internal static string ToSerializedValue(this Channels? value) =>
             value == null ? null : ((Channels)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this Channels value)
         {
-            switch( value )
+            switch (value)
             {
                 case Channels.Notification:
                     return "Notification";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static Channels? ParseChannels(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Notification":
                     return Channels.Notification;

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// The information about security rules applied to the specified VM..
     /// </summary>
-    public interface ISecurityGroupView  :
+    public interface ISecurityGroupView :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.SecurityGroupViewResultInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>,
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets network interfaces on the specified VM.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Models.SecurityGroupNetworkInterface> NetworkInterfaces { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Models.SecurityGroupNetworkInterface> NetworkInterfaces { get; }
 
         /// <summary>
         /// Gets virtual machine id.

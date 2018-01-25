@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             if (virtualMachineInstanceView != null && virtualMachineInstanceView.Statuses != null)
             {
                 return (from status in virtualMachineInstanceView.Statuses
-                                        where status.Code != null && status.Code.StartsWith("PowerState")
-                                        select Parse(status.Code)).FirstOrDefault();
+                        where status.Code != null && status.Code.StartsWith("PowerState")
+                        select Parse(status.Code)).FirstOrDefault();
             }
             return null;
         }

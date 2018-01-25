@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     }
     internal static class DnsTypeEnumExtension
     {
-        internal static string ToSerializedValue(this DnsType? value)  =>
+        internal static string ToSerializedValue(this DnsType? value) =>
             value == null ? null : ((DnsType)value).ToSerializedValue();
 
         internal static string ToSerializedValue(this DnsType value)
         {
-            switch( value )
+            switch (value)
             {
                 case DnsType.AzureDns:
                     return "AzureDns";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         internal static DnsType? ParseDnsType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "AzureDns":
                     return DnsType.AzureDns;

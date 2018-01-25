@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.IO;
     using System.Collections.Generic;
 
-    internal partial class ApplicationGatewayBackendHttpConfigurationImpl 
+    internal partial class ApplicationGatewayBackendHttpConfigurationImpl
     {
         /// <summary>
         /// Specifies the number of seconds when connection draining is active.
@@ -367,11 +367,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets authentication certificates associated with this backend HTTPS configuration.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationBeta.AuthenticationCertificates
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationBeta.AuthenticationCertificates
         {
             get
             {
-                return this.AuthenticationCertificates() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate>;
+                return this.AuthenticationCertificates() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate>;
             }
         }
 

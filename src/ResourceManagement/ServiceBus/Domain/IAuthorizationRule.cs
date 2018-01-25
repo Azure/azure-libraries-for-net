@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
     /// </summary>
     /// <typeparam name="RuleT">The specific rule type.</typeparam>
     public interface IAuthorizationRule<RuleT> :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IIndependentChildResource<Microsoft.Azure.Management.ServiceBus.Fluent.IServiceBusManager,Microsoft.Azure.Management.ServiceBus.Fluent.Models.SharedAccessAuthorizationRuleInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IIndependentChildResource<Microsoft.Azure.Management.ServiceBus.Fluent.IServiceBusManager, Microsoft.Azure.Management.ServiceBus.Fluent.Models.SharedAccessAuthorizationRuleInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<RuleT>
     {
         /// <return>Stream that emits primary, secondary keys and connection strings.</return>

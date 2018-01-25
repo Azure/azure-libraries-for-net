@@ -10,21 +10,21 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Defini
     /// 
     /// @param <T> the type of the next stage resource definition
     /// </summary>
-    public interface IDefinitionWithRegion<T> 
+    public interface IDefinitionWithRegion<T>
     {
         /// <summary>
         /// Specifies the region for the resource by name.
         /// </summary>
         /// <param name="regionName">regionName The name of the region for the resource</param>
         /// <returns>the next stage of the resource definition</returns>
-        T WithRegion (string regionName);
+        T WithRegion(string regionName);
 
         /// <summary>
         /// Specifies the region for the resource.
         /// </summary>
         /// <param name="region">region The location for the resource</param>
         /// <returns>the next stage of the resource definition</returns>
-        T WithRegion (Region region);
+        T WithRegion(Region region);
 
     }
     /// <summary>
@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Defini
     /// 
     /// @param <T> the type of the next stage resource definition
     /// </summary>
-    public interface IDefinitionWithTags<T> 
+    public interface IDefinitionWithTags<T>
     {
         /// <summary>
         /// Specifies tags for the resource as a {@link Map}.
         /// </summary>
         /// <param name="tags">tags a {@link Map} of tags</param>
         /// <returns>the next stage of the resource definition</returns>
-        T WithTags (IDictionary<string,string> tags);
+        T WithTags(IDictionary<string, string> tags);
 
         /// <summary>
         /// Adds a tag to the resource.
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Defini
         /// <param name="key">key the key for the tag</param>
         /// <param name="value">value the value for the tag</param>
         /// <returns>the next stage of the resource definition</returns>
-        T WithTag (string key, string value);
+        T WithTag(string key, string value);
 
     }
 }

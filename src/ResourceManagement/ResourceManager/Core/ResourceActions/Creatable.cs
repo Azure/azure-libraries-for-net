@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
     {
         public virtual string Name { get; private set; }
 
-        protected Creatable(string name, InnerResourceT innerObject) 
+        protected Creatable(string name, InnerResourceT innerObject)
             : base(name, innerObject)
         {
             Name = name;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
                                         taskCompletionSource.SetResult(thisResource);
                                     }
                                 }
-                            }, 
+                            },
                     cancellationToken,
                     TaskContinuationOptions.ExecuteSynchronously,
                     TaskScheduler.Default);

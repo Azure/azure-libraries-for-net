@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.DefinitionUnm
     /// <summary>
     /// The entirety of the unmanaged disk based virtual machine definition.
     /// </summary>
-    public interface IDefinitionUnmanaged  :
+    public interface IDefinitionUnmanaged :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IBlank,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithGroup,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithNetwork,

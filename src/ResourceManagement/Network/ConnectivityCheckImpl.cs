@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation of ConnectivityCheck.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uQ29ubmVjdGl2aXR5Q2hlY2tJbXBs
-    internal partial class ConnectivityCheckImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uQ29ubmVjdGl2aXR5Q2hlY2tJbXBs
+    internal partial class ConnectivityCheckImpl :
         Executable<Microsoft.Azure.Management.Network.Fluent.IConnectivityCheck>,
         IConnectivityCheck,
         IDefinition
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:C32E303545B4033613B86D06F01768CA:425AAA90FA44C25BF65D98CF87FB3E57
-        internal  ConnectivityCheckImpl(NetworkWatcherImpl parent)
+        internal ConnectivityCheckImpl(NetworkWatcherImpl parent)
         {
             this.parent = parent;
         }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:DA7C859A3D0F5D8B31101F4BF7127618:0167B7FD4F694AD9CA024AF48F9BD394
         public int ProbesSent()
         {
-            return  result.ProbesSent.HasValue ? result.ProbesSent.Value : 0;
+            return result.ProbesSent.HasValue ? result.ProbesSent.Value : 0;
         }
 
         ///GENMHASH:10457C17D058484634F7E44121EF15F1:539C2A385CE08C660FECFD97FDC642AB

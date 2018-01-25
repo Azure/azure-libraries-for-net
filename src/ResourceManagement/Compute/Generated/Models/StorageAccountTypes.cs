@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this StorageAccountTypes value)
         {
-            switch( value )
+            switch (value)
             {
                 case StorageAccountTypes.StandardLRS:
                     return "Standard_LRS";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static StorageAccountTypes? ParseStorageAccountTypes(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Standard_LRS":
                     return StorageAccountTypes.StandardLRS;

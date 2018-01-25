@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
     /// <summary>
     /// The stage of the network rule description allowing the direction and the access type to be specified.
     /// </summary>
-    public interface IWithDirectionAccess 
+    public interface IWithDirectionAccess
     {
         /// <summary>
         /// Allows outbound traffic.
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
     /// <summary>
     /// The entirety of a security rule update as part of a network security group update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IWithDirectionAccess,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IWithSourceAddress,
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IWithSourcePort,
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
     /// <summary>
     /// The stage of the network rule description allowing the destination port(s) to be specified.
     /// </summary>
-    public interface IWithDestinationPort 
+    public interface IWithDestinationPort
     {
         /// <summary>
         /// Specifies the destination port to which this rule applies.
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
     /// <summary>
     /// The stage of the security rule description allowing the protocol that the rule applies to to be specified.
     /// </summary>
-    public interface IWithProtocol 
+    public interface IWithProtocol
     {
         /// <summary>
         /// Makes this rule apply to any supported protocol.
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
     /// <summary>
     /// The stage of the network rule description allowing the destination address to be specified.
     /// </summary>
-    public interface IWithDestinationAddress 
+    public interface IWithDestinationAddress
     {
         /// <summary>
         /// Makes the rule apply to any traffic destination address.
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
     /// <summary>
     /// The stage of the network rule description allowing the source address to be specified.
     /// </summary>
-    public interface IWithSourceAddress 
+    public interface IWithSourceAddress
     {
         /// <summary>
         /// Specifies the traffic source address prefix to which this rule applies.
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
     /// <summary>
     /// The stage of the network rule description allowing the source port(s) to be specified.
     /// </summary>
-    public interface IWithSourcePort 
+    public interface IWithSourcePort
     {
         /// <summary>
         /// Specifies the source port to which this rule applies.

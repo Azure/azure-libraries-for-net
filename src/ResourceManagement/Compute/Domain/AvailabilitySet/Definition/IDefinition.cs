@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     /// <summary>
     /// Container interface for all the definitions related to an availability set.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IBlank,
         Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithGroup,
         Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithCreate
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     /// <summary>
     /// The stage of the availability set definition allowing to specify the resource group.
     /// </summary>
-    public interface IWithGroup  :
+    public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithCreate>
     {
     }
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     /// <summary>
     /// The stage of the availability set definition allowing to specify the fault domain count.
     /// </summary>
-    public interface IWithFaultDomainCount 
+    public interface IWithFaultDomainCount
     {
         /// <summary>
         /// Specifies the fault domain count for the availability set.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     /// <summary>
     /// The first stage of an availability set definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithGroup>
     {
     }
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     /// <summary>
     /// The stage of the availability set definition allowing enable or disable for managed disk.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         /// <summary>
         /// Specifies the SKU type for the availability set.
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     /// <summary>
     /// The stage of the availability set definition allowing to specify the update domain count.
     /// </summary>
-    public interface IWithUpdateDomainCount 
+    public interface IWithUpdateDomainCount
     {
         /// <summary>
         /// Specifies the update domain count for the availability set.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     /// the resource to be created but also allows
     /// for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithCreate>,
         Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithUpdateDomainCount,

@@ -9,13 +9,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// A client-side representation of an application gateway's backend HTTP configuration.
     /// </summary>
-    public interface IApplicationGatewayBackendHttpConfigurationBeta  :
+    public interface IApplicationGatewayBackendHttpConfigurationBeta :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
         /// Gets authentication certificates associated with this backend HTTPS configuration.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; }
 
         /// <summary>
         /// Gets host header to be sent to the backend servers.

@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:DDD0EE7198E7BD6B745033E06D1924F5:5CAFA661A519AFF6D69DF8A5FD045B34
         private ApplicationGatewayBackendImpl EnsureBackend()
         {
-            ApplicationGatewayBackendImpl backend = (ApplicationGatewayBackendImpl) Backend();
+            ApplicationGatewayBackendImpl backend = (ApplicationGatewayBackendImpl)Backend();
             if (backend == null)
             {
                 backend = Parent.EnsureUniqueBackend();
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (ipAddresses != null)
             {
-                foreach(var ipAddress in ipAddresses)
+                foreach (var ipAddress in ipAddresses)
                 {
                     ToBackendIPAddress(ipAddress);
                 }

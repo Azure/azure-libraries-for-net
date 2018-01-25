@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     using System.Collections.Generic;
     using System;
 
-    public partial class ServicePrincipalImpl 
+    public partial class ServicePrincipalImpl
     {
         /// <summary>
         /// Gets the mapping from scopes to role assignments.
@@ -42,11 +42,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <summary>
         /// Gets the mapping of certificate credentials from their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential> Microsoft.Azure.Management.Graph.RBAC.Fluent.IServicePrincipal.CertificateCredentials
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential> Microsoft.Azure.Management.Graph.RBAC.Fluent.IServicePrincipal.CertificateCredentials
         {
             get
             {
-                return this.CertificateCredentials() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential>;
+                return this.CertificateCredentials() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential>;
             }
         }
 
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <summary>
         /// Gets the mapping of password credentials from their names.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential> Microsoft.Azure.Management.Graph.RBAC.Fluent.IServicePrincipal.PasswordCredentials
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential> Microsoft.Azure.Management.Graph.RBAC.Fluent.IServicePrincipal.PasswordCredentials
         {
             get
             {
-                return this.PasswordCredentials() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential>;
+                return this.PasswordCredentials() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential>;
             }
         }
 

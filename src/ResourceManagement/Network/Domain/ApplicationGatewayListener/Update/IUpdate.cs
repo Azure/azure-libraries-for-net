@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.U
     /// <summary>
     /// The stage of an application gateway frontend listener update allowing to require server name indication (SNI).
     /// </summary>
-    public interface IWithServerNameIndication  :
+    public interface IWithServerNameIndication :
         Microsoft.Azure.Management.Network.Fluent.HasServerNameIndication.Update.IWithServerNameIndication<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.Update.IUpdate>
     {
     }
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.U
     /// <summary>
     /// The stage of an application gateway frontend listener update allowing to specify the password for the private key of the imported SSL certificate.
     /// </summary>
-    public interface IWithSslPassword  :
+    public interface IWithSslPassword :
         Microsoft.Azure.Management.Network.Fluent.HasSslCertificate.Update.IWithSslPassword<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.Update.IUpdate>
     {
     }
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.U
     /// The stage of an application gateway frontend listener update allowing to specify the hostname of the website for which the
     /// traffic is received.
     /// </summary>
-    public interface IWithHostName  :
+    public interface IWithHostName :
         Microsoft.Azure.Management.Network.Fluent.HasHostName.Update.IWithHostName<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.Update.IUpdate>
     {
     }
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.U
     /// <summary>
     /// The stage of an application gateway frontend listener update allowing to specify the SSL certificate to associate with the listener.
     /// </summary>
-    public interface IWithSslCertificate  :
+    public interface IWithSslCertificate :
         Microsoft.Azure.Management.Network.Fluent.HasSslCertificate.Update.IWithSslCertificate<Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.Update.IUpdate>
     {
     }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.U
     /// <summary>
     /// The entirety of an application gateway HTTP listener update as part of an application gateway update.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.Update.IWithServerNameIndication,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.Update.IWithHostName,
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.U
     /// <summary>
     /// The stage of an application gateway frontend listener update allowing to specify the frontend IP configuration to associate the listener with.
     /// </summary>
-    public interface IWithFrontend 
+    public interface IWithFrontend
     {
         /// <summary>
         /// Associates the listener with the application gateway's private (internal) frontend.
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.U
     /// <summary>
     /// The stage of an application gateway frontend listener update allowing to specify the protocol.
     /// </summary>
-    public interface IWithProtocol 
+    public interface IWithProtocol
     {
         /// <summary>
         /// Specifies that the listener is for the HTTP protocol.
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGatewayListener.U
     /// <summary>
     /// The stage of an application gateway frontend listener update allowing to specify the frontend port to associate the listener with.
     /// </summary>
-    public interface IWithFrontendPort 
+    public interface IWithFrontendPort
     {
         /// <summary>
         /// Enables the listener to listen on the specified existing frontend port.

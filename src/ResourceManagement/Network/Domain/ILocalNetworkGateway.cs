@@ -11,9 +11,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Entry point for Local Network Gateway management API in Azure.
     /// </summary>
-    public interface ILocalNetworkGateway  :
+    public interface ILocalNetworkGateway :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager,Models.LocalNetworkGatewayInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.LocalNetworkGatewayInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<LocalNetworkGateway.Update.IUpdate>
     {

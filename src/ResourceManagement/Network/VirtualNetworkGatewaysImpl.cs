@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// Implementation for VirtualNetworkGateways.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5c0ltcGw=
-    internal partial class VirtualNetworkGatewaysImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5c0ltcGw=
+    internal partial class VirtualNetworkGatewaysImpl :
         GroupableResources<IVirtualNetworkGateway,
             VirtualNetworkGatewayImpl,
             VirtualNetworkGatewayInner,
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:23437868CE68EFB16A049AF2B13B3DAB:3D6404118CFB640869888EDF59D554E2
-        internal  VirtualNetworkGatewaysImpl(INetworkManager networkManager)
+        internal VirtualNetworkGatewaysImpl(INetworkManager networkManager)
             : base(networkManager.Inner.VirtualNetworkGateways, networkManager)
         {
         }
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:178BF162835B0E3978203EDEF988B6EB:74D523E66AA62B2B4DECAB1282A54E4D
         public IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway> ListByResourceGroup(string groupName)
         {
-           return WrapList(Extensions.Synchronize(() => Inner.ListAsync(groupName)));
+            return WrapList(Extensions.Synchronize(() => Inner.ListAsync(groupName)));
         }
     }
 }

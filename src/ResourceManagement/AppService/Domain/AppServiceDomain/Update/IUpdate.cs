@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Update
     /// <summary>
     /// A domain definition allowing auto-renew setting to be set.
     /// </summary>
-    public interface IWithAutoRenew 
+    public interface IWithAutoRenew
     {
         /// <summary>
         /// Specifies if the domain should be automatically renewed when it's
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Update
     /// <summary>
     /// The template for a domain update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.AppService.Fluent.IAppServiceDomain>,
         Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Update.IWithAdminContact,
         Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Update.IWithBillingContact,
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Update
     /// <summary>
     /// A domain definition allowing billing contact to be set.
     /// </summary>
-    public interface IWithBillingContact 
+    public interface IWithBillingContact
     {
         /// <summary>
         /// Specify the billing contact.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Update
     /// <summary>
     /// A domain definition allowing admin contact to be set.
     /// </summary>
-    public interface IWithAdminContact 
+    public interface IWithAdminContact
     {
         /// <summary>
         /// Specify the admin contact.
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Update
     /// <summary>
     /// A domain definition allowing domain privacy to be set.
     /// </summary>
-    public interface IWithDomainPrivacy 
+    public interface IWithDomainPrivacy
     {
         /// <summary>
         /// Specifies if the registrant contact information is exposed publicly.
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.AppServiceDomain.Update
     /// <summary>
     /// A domain definition allowing tech contact to be set.
     /// </summary>
-    public interface IWithTechContact 
+    public interface IWithTechContact
     {
         /// <summary>
         /// Specify the tech contact.

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update
     /// The template for a virtual network gateway update operation, containing all the settings that
     /// can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update.IWithSku,
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update
     /// The stage of update allowing to specify virtual network gateway's BGP speaker settings.
     /// Note: BGP is supported on Route-Based VPN gateways only.
     /// </summary>
-    public interface IWithBgp 
+    public interface IWithBgp
     {
         /// <summary>
         /// Enables BGP.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update
     /// <summary>
     /// The stage of virtual network gateway update allowing to change SKU.
     /// </summary>
-    public interface IWithSku 
+    public interface IWithSku
     {
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update.IUpdate WithSku(VirtualNetworkGatewaySkuName skuName);
     }

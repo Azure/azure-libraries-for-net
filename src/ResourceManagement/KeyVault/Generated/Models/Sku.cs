@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// </summary>
         public Sku()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>

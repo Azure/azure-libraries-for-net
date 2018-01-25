@@ -15,8 +15,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
     /// Implementation for CdnProfiles.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNkbi5pbXBsZW1lbnRhdGlvbi5DZG5Qcm9maWxlc0ltcGw=
-    internal partial class CdnProfilesImpl  :
-        TopLevelModifiableResources<ICdnProfile,CdnProfileImpl,ProfileInner,IProfilesOperations,ICdnManager>,
+    internal partial class CdnProfilesImpl :
+        TopLevelModifiableResources<ICdnProfile, CdnProfileImpl, ProfileInner, IProfilesOperations, ICdnManager>,
         ICdnProfiles
     {
         ///GENMHASH:8B3976582303B73AC81C5220073E2D55:A4104491D327BA3667E857CA7A2EC15D
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         {
             return Extensions.Synchronize(() => Manager.Inner.ListOperationsAsync())
                                 .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.Inner.ListOperationsNextAsync(link)))
-                                .Select(inner=> new Operation(inner));
+                                .Select(inner => new Operation(inner));
         }
 
         ///GENMHASH:89CD44AA5060CAB16CB0AF1FB046BC64:416FABEC3862B2A47FF2F9DD56AFEFF6
@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
 
         ///GENMHASH:8C72A32C69D3B2099B1D93E3B9873A71:11F71B6989FF140BBFACEF8AABC579A8
         public async Task LoadEndpointContentAsync(
-            string resourceGroupName, 
-            string profileName, 
-            string endpointName, 
+            string resourceGroupName,
+            string profileName,
+            string endpointName,
             IList<string> contentPaths,
             CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -83,8 +83,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
 
         ///GENMHASH:B76E119E66FC2C5D09617333DC4FF4E3:50CAB688056CFBD731F264F50EA813EF
         public async Task StartEndpointAsync(
-            string resourceGroupName, 
-            string profileName, 
+            string resourceGroupName,
+            string profileName,
             string endpointName,
             CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -102,9 +102,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
 
         ///GENMHASH:EB7BCC87B72405260E2C64D3F60E7D12:27C4EEED8156C99311E5C3646A2873AB
         public async Task StopEndpointAsync(
-            string resourceGroupName, 
-            string profileName, 
-            string endpointName, 
+            string resourceGroupName,
+            string profileName,
+            string endpointName,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             await Manager.Inner.Endpoints.StopAsync(resourceGroupName, profileName, endpointName, cancellationToken);
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             string name,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            return new CheckNameAvailabilityResult( await Manager.Inner.CheckNameAvailabilityAsync(name, cancellationToken));
+            return new CheckNameAvailabilityResult(await Manager.Inner.CheckNameAvailabilityAsync(name, cancellationToken));
         }
 
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:B9B028D620AC932FDF66D2783E476B0D
@@ -134,8 +134,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
 
         ///GENMHASH:83F5C51B6E80CB8E2B2AB13088098EAD:7A8055F61731CABECC9333BD0AB0BDA2
         public async Task<string> GenerateSsoUriAsync(
-            string resourceGroupName, 
-            string profileName, 
+            string resourceGroupName,
+            string profileName,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             SsoUriInner ssoUri = await Manager.Inner.Profiles.GenerateSsoUriAsync(resourceGroupName, profileName, cancellationToken);
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         }
 
         ///GENMHASH:2404C5CA15B0D5D6226D2C7D01E79303:FA381ABED6F4688FD47A380CF0F41845
-        internal  CdnProfilesImpl(CdnManager cdnManager)
+        internal CdnProfilesImpl(CdnManager cdnManager)
             : base(cdnManager.Inner.Profiles, cdnManager)
         {
         }
@@ -195,9 +195,9 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
 
         ///GENMHASH:5ABD9E20ED5A3AA9092DC3AC7B3573AC:38A65CDCA635B6616A2B2FC37922C9E1
         public async Task PurgeEndpointContentAsync(
-            string resourceGroupName, 
-            string profileName, 
-            string endpointName, 
+            string resourceGroupName,
+            string profileName,
+            string endpointName,
             IList<string> contentPaths,
             CancellationToken cancellationToken = default(CancellationToken))
         {

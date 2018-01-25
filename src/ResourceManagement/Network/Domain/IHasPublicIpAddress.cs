@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// <summary>
     /// An interface representing a model's ability to reference a public IP address.
     /// </summary>
-    public interface IHasPublicIPAddress 
+    public interface IHasPublicIPAddress
     {
         /// <return>The associated public IP address.</return>
         Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress GetPublicIPAddress();
