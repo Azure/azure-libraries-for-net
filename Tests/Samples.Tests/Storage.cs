@@ -37,5 +37,16 @@ namespace Samples.Tests
                             .GetAwaiter()
                             .GetResult());
         }
+
+        [Fact]
+        [Trait("Samples", "Storage")]
+        public void ManageManageStorageAccountNetworkRulesTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ManageStorageAccountNetworkRules.Program.RunSample(rollUpClient);
+            }
+        }
     }
 }

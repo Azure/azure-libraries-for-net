@@ -292,5 +292,16 @@ namespace Samples.Tests
                 ManageZonalVirtualMachineScaleSet.Program.RunSample(rollUpClient);
             }
         }
+
+        [Fact]
+        [Trait("Samples", "Compute")]
+        public void ListComputeSkusTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ListComputeSkus.Program.RunSample(rollUpClient);
+            }
+        }
     }
 }
