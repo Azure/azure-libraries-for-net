@@ -26,7 +26,7 @@ namespace ListComputeSkus
             // List all compute SKUs in the subscription
             //
             Utilities.Log("Listing Compute SKU in the subscription");
-            String format = "%-22s %-16s %-22s %s";
+            String format = "{0,-22} {1,-22} {2,-22} {3}";
 
             Utilities.Log(String.Format(format, "Name", "ResourceType", "Size", "Regions [zones]"));
             Utilities.Log("============================================================================");
@@ -61,7 +61,7 @@ namespace ListComputeSkus
             // List compute SKUs for a specific compute resource type (VirtualMachines) in a region
             //
             Utilities.Log("Listing compute SKUs for a specific compute resource type (VirtualMachines) in a region (US East2)");
-            format = "%-22s %-22s %s";
+            format = "{0,-22} {1,-22} {2}";
 
             Utilities.Log(String.Format(format, "Name", "Size", "Regions [zones]"));
             Utilities.Log("============================================================================");
@@ -78,7 +78,7 @@ namespace ListComputeSkus
             // List compute SKUs for a specific compute resource type (Disks)
             //
             Utilities.Log("Listing compute SKUs for a specific compute resource type (Disks)");
-            format = "%-22s %-22s %s";
+            format = "{0,-22} {1,-22} {2}";
 
             Utilities.Log(String.Format(format, "Name", "Size", "Regions [zones]"));
             Utilities.Log("============================================================================");
