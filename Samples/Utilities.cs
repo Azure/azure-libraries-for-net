@@ -44,6 +44,7 @@ using Microsoft.Azure.Management.Graph.RBAC.Fluent.Models;
 using Microsoft.Azure.Management.Network.Fluent.Models;
 using Microsoft.Azure.Management.ContainerInstance.Fluent;
 using Microsoft.Azure.Management.Locks.Fluent;
+using Microsoft.Azure.Management.Msi.Fluent;
 
 namespace Microsoft.Azure.Management.Samples.Common
 {
@@ -87,6 +88,32 @@ namespace Microsoft.Azure.Management.Samples.Common
         public static string ReadLine()
         {
             return PauseMethod.Invoke();
+        }
+
+        // Print resource group info.
+        public static void PrintResourceGroup(IResourceGroup resource)
+        {
+            StringBuilder info = new StringBuilder();
+            info.Append("Resource Group: ").Append(resource.Id)
+                    .Append("\n\tName: ").Append(resource.Name)
+                    .Append("\n\tRegion: ").Append(resource.Region)
+                    .Append("\n\tTags: ").Append(resource.Tags.ToString());
+            Log(info.ToString());
+        }
+
+        // Print UserAssigned MSI info.
+        public static void PrintIdentity(IIdentity resource)
+        {
+            StringBuilder info = new StringBuilder();
+            info.Append("Identity: ").Append(resource.Id)
+                    .Append("\n\tName: ").Append(resource.Name)
+                    .Append("\n\tRegion: ").Append(resource.Region)
+                    .Append("\n\tTags: ").Append(resource.Tags.ToString())
+                    .Append("\n\tService Principal Id: ").Append(resource.PrincipalId)
+                    .Append("\n\tClient Id: ").Append(resource.ClientId)
+                    .Append("\n\tTenant Id: ").Append(resource.TenantId)
+                    .Append("\n\tClient Secret Url: ").Append(resource.ClientSecretUrl);
+            Log(info.ToString());
         }
 
         // Print app gateway info

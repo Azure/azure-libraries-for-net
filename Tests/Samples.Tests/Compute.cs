@@ -271,6 +271,17 @@ namespace Samples.Tests
             }
         }
 
+        [Fact(Skip = "Sample requires new AzureClient (with User Assigned MSI) to be published to nuget")]
+        [Trait("Samples", "Compute")]
+        public void ManageUserAssignedMSIEnabledVirtualMachineTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ManageUserAssignedMSIEnabledVirtualMachine.Program.RunSample(rollUpClient);
+            }
+        }
+
         [Fact]
         [Trait("Samples", "Compute")]
         public void ManageZonalVirtualMachineTest()
