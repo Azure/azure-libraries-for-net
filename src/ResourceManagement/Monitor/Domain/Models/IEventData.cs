@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Gets the eventTimestamp value.
         /// </summary>
-        System.DateTime EventTimestamp { get; }
+        System.DateTime? EventTimestamp { get; }
 
         /// <summary>
         /// Gets the operationName value.
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Gets the submissionTimestamp value.
         /// </summary>
-        System.DateTime SubmissionTimestamp { get; }
+        System.DateTime? SubmissionTimestamp { get; }
 
         /// <summary>
         /// Gets the level value.
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Gets the level value.
         /// </summary>
-        Microsoft.Azure.Management.Monitor.Fluent.Models.EventLevel Level { get; }
+        Microsoft.Azure.Management.Monitor.Fluent.Models.EventLevel? Level { get; }
 
         /// <summary>
         /// Gets the subStatus value.

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:4E25211860404EE8E2BAF86972E02D5D:151A4F9B8C46D2B66AE4C6FF9A546B84
         public ActivityLogsImpl FilterByResourceProvider(string resourceProviderName)
         {
-            this.filterString = string.Format(" and resourceProvider eq '%s'", resourceProviderName);
+            this.filterString = string.Format(" and resourceProvider eq '{0}'", resourceProviderName);
             return this;
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:66A358446BB2F4C0D4EA5FC8537BD415:564E60CCC7F9401E2CF56194AFC301F8
         private IEnumerable<IEventData> ListEventData(string filter)
         {
-            return Extensions.Synchronize(() => this.Inner.ListAsync())
+            return Extensions.Synchronize(() => this.Inner.ListAsync(filter, string.Join(",", this.responsePropertySelector.OrderBy(o => o))))
                          .AsContinuousCollection(link => Extensions.Synchronize(() => this.Inner.ListNextAsync(link)))
                          .Select(inner => new EventDataImpl(inner));
         }
@@ -115,14 +115,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:F53D539E431A5CEE4CC1B076D4C77610:BFADD6FEAFCB5CD377ED3E9C10E4C678
         public ActivityLogsImpl FilterByResource(string resourceId)
         {
-            this.filterString = String.Format(" and resourceUri eq '%s'", resourceId);
+            this.filterString = String.Format(" and resourceUri eq '{0}'", resourceId);
             return this;
         }
 
         ///GENMHASH:6F01E78E35D7E5AB58994AE36EDFAB4A:B883F859C5ECB2870CD846D5172095F9
         private string GetOdataFilterString()
         {
-            return string.Format("eventTimestamp ge '%s' and eventTimestamp le '%s'",
+            return string.Format("eventTimestamp ge '{0}' and eventTimestamp le '{1}'",
                 this.queryStartTime.ToString("o"),
                 this.queryEndTime.ToString("o"));
         }
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:CF28D7A5A1EBEBDAA73B8839CA5F9631:30133FA4E893BDEF196AC52E4D00AD6F
         public ActivityLogsImpl FilterByResourceGroup(string resourceGroupName)
         {
-            this.filterString = string.Format(" and resourceGroupName eq '%s'", resourceGroupName);
+            this.filterString = string.Format(" and resourceGroupName eq '{0}'", resourceGroupName);
             return this;
         }
 
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:6C04BF10CFC9018CA61EC48D69CCFFC4:D91695419640E79A341E8B6E40B9C518
         public ActivityLogsImpl FilterByCorrelationId(string correlationId)
         {
-            this.filterString = string.Format(" and correlationId eq '%s'", correlationId);
+            this.filterString = string.Format(" and correlationId eq '{0}'", correlationId);
             return this;
         }
     }

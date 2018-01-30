@@ -128,12 +128,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Gets the stage of start time filter definition.
         /// </summary>
-        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricStartTimeFilter Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition.DefineQuery
+        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricStartTimeFilter Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition.DefineQuery()
         {
-            get
-            {
-                return this.DefineQuery() as Microsoft.Azure.Management.Monitor.Fluent.IWithMetricStartTimeFilter;
-            }
+            return this.DefineQuery();
         }
 
         /// <summary>

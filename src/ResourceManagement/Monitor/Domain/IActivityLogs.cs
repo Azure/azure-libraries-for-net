@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the stage of start time filter definition.
         /// </summary>
-        Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataStartTimeFilter DefineQuery { get; }
+        Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataStartTimeFilter DefineQuery();
     }
 
     /// <summary>

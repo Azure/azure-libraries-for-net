@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             }
         }
 
-        public EventLevel Level
+        public EventLevel? Level
         {
             get
             {
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             }
         }
 
-        public DateTime EventTimestamp
+        public DateTime? EventTimestamp
         {
             get
             {
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             }
         }
 
-        public DateTime SubmissionTimestamp
+        public DateTime? SubmissionTimestamp
         {
             get
             {
