@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition :
+    public interface IDefinition  :
         Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IBlank,
         Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithConfiguration,
         Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithCreate
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition
     /// <summary>
     /// A deployment slot definition allowing the configuration to clone from to be specified.
     /// </summary>
-    public interface IWithConfiguration
+    public interface IWithConfiguration 
     {
         /// <summary>
         /// Copies the site configurations from a given web app.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition
     /// deployments slot in the cloud, but exposing additional optional
     /// inputs to specify.
     /// </summary>
-    public interface IWithCreate :
+    public interface IWithCreate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.AppService.Fluent.IDeploymentSlot>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IDeploymentSlot>
     {
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition
     /// <summary>
     /// The first stage of the deployment slot definition.
     /// </summary>
-    public interface IBlank :
+    public interface IBlank  :
         Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithConfiguration
     {
     }

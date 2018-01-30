@@ -8,9 +8,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure App Service Key Vault binding.
     /// </summary>
-    public interface IAppServiceCertificateKeyVaultBinding :
+    public interface IAppServiceCertificateKeyVaultBinding  :
         IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IIndependentChildResource<Microsoft.Azure.Management.AppService.Fluent.IAppServiceManager, Models.AppServiceCertificateResourceInner>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IIndependentChildResource<Microsoft.Azure.Management.AppService.Fluent.IAppServiceManager,Models.AppServiceCertificateResourceInner>
     {
         /// <summary>
         /// Gets the status of the Key Vault secret.

@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:A50A011CA652E846C1780DCE98D171DE:3B4125CAAD58112F3DE1E3F8B2B754D5
         public string HostName()
         {
-            return Inner.HostNameBindingName;
+            return Inner.Name;
         }
 
         ///GENMHASH:9E6C2387B371ABFFE71039FB9CDF745F:E5EF1EA4BA2D309DA43A37720754443C

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// Entry point for certificate management API.
     /// </summary>
-    public interface IAppServiceCertificates :
+    public interface IAppServiceCertificates  :
         IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<AppServiceCertificate.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingById,

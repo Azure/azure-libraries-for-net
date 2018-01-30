@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable client-side representation of a connection string on a web app.
     /// </summary>
-    public interface IConnectionString :
+    public interface IConnectionString  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

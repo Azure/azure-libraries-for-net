@@ -7,6 +7,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.KeyVault.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.Azure.Management.Storage.Fluent;
+using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
@@ -17,6 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     {
         private IKeyVaultManager keyVaultManager;
         private IStorageManager storageManager;
+        private IGraphRbacManager graphRbacManager;
         private string tenantId;
         private RestClient restClient;
 
@@ -42,6 +44,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             keyVaultManager = KeyVault.Fluent.KeyVaultManager.Authenticate(restClient, subscriptionId, tenantId);
             storageManager = Storage.Fluent.StorageManager.Authenticate(restClient, subscriptionId);
+            graphRbacManager = Graph.RBAC.Fluent.GraphRbacManager.Authenticate(restClient, tenantId);
             this.tenantId = tenantId;
             this.restClient = restClient;
         }
@@ -181,6 +184,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
+        public IGraphRbacManager GraphRbacManager
+        {
+            get
+            {
+                return graphRbacManager;
+            }
+        }
+
         #endregion
     }
 
@@ -194,5 +205,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         IAppServiceCertificateOrders AppServiceCertificateOrders { get; }
         IKeyVaultManager KeyVaultManager { get; }
         IStorageManager StorageManager { get; }
+        IGraphRbacManager GraphRbacManager { get; }
     }
 }

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Rest;
     using System.Collections.Generic;
 
-    internal partial class HostNameBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>
+    internal partial class HostNameBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> 
     {
         /// <summary>
         /// Binds to a domain purchased from Azure.
@@ -228,11 +228,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets the tags for the resource.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
+        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource.Tags
         {
             get
             {
-                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
+                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string,string>;
             }
         }
 

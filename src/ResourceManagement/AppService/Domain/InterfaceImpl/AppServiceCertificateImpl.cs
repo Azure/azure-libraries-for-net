@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
-    internal partial class AppServiceCertificateImpl
+    internal partial class AppServiceCertificateImpl 
     {
         /// <summary>
         /// Gets the certificate password.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets the raw bytes of .cer file.
         /// </summary>
-        string Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificate.CertificateBlob
+        byte[] Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificate.CertificateBlob
         {
             get
             {

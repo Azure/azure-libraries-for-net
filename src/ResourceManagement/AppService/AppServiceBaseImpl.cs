@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <typeparam name="FluentImplT">The implementation class for FluentT.</typeparam>
     /// <typeparam name="FluentWithCreateT">The definition stage that derives from Creatable.</typeparam>
     /// <typeparam name="FluentUpdateT">The definition stage that derives from Appliable.</typeparam>
-    internal abstract partial class AppServiceBaseImpl<FluentT, FluentImplT, FluentWithCreateT, DefAfterRegionT, DefAfterGroupT, UpdateT> :
+    internal abstract partial class AppServiceBaseImpl<FluentT,FluentImplT,FluentWithCreateT, DefAfterRegionT, DefAfterGroupT, UpdateT>  :
         WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>
         where FluentImplT : AppServiceBaseImpl<FluentT, FluentImplT, FluentWithCreateT, DefAfterRegionT, DefAfterGroupT, UpdateT>, FluentT
         where FluentT : class, IWebAppBase
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string id = ResourceUtils.ConstructResourceId(Manager.SubscriptionId,
             ResourceGroupName, "Microsoft.Web", "serverFarms", name, "");
             Inner.ServerFarmId = id;
-            return (FluentImplT)this;
+            return (FluentImplT) this;
         }
 
         ///GENMHASH:CC6E0592F0BCD4CD83D832B40167E562:30CA9232F1D7C8ACB181740BD31D7B58
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:3F0152723C985A22C1032733AB942C96:9A3E19132DCD027C4BA1BBB085642F29
         public override IPublishingProfile GetPublishingProfile()
         {
-            Stream stream = Extensions.Synchronize(() => Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsAsync(ResourceGroupName, Name, new CsmPublishingProfileOptionsInner()));
+            Stream stream = Extensions.Synchronize(() => Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsAsync(ResourceGroupName, Name));
             StreamReader reader = new StreamReader(stream);
             string xml = reader.ReadToEnd();
             return new PublishingProfileImpl(xml);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ((IndexableRefreshableWrapper<IResourceGroup, ResourceGroupInner>)newGroup).Inner.Location = appServicePlan.RegionName;
             }
             this.WithRegion(appServicePlan.RegionName);
-            return (FluentImplT)this;
+            return (FluentImplT) this;
         }
 
         ///GENMHASH:8C5F8B18192B4F8FD7D43AB4D318EA69:E232113DB866C8D255AE12F7A61042E8
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 hostNameBindings.Add(new HostNameBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(
                     inner,
-                    (FluentImplT)this));
+                    (FluentImplT) this));
             }
             return hostNameBindings.ToDictionary(b => b.Name.Replace(Name + "/", ""));
         }
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public override IWebAppSourceControl GetSourceControl()
         {
             SiteSourceControlInner siteSourceControlInner = Extensions.Synchronize(() => Manager.Inner.WebApps.GetSourceControlAsync(ResourceGroupName, Name));
-            return new WebAppSourceControlImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(siteSourceControlInner, (FluentImplT)this);
+            return new WebAppSourceControlImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(siteSourceControlInner, (FluentImplT) this);
         }
 
         ///GENMHASH:0F38250A3837DF9C2C345D4A038B654B:57465AB4A649A705C9DC2183EE743214
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             SiteInner innerObject,
             SiteConfigResourceInner configObject,
             IAppServiceManager manager)
-            : base(name, innerObject, configObject, manager)
+            : base (name, innerObject, configObject, manager)
         {
         }
 
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             await Manager.Inner.WebApps.DeleteHostNameBindingAsync(ResourceGroupName, Name, hostname, cancellationToken);
         }
-
+        
         internal virtual FluentImplT WithNewAppServicePlan(OperatingSystem operatingSystem, PricingTier pricingTier)
         {
             return WithNewAppServicePlan(NewDefaultAppServicePlan().WithOperatingSystem(operatingSystem).WithPricingTier(pricingTier));
@@ -292,15 +292,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private AppServicePlanImpl NewDefaultAppServicePlan()
         {
             String planName = SdkContext.RandomResourceName(Name + "plan", 32);
-            AppServicePlanImpl appServicePlan = (AppServicePlanImpl)(this.Manager.AppServicePlans
+            AppServicePlanImpl appServicePlan = (AppServicePlanImpl) (this.Manager.AppServicePlans
             .Define(planName))
             .WithRegion(RegionName);
-            if (newGroup != null && IsInCreateMode)
-            {
+            if (newGroup != null && IsInCreateMode) {
                 appServicePlan = appServicePlan.WithNewResourceGroup(newGroup) as AppServicePlanImpl;
-            }
-            else
-            {
+            } else {
                 appServicePlan = appServicePlan.WithExistingResourceGroup(ResourceGroupName) as AppServicePlanImpl;
             }
             return appServicePlan;
@@ -315,12 +312,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             return WithNewAppServicePlan(Fluent.OperatingSystem.Windows, new PricingTier("Shared", "D1"));
         }
-
+        
         public FluentImplT WithNewFreeAppServicePlan()
         {
             return WithNewAppServicePlan(Fluent.OperatingSystem.Windows, new PricingTier("Free", "F1"));
         }
-
+        
 
         ///GENMHASH:80973546C834C7C29422D77A01231051:254A5188A8B9B221986ACC09C33E3859
         public FluentImplT WithNewAppServicePlan(PricingTier pricingTier)
@@ -359,12 +356,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         ///GENMHASH:E10A5B0FD0E95947B1A669D51E6BD5C9:977A64CFAC7B27FE0960C4DC670C662E
-        public override async Task<System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>> GetHostNameBindingsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>> GetHostNameBindingsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var bindingsList = await PagedCollection<IHostNameBinding, HostNameBindingInner>.LoadPage(
                 async (cancellation) => await Manager.Inner.WebApps.ListHostNameBindingsAsync(ResourceGroupName, Name, cancellation),
                 Manager.Inner.WebApps.ListHostNameBindingsNextAsync,
-                (inner) => new HostNameBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(inner, (FluentImplT)this),
+                (inner) => new HostNameBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(inner, (FluentImplT) this),
                 true, cancellationToken);
             return bindingsList.ToDictionary(binding => binding.Name.Replace(this.Name + "/", ""));
         }
@@ -386,7 +383,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public async override Task<IPublishingProfile> GetPublishingProfileAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            Stream stream = await Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsAsync(ResourceGroupName, Name, new CsmPublishingProfileOptionsInner(), cancellationToken);
+            Stream stream = await Manager.Inner.WebApps.ListPublishingProfileXmlWithSecretsAsync(ResourceGroupName, Name, null, cancellationToken);
             StreamReader reader = new StreamReader(stream);
             string xml = reader.ReadToEnd();
             return new PublishingProfileImpl(xml);
@@ -412,6 +409,31 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         internal override async Task<MSDeployStatusInner> CreateMSDeploy(MSDeployInner msDeployInner, CancellationToken cancellationToken)
         {
             return await Manager.Inner.WebApps.CreateMSDeployOperationAsync(ResourceGroupName, Name, msDeployInner, cancellationToken);
+        }
+
+        public override Stream GetContainerLogs()
+        {
+            return Extensions.Synchronize(() => GetContainerLogsAsync());
+        }
+
+        public override async Task<Stream> GetContainerLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await Manager.Inner.WebApps.GetWebSiteContainerLogsAsync(ResourceGroupName, Name, cancellationToken);
+        }
+
+        public override Stream GetContainerLogsZip()
+        {
+            return Extensions.Synchronize(() => GetContainerLogsZipAsync());
+        }
+
+        public override async Task<Stream> GetContainerLogsZipAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await Manager.Inner.WebApps.GetWebSiteContainerLogsZipAsync(ResourceGroupName, Name, cancellationToken);
+        }
+
+        public override async Task UpdateDiagnosticLogsConfigAsync(SiteLogsConfigInner siteLogConfig, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Manager.Inner.WebApps.UpdateDiagnosticLogsConfigAsync(ResourceGroupName, Name, siteLogConfig, cancellationToken);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// Entry point for web app management API.
     /// </summary>
-    public interface IWebApps :
+    public interface IWebApps  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<WebApp.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingById,

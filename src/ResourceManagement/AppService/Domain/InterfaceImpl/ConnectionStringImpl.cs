@@ -4,7 +4,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 {
     using Microsoft.Azure.Management.AppService.Fluent.Models;
 
-    internal partial class ConnectionStringImpl
+    internal partial class ConnectionStringImpl 
     {
         /// <summary>
         /// Gets the key of the setting.

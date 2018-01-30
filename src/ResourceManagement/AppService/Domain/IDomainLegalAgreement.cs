@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure domain legal agreement.
     /// </summary>
-    public interface IDomainLegalAgreement :
+    public interface IDomainLegalAgreement  :
         IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.TldLegalAgreement>
     {

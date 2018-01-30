@@ -6,8 +6,14 @@ using Fluent.Tests.Common;
 using Microsoft.Azure.Management.AppService.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Net.Http;
 using Xunit;
 
 namespace Fluent.Tests.WebApp
@@ -65,6 +71,29 @@ namespace Fluent.Tests.WebApp
                 webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName2);
                 Assert.Single(webApps);
 
+                // View logs
+                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                {
+                    // warm up
+                    CheckAddress("http://" + webApp.DefaultHostName);
+                }
+                Stream logs = webApp.GetContainerLogs();
+                Assert.True(logs.Length > 0);
+                Stream logsZip = webApp.GetContainerLogsZip();
+                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                {
+                    var archive = new ZipArchive(logsZip);
+                    var entry = archive.Entries[0];
+                    Assert.NotNull(entry);
+                    Stream stream = entry.Open();
+                    Assert.NotNull(stream);
+                    using (var memory = new MemoryStream())
+                    {
+                        stream.CopyTo(memory);
+                        Assert.True(memory.Length > 0);
+                    }
+                }
+
                 // Update
                 webApp1.Update()
                     .WithNewAppServicePlan(PricingTier.StandardS2)
@@ -86,6 +115,26 @@ namespace Fluent.Tests.WebApp
                     .Apply();
                 Assert.NotNull(webApp1);
             }
+        }
+
+        private static string CheckAddress(string url, IDictionary<string, string> headers = null)
+        {
+            if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+            {
+                using (var client = new HttpClient())
+                {
+                    if (headers != null)
+                    {
+                        foreach (var header in headers)
+                        {
+                            client.DefaultRequestHeaders.Add(header.Key, header.Value);
+                        }
+                    }
+                    return client.GetAsync(url).Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                }
+            }
+
+            return "[Running in PlaybackMode]";
         }
     }
 }

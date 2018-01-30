@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition
     /// <summary>
     /// A function app definition allowing resource group to be specified when an existing app service plan is used.
     /// </summary>
-    public interface IExistingAppServicePlanWithGroup :
+    public interface IExistingAppServicePlanWithGroup  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition.IWithCreate>
     {
     }
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition
     /// <summary>
     /// The first stage of the function app definition.
     /// </summary>
-    public interface IBlank :
+    public interface IBlank  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition.INewAppServicePlanWithGroup>
     {
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition
     /// A storage account is required for storing function execution runtime,
     /// triggers, and logs.
     /// </summary>
-    public interface IWithStorageAccount
+    public interface IWithStorageAccount 
     {
         /// <summary>
         /// Creates a new storage account to use for the function app.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition
     /// <summary>
     /// A function app definition allowing app service plan to be set.
     /// </summary>
-    public interface IWithNewAppServicePlan
+    public interface IWithNewAppServicePlan 
     {
         /// <summary>
         /// Creates a new consumption plan to use.
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition
     /// <summary>
     /// A function app definition allowing runtime version to be specified.
     /// </summary>
-    public interface IWithRuntimeVersion
+    public interface IWithRuntimeVersion 
     {
         /// <summary>
         /// Specifies the runtime version for the function app.
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition
     /// <summary>
     /// A function app definition allowing daily usage quota to be specified.
     /// </summary>
-    public interface IWithDailyUsageQuota
+    public interface IWithDailyUsageQuota 
     {
         /// <summary>
         /// Specifies the daily usage data cap.
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition
     /// <summary>
     /// A function app definition allowing resource group to be specified when a new app service plan is to be created.
     /// </summary>
-    public interface INewAppServicePlanWithGroup
+    public interface INewAppServicePlanWithGroup 
     {
         /// <summary>
         /// Creates a new resource group to put the resource in.
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition
     /// function app in the cloud, but exposing additional optional
     /// inputs to specify.
     /// </summary>
-    public interface IWithCreate :
+    public interface IWithCreate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>,
         Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition.IWithNewAppServicePlan,
         Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition.IWithStorageAccount,
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition :
+    public interface IDefinition  :
         Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition.IBlank,
         Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition.IExistingAppServicePlanWithGroup,
         Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Definition.IWithStorageAccount,

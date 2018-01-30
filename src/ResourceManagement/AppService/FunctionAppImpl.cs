@@ -20,12 +20,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Newtonsoft.Json;
     using System.Linq;
     using System.Collections.ObjectModel;
+    using System.IO;
 
     /// <summary>
     /// The implementation for FunctionApp.
     /// </summary>
-    internal partial class FunctionAppImpl :
-        AppServiceBaseImpl<IFunctionApp, FunctionAppImpl, IWithCreate, INewAppServicePlanWithGroup, IWithCreate, IUpdate>,
+    internal partial class FunctionAppImpl  :
+        AppServiceBaseImpl<IFunctionApp,FunctionAppImpl,IWithCreate, INewAppServicePlanWithGroup, IWithCreate, IUpdate>,
         IFunctionApp,
         IDefinition,
         INewAppServicePlanWithGroup,
@@ -36,14 +37,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private IStorageAccount storageAccountToSet;
         private IStorageAccount currentStorageAccount;
         private KuduCredentials kuduCredentials;
-
-        Task IFunctionApp.SyncTriggersAsync => throw new NotImplementedException();
-
+        
         public Fluent.IFunctionDeploymentSlots DeploymentSlots()
         {
             if (deploymentSlots == null)
             {
-                deploymentSlots = new FunctionDeploymentSlotsImpl(this, Manager);
+               deploymentSlots = new FunctionDeploymentSlotsImpl(this, Manager);
             }
             return deploymentSlots;
         }
@@ -79,7 +78,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this;
         }
 
-        internal FunctionAppImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject, IAppServiceManager manager)
+        internal  FunctionAppImpl(string name, SiteInner innerObject, SiteConfigResourceInner configObject, IAppServiceManager manager)
             : base(name, innerObject, configObject, manager)
         {
             kuduCredentials = new KuduCredentials(this);
@@ -90,14 +89,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             Storage.Fluent.StorageAccount.Definition.IWithGroup storageDefine = Manager.StorageManager.StorageAccounts
                 .Define(name)
                 .WithRegion(RegionName);
-            if (newGroup != null && IsInCreateMode)
-            {
+            if (newGroup != null && IsInCreateMode) {
                 storageAccountCreatable = storageDefine.WithNewResourceGroup(newGroup)
                     .WithGeneralPurposeAccountKind()
                     .WithSku(sku);
-            }
-            else
-            {
+            } else {
                 storageAccountCreatable = storageDefine.WithExistingResourceGroup(ResourceGroupName)
                     .WithGeneralPurposeAccountKind()
                     .WithSku(sku);
@@ -131,7 +127,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             if (storageAccountCreatable != null && CreatedResource(storageAccountCreatable.Key) != null)
             {
-                storageAccountToSet = (IStorageAccount)CreatedResource(storageAccountCreatable.Key);
+                storageAccountToSet = (IStorageAccount) CreatedResource(storageAccountCreatable.Key);
             }
             if (storageAccountToSet == null)
             {
@@ -255,7 +251,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await ((WebSiteManagementClient)Manager.Inner).HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await ((WebSiteManagementClient) Manager.Inner).HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -711,6 +707,194 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 {
                     throw e;
                 }
+            }
+        }
+
+        public Stream StreamApplicationLogs()
+        {
+            return Extensions.Synchronize(() => StreamApplicationLogsAsync());
+        }
+
+        public async Task<Stream> StreamApplicationLogsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                var tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = string.Format("https://{0}", DefaultHostName().Replace("http://", "").Replace("https://", "").Replace(Name, Name + ".scm"));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/logstream/application").ToString();
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Manager.Inner.GenerateClientRequestId != null && Manager.Inner.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Manager.Inner.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Manager.Inner.AcceptLanguage);
+            }
+
+            // Set Credentials
+            await Manager.Inner.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            await PingAsync(cancellationToken);
+            _httpResponse = await ((WebSiteManagementClient)Manager.Inner).HttpClient.SendAsync(_httpRequest, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Manager.Inner.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, null);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                return await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            }
+            return null;
+        }
+
+        private async Task PingAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                var tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "Post", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = string.Format("http://{0}", DefaultHostName().Replace("http://", "").Replace("https://", ""));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "admin/host/ping").ToString();
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("POST");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Manager.Inner.GenerateClientRequestId != null && Manager.Inner.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Manager.Inner.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Manager.Inner.AcceptLanguage);
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            _requestContent = null;
+            // Set Credentials
+            cancellationToken.ThrowIfCancellationRequested();
+            await kuduCredentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await ((WebSiteManagementClient)Manager.Inner).HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Manager.Inner.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
             }
         }
     }

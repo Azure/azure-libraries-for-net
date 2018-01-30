@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Update
     /// <summary>
     /// The template for a function app update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate :
+    public interface IUpdate  :
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<Microsoft.Azure.Management.AppService.Fluent.IFunctionApp>,
         Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Update.IWithAppServicePlan,
         Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Update.IWithRuntimeVersion,
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Update
     /// A storage account is required for storing function execution runtime,
     /// triggers, and logs.
     /// </summary>
-    public interface IWithStorageAccount
+    public interface IWithStorageAccount 
     {
         /// <summary>
         /// Creates a new storage account to use for the function app.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Update
     /// <summary>
     /// A function app update allowing runtime version to be specified.
     /// </summary>
-    public interface IWithRuntimeVersion
+    public interface IWithRuntimeVersion 
     {
         /// <summary>
         /// Specifies the runtime version for the function app.
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Update
     /// <summary>
     /// A function app definition allowing daily usage quota to be specified.
     /// </summary>
-    public interface IWithDailyUsageQuota
+    public interface IWithDailyUsageQuota 
     {
         /// <summary>
         /// Specifies the daily usage data cap.
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.FunctionApp.Update
     /// <summary>
     /// A function app update allowing app service plan to be set.
     /// </summary>
-    public interface IWithAppServicePlan
+    public interface IWithAppServicePlan 
     {
         /// <summary>
         /// Creates a new consumption plan to use.

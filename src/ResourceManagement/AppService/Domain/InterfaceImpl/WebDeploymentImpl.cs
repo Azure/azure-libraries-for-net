@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System;
 
-    internal partial class WebDeploymentImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>
+    internal partial class WebDeploymentImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> 
     {
         /// <summary>
         /// Gets username of the deployer.
