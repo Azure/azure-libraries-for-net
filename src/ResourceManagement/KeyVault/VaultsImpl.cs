@@ -1,27 +1,18 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-
-namespace Microsoft.Azure.Management.KeyVault.Fluent
+namespace Microsoft.Azure.Management.Keyvault.Fluent
 {
-    using Graph.RBAC.Fluent;
-    using Models;
-    using ResourceManager.Fluent.Core;
-    using Rest.Azure;
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
-
     /// <summary>
     /// The implementation of Vaults and its parent interfaces.
     /// </summary>
-    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLlZhdWx0c0ltcGw=
-    internal partial class VaultsImpl :
+    internal partial class VaultsImpl  :
         TopLevelModifiableResources<IVault, VaultImpl, VaultInner, IVaultsOperations, IKeyVaultManager>,
         IVaults
     {
         private IGraphRbacManager graphRbacManager;
         private string tenantId;
-        ///GENMHASH:CDB7D4D816159A58F5240A4C88E5241C:4E00EDDBAADBA44B155253E3B63448A4
+
+        ///GENMHASH:B150A08031FE64095583576847133217:8935634111618393DD8A78F9B6DBDFBA
         internal VaultsImpl(IKeyVaultManager keyVaultManager, IGraphRbacManager graphRbacManager, string tenantId)
             : base(keyVaultManager.Inner.Vaults, keyVaultManager)
         {
@@ -29,38 +20,44 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             this.tenantId = tenantId;
         }
 
-        ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:6FB4EA69673E1D8A74E1418EB52BB9FE
-        protected async override Task<IPage<VaultInner>> ListInnerAsync(CancellationToken cancellationToken)
+        ///GENMHASH:178BF162835B0E3978203EDEF988B6EB:74D523E66AA62B2B4DECAB1282A54E4D
+        public IEnumerable<Microsoft.Azure.Management.KeyVault.Fluent.IVault> ListByResourceGroup(string groupName)
         {
-            return await Inner.ListAsync(cancellationToken: cancellationToken);
+            //$ return wrapList(this.Inner.ListByResourceGroup(groupName));
+
+            return null;
         }
 
-        protected async override Task<IPage<VaultInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
+        ///GENMHASH:7D35601E6590F84E3EC86E2AC56E37A0:136D659EB836ECA199ED5D69D4606314
+        protected async Task DeleteInnerAsync(string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Inner.ListNextAsync(nextLink, cancellationToken);
+            //$ return this.Inner.DeleteAsync(resourceGroupName, name).ToCompletable();
+
+            return null;
         }
 
-        ///GENMHASH:95834C6C7DA388E666B705A62A7D02BF:BDFF4CB61E8A8D975417EA5FC914921A
-        protected async override Task<IPage<VaultInner>> ListInnerByGroupAsync(string groupName, CancellationToken cancellationToken)
+        ///GENMHASH:9D38835F71DF2C39BF88CBB588420D30:FBFA0902403A234112A18515EE78DB0D
+        public async Task DeleteByResourceGroupAsync(string groupName, string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Inner.ListByResourceGroupAsync(groupName, cancellationToken: cancellationToken);
+            //$ return this.Inner.DeleteAsync(groupName, name).ToCompletable();
+
+            return null;
         }
 
-        protected async override Task<IPage<VaultInner>> ListInnerByGroupNextAsync(string nextLink, CancellationToken cancellationToken)
+        ///GENMHASH:9C5B42FF47E71D8582BAB26BBDEC1E0B:2808331D68C2B87EED057725633BDDD5
+        public async Task<Microsoft.Azure.Management.KeyVault.Fluent.IVault> ListByResourceGroupAsync(string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Inner.ListByResourceGroupNextAsync(nextLink, cancellationToken);
+            //$ return wrapPageAsync(this.Inner.ListByResourceGroupAsync(resourceGroupName));
+
+            return null;
         }
 
-        ///GENMHASH:AB63F782DA5B8D22523A284DAD664D17:7C0A1D0C3FE28C45F35B565F4AFF751D
-        protected async override Task<VaultInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
+        ///GENMHASH:0FEF45F7011A46EAF6E2D15139AE631D:4593F1A2996AA2D0219FCEB42EA28D41
+        protected async Task<Microsoft.Azure.Management.KeyVault.Fluent.Models.VaultInner> GetInnerAsync(string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Inner.GetAsync(groupName, name, cancellationToken);
-        }
+            //$ return this.Inner.GetByResourceGroupAsync(resourceGroupName, name);
 
-        ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:B9B028D620AC932FDF66D2783E476B0D
-        protected async override Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
-        {
-            await Inner.DeleteAsync(groupName, name, cancellationToken);
+            return null;
         }
 
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:913702868132D01F4C836BBF3499B8CE
@@ -71,7 +68,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                 .WithEmptyAccessPolicy();
         }
 
-        ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:CF5D7C4F8C9C8500DA16344A95E02A83
+        ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:15E2E01BC88FA6B06E6CBBCFC1371788
         protected override VaultImpl WrapModel(string name)
         {
             VaultInner inner = new VaultInner()
@@ -88,7 +85,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                 graphRbacManager);
         }
 
-        ///GENMHASH:CA260E89048F01F05DD7D13D870D6A8F:92A42C7FBDAE00431C015493416F3C0F
+        ///GENMHASH:CA260E89048F01F05DD7D13D870D6A8F:E833FC60B5F2BCB0CBB9985629CBA229
         protected override IVault WrapModel(VaultInner vaultInner)
         {
             return new VaultImpl(
