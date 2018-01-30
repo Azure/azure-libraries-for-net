@@ -320,5 +320,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return this.WithSku(skuName) as VirtualNetworkGateway.Update.IUpdate;
         }
+        PointToSiteConfiguration.Update.IUpdate IWithPointToSiteConfiguration.UpdatePointToSiteConfiguration()
+        {
+            return this.UpdatePointToSiteConfiguration() as PointToSiteConfiguration.Update.IUpdate;
+        }
+
+        PointToSiteConfiguration.Definition.IBlank<VirtualNetworkGateway.Update.IUpdate> IWithPointToSiteConfiguration.DefinePointToSiteConfiguration()
+        {
+            return this.DefinePointToSiteConfiguration() as PointToSiteConfiguration.Definition.IBlank<VirtualNetworkGateway.Update.IUpdate>;
+        }
     }
 }

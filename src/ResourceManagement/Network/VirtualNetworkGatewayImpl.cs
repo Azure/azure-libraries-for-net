@@ -485,15 +485,5 @@ namespace Microsoft.Azure.Management.Network.Fluent
             };
             return new VirtualNetworkGatewayIPConfigurationImpl(inner, this);
         }
-
-        PointToSiteConfiguration.Update.IUpdate IWithPointToSiteConfiguration.UpdatePointToSiteConfiguration()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IBlank<VirtualNetworkGateway.Update.IUpdate> IWithPointToSiteConfiguration.DefinePointToSiteConfiguration()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
