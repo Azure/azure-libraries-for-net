@@ -10,7 +10,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 {
     public class MonitorManager : Manager<IMonitorManagementClient>, IMonitorManager, IBeta
     {
-        #region ctrs
+        private IActivityLogs activityLogs;
+        private IMetricDefinitions metricDefinitions;
 
         private static IMonitorManagementClient GetInnerClient(RestClient restClient, string subscriptionId)
         {
@@ -28,9 +29,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
         }
 
-        #endregion
-
-        #region MonitorManager builder
         /// <summary>
         /// Creates an instance of MonitorManager that exposes storage resource management API entry points.
         /// </summary>
@@ -65,9 +63,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             return new Configurable();
         }
-        #endregion
 
-        #region IConfigurable and it's implementation
         /// <summary>
         /// The inteface allowing configurations to be set.
         /// </summary>
@@ -91,7 +87,30 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 return new MonitorManager(BuildRestClient(credentials), subscriptionId);
             }
         }
-        #endregion
+        
+        public IActivityLogs ActivityLogs
+        {
+            get
+            {
+                if (this.activityLogs == null)
+                {
+                    this.activityLogs = new ActivityLogsImpl(this);
+                }
+                return this.activityLogs;
+            }
+        }
+        
+        public IMetricDefinitions MetricDefinitions
+        {
+            get
+            {
+                if (this.metricDefinitions == null)
+                {
+                    this.metricDefinitions = new MetricDefinitionsImpl(this);
+                }
+                return this.metricDefinitions;
+            }
+        }
     }
 
     /// <summary>
@@ -99,5 +118,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IMonitorManager : IManager<IMonitorManagementClient>
     {
+        /// <summary>
+        /// Gets the Azure Activity Logs API entry point.
+        /// </summary>
+        IActivityLogs ActivityLogs { get; }
+
+        /// <summary>
+        /// Gets the Azure Metric Definitions API entry point
+        /// </summary>
+        IMetricDefinitions MetricDefinitions { get; }
     }
 }

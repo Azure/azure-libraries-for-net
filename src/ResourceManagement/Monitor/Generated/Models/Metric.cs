@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// 'Percent', 'MilliSeconds', 'ByteSeconds', 'Unspecified'</param>
         /// <param name="timeseries">the time series returned when a data query
         /// is performed.</param>
-        public Metric(string id, string type, LocalizableString name, Unit unit, IList<TimeSeriesElement> timeseries)
+        public Metric(string id, string type, LocalizableStringInner name, Unit unit, IList<TimeSeriesElement> timeseries)
         {
             Id = id;
             Type = type;
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// is localizable string.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public LocalizableString Name { get; set; }
+        public LocalizableStringInner Name { get; set; }
 
         /// <summary>
         /// Gets or sets the unit of the metric. Possible values include:

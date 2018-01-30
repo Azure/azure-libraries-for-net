@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="subscriptionId">the Azure subscription Id usually a
         /// GUID.</param>
         /// <param name="tenantId">the Azure tenant Id</param>
-        public EventDataInner(EventLevel level, System.DateTime eventTimestamp, System.DateTime submissionTimestamp, SenderAuthorization authorization = default(SenderAuthorization), IDictionary<string, string> claims = default(IDictionary<string, string>), string caller = default(string), string description = default(string), string id = default(string), string eventDataId = default(string), string correlationId = default(string), LocalizableString eventName = default(LocalizableString), LocalizableString category = default(LocalizableString), HttpRequestInfo httpRequest = default(HttpRequestInfo), string resourceGroupName = default(string), LocalizableString resourceProviderName = default(LocalizableString), string resourceId = default(string), LocalizableString resourceType = default(LocalizableString), string operationId = default(string), LocalizableString operationName = default(LocalizableString), IDictionary<string, string> properties = default(IDictionary<string, string>), LocalizableString status = default(LocalizableString), LocalizableString subStatus = default(LocalizableString), string subscriptionId = default(string), string tenantId = default(string))
+        public EventDataInner(EventLevel level, System.DateTime eventTimestamp, System.DateTime submissionTimestamp, SenderAuthorization authorization = default(SenderAuthorization), IDictionary<string, string> claims = default(IDictionary<string, string>), string caller = default(string), string description = default(string), string id = default(string), string eventDataId = default(string), string correlationId = default(string), LocalizableStringInner eventName = default(LocalizableStringInner), LocalizableStringInner category = default(LocalizableStringInner), HttpRequestInfo httpRequest = default(HttpRequestInfo), string resourceGroupName = default(string), LocalizableStringInner resourceProviderName = default(LocalizableStringInner), string resourceId = default(string), LocalizableStringInner resourceType = default(LocalizableStringInner), string operationId = default(string), LocalizableStringInner operationName = default(LocalizableStringInner), IDictionary<string, string> properties = default(IDictionary<string, string>), LocalizableStringInner status = default(LocalizableStringInner), LocalizableStringInner subStatus = default(LocalizableStringInner), string subscriptionId = default(string), string tenantId = default(string))
         {
             Authorization = authorization;
             Claims = claims;
@@ -175,13 +175,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// appealing to end users.
         /// </summary>
         [JsonProperty(PropertyName = "eventName")]
-        public LocalizableString EventName { get; set; }
+        public LocalizableStringInner EventName { get; set; }
 
         /// <summary>
         /// Gets or sets the event category.
         /// </summary>
         [JsonProperty(PropertyName = "category")]
-        public LocalizableString Category { get; set; }
+        public LocalizableStringInner Category { get; set; }
 
         /// <summary>
         /// Gets or sets the HTTP request info. Usually includes the
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Gets or sets the resource provider name of the impacted resource.
         /// </summary>
         [JsonProperty(PropertyName = "resourceProviderName")]
-        public LocalizableString ResourceProviderName { get; set; }
+        public LocalizableStringInner ResourceProviderName { get; set; }
 
         /// <summary>
         /// Gets or sets the resource uri that uniquely identifies the resource
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Gets or sets the resource type
         /// </summary>
         [JsonProperty(PropertyName = "resourceType")]
-        public LocalizableString ResourceType { get; set; }
+        public LocalizableStringInner ResourceType { get; set; }
 
         /// <summary>
         /// Gets or sets it is usually a GUID shared among the events
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Gets or sets the operation name.
         /// </summary>
         [JsonProperty(PropertyName = "operationName")]
-        public LocalizableString OperationName { get; set; }
+        public LocalizableStringInner OperationName { get; set; }
 
         /// <summary>
         /// Gets or sets the set of &amp;lt;Key, Value&amp;gt; pairs (usually a
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Resolved.
         /// </summary>
         [JsonProperty(PropertyName = "status")]
-        public LocalizableString Status { get; set; }
+        public LocalizableStringInner Status { get; set; }
 
         /// <summary>
         /// Gets or sets the event sub status. Most of the time, when included,
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Code:503), Gateway Timeout (HTTP Status Code: 504)
         /// </summary>
         [JsonProperty(PropertyName = "subStatus")]
-        public LocalizableString SubStatus { get; set; }
+        public LocalizableStringInner SubStatus { get; set; }
 
         /// <summary>
         /// Gets or sets the timestamp of when the event was generated by the

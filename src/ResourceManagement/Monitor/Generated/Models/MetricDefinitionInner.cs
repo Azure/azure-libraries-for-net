@@ -16,12 +16,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// Metric definition class specifies the metadata for a metric.
     /// </summary>
-    public partial class MetricDefinition
+    public partial class MetricDefinitionInner
     {
         /// <summary>
         /// Initializes a new instance of the MetricDefinition class.
         /// </summary>
-        public MetricDefinition()
+        public MetricDefinitionInner()
         {
             CustomInit();
         }
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// definition.</param>
         /// <param name="dimensions">the name and the display name of the
         /// dimension, i.e. it is a localizable string.</param>
-        public MetricDefinition(bool? isDimensionRequired = default(bool?), string resourceId = default(string), LocalizableString name = default(LocalizableString), Unit? unit = default(Unit?), AggregationType? primaryAggregationType = default(AggregationType?), IList<MetricAvailability> metricAvailabilities = default(IList<MetricAvailability>), string id = default(string), IList<LocalizableString> dimensions = default(IList<LocalizableString>))
+        public MetricDefinitionInner(bool? isDimensionRequired = default(bool?), string resourceId = default(string), LocalizableStringInner name = default(LocalizableStringInner), Unit? unit = default(Unit?), AggregationType? primaryAggregationType = default(AggregationType?), IList<MetricAvailability> metricAvailabilities = default(IList<MetricAvailability>), string id = default(string), IList<LocalizableStringInner> dimensions = default(IList<LocalizableStringInner>))
         {
             IsDimensionRequired = isDimensionRequired;
             ResourceId = resourceId;
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// is a localizable string.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public LocalizableString Name { get; set; }
+        public LocalizableStringInner Name { get; set; }
 
         /// <summary>
         /// Gets or sets the unit of the metric. Possible values include:
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// it is a localizable string.
         /// </summary>
         [JsonProperty(PropertyName = "dimensions")]
-        public IList<LocalizableString> Dimensions { get; set; }
+        public IList<LocalizableStringInner> Dimensions { get; set; }
 
         /// <summary>
         /// Validate the object.
