@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithDiskEncryptionEnabled();
 
         /// <summary>
-        /// Disable Azure Resource Manager to retrieve secrets from the key vault.
+        /// Enable Azure Resource Manager to retrieve secrets from the key vault.
         /// </summary>
         /// <return>The key vault update stage.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithTemplateDeploymentDisabled();
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithTemplateDeploymentEnabled();
 
         /// <summary>
         /// Disable Azure Virtual Machines to retrieve certificates stored as secrets from the key vault.
@@ -38,16 +38,17 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithDeploymentDisabled();
 
         /// <summary>
-        /// Enable Azure Resource Manager to retrieve secrets from the key vault.
-        /// </summary>
-        /// <return>The key vault update stage.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithTemplateDeploymentEnabled();
-
-        /// <summary>
         /// Disable Azure Disk Encryption to retrieve secrets from the vault and unwrap keys.
         /// </summary>
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithDiskEncryptionDisabled();
+
+        /// <summary>
+        /// Disable Azure Resource Manager to retrieve secrets from the key vault.
+        /// </summary>
+        /// <return>The key vault update stage.</return>
+        Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate WithTemplateDeploymentDisabled();
+
     }
 
     /// <summary>

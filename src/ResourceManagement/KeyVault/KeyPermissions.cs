@@ -26,5 +26,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         public static readonly KeyPermissions Delete = Parse("delete");
         public static readonly KeyPermissions Backup = Parse("backup");
         public static readonly KeyPermissions Restore = Parse("restore");
+        public static readonly KeyPermissions Recover = Parse("recover");
+        public static readonly KeyPermissions Purge = Parse("purge");
     }
 }

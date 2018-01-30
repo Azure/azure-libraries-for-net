@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-namespace Microsoft.Azure.Management.Keyvault.Fluent
+
+namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition;
@@ -14,7 +15,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.Collections.Generic;
 
-    internal partial class AccessPolicyImpl 
+    internal partial class AccessPolicyImpl
     {
         /// <summary>
         /// Gets the name of the resource.
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.Name();
+                return this.Name() as string;
             }
         }
 
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         /// </summary>
         /// <param name="permissions">The list of permissions allowed.</param>
         /// <return>The next stage of access policy definition.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.AllowCertificatePermissions(params CertificatePermissions[] permissions)
+        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.AllowCertificatePermissions(params Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions[] permissions)
         {
             return this.AllowCertificatePermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
         }
@@ -189,7 +190,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.ObjectId();
+                return this.ObjectId as string;
             }
         }
 
@@ -201,7 +202,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.TenantId();
+                return this.TenantId as string;
             }
         }
 
@@ -212,7 +213,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.Permissions() as Microsoft.Azure.Management.KeyVault.Fluent.Models.Permissions;
+                return this.Permissions as Microsoft.Azure.Management.KeyVault.Fluent.Models.Permissions;
             }
         }
 
@@ -223,7 +224,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.ApplicationId();
+                return this.ApplicationId as string;
             }
         }
 
@@ -370,7 +371,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         /// </summary>
         /// <param name="permissions">The list of permissions to revoke.</param>
         /// <return>The next stage of access policy update.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.DisallowCertificatePermissions(params CertificatePermissions[] permissions)
+        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.DisallowCertificatePermissions(params Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions[] permissions)
         {
             return this.DisallowCertificatePermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
         }
@@ -390,7 +391,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         /// </summary>
         /// <param name="permissions">The list of permissions allowed.</param>
         /// <return>The next stage of access policy update.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.AllowCertificatePermissions(params CertificatePermissions[] permissions)
+        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.AllowCertificatePermissions(params Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions[] permissions)
         {
             return this.AllowCertificatePermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
         }

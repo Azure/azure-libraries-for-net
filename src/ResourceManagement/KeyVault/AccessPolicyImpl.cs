@@ -1,12 +1,28 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-namespace Microsoft.Azure.Management.Keyvault.Fluent
+
+namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
+
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition;
+    using Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update;
+    using Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Models;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update;
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Implementation for AccessPolicy and its parent interfaces.
     /// </summary>
-    internal partial class AccessPolicyImpl  :
-        ChildResourceImpl<Microsoft.Azure.Management.KeyVault.Fluent.Models.AccessPolicyEntry,Microsoft.Azure.Management.Keyvault.Fluent.VaultImpl,Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
+    internal partial class AccessPolicyImpl :
+        ChildResource<Microsoft.Azure.Management.KeyVault.Fluent.Models.AccessPolicyEntry, Microsoft.Azure.Management.KeyVault.Fluent.VaultImpl, Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
         IAccessPolicy,
         IDefinition<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>,
         IUpdateDefinition<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>,
@@ -15,7 +31,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         private string userPrincipalName;
         private string servicePrincipalName;
         ///GENMHASH:DB1CD9648996DA10B58423DFABD976E4:BC7BE29DA61C7F6594944FD23512AD2F
-        internal AccessPolicyImpl(AccessPolicyEntry innerObject, VaultImpl parent) : base(innerObject, parent)
+        internal AccessPolicyImpl(AccessPolicyEntry innerObject, Microsoft.Azure.Management.KeyVault.Fluent.VaultImpl parent) : base(innerObject, parent)
         {
             Inner.TenantId = Guid.Parse(parent.TenantId);
         }
@@ -153,7 +169,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         }
 
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:B7963E82870A365FD51B673F0B0274AC
-        public VaultImpl Attach()
+        public Microsoft.Azure.Management.KeyVault.Fluent.VaultImpl Attach()
         {
             Parent.WithAccessPolicy(this);
             return Parent;
@@ -243,7 +259,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         public AccessPolicyImpl DisallowSecretAllPermissions()
         {
             InitializeSecretPermissions();
-            Inner.Permissions().Secrets().Clear();
+            Inner.Permissions.Secrets.Clear();
             return this;
         }
 
@@ -271,7 +287,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
             	Inner.Permissions = new Permissions();
             }
             if (Inner.Permissions.Certificates == null) {
-            	Inner.Permissions.Certificates = new List<CertificatePermissions>();
+            	Inner.Permissions.Certificates = new List<string>();
             }
         }
 
@@ -287,7 +303,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
             InitializeCertificatePermissions();
             foreach (var permission in permissions)
             {
-            	if (!Inner.Permissions().Certificates().Contains(permission)) {
+            	if (!Inner.Permissions.Certificates.Contains(permission.ToString())) {
                 	Inner.Permissions.Certificates.Add(permission.ToString());
 				}
             }
@@ -305,7 +321,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         public AccessPolicyImpl DisallowCertificateAllPermissions()
         {
             InitializeCertificatePermissions();
-            Inner.Permissions().Certificate().Clear();
+            Inner.Permissions.Certificates.Clear();
             return this;
         }
 

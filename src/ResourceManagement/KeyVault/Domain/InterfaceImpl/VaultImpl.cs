@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-namespace Microsoft.Azure.Management.Keyvault.Fluent
+namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
@@ -17,6 +17,15 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
     internal partial class VaultImpl 
     {
         /// <summary>
+        /// Refreshes the resource to sync with Azure.
+        /// </summary>
+        /// <return>the refreshed resource</returns>
+        Microsoft.Azure.Management.KeyVault.Fluent.IVault Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.KeyVault.Fluent.IVault>.Refresh()
+        {
+            return this.Refresh() as Microsoft.Azure.Management.KeyVault.Fluent.IVault;
+        }
+
+        /// <summary>
         /// Gets the Azure Active Directory tenant ID that should be used for
         /// authenticating requests to the key vault.
         /// </summary>
@@ -24,7 +33,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.TenantId();
+                return this.TenantId as string;
             }
         }
 
@@ -36,7 +45,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.EnabledForTemplateDeployment();
+                return this.EnabledForTemplateDeployment;
             }
         }
 
@@ -48,7 +57,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.EnabledForDiskEncryption();
+                return this.EnabledForDiskEncryption;
             }
         }
 
@@ -59,7 +68,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.VaultUri();
+                return this.VaultUri as string;
             }
         }
 
@@ -70,7 +79,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.Sku() as Microsoft.Azure.Management.KeyVault.Fluent.Models.Sku;
+                return this.Sku as Microsoft.Azure.Management.KeyVault.Fluent.Models.Sku;
             }
         }
 
@@ -82,7 +91,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.EnabledForDeployment();
+                return this.EnabledForDeployment;
             }
         }
 
@@ -95,7 +104,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         {
             get
             {
-                return this.AccessPolicies() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.KeyVault.Fluent.IAccessPolicy>;
+                return this.AccessPolicies as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.KeyVault.Fluent.IAccessPolicy>;
             }
         }
 

@@ -16,5 +16,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         public static readonly SecretPermissions List = Parse("list");
         public static readonly SecretPermissions Set = Parse("set");
         public static readonly SecretPermissions Delete = Parse("delete");
+        public static readonly SecretPermissions Backup = Parse("backup");
+        public static readonly SecretPermissions Restore = Parse("restore");
+        public static readonly SecretPermissions Recover = Parse("recover");
+        public static readonly SecretPermissions Purge = Parse("purge");
     }
 }

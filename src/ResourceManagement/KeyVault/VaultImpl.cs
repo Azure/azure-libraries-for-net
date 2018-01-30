@@ -1,7 +1,18 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-namespace Microsoft.Azure.Management.Keyvault.Fluent
+namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Models;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     /// <summary>
     /// Implementation for Vault and its parent interfaces.
     /// </summary>
@@ -227,55 +238,41 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         }
 
         ///GENMHASH:1BFD0AD1E7180AAE5C7C7706268179BD:73523791EDD462A86EA1F0D19E138E84
-        private async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.KeyVault.Fluent.IAccessPolicy>> PopulateAccessPoliciesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        private async Task PopulateAccessPolicies(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ List<Observable<?>>observables = new ArrayList<>();
-            //$ for ( AccessPolicyImpl accessPolicy : accessPolicies) {
-            //$ if (accessPolicy.ObjectId() == null) {
-            //$ if (accessPolicy.UserPrincipalName() != null) {
-            //$ observables.Add(graphRbacManager.Users().GetByNameAsync(accessPolicy.UserPrincipalName())
-            //$ .SubscribeOn(SdkContext.GetRxScheduler())
-            //$ .DoOnNext(new Action1<ActiveDirectoryUser>() {
-            //$ @Override
-            //$ public void call(ActiveDirectoryUser user) {
-            //$ if (user == null) {
-            //$ throw new CloudException(String.Format("User principal name %s is not found in tenant %s",
-            //$ accessPolicy.UserPrincipalName(), graphRbacManager.TenantId()), null);
-            //$ }
-            //$ accessPolicy.ForObjectId(user.Id());
-            //$ }
-            //$ }));
-            //$ } else if (accessPolicy.ServicePrincipalName() != null) {
-            //$ observables.Add(graphRbacManager.ServicePrincipals().GetByNameAsync(accessPolicy.ServicePrincipalName())
-            //$ .SubscribeOn(SdkContext.GetRxScheduler())
-            //$ .DoOnNext(new Action1<ServicePrincipal>() {
-            //$ @Override
-            //$ public void call(ServicePrincipal sp) {
-            //$ if (sp == null) {
-            //$ throw new CloudException(String.Format("User principal name %s is not found in tenant %s",
-            //$ accessPolicy.UserPrincipalName(), graphRbacManager.TenantId()), null);
-            //$ }
-            //$ accessPolicy.ForObjectId(sp.Id());
-            //$ }
-            //$ }));
-            //$ } else {
-            //$ throw new IllegalArgumentException("Access policy must specify object ID.");
-            //$ }
-            //$ }
-            //$ }
-            //$ if (observables.IsEmpty()) {
-            //$ return Observable.Just(accessPolicies());
-            //$ } else {
-            //$ return Observable.Zip(observables, new FuncN<List<AccessPolicy>>() {
-            //$ @Override
-            //$ public List<AccessPolicy> call(Object... args) {
-            //$ return accessPolicies();
-            //$ }
-            //$ });
-            //$ }
-            //$ }
+            var tasks = new List<Task>();
+            foreach (var accessPolicy in accessPolicies)
+            {
+                if (accessPolicy.ObjectId == null || accessPolicy.ObjectId == Guid.Empty.ToString())
+                {
+                    if (accessPolicy.UserPrincipalName != null)
+                    {
+                        tasks.Add(graphRbacManager.Users.GetByNameAsync(accessPolicy.UserPrincipalName, cancellationToken)
+                            .ContinueWith(
+                                // user => accessPolicy.ForObjectId(Guid.Parse(user.Result.Id)),
+                                user => accessPolicy.ForObjectId(user.Result.Id),
+                                cancellationToken,
+                                TaskContinuationOptions.ExecuteSynchronously,
+                                TaskScheduler.Default));
+                    }
+                    else if (accessPolicy.ServicePrincipalName != null)
+                    {
+                        tasks.Add(graphRbacManager.ServicePrincipals.GetByNameAsync(accessPolicy.ServicePrincipalName, cancellationToken)
+                            .ContinueWith(
+                                // servicePrincipal => accessPolicy.ForObjectId(Guid.Parse(servicePrincipal.Result.Id)),
+                                servicePrincipal => accessPolicy.ForObjectId(servicePrincipal.Result.Id),
+                                cancellationToken,
+                                TaskContinuationOptions.ExecuteSynchronously,
+                                TaskScheduler.Default));
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Access policy must specify Object ID");
+                    }
+                }
+            }
 
-            return null;
+            await Task.WhenAll(tasks);
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:4B81B6736F1A9E225E6208032B876D9A

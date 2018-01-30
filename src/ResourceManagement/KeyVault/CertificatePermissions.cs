@@ -24,5 +24,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         public static readonly CertificatePermissions Setissuers = Parse("setissuers");
         public static readonly CertificatePermissions Deleteissuers = Parse("deleteissuers");
         public static readonly CertificatePermissions Manageissuers = Parse("manageissuers");
+        public static readonly CertificatePermissions Recover = Parse("recover");
+        public static readonly CertificatePermissions Purge = Parse("purge");
     }
 }
