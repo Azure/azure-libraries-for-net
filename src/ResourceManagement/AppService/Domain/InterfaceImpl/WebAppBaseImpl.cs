@@ -16,9 +16,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition;
     using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.UpdateDefinition;
     using Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
     using System;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
     internal abstract partial class WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>
     {
@@ -68,6 +71,75 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the given access
+        /// (described by the role) on an ARM resource identified by the resource ID. Applications running
+        /// on the web app will have the same permission (role) on the ARM resource.
+        /// </summary>
+        /// <param name="resourceId">The ARM identifier of the resource.</param>
+        /// <param name="role">Access role to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the update.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSystemAssignedIdentityBasedAccess<FluentT>.WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role) as WebAppBase.Update.IUpdate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the access
+        /// (described by the role definition) on an ARM resource identified by the resource ID.
+        /// Applications running on the web app will have the same permission (role) on the ARM resource.
+        /// </summary>
+        /// <param name="resourceId">Scope of the access represented in ARM resource ID format.</param>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the update.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSystemAssignedIdentityBasedAccess<FluentT>.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId) as WebAppBase.Update.IUpdate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the given access
+        /// (described by the role) on the resource group that web app resides. Applications running
+        /// on the web app will have the same permission (role) on the resource group.
+        /// </summary>
+        /// <param name="role">Access role to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the update.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSystemAssignedIdentityBasedAccess<FluentT>.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role) as WebAppBase.Update.IUpdate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the access
+        /// (described by the role definition) on the resource group that web app resides.
+        /// Applications running on the web app will have the same permission (role) on the
+        /// resource group.
+        /// </summary>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the update.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSystemAssignedIdentityBasedAccess<FluentT>.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId) as WebAppBase.Update.IUpdate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies that System Assigned Managed Service Identity needs to be enabled in the web app.
+        /// </summary>
+        /// <return>The next stage of the web app definition.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithManagedServiceIdentity<FluentT>.WithSystemAssignedManagedServiceIdentity()
+        {
+            return this.WithSystemAssignedManagedServiceIdentity() as WebAppBase.Update.IUpdate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies that System Assigned Managed Service Identity needs to be enabled in the web app.
+        /// </summary>
+        /// <return>The next stage of the web app definition.</return>
+        WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithManagedServiceIdentity<FluentT>.WithSystemAssignedManagedServiceIdentity()
+        {
+            return this.WithSystemAssignedManagedServiceIdentity() as WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>;
+        }
+
+        /// <summary>
         /// Specifies if SCM site is also stopped when the web app is stopped.
         /// </summary>
         /// <param name="scmSiteAlsoStopped">True if SCM site is also stopped.</param>
@@ -88,6 +160,57 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the given access
+        /// (described by the role) on an ARM resource identified by the resource ID. Applications running
+        /// on the web app will have the same permission (role) on the ARM resource.
+        /// </summary>
+        /// <param name="resourceId">The ARM identifier of the resource.</param>
+        /// <param name="role">Access role to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>.WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role) as WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the access
+        /// (described by the role definition) on an ARM resource identified by the resource ID.
+        /// Applications running on the web app will have the same permission (role) on the ARM resource.
+        /// </summary>
+        /// <param name="resourceId">Scope of the access represented in ARM resource ID format.</param>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId) as WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the given access
+        /// (described by the role) on the resource group that web app resides. Applications running
+        /// on the web app will have the same permission (role) on the resource group.
+        /// </summary>
+        /// <param name="role">Access role to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role) as WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the access
+        /// (described by the role definition) on the resource group that web app resides.
+        /// Applications running on the web app will have the same permission (role) on the
+        /// resource group.
+        /// </summary>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
+        {
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId) as WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>;
+        }
+
+        /// <summary>
         /// Changes the stickiness of an app setting.
         /// </summary>
         /// <param name="key">The key of the app setting to change stickiness.</param>
@@ -104,7 +227,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the web app update.</return>
-        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAppSettings<FluentT>.WithStickyAppSettings(IDictionary<string, string> settings)
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAppSettings<FluentT>.WithStickyAppSettings(IDictionary<string,string> settings)
         {
             return this.WithStickyAppSettings(settings) as WebAppBase.Update.IUpdate<FluentT>;
         }
@@ -114,7 +237,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the web app update.</return>
-        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAppSettings<FluentT>.WithAppSettings(IDictionary<string, string> settings)
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAppSettings<FluentT>.WithAppSettings(IDictionary<string,string> settings)
         {
             return this.WithAppSettings(settings) as WebAppBase.Update.IUpdate<FluentT>;
         }
@@ -158,7 +281,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the definition.</return>
-        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithAppSettings<FluentT>.WithStickyAppSettings(IDictionary<string, string> settings)
+        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithAppSettings<FluentT>.WithStickyAppSettings(IDictionary<string,string> settings)
         {
             return this.WithStickyAppSettings(settings) as WebAppBase.Definition.IWithCreate<FluentT>;
         }
@@ -168,7 +291,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the definition.</return>
-        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithAppSettings<FluentT>.WithAppSettings(IDictionary<string, string> settings)
+        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithAppSettings<FluentT>.WithAppSettings(IDictionary<string,string> settings)
         {
             return this.WithAppSettings(settings) as WebAppBase.Definition.IWithCreate<FluentT>;
         }
@@ -221,6 +344,34 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebAppAuthentication.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>> WebAppBase.Definition.IWithAuthentication<FluentT>.DefineAuthentication()
         {
             return this.DefineAuthentication() as WebAppAuthentication.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>>;
+        }
+
+        /// <summary>
+        /// Removes an SSL binding for a specific hostname.
+        /// </summary>
+        /// <param name="hostname">The hostname to remove SSL certificate from.</param>
+        /// <return>The next stage of web app update.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithHostNameSslBinding<FluentT>.WithoutSslBinding(string hostname)
+        {
+            return this.WithoutSslBinding(hostname) as WebAppBase.Update.IUpdate<FluentT>;
+        }
+
+        /// <summary>
+        /// Starts a definition of an SSL binding.
+        /// </summary>
+        /// <return>The first stage of an SSL binding definition.</return>
+        HostNameSslBinding.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>> WebAppBase.Update.IWithHostNameSslBinding<FluentT>.DefineSslBinding()
+        {
+            return this.DefineSslBinding() as HostNameSslBinding.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>>;
+        }
+
+        /// <summary>
+        /// Starts a definition of an SSL binding.
+        /// </summary>
+        /// <return>The first stage of an SSL binding definition.</return>
+        HostNameSslBinding.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>> WebAppBase.Definition.IWithHostNameSslBinding<FluentT>.DefineSslBinding()
+        {
+            return this.DefineSslBinding() as HostNameSslBinding.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>>;
         }
 
         /// <summary>
@@ -292,34 +443,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithConnectionString<FluentT>.WithStickyConnectionString(string name, string value, ConnectionStringType type)
         {
             return this.WithStickyConnectionString(name, value, type) as WebAppBase.Definition.IWithCreate<FluentT>;
-        }
-
-        /// <summary>
-        /// Removes an SSL binding for a specific hostname.
-        /// </summary>
-        /// <param name="hostname">The hostname to remove SSL certificate from.</param>
-        /// <return>The next stage of web app update.</return>
-        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithHostNameSslBinding<FluentT>.WithoutSslBinding(string hostname)
-        {
-            return this.WithoutSslBinding(hostname) as WebAppBase.Update.IUpdate<FluentT>;
-        }
-
-        /// <summary>
-        /// Starts a definition of an SSL binding.
-        /// </summary>
-        /// <return>The first stage of an SSL binding definition.</return>
-        HostNameSslBinding.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>> WebAppBase.Update.IWithHostNameSslBinding<FluentT>.DefineSslBinding()
-        {
-            return this.DefineSslBinding() as HostNameSslBinding.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>>;
-        }
-
-        /// <summary>
-        /// Starts a definition of an SSL binding.
-        /// </summary>
-        /// <return>The first stage of an SSL binding definition.</return>
-        HostNameSslBinding.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>> WebAppBase.Definition.IWithHostNameSslBinding<FluentT>.DefineSslBinding()
-        {
-            return this.DefineSslBinding() as HostNameSslBinding.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>>;
         }
 
         /// <summary>
@@ -724,6 +847,66 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
+        /// Specifies the configuration for container logging for Linux web apps.
+        /// </summary>
+        /// <param name="quotaInMB">The limit that restricts file system usage by app diagnostics logs. Value can range from 25 MB and 100 MB.</param>
+        /// <param name="retentionDays">Maximum days of logs that will be available.</param>
+        /// <return>The next stage of the web app update.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithDiagnosticLogging<FluentT>.WithContainerLoggingEnabled(int quotaInMB, int retentionDays)
+        {
+            return this.WithContainerLoggingEnabled(quotaInMB, retentionDays) as WebAppBase.Update.IUpdate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies the configuration for container logging for Linux web apps.
+        /// Logs will be stored on the file system for up to 35 MB.
+        /// </summary>
+        /// <return>The next stage of the web app update.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithDiagnosticLogging<FluentT>.WithContainerLoggingEnabled()
+        {
+            return this.WithContainerLoggingEnabled() as WebAppBase.Update.IUpdate<FluentT>;
+        }
+
+        /// <summary>
+        /// Disable the container logging for Linux web apps.
+        /// </summary>
+        /// <return>The next stage of the web app update.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithDiagnosticLogging<FluentT>.WithContainerLoggingDisabled()
+        {
+            return this.WithContainerLoggingDisabled() as WebAppBase.Update.IUpdate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies the configuration for container logging for Linux web apps.
+        /// </summary>
+        /// <param name="quotaInMB">The limit that restricts file system usage by app diagnostics logs. Value can range from 25 MB and 100 MB.</param>
+        /// <param name="retentionDays">Maximum days of logs that will be available.</param>
+        /// <return>The next stage of the web app definition.</return>
+        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithDiagnosticLogging<FluentT>.WithContainerLoggingEnabled(int quotaInMB, int retentionDays)
+        {
+            return this.WithContainerLoggingEnabled(quotaInMB, retentionDays) as WebAppBase.Definition.IWithCreate<FluentT>;
+        }
+
+        /// <summary>
+        /// Specifies the configuration for container logging for Linux web apps.
+        /// Logs will be stored on the file system for up to 35 MB.
+        /// </summary>
+        /// <return>The next stage of the web app definition.</return>
+        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithDiagnosticLogging<FluentT>.WithContainerLoggingEnabled()
+        {
+            return this.WithContainerLoggingEnabled() as WebAppBase.Definition.IWithCreate<FluentT>;
+        }
+
+        /// <summary>
+        /// Disable the container logging for Linux web apps.
+        /// </summary>
+        /// <return>The next stage of the web app definition.</return>
+        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithDiagnosticLogging<FluentT>.WithContainerLoggingDisabled()
+        {
+            return this.WithContainerLoggingDisabled() as WebAppBase.Definition.IWithCreate<FluentT>;
+        }
+
+        /// <summary>
         /// Specifies if client cert is enabled.
         /// </summary>
         /// <param name="enabled">True if client cert is enabled.</param>
@@ -764,9 +947,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <return>The connection strings defined on the web app.</return>
-        async Task<System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IConnectionString>> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStringsAsync(CancellationToken cancellationToken)
+        async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStringsAsync(CancellationToken cancellationToken)
         {
-            return await this.GetConnectionStringsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
+            return await this.GetConnectionStringsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
         }
 
         /// <summary>
@@ -904,13 +1087,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets whether web app is deployed as a premium app.
+        /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory tenant ID assigned
+        /// to the web app.
         /// </summary>
-        bool Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.IsPremiumApp
+        string Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.SystemAssignedManagedServiceIdentityTenantId
         {
             get
             {
-                return this.IsPremiumApp();
+                return this.SystemAssignedManagedServiceIdentityTenantId();
             }
         }
 
@@ -949,9 +1133,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <return>The connection strings defined on the web app.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IConnectionString> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStrings()
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStrings()
         {
-            return this.GetConnectionStrings() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
+            return this.GetConnectionStrings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
         }
 
         /// <summary>
@@ -973,17 +1157,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             get
             {
                 return this.AppServicePlanId();
-            }
-        }
-
-        /// <summary>
-        /// Gets name of gateway app associated with web app.
-        /// </summary>
-        string Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GatewaySiteName
-        {
-            get
-            {
-                return this.GatewaySiteName();
             }
         }
 
@@ -1040,16 +1213,28 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
-        /// <return>The app settings defined on the web app.</return>
-        async Task<System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IAppSetting>> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAppSettingsAsync(CancellationToken cancellationToken)
+        /// <summary>
+        /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory service principal ID
+        /// assigned to the web app.
+        /// </summary>
+        string Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.SystemAssignedManagedServiceIdentityPrincipalId
         {
-            return await this.GetAppSettingsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
+            get
+            {
+                return this.SystemAssignedManagedServiceIdentityPrincipalId();
+            }
         }
 
         /// <return>The app settings defined on the web app.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IAppSetting> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAppSettings()
+        async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAppSettingsAsync(CancellationToken cancellationToken)
         {
-            return this.GetAppSettings() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
+            return await this.GetAppSettingsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
+        }
+
+        /// <return>The app settings defined on the web app.</return>
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAppSettings()
+        {
+            return this.GetAppSettings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
         }
 
         /// <summary>
@@ -1083,11 +1268,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets list of SSL states used to manage the SSL bindings for site's hostnames.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string, Models.HostNameSslState> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.HostNameSslStates
+        System.Collections.Generic.IReadOnlyDictionary<string,Models.HostNameSslState> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.HostNameSslStates
         {
             get
             {
-                return this.HostNameSslStates() as System.Collections.Generic.IReadOnlyDictionary<string, Models.HostNameSslState>;
+                return this.HostNameSslStates() as System.Collections.Generic.IReadOnlyDictionary<string,Models.HostNameSslState>;
             }
         }
 
@@ -1113,17 +1298,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             get
             {
                 return this.TrafficManagerHostNames() as System.Collections.Generic.ISet<string>;
-            }
-        }
-
-        /// <summary>
-        /// Gets the micro-service name.
-        /// </summary>
-        string Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.MicroService
-        {
-            get
-            {
-                return this.MicroService();
             }
         }
 

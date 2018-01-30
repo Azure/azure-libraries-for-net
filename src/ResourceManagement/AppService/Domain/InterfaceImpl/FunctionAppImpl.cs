@@ -988,17 +988,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
-        /// Gets name of gateway app associated with web app.
-        /// </summary>
-        string Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GatewaySiteName
-        {
-            get
-            {
-                return this.GatewaySiteName();
-            }
-        }
-
-        /// <summary>
         /// Gets Java container version.
         /// </summary>
         string Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.JavaContainerVersion
@@ -1100,17 +1089,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
 
             this.Stop();
-        }
-
-        /// <summary>
-        /// Gets the micro-service name.
-        /// </summary>
-        string Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.MicroService
-        {
-            get
-            {
-                return this.MicroService();
-            }
         }
 
         /// <summary>
@@ -1320,17 +1298,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             get
             {
                 return this.CloningInfo() as Models.CloningInfo;
-            }
-        }
-
-        /// <summary>
-        /// Gets whether web app is deployed as a premium app.
-        /// </summary>
-        bool Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.IsPremiumApp
-        {
-            get
-            {
-                return this.IsPremiumApp();
             }
         }
 

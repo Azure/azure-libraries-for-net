@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <typeparam name="FluentT">The fluent interface, web app, function app, or deployment slot.</typeparam>
     /// <typeparam name="FluentImplT">The implementation class for FluentT.</typeparam>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmFwcHNlcnZpY2UuaW1wbGVtZW50YXRpb24uV2ViRGVwbG95bWVudEltcGw=
-    internal partial class WebDeploymentImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> :
+    internal partial class WebDeploymentImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>  :
         Executable<Microsoft.Azure.Management.AppService.Fluent.IWebDeployment>,
         IWebDeployment,
         IDefinition
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         ///GENMHASH:B64F0B705C1970A57BCEB34522A005DA:56F87C785CA4EB155CEA2862A9A8B5E6
-        internal WebDeploymentImpl(WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> parent)
+        internal  WebDeploymentImpl(WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> parent)
         {
             this.parent = parent;
             this.request = new MSDeployInner();

@@ -9,24 +9,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
     using System;
+    using System.IO;
 
     /// <summary>
     /// An immutable client-side representation of an Azure Web App or deployment slot.
     /// </summary>
-    public interface IWebAppBase :
+    public interface IWebAppBase  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.AppService.Fluent.IAppServiceManager, Models.SiteInner>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.AppService.Fluent.IAppServiceManager,Models.SiteInner>
     {
         /// <summary>
         /// Gets the version of Python.
         /// </summary>
         Microsoft.Azure.Management.AppService.Fluent.PythonVersion PythonVersion { get; }
-
-        /// <summary>
-        /// Gets name of gateway app associated with web app.
-        /// </summary>
-        string GatewaySiteName { get; }
 
         /// <summary>
         /// Gets list of IP addresses that this web app uses for
@@ -35,8 +31,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </summary>
         System.Collections.Generic.ISet<string> OutboundIPAddresses { get; }
 
+        /// <return>The zipped archive of docker logs for a Linux web app.</return>
+        Stream GetContainerLogsZip();
+
         /// <return>The authentication configuration defined on the web app.</return>
         Task<Microsoft.Azure.Management.AppService.Fluent.IWebAppAuthentication> GetAuthenticationConfigAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>The last lines of docker logs for a Linux web app.</return>
+        Stream GetContainerLogs();
 
         /// <summary>
         /// Gets list of Azure Traffic manager host names associated with web
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets list of SSL states used to manage the SSL bindings for site's hostnames.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string, Models.HostNameSslState> HostNameSslStates { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string,Models.HostNameSslState> HostNameSslStates { get; }
 
         /// <summary>
         /// Gets the operating system the web app is running on.
@@ -150,14 +152,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         Task SwapAsync(string slotName, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Gets whether web app is deployed as a premium app.
-        /// </summary>
-        bool IsPremiumApp { get; }
-
-        /// <summary>
         /// Gets the version of Node.JS.
         /// </summary>
         string NodeVersion { get; }
+
+        /// <return>The last lines of docker logs for a Linux web app.</return>
+        Task<Stream> GetContainerLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Starts the web app or deployment slot.
@@ -169,6 +169,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets the auto swap slot name.
         /// </summary>
         string AutoSwapSlotName { get; }
+
+        /// <summary>
+        /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory service principal ID
+        /// assigned to the web app.
+        /// </summary>
+        string SystemAssignedManagedServiceIdentityPrincipalId { get; }
 
         /// <summary>
         /// Verifies the ownership of the domain for a certificate order by verifying a hostname
@@ -210,17 +216,18 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         string JavaContainer { get; }
 
         /// <summary>
-        /// Gets the micro-service name.
-        /// </summary>
-        string MicroService { get; }
-
-        /// <summary>
         /// Gets the remote debugging version.
         /// </summary>
         Microsoft.Azure.Management.AppService.Fluent.RemoteVisualStudioVersion RemoteDebuggingVersion { get; }
 
+        /// <summary>
+        /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory tenant ID assigned
+        /// to the web app.
+        /// </summary>
+        string SystemAssignedManagedServiceIdentityTenantId { get; }
+
         /// <return>The connection strings defined on the web app.</return>
-        Task<System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IConnectionString>> GetConnectionStringsAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>> GetConnectionStringsAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <return>The authentication configuration defined on the web app.</return>
         Microsoft.Azure.Management.AppService.Fluent.IWebAppAuthentication GetAuthenticationConfig();
@@ -231,7 +238,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         System.DateTime LastModifiedTime { get; }
 
         /// <return>The app settings defined on the web app.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IAppSetting> GetAppSettings();
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting> GetAppSettings();
 
         /// <summary>
         /// Apply the slot (or sticky) configurations from the specified slot
@@ -254,6 +261,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets Java version.
         /// </summary>
         Microsoft.Azure.Management.AppService.Fluent.JavaVersion JavaVersion { get; }
+
+        /// <return>The zipped archive of docker logs for a Linux web app.</return>
+        Task<Stream> GetContainerLogsZipAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets hostnames associated with web app.
@@ -291,7 +301,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         bool IsDefaultContainer { get; }
 
         /// <return>The connection strings defined on the web app.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IConnectionString> GetConnectionStrings();
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString> GetConnectionStrings();
 
         /// <summary>
         /// Gets whether to stop SCM (KUDU) site when the web app is
@@ -300,7 +310,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         bool ScmSiteAlsoStopped { get; }
 
         /// <return>The mapping from host names and the host name bindings.</return>
-        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding> GetHostNameBindings();
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding> GetHostNameBindings();
 
         /// <summary>
         /// Gets if web socket is enabled.
@@ -341,7 +351,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         void Start();
 
         /// <return>The mapping from host names and the host name bindings.</return>
-        Task<System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>> GetHostNameBindingsAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding>> GetHostNameBindingsAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets managed pipeline mode.
@@ -354,7 +364,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         Microsoft.Azure.Management.AppService.Fluent.PlatformArchitecture PlatformArchitecture { get; }
 
         /// <return>The app settings defined on the web app.</return>
-        Task<System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.AppService.Fluent.IAppSetting>> GetAppSettingsAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>> GetAppSettingsAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Verifies the ownership of the domain for a certificate order by verifying a hostname

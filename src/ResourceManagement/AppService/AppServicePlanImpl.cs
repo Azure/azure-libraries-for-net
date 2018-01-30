@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// The implementation for AppServicePlan.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmFwcHNlcnZpY2UuaW1wbGVtZW50YXRpb24uQXBwU2VydmljZVBsYW5JbXBs
-    internal partial class AppServicePlanImpl :
+    internal partial class AppServicePlanImpl  :
         GroupableResource<
             IAppServicePlan,
             AppServicePlanInner,
@@ -73,8 +73,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:085C052B5E99B190740EE6AF70CF4D53:E9337A64F885BD0450A880D39B4733A0
         public AppServicePlanImpl WithCapacity(int capacity)
         {
-            if (capacity < 1)
-            {
+            if (capacity < 1) {
                 throw new ArgumentException("Capacity is at least 1.");
             }
             Inner.Sku.Capacity = capacity;
@@ -117,8 +116,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:07BF52A3FFAEDB1E45066F5776F5CC29:8A264E667F06CE3E13EBAC780725861E
 
         internal AppServicePlanImpl(string name, AppServicePlanInner innerObject, IAppServiceManager manager)
-            : base(name, innerObject, manager)
+            : base (name, innerObject, manager)
         {
+            Inner.AppServicePlanName = name;
         }
 
         ///GENMHASH:96136B4F06090288022D1EF87309064C:9A69FEB095211874831DC78CF9CBB543

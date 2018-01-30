@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     /// <summary>
     /// A web app definition allowing docker registry credentials to be set.
     /// </summary>
-    public interface IWithCredentials
+    public interface IWithCredentials 
     {
         /// <summary>
         /// Specifies the username and password for Docker Hub or the docker registry.
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     /// A web app definition allowing docker startup command to be specified.
     /// This will replace the "CMD" section in the Dockerfile.
     /// </summary>
-    public interface IWithStartUpCommand :
+    public interface IWithStartUpCommand  :
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate
     {
         /// <summary>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     /// <summary>
     /// The first stage of the web app definition.
     /// </summary>
-    public interface IBlank :
+    public interface IBlank  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.INewAppServicePlanWithGroup>
     {
         /// <summary>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     /// deployments slot in the cloud, but exposing additional optional
     /// inputs to specify.
     /// </summary>
-    public interface IWithCreate :
+    public interface IWithCreate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.AppService.Fluent.IWebApp>,
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<Microsoft.Azure.Management.AppService.Fluent.IWebApp>
     {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     /// <summary>
     /// A web app definition allowing app service plan to be set.
     /// </summary>
-    public interface IWithNewAppServicePlan
+    public interface IWithNewAppServicePlan 
     {
         /// <summary>
         /// Creates a new app service plan to use.
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     /// <summary>
     /// Container interface for all the definitions that need to be implemented.
     /// </summary>
-    public interface IDefinition :
+    public interface IDefinition  :
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IBlank,
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.INewAppServicePlanWithGroup,
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithNewAppServicePlan,
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     /// <summary>
     /// A web app definition allowing resource group to be specified when a new app service plan is to be created.
     /// </summary>
-    public interface IExistingWindowsPlanWithGroup
+    public interface IExistingWindowsPlanWithGroup 
     {
         /// <summary>
         /// Creates a new resource group to put the resource in.
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     /// <summary>
     /// A web app definition allowing resource group to be specified when a new app service plan is to be created.
     /// </summary>
-    public interface IExistingLinuxPlanWithGroup
+    public interface IExistingLinuxPlanWithGroup 
     {
         /// <summary>
         /// Creates a new resource group to put the resource in.
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     /// <summary>
     /// A web app definition allowing resource group to be specified when an existing app service plan is used.
     /// </summary>
-    public interface INewAppServicePlanWithGroup :
+    public interface INewAppServicePlanWithGroup  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithNewAppServicePlan>
     {
     }
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition
     /// <summary>
     /// A web app definition allowing docker image source to be specified.
     /// </summary>
-    public interface IWithDockerContainerImage
+    public interface IWithDockerContainerImage 
     {
         /// <summary>
         /// Specifies the docker container image to be one from Docker Hub.

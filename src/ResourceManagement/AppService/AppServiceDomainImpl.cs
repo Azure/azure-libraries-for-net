@@ -132,7 +132,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             DomainOwnershipIdentifierInner identifierInner = new DomainOwnershipIdentifierInner()
             {
-                Location = "global",
                 OwnershipId = domainVerificationToken
             };
             await Manager.Inner.Domains.CreateOrUpdateOwnershipIdentifierAsync(ResourceGroupName, Name, certificateOrderName, identifierInner, cancellationToken);
@@ -234,7 +233,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public IWithCreate WithClientIpAddress(string ipAddress)
         {
             clientIp = ipAddress;
-            return this;
+            return this; 
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
 
-    internal partial class FunctionDeploymentSlotsImpl
+    internal partial class FunctionDeploymentSlotsImpl 
     {
     }
 }

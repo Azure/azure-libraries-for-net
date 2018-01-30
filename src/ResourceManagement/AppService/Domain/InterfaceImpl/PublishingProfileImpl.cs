@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
-    internal partial class PublishingProfileImpl
+    internal partial class PublishingProfileImpl 
     {
         /// <summary>
         /// Gets the password used for FTP publishing.

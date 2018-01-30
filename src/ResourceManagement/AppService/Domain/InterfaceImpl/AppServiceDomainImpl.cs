@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class AppServiceDomainImpl
+    internal partial class AppServiceDomainImpl 
     {
         /// <summary>
         /// Specifies if the registrant contact information is exposed publicly.
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.AppService.Fluent.IAppServiceDomain.VerifyDomainOwnershipAsync(string certificateOrderName, string domainVerificationToken, CancellationToken cancellationToken)
         {
-
+ 
             await this.VerifyDomainOwnershipAsync(certificateOrderName, domainVerificationToken, cancellationToken);
         }
 
@@ -228,11 +228,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Gets all hostnames derived from the domain and assigned to Azure resources.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string, Models.HostName> Microsoft.Azure.Management.AppService.Fluent.IAppServiceDomain.ManagedHostNames
+        System.Collections.Generic.IReadOnlyDictionary<string,Models.HostName> Microsoft.Azure.Management.AppService.Fluent.IAppServiceDomain.ManagedHostNames
         {
             get
             {
-                return this.ManagedHostNames() as System.Collections.Generic.IReadOnlyDictionary<string, Models.HostName>;
+                return this.ManagedHostNames() as System.Collections.Generic.IReadOnlyDictionary<string,Models.HostName>;
             }
         }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name="domainVerificationToken">The domain verification token for the certificate order.</param>
         void Microsoft.Azure.Management.AppService.Fluent.IAppServiceDomain.VerifyDomainOwnership(string certificateOrderName, string domainVerificationToken)
         {
-
+ 
             this.VerifyDomainOwnership(certificateOrderName, domainVerificationToken);
         }
 

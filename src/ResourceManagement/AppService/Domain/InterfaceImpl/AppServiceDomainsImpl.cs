@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
-    internal partial class AppServiceDomainsImpl
+    internal partial class AppServiceDomainsImpl 
     {
         /// <summary>
         /// Begins a definition for a new resource.

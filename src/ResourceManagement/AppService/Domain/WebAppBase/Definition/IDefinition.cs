@@ -2,36 +2,111 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent.Models;
+    using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition;
     using Microsoft.Azure.Management.AppService.Fluent;
     using Microsoft.Azure.Management.AppService.Fluent.Models;
     using System.Collections.Generic;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Definition;
+    using Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definition;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
     /// <summary>
-    /// A site definition with sufficient inputs to create a new web app /
-    /// deployments slot in the cloud, but exposing additional optional
-    /// inputs to specify.
+    /// A web app definition stage allowing setting if client cert is enabled.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithCreate<FluentT> :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<FluentT>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithClientAffinityEnabled<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithClientCertEnabled<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithScmSiteAlsoStopped<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSiteConfigs<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithAppSettings<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithConnectionString<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSourceControl<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithHostNameBinding<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithHostNameSslBinding<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithAuthentication<FluentT>
+    public interface IWithClientCertEnabled<FluentT> 
     {
+        /// <summary>
+        /// Specifies if client cert is enabled.
+        /// </summary>
+        /// <param name="enabled">True if client cert is enabled.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithClientCertEnabled(bool enabled);
+    }
+
+    /// <summary>
+    /// A web app definition stage allowing authentication to be set.
+    /// </summary>
+    /// <typeparam name="FluentT">The type of the resource.</typeparam>
+    public interface IWithAuthentication<FluentT> 
+    {
+        /// <summary>
+        /// Specifies the definition of a new authentication configuration.
+        /// </summary>
+        /// <return>The first stage of an authentication definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition.IBlank<Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>> DefineAuthentication();
+    }
+
+    /// <summary>
+    /// The stage of the System Assigned (Local) Managed Service Identity enabled web app allowing to
+    /// set access role for the identity.
+    /// </summary>
+    /// <typeparam name="FluentT">The type of the resource.</typeparam>
+    public interface IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>
+    {
+        /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the given access
+        /// (described by the role) on the resource group that web app resides. Applications running
+        /// on the web app will have the same permission (role) on the resource group.
+        /// </summary>
+        /// <param name="role">Access role to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role);
+
+        /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the access
+        /// (described by the role definition) on the resource group that web app resides.
+        /// Applications running on the web app will have the same permission (role) on the
+        /// resource group.
+        /// </summary>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId);
+
+        /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the given access
+        /// (described by the role) on an ARM resource identified by the resource ID. Applications running
+        /// on the web app will have the same permission (role) on the ARM resource.
+        /// </summary>
+        /// <param name="resourceId">The ARM identifier of the resource.</param>
+        /// <param name="role">Access role to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role);
+
+        /// <summary>
+        /// Specifies that web app's system assigned (local) identity should have the access
+        /// (described by the role definition) on an ARM resource identified by the resource ID.
+        /// Applications running on the web app will have the same permission (role) on the ARM resource.
+        /// </summary>
+        /// <param name="resourceId">Scope of the access represented in ARM resource ID format.</param>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the web app's local identity.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId);
+    }
+
+    /// <summary>
+    /// A web app definition stage allowing source control to be set.
+    /// </summary>
+    /// <typeparam name="FluentT">The type of the resource.</typeparam>
+    public interface IWithSourceControl<FluentT> 
+    {
+        /// <summary>
+        /// Starts the definition of a new source control.
+        /// </summary>
+        /// <return>The first stage of a source control definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition.IBlank<Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>> DefineSourceControl();
+
+        /// <summary>
+        /// Specifies the source control to be a local Git repository on the web app.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithLocalGitSourceControl();
     }
 
     /// <summary>
@@ -39,7 +114,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
     /// after specifying Java version.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithWebContainer<FluentT>
+    public interface IWithWebContainer<FluentT> 
     {
         /// <summary>
         /// Specifies the Java web container.
@@ -50,11 +125,25 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
     }
 
     /// <summary>
+    /// A web app definition stage allowing setting if SCM site is also stopped when the web app is stopped.
+    /// </summary>
+    /// <typeparam name="FluentT">The type of the resource.</typeparam>
+    public interface IWithScmSiteAlsoStopped<FluentT> 
+    {
+        /// <summary>
+        /// Specifies if SCM site is also stopped when the web app is stopped.
+        /// </summary>
+        /// <param name="scmSiteAlsoStopped">True if SCM site is also stopped.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithScmSiteAlsoStopped(bool scmSiteAlsoStopped);
+    }
+
+    /// <summary>
     /// A web app definition stage allowing other configurations to be set. These configurations
     /// can be cloned when creating or swapping with a deployment slot.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithSiteConfigs<FluentT>
+    public interface IWithSiteConfigs<FluentT> 
     {
         /// <summary>
         /// Specifies the managed pipeline mode.
@@ -161,107 +250,127 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
     }
 
     /// <summary>
-    /// A web app definition stage allowing disabling the web app upon creation.
+    /// A site definition with sufficient inputs to create a new web app /
+    /// deployments slot in the cloud, but exposing additional optional
+    /// inputs to specify.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithSiteEnabled<FluentT>
+    public interface IWithCreate<FluentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<FluentT>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithClientAffinityEnabled<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithClientCertEnabled<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithScmSiteAlsoStopped<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSiteConfigs<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithAppSettings<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithConnectionString<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSourceControl<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithHostNameBinding<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithHostNameSslBinding<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithAuthentication<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithDiagnosticLogging<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithManagedServiceIdentity<FluentT>
     {
-        /// <summary>
-        /// Disables the web app upon creation.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithAppDisabledOnCreation();
     }
 
     /// <summary>
-    /// A web app definition stage allowing authentication to be set.
+    /// A web app definition stage allowing diagnostic logging to be set.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithAuthentication<FluentT>
+    public interface IWithDiagnosticLogging<FluentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
-        /// Specifies the definition of a new authentication configuration.
+        /// Specifies the configuration for container logging for Linux web apps.
         /// </summary>
-        /// <return>The first stage of an authentication definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition.IBlank<Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>> DefineAuthentication();
+        /// <param name="quotaInMB">The limit that restricts file system usage by app diagnostics logs. Value can range from 25 MB and 100 MB.</param>
+        /// <param name="retentionDays">Maximum days of logs that will be available.</param>
+        /// <return>The next stage of the web app definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithContainerLoggingEnabled(int quotaInMB, int retentionDays);
+
+        /// <summary>
+        /// Specifies the configuration for container logging for Linux web apps.
+        /// Logs will be stored on the file system for up to 35 MB.
+        /// </summary>
+        /// <return>The next stage of the web app definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithContainerLoggingEnabled();
+
+        /// <summary>
+        /// Disable the container logging for Linux web apps.
+        /// </summary>
+        /// <return>The next stage of the web app definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithContainerLoggingDisabled();
     }
 
     /// <summary>
-    /// A web app definition stage allowing setting if SCM site is also stopped when the web app is stopped.
+    /// A web app definition stage allowing SSL binding to be set.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithScmSiteAlsoStopped<FluentT>
+    public interface IWithHostNameSslBinding<FluentT> 
     {
         /// <summary>
-        /// Specifies if SCM site is also stopped when the web app is stopped.
+        /// Starts a definition of an SSL binding.
         /// </summary>
-        /// <param name="scmSiteAlsoStopped">True if SCM site is also stopped.</param>
+        /// <return>The first stage of an SSL binding definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Definition.IBlank<Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>> DefineSslBinding();
+    }
+
+    /// <summary>
+    /// A web app definition stage allowing connection strings to be set.
+    /// </summary>
+    /// <typeparam name="FluentT">The type of the resource.</typeparam>
+    public interface IWithConnectionString<FluentT> 
+    {
+        /// <summary>
+        /// Adds a connection string to the web app.
+        /// </summary>
+        /// <param name="name">The name of the connection string.</param>
+        /// <param name="value">The connection string value.</param>
+        /// <param name="type">The connection string type.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithScmSiteAlsoStopped(bool scmSiteAlsoStopped);
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithConnectionString(string name, string value, ConnectionStringType type);
+
+        /// <summary>
+        /// Adds a connection string to the web app. This connection string will be swapped
+        /// as well after a deployment slot swap.
+        /// </summary>
+        /// <param name="name">The name of the connection string.</param>
+        /// <param name="value">The connection string value.</param>
+        /// <param name="type">The connection string type.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithStickyConnectionString(string name, string value, ConnectionStringType type);
+    }
+
+    /// <summary>
+    /// A web app definition stage allowing System Assigned Managed Service Identity to be set.
+    /// </summary>
+    /// <typeparam name="FluentT">The type of the resource.</typeparam>
+    public interface IWithManagedServiceIdentity<FluentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies that System Assigned Managed Service Identity needs to be enabled in the web app.
+        /// </summary>
+        /// <return>The next stage of the web app definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WithSystemAssignedManagedServiceIdentity();
     }
 
     /// <summary>
     /// The entirety of the web app base definition.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IDefinition<FluentT> :
+    public interface IDefinition<FluentT>  :
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithWebContainer<FluentT>,
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>,
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>
     {
-    }
-
-    /// <summary>
-    /// A web app definition stage allowing setting if client affinity is enabled.
-    /// </summary>
-    /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithClientAffinityEnabled<FluentT>
-    {
-        /// <summary>
-        /// Specifies if client affinity is enabled.
-        /// </summary>
-        /// <param name="enabled">True if client affinity is enabled.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithClientAffinityEnabled(bool enabled);
-    }
-
-    /// <summary>
-    /// A web app definition stage allowing source control to be set.
-    /// </summary>
-    /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithSourceControl<FluentT>
-    {
-        /// <summary>
-        /// Starts the definition of a new source control.
-        /// </summary>
-        /// <return>The first stage of a source control definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition.IBlank<Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>> DefineSourceControl();
-
-        /// <summary>
-        /// Specifies the source control to be a local Git repository on the web app.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithLocalGitSourceControl();
-    }
-
-    /// <summary>
-    /// A web app definition stage allowing setting if client cert is enabled.
-    /// </summary>
-    /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithClientCertEnabled<FluentT>
-    {
-        /// <summary>
-        /// Specifies if client cert is enabled.
-        /// </summary>
-        /// <param name="enabled">True if client cert is enabled.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithClientCertEnabled(bool enabled);
     }
 
     /// <summary>
     /// A web app definition stage allowing host name binding to be specified.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithHostNameBinding<FluentT>
+    public interface IWithHostNameBinding<FluentT> 
     {
         /// <summary>
         /// Defines a list of host names of an Azure managed domain. The DNS record type is
@@ -289,10 +398,23 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
     }
 
     /// <summary>
+    /// A web app definition stage allowing disabling the web app upon creation.
+    /// </summary>
+    /// <typeparam name="FluentT">The type of the resource.</typeparam>
+    public interface IWithSiteEnabled<FluentT> 
+    {
+        /// <summary>
+        /// Disables the web app upon creation.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithAppDisabledOnCreation();
+    }
+
+    /// <summary>
     /// A web app definition stage allowing app settings to be set.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithAppSettings<FluentT>
+    public interface IWithAppSettings<FluentT> 
     {
         /// <summary>
         /// Adds an app setting to the web app. This app setting will be swapped
@@ -309,7 +431,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithStickyAppSettings(IDictionary<string, string> settings);
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithStickyAppSettings(IDictionary<string,string> settings);
 
         /// <summary>
         /// Adds an app setting to the web app.
@@ -324,45 +446,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
         /// </summary>
         /// <param name="settings">A  Map of app settings.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithAppSettings(IDictionary<string, string> settings);
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithAppSettings(IDictionary<string,string> settings);
     }
 
     /// <summary>
-    /// A web app definition stage allowing SSL binding to be set.
+    /// A web app definition stage allowing setting if client affinity is enabled.
     /// </summary>
     /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithHostNameSslBinding<FluentT>
+    public interface IWithClientAffinityEnabled<FluentT> 
     {
         /// <summary>
-        /// Starts a definition of an SSL binding.
+        /// Specifies if client affinity is enabled.
         /// </summary>
-        /// <return>The first stage of an SSL binding definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Definition.IBlank<Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT>> DefineSslBinding();
-    }
-
-    /// <summary>
-    /// A web app definition stage allowing connection strings to be set.
-    /// </summary>
-    /// <typeparam name="FluentT">The type of the resource.</typeparam>
-    public interface IWithConnectionString<FluentT>
-    {
-        /// <summary>
-        /// Adds a connection string to the web app.
-        /// </summary>
-        /// <param name="name">The name of the connection string.</param>
-        /// <param name="value">The connection string value.</param>
-        /// <param name="type">The connection string type.</param>
+        /// <param name="enabled">True if client affinity is enabled.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithConnectionString(string name, string value, ConnectionStringType type);
-
-        /// <summary>
-        /// Adds a connection string to the web app. This connection string will be swapped
-        /// as well after a deployment slot swap.
-        /// </summary>
-        /// <param name="name">The name of the connection string.</param>
-        /// <param name="value">The connection string value.</param>
-        /// <param name="type">The connection string type.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithStickyConnectionString(string name, string value, ConnectionStringType type);
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithClientAffinityEnabled(bool enabled);
     }
 }
