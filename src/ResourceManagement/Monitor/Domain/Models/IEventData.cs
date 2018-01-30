@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// The Azure event log entries are of type EventData.
     /// </summary>
-    public interface IEventData  :
+    public interface IEventData :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Monitor.Fluent.Models.EventDataInner>
     {
         /// <summary>
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Gets the claims value.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Claims { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Claims { get; }
 
         /// <summary>
         /// Gets the eventDataId value.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Gets the properties value.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Properties { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Properties { get; }
 
         /// <summary>
         /// Gets the subscriptionId value.

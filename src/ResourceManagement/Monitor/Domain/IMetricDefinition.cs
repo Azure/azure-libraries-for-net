@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// The Azure metric definition entries are of type MetricDefinition.
     /// </summary>
-    public interface IMetricDefinition  :
+    public interface IMetricDefinition :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<MonitorManager>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.MetricDefinitionInner>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.MetricDefinition>
     {
         /// <summary>
         /// Gets the id value.
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// The stage of a Metric query allowing to specify end time filter.
     /// </summary>
-    public interface IWithMetricEndFilter 
+    public interface IWithMetricEndFilter
     {
         /// <summary>
         /// Sets the end time for Metric query filter.
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// The entirety of a Metrics query definition.
     /// </summary>
-    public interface IMetricsQueryDefinition  :
+    public interface IMetricsQueryDefinition :
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricStartTimeFilter,
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricEndFilter,
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute
@@ -99,14 +99,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// Grouping of Metric query stages.
     /// </summary>
-    public interface IMetricsQueryDefinitionStages 
+    public interface IMetricsQueryDefinitionStages
     {
     }
 
     /// <summary>
     /// The stage of a Metric query allowing to specify optional filters and execute the query.
     /// </summary>
-    public interface IWithMetricsQueryExecute 
+    public interface IWithMetricsQueryExecute
     {
         /// <summary>
         /// Gets Executes the query.
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="top">The maximum number of records to retrieve.</param>
         /// <return>The stage of optional query parameter definition and query execution.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute SelectTop(double top);
+        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute SelectTop(int top);
 
         /// <summary>
         /// Reduces the set of data collected. The syntax allowed depends on the operation. See the operation's description for details. Possible values include: 'Data', 'Metadata'.
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// The stage of a Metric query allowing to specify start time filter.
     /// </summary>
-    public interface IWithMetricStartTimeFilter 
+    public interface IWithMetricStartTimeFilter
     {
         /// <summary>
         /// Sets the start time for Metric query filter.

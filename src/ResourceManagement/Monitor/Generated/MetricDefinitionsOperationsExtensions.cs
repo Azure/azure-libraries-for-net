@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async Task<IEnumerable<MetricDefinitionInner>> ListAsync(this IMetricDefinitionsOperations operations, string resourceUri, CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task<IEnumerable<MetricDefinition>> ListAsync(this IMetricDefinitionsOperations operations, string resourceUri, CancellationToken cancellationToken = default(CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceUri, null, cancellationToken).ConfigureAwait(false))
             {

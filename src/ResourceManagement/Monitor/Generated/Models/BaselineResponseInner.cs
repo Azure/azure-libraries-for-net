@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="baseline">the baseline values for each
         /// sensitivity.</param>
         /// <param name="metadata">the baseline metadata values.</param>
-        public BaselineResponseInner(string id = default(string), string type = default(string), LocalizableStringInner name = default(LocalizableStringInner), string timespan = default(string), System.TimeSpan? interval = default(System.TimeSpan?), string aggregation = default(string), IList<System.DateTime?> timestamps = default(IList<System.DateTime?>), IList<Baseline> baseline = default(IList<Baseline>), IList<BaselineMetadataValue> metadata = default(IList<BaselineMetadataValue>))
+        public BaselineResponseInner(string id = default(string), string type = default(string), LocalizableString name = default(LocalizableString), string timespan = default(string), System.TimeSpan? interval = default(System.TimeSpan?), string aggregation = default(string), IList<System.DateTime?> timestamps = default(IList<System.DateTime?>), IList<Baseline> baseline = default(IList<Baseline>), IList<BaselineMetadataValue> metadata = default(IList<BaselineMetadataValue>))
         {
             Id = id;
             Type = type;
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// localizable string.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public LocalizableStringInner Name { get; private set; }
+        public LocalizableString Name { get; private set; }
 
         /// <summary>
         /// Gets or sets the timespan for which the data was retrieved. Its

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     using System.Collections.Generic;
     using System;
 
-    internal partial class MetricDefinitionImpl 
+    internal partial class MetricDefinitionImpl
     {
         /// <summary>
         /// Sets the $filter that is used to reduce the set of metric data returned.
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// </summary>
         /// <param name="top">The maximum number of records to retrieve.</param>
         /// <return>The stage of optional query parameter definition and query execution.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute.SelectTop(double top)
+        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute.SelectTop(int top)
         {
             return this.SelectTop(top) as Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute;
         }

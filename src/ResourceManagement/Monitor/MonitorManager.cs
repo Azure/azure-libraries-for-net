@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 return new MonitorManager(BuildRestClient(credentials), subscriptionId);
             }
         }
-        
+
         public IActivityLogs ActivityLogs
         {
             get
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 return this.activityLogs;
             }
         }
-        
+
         public IMetricDefinitions MetricDefinitions
         {
             get

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// </summary>
         /// <param name="name">the name of the metadata.</param>
         /// <param name="value">the value of the metadata.</param>
-        public BaselineMetadataValue(LocalizableStringInner name = default(LocalizableStringInner), string value = default(string))
+        public BaselineMetadataValue(LocalizableString name = default(LocalizableString), string value = default(string))
         {
             Name = name;
             Value = value;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// Gets or sets the name of the metadata.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public LocalizableStringInner Name { get; set; }
+        public LocalizableString Name { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the metadata.

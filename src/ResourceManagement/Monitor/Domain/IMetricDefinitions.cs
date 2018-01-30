@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// Entry point for Monitor Metric Definitions API.
     /// </summary>
-    public interface IMetricDefinitions  :
+    public interface IMetricDefinitions :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<MonitorManager>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinitionsOperations>
     {

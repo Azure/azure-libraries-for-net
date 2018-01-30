@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async Task<IEnumerable<LocalizableStringInner>> ListAsync(this IEventCategoriesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task<IEnumerable<LocalizableString>> ListAsync(this IEventCategoriesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {

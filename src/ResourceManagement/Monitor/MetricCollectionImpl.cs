@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     internal class MetricCollectionImpl : Wrapper<ResponseInner>, IMetricCollection
     {
         public MetricCollectionImpl(ResponseInner innerObject)
-            :base(innerObject)
+            : base(innerObject)
         {
         }
 

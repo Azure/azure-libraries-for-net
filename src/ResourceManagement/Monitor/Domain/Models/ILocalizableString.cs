@@ -7,8 +7,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// The localizable string class.
     /// </summary>
-    public interface ILocalizableString  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Monitor.Fluent.Models.LocalizableStringInner>
+    public interface ILocalizableString :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Monitor.Fluent.Models.LocalizableString>
     {
         /// <summary>
         /// Gets the localizedValue value.

@@ -15,12 +15,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uTWV0cmljRGVmaW5pdGlvbkltcGw=
     internal partial class MetricDefinitionImpl :
-        Wrapper<Microsoft.Azure.Management.Monitor.Fluent.Models.MetricDefinitionInner>,
+        Wrapper<Models.MetricDefinition>,
         IMetricDefinition,
         IMetricsQueryDefinition
     {
         private MonitorManager myManager;
-        private MetricDefinitionInner inner;
+        private MetricDefinition inner;
         private ILocalizableString name;
         private DateTime queryStartTime;
         private DateTime queryEndTime;
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         private TimeSpan? interval;
         private string odataFilter;
         private ResultType? resultType;
-        private double? top;
+        private int? top;
         private string orderBy;
         ///GENMHASH:8E798D06F036643A781434270F4F347E:6ED95D1C0D7030224A0A5556D72F0018
         public MetricDefinitionImpl EndsBefore(DateTime endTime)
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         ///GENMHASH:6E40675090A7C5A5E2DC401C96A422D5:887E87D6089467ED74835057139438F0
         public IMetricCollection Execute()
         {
-            return Extensions.Synchronize( () => this.ExecuteAsync());
+            return Extensions.Synchronize(() => this.ExecuteAsync());
         }
 
         ///GENMHASH:532A125F6308BA5B895A3303D68F428F:35FD1AE22645CD7DE5424859B658C564
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         }
 
         ///GENMHASH:F886A4914B553C095A7AE17389D27E77:FA5F578A5F3D9A0CDDD31A0A42192F9F
-        internal MetricDefinitionImpl(MetricDefinitionInner innerModel, MonitorManager monitorManager)
+        internal MetricDefinitionImpl(MetricDefinition innerModel, MonitorManager monitorManager)
             : base(innerModel)
         {
             this.myManager = monitorManager;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         }
 
         ///GENMHASH:75A38F9E6FBA8C676A2F326679329965:910A51D04DA74674472E2E6CDF8345AE
-        public MetricDefinitionImpl SelectTop(double top)
+        public MetricDefinitionImpl SelectTop(int top)
         {
             this.top = top;
             return this;
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         ///GENMHASH:98D67B93923AC46ECFE338C62748BCCB:75D0179020FBF5E8CFE92E1F66EDBAF7
         public Unit Unit()
         {
-            return (this.inner.Unit.HasValue)? this.inner.Unit.Value : Models.Unit.Unspecified;
+            return (this.inner.Unit.HasValue) ? this.inner.Unit.Value : Models.Unit.Unspecified;
         }
 
         ///GENMHASH:FE2BD4F5F53442BA2A87A646EE3AE424:3853D164417C81C32FF41FDBF3091A69
@@ -135,18 +135,19 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         }
 
         ///GENMHASH:28267C95BE469468FC3C62D4CF4CCA7C:A9F06CDED41BB042AAC8A6EE0459669E
-        public async Task<Microsoft.Azure.Management.Monitor.Fluent.Models.IMetricCollection> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IMetricCollection> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            // TODO: add this.top, and this.orderBy OData constructs to have parity with Java
-            return new MetricCollectionImpl( await this.Manager().Inner.Metrics.ListAsync(
+            return new MetricCollectionImpl(await this.Manager().Inner.Metrics.ListAsync(
                 this.inner.ResourceId,
-                this.odataFilter,
                 string.Format("{0}/{1}",
                     this.queryStartTime.ToString("o"),
                     this.queryEndTime.ToString("o")),
                 this.interval,
                 this.inner.Name?.Value,
                 this.aggreagation,
+                this.top,
+                this.orderBy,
+                this.odataFilter,
                 this.resultType,
                 cancellationToken));
         }

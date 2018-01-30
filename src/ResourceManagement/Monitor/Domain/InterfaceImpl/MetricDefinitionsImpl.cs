@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class MetricDefinitionsImpl 
+    internal partial class MetricDefinitionsImpl
     {
         /// <summary>
         /// Lists Metric Definitions for a given resource.

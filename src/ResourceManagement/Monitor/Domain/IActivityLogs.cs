@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// The entirety of a Activity Logs query definition.
     /// </summary>
-    public interface IActivityLogsQueryDefinition  :
+    public interface IActivityLogsQueryDefinition :
         Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataStartTimeFilter,
         Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataEndFilter,
         Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataFieldFilter,
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// Entry point for Monitor Activity logs API.
     /// </summary>
-    public interface IActivityLogs  :
+    public interface IActivityLogs :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<MonitorManager>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<IActivityLogsOperations>
     {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// The stage of the Activity log filtering by type and query execution.
     /// </summary>
-    public interface IWithActivityLogsSelectFilter  :
+    public interface IWithActivityLogsSelectFilter :
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute
     {
         /// <summary>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// The stage of the Activity log query execution.
     /// </summary>
-    public interface IWithActivityLogsQueryExecute 
+    public interface IWithActivityLogsQueryExecute
     {
         /// <summary>
         /// Gets Executes the query.
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// The stage of a Activity Log query allowing to specify start time filter.
     /// </summary>
-    public interface IWithEventDataStartTimeFilter 
+    public interface IWithEventDataStartTimeFilter
     {
         /// <summary>
         /// Sets the start time for Activity Log query filter.
@@ -110,14 +110,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// Grouping of Activity log query stages.
     /// </summary>
-    public interface IActivityLogsQueryDefinitionStages 
+    public interface IActivityLogsQueryDefinitionStages
     {
     }
 
     /// <summary>
     /// The stage of a Activity Log query allowing to specify data fields in the server response.
     /// </summary>
-    public interface IWithEventDataFieldFilter 
+    public interface IWithEventDataFieldFilter
     {
         /// <summary>
         /// Selects data fields that will be populated in the server response.
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// The stage of a Activity Log query allowing to specify end time filter.
     /// </summary>
-    public interface IWithEventDataEndFilter 
+    public interface IWithEventDataEndFilter
     {
         /// <summary>
         /// Sets the end time for Activity Log query filter.

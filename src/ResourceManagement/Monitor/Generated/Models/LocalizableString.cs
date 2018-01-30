@@ -15,12 +15,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// The localizable string class.
     /// </summary>
-    public partial class LocalizableStringInner
+    public partial class LocalizableString
     {
         /// <summary>
         /// Initializes a new instance of the LocalizableString class.
         /// </summary>
-        public LocalizableStringInner()
+        public LocalizableString()
         {
             CustomInit();
         }
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// </summary>
         /// <param name="value">the invariant value.</param>
         /// <param name="localizedValue">the locale specific value.</param>
-        public LocalizableStringInner(string value, string localizedValue = default(string))
+        public LocalizableString(string value, string localizedValue = default(string))
         {
             Value = value;
             LocalizedValue = localizedValue;

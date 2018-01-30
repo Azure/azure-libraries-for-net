@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// The MetricCollection representing wrapper over ResponseInner type.
     /// </summary>
-    public interface IMetricCollection  :
+    public interface IMetricCollection :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Monitor.Fluent.Models.ResponseInner>
     {
         /// <summary>

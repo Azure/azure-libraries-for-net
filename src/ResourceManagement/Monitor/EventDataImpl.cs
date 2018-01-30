@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return (Dictionary<string, string>) this.Inner.Claims;
+                return (Dictionary<string, string>)this.Inner.Claims;
             }
         }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.Description;
             }
         }
-        
+
         public string Id
         {
             get
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.Id;
             }
         }
-        
+
         public string EventDataId
         {
             get
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.EventDataId;
             }
         }
-        
+
         public string CorrelationId
         {
             get
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.CorrelationId;
             }
         }
-        
+
         public ILocalizableString EventName
         {
             get
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.eventName;
             }
         }
-        
+
         public ILocalizableString Category
         {
             get
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.category;
             }
         }
-        
+
         public HttpRequestInfo HttpRequest
         {
             get
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.HttpRequest;
             }
         }
-        
+
         public EventLevel Level
         {
             get
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.Level;
             }
         }
-        
+
         public string ResourceGroupName
         {
             get
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.ResourceGroupName;
             }
         }
-        
+
         public ILocalizableString ResourceProviderName
         {
             get
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.resourceProviderName;
             }
         }
-        
+
         public string ResourceId
         {
             get
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.ResourceId;
             }
         }
-        
+
         public ILocalizableString ResourceType
         {
             get
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.resourceType;
             }
         }
-        
+
         public string OperationId
         {
             get
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.OperationId;
             }
         }
-        
+
         public ILocalizableString OperationName
         {
             get
@@ -167,15 +167,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.operationName;
             }
         }
-        
+
         public IReadOnlyDictionary<string, string> Properties
         {
             get
             {
-                return (Dictionary<string, string>) this.Inner.Properties;
+                return (Dictionary<string, string>)this.Inner.Properties;
             }
         }
-        
+
         public ILocalizableString Status
         {
             get
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.status;
             }
         }
-        
+
         public ILocalizableString SubStatus
         {
             get
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.SubmissionTimestamp;
             }
         }
-        
+
         public string SubscriptionId
         {
             get
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.SubscriptionId;
             }
         }
-        
+
         public string TenantId
         {
             get

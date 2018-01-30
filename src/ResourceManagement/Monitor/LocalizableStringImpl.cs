@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
-    internal class LocalizableStringImpl : Wrapper<LocalizableStringInner>, ILocalizableString
+    internal class LocalizableStringImpl : Wrapper<LocalizableString>, ILocalizableString
     {
-        public LocalizableStringImpl(LocalizableStringInner innerObject)
+        public LocalizableStringImpl(LocalizableString innerObject)
             : base(innerObject)
         {
         }
-        
+
         public string Value
         {
             get
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 return this.Inner.Value;
             }
         }
-        
+
         public string LocalizedValue
         {
             get

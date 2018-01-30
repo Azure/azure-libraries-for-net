@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System;
 
-    internal partial class ActivityLogsImpl 
+    internal partial class ActivityLogsImpl
     {
         /// <summary>
         /// Gets Executes the query.
