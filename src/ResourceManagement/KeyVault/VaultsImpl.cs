@@ -40,8 +40,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             var results = innerResources
                 .Select(r => ResourceId.FromString(r.Id))
                 .Select(async resourceId => await GetInnerByGroupAsync(resourceId.ResourceGroupName, resourceId.Name, cancellationToken))
+                .ToList()
                 .Select(t => t.Result);
-            
+
             return new VaultInnerPage(results, innerResources.NextPageLink);
         }
 
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             var results = innerResources
                 .Select(r => ResourceId.FromString(r.Id))
                 .Select(async resourceId => await GetInnerByGroupAsync(resourceId.ResourceGroupName, resourceId.Name, cancellationToken))
+                .ToList()
                 .Select(t => t.Result);
 
             return new VaultInnerPage(results, innerResources.NextPageLink);
