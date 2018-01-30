@@ -6,6 +6,8 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
     using Microsoft.Azure;
@@ -16,9 +18,9 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     /// <summary>
     /// Defines values for VpnClientProtocol.
     /// </summary>
-    public static class VpnClientProtocol
+    public class VpnClientProtocol : ExpandableStringEnum<VpnClientProtocol>
     {
-        public const string IkeV2 = "IkeV2";
-        public const string SSTP = "SSTP";
+        public static readonly VpnClientProtocol IkeV2 = Parse("IkeV2");
+        public static readonly VpnClientProtocol SSTP = Parse("SSTP");
     }
 }
