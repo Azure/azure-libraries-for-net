@@ -29,6 +29,7 @@ using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.Locks.Fluent;
 using Microsoft.Azure.Management.Msi.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent;
+using Microsoft.Azure.Management.Monitor.Fluent;
 
 namespace Microsoft.Azure.Management.Fluent
 {
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Management.Fluent
         private IAuthorizationManager authorizationManager;
         private IMsiManager msiManager;
         private IBatchAIManager batchAIManager;
-
+        private IMonitorManager monitorManager;
         #endregion Service Managers
 
         #region Getters
@@ -457,6 +458,22 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IActivityLogs ActivityLogs
+        {
+            get
+            {
+                return monitorManager.ActivityLogs;
+            }
+        }
+
+        public IMetricDefinitions MetricDefinitions
+        {
+            get
+            {
+                return monitorManager.MetricDefinitions;
+            }
+        }
+
         #endregion Getters
 
         #region ctrs
@@ -484,6 +501,7 @@ namespace Microsoft.Azure.Management.Fluent
             authorizationManager = AuthorizationManager.Authenticate(restClient, subscriptionId);
             msiManager = MsiManager.Authenticate(restClient, subscriptionId);
             batchAIManager = BatchAIManager.Authenticate(restClient, subscriptionId);
+            monitorManager = MonitorManager.Authenticate(restClient, subscriptionId);
 
             SubscriptionId = subscriptionId;
             this.authenticated = authenticated;
@@ -764,10 +782,21 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Batch AI clusters management.
         /// </summary>
         IBatchAIClusters BatchAIClusters { get; }
+
         /// <summary>
         /// Entry point to Batch AI file servers management.
         /// </summary>
         IBatchAIFileServers BatchAIFileServers { get; }
+
+        /// <summary>
+        /// Entry point to listing activity log events in Azure.
+        /// </summary>
+        IActivityLogs ActivityLogs { get; }
+
+        /// <summary>
+        /// Entry point to listing metric definitions in Azure
+        /// </summary>
+        IMetricDefinitions MetricDefinitions { get; }
     }
 
     public interface IAzure : IAzureBeta

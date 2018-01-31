@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// 'Error', 'Warning', 'Informational', 'Verbose'
         /// </summary>
         [JsonProperty(PropertyName = "level")]
-        public EventLevel Level { get; set; }
+        public EventLevel? Level { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group name of the impacted resource.
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// ISO 8601 format.
         /// </summary>
         [JsonProperty(PropertyName = "eventTimestamp")]
-        public System.DateTime EventTimestamp { get; set; }
+        public System.DateTime? EventTimestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the timestamp of when the event became available for
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// submitted to the Azure logging infrastructure.
         /// </summary>
         [JsonProperty(PropertyName = "submissionTimestamp")]
-        public System.DateTime SubmissionTimestamp { get; set; }
+        public System.DateTime? SubmissionTimestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure subscription Id usually a GUID.
