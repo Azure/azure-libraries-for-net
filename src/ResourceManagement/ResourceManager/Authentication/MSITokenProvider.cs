@@ -18,13 +18,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     /// </summary>
     public class MSITokenProvider : ITokenProvider, IBeta
     {
-        private readonly string resource;
+        private string resource;
         private readonly MSILoginInformation msiLoginInformation;
 
         /// <summary>
         /// Creates MSITokenProvider.
         /// </summary>
-        /// <param name="resource">the resource to access using the MSI token</param>
         /// <param name="msiLoginInformation">describes the managed service identity configuration</param>
         public MSITokenProvider(string resource, MSILoginInformation msiLoginInformation)
         {
@@ -34,6 +33,18 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         }
 
         public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
+        {
+            if (msiLoginInformation.ResourceType == MSIResourceType.VirtualMachine)
+            {
+                return await GetAuthenticationHeaderForVirtualMachineAsync(resource, cancellationToken);
+            }
+            else
+            {
+                return await GetAuthenticationHeaderForAppServiceAsync(resource, cancellationToken);
+            }
+        }
+
+        private async Task<AuthenticationHeaderValue> GetAuthenticationHeaderForVirtualMachineAsync(string resource, CancellationToken cancellationToken = default(CancellationToken))
         {
             int port = msiLoginInformation.Port == null ? 50342 : msiLoginInformation.Port.Value;
             HttpRequestMessage msiRequest = new HttpRequestMessage(HttpMethod.Post, $"http://localhost:{port}/oauth2/token");
@@ -72,6 +83,45 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 throw MSILoginException.AcessTokenNotFound(content);
             }
             return new AuthenticationHeaderValue(tokenType, accessToken);
+        }
+
+        private async Task<AuthenticationHeaderValue> GetAuthenticationHeaderForAppServiceAsync(string resource, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var endpoint = Environment.GetEnvironmentVariable("MSI_ENDPOINT") ?? throw new ArgumentNullException("MSI_ENDPOINT");
+            var secret = Environment.GetEnvironmentVariable("MSI_SECRET") ?? throw new ArgumentNullException("MSI_SECRET");
+            HttpRequestMessage msiRequest = new HttpRequestMessage(HttpMethod.Get, $"{endpoint}?resource={resource}&api-version=2017-09-01");
+            msiRequest.Headers.Add("Metadata", "true");
+            msiRequest.Headers.Add("Secret", secret);
+
+            var msiResponse = await (new HttpClient()).SendAsync(msiRequest, cancellationToken);
+            string content = await msiResponse.Content.ReadAsStringAsync();
+            dynamic loginInfo = JsonConvert.DeserializeObject(content);
+            string tokenType = loginInfo.token_type;
+            if (tokenType == null)
+            {
+                throw MSILoginException.TokenTypeNotFound(content);
+            }
+            string accessToken = loginInfo.access_token;
+            if (accessToken == null)
+            {
+                throw MSILoginException.AcessTokenNotFound(content);
+            }
+            return new AuthenticationHeaderValue(tokenType, accessToken);
+        }
+    }
+
+    public class MSITokenProviderFactory: IBeta
+    {
+        private readonly MSILoginInformation msiLoginInformation;
+
+        public MSITokenProviderFactory(MSILoginInformation msiLoginInformation)
+        {
+            this.msiLoginInformation = msiLoginInformation ?? throw new ArgumentNullException("msiLoginInformation");
+        }
+
+        public MSITokenProvider Create(string resource)
+        {
+            return new MSITokenProvider(resource, msiLoginInformation);
         }
     }
 }
