@@ -101,19 +101,21 @@ namespace Fluent.Tests.ContainerService
      * @param envSecondaryServicePrincipal an Azure Container Registry
      * @return a service principal client ID
      */
-        private static string GetSecondaryServicePrincipalClientID(string envSecondaryServicePrincipal)
+        private static string GetSecondaryServicePrincipalClientID(string envServicePrincipal)
         {
-            string clientId = "";
-            File.ReadAllLines(envSecondaryServicePrincipal).All(line =>
+            string clientId = "spId";
+            if (!String.IsNullOrEmpty(envServicePrincipal))
             {
-                var keyVal = line.Trim().Split(new char[] { '=' }, 2);
-                if (keyVal.Length < 2)
-                    return true; // Ignore lines that don't look like $$$=$$$
+                File.ReadAllLines(envServicePrincipal).All(line =>
+                {
+                    var keyVal = line.Trim().Split(new char[] { '=' }, 2);
+                    if (keyVal.Length < 2)
+                        return true; // Ignore lines that don't look like $$$=$$$
                 if (keyVal[0].Equals("client"))
-                    clientId = keyVal[1];
-                return true;
-            });
-
+                        clientId = keyVal[1];
+                    return true;
+                });
+            }
             return clientId;
         }
 
@@ -122,19 +124,21 @@ namespace Fluent.Tests.ContainerService
          * @param envSecondaryServicePrincipal an Azure Container Registry
          * @return a service principal secret
          */
-        private static string GetSecondaryServicePrincipalSecret(string envSecondaryServicePrincipal)
+        private static string GetSecondaryServicePrincipalSecret(string envServicePrincipalSecret)
         {
-            string secret = "";
-            File.ReadAllLines(envSecondaryServicePrincipal).All(line =>
+            string secret = "spSecret";
+            if (!String.IsNullOrEmpty(envServicePrincipalSecret))
             {
-                var keyVal = line.Trim().Split(new char[] { '=' }, 2);
-                if (keyVal.Length < 2)
-                    return true; // Ignore lines that don't look like $$$=$$$
-                if (keyVal[0].Equals("key"))
-                    secret = keyVal[1];
-                return true;
-            });
-
+                File.ReadAllLines(envServicePrincipalSecret).All(line =>
+                {
+                    var keyVal = line.Trim().Split(new char[] { '=' }, 2);
+                    if (keyVal.Length < 2)
+                        return true; // Ignore lines that don't look like $$$=$$$
+                    if (keyVal[0].Equals("key"))
+                        secret = keyVal[1];
+                    return true;
+                });
+                }
             return secret;
         }
     }
