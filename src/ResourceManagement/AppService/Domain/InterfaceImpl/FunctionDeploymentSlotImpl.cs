@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.Update;
     using Microsoft.Azure.Management.AppService.Fluent.Models;
 
-    internal partial class FunctionDeploymentSlotImpl
+    internal partial class FunctionDeploymentSlotImpl 
     {
         /// <summary>
         /// Copies the site configurations from the web app the function deployment slot belongs to.

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.Models;
     using System.Collections.Generic;
 
-    internal partial class DeploymentSlotBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT, ParentT, ParentImplT, ParentWithCreateT, ParentDefAfterRegionT, ParentDefAfterGroupT, ParentUpdateT>
+    internal partial class DeploymentSlotBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT, ParentT, ParentImplT, ParentWithCreateT, ParentDefAfterRegionT, ParentDefAfterGroupT, ParentUpdateT> 
     {
     }
 }

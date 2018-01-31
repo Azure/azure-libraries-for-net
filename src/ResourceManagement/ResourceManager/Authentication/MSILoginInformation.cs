@@ -10,6 +10,19 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     /// </summary>
     public class MSILoginInformation : IBeta
     {
+        public MSILoginInformation(MSIResourceType resourceType)
+        {
+            this.ResourceType = resourceType;
+        }
+
+        /// <summary>
+        /// Get or set the type of the resource for MSI authentication.
+        /// </summary>
+        public MSIResourceType ResourceType
+        {
+            get; private set;
+        }
+
         /// <summary>
         /// Get or Set the MSI extension port to retrieve access token from.
         /// </summary>
@@ -41,5 +54,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         {
             get; set;
         }
+    }
+
+    /// <summary>
+    /// List of supported resources for MSI authentication.
+    /// </summary>
+    public enum MSIResourceType
+    {
+        VirtualMachine = 0,
+        AppService = 1
     }
 }

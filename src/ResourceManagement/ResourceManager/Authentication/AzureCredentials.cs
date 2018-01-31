@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     {
         private UserLoginInformation userLoginInformation;
         private ServicePrincipalLoginInformation servicePrincipalLoginInformation;
-        private MSITokenProvider msiTokenProvider;
+        private MSITokenProviderFactory msiTokenProviderFactory;
 
         private IDictionary<Uri, ServiceClientCredentials> credentialsCache;
 #if PORTABLE
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         public AzureCredentials(MSILoginInformation msiLoginInformation, AzureEnvironment environment)
             : this(tenantId: null, environment: environment)
         {
-            this.msiTokenProvider = new MSITokenProvider(environment.ResourceManagerEndpoint, msiLoginInformation);
+            this.msiTokenProviderFactory = new MSITokenProviderFactory(msiLoginInformation);
         }
 
         private AzureCredentials(string tenantId, AzureEnvironment environment)
@@ -88,12 +88,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 
         public async override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            if (this.msiTokenProvider != null)
-            {
-                request.Headers.Authorization = await this.msiTokenProvider.GetAuthenticationHeaderAsync(cancellationToken);
-                return;
-            }
-
             var adSettings = new ActiveDirectoryServiceSettings
             {
                 AuthenticationEndpoint = new Uri(Environment.AuthenticationEndpoint),
@@ -143,6 +137,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                         deviceCredentialInformation.ClientId, TenantId, adSettings, TokenCache.DefaultShared, deviceCredentialInformation.DeviceCodeFlowHandler);
                 }
 #endif
+                else if (msiTokenProviderFactory != null)
+                {
+                    credentialsCache[adSettings.TokenAudience] = new TokenCredentials(this.msiTokenProviderFactory.Create(adSettings.TokenAudience.GetComponents(UriComponents.SchemeAndServer, UriFormat.UriEscaped)));
+                }
             }
             await credentialsCache[adSettings.TokenAudience].ProcessHttpRequestAsync(request, cancellationToken);
         }

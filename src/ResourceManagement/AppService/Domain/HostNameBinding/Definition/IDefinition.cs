@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definitio
     /// The stage of a hostname binding definition allowing domain to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithDomain<ParentT>
+    public interface IWithDomain<ParentT> 
     {
         /// <summary>
         /// Binds to a 3rd party domain.
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definitio
     /// can be attached to the parent web app definition using  WithAttach.attach().
     /// </summary>
     /// <typeparam name="ParentT">The return type of  WithAttach.attach().</typeparam>
-    public interface IWithAttach<ParentT> :
+    public interface IWithAttach<ParentT>  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>
     {
     }
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definitio
     /// The stage of a hostname binding definition allowing sub-domain to be specified.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithSubDomain<ParentT>
+    public interface IWithSubDomain<ParentT> 
     {
         /// <summary>
         /// Specifies the sub-domain to bind to.
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definitio
     /// The entirety of a hostname binding definition.
     /// </summary>
     /// <typeparam name="ParentT">The return type of the final  Attachable.attach().</typeparam>
-    public interface IDefinition<ParentT> :
+    public interface IDefinition<ParentT>  :
         Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definition.IBlank<ParentT>,
         Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definition.IWithDomain<ParentT>,
         Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definition.IWithSubDomain<ParentT>,
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definitio
     /// The first stage of a host name binding definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT> :
+    public interface IBlank<ParentT>  :
         Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definition.IWithDomain<ParentT>
     {
     }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definitio
     /// The stage of a hostname binding definition allowing DNS record type to be set.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithHostNameDnsRecordType<ParentT>
+    public interface IWithHostNameDnsRecordType<ParentT> 
     {
         /// <summary>
         /// Specifies the DNS record type.

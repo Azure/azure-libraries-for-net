@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// </summary>
     /// <typeparam name="Fluent">The fluent interface of the parent web app.</typeparam>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmFwcHNlcnZpY2UuaW1wbGVtZW50YXRpb24uV2ViQXBwU291cmNlQ29udHJvbEltcGw=
-    internal partial class WebAppSourceControlImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> :
+    internal partial class WebAppSourceControlImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>  :
         IndexableWrapper<Microsoft.Azure.Management.AppService.Fluent.Models.SiteSourceControlInner>,
         IWebAppSourceControl,
         WebAppSourceControl.Definition.IDefinition<WebAppBase.Definition.IWithCreate<FluentT>>,
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         internal WebAppSourceControlImpl(
             SiteSourceControlInner inner,
             WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> parent)
-            : base(inner)
+            : base (inner)
         {
             this.parent = parent;
         }
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 return null;
             }
-            return (bool)Inner.IsMercurial ? Fluent.RepositoryType.Mercurial : Fluent.RepositoryType.Git;
+            return (bool) Inner.IsMercurial ? Fluent.RepositoryType.Mercurial : Fluent.RepositoryType.Git;
         }
 
         ///GENMHASH:AF58AEB1DD43D38B7FEDF266F4F40886:63F15AB00FF6315055DD4FFBCA6BE2EC

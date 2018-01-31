@@ -10,9 +10,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Function App deployment slot.
     /// </summary>
-    public interface IFunctionDeploymentSlot :
+    public interface IFunctionDeploymentSlot  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IIndependentChildResource<Microsoft.Azure.Management.AppService.Fluent.IAppServiceManager, Models.SiteInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IIndependentChildResource<Microsoft.Azure.Management.AppService.Fluent.IAppServiceManager,Models.SiteInner>,
         Microsoft.Azure.Management.AppService.Fluent.IWebAppBase,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.AppService.Fluent.IFunctionDeploymentSlot>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<FunctionDeploymentSlot.Update.IUpdate>,

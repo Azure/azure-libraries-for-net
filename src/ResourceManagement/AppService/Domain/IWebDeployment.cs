@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// A client-side representation allowing user to deploy to a web app through web deployment (MSDeploy).
     /// </summary>
-    public interface IWebDeployment :
+    public interface IWebDeployment  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IExecutable<Microsoft.Azure.Management.AppService.Fluent.IWebDeployment>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.AppService.Fluent.IWebAppBase>

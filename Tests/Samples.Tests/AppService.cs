@@ -187,5 +187,23 @@ namespace Samples.Tests
                 this.GetType().FullName,
                 ManageFunctionAppWithDomainSsl.Program.RunSample);
         }
+
+        [Fact(Skip = "Must run with AZURE_TEST_MODE set to 'None'")]
+        [Trait("Samples", "AppService")]
+        public void ManageFunctionAppLogsTest()
+        {
+            RunSampleAsTest(
+                this.GetType().FullName,
+                ManageFunctionAppLogs.Program.RunSample);
+        }
+
+        [Fact(Skip = "Waiting for 1.6 release to work")]
+        [Trait("Samples", "AppService")]
+        public void ManageWebAppCosmosDbByMsiTest()
+        {
+            RunSampleAsTest(
+                this.GetType().FullName,
+                ManageWebAppCosmosDbByMsi.Program.RunSample);
+        }
     }
 }

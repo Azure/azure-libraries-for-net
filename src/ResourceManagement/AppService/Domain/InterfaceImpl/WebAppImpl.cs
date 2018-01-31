@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
-    internal partial class WebAppImpl
+    internal partial class WebAppImpl 
     {
         /// <summary>
         /// Uses an existing app service plan for the web app.

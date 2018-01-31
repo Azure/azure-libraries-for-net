@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// Entry point for Azure function app deployment slot management API.
     /// </summary>
-    public interface IFunctionDeploymentSlots :
+    public interface IFunctionDeploymentSlots  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<FunctionDeploymentSlot.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.AppService.Fluent.IFunctionDeploymentSlot>,

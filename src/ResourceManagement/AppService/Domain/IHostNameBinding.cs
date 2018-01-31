@@ -8,10 +8,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// An immutable representation of a host name binding.
     /// </summary>
-    public interface IHostNameBinding :
+    public interface IHostNameBinding  :
         IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.HostNameBindingInner>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding, Microsoft.Azure.Management.AppService.Fluent.IWebAppBase>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.AppService.Fluent.IHostNameBinding,Microsoft.Azure.Management.AppService.Fluent.IWebAppBase>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource
     {
         /// <summary>

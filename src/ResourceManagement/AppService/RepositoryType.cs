@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <summary>
     /// The type of a repository.
     /// </summary>
-    public enum RepositoryType
+    public enum RepositoryType 
     {
         Git, Mercurial
     }

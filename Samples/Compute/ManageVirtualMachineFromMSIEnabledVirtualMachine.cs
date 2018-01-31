@@ -41,7 +41,7 @@ namespace ManageVirtualMachineFromMSIEnabledVirtualMachine
             //=============================================================
             // MSI Authenticate
 
-            AzureCredentials msiCredentails = new AzureCredentials(new MSILoginInformation
+            AzureCredentials msiCredentails = new AzureCredentials(new MSILoginInformation(MSIResourceType.VirtualMachine)
             {
                 UserAssignedIdentityClientId = clientId
             }, AzureEnvironment.AzureGlobalCloud);

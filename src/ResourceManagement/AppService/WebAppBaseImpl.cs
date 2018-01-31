@@ -15,6 +15,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Text.RegularExpressions;
     using System.Collections.ObjectModel;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using System.IO;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// The implementation for WebAppBase.
@@ -61,6 +64,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private bool sourceControlToDelete;
         private WebAppAuthenticationImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> authentication;
         private bool authenticationToUpdate;
+        private SiteLogsConfigInner siteLogsConfig;
+        private Func<SiteInner, CancellationToken, Task<IRoleAssignment>> msiRoleHandler;
 
         internal SiteConfigResourceInner SiteConfig
         {
@@ -157,6 +162,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                     hostNameSslStateMap[hostNameSslState.Name] = hostNameSslState;
                 }
             }
+            siteLogsConfig = null;
+            msiRoleHandler = null;
             return this as FluentT;
         }
 
@@ -373,12 +380,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return (FluentImplT)this;
         }
 
-        ///GENMHASH:42336CC6A1724D1EDE76A585C5A018A2:51AAAD58339A59C1CD8D5EBB75F8FBA7
-        public bool IsPremiumApp()
-        {
-            return Inner.PremiumAppDeployed ?? false;
-        }
-
         ///GENMHASH:7B9E90726FF47A7DBBBA2ECDEF2A3EA5:9EDEDE0F4F481094C0815FBE89B5A385
         public FluentImplT WithRemoteDebuggingDisabled()
         {
@@ -544,10 +545,27 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 await CreateOrUpdateSourceControlAsync(sourceControl.Inner, cancellationToken);
             }
 
-            // authentication
+            // Authentication
             if (authenticationToUpdate)
             {
                 await UpdateAuthenticationAsync(authentication.Inner, cancellationToken);
+            }
+
+            // Log configuration
+            if (siteLogsConfig != null)
+            {
+                await UpdateDiagnosticLogsConfigAsync(siteLogsConfig, cancellationToken);
+                siteLogsConfig = null;
+            }
+
+            // MSI Roles
+            if (msiRoleHandler != null)
+            {
+                if (site.Identity == null || site.Identity.PrincipalId == null)
+                {
+                    throw new CloudException("A managed service identity was failed to be created for this web app.");
+                }
+                await msiRoleHandler.Invoke(site, cancellationToken);
             }
 
             // convert from Inner
@@ -677,12 +695,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return (UsageState)Inner.UsageState;
         }
 
-        ///GENMHASH:6D530E5D2820D0FC31597444F5546CB5:44CE23E03A8BF27E78EB1F1D7D03D969
-        public string GatewaySiteName()
-        {
-            return Inner.GatewaySiteName;
-        }
-
         ///GENMHASH:19DC73910D23C00F8667540D0CBD0AEC:E23AFA4DD63099E4C406231C758F91E4
         public JavaVersion JavaVersion()
         {
@@ -740,12 +752,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 return null;
             }
             return this.SiteConfig.DefaultDocuments;
-        }
-
-        ///GENMHASH:48A4E53CFF08718D61958E4C92100018:A9C012D7912C454FA087C8D68B4B602F
-        public string MicroService()
-        {
-            return Inner.MicroService;
         }
 
         ///GENMHASH:8B6374B8DE9FB105A8A4FE1AC98E0A32:59ABE89788E5ADCDFB7771D2A4549653
@@ -1273,7 +1279,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:F644770BE853EE30024DEE4BE9D96441:049C263D531DF9C62F1DF917EA2491D1
         public OperatingSystem OperatingSystem()
         {
-            if (Inner.Kind.ToLower().Contains("linux"))
+            if (Inner.Kind != null && Inner.Kind.ToLower().Contains("linux"))
             {
                 return Fluent.OperatingSystem.Linux;
             }
@@ -1307,6 +1313,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         ///GENMHASH:21D1748197F7ECC1EFA9660DF579B414:27E486AB74A10242FF421C0798DDC450
         internal abstract Task<Models.SiteAuthSettingsInner> UpdateAuthenticationAsync(SiteAuthSettingsInner inner, CancellationToken cancellationToken = default(CancellationToken));
+        public abstract Task UpdateDiagnosticLogsConfigAsync(SiteLogsConfigInner siteLogConfig, CancellationToken cancellationToken = default(CancellationToken));
 
         ///GENMHASH:C17839133E66320367CE2F5EF66B54F4:6C685EA1512F1D3FDFEFDFE594F83AA2
         public PlatformArchitecture PlatformArchitecture()
@@ -1346,5 +1353,151 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             return new WebDeploymentImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>(this);
         }
+
+        public FluentImplT WithContainerLoggingEnabled()
+        {
+            return WithContainerLoggingEnabled(35, 0);
+        }
+
+        public FluentImplT WithContainerLoggingEnabled(int quotaInMB, int retentionDays)
+        {
+            siteLogsConfig = new SiteLogsConfigInner
+            {
+                HttpLogs = new HttpLogsConfig
+                {
+                    FileSystem = new FileSystemHttpLogsConfig
+                    {
+                        Enabled = true,
+                        RetentionInDays = retentionDays,
+                        RetentionInMb = quotaInMB
+                    }
+                }
+            };
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithContainerLoggingDisabled()
+        {
+            siteLogsConfig = new SiteLogsConfigInner
+            {
+                HttpLogs = new HttpLogsConfig
+                {
+                    FileSystem = new FileSystemHttpLogsConfig
+                    {
+                        Enabled = false
+                    }
+                }
+            };
+            return (FluentImplT)this;
+        }
+
+        public string SystemAssignedManagedServiceIdentityTenantId()
+        {
+            if (Inner.Identity == null)
+            {
+                return null;
+            }
+            return Inner.Identity.TenantId;
+        }
+
+        public string SystemAssignedManagedServiceIdentityPrincipalId()
+        {
+            if (Inner.Identity == null)
+            {
+                return null;
+            }
+            return Inner.Identity.PrincipalId;
+        }
+
+        public FluentImplT WithSystemAssignedManagedServiceIdentity()
+        {
+            Inner.Identity = new ManagedServiceIdentity
+            {
+                Type = "SystemAssigned"
+            };
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
+        {
+            if (Inner.Identity == null || Inner.Identity.Type == null)
+            {
+                throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
+            }
+
+            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
+                .Define(SdkContext.RandomGuid())
+                .ForObjectId(site.Identity.PrincipalId)
+                .WithBuiltInRole(role)
+                .WithScope(resourceId)
+                .CreateAsync(c);
+
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
+        {
+            if (Inner.Identity == null || Inner.Identity.Type == null)
+            {
+                throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
+            }
+
+            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
+                .Define(SdkContext.RandomGuid())
+                .ForObjectId(site.Identity.PrincipalId)
+                .WithBuiltInRole(role)
+                .WithScope(ResourceGroupId(site.Id))
+                .CreateAsync(c);
+
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
+        {
+            if (Inner.Identity == null || Inner.Identity.Type == null)
+            {
+                throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
+            }
+
+            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
+                .Define(SdkContext.RandomGuid())
+                .ForObjectId(site.Identity.PrincipalId)
+                .WithRoleDefinition(roleDefinitionId)
+                .WithScope(resourceId)
+                .CreateAsync(c);
+
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
+        {
+            if (Inner.Identity == null || Inner.Identity.Type == null)
+            {
+                throw new ArgumentException("The web app must be assigned with Managed Service Identity.");
+            }
+
+            msiRoleHandler = (site, c) => Manager.GraphRbacManager.RoleAssignments
+                .Define(SdkContext.RandomGuid())
+                .ForObjectId(site.Identity.PrincipalId)
+                .WithRoleDefinition(roleDefinitionId)
+                .WithScope(ResourceGroupId(site.Id))
+                .CreateAsync(c);
+
+            return (FluentImplT)this;
+        }
+
+
+        private static String ResourceGroupId(String id)
+        {
+            ResourceId resourceId = ResourceId.FromString(id);
+            return string.Format("/subscriptions/{0}/resourceGroups/{1}",
+                resourceId.SubscriptionId,
+                resourceId.ResourceGroupName);
+        }
+
+        public abstract Stream GetContainerLogsZip();
+        public abstract Stream GetContainerLogs();
+        public abstract Task<Stream> GetContainerLogsAsync(CancellationToken cancellationToken = default(CancellationToken));
+        public abstract Task<Stream> GetContainerLogsZipAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

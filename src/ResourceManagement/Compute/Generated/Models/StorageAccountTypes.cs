@@ -22,9 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         [EnumMember(Value = "Standard_LRS")]
         StandardLRS,
         [EnumMember(Value = "Premium_LRS")]
-        PremiumLRS,
-        [EnumMember(Value = "StandardSSD_LRS")]
-        StandardSSDLRS
+        PremiumLRS
     }
     internal static class StorageAccountTypesEnumExtension
     {

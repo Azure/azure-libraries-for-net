@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         ///GENMHASH:7D4A70D4812365A34F85C2A5F6C031DB:F4E484108C088F35C74B08AFB7D9422C
-        public string CertificateBlob()
+        public byte[] CertificateBlob()
         {
             return Inner.CerBlob;
         }

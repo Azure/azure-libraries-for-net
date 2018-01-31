@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class AppServiceCertificatesImpl
+    internal partial class AppServiceCertificatesImpl 
     {
         /// <summary>
         /// Begins a definition for a new resource.
