@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     /// </summary>
     public class MSITokenProvider : ITokenProvider, IBeta
     {
-        private string resource;
+        private readonly string resource;
         private readonly MSILoginInformation msiLoginInformation;
 
         /// <summary>
@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         {
             this.resource = resource ?? throw new ArgumentNullException("resource");
             this.msiLoginInformation = msiLoginInformation ?? throw new ArgumentNullException("msiLoginInformation");
-            this.msiLoginInformation = msiLoginInformation;
         }
 
         public async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
