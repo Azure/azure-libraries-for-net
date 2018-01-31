@@ -2,12 +2,12 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
-
     using Microsoft.Azure.Management.KeyVault.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
+
     /// <summary>
     /// An immutable client-side representation of an Azure Key Vault.
     /// </summary>
@@ -16,32 +16,45 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         IRefreshable<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
         IUpdatable<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>
     {
-        /// <returns>the URI of the vault for performing operations on keys and secrets.</returns>
+        /// <summary>
+        /// Gets the URI of the vault for performing operations on keys and secrets.
+        /// </summary>
         string VaultUri { get; }
 
-        /// <returns>the Azure Active Directory tenant ID that should be used for</returns>
-        /// <returns>authenticating requests to the key vault.</returns>
+        /// <summary>
+        /// Gets the Azure Active Directory tenant ID that should be used for
+        /// authenticating requests to the key vault.
+        /// </summary>
         string TenantId { get; }
 
-        /// <returns>SKU details.</returns>
-        Sku Sku { get; }
+        /// <summary>
+        /// Gets SKU details.
+        /// </summary>
+        Microsoft.Azure.Management.KeyVault.Fluent.Models.Sku Sku { get; }
 
-        /// <returns>an array of 0 to 16 identities that have access to the key vault. All</returns>
-        /// <returns>identities in the array must use the same tenant ID as the key vault's</returns>
-        /// <returns>tenant ID.</returns>
-        IList<Microsoft.Azure.Management.KeyVault.Fluent.IAccessPolicy> AccessPolicies { get; }
+        /// <summary>
+        /// Gets an array of 0 to 16 identities that have access to the key vault. All
+        /// identities in the array must use the same tenant ID as the key vault's
+        /// tenant ID.
+        /// </summary>
+        IReadOnlyList<Microsoft.Azure.Management.KeyVault.Fluent.IAccessPolicy> AccessPolicies { get; }
 
-        /// <returns>whether Azure Virtual Machines are permitted to</returns>
-        /// <returns>retrieve certificates stored as secrets from the key vault.</returns>
+        /// <summary>
+        /// Gets whether Azure Virtual Machines are permitted to
+        /// retrieve certificates stored as secrets from the key vault.
+        /// </summary>
         bool EnabledForDeployment { get; }
 
-        /// <returns>whether Azure Disk Encryption is permitted to</returns>
-        /// <returns>retrieve secrets from the vault and unwrap keys.</returns>
+        /// <summary>
+        /// Gets whether Azure Disk Encryption is permitted to
+        /// retrieve secrets from the vault and unwrap keys.
+        /// </summary>
         bool EnabledForDiskEncryption { get; }
 
-        /// <returns>whether Azure Resource Manager is permitted to</returns>
-        /// <returns>retrieve secrets from the key vault.</returns>
+        /// <summary>
+        /// Gets whether Azure Resource Manager is permitted to
+        /// retrieve secrets from the key vault.
+        /// </summary>
         bool EnabledForTemplateDeployment { get; }
-
     }
 }

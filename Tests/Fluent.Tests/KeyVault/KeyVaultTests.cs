@@ -13,6 +13,7 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Azure.Tests;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
+using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
 namespace Fluent.Tests
 {
@@ -28,76 +29,84 @@ namespace Fluent.Tests
         public void CanCRUDKeyVault()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
-            {
+            {        
+                // Create user service principal
+                String sp = SdkContext.RandomResourceName("sp", 20);
+                String us = SdkContext.RandomResourceName("us", 20);
+                IGraphRbacManager graphManager = TestHelper.CreateGraphRbacManager();
                 string vaultName1 = TestUtilities.GenerateName("vault1");
-                string vaultName2 = TestUtilities.GenerateName("vault2");
                 string rgName = TestUtilities.GenerateName("rgNEMV");
 
                 IKeyVaultManager manager = TestHelper.CreateKeyVaultManager();
 
-                var spnCredentialsClientId = HttpMockServer.Variables[ConnectionStringKeys.ServicePrincipalKey];
+                IServicePrincipal servicePrincipal = graphManager.ServicePrincipals
+                        .Define(sp)
+                        .WithNewApplication("http://" + sp)
+                        .Create();
+
+                IActiveDirectoryUser user = graphManager.Users
+                        .Define(us)
+                        .WithEmailAlias(us)
+                        .WithPassword("P@$$w0rd")
+                        .Create();
+                //var spnCredentialsClientId = HttpMockServer.Variables[ConnectionStringKeys.ServicePrincipalKey];
 
                 try
                 {
-                    IVault vault1 = manager.Vaults
+                    IVault vault = manager.Vaults
                             .Define(vaultName1)
                             .WithRegion(Region.USWest)
                             .WithNewResourceGroup(rgName)
-                            .WithEmptyAccessPolicy()
-                            .Create();
-
-                    Assert.NotNull(vault1);
-                    Assert.Equal(vaultName1, vault1.Name);
-                    Assert.Equal(0, vault1.AccessPolicies.Count);
-                    vault1 = vault1.Update()
                             .DefineAccessPolicy()
-                                .ForServicePrincipal(spnCredentialsClientId)
-                                .AllowKeyAllPermissions()
-                                .AllowSecretPermissions(SecretPermissions.Get)
-                                .AllowSecretPermissions(SecretPermissions.List)
-                                .Attach()
-                            .Apply();
-
-                    Assert.NotNull(vault1);
-                    Assert.Equal(1, vault1.AccessPolicies.Count);
-                    Assert.Equal(KeyPermissions.All.ToString(), vault1.AccessPolicies[0].Permissions.Keys[0]);
-                    Assert.Equal(2, vault1.AccessPolicies[0].Permissions.Secrets.Count);
-
-                    vault1 = vault1.Update()
-                            .WithDeploymentEnabled()
-                            .WithTemplateDeploymentEnabled()
-                            .UpdateAccessPolicy(vault1.AccessPolicies.First().ObjectId)
-                                .AllowSecretAllPermissions()
-                                .Parent()
-                            .Apply();
-
-                    Assert.Equal(1, vault1.AccessPolicies.Count);
-                    Assert.Equal(3, vault1.AccessPolicies[0].Permissions.Secrets.Count);
-
-                    IVault vault2 = manager.Vaults
-                            .Define(vaultName2)
-                            .WithRegion(Region.USEast)
-                            .WithExistingResourceGroup(rgName)
-                            .DefineAccessPolicy()
-                                .ForServicePrincipal(spnCredentialsClientId)
-                                .AllowKeyPermissions(KeyPermissions.Get)
+                                .ForServicePrincipal("http://" + sp)
                                 .AllowKeyPermissions(KeyPermissions.List)
-                                .AllowKeyPermissions(KeyPermissions.Decrypt)
-                                .AllowSecretPermissions(SecretPermissions.Get)
+                                .AllowSecretAllPermissions()
+                                .AllowCertificatePermissions(CertificatePermissions.Get)
+                                .Attach()
+                            .DefineAccessPolicy()
+                                .ForUser(us)
+                                .AllowKeyAllPermissions()
+                                .AllowSecretAllPermissions()
+                                .AllowCertificatePermissions(CertificatePermissions.Get, CertificatePermissions.List, CertificatePermissions.Create)
                                 .Attach()
                             .Create();
+                    Assert.NotNull(vault);
+                    Assert.Equal(vaultName1, vault.Name);
+                    foreach (IAccessPolicy policy in vault.AccessPolicies)
+                    {
+                        if (policy.ObjectId.Equals(servicePrincipal.Id))
+                        {
+                            Assert.Equal(1, policy.Permissions.Keys.Count);
+                            Assert.Equal(KeyPermissions.List.Value, policy.Permissions.Keys[0]);
+                            Assert.Equal(8, policy.Permissions.Secrets.Count);
+                            Assert.Equal(1, policy.Permissions.Certificates.Count);
+                            Assert.Equal(CertificatePermissions.Get.Value, policy.Permissions.Certificates[0]);
+                        }
+                        if (policy.ObjectId.Equals(user.Id))
+                        {
+                            Assert.Equal(16, policy.Permissions.Keys.Count);
+                            Assert.Equal(8, policy.Permissions.Secrets.Count);
+                            Assert.Equal(3, policy.Permissions.Certificates.Count);
+                        }
+                    }
 
-                    Assert.Equal(1, vault2.AccessPolicies.Count);
-                    Assert.Equal(3, vault2.AccessPolicies[0].Permissions.Keys.Count);
+                    vault = vault.Update()
+                        .UpdateAccessPolicy(servicePrincipal.Id)
+                            .AllowKeyAllPermissions()
+                            .DisallowSecretAllPermissions()
+                            .AllowCertificateAllPermissions()
+                            .Parent()
+                        .Apply();
 
-                    var vaults = manager.Vaults.ListByResourceGroup(rgName);
-                    Assert.Equal(2, vaults.Count());
-
-                    manager.Vaults.DeleteById(vault1.Id);
-                    manager.Vaults.DeleteById(vault2.Id);
-
-                    vaults = manager.Vaults.ListByResourceGroup(rgName);
-                    Assert.Empty(vaults);
+                    foreach (IAccessPolicy policy in vault.AccessPolicies)
+                    {
+                        if (policy.ObjectId.Equals(servicePrincipal.Id))
+                        {
+                            Assert.Equal(16, policy.Permissions.Keys.Count);
+                            Assert.Equal(0, policy.Permissions.Secrets.Count);
+                            Assert.Equal(14, policy.Permissions.Certificates.Count);
+                        }
+                    }
                 }
                 finally
                 {

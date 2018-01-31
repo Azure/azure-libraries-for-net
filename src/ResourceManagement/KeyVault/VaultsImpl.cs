@@ -8,20 +8,23 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using ResourceManager.Fluent.Core;
     using Rest.Azure;
     using System;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Collections;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The implementation of Vaults and its parent interfaces.
     /// </summary>
-    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLlZhdWx0c0ltcGw=
-    internal partial class VaultsImpl :
+    internal partial class VaultsImpl  :
         TopLevelModifiableResources<IVault, VaultImpl, VaultInner, IVaultsOperations, IKeyVaultManager>,
         IVaults
     {
         private IGraphRbacManager graphRbacManager;
         private string tenantId;
-        ///GENMHASH:CDB7D4D816159A58F5240A4C88E5241C:4E00EDDBAADBA44B155253E3B63448A4
+
+        ///GENMHASH:B150A08031FE64095583576847133217:8935634111618393DD8A78F9B6DBDFBA
         internal VaultsImpl(IKeyVaultManager keyVaultManager, IGraphRbacManager graphRbacManager, string tenantId)
             : base(keyVaultManager.Inner.Vaults, keyVaultManager)
         {
@@ -32,12 +35,28 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:6FB4EA69673E1D8A74E1418EB52BB9FE
         protected async override Task<IPage<VaultInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
-            return await Inner.ListAsync(cancellationToken: cancellationToken);
+            var innerResources = await Inner.ListAsync(cancellationToken: cancellationToken);
+
+            var results = innerResources
+                .Select(r => ResourceId.FromString(r.Id))
+                .Select(async resourceId => await GetInnerByGroupAsync(resourceId.ResourceGroupName, resourceId.Name, cancellationToken))
+                .ToList()
+                .Select(t => t.Result);
+
+            return new VaultInnerPage(results, innerResources.NextPageLink);
         }
 
         protected async override Task<IPage<VaultInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
         {
-            return await Inner.ListNextAsync(nextLink, cancellationToken);
+            var innerResources = await Inner.ListNextAsync(nextLink, cancellationToken: cancellationToken);
+
+            var results = innerResources
+                .Select(r => ResourceId.FromString(r.Id))
+                .Select(async resourceId => await GetInnerByGroupAsync(resourceId.ResourceGroupName, resourceId.Name, cancellationToken))
+                .ToList()
+                .Select(t => t.Result);
+
+            return new VaultInnerPage(results, innerResources.NextPageLink);
         }
 
         ///GENMHASH:95834C6C7DA388E666B705A62A7D02BF:BDFF4CB61E8A8D975417EA5FC914921A
@@ -71,7 +90,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                 .WithEmptyAccessPolicy();
         }
 
-        ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:CF5D7C4F8C9C8500DA16344A95E02A83
+        ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:15E2E01BC88FA6B06E6CBBCFC1371788
         protected override VaultImpl WrapModel(string name)
         {
             VaultInner inner = new VaultInner()
@@ -88,7 +107,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                 graphRbacManager);
         }
 
-        ///GENMHASH:CA260E89048F01F05DD7D13D870D6A8F:92A42C7FBDAE00431C015493416F3C0F
+        ///GENMHASH:CA260E89048F01F05DD7D13D870D6A8F:E833FC60B5F2BCB0CBB9985629CBA229
         protected override IVault WrapModel(VaultInner vaultInner)
         {
             return new VaultImpl(
@@ -96,6 +115,32 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                 vaultInner,
                 Manager,
                 graphRbacManager);
+        }
+
+    }
+
+    class VaultInnerPage : IPage<VaultInner>
+    {
+        private readonly IEnumerable<VaultInner> vaultInnerList;
+        private readonly string nextLink;
+
+        public VaultInnerPage(IEnumerable<VaultInner> vaultInnerList, string nextLink)
+        {
+            this.vaultInnerList = vaultInnerList;
+            this.nextLink = nextLink;
+
+        }
+
+        public string NextPageLink => nextLink;
+
+        public IEnumerator<VaultInner> GetEnumerator()
+        {
+            return vaultInnerList.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }

@@ -8,34 +8,33 @@
 
 namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Resource information with extended details.
+    /// Parameters for creating or updating a vault
     /// </summary>
-    public partial class VaultInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class VaultPatchParametersInner
     {
         /// <summary>
-        /// Initializes a new instance of the VaultInner class.
+        /// Initializes a new instance of the VaultPatchParametersInner class.
         /// </summary>
-        public VaultInner()
+        public VaultPatchParametersInner()
         {
-            Properties = new VaultProperties();
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the VaultInner class.
+        /// Initializes a new instance of the VaultPatchParametersInner class.
         /// </summary>
+        /// <param name="tags">The tags that will be assigned to the key vault.
+        /// </param>
         /// <param name="properties">Properties of the vault</param>
-        public VaultInner(VaultProperties properties, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(location, id, name, type, tags)
+        public VaultPatchParametersInner(IDictionary<string, string> tags = default(IDictionary<string, string>), VaultPatchProperties properties = default(VaultPatchProperties))
         {
+            Tags = tags;
             Properties = properties;
             CustomInit();
         }
@@ -46,23 +45,25 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the tags that will be assigned to the key vault.
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
         /// Gets or sets properties of the vault
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public VaultProperties Properties { get; set; }
+        public VaultPatchProperties Properties { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (Properties == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Properties");
-            }
             if (Properties != null)
             {
                 Properties.Validate();

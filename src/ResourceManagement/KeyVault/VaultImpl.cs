@@ -1,24 +1,21 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-
 namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
-
-    using Vault.Definition;
-    using System.Collections.Generic;
-    using Models;
-    using Vault.Update;
-    using System.Threading.Tasks;
-    using System.Threading;
-    using System.Linq;
-    using ResourceManager.Fluent;
-    using Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Models;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update;
     using System;
-
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     /// <summary>
     /// Implementation for Vault and its parent interfaces.
     /// </summary>
-    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLlZhdWx0SW1wbA==
     internal partial class VaultImpl :
         GroupableResource<IVault,
             VaultInner,
@@ -34,7 +31,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     {
         private IGraphRbacManager graphRbacManager;
         private IList<AccessPolicyImpl> accessPolicies;
-        ///GENMHASH:E75D6B887F703BA75910BF996B59E45B:30C9A572991D1AB6921DBD5E8344AFAF
+        ///GENMHASH:6553208EDE6088A698CBA12162179CE6:F1BA2A0D99BABACBDE52E4CA2270EF7E
         internal VaultImpl(string name, VaultInner innerObject, IKeyVaultManager manager, IGraphRbacManager graphRbacManager)
             : base(name, innerObject, manager)
         {
@@ -93,7 +90,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:A4B5C79524255870A60CFDA07E865BBC:A881A75678053A99DDDBBD7F4D918F27
-        public IList<IAccessPolicy> AccessPolicies
+        public IReadOnlyList<Microsoft.Azure.Management.KeyVault.Fluent.IAccessPolicy> AccessPolicies
         {
             get
             {
@@ -240,7 +237,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             return this;
         }
 
-        ///GENMHASH:1BFD0AD1E7180AAE5C7C7706268179BD:654FAB1549649BDDA9AAC1BB3468DBFB
+        ///GENMHASH:1BFD0AD1E7180AAE5C7C7706268179BD:73523791EDD462A86EA1F0D19E138E84
         private async Task PopulateAccessPolicies(CancellationToken cancellationToken = default(CancellationToken))
         {
             var tasks = new List<Task>();
@@ -252,7 +249,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                     {
                         tasks.Add(graphRbacManager.Users.GetByNameAsync(accessPolicy.UserPrincipalName, cancellationToken)
                             .ContinueWith(
-                                user => accessPolicy.ForObjectId(Guid.Parse(user.Result.Id)),
+                                // user => accessPolicy.ForObjectId(Guid.Parse(user.Result.Id)),
+                                user => accessPolicy.ForObjectId(user.Result.Id),
                                 cancellationToken,
                                 TaskContinuationOptions.ExecuteSynchronously,
                                 TaskScheduler.Default));
@@ -261,7 +259,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                     {
                         tasks.Add(graphRbacManager.ServicePrincipals.GetByNameAsync(accessPolicy.ServicePrincipalName, cancellationToken)
                             .ContinueWith(
-                                servicePrincipal => accessPolicy.ForObjectId(Guid.Parse(servicePrincipal.Result.Id)),
+                                // servicePrincipal => accessPolicy.ForObjectId(Guid.Parse(servicePrincipal.Result.Id)),
+                                servicePrincipal => accessPolicy.ForObjectId(servicePrincipal.Result.Id),
                                 cancellationToken,
                                 TaskContinuationOptions.ExecuteSynchronously,
                                 TaskScheduler.Default));
@@ -276,8 +275,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             await Task.WhenAll(tasks);
         }
 
-        ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:6825C2C979F565D012F22FFCBBFAB9ED
-        public async override Task<IVault> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:4B81B6736F1A9E225E6208032B876D9A
+        public async override Task<Microsoft.Azure.Management.KeyVault.Fluent.IVault> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             await PopulateAccessPolicies(cancellationToken);
             VaultCreateOrUpdateParametersInner parameters = new VaultCreateOrUpdateParametersInner()
@@ -296,8 +295,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             return this;
         }
 
-        ///GENMHASH:4002186478A1CB0B59732EBFB18DEB3A:CC9FF17BB935059EB35312593856BE61
-        protected override async Task<VaultInner> GetInnerAsync(CancellationToken cancellationToken)
+        ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:191F8A7ACCB4C31E15BA6CA277B0302E
+        protected override async Task<Microsoft.Azure.Management.KeyVault.Fluent.Models.VaultInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return await Manager.Inner.Vaults.GetAsync(ResourceGroupName, Name, cancellationToken);
         }

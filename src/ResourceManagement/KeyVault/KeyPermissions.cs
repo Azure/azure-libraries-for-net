@@ -11,7 +11,6 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
     /// </summary>
     public class KeyPermissions : ExpandableStringEnum<KeyPermissions>
     {
-        public static readonly KeyPermissions All = Parse("all");
         public static readonly KeyPermissions Encrypt = Parse("encrypt");
         public static readonly KeyPermissions Decrypt = Parse("decrypt");
         public static readonly KeyPermissions WrapKey = Parse("wrapKey");
@@ -26,5 +25,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         public static readonly KeyPermissions Delete = Parse("delete");
         public static readonly KeyPermissions Backup = Parse("backup");
         public static readonly KeyPermissions Restore = Parse("restore");
+        public static readonly KeyPermissions Recover = Parse("recover");
+        public static readonly KeyPermissions Purge = Parse("purge");
     }
 }
