@@ -58,16 +58,28 @@ namespace Fluent.Tests.Compute
                     }
                     if (sku.ResourceType.Equals(ComputeResourceType.Disks))
                     {
-                        Assert.NotNull(sku.DiskSkuType.ToString());
-                        Assert.Equal(sku.DiskSkuType.ToString().ToLowerInvariant(), sku.Name.ToString().Replace("_", string.Empty).ToLowerInvariant());
+                        // Below check is disabled explicitly because due to the special permission of test subscription it can
+                        // see disk sku types which are not documented in swagger
+                        //
+                        // Assert.NotNull(sku.DiskSkuType.ToString());
+                        if (sku.DiskSkuType != null)
+                        {
+                            Assert.Equal(sku.DiskSkuType.ToString().ToLowerInvariant(), sku.Name.ToString().Replace("_", string.Empty).ToLowerInvariant());
+                        }
                         Assert.Null(sku.VirtualMachineSizeType);
                         Assert.Null(sku.AvailabilitySetSkuType);
                         atleastOneDiskResourceSku = true;
                     }
                     if (sku.ResourceType.Equals(ComputeResourceType.Snapshots))
                     {
-                        Assert.NotNull(sku.DiskSkuType);
-                        Assert.Equal(sku.DiskSkuType.ToString().ToLowerInvariant(), sku.Name.ToString().Replace("_", string.Empty).ToLowerInvariant());
+                        // Below check is disabled explicitly because due to the special permission of test subscription it can
+                        // see sku types which are not documented in swagger
+                        //
+                        // Assert.NotNull(sku.DiskSkuType);
+                        if (sku.DiskSkuType != null)
+                        {
+                            Assert.Equal(sku.DiskSkuType.ToString().ToLowerInvariant(), sku.Name.ToString().Replace("_", string.Empty).ToLowerInvariant());
+                        }
                         Assert.Null(sku.VirtualMachineSizeType);
                         Assert.Null(sku.AvailabilitySetSkuType);
                         atleastOneSnapshotResourceSku = true;
