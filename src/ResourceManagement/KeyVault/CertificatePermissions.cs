@@ -11,7 +11,6 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
     /// </summary>
     public class CertificatePermissions : ExpandableStringEnum<CertificatePermissions>
     {
-        public static readonly CertificatePermissions All = Parse("all");
         public static readonly CertificatePermissions Get = Parse("get");
         public static readonly CertificatePermissions List = Parse("list");
         public static readonly CertificatePermissions Delete = Parse("delete");

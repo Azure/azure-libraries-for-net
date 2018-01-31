@@ -114,6 +114,26 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefiniti
         /// <param name="permissions">The list of permissions allowed.</param>
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<ParentT> AllowSecretPermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.SecretPermissions> permissions);
+
+        /// <summary>
+        /// Allow all permissions for the AD identity to access certificates.
+        /// </summary>
+        /// <return>The next stage of access policy definition.</return>
+        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<ParentT> AllowCertificateAllPermissions();
+
+        /// <summary>
+        /// Allow a list of permissions for the AD identity to access certificates.
+        /// </summary>
+        /// <param name="permissions">The list of permissions allowed.</param>
+        /// <return>The next stage of access policy definition.</return>
+        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<ParentT> AllowCertificatePermissions(params CertificatePermissions[] permissions);
+
+        /// <summary>
+        /// Allow a list of permissions for the AD identity to access certificates.
+        /// </summary>
+        /// <param name="permissions">The list of permissions allowed.</param>
+        /// <return>The next stage of access policy definition.</return>
+        Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<ParentT> AllowCertificatePermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions> permissions);
     }
 
     /// <summary>

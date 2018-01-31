@@ -11,7 +11,6 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
     /// </summary>
     public class SecretPermissions : ExpandableStringEnum<SecretPermissions>
     {
-        public static readonly SecretPermissions All = Parse("all");
         public static readonly SecretPermissions Get = Parse("get");
         public static readonly SecretPermissions List = Parse("list");
         public static readonly SecretPermissions Set = Parse("set");

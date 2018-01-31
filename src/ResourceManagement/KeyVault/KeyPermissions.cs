@@ -11,7 +11,6 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
     /// </summary>
     public class KeyPermissions : ExpandableStringEnum<KeyPermissions>
     {
-        public static readonly KeyPermissions All = Parse("all");
         public static readonly KeyPermissions Encrypt = Parse("encrypt");
         public static readonly KeyPermissions Decrypt = Parse("decrypt");
         public static readonly KeyPermissions WrapKey = Parse("wrapKey");

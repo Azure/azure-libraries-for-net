@@ -17,6 +17,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
 
     /// <summary>
     /// Implementation for AccessPolicy and its parent interfaces.
@@ -146,7 +148,10 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             InitializeKeyPermissions();
             foreach (var permission in permissions)
             {
-                Inner.Permissions.Keys.Add(permission.ToString());
+                if (!Inner.Permissions.Keys.Contains(permission.ToString()))
+                {
+                    Inner.Permissions.Keys.Add(permission.ToString());
+                }
             }
             return this;
         }
@@ -163,7 +168,10 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             InitializeSecretPermissions();
             foreach (var permission in permissions)
             {
-                Inner.Permissions.Secrets.Add(permission.ToString());
+                if (!Inner.Permissions.Secrets.Contains(permission.ToString()))
+                {
+                    Inner.Permissions.Secrets.Add(permission.ToString());
+                }
             }
             return this;
         }
@@ -221,7 +229,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         ///GENMHASH:01ABB2A8A169AF9132F24847F24D56E9:438CAA23A6AC21CE3918CCD89F051C7B
         public AccessPolicyImpl AllowKeyAllPermissions()
         {
-            return AllowKeyPermissions(KeyPermissions.All);
+            return AllowKeyPermissions(KeyPermissions.Encrypt.GetType()
+                .GetFields(BindingFlags.Public | BindingFlags.Static)
+                .Where(f => f.FieldType == typeof(KeyPermissions))
+                .Select(f => (KeyPermissions)f.GetValue(null))
+                .ToArray());
         }
 
         ///GENMHASH:A03FAAD8A56A117F1C5B4D0165E18038:2886FCB58861FDE2A5A0722CF95F02F8
@@ -252,7 +264,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         ///GENMHASH:23EFE82E8A7FB33D4BEAF74B70CE1367:F9763811A5E6A497FF943250AB590C11
         public AccessPolicyImpl AllowSecretAllPermissions()
         {
-            return AllowSecretPermissions(SecretPermissions.All);
+            return AllowSecretPermissions(SecretPermissions.Get.GetType()
+                .GetFields(BindingFlags.Public | BindingFlags.Static)
+                .Where(f => f.FieldType == typeof(SecretPermissions))
+                .Select(f => (SecretPermissions)f.GetValue(null))
+                .ToArray());
         }
 
         ///GENMHASH:034BD24F1EDCEF94C2B612E26745EC84:3DEB6E41E02F3F5DD756AAD51E9D5A41
@@ -303,7 +319,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             InitializeCertificatePermissions();
             foreach (var permission in permissions)
             {
-            	if (!Inner.Permissions.Certificates.Contains(permission.ToString())) {
+            	if (!Inner.Permissions.Certificates.Contains(permission.ToString()))
+                {
                 	Inner.Permissions.Certificates.Add(permission.ToString());
 				}
             }
@@ -313,8 +330,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         ///GENMHASH:3CA9C293D3584AB382168617DC8AC2DC:1ED91EC5382646AF3251110612D16696
         public AccessPolicyImpl AllowCertificateAllPermissions()
         {
-            return AllowCertificatePermissions(CertificatePermissions.All);
-            return this;
+            return AllowCertificatePermissions(CertificatePermissions.Get.GetType()
+                .GetFields(BindingFlags.Public | BindingFlags.Static)
+                .Where(f => f.FieldType == typeof(CertificatePermissions))
+                .Select(f => (CertificatePermissions)f.GetValue(null))
+                .ToArray());
         }
 
         ///GENMHASH:4D963017A45C9FB4AAD21FAA40B89E00:FB198DF0AC0B66066441E26A91E3DFA6
