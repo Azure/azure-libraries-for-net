@@ -1,13 +1,16 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved. 
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
-using Xunit;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Azure.Tests;
 using Fluent.Tests.Common;
-using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Management.ContainerService.Fluent;
 using Microsoft.Azure.Management.ContainerService.Fluent.Models;
-using Azure.Tests;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using System;
+using System.Linq;
+using System.IO;
+using Xunit;
 
 namespace Fluent.Tests.ContainerService
 {
@@ -30,14 +33,24 @@ namespace Fluent.Tests.ContainerService
 
                 try
                 {
+                    string envSecondaryServicePrincipal = Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION_2");
+
+                    if (String.IsNullOrWhiteSpace(envSecondaryServicePrincipal) || !File.Exists(envSecondaryServicePrincipal))
+                    {
+                        envSecondaryServicePrincipal = Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION");
+                    }
+
+                    string servicePrincipalClientId = GetSecondaryServicePrincipalClientID(envSecondaryServicePrincipal);
+                    string servicePrincipalSecret = GetSecondaryServicePrincipalSecret(envSecondaryServicePrincipal);
+
                     kubernetesCluster = containerServiceManager.KubernetesClusters.Define(aksName)
                         .WithRegion(Region.USCentral)
                         .WithNewResourceGroup(rgName)
                         .WithLatestVersion()
                         .WithRootUsername("testaks")
                         .WithSshKey(SshKey)
-                        .WithServicePrincipalClientId("spId")
-                        .WithServicePrincipalSecret("spSecret")
+                        .WithServicePrincipalClientId(servicePrincipalClientId)
+                        .WithServicePrincipalSecret(servicePrincipalSecret)
                         .DefineAgentPool(agentPoolName)
                             .WithVirtualMachineCount(1)
                             .WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes.StandardD1V2)
@@ -81,6 +94,48 @@ namespace Fluent.Tests.ContainerService
                 }
 
             }
+        }
+
+        /**
+     * Retrieve the secondary service principal client ID.
+     * @param envSecondaryServicePrincipal an Azure Container Registry
+     * @return a service principal client ID
+     */
+        private static string GetSecondaryServicePrincipalClientID(string envSecondaryServicePrincipal)
+        {
+            string clientId = "";
+            File.ReadAllLines(envSecondaryServicePrincipal).All(line =>
+            {
+                var keyVal = line.Trim().Split(new char[] { '=' }, 2);
+                if (keyVal.Length < 2)
+                    return true; // Ignore lines that don't look like $$$=$$$
+                if (keyVal[0].Equals("client"))
+                    clientId = keyVal[1];
+                return true;
+            });
+
+            return clientId;
+        }
+
+        /**
+         * Retrieve the secondary service principal secret.
+         * @param envSecondaryServicePrincipal an Azure Container Registry
+         * @return a service principal secret
+         */
+        private static string GetSecondaryServicePrincipalSecret(string envSecondaryServicePrincipal)
+        {
+            string secret = "";
+            File.ReadAllLines(envSecondaryServicePrincipal).All(line =>
+            {
+                var keyVal = line.Trim().Split(new char[] { '=' }, 2);
+                if (keyVal.Length < 2)
+                    return true; // Ignore lines that don't look like $$$=$$$
+                if (keyVal[0].Equals("key"))
+                    secret = keyVal[1];
+                return true;
+            });
+
+            return secret;
         }
     }
 }
