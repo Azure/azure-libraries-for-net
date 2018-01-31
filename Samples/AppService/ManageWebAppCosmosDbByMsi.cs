@@ -111,7 +111,7 @@ namespace ManageWebAppCosmosDbByMsi
 
                 vault.Update()
                         .DefineAccessPolicy()
-                            .ForObjectId(Guid.Parse(app.SystemAssignedManagedServiceIdentityPrincipalId))
+                            .ForObjectId(app.SystemAssignedManagedServiceIdentityPrincipalId)
                             .AllowSecretAllPermissions()
                             .Attach()
                         .Apply();
