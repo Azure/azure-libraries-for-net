@@ -218,10 +218,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return DiskSkuTypes.FromStorageAccountType(StorageAccountTypes.PremiumLRS);
                 }
-                if (this.inner.Name.Equals("StandardSSD_LRS", System.StringComparison.OrdinalIgnoreCase))
-                {
-                    return DiskSkuTypes.FromStorageAccountType(StorageAccountTypes.StandardSSDLRS);
-                }
                 return null;
             }
             else

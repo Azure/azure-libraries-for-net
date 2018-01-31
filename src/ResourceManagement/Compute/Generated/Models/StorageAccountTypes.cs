@@ -22,11 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         [EnumMember(Value = "Standard_LRS")]
         StandardLRS,
         [EnumMember(Value = "Premium_LRS")]
-        PremiumLRS,
-        [EnumMember(Value = "StandardSSD_LRS")]
-        StandardSSDLRS,
-        [EnumMember(Value = "Standard_ZRS")]
-        StandardZRS
+        PremiumLRS
     }
     internal static class StorageAccountTypesEnumExtension
     {
@@ -43,10 +39,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
                     return "Standard_LRS";
                 case StorageAccountTypes.PremiumLRS:
                     return "Premium_LRS";
-                case StorageAccountTypes.StandardSSDLRS:
-                    return "StandardSSD_LRS";
-                case StorageAccountTypes.StandardZRS:
-                    return "Standard_ZRS";
             }
             return null;
         }
@@ -59,11 +51,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
                     return StorageAccountTypes.StandardLRS;
                 case "Premium_LRS":
                     return StorageAccountTypes.PremiumLRS;
-                case "StandardSSD_LRS":
-                    return StorageAccountTypes.StandardSSDLRS;
-                case "Standard_ZRS":
-                    return StorageAccountTypes.StandardZRS;
-
             }
             return null;
         }
