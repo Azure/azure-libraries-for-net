@@ -14,8 +14,21 @@
     <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.6' ">1.6.1</NetStandardImplicitPackageVersion>
     <TargetFrameworks>net452;netstandard1.6</TargetFrameworks>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Remove="Asset\documentdb-dotnet-todo-app\src\App_Start\BundleConfig.cs" />
+    <Compile Remove="Asset\documentdb-dotnet-todo-app\src\App_Start\FilterConfig.cs" />
+    <Compile Remove="Asset\documentdb-dotnet-todo-app\src\App_Start\RouteConfig.cs" />
+    <Compile Remove="Asset\documentdb-dotnet-todo-app\src\Controllers\ItemController.cs" />
+    <Compile Remove="Asset\documentdb-dotnet-todo-app\src\DocumentDBRepository.cs" />
+    <Compile Remove="Asset\documentdb-dotnet-todo-app\src\Global.asax.cs" />
+    <Compile Remove="Asset\documentdb-dotnet-todo-app\src\Models\Context.cs" />
+    <Compile Remove="Asset\documentdb-dotnet-todo-app\src\Models\Item.cs" />
+    <Compile Remove="Asset\documentdb-dotnet-todo-app\src\Properties\AssemblyInfo.cs" />
+  </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="2.3.2" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.10" /> 
     <PackageReference Include="CoreFTP" Version="1.2.0" />
     <PackageReference Include="Microsoft.Azure.ServiceBus" Version="0.0.2-preview" />
@@ -69,6 +82,36 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Asset\documentdb-dotnet-todo-app\src\App_Start\BundleConfig.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Asset\documentdb-dotnet-todo-app\src\App_Start\FilterConfig.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Asset\documentdb-dotnet-todo-app\src\App_Start\RouteConfig.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Asset\documentdb-dotnet-todo-app\src\Controllers\ItemController.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Asset\documentdb-dotnet-todo-app\src\DocumentDBRepository.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Asset\documentdb-dotnet-todo-app\src\Global.asax.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Asset\documentdb-dotnet-todo-app\src\Models\Context.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Asset\documentdb-dotnet-todo-app\src\Models\Item.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Asset\documentdb-dotnet-todo-app\src\Properties\AssemblyInfo.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\src\ResourceManagement\AppService\Microsoft.Azure.Management.AppService.Fluent.csproj" />
     <ProjectReference Include="..\src\ResourceManagement\Azure.Fluent\Microsoft.Azure.Management.Fluent.csproj" />
     <ProjectReference Include="..\src\ResourceManagement\Batch\Microsoft.Azure.Management.Batch.Fluent.csproj" />
@@ -107,6 +150,153 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Asset\createCert1.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\.gitattributes">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\.gitignore">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\CONTRIBUTING.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\media\image1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\media\publish-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\media\publish-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\media\publish-4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\media\publish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Content\bootstrap-theme.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Content\bootstrap-theme.css.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Content\bootstrap-theme.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Content\bootstrap.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Content\bootstrap.css.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Content\bootstrap.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Content\Site.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\favicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Global.asax">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\bootstrap.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\bootstrap.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\jquery-1.10.2.intellisense.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\jquery-2.1.1.intellisense.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\jquery-2.1.1.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\jquery-2.1.1.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\jquery-2.1.1.min.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\jquery.validate-vsdoc.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\jquery.validate.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\jquery.validate.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\jquery.validate.unobtrusive.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\jquery.validate.unobtrusive.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\modernizr-2.6.2.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\modernizr-2.8.3.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\respond.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\respond.matchmedia.addListener.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\respond.matchmedia.addListener.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\respond.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Scripts\_references.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Views\Item\Create.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Views\Item\Delete.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Views\Item\Details.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Views\Item\Edit.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Views\Item\Index.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Views\Shared\Error.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Views\Shared\_Layout.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Views\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Views\_ViewStart.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\documentdb-dotnet-todo-app\src\Web.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Asset\helloworld.war">
