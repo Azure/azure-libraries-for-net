@@ -23,7 +23,7 @@ namespace Fluent.Tests
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 var azure = TestHelper.CreateRollupClient();
-                DateTime recordDateTime = DateTime.Parse("2018-01-24T00:07:40.350Z");
+                DateTime recordDateTime = new DateTime(2018, 01, 24, 00, 07, 40);
                 var vm = azure.VirtualMachines.List().First();
 
                 // Metric Definition
