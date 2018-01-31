@@ -197,7 +197,7 @@ namespace Samples.Tests
                 ManageFunctionAppLogs.Program.RunSample);
         }
 
-        [Fact(Skip = "Waiting for 1.6 release to work"]
+        [Fact(Skip = "Waiting for 1.6 release to work")]
         [Trait("Samples", "AppService")]
         public void ManageWebAppCosmosDbByMsiTest()
         {
