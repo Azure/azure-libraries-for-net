@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using ResourceManager.Fluent.Core.ResourceActions;
     using Rest;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Implementation for ServicePrincipal and its parent interfaces.
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             return this;
         }
 
-        public RoleAssignmentImpl WithResourceScope(IResource resource)
+        public RoleAssignmentImpl WithResourceScope(Microsoft.Azure.Management.ResourceManager.Fluent.Core.IResource resource)
         {
             return WithScope(resource.Id);
         }
@@ -192,8 +193,31 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 PrincipalId = objectId,
                 RoleDefinitionId = roleDefinitionId
             };
-            var inner = await manager.RoleInner.RoleAssignments.CreateAsync(Scope(), Name, propertiesInner, cancellationToken);
-            SetInner(inner);
+            int limit = 30;
+            while (true)
+            {
+                try
+                {
+                    var inner = await manager.RoleInner.RoleAssignments.CreateAsync(Scope(), Name, propertiesInner, cancellationToken);
+                    SetInner(inner);
+                    break;
+                }
+                catch (CloudException e)
+                {
+                    if (--limit < 0)
+                    {
+                        throw e;
+                    }
+                    else if (e.Body != null && "PrincipalNotFound".Equals(e.Body.Code, StringComparison.OrdinalIgnoreCase))
+                    {
+                        await SdkContext.DelayProvider.DelayAsync((30 - limit) * 1000, cancellationToken);
+                    }
+                    else
+                    {
+                        throw e;
+                    }
+                }
+            }
             return this;
         }
     }

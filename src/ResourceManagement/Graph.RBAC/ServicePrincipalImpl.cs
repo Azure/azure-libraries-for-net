@@ -344,36 +344,12 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 foreach (KeyValuePair<string, BuiltInRole> role in rolesToCreate)
                 {
-                    int limit = 30;
-                    while (true)
-                    {
-                        try
-                        {
-                            IRoleAssignment roleAssignment = await manager.RoleAssignments.Define(SdkContext.RandomGuid())
-                                .ForServicePrincipal(sp)
-                                .WithBuiltInRole(role.Value)
-                                .WithScope(role.Key)
-                                .CreateAsync(cancellationToken);
-                            cachedRoleAssignments.Add(roleAssignment.Id, roleAssignment);
-                            break;
-                        }
-                        catch (CloudException e)
-                        {
-                            if (--limit < 0)
-                            {
-                                throw e;
-                            }
-                            else if (e.Body != null && "PrincipalNotFound".Equals(e.Body.Code, StringComparison.OrdinalIgnoreCase))
-                            {
-                                await SdkContext.DelayProvider.DelayAsync((30 - limit) * 1000, cancellationToken);
-                            }
-                            else
-                            {
-                                throw e;
-                            }
-                        }
-                    }
-
+                    IRoleAssignment roleAssignment = await manager.RoleAssignments.Define(SdkContext.RandomGuid())
+                        .ForServicePrincipal(sp)
+                        .WithBuiltInRole(role.Value)
+                        .WithScope(role.Key)
+                        .CreateAsync(cancellationToken);
+                    cachedRoleAssignments.Add(roleAssignment.Id, roleAssignment);
                 }
                 rolesToCreate.Clear();
             }
