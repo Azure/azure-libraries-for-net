@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Azure.Tests;
@@ -26,6 +27,7 @@ namespace Fluent.Tests.Network
     public class VirtualNetworkGateway
     {
         private static Region REGION = Region.USWest;
+        private static String CERTIFICATE_NAME = "myTest3.cer";
 
         [Fact]
         public void CreateUpdate()
@@ -158,6 +160,63 @@ namespace Fluent.Tests.Network
                 vngw1.Connections.DeleteByName(connectionName);
                 connections = vngw1.ListConnections();
                 Assert.Empty(connections);
+                manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
+            }
+        }
+
+        [Fact]
+        public void CanCreatePointToSiteConfigurtation()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string vpnGatewayName = SdkContext.RandomResourceName("vngw", 10);
+                string networkName = SdkContext.RandomResourceName("net", 10);
+                var groupName = SdkContext.RandomResourceName("rg", 6);
+                var manager = TestHelper.CreateNetworkManager();
+
+                INetwork network = manager.Networks.Define(networkName)
+                    .WithRegion(REGION)
+                    .WithNewResourceGroup(groupName)
+                    .WithAddressSpace("192.168.0.0/16")
+                    .WithAddressSpace("10.254.0.0/16")
+                    .WithSubnet("GatewaySubnet", "192.168.200.0/24")
+                    .WithSubnet("FrontEnd", "192.168.1.0/24")
+                    .WithSubnet("BackEnd", "10.254.1.0/24")
+                    .Create();
+                IVirtualNetworkGateway vngw1 = manager.VirtualNetworkGateways.Define(vpnGatewayName)
+                    .WithRegion(REGION)
+                    .WithExistingResourceGroup(groupName)
+                    .WithExistingNetwork(network)
+                    .WithRouteBasedVpn()
+                    .WithSku(VirtualNetworkGatewaySkuName.VpnGw1)
+                    .Create();
+
+                vngw1.Update()
+                    .DefinePointToSiteConfiguration()
+                    .WithAddressPool("172.16.201.0/24")
+                    .WithAzureCertificateFromFile(CERTIFICATE_NAME, new FileInfo(Path.Combine("Assets", "myTest3.cer")))
+                    .Attach()
+                    .Apply();
+
+                Assert.NotNull(vngw1.VpnClientConfiguration);
+                Assert.Equal("172.16.201.0/24", vngw1.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes.First());
+                Assert.Equal(1, vngw1.VpnClientConfiguration.VpnClientRootCertificates.Count);
+                Assert.Equal(CERTIFICATE_NAME, vngw1.VpnClientConfiguration.VpnClientRootCertificates.First().Name);
+                String profile = vngw1.GenerateVpnProfile();
+                Assert.NotNull(profile);
+
+                vngw1.Update().UpdatePointToSiteConfiguration()
+                    .WithRevokedCertificate(CERTIFICATE_NAME, "bdf834528f0fff6eaae4c154e06b54322769276c")
+                    .Parent()
+                    .Apply();
+                Assert.Equal(CERTIFICATE_NAME, vngw1.VpnClientConfiguration.VpnClientRevokedCertificates.First().Name);
+
+                vngw1.Update().UpdatePointToSiteConfiguration()
+                    .WithoutAzureCertificate(CERTIFICATE_NAME)
+                    .Parent()
+                    .Apply();
+                Assert.Equal(0, vngw1.VpnClientConfiguration.VpnClientRootCertificates.Count);
+   
                 manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
             }
         }

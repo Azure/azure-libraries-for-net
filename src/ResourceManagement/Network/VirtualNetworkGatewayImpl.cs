@@ -15,6 +15,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Network.Fluent.PointToSiteConfiguration.Definition;
+    using Microsoft.Azure.Management.Network.Fluent.PointToSiteConfiguration.Update;
 
     /// <summary>
     /// Implementation for VirtualNetworkGateway and its create and update interfaces.
@@ -28,10 +30,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
             IWithGroup,
             IWithNetwork,
             IWithCreate,
-            IUpdate>,
+            VirtualNetworkGateway.Update.IUpdate>,
         IVirtualNetworkGateway,
         IDefinition,
-        IUpdate
+        VirtualNetworkGateway.Update.IUpdate
     {
         private string GATEWAY_SUBNET = "GatewaySubnet";
         private Dictionary<string, Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayIPConfiguration> ipConfigs;
@@ -145,8 +147,23 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        public string GenerateVpnProfile()
+        {
+            return Extensions.Synchronize(() => this.GenerateVpnProfileAsync());
+        }
+
+        public PointToSiteConfigurationImpl UpdatePointToSiteConfiguration()
+        {
+            return new PointToSiteConfigurationImpl(Inner.VpnClientConfiguration, this);
+        }
+
+        internal void AttachPointToSiteConfiguration(PointToSiteConfigurationImpl pointToSiteConfiguration)
+        {
+            Inner.VpnClientConfiguration = pointToSiteConfiguration.Inner;
+        }
+
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:ED53F38CFE3724E460E65F33FB69C01D
-        protected async override Task<Models.VirtualNetworkGatewayInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<Models.VirtualNetworkGatewayInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return await Manager.Inner.VirtualNetworkGateways.GetAsync(ResourceGroupName, Name);
         }
@@ -208,6 +225,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public string GatewayDefaultSiteResourceId()
         {
             return Inner.GatewayDefaultSite == null ? null : Inner.GatewayDefaultSite.Id;
+        }
+
+        public async Task<string> GenerateVpnProfileAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var result = await Manager.Inner.VirtualNetworkGateways
+                .GenerateVpnProfileWithHttpMessagesAsync(ResourceGroupName, Name, new VpnClientParametersInner(), cancellationToken: cancellationToken))
+            {
+                if (result.Body != null) return result.Body;
+
+                var bodyString = await result.Response.Content.ReadAsStringAsync();
+                return bodyString.Replace("\"", "");
+            }
         }
 
         ///GENMHASH:359B78C1848B4A526D723F29D8C8C558:149EB760CEBAD953681C8A653E657563
@@ -408,6 +437,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         private IVirtualNetworkGatewayConnection WrapConnection(VirtualNetworkGatewayConnectionListEntityInner inner)
         {
             return Connections().GetById(inner.Id);
+        }
+
+        public PointToSiteConfigurationImpl DefinePointToSiteConfiguration()
+        {
+            return new PointToSiteConfigurationImpl(new VpnClientConfiguration(), this);
         }
 
         ///GENMHASH:B54CAD7C3DE0D3C50B8DCF3D902BFB18:4F12E780C5065E3EB6FFCB437197D940

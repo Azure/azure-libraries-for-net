@@ -36,6 +36,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         bool ActiveActive { get; }
 
         /// <summary>
+        /// Generates asynchronously VPN profile for P2S client of the virtual network gateway in the specified resource group. Used for IKEV2 and radius based authentication.
+        /// </summary>
+        /// <return>String object if successful.</return>
+        Task<string> GenerateVpnProfileAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// Gets virtual network gateway's BGP speaker settings.
         /// </summary>
         Models.BgpSettings BgpSettings { get; }
@@ -58,6 +64,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Gets the gatewayType value.
         /// </summary>
         Models.VirtualNetworkGatewayType GatewayType { get; }
+
+        /// <summary>
+        /// Generates VPN profile for P2S client of the virtual network gateway in the specified resource group. Used for IKEV2 and radius based authentication.
+        /// </summary>
+        /// <return>String object if successful.</return>
+        string GenerateVpnProfile();
 
         /// <summary>
         /// Resets the primary of the virtual network gateway.
