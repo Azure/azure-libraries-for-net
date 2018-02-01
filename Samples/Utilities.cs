@@ -2412,7 +2412,7 @@ namespace Microsoft.Azure.Management.Samples.Common
             {
                 parsedTemplate.SelectToken("parameters.hostingPlanName")["defaultValue"] = hostingPlanName;
                 parsedTemplate.SelectToken("parameters.webSiteName")["defaultValue"] = webAppName;
-                parsedTemplate.SelectToken("parameters.skuName")["defaultValue"] = "F1";
+                parsedTemplate.SelectToken("parameters.skuName")["defaultValue"] = "B1";
                 parsedTemplate.SelectToken("parameters.skuCapacity")["defaultValue"] = 1;
             }
             else if (String.Equals("ArmTemplateVM.json", templateFileName, StringComparison.OrdinalIgnoreCase))
