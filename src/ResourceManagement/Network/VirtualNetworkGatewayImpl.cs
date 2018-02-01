@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public string GenerateVpnProfile()
         {
-            return Extensions.Synchronize(() => this.Manager.Inner.VirtualNetworkGateways.GenerateVpnProfileAsync(ResourceGroupName, Name, new VpnClientParametersInner()));
+            return Extensions.Synchronize(() => this.GenerateVpnProfileAsync());
         }
 
         public PointToSiteConfigurationImpl UpdatePointToSiteConfiguration()
@@ -229,7 +229,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public async Task<string> GenerateVpnProfileAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Manager.Inner.VirtualNetworkGateways.GenerateVpnProfileAsync(ResourceGroupName, Name, new VpnClientParametersInner());
+            using (var result = await Manager.Inner.VirtualNetworkGateways
+                .GenerateVpnProfileWithHttpMessagesAsync(ResourceGroupName, Name, new VpnClientParametersInner(), cancellationToken: cancellationToken))
+            {
+                if (result.Body != null) return result.Body;
+
+                var bodyString = await result.Response.Content.ReadAsStringAsync();
+                return bodyString.Replace("\"", "");
+            }
         }
 
         ///GENMHASH:359B78C1848B4A526D723F29D8C8C558:149EB760CEBAD953681C8A653E657563
