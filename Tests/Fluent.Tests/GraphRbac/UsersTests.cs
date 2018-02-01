@@ -32,7 +32,7 @@ namespace Fluent.Tests.Graph.RBAC
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Jianghao Lu doesn't exist in test tenant")]
         public void CanGetUserByForeignEmail()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
