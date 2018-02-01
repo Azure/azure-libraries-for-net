@@ -15,7 +15,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update.IWithSku,
-        Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update.IWithBgp
+        Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update.IWithBgp,
+        Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update.IWithPointToSiteConfiguration
     {
     }
 
@@ -38,6 +39,24 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update
         /// </summary>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGateway.Update.IUpdate WithoutBgp();
+    }
+
+    /// <summary>
+    /// The stage of update allowing to specify virtual network gateway's point-to-site configuration.
+    /// </summary>
+    public interface IWithPointToSiteConfiguration
+    {
+        /// <summary>
+        /// Begins update of existing point-to-site configuration for this virtual network gateway.
+        /// </summary>
+        /// <return>The first stage of the point-to-site configuration update.</return>
+        Microsoft.Azure.Management.Network.Fluent.PointToSiteConfiguration.Update.IUpdate UpdatePointToSiteConfiguration();
+
+        /// <summary>
+        /// Begins the definition of point-to-site configuration to be added to this virtual network gateway.
+        /// </summary>
+        /// <return>The first stage of the point-to-site configuration definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.PointToSiteConfiguration.Definition.IBlank<VirtualNetworkGateway.Update.IUpdate> DefinePointToSiteConfiguration();
     }
 
     /// <summary>
