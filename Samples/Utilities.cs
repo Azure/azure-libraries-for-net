@@ -2338,6 +2338,7 @@ namespace Microsoft.Azure.Management.Samples.Common
                 {
                     using (var client = new HttpClient())
                     {
+                        client.Timeout = TimeSpan.FromSeconds(300);
                         if (headers != null)
                         {
                             foreach (var header in headers)

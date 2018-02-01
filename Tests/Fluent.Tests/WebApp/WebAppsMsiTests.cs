@@ -10,6 +10,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -71,6 +72,7 @@ namespace Fluent.Tests.WebApp
             {
                 using (var client = new HttpClient())
                 {
+                    client.Timeout = TimeSpan.FromMinutes(5);
                     if (headers != null)
                     {
                         foreach (var header in headers)
