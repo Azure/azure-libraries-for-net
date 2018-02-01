@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 throw new ArgumentNullException();
             }
             byte[] content = File.ReadAllBytes(certificateFile.FullName);
-            return this.WithAzureCertificate(name, Convert.ToBase64String(content).Replace(BEGIN_CERT, "").Replace(END_CERT, ""));
+            return this.WithAzureCertificate(name, Convert.ToString(content).Replace(BEGIN_CERT, "").Replace(END_CERT, ""));
         }
 
         public VirtualNetworkGateway.Update.IUpdate Parent()
