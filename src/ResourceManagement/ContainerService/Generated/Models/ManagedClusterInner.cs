@@ -40,8 +40,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <param name="fqdn">FDQN for the master pool.</param>
         /// <param name="kubernetesVersion">Version of Kubernetes specified
         /// when creating the managed cluster.</param>
-        /// <param name="accessProfiles">Access profiles for the managed
-        /// cluster.</param>
         /// <param name="agentPoolProfiles">Properties of the agent
         /// pool.</param>
         /// <param name="linuxProfile">Profile for Linux VMs in the container
@@ -49,14 +47,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <param name="servicePrincipalProfile">Information about a service
         /// principal identity for the cluster to use for manipulating Azure
         /// APIs. Either secret or keyVaultSecretRef must be specified.</param>
-        public ManagedClusterInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string dnsPrefix = default(string), string fqdn = default(string), string kubernetesVersion = default(string), ManagedClusterPropertiesAccessProfiles accessProfiles = default(ManagedClusterPropertiesAccessProfiles), IList<ContainerServiceAgentPoolProfile> agentPoolProfiles = default(IList<ContainerServiceAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ContainerServiceServicePrincipalProfile servicePrincipalProfile = default(ContainerServiceServicePrincipalProfile))
+        public ManagedClusterInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string dnsPrefix = default(string), string fqdn = default(string), string kubernetesVersion = default(string), IList<ContainerServiceAgentPoolProfile> agentPoolProfiles = default(IList<ContainerServiceAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ContainerServiceServicePrincipalProfile servicePrincipalProfile = default(ContainerServiceServicePrincipalProfile))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
             DnsPrefix = dnsPrefix;
             Fqdn = fqdn;
             KubernetesVersion = kubernetesVersion;
-            AccessProfiles = accessProfiles;
             AgentPoolProfiles = agentPoolProfiles;
             LinuxProfile = linuxProfile;
             ServicePrincipalProfile = servicePrincipalProfile;
@@ -94,12 +91,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.kubernetesVersion")]
         public string KubernetesVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets access profiles for the managed cluster.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.accessProfiles")]
-        public ManagedClusterPropertiesAccessProfiles AccessProfiles { get; set; }
 
         /// <summary>
         /// Gets or sets properties of the agent pool.

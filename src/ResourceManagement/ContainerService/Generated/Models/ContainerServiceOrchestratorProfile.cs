@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <param name="orchestratorVersion">The version of the orchestrator
         /// to use. You can specify the major.minor.patch part of the actual
         /// version.For example, you can specify version as "1.6.11".</param>
-        public ContainerServiceOrchestratorProfile(ContainerServiceOrchestratorTypes orchestratorType, string orchestratorVersion = default(string))
+        public ContainerServiceOrchestratorProfile(string orchestratorType, string orchestratorVersion = default(string))
         {
             OrchestratorType = orchestratorType;
             OrchestratorVersion = orchestratorVersion;
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// 'Swarm', 'DCOS', 'DockerCE', 'Custom'
         /// </summary>
         [JsonProperty(PropertyName = "orchestratorType")]
-        public ContainerServiceOrchestratorTypes OrchestratorType { get; set; }
+        public string OrchestratorType { get; set; }
 
         /// <summary>
         /// Gets or sets the version of the orchestrator to use. You can
@@ -68,11 +69,15 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
+            if (OrchestratorType == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "OrchestratorType");
+            }
         }
     }
 }

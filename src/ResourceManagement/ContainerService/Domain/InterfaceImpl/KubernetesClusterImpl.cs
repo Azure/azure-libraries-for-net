@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// Specifies the version for the Kubernetes cluster.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        KubernetesCluster.Definition.IWithDnsPrefix KubernetesCluster.Definition.IWithVersion.WithVersion(KubernetesVersion kubernetesVersion)
+        KubernetesCluster.Definition.IWithDnsPrefix KubernetesCluster.Definition.IWithVersion.WithVersion(Microsoft.Azure.Management.ContainerService.Fluent.Models.KubernetesVersion kubernetesVersion)
         {
             return this.WithVersion(kubernetesVersion) as KubernetesCluster.Definition.IWithDnsPrefix;
         }
@@ -179,11 +179,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the Kubernetes version.
         /// </summary>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesVersion Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.Version
+        Microsoft.Azure.Management.ContainerService.Fluent.Models.KubernetesVersion Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.Version
         {
             get
             {
-                return this.Version() as Microsoft.Azure.Management.ContainerService.Fluent.KubernetesVersion;
+                return this.Version() as Microsoft.Azure.Management.ContainerService.Fluent.Models.KubernetesVersion;
             }
         }
 

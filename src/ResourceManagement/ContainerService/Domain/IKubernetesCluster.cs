@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <summary>
         /// Gets the Kubernetes version.
         /// </summary>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesVersion Version { get; }
+        Microsoft.Azure.Management.ContainerService.Fluent.Models.KubernetesVersion Version { get; }
 
         /// <summary>
         /// Gets the Kubernetes configuration file content with administrative privileges to the cluster.

@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         public async Task<System.Collections.Generic.ISet<string>> ListKubernetesVersionsAsync(Region region, CancellationToken cancellationToken = default(CancellationToken))
         {
             var kubernetesVersions = new SortedSet<string>();
-            var inner = await this.Manager.Inner.ContainerServices.ListOrchestratorsAsync(region.Name, cancellationToken);
+            var inner = await this.Manager.Inner.ContainerServices.ListOrchestratorsAsync(region.Name, cancellationToken:cancellationToken);
             if (inner != null && inner.Orchestrators != null && inner.Orchestrators.Count > 0)
             {
                 foreach (var orchestrator in inner.Orchestrators)

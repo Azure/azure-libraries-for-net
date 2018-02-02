@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
                 throw new Exception("Orchestrator profile is missing!");
             }
 
-            return this.Inner.OrchestratorProfile.OrchestratorType;
+            return ContainerServiceOrchestratorTypes.Parse(this.Inner.OrchestratorProfile.OrchestratorType);
         }
 
         ///GENMHASH:1C0F298C59000FB8575D2EB355D8B74B:1001666653F1B8AAB912580CFE34531C
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         private ContainerServiceImpl WithOrchestratorProfile(ContainerServiceOrchestratorTypes orchestratorType)
         {
             ContainerServiceOrchestratorProfile orchestratorProfile = new ContainerServiceOrchestratorProfile();
-            orchestratorProfile.OrchestratorType = orchestratorType;
+            orchestratorProfile.OrchestratorType = orchestratorType.ToString();
             this.Inner.OrchestratorProfile = orchestratorProfile;
 
             return this;

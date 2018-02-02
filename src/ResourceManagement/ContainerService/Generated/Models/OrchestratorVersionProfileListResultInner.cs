@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// Initializes a new instance of the
         /// OrchestratorVersionProfileListResultInner class.
         /// </summary>
-        /// <param name="orchestrators">List of orchstrator version
+        /// <param name="orchestrators">List of orchestrator version
         /// profiles.</param>
         /// <param name="id">Id of the orchestrator version profile list
         /// result.</param>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets or sets list of orchstrator version profiles.
+        /// Gets or sets list of orchestrator version profiles.
         /// </summary>
         [JsonProperty(PropertyName = "properties.orchestrators")]
         public IList<OrchestratorVersionProfile> Orchestrators { get; set; }
