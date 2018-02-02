@@ -15,7 +15,7 @@ namespace Fluent.Tests.Network
 {
     public class ExpressRouteCircuit
     {
-        private static Region REGION = Region.USWest;
+        private static Region REGION = Region.USNorthCentral;
 
         [Fact]
         public void CreateUpdate()
