@@ -104,7 +104,7 @@ namespace ManageVpnGatewayPoint2SiteConnection
                 try
                 {
                     Utilities.Log("Deleting Resource Group: " + rgName);
-//                    azure.ResourceGroups.BeginDeleteByName(rgName);
+                    azure.ResourceGroups.BeginDeleteByName(rgName);
                 }
                 catch (NullReferenceException)
                 {
