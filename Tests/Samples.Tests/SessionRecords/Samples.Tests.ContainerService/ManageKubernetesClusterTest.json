@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgakse80889415?api-version=2016-02-01",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgaks5fd519422?api-version=2016-02-01",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"centralus\"\r\n}",
       "RequestHeaders": {
@@ -12,18 +12,18 @@
           "31"
         ],
         "x-ms-client-request-id": [
-          "713637ff-dcfb-45b7-8a46-f9aa187d3dbb"
+          "085dafa0-368b-4690-b772-ea4af5ac39cb"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgakse80889415\",\r\n  \"name\": \"rgakse80889415\",\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422\",\r\n  \"name\": \"rgaks5fd519422\",\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "184"
@@ -38,22 +38,22 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 16 Nov 2017 23:41:01 GMT"
+          "Fri, 02 Feb 2018 21:43:08 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1195"
         ],
         "x-ms-request-id": [
-          "737d5f45-d112-4ed4-8885-77fb5381e444"
+          "1d4e9e65-c947-4b91-ac31-d233b5e29218"
         ],
         "x-ms-correlation-request-id": [
-          "737d5f45-d112-4ed4-8885-77fb5381e444"
+          "1d4e9e65-c947-4b91-ac31-d233b5e29218"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234102Z:737d5f45-d112-4ed4-8885-77fb5381e444"
+          "WESTUS2:20180202T214309Z:1d4e9e65-c947-4b91-ac31-d233b5e29218"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -67,18 +67,18 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ea5d3b8a-c21c-4a43-9b53-1b802abc81d9"
+          "5bd4efc5-9606-4a2f-8eb0-abf7f9ba2c1c"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/orchestrators\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.ContainerService/locations/orchestrators\",\r\n  \"properties\": {\r\n    \"orchestrators\": [\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.7.7\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.7.9\",\r\n        \"default\": true,\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.1\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.6.11\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.6.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.5\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.7\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.1\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.8.1\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.6.9\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.6.11\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.5\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.7\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.8.2\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.10.0\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.9.0\",\r\n        \"default\": true\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.8.8\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Swarm\",\r\n        \"orchestratorVersion\": \"swarm:1.1.0\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DockerCE\",\r\n        \"orchestratorVersion\": \"17.03.*\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/orchestrators\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.ContainerService/locations/orchestrators\",\r\n  \"properties\": {\r\n    \"orchestrators\": [\r\n      {\r\n        \"orchestratorType\": \"Swarm\",\r\n        \"orchestratorVersion\": \"swarm:1.1.0\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DockerCE\",\r\n        \"orchestratorVersion\": \"17.03.*\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.7.9\",\r\n        \"default\": true,\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.6\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.8.1\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.6\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.9.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.9.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.4\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.8.2\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.6\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.9.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.9.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.4\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.5.8\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.6.6\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.13\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.11\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.12\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.6.9\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.7.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.7\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.13\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.5\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.11\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.12\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.8.6\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.9.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.9.0\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.6.11\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.7.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.13\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.5\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.7\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.7.12\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.6\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.7.7\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.6\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.10.0\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.9.0\",\r\n        \"default\": true\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.8.8\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json"
@@ -90,7 +90,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 16 Nov 2017 23:41:02 GMT"
+          "Fri, 02 Feb 2018 21:43:08 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -105,19 +105,19 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14992"
+          "14978"
         ],
         "x-ms-correlation-request-id": [
-          "95150ef3-68b5-4e19-a095-490b16c81d57"
+          "38115cd9-f274-43de-9073-7dea8e43df52"
         ],
         "x-ms-request-id": [
-          "6932f86a-d97e-470c-9a30-5bb2741631b9"
+          "acc4e225-aa9a-4189-b223-79a9e30c242d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234102Z:95150ef3-68b5-4e19-a095-490b16c81d57"
+          "WESTUS2:20180202T214309Z:38115cd9-f274-43de-9073-7dea8e43df52"
         ]
       },
       "StatusCode": 200
@@ -128,18 +128,18 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5a596fb5-58be-4d22-b916-79dd933fd107"
+          "3180d7a6-ec8a-4620-9268-051939421ab7"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/orchestrators\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.ContainerService/locations/orchestrators\",\r\n  \"properties\": {\r\n    \"orchestrators\": [\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.10.0\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.9.0\",\r\n        \"default\": true\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.8.8\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Swarm\",\r\n        \"orchestratorVersion\": \"swarm:1.1.0\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DockerCE\",\r\n        \"orchestratorVersion\": \"17.03.*\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.6.9\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.7.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.7\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.11\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.5\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.8.1\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.8.2\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.7.7\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.0\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.7.9\",\r\n        \"default\": true,\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.1\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.6.11\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.7.7\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.5\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.4\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/orchestrators\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.ContainerService/locations/orchestrators\",\r\n  \"properties\": {\r\n    \"orchestrators\": [\r\n      {\r\n        \"orchestratorType\": \"DockerCE\",\r\n        \"orchestratorVersion\": \"17.03.*\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.6.9\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.6.13\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.5\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.11\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.7\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.8.1\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.6\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.9.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.9.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.4\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.8.2\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.6\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.9.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.9.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.4\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.5.8\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.6.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.11\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.13\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.6\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.7.12\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.6\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.8.6\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.9.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.9.0\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.6.11\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.7.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.7\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.13\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.5\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.6.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.12\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.7.7\",\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.12\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.6\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.9\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.4\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Kubernetes\",\r\n        \"orchestratorVersion\": \"1.7.9\",\r\n        \"default\": true,\r\n        \"upgrades\": [\r\n          {\r\n            \"orchestratorVersion\": \"1.8.0\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.4\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.10\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.1\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.2\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.8.6\"\r\n          },\r\n          {\r\n            \"orchestratorVersion\": \"1.7.12\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.10.0\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.9.0\",\r\n        \"default\": true\r\n      },\r\n      {\r\n        \"orchestratorType\": \"DCOS\",\r\n        \"orchestratorVersion\": \"1.8.8\"\r\n      },\r\n      {\r\n        \"orchestratorType\": \"Swarm\",\r\n        \"orchestratorVersion\": \"swarm:1.1.0\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json"
@@ -151,7 +151,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 16 Nov 2017 23:45:41 GMT"
+          "Fri, 02 Feb 2018 21:48:14 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -166,27 +166,27 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14981"
+          "14964"
         ],
         "x-ms-correlation-request-id": [
-          "e43a3a31-fe82-43e8-ae11-229b47435301"
+          "f360d3a1-0eef-4033-a2f2-825d61368478"
         ],
         "x-ms-request-id": [
-          "6738bfc9-b2c1-494b-b33a-1c689d53279e"
+          "a588fa82-1515-4a11-88d9-f10d2933d886"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234542Z:e43a3a31-fe82-43e8-ae11-229b47435301"
+          "WESTUS2:20180202T214815Z:f360d3a1-0eef-4033-a2f2-825d61368478"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgakse80889415/providers/Microsoft.ContainerService/managedClusters/akssample2f261236d9cddc?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2017-08-31",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dnsPrefix\": \"dns-akssample2f261236d9cddc\",\r\n    \"kubernetesVersion\": \"1.8.2\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D1_v2\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"servicePrincipalProfile\": {\r\n      \"clientId\": \"spClientId\",\r\n      \"secret\": \"spSecret\"\r\n    }\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dnsPrefix\": \"dns-akssamplef1608646cd9530\",\r\n    \"kubernetesVersion\": \"1.8.6\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D1_v2\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"servicePrincipalProfile\": {\r\n      \"clientId\": \"spId\",\r\n      \"secret\": \"spSecret\"\r\n    }\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -195,18 +195,18 @@
           "1029"
         ],
         "x-ms-client-request-id": [
-          "8d2ec017-aecc-4b4a-82b7-b6e3bc439fca"
+          "ff2d3787-601f-4eaa-8e96-eef4697ff3b0"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgakse80889415/providers/Microsoft.ContainerService/managedClusters/akssample2f261236d9cddc\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"akssample2f261236d9cddc\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"kubernetesVersion\": \"1.8.2\",\r\n    \"dnsPrefix\": \"dns-akssample2f261236d9cddc\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D1_v2\",\r\n        \"storageProfile\": \"ManagedDisks\",\r\n        \"osType\": \"Linux\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"servicePrincipalProfile\": {\r\n      \"clientId\": \"spClientId\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"akssamplef1608646cd9530\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"kubernetesVersion\": \"1.8.6\",\r\n    \"dnsPrefix\": \"dns-akssamplef1608646cd9530\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D1_v2\",\r\n        \"storageProfile\": \"ManagedDisks\",\r\n        \"osType\": \"Linux\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"servicePrincipalProfile\": {\r\n      \"clientId\": \"spId\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1246"
@@ -221,7 +221,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 16 Nov 2017 23:41:09 GMT"
+          "Fri, 02 Feb 2018 21:43:12 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -230,51 +230,50 @@
           "nginx"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/a25a7f9a-e410-4f2c-8533-1f8841327345?api-version=2017-08-31"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31"
         ],
         "x-ms-correlation-request-id": [
-          "6639dbef-7534-45a8-a4b2-75ff4207d5fd"
+          "0a8727f9-cecd-475a-8653-868d7fadc393"
         ],
         "x-ms-request-id": [
-          "a25a7f9a-e410-4f2c-8533-1f8841327345"
+          "4dcc0be9-bb57-48f0-8424-d7be15e3ad51"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1194"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234110Z:6639dbef-7534-45a8-a4b2-75ff4207d5fd"
+          "WESTUS2:20180202T214313Z:0a8727f9-cecd-475a-8653-868d7fadc393"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgakse80889415/providers/Microsoft.ContainerService/managedClusters/akssample2f261236d9cddc?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2017-08-31",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dnsPrefix\": \"dns-akssample2f261236d9cddc\",\r\n    \"kubernetesVersion\": \"1.8.2\",\r\n    \"accessProfiles\": {\r\n      \"clusterAdmin\": {\r\n        \"kubeConfig\": \"kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": \"kubeconfig\"\r\n      }\r\n    },\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 2,\r\n        \"vmSize\": \"Standard_D1_v2\",\r\n        \"storageProfile\": \"ManagedDisks\",\r\n        \"osType\": \"Linux\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"centralus\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"dnsPrefix\": \"dns-akssamplef1608646cd9530\",\r\n    \"kubernetesVersion\": \"1.8.6\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 2,\r\n        \"vmSize\": \"Standard_D1_v2\",\r\n        \"storageProfile\": \"ManagedDisks\",\r\n        \"osType\": \"Linux\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"centralus\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "26613"
+          "928"
         ],
         "x-ms-client-request-id": [
-          "4282101d-2e70-4739-8c80-52444aa3d526"
+          "1bd26ef6-ae66-42ff-8211-007ab1ca3daf"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgakse80889415/providers/Microsoft.ContainerService/managedClusters/akssample2f261236d9cddc\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"akssample2f261236d9cddc\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"kubernetesVersion\": \"1.8.2\",\r\n    \"dnsPrefix\": \"dns-akssample2f261236d9cddc\",\r\n    \"fqdn\": \"dns-akssample2f261236d9cddc-e2fe4de4.hcp.centralus.azmk8s.io\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 2,\r\n        \"vmSize\": \"Standard_D1_v2\",\r\n        \"storageProfile\": \"ManagedDisks\",\r\n        \"osType\": \"Linux\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"servicePrincipalProfile\": {\r\n      \"clientId\": \"spClientId\"\r\n    },\r\n    \"accessProfiles\": {\r\n      \"clusterAdmin\": {\r\n        \"kubeConfig\": \"
-kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": \"kubeconfig\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"akssamplef1608646cd9530\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"kubernetesVersion\": \"1.8.6\",\r\n    \"dnsPrefix\": \"dns-akssamplef1608646cd9530\",\r\n    \"fqdn\": \"dns-akssamplef1608646cd9530-cf6abff0.hcp.centralus.azmk8s.io\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 2,\r\n        \"vmSize\": \"Standard_D1_v2\",\r\n        \"storageProfile\": \"ManagedDisks\",\r\n        \"osType\": \"Linux\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"servicePrincipalProfile\": {\r\n      \"clientId\": \"spId\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json"
@@ -286,7 +285,7 @@ kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": 
           "no-cache"
         ],
         "Date": [
-          "Thu, 16 Nov 2017 23:45:43 GMT"
+          "Fri, 02 Feb 2018 21:48:16 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -299,40 +298,40 @@ kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": 
         ],
         "Vary": [
           "Accept-Encoding"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4faf7e8d-aaad-43bd-9b5d-66f0fa563052?api-version=2017-08-31"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31"
         ],
         "x-ms-correlation-request-id": [
-          "2970521f-d565-4791-84c9-712303628d90"
+          "dcfce5cd-cd22-4e03-aab3-0ab905d3e4aa"
         ],
         "x-ms-request-id": [
-          "4faf7e8d-aaad-43bd-9b5d-66f0fa563052"
+          "709ab6d9-8d1c-400e-8fee-a19ff052d9e5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234544Z:2970521f-d565-4791-84c9-712303628d90"
+          "WESTUS2:20180202T214817Z:dcfce5cd-cd22-4e03-aab3-0ab905d3e4aa"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/a25a7f9a-e410-4f2c-8533-1f8841327345?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"9a7f5aa2-10e4-2c4f-8533-1f8841327345\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:41:08.6566707Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"e90bcc4d-57bb-f048-8424-d7be15e3ad51\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:43:11.1459167Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json"
@@ -344,7 +343,7 @@ kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": 
           "no-cache"
         ],
         "Date": [
-          "Thu, 16 Nov 2017 23:41:40 GMT"
+          "Fri, 02 Feb 2018 21:43:43 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -359,780 +358,10 @@ kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": 
           "Accept-Encoding"
         ],
         "x-ms-correlation-request-id": [
-          "87abf663-f61f-4415-883b-02cc9f97cc48"
+          "682ce1cc-2ae8-4e86-b216-4a4584f43001"
         ],
         "x-ms-request-id": [
-          "0efdbcc1-73c4-448f-8b76-4349abb4c21a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14991"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234140Z:87abf663-f61f-4415-883b-02cc9f97cc48"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/a25a7f9a-e410-4f2c-8533-1f8841327345?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"9a7f5aa2-10e4-2c4f-8533-1f8841327345\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:41:08.6566707Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:42:11 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "e6f90d4e-a232-41ce-859f-dc9fae185294"
-        ],
-        "x-ms-request-id": [
-          "65b3783a-4d81-4ef2-b50b-4463cecc44dc"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14990"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234211Z:e6f90d4e-a232-41ce-859f-dc9fae185294"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/a25a7f9a-e410-4f2c-8533-1f8841327345?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"9a7f5aa2-10e4-2c4f-8533-1f8841327345\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:41:08.6566707Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:42:40 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "1b6e6a20-abeb-4e10-9011-61c6f033aaf7"
-        ],
-        "x-ms-request-id": [
-          "f50f1ec4-b584-455c-906d-0f07e300ea1d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234241Z:1b6e6a20-abeb-4e10-9011-61c6f033aaf7"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/a25a7f9a-e410-4f2c-8533-1f8841327345?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"9a7f5aa2-10e4-2c4f-8533-1f8841327345\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:41:08.6566707Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:43:11 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "ef967f6c-8365-4ba6-9367-5cc8d8f4b844"
-        ],
-        "x-ms-request-id": [
-          "d1c6ac00-af93-433b-b9fb-04906b373c0d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14988"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234311Z:ef967f6c-8365-4ba6-9367-5cc8d8f4b844"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/a25a7f9a-e410-4f2c-8533-1f8841327345?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"9a7f5aa2-10e4-2c4f-8533-1f8841327345\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:41:08.6566707Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:43:41 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "236282d9-8196-4d48-b524-7280e7137132"
-        ],
-        "x-ms-request-id": [
-          "274f2b10-d234-4b80-b2a5-01ef7e643e99"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14987"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234341Z:236282d9-8196-4d48-b524-7280e7137132"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/a25a7f9a-e410-4f2c-8533-1f8841327345?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"9a7f5aa2-10e4-2c4f-8533-1f8841327345\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:41:08.6566707Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:44:10 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "481ab964-8185-4070-80ee-6a47025bdcfd"
-        ],
-        "x-ms-request-id": [
-          "596a65b9-fa46-425d-99c9-7df96c855550"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14986"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234411Z:481ab964-8185-4070-80ee-6a47025bdcfd"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/a25a7f9a-e410-4f2c-8533-1f8841327345?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"9a7f5aa2-10e4-2c4f-8533-1f8841327345\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:41:08.6566707Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:44:41 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "2f37b644-3b94-4761-a953-25d02f84a7a4"
-        ],
-        "x-ms-request-id": [
-          "f03b9a11-57db-45cb-a2c2-c5abeaaf2106"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14984"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234441Z:2f37b644-3b94-4761-a953-25d02f84a7a4"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/a25a7f9a-e410-4f2c-8533-1f8841327345?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"9a7f5aa2-10e4-2c4f-8533-1f8841327345\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:41:08.6566707Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:45:11 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "1961021b-ec55-4eb0-a41c-8eddb727bd8b"
-        ],
-        "x-ms-request-id": [
-          "972b835e-ebf6-4c8b-8dbd-99bdfebcd6b5"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14984"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234512Z:1961021b-ec55-4eb0-a41c-8eddb727bd8b"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/a25a7f9a-e410-4f2c-8533-1f8841327345?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"9a7f5aa2-10e4-2c4f-8533-1f8841327345\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2017-11-16T23:41:08.6566707Z\",\r\n  \"endTime\": \"2017-11-16T23:45:25.2632248Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:45:41 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "718af750-e961-4511-a2a3-178e798b815f"
-        ],
-        "x-ms-request-id": [
-          "b9947006-c0a0-463c-add8-26ce83fdae96"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14983"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234542Z:718af750-e961-4511-a2a3-178e798b815f"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgakse80889415/providers/Microsoft.ContainerService/managedClusters/akssample2f261236d9cddc?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgakse80889415/providers/Microsoft.ContainerService/managedClusters/akssample2f261236d9cddc\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"akssample2f261236d9cddc\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"kubernetesVersion\": \"1.8.2\",\r\n    \"dnsPrefix\": \"dns-akssample2f261236d9cddc\",\r\n    \"fqdn\": \"dns-akssample2f261236d9cddc-e2fe4de4.hcp.centralus.azmk8s.io\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D1_v2\",\r\n        \"storageProfile\": \"ManagedDisks\",\r\n        \"osType\": \"Linux\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"servicePrincipalProfile\": {\r\n      \"clientId\": \"spClientId\"\r\n    },\r\n    \"accessProfiles\": {\r\n      \"clusterAdmin\": {\r\n        \"kubeConfig\": \"kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": \"kubeconfig\"\r\n      }\r\n    }\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:45:41 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14982"
-        ],
-        "x-ms-correlation-request-id": [
-          "119e3bb5-6945-42e1-8f2a-d3f8733cb2e2"
-        ],
-        "x-ms-request-id": [
-          "878360c8-fddc-4a26-b371-3ac0a8d8648f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234542Z:119e3bb5-6945-42e1-8f2a-d3f8733cb2e2"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgakse80889415/providers/Microsoft.ContainerService/managedClusters/akssample2f261236d9cddc?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgakse80889415/providers/Microsoft.ContainerService/managedClusters/akssample2f261236d9cddc\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"akssample2f261236d9cddc\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"kubernetesVersion\": \"1.8.2\",\r\n    \"dnsPrefix\": \"dns-akssample2f261236d9cddc\",\r\n    \"fqdn\": \"dns-akssample2f261236d9cddc-e2fe4de4.hcp.centralus.azmk8s.io\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 2,\r\n        \"vmSize\": \"Standard_D1_v2\",\r\n        \"storageProfile\": \"ManagedDisks\",\r\n        \"osType\": \"Linux\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"servicePrincipalProfile\": {\r\n      \"clientId\": \"spClientId\"\r\n    },\r\n    \"accessProfiles\": {\r\n      \"clusterAdmin\": {\r\n        \"kubeConfig\": \"kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": \"kubeconfig\"\r\n      }\r\n    }\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:48:15 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14975"
-        ],
-        "x-ms-correlation-request-id": [
-          "3b82ba1b-1646-4066-9377-8e3b469c039c"
-        ],
-        "x-ms-request-id": [
-          "50aa2337-f0da-4afb-b5ac-2be77fb04f76"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234816Z:3b82ba1b-1646-4066-9377-8e3b469c039c"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4faf7e8d-aaad-43bd-9b5d-66f0fa563052?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"8d7eaf4f-adaa-bd43-9b5d-66f0fa563052\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:45:43.4031831Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:46:14 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "076fff7d-b045-4b19-bcf5-15530cc37e7e"
-        ],
-        "x-ms-request-id": [
-          "833c22a7-0ff4-4a9b-b03f-b39ee2644137"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14980"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234614Z:076fff7d-b045-4b19-bcf5-15530cc37e7e"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4faf7e8d-aaad-43bd-9b5d-66f0fa563052?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"8d7eaf4f-adaa-bd43-9b5d-66f0fa563052\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:45:43.4031831Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:46:44 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "8f58b388-a032-406a-a10a-57b3b3d6fc9a"
-        ],
-        "x-ms-request-id": [
-          "7c4a9f85-ad3e-4a2c-b7b2-e6cf5bbaf67e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14979"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234645Z:8f58b388-a032-406a-a10a-57b3b3d6fc9a"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4faf7e8d-aaad-43bd-9b5d-66f0fa563052?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"8d7eaf4f-adaa-bd43-9b5d-66f0fa563052\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:45:43.4031831Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:47:14 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "ba42611c-017c-4649-81b6-dd771d7c094a"
-        ],
-        "x-ms-request-id": [
-          "fe63c175-cbf2-4e65-baa8-dc212581baa9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14978"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234715Z:ba42611c-017c-4649-81b6-dd771d7c094a"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4faf7e8d-aaad-43bd-9b5d-66f0fa563052?api-version=2017-08-31",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"8d7eaf4f-adaa-bd43-9b5d-66f0fa563052\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2017-11-16T23:45:43.4031831Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 16 Nov 2017 23:47:45 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "nginx"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-correlation-request-id": [
-          "9655fd98-b425-4c49-b96c-ec14afa58d0c"
-        ],
-        "x-ms-request-id": [
-          "b2747e24-ca74-43f0-8d56-29c7af42d94e"
+          "7dab4dfb-c18e-4cd9-9afb-af235a933bf2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1141,23 +370,23 @@ kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": 
           "14977"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234745Z:9655fd98-b425-4c49-b96c-ec14afa58d0c"
+          "WESTUS2:20180202T214343Z:682ce1cc-2ae8-4e86-b216-4a4584f43001"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4faf7e8d-aaad-43bd-9b5d-66f0fa563052?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"8d7eaf4f-adaa-bd43-9b5d-66f0fa563052\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2017-11-16T23:45:43.4031831Z\",\r\n  \"endTime\": \"2017-11-16T23:48:08.9781417Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"e90bcc4d-57bb-f048-8424-d7be15e3ad51\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:43:11.1459167Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json"
@@ -1169,7 +398,7 @@ kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": 
           "no-cache"
         ],
         "Date": [
-          "Thu, 16 Nov 2017 23:48:15 GMT"
+          "Fri, 02 Feb 2018 21:44:12 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -1184,10 +413,10 @@ kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": 
           "Accept-Encoding"
         ],
         "x-ms-correlation-request-id": [
-          "0fda7f09-357a-48f8-9cc6-137ac83fed27"
+          "dc94d384-2c6f-48f3-88d3-3c89868e3b3d"
         ],
         "x-ms-request-id": [
-          "d46b4571-0812-450c-8a1f-8367855d866e"
+          "eef7f8cd-cdef-42b7-a505-6159ce9ac191"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1196,26 +425,1150 @@ kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": 
           "14976"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234815Z:0fda7f09-357a-48f8-9cc6-137ac83fed27"
+          "WESTUS2:20180202T214413Z:dc94d384-2c6f-48f3-88d3-3c89868e3b3d"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgakse80889415?api-version=2016-02-01",
-      "RequestMethod": "DELETE",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e90bcc4d-57bb-f048-8424-d7be15e3ad51\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:43:11.1459167Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:44:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "c571ad61-e6c9-4c58-8d35-742c16cc38a4"
+        ],
+        "x-ms-request-id": [
+          "34631428-7437-4380-973a-ae06dd39cb95"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14975"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214443Z:c571ad61-e6c9-4c58-8d35-742c16cc38a4"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e90bcc4d-57bb-f048-8424-d7be15e3ad51\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:43:11.1459167Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:45:13 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "919a49f5-4c3c-4676-a43b-0938ce362775"
+        ],
+        "x-ms-request-id": [
+          "510986bc-fdf8-41c6-9c51-9a61018e4841"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14974"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214513Z:919a49f5-4c3c-4676-a43b-0938ce362775"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e90bcc4d-57bb-f048-8424-d7be15e3ad51\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:43:11.1459167Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:45:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "46df0c14-8b95-40f1-abcd-c18566d6133d"
+        ],
+        "x-ms-request-id": [
+          "d40abdbb-d1d7-4082-bd02-df8181e58046"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14973"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214544Z:46df0c14-8b95-40f1-abcd-c18566d6133d"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e90bcc4d-57bb-f048-8424-d7be15e3ad51\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:43:11.1459167Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:46:13 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "c3e9cf3e-8024-45b9-a7e2-b5c6b5af0c25"
+        ],
+        "x-ms-request-id": [
+          "63adc4b7-2297-49ee-961a-d8b4cc3bc523"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14972"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214614Z:c3e9cf3e-8024-45b9-a7e2-b5c6b5af0c25"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e90bcc4d-57bb-f048-8424-d7be15e3ad51\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:43:11.1459167Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:46:44 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "e7efd5cf-91c5-4f36-9150-4c67409f84fe"
+        ],
+        "x-ms-request-id": [
+          "8444764c-04e2-4ad8-8e82-ad0e6e950569"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14971"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214644Z:e7efd5cf-91c5-4f36-9150-4c67409f84fe"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e90bcc4d-57bb-f048-8424-d7be15e3ad51\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:43:11.1459167Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:47:13 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "fd8c76c7-1fa0-4434-8c8e-09a43afcf04f"
+        ],
+        "x-ms-request-id": [
+          "055f73c9-5d22-466b-953e-3ca00c529d51"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14970"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214714Z:fd8c76c7-1fa0-4434-8c8e-09a43afcf04f"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e90bcc4d-57bb-f048-8424-d7be15e3ad51\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:43:11.1459167Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:47:44 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "b0a452b7-8141-457f-867f-0001008e79b2"
+        ],
+        "x-ms-request-id": [
+          "22390252-ede3-4f02-a236-eb1bdd5bd637"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14969"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214744Z:b0a452b7-8141-457f-867f-0001008e79b2"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e90bcc4d-57bb-f048-8424-d7be15e3ad51\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-02-02T21:43:11.1459167Z\",\r\n  \"endTime\": \"2018-02-02T21:47:51.2565356Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:48:14 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "9817d975-0df1-49e2-8fc5-24b77a394b83"
+        ],
+        "x-ms-request-id": [
+          "ae325754-ec30-4d68-b661-de408eb211bb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14968"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214814Z:9817d975-0df1-49e2-8fc5-24b77a394b83"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"akssamplef1608646cd9530\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"kubernetesVersion\": \"1.8.6\",\r\n    \"dnsPrefix\": \"dns-akssamplef1608646cd9530\",\r\n    \"fqdn\": \"dns-akssamplef1608646cd9530-cf6abff0.hcp.centralus.azmk8s.io\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D1_v2\",\r\n        \"storageProfile\": \"ManagedDisks\",\r\n        \"osType\": \"Linux\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"servicePrincipalProfile\": {\r\n      \"clientId\": \"spId\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:48:14 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "5d3ce18f-98a4-4763-ad25-ada9328e062c"
+        ],
+        "x-ms-request-id": [
+          "3f7c2b0b-a132-48bc-b81b-394b70205b0f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14967"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214814Z:5d3ce18f-98a4-4763-ad25-ada9328e062c"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"akssamplef1608646cd9530\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"kubernetesVersion\": \"1.8.6\",\r\n    \"dnsPrefix\": \"dns-akssamplef1608646cd9530\",\r\n    \"fqdn\": \"dns-akssamplef1608646cd9530-cf6abff0.hcp.centralus.azmk8s.io\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 2,\r\n        \"vmSize\": \"Standard_D1_v2\",\r\n        \"storageProfile\": \"ManagedDisks\",\r\n        \"osType\": \"Linux\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"servicePrincipalProfile\": {\r\n      \"clientId\": \"spId\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:51:17 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "c640eec4-2ab7-486e-952b-0ecc982abd7f"
+        ],
+        "x-ms-request-id": [
+          "d8506887-5ed6-42ac-8f85-702e2cba564f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14957"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T215118Z:c640eec4-2ab7-486e-952b-0ecc982abd7f"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterAdmin?api-version=2017-08-31",
+      "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6000827f-1050-4448-b83e-61af8282acb5"
+          "bb53543e-c879-48ed-97ff-0606b8fe7a2e"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.3.0.0",
-          "MacAddressHash/89b2dc800b8b5b63ad322a81e1c8ff182912c66d60f3a7424549b566713c5ae0"
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterAdmin\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"clusterAdmin\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters/AccessProfiles\",\r\n  \"properties\": {\r\n    \"kubeConfig\": \"kubeconfig\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:48:14 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14966"
+        ],
+        "x-ms-correlation-request-id": [
+          "9e14231b-1632-4472-bb39-88bcc4b58ba5"
+        ],
+        "x-ms-request-id": [
+          "57025ad2-5044-4bec-bc10-948b99363c65"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214815Z:9e14231b-1632-4472-bb39-88bcc4b58ba5"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterAdmin?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e039af4b-d21c-400e-bf04-ada0f86f1ad9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterAdmin\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"clusterAdmin\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters/AccessProfiles\",\r\n  \"properties\": {\r\n    \"kubeConfig\": \"kubeconfig\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:51:17 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14956"
+        ],
+        "x-ms-correlation-request-id": [
+          "6424cd4f-48c9-4e53-b3c7-9e02476b62e1"
+        ],
+        "x-ms-request-id": [
+          "764cd727-9080-4a6f-b704-75a8a6949f6e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T215118Z:6424cd4f-48c9-4e53-b3c7-9e02476b62e1"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterUser?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d979eb87-a721-4262-8194-4f679f64c3fa"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterUser\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"clusterUser\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters/AccessProfiles\",\r\n  \"properties\": {\r\n    \"kubeConfig\": \"kubeconfig\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:48:14 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14965"
+        ],
+        "x-ms-correlation-request-id": [
+          "388a5402-b0e3-4ce1-a6b4-8bbcfdcc91c0"
+        ],
+        "x-ms-request-id": [
+          "6108e962-8d45-4ec0-a346-eec4a9c73fdd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214815Z:388a5402-b0e3-4ce1-a6b4-8bbcfdcc91c0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterUser?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3e66d0cb-2e0e-462e-92d3-e42efbc74b47"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterUser\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"clusterUser\",\r\n  \"type\": \"Microsoft.ContainerService/ManagedClusters/AccessProfiles\",\r\n  \"properties\": {\r\n    \"kubeConfig\": \"kubeconfig\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:51:17 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14955"
+        ],
+        "x-ms-correlation-request-id": [
+          "4effaa85-318a-4a32-a96d-3ffc0e091d56"
+        ],
+        "x-ms-request-id": [
+          "fc3fa0e4-2157-48c4-a074-4da7320b0c51"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T215118Z:4effaa85-318a-4a32-a96d-3ffc0e091d56"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"d9b69a70-1c8d-0e40-8fee-a19ff052d9e5\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:48:15.3101121Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:48:47 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "6ab72404-4d67-4e50-bedb-4355782253e7"
+        ],
+        "x-ms-request-id": [
+          "a9cbf37e-d14c-4ddd-9e8b-26620fa4882f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14963"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214847Z:6ab72404-4d67-4e50-bedb-4355782253e7"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"d9b69a70-1c8d-0e40-8fee-a19ff052d9e5\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:48:15.3101121Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:49:16 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "9cb153f2-dc17-4fd0-b341-185946a1fd55"
+        ],
+        "x-ms-request-id": [
+          "c67076a1-9133-4d7b-a12b-a1697f1f3ff6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14962"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214917Z:9cb153f2-dc17-4fd0-b341-185946a1fd55"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"d9b69a70-1c8d-0e40-8fee-a19ff052d9e5\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:48:15.3101121Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:49:47 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "67e57330-eeda-49b6-a120-fbdfa2d01cf6"
+        ],
+        "x-ms-request-id": [
+          "68cdb581-f293-49d0-a234-e8e0ee615ba5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14961"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T214947Z:67e57330-eeda-49b6-a120-fbdfa2d01cf6"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"d9b69a70-1c8d-0e40-8fee-a19ff052d9e5\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:48:15.3101121Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:50:17 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "21cc455e-1044-4ef8-bf94-db8018c92b43"
+        ],
+        "x-ms-request-id": [
+          "7ddf8a94-ee2d-4e47-ad8c-c41fec18e1c5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14960"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T215017Z:21cc455e-1044-4ef8-bf94-db8018c92b43"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"d9b69a70-1c8d-0e40-8fee-a19ff052d9e5\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-02-02T21:48:15.3101121Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:50:47 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "b83ebd87-8047-40bf-af59-38a9cf9eadb3"
+        ],
+        "x-ms-request-id": [
+          "de566df3-df24-47ab-b483-83c00f6d1e7c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14959"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T215047Z:b83ebd87-8047-40bf-af59-38a9cf9eadb3"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"d9b69a70-1c8d-0e40-8fee-a19ff052d9e5\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-02-02T21:48:15.3101121Z\",\r\n  \"endTime\": \"2018-02-02T21:50:50.999341Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Feb 2018 21:51:17 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "nginx"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-correlation-request-id": [
+          "ad0804ff-7a08-432d-8b84-8c4d972ff6dc"
+        ],
+        "x-ms-request-id": [
+          "80be239b-6dfc-4d9a-aac4-2fffce9cea0e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14958"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180202T215118Z:ad0804ff-7a08-432d-8b84-8c4d972ff6dc"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgaks5fd519422?api-version=2016-02-01",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f55c83bf-5d9b-4979-8f7d-d145a83b6ee0"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
       "ResponseBody": "",
@@ -1230,28 +1583,28 @@ kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": 
           "no-cache"
         ],
         "Date": [
-          "Thu, 16 Nov 2017 23:48:17 GMT"
+          "Fri, 02 Feb 2018 21:51:18 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR0FLU0U4MDg4OTQxNS1DRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6ImNlbnRyYWx1cyJ9?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR0FLUzVGRDUxOTQyMi1DRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6ImNlbnRyYWx1cyJ9?api-version=2016-02-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1192"
         ],
         "x-ms-request-id": [
-          "99cfbf5f-38da-42d4-94a3-00a3abcc3dd3"
+          "712f3537-85a3-492c-87ce-37eda4f9fd40"
         ],
         "x-ms-correlation-request-id": [
-          "99cfbf5f-38da-42d4-94a3-00a3abcc3dd3"
+          "712f3537-85a3-492c-87ce-37eda4f9fd40"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20171116T234817Z:99cfbf5f-38da-42d4-94a3-00a3abcc3dd3"
+          "WESTUS2:20180202T215119Z:712f3537-85a3-492c-87ce-37eda4f9fd40"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1262,12 +1615,12 @@ kubeconfig\"\r\n      },\r\n      \"clusterUser\": {\r\n        \"kubeConfig\": 
   ],
   "Names": {
     "ManageKubernetesClusterTest": [
-      "rgakse80889415",
-      "akssample2f261236d9cddc"
+      "rgaks5fd519422",
+      "akssamplef1608646cd9530"
     ]
   },
   "Variables": {
-    "ServicePrincipal": "spClientId",
+    "ServicePrincipal": "spId",
     "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
