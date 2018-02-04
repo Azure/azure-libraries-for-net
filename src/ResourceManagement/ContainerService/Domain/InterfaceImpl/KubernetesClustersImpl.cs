@@ -68,6 +68,50 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
+        /// Returns the admin Kube.config content which can be used with a Kubernetes client.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name where the cluster is.</param>
+        /// <param name="kubernetesClusterName">The managed cluster name.</param>
+        /// <return>The Kube.config content which can be used with a Kubernetes client.</return>
+        byte[] Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.GetAdminKubeConfigContents(string resourceGroupName, string kubernetesClusterName)
+        {
+            return this.GetAdminKubeConfigContents(resourceGroupName, kubernetesClusterName) as byte[];
+        }
+
+        /// <summary>
+        /// Returns asynchronously the admin Kube.config content which can be used with a Kubernetes client.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name where the cluster is.</param>
+        /// <param name="kubernetesClusterName">The managed cluster name.</param>
+        /// <return>A future representation of the Kube.config content which can be used with a Kubernetes client.</return>
+        async Task<byte[]> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.GetAdminKubeConfigContentsAsync(string resourceGroupName, string kubernetesClusterName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.GetAdminKubeConfigContentsAsync(resourceGroupName, kubernetesClusterName, cancellationToken) as byte[];
+        }
+
+        /// <summary>
+        /// Returns the user Kube.config content which can be used with a Kubernetes client.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name where the cluster is.</param>
+        /// <param name="kubernetesClusterName">The managed cluster name.</param>
+        /// <return>The Kube.config content which can be used with a Kubernetes client.</return>
+        byte[] Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.GetUserKubeConfigContents(string resourceGroupName, string kubernetesClusterName)
+        {
+            return this.GetUserKubeConfigContents(resourceGroupName, kubernetesClusterName) as byte[];
+        }
+
+        /// <summary>
+        /// Returns asynchronously the user Kube.config content which can be used with a Kubernetes client.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name where the cluster is.</param>
+        /// <param name="kubernetesClusterName">The managed cluster name.</param>
+        /// <return>A future representation of the Kube.config content which can be used with a Kubernetes client.</return>
+        async Task<byte[]> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.GetUserKubeConfigContentsAsync(string resourceGroupName, string kubernetesClusterName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.GetUserKubeConfigContentsAsync(resourceGroupName, kubernetesClusterName, cancellationToken) as byte[];
+        }
+
+        /// <summary>
         /// Lists all the resources of the specified type in the currently selected subscription.
         /// </summary>
         /// <return>List of resources.</return>

@@ -39,5 +39,37 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <param name="region">The Azure region to query into.</param>
         /// <return>A future representation of a set of Kubernetes versions which can be used when creating a service in this region.</return>
         Task<System.Collections.Generic.ISet<string>> ListKubernetesVersionsAsync(Region region, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Returns the admin Kube.config content which can be used with a Kubernetes client.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name where the cluster is.</param>
+        /// <param name="kubernetesClusterName">The managed cluster name.</param>
+        /// <return>The Kube.config content which can be used with a Kubernetes client.</return>
+        byte[] GetAdminKubeConfigContents(string resourceGroupName, string kubernetesClusterName);
+
+        /// <summary>
+        /// Returns asynchronously the admin Kube.config content which can be used with a Kubernetes client.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name where the cluster is.</param>
+        /// <param name="kubernetesClusterName">The managed cluster name.</param>
+        /// <return>A future representation of the Kube.config content which can be used with a Kubernetes client.</return>
+        Task<byte[]> GetAdminKubeConfigContentsAsync(string resourceGroupName, string kubernetesClusterName, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Returns the user Kube.config content which can be used with a Kubernetes client.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name where the cluster is.</param>
+        /// <param name="kubernetesClusterName">The managed cluster name.</param>
+        /// <return>The Kube.config content which can be used with a Kubernetes client.</return>
+        byte[] GetUserKubeConfigContents(string resourceGroupName, string kubernetesClusterName);
+
+        /// <summary>
+        /// Returns asynchronously the user Kube.config content which can be used with a Kubernetes client.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name where the cluster is.</param>
+        /// <param name="kubernetesClusterName">The managed cluster name.</param>
+        /// <return>A future representation of the Kube.config content which can be used with a Kubernetes client.</return>
+        Task<byte[]> GetUserKubeConfigContentsAsync(string resourceGroupName, string kubernetesClusterName, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

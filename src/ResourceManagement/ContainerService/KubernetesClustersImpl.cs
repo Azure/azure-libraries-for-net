@@ -81,6 +81,44 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return kubernetesVersions;
         }
 
+        public byte[] GetAdminKubeConfigContents(string resourceGroupName, string kubernetesCluster)
+        {
+            return Extensions.Synchronize(() => this.GetAdminKubeConfigContentsAsync(resourceGroupName, kubernetesCluster));
+        }
+
+        public async Task<byte[]> GetAdminKubeConfigContentsAsync(string resourceGroupName, string kubernetesCluster, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var profileInner = await this.Manager.Inner.ManagedClusters
+                .GetAccessProfilesAsync(resourceGroupName, kubernetesCluster, KubernetesClusterAccessProfileRole.ADMIN.ToString());
+            if (profileInner == null)
+            {
+                return new byte[0];
+            }
+            else
+            {
+                return System.Convert.FromBase64String(profileInner.KubeConfig);
+            }
+        }
+
+        public byte[] GetUserKubeConfigContents(string resourceGroupName, string kubernetesCluster)
+        {
+            return Extensions.Synchronize(() => this.GetUserKubeConfigContentsAsync(resourceGroupName, kubernetesCluster));
+        }
+
+        public async Task<byte[]> GetUserKubeConfigContentsAsync(string resourceGroupName, string kubernetesCluster, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var profileInner = await this.Manager.Inner.ManagedClusters
+                .GetAccessProfilesAsync(resourceGroupName, kubernetesCluster, KubernetesClusterAccessProfileRole.USER.ToString());
+            if (profileInner == null)
+            {
+                return new byte[0];
+            }
+            else
+            {
+                return System.Convert.FromBase64String(profileInner.KubeConfig);
+            }
+        }
+
         ///GENMHASH:0FEF45F7011A46EAF6E2D15139AE631D:4593F1A2996AA2D0219FCEB42EA28D41
         protected Task<Models.ManagedClusterInner> GetInnerAsync(string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
         {
