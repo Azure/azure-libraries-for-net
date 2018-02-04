@@ -15,7 +15,7 @@ namespace Fluent.Tests.Network
 {
     public class ExpressRouteCircuit
     {
-        private static Region REGION = Region.USWest;
+        private static Region REGION = Region.USNorthCentral;
 
         [Fact]
         public void CreateUpdate()
@@ -30,8 +30,8 @@ namespace Fluent.Tests.Network
                 IExpressRouteCircuit erc = manager.ExpressRouteCircuits.Define(circuitName)
                     .WithRegion(REGION)
                     .WithNewResourceGroup(groupName)
-                    .WithServiceProvider("Equinix")
-                    .WithPeeringLocation("Silicon Valley")
+                    .WithServiceProvider("Microsoft ER Test")
+                    .WithPeeringLocation("Area51")
                     .WithBandwidthInMbps(50)
                     .WithSku(ExpressRouteCircuitSkuType.StandardMeteredData)
                     .WithTag("tag1", "value1")
@@ -65,8 +65,8 @@ namespace Fluent.Tests.Network
                 IExpressRouteCircuit erc = manager.ExpressRouteCircuits.Define(circuitName)
                     .WithRegion(REGION)
                     .WithNewResourceGroup(groupName)
-                    .WithServiceProvider("Equinix")
-                    .WithPeeringLocation("Silicon Valley")
+                    .WithServiceProvider("Microsoft ER Test")
+                    .WithPeeringLocation("Area51")
                     .WithBandwidthInMbps(50)
                     .WithSku(ExpressRouteCircuitSkuType.PremiumMeteredData)
                     .WithTag("tag1", "value1")
