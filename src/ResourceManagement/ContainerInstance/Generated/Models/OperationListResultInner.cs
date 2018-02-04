@@ -31,9 +31,12 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// Initializes a new instance of the OperationListResultInner class.
         /// </summary>
         /// <param name="value">The list of operations.</param>
-        public OperationListResultInner(IList<Operation> value = default(IList<Operation>))
+        /// <param name="nextLink">The URI to fetch the next page of
+        /// operations.</param>
+        public OperationListResultInner(IList<Operation> value = default(IList<Operation>), string nextLink = default(string))
         {
             Value = value;
+            NextLink = nextLink;
             CustomInit();
         }
 
@@ -47,6 +50,12 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public IList<Operation> Value { get; set; }
+
+        /// <summary>
+        /// Gets or sets the URI to fetch the next page of operations.
+        /// </summary>
+        [JsonProperty(PropertyName = "nextLink")]
+        public string NextLink { get; set; }
 
     }
 }

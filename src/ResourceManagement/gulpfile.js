@@ -82,9 +82,9 @@ var handleInput = function (projects, cb) {
 
 var codegen = function (project, cb) {
     const regenManager = args['regenerate-manager'] ? ' --regenerate-manager=true ' : '';
-    var outputDir = path.resolve(mappings[project].dir) + '/Generated';
+    var outputDir = path.resolve(mappings[project].dir);
     if (!args['preserve']) {
-        deleteFolderRecursive(outputDir);
+        deleteFolderRecursive(outputDir + '/Generated');
     }
     console.log('Generating "' + project + '" from spec file ' + specRoot + '/' + mappings[project].source);
     var generator = '--fluent';
