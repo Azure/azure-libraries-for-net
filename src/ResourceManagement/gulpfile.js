@@ -6,7 +6,7 @@ var spawn = require('child_process').spawn;
 var fs = require('fs');
 
 const mappings = require('./api-specs.json');
-const defaultSpecRoot = "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current";
+const defaultSpecRoot = "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 
 gulp.task('default', function () {
 
