@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
+    using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
@@ -15,12 +16,18 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     public interface IContainerGroup  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerInstanceManager,Models.ContainerGroupInner>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<ContainerGroup.Update.IUpdate>
     {
         /// <summary>
         /// Gets the Docker image registry servers by which the container group is created from.
         /// </summary>
         System.Collections.Generic.IReadOnlyCollection<string> ImageRegistryServers { get; }
+
+        /// <summary>
+        /// Gets the FQDN for the container group.
+        /// </summary>
+        string Fqdn { get; }
 
         /// <summary>
         /// Gets all the ports publicly exposed for this container group.
@@ -66,6 +73,11 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// Gets the base level OS type required by the containers in the group.
         /// </summary>
         OSTypeName OSType { get; }
+
+        /// <summary>
+        /// Gets the DNS prefix which was specified at creation time.
+        /// </summary>
+        string DnsPrefix { get; }
 
         /// <summary>
         /// Gets the container instances in this container group.

@@ -32,6 +32,39 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return this;
         }
 
+        ///GENMHASH:5119FFB804FCA8B0C4EE81F99B57C5C0:ABF544BF72627CBE85238805F5B9E871
+        public VolumeImpl WithGitUrl(string gitUrl)
+        {
+            this.innerVolume.GitRepo = new GitRepoVolume();
+            this.innerVolume.GitRepo.Repository = gitUrl;
+
+            return this;
+        }
+
+        ///GENMHASH:9698E538C219A650EEA3DBBA01FC5C1B:A449899983D0C3D7AEFDFF4ED8FB04AE
+        public VolumeImpl WithGitDirectoryName(string gitDirectoryName)
+        {
+            if (this.innerVolume.GitRepo == null)
+            {
+                this.innerVolume.GitRepo = new GitRepoVolume();
+            }
+            this.innerVolume.GitRepo.Directory = gitDirectoryName;
+
+            return this;
+        }
+
+        ///GENMHASH:08692DD2A9C6AAF727D8397DABB4C833:54E9F65BD3A7D18DD3409B3AEFFF8EA5
+        public VolumeImpl WithGitRevision(string gitRevision)
+        {
+            if (this.innerVolume.GitRepo == null)
+            {
+                this.innerVolume.GitRepo = new GitRepoVolume();
+            }
+            this.innerVolume.GitRepo.Revision = gitRevision;
+
+            return this;
+        }
+
         ///GENMHASH:C3BEE33E51121CBAF2861DB3C9FE8E00:FD1669E86C4F7C3C91337F9EBBB7A285
         public VolumeImpl WithStorageAccountKey(string storageAccountKey)
         {
@@ -57,6 +90,14 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             var azureFileVolume = this.EnsureAzureFileVolume();
             azureFileVolume.ShareName = shareName;
             azureFileVolume.ReadOnlyProperty = true;
+
+            return this;
+        }
+
+        ///GENMHASH:A277DF005889B3EFB297E1BD1948FD0F:929D27DCF79FAF83EBF014C36E5605C0
+        public VolumeImpl WithSecrets(IDictionary<string,string> secrets)
+        {
+            this.innerVolume.Secret = secrets;
 
             return this;
         }

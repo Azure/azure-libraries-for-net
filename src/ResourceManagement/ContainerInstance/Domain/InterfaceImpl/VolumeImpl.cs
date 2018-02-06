@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
     using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using System.Collections.Generic;
 
     internal partial class VolumeImpl 
     {
@@ -16,6 +17,30 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ContainerGroup.Definition.IWithStorageAccountKey<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume>.WithStorageAccountName(string storageAccountName)
         {
             return this.WithStorageAccountName(storageAccountName) as ContainerGroup.Definition.IWithStorageAccountKey<ContainerGroup.Definition.IWithVolume>;
+        }
+
+        /// <summary>
+        /// Specifies the Git target directory name for the new volume.
+        /// Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the
+        /// git repository.  Otherwise, if specified, the volume will contain the git repository in the
+        /// subdirectory with the given name.
+        /// </summary>
+        /// <param name="gitDirectoryName">The Git target directory name for the new volume.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithGitRevision<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithGitDirectoryNameBeta<ContainerGroup.Definition.IWithVolume>.WithGitDirectoryName(string gitDirectoryName)
+        {
+            return this.WithGitDirectoryName(gitDirectoryName) as ContainerGroup.Definition.IWithGitRevision<ContainerGroup.Definition.IWithVolume>;
+        }
+
+        /// <summary>
+        /// Specifies the secrets map.
+        /// The secret value must be specified in Base64 encoding.
+        /// </summary>
+        /// <param name="secrets">The new volume secrets map; value must be in Base64 encoding.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithVolumeAttach<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithSecretsMapBeta<ContainerGroup.Definition.IWithVolume>.WithSecrets(IDictionary<string,string> secrets)
+        {
+            return this.WithSecrets(secrets) as ContainerGroup.Definition.IWithVolumeAttach<ContainerGroup.Definition.IWithVolume>;
         }
 
         /// <summary>
@@ -42,9 +67,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// </summary>
         /// <param name="shareName">An existing Azure file share name.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithAzureFileShare<ContainerGroup.Definition.IWithVolume>.WithExistingReadWriteAzureFileShare(string shareName)
+        ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithAzureFileShare<ContainerGroup.Definition.IWithVolume>.WithExistingReadOnlyAzureFileShare(string shareName)
         {
-            return this.WithExistingReadWriteAzureFileShare(shareName) as ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume>;
+            return this.WithExistingReadOnlyAzureFileShare(shareName) as ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume>;
         }
 
         /// <summary>
@@ -52,9 +77,29 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// </summary>
         /// <param name="shareName">An existing Azure file share name.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithAzureFileShare<ContainerGroup.Definition.IWithVolume>.WithExistingReadOnlyAzureFileShare(string shareName)
+        ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithAzureFileShare<ContainerGroup.Definition.IWithVolume>.WithExistingReadWriteAzureFileShare(string shareName)
         {
-            return this.WithExistingReadOnlyAzureFileShare(shareName) as ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume>;
+            return this.WithExistingReadWriteAzureFileShare(shareName) as ContainerGroup.Definition.IWithStorageAccountName<ContainerGroup.Definition.IWithVolume>;
+        }
+
+        /// <summary>
+        /// Specifies the Git URL for the new volume.
+        /// </summary>
+        /// <param name="gitUrl">The Git URL for the new volume.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithGitDirectoryName<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithGitUrlBeta<ContainerGroup.Definition.IWithVolume>.WithGitUrl(string gitUrl)
+        {
+            return this.WithGitUrl(gitUrl) as ContainerGroup.Definition.IWithGitDirectoryName<ContainerGroup.Definition.IWithVolume>;
+        }
+
+        /// <summary>
+        /// Specifies the Git revision for the new volume.
+        /// </summary>
+        /// <param name="gitRevision">The Git revision for the new volume.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithVolumeAttach<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithGitRevisionBeta<ContainerGroup.Definition.IWithVolume>.WithGitRevision(string gitRevision)
+        {
+            return this.WithGitRevision(gitRevision) as ContainerGroup.Definition.IWithVolumeAttach<ContainerGroup.Definition.IWithVolume>;
         }
     }
 }
