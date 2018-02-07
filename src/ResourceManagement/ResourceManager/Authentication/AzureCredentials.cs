@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                     else
                     {
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
-                            TenantId, servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.Certificate, servicePrincipalLoginInformation.CertificatePassword, TokenCache.DefaultShared);
+                            TenantId, servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.Certificate, servicePrincipalLoginInformation.CertificatePassword, adSettings, TokenCache.DefaultShared);
                     }
                 }
 #if !PORTABLE
