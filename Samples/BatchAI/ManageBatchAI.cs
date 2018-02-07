@@ -55,8 +55,7 @@ namespace ManageBatchAI
 
                 StorageAccountKey storageAccountKey = storageAccount.GetKeys().First();
 
-                CloudFileShare cloudFileShare = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" + saName + ";AccountKey="+ storageAccountKey.Value +
-                    ";EndpointSuffix=core.windows.net")
+                var cloudFileShare = CloudStorageAccount.Parse($"DefaultEndpointsProtocol=https;AccountName={saName};AccountKey={storageAccountKey.Value};EndpointSuffix=core.windows.net")
                     .CreateCloudFileClient()
                     .GetShareReference(shareName);
                 cloudFileShare.CreateAsync().GetAwaiter().GetResult();
