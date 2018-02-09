@@ -6,7 +6,7 @@ var spawn = require('child_process').spawn;
 var fs = require('fs');
 
 const mappings = require('./api-specs.json');
-const defaultSpecRoot = "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/current";
+const defaultSpecRoot = "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 
 gulp.task('default', function () {
 
@@ -82,7 +82,7 @@ var handleInput = function (projects, cb) {
 
 var codegen = function (project, cb) {
     const regenManager = args['regenerate-manager'] ? ' --regenerate-manager=true ' : '';
-    var outputDir = path.resolve(mappings[project].dir) + '/Generated';
+    var outputDir = path.resolve(mappings[project].dir);
     if (!args['preserve']) {
         deleteFolderRecursive(outputDir);
     }
@@ -107,6 +107,7 @@ var codegen = function (project, cb) {
         ` --csharp.namespace=${mappings[project].package} ` +
         ` --csharp.output-folder=${outputDir} ` +
         ` --csharp.license-header=MICROSOFT_MIT_NO_CODEGEN ` +
+        ` --csharp.clear-output-folder=false ` +
         autorestUseArg +
         regenManager +
         ' --package-version=1.3.0 ' +
