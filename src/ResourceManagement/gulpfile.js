@@ -84,7 +84,7 @@ var codegen = function (project, cb) {
     const regenManager = args['regenerate-manager'] ? ' --regenerate-manager=true ' : '';
     var outputDir = path.resolve(mappings[project].dir);
     if (!args['preserve']) {
-        deleteFolderRecursive(outputDir + '/Generated');
+        deleteFolderRecursive(outputDir);
     }
     console.log('Generating "' + project + '" from spec file ' + specRoot + '/' + mappings[project].source);
     var generator = '--fluent';
