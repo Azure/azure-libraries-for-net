@@ -2,24 +2,23 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
-
     using Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
     /// Entry point for key vaults management API.
     /// </summary>
     public interface IVaults  :
-        ISupportsListing<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
-        ISupportsCreating<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IBlank>,
-        ISupportsDeletingById,
-        ISupportsListingByResourceGroup<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
-        ISupportsGettingByResourceGroup<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
-        ISupportsGettingById<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
-        ISupportsDeletingByResourceGroup,
-        IHasManager<IKeyVaultManager>,
-        IHasInner<IVaultsOperations>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Vault.Definition.IBlank>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingById,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByResourceGroup<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.KeyVault.Fluent.IVault>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingByResourceGroup,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.KeyVault.Fluent.KeyVaultManager>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.KeyVault.Fluent.IVaultsOperations>
     {
     }
 }
