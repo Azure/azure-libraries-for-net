@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         ///GENMHASH:5002116800CBAC02BBC1B4BF62BC4942:814F98840711B8895AC26CE249A73A62
         public ISecret GetById(string id)
         {
-            return WrapModel(Extensions.Synchronize(() => inner.GetSecretAsync(id)));
+            return Extensions.Synchronize(() => GetByIdAsync(id));
         }
 
         ///GENMHASH:E776888E46F8A3FC56D24DF4A74E5B74:B752E4EC59041E9F1775EA7156FC1A6B
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         public async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<ISecret>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<ISecret, SecretItem>.LoadPage(c => inner.GetSecretsAsync(vault.VaultUri, null, c),
-                inner.GetSecretsNextAsync, WrapModel, true, cancellationToken);
+                inner.GetSecretsNextAsync, WrapModel, loadAllPages, cancellationToken);
         }
 
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:58334205B705AB8BE13E5163112B10FF
