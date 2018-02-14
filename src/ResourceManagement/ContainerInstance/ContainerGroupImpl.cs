@@ -9,6 +9,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
     using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition;
+    using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
@@ -30,9 +31,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             IWithGroup,
             IWithOsType,
             IWithCreate,
-            IWithCreate>,
+            IUpdate>,
         IContainerGroup,
-        IDefinition
+        IDefinition,
+        IUpdate
     {
         private IStorageManager storageManager;
         private string creatableStorageAccountKey;
@@ -233,8 +235,19 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
 
                 return this;
             }
+            else
+            {
+                var resourceInner = new ResourceInner();
+                resourceInner.Location = this.RegionName;
+                resourceInner.Tags = this.Inner.Tags;
+                var updatedInner = await this.Manager.Inner.ContainerGroups.UpdateAsync(this.ResourceGroupName, this.Name, resourceInner, cancellationToken: cancellationToken);
+                // TODO: this will go away after service fixes the update bug
+                updatedInner = await this.GetInnerAsync(cancellationToken);
+                SetInner(updatedInner);
+                this.InitializeChildrenFromInner();
 
-            throw new NotImplementedException();
+                return this;
+            }
         }
 
         protected override Task<ContainerGroupInner> GetInnerAsync(CancellationToken cancellationToken)
@@ -288,6 +301,22 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         public ContainerGroupImpl WithoutVolume()
         {
             this.Inner.Volumes = null;
+
+            return this;
+        }
+
+        ///GENMHASH:948C3D8A111E9F3CE85191C15BCEEBFF:E4410CA2195639D89F98489D4A24F153
+        public ContainerGroupImpl WithEmptyDirectoryVolume(string volumeName)
+        {
+            if (this.Inner.Volumes == null)
+            {
+                this.Inner.Volumes = new List<Volume>();
+            }
+            this.Inner.Volumes.Add(new Volume()
+                {
+                    Name = volumeName,
+                    EmptyDir = new Object()
+                });
 
             return this;
         }
@@ -391,6 +420,30 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             var log = await this.Manager.Inner.ContainerLogs.ListAsync(this.ResourceGroupName, this.Name, containerName, tailLineCount, cancellationToken);
 
             return (log != null) ? log.Content : "";
+        }
+
+        ///GENMHASH:8642FC9B9C8DC7375DEE3CC5736F8853:D8E9D98F2E55B91C74B8A9CCC0D57DFB
+        public ContainerGroupImpl WithDnsPrefix(string dnsPrefix)
+        {
+            if (this.Inner.IpAddress == null)
+            {
+                this.Inner.IpAddress = new IpAddress();
+            }
+            this.Inner.IpAddress.DnsNameLabel = dnsPrefix;
+
+            return this;
+        }
+
+        ///GENMHASH:59348A25FD515049ECD26A6290F76B85:E61328CEA9774DAE97931A8E3F5BA1FA
+        public string DnsPrefix()
+        {
+            return (this.Inner.IpAddress != null) ? this.Inner.IpAddress.DnsNameLabel : null;
+        }
+
+        ///GENMHASH:577F8437932AEC6E08E1A137969BDB4A:6EE2F2474752814D061D517DDCF91010
+        public string Fqdn()
+        {
+            return (this.Inner.IpAddress != null) ? this.Inner.IpAddress.Fqdn : null;
         }
 
     }
