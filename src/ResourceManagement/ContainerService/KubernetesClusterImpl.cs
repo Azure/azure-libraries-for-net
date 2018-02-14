@@ -121,12 +121,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         ///GENMHASH:94A9F49AECE7874D497A7F5E8A5AB25C:FB91DAFFC2B4B802AB4DE52634A023D9
         public byte[] UserKubeConfigContent()
         {
-            if (this.adminKubeConfigContent == null)
+            if (this.userKubeConfigContent == null)
             {
-                this.adminKubeConfigContent = Extensions.Synchronize(() => this.GetUserKubeConfigContent());
+                this.userKubeConfigContent = Extensions.Synchronize(() => this.GetUserKubeConfigContent());
             }
 
-            return this.adminKubeConfigContent;
+            return this.userKubeConfigContent;
         }
 
         private async Task<byte[]> GetAdminKubeConfigContent()
