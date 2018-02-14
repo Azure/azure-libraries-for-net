@@ -3,7 +3,7 @@
 namespace Microsoft.Azure.Management.KeyVault.Fluent.Secret.Update
 {
     using System.Collections.Generic;
-    using Microsoft.Azure.Keyvault.Models;
+    using Microsoft.Azure.KeyVault.Models;
     using Microsoft.Azure.Management.KeyVault.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 

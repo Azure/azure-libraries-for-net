@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using System.Collections.Generic;
-    using Microsoft.Azure.Keyvault.Models;
+    using Microsoft.Azure.KeyVault.Models;
     using Microsoft.Azure.Management.KeyVault.Fluent.Secret.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     public interface ISecret  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IIndexable,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Keyvault.Models.SecretBundle>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.KeyVault.Models.SecretBundle>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Secret.Update.IUpdate>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <summary>
         /// Gets the secret management attributes.
         /// </summary>
-        Microsoft.Azure.Keyvault.Models.SecretAttributes Attributes { get; }
+        Microsoft.Azure.KeyVault.Models.SecretAttributes Attributes { get; }
 
         /// <summary>
         /// Gets the secret value.

@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition
 {
-    using Microsoft.Azure.Keyvault.Models;
+    using Microsoft.Azure.KeyVault.Models;
     using System.Collections.Generic;
     using Microsoft.Azure.Management.KeyVault.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;

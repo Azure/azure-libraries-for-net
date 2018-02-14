@@ -6,8 +6,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
     using Microsoft.Azure.Management.KeyVault.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.UpdateWithImport;
-    using Microsoft.Azure.Keyvault.Webkey;
-    using Microsoft.Azure.Keyvault.Models;
+    using Microsoft.Azure.KeyVault.Webkey;
+    using Microsoft.Azure.KeyVault.Models;
     using System.Collections.Generic;
 
     /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
         /// </summary>
         /// <param name="keyOperations">The list of JWK operations.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate WithKeyOperations(IList<Microsoft.Azure.Keyvault.Webkey.JsonWebKeyOperation> keyOperations);
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate WithKeyOperations(IList<Microsoft.Azure.KeyVault.Webkey.JsonWebKeyOperation> keyOperations);
 
         /// <summary>
         /// Specifies the list of allowed key operations. By default all operations are allowed.

@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-namespace Microsoft.Azure.Management.Keyvault.Fluent
+namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
     using System.Collections.Generic;
-    using Microsoft.Azure.Keyvault.Models;
-    using Microsoft.Azure.Keyvault.Requests.SetSecretRequest;
-    using Microsoft.Azure.Keyvault.Requests.UpdateSecretRequest;
+    using Microsoft.Azure.KeyVault.Models;
+    using Microsoft.Azure.KeyVault.Requests.SetSecretRequest;
+    using Microsoft.Azure.KeyVault.Requests.UpdateSecretRequest;
     using Microsoft.Azure.Management.KeyVault.Fluent;
     using Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition;
     using Microsoft.Azure.Management.KeyVault.Fluent.Secret.Update;
@@ -18,14 +18,14 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
     /// </summary>
 ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLlNlY3JldEltcGw=
     internal partial class SecretImpl  :
-        CreatableUpdatableImpl<Microsoft.Azure.Management.KeyVault.Fluent.ISecret,Microsoft.Azure.Keyvault.Models.SecretBundle,Microsoft.Azure.Management.Keyvault.Fluent.SecretImpl>,
+        CreatableUpdatableImpl<Microsoft.Azure.Management.KeyVault.Fluent.ISecret,Microsoft.Azure.KeyVault.Models.SecretBundle,Microsoft.Azure.Management.KeyVault.Fluent.SecretImpl>,
         ISecret,
         IDefinition,
         IUpdate
     {
         private IVault vault;
-        private Microsoft.Azure.Keyvault.Requests.SetSecretRequest.Builder setSecretRequest;
-        private Microsoft.Azure.Keyvault.Requests.UpdateSecretRequest.Builder updateSecretRequest;
+        private Microsoft.Azure.KeyVault.Requests.SetSecretRequest.Builder setSecretRequest;
+        private Microsoft.Azure.KeyVault.Requests.UpdateSecretRequest.Builder updateSecretRequest;
         ///GENMHASH:AFCF54960F557DFD8C6A8457EFAA9FD7:0C9DCA023B95F799C3FD4D6189ABC2DC
         public SecretImpl WithAttributes(Attributes attributes)
         {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:74DB1877CF76B1176F40C6A6991EF568
-        protected async Task<Microsoft.Azure.Keyvault.Models.SecretBundle> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected async Task<Microsoft.Azure.KeyVault.Models.SecretBundle> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             //$ return Observable.From(vault.Client().GetSecretAsync(id(), null));
 

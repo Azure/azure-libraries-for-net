@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-namespace Microsoft.Azure.Management.Keyvault.Fluent
+namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
     using System.Collections.Generic;
-    using Microsoft.Azure.Keyvault.Models;
-    using Microsoft.Azure.Keyvault.Requests.CreateKeyRequest;
-    using Microsoft.Azure.Keyvault.Requests.ImportKeyRequest;
-    using Microsoft.Azure.Keyvault.Requests.UpdateKeyRequest;
-    using Microsoft.Azure.Keyvault.Webkey;
+    using Microsoft.Azure.KeyVault.Models;
+    using Microsoft.Azure.KeyVault.Requests.CreateKeyRequest;
+    using Microsoft.Azure.KeyVault.Requests.ImportKeyRequest;
+    using Microsoft.Azure.KeyVault.Requests.UpdateKeyRequest;
+    using Microsoft.Azure.KeyVault.Webkey;
     using Microsoft.Azure.Management.KeyVault.Fluent;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.Update;
@@ -22,16 +22,16 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
     /// </summary>
 ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLktleUltcGw=
     internal partial class KeyImpl  :
-        CreatableUpdatableImpl<Microsoft.Azure.Management.KeyVault.Fluent.IKey,Microsoft.Azure.Keyvault.Models.KeyBundle,Microsoft.Azure.Management.Keyvault.Fluent.KeyImpl>,
+        CreatableUpdatableImpl<Microsoft.Azure.Management.KeyVault.Fluent.IKey,Microsoft.Azure.KeyVault.Models.KeyBundle,Microsoft.Azure.Management.KeyVault.Fluent.KeyImpl>,
         IKey,
         IDefinition,
         IUpdateWithCreate,
         IUpdateWithImport
     {
         private IVault vault;
-        private Microsoft.Azure.Keyvault.Requests.CreateKeyRequest.Builder createKeyRequest;
-        private Microsoft.Azure.Keyvault.Requests.UpdateKeyRequest.Builder updateKeyRequest;
-        private Microsoft.Azure.Keyvault.Requests.ImportKeyRequest.Builder importKeyRequest;
+        private Microsoft.Azure.KeyVault.Requests.CreateKeyRequest.Builder createKeyRequest;
+        private Microsoft.Azure.KeyVault.Requests.UpdateKeyRequest.Builder updateKeyRequest;
+        private Microsoft.Azure.KeyVault.Requests.ImportKeyRequest.Builder importKeyRequest;
         ///GENMHASH:AFCF54960F557DFD8C6A8457EFAA9FD7:4D14C122ABD17C920271DE798B9AE88A
         public KeyImpl WithAttributes(Attributes attributes)
         {
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:695605B4CA55F648453EEFC4352B1130
-        protected async Task<Microsoft.Azure.Keyvault.Models.KeyBundle> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected async Task<Microsoft.Azure.KeyVault.Models.KeyBundle> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             //$ return Observable.From(vault.Client().GetKeyAsync(id(), null));
 
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         }
 
         ///GENMHASH:F8981C320EC895546CAD8EF73E3DACB1:FA255B6DF9DFB304BFA5E3A3E7D37104
-        public KeyImpl WithKeyOperations(IList<Microsoft.Azure.Keyvault.Webkey.JsonWebKeyOperation> keyOperations)
+        public KeyImpl WithKeyOperations(IList<Microsoft.Azure.KeyVault.Webkey.JsonWebKeyOperation> keyOperations)
         {
             //$ if (isInCreateMode()) {
             //$ createKeyRequest.WithKeyOperations(keyOperations);

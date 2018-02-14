@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-namespace Microsoft.Azure.Management.Keyvault.Fluent
+namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
     using System.Collections.Generic;
-    using Microsoft.Azure.Keyvault;
-    using Microsoft.Azure.Keyvault.Models;
+    using Microsoft.Azure.KeyVault;
+    using Microsoft.Azure.KeyVault.Models;
     using Microsoft.Azure.Management.KeyVault.Fluent;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
     /// </summary>
 ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLktleXNJbXBs
     internal partial class KeysImpl  :
-        CreatableWrappersImpl<Microsoft.Azure.Management.KeyVault.Fluent.IKey,Microsoft.Azure.Management.Keyvault.Fluent.KeyImpl,Microsoft.Azure.Keyvault.Models.KeyBundle>,
+        CreatableWrappersImpl<Microsoft.Azure.Management.KeyVault.Fluent.IKey,Microsoft.Azure.Management.KeyVault.Fluent.KeyImpl,Microsoft.Azure.KeyVault.Models.KeyBundle>,
         IKeys
     {
         private KeyVaultClient inner;
         private IVault vault;
-        private IFunc1<Microsoft.Azure.Keyvault.Models.KeyItem,Rx.Observable<Microsoft.Azure.Management.KeyVault.Fluent.IKey>> converter;
-        private <Microsoft.Azure.Keyvault.Models.KeyItem,Microsoft.Azure.Management.KeyVault.Fluent.IKey> listConverter;
+        private IFunc1<Microsoft.Azure.KeyVault.Models.KeyItem,Rx.Observable<Microsoft.Azure.Management.KeyVault.Fluent.IKey>> converter;
+        private <Microsoft.Azure.KeyVault.Models.KeyItem,Microsoft.Azure.Management.KeyVault.Fluent.IKey> listConverter;
         ///GENMHASH:8526360550C053825B6A643F96D512AD:D063ACAEFB27FCE2CA0B805B84D52A40
         public IKey Restore(params byte[] backup)
         {

@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-namespace Microsoft.Azure.Management.Keyvault.Fluent
+namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
     using System.Collections.Generic;
-    using Microsoft.Azure.Keyvault.Models;
-    using Microsoft.Azure.Keyvault.Requests.CreateKeyRequest;
-    using Microsoft.Azure.Keyvault.Requests.ImportKeyRequest;
-    using Microsoft.Azure.Keyvault.Requests.UpdateKeyRequest;
-    using Microsoft.Azure.Keyvault.Webkey;
+    using Microsoft.Azure.KeyVault.Models;
+    using Microsoft.Azure.KeyVault.Requests.CreateKeyRequest;
+    using Microsoft.Azure.KeyVault.Requests.ImportKeyRequest;
+    using Microsoft.Azure.KeyVault.Requests.UpdateKeyRequest;
+    using Microsoft.Azure.KeyVault.Webkey;
     using Microsoft.Azure.Management.KeyVault.Fluent;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.Update;
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         /// </summary>
         /// <param name="keyOperations">The list of JWK operations.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IWithKeyOperations.WithKeyOperations(IList<Microsoft.Azure.Keyvault.Webkey.JsonWebKeyOperation> keyOperations)
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IWithKeyOperations.WithKeyOperations(IList<Microsoft.Azure.KeyVault.Webkey.JsonWebKeyOperation> keyOperations)
         {
             return this.WithKeyOperations(keyOperations) as Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate;
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         /// </summary>
         /// <param name="keyOperations">The list of JWK operations.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithKeyOperations.WithKeyOperations(IList<Microsoft.Azure.Keyvault.Webkey.JsonWebKeyOperation> keyOperations)
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithKeyOperations.WithKeyOperations(IList<Microsoft.Azure.KeyVault.Webkey.JsonWebKeyOperation> keyOperations)
         {
             return this.WithKeyOperations(keyOperations) as Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreate;
         }
@@ -97,22 +97,22 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         /// <summary>
         /// Gets the Json web key.
         /// </summary>
-        Microsoft.Azure.Keyvault.Webkey.JsonWebKey Microsoft.Azure.Management.KeyVault.Fluent.IKey.JsonWebKey
+        Microsoft.Azure.KeyVault.Webkey.JsonWebKey Microsoft.Azure.Management.KeyVault.Fluent.IKey.JsonWebKey
         {
             get
             {
-                return this.JsonWebKey() as Microsoft.Azure.Keyvault.Webkey.JsonWebKey;
+                return this.JsonWebKey() as Microsoft.Azure.KeyVault.Webkey.JsonWebKey;
             }
         }
 
         /// <summary>
         /// Gets the key management attributes.
         /// </summary>
-        Microsoft.Azure.Keyvault.Models.KeyAttributes Microsoft.Azure.Management.KeyVault.Fluent.IKey.Attributes
+        Microsoft.Azure.KeyVault.Models.KeyAttributes Microsoft.Azure.Management.KeyVault.Fluent.IKey.Attributes
         {
             get
             {
-                return this.Attributes() as Microsoft.Azure.Keyvault.Models.KeyAttributes;
+                return this.Attributes() as Microsoft.Azure.KeyVault.Models.KeyAttributes;
             }
         }
 

@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-namespace Microsoft.Azure.Management.Keyvault.Fluent
+namespace Microsoft.Azure.Management.KeyVault.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
     using System.Collections.Generic;
-    using Microsoft.Azure.Keyvault.Models;
-    using Microsoft.Azure.Keyvault.Requests.SetSecretRequest;
-    using Microsoft.Azure.Keyvault.Requests.UpdateSecretRequest;
+    using Microsoft.Azure.KeyVault.Models;
+    using Microsoft.Azure.KeyVault.Requests.SetSecretRequest;
+    using Microsoft.Azure.KeyVault.Requests.UpdateSecretRequest;
     using Microsoft.Azure.Management.KeyVault.Fluent;
     using Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition;
     using Microsoft.Azure.Management.KeyVault.Fluent.Secret.Update;
@@ -105,11 +105,11 @@ namespace Microsoft.Azure.Management.Keyvault.Fluent
         /// <summary>
         /// Gets the secret management attributes.
         /// </summary>
-        Microsoft.Azure.Keyvault.Models.SecretAttributes Microsoft.Azure.Management.KeyVault.Fluent.ISecret.Attributes
+        Microsoft.Azure.KeyVault.Models.SecretAttributes Microsoft.Azure.Management.KeyVault.Fluent.ISecret.Attributes
         {
             get
             {
-                return this.Attributes() as Microsoft.Azure.Keyvault.Models.SecretAttributes;
+                return this.Attributes() as Microsoft.Azure.KeyVault.Models.SecretAttributes;
             }
         }
 
