@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             if (this.adminKubeConfigContent == null)
             {
-                this.adminKubeConfigContent = Extensions.Synchronize(() => this.GetAdminKubeConfigContent());
+                this.adminKubeConfigContent = Extensions.Synchronize(() => this.GetAdminKubeConfigContentAsync());
             }
 
             return this.adminKubeConfigContent;
@@ -123,16 +123,16 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             if (this.userKubeConfigContent == null)
             {
-                this.userKubeConfigContent = Extensions.Synchronize(() => this.GetUserKubeConfigContent());
+                this.userKubeConfigContent = Extensions.Synchronize(() => this.GetUserKubeConfigContentAsync());
             }
 
             return this.userKubeConfigContent;
         }
 
-        private async Task<byte[]> GetAdminKubeConfigContent()
+        private async Task<byte[]> GetAdminKubeConfigContentAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var profileInner = await this.Manager.Inner.ManagedClusters
-                .GetAccessProfilesAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.ADMIN.ToString());
+                .GetAccessProfilesAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.ADMIN.ToString(), cancellationToken: cancellationToken);
             if (profileInner == null)
             {
                 return new byte[0];
@@ -143,10 +143,10 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             }
         }
 
-        private async Task<byte[]> GetUserKubeConfigContent()
+        private async Task<byte[]> GetUserKubeConfigContentAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var profileInner = await this.Manager.Inner.ManagedClusters
-                .GetAccessProfilesAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.USER.ToString());
+                .GetAccessProfilesAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.USER.ToString(), cancellationToken: cancellationToken);
             if (profileInner == null)
             {
                 return new byte[0];
@@ -210,8 +210,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         protected override async Task<Models.ManagedClusterInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var managedClueserInner = await this.Manager.Inner.ManagedClusters.GetAsync(this.ResourceGroupName, this.Name, cancellationToken);
-            this.adminKubeConfigContent = await this.GetAdminKubeConfigContent();
-            this.userKubeConfigContent = await this.GetUserKubeConfigContent();
+            this.adminKubeConfigContent = await this.GetAdminKubeConfigContentAsync(cancellationToken);
+            this.userKubeConfigContent = await this.GetUserKubeConfigContentAsync(cancellationToken);
 
             return managedClueserInner;
         }
@@ -236,8 +236,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
 
             var containerServiceInner = await this.Manager.Inner.ManagedClusters.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken);
             this.SetInner(containerServiceInner);
-            this.adminKubeConfigContent = await this.GetAdminKubeConfigContent();
-            this.userKubeConfigContent = await this.GetUserKubeConfigContent();
+            this.adminKubeConfigContent = await this.GetAdminKubeConfigContentAsync(cancellationToken: cancellationToken);
+            this.userKubeConfigContent = await this.GetUserKubeConfigContentAsync(cancellationToken: cancellationToken);
 
             return this;
         }
