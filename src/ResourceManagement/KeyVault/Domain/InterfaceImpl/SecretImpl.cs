@@ -6,8 +6,6 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Microsoft.Azure.KeyVault.Models;
-    using Microsoft.Azure.KeyVault.Requests.SetSecretRequest;
-    using Microsoft.Azure.KeyVault.Requests.UpdateSecretRequest;
     using Microsoft.Azure.Management.KeyVault.Fluent;
     using Microsoft.Azure.Management.KeyVault.Fluent.Secret.Definition;
     using Microsoft.Azure.Management.KeyVault.Fluent.Secret.Update;

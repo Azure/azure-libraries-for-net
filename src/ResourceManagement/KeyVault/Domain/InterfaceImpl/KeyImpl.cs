@@ -6,11 +6,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Microsoft.Azure.KeyVault.Models;
-    using Microsoft.Azure.KeyVault.Requests.CreateKeyRequest;
-    using Microsoft.Azure.KeyVault.Requests.ImportKeyRequest;
-    using Microsoft.Azure.KeyVault.Requests.UpdateKeyRequest;
-    using Microsoft.Azure.KeyVault.Webkey;
     using Microsoft.Azure.Management.KeyVault.Fluent;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Models;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.Update;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.UpdateWithCreate;
@@ -24,7 +21,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// </summary>
         /// <param name="keyOperations">The list of JWK operations.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IWithKeyOperations.WithKeyOperations(IList<Microsoft.Azure.KeyVault.Webkey.JsonWebKeyOperation> keyOperations)
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IWithKeyOperations.WithKeyOperations(IList<JsonWebKeyOperation> keyOperations)
         {
             return this.WithKeyOperations(keyOperations) as Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate;
         }
@@ -44,7 +41,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// </summary>
         /// <param name="keyOperations">The list of JWK operations.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithKeyOperations.WithKeyOperations(IList<Microsoft.Azure.KeyVault.Webkey.JsonWebKeyOperation> keyOperations)
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithKeyOperations.WithKeyOperations(IList<JsonWebKeyOperation> keyOperations)
         {
             return this.WithKeyOperations(keyOperations) as Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreate;
         }
@@ -77,7 +74,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="content">The content to be decrypted.</param>
         /// <return>The decrypted value.</return>
-        byte Microsoft.Azure.Management.KeyVault.Fluent.IKey.Decrypt(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] content)
+        byte[] Microsoft.Azure.Management.KeyVault.Fluent.IKey.Decrypt(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] content)
         {
             return this.Decrypt(algorithm, content);
         }
@@ -89,7 +86,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         /// <return>A backup of the specified key be downloaded to the client.</return>
-        byte Microsoft.Azure.Management.KeyVault.Fluent.IKey.Backup()
+        byte[] Microsoft.Azure.Management.KeyVault.Fluent.IKey.Backup()
         {
             return this.Backup();
         }
@@ -97,11 +94,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <summary>
         /// Gets the Json web key.
         /// </summary>
-        Microsoft.Azure.KeyVault.Webkey.JsonWebKey Microsoft.Azure.Management.KeyVault.Fluent.IKey.JsonWebKey
+        Microsoft.Azure.KeyVault.WebKey.JsonWebKey Microsoft.Azure.Management.KeyVault.Fluent.IKey.JsonWebKey
         {
             get
             {
-                return this.JsonWebKey() as Microsoft.Azure.KeyVault.Webkey.JsonWebKey;
+                return this.JsonWebKey() as Microsoft.Azure.KeyVault.WebKey.JsonWebKey;
             }
         }
 
@@ -125,7 +122,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>True if the signature is valid.</return>
         async Task<bool> Microsoft.Azure.Management.KeyVault.Fluent.IKey.VerifyAsync(JsonWebKeySignatureAlgorithm algorithm, byte[] digest, byte[] signature, CancellationToken cancellationToken)
         {
-            return await this.VerifyAsync(algorithm, digest, signature, cancellationToken) as bool;
+            return await this.VerifyAsync(algorithm, digest, signature, cancellationToken);
         }
 
         /// <summary>
@@ -144,10 +141,10 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// </summary>
         /// <param name="algorithm">The JWK signing algorithm.</param>
         /// <param name="digest">The content to be signed.</param>
-        /// <return>The signature in a byte array.</return>
-        async Task<byte> Microsoft.Azure.Management.KeyVault.Fluent.IKey.SignAsync(JsonWebKeySignatureAlgorithm algorithm, byte[] digest, CancellationToken cancellationToken)
+        /// <return>The signature in a byte[] array.</return>
+        async Task<byte[]> Microsoft.Azure.Management.KeyVault.Fluent.IKey.SignAsync(JsonWebKeySignatureAlgorithm algorithm, byte[] digest, CancellationToken cancellationToken)
         {
-            return await this.SignAsync(algorithm, digest, cancellationToken) as byte;
+            return await this.SignAsync(algorithm, digest, cancellationToken);
         }
 
         /// <summary>
@@ -156,9 +153,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="key">The symmetric key to wrap.</param>
         /// <return>The wrapped key.</return>
-        async Task<byte> Microsoft.Azure.Management.KeyVault.Fluent.IKey.WrapKeyAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] key, CancellationToken cancellationToken)
+        async Task<byte[]> Microsoft.Azure.Management.KeyVault.Fluent.IKey.WrapKeyAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] key, CancellationToken cancellationToken)
         {
-            return await this.WrapKeyAsync(algorithm, key, cancellationToken) as byte;
+            return await this.WrapKeyAsync(algorithm, key, cancellationToken);
         }
 
         /// <summary>
@@ -167,7 +164,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="content">The content to be encrypted.</param>
         /// <return>The encrypted value.</return>
-        byte Microsoft.Azure.Management.KeyVault.Fluent.IKey.Encrypt(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] content)
+        byte[] Microsoft.Azure.Management.KeyVault.Fluent.IKey.Encrypt(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] content)
         {
             return this.Encrypt(algorithm, content);
         }
@@ -178,7 +175,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="key">The symmetric key to wrap.</param>
         /// <return>The wrapped key.</return>
-        byte Microsoft.Azure.Management.KeyVault.Fluent.IKey.WrapKey(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] key)
+        byte[] Microsoft.Azure.Management.KeyVault.Fluent.IKey.WrapKey(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] key)
         {
             return this.WrapKey(algorithm, key);
         }
@@ -189,9 +186,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="content">The content to be encrypted.</param>
         /// <return>The encrypted value.</return>
-        async Task<byte> Microsoft.Azure.Management.KeyVault.Fluent.IKey.EncryptAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] content, CancellationToken cancellationToken)
+        async Task<byte[]> Microsoft.Azure.Management.KeyVault.Fluent.IKey.EncryptAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] content, CancellationToken cancellationToken)
         {
-            return await this.EncryptAsync(algorithm, content, cancellationToken) as byte;
+            return await this.EncryptAsync(algorithm, content, cancellationToken);
         }
 
         /// <summary>
@@ -200,15 +197,15 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="key">The key to unwrap.</param>
         /// <return>The unwrapped symmetric key.</return>
-        async Task<byte> Microsoft.Azure.Management.KeyVault.Fluent.IKey.UnwrapKeyAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] key, CancellationToken cancellationToken)
+        async Task<byte[]> Microsoft.Azure.Management.KeyVault.Fluent.IKey.UnwrapKeyAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] key, CancellationToken cancellationToken)
         {
-            return await this.UnwrapKeyAsync(algorithm, key, cancellationToken) as byte;
+            return await this.UnwrapKeyAsync(algorithm, key, cancellationToken);
         }
 
         /// <return>A backup of the specified key be downloaded to the client.</return>
-        async Task<byte> Microsoft.Azure.Management.KeyVault.Fluent.IKey.BackupAsync(CancellationToken cancellationToken)
+        async Task<byte[]> Microsoft.Azure.Management.KeyVault.Fluent.IKey.BackupAsync(CancellationToken cancellationToken)
         {
-            return await this.BackupAsync(cancellationToken) as byte;
+            return await this.BackupAsync(cancellationToken);
         }
 
         /// <summary>
@@ -229,7 +226,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="key">The key to unwrap.</param>
         /// <return>The unwrapped symmetric key.</return>
-        byte Microsoft.Azure.Management.KeyVault.Fluent.IKey.UnwrapKey(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] key)
+        byte[] Microsoft.Azure.Management.KeyVault.Fluent.IKey.UnwrapKey(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] key)
         {
             return this.UnwrapKey(algorithm, key);
         }
@@ -239,8 +236,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// </summary>
         /// <param name="algorithm">The JWK signing algorithm.</param>
         /// <param name="digest">The content to be signed.</param>
-        /// <return>The signature in a byte array.</return>
-        byte Microsoft.Azure.Management.KeyVault.Fluent.IKey.Sign(JsonWebKeySignatureAlgorithm algorithm, params byte[] digest)
+        /// <return>The signature in a byte[] array.</return>
+        byte[] Microsoft.Azure.Management.KeyVault.Fluent.IKey.Sign(JsonWebKeySignatureAlgorithm algorithm, params byte[] digest)
         {
             return this.Sign(algorithm, digest);
         }
@@ -251,9 +248,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="content">The content to be decrypted.</param>
         /// <return>The decrypted value.</return>
-        async Task<byte> Microsoft.Azure.Management.KeyVault.Fluent.IKey.DecryptAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] content, CancellationToken cancellationToken)
+        async Task<byte[]> Microsoft.Azure.Management.KeyVault.Fluent.IKey.DecryptAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] content, CancellationToken cancellationToken)
         {
-            return await this.DecryptAsync(algorithm, content, cancellationToken) as byte;
+            return await this.DecryptAsync(algorithm, content, cancellationToken);
         }
 
         /// <return>A list of individual key versions with the same key name.</return>
@@ -327,7 +324,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// </summary>
         /// <param name="key">The existing JWK to import.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.UpdateWithImport.IUpdateWithImport Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IWithKey.WithLocalKeyToImport(JsonWebKey key)
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.UpdateWithImport.IUpdateWithImport Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IWithKey.WithLocalKeyToImport(Microsoft.Azure.KeyVault.WebKey.JsonWebKey key)
         {
             return this.WithLocalKeyToImport(key) as Microsoft.Azure.Management.KeyVault.Fluent.Key.UpdateWithImport.IUpdateWithImport;
         }
@@ -347,7 +344,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// </summary>
         /// <param name="key">The existing JWK to import.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithImport Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithKey.WithLocalKeyToImport(JsonWebKey key)
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithImport Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithKey.WithLocalKeyToImport(Microsoft.Azure.KeyVault.WebKey.JsonWebKey key)
         {
             return this.WithLocalKeyToImport(key) as Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithImport;
         }

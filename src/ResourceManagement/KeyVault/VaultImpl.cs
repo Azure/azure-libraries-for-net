@@ -147,11 +147,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             get
             {
-                if (secrets == null)
+                if (keys == null)
                 {
-                    secrets = new SecretsImpl(client, this);
+                    keys = new KeysImpl(client, this);
                 }
-                return secrets;
+                return keys;
             }
         }
 
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
             }
         }
 
-        IKeyVaultClient IVaultBeta.Client => client
+        IKeyVaultClient IVaultBeta.Client => client;
 
         ///GENMHASH:577E5E9CE0B513EB5189E6F44BB732C7:3949CE4CBC4994E8C88DF2E4815A8696
         public VaultImpl WithEmptyAccessPolicy()

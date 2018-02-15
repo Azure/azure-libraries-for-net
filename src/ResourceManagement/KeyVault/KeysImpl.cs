@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     /// <summary>
     /// The implementation of Vaults and its parent interfaces.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLktleXNJbXBs
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmtleXZhdWx0LmltcGxlbWVudGF0aW9uLktleXNJbXBs
     internal partial class KeysImpl  :
         CreatableResources<Microsoft.Azure.Management.KeyVault.Fluent.IKey,Microsoft.Azure.Management.KeyVault.Fluent.KeyImpl,Microsoft.Azure.KeyVault.Models.KeyBundle>,
         IKeys
     {
-        private KeyVaultClient inner;
+        private IKeyVaultClient inner;
         private IVault vault;
         ///GENMHASH:8526360550C053825B6A643F96D512AD:D063ACAEFB27FCE2CA0B805B84D52A40
         public IKey Restore(params byte[] backup)
@@ -49,14 +49,19 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:4D33A73A344E127F784620E76B686786:24F6E5076A7165DE19B48E32B2D2E90C
-        public async Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        public async override Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             KeyIdentifier identifier = new KeyIdentifier(id);
             await inner.DeleteKeyAsync(identifier.Vault, identifier.Name, cancellationToken);
         }
 
+        public override void DeleteById(string id)
+        {
+            Extensions.Synchronize(() => DeleteByIdAsync(id));
+        }
+
         ///GENMHASH:D00A188D7DFFF4A60B4043C987E8B889:8EFCE07990CA95E6F5AE1F22DEDC0454
-        internal  KeysImpl(KeyVaultClient client, IVault vault)
+        internal  KeysImpl(IKeyVaultClient client, IVault vault)
         {
             this.inner = client;
             this.vault = vault;

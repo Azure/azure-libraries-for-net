@@ -52,10 +52,15 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         }
 
         ///GENMHASH:4D33A73A344E127F784620E76B686786:C93F0B75434DD302173E0DC1D7D38D38
-        public async Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        public async override Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             SecretIdentifier identifier = new SecretIdentifier(id);
             await inner.DeleteSecretAsync(identifier.Vault, identifier.Name, cancellationToken);
+        }
+
+        public override void DeleteById(string id)
+        {
+            Extensions.Synchronize(() => DeleteByIdAsync(id));
         }
 
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:78CDE324BDF4562C4434C84B3646BE66

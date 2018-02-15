@@ -6,13 +6,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Microsoft.Azure.KeyVault;
-    using Microsoft.Azure.KeyVault.Models;
     using Microsoft.Azure.Management.KeyVault.Fluent;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest;
-    using Rx.Functions;
 
     internal partial class KeysImpl 
     {

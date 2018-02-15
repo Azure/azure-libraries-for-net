@@ -4,9 +4,9 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
 {
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.UpdateWithCreate;
     using Microsoft.Azure.Management.KeyVault.Fluent;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.UpdateWithImport;
-    using Microsoft.Azure.KeyVault.Webkey;
     using Microsoft.Azure.KeyVault.Models;
     using System.Collections.Generic;
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
         /// </summary>
         /// <param name="key">The existing JWK to import.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.UpdateWithImport.IUpdateWithImport WithLocalKeyToImport(JsonWebKey key);
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.UpdateWithImport.IUpdateWithImport WithLocalKeyToImport(Microsoft.Azure.KeyVault.WebKey.JsonWebKey key);
     }
 
     /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Update
         /// </summary>
         /// <param name="keyOperations">The list of JWK operations.</param>
         /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate WithKeyOperations(IList<Microsoft.Azure.KeyVault.Webkey.JsonWebKeyOperation> keyOperations);
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.Update.IUpdate WithKeyOperations(IList<JsonWebKeyOperation> keyOperations);
 
         /// <summary>
         /// Specifies the list of allowed key operations. By default all operations are allowed.

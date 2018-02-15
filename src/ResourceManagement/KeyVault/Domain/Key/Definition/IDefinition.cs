@@ -2,8 +2,8 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
 {
-    using Microsoft.Azure.KeyVault.Webkey;
     using Microsoft.Azure.Management.KeyVault.Fluent;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
     using Microsoft.Azure.KeyVault.Models;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
         /// </summary>
         /// <param name="key">The existing JWK to import.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithImport WithLocalKeyToImport(JsonWebKey key);
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithImport WithLocalKeyToImport(Microsoft.Azure.KeyVault.WebKey.JsonWebKey key);
     }
 
     /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition
         /// </summary>
         /// <param name="keyOperations">The list of JWK operations.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreate WithKeyOperations(IList<Microsoft.Azure.KeyVault.Webkey.JsonWebKeyOperation> keyOperations);
+        Microsoft.Azure.Management.KeyVault.Fluent.Key.Definition.IWithCreate WithKeyOperations(IList<JsonWebKeyOperation> keyOperations);
 
         /// <summary>
         /// Specifies the list of allowed key operations. By default all operations are allowed.

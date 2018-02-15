@@ -6,8 +6,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Microsoft.Azure.KeyVault.Models;
-    using Microsoft.Azure.KeyVault.Webkey;
     using Microsoft.Azure.Management.KeyVault.Fluent.Key.Update;
+    using Microsoft.Azure.Management.KeyVault.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Key.Update.IUpdate>
     {
         /// <return>A backup of the specified key be downloaded to the client.</return>
-        byte Backup();
+        byte[] Backup();
 
         /// <return>A list of individual key versions with the same key name.</return>
         Task<Microsoft.Azure.Management.KeyVault.Fluent.IKey> ListVersionsAsync(CancellationToken cancellationToken = default(CancellationToken));
@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// </summary>
         /// <param name="algorithm">The JWK signing algorithm.</param>
         /// <param name="digest">The content to be signed.</param>
-        /// <return>The signature in a byte array.</return>
-        Task<byte> SignAsync(JsonWebKeySignatureAlgorithm algorithm, byte[] digest, CancellationToken cancellationToken = default(CancellationToken));
+        /// <return>The signature in a byte[] array.</return>
+        Task<byte[]> SignAsync(JsonWebKeySignatureAlgorithm algorithm, byte[] digest, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Wraps a symmetric key using the specified algorithm.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="key">The symmetric key to wrap.</param>
         /// <return>The wrapped key.</return>
-        Task<byte> WrapKeyAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] key, CancellationToken cancellationToken = default(CancellationToken));
+        Task<byte[]> WrapKeyAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] key, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Encrypts an arbitrary sequence of bytes using an encryption key that is stored in a key vault.
@@ -50,15 +50,15 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="content">The content to be encrypted.</param>
         /// <return>The encrypted value.</return>
-        Task<byte> EncryptAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] content, CancellationToken cancellationToken = default(CancellationToken));
+        Task<byte[]> EncryptAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] content, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Creates a signature from a digest.
         /// </summary>
         /// <param name="algorithm">The JWK signing algorithm.</param>
         /// <param name="digest">The content to be signed.</param>
-        /// <return>The signature in a byte array.</return>
-        byte Sign(JsonWebKeySignatureAlgorithm algorithm, params byte[] digest);
+        /// <return>The signature in a byte[] array.</return>
+        byte[] Sign(JsonWebKeySignatureAlgorithm algorithm, params byte[] digest);
 
         /// <summary>
         /// Unwraps a symmetric key wrapped originally by this Key Vault key.
@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="key">The key to unwrap.</param>
         /// <return>The unwrapped symmetric key.</return>
-        Task<byte> UnwrapKeyAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] key, CancellationToken cancellationToken = default(CancellationToken));
+        Task<byte[]> UnwrapKeyAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] key, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <return>A backup of the specified key be downloaded to the client.</return>
-        Task<byte> BackupAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<byte[]> BackupAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Decrypts a single block of encrypted data.
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="content">The content to be decrypted.</param>
         /// <return>The decrypted value.</return>
-        Task<byte> DecryptAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] content, CancellationToken cancellationToken = default(CancellationToken));
+        Task<byte[]> DecryptAsync(JsonWebKeyEncryptionAlgorithm algorithm, byte[] content, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Wraps a symmetric key using the specified algorithm.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="key">The symmetric key to wrap.</param>
         /// <return>The wrapped key.</return>
-        byte WrapKey(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] key);
+        byte[] WrapKey(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] key);
 
         /// <summary>
         /// Gets application specific metadata in the form of key-value pairs.
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="content">The content to be encrypted.</param>
         /// <return>The encrypted value.</return>
-        byte Encrypt(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] content);
+        byte[] Encrypt(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] content);
 
         /// <summary>
         /// Verifies a signature from a digest.
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <summary>
         /// Gets the Json web key.
         /// </summary>
-        Microsoft.Azure.KeyVault.Webkey.JsonWebKey JsonWebKey { get; }
+        Microsoft.Azure.KeyVault.WebKey.JsonWebKey JsonWebKey { get; }
 
         /// <summary>
         /// Gets the key management attributes.
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="content">The content to be decrypted.</param>
         /// <return>The decrypted value.</return>
-        byte Decrypt(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] content);
+        byte[] Decrypt(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] content);
 
         /// <summary>
         /// Unwraps a symmetric key wrapped originally by this Key Vault key.
@@ -151,6 +151,6 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <param name="algorithm">The JWK encryption algorithm.</param>
         /// <param name="key">The key to unwrap.</param>
         /// <return>The unwrapped symmetric key.</return>
-        byte UnwrapKey(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] key);
+        byte[] UnwrapKey(JsonWebKeyEncryptionAlgorithm algorithm, params byte[] key);
     }
 }
