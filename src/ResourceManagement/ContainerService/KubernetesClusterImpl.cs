@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition;
     using Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -32,6 +33,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         IUpdate
     {
         private bool useLatestVersion;
+        private byte[] adminKubeConfigContent;
+        private byte[] userKubeConfigContent;
 
         ///GENMHASH:DEDF5AE2F1ABB9DF6AD962840B38A58B:0F98D2133F32D8FB212E9B9A457FA932
         internal KubernetesClusterImpl(string name, ManagedClusterInner innerObject, IContainerServiceManager manager) : base(name, innerObject, manager)
@@ -43,6 +46,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             }
 
             this.useLatestVersion = false;
+            this.adminKubeConfigContent = null;
+            this.userKubeConfigContent = null;
         }
 
         ///GENMHASH:24C4B5842536160FA41D355F9B7D00FB:EA17E710E325D38A5D12B21C390850F7
@@ -105,30 +110,50 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         ///GENMHASH:6B9110585F8C0802DD175E2A4CC42085:0AFA47BFFB09777DA247B843C7A8F6D9
         public byte[] AdminKubeConfigContent()
         {
-            if (this.Inner.AccessProfiles == null
-                || this.Inner.AccessProfiles.ClusterAdmin == null
-                || this.Inner.AccessProfiles.ClusterAdmin.KubeConfig == null)
+            if (this.adminKubeConfigContent == null)
             {
-                return new byte[0];
+                this.adminKubeConfigContent = Extensions.Synchronize(() => this.GetAdminKubeConfigContentAsync());
             }
-            else
-            {
-                return System.Convert.FromBase64String(this.Inner.AccessProfiles.ClusterAdmin.KubeConfig);
-            }
+
+            return this.adminKubeConfigContent;
         }
 
         ///GENMHASH:94A9F49AECE7874D497A7F5E8A5AB25C:FB91DAFFC2B4B802AB4DE52634A023D9
         public byte[] UserKubeConfigContent()
         {
-            if (this.Inner.AccessProfiles == null
-                || this.Inner.AccessProfiles.ClusterUser == null
-                || this.Inner.AccessProfiles.ClusterUser.KubeConfig == null)
+            if (this.userKubeConfigContent == null)
+            {
+                this.userKubeConfigContent = Extensions.Synchronize(() => this.GetUserKubeConfigContentAsync());
+            }
+
+            return this.userKubeConfigContent;
+        }
+
+        private async Task<byte[]> GetAdminKubeConfigContentAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var profileInner = await this.Manager.Inner.ManagedClusters
+                .GetAccessProfilesAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.ADMIN.ToString(), cancellationToken: cancellationToken);
+            if (profileInner == null)
             {
                 return new byte[0];
             }
             else
             {
-                return System.Convert.FromBase64String(this.Inner.AccessProfiles.ClusterUser.KubeConfig);
+                return System.Convert.FromBase64String(profileInner.KubeConfig);
+            }
+        }
+
+        private async Task<byte[]> GetUserKubeConfigContentAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var profileInner = await this.Manager.Inner.ManagedClusters
+                .GetAccessProfilesAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.USER.ToString(), cancellationToken: cancellationToken);
+            if (profileInner == null)
+            {
+                return new byte[0];
+            }
+            else
+            {
+                return System.Convert.FromBase64String(profileInner.KubeConfig);
             }
         }
 
@@ -184,7 +209,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:E92DCB891A6508AA2417BBC73DD661CA
         protected override async Task<Models.ManagedClusterInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.ManagedClusters.GetAsync(this.ResourceGroupName, this.Name, cancellationToken);
+            var managedClueserInner = await this.Manager.Inner.ManagedClusters.GetAsync(this.ResourceGroupName, this.Name, cancellationToken);
+            this.adminKubeConfigContent = await this.GetAdminKubeConfigContentAsync(cancellationToken);
+            this.userKubeConfigContent = await this.GetUserKubeConfigContentAsync(cancellationToken);
+
+            return managedClueserInner;
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:25E405EF73C8D80ECBABEE2CA82ED9BB
@@ -196,7 +225,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             }
             if (useLatestVersion)
             {
-                var orchestratorsList = await this.Manager.Inner.ContainerServices.ListOrchestratorsAsync(this.Inner.Location, cancellationToken);
+                var orchestratorsList = await this.Manager.Inner.ContainerServices.ListOrchestratorsAsync(this.RegionName, cancellationToken: cancellationToken);
                 if (orchestratorsList != null && orchestratorsList.Orchestrators != null && orchestratorsList.Orchestrators.Count > 0)
                 {
                     this.Inner.KubernetesVersion = orchestratorsList.Orchestrators
@@ -207,6 +236,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
 
             var containerServiceInner = await this.Manager.Inner.ManagedClusters.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken);
             this.SetInner(containerServiceInner);
+            this.adminKubeConfigContent = await this.GetAdminKubeConfigContentAsync(cancellationToken: cancellationToken);
+            this.userKubeConfigContent = await this.GetUserKubeConfigContentAsync(cancellationToken: cancellationToken);
 
             return this;
         }

@@ -8,28 +8,37 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
 {
+    using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Profile for enabling a user to access a managed cluster.
+    /// Managed cluster Access Profile.
     /// </summary>
-    public partial class AccessProfile
+    [Rest.Serialization.JsonTransformation]
+    public partial class ManagedClusterAccessProfileInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
-        /// Initializes a new instance of the AccessProfile class.
+        /// Initializes a new instance of the ManagedClusterAccessProfileInner
+        /// class.
         /// </summary>
-        public AccessProfile()
+        public ManagedClusterAccessProfileInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AccessProfile class.
+        /// Initializes a new instance of the ManagedClusterAccessProfileInner
+        /// class.
         /// </summary>
         /// <param name="kubeConfig">Base64-encoded Kubernetes configuration
         /// file.</param>
-        public AccessProfile(string kubeConfig = default(string))
+        public ManagedClusterAccessProfileInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string kubeConfig = default(string))
+            : base(location, id, name, type, tags)
         {
             KubeConfig = kubeConfig;
             CustomInit();
@@ -43,7 +52,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// <summary>
         /// Gets or sets base64-encoded Kubernetes configuration file.
         /// </summary>
-        [JsonProperty(PropertyName = "kubeConfig")]
+        [JsonProperty(PropertyName = "properties.kubeConfig")]
         public string KubeConfig { get; set; }
 
     }

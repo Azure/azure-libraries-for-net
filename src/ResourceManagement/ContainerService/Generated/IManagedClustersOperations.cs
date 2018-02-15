@@ -101,6 +101,38 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </exception>
         Task<AzureOperationResponse<ManagedClusterUpgradeProfileInner>> GetUpgradeProfileWithHttpMessagesAsync(string resourceGroupName, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets access profile of a managed cluster.
+        /// </summary>
+        /// <remarks>
+        /// Gets the accessProfile for the specified role name of the managed
+        /// cluster with a specified resource group and name.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the managed cluster resource.
+        /// </param>
+        /// <param name='roleName'>
+        /// The name of the role for managed cluster accessProfile resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ManagedClusterAccessProfileInner>> GetAccessProfilesWithHttpMessagesAsync(string resourceGroupName, string resourceName, string roleName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Gets a managed cluster.
         /// </summary>
         /// <remarks>

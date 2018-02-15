@@ -172,36 +172,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// </exception>
         Task<AzureOperationResponse<IPage<ContainerServiceInner>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets upgrade profile information for specified container service.
-        /// </summary>
-        /// <remarks>
-        /// Gets upgrade profile information for specified container service.
-        /// The operation returns properties of the compute pools including
-        /// name, OS, orchestrator verison, and available upgrades.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='resourceName'>
-        /// The name of the resource.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<UpgradeProfileInner>> GetUpgradeProfilesWithHttpMessagesAsync(string resourceGroupName, string resourceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
         /// Gets a list of supported orchestrators in the specified
         /// subscription.
         /// </summary>
@@ -213,6 +183,10 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <param name='location'>
         /// The name of a supported Azure region.
         /// </param>
+        /// <param name='resourceType'>
+        /// resource type for which the list of orchestrators needs to be
+        /// returned
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -228,7 +202,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<OrchestratorVersionProfileListResultInner>> ListOrchestratorsWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OrchestratorVersionProfileListResultInner>> ListOrchestratorsWithHttpMessagesAsync(string location, string resourceType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates or updates a container service.
         /// </summary>
