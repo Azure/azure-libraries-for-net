@@ -8,11 +8,8 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
-    using Microsoft.Azure.Management.EventHub.Fluent;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,52 +17,48 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Parameters supplied to the Create Or Update Event Hub operation.
+    /// Single item in List or Get Event Hub operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class EventHubCreateOrUpdateParametersInner
+    public partial class EventhubInner : Rest.Azure.Resource
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// EventHubCreateOrUpdateParametersInner class.
+        /// Initializes a new instance of the EventhubInner class.
         /// </summary>
-        public EventHubCreateOrUpdateParametersInner()
+        public EventhubInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// EventHubCreateOrUpdateParametersInner class.
+        /// Initializes a new instance of the EventhubInner class.
         /// </summary>
-        /// <param name="location">Location of the resource.</param>
-        /// <param name="type">ARM type of the Namespace.</param>
-        /// <param name="name">Name of the Event Hub.</param>
-        /// <param name="createdAt">Exact time the Event Hub was
-        /// created.</param>
-        /// <param name="messageRetentionInDays">Number of days to retain the
-        /// events for this Event Hub.</param>
-        /// <param name="partitionCount">Number of partitions created for the
-        /// Event Hub.</param>
         /// <param name="partitionIds">Current number of shards on the Event
         /// Hub.</param>
+        /// <param name="createdAt">Exact time the Event Hub was
+        /// created.</param>
+        /// <param name="updatedAt">The exact time the message was
+        /// updated.</param>
+        /// <param name="messageRetentionInDays">Number of days to retain the
+        /// events for this Event Hub, value should be 1 to 7 days</param>
+        /// <param name="partitionCount">Number of partitions created for the
+        /// Event Hub, allowed values are from 1 to 32 partitions.</param>
         /// <param name="status">Enumerates the possible values for the status
         /// of the Event Hub. Possible values include: 'Active', 'Disabled',
         /// 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating',
         /// 'Deleting', 'Renaming', 'Unknown'</param>
-        /// <param name="updatedAt">The exact time the message was
-        /// updated.</param>
-        public EventHubCreateOrUpdateParametersInner(string location, string type = default(string), string name = default(string), System.DateTime? createdAt = default(System.DateTime?), long? messageRetentionInDays = default(long?), long? partitionCount = default(long?), IList<string> partitionIds = default(IList<string>), EntityStatus? status = default(EntityStatus?), System.DateTime? updatedAt = default(System.DateTime?))
+        /// <param name="captureDescription">Properties of capture
+        /// description</param>
+        public EventhubInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<string> partitionIds = default(IList<string>), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), long? messageRetentionInDays = default(long?), long? partitionCount = default(long?), EntityStatus? status = default(EntityStatus?), CaptureDescription captureDescription = default(CaptureDescription))
+            : base(location, id, name, type, tags)
         {
-            Location = location;
-            Type = type;
-            Name = name;
+            PartitionIds = partitionIds;
             CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
             MessageRetentionInDays = messageRetentionInDays;
             PartitionCount = partitionCount;
-            PartitionIds = partitionIds;
             Status = status;
-            UpdatedAt = updatedAt;
+            CaptureDescription = captureDescription;
             CustomInit();
         }
 
@@ -75,22 +68,10 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets location of the resource.
+        /// Gets current number of shards on the Event Hub.
         /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets ARM type of the Namespace.
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets name of the Event Hub.
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [JsonProperty(PropertyName = "properties.partitionIds")]
+        public IList<string> PartitionIds { get; private set; }
 
         /// <summary>
         /// Gets exact time the Event Hub was created.
@@ -99,23 +80,24 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         public System.DateTime? CreatedAt { get; private set; }
 
         /// <summary>
+        /// Gets the exact time the message was updated.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.updatedAt")]
+        public System.DateTime? UpdatedAt { get; private set; }
+
+        /// <summary>
         /// Gets or sets number of days to retain the events for this Event
-        /// Hub.
+        /// Hub, value should be 1 to 7 days
         /// </summary>
         [JsonProperty(PropertyName = "properties.messageRetentionInDays")]
         public long? MessageRetentionInDays { get; set; }
 
         /// <summary>
-        /// Gets or sets number of partitions created for the Event Hub.
+        /// Gets or sets number of partitions created for the Event Hub,
+        /// allowed values are from 1 to 32 partitions.
         /// </summary>
         [JsonProperty(PropertyName = "properties.partitionCount")]
         public long? PartitionCount { get; set; }
-
-        /// <summary>
-        /// Gets current number of shards on the Event Hub.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.partitionIds")]
-        public IList<string> PartitionIds { get; private set; }
 
         /// <summary>
         /// Gets or sets enumerates the possible values for the status of the
@@ -127,10 +109,10 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         public EntityStatus? Status { get; set; }
 
         /// <summary>
-        /// Gets the exact time the message was updated.
+        /// Gets or sets properties of capture description
         /// </summary>
-        [JsonProperty(PropertyName = "properties.updatedAt")]
-        public System.DateTime? UpdatedAt { get; private set; }
+        [JsonProperty(PropertyName = "properties.captureDescription")]
+        public CaptureDescription CaptureDescription { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -140,9 +122,17 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Location == null)
+            if (MessageRetentionInDays < 1)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Location");
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "MessageRetentionInDays", 1);
+            }
+            if (PartitionCount < 1)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "PartitionCount", 1);
+            }
+            if (CaptureDescription != null)
+            {
+                CaptureDescription.Validate();
             }
         }
     }

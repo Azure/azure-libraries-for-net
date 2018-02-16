@@ -8,10 +8,6 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
-    using Microsoft.Azure.Management.EventHub.Fluent;
 
     /// <summary>
     /// Defines values for SkuTier.
@@ -20,6 +16,5 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     {
         public const string Basic = "Basic";
         public const string Standard = "Standard";
-        public const string Premium = "Premium";
     }
 }

@@ -8,53 +8,50 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
-    using Microsoft.Azure.Management.EventHub.Fluent;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using System.Runtime;
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Defines values for Policykey.
+    /// Defines values for KeyType.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum Policykey
+    public enum KeyType
     {
         [EnumMember(Value = "PrimaryKey")]
         PrimaryKey,
         [EnumMember(Value = "SecondaryKey")]
         SecondaryKey
     }
-    internal static class PolicykeyEnumExtension
+
+    internal static class KeyTypeEnumExtension
     {
-        internal static string ToSerializedValue(this Policykey? value)
+        internal static string ToSerializedValue(this KeyType? value)
         {
-            return value == null ? null : ((Policykey)value).ToSerializedValue();
+            return value == null ? null : ((KeyType)value).ToSerializedValue();
         }
 
-        internal static string ToSerializedValue(this Policykey value)
+        internal static string ToSerializedValue(this KeyType value)
         {
             switch( value )
             {
-                case Policykey.PrimaryKey:
+                case KeyType.PrimaryKey:
                     return "PrimaryKey";
-                case Policykey.SecondaryKey:
+                case KeyType.SecondaryKey:
                     return "SecondaryKey";
             }
             return null;
         }
 
-        internal static Policykey? ParsePolicykey(this string value)
+        internal static KeyType? ParseKeyType(this string value)
         {
             switch( value )
             {
                 case "PrimaryKey":
-                    return Policykey.PrimaryKey;
+                    return KeyType.PrimaryKey;
                 case "SecondaryKey":
-                    return Policykey.SecondaryKey;
+                    return KeyType.SecondaryKey;
             }
             return null;
         }

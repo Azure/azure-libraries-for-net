@@ -8,16 +8,12 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
-    using Microsoft.Azure.Management.EventHub.Fluent;
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// SKU parameters supplied to the create Namespace operation
+    /// SKU parameters supplied to the create namespace operation
     /// </summary>
     public partial class Sku
     {
@@ -26,18 +22,19 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// </summary>
         public Sku()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the Sku class.
         /// </summary>
-        /// <param name="tier">The billing tier of this particular SKU.
-        /// Possible values include: 'Basic', 'Standard', 'Premium'</param>
         /// <param name="name">Name of this SKU. Possible values include:
         /// 'Basic', 'Standard'</param>
-        /// <param name="capacity">The Event Hubs throughput units.</param>
-        public Sku(string tier, string name = default(string), int? capacity = default(int?))
+        /// <param name="tier">The billing tier of this particular SKU.
+        /// Possible values include: 'Basic', 'Standard'</param>
+        /// <param name="capacity">The Event Hubs throughput units, vaule
+        /// should be 0 to 20 throughput units.</param>
+        public Sku(string name, string tier = default(string), int? capacity = default(int?))
         {
             Name = name;
             Tier = tier;
@@ -59,13 +56,14 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 
         /// <summary>
         /// Gets or sets the billing tier of this particular SKU. Possible
-        /// values include: 'Basic', 'Standard', 'Premium'
+        /// values include: 'Basic', 'Standard'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; set; }
 
         /// <summary>
-        /// Gets or sets the Event Hubs throughput units.
+        /// Gets or sets the Event Hubs throughput units, vaule should be 0 to
+        /// 20 throughput units.
         /// </summary>
         [JsonProperty(PropertyName = "capacity")]
         public int? Capacity { get; set; }
@@ -78,9 +76,17 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Tier == null)
+            if (Name == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Tier");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
+            }
+            if (Capacity > 20)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "Capacity", 20);
+            }
+            if (Capacity < 0)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "Capacity", 0);
             }
         }
     }
