@@ -8,9 +8,6 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -85,6 +82,11 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// Gets the INamespacesOperations.
         /// </summary>
         public virtual INamespacesOperations Namespaces { get; private set; }
+
+        /// <summary>
+        /// Gets the IDisasterRecoveryConfigsOperations.
+        /// </summary>
+        public virtual IDisasterRecoveryConfigsOperations DisasterRecoveryConfigs { get; private set; }
 
         /// <summary>
         /// Gets the IEventHubsOperations.
@@ -299,10 +301,11 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         {
             Operations = new Operations(this);
             Namespaces = new NamespacesOperations(this);
+            DisasterRecoveryConfigs = new DisasterRecoveryConfigsOperations(this);
             EventHubs = new EventHubsOperations(this);
             ConsumerGroups = new ConsumerGroupsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2015-08-01";
+            ApiVersion = "2017-04-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

@@ -8,9 +8,6 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
@@ -25,7 +22,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <summary>
             /// Creates or updates an Event Hubs consumer group as a nested resource within
             /// a Namespace.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639498.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -42,15 +38,18 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='consumerGroupName'>
             /// The consumer group name
             /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to create or update a consumer group resource.
+            /// <param name='userMetadata'>
+            /// Usermetadata is a placeholder to store user-defined string data with
+            /// maximum length 1024. e.g. it can be used to store descriptive data, such as
+            /// list of teams and their contact information also user-defined configuration
+            /// settings can be stored.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ConsumerGroupResourceInner> CreateOrUpdateAsync(this IConsumerGroupsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string consumerGroupName, ConsumerGroupCreateOrUpdateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ConsumerGroupInner> CreateOrUpdateAsync(this IConsumerGroupsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string consumerGroupName, string userMetadata = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, consumerGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, consumerGroupName, userMetadata, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             /// <summary>
             /// Deletes a consumer group from the specified Event Hub and resource group.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639491.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -85,7 +83,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             /// <summary>
             /// Gets a description for the specified consumer group.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639488.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -105,7 +102,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ConsumerGroupResourceInner> GetAsync(this IConsumerGroupsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string consumerGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ConsumerGroupInner> GetAsync(this IConsumerGroupsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string consumerGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, consumerGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -116,7 +113,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <summary>
             /// Gets all the consumer groups in a Namespace. An empty feed is returned if
             /// no consumer group exists in the Namespace.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639503.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -133,9 +129,9 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ConsumerGroupResourceInner>> ListAllAsync(this IConsumerGroupsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ConsumerGroupInner>> ListByEventHubAsync(this IConsumerGroupsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListAllWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByEventHubWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -144,7 +140,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <summary>
             /// Gets all the consumer groups in a Namespace. An empty feed is returned if
             /// no consumer group exists in the Namespace.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639503.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -155,9 +150,9 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ConsumerGroupResourceInner>> ListAllNextAsync(this IConsumerGroupsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ConsumerGroupInner>> ListByEventHubNextAsync(this IConsumerGroupsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByEventHubNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

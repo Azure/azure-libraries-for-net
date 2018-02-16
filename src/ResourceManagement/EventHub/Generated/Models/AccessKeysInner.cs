@@ -8,43 +8,45 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
-    using Microsoft.Azure.Management.EventHub.Fluent;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Namespace/EventHub Connection String
     /// </summary>
-    public partial class ResourceListKeysInner
+    public partial class AccessKeysInner
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceListKeysInner class.
+        /// Initializes a new instance of the AccessKeysInner class.
         /// </summary>
-        public ResourceListKeysInner()
+        public AccessKeysInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceListKeysInner class.
+        /// Initializes a new instance of the AccessKeysInner class.
         /// </summary>
         /// <param name="primaryConnectionString">Primary connection string of
-        /// the created Namespace AuthorizationRule.</param>
+        /// the created namespace AuthorizationRule.</param>
         /// <param name="secondaryConnectionString">Secondary connection string
-        /// of the created Namespace AuthorizationRule.</param>
+        /// of the created namespace AuthorizationRule.</param>
+        /// <param name="aliasPrimaryConnectionString">Primary connection
+        /// string of the alias if GEO DR is enabled</param>
+        /// <param name="aliasSecondaryConnectionString">Secondary  connection
+        /// string of the alias if GEO DR is enabled</param>
         /// <param name="primaryKey">A base64-encoded 256-bit primary key for
         /// signing and validating the SAS token.</param>
         /// <param name="secondaryKey">A base64-encoded 256-bit primary key for
         /// signing and validating the SAS token.</param>
         /// <param name="keyName">A string that describes the
         /// AuthorizationRule.</param>
-        public ResourceListKeysInner(string primaryConnectionString = default(string), string secondaryConnectionString = default(string), string primaryKey = default(string), string secondaryKey = default(string), string keyName = default(string))
+        public AccessKeysInner(string primaryConnectionString = default(string), string secondaryConnectionString = default(string), string aliasPrimaryConnectionString = default(string), string aliasSecondaryConnectionString = default(string), string primaryKey = default(string), string secondaryKey = default(string), string keyName = default(string))
         {
             PrimaryConnectionString = primaryConnectionString;
             SecondaryConnectionString = secondaryConnectionString;
+            AliasPrimaryConnectionString = aliasPrimaryConnectionString;
+            AliasSecondaryConnectionString = aliasSecondaryConnectionString;
             PrimaryKey = primaryKey;
             SecondaryKey = secondaryKey;
             KeyName = keyName;
@@ -57,18 +59,30 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets primary connection string of the created Namespace
+        /// Gets primary connection string of the created namespace
         /// AuthorizationRule.
         /// </summary>
         [JsonProperty(PropertyName = "primaryConnectionString")]
         public string PrimaryConnectionString { get; private set; }
 
         /// <summary>
-        /// Gets secondary connection string of the created Namespace
+        /// Gets secondary connection string of the created namespace
         /// AuthorizationRule.
         /// </summary>
         [JsonProperty(PropertyName = "secondaryConnectionString")]
         public string SecondaryConnectionString { get; private set; }
+
+        /// <summary>
+        /// Gets primary connection string of the alias if GEO DR is enabled
+        /// </summary>
+        [JsonProperty(PropertyName = "aliasPrimaryConnectionString")]
+        public string AliasPrimaryConnectionString { get; private set; }
+
+        /// <summary>
+        /// Gets secondary  connection string of the alias if GEO DR is enabled
+        /// </summary>
+        [JsonProperty(PropertyName = "aliasSecondaryConnectionString")]
+        public string AliasSecondaryConnectionString { get; private set; }
 
         /// <summary>
         /// Gets a base64-encoded 256-bit primary key for signing and
