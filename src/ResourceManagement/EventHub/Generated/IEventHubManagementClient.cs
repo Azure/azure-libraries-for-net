@@ -8,9 +8,6 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
@@ -80,6 +77,11 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// Gets the INamespacesOperations.
         /// </summary>
         INamespacesOperations Namespaces { get; }
+
+        /// <summary>
+        /// Gets the IDisasterRecoveryConfigsOperations.
+        /// </summary>
+        IDisasterRecoveryConfigsOperations DisasterRecoveryConfigs { get; }
 
         /// <summary>
         /// Gets the IEventHubsOperations.

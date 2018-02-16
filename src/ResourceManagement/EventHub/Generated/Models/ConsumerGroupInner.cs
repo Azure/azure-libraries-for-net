@@ -8,10 +8,6 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
-    using Microsoft.Azure.Management.EventHub.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -24,29 +20,31 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Single item in List or Get Consumer group operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ConsumerGroupResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class ConsumerGroupInner : Rest.Azure.Resource
     {
         /// <summary>
-        /// Initializes a new instance of the ConsumerGroupResourceInner class.
+        /// Initializes a new instance of the ConsumerGroupInner class.
         /// </summary>
-        public ConsumerGroupResourceInner()
+        public ConsumerGroupInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ConsumerGroupResourceInner class.
+        /// Initializes a new instance of the ConsumerGroupInner class.
         /// </summary>
         /// <param name="createdAt">Exact time the message was created.</param>
-        /// <param name="eventHubPath">The path of the Event Hub.</param>
         /// <param name="updatedAt">The exact time the message was
         /// updated.</param>
-        /// <param name="userMetadata">The user metadata.</param>
-        public ConsumerGroupResourceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? createdAt = default(System.DateTime?), string eventHubPath = default(string), System.DateTime? updatedAt = default(System.DateTime?), string userMetadata = default(string))
+        /// <param name="userMetadata">Usermetadata is a placeholder to store
+        /// user-defined string data with maximum length 1024. e.g. it can be
+        /// used to store descriptive data, such as list of teams and their
+        /// contact information also user-defined configuration settings can be
+        /// stored.</param>
+        public ConsumerGroupInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string userMetadata = default(string))
             : base(location, id, name, type, tags)
         {
             CreatedAt = createdAt;
-            EventHubPath = eventHubPath;
             UpdatedAt = updatedAt;
             UserMetadata = userMetadata;
             CustomInit();
@@ -64,19 +62,16 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         public System.DateTime? CreatedAt { get; private set; }
 
         /// <summary>
-        /// Gets the path of the Event Hub.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.eventHubPath")]
-        public string EventHubPath { get; private set; }
-
-        /// <summary>
         /// Gets the exact time the message was updated.
         /// </summary>
         [JsonProperty(PropertyName = "properties.updatedAt")]
         public System.DateTime? UpdatedAt { get; private set; }
 
         /// <summary>
-        /// Gets or sets the user metadata.
+        /// Gets or sets usermetadata is a placeholder to store user-defined
+        /// string data with maximum length 1024. e.g. it can be used to store
+        /// descriptive data, such as list of teams and their contact
+        /// information also user-defined configuration settings can be stored.
         /// </summary>
         [JsonProperty(PropertyName = "properties.userMetadata")]
         public string UserMetadata { get; set; }

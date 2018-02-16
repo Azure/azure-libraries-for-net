@@ -8,9 +8,6 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
@@ -53,7 +50,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
         /// <summary>
         /// Gets all the Event Hubs in a Namespace.
-        /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639493.aspx" />
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group within the azure subscription.
@@ -67,7 +63,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -82,7 +78,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<EventHubResourceInner>>> ListAllWithHttpMessagesAsync(string resourceGroupName, string namespaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<EventhubInner>>> ListByNamespaceWithHttpMessagesAsync(string resourceGroupName, string namespaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -132,7 +128,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("namespaceName", namespaceName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListAll", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListByNamespace", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
@@ -205,14 +201,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -222,10 +217,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -238,7 +229,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<EventHubResourceInner>>();
+            var _result = new AzureOperationResponse<IPage<EventhubInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -251,7 +242,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<EventHubResourceInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<EventhubInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -272,7 +263,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
         /// <summary>
         /// Creates or updates a new Event Hub as a nested resource within a Namespace.
-        /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639497.aspx" />
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group within the azure subscription.
@@ -292,7 +282,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -307,7 +297,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<EventHubResourceInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, EventHubCreateOrUpdateParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EventhubInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, EventhubInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -345,10 +335,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (eventHubName != null)
             {
-                if (eventHubName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "eventHubName", 50);
-                }
                 if (eventHubName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "eventHubName", 1);
@@ -462,14 +448,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -479,10 +464,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -495,7 +476,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<EventHubResourceInner>();
+            var _result = new AzureOperationResponse<EventhubInner>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -508,7 +489,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EventHubResourceInner>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EventhubInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -529,7 +510,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
         /// <summary>
         /// Deletes an Event Hub from the specified Namespace and resource group.
-        /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639496.aspx" />
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group within the azure subscription.
@@ -546,7 +526,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="ValidationException">
@@ -596,10 +576,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (eventHubName != null)
             {
-                if (eventHubName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "eventHubName", 50);
-                }
                 if (eventHubName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "eventHubName", 1);
@@ -696,16 +672,15 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 204 && (int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 204)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -715,10 +690,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -747,7 +718,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
         /// <summary>
         /// Gets an Event Hubs description for the specified Event Hub.
-        /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639501.aspx" />
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group within the azure subscription.
@@ -764,7 +734,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -779,7 +749,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<EventHubResourceInner>> GetWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EventhubInner>> GetWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -817,10 +787,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (eventHubName != null)
             {
-                if (eventHubName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "eventHubName", 50);
-                }
                 if (eventHubName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "eventHubName", 1);
@@ -919,14 +885,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -936,10 +901,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -952,7 +913,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<EventHubResourceInner>();
+            var _result = new AzureOperationResponse<EventhubInner>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -965,7 +926,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EventHubResourceInner>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<EventhubInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -1002,7 +963,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -1017,7 +978,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<SharedAccessAuthorizationRuleResourceInner>>> ListAuthorizationRulesWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<AuthorizationRuleInner>>> ListAuthorizationRulesWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1055,10 +1016,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (eventHubName != null)
             {
-                if (eventHubName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "eventHubName", 50);
-                }
                 if (eventHubName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "eventHubName", 1);
@@ -1157,14 +1114,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1174,10 +1130,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -1190,7 +1142,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<SharedAccessAuthorizationRuleResourceInner>>();
+            var _result = new AzureOperationResponse<IPage<AuthorizationRuleInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1203,7 +1155,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<SharedAccessAuthorizationRuleResourceInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<AuthorizationRuleInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -1224,7 +1176,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
         /// <summary>
         /// Creates or updates an AuthorizationRule for the specified Event Hub.
-        /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt706096.aspx" />
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group within the azure subscription.
@@ -1238,8 +1189,8 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='authorizationRuleName'>
         /// The authorization rule name.
         /// </param>
-        /// <param name='parameters'>
-        /// The shared access AuthorizationRule.
+        /// <param name='rights'>
+        /// The rights associated with the rule.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1247,7 +1198,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -1262,7 +1213,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SharedAccessAuthorizationRuleResourceInner>> CreateOrUpdateAuthorizationRuleWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, SharedAccessAuthorizationRuleCreateOrUpdateParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AuthorizationRuleInner>> CreateOrUpdateAuthorizationRuleWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, IList<string> rights, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1300,10 +1251,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (eventHubName != null)
             {
-                if (eventHubName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "eventHubName", 50);
-                }
                 if (eventHubName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "eventHubName", 1);
@@ -1315,22 +1262,10 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (authorizationRuleName != null)
             {
-                if (authorizationRuleName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "authorizationRuleName", 50);
-                }
                 if (authorizationRuleName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "authorizationRuleName", 1);
                 }
-            }
-            if (parameters == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
-            }
-            if (parameters != null)
-            {
-                parameters.Validate();
             }
             if (Client.ApiVersion == null)
             {
@@ -1339,6 +1274,15 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (rights == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "rights");
+            }
+            AuthorizationRuleInner parameters = new AuthorizationRuleInner();
+            if (rights != null)
+            {
+                parameters.Rights = rights;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -1434,14 +1378,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1451,10 +1394,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -1467,7 +1406,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<SharedAccessAuthorizationRuleResourceInner>();
+            var _result = new AzureOperationResponse<AuthorizationRuleInner>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1480,7 +1419,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<SharedAccessAuthorizationRuleResourceInner>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AuthorizationRuleInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -1501,7 +1440,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
         /// <summary>
         /// Gets an AuthorizationRule for an Event Hub by rule name.
-        /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt706097.aspx" />
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group within the azure subscription.
@@ -1521,7 +1459,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -1536,7 +1474,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SharedAccessAuthorizationRuleResourceInner>> GetAuthorizationRuleWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AuthorizationRuleInner>> GetAuthorizationRuleWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1574,10 +1512,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (eventHubName != null)
             {
-                if (eventHubName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "eventHubName", 50);
-                }
                 if (eventHubName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "eventHubName", 1);
@@ -1589,10 +1523,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (authorizationRuleName != null)
             {
-                if (authorizationRuleName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "authorizationRuleName", 50);
-                }
                 if (authorizationRuleName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "authorizationRuleName", 1);
@@ -1693,14 +1623,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1710,10 +1639,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -1726,7 +1651,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<SharedAccessAuthorizationRuleResourceInner>();
+            var _result = new AzureOperationResponse<AuthorizationRuleInner>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1739,7 +1664,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<SharedAccessAuthorizationRuleResourceInner>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AuthorizationRuleInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -1760,7 +1685,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
         /// <summary>
         /// Deletes an Event Hub AuthorizationRule.
-        /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt706100.aspx" />
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group within the azure subscription.
@@ -1780,7 +1704,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="ValidationException">
@@ -1830,10 +1754,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (eventHubName != null)
             {
-                if (eventHubName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "eventHubName", 50);
-                }
                 if (eventHubName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "eventHubName", 1);
@@ -1845,10 +1765,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (authorizationRuleName != null)
             {
-                if (authorizationRuleName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "authorizationRuleName", 50);
-                }
                 if (authorizationRuleName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "authorizationRuleName", 1);
@@ -1947,16 +1863,15 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 204 && (int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 204)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -1966,10 +1881,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -1998,7 +1909,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
         /// <summary>
         /// Gets the ACS and SAS connection strings for the Event Hub.
-        /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt706098.aspx" />
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group within the azure subscription.
@@ -2018,7 +1928,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -2033,7 +1943,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ResourceListKeysInner>> ListKeysWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AccessKeysInner>> ListKeysWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -2071,10 +1981,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (eventHubName != null)
             {
-                if (eventHubName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "eventHubName", 50);
-                }
                 if (eventHubName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "eventHubName", 1);
@@ -2086,10 +1992,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (authorizationRuleName != null)
             {
-                if (authorizationRuleName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "authorizationRuleName", 50);
-                }
                 if (authorizationRuleName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "authorizationRuleName", 1);
@@ -2190,14 +2092,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2207,10 +2108,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -2223,7 +2120,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<ResourceListKeysInner>();
+            var _result = new AzureOperationResponse<AccessKeysInner>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -2236,7 +2133,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ResourceListKeysInner>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AccessKeysInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -2257,7 +2154,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
         /// <summary>
         /// Regenerates the ACS and SAS connection strings for the Event Hub.
-        /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt706099.aspx" />
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group within the azure subscription.
@@ -2271,9 +2167,9 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='authorizationRuleName'>
         /// The authorization rule name.
         /// </param>
-        /// <param name='policykey'>
-        /// Key that needs to be regenerated. Possible values include: 'PrimaryKey',
-        /// 'SecondaryKey'
+        /// <param name='parameters'>
+        /// Parameters supplied to regenerate the AuthorizationRule Keys
+        /// (PrimaryKey/SecondaryKey).
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2281,7 +2177,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -2296,7 +2192,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ResourceListKeysInner>> RegenerateKeysWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, Policykey? policykey = default(Policykey?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AccessKeysInner>> RegenerateKeysWithHttpMessagesAsync(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, RegenerateAccessKeyParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -2334,10 +2230,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (eventHubName != null)
             {
-                if (eventHubName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "eventHubName", 50);
-                }
                 if (eventHubName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "eventHubName", 1);
@@ -2349,14 +2241,18 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
             if (authorizationRuleName != null)
             {
-                if (authorizationRuleName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "authorizationRuleName", 50);
-                }
                 if (authorizationRuleName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "authorizationRuleName", 1);
                 }
+            }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
             }
             if (Client.ApiVersion == null)
             {
@@ -2365,11 +2261,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            RegenerateKeysParameters parameters = new RegenerateKeysParameters();
-            if (policykey != null)
-            {
-                parameters.Policykey = policykey;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -2465,14 +2356,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2482,10 +2372,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -2498,7 +2384,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<ResourceListKeysInner>();
+            var _result = new AzureOperationResponse<AccessKeysInner>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -2511,7 +2397,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ResourceListKeysInner>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AccessKeysInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -2532,7 +2418,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
         /// <summary>
         /// Gets all the Event Hubs in a Namespace.
-        /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639493.aspx" />
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -2543,7 +2428,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -2558,7 +2443,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<EventHubResourceInner>>> ListAllNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<EventhubInner>>> ListByNamespaceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -2573,7 +2458,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListAllNext", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListByNamespaceNext", tracingParameters);
             }
             // Construct URL
             string _url = "{nextLink}";
@@ -2639,14 +2524,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2656,10 +2540,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -2672,7 +2552,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<EventHubResourceInner>>();
+            var _result = new AzureOperationResponse<IPage<EventhubInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -2685,7 +2565,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<EventHubResourceInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<EventhubInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -2716,7 +2596,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -2731,7 +2611,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<SharedAccessAuthorizationRuleResourceInner>>> ListAuthorizationRulesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<AuthorizationRuleInner>>> ListAuthorizationRulesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -2812,14 +2692,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -2829,10 +2708,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 }
                 ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     ServiceClientTracing.Error(_invocationId, ex);
@@ -2845,7 +2720,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<SharedAccessAuthorizationRuleResourceInner>>();
+            var _result = new AzureOperationResponse<IPage<AuthorizationRuleInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -2858,7 +2733,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<SharedAccessAuthorizationRuleResourceInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<AuthorizationRuleInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

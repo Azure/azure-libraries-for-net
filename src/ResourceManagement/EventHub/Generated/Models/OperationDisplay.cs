@@ -8,10 +8,6 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
-    using Microsoft.Azure.Management.EventHub.Fluent;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -25,7 +21,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// </summary>
         public OperationDisplay()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>
