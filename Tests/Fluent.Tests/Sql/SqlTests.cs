@@ -378,7 +378,7 @@ namespace Fluent.Tests
                 Assert.NotNull(transparentDataEncryption.Id);
                 // Done testing with encryption settings.
 
-                Assert.NotNull(sqlDatabase.GetUpgradeHint());
+                // Assert.NotNull(sqlDatabase.GetUpgradeHint());
 
                 // Test Service tier advisors.
                 var serviceTierAdvisors = sqlDatabase.ListServiceTierAdvisors();

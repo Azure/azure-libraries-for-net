@@ -10,6 +10,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -29,13 +31,17 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// Initializes a new instance of the Volume class.
         /// </summary>
         /// <param name="name">The name of the volume.</param>
-        /// <param name="azureFile">The name of the Azure File volume.</param>
+        /// <param name="azureFile">The Azure File volume.</param>
         /// <param name="emptyDir">The empty directory volume.</param>
-        public Volume(string name, AzureFileVolume azureFile = default(AzureFileVolume), object emptyDir = default(object))
+        /// <param name="secret">The secret volume.</param>
+        /// <param name="gitRepo">The git repo volume.</param>
+        public Volume(string name, AzureFileVolume azureFile = default(AzureFileVolume), object emptyDir = default(object), IDictionary<string, string> secret = default(IDictionary<string, string>), GitRepoVolume gitRepo = default(GitRepoVolume))
         {
             Name = name;
             AzureFile = azureFile;
             EmptyDir = emptyDir;
+            Secret = secret;
+            GitRepo = gitRepo;
             CustomInit();
         }
 
@@ -51,7 +57,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Azure File volume.
+        /// Gets or sets the Azure File volume.
         /// </summary>
         [JsonProperty(PropertyName = "azureFile")]
         public AzureFileVolume AzureFile { get; set; }
@@ -61,6 +67,18 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "emptyDir")]
         public object EmptyDir { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secret volume.
+        /// </summary>
+        [JsonProperty(PropertyName = "secret")]
+        public IDictionary<string, string> Secret { get; set; }
+
+        /// <summary>
+        /// Gets or sets the git repo volume.
+        /// </summary>
+        [JsonProperty(PropertyName = "gitRepo")]
+        public GitRepoVolume GitRepo { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -77,6 +95,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
             if (AzureFile != null)
             {
                 AzureFile.Validate();
+            }
+            if (GitRepo != null)
+            {
+                GitRepo.Validate();
             }
         }
     }

@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ContainerInstance.Fluent.Models;
     using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition;
+    using Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Storage.Fluent;
@@ -36,6 +37,16 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// Skips the definition of volumes to be shared by the container instances.
+        /// An IllegalArgumentException will be thrown if a container instance attempts to define a volume mounting.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithFirstContainerInstance ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume.WithoutVolume()
+        {
+            return this.WithoutVolume() as ContainerGroup.Definition.IWithFirstContainerInstance;
+        }
+
+        /// <summary>
         /// Specifies a new Azure file share name to be created.
         /// </summary>
         /// <param name="volumeName">The name of the volume.</param>
@@ -47,6 +58,16 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// Specifies an empty directory volume that can be shared by the container instances in the container group.
+        /// </summary>
+        /// <param name="name">The name of the empty directory volume.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithFirstContainerInstance ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume.WithEmptyDirectoryVolume(string name)
+        {
+            return this.WithEmptyDirectoryVolume(name) as ContainerGroup.Definition.IWithFirstContainerInstance;
+        }
+
+        /// <summary>
         /// Begins the definition of a volume that can be shared by the container instances in the container group.
         /// The definition must be completed with a call to  VolumeDefinitionStages.WithVolumeAttach.attach().
         /// </summary>
@@ -55,16 +76,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ContainerGroup.Definition.IVolumeDefinitionBlank<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume.DefineVolume(string name)
         {
             return this.DefineVolume(name) as ContainerGroup.Definition.IVolumeDefinitionBlank<ContainerGroup.Definition.IWithVolume>;
-        }
-
-        /// <summary>
-        /// Skips the definition of volumes to be shared by the container instances.
-        /// An IllegalArgumentException will be thrown if a container instance attempts to define a volume mounting.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithFirstContainerInstance ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume.WithoutVolume()
-        {
-            return this.WithoutVolume() as ContainerGroup.Definition.IWithFirstContainerInstance;
         }
 
         /// <summary>
@@ -110,12 +121,44 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// Specifies the DNS prefix to be used to create the FQDN for the container group.
+        /// </summary>
+        /// <param name="dnsPrefix">The DNS prefix to be used to create the FQDN for the container group.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithCreate ContainerGroup.Definition.IWithDnsPrefix.WithDnsPrefix(string dnsPrefix)
+        {
+            return this.WithDnsPrefix(dnsPrefix) as ContainerGroup.Definition.IWithCreate;
+        }
+
+        /// <summary>
         /// Only public container image repository will be used to create the container instances in the container group.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume ContainerGroup.Definition.IWithPublicImageRegistryOnly.WithPublicImageRegistryOnly()
         {
             return this.WithPublicImageRegistryOnly() as ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume;
+        }
+
+        /// <summary>
+        /// Gets true if IP address is public.
+        /// </summary>
+        bool Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.IsIPAddressPublic
+        {
+            get
+            {
+                return this.IsIPAddressPublic();
+            }
+        }
+
+        /// <summary>
+        /// Gets the container instances in this container group.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string,Models.Container> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.Containers
+        {
+            get
+            {
+                return this.Containers() as System.Collections.Generic.IReadOnlyDictionary<string,Models.Container>;
+            }
         }
 
         /// <summary>
@@ -142,6 +185,28 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// Gets the IP address.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.IPAddress
+        {
+            get
+            {
+                return this.IPAddress();
+            }
+        }
+
+        /// <summary>
+        /// Gets the volumes for this container group.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string,Models.Volume> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.Volumes
+        {
+            get
+            {
+                return this.Volumes() as System.Collections.Generic.IReadOnlyDictionary<string,Models.Volume>;
+            }
+        }
+
+        /// <summary>
         /// Gets the Docker image registry servers by which the container group is created from.
         /// </summary>
         System.Collections.Generic.IReadOnlyCollection<string> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.ImageRegistryServers
@@ -149,17 +214,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             get
             {
                 return this.ImageRegistryServers() as System.Collections.Generic.IReadOnlyCollection<string>;
-            }
-        }
-
-        /// <summary>
-        /// Gets the container group events.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyCollection<Models.EventModel> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.Events
-        {
-            get
-            {
-                return this.Events() as System.Collections.Generic.IReadOnlyCollection<Models.EventModel>;
             }
         }
 
@@ -175,35 +229,13 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
-        /// Gets the container group restart policy.
+        /// Gets the container group events.
         /// </summary>
-        Models.ContainerGroupRestartPolicy Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.RestartPolicy
+        System.Collections.Generic.IReadOnlyCollection<Models.EventModel> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.Events
         {
             get
             {
-                return this.RestartPolicy() as Models.ContainerGroupRestartPolicy;
-            }
-        }
-
-        /// <summary>
-        /// Gets the state of the container group; only valid in response.
-        /// </summary>
-        string Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.State
-        {
-            get
-            {
-                return this.State();
-            }
-        }
-
-        /// <summary>
-        /// Gets all the ports publicly exposed for this container group.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyCollection<Models.Port> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.ExternalPorts
-        {
-            get
-            {
-                return this.ExternalPorts() as System.Collections.Generic.IReadOnlyCollection<Models.Port>;
+                return this.Events() as System.Collections.Generic.IReadOnlyCollection<Models.EventModel>;
             }
         }
 
@@ -215,28 +247,6 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             get
             {
                 return this.ProvisioningState();
-            }
-        }
-
-        /// <summary>
-        /// Gets the UDP ports publicly exposed for this container group.
-        /// </summary>
-        int[] Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.ExternalUdpPorts
-        {
-            get
-            {
-                return this.ExternalUdpPorts();
-            }
-        }
-
-        /// <summary>
-        /// Gets the container instances in this container group.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Models.Container> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.Containers
-        {
-            get
-            {
-                return this.Containers() as System.Collections.Generic.IReadOnlyDictionary<string,Models.Container>;
             }
         }
 
@@ -264,35 +274,24 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
-        /// Gets the IP address.
+        /// Gets the UDP ports publicly exposed for this container group.
         /// </summary>
-        string Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.IPAddress
+        int[] Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.ExternalUdpPorts
         {
             get
             {
-                return this.IPAddress();
+                return this.ExternalUdpPorts();
             }
         }
 
         /// <summary>
-        /// Gets the volumes for this container group.
+        /// Gets all the ports publicly exposed for this container group.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Models.Volume> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.Volumes
+        System.Collections.Generic.IReadOnlyCollection<Models.Port> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.ExternalPorts
         {
             get
             {
-                return this.Volumes() as System.Collections.Generic.IReadOnlyDictionary<string,Models.Volume>;
-            }
-        }
-
-        /// <summary>
-        /// Gets true if IP address is public.
-        /// </summary>
-        bool Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.IsIPAddressPublic
-        {
-            get
-            {
-                return this.IsIPAddressPublic();
+                return this.ExternalPorts() as System.Collections.Generic.IReadOnlyCollection<Models.Port>;
             }
         }
 
@@ -304,6 +303,50 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             get
             {
                 return this.OSType() as OSTypeName;
+            }
+        }
+
+        /// <summary>
+        /// Gets the container group restart policy.
+        /// </summary>
+        Models.ContainerGroupRestartPolicy Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.RestartPolicy
+        {
+            get
+            {
+                return this.RestartPolicy() as Models.ContainerGroupRestartPolicy;
+            }
+        }
+
+        /// <summary>
+        /// Gets the DNS prefix which was specified at creation time.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.DnsPrefix
+        {
+            get
+            {
+                return this.DnsPrefix();
+            }
+        }
+
+        /// <summary>
+        /// Gets the state of the container group; only valid in response.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.State
+        {
+            get
+            {
+                return this.State();
+            }
+        }
+
+        /// <summary>
+        /// Gets the FQDN for the container group.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.Fqdn
+        {
+            get
+            {
+                return this.Fqdn();
             }
         }
 

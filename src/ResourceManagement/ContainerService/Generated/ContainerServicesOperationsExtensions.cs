@@ -159,34 +159,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             }
 
             /// <summary>
-            /// Gets upgrade profile information for specified container service.
-            /// </summary>
-            /// <remarks>
-            /// Gets upgrade profile information for specified container service. The
-            /// operation returns properties of the compute pools including name, OS,
-            /// orchestrator verison, and available upgrades.
-            /// </remarks>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='resourceName'>
-            /// The name of the resource.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<UpgradeProfileInner> GetUpgradeProfilesAsync(this IContainerServicesOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetUpgradeProfilesWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Gets a list of supported orchestrators in the specified subscription.
             /// </summary>
             /// <remarks>
@@ -200,12 +172,15 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='location'>
             /// The name of a supported Azure region.
             /// </param>
+            /// <param name='resourceType'>
+            /// resource type for which the list of orchestrators needs to be returned
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OrchestratorVersionProfileListResultInner> ListOrchestratorsAsync(this IContainerServicesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<OrchestratorVersionProfileListResultInner> ListOrchestratorsAsync(this IContainerServicesOperations operations, string location, string resourceType = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListOrchestratorsWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListOrchestratorsWithHttpMessagesAsync(location, resourceType, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

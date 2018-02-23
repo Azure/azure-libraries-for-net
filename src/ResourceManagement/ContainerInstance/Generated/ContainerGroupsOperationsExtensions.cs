@@ -128,6 +128,35 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             }
 
             /// <summary>
+            /// Update container groups.
+            /// </summary>
+            /// <remarks>
+            /// Updates container group tags with specified values.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='containerGroupName'>
+            /// The name of the container group.
+            /// </param>
+            /// <param name='resource'>
+            /// The container group resource with just the tags to be updated.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ContainerGroupInner> UpdateAsync(this IContainerGroupsOperations operations, string resourceGroupName, string containerGroupName, ResourceInner resource = default(ResourceInner), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, containerGroupName, resource, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Delete the specified container group.
             /// </summary>
             /// <remarks>

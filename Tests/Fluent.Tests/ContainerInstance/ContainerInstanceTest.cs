@@ -32,7 +32,7 @@ namespace Fluent.Tests
                             .WithNewResourceGroup(rgName)
                             .WithLinux()
                             .WithPublicImageRegistryOnly()
-                            .WithoutVolume()
+                            .WithEmptyDirectoryVolume("emptydir1")
                             .DefineContainerInstance("tomcat")
                                 .WithImage("tomcat")
                                 .WithExternalTcpPort(8080)
@@ -43,13 +43,15 @@ namespace Fluent.Tests
                                 .WithExternalTcpPort(80)
                                 .Attach()
                             .WithRestartPolicy(ContainerGroupRestartPolicy.Never)
+                            .WithDnsPrefix(cgName)
                             .WithTag("tag1", "value1")
                             .Create();
 
                     Assert.Equal(cgName, containerGroup.Name);
                     Assert.Equal("Linux", containerGroup.OSType.Value);
                     Assert.Equal(0, containerGroup.ImageRegistryServers.Count);
-                    Assert.Equal(0, containerGroup.Volumes.Count);
+                    Assert.Equal(1, containerGroup.Volumes.Count);
+                    Assert.NotNull(containerGroup.Volumes["emptydir1"]);
                     Assert.NotNull(containerGroup.IPAddress);
                     Assert.True(containerGroup.IsIPAddressPublic);
                     Assert.Equal(2, containerGroup.ExternalTcpPorts.Length);
@@ -82,6 +84,7 @@ namespace Fluent.Tests
                     Assert.Null(nginxContainer.Command);
                     Assert.NotNull(nginxContainer.EnvironmentVariables);
                     Assert.Empty(nginxContainer.EnvironmentVariables);
+                    Assert.Equal(cgName, containerGroup.DnsPrefix);
                     Assert.True(containerGroup.Tags.ContainsKey("tag1"));
                     Assert.Equal(ContainerGroupRestartPolicy.Never, containerGroup.RestartPolicy);
 
@@ -95,6 +98,13 @@ namespace Fluent.Tests
 
                     var containerOperationsList = containerInstanceManager.ContainerGroups.ListOperations();
                     Assert.Equal(4, containerOperationsList.Count());
+
+                    containerGroup.Update()
+                        .WithoutTag("tag1")
+                        .WithTag("tag2", "value2")
+                        .Apply();
+                    Assert.False(containerGroup.Tags.ContainsKey("tag1"));
+                    Assert.True(containerGroup.Tags.ContainsKey("tag2"));
 
                     containerInstanceManager.ContainerGroups.DeleteById(containerGroup.Id);
                 }

@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/rgaci6865?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL3JnYWNpNjg2NT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourcegroups/rgaci3126?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlZ3JvdXBzL3JnYWNpMzEyNj9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
@@ -13,18 +13,18 @@
           "28"
         ],
         "x-ms-client-request-id": [
-          "2a6700d0-36e5-4d9c-8f1c-5a2a39ca4a66"
+          "d64b9152-4056-4c21-a44d-ce78c8a9ce9d"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865\",\r\n  \"name\": \"rgaci6865\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126\",\r\n  \"name\": \"rgaci3126\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "171"
@@ -39,22 +39,22 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 12:11:08 GMT"
+          "Tue, 06 Feb 2018 19:48:13 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-request-id": [
-          "ae4dc036-7ccc-41e2-931b-d294e52a9486"
+          "cbf59a3f-b5af-4c59-b9d4-d9d315936325"
         ],
         "x-ms-correlation-request-id": [
-          "ae4dc036-7ccc-41e2-931b-d294e52a9486"
+          "cbf59a3f-b5af-4c59-b9d4-d9d315936325"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T121109Z:ae4dc036-7ccc-41e2-931b-d294e52a9486"
+          "WESTUS2:20180206T194813Z:cbf59a3f-b5af-4c59-b9d4-d9d315936325"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -63,33 +63,33 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnYWNpNjg2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k5MzU2P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543?api-version=2018-02-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpMzEyNi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k2NTQzP2FwaS12ZXJzaW9uPTIwMTgtMDItMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"Public\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"Public\",\r\n      \"dnsNameLabel\": \"aci6543\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"volumes\": [\r\n      {\r\n        \"name\": \"emptydir1\",\r\n        \"emptyDir\": {}\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "1120"
+          "1252"
         ],
         "x-ms-client-request-id": [
-          "68a9eab6-4584-4dab-b783-db13a06de6d2"
+          "b9ff1ac7-c59f-426f-bdad-671ecdab601f"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"40.121.205.73\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356\",\r\n  \"name\": \"aci9356\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"52.170.6.62\",\r\n      \"type\": \"Public\",\r\n      \"dnsNameLabel\": \"aci6543\",\r\n      \"fqdn\": \"aci6543.eastus.azurecontainer.io\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"volumes\": [\r\n      {\r\n        \"name\": \"emptydir1\",\r\n        \"emptyDir\": {}\r\n      }\r\n    ],\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543\",\r\n  \"name\": \"aci6543\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "836"
+          "948"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -101,7 +101,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 12:11:12 GMT"
+          "Tue, 06 Feb 2018 19:48:20 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -113,16 +113,16 @@
           "59"
         ],
         "x-ms-request-id": [
-          "eastus:241d1e43-65be-4ffe-8dba-96e43112a4a9"
+          "eastus:369a5e3b-b50f-4bc3-8b9d-e8f08a0a0afc"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "4e757758-b1dc-4c36-bebf-2990615914db"
+          "633cd65a-fd85-4566-a04e-d63187ccdb64"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T121112Z:4e757758-b1dc-4c36-bebf-2990615914db"
+          "WESTUS2:20180206T194820Z:633cd65a-fd85-4566-a04e-d63187ccdb64"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -131,24 +131,24 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnYWNpNjg2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k5MzU2P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543?api-version=2018-02-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpMzEyNi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k2NTQzP2FwaS12ZXJzaW9uPTIwMTgtMDItMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "af665c80-2852-45c8-9141-1a44acb769fc"
+          "ec143fc4-0415-4651-89ab-048d4b6b469a"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"40.121.205.73\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356\",\r\n  \"name\": \"aci9356\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"52.170.6.62\",\r\n      \"type\": \"Public\",\r\n      \"dnsNameLabel\": \"aci6543\",\r\n      \"fqdn\": \"aci6543.eastus.azurecontainer.io\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"volumes\": [\r\n      {\r\n        \"name\": \"emptydir1\",\r\n        \"emptyDir\": {}\r\n      }\r\n    ],\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543\",\r\n  \"name\": \"aci6543\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -160,7 +160,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 12:11:12 GMT"
+          "Tue, 06 Feb 2018 19:48:20 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -173,16 +173,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "eastus:fa2163cd-a7d8-4dd3-a533-bafb1b11d563"
+          "eastus:afb7f6e3-fe3f-4127-98aa-3828a6deafe0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14965"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "6ba8fe29-ac75-49bf-b6c4-0e22ce35cc47"
+          "0a85c98d-7243-41da-8bcb-f6e78fe7809e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T121112Z:6ba8fe29-ac75-49bf-b6c4-0e22ce35cc47"
+          "WESTUS2:20180206T194821Z:0a85c98d-7243-41da-8bcb-f6e78fe7809e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -191,24 +191,24 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnYWNpNjg2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k5MzU2P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543?api-version=2018-02-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpMzEyNi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k2NTQzP2FwaS12ZXJzaW9uPTIwMTgtMDItMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d82f636e-61ec-4a32-a5e6-9ae934bf99e8"
+          "3c496aed-3b44-4c2e-a56e-2cbcfdb52fa3"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"40.121.205.73\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356\",\r\n  \"name\": \"aci9356\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"52.170.6.62\",\r\n      \"type\": \"Public\",\r\n      \"dnsNameLabel\": \"aci6543\",\r\n      \"fqdn\": \"aci6543.eastus.azurecontainer.io\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"volumes\": [\r\n      {\r\n        \"name\": \"emptydir1\",\r\n        \"emptyDir\": {}\r\n      }\r\n    ],\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543\",\r\n  \"name\": \"aci6543\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -220,7 +220,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 12:11:12 GMT"
+          "Tue, 06 Feb 2018 19:48:21 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -233,16 +233,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "eastus:a631bb2d-c9ac-4bcd-a1ea-bc3306652520"
+          "eastus:f00440e5-d873-4461-83c3-77230e95e6c3"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14963"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "321ce1ca-f45b-4a0c-8867-49fb0e8fd2f9"
+          "62b71a24-592c-4f0e-b428-0396a9566687"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T121113Z:321ce1ca-f45b-4a0c-8867-49fb0e8fd2f9"
+          "WESTUS2:20180206T194821Z:62b71a24-592c-4f0e-b428-0396a9566687"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -251,24 +251,24 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnYWNpNjg2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k5MzU2P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543?api-version=2018-02-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpMzEyNi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k2NTQzP2FwaS12ZXJzaW9uPTIwMTgtMDItMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cd8a70c7-4a6d-49f8-a2d8-9b2aff53a5b0"
+          "43cccb2e-5298-4df4-bf61-f517796d67b9"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"40.121.205.73\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356\",\r\n  \"name\": \"aci9356\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"52.170.6.62\",\r\n      \"type\": \"Public\",\r\n      \"dnsNameLabel\": \"aci6543\",\r\n      \"fqdn\": \"aci6543.eastus.azurecontainer.io\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"volumes\": [\r\n      {\r\n        \"name\": \"emptydir1\",\r\n        \"emptyDir\": {}\r\n      }\r\n    ],\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543\",\r\n  \"name\": \"aci6543\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -280,7 +280,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 12:11:12 GMT"
+          "Tue, 06 Feb 2018 19:48:21 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -293,16 +293,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "eastus:815d1d2b-9105-4082-adb3-637f4e3940f4"
+          "eastus:f8ce736e-6059-4145-9e50-c0f94798ee7b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14962"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "cbc38f28-6f81-4c1d-91d0-efb020ad215c"
+          "4a1e1635-5c2a-44a8-8a1e-d13f9c563157"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T121113Z:cbc38f28-6f81-4c1d-91d0-efb020ad215c"
+          "WESTUS2:20180206T194821Z:4a1e1635-5c2a-44a8-8a1e-d13f9c563157"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -311,24 +311,24 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnYWNpNjg2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k5MzU2P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543?api-version=2018-02-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpMzEyNi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k2NTQzP2FwaS12ZXJzaW9uPTIwMTgtMDItMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "906d0240-57ea-4e61-a9f9-ea6b14c44129"
+          "691979b5-03bf-4a2b-899f-01917ead04a8"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"40.121.205.73\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356\",\r\n  \"name\": \"aci9356\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"52.170.6.62\",\r\n      \"type\": \"Public\",\r\n      \"dnsNameLabel\": \"aci6543\",\r\n      \"fqdn\": \"aci6543.eastus.azurecontainer.io\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"volumes\": [\r\n      {\r\n        \"name\": \"emptydir1\",\r\n        \"emptyDir\": {}\r\n      }\r\n    ],\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543\",\r\n  \"name\": \"aci6543\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -340,7 +340,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 12:11:13 GMT"
+          "Tue, 06 Feb 2018 19:48:21 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -353,16 +353,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "eastus:dd764e51-14bb-4670-8722-a759a0aa3289"
+          "eastus:c82bd3fb-dec2-4842-b7ff-532769603c86"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14961"
+          "14992"
         ],
         "x-ms-correlation-request-id": [
-          "bc3f10a1-ded1-4d73-b2cb-e554a1acbf1f"
+          "10229cff-1387-4aa2-a027-d99d81dcfa7e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T121113Z:bc3f10a1-ded1-4d73-b2cb-e554a1acbf1f"
+          "WESTUS2:20180206T194821Z:10229cff-1387-4aa2-a027-d99d81dcfa7e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -371,24 +371,24 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnYWNpNjg2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcz9hcGktdmVyc2lvbj0yMDE3LTEwLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543?api-version=2018-02-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpMzEyNi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k2NTQzP2FwaS12ZXJzaW9uPTIwMTgtMDItMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "102e69c5-2425-438c-9803-01fea6e046a8"
+          "a25440ed-d793-4c80-972b-e2133ccf8f81"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"provisioningState\": \"Creating\",\r\n        \"containers\": [\r\n          {\r\n            \"name\": \"tomcat\",\r\n            \"properties\": {\r\n              \"image\": \"tomcat\",\r\n              \"ports\": [\r\n                {\r\n                  \"port\": 8080\r\n                }\r\n              ],\r\n              \"environmentVariables\": [],\r\n              \"resources\": {\r\n                \"requests\": {\r\n                  \"memoryInGB\": 1.5,\r\n                  \"cpu\": 1.0\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"name\": \"nginx\",\r\n            \"properties\": {\r\n              \"image\": \"nginx\",\r\n              \"ports\": [\r\n                {\r\n                  \"port\": 80\r\n                }\r\n              ],\r\n              \"environmentVariables\": [],\r\n              \"resources\": {\r\n                \"requests\": {\r\n                  \"memoryInGB\": 1.5,\r\n                  \"cpu\": 1.0\r\n                }\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"restartPolicy\": \"Never\",\r\n        \"ipAddress\": {\r\n          \"ports\": [\r\n            {\r\n              \"protocol\": \"TCP\",\r\n              \"port\": 8080\r\n            },\r\n            {\r\n              \"protocol\": \"TCP\",\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"ip\": \"40.121.205.73\",\r\n          \"type\": \"Public\"\r\n        },\r\n        \"osType\": \"Linux\"\r\n      },\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356\",\r\n      \"name\": \"aci9356\",\r\n      \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"52.170.6.62\",\r\n      \"type\": \"Public\",\r\n      \"dnsNameLabel\": \"aci6543\",\r\n      \"fqdn\": \"aci6543.eastus.azurecontainer.io\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"volumes\": [\r\n      {\r\n        \"name\": \"emptydir1\",\r\n        \"emptyDir\": {}\r\n      }\r\n    ],\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543\",\r\n  \"name\": \"aci6543\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -400,7 +400,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 12:11:12 GMT"
+          "Tue, 06 Feb 2018 19:48:22 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -413,16 +413,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "eastus:b05607cc-5975-473c-85fc-2b5736c425a2"
+          "eastus:5a9b8b11-2ddd-43f5-9d64-70a15e786e34"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14964"
+          "14991"
         ],
         "x-ms-correlation-request-id": [
-          "dca16df8-70d3-4fc9-bc81-0afe05f01186"
+          "9e737f4c-6566-43fa-8d7f-dd533011371e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T121112Z:dca16df8-70d3-4fc9-bc81-0afe05f01186"
+          "WESTUS2:20180206T194822Z:9e737f4c-6566-43fa-8d7f-dd533011371e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -431,21 +431,81 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.ContainerInstance/operations?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2Uvb3BlcmF0aW9ucz9hcGktdmVyc2lvbj0yMDE3LTEwLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups?api-version=2018-02-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpMzEyNi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcz9hcGktdmVyc2lvbj0yMDE4LTAyLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "40bca3df-61c2-440a-8c08-278f6e881847"
+          "172af5ec-df7c-40d7-bf57-f2db6e973e70"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"provisioningState\": \"Creating\",\r\n        \"containers\": [\r\n          {\r\n            \"name\": \"tomcat\",\r\n            \"properties\": {\r\n              \"image\": \"tomcat\",\r\n              \"ports\": [\r\n                {\r\n                  \"port\": 8080\r\n                }\r\n              ],\r\n              \"environmentVariables\": [],\r\n              \"resources\": {\r\n                \"requests\": {\r\n                  \"memoryInGB\": 1.5,\r\n                  \"cpu\": 1.0\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"name\": \"nginx\",\r\n            \"properties\": {\r\n              \"image\": \"nginx\",\r\n              \"ports\": [\r\n                {\r\n                  \"port\": 80\r\n                }\r\n              ],\r\n              \"environmentVariables\": [],\r\n              \"resources\": {\r\n                \"requests\": {\r\n                  \"memoryInGB\": 1.5,\r\n                  \"cpu\": 1.0\r\n                }\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"restartPolicy\": \"Never\",\r\n        \"ipAddress\": {\r\n          \"ports\": [\r\n            {\r\n              \"protocol\": \"TCP\",\r\n              \"port\": 8080\r\n            },\r\n            {\r\n              \"protocol\": \"TCP\",\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"ip\": \"52.170.6.62\",\r\n          \"type\": \"Public\",\r\n          \"dnsNameLabel\": \"aci6543\",\r\n          \"fqdn\": \"aci6543.eastus.azurecontainer.io\"\r\n        },\r\n        \"osType\": \"Linux\",\r\n        \"volumes\": [\r\n          {\r\n            \"name\": \"emptydir1\",\r\n            \"emptyDir\": {}\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543\",\r\n      \"name\": \"aci6543\",\r\n      \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 06 Feb 2018 19:48:21 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Vary": [
+          "Accept-Encoding",
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "eastus:5d0c70a0-4240-4418-8ed9-d6a441416586"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "677516f9-880e-4ce4-83ba-98bf11d76956"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180206T194821Z:677516f9-880e-4ce4-83ba-98bf11d76956"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.ContainerInstance/operations?api-version=2018-02-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2Uvb3BlcmF0aW9ucz9hcGktdmVyc2lvbj0yMDE4LTAyLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a23519de-d209-4817-b166-646aa85f3ecc"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Microsoft.ContainerInstance/containerGroups/read\",\r\n      \"display\": {\r\n        \"provider\": \"Microsoft Container Instance\",\r\n        \"resource\": \"Container Group\",\r\n        \"operation\": \"Get Container Groups\",\r\n        \"description\": \"Get all container goups.\"\r\n      },\r\n      \"origin\": \"User\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.ContainerInstance/containerGroups/write\",\r\n      \"display\": {\r\n        \"provider\": \"Microsoft Container Instance\",\r\n        \"resource\": \"Container Group\",\r\n        \"operation\": \"Create or update Container Group\",\r\n        \"description\": \"Create or update a specific container group.\"\r\n      },\r\n      \"origin\": \"User\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.ContainerInstance/containerGroups/delete\",\r\n      \"display\": {\r\n        \"provider\": \"Microsoft Container Instance\",\r\n        \"resource\": \"Container Group\",\r\n        \"operation\": \"Delete Container Group\",\r\n        \"description\": \"Delete the specific container group.\"\r\n      },\r\n      \"origin\": \"User\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.ContainerInstance/containerGroups/containers/logs/read\",\r\n      \"display\": {\r\n        \"provider\": \"Microsoft Container Instance\",\r\n        \"resource\": \"Container Group\",\r\n        \"operation\": \"Get Container Logs\",\r\n        \"description\": \"Get logs for a specific container.\"\r\n      },\r\n      \"origin\": \"User\"\r\n    }\r\n  ]\r\n}",
@@ -460,7 +520,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 12:11:13 GMT"
+          "Tue, 06 Feb 2018 19:48:21 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -473,16 +533,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:0adbb1fe-998d-447c-85a3-d87acad37bb7"
+          "westus:3a71dfd3-b90f-4598-97c1-d5330e12a3ac"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "b5c0e773-a377-461b-ae2f-439417af946c"
+          "f3a3cd16-7a05-47bb-8a3c-172706938b8e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T121113Z:b5c0e773-a377-461b-ae2f-439417af946c"
+          "WESTUS2:20180206T194822Z:f3a3cd16-7a05-47bb-8a3c-172706938b8e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -491,24 +551,30 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3JnYWNpNjg2NS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k5MzU2P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
+      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543?api-version=2018-02-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpMzEyNi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k2NTQzP2FwaS12ZXJzaW9uPTIwMTgtMDItMDEtcHJldmlldw==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\"\r\n  }\r\n}",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "69"
+        ],
         "x-ms-client-request-id": [
-          "d6cfc0a6-181d-4c52-bf21-48c6e3e3c8f2"
+          "6eef597c-9975-47f4-af0b-fbfcf00c4c47"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"40.121.205.73\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/rgaci6865/providers/Microsoft.ContainerInstance/containerGroups/aci9356\",\r\n  \"name\": \"aci9356\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -520,7 +586,67 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 12:11:14 GMT"
+          "Tue, 06 Feb 2018 19:48:22 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Vary": [
+          "Accept-Encoding",
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "eastus:5192e566-baaa-4c14-a1d2-15ccef0a4306"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "87e2776c-26a6-4d72-87c5-cd5de615a926"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180206T194822Z:87e2776c-26a6-4d72-87c5-cd5de615a926"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543?api-version=2018-02-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpMzEyNi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lckluc3RhbmNlL2NvbnRhaW5lckdyb3Vwcy9hY2k2NTQzP2FwaS12ZXJzaW9uPTIwMTgtMDItMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3c90b85c-cc12-47e6-94f8-fe79a1a1b909"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"tomcat\",\r\n        \"properties\": {\r\n          \"image\": \"tomcat\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 8080\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"nginx\",\r\n        \"properties\": {\r\n          \"image\": \"nginx\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.5,\r\n              \"cpu\": 1.0\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 8080\r\n        },\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"52.170.6.62\",\r\n      \"type\": \"Public\",\r\n      \"dnsNameLabel\": \"aci6543\",\r\n      \"fqdn\": \"aci6543.eastus.azurecontainer.io\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"volumes\": [\r\n      {\r\n        \"name\": \"emptydir1\",\r\n        \"emptyDir\": {}\r\n      }\r\n    ],\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaci3126/providers/Microsoft.ContainerInstance/containerGroups/aci6543\",\r\n  \"name\": \"aci6543\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 06 Feb 2018 19:48:24 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -539,16 +665,16 @@
           "149"
         ],
         "x-ms-request-id": [
-          "eastus:80155831-1e13-4019-a587-8374c1067574"
+          "eastus:575090f2-3f45-47cf-b855-6c7a6f5c851f"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1196"
         ],
         "x-ms-correlation-request-id": [
-          "b4a9e3e3-2218-49ba-9c72-289849e04bcf"
+          "8f2dca82-530d-4a08-bbe0-1b85085bcd9d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T121115Z:b4a9e3e3-2218-49ba-9c72-289849e04bcf"
+          "WESTUS2:20180206T194825Z:8f2dca82-530d-4a08-bbe0-1b85085bcd9d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -557,21 +683,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/rgaci6865?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL3JnYWNpNjg2NT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourcegroups/rgaci3126?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlZ3JvdXBzL3JnYWNpMzEyNj9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1963eba8-4a80-4d0a-aa46-f6ba0795479a"
+          "0847804d-9487-4652-9260-5dd7b467c751"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.6.0.0",
+          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
         ]
       },
       "ResponseBody": "",
@@ -586,28 +712,28 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 12:11:16 GMT"
+          "Tue, 06 Feb 2018 19:48:26 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR0FDSTY4NjUtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR0FDSTMxMjYtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-02-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1171"
+          "1199"
         ],
         "x-ms-request-id": [
-          "32371acc-54e9-435b-91fb-bd7c6e0e60e6"
+          "4c628a08-b49a-4224-9df3-889507babcec"
         ],
         "x-ms-correlation-request-id": [
-          "32371acc-54e9-435b-91fb-bd7c6e0e60e6"
+          "4c628a08-b49a-4224-9df3-889507babcec"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T121117Z:32371acc-54e9-435b-91fb-bd7c6e0e60e6"
+          "WESTUS2:20180206T194826Z:4c628a08-b49a-4224-9df3-889507babcec"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -618,13 +744,13 @@
   ],
   "Names": {
     "ContainerInstanceCRD": [
-      "rgaci6865",
-      "aci9356"
+      "rgaci3126",
+      "aci6543"
     ]
   },
   "Variables": {
-    "ServicePrincipal": "a971e5df-eeb7-4481-9bf7-e72e66a2ba12",
-    "AADTenant": "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a",
-    "SubscriptionId": "0b1f6471-1bf0-4dda-aec3-cb9272f09590"
+    "ServicePrincipal": "26bdda7f-4c22-4e48-8524-7c44e2cdbe38",
+    "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "SubscriptionId": "ffa52f27-be12-4cad-b1ea-c2c241b6cceb"
   }
 }

@@ -8,10 +8,6 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
-    using Microsoft.Azure.Management.EventHub.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -24,23 +20,21 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Single item in a List or Get AuthorizationRule operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SharedAccessAuthorizationRuleResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class AuthorizationRuleInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// SharedAccessAuthorizationRuleResourceInner class.
+        /// Initializes a new instance of the AuthorizationRuleInner class.
         /// </summary>
-        public SharedAccessAuthorizationRuleResourceInner()
+        public AuthorizationRuleInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// SharedAccessAuthorizationRuleResourceInner class.
+        /// Initializes a new instance of the AuthorizationRuleInner class.
         /// </summary>
         /// <param name="rights">The rights associated with the rule.</param>
-        public SharedAccessAuthorizationRuleResourceInner(IList<AccessRights?> rights, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public AuthorizationRuleInner(IList<string> rights, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(location, id, name, type, tags)
         {
             Rights = rights;
@@ -56,7 +50,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// Gets or sets the rights associated with the rule.
         /// </summary>
         [JsonProperty(PropertyName = "properties.rights")]
-        public IList<AccessRights?> Rights { get; set; }
+        public IList<string> Rights { get; set; }
 
         /// <summary>
         /// Validate the object.

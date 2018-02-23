@@ -8,10 +8,6 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent.Models
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
-    using Microsoft.Azure.Management.EventHub.Fluent;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -26,13 +22,15 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// </summary>
         public CheckNameAvailabilityResultInner()
         {
-          CustomInit();
+            CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the CheckNameAvailabilityResultInner
         /// class.
         /// </summary>
+        /// <param name="message">The detailed info regarding the reason
+        /// associated with the Namespace.</param>
         /// <param name="nameAvailable">Value indicating Namespace is
         /// availability, true if the Namespace is available; otherwise,
         /// false.</param>
@@ -40,13 +38,11 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// Possible values include: 'None', 'InvalidName',
         /// 'SubscriptionIsDisabled', 'NameInUse', 'NameInLockdown',
         /// 'TooManyNamespaceInCurrentSubscription'</param>
-        /// <param name="message">The detailed info regarding the reason
-        /// associated with the Namespace.</param>
-        public CheckNameAvailabilityResultInner(bool? nameAvailable = default(bool?), UnavailableReason? reason = default(UnavailableReason?), string message = default(string))
+        public CheckNameAvailabilityResultInner(string message = default(string), bool? nameAvailable = default(bool?), UnavailableReason? reason = default(UnavailableReason?))
         {
+            Message = message;
             NameAvailable = nameAvailable;
             Reason = reason;
-            Message = message;
             CustomInit();
         }
 
@@ -54,6 +50,13 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets the detailed info regarding the reason associated with the
+        /// Namespace.
+        /// </summary>
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; private set; }
 
         /// <summary>
         /// Gets or sets value indicating Namespace is availability, true if
@@ -70,13 +73,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public UnavailableReason? Reason { get; set; }
-
-        /// <summary>
-        /// Gets the detailed info regarding the reason associated with the
-        /// Namespace.
-        /// </summary>
-        [JsonProperty(PropertyName = "message")]
-        public string Message { get; private set; }
 
     }
 }

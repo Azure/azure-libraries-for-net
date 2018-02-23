@@ -9,12 +9,16 @@
 namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
 {
     using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// The list of available upgrades for compute pools.
     /// </summary>
+    [Rest.Serialization.JsonTransformation]
     public partial class ManagedClusterUpgradeProfileInner
     {
         /// <summary>
@@ -30,16 +34,20 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// Initializes a new instance of the ManagedClusterUpgradeProfileInner
         /// class.
         /// </summary>
-        /// <param name="properties">Properties of upgrade profile.</param>
+        /// <param name="controlPlaneProfile">The list of available upgrade
+        /// versions for the control plane.</param>
+        /// <param name="agentPoolProfiles">The list of available upgrade
+        /// versions for agent pools.</param>
         /// <param name="id">Id of upgrade profile.</param>
         /// <param name="name">Name of upgrade profile.</param>
         /// <param name="type">Type of upgrade profile.</param>
-        public ManagedClusterUpgradeProfileInner(ManagedClusterUpgradeProfileProperties properties, string id = default(string), string name = default(string), string type = default(string))
+        public ManagedClusterUpgradeProfileInner(ManagedClusterPoolUpgradeProfile controlPlaneProfile, IList<ManagedClusterPoolUpgradeProfile> agentPoolProfiles, string id = default(string), string name = default(string), string type = default(string))
         {
             Id = id;
             Name = name;
             Type = type;
-            Properties = properties;
+            ControlPlaneProfile = controlPlaneProfile;
+            AgentPoolProfiles = agentPoolProfiles;
             CustomInit();
         }
 
@@ -67,10 +75,18 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets or sets properties of upgrade profile.
+        /// Gets or sets the list of available upgrade versions for the control
+        /// plane.
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public ManagedClusterUpgradeProfileProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "properties.controlPlaneProfile")]
+        public ManagedClusterPoolUpgradeProfile ControlPlaneProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of available upgrade versions for agent
+        /// pools.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.agentPoolProfiles")]
+        public IList<ManagedClusterPoolUpgradeProfile> AgentPoolProfiles { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -80,13 +96,27 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Properties == null)
+            if (ControlPlaneProfile == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Properties");
+                throw new ValidationException(ValidationRules.CannotBeNull, "ControlPlaneProfile");
             }
-            if (Properties != null)
+            if (AgentPoolProfiles == null)
             {
-                Properties.Validate();
+                throw new ValidationException(ValidationRules.CannotBeNull, "AgentPoolProfiles");
+            }
+            if (ControlPlaneProfile != null)
+            {
+                ControlPlaneProfile.Validate();
+            }
+            if (AgentPoolProfiles != null)
+            {
+                foreach (var element in AgentPoolProfiles)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
         }
     }

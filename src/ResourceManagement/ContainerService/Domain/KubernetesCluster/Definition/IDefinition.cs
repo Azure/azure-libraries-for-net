@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
         /// Specifies the version for the Kubernetes cluster.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithDnsPrefix WithVersion(KubernetesVersion kubernetesVersion);
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithDnsPrefix WithVersion(Microsoft.Azure.Management.ContainerService.Fluent.Models.KubernetesVersion kubernetesVersion);
 
         /// <summary>
         /// Uses the latest version for the Kubernetes cluster.

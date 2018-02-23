@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     /// </summary>
     public interface IWithCreate  :
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithRestartPolicy,
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithDnsPrefix,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithCreate>
     {
@@ -81,6 +82,16 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     public interface IWithPublicOrPrivateImageRegistry  :
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPublicImageRegistryOnly,
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPrivateImageRegistry
+    {
+    }
+
+    /// <summary>
+    /// The stage of the volume definition allowing to specify the Git target directory name mappings.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithGitDirectoryName<ParentT>  :
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGitRevision<ParentT>,
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGitDirectoryNameBeta<ParentT>
     {
     }
 
@@ -264,6 +275,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithAzureFileShare<ParentT>,
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithStorageAccountName<ParentT>,
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithStorageAccountKey<ParentT>,
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSecretsMap<ParentT>,
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGitUrl<ParentT>,
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGitDirectoryName<ParentT>,
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGitRevision<ParentT>,
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithVolumeAttach<ParentT>
     {
     }
@@ -299,6 +314,13 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     public interface IWithPrivateImageRegistryOrVolume  :
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPrivateImageRegistry
     {
+        /// <summary>
+        /// Specifies an empty directory volume that can be shared by the container instances in the container group.
+        /// </summary>
+        /// <param name="name">The name of the empty directory volume.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithFirstContainerInstance WithEmptyDirectoryVolume(string name);
+
         /// <summary>
         /// Skips the definition of volumes to be shared by the container instances.
         /// An IllegalArgumentException will be thrown if a container instance attempts to define a volume mounting.
@@ -381,6 +403,16 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     /// </summary>
     public interface IWithRestartPolicy  :
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithRestartPolicyBeta
+    {
+    }
+
+    /// <summary>
+    /// The stage of the volume definition allowing to specify the Git revision.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithGitRevision<ParentT>  :
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithVolumeAttach<ParentT>,
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGitRevisionBeta<ParentT>
     {
     }
 
@@ -507,6 +539,15 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     }
 
     /// <summary>
+    /// The stage of the volume definition allowing to specify the secrets map.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithSecretsMap<ParentT>  :
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithSecretsMapBeta<ParentT>
+    {
+    }
+
+    /// <summary>
     /// The first stage of the container instance definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
@@ -578,6 +619,46 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     }
 
     /// <summary>
+    /// The stage of the volume definition allowing to specify the Git URL mappings.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithGitUrl<ParentT>  :
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGitUrlBeta<ParentT>
+    {
+    }
+
+    /// <summary>
+    /// The stage of the container group definition allowing to specify the DNS prefix label.
+    /// </summary>
+    public interface IWithDnsPrefix 
+    {
+        /// <summary>
+        /// Specifies the DNS prefix to be used to create the FQDN for the container group.
+        /// </summary>
+        /// <param name="dnsPrefix">The DNS prefix to be used to create the FQDN for the container group.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithCreate WithDnsPrefix(string dnsPrefix);
+    }
+
+    /// <summary>
+    /// The stage of the volume definition allowing to specify the Git target directory name mappings.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithGitDirectoryNameBeta<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the Git target directory name for the new volume.
+        /// Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the
+        /// git repository.  Otherwise, if specified, the volume will contain the git repository in the
+        /// subdirectory with the given name.
+        /// </summary>
+        /// <param name="gitDirectoryName">The Git target directory name for the new volume.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGitRevision<ParentT> WithGitDirectoryName(string gitDirectoryName);
+    }
+
+    /// <summary>
     /// The stage of the container group definition allowing to specify the container group restart policy.
     /// </summary>
     public interface IWithRestartPolicyBeta  :
@@ -589,5 +670,51 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         /// <param name="restartPolicy">The restart policy for all the container instances within the container group.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithCreate WithRestartPolicy(ContainerGroupRestartPolicy restartPolicy);
+    }
+
+    /// <summary>
+    /// The stage of the volume definition allowing to specify the Git revision.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithGitRevisionBeta<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the Git revision for the new volume.
+        /// </summary>
+        /// <param name="gitRevision">The Git revision for the new volume.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithVolumeAttach<ParentT> WithGitRevision(string gitRevision);
+    }
+
+    /// <summary>
+    /// The stage of the volume definition allowing to specify the secrets map.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithSecretsMapBeta<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the secrets map.
+        /// The secret value must be specified in Base64 encoding.
+        /// </summary>
+        /// <param name="secrets">The new volume secrets map; value must be in Base64 encoding.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithVolumeAttach<ParentT> WithSecrets(IDictionary<string,string> secrets);
+    }
+
+    /// <summary>
+    /// The stage of the volume definition allowing to specify the Git URL mappings.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithGitUrlBeta<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies the Git URL for the new volume.
+        /// </summary>
+        /// <param name="gitUrl">The Git URL for the new volume.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGitDirectoryName<ParentT> WithGitUrl(string gitUrl);
     }
 }

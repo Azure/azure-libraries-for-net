@@ -8,12 +8,11 @@
 
 namespace Microsoft.Azure.Management.EventHub.Fluent
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -24,7 +23,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
     {
             /// <summary>
             /// Gets all the Event Hubs in a Namespace.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639493.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -38,9 +36,9 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<EventHubResourceInner>> ListAllAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<EventhubInner>> ListByNamespaceAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListAllWithHttpMessagesAsync(resourceGroupName, namespaceName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByNamespaceWithHttpMessagesAsync(resourceGroupName, namespaceName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -48,7 +46,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             /// <summary>
             /// Creates or updates a new Event Hub as a nested resource within a Namespace.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639497.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -68,7 +65,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<EventHubResourceInner> CreateOrUpdateAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, EventHubCreateOrUpdateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<EventhubInner> CreateOrUpdateAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, EventhubInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -78,7 +75,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             /// <summary>
             /// Deletes an Event Hub from the specified Namespace and resource group.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639496.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -102,7 +98,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             /// <summary>
             /// Gets an Event Hubs description for the specified Event Hub.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639501.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -119,7 +114,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<EventHubResourceInner> GetAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<EventhubInner> GetAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -145,7 +140,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SharedAccessAuthorizationRuleResourceInner>> ListAuthorizationRulesAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<AuthorizationRuleInner>> ListAuthorizationRulesAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAuthorizationRulesWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -155,7 +150,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             /// <summary>
             /// Creates or updates an AuthorizationRule for the specified Event Hub.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt706096.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -172,15 +166,15 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='authorizationRuleName'>
             /// The authorization rule name.
             /// </param>
-            /// <param name='parameters'>
-            /// The shared access AuthorizationRule.
+            /// <param name='rights'>
+            /// The rights associated with the rule.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SharedAccessAuthorizationRuleResourceInner> CreateOrUpdateAuthorizationRuleAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, SharedAccessAuthorizationRuleCreateOrUpdateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AuthorizationRuleInner> CreateOrUpdateAuthorizationRuleAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, IList<string> rights, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateAuthorizationRuleWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateAuthorizationRuleWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, rights, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -188,7 +182,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             /// <summary>
             /// Gets an AuthorizationRule for an Event Hub by rule name.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt706097.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -208,7 +201,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SharedAccessAuthorizationRuleResourceInner> GetAuthorizationRuleAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AuthorizationRuleInner> GetAuthorizationRuleAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetAuthorizationRuleWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -218,7 +211,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             /// <summary>
             /// Deletes an Event Hub AuthorizationRule.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt706100.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -245,7 +237,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             /// <summary>
             /// Gets the ACS and SAS connection strings for the Event Hub.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt706098.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -265,7 +256,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ResourceListKeysInner> ListKeysAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AccessKeysInner> ListKeysAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListKeysWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -275,7 +266,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             /// <summary>
             /// Regenerates the ACS and SAS connection strings for the Event Hub.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt706099.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -292,16 +282,16 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='authorizationRuleName'>
             /// The authorization rule name.
             /// </param>
-            /// <param name='policykey'>
-            /// Key that needs to be regenerated. Possible values include: 'PrimaryKey',
-            /// 'SecondaryKey'
+            /// <param name='parameters'>
+            /// Parameters supplied to regenerate the AuthorizationRule Keys
+            /// (PrimaryKey/SecondaryKey).
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ResourceListKeysInner> RegenerateKeysAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, Policykey? policykey = default(Policykey?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AccessKeysInner> RegenerateKeysAsync(this IEventHubsOperations operations, string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, RegenerateAccessKeyParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.RegenerateKeysWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, policykey, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.RegenerateKeysWithHttpMessagesAsync(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -309,7 +299,6 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
 
             /// <summary>
             /// Gets all the Event Hubs in a Namespace.
-            /// <see href="https://msdn.microsoft.com/en-us/library/azure/mt639493.aspx" />
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -320,9 +309,9 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<EventHubResourceInner>> ListAllNextAsync(this IEventHubsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<EventhubInner>> ListByNamespaceNextAsync(this IEventHubsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByNamespaceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -340,7 +329,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<SharedAccessAuthorizationRuleResourceInner>> ListAuthorizationRulesNextAsync(this IEventHubsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<AuthorizationRuleInner>> ListAuthorizationRulesNextAsync(this IEventHubsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAuthorizationRulesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
