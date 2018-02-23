@@ -5,6 +5,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition;
     using Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Update;
     using Microsoft.Azure.Management.AppService.Fluent.Models;
+    using System.IO;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     internal partial class DeploymentSlotImpl
     {
@@ -44,6 +47,27 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithCreate DeploymentSlot.Definition.IWithConfiguration.WithBrandNewConfiguration()
         {
             return this.WithBrandNewConfiguration() as DeploymentSlot.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Deploys a WAR file onto the Azure specialized Tomcat on this web app.
+        /// </summary>
+        /// <param name="warFile">The WAR file to upload.</param>
+        void Microsoft.Azure.Management.AppService.Fluent.IDeploymentSlot.WarDeploy(FileInfo warFile)
+        {
+ 
+            this.WarDeploy(warFile);
+        }
+
+        /// <summary>
+        /// Deploys a WAR file onto the Azure specialized Tomcat on this web app.
+        /// </summary>
+        /// <param name="warFile">The WAR file to upload.</param>
+        /// <return>A completable of the operation.</return>
+        async Task Microsoft.Azure.Management.AppService.Fluent.IDeploymentSlot.WarDeployAsync(FileInfo warFile, CancellationToken cancellationToken)
+        {
+ 
+            await this.WarDeployAsync(warFile, cancellationToken);
         }
     }
 }
