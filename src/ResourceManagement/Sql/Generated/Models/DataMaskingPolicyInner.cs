@@ -44,15 +44,18 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// used.</param>
         /// <param name="maskingLevel">The masking level. This is a legacy
         /// parameter and is no longer used.</param>
+        /// <param name="location">The location of the data masking
+        /// policy.</param>
         /// <param name="kind">The kind of data masking policy. Metadata, used
         /// for Azure portal.</param>
-        public DataMaskingPolicyInner(DataMaskingState dataMaskingState, string id = default(string), string name = default(string), string type = default(string), string exemptPrincipals = default(string), string applicationPrincipals = default(string), string maskingLevel = default(string), string kind = default(string))
+        public DataMaskingPolicyInner(DataMaskingState dataMaskingState, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string exemptPrincipals = default(string), string applicationPrincipals = default(string), string maskingLevel = default(string), string kind = default(string))
             : base(id, name, type)
         {
             DataMaskingState = dataMaskingState;
             ExemptPrincipals = exemptPrincipals;
             ApplicationPrincipals = applicationPrincipals;
             MaskingLevel = maskingLevel;
+            Location = location;
             Kind = kind;
             CustomInit();
         }
@@ -91,6 +94,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.maskingLevel")]
         public string MaskingLevel { get; private set; }
+
+        /// <summary>
+        /// Gets the location of the data masking policy.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets the kind of data masking policy. Metadata, used for Azure

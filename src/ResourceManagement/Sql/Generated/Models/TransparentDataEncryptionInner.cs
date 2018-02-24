@@ -34,11 +34,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the TransparentDataEncryptionInner
         /// class.
         /// </summary>
+        /// <param name="location">Resource location.</param>
         /// <param name="status">The status of the database transparent data
         /// encryption. Possible values include: 'Enabled', 'Disabled'</param>
-        public TransparentDataEncryptionInner(string id = default(string), string name = default(string), string type = default(string), TransparentDataEncryptionState? status = default(TransparentDataEncryptionState?))
+        public TransparentDataEncryptionInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), TransparentDataEncryptionState? status = default(TransparentDataEncryptionState?))
             : base(id, name, type)
         {
+            Location = location;
             Status = status;
             CustomInit();
         }
@@ -47,6 +49,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets resource location.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets or sets the status of the database transparent data

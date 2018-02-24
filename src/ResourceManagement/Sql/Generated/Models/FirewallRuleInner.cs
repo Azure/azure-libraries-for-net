@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     /// Represents a server firewall rule.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class FirewallRuleInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class FirewallRuleInner : ProxyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the FirewallRuleInner class.
@@ -43,10 +43,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// rule.</param>
         /// <param name="location">Location of the server that contains this
         /// firewall rule.</param>
-        public FirewallRuleInner(string startIpAddress, string endIpAddress, string id = default(string), string name = default(string), string type = default(string), string kind = default(string))
+        public FirewallRuleInner(string startIpAddress, string endIpAddress, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string kind = default(string))
             : base(id, name, type)
         {
             Kind = kind;
+            Location = location;
             StartIpAddress = startIpAddress;
             EndIpAddress = endIpAddress;
             CustomInit();
@@ -62,6 +63,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; private set; }
+
+        /// <summary>
+        /// Gets location of the server that contains this firewall rule.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets or sets the start IP address of the firewall rule. Must be
@@ -85,9 +92,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (StartIpAddress == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "StartIpAddress");

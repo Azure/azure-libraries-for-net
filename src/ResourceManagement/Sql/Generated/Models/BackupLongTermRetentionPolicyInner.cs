@@ -38,9 +38,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// policy. Possible values include: 'Disabled', 'Enabled'</param>
         /// <param name="recoveryServicesBackupPolicyResourceId">The azure
         /// recovery services backup protection policy resource id</param>
-        public BackupLongTermRetentionPolicyInner(BackupLongTermRetentionPolicyState state, string recoveryServicesBackupPolicyResourceId, string id = default(string), string name = default(string), string type = default(string))
+        /// <param name="location">The geo-location where the resource
+        /// lives</param>
+        public BackupLongTermRetentionPolicyInner(BackupLongTermRetentionPolicyState state, string recoveryServicesBackupPolicyResourceId, string location = default(string), string id = default(string), string name = default(string), string type = default(string))
             : base(id, name, type)
         {
+            Location = location;
             State = state;
             RecoveryServicesBackupPolicyResourceId = recoveryServicesBackupPolicyResourceId;
             CustomInit();
@@ -50,6 +53,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets the geo-location where the resource lives
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets or sets the status of the backup long term retention policy.

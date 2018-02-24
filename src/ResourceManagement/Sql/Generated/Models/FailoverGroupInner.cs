@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     /// A failover group.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class FailoverGroupInner : ProxyResourceInner
+    public partial class FailoverGroupInner :  Microsoft.Azure.Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the FailoverGroupInner class.
@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// group instance.</param>
         /// <param name="databases">List of databases in the failover
         /// group.</param>
-        public FailoverGroupInner(FailoverGroupReadWriteEndpoint readWriteEndpoint, IList<PartnerInfo> partnerServers, string id = default(string), string name = default(string), string type = default(string), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string), IList<string> databases = default(IList<string>))
-            : base(id, name, type)
+        public FailoverGroupInner(FailoverGroupReadWriteEndpoint readWriteEndpoint, IList<PartnerInfo> partnerServers, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string), IList<string> databases = default(IList<string>))
+            : base(location, id, name, type, tags)
         {
             ReadWriteEndpoint = readWriteEndpoint;
             ReadOnlyEndpoint = readOnlyEndpoint;
@@ -106,8 +106,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (ReadWriteEndpoint == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ReadWriteEndpoint");

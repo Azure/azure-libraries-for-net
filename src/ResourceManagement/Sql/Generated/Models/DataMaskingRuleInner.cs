@@ -66,9 +66,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="replacementString">If maskingFunction is set to Text,
         /// the character to use for masking the unexposed part of the string.
         /// Otherwise, this parameter will be ignored.</param>
+        /// <param name="location">The location of the data masking
+        /// rule.</param>
         /// <param name="kind">The kind of Data Masking Rule. Metadata, used
         /// for Azure portal.</param>
-        public DataMaskingRuleInner(string schemaName, string tableName, string columnName, DataMaskingFunction maskingFunction, string id = default(string), string name = default(string), string type = default(string), string dataMaskingRuleId = default(string), string aliasName = default(string), DataMaskingRuleState? ruleState = default(DataMaskingRuleState?), string numberFrom = default(string), string numberTo = default(string), string prefixSize = default(string), string suffixSize = default(string), string replacementString = default(string), string kind = default(string))
+        public DataMaskingRuleInner(string schemaName, string tableName, string columnName, DataMaskingFunction maskingFunction, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string dataMaskingRuleId = default(string), string aliasName = default(string), DataMaskingRuleState? ruleState = default(DataMaskingRuleState?), string numberFrom = default(string), string numberTo = default(string), string prefixSize = default(string), string suffixSize = default(string), string replacementString = default(string), string kind = default(string))
             : base(id, name, type)
         {
             DataMaskingRuleId = dataMaskingRuleId;
@@ -184,6 +186,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.replacementString")]
         public string ReplacementString { get; set; }
+
+        /// <summary>
+        /// Gets the location of the data masking rule.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets the kind of Data Masking Rule. Metadata, used for Azure

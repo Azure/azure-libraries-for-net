@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ElasticPoolActivity class.
         /// </summary>
+        /// <param name="location">The geo-location where the resource
+        /// lives</param>
         /// <param name="endTime">The time the operation finished (ISO8601
         /// format).</param>
         /// <param name="errorCode">The error code if available.</param>
@@ -66,9 +68,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// DTU cap.</param>
         /// <param name="requestedDtuGuarantee">The requested DTU
         /// guarantee.</param>
-        public ElasticPoolActivity(string id = default(string), string name = default(string), string type = default(string), System.DateTime? endTime = default(System.DateTime?), int? errorCode = default(int?), string errorMessage = default(string), int? errorSeverity = default(int?), string operation = default(string), System.Guid operationId = default(System.Guid), int? percentComplete = default(int?), int? requestedDatabaseDtuMax = default(int?), int? requestedDatabaseDtuMin = default(int?), int? requestedDtu = default(int?), string requestedElasticPoolName = default(string), long? requestedStorageLimitInGB = default(long?), string elasticPoolName = default(string), string serverName = default(string), System.DateTime? startTime = default(System.DateTime?), string state = default(string), int? requestedStorageLimitInMB = default(int?), int? requestedDatabaseDtuGuarantee = default(int?), int? requestedDatabaseDtuCap = default(int?), int? requestedDtuGuarantee = default(int?))
+        public ElasticPoolActivity(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.DateTime? endTime = default(System.DateTime?), int? errorCode = default(int?), string errorMessage = default(string), int? errorSeverity = default(int?), string operation = default(string), System.Guid operationId = default(System.Guid), int? percentComplete = default(int?), int? requestedDatabaseDtuMax = default(int?), int? requestedDatabaseDtuMin = default(int?), int? requestedDtu = default(int?), string requestedElasticPoolName = default(string), long? requestedStorageLimitInGB = default(long?), string elasticPoolName = default(string), string serverName = default(string), System.DateTime? startTime = default(System.DateTime?), string state = default(string), int? requestedStorageLimitInMB = default(int?), int? requestedDatabaseDtuGuarantee = default(int?), int? requestedDatabaseDtuCap = default(int?), int? requestedDtuGuarantee = default(int?))
             : base(id, name, type)
         {
+            Location = location;
             EndTime = endTime;
             ErrorCode = errorCode;
             ErrorMessage = errorMessage;
@@ -96,6 +99,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; set; }
 
         /// <summary>
         /// Gets the time the operation finished (ISO8601 format).

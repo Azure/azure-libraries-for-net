@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ReplicationLinkInner class.
         /// </summary>
+        /// <param name="location">Location of the server that contains this
+        /// firewall rule.</param>
         /// <param name="isTerminationAllowed">Legacy value indicating whether
         /// termination is allowed.  Currently always returns true.</param>
         /// <param name="replicationMode">Replication mode of this replication
@@ -55,9 +57,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="replicationState">The replication state for the
         /// replication link. Possible values include: 'PENDING', 'SEEDING',
         /// 'CATCH_UP', 'SUSPENDED'</param>
-        public ReplicationLinkInner(string id = default(string), string name = default(string), string type = default(string), bool? isTerminationAllowed = default(bool?), string replicationMode = default(string), string partnerServer = default(string), string partnerDatabase = default(string), string partnerLocation = default(string), ReplicationRole? role = default(ReplicationRole?), ReplicationRole? partnerRole = default(ReplicationRole?), System.DateTime? startTime = default(System.DateTime?), int? percentComplete = default(int?), string replicationState = default(string))
+        public ReplicationLinkInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), bool? isTerminationAllowed = default(bool?), string replicationMode = default(string), string partnerServer = default(string), string partnerDatabase = default(string), string partnerLocation = default(string), ReplicationRole? role = default(ReplicationRole?), ReplicationRole? partnerRole = default(ReplicationRole?), System.DateTime? startTime = default(System.DateTime?), int? percentComplete = default(int?), string replicationState = default(string))
             : base(id, name, type)
         {
+            Location = location;
             IsTerminationAllowed = isTerminationAllowed;
             ReplicationMode = replicationMode;
             PartnerServer = partnerServer;
@@ -75,6 +78,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets location of the server that contains this firewall rule.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets legacy value indicating whether termination is allowed.

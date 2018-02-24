@@ -38,12 +38,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// policy.</param>
         /// <param name="kind">Kind of geo backup policy.  This is metadata
         /// used for the Azure portal experience.</param>
-        public GeoBackupPolicyInner(GeoBackupPolicyState state, string id = default(string), string name = default(string), string type = default(string), string storageType = default(string), string kind = default(string))
+        /// <param name="location">Backup policy location.</param>
+        public GeoBackupPolicyInner(GeoBackupPolicyState state, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string storageType = default(string), string kind = default(string))
             : base(id, name, type)
         {
             State = state;
             StorageType = storageType;
             Kind = kind;
+            Location = location;
             CustomInit();
         }
 
@@ -71,6 +73,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; private set; }
+
+        /// <summary>
+        /// Gets backup policy location.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Validate the object.

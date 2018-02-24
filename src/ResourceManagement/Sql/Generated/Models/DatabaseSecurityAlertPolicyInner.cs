@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="state">Specifies the state of the policy. If state is
         /// Enabled, storageEndpoint and storageAccountAccessKey are required.
         /// Possible values include: 'New', 'Enabled', 'Disabled'</param>
+        /// <param name="location">The geo-location where the resource
+        /// lives</param>
         /// <param name="kind">Resource kind.</param>
         /// <param name="disabledAlerts">Specifies the semicolon-separated list
         /// of alerts that are disabled, or empty string to disable no alerts.
@@ -59,9 +61,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="useServerDefault">Specifies whether to use the default
         /// server policy. Possible values include: 'Enabled',
         /// 'Disabled'</param>
-        public DatabaseSecurityAlertPolicyInner(SecurityAlertPolicyState state, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string disabledAlerts = default(string), string emailAddresses = default(string), SecurityAlertPolicyEmailAccountAdmins? emailAccountAdmins = default(SecurityAlertPolicyEmailAccountAdmins?), string storageEndpoint = default(string), string storageAccountAccessKey = default(string), int? retentionDays = default(int?), SecurityAlertPolicyUseServerDefault? useServerDefault = default(SecurityAlertPolicyUseServerDefault?))
+        public DatabaseSecurityAlertPolicyInner(SecurityAlertPolicyState state, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string disabledAlerts = default(string), string emailAddresses = default(string), SecurityAlertPolicyEmailAccountAdmins? emailAccountAdmins = default(SecurityAlertPolicyEmailAccountAdmins?), string storageEndpoint = default(string), string storageAccountAccessKey = default(string), int? retentionDays = default(int?), SecurityAlertPolicyUseServerDefault? useServerDefault = default(SecurityAlertPolicyUseServerDefault?))
             : base(id, name, type)
         {
+            Location = location;
             Kind = kind;
             State = state;
             DisabledAlerts = disabledAlerts;
@@ -78,6 +81,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; set; }
 
         /// <summary>
         /// Gets resource kind.

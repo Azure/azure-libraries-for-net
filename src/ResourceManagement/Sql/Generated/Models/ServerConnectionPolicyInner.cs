@@ -38,10 +38,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// values include: 'Default', 'Proxy', 'Redirect'</param>
         /// <param name="kind">Metadata used for the Azure portal
         /// experience.</param>
-        public ServerConnectionPolicyInner(ServerConnectionType connectionType, string id = default(string), string name = default(string), string type = default(string), string kind = default(string))
+        /// <param name="location">Resource location.</param>
+        public ServerConnectionPolicyInner(ServerConnectionType connectionType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string kind = default(string))
             : base(id, name, type)
         {
             Kind = kind;
+            Location = location;
             ConnectionType = connectionType;
             CustomInit();
         }
@@ -56,6 +58,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; private set; }
+
+        /// <summary>
+        /// Gets resource location.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets or sets the server connection type. Possible values include:

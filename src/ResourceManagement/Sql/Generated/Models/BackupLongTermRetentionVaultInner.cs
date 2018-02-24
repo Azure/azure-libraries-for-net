@@ -36,9 +36,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         /// <param name="recoveryServicesVaultResourceId">The azure recovery
         /// services vault resource id</param>
-        public BackupLongTermRetentionVaultInner(string recoveryServicesVaultResourceId, string id = default(string), string name = default(string), string type = default(string))
+        /// <param name="location">The geo-location where the resource
+        /// lives</param>
+        public BackupLongTermRetentionVaultInner(string recoveryServicesVaultResourceId, string location = default(string), string id = default(string), string name = default(string), string type = default(string))
             : base(id, name, type)
         {
+            Location = location;
             RecoveryServicesVaultResourceId = recoveryServicesVaultResourceId;
             CustomInit();
         }
@@ -47,6 +50,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets the geo-location where the resource lives
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets or sets the azure recovery services vault resource id

@@ -36,13 +36,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         /// <param name="partnerServer">The name of the partner server.</param>
         /// <param name="state">The state.</param>
+        /// <param name="location">Communication link location.</param>
         /// <param name="kind">Communication link kind.  This property is used
         /// for Azure Portal metadata.</param>
-        public ServerCommunicationLinkInner(string partnerServer, string id = default(string), string name = default(string), string type = default(string), string state = default(string), string kind = default(string))
+        public ServerCommunicationLinkInner(string partnerServer, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string state = default(string), string kind = default(string))
             : base(id, name, type)
         {
             State = state;
             PartnerServer = partnerServer;
+            Location = location;
             Kind = kind;
             CustomInit();
         }
@@ -63,6 +65,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.partnerServer")]
         public string PartnerServer { get; set; }
+
+        /// <summary>
+        /// Gets communication link location.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets communication link kind.  This property is used for Azure

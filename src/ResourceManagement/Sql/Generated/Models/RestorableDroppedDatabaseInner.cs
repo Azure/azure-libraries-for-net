@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the RestorableDroppedDatabaseInner
         /// class.
         /// </summary>
+        /// <param name="location">The geo-location where the resource
+        /// lives</param>
         /// <param name="databaseName">The name of the database</param>
         /// <param name="edition">The edition of the database</param>
         /// <param name="maxSizeBytes">The max size in bytes of the
@@ -48,9 +50,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// (ISO8601 format)</param>
         /// <param name="earliestRestoreDate">The earliest restore date of the
         /// database (ISO8601 format)</param>
-        public RestorableDroppedDatabaseInner(string id = default(string), string name = default(string), string type = default(string), string databaseName = default(string), string edition = default(string), string maxSizeBytes = default(string), string serviceLevelObjective = default(string), string elasticPoolName = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? deletionDate = default(System.DateTime?), System.DateTime? earliestRestoreDate = default(System.DateTime?))
+        public RestorableDroppedDatabaseInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), string databaseName = default(string), string edition = default(string), string maxSizeBytes = default(string), string serviceLevelObjective = default(string), string elasticPoolName = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? deletionDate = default(System.DateTime?), System.DateTime? earliestRestoreDate = default(System.DateTime?))
             : base(id, name, type)
         {
+            Location = location;
             DatabaseName = databaseName;
             Edition = edition;
             MaxSizeBytes = maxSizeBytes;
@@ -66,6 +69,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets the geo-location where the resource lives
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets the name of the database

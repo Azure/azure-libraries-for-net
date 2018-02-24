@@ -37,15 +37,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// 'ServiceManaged', 'AzureKeyVault'</param>
         /// <param name="kind">Kind of encryption protector. This is metadata
         /// used for the Azure portal experience.</param>
+        /// <param name="location">Resource location.</param>
         /// <param name="subregion">Subregion of the encryption
         /// protector.</param>
         /// <param name="serverKeyName">The name of the server key.</param>
         /// <param name="uri">The URI of the server key.</param>
         /// <param name="thumbprint">Thumbprint of the server key.</param>
-        public EncryptionProtectorInner(string serverKeyType, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string subregion = default(string), string serverKeyName = default(string), string uri = default(string), string thumbprint = default(string))
+        public EncryptionProtectorInner(string serverKeyType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string subregion = default(string), string serverKeyName = default(string), string uri = default(string), string thumbprint = default(string))
             : base(id, name, type)
         {
             Kind = kind;
+            Location = location;
             Subregion = subregion;
             ServerKeyName = serverKeyName;
             ServerKeyType = serverKeyType;
@@ -65,6 +67,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
         public string Kind { get; set; }
+
+        /// <summary>
+        /// Gets resource location.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets subregion of the encryption protector.
