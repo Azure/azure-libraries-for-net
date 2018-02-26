@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:66A358446BB2F4C0D4EA5FC8537BD415:564E60CCC7F9401E2CF56194AFC301F8
         private IEnumerable<IEventData> ListEventData(string filter)
         {
-            return Extensions.Synchronize(() => this.Inner.ListAsync(filter, string.Join(",", this.responsePropertySelector.OrderBy(o => o))))
+            return Extensions.Synchronize(() => this.Inner.ListAsync(filter, CreatePropertyFilter()))
                          .AsContinuousCollection(link => Extensions.Synchronize(() => this.Inner.ListNextAsync(link)))
                          .Select(inner => new EventDataImpl(inner));
         }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         private async Task<IPagedCollection<IEventData>> ListEventDataAsync(string filter, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IEventData, EventDataInner>.LoadPage(
-                async (cancellation) => await Inner.ListAsync(filter, string.Join(",", this.responsePropertySelector.OrderBy(o => o)), cancellation),
+                async (cancellation) => await Inner.ListAsync(filter, CreatePropertyFilter(), cancellation),
                 async (nextLink, cancellation) => await Inner.ListNextAsync(nextLink, cancellation),
                 (inner) => new EventDataImpl(inner),
                 true,
@@ -153,6 +153,16 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             this.filterString = string.Format(" and correlationId eq '{0}'", correlationId);
             return this;
+        }
+
+        private string CreatePropertyFilter()
+        {
+            var propertyFilter = string.Join(",", this.responsePropertySelector.OrderBy(o => o));
+            if (string.IsNullOrWhiteSpace(propertyFilter))
+            {
+                propertyFilter = null;
+            }
+            return propertyFilter;
         }
     }
 }
