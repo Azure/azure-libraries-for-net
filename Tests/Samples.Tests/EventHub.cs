@@ -26,7 +26,7 @@ namespace Samples.Tests
             }
         }
 
-        [Fact]
+        [Fact (Skip = "Sample uses azure-stroage data plane SDK. Mocking data plane request-response is not supported by test framework")]
         [Trait("Samples", "EventHub")]
         public void ManageEventHubGeoDisasterRecoveryTest()
         {
