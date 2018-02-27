@@ -17,14 +17,14 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent.EventHubConsumerGroup.Defin
         /// </summary>
         /// <param name="eventHub">Event hub.</param>
         /// <return>Next stage of the consumer group definition.</return>
-        Microsoft.Azure.Management.Eventhub.Fluent.EventHubConsumerGroup.Definition.IWithCreate ForExistingEventHub(IEventHub eventHub);
+        Microsoft.Azure.Management.Eventhub.Fluent.EventHubConsumerGroup.Definition.IWithCreate WithExistingEventHub(IEventHub eventHub);
 
         /// <summary>
         /// Specifies the event hub for which consumer group needs to be created.
         /// </summary>
         /// <param name="eventHubId">ARM resource id of event hub.</param>
         /// <return>Next stage of the consumer group definition.</return>
-        Microsoft.Azure.Management.Eventhub.Fluent.EventHubConsumerGroup.Definition.IWithCreate ForExistingEventHub(string eventHubId);
+        Microsoft.Azure.Management.Eventhub.Fluent.EventHubConsumerGroup.Definition.IWithCreate WithExistingEventHubId(string eventHubId);
 
         /// <summary>
         /// Specifies the event hub for which consumer group needs to be created.
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent.EventHubConsumerGroup.Defin
         /// <param name="namespaceName">Event hub namespace name.</param>
         /// <param name="eventHubName">Event hub name.</param>
         /// <return>Next stage of the consumer group definition.</return>
-        Microsoft.Azure.Management.Eventhub.Fluent.EventHubConsumerGroup.Definition.IWithCreate ForExistingEventHub(string resourceGroupName, string namespaceName, string eventHubName);
+        Microsoft.Azure.Management.Eventhub.Fluent.EventHubConsumerGroup.Definition.IWithCreate WithExistingEventHub(string resourceGroupName, string namespaceName, string eventHubName);
     }
 
     /// <summary>

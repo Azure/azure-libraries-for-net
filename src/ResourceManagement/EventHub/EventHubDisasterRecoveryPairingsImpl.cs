@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:E776888E46F8A3FC56D24DF4A74E5B74:279A0BE8EAAA54434723FD778381D28C
-        public Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             ResourceId resourceId = ResourceId.FromString(id ?? throw new ArgumentNullException(id));
-            return GetByNameAsync(resourceId.ResourceGroupName,
+            return await GetByNameAsync(resourceId.ResourceGroupName,
                 resourceId.Parent.Name,
                 resourceId.Name,
                 cancellationToken);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:5002116800CBAC02BBC1B4BF62BC4942:37DAFCA0F979EB14168635F75681B9E4
         public IEventHubDisasterRecoveryPairing GetById(string id)
         {
-            return GetByIdAsync(id).Result;
+            return Extensions.Synchronize(() => GetByIdAsync(id));
         }
         ///GENMHASH:B6961E0C7CB3A9659DE0E1489F44A936:168EFDB95EECDB98D4BDFCCA32101AC1
         public IEventHubManager Manager
@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:4D33A73A344E127F784620E76B686786:9723D6330EE11E0764C52AE608F5F48E
-        public Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             ResourceId resourceId = ResourceId.FromString(id ?? throw new ArgumentNullException(id));
-            return DeleteByNameAsync(resourceId.ResourceGroupName,
+            await DeleteByNameAsync(resourceId.ResourceGroupName,
                 resourceId.Parent.Name,
                 resourceId.Name,
                 cancellationToken);
@@ -119,26 +119,26 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:666C0465A5F64EEA835CC2DA55F94875:066987FB34F379BFE8B7DD7842362947
         public void DeleteByName(string resourceGroupName, string namespaceName, string name)
         {
-            DeleteByNameAsync(resourceGroupName, namespaceName, name).Wait();
+            Extensions.Synchronize(() => DeleteByNameAsync(resourceGroupName, namespaceName, name));
 
         }
 
         ///GENMHASH:AD2574D8A0B41B7543E661226E7079CC:3EAC4D0C83CAC924621C946950DC6EB1
         public IEventHubDisasterRecoveryPairing GetByName(string resourceGroupName, string namespaceName, string name)
         {
-            return GetByNameAsync(resourceGroupName, namespaceName, name).Result;
+            return Extensions.Synchronize(() => GetByNameAsync(resourceGroupName, namespaceName, name));
         }
 
         ///GENMHASH:CFA8F482B43AF8D63CC08E2DEC651ED3:8B61E578211E798393BC11B4706B4C15
         public void DeleteById(string id)
         {
-            DeleteByIdAsync(id).Wait();
+            Extensions.Synchronize(() => DeleteByIdAsync(id));
         }
 
         ///GENMHASH:76D3089A9A4A15E17E55ADC8A99BA937:A7ED93C8E89A6166255AB510D73F3A59
-        public Task DeleteByNameAsync(string resourceGroupName, string namespaceName, string name, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task DeleteByNameAsync(string resourceGroupName, string namespaceName, string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Inner.DeleteAsync(resourceGroupName,
+            await this.Inner.DeleteAsync(resourceGroupName,
                 namespaceName,
                 name,
                 cancellationToken);

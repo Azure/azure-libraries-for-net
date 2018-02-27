@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:323E13EA523CC5C9992A3C5081E83085:3A8604878A4599454D9E6CBEA196DA57
-        protected override Task<AccessKeysInner> GetKeysInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<AccessKeysInner> GetKeysInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.Inner.Namespaces
+            return await this.Manager.Inner.Namespaces
                 .ListKeysAsync(this.Ancestor().ResourceGroupName,
                     this.Ancestor().Ancestor1Name,
                     this.Name,
@@ -77,13 +77,13 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:2A78999F239DA090C8DF19A6D1F08331:8F91E65E832D3679B5CB708B68F15EFC
-        protected override Task<AccessKeysInner> RegenerateKeysInnerAsync(KeyType keyType, CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<AccessKeysInner> RegenerateKeysInnerAsync(KeyType keyType, CancellationToken cancellationToken = default(CancellationToken))
         {
             RegenerateAccessKeyParametersInner regenKeyInner = new RegenerateAccessKeyParametersInner
             {
                 KeyType = keyType
             };
-            return this.Manager.Inner.Namespaces
+            return await this.Manager.Inner.Namespaces
                 .RegenerateKeysAsync(this.Ancestor().ResourceGroupName,
                     this.Ancestor().Ancestor1Name,
                     this.Name,
@@ -92,9 +92,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:D5BDED52BBBA3F06ABF8C110A013F75E
-        protected override Task<AuthorizationRuleInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<AuthorizationRuleInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.Inner.Namespaces
+            return await this.Manager.Inner.Namespaces
                 .GetAuthorizationRuleAsync(this.Ancestor().ResourceGroupName,
                     this.Ancestor().Ancestor1Name,
                     this.Name,

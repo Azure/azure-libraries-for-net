@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:5002116800CBAC02BBC1B4BF62BC4942:37DAFCA0F979EB14168635F75681B9E4
         public RuleT GetById(string id)
         {
-            return GetByIdAsync(id).Result;
+            return Extensions.Synchronize(() => GetByIdAsync(id));
         }
 
         ///GENMHASH:4D33A73A344E127F784620E76B686786:27E486AB74A10242FF421C0798DDC450
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:CFA8F482B43AF8D63CC08E2DEC651ED3:8B61E578211E798393BC11B4706B4C15
         public void DeleteById(string id)
         {
-            DeleteByIdAsync(id).Wait();
+            Extensions.Synchronize(() => DeleteByIdAsync(id));
         }
 
         ///GENMHASH:BCF24D03D2EE33ADFF1E81AD1D0155CB:27E486AB74A10242FF421C0798DDC450

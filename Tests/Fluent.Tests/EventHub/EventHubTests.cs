@@ -144,7 +144,7 @@ namespace Fluent.Tests.EventHub
                     azure.EventHubs
                             .ConsumerGroups
                                 .Define("grp3")
-                                .ForExistingEventHub(eventHub.Id)
+                                .WithExistingEventHubId(eventHub.Id)
                                 .WithUserMetadata("metadata222")
                                 .Create();
 

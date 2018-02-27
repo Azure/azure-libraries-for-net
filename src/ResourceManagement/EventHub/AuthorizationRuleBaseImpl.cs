@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         NestedResourceImpl<RuleT, AuthorizationRuleInner, RuleImpl, UpdateEntryPoint>,
         IAuthorizationRule<RuleT>
         where RuleT : class, IHasId
-        where RuleImpl : class
+        where RuleImpl : AuthorizationRuleBaseImpl<RuleT, RuleImpl, UpdateEntryPoint>
         where UpdateEntryPoint : class
     {
         ///GENMHASH:6F0F4875025EFAD1501AE24B692D87A3:C5C9A7A1846EEA08D381D40B63B43DC6
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             {
                 this.Inner.Rights.Add("Listen");
             }
-            return this as RuleImpl;
+            return (RuleImpl) this;
         }
 
         ///GENMHASH:C5DDA67F1816E477A8EAA6ECEFBBB25C:A23796BF710470D2B0F0EF3CB21F9D0B
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             {
                 this.Inner.Rights.Add("Send");
             }
-            return this as RuleImpl;
+            return (RuleImpl) this;
         }
 
         ///GENMHASH:D56754248D4EE259AEA7A819BD939780:448F969B7719EB9B90B397331F814EA9
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             {
                 this.Inner.Rights.Add("Manage");
             }
-            return this as RuleImpl;
+            return (RuleImpl) this;
         }
 
 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:E4DFA7EA15F8324FB60C810D0C96D2FF:EACB47A475A2EC02AC952C3B5FCFCC6E
         public IEventHubAuthorizationKey GetKeys()
         {
-            return GetKeysAsync().Result;
+            return Extensions.Synchronize(() => GetKeysAsync());
         }
 
         ///GENMHASH:2A78999F239DA090C8DF19A6D1F08331:27E486AB74A10242FF421C0798DDC450
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:089CB9C164DC80CDB29D51C8C539E9EA:80AB9608DE4559B7659A43E48078D878
         public IEventHubAuthorizationKey RegenerateKey(KeyType keyType)
         {
-            return RegenerateKeyAsync(keyType).Result;
+            return Extensions.Synchronize(() => RegenerateKeyAsync(keyType));
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:27E486AB74A10242FF421C0798DDC450

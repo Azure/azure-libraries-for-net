@@ -71,14 +71,14 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:5002116800CBAC02BBC1B4BF62BC4942:37DAFCA0F979EB14168635F75681B9E4
         public IDisasterRecoveryPairingAuthorizationRule GetById(string id)
         {
-            return GetByIdAsync(id).Result;
+            return Extensions.Synchronize(() => GetByIdAsync(id));
         }
 
         ///GENMHASH:E776888E46F8A3FC56D24DF4A74E5B74:75BCE9962F8F51C054B48D3344BFE162
-        public Task<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             ResourceId resourceId = ResourceId.FromString(id);
-            return this.GetByNameAsync(resourceId.ResourceGroupName,
+            return await this.GetByNameAsync(resourceId.ResourceGroupName,
                 resourceId.Parent.Name,
                 resourceId.Parent.Parent.Name,
                 resourceId.Name,
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:D4172B991CD1CF668EFC326060AE2DFF:0706A02D75607FE8C57BF482CF5BD842
         public IDisasterRecoveryPairingAuthorizationRule GetByName(string resourceGroupName, string namespaceName, string pairingName, string name)
         {
-            return GetByNameAsync(resourceGroupName, namespaceName, pairingName, name).Result;
+            return Extensions.Synchronize(() => GetByNameAsync(resourceGroupName, namespaceName, pairingName, name));
         }
 
         ///GENMHASH:A25618C0BA8BEE57DEC3C4B9D011B985:0D41DFBD0DA616BDF2B347AB0F670014

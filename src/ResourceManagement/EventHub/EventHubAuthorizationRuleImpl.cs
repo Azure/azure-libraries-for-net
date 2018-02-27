@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:323E13EA523CC5C9992A3C5081E83085:B21407B848292AD05D2EDA15DA7A077A
-        protected override Task<AccessKeysInner> GetKeysInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<AccessKeysInner> GetKeysInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.Inner.EventHubs
+            return await this.Manager.Inner.EventHubs
                 .ListKeysAsync(this.Ancestor().ResourceGroupName,
                     this.Ancestor().Ancestor2Name,
                     this.Ancestor().Ancestor1Name,
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:2A78999F239DA090C8DF19A6D1F08331:C4C36D1AABF35564B2294D36E9FB136D
-        protected override Task<AccessKeysInner> RegenerateKeysInnerAsync(KeyType keyType, CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<AccessKeysInner> RegenerateKeysInnerAsync(KeyType keyType, CancellationToken cancellationToken = default(CancellationToken))
         {
             RegenerateAccessKeyParametersInner regenKeyInner = new RegenerateAccessKeyParametersInner
             {
                 KeyType = keyType
             };
-            return this.Manager.Inner.EventHubs
+            return await this.Manager.Inner.EventHubs
                 .RegenerateKeysAsync(this.Ancestor().ResourceGroupName,
                     this.Ancestor().Ancestor2Name,
                     this.Ancestor().Ancestor1Name,
@@ -100,9 +100,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:AA0C9A4A4BF2840880B12217DDB9B07E
-        protected override Task<AuthorizationRuleInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<AuthorizationRuleInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.Inner.EventHubs
+            return await this.Manager.Inner.EventHubs
                 .GetAuthorizationRuleAsync(this.Ancestor().ResourceGroupName,
                     this.Ancestor().Ancestor2Name,
                     this.Ancestor().Ancestor1Name,

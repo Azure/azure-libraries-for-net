@@ -71,21 +71,21 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:F99F3258B7041A2910BA994BB518EAA3:2CC5F403817B58A1E7310EB6F1AF1764
-        public EventHubConsumerGroupImpl ForExistingEventHub(IEventHub eventHub)
+        public EventHubConsumerGroupImpl WithExistingEventHub(IEventHub eventHub)
         {
             this.ancestor = new TwoAncestor(SelfId(eventHub.Id));
             return this;
         }
 
         ///GENMHASH:0D1A56A2D4975A5117372A4C6EDA24AD:FC5A569B96738DB334A09C4983B592F2
-        public EventHubConsumerGroupImpl ForExistingEventHub(string eventHubId)
+        public EventHubConsumerGroupImpl WithExistingEventHubId(string eventHubId)
         {
             this.ancestor = new TwoAncestor(SelfId(eventHubId));
             return this;
         }
 
         ///GENMHASH:8E558916BC9FD09AB1EE2BAA127372EB:1D4B99B2219FD6B197BBB7366BE9C73B
-        public EventHubConsumerGroupImpl ForExistingEventHub(string resourceGroupName, string namespaceName, string eventHubName)
+        public EventHubConsumerGroupImpl WithExistingEventHub(string resourceGroupName, string namespaceName, string eventHubName)
         {
             this.ancestor = new TwoAncestor(resourceGroupName, eventHubName, namespaceName);
             return this;
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:C2C0330D0A79CA5A25B339EE0B2AC41B
-        protected override Task<ConsumerGroupInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<ConsumerGroupInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.Inner.ConsumerGroups
+            return await this.Manager.Inner.ConsumerGroups
                 .GetAsync(this.Ancestor().ResourceGroupName,
                     this.Ancestor().Ancestor2Name,
                     this.Ancestor().Ancestor1Name,

@@ -47,13 +47,6 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             }
         }
 
-        ///GENMHASH:B6961E0C7CB3A9659DE0E1489F44A936:168EFDB95EECDB98D4BDFCCA32101AC1
-        /**
-        public IEventHubManager Manager()
-        {
-            return this.manager;
-        }
-        **/
         string INestedResource.Name
         {
             get

@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:E4DFA7EA15F8324FB60C810D0C96D2FF:1BCD5CF569F11AB6F798D4F3A5BFC786
         public IDisasterRecoveryPairingAuthorizationKey GetKeys()
         {
-            return this.GetKeysAsync().Result;
+            return Extensions.Synchronize(() => this.GetKeysAsync());
         }
 
         ///GENMHASH:784B68605E207509447B184BA254B28A:672FDADCD18A3B2A31177B23B25B052D

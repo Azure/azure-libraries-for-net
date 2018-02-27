@@ -81,9 +81,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// </summary>
         /// <param name="eventHub">Event hub.</param>
         /// <return>Next stage of the consumer group definition.</return>
-        EventHubConsumerGroup.Definition.IWithCreate EventHubConsumerGroup.Definition.IWithEventHub.ForExistingEventHub(IEventHub eventHub)
+        EventHubConsumerGroup.Definition.IWithCreate EventHubConsumerGroup.Definition.IWithEventHub.WithExistingEventHub(IEventHub eventHub)
         {
-            return this.ForExistingEventHub(eventHub) as EventHubConsumerGroup.Definition.IWithCreate;
+            return this.WithExistingEventHub(eventHub) as EventHubConsumerGroup.Definition.IWithCreate;
         }
 
         /// <summary>
@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// </summary>
         /// <param name="eventHubId">ARM resource id of event hub.</param>
         /// <return>Next stage of the consumer group definition.</return>
-        EventHubConsumerGroup.Definition.IWithCreate EventHubConsumerGroup.Definition.IWithEventHub.ForExistingEventHub(string eventHubId)
+        EventHubConsumerGroup.Definition.IWithCreate EventHubConsumerGroup.Definition.IWithEventHub.WithExistingEventHubId(string eventHubId)
         {
-            return this.ForExistingEventHub(eventHubId) as EventHubConsumerGroup.Definition.IWithCreate;
+            return this.WithExistingEventHubId(eventHubId) as EventHubConsumerGroup.Definition.IWithCreate;
         }
 
         /// <summary>
@@ -103,9 +103,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <param name="namespaceName">Event hub namespace name.</param>
         /// <param name="eventHubName">Event hub name.</param>
         /// <return>Next stage of the consumer group definition.</return>
-        EventHubConsumerGroup.Definition.IWithCreate EventHubConsumerGroup.Definition.IWithEventHub.ForExistingEventHub(string resourceGroupName, string namespaceName, string eventHubName)
+        EventHubConsumerGroup.Definition.IWithCreate EventHubConsumerGroup.Definition.IWithEventHub.WithExistingEventHub(string resourceGroupName, string namespaceName, string eventHubName)
         {
-            return this.ForExistingEventHub(resourceGroupName, namespaceName, eventHubName) as EventHubConsumerGroup.Definition.IWithCreate;
+            return this.WithExistingEventHub(resourceGroupName, namespaceName, eventHubName) as EventHubConsumerGroup.Definition.IWithCreate;
         }
 
         /// <summary>

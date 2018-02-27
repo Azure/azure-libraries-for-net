@@ -291,9 +291,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:6B59E5250798DE7162AA40D03C37BC76
-        protected override Task<EHNamespaceInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<EHNamespaceInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.Inner.Namespaces.GetAsync(this.ResourceGroupName, this.Name, cancellationToken);
+            return await this.Manager.Inner.Namespaces.GetAsync(this.ResourceGroupName, this.Name, cancellationToken);
         }
 
         ///GENMHASH:3EE273EE4D62EEBDEF6A6504795341D1:E3F88E10BC75D3AA8E5D63CB31408492
@@ -303,9 +303,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:A83092260CFC1DE32D6AD56CCB7EF30D:DC02B2383AD2D1413628908699BA0CF2
-        public Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>> ListEventHubsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>> ListEventHubsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.EventHubs.ListByNamespaceAsync(ResourceGroupName, Name, cancellationToken);
+            return await this.Manager.EventHubs.ListByNamespaceAsync(ResourceGroupName, Name, cancellationToken);
         }
 
         ///GENMHASH:2FAF2208689547C6A4D62711AACA378B:48280EAB50AEF29CC837FDD0BD322F89
@@ -316,9 +316,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:362D73D3A0A345883DD0DA56D35DF38D:E7BFCBD1276EBB06F22B520CAA9538B3
-        public Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule>> ListAuthorizationRulesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule>> ListAuthorizationRulesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.NamespaceAuthorizationRules.ListByNamespaceAsync(this.ResourceGroupName, this.Name, cancellationToken);
+            return await this.Manager.NamespaceAuthorizationRules.ListByNamespaceAsync(this.ResourceGroupName, this.Name, cancellationToken);
         }
 
         ///GENMHASH:2A540D3EA5484526657F0DCDF3830DB2:4FD56E792DCEA9C8B4208C7730ED2A42

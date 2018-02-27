@@ -56,34 +56,34 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             return new EventHubNamespaceImpl(inner.Name, inner, this.Manager);
         }
 
-        protected override Task<IPage<EHNamespaceInner>> ListInnerAsync(CancellationToken cancellationToken)
+        protected override async Task<IPage<EHNamespaceInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
-            return this.Inner.ListAsync(cancellationToken);
+            return await this.Inner.ListAsync(cancellationToken);
         }
 
-        protected override Task<IPage<EHNamespaceInner>> ListInnerNextAsync(string link, CancellationToken cancellationToken)
+        protected override async Task<IPage<EHNamespaceInner>> ListInnerNextAsync(string link, CancellationToken cancellationToken)
         {
-            return this.Inner.ListNextAsync(link, cancellationToken);
+            return await this.Inner.ListNextAsync(link, cancellationToken);
         }
 
-        protected override Task<IPage<EHNamespaceInner>> ListInnerByGroupAsync(string resourceGroupName, CancellationToken cancellationToken)
+        protected override async Task<IPage<EHNamespaceInner>> ListInnerByGroupAsync(string resourceGroupName, CancellationToken cancellationToken)
         {
-            return this.Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken);
+            return await this.Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken);
         }
 
-        protected override Task<IPage<EHNamespaceInner>> ListInnerByGroupNextAsync(string link, CancellationToken cancellationToken)
+        protected override async Task<IPage<EHNamespaceInner>> ListInnerByGroupNextAsync(string link, CancellationToken cancellationToken)
         {
-            return this.Inner.ListByResourceGroupNextAsync(link, cancellationToken);
+            return await this.Inner.ListByResourceGroupNextAsync(link, cancellationToken);
         }
 
-        protected override Task<EHNamespaceInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
+        protected override async Task<EHNamespaceInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
         {
-            return this.Inner.GetAsync(groupName, name, cancellationToken);
+            return await this.Inner.GetAsync(groupName, name, cancellationToken);
         }
 
-        protected override Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
+        protected override async Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
         {
-            return this.Inner.DeleteAsync(groupName, name, cancellationToken);
+            await this.Inner.DeleteAsync(groupName, name, cancellationToken);
         }
     }
 }

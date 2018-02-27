@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:672258F380132668907B1425A93D74E1:26CA102DFF02D40B2C832DF17782E023
         public void BreakPairing()
         {
-            this.BreakPairingAsync().Wait();
+            Extensions.Synchronize(() => BreakPairingAsync());
         }
 
         ///GENMHASH:E42A0416DF558FB7762C4D5D91B98C8D:463AE6BF52FF214D6396DD09F1B3EED4
@@ -151,14 +151,13 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:5E571B5874E00595C35082DC9F3F8633:420B820CBA0F4722F8ED8B776C30C228
         public void FailOver()
         {
-            this.FailOverAsync().Wait();
-
+            Extensions.Synchronize(() => this.FailOverAsync());
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:AF5F5922BA778F862B0E5C20EC36C636
-        protected override Task<ArmDisasterRecoveryInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<ArmDisasterRecoveryInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.Inner.DisasterRecoveryConfigs.GetAsync(this.Ancestor().ResourceGroupName,
+            return await this.Manager.Inner.DisasterRecoveryConfigs.GetAsync(this.Ancestor().ResourceGroupName,
                 this.Ancestor().Ancestor1Name,
                 this.Name,
                 cancellationToken);
@@ -173,9 +172,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:362D73D3A0A345883DD0DA56D35DF38D:22F7986A4794FFC098CC3B1C19AEDA41
-        public Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule>> ListAuthorizationRulesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule>> ListAuthorizationRulesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.DisasterRecoveryPairingAuthorizationRules.ListByDisasterRecoveryPairingAsync(this.Ancestor().ResourceGroupName,
+            return await this.Manager.DisasterRecoveryPairingAuthorizationRules.ListByDisasterRecoveryPairingAsync(this.Ancestor().ResourceGroupName,
                 this.Ancestor().Ancestor1Name,
                 this.Name,
                 cancellationToken);

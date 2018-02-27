@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:E776888E46F8A3FC56D24DF4A74E5B74:F081FE980E79F1E88B95F84B83248DFF
-        public override Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             ResourceId resourceId = ResourceId.FromString(id ?? throw new ArgumentNullException(id));
-            return GetByNameAsync(resourceId.ResourceGroupName,
+            return await GetByNameAsync(resourceId.ResourceGroupName,
                 resourceId.Parent.Parent.Name,
                 resourceId.Parent.Name,
                 resourceId.Name,
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:D4172B991CD1CF668EFC326060AE2DFF:4F9E54D6532DF8127D59EDCED55C2688
         public IEventHubAuthorizationRule GetByName(string resourceGroupName, string namespaceName, string eventHubName, string name)
         {
-            return GetByNameAsync(resourceGroupName, namespaceName, eventHubName, name).Result;
+            return Extensions.Synchronize(() => GetByNameAsync(resourceGroupName, namespaceName, eventHubName, name));
         }
 
         ///GENMHASH:C98B5924C4B12F70C49985B2AAED62BE:1C1485D42A8FCEC5650D8914CCD5B0E7
@@ -93,10 +93,10 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:4D33A73A344E127F784620E76B686786:19014DBA68BF4C143FA6803F3D71AEB6
-        public override Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             ResourceId resourceId = ResourceId.FromString(id ?? throw new ArgumentNullException(id));
-            return DeleteByNameAsync(resourceId.ResourceGroupName,
+            await DeleteByNameAsync(resourceId.ResourceGroupName,
                 resourceId.Parent.Parent.Name,
                 resourceId.Parent.Name,
                 resourceId.Name,
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:9B2A559514B349EBD1BDDF3D29BDBC9E:C4E2F811E63804D39B306A96EAC9A8DE
         public void DeleteByName(string resourceGroupName, string namespaceName, string eventHubName, string name)
         {
-            DeleteByNameAsync(resourceGroupName, namespaceName, eventHubName, name).Wait();
+            Extensions.Synchronize(() => DeleteByNameAsync(resourceGroupName, namespaceName, eventHubName, name));
         }
 
         ///GENMHASH:BCF24D03D2EE33ADFF1E81AD1D0155CB:6AE3706867B3B82037FF77182EC78624

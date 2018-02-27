@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             {
                 await Manager.ConsumerGroups
                     .Define(name)
-                    .ForExistingEventHub(Ancestor().ResourceGroupName, Ancestor().Ancestor1Name, Name)
+                    .WithExistingEventHub(Ancestor().ResourceGroupName, Ancestor().Ancestor1Name, Name)
                     .CreateAsync(cancellation);
             });
             return this;
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
             {
                 await Manager.ConsumerGroups
                     .Define(name)
-                    .ForExistingEventHub(Ancestor().ResourceGroupName, Ancestor().Ancestor1Name, Name)
+                    .WithExistingEventHub(Ancestor().ResourceGroupName, Ancestor().Ancestor1Name, Name)
                     .WithUserMetadata(metadata)
                     .CreateAsync(cancellation);
             });
@@ -399,15 +399,15 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:C853C0C6E68EFB335138917CB5C0867A
-        protected override Task<EventhubInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<EventhubInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.Inner.EventHubs.GetAsync(Ancestor().ResourceGroupName, Ancestor().Ancestor1Name, Name, cancellationToken);
+            return await this.Manager.Inner.EventHubs.GetAsync(Ancestor().ResourceGroupName, Ancestor().Ancestor1Name, Name, cancellationToken);
         }
 
         ///GENMHASH:83B18B40DCF82ECAB50C9B48076D9892:8C2E8EBD71AB8531A72B44F1C03F6AC3
-        public Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup>> ListConsumerGroupsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup>> ListConsumerGroupsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.ConsumerGroups
+            return await this.Manager.ConsumerGroups
                 .ListByEventHubAsync(Ancestor().ResourceGroupName, Ancestor().Ancestor1Name, Name, cancellationToken);
         }
 
@@ -426,9 +426,9 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         }
 
         ///GENMHASH:362D73D3A0A345883DD0DA56D35DF38D:29653799632DB5FFEB4D55A8D05C3E8F
-        public Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule>> ListAuthorizationRulesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule>> ListAuthorizationRulesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return this.Manager.EventHubAuthorizationRules
+            return await this.Manager.EventHubAuthorizationRules
             .ListByEventHubAsync(Ancestor().ResourceGroupName, Ancestor().Ancestor1Name, Name, cancellationToken);
         }
 
