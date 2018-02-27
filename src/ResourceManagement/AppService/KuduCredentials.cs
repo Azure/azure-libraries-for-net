@@ -9,13 +9,13 @@ using System.Net.Http;
 
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
-    internal class KuduCredentials : ServiceClientCredentials
+    internal class FunctionCredentials : ServiceClientCredentials
     {
         private string token;
         private long expire;
         private FunctionAppImpl functionApp;
 
-        internal KuduCredentials(FunctionAppImpl functionApp)
+        internal FunctionCredentials(FunctionAppImpl functionApp)
         {
             this.functionApp = functionApp;
         }

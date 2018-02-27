@@ -55,6 +55,8 @@ namespace Fluent.Tests.WebApp
                 Assert.Equal(webApp1.Id, webApp.Id);
                 webApp = appServiceManager.WebApps.GetById(webApp2.Id);
                 Assert.Equal(webApp2.Name, webApp.Name);
+                webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName1, "nonexist");
+                Assert.Null(webApp);
 
                 // List
                 var webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName1);

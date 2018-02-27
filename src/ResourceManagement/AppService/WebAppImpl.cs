@@ -3,6 +3,7 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
+    using Microsoft.Rest.Azure;
     using Models;
     using ResourceManager.Fluent;
     using ResourceManager.Fluent.Core;
@@ -12,6 +13,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
     using WebApp.Definition;
@@ -44,6 +46,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         private const string SETTING_REGISTRY_USERNAME = "DOCKER_REGISTRY_SERVER_USERNAME";
         private const string SETTING_REGISTRY_PASSWORD = "DOCKER_REGISTRY_SERVER_PASSWORD";
 
+        private KuduClient kuduClient;
 
         ///GENMHASH:B22FA99F4432342EBBDB2AB426A8D2A2:DB92CE96AE133E965FE6DE31D475D7ED
         internal WebAppImpl(
@@ -53,6 +56,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             IAppServiceManager manager)
             : base(name, innerObject, configObject, manager)
         {
+            kuduClient = new KuduClient(this);
         }
 
         ///GENMHASH:CF27BBA612E1A2ABC8C2A6B8E0D936B0:8EE9D9B6AF47B6B9D97ADAC781E86E83
@@ -279,6 +283,39 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             WithExistingResourceGroup(group);
             return this;
+        }
+
+        public void WarDeploy(FileInfo warFile)
+        {
+            Extensions.Synchronize(() => WarDeployAsync(warFile));
+        }
+
+        public async Task WarDeployAsync(FileInfo warFile, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            int limit = 30;
+            while (true)
+            {
+                try
+                {
+                    await kuduClient.WarDeployAsync(warFile, cancellationToken);
+                    break;
+                }
+                catch (CloudException e)
+                {
+                    if (--limit < 0)
+                    {
+                        throw e;
+                    }
+                    else if (HttpStatusCode.BadGateway == e.Response.StatusCode || HttpStatusCode.Forbidden == e.Response.StatusCode)
+                    {
+                        await SdkContext.DelayProvider.DelayAsync((30 - limit) * 1000, cancellationToken);
+                    }
+                    else
+                    {
+                        throw e;
+                    }
+                }
+            }
         }
     }
 }

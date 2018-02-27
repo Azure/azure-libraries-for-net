@@ -6,6 +6,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.AppService.Fluent.WebApp.Update;
     using Microsoft.Azure.Management.AppService.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using System.IO;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     internal partial class WebAppImpl 
     {
@@ -259,6 +262,27 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebApp.Definition.IWithStartUpCommand WebApp.Definition.IWithCredentials.WithCredentials(string username, string password)
         {
             return this.WithCredentials(username, password) as WebApp.Definition.IWithStartUpCommand;
+        }
+
+        /// <summary>
+        /// Deploys a WAR file onto the Azure specialized Tomcat on this web app.
+        /// </summary>
+        /// <param name="warFile">The WAR file to upload.</param>
+        void Microsoft.Azure.Management.AppService.Fluent.IWebApp.WarDeploy(FileInfo warFile)
+        {
+ 
+            this.WarDeploy(warFile);
+        }
+
+        /// <summary>
+        /// Deploys a WAR file onto the Azure specialized Tomcat on this web app.
+        /// </summary>
+        /// <param name="warFile">The WAR file to upload.</param>
+        /// <return>A completable of the operation.</return>
+        async Task Microsoft.Azure.Management.AppService.Fluent.IWebApp.WarDeployAsync(FileInfo warFile, CancellationToken cancellationToken)
+        {
+ 
+            await this.WarDeployAsync(warFile, cancellationToken);
         }
 
         /// <summary>
