@@ -16,7 +16,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 ResourceManagerEndpoint = "https://management.azure.com/",
                 ManagementEndpoint = "https://management.core.windows.net/",
                 GraphEndpoint = "https://graph.windows.net/",
-                StorageEndpointSuffix = ".core.windows.net"
+                StorageEndpointSuffix = ".core.windows.net",
+                KeyVaultSuffix = ".vault.azure.net"
             };
             AzureChinaCloud = new AzureEnvironment()
             {
@@ -24,7 +25,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 ResourceManagerEndpoint = "https://management.chinacloudapi.cn/",
                 ManagementEndpoint = "https://management.core.chinacloudapi.cn/",
                 GraphEndpoint = "https://graph.chinacloudapi.cn/",
-                StorageEndpointSuffix = ".core.chinacloudapi.cn"
+                StorageEndpointSuffix = ".core.chinacloudapi.cn",
+                KeyVaultSuffix = ".vault.azure.cn"
             };
             AzureUSGovernment = new AzureEnvironment()
             {
@@ -32,7 +34,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 ResourceManagerEndpoint = "https://management.usgovcloudapi.net/",
                 ManagementEndpoint = "https://management.core.usgovcloudapi.net",
                 GraphEndpoint = "https://graph.windows.net/",
-                StorageEndpointSuffix = ".core.usgovcloudapi.net"
+                StorageEndpointSuffix = ".core.usgovcloudapi.net",
+                KeyVaultSuffix = ".vault.usgovcloudapi.net"
             };
             AzureGermanCloud = new AzureEnvironment()
             {
@@ -40,7 +43,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 ResourceManagerEndpoint = "https://management.microsoftazure.de/",
                 ManagementEndpoint = "https://management.core.cloudapi.de",
                 GraphEndpoint = "https://graph.cloudapi.de/",
-                StorageEndpointSuffix = ".core.cloudapi.de"
+                StorageEndpointSuffix = ".core.cloudapi.de",
+                KeyVaultSuffix = ".vault.microsoftazure.de"
             };
         }
 
@@ -69,6 +73,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// The storage service url suffix.
         /// </summary>
         public string StorageEndpointSuffix { get; set; }
+
+        /// <summary>
+        /// The Key Vault service url suffix.
+        /// </summary>
+        public string KeyVaultSuffix { get; set; }
 
         public static AzureEnvironment AzureGlobalCloud
         {
