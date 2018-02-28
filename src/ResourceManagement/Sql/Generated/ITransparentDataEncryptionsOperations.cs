@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<TransparentDataEncryptionInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, TransparentDataEncryptionState? status = default(TransparentDataEncryptionState?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<TransparentDataEncryptionInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, TransparentDataEncryptionStates? status = default(TransparentDataEncryptionStates?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a database's transparent data encryption configuration.
         /// </summary>

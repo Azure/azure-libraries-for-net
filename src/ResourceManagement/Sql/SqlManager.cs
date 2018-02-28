@@ -10,8 +10,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
 {
     public class SqlManager : Manager<ISqlManagementClient>, ISqlManager
     {
-        // private ISqlServers sqlServers;
-        private ISqlManagementClient sqlServers;
+        private ISqlServers sqlServers;
+        private string tenantId;
 
         public SqlManager(RestClient restClient, string subscriptionId) :
             base(restClient, subscriptionId, new SqlManagementClient(new Uri(restClient.BaseUri),
@@ -73,15 +73,21 @@ namespace Microsoft.Azure.Management.Sql.Fluent
 
         #endregion IConfigurable and it's implementation
 
-        // public ISqlServers SqlServers
-        public ISqlManagementClient SqlServers
+        public string TenantId
+        {
+            get
+            {
+                return tenantId;
+            }
+        }
+
+        public ISqlServers SqlServers
         {
             get
             {
                 if (sqlServers == null)
                 {
-                    // sqlServers = new SqlServersImpl(this);
-                    sqlServers = this.Inner;
+                    sqlServers = new SqlServersImpl(this);
                 }
 
                 return sqlServers;
@@ -91,7 +97,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
 
     public interface ISqlManager : IManager<ISqlManagementClient>
     {
-        // ISqlServers SqlServers { get; }
-        ISqlManagementClient SqlServers { get; }
+        ISqlServers SqlServers { get; }
+        string TenantId { get; }
     }
 }

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<TransparentDataEncryptionInner> CreateOrUpdateAsync(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, TransparentDataEncryptionState? status = default(TransparentDataEncryptionState?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<TransparentDataEncryptionInner> CreateOrUpdateAsync(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, TransparentDataEncryptionStates? status = default(TransparentDataEncryptionStates?), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, status, null, cancellationToken).ConfigureAwait(false))
                 {

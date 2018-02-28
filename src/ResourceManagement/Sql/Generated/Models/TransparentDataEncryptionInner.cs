@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="location">Resource location.</param>
         /// <param name="status">The status of the database transparent data
         /// encryption. Possible values include: 'Enabled', 'Disabled'</param>
-        public TransparentDataEncryptionInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), TransparentDataEncryptionState? status = default(TransparentDataEncryptionState?))
+        public TransparentDataEncryptionInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), TransparentDataEncryptionStates? status = default(TransparentDataEncryptionStates?))
             : base(id, name, type)
         {
             Location = location;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// encryption. Possible values include: 'Enabled', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
-        public TransparentDataEncryptionState? Status { get; set; }
+        public TransparentDataEncryptionStates? Status { get; set; }
 
     }
 }
