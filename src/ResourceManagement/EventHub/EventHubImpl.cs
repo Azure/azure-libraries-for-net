@@ -68,91 +68,52 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         ///GENMHASH:C46E7D14DC04B767ED8FEE1B2480967D:CC5C061B75C2FD04CB51682F8DDE54D5
         public bool IsDataCaptureEnabled()
         {
-            if (this.Inner.CaptureDescription == null)
-            {
-                return false;
-            }
-            if (this.Inner.CaptureDescription.Enabled != null)
+            if (this.Inner.CaptureDescription?.Enabled != null)
             {
                 return this.Inner.CaptureDescription.Enabled.Value;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         ///GENMHASH:413962625FAAB9D45A54A7306D081A0D:BF1AD1A1F43F73817AA833B1AC55DBE7
         public int DataCaptureWindowSizeInSeconds()
         {
-            if (this.Inner.CaptureDescription == null)
-            {
-                return 0;
-            }
-            if (this.Inner.CaptureDescription.IntervalInSeconds != null)
+            if (this.Inner.CaptureDescription?.SizeLimitInBytes != null)
             {
                 return this.Inner.CaptureDescription.IntervalInSeconds.Value;
             }
-            else
-            {
-                return 0;
-            }
+            return 0;
         }
 
         ///GENMHASH:B6930744702E626F564BDAD8ECCFFDEF:5F8325B3C941DE0FDAC2C45D093B01FF
         public int DataCaptureWindowSizeInMB()
         {
-            if (this.Inner.CaptureDescription == null)
+            if (this.Inner.CaptureDescription?.SizeLimitInBytes != null)
             {
-                return 0;
+                return this.Inner.CaptureDescription.SizeLimitInBytes.Value / (1024 * 1024);
             }
-            if (this.Inner.CaptureDescription.SizeLimitInBytes != null)
-            {
-                int v = this.Inner.CaptureDescription.SizeLimitInBytes.Value;
-                if (v != 0)
-                {
-                    return v / (1024 * 1024);
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            else
-            {
-                return 0;
-            }
+            return 0;
         }
 
         ///GENMHASH:983D09DB57D14F32384D91C0EC81C8A2:109AC2E4737271E0E67422F073A4FBA1
         public string DataCaptureFileNameFormat()
         {
-            if (this.Inner.CaptureDescription == null)
-            {
-                return null;
-            }
-            else if (this.Inner.CaptureDescription.Destination == null)
-            {
-                return null;
-            }
-            else
+            if (this.Inner.CaptureDescription?.Destination?.ArchiveNameFormat != null)
             {
                 return this.Inner.CaptureDescription.Destination.ArchiveNameFormat;
             }
+            return null;
         }
 
 
         ///GENMHASH:878C662D030030763F29556145B87E07:4A0127C55741A494DB9949A72C68C20E
         public Destination CaptureDestination()
         {
-            if (this.Inner.CaptureDescription == null)
-            {
-                return null;
-            }
-            else
+            if (this.Inner.CaptureDescription?.Destination != null)
             {
                 return this.Inner.CaptureDescription.Destination;
             }
+            return null;
         }
 
         ///GENMHASH:A81E23E1FF99483D58C57E5A97A610EA:99883E5FFF57867D1B9FCD54CCCDC2FA
