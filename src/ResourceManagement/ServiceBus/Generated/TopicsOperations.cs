@@ -344,10 +344,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (topicName != null)
             {
-                if (topicName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "topicName", 50);
-                }
+
                 if (topicName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "topicName", 1);
@@ -591,10 +588,6 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (topicName != null)
             {
-                if (topicName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "topicName", 50);
-                }
                 if (topicName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "topicName", 1);
@@ -812,10 +805,6 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (topicName != null)
             {
-                if (topicName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "topicName", 50);
-                }
                 if (topicName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "topicName", 1);
@@ -1051,10 +1040,6 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (topicName != null)
             {
-                if (topicName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "topicName", 50);
-                }
                 if (topicName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "topicName", 1);
@@ -1296,10 +1281,6 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (topicName != null)
             {
-                if (topicName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "topicName", 50);
-                }
                 if (topicName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "topicName", 1);
@@ -1571,10 +1552,6 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (topicName != null)
             {
-                if (topicName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "topicName", 50);
-                }
                 if (topicName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "topicName", 1);
@@ -1827,10 +1804,6 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (topicName != null)
             {
-                if (topicName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "topicName", 50);
-                }
                 if (topicName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "topicName", 1);
@@ -2068,10 +2041,6 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (topicName != null)
             {
-                if (topicName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "topicName", 50);
-                }
                 if (topicName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "topicName", 1);
@@ -2331,10 +2300,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (topicName != null)
             {
-                if (topicName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "topicName", 50);
-                }
+
                 if (topicName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "topicName", 1);
