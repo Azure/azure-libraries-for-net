@@ -318,6 +318,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             : base(name, inner, parent.Manager)
         {
             this.parent = parent;
+            WithExistingResourceGroup(parent.ResourceGroupName);
         }
 
         public IReadOnlyList<EnvironmentSetting> EnvironmentVariables()

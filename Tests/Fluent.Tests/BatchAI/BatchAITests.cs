@@ -119,7 +119,7 @@ namespace Fluent.Tests
                     .Create();
                 Assert.Equal(AllocationState.Steady, cluster.AllocationState);
                 Assert.Equal(userName, cluster.AdminUserName);
-                cluster.Jobs.Define("myJob")
+                IBatchAIJob job = cluster.Jobs.Define("myJob")
                     .WithRegion(REGION)
                     .WithNodeCount(1)
                     .WithStdOutErrPathPrefix("$AZ_BATCHAI_MOUNT_ROOT/azurefileshare")
@@ -131,6 +131,10 @@ namespace Fluent.Tests
                     .WithOutputDirectory("MODEL", "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/model")
                     .WithContainerImage("microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0")
                     .Create();
+                Assert.Equal(groupName, job.ResourceGroupName);
+
+                job.Refresh();
+                Assert.Equal(groupName, job.ResourceGroupName);
 
                 manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
             }
