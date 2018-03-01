@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 throw new ArgumentNullException("parent");
             }
+            this.name = name;
             this.sqlServerManager = sqlServerManager ?? throw new ArgumentNullException("sqlServerManager");
             this.resourceGroupName = parent.ResourceGroupName;
             this.sqlServerName = parent.Name;
@@ -100,6 +101,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         internal SqlDatabaseImpl(string resourceGroupName, string sqlServerName, string sqlServerLocation, string name, DatabaseInner innerObject, ISqlManager sqlServerManager)
             : base(innerObject, null)
         {
+            this.name = name;
             this.sqlServerManager = sqlServerManager ?? throw new ArgumentNullException("sqlServerManager");
             this.resourceGroupName = resourceGroupName;
             this.sqlServerName = sqlServerName;
@@ -119,6 +121,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         internal SqlDatabaseImpl(string name, DatabaseInner innerObject, ISqlManager sqlServerManager)
             : base(innerObject, null)
         {
+            this.name = name;
             this.sqlServerManager = sqlServerManager ?? throw new ArgumentNullException("sqlServerManager");
 
             this.isPatchUpdate = false;

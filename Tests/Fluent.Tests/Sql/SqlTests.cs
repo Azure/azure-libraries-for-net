@@ -63,6 +63,7 @@ namespace Fluent.Tests
                         .WithNewResourceGroup(GroupName)
                         .WithAdministratorLogin("userName")
                         .WithAdministratorPassword("loepop77ejk~13@@")
+                        .WithoutAccessFromAzureServices()
                         .Create();
                 Assert.NotNull(sqlServer.Databases.List());
                 rollUpClient.SqlServers.DeleteById(sqlServer.Id);
@@ -158,6 +159,7 @@ namespace Fluent.Tests
                     .WithNewFirewallRule(StartIPAddress, EndIPAddress, SqlFirewallRuleName)
                     .WithNewFirewallRule(StartIPAddress, EndIPAddress)
                     .WithNewFirewallRule(StartIPAddress)
+                    .WithoutAccessFromAzureServices()
                     .Create();
 
                 ValidateMultiCreation(
@@ -241,7 +243,7 @@ namespace Fluent.Tests
             ValidateSqlFirewallRule(sqlServer.FirewallRules.Get(SqlFirewallRuleName), SqlFirewallRuleName);
 
             var firewalls = sqlServer.FirewallRules.List();
-            Assert.Equal(3, firewalls.Count());
+            Assert.Equal(4, firewalls.Count());
 
             var startIPAddress = 0;
             var endIPAddress = 0;
@@ -884,7 +886,7 @@ namespace Fluent.Tests
             Assert.NotNull(sqlServer);
             Assert.Equal(GroupName, sqlServer.ResourceGroupName);
             Assert.NotNull(sqlServer.FullyQualifiedDomainName);
-            Assert.Equal(ServerVersion.OneTwoFullStopZero, sqlServer.Version);
+            Assert.NotNull(sqlServer.Version);
             Assert.Equal("userName", sqlServer.AdministratorLogin);
         }
 
