@@ -41,6 +41,7 @@
     <PackageReference Include="Microsoft.Azure.Management.ContainerService.Fluent" Version="1.6.0" />
     <PackageReference Include="Microsoft.Azure.Management.CosmosDB.Fluent" Version="1.6.0" />
     <PackageReference Include="Microsoft.Azure.Management.Dns.Fluent" Version="1.6.0" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub.Fluent" Version="1.6.0" />
     <PackageReference Include="Microsoft.Azure.Management.Graph.RBAC.Fluent" Version="1.6.0" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault.Fluent" Version="1.6.0" />
     <PackageReference Include="Microsoft.Azure.Management.Locks.Fluent" Version="1.6.0" />
@@ -87,6 +88,7 @@
     <ProjectReference Include="..\ContainerService\Microsoft.Azure.Management.ContainerService.Fluent.csproj" />
     <ProjectReference Include="..\Dns\Microsoft.Azure.Management.Dns.Fluent.csproj" />
     <ProjectReference Include="..\CosmosDB\Microsoft.Azure.Management.CosmosDB.Fluent.csproj" />
+    <ProjectReference Include="..\EventHub\Microsoft.Azure.Management.EventHub.Fluent.csproj" />
     <ProjectReference Include="..\Graph.RBAC\Microsoft.Azure.Management.Graph.RBAC.Fluent.csproj" />
     <ProjectReference Include="..\KeyVault\Microsoft.Azure.Management.KeyVault.Fluent.csproj" />
     <ProjectReference Include="..\Locks\Microsoft.Azure.Management.Locks.Fluent.csproj" />

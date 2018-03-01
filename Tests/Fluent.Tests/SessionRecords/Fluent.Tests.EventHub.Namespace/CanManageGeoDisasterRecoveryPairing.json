@@ -1,0 +1,1662 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgns4018?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnbnM0MDE4P2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"southcentralus\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "36"
+        ],
+        "x-ms-client-request-id": [
+          "561b5a37-aa68-4917-a46c-d07aae3b2c37"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.6.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018\",\r\n  \"name\": \"rgns4018\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "177"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:51:02 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "a48ab7dd-89cb-45f3-bbc6-3153d0964bf6"
+        ],
+        "x-ms-correlation-request-id": [
+          "a48ab7dd-89cb-45f3-bbc6-3153d0964bf6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205102Z:a48ab7dd-89cb-45f3-bbc6-3153d0964bf6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzM/YXBpLXZlcnNpb249MjAxNy0wNC0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "51"
+        ],
+        "x-ms-client-request-id": [
+          "a5bfca35-82aa-488b-8065-e922c55791cc"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233\",\r\n  \"name\": \"ns1119233\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"isAutoInflateEnabled\": false,\r\n    \"maximumThroughputUnits\": 0,\r\n    \"provisioningState\": \"Created\",\r\n    \"metricId\": \"ec0aa5f7-9e78-40c9-85cd-535c6305b380:ns1119233\",\r\n    \"createdAt\": \"2018-02-23T20:51:02.207Z\",\r\n    \"updatedAt\": \"2018-02-23T20:51:02.207Z\",\r\n    \"serviceBusEndpoint\": \"https://ns1119233.servicebus.windows.net:443/\",\r\n    \"status\": \"Activating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:51:03 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "142cf028-d36f-4de4-ab15-a936ae820359_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "7bb0177f-9c41-422b-91cc-c4d8f69ac6a5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205103Z:7bb0177f-9c41-422b-91cc-c4d8f69ac6a5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzM/YXBpLXZlcnNpb249MjAxNy0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233\",\r\n  \"name\": \"ns1119233\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"isAutoInflateEnabled\": false,\r\n    \"maximumThroughputUnits\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"ec0aa5f7-9e78-40c9-85cd-535c6305b380:ns1119233\",\r\n    \"createdAt\": \"2018-02-23T20:51:02.207Z\",\r\n    \"updatedAt\": \"2018-02-23T20:51:25.553Z\",\r\n    \"serviceBusEndpoint\": \"https://ns1119233.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:51:33 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "48f3604d-7040-4d8b-8324-31d79394a495_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "4e4b25ad-159f-4554-bcc8-cc459cc28cb7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205133Z:4e4b25ad-159f-4554-bcc8-cc459cc28cb7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczIyMjkxNzY/YXBpLXZlcnNpb249MjAxNy0wNC0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "51"
+        ],
+        "x-ms-client-request-id": [
+          "b6760dc6-7d2d-42e9-a29b-7e37a2638fa7"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n  \"name\": \"ns2229176\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces\",\r\n  \"location\": \"North Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"isAutoInflateEnabled\": false,\r\n    \"maximumThroughputUnits\": 0,\r\n    \"provisioningState\": \"Created\",\r\n    \"metricId\": \"ec0aa5f7-9e78-40c9-85cd-535c6305b380:ns2229176\",\r\n    \"createdAt\": \"2018-02-23T20:51:33.49Z\",\r\n    \"updatedAt\": \"2018-02-23T20:51:33.49Z\",\r\n    \"serviceBusEndpoint\": \"https://ns2229176.servicebus.windows.net:443/\",\r\n    \"status\": \"Activating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:51:34 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "7debab92-7554-48dd-8b7a-0d6823c17e88_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "8dc067d3-286c-4e7f-8dee-91fb21c13b92"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205134Z:8dc067d3-286c-4e7f-8dee-91fb21c13b92"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczIyMjkxNzY/YXBpLXZlcnNpb249MjAxNy0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n  \"name\": \"ns2229176\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces\",\r\n  \"location\": \"North Central US\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"isAutoInflateEnabled\": false,\r\n    \"maximumThroughputUnits\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"ec0aa5f7-9e78-40c9-85cd-535c6305b380:ns2229176\",\r\n    \"createdAt\": \"2018-02-23T20:51:33.49Z\",\r\n    \"updatedAt\": \"2018-02-23T20:51:58.56Z\",\r\n    \"serviceBusEndpoint\": \"https://ns2229176.servicebus.windows.net:443/\",\r\n    \"status\": \"Active\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:52:04 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "888c259f-0830-4258-940e-e7c25f84ad1b_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "96237e2c-eb78-41c7-b623-b5916f43abb6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205205Z:96237e2c-eb78-41c7-b623-b5916f43abb6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "181"
+        ],
+        "x-ms-client-request-id": [
+          "7620d522-ec93-46b5-a18b-81135ad221ca"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:52:36 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "f5827416-ffa8-4517-ad87-7a853a7fb5b6_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "95fa8a45-522f-4dec-85bf-fca4ffe7edf5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205237Z:95fa8a45-522f-4dec-85bf-fca4ffe7edf5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b0900651-ef11-4401-ab25-971a96f3448d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:52:36 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "6afe0eb6-928b-4440-948b-02efdc1db65c_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-correlation-request-id": [
+          "260235d4-b9c8-45ee-9d72-598c4726ae8a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205237Z:260235d4-b9c8-45ee-9d72-598c4726ae8a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3a301658-6184-4d3c-a5bb-40efe7cc59cf"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:52:52 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "26b5b076-4d99-4238-9a17-659ca364d040_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "4598b053-f4aa-4236-802c-0cf5091ab637"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205252Z:4598b053-f4aa-4236-802c-0cf5091ab637"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1c0ec1f4-0542-4c8a-aaf0-114a5b4c64a0"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:53:07 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "4824f03e-8bf6-40bd-8694-0698c7952a3b_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-correlation-request-id": [
+          "31a109f3-6ef3-408f-b787-e9337e9bf96d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205307Z:31a109f3-6ef3-408f-b787-e9337e9bf96d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e238255c-92f5-4f9e-88ae-f2db7ce5c174"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:53:22 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "70e1003e-d516-49d1-a40a-b71be70ed302_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-correlation-request-id": [
+          "c49d8291-e3ec-4def-a621-2776d5015dc2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205322Z:c49d8291-e3ec-4def-a621-2776d5015dc2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c4d362f5-6d10-4da2-8c3e-90cec5f0d266"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:53:37 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "f8fa831c-bf8f-4bfd-b0fd-c491724961f1_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-correlation-request-id": [
+          "f4b6798f-a055-49f8-b524-7a44a304dbe1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205337Z:f4b6798f-a055-49f8-b524-7a44a304dbe1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3b5ac634-409c-46cd-bae3-706b7b88f05c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:53:52 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "be606349-f648-40ff-a69f-f6642542fc01_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-correlation-request-id": [
+          "813063d1-6870-4f98-8f81-9dd06cd49781"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205353Z:813063d1-6870-4f98-8f81-9dd06cd49781"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "27c302c0-c794-4037-a9af-9686a9b12f55"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:54:07 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "e490a959-2ed8-40aa-a10c-d6413697b75e_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-correlation-request-id": [
+          "ad7a680d-904b-4f22-96a6-8bdd608b066b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205408Z:ad7a680d-904b-4f22-96a6-8bdd608b066b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6fac6aa8-c2b0-4aa0-838a-59aae25e7770"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:54:22 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "c358a901-5bc7-4716-8a05-4df7d808cd54_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "a49745d0-e4b1-4301-a943-7b3c7d4eb268"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205423Z:a49745d0-e4b1-4301-a943-7b3c7d4eb268"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "80b0748f-bc78-406a-8eae-c15bbafa5297"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:54:37 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "119ecbc8-26e9-41d5-8c0a-92f2231df7b9_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-correlation-request-id": [
+          "e1927be5-e580-451f-afcb-eda11f3fdc36"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205438Z:e1927be5-e580-451f-afcb-eda11f3fdc36"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a111777e-d5d4-4cf3-bf55-09a0979f45fd"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:54:52 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "971341ed-9bff-49e3-a198-1d4adc6215f3_M4SN1_M4SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-correlation-request-id": [
+          "ad513934-c354-462b-b42b-78ac90c7aed1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205453Z:ad513934-c354-462b-b42b-78ac90c7aed1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "817c6305-769e-4a3f-94e7-b2455fe84c1b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:55:08 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "6178175c-59ab-4829-a504-ea74de4fd514_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14986"
+        ],
+        "x-ms-correlation-request-id": [
+          "39759ba3-b74d-4782-ac19-dc3402a1a208"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205508Z:39759ba3-b74d-4782-ac19-dc3402a1a208"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a4490503-724e-44a8-a38f-caa727ec5ad1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:55:25 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "b60d2884-b6be-4955-a76c-69cab815956e_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14983"
+        ],
+        "x-ms-correlation-request-id": [
+          "f8afbdf1-86f7-48c6-b31f-1641dc8301aa"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205525Z:f8afbdf1-86f7-48c6-b31f-1641dc8301aa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "254d304b-c542-46bd-98c8-383c425dc4be"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n  \"name\": \"geodr7830\",\r\n  \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Accepted\",\r\n    \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n    \"role\": \"Primary\",\r\n    \"type\": \"MetadataReplication\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:55:25 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "318d6c77-d149-4e76-8a32-6c8964dc56f6_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14982"
+        ],
+        "x-ms-correlation-request-id": [
+          "351199b1-bdfc-4170-9f93-031aa149770e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205525Z:351199b1-bdfc-4170-9f93-031aa149770e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830/AuthorizationRules?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwL0F1dGhvcml6YXRpb25SdWxlcz9hcGktdmVyc2lvbj0yMDE3LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "05262e86-c1ab-4acb-b3d9-0916699fb6f6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830/AuthorizationRules/RootManageSharedAccessKey\",\r\n      \"name\": \"RootManageSharedAccessKey\",\r\n      \"type\": \"Microsoft.EventHub/Namespaces/AuthorizationRules\",\r\n      \"location\": \"South Central US\",\r\n      \"properties\": {\r\n        \"rights\": [\r\n          \"Listen\",\r\n          \"Manage\",\r\n          \"Send\"\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:55:24 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "11f57c08-2222-4e1d-ba39-141c4d615e97_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14985"
+        ],
+        "x-ms-correlation-request-id": [
+          "7b540f3d-3c83-46e5-acea-e1de2ebbf285"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205524Z:7b540f3d-3c83-46e5-acea-e1de2ebbf285"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830/AuthorizationRules/RootManageSharedAccessKey/listKeys?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwL0F1dGhvcml6YXRpb25SdWxlcy9Sb290TWFuYWdlU2hhcmVkQWNjZXNzS2V5L2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "311190b0-6238-4f04-87c9-d92cac27351e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"aliasPrimaryConnectionString\": \"Endpoint=sb://geodr7830.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=GFctL/StZByIgryrbcoMHWNdKcsEq9jTGjtKNJiGUVI=\",\r\n  \"aliasSecondaryConnectionString\": \"Endpoint=sb://geodr7830.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=fGg07pSVNnjCvKTG1MMtV7Lby2IODeB1qs0mYHrYD9o=\",\r\n  \"primaryKey\": \"GFctL/StZByIgryrbcoMHWNdKcsEq9jTGjtKNJiGUVI=\",\r\n  \"secondaryKey\": \"fGg07pSVNnjCvKTG1MMtV7Lby2IODeB1qs0mYHrYD9o=\",\r\n  \"keyName\": \"RootManageSharedAccessKey\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:55:24 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "0bd07703-9250-418b-a05e-fbd875f34486_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "cc664f95-be83-4bd7-b681-53eb4a6428b7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205525Z:cc664f95-be83-4bd7-b681-53eb4a6428b7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczExMTkyMzMvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3M/YXBpLXZlcnNpb249MjAxNy0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ad06a868-a96e-48f0-866f-008a7ba11b63"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns1119233/disasterRecoveryConfigs/geodr7830\",\r\n      \"name\": \"geodr7830\",\r\n      \"type\": \"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"partnerNamespace\": \"/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176\",\r\n        \"role\": \"Primary\",\r\n        \"type\": \"MetadataReplication\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:55:24 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "03cee978-2ea4-4226-87a7-7fde823dc140_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14984"
+        ],
+        "x-ms-correlation-request-id": [
+          "1e82ed31-889a-48ba-966b-e997c1da9d97"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205525Z:1e82ed31-889a-48ba-966b-e997c1da9d97"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourceGroups/rgns4018/providers/Microsoft.EventHub/namespaces/ns2229176/disasterRecoveryConfigs/geodr7830/failover?api-version=2017-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlR3JvdXBzL3JnbnM0MDE4L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRIdWIvbmFtZXNwYWNlcy9uczIyMjkxNzYvZGlzYXN0ZXJSZWNvdmVyeUNvbmZpZ3MvZ2VvZHI3ODMwL2ZhaWxvdmVyP2FwaS12ZXJzaW9uPTIwMTctMDQtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "90a456ac-4813-4891-b1f3-8e331d122602"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.EventHub.Fluent.EventHubManagementClient/0.0.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:55:25 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "46b99b15-f6df-4d82-84e1-5da174e962eb_M11SN1_M11SN1"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-correlation-request-id": [
+          "2050a1cd-6a03-4742-91de-102683098c7c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205525Z:2050a1cd-6a03-4742-91de-102683098c7c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/resourcegroups/rgns4018?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWMwYWE1ZjctOWU3OC00MGM5LTg1Y2QtNTM1YzYzMDViMzgwL3Jlc291cmNlZ3JvdXBzL3JnbnM0MDE4P2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6e444598-52df-4550-bfd7-dcd137047f12"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.6.0.0",
+          "MacAddressHash/79a3844c900980d71760eb3bd05bf1d3f647bb724a60a52c86053efff382e882"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Feb 2018 20:55:26 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/ec0aa5f7-9e78-40c9-85cd-535c6305b380/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05TNDAxOC1TT1VUSENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoic291dGhjZW50cmFsdXMifQ?api-version=2016-02-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
+        "x-ms-request-id": [
+          "5466169a-6b05-441f-a701-309990324f1a"
+        ],
+        "x-ms-correlation-request-id": [
+          "5466169a-6b05-441f-a701-309990324f1a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180223T205527Z:5466169a-6b05-441f-a701-309990324f1a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 202
+    }
+  ],
+  "Names": {
+    "CanManageGeoDisasterRecoveryPairing": [
+      "rgns4018",
+      "geodr7830",
+      "ns1119233",
+      "ns2229176"
+    ]
+  },
+  "Variables": {
+    "ServicePrincipal": "df54dca9-9512-4305-8c03-a026282685e0",
+    "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "SubscriptionId": "ec0aa5f7-9e78-40c9-85cd-535c6305b380"
+  }
+}
