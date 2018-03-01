@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 
     /// <summary>
     /// Implementation for SqlServer and its parent interfaces.
@@ -394,35 +395,39 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                     this.sqlFirewallRulesToCreateOrUpdate.Add(sqlFirewallRule);
                 }
             }
-            List<Func<CancellationToken, Task>> postRunWorkers = new List<Func<CancellationToken, Task>>();
-            foreach (var db in this.sqlDatabasesToDelete)
+            // validate the new/updated elastic pool items are not in the delete list
+            // elastic pools will be deleted in the AfterPostRunAsync() since they depend on databases being deleted first
+            foreach (var epName in this.sqlElasticPoolsToDelete)
             {
+                foreach (var epItem in this.sqlElasticPoolsToCreateOrUpdate)
+                {
+                    if (epItem.Name() == epName)
+                    {
+                        throw new InvalidOperationException($"{epName} is created and removed in the same operation");
+                    }
+                }
+            }
 
-            }
-            {
-                //$ if (this.sqlElasticPools != null && this.sqlDatabases != null) {
-                //$ // Databases must be deleted before the Elastic Pools (only an empty Elastic Pool can be deleted)
-                //$ List<SqlDatabaseImpl> dbToBeRemoved = this.sqlDatabases.GetChildren(ExternalChildResourceImpl.PendingOperation.ToBeRemoved);
-                //$ List<SqlElasticPoolImpl> epToBeRemoved = this.sqlElasticPools.GetChildren(ExternalChildResourceImpl.PendingOperation.ToBeRemoved);
-                //$ foreach(var epItem in epToBeRemoved) {
-                //$ foreach(var dbItem in dbToBeRemoved) {
-                //$ epItem.AddParentDependency(dbItem);
-                //$ }
-                //$ }
-                //$ 
-                //$ // Databases in a new Elastic Pool should be created after the Elastic Pool
-                //$ List<SqlDatabaseImpl> dbToBeCreated = this.sqlDatabases.GetChildren(ExternalChildResourceImpl.PendingOperation.ToBeCreated);
-                //$ List<SqlElasticPoolImpl> epToBeCreated = this.sqlElasticPools.GetChildren(ExternalChildResourceImpl.PendingOperation.ToBeCreated);
-                //$ foreach(var epItem in epToBeCreated) {
-                //$ foreach(var dbItem in dbToBeCreated) {
-                //$ if (dbItem.ElasticPoolName() != null && dbItem.ElasticPoolName().Equals(epItem.Name())) {
-                //$ dbItem.AddParentDependency(epItem);
-                //$ }
-                //$ }
-                //$ }
-                //$ 
-                //$ }
-            }
+//            List<Task> deleteWorkers = new List<Task>();
+            // populate the "delete" worker and validate the new/updated items are not in the delete list
+            var deleteWorkers = this.sqlDatabasesToDelete.Select(async dbName =>
+                {
+                    if (this.sqlDatabasesToCreateOrUpdate.Any(dbItem => dbItem.Name().Equals(dbName, StringComparison.OrdinalIgnoreCase)) ||
+                        this.sqlDatabasesWithElasticPoolToCreateOrUpdate.Any(dbItem => dbItem.Name().Equals(dbName, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        throw new InvalidOperationException($"{dbName} is created and removed in the same operation");
+                    }
+                    await this.Manager.Inner.Databases.DeleteAsync(this.ResourceGroupName, this.Name, dbName, cancellationToken);
+                })
+                .Union(this.sqlFirewallRulesToDelete.Select(async firewallRuleName =>
+                {
+                    if (this.sqlFirewallRulesToCreateOrUpdate.Any(firewallRuleItem => firewallRuleItem.Name().Equals(firewallRuleName, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        throw new InvalidOperationException($"{firewallRuleName} is created and removed in the same operation");
+                    }
+                    await this.Manager.Inner.FirewallRules.DeleteAsync(this.ResourceGroupName, this.Name, firewallRuleName, cancellationToken);
+                }));
+            await Task.WhenAll(deleteWorkers);
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:6A580BEA5FE973647B1C647B0BCDE194
@@ -441,6 +446,27 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 await this.Manager.Inner.ServerAzureADAdministrators.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, sqlADAdminObject);
             }
+            //split the create/update databases into those with elastic pool (which will be scheduled later) and those without
+            var allTasks = sqlDatabasesToCreateOrUpdate.Where(dbItem => dbItem.ElasticPoolName() == null)
+                .Select(async dbItem => await dbItem.CreateResourceAsync(cancellationToken))
+                // delete all elastic pools marked as to be deleted
+                .Union(this.sqlElasticPoolsToDelete
+                    .Select(async epName => await this.Manager.Inner.ElasticPools.DeleteAsync(this.ResourceGroupName, this.Name, epName, cancellationToken)))
+                // create/update all elastic pools marked as to be created/updated
+                .Union(this.sqlElasticPoolsToCreateOrUpdate
+                    .Select(async epItem => await epItem.CreateResourceAsync(cancellationToken)))
+                // create/update all databases marked as to be created/updated
+                .Union(this.sqlFirewallRulesToCreateOrUpdate
+                    .Select(async firewallRuleItem => await firewallRuleItem.CreateResourceAsync(cancellationToken)));
+            await Task.WhenAll(allTasks);
+
+            foreach (var db in this.sqlDatabasesToCreateOrUpdate.Where(dbItem => dbItem.ElasticPoolName() != null))
+            {
+                this.sqlDatabasesWithElasticPoolToCreateOrUpdate.Add(db);
+            }
+
+            // create/update databases with elastic pools
+            await Task.WhenAll(this.sqlDatabasesWithElasticPoolToCreateOrUpdate.Select( async dbItem => await dbItem.CreateResourceAsync(cancellationToken)));        
 
             this.sqlADAdminObject = null;
             this.sqlFirewallRulesToCreateOrUpdate.Clear();

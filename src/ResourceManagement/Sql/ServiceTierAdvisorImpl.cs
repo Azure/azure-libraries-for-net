@@ -111,15 +111,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:E436DE603F6C7FB0C98E5ECEA3B20FAB:3D51FB843FA93F602F4DEF956AC6F706
         public IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceLevelObjectiveUsageMetric> ServiceLevelObjectiveUsageMetric()
         {
-            //$ if (this.serviceLevelObjectiveUsageMetrics == null) {
-            //$ this.serviceLevelObjectiveUsageMetrics = new ArrayList<>();
-            //$ foreach(var sloUsageMetricInner in this.Inner.ServiceLevelObjectiveUsageMetrics()) {
-            //$ this.serviceLevelObjectiveUsageMetrics.Add(new ServiceLevelObjectiveUsageMetricImpl(sloUsageMetricInner));
-            //$ }
-            //$ }
-            //$ return serviceLevelObjectiveUsageMetrics;
-
-            return null;
+            if (this.serviceLevelObjectiveUsageMetrics == null)
+            {
+                this.serviceLevelObjectiveUsageMetrics = new List<IServiceLevelObjectiveUsageMetric>();
+                foreach (var sloUsageMetricInner in this.Inner.ServiceLevelObjectiveUsageMetrics)
+                {
+                    this.serviceLevelObjectiveUsageMetrics.Add(new ServiceLevelObjectiveUsageMetricImpl(sloUsageMetricInner));
+                }
+            }
+            return this.serviceLevelObjectiveUsageMetrics.AsReadOnly();
         }
 
         ///GENMHASH:E1D13665116B8ECA351FF7B3C332BAF4:132F6DAA63B96E3D5A5059C74C281394
@@ -178,9 +178,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:C4B4BF3321B70686AA3906F2295146C1:C8E7AAD6A3E0CD79087919190171E915
         public DateTime? ObservationPeriodEnd()
         {
-            //$ return this.Inner.ObservationPeriodEnd();
-
-            return DateTime.Now;
+            return this.Inner.ObservationPeriodEnd;
         }
 
         ///GENMHASH:2C118AADB9C4EED010A789927B901D6A:BF060DDEC8011AFD01DB638A2174B219

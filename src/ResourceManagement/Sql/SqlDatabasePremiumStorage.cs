@@ -8,66 +8,66 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     public enum SqlDatabasePremiumStorage  : long
     {
         /** 100 MB storage capacity available for the database. */
-        MAX_100_MB = 100L * 1024L * 1024L,
+        Max100Mb = 100L * 1024L * 1024L,
         /** 500 MB storage capacity available for the database. */
-        MAX_500_MB = 500L * 1024L * 1024L,
+        Max500Mb = 500L * 1024L * 1024L,
         /** 1 GB storage capacity available for the database. */
-        MAX_1_GB = 1L * 1024L * 1024L * 1024L,
+        Max1Gb = 1L * 1024L * 1024L * 1024L,
         /** 2 GB storage capacity available for the database. */
-        MAX_2_GB = 2L * 1024L * 1024L * 1024L,
+        Max2Gb = 2L * 1024L * 1024L * 1024L,
         /** 5 GB storage capacity available for the database. */
-        MAX_5_GB = 5L * 1024L * 1024L * 1024L,
+        Max5Gb = 5L * 1024L * 1024L * 1024L,
         /** 10 GB storage capacity available for the database. */
-        MAX_10_GB = 10L * 1024L * 1024L * 1024L,
+        Max10Gb = 10L * 1024L * 1024L * 1024L,
         /** 20 GB storage capacity available for the database. */
-        MAX_20_GB = 20L * 1024L * 1024L * 1024L,
+        Max20Gb = 20L * 1024L * 1024L * 1024L,
         /** 30 GB storage capacity available for the database. */
-        MAX_30_GB = 30L * 1024L * 1024L * 1024L,
+        Max30Gb = 30L * 1024L * 1024L * 1024L,
         /** 40 GB storage capacity available for the database. */
-        MAX_40_GB = 40L * 1024L * 1024L * 1024L,
+        Max40Gb = 40L * 1024L * 1024L * 1024L,
         /** 50 GB storage capacity available for the database. */
-        MAX_50_GB = 50L * 1024L * 1024L * 1024L,
+        Max50Gb = 50L * 1024L * 1024L * 1024L,
         /** 100 GB storage capacity available for the database. */
-        MAX_100_GB = 100L * 1024L * 1024L * 1024L,
+        Max100Gb = 100L * 1024L * 1024L * 1024L,
         /** 150 GB storage capacity available for the database. */
-        MAX_150_GB = 150L * 1024L * 1024L * 1024L,
+        Max150Gb = 150L * 1024L * 1024L * 1024L,
         /** 200 GB storage capacity available for the database. */
-        MAX_200_GB = 200L * 1024L * 1024L * 1024L,
+        Max200Gb = 200L * 1024L * 1024L * 1024L,
         /** 250 GB storage capacity available for the database. */
-        MAX_250_GB = 250L * 1024L * 1024L * 1024L,
+        Max250Gb = 250L * 1024L * 1024L * 1024L,
         /** 300 GB storage capacity available for the database. */
-        MAX_300_GB = 300L * 1024L * 1024L * 1024L,
+        Max300Gb = 300L * 1024L * 1024L * 1024L,
         /** 400 GB storage capacity available for the database. */
-        MAX_400_GB = 400L * 1024L * 1024L * 1024L,
+        Max400Gb = 400L * 1024L * 1024L * 1024L,
         /** 500 GB storage capacity available for the database. */
-        MAX_500_GB = 500L * 1024L * 1024L * 1024L,
+        Max500Gb = 500L * 1024L * 1024L * 1024L,
         /** 750 GB storage capacity available for the database. */
-        MAX_750_GB = 750L * 1024L * 1024L * 1024L,
+        Max750Gb = 750L * 1024L * 1024L * 1024L,
         /** 1 TB storage capacity available for the database. */
-        MAX_1_TB = 1L * 1024L * 1024L * 1024L * 1024L,
+        Max1Tb = 1L * 1024L * 1024L * 1024L * 1024L,
         /** 1280 GB storage capacity available for the database. */
-        MAX_1280_GB = 1280L * 1024L * 1024L * 1024L,
+        Max1280Gb = 1280L * 1024L * 1024L * 1024L,
         /** 1536 GB storage capacity available for the database. */
-        MAX_1536_GB = 1536L * 1024L * 1024L * 1024L,
+        Max1536Gb = 1536L * 1024L * 1024L * 1024L,
         /** 1792 GB storage capacity available for the database. */
-        MAX_1792_GB = 1792L * 1024L * 1024L * 1024L,
+        Max1792Gb = 1792L * 1024L * 1024L * 1024L,
         /** 2 TB storage capacity available for the database. */
-        MAX_2_TB = 2L * 1024L * 1024L * 1024L * 1024L,
+        Max2Tb = 2L * 1024L * 1024L * 1024L * 1024L,
         /** 2304 GB storage capacity available for the database. */
-        MAX_2304_GB = 2304L * 1024L * 1024L * 1024L,
+        Max2304Gb = 2304L * 1024L * 1024L * 1024L,
         /** 2560 GB storage capacity available for the database. */
-        MAX_2560_GB = 2560L * 1024L * 1024L * 1024L,
+        Max2560Gb = 2560L * 1024L * 1024L * 1024L,
         /** 2816 GB storage capacity available for the database. */
-        MAX_2816_GB = 2816L * 1024L * 1024L * 1024L,
+        Max2816Gb = 2816L * 1024L * 1024L * 1024L,
         /** 3 TB storage capacity available for the database. */
-        MAX_3_TB = 3L * 1024L * 1024L * 1024L * 1024L,
+        Max3Tb = 3L * 1024L * 1024L * 1024L * 1024L,
         /** 3328 GB storage capacity available for the database. */
-        MAX_3328_GB = 3328L * 1024L * 1024L * 1024L,
+        Max3328Gb = 3328L * 1024L * 1024L * 1024L,
         /** 3584 GB storage capacity available for the database. */
-        MAX_3584_GB = 3584L * 1024L * 1024L * 1024L,
+        Max3584Gb = 3584L * 1024L * 1024L * 1024L,
         /** 3840 GB storage capacity available for the database. */
-        MAX_3840_GB = 3840L * 1024L * 1024L * 1024L,
+        Max3840Gb = 3840L * 1024L * 1024L * 1024L,
         /** 4 TB storage capacity available for the database. */
-        MAX_4_TB = 4L * 1024L * 1024L * 1024L * 1024L
+        Max4Tb = 4L * 1024L * 1024L * 1024L * 1024L
     }
 }

@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public async Task ResumeDataWarehouseAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             await this.sqlServerManager.Inner.Databases
-                .ResumeAsync(this.ResourceGroupName(), this.SqlServerName(), this.Name());
+                .ResumeAsync(this.ResourceGroupName(), this.SqlServerName(), this.Name(), cancellationToken);
         }
     }
 }

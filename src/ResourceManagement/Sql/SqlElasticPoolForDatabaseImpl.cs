@@ -161,7 +161,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:30C0011CBDCA9BC2141BD6CFEA069B06
         public SqlDatabaseImpl Attach()
         {
-            //$ this.sqlDatabase.AddParentDependency(this.sqlElasticPool);
+            // Future reference when enabling the proper framework which will track dependencies 
+            // this.sqlDatabase.AddParentDependency(this.sqlElasticPool);
             return this.sqlDatabase;
         }
     }

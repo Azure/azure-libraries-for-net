@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         IWithCreateAfterElasticPoolOptions,
         ISqlDatabaseOperationsDefinition
     {
-        private SqlElasticPoolsAsExternalChildResourcesImpl sqlElasticPools;
         protected ISqlManager sqlServerManager;
         protected string resourceGroupName;
         protected string sqlServerName;

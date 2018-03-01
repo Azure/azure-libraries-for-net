@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     {
         private ISqlManager sqlServerManager;
         private ISqlServer sqlServer;
-        private SqlFirewallRulesAsExternalChildResourcesImpl sqlFirewallRules;
         ///GENMHASH:AD32A6F74A551E763332E8032D916730:329DC5E0778C1CD930146B1FA58434F1
         internal  SqlFirewallRuleOperationsImpl(ISqlServer parent, ISqlManager sqlServerManager)
         {

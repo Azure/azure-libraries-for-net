@@ -133,6 +133,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:8C759FE8EBA306AE974D0A58B24683DD
         public SqlElasticPoolImpl Attach()
         {
+            // Future reference when enabling the proper framework which will track dependencies 
             //$ this.sqlDatabase.AddParentDependency(this.sqlElasticPool);
             return this.sqlElasticPool;
         }

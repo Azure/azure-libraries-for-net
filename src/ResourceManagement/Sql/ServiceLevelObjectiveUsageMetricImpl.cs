@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     {
 
         ///GENMHASH:8D7A337BEDF3A9D07D413BF1EF13D3CF:C0C35E00AF4E17F141675A2C05C7067B
-        protected ServiceLevelObjectiveUsageMetricImpl(SloUsageMetric innerObject) : base(innerObject)
+        public ServiceLevelObjectiveUsageMetricImpl(SloUsageMetric innerObject) : base(innerObject)
         {
         }
 

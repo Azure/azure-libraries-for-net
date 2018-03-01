@@ -42,11 +42,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             if (this.storageAccountCreatable != null)
             {
-                this.storageAccount = await storageAccountCreatable.CreateAsync(cancellationToken) ?? throw new Microsoft.Rest.Azure.CloudException("Failed to create Storage Account");
+                this.storageAccount = await storageAccountCreatable.CreateAsync(cancellationToken) ?? throw new Exception("Failed to create Storage Account");
             }
             if (this.storageAccount != null)
             {
-                var storageAccountKey = (await storageAccount.GetKeysAsync())[0].Value;
+                var storageKeys = (await storageAccount.GetKeysAsync());
+                if (storageKeys == null || storageKeys.Count == 0)
+                {
+                    throw new Exception("Failed to retrieve Storage Account Keys");
+                }
+                var storageAccountKey = storageKeys[0].Value;
                 this.Inner.StorageUri = $"{this.storageAccount.EndPoints.Primary.Blob}{this.containerName}/{this.fileName}";
                 this.Inner.StorageKeyType = StorageKeyType.StorageAccessKey;
                 this.Inner.StorageKey = storageAccountKey;
@@ -58,7 +63,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             }
 
             var importExportResponseInner = await this.sqlServerManager.Inner.Databases
-                .ExportAsync(this.sqlDatabase.ResourceGroupName(), this.sqlDatabase.SqlServerName(), this.sqlDatabase.Name(), this.Inner);
+                .ExportAsync(this.sqlDatabase.ResourceGroupName(), this.sqlDatabase.SqlServerName(), this.sqlDatabase.Name(), this.Inner, cancellationToken);
             return new SqlDatabaseImportExportResponseImpl(importExportResponseInner);
         }
 

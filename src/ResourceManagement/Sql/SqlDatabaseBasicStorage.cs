@@ -10,12 +10,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     public enum SqlDatabaseBasicStorage : long
     {
         /** 100 MB storage capacity available for the database. */
-        MAX_100_MB = 100L * 1024L * 1024L,
+        Max100Mb = 100L * 1024L * 1024L,
         /** 500 MB storage capacity available for the database. */
-        MAX_500_MB = 500L * 1024L * 1024L,
+        Max500Mb = 500L * 1024L * 1024L,
         /** 1 GB storage capacity available for the database. */
-        MAX_1_GB = 1L * 1024L * 1024L * 1024L,
+        Max1Gb = 1L * 1024L * 1024L * 1024L,
         /** 2 GB storage capacity available for the database. */
-        MAX_2_GB = 2L * 1024L * 1024L * 1024L
+        Max2Gb = 2L * 1024L * 1024L * 1024L
     }
 }

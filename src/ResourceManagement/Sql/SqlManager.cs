@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private ISqlServers sqlServers;
         private string tenantId;
 
-        public SqlManager(RestClient restClient, string subscriptionId) :
+        public SqlManager(RestClient restClient, string subscriptionId, string tenantId) :
             base(restClient, subscriptionId, new SqlManagementClient(new Uri(restClient.BaseUri),
                 restClient.Credentials,
                 restClient.RootHttpHandler,
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                     .WithEnvironment(credentials.Environment)
                     .WithCredentials(credentials)
                     .WithDelegatingHandler(new ProviderRegistrationDelegatingHandler(credentials))
-                    .Build(), subscriptionId);
+                    .Build(), subscriptionId, credentials.TenantId);
         }
 
         /// <summary>
@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The SqlManager</return>
         public static ISqlManager Authenticate(RestClient restClient, string subscriptionId)
         {
-            return new SqlManager(restClient, subscriptionId);
+
+            var credentials = ((AzureCredentials)restClient.Credentials);
+            var tenantId = credentials?.TenantId;
+            return new SqlManager(restClient, subscriptionId, tenantId);
         }
 
         public static IConfigurable Configure()
@@ -67,7 +70,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             public ISqlManager Authenticate(AzureCredentials credentials, string subscriptionId)
             {
-                return new SqlManager(BuildRestClient(credentials), subscriptionId);
+                return new SqlManager(BuildRestClient(credentials), subscriptionId, credentials.TenantId);
             }
         }
 

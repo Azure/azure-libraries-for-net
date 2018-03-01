@@ -115,9 +115,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:7EC64CE674517E507F9E7D72F93A7DF6:83C9FF1F82052A9E5127DEA47990F4A0
         public string ErrorMessage()
         {
-            //$ return this.Inner.ErrorMessage();
-
-            return null;
+            return this.Inner.ErrorMessage;
         }
 
         ///GENMHASH:64FDD7DAC0F2CAB9406652DA7545E8AA:3F5BF88EAEB847CE67B8C16A5FDD2D28

@@ -268,6 +268,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return epDatabaseActivities.AsReadOnly();
         }
 
+        // Future reference when enabling the proper framework which will track dependencies 
         /////GENMHASH:7A9E1ACC5D9B5ED3EF93A2ABFD978F14:1F4B6D4F1D6BA088BF475B965981DC9B
         //internal void AddParentDependency(IHasTaskGroup parentDependency)
         //{
@@ -281,13 +282,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             this.Inner.Edition = ElasticPoolEditions.Basic;
             return this;
-        }
-
-        ///GENMHASH:9557699E7EE892CCCC89A074E0915333:27E486AB74A10242FF421C0798DDC450
-        public void BeforeGroupCreateOrUpdate()
-        {
-            //$ 
-
         }
 
         ///GENMHASH:546F275F5C716DBA4B4E3ED283223400:20C4C1F2718851798082D52E4164D7EB
@@ -414,6 +408,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:6BCE517E09457FF033728269C8936E64:ECB4548536225101A4FBA7DFDB22FE6D
         public IUpdate Update()
         {
+            // Future reference when enabling the proper framework which will track dependencies 
             //$ super.PrepareUpdate();
             return this;
         }
@@ -641,14 +636,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:AC7CC07C6D6A5043B63254841EEBA63A:76CFB8C3FCDB36FCCFC150AF5507CBD0
         public async Task AfterPostRunAsync(bool isGroupFaulted, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var dbTasks = this.dbToUpdate.Select(dbName => this.sqlServerManager.SqlServers.Databases.GetBySqlServerAsync(this.resourceGroupName, this.sqlServerName, dbName, cancellationToken))
-                .Select(db => {
-                    var dbImpl = (SqlDatabaseImpl)db.Result;
-                    this.SetElasticPoolForDatabaseInner(dbImpl.Inner);
-                    return dbImpl.UpdateResourceAsync(cancellationToken);
-                }).ToList();
-
-            this.dbToCreateOrUpdate.ForEach(db => dbTasks.Add(db.CreateResourceAsync(cancellationToken)));
+            var dbTasks = this.dbToUpdate.Select(async dbName =>
+                {
+                    var db = await this.sqlServerManager.SqlServers.Databases.GetBySqlServerAsync(this.resourceGroupName, this.sqlServerName, dbName, cancellationToken);
+                    this.SetElasticPoolForDatabaseInner(db.Inner);
+                    return await ((SqlDatabaseImpl)db).UpdateResourceAsync(cancellationToken);
+                })
+                .Union(this.dbToCreateOrUpdate.Select(async db => await db.CreateResourceAsync(cancellationToken)));
 
             await Task.WhenAll(dbTasks);
             this.dbToCreateOrUpdate.Clear();

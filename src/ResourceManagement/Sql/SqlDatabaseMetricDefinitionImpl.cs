@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         Wrapper<Models.MetricDefinition>,
         ISqlDatabaseMetricDefinition
     {
-
+        private List<ISqlDatabaseMetricAvailability> sqlDatabaseMetricAvailabilities;
         ///GENMHASH:5CDCE3A8B827FE30E0D0EA58A812A905:C0C35E00AF4E17F141675A2C05C7067B
         public SqlDatabaseMetricDefinitionImpl(MetricDefinition innerObject) : base(innerObject)
         {
@@ -47,16 +47,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:532A125F6308BA5B895A3303D68F428F:24C8A9A6597283812934AD14A398C185
         public IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricAvailability> MetricAvailabilities()
         {
-            List<ISqlDatabaseMetricAvailability> databaseMetricAvailabilities = new List<ISqlDatabaseMetricAvailability>();
-            if (this.Inner.MetricAvailabilities != null)
+            if (sqlDatabaseMetricAvailabilities == null)
             {
-                foreach (var metricAvailability in this.Inner.MetricAvailabilities)
+                sqlDatabaseMetricAvailabilities = new List<ISqlDatabaseMetricAvailability>();
+                if (this.Inner.MetricAvailabilities != null)
                 {
-                    databaseMetricAvailabilities.Add(new SqlDatabaseMetricAvailabilityImpl(metricAvailability));
+                    foreach (var metricAvailability in this.Inner.MetricAvailabilities)
+                    {
+                        sqlDatabaseMetricAvailabilities.Add(new SqlDatabaseMetricAvailabilityImpl(metricAvailability));
+                    }
                 }
             }
 
-            return databaseMetricAvailabilities.AsReadOnly();
+            return sqlDatabaseMetricAvailabilities.AsReadOnly();
         }
     }
 }
