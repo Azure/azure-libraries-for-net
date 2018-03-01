@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         string RegionName { get; }
 
         /// <return>A representation of the deferred computation of all the replication links associated with this database.</return>
-        Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IReplicationLink>> ListReplicationLinksAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<IReadOnlyDictionary<string, Microsoft.Azure.Management.Sql.Fluent.IReplicationLink>> ListReplicationLinksAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets the edition of the Azure SQL Database.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Gets the current Service Level Objective Id of the Azure SQL Database, this is the Id of the
         /// Service Level Objective that is currently active.
         /// </summary>
-        System.Guid CurrentServiceObjectiveId { get; }
+        System.Guid? CurrentServiceObjectiveId { get; }
 
         /// <return>The upgradeHint value.</return>
         Microsoft.Azure.Management.Sql.Fluent.IUpgradeHintInterface GetUpgradeHint();
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// records the start date and time when recovery is available for this
         /// Azure SQL Database.
         /// </summary>
-        System.DateTime EarliestRestoreDate { get; }
+        System.DateTime? EarliestRestoreDate { get; }
 
         /// <summary>
         /// Gets the name of the configured Service Level Objective of the Azure
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the creation date of the Azure SQL Database.
         /// </summary>
-        System.DateTime CreationDate { get; }
+        System.DateTime? CreationDate { get; }
 
         /// <summary>
         /// Gets the parent SQL server ID.
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         bool IsDataWarehouse { get; }
 
         /// <return>A representation of the deferred computation of the information about service tier advisors for this database.</return>
-        Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor>> ListServiceTierAdvisorsAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<IReadOnlyDictionary<string, Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor>> ListServiceTierAdvisorsAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Exports the current database to a specified URI path.
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Database, this is the Service Level Objective that is being applied to
         /// the Azure SQL Database.
         /// </summary>
-        System.Guid RequestedServiceObjectiveId { get; }
+        System.Guid? RequestedServiceObjectiveId { get; }
 
         /// <return>The list of all restore points on this database.</return>
         Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IRestorePoint>> ListRestorePointsAsync(CancellationToken cancellationToken = default(CancellationToken));

@@ -286,9 +286,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <return>A representation of the deferred computation of the information about service tier advisors for this database.</return>
-        async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListServiceTierAdvisorsAsync(CancellationToken cancellationToken)
+        async Task<IReadOnlyDictionary<string, Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListServiceTierAdvisorsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListServiceTierAdvisorsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor>;
+            return await this.ListServiceTierAdvisorsAsync(cancellationToken) as IReadOnlyDictionary<string, Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor>;
         }
 
         /// <summary>
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// records the start date and time when recovery is available for this
         /// Azure SQL Database.
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.EarliestRestoreDate
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.EarliestRestoreDate
         {
             get
             {
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Database, this is the Service Level Objective that is being applied to
         /// the Azure SQL Database.
         /// </summary>
-        System.Guid Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.RequestedServiceObjectiveId
+        System.Guid? Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.RequestedServiceObjectiveId
         {
             get
             {
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Gets the current Service Level Objective Id of the Azure SQL Database, this is the Id of the
         /// Service Level Objective that is currently active.
         /// </summary>
-        System.Guid Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.CurrentServiceObjectiveId
+        System.Guid? Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.CurrentServiceObjectiveId
         {
             get
             {
@@ -601,9 +601,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <return>A representation of the deferred computation of all the replication links associated with this database.</return>
-        async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IReplicationLink>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListReplicationLinksAsync(CancellationToken cancellationToken)
+        async Task<IReadOnlyDictionary<string, Microsoft.Azure.Management.Sql.Fluent.IReplicationLink>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListReplicationLinksAsync(CancellationToken cancellationToken)
         {
-            return await this.ListReplicationLinksAsync(cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IReplicationLink>;
+            return await this.ListReplicationLinksAsync(cancellationToken) as IReadOnlyDictionary<string, Microsoft.Azure.Management.Sql.Fluent.IReplicationLink>;
         }
 
         /// <summary>
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the creation date of the Azure SQL Database.
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.CreationDate
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.CreationDate
         {
             get
             {

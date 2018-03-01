@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private string resourceGroupName;
 
         ///GENMHASH:8BF35069264E47CDD42CDDEF7F56D9A0:FE22A3B9FE8FEA30A8F2D84276879172
-        protected  RestorePointImpl(string resourceGroupName, string sqlServerName, RestorePoint innerObject) : base(innerObject)
+        public RestorePointImpl(string resourceGroupName, string sqlServerName, RestorePoint innerObject) : base(innerObject)
         {
             this.resourceGroupName = resourceGroupName;
             this.sqlServerName = sqlServerName;

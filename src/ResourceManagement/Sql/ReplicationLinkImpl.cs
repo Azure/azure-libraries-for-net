@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private ResourceId resourceId;
 
         ///GENMHASH:5DEC8568283F2E20241D12E11ECD4AC2:2195512CD9515F346E018CD0415C3ECF
-        protected ReplicationLinkImpl(string resourceGroupName, string sqlServerName, ReplicationLinkInner innerObject, ISqlManager sqlServerManager) : base(innerObject)
+        public ReplicationLinkImpl(string resourceGroupName, string sqlServerName, ReplicationLinkInner innerObject, ISqlManager sqlServerManager) : base(innerObject)
         {
             this.resourceGroupName = resourceGroupName;
             this.sqlServerName = sqlServerName;

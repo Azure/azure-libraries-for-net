@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private List<Microsoft.Azure.Management.Sql.Fluent.IServiceLevelObjectiveUsageMetric> serviceLevelObjectiveUsageMetrics;
 
         ///GENMHASH:AE5E279A623EC95DE2C1FF13EE964ABF:2195512CD9515F346E018CD0415C3ECF
-        protected ServiceTierAdvisorImpl(string resourceGroupName, string sqlServerName, ServiceTierAdvisorInner innerObject, ISqlManager sqlServerManager)
+        public ServiceTierAdvisorImpl(string resourceGroupName, string sqlServerName, ServiceTierAdvisorInner innerObject, ISqlManager sqlServerManager)
             : base(innerObject)
         {
             this.resourceGroupName = resourceGroupName;
