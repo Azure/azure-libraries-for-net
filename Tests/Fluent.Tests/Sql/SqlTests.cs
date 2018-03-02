@@ -804,22 +804,22 @@ namespace Fluent.Tests
 
         private static void ValidateSqlFirewallRuleNotFound(ISqlManager sqlServerManager)
         {
-            Assert.Null(sqlServerManager.SqlServers.GetByResourceGroup(GroupName, SqlServerName).FirewallRules.Get(SqlFirewallRuleName));
+            Assert.Throws<CloudException>( () => sqlServerManager.SqlServers.GetByResourceGroup(GroupName, SqlServerName).FirewallRules.Get(SqlFirewallRuleName));
         }
 
         private static void ValidateSqlElasticPoolNotFound(ISqlServer sqlServer, string elasticPoolName)
         {
-            Assert.Null(sqlServer.ElasticPools.Get(elasticPoolName));
+            Assert.Throws<CloudException>(() => sqlServer.ElasticPools.Get(elasticPoolName));
         }
 
         private static void ValidateSqlDatabaseNotFound(ISqlManager sqlServerManager, String newDatabase)
         {
-            Assert.Null(sqlServerManager.SqlServers.GetByResourceGroup(GroupName, SqlServerName).Databases.Get(newDatabase));
+            Assert.Throws<CloudException>(() => sqlServerManager.SqlServers.GetByResourceGroup(GroupName, SqlServerName).Databases.Get(newDatabase));
         }
 
         private static void ValidateSqlServerNotFound(ISqlManager sqlServerManager, ISqlServer sqlServer)
         {
-            Assert.Null(sqlServerManager.SqlServers.GetById(sqlServer.Id));
+            Assert.Throws<CloudException>(() => sqlServerManager.SqlServers.GetById(sqlServer.Id));
         }
 
         private static ISqlServer CreateSqlServer(ISqlManager sqlServerManager)
