@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:547C5E4F79BCDF43D68C1D68B8233E56:0417368F07CF88E0DF418E9E5F74D9AE
         public bool IsDataWarehouse()
         {
-            return this.Inner.Edition.Equals(DatabaseEditions.DataWarehouse, StringComparison.OrdinalIgnoreCase);
+            return this.Inner.Edition != null ? this.Inner.Edition.Equals(DatabaseEditions.DataWarehouse, StringComparison.OrdinalIgnoreCase) : false;
         }
 
         ///GENMHASH:8380741288B285433B6443AF2F466E6D:A0411F0E7FF3C97800E30DDE842787ED
@@ -976,8 +976,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                     ElasticPoolName = this.Inner.ElasticPoolName,
                     Location = this.sqlServerLocation
                 };
-                var dbInner = await this.sqlServerManager.Inner.Databases.UpdateAsync(this.resourceGroupName, this.sqlServerName, this.Name(), databaseUpdateInner, cancellationToken);
-                this.SetInner(dbInner);
+                await this.sqlServerManager.Inner.Databases.UpdateAsync(this.resourceGroupName, this.sqlServerName, this.Name(), databaseUpdateInner, cancellationToken);
+                await this.RefreshAsync(cancellationToken);
                 return this;
             }
             else

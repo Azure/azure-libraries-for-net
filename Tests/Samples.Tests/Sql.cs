@@ -59,7 +59,7 @@ namespace Samples.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Manual only test: requires couple hours to finish")]
         [Trait("Samples", "Sql")]
         public void ManageSqlWithRecoveredOrRestoredDatabaseTest()
         {
@@ -70,7 +70,7 @@ namespace Samples.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Manual only test: requires http calls to storage data plane")]
         [Trait("Samples", "Sql")]
         public void ManageSqlImportExportDatabaseTest()
         {

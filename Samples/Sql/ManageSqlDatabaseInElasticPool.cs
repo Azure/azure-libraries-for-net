@@ -6,6 +6,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Samples.Common;
 using Microsoft.Azure.Management.Sql.Fluent.Models;
+using Microsoft.Rest.Azure;
 using System;
 
 namespace ManageSqlDatabaseInElasticPool
@@ -166,7 +167,14 @@ namespace ManageSqlDatabaseInElasticPool
                 foreach (var databaseInServer in sqlServer.Databases.List())
                 {
                     Utilities.PrintDatabase(databaseInServer);
-                    databaseInServer.Delete();
+                    try
+                    {
+                        databaseInServer.Delete();
+                    }
+                    catch (CloudException ex)
+                    {
+                        Utilities.Log($"Failed to delete SQL database {databaseInServer.Name}; {ex.Message}");
+                    }
                 }
 
                 // ============================================================

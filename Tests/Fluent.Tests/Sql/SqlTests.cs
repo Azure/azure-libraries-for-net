@@ -243,7 +243,7 @@ namespace Fluent.Tests
             ValidateSqlFirewallRule(sqlServer.FirewallRules.Get(SqlFirewallRuleName), SqlFirewallRuleName);
 
             var firewalls = sqlServer.FirewallRules.List();
-            Assert.Equal(4, firewalls.Count());
+            Assert.Equal(3, firewalls.Count());
 
             var startIPAddress = 0;
             var endIPAddress = 0;
@@ -315,7 +315,6 @@ namespace Fluent.Tests
                         .WithoutElasticPool(elasticPool1Name)
                         .WithoutElasticPool(elasticPool2Name)
                         .WithoutElasticPool(elasticPool3Name)
-                        .WithoutElasticPool(elasticPool1Name)
                         .WithoutDatabase(database1InEPName)
                         .WithoutDatabase(SqlDatabaseName)
                         .WithoutDatabase(database2InEPName)

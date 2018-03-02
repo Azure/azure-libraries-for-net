@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:69FD06084D43219AA18CD7D3D99C1279:7D1773A8567ECFFC0A4621517C19EF47
         public SqlServerImpl WithNewFirewallRule(string startIPAddress, string endIPAddress, string firewallRuleName)
         {
-            var sqlFirewallRule = new SqlFirewallRuleImpl("firewallRuleName", this, new FirewallRuleInner(), this.Manager);
+            var sqlFirewallRule = new SqlFirewallRuleImpl(firewallRuleName, this, new FirewallRuleInner(), this.Manager);
             sqlFirewallRule.WithStartIPAddress(startIPAddress);
             sqlFirewallRule.WithEndIPAddress(endIPAddress);
             this.sqlFirewallRulesToCreateOrUpdate.Add(sqlFirewallRule);
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:16B9C6819B9C7B3C705BAABCD3F0D40E:8A7D594156E3F5B870F17F382CD26DF9
         public SqlServerImpl WithoutElasticPool(string elasticPoolName)
         {
-            this.sqlFirewallRulesToDelete.Add(elasticPoolName);
+            this.sqlElasticPoolsToDelete.Add(elasticPoolName);
             return this;
         }
 
