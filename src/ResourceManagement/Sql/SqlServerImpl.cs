@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Implementation for SqlServer and its parent interfaces.
@@ -115,8 +116,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:95ECB09CB6FA7BA92B573DFF1B47DAEF:AC52250D4168EB0417344212078F23E1
         public SqlActiveDirectoryAdministratorImpl GetActiveDirectoryAdministrator()
         {
-            var serverAzureADAdministratorInner = Extensions.Synchronize(() => this.Manager.Inner.ServerAzureADAdministrators.GetAsync(this.ResourceGroupName, this.Name));
-            return serverAzureADAdministratorInner != null ? new SqlActiveDirectoryAdministratorImpl(serverAzureADAdministratorInner) : null;
+            try
+            {
+                var serverAzureADAdministratorInner = Extensions.Synchronize(() => this.Manager.Inner.ServerAzureADAdministrators.GetAsync(this.ResourceGroupName, this.Name));
+                return serverAzureADAdministratorInner != null ? new SqlActiveDirectoryAdministratorImpl(serverAzureADAdministratorInner) : null;
+            }
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
         }
 
         ///GENMHASH:485F4A0DF47C41F174B382433B167D0F:94BB6E93CBB57046850D373DA9AB1CD7
@@ -330,9 +342,20 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:32076B0182F921179C1E78728F749DBF:0D9BD431A75197BE6CFABBBF154897D8
         public IServiceObjective GetServiceObjective(string serviceObjectiveName)
         {
-            var innerResult = Extensions.Synchronize(() => this.Manager.Inner.ServiceObjectives
-                .GetAsync(this.ResourceGroupName, this.Name, serviceObjectiveName));
-            return (innerResult != null) ? new ServiceObjectiveImpl(innerResult, this) : null;
+            try
+            {
+                var innerResult = Extensions.Synchronize(() => this.Manager.Inner.ServiceObjectives
+                    .GetAsync(this.ResourceGroupName, this.Name, serviceObjectiveName));
+                return (innerResult != null) ? new ServiceObjectiveImpl(innerResult, this) : null;
+            }
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
         }
 
         ///GENMHASH:D1A254F5015CA208E094ACEC31626CE3:68467397F577EB08788291BD38EF9B4E

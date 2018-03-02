@@ -8,11 +8,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using Microsoft.Azure.Management.Sql.Fluent.Models;
     using System.Collections.Generic;
     using System;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Implementation for RecommendedElasticPool and its parent interfaces.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5SZWNvbW1lbmRlZEVsYXN0aWNQb29sSW1wbA==
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5SZWNvbW1lbmRlZEVsYXN0aWNQb29sSW1wbA==
     internal partial class RecommendedElasticPoolImpl  :
         Wrapper<Models.RecommendedElasticPoolInner>,
         IRecommendedElasticPool
@@ -95,10 +96,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:70FFECB4FEA7D59DD4971789709E0B1F:6E834E8599DBDC4A3B884BDCE4188944
         public async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> GetDatabaseAsync(string databaseName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            List<ISqlDatabase> databases = new List<ISqlDatabase>();
-            var innerDatabase = await this.Manager().Inner.Databases.GetByRecommendedElasticPoolAsync(this.ResourceGroupName(), this.SqlServerName(), this.Name(), databaseName, cancellationToken);
-
-            return innerDatabase != null ? new SqlDatabaseImpl(innerDatabase.Name, this.sqlServer, innerDatabase, this.Manager()) : null;
+            try
+            {
+                var innerDatabase = await this.Manager().Inner.Databases.GetByRecommendedElasticPoolAsync(this.ResourceGroupName(), this.SqlServerName(), this.Name(), databaseName, cancellationToken);
+                return innerDatabase != null ? new SqlDatabaseImpl(innerDatabase.Name, this.sqlServer, innerDatabase, this.Manager()) : null;
+            }
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:6B05A1FE3956A89247E0497F730E7CBB

@@ -11,11 +11,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRuleOperations.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRuleOperations.SqlFirewallRuleActionsDefinition;
     using System.Collections.Generic;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Implementation for SQL Firewall Rule operations.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5TcWxGaXJld2FsbFJ1bGVPcGVyYXRpb25zSW1wbA==
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5TcWxGaXJld2FsbFJ1bGVPcGVyYXRpb25zSW1wbA==
     internal partial class SqlFirewallRuleOperationsImpl  :
         ISqlFirewallRuleOperations,
         ISqlFirewallRuleActionsDefinition
@@ -157,14 +158,20 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:2A6462AE45E430A3F53D2BC369D967B4:D094667796CF6867B147E7AA29FF0EB6
         public async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> GetBySqlServerAsync(string resourceGroupName, string sqlServerName, string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var firewallRuleInner = await this.sqlServerManager.Inner.FirewallRules
-                .GetAsync(resourceGroupName, sqlServerName, name, cancellationToken);
-            if (firewallRuleInner != null)
+            try
             {
-                return new SqlFirewallRuleImpl(resourceGroupName, sqlServerName, firewallRuleInner.Name, firewallRuleInner, sqlServerManager);
+                var firewallRuleInner = await this.sqlServerManager.Inner.FirewallRules
+                    .GetAsync(resourceGroupName, sqlServerName, name, cancellationToken);
+                return firewallRuleInner != null ? new SqlFirewallRuleImpl(resourceGroupName, sqlServerName, firewallRuleInner.Name, firewallRuleInner, sqlServerManager) : null;
             }
-
-            return null;
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
         }
 
         ///GENMHASH:4ABAEC77990815B01AA39D981ECF5CA5:90B9C7BD61D57577CF56639A14C1BBC0

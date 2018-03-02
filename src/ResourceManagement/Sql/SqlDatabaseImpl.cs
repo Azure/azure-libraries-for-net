@@ -24,11 +24,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Implementation for SqlDatabase and its parent interfaces.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5TcWxEYXRhYmFzZUltcGw=
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5TcWxEYXRhYmFzZUltcGw=
     internal partial class SqlDatabaseImpl  :
         ChildResource<
             Models.DatabaseInner,
@@ -534,9 +535,20 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:C8BF6EB45120AB5638A39B9E6F246F48:88685B211625AC25043E56EF15C881D0
         public async Task<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption> GetTransparentDataEncryptionAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var transparentDataEncryptionInner = await this.sqlServerManager.Inner.TransparentDataEncryptions
-                .GetAsync(this.resourceGroupName, this.sqlServerName, this.Name(), cancellationToken);
-            return transparentDataEncryptionInner != null ? new TransparentDataEncryptionImpl(this.resourceGroupName, this.sqlServerName, transparentDataEncryptionInner, this.sqlServerManager) : null;
+            try
+            {
+                var transparentDataEncryptionInner = await this.sqlServerManager.Inner.TransparentDataEncryptions
+                    .GetAsync(this.resourceGroupName, this.sqlServerName, this.Name(), cancellationToken);
+                return transparentDataEncryptionInner != null ? new TransparentDataEncryptionImpl(this.resourceGroupName, this.sqlServerName, transparentDataEncryptionInner, this.sqlServerManager) : null;
+            }
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
         }
 
         ///GENMHASH:B23645FC2F779DBC6F44B880C488B561:EEF0AD33D842F97FF9BE1E629E1C03EE
@@ -631,9 +643,20 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:CA0DDA4D9821F262B350AF8BD2FD3D72:90A235C564BCEA582EA7E8E169017608
         public ISqlDatabaseThreatDetectionPolicy GetThreatDetectionPolicy()
         {
-            var policyInner = Extensions.Synchronize(() => this.sqlServerManager.Inner.DatabaseThreatDetectionPolicies
-               .GetAsync(this.resourceGroupName, this.sqlServerName, this.Name()));
-            return policyInner != null ? new SqlDatabaseThreatDetectionPolicyImpl(policyInner.Name, this, policyInner, this.sqlServerManager) : null;
+            try
+            {
+                var policyInner = Extensions.Synchronize(() => this.sqlServerManager.Inner.DatabaseThreatDetectionPolicies
+                   .GetAsync(this.resourceGroupName, this.sqlServerName, this.Name()));
+                return policyInner != null ? new SqlDatabaseThreatDetectionPolicyImpl(policyInner.Name, this, policyInner, this.sqlServerManager) : null;
+            }
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
         }
 
         ///GENMHASH:E9EDBD2E8DC2C547D1386A58778AA6B9:7EBD4102FEBFB0AD7091EA1ACBD84F8B
