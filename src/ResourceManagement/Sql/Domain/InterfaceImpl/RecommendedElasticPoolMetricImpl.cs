@@ -21,6 +21,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the time of metric (ISO8601 format).
+        /// </summary>
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolMetric.DateTimeProperty
+        {
+            get
+            {
+                return this.DateTimeProperty();
+            }
+        }
+
+        /// <summary>
         /// Gets the size in gigabytes.
         /// </summary>
         double Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolMetric.SizeGB
@@ -28,17 +39,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.SizeGB();
-            }
-        }
-
-        /// <summary>
-        /// Gets the time of metric (ISO8601 format).
-        /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolMetric.DateTimeProperty
-        {
-            get
-            {
-                return this.DateTimeProperty();
             }
         }
     }

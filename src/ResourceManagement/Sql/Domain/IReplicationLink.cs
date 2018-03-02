@@ -18,7 +18,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ReplicationLinkInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasResourceGroup,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId,
+        Microsoft.Azure.Management.Sql.Fluent.IReplicationLinkBeta
     {
         /// <summary>
         /// Gets the replication state for the replication link.
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets start time for the replication link (ISO8601 format).
         /// </summary>
-        System.DateTime StartTime { get; }
+        System.DateTime? StartTime { get; }
 
         /// <summary>
         /// Gets the Azure Region of the partner Azure SQL Database.

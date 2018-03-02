@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId
     {
         /// <summary>
-        /// Gets or sets currentServiceLevelObjective for service tier advisor.
+        /// Gets the current service level Objective for the service tier advisor.
         /// </summary>
         string CurrentServiceLevelObjective { get; }
 
@@ -34,101 +34,98 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         string SqlServerName { get; }
 
         /// <summary>
-        /// Gets or sets databaseSizeBasedRecommendationServiceLevelObjective for
-        /// service tier advisor.
+        /// Gets the database size based recommendation service level objective for the service tier advisor.
         /// </summary>
         string DatabaseSizeBasedRecommendationServiceLevelObjective { get; }
 
         /// <summary>
-        /// Gets or sets overallRecommendationServiceLevelObjective for service
-        /// tier advisor.
+        /// Gets the overall recommendation service level objective for the service tier advisor.
         /// </summary>
         string OverallRecommendationServiceLevelObjective { get; }
 
         /// <summary>
-        /// Gets or sets avgDtu for service tier advisor.
+        /// Gets the average DTU for the service tier advisor.
         /// </summary>
         double AvgDtu { get; }
 
         /// <summary>
-        /// Gets or sets confidence for service tier advisor.
+        /// Gets the confidence for service tier advisor.
         /// </summary>
         double Confidence { get; }
 
         /// <summary>
-        /// Gets or sets overallRecommendationServiceLevelObjectiveId for service
-        /// tier advisor.
+        /// Gets the overall recommendation service level objective ID for the service tier advisor.
         /// </summary>
-        System.Guid OverallRecommendationServiceLevelObjectiveId { get; }
+        System.Guid? OverallRecommendationServiceLevelObjectiveId { get; }
 
         /// <summary>
-        /// Gets or sets minDtu for service tier advisor.
+        /// Gets or sets minDtu for the service tier advisor.
         /// </summary>
         double MinDtu { get; }
 
         /// <summary>
-        /// Gets or sets usageBasedRecommendationServiceLevelObjectiveId for
-        /// service tier advisor.
+        /// Gets the usage based recommendation service level objective ID for the service tier advisor.
         /// </summary>
-        System.Guid UsageBasedRecommendationServiceLevelObjectiveId { get; }
+        System.Guid? UsageBasedRecommendationServiceLevelObjectiveId { get; }
 
         /// <summary>
-        /// Gets or sets disasterPlanBasedRecommendationServiceLevelObjectiveId for
-        /// service tier advisor.
+        /// Gets the disaster plan based recommendation service level objective ID for the service tier advisor.
         /// </summary>
-        System.Guid DisasterPlanBasedRecommendationServiceLevelObjectiveId { get; }
+        System.Guid? DisasterPlanBasedRecommendationServiceLevelObjectiveId { get; }
 
         /// <summary>
-        /// Gets or sets maxDtu for service tier advisor.
+        /// Gets the maximum DTU for the service tier advisor.
         /// </summary>
         double MaxDtu { get; }
 
         /// <summary>
-        /// Gets serviceLevelObjectiveUsageMetrics for the service tier
-        /// advisor.
+        /// Gets the service level objective usage metrics for the service tier advisor.
         /// </summary>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISloUsageMetricInterface> ServiceLevelObjectiveUsageMetrics { get; }
 
         /// <summary>
         /// Gets the observation period start (ISO8601 format).
         /// </summary>
-        System.DateTime ObservationPeriodEnd { get; }
+        System.DateTime? ObservationPeriodEnd { get; }
 
         /// <summary>
-        /// Gets the activeTimeRatio for service tier advisor.
+        /// Gets the activeTimeRatio for the service tier advisor.
         /// </summary>
         double ActiveTimeRatio { get; }
 
         /// <summary>
-        /// Gets or sets databaseSizeBasedRecommendationServiceLevelObjectiveId for
-        /// service tier advisor.
+        /// Gets the database size based recommendation service level objective ID for the service tier advisor.
         /// </summary>
-        System.Guid DatabaseSizeBasedRecommendationServiceLevelObjectiveId { get; }
+        System.Guid? DatabaseSizeBasedRecommendationServiceLevelObjectiveId { get; }
 
         /// <summary>
-        /// Gets or sets currentServiceLevelObjectiveId for service tier advisor.
+        /// Gets the current service level objective ID for the service tier advisor.
         /// </summary>
-        System.Guid CurrentServiceLevelObjectiveId { get; }
+        System.Guid? CurrentServiceLevelObjectiveId { get; }
 
         /// <summary>
         /// Gets the observation period start (ISO8601 format).
         /// </summary>
-        System.DateTime ObservationPeriodStart { get; }
+        System.DateTime? ObservationPeriodStart { get; }
 
         /// <summary>
-        /// Gets or sets disasterPlanBasedRecommendationServiceLevelObjective for
-        /// service tier advisor.
+        /// Gets the disaster plan based recommendation service level objective for the service tier advisor.
         /// </summary>
         string DisasterPlanBasedRecommendationServiceLevelObjective { get; }
 
         /// <summary>
-        /// Gets or sets maxSizeInGB for service tier advisor.
+        /// Gets the service level objective usage metric for the service tier
+        /// advisor.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceLevelObjectiveUsageMetric> ServiceLevelObjectiveUsageMetric { get; }
+
+        /// <summary>
+        /// Gets the maximum size in GB for the service tier advisor.
         /// </summary>
         double MaxSizeInGB { get; }
 
         /// <summary>
-        /// Gets or sets usageBasedRecommendationServiceLevelObjective for service
-        /// tier advisor.
+        /// Gets the usage based recommendation service level objective for the service tier advisor.
         /// </summary>
         string UsageBasedRecommendationServiceLevelObjective { get; }
     }

@@ -5,16 +5,20 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.IndependentChild.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.SqlFirewallRuleDefinition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Update;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRuleOperations.Definition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRuleOperations.SqlFirewallRuleOperationsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.Models;
 
     internal partial class SqlFirewallRuleImpl 
     {
         /// <summary>
-        /// Sets the ending IP address of SQL server's firewall rule.
+        /// Sets the ending IP address of SQL server's Firewall Rule.
         /// </summary>
         /// <param name="endIPAddress">End IP address in IPv4 format.</param>
         /// <return>The next stage of the update.</return>
@@ -24,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Sets the starting IP address of SQL server's firewall rule.
+        /// Sets the starting IP address of SQL server's Firewall Rule.
         /// </summary>
         /// <param name="startIPAddress">Start IP address in IPv4 format.</param>
         /// <return>The next stage of the update.</return>
@@ -34,44 +38,44 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Sets the parent SQL server for the new Firewall rule.
+        /// </summary>
+        /// <param name="sqlServerId">The parent SQL server ID.</param>
+        /// <return>The next stage of the definition.</return>
+        SqlFirewallRuleOperations.Definition.IWithIPAddressRange SqlFirewallRuleOperations.Definition.IWithSqlServer.WithExistingSqlServerId(string sqlServerId)
+        {
+            return this.WithExistingSqlServerId(sqlServerId) as SqlFirewallRuleOperations.Definition.IWithIPAddressRange;
+        }
+
+        /// <summary>
+        /// Sets the parent SQL server name and resource group it belongs to.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group the parent SQL server.</param>
+        /// <param name="sqlServerName">The parent SQL server name.</param>
+        /// <return>The next stage of the definition.</return>
+        SqlFirewallRuleOperations.Definition.IWithIPAddressRange SqlFirewallRuleOperations.Definition.IWithSqlServer.WithExistingSqlServer(string resourceGroupName, string sqlServerName)
+        {
+            return this.WithExistingSqlServer(resourceGroupName, sqlServerName) as SqlFirewallRuleOperations.Definition.IWithIPAddressRange;
+        }
+
+        /// <summary>
+        /// Sets the parent SQL server for the new Firewall rule.
+        /// </summary>
+        /// <param name="sqlServer">The parent SQL server.</param>
+        /// <return>The next stage of the definition.</return>
+        SqlFirewallRuleOperations.Definition.IWithIPAddressRange SqlFirewallRuleOperations.Definition.IWithSqlServer.WithExistingSqlServer(ISqlServer sqlServer)
+        {
+            return this.WithExistingSqlServer(sqlServer) as SqlFirewallRuleOperations.Definition.IWithIPAddressRange;
+        }
+
+        /// <summary>
         /// Sets the ending IP address of SQL server's firewall rule.
         /// </summary>
         /// <param name="ipAddress">IP address in IPv4 format.</param>
         /// <return>The next stage of the definition.</return>
-        SqlFirewallRule.Definition.IWithCreate SqlFirewallRule.Definition.IWithIPAddress.WithIPAddress(string ipAddress)
+        SqlFirewallRuleOperations.Definition.IWithCreate SqlFirewallRuleOperations.Definition.IWithIPAddressRange.WithIPAddress(string ipAddress)
         {
-            return this.WithIPAddress(ipAddress) as SqlFirewallRule.Definition.IWithCreate;
-        }
-
-        /// <summary>
-        /// Creates a new child resource under parent resource.
-        /// </summary>
-        /// <param name="parentResourceCreatable">A creatable definition for the parent resource.</param>
-        /// <return>The creatable for the child resource.</return>
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IndependentChild.Definition.IWithParentResource<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule,Microsoft.Azure.Management.Sql.Fluent.ISqlServer>.WithNewParentResource(ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlServer> parentResourceCreatable)
-        {
-            return this.WithNewParentResource(parentResourceCreatable) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>;
-        }
-
-        /// <summary>
-        /// Creates a new child resource under parent resource.
-        /// </summary>
-        /// <param name="groupName">The name of the resource group for parent resource.</param>
-        /// <param name="parentName">The name of the parent resource.</param>
-        /// <return>The creatable for the child resource.</return>
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IndependentChild.Definition.IWithParentResource<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule,Microsoft.Azure.Management.Sql.Fluent.ISqlServer>.WithExistingParentResource(string groupName, string parentName)
-        {
-            return this.WithExistingParentResource(groupName, parentName) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>;
-        }
-
-        /// <summary>
-        /// Creates a new child resource under parent resource.
-        /// </summary>
-        /// <param name="existingParentResource">The parent resource under which this resource to be created.</param>
-        /// <return>The creatable for the child resource.</return>
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> Microsoft.Azure.Management.ResourceManager.Fluent.Core.IndependentChild.Definition.IWithParentResource<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule,Microsoft.Azure.Management.Sql.Fluent.ISqlServer>.WithExistingParentResource(ISqlServer existingParentResource)
-        {
-            return this.WithExistingParentResource(existingParentResource) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>;
+            return this.WithIPAddress(ipAddress) as SqlFirewallRuleOperations.Definition.IWithCreate;
         }
 
         /// <summary>
@@ -80,9 +84,62 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="startIPAddress">Starting IP address in IPv4 format.</param>
         /// <param name="endIPAddress">Starting IP address in IPv4 format.</param>
         /// <return>The next stage of the definition.</return>
-        SqlFirewallRule.Definition.IWithCreate SqlFirewallRule.Definition.IWithIPAddressRange.WithIPAddressRange(string startIPAddress, string endIPAddress)
+        SqlFirewallRuleOperations.Definition.IWithCreate SqlFirewallRuleOperations.Definition.IWithIPAddressRange.WithIPAddressRange(string startIPAddress, string endIPAddress)
         {
-            return this.WithIPAddressRange(startIPAddress, endIPAddress) as SqlFirewallRule.Definition.IWithCreate;
+            return this.WithIPAddressRange(startIPAddress, endIPAddress) as SqlFirewallRuleOperations.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Sets the ending IP address of SQL server's Firewall Rule.
+        /// </summary>
+        /// <param name="ipAddress">IP address in IPv4 format.</param>
+        /// <return>The next stage of the definition.</return>
+        SqlFirewallRule.Definition.IWithAttach<SqlServer.Definition.IWithCreate> SqlFirewallRule.Definition.IWithIPAddress<SqlServer.Definition.IWithCreate>.WithIPAddress(string ipAddress)
+        {
+            return this.WithIPAddress(ipAddress) as SqlFirewallRule.Definition.IWithAttach<SqlServer.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Attaches the child definition to the parent resource definiton.
+        /// </summary>
+        /// <return>The next stage of the parent definition.</return>
+        SqlServer.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<SqlServer.Definition.IWithCreate>.Attach()
+        {
+            return this.Attach() as SqlServer.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Begins an update for a new resource.
+        /// This is the beginning of the builder pattern used to update top level resources
+        /// in Azure. The final method completing the definition and starting the actual resource creation
+        /// process in Azure is  Appliable.apply().
+        /// </summary>
+        /// <return>The stage of new resource update.</return>
+        SqlFirewallRule.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlFirewallRule.Update.IUpdate>.Update()
+        {
+            return this.Update() as SqlFirewallRule.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Gets the name of the resource group.
+        /// </summary>
+        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasResourceGroup.ResourceGroupName
+        {
+            get
+            {
+                return this.ResourceGroupName();
+            }
+        }
+
+        /// <summary>
+        /// Sets the starting IP address of SQL server's Firewall Rule.
+        /// </summary>
+        /// <param name="startIPAddress">Starting IP address in IPv4 format.</param>
+        /// <param name="endIPAddress">Starting IP address in IPv4 format.</param>
+        /// <return>The next stage of the definition.</return>
+        SqlFirewallRule.Definition.IWithAttach<SqlServer.Definition.IWithCreate> SqlFirewallRule.Definition.IWithIPAddressRange<SqlServer.Definition.IWithCreate>.WithIPAddressRange(string startIPAddress, string endIPAddress)
+        {
+            return this.WithIPAddressRange(startIPAddress, endIPAddress) as SqlFirewallRule.Definition.IWithAttach<SqlServer.Definition.IWithCreate>;
         }
 
         /// <summary>
@@ -97,7 +154,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets region of SQL Server that contains this firewall rule.
+        /// Gets region of SQL Server that contains this Firewall Rule.
         /// </summary>
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule.Region
         {
@@ -119,7 +176,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets kind of SQL Server that contains this firewall rule.
+        /// Gets kind of SQL Server that contains this Firewall Rule.
         /// </summary>
         string Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule.Kind
         {
@@ -130,7 +187,18 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets name of the SQL Server to which this firewall rule belongs.
+        /// Gets the parent SQL server ID.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule.ParentId
+        {
+            get
+            {
+                return this.ParentId();
+            }
+        }
+
+        /// <summary>
+        /// Gets name of the SQL Server to which this Firewall Rule belongs.
         /// </summary>
         string Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule.SqlServerName
         {
@@ -147,6 +215,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
  
             this.Delete();
+        }
+
+        /// <summary>
+        /// Deletes the firewall rule asynchronously.
+        /// </summary>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule.DeleteAsync(CancellationToken cancellationToken)
+        {
+ 
+            await this.DeleteAsync(cancellationToken);
         }
     }
 }

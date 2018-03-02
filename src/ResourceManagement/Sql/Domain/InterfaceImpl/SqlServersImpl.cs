@@ -27,5 +27,38 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             return this.Define(name) as SqlServer.Definition.IBlank;
         }
+
+        /// <summary>
+        /// Gets the SQL Server Firewall Rules API entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRuleOperations Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.FirewallRules
+        {
+            get
+            {
+                return this.FirewallRules() as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRuleOperations;
+            }
+        }
+
+        /// <summary>
+        /// Gets the SQL Server Database API entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseOperations Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.Databases
+        {
+            get
+            {
+                return this.Databases() as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseOperations;
+            }
+        }
+
+        /// <summary>
+        /// Gets the SQL Server Elastic Pools API entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPoolOperations Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.ElasticPools
+        {
+            get
+            {
+                return this.ElasticPools() as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPoolOperations;
+            }
+        }
     }
 }

@@ -42,6 +42,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the geo-location where the resource lives.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivityBeta.Location
+        {
+            get
+            {
+                return this.Location();
+            }
+        }
+
+        /// <summary>
         /// Gets the requested min DTU per database if available.
         /// </summary>
         int Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivity.RequestedDatabaseDtuMin
@@ -77,7 +88,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the time the operation finished (ISO8601 format).
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivity.EndTime
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivity.EndTime
         {
             get
             {
@@ -93,6 +104,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.State();
+            }
+        }
+
+        /// <summary>
+        /// Gets he requested per database DTU guarantee.
+        /// </summary>
+        int Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivityBeta.RequestedDatabaseDtuGuarantee
+        {
+            get
+            {
+                return this.RequestedDatabaseDtuGuarantee();
             }
         }
 
@@ -154,7 +176,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the time the operation started (ISO8601 format).
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivity.StartTime
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivity.StartTime
         {
             get
             {
@@ -196,6 +218,28 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the requested per database DTU cap.
+        /// </summary>
+        int Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivityBeta.RequestedDatabaseDtuCap
+        {
+            get
+            {
+                return this.RequestedDatabaseDtuCap();
+            }
+        }
+
+        /// <summary>
+        /// Gets the requested storage limit in MB.
+        /// </summary>
+        long Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivityBeta.RequestedStorageLimitInMB
+        {
+            get
+            {
+                return this.RequestedStorageLimitInMB();
+            }
+        }
+
+        /// <summary>
         /// Gets the percentage complete if available.
         /// </summary>
         int Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivity.PercentComplete
@@ -203,6 +247,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.PercentComplete();
+            }
+        }
+
+        /// <summary>
+        /// Gets the requested DTU guarantee.
+        /// </summary>
+        int Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivityBeta.RequestedDtuGuarantee
+        {
+            get
+            {
+                return this.RequestedDtuGuarantee();
             }
         }
 

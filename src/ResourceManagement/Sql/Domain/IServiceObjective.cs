@@ -22,13 +22,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         bool IsSystem { get; }
 
         /// <summary>
-        /// Gets whether the service level objective is the default service
-        /// objective.
+        /// Gets whether the service level objective is the default service objective.
         /// </summary>
         bool IsDefault { get; }
 
         /// <summary>
-        /// Gets name of the SQL Server to which this replication belongs.
+        /// Gets name of the SQL Server to which this service objective belongs.
         /// </summary>
         string SqlServerName { get; }
 

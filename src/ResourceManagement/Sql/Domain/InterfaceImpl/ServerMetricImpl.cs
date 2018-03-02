@@ -9,28 +9,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     internal partial class ServerMetricImpl 
     {
         /// <summary>
-        /// Gets the name of the resource.
-        /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.IServerMetric.ResourceName
-        {
-            get
-            {
-                return this.ResourceName();
-            }
-        }
-
-        /// <summary>
-        /// Gets the next reset time for the metric (ISO8601 format).
-        /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IServerMetric.NextResetTime
-        {
-            get
-            {
-                return this.NextResetTime();
-            }
-        }
-
-        /// <summary>
         /// Gets the metric display name.
         /// </summary>
         string Microsoft.Azure.Management.Sql.Fluent.IServerMetric.DisplayName
@@ -38,6 +16,39 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.DisplayName();
+            }
+        }
+
+        /// <summary>
+        /// Gets the current limit of the metric.
+        /// </summary>
+        double Microsoft.Azure.Management.Sql.Fluent.IServerMetric.Limit
+        {
+            get
+            {
+                return this.Limit();
+            }
+        }
+
+        /// <summary>
+        /// Gets Name of the server usage metric.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.IServerMetric.Name
+        {
+            get
+            {
+                return this.Name();
+            }
+        }
+
+        /// <summary>
+        /// Gets the name of the resource.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.IServerMetric.ResourceName
+        {
+            get
+            {
+                return this.ResourceName();
             }
         }
 
@@ -64,13 +75,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets the current limit of the metric.
+        /// Gets the next reset time for the metric (ISO8601 format).
         /// </summary>
-        double Microsoft.Azure.Management.Sql.Fluent.IServerMetric.Limit
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IServerMetric.NextResetTime
         {
             get
             {
-                return this.Limit();
+                return this.NextResetTime();
             }
         }
     }

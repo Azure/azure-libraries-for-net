@@ -10,7 +10,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// An immutable client-side representation of an Azure SQL ServerMetric.
     /// </summary>
     public interface IServerMetric  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ServerMetric>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ServerUsage>
     {
         /// <summary>
         /// Gets the units of the metric.
@@ -23,6 +24,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         string DisplayName { get; }
 
         /// <summary>
+        /// Gets Name of the server usage metric.
+        /// </summary>
+        string Name { get; }
+
+        /// <summary>
         /// Gets the current limit of the metric.
         /// </summary>
         double Limit { get; }
@@ -30,7 +36,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the next reset time for the metric (ISO8601 format).
         /// </summary>
-        System.DateTime NextResetTime { get; }
+        System.DateTime? NextResetTime { get; }
 
         /// <summary>
         /// Gets the name of the resource.

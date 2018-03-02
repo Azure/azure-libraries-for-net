@@ -2,63 +2,57 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Sql.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
 
     /// <summary>
-    /// The SQL Firewall Rule definition to set the starting IP Address for the server.
+    /// The SQL Firewall Rule definition to set the IP address range for the parent SQL Server.
     /// </summary>
-    public interface IWithIPAddress 
+    public interface IWithIPAddressRange<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
-        /// Sets the ending IP address of SQL server's firewall rule.
-        /// </summary>
-        /// <param name="ipAddress">IP address in IPv4 format.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IWithCreate WithIPAddress(string ipAddress);
-    }
-
-    /// <summary>
-    /// Container interface for all the definitions that need to be implemented.
-    /// </summary>
-    public interface IDefinition  :
-        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IBlank,
-        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IWithIPAddress,
-        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IWithIPAddressRange,
-        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IWithCreate
-    {
-    }
-
-    /// <summary>
-    /// The SQL Firewall Rule definition to set the starting IP Address for the server.
-    /// </summary>
-    public interface IWithIPAddressRange 
-    {
-        /// <summary>
-        /// Sets the starting IP address of SQL server's firewall rule.
+        /// Sets the starting IP address of SQL server's Firewall Rule.
         /// </summary>
         /// <param name="startIPAddress">Starting IP address in IPv4 format.</param>
         /// <param name="endIPAddress">Starting IP address in IPv4 format.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IWithCreate WithIPAddressRange(string startIPAddress, string endIPAddress);
+        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IWithAttach<ParentT> WithIPAddressRange(string startIPAddress, string endIPAddress);
     }
 
     /// <summary>
-    /// The first stage of the SQL Server definition.
+    /// The final stage of the SQL Firewall Rule definition.
+    /// At this stage, any remaining optional settings can be specified, or the SQL Firewall Rule definition
+    /// can be attached to the parent SQL Server definition.
     /// </summary>
-    public interface IBlank  :
-        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IWithIPAddressRange,
-        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IWithIPAddress
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithAttach<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>
     {
     }
 
     /// <summary>
-    /// A SQL Server definition with sufficient inputs to create a new
-    /// SQL Server in the cloud, but exposing additional optional inputs to
-    /// specify.
+    /// The first stage of the SQL Server Firewall Rule definition.
     /// </summary>
-    public interface IWithCreate  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IBlank<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
+        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IWithIPAddressRange<ParentT>,
+        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IWithIPAddress<ParentT>
     {
+    }
+
+    /// <summary>
+    /// The SQL Firewall Rule definition to set the IP address for the parent SQL Server.
+    /// </summary>
+    public interface IWithIPAddress<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Sets the ending IP address of SQL server's Firewall Rule.
+        /// </summary>
+        /// <param name="ipAddress">IP address in IPv4 format.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition.IWithAttach<ParentT> WithIPAddress(string ipAddress);
     }
 }

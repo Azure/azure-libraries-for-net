@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the time of metric (ISO8601 format).
         /// </summary>
-        System.DateTime DateTimeProperty { get; }
+        System.DateTime? DateTimeProperty { get; }
 
         /// <summary>
         /// Gets the DTUs (Database Transaction Units)

@@ -2,12 +2,14 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Sql.Fluent
 {
-    using ResourceManager.Fluent.Core;
-    using Models;
-    using SqlServer.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition;
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using Rest.Azure;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Implementation for SqlServers and its parent interfaces.
@@ -15,12 +17,70 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5TcWxTZXJ2ZXJzSW1wbA==
     internal partial class SqlServersImpl :
         TopLevelModifiableResources<ISqlServer, SqlServerImpl, ServerInner, IServersOperations, ISqlManager>,
+        //        TopLevelModifiableResourcesImpl<Microsoft.Azure.Management.Sql.Fluent.ISqlServer,Microsoft.Azure.Management.Sql.Fluent.SqlServerImpl,Models.ServerInner,Microsoft.Azure.Management.Sql.Fluent.IServersOperations,Microsoft.Azure.Management.Sql.Fluent.ISqlManager>,
         ISqlServers
     {
-        ///GENMHASH:01C0FA69267690E3BF39F794FC8D1F05:9CCC9CA468F37F7150A173588C172C02
-        internal SqlServersImpl(SqlManager manager)
+        private ISqlFirewallRuleOperations firewallRules;
+        private ISqlElasticPoolOperations elasticPools;
+        private ISqlDatabaseOperations databases;
+
+        ///GENMHASH:CD99F9712BCAD6B97E57591564CBC327:E4EB5400B898EAB4E389857A2249916F
+        public SqlServersImpl(ISqlManager manager)
             : base(manager.Inner.Servers, manager)
         {
+        }
+
+        ///GENMHASH:DF46C62E0E8998CD0340B3F8A136F135:11837351BC2EEC12842F1B5C5B26ED07
+        public ISqlDatabaseOperations Databases()
+        {
+            if (databases == null)
+            {
+                this.databases = new SqlDatabaseOperationsImpl(this.Manager);
+            }
+            return this.databases;
+        }
+
+        ///GENMHASH:22ED13819FBF2CA919B55726AC1FB656:CA298AE187015BA1255E73AC78A0A0E0
+        public ISqlElasticPoolOperations ElasticPools()
+        {
+            if (elasticPools == null)
+            {
+                this.elasticPools = new SqlElasticPoolOperationsImpl(this.Manager);
+            }
+            return this.elasticPools;
+        }
+
+        ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691
+        public ISqlServer Define(string name)
+        {
+            return WrapModel(name);
+        }
+
+        ///GENMHASH:7DDEADFB2FB27BEC42C0B993AB65C3CB:18521E15B275AC00B93CBE6E0FD799F2
+        public ISqlFirewallRuleOperations FirewallRules()
+        {
+            if (firewallRules == null)
+            {
+                this.firewallRules = new SqlFirewallRuleOperationsImpl(this.Manager);
+            }
+            return this.firewallRules;
+        }
+
+        ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:9E3AAE2EBAEFB292B77161CC09036F00
+        protected override SqlServerImpl WrapModel(string name)
+        {
+            ServerInner inner = new ServerInner();
+            return new SqlServerImpl(name, inner, this.Manager);
+        }
+
+        ///GENMHASH:14929760F9002214878530515584D731:5A0307D2185B2239D36C696C06B0D168
+        protected override ISqlServer WrapModel(ServerInner inner)
+        {
+            if (inner == null)
+            {
+                return null;
+            }
+            return new SqlServerImpl(inner.Name, inner, this.Manager);
         }
 
         ///GENMHASH:0679DF8CA692D1AC80FC21655835E678:B9B028D620AC932FDF66D2783E476B0D
@@ -29,61 +89,28 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             await Inner.DeleteAsync(groupName, name, cancellationToken);
         }
 
-        ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691
-        public IBlank Define(string name)
-        {
-            return WrapModel(name);
-        }
-
         ///GENMHASH:AB63F782DA5B8D22523A284DAD664D17:92EAC0C15F6E0EE83B7B356CD097B0A0
         protected async override Task<ServerInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
         {
-            return await Inner.GetByResourceGroupAsync(groupName, name, cancellationToken);
+            return await Inner.GetAsync(groupName, name, cancellationToken);
         }
 
-        ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:6FB4EA69673E1D8A74E1418EB52BB9FE
         protected async override Task<IPage<ServerInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
             return ConvertToPage(await Inner.ListAsync(cancellationToken));
         }
 
-        protected async override Task<IPage<ServerInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
+        protected async override Task<IPage<ServerInner>> ListInnerNextAsync(string link, CancellationToken cancellationToken)
         {
             return await Task.FromResult<IPage<ServerInner>>(null);
         }
 
-        ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:4400109B5DDC2A92920D8D598AB5D8B9
-        protected override SqlServerImpl WrapModel(string name)
+        protected async override Task<IPage<ServerInner>> ListInnerByGroupAsync(string resourceGroupName, CancellationToken cancellationToken)
         {
-            ServerInner inner = new ServerInner();
-            inner.Version = ServerVersion.OneTwoFullStopZero;
-            return new SqlServerImpl(
-                name,
-                inner,
-                Manager);
+            return ConvertToPage(await Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken));
         }
 
-        ///GENMHASH:14929760F9002214878530515584D731:A4CD16875FD79CECC756C53898FB4374
-        protected override ISqlServer WrapModel(ServerInner inner)
-        {
-            if (inner == null)
-            {
-                return null;
-            }
-
-            return new SqlServerImpl(
-                inner.Name,
-                inner,
-                Manager);
-        }
-
-        ///GENMHASH:95834C6C7DA388E666B705A62A7D02BF:F27988875BD81EE531DA23D26C675612
-        protected async override Task<IPage<ServerInner>> ListInnerByGroupAsync(string groupName, CancellationToken cancellationToken)
-        {
-            return ConvertToPage(await Inner.ListByResourceGroupAsync(groupName, cancellationToken));
-        }
-
-        protected async override Task<IPage<ServerInner>> ListInnerByGroupNextAsync(string nextLink, CancellationToken cancellationToken)
+        protected async override Task<IPage<ServerInner>> ListInnerByGroupNextAsync(string link, CancellationToken cancellationToken)
         {
             return await Task.FromResult<IPage<ServerInner>>(null);
         }

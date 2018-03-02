@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the serviceLevelObjectiveId for SLO usage metric.
         /// </summary>
-        System.Guid ServiceLevelObjectiveId { get; }
+        System.Guid? ServiceLevelObjectiveId { get; }
 
         /// <summary>
         /// Gets the serviceLevelObjective for SLO usage metric.

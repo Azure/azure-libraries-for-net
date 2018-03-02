@@ -2,6 +2,8 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Sql.Fluent
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Sql.Fluent.Models;
@@ -17,7 +19,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasResourceGroup,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.Sql.Fluent.ISqlManager>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.Sql.Fluent.ISqlManager>,
+        Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolBeta
     {
         /// <summary>
         /// Gets the list of Azure SQL Databases in this pool. Expanded property.
@@ -58,14 +61,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the observation period start (ISO8601 format).
         /// </summary>
-        System.DateTime ObservationPeriodEnd { get; }
-
-        /// <summary>
-        /// Gets the edition of the Azure SQL Recommended Elastic Pool. The
-        /// ElasticPoolEditions enumeration contains all the valid editions.
-        /// Possible values include: 'Basic', 'Standard', 'Premium'.
-        /// </summary>
-        string DatabaseEdition { get; }
+        System.DateTime? ObservationPeriodEnd { get; }
 
         /// <summary>
         /// Gets the minimum DTU for the database.
@@ -88,7 +84,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the observation period start (ISO8601 format).
         /// </summary>
-        System.DateTime ObservationPeriodStart { get; }
+        System.DateTime? ObservationPeriodStart { get; }
 
         /// <summary>
         /// Gets storage size in megabytes.

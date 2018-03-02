@@ -2,138 +2,190 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Sql.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Models;
-    using ResourceManager.Fluent;
-    using ResourceManager.Fluent.Core.ResourceActions;
-    using SqlServer.Databases;
-    using SqlServer.ElasticPools;
-    using SqlServer.FirewallRules;
-    using SqlServer.Update;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.SqlDatabaseActionsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Definition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.SqlElasticPoolActionsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRuleOperations.SqlFirewallRuleActionsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
+    using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Implementation for SqlServer and its parent interfaces.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5TcWxTZXJ2ZXJJbXBs
-    internal partial class SqlServerImpl :
+    internal partial class SqlServerImpl  :
         GroupableResource<
-            ISqlServer,
-            ServerInner,
-            SqlServerImpl,
-            ISqlManager,
+            Microsoft.Azure.Management.Sql.Fluent.ISqlServer,
+            Models.ServerInner,
+            Microsoft.Azure.Management.Sql.Fluent.SqlServerImpl,
+            Microsoft.Azure.Management.Sql.Fluent.ISqlManager,
             SqlServer.Definition.IWithGroup,
             SqlServer.Definition.IWithAdministratorLogin,
-            SqlServer.Definition.IWithCreate,
-            SqlServer.Update.IUpdate>,
+            IWithCreate,
+            IUpdate>,
         ISqlServer,
-        SqlServer.Definition.IDefinition,
+        IDefinition,
         IUpdate
     {
-        private IDictionary<string, SqlElasticPool.Definition.IWithCreate> elasticPoolCreatableMap;
-        private IDictionary<string, SqlFirewallRule.Definition.IWithCreate> firewallRuleCreatableMap;
-        private IDictionary<string, SqlDatabase.Definition.IWithCreate> databaseCreatableMap;
-        private FirewallRulesImpl firewallRulesImpl;
-        private ElasticPoolsImpl elasticPoolsImpl;
-        private DatabasesImpl databasesImpl;
-        private IList<string> elasticPoolsToDelete;
-        private IList<string> firewallRulesToDelete;
-        private IList<string> databasesToDelete;
+        private ServerAzureADAdministratorInner sqlADAdminObject = null;
+        private bool allowAzureServicesAccess = true;
 
-        ///GENMHASH:13130EA9D0D51B33AB3979B218BFFA7D:10E44AC4E7806D854C536C98ECFD0C23
-        internal SqlServerImpl(string name, ServerInner innerObject, ISqlManager manager)
-            : base(name, innerObject, manager)
+        private List<SqlFirewallRuleImpl> sqlFirewallRulesToCreateOrUpdate = new List<SqlFirewallRuleImpl>();
+        private List<string> sqlFirewallRulesToDelete = new List<string>();
+
+        private List<SqlElasticPoolImpl> sqlElasticPoolsToCreateOrUpdate = new List<SqlElasticPoolImpl>();
+        private List<string> sqlElasticPoolsToDelete = new List<string>();
+
+        private List<SqlDatabaseImpl> sqlDatabasesToCreateOrUpdate = new List<SqlDatabaseImpl>();
+        private List<SqlDatabaseImpl> sqlDatabasesWithElasticPoolToCreateOrUpdate = new List<SqlDatabaseImpl>();
+        private List<string> sqlDatabasesToDelete = new List<string>();
+
+
+        ///GENMHASH:FED6CA0448AFD6EE7D63F8D84B7C6C26:4E9D1D31C4E764F2191FF855F590821F
+        public SqlServerImpl(string name, ServerInner innerObject, ISqlManager manager) : base(name, innerObject, manager)
         {
-            this.databaseCreatableMap = new Dictionary<string, SqlDatabase.Definition.IWithCreate>();
-            this.elasticPoolCreatableMap = new Dictionary<string, SqlElasticPool.Definition.IWithCreate>();
-            this.firewallRuleCreatableMap = new Dictionary<string, SqlFirewallRule.Definition.IWithCreate>();
-
-            this.elasticPoolsToDelete = new List<string>();
-            this.databasesToDelete = new List<string>();
-            this.firewallRulesToDelete = new List<string>();
+            this.sqlADAdminObject = null;
+            this.allowAzureServicesAccess = true;
         }
 
-        ///GENMHASH:D14E9D120B5AE20CBE29EEDB19E51726:9F7A942C3CD9C1E1D14B752782BC5635
+        ///GENMHASH:D14E9D120B5AE20CBE29EEDB19E51726:57C4C54E78144683A9963F2DF6825C68
         public SqlServerImpl WithoutFirewallRule(string firewallRuleName)
         {
-            this.firewallRulesToDelete.Add(firewallRuleName);
+            sqlFirewallRulesToDelete.Add(firewallRuleName);
             return this;
         }
 
         ///GENMHASH:76CA3DF47AE2173C7DD2F7771FDD2AD0:B347DF5D92EFFF6EC992D5C6C59BB49E
         public string AdministratorLogin()
         {
-            return Inner.AdministratorLogin;
+            return this.Inner.AdministratorLogin;
         }
 
-        ///GENMHASH:E8FF0EA4C9A70B28C5CC2D7109717350:1E18DC483BE5652C158841887DD5936F
-        private async Task DeleteChildResourcesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        ///GENMHASH:376C162D9E950FA8A14B198790B45E34:643DE26992E791AEFF298AA2807A12E4
+        public IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServerMetric> ListUsageMetrics()
         {
-            await Task.WhenAll(DeleteFirewallRuleAsync(cancellationToken), DeleteDatabasesAndElasticPoolsAsync(cancellationToken));
+            List<Microsoft.Azure.Management.Sql.Fluent.IServerMetric> serverMetrics = new List<IServerMetric>();
+            var usageMetricsInners = Extensions.Synchronize(() => this.Manager.Inner.ServerUsages
+                .ListByServerAsync(this.ResourceGroupName, this.Name));
+            if (usageMetricsInners != null)
+            {
+                foreach (var serverUsageInner in usageMetricsInners)
+                {
+                    serverMetrics.Add(new ServerMetricImpl(serverUsageInner));
+                }
+            }
+            return serverMetrics.AsReadOnly();
         }
 
-        ///GENMHASH:B78DFDEE870AD37F60EF238FF854629E:6F640C7F45F52AB9BB3143BCD2962AC5
-        private async Task CreateOrUpdateChildResourcesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        ///GENMHASH:C11535A65C2F85653353000F3BCCBABE:BA3E680F4190F2624FB5865D26163516
+        public SqlFirewallRuleImpl DefineFirewallRule(string name)
         {
-            await Task.WhenAll(CreateOrUpdateFirewallRulesAsync(cancellationToken), CreateOrUpdateElasticPoolsAndDatabasesAsync(cancellationToken));
+            var firewallRule = new SqlFirewallRuleImpl(name, this, new FirewallRuleInner(), this.Manager);
+            this.sqlFirewallRulesToCreateOrUpdate.Add(firewallRule);
+            return firewallRule;
         }
 
-        ///GENMHASH:7E50AD9C0C3F4B5336C13F19E4DAF04D:2BA4F314D86877439CDB39BE947335E8
-        private async Task DeleteFirewallRuleAsync(CancellationToken cancellationToken = default(CancellationToken))
+        ///GENMHASH:2A59E18DA93663D485FB24124FE696D7:5D4984EAFAEDA4C174C8D71531DE2856
+        public IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceObjective> ListServiceObjectives()
         {
-            await Task.WhenAll(this.firewallRulesToDelete.Select((firewallRuleToDelete) => this.firewallRulesImpl.DeleteAsync(firewallRuleToDelete, cancellationToken)));
+            List<Microsoft.Azure.Management.Sql.Fluent.IServiceObjective> serviceObjectives = new List<IServiceObjective>();
+            var serviceObjectiveInners = Extensions.Synchronize(() => this.Manager.Inner.ServiceObjectives
+                .ListByServerAsync(this.ResourceGroupName, this.Name));
+            if (serviceObjectiveInners != null)
+            {
+                foreach (var serviceObjectiveInner in serviceObjectiveInners)
+                {
+                    serviceObjectives.Add(new ServiceObjectiveImpl(serviceObjectiveInner, this));
+                }
+            }
+            return serviceObjectives.AsReadOnly();
         }
 
-        ///GENMHASH:2A59E18DA93663D485FB24124FE696D7:A9A12F1824E7FC07247043927FEEBFC2
-        public IList<IServiceObjective> ListServiceObjectives()
+        ///GENMHASH:95ECB09CB6FA7BA92B573DFF1B47DAEF:AC52250D4168EB0417344212078F23E1
+        public SqlActiveDirectoryAdministratorImpl GetActiveDirectoryAdministrator()
         {
-            var serviceObjectives = Extensions.Synchronize(() => Manager.Inner.Servers.ListServiceObjectivesAsync(
-                ResourceGroupName,
-                Name));
-            return serviceObjectives.Select((serviceObjectiveInner) => (IServiceObjective)new ServiceObjectiveImpl(
-                serviceObjectiveInner, Manager.Inner.Servers)).ToList();
+            try
+            {
+                var serverAzureADAdministratorInner = Extensions.Synchronize(() => this.Manager.Inner.ServerAzureADAdministrators.GetAsync(this.ResourceGroupName, this.Name));
+                return serverAzureADAdministratorInner != null ? new SqlActiveDirectoryAdministratorImpl(serverAzureADAdministratorInner) : null;
+            }
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+        }
+
+        ///GENMHASH:485F4A0DF47C41F174B382433B167D0F:94BB6E93CBB57046850D373DA9AB1CD7
+        public SqlActiveDirectoryAdministratorImpl SetActiveDirectoryAdministrator(string userLogin, string objectId)
+        {
+            var serverAzureADAdministratorInner = new ServerAzureADAdministratorInner()
+            {
+                Login = userLogin,
+                Sid = Guid.Parse(objectId),
+                TenantId = Guid.Parse(this.Manager.TenantId)
+            };
+            var createResult = Extensions.Synchronize(() => this.Manager.Inner.ServerAzureADAdministrators.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, serverAzureADAdministratorInner));
+            return createResult != null ? new SqlActiveDirectoryAdministratorImpl(createResult) : null;
+        }
+
+        ///GENMHASH:0FB19BD71D35E8BAC2D116947E61A25B:E179DA2275FB13CD950B71504BBC5FBA
+        public SqlServerImpl WithoutAccessFromAzureServices()
+        {
+            allowAzureServicesAccess = false;
+            return this;
         }
 
         ///GENMHASH:2F58B86CF4C09A3821196E375EB636F4:AA91D65BA65D340B46D6B88D4467855D
         public SqlServerImpl WithAdministratorLogin(string administratorLogin)
         {
-            Inner.AdministratorLogin = administratorLogin;
+            this.Inner.AdministratorLogin = administratorLogin;
             return this;
         }
 
         ///GENMHASH:618686B3EE435187E4F949C115EFA823:983FBE57E91E1FA947BEA694720011F0
         public SqlServerImpl WithAdministratorPassword(string administratorLoginPassword)
         {
-            Inner.AdministratorLoginPassword = administratorLoginPassword;
+            this.Inner.AdministratorLoginPassword = administratorLoginPassword;
             return this;
         }
 
-        ///GENMHASH:42238C96020583EAD41C40C184F554ED:69F489ECA959B263C944C8127108388F
+        ///GENMHASH:42238C96020583EAD41C40C184F554ED:4DCE841EF0A7240735E632B7BE9A261D
         public IReadOnlyDictionary<string, Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool> ListRecommendedElasticPools()
         {
-            var recommendedElasticPools = Extensions.Synchronize(() => Manager.Inner.RecommendedElasticPools.ListAsync(
-                ResourceGroupName,
-                Name));
-
-            return new ReadOnlyDictionary<string, IRecommendedElasticPool>(recommendedElasticPools.ToDictionary(
-                    recommendedElasticPoolInner => recommendedElasticPoolInner.Name,
-                    recommendedElasticPoolInner => (IRecommendedElasticPool)new RecommendedElasticPoolImpl(recommendedElasticPoolInner, Manager)));
+            Dictionary<string, Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool> recommendedElasticPoolMap = new Dictionary<string, IRecommendedElasticPool>();
+            //$ Map<String, RecommendedElasticPool> recommendedElasticPoolMap = new HashMap<>();
+            var recommendedElasticPoolInners = Extensions.Synchronize(() => this.Manager.Inner.RecommendedElasticPools
+                .ListByServerAsync(this.ResourceGroupName, this.Name));
+            if (recommendedElasticPoolInners != null)
+            {
+                foreach (var inner in recommendedElasticPoolInners)
+                {
+                    recommendedElasticPoolMap.Add(inner.Name, new RecommendedElasticPoolImpl(inner, this));
+                }
+            }
+            return recommendedElasticPoolMap;
         }
 
-        ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:3A15AE6B9ADA17FBEC37A8078DA08565
-        public async override Task<ISqlServer> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        ///GENMHASH:AEE17FD09F624712647F5EBCEC141EA5:F31B0F3D0CD1A4C57DB28EB70C9E094A
+        public string State()
         {
-            var serverInner = await Manager.Inner.Servers.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
-            SetInner(serverInner);
-
-            await DeleteChildResourcesAsync(cancellationToken);
-            await CreateOrUpdateChildResourcesAsync(cancellationToken);
-
-            return this;
+            return this.Inner.State;
         }
 
         ///GENMHASH:4693BD7957E2D51A8D0B8B0AFDDA3A22:053C528D1658BA9F774BF38FF3DDB425
@@ -142,190 +194,310 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return this.WithNewFirewallRule(ipAddress, ipAddress);
         }
 
-        ///GENMHASH:B586503226700C805360D5B6E3725EF6:E505BA6DA6C53CDACAB31669A8BAC1D2
-        public SqlServerImpl WithNewFirewallRule(string startIpAddress, string endIpAddress)
+        ///GENMHASH:B586503226700C805360D5B6E3725EF6:2CF4AB6732EA56C1D3EB4598632963FD
+        public SqlServerImpl WithNewFirewallRule(string startIPAddress, string endIPAddress)
         {
-            return this.WithNewFirewallRule(startIpAddress, endIpAddress, SdkContext.RandomResourceName("firewall_", 15));
+            return this.WithNewFirewallRule(startIPAddress, endIPAddress, SdkContext.RandomResourceName("firewall_", 15));
         }
 
-        ///GENMHASH:69FD06084D43219AA18CD7D3D99C1279:4CFE3B40F5F4B89B4325AA4C436DF8EE
-        public SqlServerImpl WithNewFirewallRule(string startIpAddress, string endIpAddress, string firewallRuleName)
+        ///GENMHASH:69FD06084D43219AA18CD7D3D99C1279:7D1773A8567ECFFC0A4621517C19EF47
+        public SqlServerImpl WithNewFirewallRule(string startIPAddress, string endIPAddress, string firewallRuleName)
         {
-            this.firewallRuleCreatableMap.Remove(firewallRuleName);
+            var sqlFirewallRule = new SqlFirewallRuleImpl(firewallRuleName, this, new FirewallRuleInner(), this.Manager);
+            sqlFirewallRule.WithStartIPAddress(startIPAddress);
+            sqlFirewallRule.WithEndIPAddress(endIPAddress);
+            this.sqlFirewallRulesToCreateOrUpdate.Add(sqlFirewallRule);
 
-            this.firewallRuleCreatableMap.Add(firewallRuleName,
-                this.FirewallRules().Define(firewallRuleName).WithIPAddressRange(startIpAddress, endIpAddress));
             return this;
         }
 
-        ///GENMHASH:DF46C62E0E8998CD0340B3F8A136F135:162FCA0A7E0415224BF3AD6DEFD9DC00
-        public IDatabases Databases()
+        ///GENMHASH:AD959A66C4DBDA49C4C0DA1EC29F8FC4:6C08A0EC4BEBAF6C92531AE8ED818D15
+        public async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase>> ListRestorableDroppedDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (databasesImpl == null)
+            List<Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase> restorableDroppedDatabases = new List<ISqlRestorableDroppedDatabase>();
+            var droppedDatabasesInners = await this.Manager.Inner.RestorableDroppedDatabases
+                .ListByServerAsync(this.ResourceGroupName, this.Name, cancellationToken);
+            if (droppedDatabasesInners != null)
             {
-                databasesImpl = new DatabasesImpl(Manager, ResourceGroupName, Name, Region);
+                foreach (var restorableDroppedDatabaseInner in droppedDatabasesInners)
+                {
+                    restorableDroppedDatabases.Add(new SqlRestorableDroppedDatabaseImpl(this.ResourceGroupName, this.Name, restorableDroppedDatabaseInner, this.Manager));
+                }
             }
-            return databasesImpl;
+            return restorableDroppedDatabases.AsReadOnly();
         }
 
-        ///GENMHASH:39211D199FB6D28F49ADF0BA2BA3CF1E:B4D84A42F3D3231B1FFD5AD6C788EA45
+        ///GENMHASH:DF46C62E0E8998CD0340B3F8A136F135:02BE7356BA27A5AA002198DE62969F52
+        public ISqlDatabaseActionsDefinition Databases()
+        {
+            return new SqlDatabaseOperationsImpl(this, this.Manager);
+        }
+
+        ///GENMHASH:39211D199FB6D28F49ADF0BA2BA3CF1E:C61C684B45B07539B0E5FEFC139FEDDC
         public SqlServerImpl WithoutDatabase(string databaseName)
         {
-            this.databasesToDelete.Add(databaseName);
+            this.sqlDatabasesToDelete.Add(databaseName);
             return this;
         }
 
-        ///GENMHASH:0E666BFDFC9A666CA31FD735D7839414:2AAE577C01D4088729534C3BC39664A7
-        public IReadOnlyList<IServerMetric> ListUsages()
+        ///GENMHASH:1130C7B9E2673D9024ACFFC4705A8B49:182C479ECA149DB94974EDE6D0E58994
+        public void RemoveActiveDirectoryAdministrator()
         {
-            var usages = Extensions.Synchronize(() => Manager.Inner.Servers.ListUsagesAsync(
-                ResourceGroupName,
-                Name));
-            return usages.Select((serverMetricInner) => (IServerMetric)new ServerMetricImpl(serverMetricInner)).ToList();
+            Extensions.Synchronize(() => this.Manager.Inner.ServerAzureADAdministrators.DeleteAsync(this.ResourceGroupName, this.Name));
+        }
+
+        ///GENMHASH:0E666BFDFC9A666CA31FD735D7839414:C74F9E346B86B0AEA8A20EC90542DA1B
+        public IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServerMetric> ListUsages()
+        {
+            return this.ListUsageMetrics();
         }
 
         ///GENMHASH:207CF59627452C607A1B799233F875B9:24C6C69C18977BD264EC783E32744339
         public string FullyQualifiedDomainName()
         {
-            return Inner.FullyQualifiedDomainName;
+            return this.Inner.FullyQualifiedDomainName;
         }
 
-        ///GENMHASH:22ED13819FBF2CA919B55726AC1FB656:470E0AF821791A8E1F0273443B706FEA
-        public IElasticPools ElasticPools()
+        ///GENMHASH:C4C0D4751CA4E1904C31CE6DF0B02AC3:B30E59DD4D927FB508DCE8588A7B6C5E
+        public string Kind()
         {
-            if (elasticPoolsImpl == null)
-            {
-                elasticPoolsImpl = new ElasticPoolsImpl(
-                Manager,
-                (DatabasesImpl)Databases(),
-                ResourceGroupName,
-                Name,
-                Region);
-            }
-            return elasticPoolsImpl;
+            return this.Inner.Kind;
         }
 
-        ///GENMHASH:4002186478A1CB0B59732EBFB18DEB3A:62957758FC09C0990CF1236E4DBFE16D
-        protected override async Task<ServerInner> GetInnerAsync(CancellationToken cancellationToken)
+        ///GENMHASH:BCD2990368F775C17F7832CE8193853C:D54AB1B5041A802D63BEA19C00F47CA5
+        public void RemoveAccessFromAzureServices()
         {
-            return await Manager.Inner.Servers.GetByResourceGroupAsync(ResourceGroupName,
-                Name, cancellationToken: cancellationToken);
+            ISqlFirewallRule firewallRule = this.Manager.SqlServers.FirewallRules.GetBySqlServer(this, "AllowAllWindowsAzureIps");
+            if (firewallRule != null)
+            {
+                firewallRule.Delete();
+            }
         }
 
-        ///GENMHASH:7D636B43F636D47A310AB1AF99E3C582:8AD037D8825930A5FDA5752A92895784
-        public SqlServerImpl WithNewElasticPool(string elasticPoolName, string elasticPoolEdition, params string[] databaseNames)
+        ///GENMHASH:22ED13819FBF2CA919B55726AC1FB656:2D4BB539678CAB8C520F10044E2C7968
+        public ISqlElasticPoolActionsDefinition ElasticPools()
         {
-            if (!elasticPoolCreatableMap.ContainsKey(elasticPoolName))
-            {
-                this.elasticPoolCreatableMap.Add(elasticPoolName, this.ElasticPools().Define(elasticPoolName).WithEdition(elasticPoolEdition));
-            }
+            return new SqlElasticPoolOperationsImpl(this, this.Manager);
+        }
 
-            if (databaseNames != null)
-            {
-                foreach (var databaseName in databaseNames)
-                {
-                    WithDatabaseInElasticPool(databaseName, elasticPoolName);
-                }
-            }
-
+        ///GENMHASH:15C6DE336A70D5E1EDFAC74C3066EED7:9C29DD32907A6122759FBE531E3E19EA
+        public SqlServerImpl WithNewElasticPool(string elasticPoolName, string elasticPoolEdition)
+        {
+            var elasticPoolItem = new SqlElasticPoolImpl(elasticPoolName, this, new ElasticPoolInner(), this.Manager);
+            elasticPoolItem.WithEdition(elasticPoolEdition);
+            this.sqlElasticPoolsToCreateOrUpdate.Add(elasticPoolItem);
             return this;
         }
 
-        ///GENMHASH:15C6DE336A70D5E1EDFAC74C3066EED7:6CC0DB20CC1C8B5143A66E5EC134B6B9
-        public SqlServerImpl WithNewElasticPool(string elasticPoolName, string elasticPoolEdition)
+        ///GENMHASH:7D636B43F636D47A310AB1AF99E3C582:AE9A1BF8CECF2027ED24BE1BBDE1CD93
+        public SqlServerImpl WithNewElasticPool(string elasticPoolName, string elasticPoolEdition, params string[] databaseNames)
         {
-            return WithNewElasticPool(elasticPoolName, elasticPoolEdition, null);
+            this.WithNewElasticPool(elasticPoolName, elasticPoolEdition);
+            foreach (var dbName in databaseNames)
+            {
+                var dbItem = new SqlDatabaseImpl(dbName, this, new DatabaseInner(), this.Manager);
+                dbItem.WithExistingElasticPool(elasticPoolName);
+                this.sqlDatabasesWithElasticPoolToCreateOrUpdate.Add(dbItem);
+            }
+            return this;
         }
 
-        ///GENMHASH:E32216D611BFF265A1F25D65E5EFA4A3:5A4B9BD63AA8FEB5746A72A9F3CFED28
-        private async Task DeleteDatabasesAndElasticPoolsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        ///GENMHASH:4A64D79C205DE76E07E6A3581CF5E14B:D4B4008CD0FC6AC7097FB9303C5C92E3
+        public SqlElasticPoolImpl DefineElasticPool(string name)
         {
-            await Task.WhenAll(databasesToDelete.Select((databaseName) => this.Databases().DeleteAsync(databaseName, cancellationToken)));
-            await Task.WhenAll(elasticPoolsToDelete.Select((elasticPoolName) => this.ElasticPools().DeleteAsync(elasticPoolName, cancellationToken)));
+            var elasticPoolItem = new SqlElasticPoolImpl(name, this, new ElasticPoolInner(), this.Manager);
+            this.sqlElasticPoolsToCreateOrUpdate.Add(elasticPoolItem);
+            return elasticPoolItem;
+        }
+
+        ///GENMHASH:D50E5343B7C7C1B41E095AD98B40D4AD:5517706AAC27788C4749AAF1BF4416DC
+        public IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase> ListRestorableDroppedDatabases()
+        {
+            return Extensions.Synchronize(() => this.ListRestorableDroppedDatabasesAsync());
         }
 
         ///GENMHASH:493B1EDB88EACA3A476D936362A5B14C:583937857C93CEEDEFD65D6B38E46ADD
         public string Version()
         {
-            return Inner.Version;
+            return this.Inner.Version;
         }
 
-        ///GENMHASH:D7949083DDCDE361387E2A975A1A1DE5:CEA494BF84552A0D1AD6DEA7E85EA72E
+        ///GENMHASH:1EBEB339569DE78AA557F27D165310BC:A2BCC5B0F32B0E3A66520AC36CE66D24
+        public SqlDatabaseImpl DefineDatabase(string name)
+        {
+            var dbItem = new SqlDatabaseImpl(name, this, new DatabaseInner(), this.Manager);
+            this.sqlDatabasesToCreateOrUpdate.Add(dbItem);
+            return dbItem;
+        }
+
+        ///GENMHASH:D7949083DDCDE361387E2A975A1A1DE5:8A9E3DEC81E694085872797F0F4B9D17
         public SqlServerImpl WithNewDatabase(string databaseName)
         {
-            this.databaseCreatableMap.Remove(databaseName);
-
-            this.databaseCreatableMap.Add(databaseName,
-                (SqlDatabase.Definition.IWithCreate) this.Databases().Define(databaseName));
-
+            var dbItem = new SqlDatabaseImpl(databaseName, this, new DatabaseInner(), this.Manager);
+            dbItem.WithStandardEdition(SqlDatabaseStandardServiceObjective.S0);
+            this.sqlDatabasesToCreateOrUpdate.Add(dbItem);
             return this;
         }
 
-        ///GENMHASH:D8D142E7FD8CC54428AA984C509B8FC8:D3504AC2A9A0717A59959BE778357FC7
-        private async Task CreateOrUpdateFirewallRulesAsync(CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (this.firewallRuleCreatableMap.Any())
-            {
-                var firewallCreatables = this.firewallRuleCreatableMap.Values.Select(firewallRule => firewallRule as ICreatable<ISqlFirewallRule>).ToArray();
-                await this.firewallRulesImpl.SqlFirewallRules().CreateAsync(firewallCreatables);
-                this.firewallRuleCreatableMap.Clear();
-            }
-        }
-
-        ///GENMHASH:32076B0182F921179C1E78728F749DBF:1711ED7C1A451D45F74D5A94B70C7907
+        ///GENMHASH:32076B0182F921179C1E78728F749DBF:0D9BD431A75197BE6CFABBBF154897D8
         public IServiceObjective GetServiceObjective(string serviceObjectiveName)
         {
-            return new ServiceObjectiveImpl(
-                Extensions.Synchronize(() => Manager.Inner.Servers.GetServiceObjectiveAsync(ResourceGroupName, Name, serviceObjectiveName)),
-                Manager.Inner.Servers);
+            try
+            {
+                var innerResult = Extensions.Synchronize(() => this.Manager.Inner.ServiceObjectives
+                    .GetAsync(this.ResourceGroupName, this.Name, serviceObjectiveName));
+                return (innerResult != null) ? new ServiceObjectiveImpl(innerResult, this) : null;
+            }
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
         }
 
-        ///GENMHASH:0E72E9CA1B7053C3FF04E00B992D9096:C708FFD899243CFE1DDD3607C4089B6A
-        private async Task CreateOrUpdateElasticPoolsAndDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        ///GENMHASH:D1A254F5015CA208E094ACEC31626CE3:68467397F577EB08788291BD38EF9B4E
+        public ISqlFirewallRule EnableAccessFromAzureServices()
         {
-            if (this.elasticPoolCreatableMap.Any())
+            ISqlFirewallRule firewallRule = this.Manager.SqlServers.FirewallRules
+                .GetBySqlServer(this.ResourceGroupName, this.Name, "AllowAllWindowsAzureIps");
+            if (firewallRule == null)
             {
-                await this.elasticPoolsImpl.ElasticPools.CreateAsync(
-                    this.elasticPoolCreatableMap.Values.Select(
-                        elasticPool => elasticPool as ICreatable<ISqlElasticPool>).ToArray());
-                this.elasticPoolCreatableMap.Clear();
+                firewallRule = this.Manager.SqlServers.FirewallRules
+                    .Define("AllowAllWindowsAzureIps")
+                    .WithExistingSqlServer(this.ResourceGroupName, this.Name)
+                    .WithIPAddress("0.0.0.0")
+                    .Create();
             }
-
-            if (this.databaseCreatableMap.Any())
-            {
-                await this.databasesImpl.Databases.CreateAsync(
-                    this.databaseCreatableMap.Values.Select(
-                        database => database as ICreatable<ISqlDatabase>).ToArray());
-                this.databaseCreatableMap.Clear();
-            }
+            return firewallRule;
         }
 
-        ///GENMHASH:16B9C6819B9C7B3C705BAABCD3F0D40E:B348E6639CB1D40C9D96A7C2987DEA0C
+        ///GENMHASH:16B9C6819B9C7B3C705BAABCD3F0D40E:8A7D594156E3F5B870F17F382CD26DF9
         public SqlServerImpl WithoutElasticPool(string elasticPoolName)
         {
-            this.elasticPoolsToDelete.Add(elasticPoolName);
-
+            this.sqlElasticPoolsToDelete.Add(elasticPoolName);
             return this;
         }
 
-        ///GENMHASH:77FCE079B32B71295AE582EB77E23D52:F261F33699B298737889E849E6BAB705
-        private void WithDatabaseInElasticPool(string databaseName, string elasticPoolName)
+        ///GENMHASH:3DE2C94FB1F0FC3946A6F562B7B60F99:74849820BB90CF98C7B9A424B90B1577
+        public IWithCreate WithActiveDirectoryAdministrator(string userLogin, string objectId)
         {
-            this.databaseCreatableMap.Remove(databaseName);
-
-            this.databaseCreatableMap.Add(databaseName,(SqlDatabase.Definition.IWithCreate) this.Databases()
-                .Define(databaseName)
-                .WithExistingElasticPool(elasticPoolName));
+            this.sqlADAdminObject = new ServerAzureADAdministratorInner()
+            {
+                Login = userLogin,
+                Sid = Guid.Parse(objectId),
+                TenantId = Guid.Parse(this.Manager.TenantId)
+            };
+            return this;
         }
 
-        ///GENMHASH:7DDEADFB2FB27BEC42C0B993AB65C3CB:0D8D2B5DE282DE762F97F0E96C5562F9
-        public IFirewallRules FirewallRules()
+        ///GENMHASH:7DDEADFB2FB27BEC42C0B993AB65C3CB:514904B05756E018F32C6B8219C69559
+        public ISqlFirewallRuleActionsDefinition FirewallRules()
         {
-            if (firewallRulesImpl == null)
+            return new SqlFirewallRuleOperationsImpl(this, this.Manager);
+        }
+
+        ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:1A74F5AF3A99B90A121C907190687B02
+        protected async override Task<Models.ServerInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.Inner.Servers.GetAsync(this.ResourceGroupName, this.Name, cancellationToken);
+        }
+
+        ///GENMHASH:9557699E7EE892CCCC89A074E0915333:FA4A38A563B9469CAA6DFA06B860491B
+        public async Task BeforeGroupCreateOrUpdateAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (this.IsInCreateMode)
             {
-                firewallRulesImpl = new FirewallRulesImpl(Manager, ResourceGroupName, Name);
+                if (allowAzureServicesAccess)
+                {
+                    var sqlFirewallRule = new SqlFirewallRuleImpl("AllowAllWindowsAzureIps", this, new FirewallRuleInner(), this.Manager);
+                    sqlFirewallRule.WithStartIPAddress("0.0.0.0");
+                    sqlFirewallRule.WithEndIPAddress("0.0.0.0");
+                    this.sqlFirewallRulesToCreateOrUpdate.Add(sqlFirewallRule);
+                }
             }
-            return firewallRulesImpl;
+            // validate the new/updated elastic pool items are not in the delete list
+            // elastic pools will be deleted in the AfterPostRunAsync() since they depend on databases being deleted first
+            foreach (var epName in this.sqlElasticPoolsToDelete)
+            {
+                foreach (var epItem in this.sqlElasticPoolsToCreateOrUpdate)
+                {
+                    if (epItem.Name() == epName)
+                    {
+                        throw new InvalidOperationException($"{epName} is created and removed in the same operation");
+                    }
+                }
+            }
+
+            // populate the "delete" worker and validate the new/updated items are not in the delete list
+            var deleteWorkers = this.sqlDatabasesToDelete.Select(async dbName =>
+                {
+                    if (this.sqlDatabasesToCreateOrUpdate.Any(dbItem => dbItem.Name().Equals(dbName, StringComparison.OrdinalIgnoreCase)) ||
+                        this.sqlDatabasesWithElasticPoolToCreateOrUpdate.Any(dbItem => dbItem.Name().Equals(dbName, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        throw new InvalidOperationException($"{dbName} is created and removed in the same operation");
+                    }
+                    await this.Manager.Inner.Databases.DeleteAsync(this.ResourceGroupName, this.Name, dbName, cancellationToken);
+                })
+                .Union(this.sqlFirewallRulesToDelete.Select(async firewallRuleName =>
+                {
+                    if (this.sqlFirewallRulesToCreateOrUpdate.Any(firewallRuleItem => firewallRuleItem.Name().Equals(firewallRuleName, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        throw new InvalidOperationException($"{firewallRuleName} is created and removed in the same operation");
+                    }
+                    await this.Manager.Inner.FirewallRules.DeleteAsync(this.ResourceGroupName, this.Name, firewallRuleName, cancellationToken);
+                }));
+            await Task.WhenAll(deleteWorkers);
+        }
+
+        ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:6A580BEA5FE973647B1C647B0BCDE194
+        public async override Task<Microsoft.Azure.Management.Sql.Fluent.ISqlServer> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await BeforeGroupCreateOrUpdateAsync(cancellationToken);
+            this.SetInner(await this.Manager.Inner.Servers.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken));
+            await AfterPostRunAsync(false, cancellationToken);
+            return this;
+        }
+
+        ///GENMHASH:AC7CC07C6D6A5043B63254841EEBA63A:00D6A455C1397EAEFDE583FBC8D53FCC
+        public async Task AfterPostRunAsync(bool isGroupFaulted, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (sqlADAdminObject != null)
+            {
+                await this.Manager.Inner.ServerAzureADAdministrators.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, sqlADAdminObject);
+            }
+            //split the create/update databases into those with elastic pool (which will be scheduled later) and those without
+            var allTasks = sqlDatabasesToCreateOrUpdate.Where(dbItem => dbItem.ElasticPoolName() == null)
+                .Select(async dbItem => await dbItem.CreateResourceAsync(cancellationToken))
+                // delete all elastic pools marked as to be deleted
+                .Union(this.sqlElasticPoolsToDelete
+                    .Select(async epName => await this.Manager.Inner.ElasticPools.DeleteAsync(this.ResourceGroupName, this.Name, epName, cancellationToken)))
+                // create/update all elastic pools marked as to be created/updated
+                .Union(this.sqlElasticPoolsToCreateOrUpdate
+                    .Select(async epItem => await epItem.CreateResourceAsync(cancellationToken)))
+                // create/update all databases marked as to be created/updated
+                .Union(this.sqlFirewallRulesToCreateOrUpdate
+                    .Select(async firewallRuleItem => await firewallRuleItem.CreateResourceAsync(cancellationToken)));
+            await Task.WhenAll(allTasks);
+
+            foreach (var db in this.sqlDatabasesToCreateOrUpdate.Where(dbItem => dbItem.ElasticPoolName() != null))
+            {
+                this.sqlDatabasesWithElasticPoolToCreateOrUpdate.Add(db);
+            }
+
+            // create/update databases with elastic pools
+            await Task.WhenAll(this.sqlDatabasesWithElasticPoolToCreateOrUpdate.Select( async dbItem => await dbItem.CreateResourceAsync(cancellationToken)));        
+
+            this.sqlADAdminObject = null;
+            this.sqlFirewallRulesToCreateOrUpdate.Clear();
+            this.sqlFirewallRulesToDelete.Clear();
+            this.sqlElasticPoolsToCreateOrUpdate.Clear();
+            this.sqlElasticPoolsToDelete.Clear();
+            this.sqlDatabasesToCreateOrUpdate.Clear();
+            this.sqlDatabasesWithElasticPoolToCreateOrUpdate.Clear();
+            this.sqlDatabasesToDelete.Clear();
         }
     }
 }
