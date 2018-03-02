@@ -60,7 +60,7 @@
     <Scope Condition=" '$(Scope)' == '' ">All</Scope>
     <FxTargetList>portable;net40;net45</FxTargetList>
     <ZipExeFolder>$(LibraryToolsFolder)\7-Zip</ZipExeFolder>
-    <ZipExe>$(ZipExeFolder)\7z.exe</ZipExe>
+    <ZipExe>7z.exe</ZipExe>
   </PropertyGroup>
 
   <ItemGroup>
@@ -90,9 +90,12 @@
 
   <Target Name="PrepareForAutoRestLibraries">
     <Message Text="Ensure 7zip is available" />
+    <!--
     <Exec
       Command="$(LibraryToolsFolder)\AzCopy\AzCopy.exe /Source:https://azuresdktools.blob.core.windows.net/7-zip  /S /Dest:$(ZipExeFolder) /Y"
       Condition="!Exists('$(ZipExe)')" />
+    -->
+    <Exec Command="$(ZipExe)" />
   </Target>
   
   <Target Name="Build" DependsOnTargets="BuildMsBuildTask;PrepareForAutoRestLibraries">

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ArmDisasterRecoveryInner : Resource
+    public partial class ArmDisasterRecoveryInner : NestedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the ArmDisasterRecoveryInner class.
@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible
         /// values include: 'Primary', 'PrimaryNotReplicating',
         /// 'Secondary'</param>
-        public ArmDisasterRecoveryInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProvisioningStateDR? provisioningState = default(ProvisioningStateDR?), string partnerNamespace = default(string), string alternateName = default(string), RoleDisasterRecovery? role = default(RoleDisasterRecovery?))
-            : base(location, id, name, type, tags)
+        public ArmDisasterRecoveryInner(string id = default(string), string name = default(string), string type = default(string), ProvisioningStateDR? provisioningState = default(ProvisioningStateDR?), string partnerNamespace = default(string), string alternateName = default(string), RoleDisasterRecovery? role = default(RoleDisasterRecovery?))
+            : base(id, name, type)
         {
             ProvisioningState = provisioningState;
             PartnerNamespace = partnerNamespace;

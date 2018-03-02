@@ -30,6 +30,8 @@ using Microsoft.Azure.Management.Locks.Fluent;
 using Microsoft.Azure.Management.Msi.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent;
+using Microsoft.Azure.Management.Eventhub.Fluent;
+using Microsoft.Azure.Management.EventHub.Fluent;
 
 namespace Microsoft.Azure.Management.Fluent
 {
@@ -61,6 +63,8 @@ namespace Microsoft.Azure.Management.Fluent
         private IMsiManager msiManager;
         private IBatchAIManager batchAIManager;
         private IMonitorManager monitorManager;
+        private IEventHubManager eventHubManager;
+
         #endregion Service Managers
 
         #region Getters
@@ -474,6 +478,30 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IEventHubNamespaces EventHubNamespaces
+        {
+            get
+            {
+                return eventHubManager.Namespaces;
+            }
+        }
+
+        public IEventHubs EventHubs
+        {
+            get
+            {
+                return eventHubManager.EventHubs;
+            }
+        }
+
+        public IEventHubDisasterRecoveryPairings EventHubDisasterRecoveryPairings
+        {
+            get
+            {
+                return eventHubManager.EventHubDisasterRecoveryPairings;
+            }
+        }
+
         #endregion Getters
 
         #region ctrs
@@ -502,6 +530,7 @@ namespace Microsoft.Azure.Management.Fluent
             msiManager = MsiManager.Authenticate(restClient, subscriptionId);
             batchAIManager = BatchAIManager.Authenticate(restClient, subscriptionId);
             monitorManager = MonitorManager.Authenticate(restClient, subscriptionId);
+            eventHubManager = EventHubManager.Authenticate(restClient, subscriptionId);
 
             SubscriptionId = subscriptionId;
             this.authenticated = authenticated;
@@ -945,5 +974,20 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to compute service SKU management.
         /// </summary>
         IComputeSkus ComputeSkus { get; }
+
+        /// <summary>
+        /// Entry point to Event Hub namespace management.
+        /// </summary>
+        IEventHubNamespaces EventHubNamespaces { get; }
+
+        /// <summary>
+        /// Entry point to Event Hub management.
+        /// </summary>
+        IEventHubs EventHubs { get; }
+
+        /// <summary>
+        /// Entry point to Event Hub disaster recovery pairing.
+        /// </summary>
+        IEventHubDisasterRecoveryPairings EventHubDisasterRecoveryPairings { get; }
     }
 }

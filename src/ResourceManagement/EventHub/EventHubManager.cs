@@ -1,19 +1,29 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using System;
 using System.Linq;
-using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
+using Microsoft.Azure.Management.Eventhub.Fluent;
+using Microsoft.Azure.Management.Storage.Fluent;
+
 namespace Microsoft.Azure.Management.EventHub.Fluent
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Management;
-    using Microsoft.Azure.Management.EventHub;
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     public class EventHubManager : Manager<IEventHubManagementClient>, IEventHubManager, IBeta
     {
+        private readonly IStorageManager storageManager;
+
+        #region Fluent private collections
+        private IEventHubNamespaces namespaces;
+        private IEventHubs eventHubs;
+        private IEventHubConsumerGroups consumerGroups;
+        private IEventHubDisasterRecoveryPairings eventHubDisasterRecoveryPairings;
+        private IEventHubAuthorizationRules eventHubAuthorizationRules;
+        public IEventHubNamespaceAuthorizationRules namespaceAuthorizationRules;
+        private IDisasterRecoveryPairingAuthorizationRules disasterRecoveryPairingAuthorizationRules;
+        #endregion
+
         #region ctrs
         private EventHubManager(RestClient restClient, string subscriptionId) :
             base(restClient, subscriptionId, new EventHubManagementClient(new Uri(restClient.BaseUri),
@@ -24,7 +34,9 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
                 SubscriptionId = subscriptionId
             })
         {
+            storageManager = StorageManager.Authenticate(restClient, subscriptionId);
         }
+
         #endregion
         #region EventHubManager builder
         /// <summary>
@@ -84,11 +96,132 @@ namespace Microsoft.Azure.Management.EventHub.Fluent
             }
         }
         #endregion
+
+        #region
+        public IEventHubNamespaces Namespaces
+        {
+            get
+            {
+                if (this.namespaces == null)
+                {
+                    this.namespaces = new EventHubNamespacesImpl(this);
+                }
+                return this.namespaces;
+            }
+        }
+
+        public IEventHubs EventHubs
+        {
+            get
+            {
+                if (this.eventHubs == null)
+                {
+                    this.eventHubs = new EventHubsImpl(this, this.storageManager);
+                }
+                return this.eventHubs;
+            }
+        }
+
+        public IEventHubConsumerGroups ConsumerGroups
+        {
+            get
+            {
+                if (this.consumerGroups == null)
+                {
+                    this.consumerGroups = new EventHubConsumerGroupsImpl(this);
+                }
+                return this.consumerGroups;
+            }
+        }
+
+        public IEventHubDisasterRecoveryPairings EventHubDisasterRecoveryPairings
+        {
+            get
+            {
+                if (this.eventHubDisasterRecoveryPairings == null)
+                {
+                    this.eventHubDisasterRecoveryPairings = new EventHubDisasterRecoveryPairingsImpl(this);
+                }
+                return this.eventHubDisasterRecoveryPairings;
+            }
+        }
+
+        public IEventHubAuthorizationRules EventHubAuthorizationRules
+        {
+            get
+            {
+                if (this.eventHubAuthorizationRules  == null)
+                {
+                    this.eventHubAuthorizationRules = new EventHubAuthorizationRulesImpl(this);
+                }
+                return this.eventHubAuthorizationRules;
+            }
+        }
+
+        public IEventHubNamespaceAuthorizationRules NamespaceAuthorizationRules
+        {
+            get
+            {
+                if (this.namespaceAuthorizationRules == null)
+                {
+                    this.namespaceAuthorizationRules = new EventHubNamespaceAuthorizationRulesImpl(this);
+                }
+                return this.namespaceAuthorizationRules;
+            }
+        }
+
+        public IDisasterRecoveryPairingAuthorizationRules DisasterRecoveryPairingAuthorizationRules
+        {
+            get
+            {
+                if (this.disasterRecoveryPairingAuthorizationRules == null)
+                {
+                    this.disasterRecoveryPairingAuthorizationRules = new DisasterRecoveryPairingAuthorizationRulesImpl(this);
+                }
+                return this.disasterRecoveryPairingAuthorizationRules;
+            }
+        }
+
+        #endregion
     }
     /// <summary>
     /// Entry point to Azure EventHub resource management.
     /// </summary>
-    public interface IEventHubManager : IManager<IEventHubManagementClient>
+    public interface IEventHubManager : IManager<IEventHubManagementClient>, IBeta
     {
+        /// <summary>
+        /// Entry point to manage EventHub namespaces
+        /// </summary>
+        IEventHubNamespaces Namespaces { get; }
+
+        /// <summary>
+        /// Entry point to manage event hubs
+        /// </summary>
+        IEventHubs EventHubs { get; }
+
+        /// <summary>
+        /// Entry point to manage event hub consumer groups
+        /// </summary>
+        IEventHubConsumerGroups ConsumerGroups { get; }
+
+        /// <summary>
+        /// Entry point to manage disaster recovery pairing of event hub namespaces
+        /// </summary>
+        IEventHubDisasterRecoveryPairings EventHubDisasterRecoveryPairings { get; }
+
+        /// <summary>
+        /// Entry point to manage event hub authorization rule
+        /// </summary>
+        IEventHubAuthorizationRules EventHubAuthorizationRules { get; }
+
+        /// <summary>
+        /// Entry point to manage event hub namespace authorization rules
+        /// </summary>
+        IEventHubNamespaceAuthorizationRules NamespaceAuthorizationRules { get; }
+
+        /// <summary>
+        /// Entry point to manage disaster recovery pairing authorization rules
+        /// </summary>
+        IDisasterRecoveryPairingAuthorizationRules DisasterRecoveryPairingAuthorizationRules { get; }
     }
 }

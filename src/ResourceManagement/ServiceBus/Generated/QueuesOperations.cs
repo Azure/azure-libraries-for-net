@@ -344,10 +344,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (queueName != null)
             {
-                if (queueName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "queueName", 50);
-                }
+
                 if (queueName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "queueName", 1);
@@ -591,10 +588,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (queueName != null)
             {
-                if (queueName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "queueName", 50);
-                }
+
                 if (queueName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "queueName", 1);
@@ -812,10 +806,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (queueName != null)
             {
-                if (queueName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "queueName", 50);
-                }
+
                 if (queueName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "queueName", 1);
@@ -1051,10 +1042,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (queueName != null)
             {
-                if (queueName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "queueName", 50);
-                }
+
                 if (queueName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "queueName", 1);
@@ -1295,10 +1283,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (queueName != null)
             {
-                if (queueName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "queueName", 50);
-                }
+
                 if (queueName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "queueName", 1);
@@ -1567,10 +1552,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (queueName != null)
             {
-                if (queueName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "queueName", 50);
-                }
+
                 if (queueName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "queueName", 1);
@@ -1808,10 +1790,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (queueName != null)
             {
-                if (queueName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "queueName", 50);
-                }
+
                 if (queueName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "queueName", 1);
@@ -2067,10 +2046,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (queueName != null)
             {
-                if (queueName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "queueName", 50);
-                }
+
                 if (queueName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "queueName", 1);
@@ -2330,10 +2306,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
             }
             if (queueName != null)
             {
-                if (queueName.Length > 50)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "queueName", 50);
-                }
+
                 if (queueName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "queueName", 1);

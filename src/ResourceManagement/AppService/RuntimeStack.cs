@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public static readonly RuntimeStack NETCore_V1_0 = new RuntimeStack("DOTNETCORE", "1.0");
         public static readonly RuntimeStack NETCore_V1_1 = new RuntimeStack("DOTNETCORE", "1.1");
         public static readonly RuntimeStack Ruby_2_3 = new RuntimeStack("RUBY", "2.3");
+        public static readonly RuntimeStack Tomcat_8_5_JRE8 = new RuntimeStack("TOMCAT", "8.5-jre8");
+        public static readonly RuntimeStack Tomcat_9_0_JRE8 = new RuntimeStack("TOMCAT", "9.0-jre8");
 
         private string stack;
         private string version;
