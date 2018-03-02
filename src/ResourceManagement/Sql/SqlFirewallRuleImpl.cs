@@ -147,6 +147,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:A0EEAA3D4BFB322B5036FE92D9F0F641:29B0399E75CADE64EBE14362E52E6A76
         public SqlFirewallRuleImpl WithExistingSqlServer(ISqlServer sqlServer)
         {
+            if (sqlServer == null)
+            {
+                throw new ArgumentNullException("sqlServer");
+            }
             this.resourceGroupName = sqlServer.ResourceGroupName;
             this.sqlServerName = sqlServer.Name;
             return this;
@@ -155,6 +159,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:6BCE517E09457FF033728269C8936E64:FF9561965B2D28AAEC739E970ABAF8A6
         public SqlFirewallRuleImpl Update()
         {
+            // This is the beginning of the update flow
             return this;
         }
 

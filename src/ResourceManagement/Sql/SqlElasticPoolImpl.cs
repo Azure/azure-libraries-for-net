@@ -409,9 +409,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:6BCE517E09457FF033728269C8936E64:ECB4548536225101A4FBA7DFDB22FE6D
-        public IUpdate Update()
+        public SqlElasticPoolImpl Update()
         {
-            // Future reference when enabling the proper framework which will track dependencies 
+            // Future reference when enabling the proper framework which will track dependencies
+            // This is the beginning of the update flow
             //$ super.PrepareUpdate();
             return this;
         }

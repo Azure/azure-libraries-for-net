@@ -15,6 +15,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         Wrapper<Models.Metric>,
         ISqlDatabaseMetric
     {
+        private List<ISqlDatabaseMetricValue> sqlDatabaseMetricValues;
+
         ///GENMHASH:2DFE05B7A49BBD23F65FDFBB0BF2C427:594D1010C484E7E384FED20C1B90C922
         public string TimeGrain()
         {
@@ -53,21 +55,18 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:AA67B4810CC7FB0A9425076713471212:20E3836EE79C64C3DD9D1D42104F1FAA
         public IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricValue> MetricValues()
         {
-            List<ISqlDatabaseMetricValue> sqlDatabaseMetricValues = new List<ISqlDatabaseMetricValue>();
-            if (this.Inner.MetricValues != null)
+            if (this.sqlDatabaseMetricValues == null)
             {
-                foreach (var metricValue in this.Inner.MetricValues)
+                this.sqlDatabaseMetricValues = new List<ISqlDatabaseMetricValue>();
+                if (this.Inner.MetricValues != null)
                 {
-                    sqlDatabaseMetricValues.Add(new SqlDatabaseMetricValueImpl(metricValue));
+                    foreach (var metricValue in this.Inner.MetricValues)
+                    {
+                        sqlDatabaseMetricValues.Add(new SqlDatabaseMetricValueImpl(metricValue));
+                    }
                 }
             }
-            //$ foreach(var metricValue in this.Inner.MetricValues()) {
-            //$ sqlDatabaseMetricValues.Add(new SqlDatabaseMetricValueImpl(metricValue));
-            //$ }
-            //$ }
-            //$ return Collections.UnmodifiableList(sqlDatabaseMetricValues);
-
-            return sqlDatabaseMetricValues.AsReadOnly();
+            return this.sqlDatabaseMetricValues.AsReadOnly();
         }
     }
 }

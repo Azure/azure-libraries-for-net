@@ -297,6 +297,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 throw new ArgumentNullException("sqlServer");
             }
+            this.resourceGroupName = sqlServer.ResourceGroupName;
+            this.sqlServerName = sqlServer.Name;
+            this.sqlServerLocation = sqlServer.RegionName;
             return this;
         }
 
@@ -696,10 +699,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 throw new ArgumentNullException("sqlElasticPool");
             }
             this.sqlElasticPoolCreatable = sqlElasticPool;
+            this.parentSqlElasticPool = (SqlElasticPoolImpl)sqlElasticPool;
             this.Inner.Edition = null;
             this.Inner.RequestedServiceObjectiveId = null;
             this.Inner.RequestedServiceObjectiveName = null;
-            this.Inner.ElasticPoolName = sqlElasticPool.Name;
+            this.Inner.ElasticPoolName = parentSqlElasticPool.Name();
 
             // future dependency tracking note
             //$ this.AddDependency(sqlElasticPool);
@@ -858,7 +862,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             if (this.importRequestInner != null && this.storageAccount != null)
             {
-                var storageKeys = await storageAccount.GetKeysAsync();
+                var storageKeys = await storageAccount.GetKeysAsync(cancellationToken);
                 if (storageKeys == null || storageKeys.Count == 0)
                 {
                     throw new Exception("Failed to retrieve Storage Account Keys");
@@ -883,6 +887,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:4E95DB8FD4DE0A3758B25CB7991A2C2A
         public async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
+            await BeforeGroupCreateOrUpdateAsync(cancellationToken);
             this.Inner.Location = this.sqlServerLocation;
             if (this.importRequestInner != null)
             {
@@ -914,6 +919,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 this.SetInner(dbInner);
                 return this;
             }
+            await AfterPostRunAsync(cancellationToken);
         }
 
         ///GENMHASH:AC7CC07C6D6A5043B63254841EEBA63A:7F7F8CAB431C433CEC91CF27F54FEFFD
@@ -953,7 +959,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             }
             else
             {
-                return await this.CreateResourceAsync();
+                return await this.CreateResourceAsync(cancellationToken);
             }
         }
 
@@ -972,7 +978,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:0FEDA307DAD2022B36843E8905D26EAD:95BA1017B6D636BB0934427C9B74AB8D
         public async Task DeleteAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            await this.DeleteResourceAsync();
+            await this.DeleteResourceAsync(cancellationToken);
         }
 
         ///GENMHASH:E24A9768E91CD60E963E43F00AA1FDFE:774D147C034A0076F237A117323E70D7
@@ -986,6 +992,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public SqlDatabaseImpl Update()
         {
             // Future reference when enabling the proper framework which will track dependencies 
+            // This is the beginning of the update flow
             //$ super.PrepareUpdate();
             return this;
         }

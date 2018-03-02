@@ -408,7 +408,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 }
             }
 
-//            List<Task> deleteWorkers = new List<Task>();
             // populate the "delete" worker and validate the new/updated items are not in the delete list
             var deleteWorkers = this.sqlDatabasesToDelete.Select(async dbName =>
                 {

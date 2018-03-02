@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         IRecommendedElasticPool
     {
         private SqlServerImpl sqlServer;
+        private List<ISqlDatabase> databases;
 
         ///GENMHASH:02ED968F148B39A9E0BC7F3E427EC0AA:7EA48F168814C86A7C06DEF2A48D1466
         public RecommendedElasticPoolImpl(RecommendedElasticPoolInner innerObject, SqlServerImpl sqlServer) : base(innerObject)
@@ -28,16 +29,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:DF46C62E0E8998CD0340B3F8A136F135:58F5D293EFF1B12DD86B185427748416
         public IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> Databases()
         {
-            List<ISqlDatabase> databases = new List<ISqlDatabase>();
-            if (this.Inner.Databases != null)
+            if (this.databases == null)
             {
-                foreach (var databaseInner in this.Inner.Databases)
+                this.databases = new List<ISqlDatabase>();
+                if (this.Inner.Databases != null)
                 {
-                    databases.Add(new SqlDatabaseImpl(databaseInner.Name, this.sqlServer, databaseInner, this.Manager()));
+                    foreach (var databaseInner in this.Inner.Databases)
+                    {
+                        databases.Add(new SqlDatabaseImpl(databaseInner.Name, this.sqlServer, databaseInner, this.Manager()));
+                    }
                 }
             }
 
-            return databases.AsReadOnly();
+            return this.databases.AsReadOnly();
         }
 
         ///GENMHASH:F018FD6E531156DFCBAA9FAE7F4D8519:F548C4892951BC9F8563B941B288836A

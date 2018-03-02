@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             if (this.storageAccount != null)
             {
-                var storageKeys = (await storageAccount.GetKeysAsync());
+                var storageKeys = (await storageAccount.GetKeysAsync(cancellationToken));
                 if (storageKeys == null || storageKeys.Count == 0)
                 {
                     throw new Exception("Failed to retrieve Storage Account Keys");

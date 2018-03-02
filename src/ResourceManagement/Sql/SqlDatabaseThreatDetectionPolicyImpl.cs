@@ -80,8 +80,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:6BCE517E09457FF033728269C8936E64:ECB4548536225101A4FBA7DFDB22FE6D
-        public IUpdate Update()
+        public SqlDatabaseThreatDetectionPolicyImpl Update()
         {
+            // This is the beginning of the update flow
             return this;
         }
 
@@ -98,7 +99,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:507A92D4DCD93CE9595A78198DEBDFCF:4C4C4336C86119672D7AD1E0D4BD29CB
         public async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseThreatDetectionPolicy> UpdateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await CreateResourceAsync();
+            return await CreateResourceAsync(cancellationToken);
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:5463608543545841B01F4CC38FD3ED2F
