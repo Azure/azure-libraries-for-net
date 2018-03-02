@@ -19,6 +19,28 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the resource ID string.
+        /// </summary>
+        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId.Id
+        {
+            get
+            {
+                return this.Id();
+            }
+        }
+
+        /// <summary>
+        /// Gets the name of the resource group.
+        /// </summary>
+        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasResourceGroup.ResourceGroupName
+        {
+            get
+            {
+                return this.ResourceGroupName();
+            }
+        }
+
+        /// <summary>
         /// Gets the status transparent data encryption of the Azure SQL Database.
         /// </summary>
         string Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryptionActivity.Status
@@ -26,17 +48,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.Status();
-            }
-        }
-
-        /// <summary>
-        /// Gets name of the SQL Server to which this replication belongs.
-        /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryptionActivity.SqlServerName
-        {
-            get
-            {
-                return this.SqlServerName();
             }
         }
 
@@ -64,24 +75,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets the resource ID string.
+        /// Gets name of the SQL Server to which this replication belongs.
         /// </summary>
-        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId.Id
+        string Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryptionActivity.SqlServerName
         {
             get
             {
-                return this.Id();
-            }
-        }
-
-        /// <summary>
-        /// Gets the name of the resource group.
-        /// </summary>
-        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasResourceGroup.ResourceGroupName
-        {
-            get
-            {
-                return this.ResourceGroupName();
+                return this.SqlServerName();
             }
         }
     }

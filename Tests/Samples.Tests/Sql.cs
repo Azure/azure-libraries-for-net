@@ -58,5 +58,27 @@ namespace Samples.Tests
                 ManageSqlFirewallRules.Program.RunSample(rollUpClient);
             }
         }
+
+        [Fact(Skip = "Manual only test: requires couple hours to finish")]
+        [Trait("Samples", "Sql")]
+        public void ManageSqlWithRecoveredOrRestoredDatabaseTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ManageSqlWithRecoveredOrRestoredDatabase.Program.RunSample(rollUpClient);
+            }
+        }
+
+        [Fact(Skip = "Manual only test: requires http calls to storage data plane")]
+        [Trait("Samples", "Sql")]
+        public void ManageSqlImportExportDatabaseTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ManageSqlImportExportDatabase.Program.RunSample(rollUpClient);
+            }
+        }
     }
 }

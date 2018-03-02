@@ -20,6 +20,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the geo-location where the resource lives.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.IElasticPoolDatabaseActivityBeta.Location
+        {
+            get
+            {
+                return this.Location();
+            }
+        }
+
+        /// <summary>
         /// Gets the name of the current Elastic Pool the database is in if available.
         /// </summary>
         string Microsoft.Azure.Management.Sql.Fluent.IElasticPoolDatabaseActivity.CurrentElasticPoolName
@@ -33,7 +44,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the time the operation finished (ISO8601 format).
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IElasticPoolDatabaseActivity.EndTime
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IElasticPoolDatabaseActivity.EndTime
         {
             get
             {
@@ -99,7 +110,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the time the operation started (ISO8601 format).
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IElasticPoolDatabaseActivity.StartTime
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IElasticPoolDatabaseActivity.StartTime
         {
             get
             {
