@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Single item in a List or Get AuthorizationRule operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AuthorizationRuleInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class AuthorizationRuleInner : NestedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the AuthorizationRuleInner class.
@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// Initializes a new instance of the AuthorizationRuleInner class.
         /// </summary>
         /// <param name="rights">The rights associated with the rule.</param>
-        public AuthorizationRuleInner(IList<string> rights, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(location, id, name, type, tags)
+        public AuthorizationRuleInner(IList<string> rights, string id = default(string), string name = default(string), string type = default(string))
+            : base(id, name, type)
         {
             Rights = rights;
             CustomInit();

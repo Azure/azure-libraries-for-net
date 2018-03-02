@@ -118,7 +118,7 @@ namespace Fluent.Tests
                     Assert.NotNull(nspace);
                     Assert.NotNull(nspace.Inner);
 
-                    String queueName = TestUtilities.GenerateName("queue1-");
+                    String queueName = TestUtilities.GenerateName("queue14444444444444444444444444444444444444444444555555555555");
                     var queue = nspace.Queues
                             .Define(queueName)
                             .Create();
@@ -277,7 +277,9 @@ namespace Fluent.Tests
 
                     Assert.NotNull(nspace);
                     Assert.NotNull(nspace.Inner);
-                    var topicName = TestUtilities.GenerateName("topic1-");
+
+                    var topicName = TestUtilities.GenerateName("topic14444444444444444444444444444444444444444444555555555555");
+
                     var topic = nspace.Topics
                         .Define(topicName)
                         .Create();

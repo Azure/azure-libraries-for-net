@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
     /// Single item in List or Get Consumer group operation
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ConsumerGroupInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class ConsumerGroupInner : NestedResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the ConsumerGroupInner class.
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.EventHub.Fluent.Models
         /// used to store descriptive data, such as list of teams and their
         /// contact information also user-defined configuration settings can be
         /// stored.</param>
-        public ConsumerGroupInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string userMetadata = default(string))
-            : base(location, id, name, type, tags)
+        public ConsumerGroupInner(string id = default(string), string name = default(string), string type = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string userMetadata = default(string))
+            : base(id, name, type)
         {
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;

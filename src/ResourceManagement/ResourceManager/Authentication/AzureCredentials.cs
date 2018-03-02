@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 #endif
                 else if (msiTokenProviderFactory != null)
                 {
-                    credentialsCache[adSettings.TokenAudience] = new TokenCredentials(this.msiTokenProviderFactory.Create(adSettings.TokenAudience.GetComponents(UriComponents.SchemeAndServer, UriFormat.UriEscaped)));
+                    credentialsCache[adSettings.TokenAudience] = new TokenCredentials(this.msiTokenProviderFactory.Create(adSettings.TokenAudience.OriginalString));
                 }
             }
             await credentialsCache[adSettings.TokenAudience].ProcessHttpRequestAsync(request, cancellationToken);

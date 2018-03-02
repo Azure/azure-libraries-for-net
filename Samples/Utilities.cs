@@ -45,6 +45,7 @@ using Microsoft.Azure.Management.Network.Fluent.Models;
 using Microsoft.Azure.Management.ContainerInstance.Fluent;
 using Microsoft.Azure.Management.Locks.Fluent;
 using Microsoft.Azure.Management.Msi.Fluent;
+using Microsoft.Azure.Management.Eventhub.Fluent;
 
 namespace Microsoft.Azure.Management.Samples.Common
 {
@@ -2083,6 +2084,95 @@ namespace Microsoft.Azure.Management.Samples.Common
                 .Append("\n\tEgressBytesTransferred: ").Append(resource.EgressBytesTransferred)
                 .Append("\n\tIngressBytesTransferred: ").Append(resource.IngressBytesTransferred);
             Utilities.Log(sb.ToString());
+        }
+
+        public static void Print(IEventHubNamespace resource)
+        {
+            StringBuilder eh = new StringBuilder("Eventhub Namespace: ")
+                .Append("Eventhub Namespace: ").Append(resource.Id)
+                    .Append("\n\tName: ").Append(resource.Name)
+                    .Append("\n\tRegion: ").Append(resource.Region)
+                    .Append("\n\tTags: ").Append(resource.Tags.ToString())
+                    .Append("\n\tAzureInsightMetricId: ").Append(resource.AzureInsightMetricId)
+                    .Append("\n\tIsAutoScale enabled: ").Append(resource.IsAutoScaleEnabled)
+                    .Append("\n\tServiceBus endpoint: ").Append(resource.ServiceBusEndpoint)
+                    .Append("\n\tThroughPut upper limit: ").Append(resource.ThroughputUnitsUpperLimit)
+                    .Append("\n\tCurrent ThroughPut: ").Append(resource.CurrentThroughputUnits)
+                    .Append("\n\tCreated time: ").Append(resource.CreatedAt)
+                    .Append("\n\tUpdated time: ").Append(resource.UpdatedAt);
+            Utilities.Log(eh.ToString());
+        }
+
+        public static void Print(IEventHub resource)
+        {
+            StringBuilder info = new StringBuilder();
+            info.Append("Eventhub: ").Append(resource.Id)
+                    .Append("\n\tName: ").Append(resource.Name)
+                    .Append("\n\tNamespace resource group: ").Append(resource.NamespaceResourceGroupName)
+                    .Append("\n\tNamespace: ").Append(resource.NamespaceName)
+                    .Append("\n\tIs data capture enabled: ").Append(resource.IsDataCaptureEnabled)
+                    .Append("\n\tPartition ids: ").Append(resource.PartitionIds);
+            if (resource.IsDataCaptureEnabled)
+            {
+                info.Append("\n\t\t\tData capture window size in MB: ").Append(resource.DataCaptureWindowSizeInMB);
+                info.Append("\n\t\t\tData capture window size in seconds: ").Append(resource.DataCaptureWindowSizeInSeconds);
+                if (resource.CaptureDestination != null)
+                {
+                    info.Append("\n\t\t\tData capture storage account: ").Append(resource.CaptureDestination.StorageAccountResourceId);
+                    info.Append("\n\t\t\tData capture storage container: ").Append(resource.CaptureDestination.BlobContainer);
+                }
+            }
+            Utilities.Log(info.ToString());
+        }
+
+        public static void Print(IEventHubDisasterRecoveryPairing resource)
+        {
+            StringBuilder info = new StringBuilder();
+            info.Append("DisasterRecoveryPairing: ").Append(resource.Id)
+                    .Append("\n\tName: ").Append(resource.Name)
+                    .Append("\n\tPrimary namespace resource group name: ").Append(resource.PrimaryNamespaceResourceGroupName)
+                    .Append("\n\tPrimary namespace name: ").Append(resource.PrimaryNamespaceName)
+                    .Append("\n\tSecondary namespace: ").Append(resource.SecondaryNamespaceId)
+                    .Append("\n\tNamespace role: ").Append(resource.NamespaceRole);
+            Utilities.Log(info.ToString());
+        }
+
+        public static void Print(IDisasterRecoveryPairingAuthorizationRule resource)
+        {
+            StringBuilder info = new StringBuilder();
+            info.Append("DisasterRecoveryPairing auth rule: ").Append(resource.Name);
+            List<String> rightsStr = new List<string>();
+            foreach (var rights in resource.Rights)
+            {
+                rightsStr.Add(rights.ToString());
+            }
+            info.Append("\n\tRights: ").Append(rightsStr);
+            Utilities.Log(info.ToString());
+        }
+
+        public static void Print(IDisasterRecoveryPairingAuthorizationKey resource)
+        {
+            StringBuilder info = new StringBuilder();
+            info.Append("DisasterRecoveryPairing auth key: ")
+                    .Append("\n\t Alias primary connection string: ").Append(resource.AliasPrimaryConnectionString)
+                    .Append("\n\t Alias secondary connection string: ").Append(resource.AliasSecondaryConnectionString)
+                    .Append("\n\t Primary key: ").Append(resource.PrimaryKey)
+                    .Append("\n\t Secondary key: ").Append(resource.SecondaryKey)
+                    .Append("\n\t Primary connection string: ").Append(resource.PrimaryConnectionString)
+                    .Append("\n\t Secondary connection string: ").Append(resource.SecondaryConnectionString);
+            Utilities.Log(info.ToString());
+        }
+
+        public static void Print(IEventHubConsumerGroup resource)
+        {
+            StringBuilder info = new StringBuilder();
+            info.Append("Event hub consumer group: ").Append(resource.Id)
+                    .Append("\n\tName: ").Append(resource.Name)
+                    .Append("\n\tNamespace resource group: ").Append(resource.NamespaceResourceGroupName)
+                    .Append("\n\tNamespace: ").Append(resource.NamespaceName)
+                    .Append("\n\tEvent hub name: ").Append(resource.EventHubName)
+                    .Append("\n\tUser metadata: ").Append(resource.UserMetadata);
+            Utilities.Log(info.ToString());
         }
 
         public static void CreateCertificate(string domainName, string pfxPath, string password)
