@@ -50,7 +50,7 @@ namespace ManageEventHubGeoDisasterRecovery
                     .Create();
 
                 Utilities.Log("Primary event hub namespace created");
-                Utilities.Log(primaryNamespace);
+                Utilities.Print(primaryNamespace);
 
                 Utilities.Log($"Creating secondary event hub namespace {primaryNamespaceName}");
 
@@ -61,7 +61,7 @@ namespace ManageEventHubGeoDisasterRecovery
                         .Create();
 
                 Utilities.Log("Secondary event hub namespace created");
-                Utilities.Log(secondaryNamespace);
+                Utilities.Print(secondaryNamespace);
 
                 //============================================================
                 // Create primary and secondary namespaces and recovery pairing
@@ -86,7 +86,7 @@ namespace ManageEventHubGeoDisasterRecovery
                 }
 
                 Utilities.Log($"Created geo-disaster recovery pairing {geoDRName}");
-                Utilities.Log(pairing);
+                Utilities.Print(pairing);
 
                 //============================================================
                 // Create an event hub and consumer group in primary namespace
@@ -101,7 +101,7 @@ namespace ManageEventHubGeoDisasterRecovery
                         .Create();
 
                 Utilities.Log("Created event hub and consumer group in primary namespace");
-                Utilities.Log(eventHubInPrimaryNamespace);
+                Utilities.Print(eventHubInPrimaryNamespace);
 
                 Utilities.Log("Waiting for 60 seconds to allow metadata to sync across primary and secondary");
                 SdkContext.DelayProvider.Delay(60 * 1000); // Wait for syncing to finish
@@ -111,7 +111,7 @@ namespace ManageEventHubGeoDisasterRecovery
                 IEventHub eventHubInSecondaryNamespace = azure.EventHubs.GetByName(rgName, secondaryNamespaceName, eventHubName);
 
                 Utilities.Log("Retrieved the event hubs in secondary namespace");
-                Utilities.Log(eventHubInSecondaryNamespace);
+                Utilities.Print(eventHubInSecondaryNamespace);
 
                 //============================================================
                 // Retrieving the connection string
@@ -120,7 +120,7 @@ namespace ManageEventHubGeoDisasterRecovery
                 foreach (IDisasterRecoveryPairingAuthorizationRule rule in rules)
                 {
                     IDisasterRecoveryPairingAuthorizationKey key = rule.GetKeys();
-                    Utilities.Log(key);
+                    Utilities.Print(key);
                 }
 
                 Utilities.Log("Initiating fail over");

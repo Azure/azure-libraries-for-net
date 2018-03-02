@@ -47,7 +47,7 @@ namespace ManageEventHub
                             .WithNewResourceGroup(rgName)
                             .Create();
 
-                Utilities.Log(namespace1);
+                Utilities.Print(namespace1);
                 Utilities.Log("Created a namespace");
 
                 //============================================================
@@ -75,7 +75,7 @@ namespace ManageEventHub
                             .Create();
 
                 Utilities.Log("Created an event hub with data capture enabled with a consumer group and rule in it");
-                Utilities.Log(eventHub1);
+                Utilities.Print(eventHub1);
 
                 //============================================================
                 // Retrieve consumer groups in the event hub
@@ -87,7 +87,7 @@ namespace ManageEventHub
                 Utilities.Log("Retrieved consumer groups");
                 foreach (IEventHubConsumerGroup group in consumerGroups)
                 {
-                    Utilities.Log(group);
+                    Utilities.Print(group);
                 }
 
                 //============================================================
@@ -103,7 +103,7 @@ namespace ManageEventHub
                             .Create();
 
                 Utilities.Log("Created second event hub");
-                Utilities.Log(eventHub2);
+                Utilities.Print(eventHub2);
 
                 //============================================================
                 // Create a consumer group in the event hub using consumer group accessor in event hub accessor
@@ -121,7 +121,7 @@ namespace ManageEventHub
                             .Create();
 
                 Utilities.Log("Created a consumer group in the second event hub");
-                Utilities.Log(consumerGroup2);
+                Utilities.Print(consumerGroup2);
 
                 //============================================================
                 // Retrieve consumer groups in the event hub
@@ -133,7 +133,7 @@ namespace ManageEventHub
                 Utilities.Log("Retrieved consumer groups in the seoond event hub");
                 foreach (IEventHubConsumerGroup group in consumerGroups)
                 {
-                    Utilities.Log(group);
+                    Utilities.Print(group);
                 }
 
                 //============================================================
@@ -150,10 +150,10 @@ namespace ManageEventHub
                             .Create();
 
                 Utilities.Log("Created an event hub namespace along with event hub");
-                Utilities.Log(namespace2);
+                Utilities.Print(namespace2);
                 foreach (IEventHub eh in namespace2.ListEventHubs())
                 {
-                    Utilities.Log(eh);
+                    Utilities.Print(eh);
                 }
             }
             finally
