@@ -56,14 +56,18 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:B90198DC89E5EAAFA864E1D246D6806C:4AD5178A115C8AF028528ABF531FF276
         private string GetCertificateThumbprint(string pfxPath, string password)
         {
-            X509Certificate2Collection collection = new X509Certificate2Collection();
-            collection.Import(pfxPath, password, X509KeyStorageFlags.PersistKeySet);
+            var certificate = new X509Certificate2(pfxPath, password);
+            return certificate.HasPrivateKey
+                ? certificate.Thumbprint
+                : throw new KeyNotFoundException("Private key not found in the pfx file");
+        }
 
-            foreach (var cert in collection)
-            {
-                return cert.Thumbprint;
-            }
-            throw new KeyNotFoundException("Private key not found in the pfx file");
+        private static string GetCertificateThumbprint(byte[] pfxByteArray, string password)
+        {
+            var certificate = new X509Certificate2(pfxByteArray, password);
+            return certificate.HasPrivateKey
+                ? certificate.Thumbprint
+                : throw new KeyNotFoundException("Private key not found in the pfx file");
         }
 
         ///GENMHASH:0B0AB38F6DD8B1FEB79C787CAA88F145:906C0B4A59497294B730FFF3475D49DA
@@ -115,6 +119,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 .WithRegion(parent.Region)
                 .WithExistingResourceGroup(parent.ResourceGroupName)
                 .WithPfxFile(pfxPath)
+                .WithPfxPassword(password)
+                .CreateAsync();
+
+            return this;
+        }
+
+        public HostNameSslBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithPfxByteArrayToUpload(byte[] pfxByteArray, string password)
+        {
+            var thumbprint = GetCertificateThumbprint(pfxByteArray, password);
+            newCertificate = async () => await parent.Manager.AppServiceCertificates
+                .Define(GetCertificateUniqueName(thumbprint, parent.Region))
+                .WithRegion(parent.Region)
+                .WithExistingResourceGroup(parent.ResourceGroupName)
+                .WithPfxByteArray(pfxByteArray)
                 .WithPfxPassword(password)
                 .CreateAsync();
 

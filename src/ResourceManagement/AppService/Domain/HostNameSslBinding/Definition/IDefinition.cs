@@ -95,6 +95,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Defini
         Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Definition.IWithSslType<ParentT> WithPfxCertificateToUpload(string pfxFile, string password);
 
         /// <summary>
+        /// Uploads a PFX certificate.
+        /// </summary>
+        /// <param name="pfxByteArray">The PFX byte array.</param>
+        /// <param name="password">The password to the certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Definition.IWithSslType<ParentT> WithPfxByteArrayToUpload(byte[] pfxByteArray, string password);
+
+        /// <summary>
         /// Places a new App Service certificate order to use for the hostname.
         /// </summary>
         /// <param name="certificateOrderName">The name of the certificate order.</param>

@@ -167,6 +167,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
+        /// Uploads a PFX certificate.
+        /// </summary>
+        /// <param name="pfxByteArray">The PFX byte array to upload.</param>
+        /// <param name="password">The password to the certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        HostNameSslBinding.Definition.IWithSslType<WebAppBase.Definition.IWithCreate<FluentT>> HostNameSslBinding.Definition.IWithCertificate<WebAppBase.Definition.IWithCreate<FluentT>>.WithPfxByteArrayToUpload(byte[] pfxByteArray, string password)
+        {
+            return this.WithPfxByteArrayToUpload(pfxByteArray, password) as HostNameSslBinding.Definition.IWithSslType<WebAppBase.Definition.IWithCreate<FluentT>>;
+        }
+
+        /// <summary>
         /// Places a new App Service certificate order to use for the hostname.
         /// </summary>
         /// <param name="certificateOrderName">The name of the certificate order.</param>
@@ -195,6 +206,17 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         HostNameSslBinding.UpdateDefinition.IWithSslType<WebAppBase.Update.IUpdate<FluentT>> HostNameSslBinding.UpdateDefinition.IWithCertificate<WebAppBase.Update.IUpdate<FluentT>>.WithPfxCertificateToUpload(string pfxFile, string password)
         {
             return this.WithPfxCertificateToUpload(pfxFile, password) as HostNameSslBinding.UpdateDefinition.IWithSslType<WebAppBase.Update.IUpdate<FluentT>>;
+        }
+
+        /// <summary>
+        /// Uploads a PFX certificate.
+        /// </summary>
+        /// <param name="pfxByteArray">The PFX byte array to upload.</param>
+        /// <param name="password">The password to the certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        HostNameSslBinding.UpdateDefinition.IWithSslType<WebAppBase.Update.IUpdate<FluentT>> HostNameSslBinding.UpdateDefinition.IWithCertificate<WebAppBase.Update.IUpdate<FluentT>>.WithPfxByteArrayToUpload(byte[] pfxByteArray, string password)
+        {
+            return this.WithPfxByteArrayToUpload(pfxByteArray, password) as HostNameSslBinding.UpdateDefinition.IWithSslType<WebAppBase.Update.IUpdate<FluentT>>;
         }
 
         /// <summary>
