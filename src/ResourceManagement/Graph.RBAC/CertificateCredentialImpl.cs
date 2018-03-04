@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             AzureEnvironment environment = null;
             if (restClient.Credentials is AzureCredentials)
             {
-                environment = ((AzureCredentials)restClient.Credentials).Environment;
+                environment = restClient.Credentials.Environment;
             }
             else
             {

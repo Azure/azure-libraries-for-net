@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
                 SubscriptionId = subscriptionId
             })
         {
-            this.graphRbacManager = Microsoft.Azure.Management.Graph.RBAC.Fluent.GraphRbacManager.Authenticate(restClient, ((AzureCredentials)(restClient.Credentials)).TenantId);
+            this.graphRbacManager = Microsoft.Azure.Management.Graph.RBAC.Fluent.GraphRbacManager.Authenticate(restClient, restClient.Credentials.TenantId);
         }
 
         #region MsiManager builder
