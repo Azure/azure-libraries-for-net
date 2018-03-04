@@ -64,6 +64,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             this.msiTokenProviderFactory = new MSITokenProviderFactory(msiLoginInformation);
         }
 
+        public AzureCredentials(ServiceClientCredentials credentials, string tenantId, AzureEnvironment environment)
+            : this(tenantId, environment)
+        {
+            credentialsCache[new Uri(Environment.ManagementEndpoint)] = credentials;
+        }
+
         private AzureCredentials(string tenantId, AzureEnvironment environment)
         {
             TenantId = tenantId;

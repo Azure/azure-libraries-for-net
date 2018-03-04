@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 {
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             get; private set;
         }
 
-        public ServiceClientCredentials Credentials
+        public AzureCredentials Credentials
         {
             get; private set;
         }
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public class RestClientBuilder : RestClientBuilder.IBlank, RestClientBuilder.IBuildable
         {
             private string baseUri;
-            private ServiceClientCredentials credentials;
+            private AzureCredentials credentials;
             private List<DelegatingHandler> handlers;
             private RetryPolicy retryPolicy;
             private HttpLoggingDelegatingHandler loggingDelegatingHandler;
@@ -155,7 +156,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
                 IBuildable WithLogLevel(HttpLoggingDelegatingHandler.Level level);
 
-                IBuildable WithCredentials(ServiceClientCredentials credentials);
+                IBuildable WithCredentials(AzureCredentials credentials);
 
                 RestClient Build();
             }
@@ -214,7 +215,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                 return this;
             }
 
-            public IBuildable WithCredentials(ServiceClientCredentials credentials)
+            public IBuildable WithCredentials(AzureCredentials credentials)
             {
                 this.credentials = credentials;
                 return this;
