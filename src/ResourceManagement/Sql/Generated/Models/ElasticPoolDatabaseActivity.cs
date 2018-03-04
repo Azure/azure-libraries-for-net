@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -34,6 +32,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the ElasticPoolDatabaseActivity
         /// class.
         /// </summary>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
         /// <param name="databaseName">The database name.</param>
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="startTime">The time the operation started (ISO8601
         /// format).</param>
         /// <param name="state">The current state of the operation.</param>
-        public ElasticPoolDatabaseActivity(string location = default(string), string id = default(string), string name = default(string), string type = default(string), string databaseName = default(string), System.DateTime? endTime = default(System.DateTime?), int? errorCode = default(int?), string errorMessage = default(string), int? errorSeverity = default(int?), string operation = default(string), System.Guid operationId = default(System.Guid), int? percentComplete = default(int?), string requestedElasticPoolName = default(string), string currentElasticPoolName = default(string), string currentServiceObjective = default(string), string requestedServiceObjective = default(string), string serverName = default(string), System.DateTime? startTime = default(System.DateTime?), string state = default(string))
+        public ElasticPoolDatabaseActivity(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string databaseName = default(string), System.DateTime? endTime = default(System.DateTime?), int? errorCode = default(int?), string errorMessage = default(string), int? errorSeverity = default(int?), string operation = default(string), System.Guid operationId = default(System.Guid), int? percentComplete = default(int?), string requestedElasticPoolName = default(string), string currentElasticPoolName = default(string), string currentServiceObjective = default(string), string requestedServiceObjective = default(string), string serverName = default(string), System.DateTime? startTime = default(System.DateTime?), string state = default(string))
             : base(id, name, type)
         {
             Location = location;

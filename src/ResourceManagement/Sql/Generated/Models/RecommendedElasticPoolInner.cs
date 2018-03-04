@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the RecommendedElasticPoolInner
         /// class.
         /// </summary>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="databaseEdition">The edition of the recommended
         /// elastic pool. The ElasticPoolEdition enumeration contains all the
         /// valid editions. Possible values include: 'Basic', 'Standard',

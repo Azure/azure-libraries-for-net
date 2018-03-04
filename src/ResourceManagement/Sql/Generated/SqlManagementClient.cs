@@ -90,9 +90,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public virtual IRestorableDroppedDatabasesOperations RestorableDroppedDatabases { get; private set; }
 
         /// <summary>
-        /// Gets the IRestorePointsOperations.
+        /// Gets the ICapabilitiesOperations.
         /// </summary>
-        public virtual IRestorePointsOperations RestorePoints { get; private set; }
+        public virtual ICapabilitiesOperations Capabilities { get; private set; }
 
         /// <summary>
         /// Gets the IServersOperations.
@@ -200,14 +200,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public virtual IDatabaseUsagesOperations DatabaseUsages { get; private set; }
 
         /// <summary>
-        /// Gets the ICapabilitiesOperations.
-        /// </summary>
-        public virtual ICapabilitiesOperations Capabilities { get; private set; }
-
-        /// <summary>
         /// Gets the IDatabaseBlobAuditingPoliciesOperations.
         /// </summary>
         public virtual IDatabaseBlobAuditingPoliciesOperations DatabaseBlobAuditingPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IDatabaseAutomaticTuningOperations.
+        /// </summary>
+        public virtual IDatabaseAutomaticTuningOperations DatabaseAutomaticTuning { get; private set; }
 
         /// <summary>
         /// Gets the IEncryptionProtectorsOperations.
@@ -253,6 +253,26 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Gets the IVirtualNetworkRulesOperations.
         /// </summary>
         public virtual IVirtualNetworkRulesOperations VirtualNetworkRules { get; private set; }
+
+        /// <summary>
+        /// Gets the IDatabaseOperations.
+        /// </summary>
+        public virtual IDatabaseOperations DatabaseOperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IServerAutomaticTuningOperations.
+        /// </summary>
+        public virtual IServerAutomaticTuningOperations ServerAutomaticTuning { get; private set; }
+
+        /// <summary>
+        /// Gets the IServerDnsAliasesOperations.
+        /// </summary>
+        public virtual IServerDnsAliasesOperations ServerDnsAliases { get; private set; }
+
+        /// <summary>
+        /// Gets the IRestorePointsOperations.
+        /// </summary>
+        public virtual IRestorePointsOperations RestorePoints { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
@@ -459,7 +479,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             BackupLongTermRetentionVaults = new BackupLongTermRetentionVaultsOperations(this);
             RecoverableDatabases = new RecoverableDatabasesOperations(this);
             RestorableDroppedDatabases = new RestorableDroppedDatabasesOperations(this);
-            RestorePoints = new RestorePointsOperations(this);
+            Capabilities = new CapabilitiesOperations(this);
             Servers = new ServersOperations(this);
             ServerConnectionPolicies = new ServerConnectionPoliciesOperations(this);
             Databases = new DatabasesOperations(this);
@@ -481,8 +501,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             TransparentDataEncryptionActivities = new TransparentDataEncryptionActivitiesOperations(this);
             ServerUsages = new ServerUsagesOperations(this);
             DatabaseUsages = new DatabaseUsagesOperations(this);
-            Capabilities = new CapabilitiesOperations(this);
             DatabaseBlobAuditingPolicies = new DatabaseBlobAuditingPoliciesOperations(this);
+            DatabaseAutomaticTuning = new DatabaseAutomaticTuningOperations(this);
             EncryptionProtectors = new EncryptionProtectorsOperations(this);
             FailoverGroups = new FailoverGroupsOperations(this);
             Operations = new Operations(this);
@@ -492,6 +512,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             SyncMembers = new SyncMembersOperations(this);
             SubscriptionUsages = new SubscriptionUsagesOperations(this);
             VirtualNetworkRules = new VirtualNetworkRulesOperations(this);
+            DatabaseOperations = new DatabaseOperations(this);
+            ServerAutomaticTuning = new ServerAutomaticTuningOperations(this);
+            ServerDnsAliases = new ServerDnsAliasesOperations(this);
+            RestorePoints = new RestorePointsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

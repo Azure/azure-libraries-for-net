@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -35,6 +33,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="serverKeyType">The server key type like
         /// 'ServiceManaged', 'AzureKeyVault'. Possible values include:
         /// 'ServiceManaged', 'AzureKeyVault'</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="kind">Kind of encryption protector. This is metadata
         /// used for the Azure portal experience.</param>
         /// <param name="location">Resource location.</param>

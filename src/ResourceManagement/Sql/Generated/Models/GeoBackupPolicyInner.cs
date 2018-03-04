@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -34,12 +32,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         /// <param name="state">The state of the geo backup policy. Possible
         /// values include: 'Disabled', 'Enabled'</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="storageType">The storage type of the geo backup
         /// policy.</param>
         /// <param name="kind">Kind of geo backup policy.  This is metadata
         /// used for the Azure portal experience.</param>
         /// <param name="location">Backup policy location.</param>
-        public GeoBackupPolicyInner(GeoBackupPolicyState state, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string storageType = default(string), string kind = default(string))
+        public GeoBackupPolicyInner(GeoBackupPolicyState state, string id = default(string), string name = default(string), string type = default(string), string storageType = default(string), string kind = default(string), string location = default(string))
             : base(id, name, type)
         {
             State = state;

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The elastic pool edition capability.
+    /// The elastic pool edition capabilities.
     /// </summary>
     public partial class ElasticPoolEditionCapability
     {
@@ -32,18 +32,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// class.
         /// </summary>
         /// <param name="name">The elastic pool edition name.</param>
+        /// <param name="status">The status of the elastic pool edition.
+        /// Possible values include: 'Visible', 'Available', 'Default',
+        /// 'Disabled'</param>
         /// <param name="supportedElasticPoolDtus">The list of supported
         /// elastic pool DTU levels for the edition.</param>
-        /// <param name="status">The status of the capability. Possible values
-        /// include: 'Visible', 'Available', 'Default', 'Disabled'</param>
-        /// <param name="reason">The reason for the capability not being
-        /// available.</param>
-        public ElasticPoolEditionCapability(string name = default(string), IList<ElasticPoolDtuCapability> supportedElasticPoolDtus = default(IList<ElasticPoolDtuCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        /// <param name="zoneRedundant">Whether or not zone redundancy is
+        /// supported for the edition.</param>
+        public ElasticPoolEditionCapability(string name = default(string), CapabilityStatus? status = default(CapabilityStatus?), IList<ElasticPoolDtuCapability> supportedElasticPoolDtus = default(IList<ElasticPoolDtuCapability>), bool? zoneRedundant = default(bool?))
         {
             Name = name;
-            SupportedElasticPoolDtus = supportedElasticPoolDtus;
             Status = status;
-            Reason = reason;
+            SupportedElasticPoolDtus = supportedElasticPoolDtus;
+            ZoneRedundant = zoneRedundant;
             CustomInit();
         }
 
@@ -59,23 +60,23 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         public string Name { get; private set; }
 
         /// <summary>
+        /// Gets the status of the elastic pool edition. Possible values
+        /// include: 'Visible', 'Available', 'Default', 'Disabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public CapabilityStatus? Status { get; private set; }
+
+        /// <summary>
         /// Gets the list of supported elastic pool DTU levels for the edition.
         /// </summary>
         [JsonProperty(PropertyName = "supportedElasticPoolDtus")]
         public IList<ElasticPoolDtuCapability> SupportedElasticPoolDtus { get; private set; }
 
         /// <summary>
-        /// Gets the status of the capability. Possible values include:
-        /// 'Visible', 'Available', 'Default', 'Disabled'
+        /// Gets whether or not zone redundancy is supported for the edition.
         /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public CapabilityStatus? Status { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the reason for the capability not being available.
-        /// </summary>
-        [JsonProperty(PropertyName = "reason")]
-        public string Reason { get; set; }
+        [JsonProperty(PropertyName = "zoneRedundant")]
+        public bool? ZoneRedundant { get; private set; }
 
     }
 }

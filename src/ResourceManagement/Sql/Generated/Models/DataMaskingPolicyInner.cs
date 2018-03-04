@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -34,6 +32,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         /// <param name="dataMaskingState">The state of the data masking
         /// policy. Possible values include: 'Disabled', 'Enabled'</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="exemptPrincipals">The list of the exempt principals.
         /// Specifies the semicolon-separated list of database users for which
         /// the data masking policy does not apply. The specified users receive
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// policy.</param>
         /// <param name="kind">The kind of data masking policy. Metadata, used
         /// for Azure portal.</param>
-        public DataMaskingPolicyInner(DataMaskingState dataMaskingState, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string exemptPrincipals = default(string), string applicationPrincipals = default(string), string maskingLevel = default(string), string kind = default(string))
+        public DataMaskingPolicyInner(DataMaskingState dataMaskingState, string id = default(string), string name = default(string), string type = default(string), string exemptPrincipals = default(string), string applicationPrincipals = default(string), string maskingLevel = default(string), string location = default(string), string kind = default(string))
             : base(id, name, type)
         {
             DataMaskingState = dataMaskingState;

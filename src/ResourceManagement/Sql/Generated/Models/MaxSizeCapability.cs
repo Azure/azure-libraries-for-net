@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The maximum size capability.
+    /// The maximum size limits for a database.
     /// </summary>
     public partial class MaxSizeCapability
     {
@@ -27,21 +27,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the MaxSizeCapability class.
         /// </summary>
-        /// <param name="limit">The maximum size limit (see 'unit' for the
-        /// units).</param>
+        /// <param name="limit">The maximum size of the database (see 'unit'
+        /// for the units).</param>
         /// <param name="unit">The units that the limit is expressed in.
         /// Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes',
         /// 'Petabytes'</param>
-        /// <param name="status">The status of the capability. Possible values
-        /// include: 'Visible', 'Available', 'Default', 'Disabled'</param>
-        /// <param name="reason">The reason for the capability not being
-        /// available.</param>
-        public MaxSizeCapability(int? limit = default(int?), MaxSizeUnits? unit = default(MaxSizeUnits?), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        /// <param name="status">The status of the maximum size capability.
+        /// Possible values include: 'Visible', 'Available', 'Default',
+        /// 'Disabled'</param>
+        public MaxSizeCapability(long limit = default(long), MaxSizeUnits? unit = default(MaxSizeUnits?), CapabilityStatus? status = default(CapabilityStatus?))
         {
             Limit = limit;
             Unit = unit;
             Status = status;
-            Reason = reason;
             CustomInit();
         }
 
@@ -51,10 +49,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the maximum size limit (see 'unit' for the units).
+        /// Gets the maximum size of the database (see 'unit' for the units).
         /// </summary>
         [JsonProperty(PropertyName = "limit")]
-        public int? Limit { get; private set; }
+        public long Limit { get; private set; }
 
         /// <summary>
         /// Gets the units that the limit is expressed in. Possible values
@@ -64,17 +62,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         public MaxSizeUnits? Unit { get; private set; }
 
         /// <summary>
-        /// Gets the status of the capability. Possible values include:
-        /// 'Visible', 'Available', 'Default', 'Disabled'
+        /// Gets the status of the maximum size capability. Possible values
+        /// include: 'Visible', 'Available', 'Default', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public CapabilityStatus? Status { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the reason for the capability not being available.
-        /// </summary>
-        [JsonProperty(PropertyName = "reason")]
-        public string Reason { get; set; }
 
     }
 }

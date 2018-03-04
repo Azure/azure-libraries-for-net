@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -34,13 +32,18 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the TransparentDataEncryptionActivity
         /// class.
         /// </summary>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
+        /// <param name="location">Resource location.</param>
         /// <param name="status">The status of the database. Possible values
         /// include: 'Encrypting', 'Decrypting'</param>
         /// <param name="percentComplete">The percent complete of the
         /// transparent data encryption scan for a database.</param>
-        public TransparentDataEncryptionActivity(string id = default(string), string name = default(string), string type = default(string), string status = default(string), double? percentComplete = default(double?))
+        public TransparentDataEncryptionActivity(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string status = default(string), double? percentComplete = default(double?))
             : base(id, name, type)
         {
+            Location = location;
             Status = status;
             PercentComplete = percentComplete;
             CustomInit();
@@ -50,6 +53,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets resource location.
+        /// </summary>
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; private set; }
 
         /// <summary>
         /// Gets the status of the database. Possible values include:

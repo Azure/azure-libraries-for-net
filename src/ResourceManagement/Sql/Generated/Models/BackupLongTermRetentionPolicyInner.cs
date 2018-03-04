@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -38,9 +36,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// policy. Possible values include: 'Disabled', 'Enabled'</param>
         /// <param name="recoveryServicesBackupPolicyResourceId">The azure
         /// recovery services backup protection policy resource id</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
-        public BackupLongTermRetentionPolicyInner(BackupLongTermRetentionPolicyState state, string recoveryServicesBackupPolicyResourceId, string location = default(string), string id = default(string), string name = default(string), string type = default(string))
+        public BackupLongTermRetentionPolicyInner(BackupLongTermRetentionPolicyState state, string recoveryServicesBackupPolicyResourceId, string id = default(string), string name = default(string), string type = default(string), string location = default(string))
             : base(id, name, type)
         {
             Location = location;

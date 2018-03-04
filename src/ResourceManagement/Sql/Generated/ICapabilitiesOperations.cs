@@ -22,11 +22,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     public partial interface ICapabilitiesOperations
     {
         /// <summary>
-        /// Gets the subscription capabilities available for the specified
-        /// location.
+        /// Gets the capabilities available for the specified location.
         /// </summary>
-        /// <param name='locationName'>
-        /// The location name whose capabilities are retrieved.
+        /// <param name='locationId'>
+        /// The location id whose capabilities are retrieved.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,6 +42,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LocationCapabilitiesInner>> ListByLocationWithHttpMessagesAsync(string locationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<LocationCapabilitiesInner>> ListByLocationWithHttpMessagesAsync(string locationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

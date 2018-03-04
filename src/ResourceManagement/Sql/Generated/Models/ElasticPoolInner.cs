@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the ElasticPoolInner class.
         /// </summary>
         /// <param name="location">Resource location.</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="creationDate">The creation date of the elastic pool
         /// (ISO8601 format).</param>
@@ -58,7 +61,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// will be spread across multiple availability zones.</param>
         /// <param name="kind">Kind of elastic pool.  This is metadata used for
         /// the Azure portal experience.</param>
-        public ElasticPoolInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? creationDate = default(System.DateTime?), string state = default(string), string edition = default(string), int? dtu = default(int?), int? databaseDtuMax = default(int?), int? databaseDtuMin = default(int?), int? storageMB = default(int?), bool? zoneRedundant = default(bool?), string kind = default(string))
+        public ElasticPoolInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), System.DateTime? creationDate = default(System.DateTime?), string state = default(string), string edition = default(string), int? dtu = default(int?), int? databaseDtuMax = default(int?), int? databaseDtuMin = default(int?), int? storageMB = default(int?), bool? zoneRedundant = default(bool?), string kind = default(string))
             : base(location, id, name, type, tags)
         {
             CreationDate = creationDate;

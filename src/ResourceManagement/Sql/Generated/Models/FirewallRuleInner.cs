@@ -39,11 +39,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Must be IPv4 format. Must be greater than or equal to
         /// startIpAddress. Use value '0.0.0.0' to represent all Azure-internal
         /// IP addresses.</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="kind">Kind of server that contains this firewall
         /// rule.</param>
         /// <param name="location">Location of the server that contains this
         /// firewall rule.</param>
-        public FirewallRuleInner(string startIpAddress, string endIpAddress, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string kind = default(string))
+        public FirewallRuleInner(string startIpAddress, string endIpAddress, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string location = default(string))
             : base(id, name, type)
         {
             Kind = kind;

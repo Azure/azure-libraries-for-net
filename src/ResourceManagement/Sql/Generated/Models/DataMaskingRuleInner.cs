@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -41,6 +39,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="maskingFunction">The masking function that is used for
         /// the data masking rule. Possible values include: 'Default', 'CCN',
         /// 'Email', 'Number', 'SSN', 'Text'</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="dataMaskingRuleId">The rule Id.</param>
         /// <param name="aliasName">The alias name. This is a legacy parameter
         /// and is no longer used.</param>
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// rule.</param>
         /// <param name="kind">The kind of Data Masking Rule. Metadata, used
         /// for Azure portal.</param>
-        public DataMaskingRuleInner(string schemaName, string tableName, string columnName, DataMaskingFunction maskingFunction, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string dataMaskingRuleId = default(string), string aliasName = default(string), DataMaskingRuleState? ruleState = default(DataMaskingRuleState?), string numberFrom = default(string), string numberTo = default(string), string prefixSize = default(string), string suffixSize = default(string), string replacementString = default(string), string kind = default(string))
+        public DataMaskingRuleInner(string schemaName, string tableName, string columnName, DataMaskingFunction maskingFunction, string id = default(string), string name = default(string), string type = default(string), string dataMaskingRuleId = default(string), string aliasName = default(string), DataMaskingRuleState? ruleState = default(DataMaskingRuleState?), string numberFrom = default(string), string numberTo = default(string), string prefixSize = default(string), string suffixSize = default(string), string replacementString = default(string), string location = default(string), string kind = default(string))
             : base(id, name, type)
         {
             DataMaskingRuleId = dataMaskingRuleId;
@@ -85,6 +86,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
             PrefixSize = prefixSize;
             SuffixSize = suffixSize;
             ReplacementString = replacementString;
+            Location = location;
             Kind = kind;
             CustomInit();
         }

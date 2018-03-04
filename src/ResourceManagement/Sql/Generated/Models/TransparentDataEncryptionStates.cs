@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// Defines values for TransparentDataEncryptionStates.
+    /// Defines values for TransparentDataEncryptionStatus.
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum TransparentDataEncryptionStates

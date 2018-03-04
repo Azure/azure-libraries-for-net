@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public SqlManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the subscription capabilities available for the specified location.
+        /// Gets the capabilities available for the specified location.
         /// </summary>
-        /// <param name='locationName'>
-        /// The location name whose capabilities are retrieved.
+        /// <param name='locationId'>
+        /// The location id whose capabilities are retrieved.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -75,17 +75,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<LocationCapabilitiesInner>> ListByLocationWithHttpMessagesAsync(string locationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<LocationCapabilitiesInner>> ListByLocationWithHttpMessagesAsync(string locationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (locationName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "locationName");
-            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2015-05-01";
+            if (locationId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "locationId");
+            }
+            string apiVersion = "2014-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -93,16 +93,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("locationName", locationName);
                 tracingParameters.Add("apiVersion", apiVersion);
+                tracingParameters.Add("locationId", locationId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListByLocation", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/capabilities").ToString();
-            _url = _url.Replace("{locationName}", System.Uri.EscapeDataString(locationName));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationId}/capabilities").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{locationId}", System.Uri.EscapeDataString(locationId));
             List<string> _queryParameters = new List<string>();
             if (apiVersion != null)
             {

@@ -20,20 +20,20 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     public static partial class CapabilitiesOperationsExtensions
     {
             /// <summary>
-            /// Gets the subscription capabilities available for the specified location.
+            /// Gets the capabilities available for the specified location.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='locationName'>
-            /// The location name whose capabilities are retrieved.
+            /// <param name='locationId'>
+            /// The location id whose capabilities are retrieved.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LocationCapabilitiesInner> ListByLocationAsync(this ICapabilitiesOperations operations, string locationName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LocationCapabilitiesInner> ListByLocationAsync(this ICapabilitiesOperations operations, string locationId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(locationName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(locationId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

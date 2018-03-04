@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -35,6 +33,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="serverKeyType">The encryption protector type like
         /// 'ServiceManaged', 'AzureKeyVault'. Possible values include:
         /// 'ServiceManaged', 'AzureKeyVault'</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="kind">Kind of encryption protector. This is metadata
         /// used for the Azure portal experience.</param>
         /// <param name="location">Resource location.</param>
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="serverKeyName">The name of the server key.</param>
         /// <param name="uri">The URI of the server key.</param>
         /// <param name="thumbprint">Thumbprint of the server key.</param>
-        public EncryptionProtectorInner(string serverKeyType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string subregion = default(string), string serverKeyName = default(string), string uri = default(string), string thumbprint = default(string))
+        public EncryptionProtectorInner(string serverKeyType, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string location = default(string), string subregion = default(string), string serverKeyName = default(string), string uri = default(string), string thumbprint = default(string))
             : base(id, name, type)
         {
             Kind = kind;

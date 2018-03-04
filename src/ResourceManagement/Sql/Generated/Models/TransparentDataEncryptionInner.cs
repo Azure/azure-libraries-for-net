@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -34,10 +32,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the TransparentDataEncryptionInner
         /// class.
         /// </summary>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="location">Resource location.</param>
         /// <param name="status">The status of the database transparent data
         /// encryption. Possible values include: 'Enabled', 'Disabled'</param>
-        public TransparentDataEncryptionInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), TransparentDataEncryptionStates? status = default(TransparentDataEncryptionStates?))
+        public TransparentDataEncryptionInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), TransparentDataEncryptionStates? status = default(TransparentDataEncryptionStates?))
             : base(id, name, type)
         {
             Location = location;
