@@ -47,18 +47,22 @@ namespace ManageBatchAI
             {
                 //=============================================================
                 // Create a new storage account and an Azure file share resource
-
+                Utilities.Log("Creating a storage account...");
                 IStorageAccount storageAccount = azure.StorageAccounts.Define(saName)
                     .WithRegion(region)
                     .WithNewResourceGroup(rgName)
                     .Create();
+                Utilities.Log("Created storage account.");
+                Utilities.Log(storageAccount);
 
                 StorageAccountKey storageAccountKey = storageAccount.GetKeys().First();
 
+                Utilities.Log("Creating Azure File share...");
                 var cloudFileShare = CloudStorageAccount.Parse($"DefaultEndpointsProtocol=https;AccountName={saName};AccountKey={storageAccountKey.Value};EndpointSuffix=core.windows.net")
                     .CreateCloudFileClient()
                     .GetShareReference(shareName);
                 cloudFileShare.CreateAsync().GetAwaiter().GetResult();
+                Utilities.Log("Created Azure File share.");
 
                 //=============================================================
                 // Upload sample data to Azure file share
@@ -67,15 +71,18 @@ namespace ManageBatchAI
                 CloudFileDirectory rootDir = cloudFileShare.GetRootDirectoryReference();
 
                 //Get a reference to the sampledir directory
+                Utilities.Log("Creating directory and uploading data files...");
                 CloudFileDirectory sampleDir = rootDir.GetDirectoryReference(sharePath);
                 sampleDir.CreateAsync().GetAwaiter().GetResult();
 
                 sampleDir.GetFileReference("Train-28x28_cntk_text.txt").UploadFromFileAsync(sampleDataPath + "/Train-28x28_cntk_text.txt").GetAwaiter().GetResult();
                 sampleDir.GetFileReference("Test-28x28_cntk_text.txt").UploadFromFileAsync(sampleDataPath + "/Test-28x28_cntk_text.txt").GetAwaiter().GetResult();
                 sampleDir.GetFileReference("ConvNet_MNIST.py").UploadFromFileAsync(sampleDataPath + "/ConvNet_MNIST.py").GetAwaiter().GetResult();
+                Utilities.Log("Data files uploaded.");
 
                 //=============================================================
                 // Create Batch AI cluster that uses Azure file share to host the training data and scripts for the learning job
+                Utilities.Log("Creating Batch AI cluster...");
                 IBatchAICluster cluster = azure.BatchAIClusters.Define(clusterName)
                     .WithRegion(region)
                     .WithNewResourceGroup(rgName)
@@ -90,9 +97,11 @@ namespace ManageBatchAI
                         .WithAccountKey(storageAccountKey.Value)
                         .Attach()
                     .Create();
+                Utilities.Log("Created Batch AI cluster.");
 
                 // =============================================================
                 // Create Microsoft Cognitive Toolkit job to run on the cluster
+                Utilities.Log("Creating Batch AI job...");
                 IBatchAIJob job = cluster.Jobs.Define("myJob")
                     .WithRegion(region)
                     .WithNodeCount(1)
@@ -105,6 +114,7 @@ namespace ManageBatchAI
                     .WithOutputDirectory("MODEL", "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/model")
                     .WithContainerImage("microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0")
                     .Create();
+                Utilities.Log("Created Batch AI job.");
 
                 // =============================================================
                 // Wait for job results
@@ -112,6 +122,7 @@ namespace ManageBatchAI
                 // Wait for job to start running
                 while (ExecutionState.Queued.Equals(job.ExecutionState))
                 {
+                    Utilities.Log("Waiting for Batch AI job to start running...");
                     SdkContext.DelayProvider.Delay(5000);
                     job.Refresh();
                 }
@@ -119,6 +130,7 @@ namespace ManageBatchAI
                 // Wait for job to complete and job output to become available
                 while (!(ExecutionState.Succeeded.Equals(job.ExecutionState) || ExecutionState.Failed.Equals(job.ExecutionState)))
                 {
+                    Utilities.Log("Waiting for Batch AI job to complete...");
                     SdkContext.DelayProvider.Delay(5000);
                     job.Refresh();
                 }
