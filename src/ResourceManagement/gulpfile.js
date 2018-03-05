@@ -100,7 +100,6 @@ var codegen = function (project, cb) {
     const autorestUseArg = `--use=${generatorPath}`;
 
     cmd = autoRestExe + ' ' + specRoot + "/" + mappings[project].source +
-        ' --use=@microsoft.azure/autorest.csharp@preview' +
         ' --csharp ' +
         ' --azure-arm ' +
         generator +
