@@ -2086,7 +2086,7 @@ namespace Microsoft.Azure.Management.Samples.Common
             Utilities.Log(sb.ToString());
         }
 
-        public static void Log(IEventHubNamespace resource)
+        public static void Print(IEventHubNamespace resource)
         {
             StringBuilder eh = new StringBuilder("Eventhub Namespace: ")
                 .Append("Eventhub Namespace: ").Append(resource.Id)

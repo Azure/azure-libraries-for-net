@@ -3,22 +3,22 @@
 namespace Microsoft.Azure.Management.Sql.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Models;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
 
     /// <summary>
     /// Implementation for TransparentDataEncryptionActivity.
     /// </summary>
-    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5UcmFuc3BhcmVudERhdGFFbmNyeXB0aW9uQWN0aXZpdHlJbXBs
-    internal partial class TransparentDataEncryptionActivityImpl :
+///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5UcmFuc3BhcmVudERhdGFFbmNyeXB0aW9uQWN0aXZpdHlJbXBs
+    internal partial class TransparentDataEncryptionActivityImpl  :
         Wrapper<Models.TransparentDataEncryptionActivity>,
         ITransparentDataEncryptionActivity
     {
         private ResourceId resourceId;
 
         ///GENMHASH:EBE49FE507369AC7A8F4328AF938B32D:95FDB4476A86D2D89C844159139FF9F4
-        internal TransparentDataEncryptionActivityImpl(TransparentDataEncryptionActivity innerObject) : base(innerObject)
+        public TransparentDataEncryptionActivityImpl(TransparentDataEncryptionActivity innerObject) : base(innerObject)
         {
-            this.resourceId = ResourceId.FromString(Inner.Id);
+            this.resourceId = ResourceId.FromString(this.Inner.Id);
         }
 
         ///GENMHASH:E9EDBD2E8DC2C547D1386A58778AA6B9:9FE42D967416923E070F823D07063A47
@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:64FDD7DAC0F2CAB9406652DA7545E8AA:60E139E176D51169A736C4BE93730827
         public double PercentComplete()
         {
-            return Inner.PercentComplete.GetValueOrDefault();
+            return this.Inner.PercentComplete.GetValueOrDefault();
         }
 
         ///GENMHASH:06F61EC9451A16F634AEB221D51F2F8C:1ABA34EF946CBD0278FAD778141792B2
         public string Status()
         {
-            return Inner.Status;
+            return this.Inner.Status;
         }
     }
 }

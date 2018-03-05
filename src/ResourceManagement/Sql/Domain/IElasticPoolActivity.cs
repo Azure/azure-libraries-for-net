@@ -10,10 +10,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// An immutable client-side representation of an Azure SQL ElasticPool's Activity.
     /// </summary>
     public interface IElasticPoolActivity  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ElasticPoolActivityInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ElasticPoolActivity>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasResourceGroup,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId,
+        Microsoft.Azure.Management.Sql.Fluent.IElasticPoolActivityBeta
     {
         /// <summary>
         /// Gets the name of the Elastic Pool.
@@ -78,12 +79,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the time the operation started (ISO8601 format).
         /// </summary>
-        System.DateTime StartTime { get; }
+        System.DateTime? StartTime { get; }
 
         /// <summary>
         /// Gets the time the operation finished (ISO8601 format).
         /// </summary>
-        System.DateTime EndTime { get; }
+        System.DateTime? EndTime { get; }
 
         /// <summary>
         /// Gets the current state of the operation.

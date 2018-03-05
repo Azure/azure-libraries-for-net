@@ -2,11 +2,13 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Sql.Fluent
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Sql.Fluent.SqlServer.Databases;
-    using Microsoft.Azure.Management.Sql.Fluent.SqlServer.ElasticPools;
-    using Microsoft.Azure.Management.Sql.Fluent.SqlServer.FirewallRules;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.SqlDatabaseActionsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.SqlElasticPoolActionsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRuleOperations.SqlFirewallRuleActionsDefinition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update;
     using Microsoft.Azure.Management.Sql.Fluent.Models;
     using System.Collections.Generic;
@@ -15,6 +17,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// An immutable client-side representation of an Azure SQL Server.
     /// </summary>
     public interface ISqlServer  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Sql.Fluent.ISqlManager,Models.ServerInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Sql.Fluent.ISqlServer>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlServer.Update.IUpdate>
@@ -25,9 +28,58 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         string AdministratorLogin { get; }
 
         /// <summary>
-        /// Gets entry point to manage Databases in SqlServer.
+        /// Gets entry point to manage Databases for this SQL server.
         /// </summary>
-        SqlServer.Databases.IDatabases Databases { get; }
+        SqlDatabaseOperations.SqlDatabaseActionsDefinition.ISqlDatabaseActionsDefinition Databases { get; }
+
+        /// <summary>
+        /// Removes the Active Directory administrator from this server.
+        /// </summary>
+        void RemoveActiveDirectoryAdministrator();
+
+        /// <return>Returns the list of usages (ServerMetric) of Azure SQL Server.</return>
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServerMetric> ListUsages();
+
+        /// <return>Returns the list of usage metrics for an Azure SQL Server.</return>
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServerMetric> ListUsageMetrics();
+
+        /// <summary>
+        /// Gets fully qualified name of the SQL Server.
+        /// </summary>
+        string FullyQualifiedDomainName { get; }
+
+        /// <summary>
+        /// Gets the SQL Server "kind".
+        /// </summary>
+        string Kind { get; }
+
+        /// <summary>
+        /// Sets the Azure services default access to this server to false.
+        /// The firewall rule named "AllowAllWindowsAzureIps" will be removed from the SQL server.
+        /// </summary>
+        void RemoveAccessFromAzureServices();
+
+        /// <summary>
+        /// Gets returns entry point to manage the SQL Elastic Pools for this server.
+        /// </summary>
+        SqlElasticPoolOperations.SqlElasticPoolActionsDefinition.ISqlElasticPoolActionsDefinition ElasticPools { get; }
+
+        /// <return>The list of information on all service objectives.</return>
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceObjective> ListServiceObjectives();
+
+        /// <return>The list of all restorable dropped databases.</return>
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase> ListRestorableDroppedDatabases();
+
+        /// <summary>
+        /// Gets the SQL Server version.
+        /// </summary>
+        string Version { get; }
+
+        /// <summary>
+        /// Gets the Active Directory administrator for this server.
+        /// </summary>
+        /// <return>A representation of a SQL Server Active Directory administrator object (null if one is not set).</return>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlActiveDirectoryAdministrator GetActiveDirectoryAdministrator();
 
         /// <summary>
         /// Gets the information on a particular Sql Server Service Objective.
@@ -36,18 +88,23 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Information of the service objective.</return>
         Microsoft.Azure.Management.Sql.Fluent.IServiceObjective GetServiceObjective(string serviceObjectiveName);
 
-        /// <return>Returns the list of usages (ServerMetric) of Azure SQL Server.</return>
-        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServerMetric> ListUsages();
+        /// <summary>
+        /// Sets the Azure services default access to this server to true.
+        /// A firewall rule named "AllowAllWindowsAzureIps" with the start IP "0.0.0.0" will be added
+        /// to the SQL server if one does not exist.
+        /// </summary>
+        /// <return>The SQL Firewall rule.</return>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule EnableAccessFromAzureServices();
 
         /// <summary>
-        /// Gets fully qualified name of the SQL Server.
+        /// Sets an Active Directory administrator to this server.
+        /// Azure Active Directory authentication allows you to centrally manage identity and access
+        /// to your Azure SQL Database V12.
         /// </summary>
-        string FullyQualifiedDomainName { get; }
-
-        /// <summary>
-        /// Gets returns entry point to manage ElasticPools in SqlServer.
-        /// </summary>
-        SqlServer.ElasticPools.IElasticPools ElasticPools { get; }
+        /// <param name="userLogin">The user or group login; it can be the name or the email address.</param>
+        /// <param name="id">The user or group unique ID.</param>
+        /// <return>A representation of a SQL Server Active Directory administrator object.</return>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlActiveDirectoryAdministrator SetActiveDirectoryAdministrator(string userLogin, string id);
 
         /// <summary>
         /// Returns all the recommended elastic pools for the server.
@@ -55,17 +112,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>List of recommended elastic pools for the server.</return>
         System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool> ListRecommendedElasticPools();
 
-        /// <return>The list of information on all service objectives.</return>
-        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceObjective> ListServiceObjectives();
+        /// <summary>
+        /// Gets the state of the server.
+        /// </summary>
+        string State { get; }
 
         /// <summary>
-        /// Gets the version of the SQL Server.
+        /// Gets returns entry point to manage SQL Firewall rules for this server.
         /// </summary>
-        string Version { get; }
+        SqlFirewallRuleOperations.SqlFirewallRuleActionsDefinition.ISqlFirewallRuleActionsDefinition FirewallRules { get; }
 
-        /// <summary>
-        /// Gets returns entry point to manage FirewallRules in SqlServer.
-        /// </summary>
-        SqlServer.FirewallRules.IFirewallRules FirewallRules { get; }
+        /// <return>The list of all restorable dropped databases.</return>
+        Task<Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase> ListRestorableDroppedDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

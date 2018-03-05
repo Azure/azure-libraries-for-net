@@ -45,32 +45,32 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets or sets currentServiceLevelObjectiveId for service tier advisor.
+        /// Gets the service level objective usage metric for the service tier
+        /// advisor.
         /// </summary>
-        System.Guid Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.CurrentServiceLevelObjectiveId
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceLevelObjectiveUsageMetric> Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.ServiceLevelObjectiveUsageMetric
         {
             get
             {
-                return this.CurrentServiceLevelObjectiveId();
+                return this.ServiceLevelObjectiveUsageMetric() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceLevelObjectiveUsageMetric>;
             }
         }
 
         /// <summary>
-        /// Gets or sets maxDtu for service tier advisor.
+        /// Gets or sets minDtu for the service tier advisor.
         /// </summary>
-        double Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.MaxDtu
+        double Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.MinDtu
         {
             get
             {
-                return this.MaxDtu();
+                return this.MinDtu();
             }
         }
 
         /// <summary>
-        /// Gets or sets usageBasedRecommendationServiceLevelObjectiveId for
-        /// service tier advisor.
+        /// Gets the usage based recommendation service level objective ID for the service tier advisor.
         /// </summary>
-        System.Guid Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.UsageBasedRecommendationServiceLevelObjectiveId
+        System.Guid? Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.UsageBasedRecommendationServiceLevelObjectiveId
         {
             get
             {
@@ -79,21 +79,20 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets the observation period start (ISO8601 format).
+        /// Gets the confidence for service tier advisor.
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.ObservationPeriodEnd
+        double Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.Confidence
         {
             get
             {
-                return this.ObservationPeriodEnd();
+                return this.Confidence();
             }
         }
 
         /// <summary>
-        /// Gets or sets databaseSizeBasedRecommendationServiceLevelObjectiveId for
-        /// service tier advisor.
+        /// Gets the database size based recommendation service level objective ID for the service tier advisor.
         /// </summary>
-        System.Guid Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.DatabaseSizeBasedRecommendationServiceLevelObjectiveId
+        System.Guid? Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.DatabaseSizeBasedRecommendationServiceLevelObjectiveId
         {
             get
             {
@@ -102,7 +101,29 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets or sets avgDtu for service tier advisor.
+        /// Gets the current service level Objective for the service tier advisor.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.CurrentServiceLevelObjective
+        {
+            get
+            {
+                return this.CurrentServiceLevelObjective();
+            }
+        }
+
+        /// <summary>
+        /// Gets the observation period start (ISO8601 format).
+        /// </summary>
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.ObservationPeriodStart
+        {
+            get
+            {
+                return this.ObservationPeriodStart();
+            }
+        }
+
+        /// <summary>
+        /// Gets the average DTU for the service tier advisor.
         /// </summary>
         double Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.AvgDtu
         {
@@ -113,26 +134,90 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets or sets databaseSizeBasedRecommendationServiceLevelObjective for
-        /// service tier advisor.
+        /// Gets the activeTimeRatio for the service tier advisor.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.DatabaseSizeBasedRecommendationServiceLevelObjective
+        double Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.ActiveTimeRatio
         {
             get
             {
-                return this.DatabaseSizeBasedRecommendationServiceLevelObjective();
+                return this.ActiveTimeRatio();
             }
         }
 
         /// <summary>
-        /// Gets or sets overallRecommendationServiceLevelObjective for service
-        /// tier advisor.
+        /// Gets the maximum DTU for the service tier advisor.
+        /// </summary>
+        double Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.MaxDtu
+        {
+            get
+            {
+                return this.MaxDtu();
+            }
+        }
+
+        /// <summary>
+        /// Gets the overall recommendation service level objective ID for the service tier advisor.
+        /// </summary>
+        System.Guid? Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.OverallRecommendationServiceLevelObjectiveId
+        {
+            get
+            {
+                return this.OverallRecommendationServiceLevelObjectiveId();
+            }
+        }
+
+        /// <summary>
+        /// Gets the overall recommendation service level objective for the service tier advisor.
         /// </summary>
         string Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.OverallRecommendationServiceLevelObjective
         {
             get
             {
                 return this.OverallRecommendationServiceLevelObjective();
+            }
+        }
+
+        /// <summary>
+        /// Gets the service level objective usage metrics for the service tier advisor.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISloUsageMetricInterface> Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.ServiceLevelObjectiveUsageMetrics
+        {
+            get
+            {
+                return this.ServiceLevelObjectiveUsageMetrics() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISloUsageMetricInterface>;
+            }
+        }
+
+        /// <summary>
+        /// Gets the disaster plan based recommendation service level objective for the service tier advisor.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.DisasterPlanBasedRecommendationServiceLevelObjective
+        {
+            get
+            {
+                return this.DisasterPlanBasedRecommendationServiceLevelObjective();
+            }
+        }
+
+        /// <summary>
+        /// Gets the current service level objective ID for the service tier advisor.
+        /// </summary>
+        System.Guid? Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.CurrentServiceLevelObjectiveId
+        {
+            get
+            {
+                return this.CurrentServiceLevelObjectiveId();
+            }
+        }
+
+        /// <summary>
+        /// Gets the disaster plan based recommendation service level objective ID for the service tier advisor.
+        /// </summary>
+        System.Guid? Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.DisasterPlanBasedRecommendationServiceLevelObjectiveId
+        {
+            get
+            {
+                return this.DisasterPlanBasedRecommendationServiceLevelObjectiveId();
             }
         }
 
@@ -148,36 +233,35 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets the observation period start (ISO8601 format).
-        /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.ObservationPeriodStart
-        {
-            get
-            {
-                return this.ObservationPeriodStart();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets overallRecommendationServiceLevelObjectiveId for service
-        /// tier advisor.
-        /// </summary>
-        System.Guid Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.OverallRecommendationServiceLevelObjectiveId
-        {
-            get
-            {
-                return this.OverallRecommendationServiceLevelObjectiveId();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets maxSizeInGB for service tier advisor.
+        /// Gets the maximum size in GB for the service tier advisor.
         /// </summary>
         double Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.MaxSizeInGB
         {
             get
             {
                 return this.MaxSizeInGB();
+            }
+        }
+
+        /// <summary>
+        /// Gets the usage based recommendation service level objective for the service tier advisor.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.UsageBasedRecommendationServiceLevelObjective
+        {
+            get
+            {
+                return this.UsageBasedRecommendationServiceLevelObjective();
+            }
+        }
+
+        /// <summary>
+        /// Gets the database size based recommendation service level objective for the service tier advisor.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.DatabaseSizeBasedRecommendationServiceLevelObjective
+        {
+            get
+            {
+                return this.DatabaseSizeBasedRecommendationServiceLevelObjective();
             }
         }
 
@@ -193,94 +277,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets or sets disasterPlanBasedRecommendationServiceLevelObjectiveId for
-        /// service tier advisor.
+        /// Gets the observation period start (ISO8601 format).
         /// </summary>
-        System.Guid Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.DisasterPlanBasedRecommendationServiceLevelObjectiveId
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.ObservationPeriodEnd
         {
             get
             {
-                return this.DisasterPlanBasedRecommendationServiceLevelObjectiveId();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets currentServiceLevelObjective for service tier advisor.
-        /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.CurrentServiceLevelObjective
-        {
-            get
-            {
-                return this.CurrentServiceLevelObjective();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets disasterPlanBasedRecommendationServiceLevelObjective for
-        /// service tier advisor.
-        /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.DisasterPlanBasedRecommendationServiceLevelObjective
-        {
-            get
-            {
-                return this.DisasterPlanBasedRecommendationServiceLevelObjective();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets minDtu for service tier advisor.
-        /// </summary>
-        double Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.MinDtu
-        {
-            get
-            {
-                return this.MinDtu();
-            }
-        }
-
-        /// <summary>
-        /// Gets serviceLevelObjectiveUsageMetrics for the service tier
-        /// advisor.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISloUsageMetricInterface> Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.ServiceLevelObjectiveUsageMetrics
-        {
-            get
-            {
-                return this.ServiceLevelObjectiveUsageMetrics() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISloUsageMetricInterface>;
-            }
-        }
-
-        /// <summary>
-        /// Gets the activeTimeRatio for service tier advisor.
-        /// </summary>
-        double Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.ActiveTimeRatio
-        {
-            get
-            {
-                return this.ActiveTimeRatio();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets confidence for service tier advisor.
-        /// </summary>
-        double Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.Confidence
-        {
-            get
-            {
-                return this.Confidence();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets usageBasedRecommendationServiceLevelObjective for service
-        /// tier advisor.
-        /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.IServiceTierAdvisor.UsageBasedRecommendationServiceLevelObjective
-        {
-            get
-            {
-                return this.UsageBasedRecommendationServiceLevelObjective();
+                return this.ObservationPeriodEnd();
             }
         }
     }

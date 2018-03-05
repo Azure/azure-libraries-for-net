@@ -10,7 +10,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// An immutable client-side representation of an Azure SQL database's Restore Point.
     /// </summary>
     public interface IRestorePoint  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.RestorePointInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.RestorePoint>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasResourceGroup,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId
@@ -24,12 +25,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Gets restore point creation time (ISO8601 format). Populated when
         /// restorePointType = CONTINUOUS. Null otherwise.
         /// </summary>
-        System.DateTime RestorePointCreationDate { get; }
+        System.DateTime? RestorePointCreationDate { get; }
 
         /// <summary>
         /// Gets name of the SQL Server to which this replication belongs.
         /// </summary>
         string SqlServerName { get; }
+
+        /// <summary>
+        /// Gets the ID of the SQL Database to which this replication belongs.
+        /// </summary>
+        string DatabaseId { get; }
 
         /// <summary>
         /// Gets the restore point type of the Azure SQL Database restore point.
@@ -40,6 +46,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Gets earliest restore time (ISO8601 format). Populated when restorePointType
         /// = DISCRETE. Null otherwise.
         /// </summary>
-        System.DateTime EarliestRestoreDate { get; }
+        System.DateTime? EarliestRestoreDate { get; }
     }
 }

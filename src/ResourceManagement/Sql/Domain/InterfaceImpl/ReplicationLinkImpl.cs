@@ -34,6 +34,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the location of the server that contains this replication link.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.IReplicationLinkBeta.Location
+        {
+            get
+            {
+                return this.Location();
+            }
+        }
+
+        /// <summary>
         /// Forces fail over the Azure SQL Database Replication Link which may result in data loss.
         /// </summary>
         /// <return>A representation of the deferred computation of this call.</return>
@@ -41,6 +52,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
  
             await this.ForceFailoverAllowDataLossAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets the replication mode of this replication link.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.IReplicationLinkBeta.ReplicationMode
+        {
+            get
+            {
+                return this.ReplicationMode();
+            }
         }
 
         /// <summary>
@@ -77,7 +99,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets start time for the replication link (ISO8601 format).
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IReplicationLink.StartTime
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IReplicationLink.StartTime
         {
             get
             {
@@ -93,6 +115,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.PartnerDatabase();
+            }
+        }
+
+        /// <summary>
+        /// Gets the legacy value indicating whether termination is allowed (currently always returns true).
+        /// </summary>
+        bool Microsoft.Azure.Management.Sql.Fluent.IReplicationLinkBeta.IsTerminationAllowed
+        {
+            get
+            {
+                return this.IsTerminationAllowed();
             }
         }
 

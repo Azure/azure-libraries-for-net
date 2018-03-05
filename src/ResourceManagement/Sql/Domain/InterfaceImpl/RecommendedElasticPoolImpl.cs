@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// ElasticPoolEditions enumeration contains all the valid editions.
         /// Possible values include: 'Basic', 'Standard', 'Premium'.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool.DatabaseEdition
+        string Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolBeta.DatabaseEdition
         {
             get
             {
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the observation period start (ISO8601 format).
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool.ObservationPeriodStart
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool.ObservationPeriodStart
         {
             get
             {
@@ -130,6 +130,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Get a specific database in the recommended database.
+        /// </summary>
+        /// <param name="databaseName">Name of the database to be fetched.</param>
+        /// <return>A representation of the deferred computation to get the database in the recommended elastic pool.</return>
+        async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolBeta.GetDatabaseAsync(string databaseName, CancellationToken cancellationToken)
+        {
+            return await this.GetDatabaseAsync(databaseName, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+        }
+
+        /// <summary>
         /// Gets name of the SQL Server to which this database belongs.
         /// </summary>
         string Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool.SqlServerName
@@ -154,7 +164,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets the observation period start (ISO8601 format).
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool.ObservationPeriodEnd
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool.ObservationPeriodEnd
         {
             get
             {
@@ -171,6 +181,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 return this.StorageMB();
             }
+        }
+
+        /// <summary>
+        /// Fetches list of databases by making call to Azure.
+        /// </summary>
+        /// <return>A representation of the deferred computation of the databases in this recommended elastic pool.</return>
+        async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>> Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolBeta.ListDatabasesAsync(CancellationToken cancellationToken)
+        {
+            return await this.ListDatabasesAsync(cancellationToken) as IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>;
         }
 
         /// <summary>
@@ -192,6 +211,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.ResourceGroupName();
+            }
+        }
+
+        /// <summary>
+        /// Gets the manager client of this resource type.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlManager Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.Sql.Fluent.ISqlManager>.Manager
+        {
+            get
+            {
+                return this.Manager() as Microsoft.Azure.Management.Sql.Fluent.ISqlManager;
             }
         }
     }

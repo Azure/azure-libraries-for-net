@@ -20,6 +20,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the serviceLevelObjectiveId for SLO usage metric.
+        /// </summary>
+        System.Guid? Microsoft.Azure.Management.Sql.Fluent.ISloUsageMetricInterface.ServiceLevelObjectiveId
+        {
+            get
+            {
+                return this.ServiceLevelObjectiveId();
+            }
+        }
+
+        /// <summary>
         /// Gets inRangeTimeRatio for SLO usage metric.
         /// </summary>
         double Microsoft.Azure.Management.Sql.Fluent.ISloUsageMetricInterface.InRangeTimeRatio
@@ -27,17 +38,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.InRangeTimeRatio();
-            }
-        }
-
-        /// <summary>
-        /// Gets the serviceLevelObjectiveId for SLO usage metric.
-        /// </summary>
-        System.Guid Microsoft.Azure.Management.Sql.Fluent.ISloUsageMetricInterface.ServiceLevelObjectiveId
-        {
-            get
-            {
-                return this.ServiceLevelObjectiveId();
             }
         }
     }

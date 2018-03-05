@@ -2,8 +2,55 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Sql.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
+
+    /// <summary>
+    /// The SQL Database definition to set the Max Size in Bytes for database.
+    /// </summary>
+    public interface IWithMaxSizeBytes 
+    {
+        /// <summary>
+        /// Sets the max size in bytes for SQL Database.
+        /// </summary>
+        /// <param name="maxSizeBytes">
+        /// Max size of the Azure SQL Database expressed in bytes. Note: Only
+        /// the following sizes are supported (in addition to limitations being
+        /// placed on each edition): { 100 MB | 500 MB |1 GB | 5 GB | 10 GB | 20
+        /// GB | 30 GB … 150 GB | 200 GB … 500 GB }.
+        /// </param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithMaxSizeBytes(long maxSizeBytes);
+    }
+
+    /// <summary>
+    /// The SQL Database definition to set the service level objective.
+    /// </summary>
+    public interface IWithServiceObjective 
+    {
+        /// <summary>
+        /// Sets the service level objective for the SQL Database.
+        /// </summary>
+        /// <param name="serviceLevelObjective">Service level objected for the SQL Database.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithServiceObjective(string serviceLevelObjective);
+    }
+
+    /// <summary>
+    /// The SQL Database definition to set the edition for database.
+    /// </summary>
+    public interface IWithEdition  :
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IWithEditionBeta
+    {
+        /// <summary>
+        /// Sets the edition for the SQL Database.
+        /// </summary>
+        /// <param name="edition">Edition to be set for database.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithEdition(string edition);
+
+    }
 
     /// <summary>
     /// The SQL Database definition to set the elastic pool for database.
@@ -39,58 +86,64 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update
     }
 
     /// <summary>
-    /// The SQL Database definition to set the edition for database.
-    /// </summary>
-    public interface IWithEdition 
-    {
-        /// <summary>
-        /// Sets the edition for the SQL Database.
-        /// </summary>
-        /// <param name="edition">Edition to be set for database.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithEdition(string edition);
-    }
-
-    /// <summary>
-    /// The SQL Database definition to set the service level objective.
-    /// </summary>
-    public interface IWithServiceObjective 
-    {
-        /// <summary>
-        /// Sets the service level objective for the SQL Database.
-        /// </summary>
-        /// <param name="serviceLevelObjective">Service level objected for the SQL Database.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithServiceObjective(string serviceLevelObjective);
-    }
-
-    /// <summary>
-    /// The template for a SQLDatabase modifyState operation, containing all the settings that can be modified.
+    /// The template for a SqlDatabase update operation, containing all the settings that can be modified.
     /// </summary>
     public interface IUpdate  :
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IWithEdition,
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IWithElasticPoolName,
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IWithMaxSizeBytes,
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IWithServiceObjective,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>
     {
     }
 
     /// <summary>
-    /// The SQL Database definition to set the Max Size in Bytes for database.
+    /// The SQL Database definition to set the edition for database.
     /// </summary>
-    public interface IWithMaxSizeBytes 
+    public interface IWithEditionBeta  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>
-        /// Sets the max size in bytes for SQL Database.
+        /// Sets a "Standard" edition for the SQL Database.
         /// </summary>
-        /// <param name="maxSizeBytes">
-        /// Max size of the Azure SQL Database expressed in bytes. Note: Only
-        /// the following sizes are supported (in addition to limitations being
-        /// placed on each edition): { 100 MB | 500 MB |1 GB | 5 GB | 10 GB | 20
-        /// GB | 30 GB … 150 GB | 200 GB … 500 GB }.
-        /// </param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithMaxSizeBytes(long maxSizeBytes);
+        /// <param name="serviceObjective">Edition to be set for database.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithStandardEdition(SqlDatabaseStandardServiceObjective serviceObjective);
+
+        /// <summary>
+        /// Sets a "Standard" edition and maximum storage capacity for the SQL Database.
+        /// </summary>
+        /// <param name="serviceObjective">Edition to be set for database.</param>
+        /// <param name="maxStorageCapacity">Edition to be set for database.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithStandardEdition(SqlDatabaseStandardServiceObjective serviceObjective, SqlDatabaseStandardStorage maxStorageCapacity);
+
+        /// <summary>
+        /// Sets a "Premium" edition for the SQL Database.
+        /// </summary>
+        /// <param name="serviceObjective">Edition to be set for database.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithPremiumEdition(SqlDatabasePremiumServiceObjective serviceObjective);
+
+        /// <summary>
+        /// Sets a "Premium" edition and maximum storage capacity for the SQL Database.
+        /// </summary>
+        /// <param name="serviceObjective">Edition to be set for database.</param>
+        /// <param name="maxStorageCapacity">Edition to be set for database.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithPremiumEdition(SqlDatabasePremiumServiceObjective serviceObjective, SqlDatabasePremiumStorage maxStorageCapacity);
+
+        /// <summary>
+        /// Sets a "Basic" edition for the SQL Database.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithBasicEdition();
+
+        /// <summary>
+        /// Sets a "Basic" edition and maximum storage capacity for the SQL Database.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate WithBasicEdition(SqlDatabaseBasicStorage maxStorageCapacity);
     }
 }

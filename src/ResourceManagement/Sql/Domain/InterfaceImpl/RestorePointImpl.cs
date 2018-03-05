@@ -23,23 +23,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Gets earliest restore time (ISO8601 format). Populated when restorePointType
         /// = DISCRETE. Null otherwise.
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IRestorePoint.EarliestRestoreDate
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IRestorePoint.EarliestRestoreDate
         {
             get
             {
                 return this.EarliestRestoreDate();
-            }
-        }
-
-        /// <summary>
-        /// Gets restore point creation time (ISO8601 format). Populated when
-        /// restorePointType = CONTINUOUS. Null otherwise.
-        /// </summary>
-        System.DateTime Microsoft.Azure.Management.Sql.Fluent.IRestorePoint.RestorePointCreationDate
-        {
-            get
-            {
-                return this.RestorePointCreationDate();
             }
         }
 
@@ -66,6 +54,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the ID of the SQL Database to which this replication belongs.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.IRestorePoint.DatabaseId
+        {
+            get
+            {
+                return this.DatabaseId();
+            }
+        }
+
+        /// <summary>
         /// Gets name of the SQL Database to which this replication belongs.
         /// </summary>
         string Microsoft.Azure.Management.Sql.Fluent.IRestorePoint.DatabaseName
@@ -77,13 +76,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets the resource ID string.
+        /// Gets restore point creation time (ISO8601 format). Populated when
+        /// restorePointType = CONTINUOUS. Null otherwise.
         /// </summary>
-        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId.Id
+        System.DateTime? Microsoft.Azure.Management.Sql.Fluent.IRestorePoint.RestorePointCreationDate
         {
             get
             {
-                return this.Id();
+                return this.RestorePointCreationDate();
             }
         }
 
@@ -95,6 +95,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.ResourceGroupName();
+            }
+        }
+
+        /// <summary>
+        /// Gets the resource ID string.
+        /// </summary>
+        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId.Id
+        {
+            get
+            {
+                return this.Id();
             }
         }
     }

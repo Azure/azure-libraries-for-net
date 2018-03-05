@@ -21,35 +21,24 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets the resource ID string.
+        /// Gets whether the service level objective is the default service objective.
         /// </summary>
-        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId.Id
+        bool Microsoft.Azure.Management.Sql.Fluent.IServiceObjective.IsDefault
         {
             get
             {
-                return this.Id();
+                return this.IsDefault();
             }
         }
 
         /// <summary>
-        /// Gets the name of the resource group.
+        /// Gets name of the SQL Server to which this service objective belongs.
         /// </summary>
-        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasResourceGroup.ResourceGroupName
+        string Microsoft.Azure.Management.Sql.Fluent.IServiceObjective.SqlServerName
         {
             get
             {
-                return this.ResourceGroupName();
-            }
-        }
-
-        /// <summary>
-        /// Gets the name for the service objective.
-        /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.IServiceObjective.ServiceObjectiveName
-        {
-            get
-            {
-                return this.ServiceObjectiveName();
+                return this.SqlServerName();
             }
         }
 
@@ -87,25 +76,35 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
-        /// Gets whether the service level objective is the default service
-        /// objective.
+        /// Gets the name for the service objective.
         /// </summary>
-        bool Microsoft.Azure.Management.Sql.Fluent.IServiceObjective.IsDefault
+        string Microsoft.Azure.Management.Sql.Fluent.IServiceObjective.ServiceObjectiveName
         {
             get
             {
-                return this.IsDefault();
+                return this.ServiceObjectiveName();
             }
         }
 
         /// <summary>
-        /// Gets name of the SQL Server to which this replication belongs.
+        /// Gets the name of the resource group.
         /// </summary>
-        string Microsoft.Azure.Management.Sql.Fluent.IServiceObjective.SqlServerName
+        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasResourceGroup.ResourceGroupName
         {
             get
             {
-                return this.SqlServerName();
+                return this.ResourceGroupName();
+            }
+        }
+
+        /// <summary>
+        /// Gets the resource ID string.
+        /// </summary>
+        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId.Id
+        {
+            get
+            {
+                return this.Id();
             }
         }
     }
