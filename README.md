@@ -564,9 +564,9 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ### Latest stable release
 
-**1.6** release builds are available on NuGet:
+**1.7** release builds are available on NuGet:
 
-|Azure Management Library                     | Package name                                        | Stable (1.6 release) |
+|Azure Management Library                     | Package name                                        | Stable (1.7 release) |
 |---------------------------------------------|-----------------------------------------------------|------------------------|
 |Azure Management Client (wrapper package)    | `Microsoft.Azure.Management.Fluent`                 | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) |
 |App Service (Web Apps and Functions)         | `Microsoft.Azure.Management.AppService.Fluent`      | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.AppService.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.AppService.Fluent/) |
