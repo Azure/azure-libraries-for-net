@@ -106,7 +106,8 @@ namespace ManageUserAssignedMSIEnabledVirtualMachine
                 List<String> commands = new List<string>
                 {
                     "git clone https://github.com/Azure-Samples/compute-dotnet-manage-vm-from-vm-with-msi-credentials.git",
-                    "cd compute-dotnet-manage-vm-from-vm-with-msi-credentials"
+                    "cd compute-dotnet-manage-vm-from-vm-with-msi-credentials",
+                    $"dotnet run {azure.SubscriptionId} {rgName1} {identity.ClientId}"
                 };
 
                 RunCommandOnVM(azure, virtualMachine, commands);
