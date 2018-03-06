@@ -75,9 +75,9 @@ namespace ManageBatchAI
                 CloudFileDirectory sampleDir = rootDir.GetDirectoryReference(sharePath);
                 sampleDir.CreateAsync().GetAwaiter().GetResult();
 
-                sampleDir.GetFileReference("Train-28x28_cntk_text.txt").UploadFromFileAsync(sampleDataPath + "/Train-28x28_cntk_text.txt").GetAwaiter().GetResult();
-                sampleDir.GetFileReference("Test-28x28_cntk_text.txt").UploadFromFileAsync(sampleDataPath + "/Test-28x28_cntk_text.txt").GetAwaiter().GetResult();
-                sampleDir.GetFileReference("ConvNet_MNIST.py").UploadFromFileAsync(sampleDataPath + "/ConvNet_MNIST.py").GetAwaiter().GetResult();
+                rootDir.GetFileReference("Train-28x28_cntk_text.txt").UploadFromFileAsync(sampleDataPath + "/Train-28x28_cntk_text.txt").GetAwaiter().GetResult();
+                rootDir.GetFileReference("Test-28x28_cntk_text.txt").UploadFromFileAsync(sampleDataPath + "/Test-28x28_cntk_text.txt").GetAwaiter().GetResult();
+                rootDir.GetFileReference("ConvNet_MNIST.py").UploadFromFileAsync(sampleDataPath + "/ConvNet_MNIST.py").GetAwaiter().GetResult();
                 Utilities.Log("Data files uploaded.");
 
                 //=============================================================
@@ -108,10 +108,9 @@ namespace ManageBatchAI
                     .WithNodeCount(1)
                     .WithStdOutErrPathPrefix("$AZ_BATCHAI_MOUNT_ROOT/azurefileshare")
                     .DefineCognitiveToolkit()
-                        .WithPythonScriptFile("$AZ_BATCHAI_INPUT_SAMPLE/ConvNet_MNIST.py")
-                        .WithCommandLineArgs("$AZ_BATCHAI_INPUT_SAMPLE $AZ_BATCHAI_OUTPUT_MODEL")
+                        .WithPythonScriptFile("$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/ConvNet_MNIST.py")
+                        .WithCommandLineArgs("$AZ_BATCHAI_MOUNT_ROOT/azurefileshare $AZ_BATCHAI_OUTPUT_MODEL")
                         .Attach()
-                    .WithInputDirectory("SAMPLE", "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/" + sharePath)
                     .WithOutputDirectory("MODEL", "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/model")
                     .WithContainerImage("microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0")
                     .Create();
