@@ -53,7 +53,7 @@ namespace ManageBatchAI
                     .WithNewResourceGroup(rgName)
                     .Create();
                 Utilities.Log("Created storage account.");
-                Utilities.Log(storageAccount);
+                Utilities.PrintStorageAccount(storageAccount);
 
                 StorageAccountKey storageAccountKey = storageAccount.GetKeys().First();
 
@@ -98,6 +98,7 @@ namespace ManageBatchAI
                         .Attach()
                     .Create();
                 Utilities.Log("Created Batch AI cluster.");
+                Utilities.Print(cluster);
 
                 // =============================================================
                 // Create Microsoft Cognitive Toolkit job to run on the cluster
@@ -115,22 +116,23 @@ namespace ManageBatchAI
                     .WithContainerImage("microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0")
                     .Create();
                 Utilities.Log("Created Batch AI job.");
+                Utilities.Print(job);
 
                 // =============================================================
                 // Wait for job results
 
                 // Wait for job to start running
+                Utilities.Log("Waiting for Batch AI job to start running...");
                 while (ExecutionState.Queued.Equals(job.ExecutionState))
                 {
-                    Utilities.Log("Waiting for Batch AI job to start running...");
                     SdkContext.DelayProvider.Delay(5000);
                     job.Refresh();
                 }
 
                 // Wait for job to complete and job output to become available
+                Utilities.Log("Waiting for Batch AI job to complete...");
                 while (!(ExecutionState.Succeeded.Equals(job.ExecutionState) || ExecutionState.Failed.Equals(job.ExecutionState)))
                 {
-                    Utilities.Log("Waiting for Batch AI job to complete...");
                     SdkContext.DelayProvider.Delay(5000);
                     job.Refresh();
                 }
