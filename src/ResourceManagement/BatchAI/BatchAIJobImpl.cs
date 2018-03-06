@@ -178,15 +178,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Models.ToolType.Parse(Inner.ToolType);
         }
 
-        private List<InputDirectory> EnsureInputDirectories()
-        {
-            if (createParameters.InputDirectories == null)
-            {
-                createParameters.InputDirectories = new List<InputDirectory>();
-            }
-            return createParameters.InputDirectories.ToList();
-        }
-
         internal void AttachCaffeSettings(CaffeImpl caffe)
         {
             createParameters.CaffeSettings = caffe.Inner;
@@ -301,7 +292,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public BatchAIJobImpl WithInputDirectory(string id, string path)
         {
-            EnsureInputDirectories().Add(new InputDirectory(id, path));
+            if (createParameters.InputDirectories == null)
+            {
+                createParameters.InputDirectories = new List<InputDirectory>();
+            }
+            createParameters.InputDirectories.Add(new InputDirectory(id, path));
             return this;
         }
 
