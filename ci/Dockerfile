@@ -35,3 +35,6 @@ RUN mkdir warmup \
     && rm -rf warmup \
     && rm -rf /tmp/NuGetScratch
 COPY . /azure-libraries-for-net
+
+RUN cd /azure-libraries-for-net \
+    && dotnet restore Fluent.Tests.sln
