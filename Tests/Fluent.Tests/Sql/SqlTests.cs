@@ -352,6 +352,7 @@ namespace Fluent.Tests
                     .Define(SqlDatabaseName)
                     .WithCollation(Collation)
                     .WithEdition(DatabaseEditions.Standard)
+                    .WithTag("tag1", "value1")
                     .Create();
 
                 Assert.True(sqlServer.Databases.List().Count > 0);
@@ -696,6 +697,7 @@ namespace Fluent.Tests
                 var sqlElasticPool = sqlServer.ElasticPools
                         .Define(SqlElasticPoolName)
                         .WithEdition(ElasticPoolEditions.Standard)
+                        .WithTag("tag1", "value1")
                         .Create();
                 ValidateSqlElasticPool(sqlElasticPool);
                 Assert.Empty(sqlElasticPool.ListDatabases());

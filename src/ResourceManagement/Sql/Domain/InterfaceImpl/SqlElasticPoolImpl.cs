@@ -285,9 +285,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="key">The key of the tag to remove.</param>
         /// <return>The next stage of the resource update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.WithoutTag(string key)
+        Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IUpdate IUpdateWithTags<SqlElasticPool.Update.IUpdate>.WithoutTag(string key)
         {
-            return this.WithoutTag(key) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return this.WithoutTag(key) as Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IUpdate;
         }
 
         /// <summary>
@@ -295,9 +295,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="tags">A  Map of tags.</param>
         /// <return>The next stage of the resource update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.WithTags(IDictionary<string,string> tags)
+        Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IUpdate>.WithTags(IDictionary<string,string> tags)
         {
-            return this.WithTags(tags) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return this.WithTags(tags) as Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IUpdate;
         }
 
         /// <summary>
@@ -306,9 +306,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="key">The key for the tag.</param>
         /// <param name="value">The value for the tag.</param>
         /// <return>The next stage of the resource update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.WithTag(string key, string value)
+        Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IUpdate>.WithTag(string key, string value)
         {
-            return this.WithTag(key, value) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return this.WithTag(key, value) as Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IUpdate;
         }
 
         /// <summary>
@@ -987,9 +987,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="tags">A  Map of tags.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.WithTags(IDictionary<string,string> tags)
+        Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition.IWithCreate>.WithTags(IDictionary<string,string> tags)
         {
-            return this.WithTags(tags) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return this.WithTags(tags) as Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition.IWithCreate;
         }
 
         /// <summary>
@@ -998,9 +998,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="key">The key for the tag.</param>
         /// <param name="value">The value for the tag.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.WithTag(string key, string value)
+        Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition.IWithCreate>.WithTag(string key, string value)
         {
-            return this.WithTag(key, value) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return this.WithTag(key, value) as Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition.IWithCreate;
         }
     }
 }

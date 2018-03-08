@@ -979,9 +979,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="key">The key for the tag.</param>
         /// <param name="value">The value for the tag.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>.WithTag(string key, string value)
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal>.WithTag(string key, string value)
         {
-            return this.WithTag(key, value) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+            return this.WithTag(key, value) as Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal;
         }
 
         /// <summary>
@@ -989,9 +989,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="tags">A  Map of tags.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>.WithTags(IDictionary<string,string> tags)
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal>.WithTags(IDictionary<string,string> tags)
         {
-            return this.WithTags(tags) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+            return this.WithTags(tags) as Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal;
         }
 
         /// <summary>
@@ -1292,9 +1292,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="key">The key of the tag to remove.</param>
         /// <return>The next stage of the resource update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>.WithoutTag(string key)
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate>.WithoutTag(string key)
         {
-            return this.WithoutTag(key) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+            return this.WithoutTag(key) as Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate;
         }
 
         /// <summary>
@@ -1303,9 +1303,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="key">The key for the tag.</param>
         /// <param name="value">The value for the tag.</param>
         /// <return>The next stage of the resource update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>.WithTag(string key, string value)
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate>.WithTag(string key, string value)
         {
-            return this.WithTag(key, value) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+            return this.WithTag(key, value) as Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate;
         }
 
         /// <summary>
@@ -1313,9 +1313,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="tags">A  Map of tags.</param>
         /// <return>The next stage of the resource update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>.WithTags(IDictionary<string,string> tags)
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate>.WithTags(IDictionary<string,string> tags)
         {
-            return this.WithTags(tags) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+            return this.WithTags(tags) as Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IUpdate;
         }
 
         /// <param name="administratorLogin">The SQL administrator login.</param>

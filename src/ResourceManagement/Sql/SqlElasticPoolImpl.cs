@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:32E35A609CF1108D0FC5FAAF9277C1AA:0A35F4FBFC584D98FAACCA25325781E8
         public SqlElasticPoolImpl WithTags(IDictionary<string,string> tags)
         {
-            this.Inner.Tags = tags;
+            this.Inner.Tags = new Dictionary<string, string>(tags);
             return this;
         }
 
@@ -380,6 +380,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:FF80DD5A8C82E021759350836BD2FAD1:E70E0F84833F74462C0831B3C84D4A03
         public SqlElasticPoolImpl WithTag(string key, string value)
         {
+            if (this.Inner.Tags == null)
+            {
+                this.Inner.Tags = new Dictionary<string, string>();
+            }
             this.Inner.Tags.Add(key, value);
             return this;
         }

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definit
         Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition.IWithDtu,
         Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition.IWithStorageCapacity,
         Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition.IWithDatabase,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<IWithCreate>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>
     {
     }
