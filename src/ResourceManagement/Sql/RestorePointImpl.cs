@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     /// </summary>
 ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnNxbC5pbXBsZW1lbnRhdGlvbi5SZXN0b3JlUG9pbnRJbXBs
     internal partial class RestorePointImpl  :
-        Wrapper<Models.RestorePoint>,
+        Wrapper<Models.RestorePointInner>,
         IRestorePoint
     {
         private ResourceId resourceId;
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private string resourceGroupName;
 
         ///GENMHASH:8BF35069264E47CDD42CDDEF7F56D9A0:FE22A3B9FE8FEA30A8F2D84276879172
-        public RestorePointImpl(string resourceGroupName, string sqlServerName, RestorePoint innerObject) : base(innerObject)
+        public RestorePointImpl(string resourceGroupName, string sqlServerName, RestorePointInner innerObject) : base(innerObject)
         {
             this.resourceGroupName = resourceGroupName;
             this.sqlServerName = sqlServerName;

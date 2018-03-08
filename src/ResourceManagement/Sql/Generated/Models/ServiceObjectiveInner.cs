@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -32,6 +30,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ServiceObjectiveInner class.
         /// </summary>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="serviceObjectiveName">The name for the service
         /// objective.</param>
         /// <param name="isDefault">Gets whether the service level objective is

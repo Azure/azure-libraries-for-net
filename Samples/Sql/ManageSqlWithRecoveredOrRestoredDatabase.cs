@@ -78,7 +78,7 @@ namespace ManageSqlWithRecoveredOrRestoredDatabase
 
                 var restorePointInTime = dbToRestore.ListRestorePoints()[0];
                 // Restore point might not be ready right away and we will have to wait for it.
-                long waitForRestoreToBeReady = (long) ((System.TimeSpan)restorePointInTime.EarliestRestoreDate.GetValueOrDefault().Subtract(DateTime.Now.ToUniversalTime())).TotalMilliseconds;
+                long waitForRestoreToBeReady = (long) ((System.TimeSpan)restorePointInTime.EarliestRestoreDate.GetValueOrDefault().Subtract(DateTime.Now.ToUniversalTime())).TotalMilliseconds + 300000;
                 if (waitForRestoreToBeReady > 0)
                 {
                     SdkContext.DelayProvider.Delay((int)waitForRestoreToBeReady);

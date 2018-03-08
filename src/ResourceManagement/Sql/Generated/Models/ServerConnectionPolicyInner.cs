@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -36,10 +34,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         /// <param name="connectionType">The server connection type. Possible
         /// values include: 'Default', 'Proxy', 'Redirect'</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="kind">Metadata used for the Azure portal
         /// experience.</param>
         /// <param name="location">Resource location.</param>
-        public ServerConnectionPolicyInner(ServerConnectionType connectionType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string kind = default(string))
+        public ServerConnectionPolicyInner(ServerConnectionType connectionType, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string location = default(string))
             : base(id, name, type)
         {
             Kind = kind;

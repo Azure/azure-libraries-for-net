@@ -475,6 +475,33 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             }
 
             /// <summary>
+            /// Renames a database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            /// <param name='databaseName'>
+            /// The name of the database to rename.
+            /// </param>
+            /// <param name='id'>
+            /// The target ID for the resource
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task RenameAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, string id, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.RenameWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, id, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Pauses a data warehouse.
             /// </summary>
             /// <param name='operations'>

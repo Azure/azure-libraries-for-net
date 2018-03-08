@@ -50,7 +50,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         ///GENMHASH:2345D3E100BA4B78504A2CC57A361F1E:F09D7F392261B6225D607D71947E5D4D
         public FluentResourceT WithoutTag(string key)
         {
-            Inner.Tags.Remove(key);
+            if (Inner.Tags != null)
+            {
+                Inner.Tags.Remove(key);
+            }
             return this as FluentResourceT;
         }
 
@@ -121,7 +124,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         ///GENMHASH:32E35A609CF1108D0FC5FAAF9277C1AA:44AB506D9A8E5CFFF51BB0ADBE880CDD
         public FluentResourceT WithTags(IDictionary<string, string> tags)
         {
-            Inner.Tags = tags;
+            Inner.Tags = new Dictionary<string, string>(tags);
             return this as FluentResourceT;
         }
 

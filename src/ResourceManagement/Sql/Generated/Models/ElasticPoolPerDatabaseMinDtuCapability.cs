@@ -29,16 +29,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the
         /// ElasticPoolPerDatabaseMinDtuCapability class.
         /// </summary>
-        /// <param name="limit">The minimum DTUs per database.</param>
+        /// <param name="limit">The maximum DTUs per database.</param>
         /// <param name="status">The status of the capability. Possible values
         /// include: 'Visible', 'Available', 'Default', 'Disabled'</param>
-        /// <param name="reason">The reason for the capability not being
-        /// available.</param>
-        public ElasticPoolPerDatabaseMinDtuCapability(int? limit = default(int?), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public ElasticPoolPerDatabaseMinDtuCapability(long? limit = default(long?), CapabilityStatus? status = default(CapabilityStatus?))
         {
             Limit = limit;
             Status = status;
-            Reason = reason;
             CustomInit();
         }
 
@@ -48,10 +45,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the minimum DTUs per database.
+        /// Gets the maximum DTUs per database.
         /// </summary>
         [JsonProperty(PropertyName = "limit")]
-        public int? Limit { get; private set; }
+        public long? Limit { get; private set; }
 
         /// <summary>
         /// Gets the status of the capability. Possible values include:
@@ -59,12 +56,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public CapabilityStatus? Status { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the reason for the capability not being available.
-        /// </summary>
-        [JsonProperty(PropertyName = "reason")]
-        public string Reason { get; set; }
 
     }
 }

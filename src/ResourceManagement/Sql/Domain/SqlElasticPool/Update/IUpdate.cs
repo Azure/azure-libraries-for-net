@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update
         Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IWithDtu,
         Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IWithStorageCapacity,
         Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IWithDatabase,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Update.IUpdate>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>
     {
     }

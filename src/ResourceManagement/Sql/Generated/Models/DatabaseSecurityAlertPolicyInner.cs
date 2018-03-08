@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -37,6 +35,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="state">Specifies the state of the policy. If state is
         /// Enabled, storageEndpoint and storageAccountAccessKey are required.
         /// Possible values include: 'New', 'Enabled', 'Disabled'</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
         /// <param name="kind">Resource kind.</param>
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="useServerDefault">Specifies whether to use the default
         /// server policy. Possible values include: 'Enabled',
         /// 'Disabled'</param>
-        public DatabaseSecurityAlertPolicyInner(SecurityAlertPolicyState state, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string disabledAlerts = default(string), string emailAddresses = default(string), SecurityAlertPolicyEmailAccountAdmins? emailAccountAdmins = default(SecurityAlertPolicyEmailAccountAdmins?), string storageEndpoint = default(string), string storageAccountAccessKey = default(string), int? retentionDays = default(int?), SecurityAlertPolicyUseServerDefault? useServerDefault = default(SecurityAlertPolicyUseServerDefault?))
+        public DatabaseSecurityAlertPolicyInner(SecurityAlertPolicyState state, string id = default(string), string name = default(string), string type = default(string), string location = default(string), string kind = default(string), string disabledAlerts = default(string), string emailAddresses = default(string), SecurityAlertPolicyEmailAccountAdmins? emailAccountAdmins = default(SecurityAlertPolicyEmailAccountAdmins?), string storageEndpoint = default(string), string storageAccountAccessKey = default(string), int? retentionDays = default(int?), SecurityAlertPolicyUseServerDefault? useServerDefault = default(SecurityAlertPolicyUseServerDefault?))
             : base(id, name, type)
         {
             Location = location;

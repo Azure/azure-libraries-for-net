@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The server capability
+    /// The server capabilities.
     /// </summary>
     public partial class ServerVersionCapability
     {
@@ -30,21 +30,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the ServerVersionCapability class.
         /// </summary>
         /// <param name="name">The server version name.</param>
+        /// <param name="status">The status of the server version. Possible
+        /// values include: 'Visible', 'Available', 'Default',
+        /// 'Disabled'</param>
         /// <param name="supportedEditions">The list of supported database
         /// editions.</param>
         /// <param name="supportedElasticPoolEditions">The list of supported
         /// elastic pool editions.</param>
-        /// <param name="status">The status of the capability. Possible values
-        /// include: 'Visible', 'Available', 'Default', 'Disabled'</param>
-        /// <param name="reason">The reason for the capability not being
-        /// available.</param>
-        public ServerVersionCapability(string name = default(string), IList<EditionCapability> supportedEditions = default(IList<EditionCapability>), IList<ElasticPoolEditionCapability> supportedElasticPoolEditions = default(IList<ElasticPoolEditionCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public ServerVersionCapability(string name = default(string), CapabilityStatus? status = default(CapabilityStatus?), IList<EditionCapability> supportedEditions = default(IList<EditionCapability>), IList<ElasticPoolEditionCapability> supportedElasticPoolEditions = default(IList<ElasticPoolEditionCapability>))
         {
             Name = name;
+            Status = status;
             SupportedEditions = supportedEditions;
             SupportedElasticPoolEditions = supportedElasticPoolEditions;
-            Status = status;
-            Reason = reason;
             CustomInit();
         }
 
@@ -60,6 +58,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         public string Name { get; private set; }
 
         /// <summary>
+        /// Gets the status of the server version. Possible values include:
+        /// 'Visible', 'Available', 'Default', 'Disabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "status")]
+        public CapabilityStatus? Status { get; private set; }
+
+        /// <summary>
         /// Gets the list of supported database editions.
         /// </summary>
         [JsonProperty(PropertyName = "supportedEditions")]
@@ -70,19 +75,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "supportedElasticPoolEditions")]
         public IList<ElasticPoolEditionCapability> SupportedElasticPoolEditions { get; private set; }
-
-        /// <summary>
-        /// Gets the status of the capability. Possible values include:
-        /// 'Visible', 'Available', 'Default', 'Disabled'
-        /// </summary>
-        [JsonProperty(PropertyName = "status")]
-        public CapabilityStatus? Status { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the reason for the capability not being available.
-        /// </summary>
-        [JsonProperty(PropertyName = "reason")]
-        public string Reason { get; set; }
 
     }
 }

@@ -29,31 +29,29 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ElasticPoolDtuCapability class.
         /// </summary>
-        /// <param name="limit">The DTU limit for the pool.</param>
+        /// <param name="limit">The maximum size of the database (see 'unit'
+        /// for the units).</param>
         /// <param name="maxDatabaseCount">The maximum number of databases
         /// supported.</param>
-        /// <param name="includedMaxSize">The included (free) max size for this
-        /// DTU.</param>
-        /// <param name="supportedMaxSizes">The list of supported max
-        /// sizes.</param>
-        /// <param name="supportedPerDatabaseMaxSizes">The list of supported
-        /// per database max sizes.</param>
-        /// <param name="supportedPerDatabaseMaxDtus">The list of supported per
-        /// database max DTUs.</param>
         /// <param name="status">The status of the capability. Possible values
         /// include: 'Visible', 'Available', 'Default', 'Disabled'</param>
-        /// <param name="reason">The reason for the capability not being
-        /// available.</param>
-        public ElasticPoolDtuCapability(int? limit = default(int?), int? maxDatabaseCount = default(int?), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), IList<MaxSizeCapability> supportedMaxSizes = default(IList<MaxSizeCapability>), IList<MaxSizeCapability> supportedPerDatabaseMaxSizes = default(IList<MaxSizeCapability>), IList<ElasticPoolPerDatabaseMaxDtuCapability> supportedPerDatabaseMaxDtus = default(IList<ElasticPoolPerDatabaseMaxDtuCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        /// <param name="supportedMaxSizes">The list of supported max
+        /// sizes.</param>
+        /// <param name="includedMaxSize">The included (free) max size for this
+        /// service level objective.</param>
+        /// <param name="supportedPerDatabaseMaxSizes">The list of supported
+        /// max database sizes.</param>
+        /// <param name="supportedPerDatabaseMaxDtus">The list of supported max
+        /// database DTUs.</param>
+        public ElasticPoolDtuCapability(long? limit = default(long?), long? maxDatabaseCount = default(long?), CapabilityStatus? status = default(CapabilityStatus?), IList<MaxSizeCapability> supportedMaxSizes = default(IList<MaxSizeCapability>), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), IList<MaxSizeCapability> supportedPerDatabaseMaxSizes = default(IList<MaxSizeCapability>), IList<ElasticPoolPerDatabaseMaxDtuCapability> supportedPerDatabaseMaxDtus = default(IList<ElasticPoolPerDatabaseMaxDtuCapability>))
         {
             Limit = limit;
             MaxDatabaseCount = maxDatabaseCount;
-            IncludedMaxSize = includedMaxSize;
+            Status = status;
             SupportedMaxSizes = supportedMaxSizes;
+            IncludedMaxSize = includedMaxSize;
             SupportedPerDatabaseMaxSizes = supportedPerDatabaseMaxSizes;
             SupportedPerDatabaseMaxDtus = supportedPerDatabaseMaxDtus;
-            Status = status;
-            Reason = reason;
             CustomInit();
         }
 
@@ -63,40 +61,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the DTU limit for the pool.
+        /// Gets the maximum size of the database (see 'unit' for the units).
         /// </summary>
         [JsonProperty(PropertyName = "limit")]
-        public int? Limit { get; private set; }
+        public long? Limit { get; private set; }
 
         /// <summary>
         /// Gets the maximum number of databases supported.
         /// </summary>
         [JsonProperty(PropertyName = "maxDatabaseCount")]
-        public int? MaxDatabaseCount { get; private set; }
-
-        /// <summary>
-        /// Gets the included (free) max size for this DTU.
-        /// </summary>
-        [JsonProperty(PropertyName = "includedMaxSize")]
-        public MaxSizeCapability IncludedMaxSize { get; private set; }
-
-        /// <summary>
-        /// Gets the list of supported max sizes.
-        /// </summary>
-        [JsonProperty(PropertyName = "supportedMaxSizes")]
-        public IList<MaxSizeCapability> SupportedMaxSizes { get; private set; }
-
-        /// <summary>
-        /// Gets the list of supported per database max sizes.
-        /// </summary>
-        [JsonProperty(PropertyName = "supportedPerDatabaseMaxSizes")]
-        public IList<MaxSizeCapability> SupportedPerDatabaseMaxSizes { get; private set; }
-
-        /// <summary>
-        /// Gets the list of supported per database max DTUs.
-        /// </summary>
-        [JsonProperty(PropertyName = "supportedPerDatabaseMaxDtus")]
-        public IList<ElasticPoolPerDatabaseMaxDtuCapability> SupportedPerDatabaseMaxDtus { get; private set; }
+        public long? MaxDatabaseCount { get; private set; }
 
         /// <summary>
         /// Gets the status of the capability. Possible values include:
@@ -106,10 +80,28 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         public CapabilityStatus? Status { get; private set; }
 
         /// <summary>
-        /// Gets or sets the reason for the capability not being available.
+        /// Gets the list of supported max sizes.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
-        public string Reason { get; set; }
+        [JsonProperty(PropertyName = "supportedMaxSizes")]
+        public IList<MaxSizeCapability> SupportedMaxSizes { get; private set; }
+
+        /// <summary>
+        /// Gets the included (free) max size for this service level objective.
+        /// </summary>
+        [JsonProperty(PropertyName = "includedMaxSize")]
+        public MaxSizeCapability IncludedMaxSize { get; private set; }
+
+        /// <summary>
+        /// Gets the list of supported max database sizes.
+        /// </summary>
+        [JsonProperty(PropertyName = "supportedPerDatabaseMaxSizes")]
+        public IList<MaxSizeCapability> SupportedPerDatabaseMaxSizes { get; private set; }
+
+        /// <summary>
+        /// Gets the list of supported max database DTUs.
+        /// </summary>
+        [JsonProperty(PropertyName = "supportedPerDatabaseMaxDtus")]
+        public IList<ElasticPoolPerDatabaseMaxDtuCapability> SupportedPerDatabaseMaxDtus { get; private set; }
 
     }
 }

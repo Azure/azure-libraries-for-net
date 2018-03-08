@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         ///GENMHASH:4B19A5F1B35CA91D20F63FBB66E86252:497CEBB37227D75C20D80EC55C7C4F14
         public IReadOnlyDictionary<string, string> Tags()
         {
-            return new ReadOnlyDictionary<string, string>(this.Inner.Tags);
+            return new ReadOnlyDictionary<string, string>(this.Inner.Tags != null ? this.Inner.Tags : new Dictionary<string, string>());
         }
 
         ///GENMHASH:BFA458E6B7DB31C66B1C81B1BDBE609C:D70B9F4CBC472FC5B5D0AAEB72616601

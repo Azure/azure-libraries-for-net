@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the ServerInner class.
         /// </summary>
         /// <param name="location">Resource location.</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="tags">Resource tags.</param>
         /// <param name="identity">The Azure Active Directory identity of the
         /// server.</param>
@@ -50,7 +53,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="state">The state of the server.</param>
         /// <param name="fullyQualifiedDomainName">The fully qualified domain
         /// name of the server.</param>
-        public ServerInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), string kind = default(string), string administratorLogin = default(string), string administratorLoginPassword = default(string), string version = default(string), string state = default(string), string fullyQualifiedDomainName = default(string))
+        public ServerInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), string kind = default(string), string administratorLogin = default(string), string administratorLoginPassword = default(string), string version = default(string), string state = default(string), string fullyQualifiedDomainName = default(string))
             : base(location, id, name, type, tags)
         {
             Identity = identity;

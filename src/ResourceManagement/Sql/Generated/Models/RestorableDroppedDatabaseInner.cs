@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -34,6 +32,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the RestorableDroppedDatabaseInner
         /// class.
         /// </summary>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
         /// <param name="databaseName">The name of the database</param>
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// (ISO8601 format)</param>
         /// <param name="earliestRestoreDate">The earliest restore date of the
         /// database (ISO8601 format)</param>
-        public RestorableDroppedDatabaseInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), string databaseName = default(string), string edition = default(string), string maxSizeBytes = default(string), string serviceLevelObjective = default(string), string elasticPoolName = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? deletionDate = default(System.DateTime?), System.DateTime? earliestRestoreDate = default(System.DateTime?))
+        public RestorableDroppedDatabaseInner(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string databaseName = default(string), string edition = default(string), string maxSizeBytes = default(string), string serviceLevelObjective = default(string), string elasticPoolName = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? deletionDate = default(System.DateTime?), System.DateTime? earliestRestoreDate = default(System.DateTime?))
             : base(id, name, type)
         {
             Location = location;

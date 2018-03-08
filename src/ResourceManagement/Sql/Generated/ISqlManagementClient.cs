@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         IRestorableDroppedDatabasesOperations RestorableDroppedDatabases { get; }
 
         /// <summary>
-        /// Gets the IRestorePointsOperations.
+        /// Gets the ICapabilitiesOperations.
         /// </summary>
-        IRestorePointsOperations RestorePoints { get; }
+        ICapabilitiesOperations Capabilities { get; }
 
         /// <summary>
         /// Gets the IServersOperations.
@@ -195,14 +195,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         IDatabaseUsagesOperations DatabaseUsages { get; }
 
         /// <summary>
-        /// Gets the ICapabilitiesOperations.
-        /// </summary>
-        ICapabilitiesOperations Capabilities { get; }
-
-        /// <summary>
         /// Gets the IDatabaseBlobAuditingPoliciesOperations.
         /// </summary>
         IDatabaseBlobAuditingPoliciesOperations DatabaseBlobAuditingPolicies { get; }
+
+        /// <summary>
+        /// Gets the IDatabaseAutomaticTuningOperations.
+        /// </summary>
+        IDatabaseAutomaticTuningOperations DatabaseAutomaticTuning { get; }
 
         /// <summary>
         /// Gets the IEncryptionProtectorsOperations.
@@ -248,6 +248,26 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Gets the IVirtualNetworkRulesOperations.
         /// </summary>
         IVirtualNetworkRulesOperations VirtualNetworkRules { get; }
+
+        /// <summary>
+        /// Gets the IDatabaseOperations.
+        /// </summary>
+        IDatabaseOperations DatabaseOperations { get; }
+
+        /// <summary>
+        /// Gets the IServerAutomaticTuningOperations.
+        /// </summary>
+        IServerAutomaticTuningOperations ServerAutomaticTuning { get; }
+
+        /// <summary>
+        /// Gets the IServerDnsAliasesOperations.
+        /// </summary>
+        IServerDnsAliasesOperations ServerDnsAliases { get; }
+
+        /// <summary>
+        /// Gets the IRestorePointsOperations.
+        /// </summary>
+        IRestorePointsOperations RestorePoints { get; }
 
     }
 }

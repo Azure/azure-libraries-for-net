@@ -59,7 +59,8 @@ namespace Samples.Tests
             }
         }
 
-        [Fact(Skip = "Manual only test: requires couple hours to finish")]
+//        [Fact(Skip = "Manual only test: requires couple hours to finish")]
+        [Fact]
         [Trait("Samples", "Sql")]
         public void ManageSqlWithRecoveredOrRestoredDatabaseTest()
         {

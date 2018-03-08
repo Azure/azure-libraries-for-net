@@ -205,13 +205,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:32E35A609CF1108D0FC5FAAF9277C1AA:E462F242E1761228E205CEE8F760EDF9
         public VirtualMachineExtensionImpl WithTags(IDictionary<string, string> tags)
         {
-            Inner.Tags = tags;
+            Inner.Tags = new Dictionary<string, string>(tags);
             return this;
         }
 
         ///GENMHASH:FF80DD5A8C82E021759350836BD2FAD1:E70E0F84833F74462C0831B3C84D4A03
         public VirtualMachineExtensionImpl WithTag(string key, string value)
         {
+            if (Inner.Tags == null)
+            {
+                Inner.Tags = new Dictionary<string, string>();
+            }
             Inner.Tags.Add(key, value);
             return this;
         }
@@ -219,7 +223,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:2345D3E100BA4B78504A2CC57A361F1E:250EC2907300FFA6125F7205F03A3E7F
         public VirtualMachineExtensionImpl WithoutTag(string key)
         {
-            Inner.Tags.Remove(key);
+            if (Inner.Tags != null)
+            {
+                Inner.Tags.Remove(key);
+            }
             return this;
         }
 

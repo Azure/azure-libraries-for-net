@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
 {
 
     /// <summary>
-    /// Defines values for TransparentDataEncryptionActivityStates.
+    /// Defines values for TransparentDataEncryptionActivityStatus.
     /// </summary>
     public static class TransparentDataEncryptionActivityStates
     {

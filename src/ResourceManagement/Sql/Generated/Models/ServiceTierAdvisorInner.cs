@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ServiceTierAdvisorInner class.
         /// </summary>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="observationPeriodStart">The observation period start
         /// (ISO8601 format).</param>
         /// <param name="observationPeriodEnd">The observation period start

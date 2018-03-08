@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IWithElasticPoolName,
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IWithMaxSizeBytes,
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Update.IWithServiceObjective,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<IUpdate>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>
     {
     }

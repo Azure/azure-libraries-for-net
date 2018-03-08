@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The edition capability.
+    /// The database edition capabilities.
     /// </summary>
     public partial class EditionCapability
     {
@@ -29,19 +29,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the EditionCapability class.
         /// </summary>
-        /// <param name="name">The database edition name.</param>
+        /// <param name="name">The edition name.</param>
+        /// <param name="status">The status of the edition. Possible values
+        /// include: 'Visible', 'Available', 'Default', 'Disabled'</param>
         /// <param name="supportedServiceLevelObjectives">The list of supported
         /// service objectives for the edition.</param>
-        /// <param name="status">The status of the capability. Possible values
-        /// include: 'Visible', 'Available', 'Default', 'Disabled'</param>
-        /// <param name="reason">The reason for the capability not being
-        /// available.</param>
-        public EditionCapability(string name = default(string), IList<ServiceLevelObjectiveCapability> supportedServiceLevelObjectives = default(IList<ServiceLevelObjectiveCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        /// <param name="zoneRedundant">Whether or not zone redundancy is
+        /// supported for the edition.</param>
+        public EditionCapability(string name = default(string), CapabilityStatus? status = default(CapabilityStatus?), IList<ServiceObjectiveCapability> supportedServiceLevelObjectives = default(IList<ServiceObjectiveCapability>), bool? zoneRedundant = default(bool?))
         {
             Name = name;
-            SupportedServiceLevelObjectives = supportedServiceLevelObjectives;
             Status = status;
-            Reason = reason;
+            SupportedServiceLevelObjectives = supportedServiceLevelObjectives;
+            ZoneRedundant = zoneRedundant;
             CustomInit();
         }
 
@@ -51,29 +51,29 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the database edition name.
+        /// Gets the edition name.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the list of supported service objectives for the edition.
-        /// </summary>
-        [JsonProperty(PropertyName = "supportedServiceLevelObjectives")]
-        public IList<ServiceLevelObjectiveCapability> SupportedServiceLevelObjectives { get; private set; }
-
-        /// <summary>
-        /// Gets the status of the capability. Possible values include:
-        /// 'Visible', 'Available', 'Default', 'Disabled'
+        /// Gets the status of the edition. Possible values include: 'Visible',
+        /// 'Available', 'Default', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public CapabilityStatus? Status { get; private set; }
 
         /// <summary>
-        /// Gets or sets the reason for the capability not being available.
+        /// Gets the list of supported service objectives for the edition.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
-        public string Reason { get; set; }
+        [JsonProperty(PropertyName = "supportedServiceLevelObjectives")]
+        public IList<ServiceObjectiveCapability> SupportedServiceLevelObjectives { get; private set; }
+
+        /// <summary>
+        /// Gets whether or not zone redundancy is supported for the edition.
+        /// </summary>
+        [JsonProperty(PropertyName = "zoneRedundant")]
+        public bool? ZoneRedundant { get; private set; }
 
     }
 }

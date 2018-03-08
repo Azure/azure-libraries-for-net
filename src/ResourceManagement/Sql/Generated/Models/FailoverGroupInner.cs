@@ -36,6 +36,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// group instance.</param>
         /// <param name="partnerServers">List of partner server information for
         /// the failover group.</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
+        /// <param name="location">Resource location.</param>
+        /// <param name="tags">Resource tags.</param>
         /// <param name="readOnlyEndpoint">Read-only endpoint of the failover
         /// group instance.</param>
         /// <param name="replicationRole">Local replication role of the
@@ -45,7 +50,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// group instance.</param>
         /// <param name="databases">List of databases in the failover
         /// group.</param>
-        public FailoverGroupInner(FailoverGroupReadWriteEndpoint readWriteEndpoint, IList<PartnerInfo> partnerServers, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string), IList<string> databases = default(IList<string>))
+        public FailoverGroupInner(FailoverGroupReadWriteEndpoint readWriteEndpoint, IList<PartnerInfo> partnerServers, string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string), IList<string> databases = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             ReadWriteEndpoint = readWriteEndpoint;

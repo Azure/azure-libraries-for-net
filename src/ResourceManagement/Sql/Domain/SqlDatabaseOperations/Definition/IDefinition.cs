@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition
     /// specify.
     /// </summary>
     public interface IWithCreateFinal  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<IWithCreateFinal>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>
     {
     }

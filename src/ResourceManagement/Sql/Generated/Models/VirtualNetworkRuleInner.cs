@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -34,6 +32,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         /// <param name="virtualNetworkSubnetId">The ARM resource id of the
         /// virtual network subnet.</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="ignoreMissingVnetServiceEndpoint">Create firewall rule
         /// before the virtual network has vnet service endpoint
         /// enabled.</param>

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The location capability.
+    /// The capabilities for a location.
     /// </summary>
     public partial class LocationCapabilitiesInner
     {
@@ -30,18 +30,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Initializes a new instance of the LocationCapabilitiesInner class.
         /// </summary>
         /// <param name="name">The location name.</param>
+        /// <param name="status">Azure SQL Database's status for the location.
+        /// Possible values include: 'Visible', 'Available', 'Default',
+        /// 'Disabled'</param>
         /// <param name="supportedServerVersions">The list of supported server
         /// versions.</param>
-        /// <param name="status">The status of the capability. Possible values
-        /// include: 'Visible', 'Available', 'Default', 'Disabled'</param>
-        /// <param name="reason">The reason for the capability not being
-        /// available.</param>
-        public LocationCapabilitiesInner(string name = default(string), IList<ServerVersionCapability> supportedServerVersions = default(IList<ServerVersionCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public LocationCapabilitiesInner(string name = default(string), CapabilityStatus? status = default(CapabilityStatus?), IList<ServerVersionCapability> supportedServerVersions = default(IList<ServerVersionCapability>))
         {
             Name = name;
-            SupportedServerVersions = supportedServerVersions;
             Status = status;
-            Reason = reason;
+            SupportedServerVersions = supportedServerVersions;
             CustomInit();
         }
 
@@ -57,23 +55,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets the list of supported server versions.
-        /// </summary>
-        [JsonProperty(PropertyName = "supportedServerVersions")]
-        public IList<ServerVersionCapability> SupportedServerVersions { get; private set; }
-
-        /// <summary>
-        /// Gets the status of the capability. Possible values include:
-        /// 'Visible', 'Available', 'Default', 'Disabled'
+        /// Gets azure SQL Database's status for the location. Possible values
+        /// include: 'Visible', 'Available', 'Default', 'Disabled'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public CapabilityStatus? Status { get; private set; }
 
         /// <summary>
-        /// Gets or sets the reason for the capability not being available.
+        /// Gets the list of supported server versions.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
-        public string Reason { get; set; }
+        [JsonProperty(PropertyName = "supportedServerVersions")]
+        public IList<ServerVersionCapability> SupportedServerVersions { get; private set; }
 
     }
 }

@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public IWithCreate WithTags(IDictionary<string, string> tags)
         {
-            Inner.Tags = tags;
+            Inner.Tags = new Dictionary<string, string>(tags);
             return this;
         }
 
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         IUpdate IUpdateWithTags<IUpdate>.WithTags(IDictionary<string, string> tags)
         {
-            Inner.Tags = tags;
+            Inner.Tags = new Dictionary<string, string>(tags);
             return this;
         }
 

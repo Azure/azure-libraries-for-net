@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -35,11 +33,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// class.
         /// </summary>
         /// <param name="partnerServer">The name of the partner server.</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="state">The state.</param>
         /// <param name="location">Communication link location.</param>
         /// <param name="kind">Communication link kind.  This property is used
         /// for Azure Portal metadata.</param>
-        public ServerCommunicationLinkInner(string partnerServer, string location = default(string), string id = default(string), string name = default(string), string type = default(string), string state = default(string), string kind = default(string))
+        public ServerCommunicationLinkInner(string partnerServer, string id = default(string), string name = default(string), string type = default(string), string state = default(string), string location = default(string), string kind = default(string))
             : base(id, name, type)
         {
             State = state;

@@ -32,18 +32,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// ElasticPoolPerDatabaseMaxDtuCapability class.
         /// </summary>
         /// <param name="limit">The maximum DTUs per database.</param>
-        /// <param name="supportedPerDatabaseMinDtus">The list of supported min
-        /// database DTUs.</param>
         /// <param name="status">The status of the capability. Possible values
         /// include: 'Visible', 'Available', 'Default', 'Disabled'</param>
-        /// <param name="reason">The reason for the capability not being
-        /// available.</param>
-        public ElasticPoolPerDatabaseMaxDtuCapability(int? limit = default(int?), IList<ElasticPoolPerDatabaseMinDtuCapability> supportedPerDatabaseMinDtus = default(IList<ElasticPoolPerDatabaseMinDtuCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        /// <param name="supportedPerDatabaseMinDtus">The list of supported min
+        /// database DTUs.</param>
+        public ElasticPoolPerDatabaseMaxDtuCapability(long? limit = default(long?), CapabilityStatus? status = default(CapabilityStatus?), IList<ElasticPoolPerDatabaseMinDtuCapability> supportedPerDatabaseMinDtus = default(IList<ElasticPoolPerDatabaseMinDtuCapability>))
         {
             Limit = limit;
-            SupportedPerDatabaseMinDtus = supportedPerDatabaseMinDtus;
             Status = status;
-            Reason = reason;
+            SupportedPerDatabaseMinDtus = supportedPerDatabaseMinDtus;
             CustomInit();
         }
 
@@ -56,13 +53,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// Gets the maximum DTUs per database.
         /// </summary>
         [JsonProperty(PropertyName = "limit")]
-        public int? Limit { get; private set; }
-
-        /// <summary>
-        /// Gets the list of supported min database DTUs.
-        /// </summary>
-        [JsonProperty(PropertyName = "supportedPerDatabaseMinDtus")]
-        public IList<ElasticPoolPerDatabaseMinDtuCapability> SupportedPerDatabaseMinDtus { get; private set; }
+        public long? Limit { get; private set; }
 
         /// <summary>
         /// Gets the status of the capability. Possible values include:
@@ -72,10 +63,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         public CapabilityStatus? Status { get; private set; }
 
         /// <summary>
-        /// Gets or sets the reason for the capability not being available.
+        /// Gets the list of supported min database DTUs.
         /// </summary>
-        [JsonProperty(PropertyName = "reason")]
-        public string Reason { get; set; }
+        [JsonProperty(PropertyName = "supportedPerDatabaseMinDtus")]
+        public IList<ElasticPoolPerDatabaseMinDtuCapability> SupportedPerDatabaseMinDtus { get; private set; }
 
     }
 }

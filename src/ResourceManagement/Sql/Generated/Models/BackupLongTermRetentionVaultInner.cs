@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -36,9 +34,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// </summary>
         /// <param name="recoveryServicesVaultResourceId">The azure recovery
         /// services vault resource id</param>
+        /// <param name="id">Resource ID.</param>
+        /// <param name="name">Resource name.</param>
+        /// <param name="type">Resource type.</param>
         /// <param name="location">The geo-location where the resource
         /// lives</param>
-        public BackupLongTermRetentionVaultInner(string recoveryServicesVaultResourceId, string location = default(string), string id = default(string), string name = default(string), string type = default(string))
+        public BackupLongTermRetentionVaultInner(string recoveryServicesVaultResourceId, string id = default(string), string name = default(string), string type = default(string), string location = default(string))
             : base(id, name, type)
         {
             Location = location;
