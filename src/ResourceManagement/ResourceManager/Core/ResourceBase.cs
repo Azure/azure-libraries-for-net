@@ -143,19 +143,23 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
         public FluentResourceT WithTags(IDictionary<string, string> tags)
         {
-            Inner.Tags = tags;
+            Inner.Tags = new Dictionary<string, string>(tags);
             return this as FluentResourceT;
         }
 
         public FluentResourceT WithTag(string key, string value)
         {
+            if (Inner.Tags == null)
+            {
+                Inner.Tags = new Dictionary<string, string>();
+            }
             Inner.Tags[key] = value;
             return this as FluentResourceT;
         }
 
         public FluentResourceT WithoutTag(string key)
         {
-            if (Inner.Tags.ContainsKey(key))
+            if (Inner.Tags != null && Inner.Tags.ContainsKey(key))
             {
                 Inner.Tags.Remove(key);
             }
