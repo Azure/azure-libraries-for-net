@@ -1,0 +1,29 @@
+[{"ver": "1.0",
+  "execution": {
+    "command": "dotnet test --filter Samples.Tests.Network.ManageNetworkInterfaceTest -f netcoreapp1.1",
+    "recording": null
+  },
+  "classifier": {
+    "identifier": "Samples.Tests.Network.ManageNetworkInterfaceTest",
+    "type": "Unit"
+  }
+},{"ver": "1.0",
+    "execution": {
+      "command": "dotnet test --filter Samples.Tests.Network.ManageNetworkSecurityGroupTest -f netcoreapp1.1",
+      "recording": null
+    },
+    "classifier": {
+      "identifier": "Samples.Tests.Network.ManageNetworkSecurityGroupTest",
+      "type": "Unit"
+    }
+  },{"ver": "1.0",
+      "execution": {
+        "command": "dotnet test --filter Samples.Tests.Network.ManageVirtualNetworkTest -f netcoreapp1.1",
+        "recording": null
+      },
+      "classifier": {
+        "identifier": "Samples.Tests.Network.ManageVirtualNetworkTest",
+        "type": "Unit"
+      }
+    }
+}]
