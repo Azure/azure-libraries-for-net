@@ -36,6 +36,7 @@ using Microsoft.Azure.Management.ServiceBus.Fluent;
 using Microsoft.Azure.ServiceBus;
 using System.Threading;
 using System.Net.Http.Headers;
+using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.CosmosDB.Fluent;
 using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 using Microsoft.Azure.Management.Compute.Fluent.Models;
@@ -2173,6 +2174,81 @@ namespace Microsoft.Azure.Management.Samples.Common
                     .Append("\n\tEvent hub name: ").Append(resource.EventHubName)
                     .Append("\n\tUser metadata: ").Append(resource.UserMetadata);
             Utilities.Log(info.ToString());
+        }
+
+        public static void Print(IBatchAICluster resource)
+        {
+            StringBuilder sb = new StringBuilder("Batch AI cluster: ")
+                .Append("\n\tId: ").Append(resource.Id)
+                .Append("\n\tName: ").Append(resource.Name)
+                .Append("\n\tResource group: ").Append(resource.ResourceGroupName)
+                .Append("\n\tRegion: ").Append(resource.RegionName)
+                .Append("\n\tVM Size: ").Append(resource.VMSize)
+                .Append("\n\tVM Priority: ").Append(resource.VMPriority)
+                .Append("\n\tSubnet: ").Append(resource.Subnet)
+                .Append("\n\tAllocation state: ").Append(resource.AllocationState)
+                .Append("\n\tAllocation state transition time: ").Append(resource.AllocationStateTransitionTime)
+                .Append("\n\tCreation time: ").Append(resource.CreationTime)
+                .Append("\n\tCurrent node count: ").Append(resource.CurrentNodeCount)
+                .Append("\n\tAllocation state transition time: ").Append(resource.AllocationStateTransitionTime)
+                .Append("\n\tAllocation state transition time: ").Append(resource.AllocationStateTransitionTime);
+            if (resource.ScaleSettings.AutoScale != null)
+            {
+                sb.Append("\n\tAuto scale settings: ")
+                    .Append("\n\t\tInitial node count: ").Append(resource.ScaleSettings.AutoScale.InitialNodeCount)
+                    .Append("\n\t\tMinimum node count: ").Append(resource.ScaleSettings.AutoScale.MinimumNodeCount)
+                    .Append("\n\t\tMaximum node count: ").Append(resource.ScaleSettings.AutoScale.MaximumNodeCount);
+            }
+            if (resource.ScaleSettings.Manual != null)
+            {
+                sb.Append("\n\tManual scale settings: ")
+                    .Append("\n\t\tTarget node count: ").Append(resource.ScaleSettings.Manual.TargetNodeCount)
+                    .Append("\n\t\tDeallocation option: ")
+                    .Append(resource.ScaleSettings.Manual.NodeDeallocationOption.GetValueOrDefault());
+            }
+            if (resource.NodeStateCounts != null)
+            {
+                sb.Append("\n\tNode state counts: ")
+                    .Append("\n\t\tRunning nodes count: ").Append(resource.NodeStateCounts.RunningNodeCount)
+                    .Append("\n\t\tIdle nodes count: ").Append(resource.NodeStateCounts.IdleNodeCount)
+                    .Append("\n\t\tPreparing nodes count: ").Append(resource.NodeStateCounts.PreparingNodeCount)
+                    .Append("\n\t\tLeaving nodes count: ").Append(resource.NodeStateCounts.LeavingNodeCount)
+                    .Append("\n\t\tPreparing nodes count: ").Append(resource.NodeStateCounts.PreparingNodeCount);
+            }
+            if (resource.VirtualMachineConfiguration != null && resource.VirtualMachineConfiguration.ImageReference != null)
+            {
+                sb.Append("\n\tVirtual machine configuration: ")
+                    .Append("\n\t\tPublisher: ").Append(resource.VirtualMachineConfiguration.ImageReference.Publisher)
+                    .Append("\n\t\tOffer: ").Append(resource.VirtualMachineConfiguration.ImageReference.Offer)
+                    .Append("\n\t\tSku: ").Append(resource.VirtualMachineConfiguration.ImageReference.Sku)
+                    .Append("\n\t\tVersion: ").Append(resource.VirtualMachineConfiguration.ImageReference.Version);
+            }
+            if (resource.NodeSetup != null && resource.NodeSetup.SetupTask != null)
+            {
+                sb.Append("\n\tSetup task: ")
+                    .Append("\n\t\tCommand line: ").Append(resource.NodeSetup.SetupTask.CommandLine)
+                    .Append("\n\t\tRun elevated: ").Append(resource.NodeSetup.SetupTask.RunElevated)
+                    .Append("\n\t\tStdout/err Path Prefix: ").Append(resource.NodeSetup.SetupTask.StdOutErrPathPrefix);
+            }
+            Utilities.Log(sb.ToString());
+        }
+
+        public static void Print(IBatchAIJob resource)
+        {
+            StringBuilder sb = new StringBuilder("Batch AI job: ")
+                .Append("\n\tId: ").Append(resource.Id)
+                .Append("\n\tName: ").Append(resource.Name)
+                .Append("\n\tResource group: ").Append(resource.ResourceGroupName)
+                .Append("\n\tRegion: ").Append(resource.RegionName)
+                .Append("\n\tCluster Id: ").Append(resource.Cluster)
+                .Append("\n\tCreation time: ").Append(resource.CreationTime)
+                .Append("\n\tNode count: ").Append(resource.NodeCount)
+                .Append("\n\tPriority: ").Append(resource.Priority)
+                .Append("\n\tExecution state: ").Append(resource.ExecutionState)
+                .Append("\n\tExecution state transition time: ").Append(resource.ExecutionStateTransitionTime)
+                .Append("\n\tTool type: ").Append(resource.ToolType)
+                .Append("\n\tExperiment name: ").Append(resource.ExperimentName);
+            Utilities.Log(sb.ToString());
         }
 
         public static void CreateCertificate(string domainName, string pfxPath, string password)

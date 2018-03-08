@@ -1,7 +1,7 @@
 
 # Azure Management Libraries for .NET
 
-This README is based on the released stable version (1.6). If you are looking for other releases, see [More Information](#more-information)
+This README is based on the released stable version (1.7). If you are looking for other releases, see [More Information](#more-information)
 
 The Azure Management Libraries for .NET is a higher-level, object-oriented API for managing Azure resources. Libraries are built on the lower-level, request-response style [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest) and can run side-by-side with [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest).
 
@@ -21,7 +21,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
 * [More information](#more-information)
 
 ## Feature Availability and Road Map
-:triangular_flag_on_post: *as of Version 1.6*
+:triangular_flag_on_post: *as of Version 1.7*
 
 <table>
   <tr>
@@ -44,7 +44,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
   </tr>
   <tr>
     <td>SQL Database</td>
-    <td>Databases<br>Firewalls<br>Elastic pools</td>
+    <td>Databases<br>Firewalls<br>Elastic pools<br>import, export, recover and restore dbs</td>
     <td></td>
     <td valign="top">More features</td>
   </tr>
@@ -57,7 +57,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
   <tr>
     <td>More services</td>
     <td>Resource Manager<br>Key Vault<br>Redis<br>CDN<br>Batch<br>Service bus</td>
-    <td valign="top">Web apps<br>Function Apps<br>Graph RBAC<br>Cosmos DB<br>Monitor<br>Batch AI<br>Search</td>
+    <td valign="top">Web apps<br>Function Apps<br>Graph RBAC<br>Cosmos DB<br>Monitor<br>Batch AI<br>Search<br>Event Hub</td>
     <td valign="top">Data Lake</td>
   </tr>
   <tr>
@@ -124,7 +124,7 @@ var virtualMachineScaleSet = azure.VirtualMachineScaleSets.Define(vmssName)
     .WithExistingResourceGroup(rgName)
     .WithSku(VirtualMachineScaleSetSkuTypes.StandardD3v2)
     .WithExistingPrimaryNetworkSubnet(network, "Front-end")
-    .WithExistingPrimaryInternetFacingLoadBalancer(loadBalancer1)
+    .WithPrimaryInternetFacingLoadBalancer(loadBalancer1)
     .WithPrimaryInternetFacingLoadBalancerBackends(backendPoolName1, backendPoolName2)
     .WithPrimaryInternetFacingLoadBalancerInboundNatPools(natPool50XXto22, natPool60XXto23)
     .WithoutPrimaryInternalLoadBalancer()
@@ -432,6 +432,8 @@ var database = sqlServer.Databases.Define(databaseName)
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-dbs-in-elastic-pool">Manage SQL databases in elastic pools</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-firewalls-for-sql-databases">Manage firewalls for SQL databases</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-databases-across-regions">Manage SQL databases across regions</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-import-export-db">Import and export SQL databases</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-recover-restore-db">Restore and recover SQL databases</a></li>
 </ul></td>
   </tr>
 <tr>
@@ -547,15 +549,24 @@ var database = sqlServer.Databases.Define(databaseName)
 <li><a href="https://github.com/Azure-Samples/search-dotnet-manage-search-service">Manage Azure search</a></li>
 </ul></td>
   </tr>  
+  
+  <tr>
+    <td>Event Hub</td>
+    <td><ul style="list-style-type:circle">
+<li><a href="https://github.com/Azure-Samples/eventhub-dotnet-manage-event-hub">Manage event hub and associated resources</a></li>
+<li><a href="https://github.com/Azure-Samples/eventhub-dotnet-manage-event-hub-geo-disaster-recovery">Manage event hub geo-disaster recovery</a></li>
+</ul></td>
+  </tr>
+  
 </table>
 
 ## Download
 
 ### Latest stable release
 
-**1.6** release builds are available on NuGet:
+**1.7** release builds are available on NuGet:
 
-|Azure Management Library                     | Package name                                        | Stable (1.6 release) |
+|Azure Management Library                     | Package name                                        | Stable (1.7 release) |
 |---------------------------------------------|-----------------------------------------------------|------------------------|
 |Azure Management Client (wrapper package)    | `Microsoft.Azure.Management.Fluent`                 | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) |
 |App Service (Web Apps and Functions)         | `Microsoft.Azure.Management.AppService.Fluent`      | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.AppService.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.AppService.Fluent/) |
@@ -568,6 +579,7 @@ var database = sqlServer.Databases.Define(databaseName)
 |Container Service                            | `Microsoft.Azure.Management.ContainerService.Fluent `| [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.ContainerService.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.ContainerService.Fluent/) |
 |Cosmos DB                                    | `Microsoft.Azure.Management.CosmosDB.Fluent`        | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.CosmosDB.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.CosmosDB.Fluent/) |
 |DNS                                          | `Microsoft.Azure.Management.Dns.Fluent`             | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Dns.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Dns.Fluent/) |
+|EventHub                                     | `Microsoft.Azure.Management.EventHub.Fluent`        | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.EventHub.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub.Fluent/) |
 |Graph RBAC                                   | `Microsoft.Azure.Management.Graph.RBAC.Fluent`      | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Graph.RBAC.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Graph.RBAC.Fluent/) |
 |Key Vault                                    | `Microsoft.Azure.Management.KeyVault.Fluent`        | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.KeyVault.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.KeyVault.Fluent/) |
 |Locks                                        | `Microsoft.Azure.Management.Locks.Fluent`           | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Locks.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Locks.Fluent/) |
@@ -591,7 +603,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ## Upgrading from older versions
 
-If you are migrating your code from 1.4.x to 1.6.x, you can use these release notes for [preparing your code for 1.6 from 1.4](./notes/prepare-for-1.6.md).
+If you are migrating your code from 1.6.x to 1.7.x, you can use these release notes for [preparing your code for 1.7 from 1.6](./notes/prepare-for-1.7.md).
 
 In general, Azure Libraries for .Net follow [semantic versioning](http://semver.org/), so user code should continue working in a compatible fashion between minor versions of the same major version release train, with the following caveats:
 
@@ -626,6 +638,7 @@ If you would like to become an active contributor to this project please follow 
 
 | Version           | SHA1                                                                                      | Remarks                                               |
 |-------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| 1.7               | [1.7](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.7)          | Tagged release for 1.7 version of Azure management libraries |
 | 1.6               | [1.6](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.6)          | Tagged release for 1.6 version of Azure management libraries |
 | 1.4               | [1.4](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.4)          | Tagged release for 1.4 version of Azure management libraries |
 | 1.3               | [1.3](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.3)          | Tagged release for 1.3 version of Azure management libraries |
