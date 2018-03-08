@@ -34,7 +34,11 @@ RUN mkdir warmup \
     && cd .. \
     && rm -rf warmup \
     && rm -rf /tmp/NuGetScratch
+
 COPY . /azure-libraries-for-net
+COPY ./ci/app /app
 
 RUN cd /azure-libraries-for-net \
     && dotnet restore Fluent.Tests.sln
+
+CMD /app/a01droid
