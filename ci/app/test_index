@@ -1,6 +1,6 @@
 [{"ver": "1.0",
   "execution": {
-    "command": "dotnet test --filter Samples.Tests.Network.ManageNetworkInterfaceTest -f netcoreapp1.1",
+    "command": "cd azure-libraries-for-net/Tests/Samples.Tests/ && dotnet test --filter Samples.Tests.Network.ManageNetworkInterfaceTest -f netcoreapp1.1",
     "recording": null
   },
   "classifier": {
@@ -9,7 +9,7 @@
   }
 },{"ver": "1.0",
     "execution": {
-      "command": "dotnet test --filter Samples.Tests.Network.ManageNetworkSecurityGroupTest -f netcoreapp1.1",
+      "command": "cd azure-libraries-for-net/Tests/Samples.Tests/ && dotnet test --filter Samples.Tests.Network.ManageNetworkSecurityGroupTest -f netcoreapp1.1",
       "recording": null
     },
     "classifier": {
@@ -18,7 +18,7 @@
     }
   },{"ver": "1.0",
       "execution": {
-        "command": "dotnet test --filter Samples.Tests.Network.ManageVirtualNetworkTest -f netcoreapp1.1",
+        "command": "cd azure-libraries-for-net/Tests/Samples.Tests/ && dotnet test --filter Samples.Tests.Network.ManageVirtualNetworkTest -f netcoreapp1.1",
         "recording": null
       },
       "classifier": {
