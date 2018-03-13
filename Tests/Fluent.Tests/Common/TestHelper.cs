@@ -34,6 +34,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Rest;
 using Xunit.Abstractions;
 
 namespace Fluent.Tests.Common
@@ -309,7 +310,13 @@ namespace Fluent.Tests.Common
             }
             else
             {
+                if (clientId == null || tenantId == null || clientSecret == null || subscriptionId == null)
+                {
+                    throw new ValidationException(
+                        "When running tests in live mode either 'AZURE_AUTH_LOCATION' or 'AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_CLIENT_SECRET and AZURE_SUBSCRIPTION_ID' needs to be set");
+                }
                 credentials = SdkContext.AzureCredentialsFactory.FromServicePrincipal(clientId, clientSecret, tenantId, AzureEnvironment.AzureGlobalCloud);
+                credentials.WithDefaultSubscription(subscriptionId);
             }
             var manager = builder.Invoke(credentials);
 
