@@ -8,7 +8,6 @@
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -17,33 +16,29 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
     /// <summary>
     /// Resource group information.
     /// </summary>
-    public partial class ResourceGroupInner
+    public partial class ResourceGroupPatchableInner
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceGroupInner class.
+        /// Initializes a new instance of the ResourceGroupPatchableInner
+        /// class.
         /// </summary>
-        public ResourceGroupInner()
+        public ResourceGroupPatchableInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceGroupInner class.
+        /// Initializes a new instance of the ResourceGroupPatchableInner
+        /// class.
         /// </summary>
-        /// <param name="location">The location of the resource group. It
-        /// cannot be changed after the resource group has been created. It
-        /// must be one of the supported Azure locations.</param>
-        /// <param name="id">The ID of the resource group.</param>
         /// <param name="name">The name of the resource group.</param>
         /// <param name="managedBy">The ID of the resource that manages this
         /// resource group.</param>
         /// <param name="tags">The tags attached to the resource group.</param>
-        public ResourceGroupInner(string location, string id = default(string), string name = default(string), ResourceGroupProperties properties = default(ResourceGroupProperties), string managedBy = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public ResourceGroupPatchableInner(string name = default(string), ResourceGroupProperties properties = default(ResourceGroupProperties), string managedBy = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
-            Id = id;
             Name = name;
             Properties = properties;
-            Location = location;
             ManagedBy = managedBy;
             Tags = tags;
             CustomInit();
@@ -55,12 +50,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the ID of the resource group.
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
         /// Gets or sets the name of the resource group.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
@@ -70,14 +59,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public ResourceGroupProperties Properties { get; set; }
-
-        /// <summary>
-        /// Gets or sets the location of the resource group. It cannot be
-        /// changed after the resource group has been created. It must be one
-        /// of the supported Azure locations.
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets the ID of the resource that manages this resource
@@ -92,18 +73,5 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Models
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Location");
-            }
-        }
     }
 }

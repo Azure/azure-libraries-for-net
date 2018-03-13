@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
             get
             {
-                return Inner.State;
+                return Inner.State?.ToSerializedValue();
             }
         }
 
