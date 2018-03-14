@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 base=`dirname {BASH_SOURCE[0]}`
 rootdir="$( cd "$base" && pwd )"
@@ -37,7 +37,7 @@ done < $rootdir/ci/tasklist
 
 #sed -i '$ s|.$||' ./app/test_index
 
-truncate -s-1 $rootdir/ci/app/test_index
+truncate -s-2 $rootdir/ci/app/test_index
 
 #sed -i '$! { P; D; }; s|.$||' ./app/test_index
 
