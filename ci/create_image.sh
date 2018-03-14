@@ -10,7 +10,7 @@ function title {
 #############################################
 
 title 'Generating tasks list'
-
+./ci/get_tasks_list.sh
 
 title 'Building docker image'
 image=azuresdk-net:net-$TRAVIS_BUILD_NUMBER
