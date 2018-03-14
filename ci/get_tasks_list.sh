@@ -20,7 +20,7 @@ while read line; do
         task=$(cat $rootdir/ci/file.out)
         echo $task, >> $rootdir/ci/app/test_index
     fi
-done < $rootdir/ci/ci/tasklist
+done < $rootdir/ci/tasklist
 
 cd $rootdir/Tests/Fluent.Tests/
 
@@ -29,7 +29,7 @@ dotnet test -t --no-build > $rootdir/ci/tasklist
 while read line; do
     testcase="$( echo "$line" | cut -d '=' -f 1 )"
     if [[ $testcase == Fluent* ]] ; then
-        sed -e "s/%testcase%/${testcase}/g" -e "s|%testpath%|${fluentTestPath}|g" $rootdir/ci/ci/task_template > $rootdir/ci/file.out
+        sed -e "s/%testcase%/${testcase}/g" -e "s|%testpath%|${fluentTestPath}|g" $rootdir/ci/task_template > $rootdir/ci/file.out
         task=$(cat $rootdir/ci/file.out)
         echo $task, >> $rootdir/ci/app/test_index
     fi
