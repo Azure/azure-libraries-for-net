@@ -304,7 +304,7 @@ namespace Fluent.Tests.Common
         private static T CreateMockedManager<T>(Func<AzureCredentials, T> builder)
         {
             AzureCredentials credentials;
-            if (authFilePath != null)
+            if (authFilePath != null || HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 credentials = SdkContext.AzureCredentialsFactory.FromFile(authFilePath);
             }
