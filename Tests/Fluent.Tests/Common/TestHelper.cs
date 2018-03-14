@@ -34,6 +34,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Rest;
 using Xunit.Abstractions;
 
 namespace Fluent.Tests.Common
@@ -43,6 +44,10 @@ namespace Fluent.Tests.Common
         public static ITestOutputHelper TestLogger { get; set; }
 
         private static string authFilePath = Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION");
+        private static string clientId = Environment.GetEnvironmentVariable("AZURE_CLIENT_ID");
+        private static string tenantId = Environment.GetEnvironmentVariable("AZURE_TENANT_ID");
+        private static string clientSecret = Environment.GetEnvironmentVariable("AZURE_CLIENT_SECRET");
+        private static string subscriptionId = Environment.GetEnvironmentVariable("AZURE_SUBSCRIPTION_ID");
 
         public static void Delay(int millisecondsTimeout)
         {
@@ -298,8 +303,21 @@ namespace Fluent.Tests.Common
 
         private static T CreateMockedManager<T>(Func<AzureCredentials, T> builder)
         {
-            AzureCredentials credentials = SdkContext.AzureCredentialsFactory.FromFile(authFilePath);
-
+            AzureCredentials credentials;
+            if (authFilePath != null)
+            {
+                credentials = SdkContext.AzureCredentialsFactory.FromFile(authFilePath);
+            }
+            else
+            {
+                if (clientId == null || tenantId == null || clientSecret == null || subscriptionId == null)
+                {
+                    throw new ValidationException(
+                        "When running tests in live mode either 'AZURE_AUTH_LOCATION' or 'AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_CLIENT_SECRET and AZURE_SUBSCRIPTION_ID' needs to be set");
+                }
+                credentials = SdkContext.AzureCredentialsFactory.FromServicePrincipal(clientId, clientSecret, tenantId, AzureEnvironment.AzureGlobalCloud);
+                credentials.WithDefaultSubscription(subscriptionId);
+            }
             var manager = builder.Invoke(credentials);
 
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
