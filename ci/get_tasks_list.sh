@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 base=`dirname {BASH_SOURCE[0]}`
 rootdir="$( cd "$base" && pwd )"
