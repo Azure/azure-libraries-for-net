@@ -17,6 +17,7 @@ install:
   - sudo apt-get install dotnet-dev-1.0.4 -y
 script: 
   - ./test_on_linux.sh
+  - ./ci/create_image.sh
 after_script:
   - echo "========== Server log: ============"
   - pwd

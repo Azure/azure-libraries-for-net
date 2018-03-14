@@ -1,0 +1,22 @@
+kind: DroidMetadata
+version: v3
+product: dotnetsdk
+storage: true
+environments:
+  - name: AZURE_CLIENT_ID
+    type: secret
+    value: client
+  - name: AZURE_CLIENT_SECRET
+    type: secret
+    value: key
+  - name: AZURE_TENANT_ID
+    type: secret
+    value: tenant
+  - name: AZURE_SUBSCRIPTION_ID
+    type: secret
+    value: subscription
+  - name: AZURE_TEST_MODE
+    type: argument-value-mode
+    value: ""
+owners:
+  - fluent

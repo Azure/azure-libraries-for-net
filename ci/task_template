@@ -1,0 +1,9 @@
+{"ver": "1.0",
+  "execution": {
+    "command": "cd %testpath% && dotnet test --filter %testcase% -f netcoreapp1.1",
+    "recording": null
+  },
+  "classifier": {
+    "identifier": "%testcase%",
+    "type": "Unit"}
+  }

@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         /// <param name="tenantId">the tenant ID or domain the application is in</param>
         /// <param name="environment">the environment to authenticate to</param>
         /// <returns>an authenticated credentials object</returns>
-        public AzureCredentials FromServicePrincipal(string clientId, string clientSecret, string tenantId, AzureEnvironment environment)
+        public virtual AzureCredentials FromServicePrincipal(string clientId, string clientSecret, string tenantId, AzureEnvironment environment)
         {
             return new AzureCredentials(new ServicePrincipalLoginInformation
             {
