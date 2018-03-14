@@ -1,24 +1,24 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590?api-version=2015-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwP2FwaS12ZXJzaW9uPTIwMTUtMTEtMDE=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d2fd9693-9923-4120-bff5-9b89e932f7df"
+          "acd005e6-31ed-4ac1-bd63-4cc6c495e02d"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.SubscriptionClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ResourceManager.Fluent.SubscriptionClient/1.7.0.0",
+          "MacAddressHash/32ac13edda214fc6108630a151bc81b40bade0f5b6c8d010a5350f8a3ea67e13"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590\",\r\n  \"subscriptionId\": \"0b1f6471-1bf0-4dda-aec3-cb9272f09590\",\r\n  \"displayName\": \"AzureSDKADGraph2\",\r\n  \"state\": \"Enabled\",\r\n  \"subscriptionPolicies\": {\r\n    \"locationPlacementId\": \"Internal_2014-09-01\",\r\n    \"quotaId\": \"Internal_2014-09-01\",\r\n    \"spendingLimit\": \"Off\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n  \"subscriptionId\": \"1c638cf4-608f-4ee6-b680-c329e824c3a8\",\r\n  \"displayName\": \"Java Libs Tests with TTL = 2 Days\",\r\n  \"state\": \"Enabled\",\r\n  \"subscriptionPolicies\": {\r\n    \"locationPlacementId\": \"Internal_2014-09-01\",\r\n    \"quotaId\": \"Internal_2014-09-01\",\r\n    \"spendingLimit\": \"Off\"\r\n  },\r\n  \"authorizationSource\": \"RoleBased\"\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -30,7 +30,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 00:45:29 GMT"
+          "Tue, 13 Mar 2018 18:05:38 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -39,42 +39,45 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14931"
+          "14997"
         ],
         "x-ms-request-id": [
-          "02b8a497-95db-400f-abc9-97a7a987b26a"
+          "c28f5a2c-52b5-4df5-8661-a9fa16e1daf9"
         ],
         "x-ms-correlation-request-id": [
-          "02b8a497-95db-400f-abc9-97a7a987b26a"
+          "c28f5a2c-52b5-4df5-8661-a9fa16e1daf9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T004530Z:02b8a497-95db-400f-abc9-97a7a987b26a"
+          "WESTUS2:20180313T180539Z:c28f5a2c-52b5-4df5-8661-a9fa16e1daf9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations?api-version=2015-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL2xvY2F0aW9ucz9hcGktdmVyc2lvbj0yMDE1LTExLTAx",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L2xvY2F0aW9ucz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "48da496e-2076-4999-8801-39db977c8d02"
+          "902a475a-0c4c-4d05-9d36-62a7cff692a2"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.SubscriptionClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ResourceManager.Fluent.SubscriptionClient/1.7.0.0",
+          "MacAddressHash/32ac13edda214fc6108630a151bc81b40bade0f5b6c8d010a5350f8a3ea67e13"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/eastasia\",\r\n      \"name\": \"eastasia\",\r\n      \"displayName\": \"East Asia\",\r\n      \"longitude\": \"114.188\",\r\n      \"latitude\": \"22.267\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/southeastasia\",\r\n      \"name\": \"southeastasia\",\r\n      \"displayName\": \"Southeast Asia\",\r\n      \"longitude\": \"103.833\",\r\n      \"latitude\": \"1.283\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/centralus\",\r\n      \"name\": \"centralus\",\r\n      \"displayName\": \"Central US\",\r\n      \"longitude\": \"-93.6208\",\r\n      \"latitude\": \"41.5908\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/eastus\",\r\n      \"name\": \"eastus\",\r\n      \"displayName\": \"East US\",\r\n      \"longitude\": \"-79.8164\",\r\n      \"latitude\": \"37.3719\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/eastus2\",\r\n      \"name\": \"eastus2\",\r\n      \"displayName\": \"East US 2\",\r\n      \"longitude\": \"-78.3889\",\r\n      \"latitude\": \"36.6681\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/westus\",\r\n      \"name\": \"westus\",\r\n      \"displayName\": \"West US\",\r\n      \"longitude\": \"-122.417\",\r\n      \"latitude\": \"37.783\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/northcentralus\",\r\n      \"name\": \"northcentralus\",\r\n      \"displayName\": \"North Central US\",\r\n      \"longitude\": \"-87.6278\",\r\n      \"latitude\": \"41.8819\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/southcentralus\",\r\n      \"name\": \"southcentralus\",\r\n      \"displayName\": \"South Central US\",\r\n      \"longitude\": \"-98.5\",\r\n      \"latitude\": \"29.4167\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/northeurope\",\r\n      \"name\": \"northeurope\",\r\n      \"displayName\": \"North Europe\",\r\n      \"longitude\": \"-6.2597\",\r\n      \"latitude\": \"53.3478\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/westeurope\",\r\n      \"name\": \"westeurope\",\r\n      \"displayName\": \"West Europe\",\r\n      \"longitude\": \"4.9\",\r\n      \"latitude\": \"52.3667\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/japanwest\",\r\n      \"name\": \"japanwest\",\r\n      \"displayName\": \"Japan West\",\r\n      \"longitude\": \"135.5022\",\r\n      \"latitude\": \"34.6939\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/japaneast\",\r\n      \"name\": \"japaneast\",\r\n      \"displayName\": \"Japan East\",\r\n      \"longitude\": \"139.77\",\r\n      \"latitude\": \"35.68\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/brazilsouth\",\r\n      \"name\": \"brazilsouth\",\r\n      \"displayName\": \"Brazil South\",\r\n      \"longitude\": \"-46.633\",\r\n      \"latitude\": \"-23.55\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/australiaeast\",\r\n      \"name\": \"australiaeast\",\r\n      \"displayName\": \"Australia East\",\r\n      \"longitude\": \"151.2094\",\r\n      \"latitude\": \"-33.86\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/australiasoutheast\",\r\n      \"name\": \"australiasoutheast\",\r\n      \"displayName\": \"Australia Southeast\",\r\n      \"longitude\": \"144.9631\",\r\n      \"latitude\": \"-37.8136\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/southindia\",\r\n      \"name\": \"southindia\",\r\n      \"displayName\": \"South India\",\r\n      \"longitude\": \"80.1636\",\r\n      \"latitude\": \"12.9822\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/centralindia\",\r\n      \"name\": \"centralindia\",\r\n      \"displayName\": \"Central India\",\r\n      \"longitude\": \"73.9197\",\r\n      \"latitude\": \"18.5822\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/westindia\",\r\n      \"name\": \"westindia\",\r\n      \"displayName\": \"West India\",\r\n      \"longitude\": \"72.868\",\r\n      \"latitude\": \"19.088\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/canadacentral\",\r\n      \"name\": \"canadacentral\",\r\n      \"displayName\": \"Canada Central\",\r\n      \"longitude\": \"-79.383\",\r\n      \"latitude\": \"43.653\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/canadaeast\",\r\n      \"name\": \"canadaeast\",\r\n      \"displayName\": \"Canada East\",\r\n      \"longitude\": \"-71.217\",\r\n      \"latitude\": \"46.817\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/uksouth\",\r\n      \"name\": \"uksouth\",\r\n      \"displayName\": \"UK South\",\r\n      \"longitude\": \"-0.799\",\r\n      \"latitude\": \"50.941\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/ukwest\",\r\n      \"name\": \"ukwest\",\r\n      \"displayName\": \"UK West\",\r\n      \"longitude\": \"-3.084\",\r\n      \"latitude\": \"53.427\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/westcentralus\",\r\n      \"name\": \"westcentralus\",\r\n      \"displayName\": \"West Central US\",\r\n      \"longitude\": \"-110.234\",\r\n      \"latitude\": \"40.890\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/westus2\",\r\n      \"name\": \"westus2\",\r\n      \"displayName\": \"West US 2\",\r\n      \"longitude\": \"-119.852\",\r\n      \"latitude\": \"47.233\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/koreacentral\",\r\n      \"name\": \"koreacentral\",\r\n      \"displayName\": \"Korea Central\",\r\n      \"longitude\": \"126.9780\",\r\n      \"latitude\": \"37.5665\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/koreasouth\",\r\n      \"name\": \"koreasouth\",\r\n      \"displayName\": \"Korea South\",\r\n      \"longitude\": \"129.0756\",\r\n      \"latitude\": \"35.1796\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/eastasia\",\r\n      \"name\": \"eastasia\",\r\n      \"displayName\": \"East Asia\",\r\n      \"longitude\": \"114.188\",\r\n      \"latitude\": \"22.267\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/southeastasia\",\r\n      \"name\": \"southeastasia\",\r\n      \"displayName\": \"Southeast Asia\",\r\n      \"longitude\": \"103.833\",\r\n      \"latitude\": \"1.283\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/centralus\",\r\n      \"name\": \"centralus\",\r\n      \"displayName\": \"Central US\",\r\n      \"longitude\": \"-93.6208\",\r\n      \"latitude\": \"41.5908\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/eastus\",\r\n      \"name\": \"eastus\",\r\n      \"displayName\": \"East US\",\r\n      \"longitude\": \"-79.8164\",\r\n      \"latitude\": \"37.3719\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/eastus2\",\r\n      \"name\": \"eastus2\",\r\n      \"displayName\": \"East US 2\",\r\n      \"longitude\": \"-78.3889\",\r\n      \"latitude\": \"36.6681\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/westus\",\r\n      \"name\": \"westus\",\r\n      \"displayName\": \"West US\",\r\n      \"longitude\": \"-122.417\",\r\n      \"latitude\": \"37.783\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/northcentralus\",\r\n      \"name\": \"northcentralus\",\r\n      \"displayName\": \"North Central US\",\r\n      \"longitude\": \"-87.6278\",\r\n      \"latitude\": \"41.8819\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/southcentralus\",\r\n      \"name\": \"southcentralus\",\r\n      \"displayName\": \"South Central US\",\r\n      \"longitude\": \"-98.5\",\r\n      \"latitude\": \"29.4167\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/northeurope\",\r\n      \"name\": \"northeurope\",\r\n      \"displayName\": \"North Europe\",\r\n      \"longitude\": \"-6.2597\",\r\n      \"latitude\": \"53.3478\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/westeurope\",\r\n      \"name\": \"westeurope\",\r\n      \"displayName\": \"West Europe\",\r\n      \"longitude\": \"4.9\",\r\n      \"latitude\": \"52.3667\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/japanwest\",\r\n      \"name\": \"japanwest\",\r\n      \"displayName\": \"Japan West\",\r\n      \"longitude\": \"135.5022\",\r\n      \"latitude\": \"34.6939\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/japaneast\",\r\n      \"name\": \"japaneast\",\r\n      \"displayName\": \"Japan East\",\r\n      \"longitude\": \"139.77\",\r\n      \"latitude\": \"35.68\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/brazilsouth\",\r\n      \"name\": \"brazilsouth\",\r\n      \"displayName\": \"Brazil South\",\r\n      \"longitude\": \"-46.633\",\r\n      \"latitude\": \"-23.55\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/australiaeast\",\r\n      \"name\": \"australiaeast\",\r\n      \"displayName\": \"Australia East\",\r\n      \"longitude\": \"151.2094\",\r\n      \"latitude\": \"-33.86\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/australiasoutheast\",\r\n      \"name\": \"australiasoutheast\",\r\n      \"displayName\": \"Australia Southeast\",\r\n      \"longitude\": \"144.9631\",\r\n      \"latitude\": \"-37.8136\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/southindia\",\r\n      \"name\": \"southindia\",\r\n      \"displayName\": \"South India\",\r\n      \"longitude\": \"80.1636\",\r\n      \"latitude\": \"12.9822\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/centralindia\",\r\n      \"name\": \"centralindia\",\r\n      \"displayName\": \"Central India\",\r\n      \"longitude\": \"73.9197\",\r\n      \"latitude\": \"18.5822\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/westindia\",\r\n      \"name\": \"westindia\",\r\n      \"displayName\": \"West India\",\r\n      \"longitude\": \"72.868\",\r\n      \"latitude\": \"19.088\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/canadacentral\",\r\n      \"name\": \"canadacentral\",\r\n      \"displayName\": \"Canada Central\",\r\n      \"longitude\": \"-79.383\",\r\n      \"latitude\": \"43.653\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/canadaeast\",\r\n      \"name\": \"canadaeast\",\r\n      \"displayName\": \"Canada East\",\r\n      \"longitude\": \"-71.217\",\r\n      \"latitude\": \"46.817\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/uksouth\",\r\n      \"name\": \"uksouth\",\r\n      \"displayName\": \"UK South\",\r\n      \"longitude\": \"-0.799\",\r\n      \"latitude\": \"50.941\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/ukwest\",\r\n      \"name\": \"ukwest\",\r\n      \"displayName\": \"UK West\",\r\n      \"longitude\": \"-3.084\",\r\n      \"latitude\": \"53.427\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/westcentralus\",\r\n      \"name\": \"westcentralus\",\r\n      \"displayName\": \"West Central US\",\r\n      \"longitude\": \"-110.234\",\r\n      \"latitude\": \"40.890\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/westus2\",\r\n      \"name\": \"westus2\",\r\n      \"displayName\": \"West US 2\",\r\n      \"longitude\": \"-119.852\",\r\n      \"latitude\": \"47.233\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/koreacentral\",\r\n      \"name\": \"koreacentral\",\r\n      \"displayName\": \"Korea Central\",\r\n      \"longitude\": \"126.9780\",\r\n      \"latitude\": \"37.5665\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/koreasouth\",\r\n      \"name\": \"koreasouth\",\r\n      \"displayName\": \"Korea South\",\r\n      \"longitude\": \"129.0756\",\r\n      \"latitude\": \"35.1796\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/francecentral\",\r\n      \"name\": \"francecentral\",\r\n      \"displayName\": \"France Central\",\r\n      \"longitude\": \"2.3730\",\r\n      \"latitude\": \"46.3772\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/francesouth\",\r\n      \"name\": \"francesouth\",\r\n      \"displayName\": \"France South\",\r\n      \"longitude\": \"2.1972\",\r\n      \"latitude\": \"43.8345\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -86,7 +89,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 00:45:29 GMT"
+          "Tue, 13 Mar 2018 18:05:38 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -95,42 +98,45 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14930"
+          "14996"
         ],
         "x-ms-request-id": [
-          "244f496c-3d12-4755-8c1f-dfe3f8be60d0"
+          "092af6d9-0b96-468b-be27-f2bc5fe15ea3"
         ],
         "x-ms-correlation-request-id": [
-          "244f496c-3d12-4755-8c1f-dfe3f8be60d0"
+          "092af6d9-0b96-468b-be27-f2bc5fe15ea3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T004530Z:244f496c-3d12-4755-8c1f-dfe3f8be60d0"
+          "WESTUS2:20180313T180539Z:092af6d9-0b96-468b-be27-f2bc5fe15ea3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations?api-version=2015-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL2xvY2F0aW9ucz9hcGktdmVyc2lvbj0yMDE1LTExLTAx",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L2xvY2F0aW9ucz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bc87dfe0-54b7-4c79-a1b0-52a4197d68f8"
+          "93fa14ac-3513-41f4-81b2-f9c9438fe9be"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.SubscriptionClient/1.4.1.0",
-          "MacAddressHash/8aacf6245de346f347b0601b2da7a93ac9072c00fb7b723a469bc615c87f34d2"
+          "Microsoft.Azure.Management.ResourceManager.Fluent.SubscriptionClient/1.7.0.0",
+          "MacAddressHash/32ac13edda214fc6108630a151bc81b40bade0f5b6c8d010a5350f8a3ea67e13"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/eastasia\",\r\n      \"name\": \"eastasia\",\r\n      \"displayName\": \"East Asia\",\r\n      \"longitude\": \"114.188\",\r\n      \"latitude\": \"22.267\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/southeastasia\",\r\n      \"name\": \"southeastasia\",\r\n      \"displayName\": \"Southeast Asia\",\r\n      \"longitude\": \"103.833\",\r\n      \"latitude\": \"1.283\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/centralus\",\r\n      \"name\": \"centralus\",\r\n      \"displayName\": \"Central US\",\r\n      \"longitude\": \"-93.6208\",\r\n      \"latitude\": \"41.5908\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/eastus\",\r\n      \"name\": \"eastus\",\r\n      \"displayName\": \"East US\",\r\n      \"longitude\": \"-79.8164\",\r\n      \"latitude\": \"37.3719\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/eastus2\",\r\n      \"name\": \"eastus2\",\r\n      \"displayName\": \"East US 2\",\r\n      \"longitude\": \"-78.3889\",\r\n      \"latitude\": \"36.6681\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/westus\",\r\n      \"name\": \"westus\",\r\n      \"displayName\": \"West US\",\r\n      \"longitude\": \"-122.417\",\r\n      \"latitude\": \"37.783\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/northcentralus\",\r\n      \"name\": \"northcentralus\",\r\n      \"displayName\": \"North Central US\",\r\n      \"longitude\": \"-87.6278\",\r\n      \"latitude\": \"41.8819\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/southcentralus\",\r\n      \"name\": \"southcentralus\",\r\n      \"displayName\": \"South Central US\",\r\n      \"longitude\": \"-98.5\",\r\n      \"latitude\": \"29.4167\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/northeurope\",\r\n      \"name\": \"northeurope\",\r\n      \"displayName\": \"North Europe\",\r\n      \"longitude\": \"-6.2597\",\r\n      \"latitude\": \"53.3478\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/westeurope\",\r\n      \"name\": \"westeurope\",\r\n      \"displayName\": \"West Europe\",\r\n      \"longitude\": \"4.9\",\r\n      \"latitude\": \"52.3667\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/japanwest\",\r\n      \"name\": \"japanwest\",\r\n      \"displayName\": \"Japan West\",\r\n      \"longitude\": \"135.5022\",\r\n      \"latitude\": \"34.6939\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/japaneast\",\r\n      \"name\": \"japaneast\",\r\n      \"displayName\": \"Japan East\",\r\n      \"longitude\": \"139.77\",\r\n      \"latitude\": \"35.68\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/brazilsouth\",\r\n      \"name\": \"brazilsouth\",\r\n      \"displayName\": \"Brazil South\",\r\n      \"longitude\": \"-46.633\",\r\n      \"latitude\": \"-23.55\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/australiaeast\",\r\n      \"name\": \"australiaeast\",\r\n      \"displayName\": \"Australia East\",\r\n      \"longitude\": \"151.2094\",\r\n      \"latitude\": \"-33.86\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/australiasoutheast\",\r\n      \"name\": \"australiasoutheast\",\r\n      \"displayName\": \"Australia Southeast\",\r\n      \"longitude\": \"144.9631\",\r\n      \"latitude\": \"-37.8136\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/southindia\",\r\n      \"name\": \"southindia\",\r\n      \"displayName\": \"South India\",\r\n      \"longitude\": \"80.1636\",\r\n      \"latitude\": \"12.9822\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/centralindia\",\r\n      \"name\": \"centralindia\",\r\n      \"displayName\": \"Central India\",\r\n      \"longitude\": \"73.9197\",\r\n      \"latitude\": \"18.5822\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/westindia\",\r\n      \"name\": \"westindia\",\r\n      \"displayName\": \"West India\",\r\n      \"longitude\": \"72.868\",\r\n      \"latitude\": \"19.088\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/canadacentral\",\r\n      \"name\": \"canadacentral\",\r\n      \"displayName\": \"Canada Central\",\r\n      \"longitude\": \"-79.383\",\r\n      \"latitude\": \"43.653\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/canadaeast\",\r\n      \"name\": \"canadaeast\",\r\n      \"displayName\": \"Canada East\",\r\n      \"longitude\": \"-71.217\",\r\n      \"latitude\": \"46.817\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/uksouth\",\r\n      \"name\": \"uksouth\",\r\n      \"displayName\": \"UK South\",\r\n      \"longitude\": \"-0.799\",\r\n      \"latitude\": \"50.941\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/ukwest\",\r\n      \"name\": \"ukwest\",\r\n      \"displayName\": \"UK West\",\r\n      \"longitude\": \"-3.084\",\r\n      \"latitude\": \"53.427\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/westcentralus\",\r\n      \"name\": \"westcentralus\",\r\n      \"displayName\": \"West Central US\",\r\n      \"longitude\": \"-110.234\",\r\n      \"latitude\": \"40.890\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/westus2\",\r\n      \"name\": \"westus2\",\r\n      \"displayName\": \"West US 2\",\r\n      \"longitude\": \"-119.852\",\r\n      \"latitude\": \"47.233\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/koreacentral\",\r\n      \"name\": \"koreacentral\",\r\n      \"displayName\": \"Korea Central\",\r\n      \"longitude\": \"126.9780\",\r\n      \"latitude\": \"37.5665\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/koreasouth\",\r\n      \"name\": \"koreasouth\",\r\n      \"displayName\": \"Korea South\",\r\n      \"longitude\": \"129.0756\",\r\n      \"latitude\": \"35.1796\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/eastasia\",\r\n      \"name\": \"eastasia\",\r\n      \"displayName\": \"East Asia\",\r\n      \"longitude\": \"114.188\",\r\n      \"latitude\": \"22.267\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/southeastasia\",\r\n      \"name\": \"southeastasia\",\r\n      \"displayName\": \"Southeast Asia\",\r\n      \"longitude\": \"103.833\",\r\n      \"latitude\": \"1.283\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/centralus\",\r\n      \"name\": \"centralus\",\r\n      \"displayName\": \"Central US\",\r\n      \"longitude\": \"-93.6208\",\r\n      \"latitude\": \"41.5908\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/eastus\",\r\n      \"name\": \"eastus\",\r\n      \"displayName\": \"East US\",\r\n      \"longitude\": \"-79.8164\",\r\n      \"latitude\": \"37.3719\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/eastus2\",\r\n      \"name\": \"eastus2\",\r\n      \"displayName\": \"East US 2\",\r\n      \"longitude\": \"-78.3889\",\r\n      \"latitude\": \"36.6681\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/westus\",\r\n      \"name\": \"westus\",\r\n      \"displayName\": \"West US\",\r\n      \"longitude\": \"-122.417\",\r\n      \"latitude\": \"37.783\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/northcentralus\",\r\n      \"name\": \"northcentralus\",\r\n      \"displayName\": \"North Central US\",\r\n      \"longitude\": \"-87.6278\",\r\n      \"latitude\": \"41.8819\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/southcentralus\",\r\n      \"name\": \"southcentralus\",\r\n      \"displayName\": \"South Central US\",\r\n      \"longitude\": \"-98.5\",\r\n      \"latitude\": \"29.4167\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/northeurope\",\r\n      \"name\": \"northeurope\",\r\n      \"displayName\": \"North Europe\",\r\n      \"longitude\": \"-6.2597\",\r\n      \"latitude\": \"53.3478\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/westeurope\",\r\n      \"name\": \"westeurope\",\r\n      \"displayName\": \"West Europe\",\r\n      \"longitude\": \"4.9\",\r\n      \"latitude\": \"52.3667\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/japanwest\",\r\n      \"name\": \"japanwest\",\r\n      \"displayName\": \"Japan West\",\r\n      \"longitude\": \"135.5022\",\r\n      \"latitude\": \"34.6939\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/japaneast\",\r\n      \"name\": \"japaneast\",\r\n      \"displayName\": \"Japan East\",\r\n      \"longitude\": \"139.77\",\r\n      \"latitude\": \"35.68\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/brazilsouth\",\r\n      \"name\": \"brazilsouth\",\r\n      \"displayName\": \"Brazil South\",\r\n      \"longitude\": \"-46.633\",\r\n      \"latitude\": \"-23.55\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/australiaeast\",\r\n      \"name\": \"australiaeast\",\r\n      \"displayName\": \"Australia East\",\r\n      \"longitude\": \"151.2094\",\r\n      \"latitude\": \"-33.86\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/australiasoutheast\",\r\n      \"name\": \"australiasoutheast\",\r\n      \"displayName\": \"Australia Southeast\",\r\n      \"longitude\": \"144.9631\",\r\n      \"latitude\": \"-37.8136\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/southindia\",\r\n      \"name\": \"southindia\",\r\n      \"displayName\": \"South India\",\r\n      \"longitude\": \"80.1636\",\r\n      \"latitude\": \"12.9822\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/centralindia\",\r\n      \"name\": \"centralindia\",\r\n      \"displayName\": \"Central India\",\r\n      \"longitude\": \"73.9197\",\r\n      \"latitude\": \"18.5822\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/westindia\",\r\n      \"name\": \"westindia\",\r\n      \"displayName\": \"West India\",\r\n      \"longitude\": \"72.868\",\r\n      \"latitude\": \"19.088\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/canadacentral\",\r\n      \"name\": \"canadacentral\",\r\n      \"displayName\": \"Canada Central\",\r\n      \"longitude\": \"-79.383\",\r\n      \"latitude\": \"43.653\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/canadaeast\",\r\n      \"name\": \"canadaeast\",\r\n      \"displayName\": \"Canada East\",\r\n      \"longitude\": \"-71.217\",\r\n      \"latitude\": \"46.817\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/uksouth\",\r\n      \"name\": \"uksouth\",\r\n      \"displayName\": \"UK South\",\r\n      \"longitude\": \"-0.799\",\r\n      \"latitude\": \"50.941\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/ukwest\",\r\n      \"name\": \"ukwest\",\r\n      \"displayName\": \"UK West\",\r\n      \"longitude\": \"-3.084\",\r\n      \"latitude\": \"53.427\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/westcentralus\",\r\n      \"name\": \"westcentralus\",\r\n      \"displayName\": \"West Central US\",\r\n      \"longitude\": \"-110.234\",\r\n      \"latitude\": \"40.890\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/westus2\",\r\n      \"name\": \"westus2\",\r\n      \"displayName\": \"West US 2\",\r\n      \"longitude\": \"-119.852\",\r\n      \"latitude\": \"47.233\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/koreacentral\",\r\n      \"name\": \"koreacentral\",\r\n      \"displayName\": \"Korea Central\",\r\n      \"longitude\": \"126.9780\",\r\n      \"latitude\": \"37.5665\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/koreasouth\",\r\n      \"name\": \"koreasouth\",\r\n      \"displayName\": \"Korea South\",\r\n      \"longitude\": \"129.0756\",\r\n      \"latitude\": \"35.1796\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/francecentral\",\r\n      \"name\": \"francecentral\",\r\n      \"displayName\": \"France Central\",\r\n      \"longitude\": \"2.3730\",\r\n      \"latitude\": \"46.3772\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/locations/francesouth\",\r\n      \"name\": \"francesouth\",\r\n      \"displayName\": \"France South\",\r\n      \"longitude\": \"2.1972\",\r\n      \"latitude\": \"43.8345\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -142,7 +148,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 10 Jan 2018 00:45:29 GMT"
+          "Tue, 13 Mar 2018 18:05:38 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -151,19 +157,22 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14929"
+          "14995"
         ],
         "x-ms-request-id": [
-          "4817149d-dbf6-48dd-be03-0b8cf2d75114"
+          "92e9a013-a7fd-47e4-a516-42056a7f5e58"
         ],
         "x-ms-correlation-request-id": [
-          "4817149d-dbf6-48dd-be03-0b8cf2d75114"
+          "92e9a013-a7fd-47e4-a516-42056a7f5e58"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180110T004530Z:4817149d-dbf6-48dd-be03-0b8cf2d75114"
+          "WESTUS2:20180313T180539Z:92e9a013-a7fd-47e4-a516-42056a7f5e58"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ]
       },
       "StatusCode": 200
@@ -171,8 +180,8 @@
   ],
   "Names": {},
   "Variables": {
-    "ServicePrincipal": "a971e5df-eeb7-4481-9bf7-e72e66a2ba12",
-    "AADTenant": "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a",
-    "SubscriptionId": "0b1f6471-1bf0-4dda-aec3-cb9272f09590"
+    "ServicePrincipal": "c6b528d7-8967-4469-a585-f91cb15a3217",
+    "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "SubscriptionId": "1c638cf4-608f-4ee6-b680-c329e824c3a8"
   }
 }

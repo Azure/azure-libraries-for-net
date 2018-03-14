@@ -122,8 +122,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         public IEnumerable<IDeployment> ListByResourceGroup(string resourceGroupName)
         {
-            return Extensions.Synchronize(() => Manager.Inner.Deployments.ListAsync(resourceGroupName))
-                                            .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.Inner.Deployments.ListNextAsync(link)))
+            return Extensions.Synchronize(() => Manager.Inner.Deployments.ListByResourceGroupAsync(resourceGroupName))
+                                            .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.Inner.Deployments.ListByResourceGroupNextAsync(link)))
                                             .Select(inner => WrapModel(inner));
         }
 
@@ -153,8 +153,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         public async Task<IPagedCollection<IDeployment>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IDeployment, DeploymentExtendedInner>.LoadPage(
-                async (cancellation) => await Manager.Inner.Deployments.ListAsync(resourceGroupName, cancellationToken: cancellationToken),
-                Manager.Inner.Deployments.ListNextAsync,
+                async (cancellation) => await Manager.Inner.Deployments.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellationToken),
+                Manager.Inner.Deployments.ListByResourceGroupNextAsync,
                 WrapModel, loadAllPages, cancellationToken);
         }
     }

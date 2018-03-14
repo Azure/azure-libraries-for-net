@@ -116,7 +116,8 @@
   "features": {
     "dir": "ResourceManager",
     "source": "specification/resources/resource-manager/readme.md",
-    "package": "Microsoft.Azure.Management.ResourceManager.Fluent"
+    "package": "Microsoft.Azure.Management.ResourceManager.Fluent",
+    "args": "--payload-flattening-threshold=1 --tag=package-features-2015-12"
   },
   "graphrbac": {
     "dir": "Graph.RBAC",
@@ -211,7 +212,8 @@
   "resources": {
     "dir": "ResourceManager",
     "source": "specification/resources/resource-manager/readme.md",
-    "package": "Microsoft.Azure.Management.ResourceManager.Fluent"
+    "package": "Microsoft.Azure.Management.ResourceManager.Fluent",
+    "args": "--payload-flattening-threshold=1 --tag=package-resources-2017-05"
   },
   "scheduler": {
     "dir": "Scheduler",
