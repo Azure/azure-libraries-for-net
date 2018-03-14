@@ -16,28 +16,7 @@ namespace Azure.Tests
         {
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
-                var env = new AzureEnvironment()
-                {
-                    AuthenticationEndpoint = "https://www.contoso.com",
-                    ManagementEndpoint = "https://www.contoso.com",
-                    ResourceManagerEndpoint = "https://www.contoso.com",
-                    GraphEndpoint = "https://www.contoso.com"
-                };
-
-                AzureCredentials credentials = new TestAzureCredentials(
-                    new ServicePrincipalLoginInformation
-                    {
-                        ClientId = HttpMockServer.Variables.ContainsKey(ConnectionStringKeys.AADTenantKey) ?
-                            HttpMockServer.Variables[ConnectionStringKeys.ServicePrincipalKey] : "servicePrincipalNotRecorded",
-                        ClientSecret = null
-                    }, 
-                    HttpMockServer.Variables.ContainsKey(ConnectionStringKeys.AADTenantKey) ?
-                        HttpMockServer.Variables[ConnectionStringKeys.AADTenantKey] : "tenantIdNotRecorded", env);
-                credentials.WithDefaultSubscription(
-                    HttpMockServer.Variables.ContainsKey(ConnectionStringKeys.SubscriptionIdKey) ?
-                        HttpMockServer.Variables[ConnectionStringKeys.SubscriptionIdKey] : "subscriptionIdNotRecorded");
-
-                return credentials;
+                return GetTestCredentials();
             }
 
             var retValue = base.FromFile(authFile);
@@ -47,6 +26,51 @@ namespace Azure.Tests
             HttpMockServer.Variables[ConnectionStringKeys.SubscriptionIdKey] = retValue.DefaultSubscriptionId;
 
             return retValue;
+        }
+
+        public override AzureCredentials FromServicePrincipal(string clientId, string clientSecret, string tenantId, AzureEnvironment environment)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                return GetTestCredentials();
+            }
+
+            var retValue = base.FromServicePrincipal(clientId, clientSecret, tenantId, environment);
+
+            HttpMockServer.Variables[ConnectionStringKeys.ServicePrincipalKey] = retValue.ClientId;
+            HttpMockServer.Variables[ConnectionStringKeys.AADTenantKey] = retValue.TenantId;
+            HttpMockServer.Variables[ConnectionStringKeys.SubscriptionIdKey] = retValue.DefaultSubscriptionId;
+
+            return retValue;
+        }
+
+        private static AzureCredentials GetTestCredentials()
+        {
+            var env = new AzureEnvironment()
+            {
+                AuthenticationEndpoint = "https://www.contoso.com",
+                ManagementEndpoint = "https://www.contoso.com",
+                ResourceManagerEndpoint = "https://www.contoso.com",
+                GraphEndpoint = "https://www.contoso.com"
+            };
+
+            AzureCredentials credentials = new TestAzureCredentials(
+                new ServicePrincipalLoginInformation
+                {
+                    ClientId = HttpMockServer.Variables.ContainsKey(ConnectionStringKeys.AADTenantKey)
+                        ? HttpMockServer.Variables[ConnectionStringKeys.ServicePrincipalKey]
+                        : "servicePrincipalNotRecorded",
+                    ClientSecret = null
+                },
+                HttpMockServer.Variables.ContainsKey(ConnectionStringKeys.AADTenantKey)
+                    ? HttpMockServer.Variables[ConnectionStringKeys.AADTenantKey]
+                    : "tenantIdNotRecorded", env);
+            credentials.WithDefaultSubscription(
+                HttpMockServer.Variables.ContainsKey(ConnectionStringKeys.SubscriptionIdKey)
+                    ? HttpMockServer.Variables[ConnectionStringKeys.SubscriptionIdKey]
+                    : "subscriptionIdNotRecorded");
+
+            return credentials;
         }
     }
 }
