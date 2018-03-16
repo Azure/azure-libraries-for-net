@@ -9,6 +9,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     using System.Collections.Generic;
     using System;
     using System.Linq;
+    using Microsoft.Rest.Azure.OData;
 
     /// <summary>
     /// The Azure metric definition entries are of type MetricDefinition.
@@ -138,18 +139,19 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         public async Task<IMetricCollection> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return new MetricCollectionImpl(await this.Manager().Inner.Metrics.ListAsync(
-                this.inner.ResourceId,
-                string.Format("{0}/{1}",
+                resourceUri: this.inner.ResourceId,
+                odataQuery: new ODataQuery<MetadataValueInner>(this.odataFilter),
+                timespan: string.Format("{0}/{1}",
                     this.queryStartTime.ToString("o"),
                     this.queryEndTime.ToString("o")),
-                this.interval,
-                this.inner.Name?.Value,
-                this.aggreagation,
-                this.top,
-                this.orderBy,
-                this.odataFilter,
-                this.resultType,
-                cancellationToken));
+                interval: this.interval,
+                metricnames: this.inner.Name?.Value,
+                aggregation: this.aggreagation,
+                top: this.top,
+                orderby: this.orderBy,
+                resultType: this.resultType,
+                metricnamespace: null,
+                cancellationToken: cancellationToken));
         }
 
         ///GENMHASH:109D11A77FA743E7E386E405BD1BAAAF:ADA232E274A9B225A8972BEF1F18FEB5

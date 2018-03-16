@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
         ///GENMHASH:8BB42E8B013293EB00FF395576B1B45A:4738909A0D005F4EAE1440649772A2CF
         public async Task<IReadOnlyList<IMetricDefinition>> ListByResourceAsync(string resourceId, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return (await this.Inner.ListAsync(resourceId, cancellationToken))
+        { 
+            return (await this.Inner.ListAsync(resourceUri: resourceId, metricnamespace: null, cancellationToken: cancellationToken))
                 .Select(md => new MetricDefinitionImpl(md, this.Manager()))
                 .ToList();
         }
