@@ -15,9 +15,12 @@ install:
   - sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
   - sudo apt-get update
   - sudo apt-get install dotnet-dev-1.0.4 -y
-script: 
-  - ./test_on_linux.sh
-  - ./ci/create_image.sh
+script:
+- |-
+  ./test_on_linux.sh
+  if [ ${TRAVIS_BRANCH} = "master"] && [ ${TRAVIS_PULL_REQUEST} = "false" ]; then
+    ./ci/create_image.sh ;
+  fi
 after_script:
   - echo "========== Server log: ============"
   - pwd
