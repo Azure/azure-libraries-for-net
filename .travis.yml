@@ -18,7 +18,7 @@ install:
 script:
 - |-
   ./test_on_linux.sh
-  if [ ${TRAVIS_BRANCH} = "master"] && [ ${TRAVIS_PULL_REQUEST} = "false" ]; then
+   if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; then
     ./ci/create_image.sh ;
   fi
 after_script:
