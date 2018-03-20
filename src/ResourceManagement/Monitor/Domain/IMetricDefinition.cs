@@ -1,10 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Monitor.Fluent
 {
     using Microsoft.Azure.Management.Monitor.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using System.Collections.Generic;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
@@ -16,6 +15,16 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<MonitorManager>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.MetricDefinition>
     {
+
+        /// <summary>
+        /// Gets the name and the display name of the dimension, i.e. it is a localizable
+        /// string.
+        /// </summary>
+        /// <summary>
+        /// Gets the list of dimension values.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<Models.ILocalizableString> Dimensions { get; }
+
         /// <summary>
         /// Gets the id value.
         /// </summary>
@@ -25,12 +34,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         string Id { get; }
 
         /// <summary>
-        /// Gets the unit value.
+        /// Gets the isDimensionRequired value.
         /// </summary>
         /// <summary>
-        /// Gets the unit value.
+        /// Gets the isDimensionRequired value.
         /// </summary>
-        Models.Unit Unit { get; }
+        bool IsDimensionRequired { get; }
 
         /// <summary>
         /// Gets the metricAvailabilities value.
@@ -41,22 +50,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         System.Collections.Generic.IReadOnlyList<Models.MetricAvailability> MetricAvailabilities { get; }
 
         /// <summary>
-        /// Gets the resourceId value.
-        /// </summary>
-        /// <summary>
-        /// Gets the resourceId value.
-        /// </summary>
-        string ResourceId { get; }
-
-        /// <summary>
-        /// Gets Begins a definition for a new resource Metric query.
-        /// </summary>
-        /// <summary>
-        /// Gets the stage of start time filter definition.
-        /// </summary>
-        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricStartTimeFilter DefineQuery();
-
-        /// <summary>
         /// Gets the name value.
         /// </summary>
         /// <summary>
@@ -65,12 +58,50 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         Models.ILocalizableString Name { get; }
 
         /// <summary>
+        /// Gets the namespace value.
+        /// </summary>
+        /// <summary>
+        /// Gets the namespace value.
+        /// </summary>
+        string Namespace { get; }
+
+        /// <summary>
         /// Gets the primaryAggregationType value.
         /// </summary>
         /// <summary>
         /// Gets the primaryAggregationType value.
         /// </summary>
         Models.AggregationType PrimaryAggregationType { get; }
+
+        /// <summary>
+        /// Gets the resourceId value.
+        /// </summary>
+        /// <summary>
+        /// Gets the resourceId value.
+        /// </summary>
+        string ResourceId { get; }
+
+        /// <summary>
+        /// Gets the collection of what aggregation types are supported.
+        /// </summary>
+        /// <summary>
+        /// Gets the list of supported aggregation type values.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<Models.AggregationType> SupportedAggregationTypes { get; }
+
+        /// <summary>
+        /// Gets the unit value.
+        /// </summary>
+        /// <summary>
+        /// Gets the unit value.
+        /// </summary>
+        Models.Unit Unit { get; }
+
+        /// <summary>
+        /// Begins a definition for a new resource Metric query.
+        /// </summary>
+        /// <return>The stage of start time filter definition.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricStartTimeFilter DefineQuery();
     }
 
     /// <summary>
@@ -78,6 +109,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IWithMetricEndFilter
     {
+
         /// <summary>
         /// Sets the end time for Metric query filter.
         /// </summary>
@@ -94,6 +126,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricEndFilter,
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute
     {
+
     }
 
     /// <summary>
@@ -101,6 +134,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IMetricsQueryDefinitionStages
     {
+
     }
 
     /// <summary>
@@ -108,13 +142,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IWithMetricsQueryExecute
     {
+
         /// <summary>
-        /// Gets Executes the query.
+        /// Executes the query.
         /// </summary>
-        /// <summary>
-        /// Gets Metric collection received after query execution.
-        /// </summary>
+        /// <return>Metric collection received after query execution.</return>
         Models.IMetricCollection Execute();
+
+        /// <summary>
+        /// Executes the query.
+        /// </summary>
+        /// <return>A representation of the deferred computation of Metric collection query call.</return>
+        Task<Models.IMetricCollection> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Sets the aggregation to use for sorting results and the direction of the sort.
@@ -124,6 +163,29 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name="orderBy">The aggregation to use for sorting results and the direction of the sort.</param>
         /// <return>The stage of optional query parameter definition and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute OrderBy(string orderBy);
+
+        /// <summary>
+        /// Sets the maximum number of records to retrieve.
+        /// Valid only if $filter is specified.
+        /// Defaults to 10.
+        /// </summary>
+        /// <param name="top">The maximum number of records to retrieve.</param>
+        /// <return>The stage of optional query parameter definition and query execution.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute SelectTop(int top);
+
+        /// <summary>
+        /// Sets the list of aggregation types to retrieve.
+        /// </summary>
+        /// <param name="aggregation">The list of aggregation types (comma separated) to retrieve.</param>
+        /// <return>The stage of optional query parameter definition and query execution.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute WithAggregation(string aggregation);
+
+        /// <summary>
+        /// Sets the interval of the query.
+        /// </summary>
+        /// <param name="interval">The interval of the query.</param>
+        /// <return>The stage of optional query parameter definition and query execution.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute WithInterval(TimeSpan interval);
 
         /// <summary>
         /// Sets the $filter that is used to reduce the set of metric data returned.
@@ -144,42 +206,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute WithOdataFilter(string odataFilter);
 
         /// <summary>
-        /// Sets the interval of the query.
-        /// </summary>
-        /// <param name="interval">The interval of the query.</param>
-        /// <return>The stage of optional query parameter definition and query execution.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute WithInterval(TimeSpan interval);
-
-        /// <summary>
-        /// Gets Executes the query.
-        /// </summary>
-        /// <summary>
-        /// Gets a representation of the deferred computation of Metric collection query call.
-        /// </summary>
-        Task<Models.IMetricCollection> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
-        /// Sets the maximum number of records to retrieve.
-        /// Valid only if $filter is specified.
-        /// Defaults to 10.
-        /// </summary>
-        /// <param name="top">The maximum number of records to retrieve.</param>
-        /// <return>The stage of optional query parameter definition and query execution.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute SelectTop(int top);
-
-        /// <summary>
         /// Reduces the set of data collected. The syntax allowed depends on the operation. See the operation's description for details. Possible values include: 'Data', 'Metadata'.
         /// </summary>
         /// <param name="resultType">The type of metric to retrieve.</param>
         /// <return>The stage of optional query parameter definition and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute WithResultType(ResultType resultType);
-
-        /// <summary>
-        /// Sets the list of aggregation types to retrieve.
-        /// </summary>
-        /// <param name="aggregation">The list of aggregation types (comma separated) to retrieve.</param>
-        /// <return>The stage of optional query parameter definition and query execution.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute WithAggregation(string aggregation);
     }
 
     /// <summary>
@@ -187,6 +218,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IWithMetricStartTimeFilter
     {
+
         /// <summary>
         /// Sets the start time for Metric query filter.
         /// </summary>
