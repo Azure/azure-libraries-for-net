@@ -47,6 +47,7 @@ using Microsoft.Azure.Management.ContainerInstance.Fluent;
 using Microsoft.Azure.Management.Locks.Fluent;
 using Microsoft.Azure.Management.Msi.Fluent;
 using Microsoft.Azure.Management.Eventhub.Fluent;
+using Microsoft.Azure.Management.Monitor.Fluent;
 
 namespace Microsoft.Azure.Management.Samples.Common
 {
@@ -328,6 +329,55 @@ namespace Microsoft.Azure.Management.Samples.Common
             }
 
             Log(builder.ToString());
+        }
+
+        public static void Print(IDiagnosticSetting resource)
+        {
+            StringBuilder info = new StringBuilder("Diagnostic Setting: ")
+                    .Append("\n\tId: ").Append(resource.Id)
+                    .Append("\n\tAssociated resource Id: ").Append(resource.ResourceId)
+                    .Append("\n\tName: ").Append(resource.Name)
+                    .Append("\n\tStorage Account Id: ").Append(resource.StorageAccountId)
+                    .Append("\n\tEventHub Namespace Autorization Rule Id: ").Append(resource.EventHubAuthorizationRuleId)
+                    .Append("\n\tEventHub name: ").Append(resource.EventHubName)
+                    .Append("\n\tLog Analytics workspace Id: ").Append(resource.WorkspaceId);
+
+            if (resource.Logs != null && resource.Logs.Any())
+            {
+                info.Append("\n\tLog Settings: ");
+                foreach (var ls in resource.Logs)
+                {
+                    info.Append("\n\t\tCategory: ").Append(ls.Category);
+                    info.Append("\n\t\tRetention policy: ");
+                    if (ls.RetentionPolicy != null)
+                    {
+                        info.Append(ls.RetentionPolicy.Days + " days");
+                    }
+                    else
+                    {
+                        info.Append("NONE");
+                    }
+                }
+            }
+            if (resource.Metrics != null && resource.Metrics.Any())
+            {
+                info.Append("\n\tMetric Settings: ");
+                foreach (var ls in resource.Metrics)
+                {
+                    info.Append("\n\t\tCategory: ").Append(ls.Category);
+                    info.Append("\n\t\tTimegrain: ").Append(ls.TimeGrain);
+                    info.Append("\n\t\tRetention policy: ");
+                    if (ls.RetentionPolicy != null)
+                    {
+                        info.Append(ls.RetentionPolicy.Days + " days");
+                    }
+                    else
+                    {
+                        info.Append("NONE");
+                    }
+                }
+            }
+            Log(info.ToString());
         }
 
         public static void Print(ISearchService searchService)

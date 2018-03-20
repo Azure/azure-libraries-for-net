@@ -3,20 +3,21 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
-    /// <summary>
-    /// The localizable string class.
-    /// </summary>
-    public interface ILocalizableString :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Monitor.Fluent.Models.LocalizableString>
+    internal partial class LocalizableStringImpl
     {
-
         /// <summary>
         /// Gets the localizedValue value.
         /// </summary>
         /// <summary>
         /// Gets the localizedValue value.
         /// </summary>
-        string LocalizedValue { get; }
+        string Microsoft.Azure.Management.Monitor.Fluent.Models.ILocalizableString.LocalizedValue
+        {
+            get
+            {
+                return this.LocalizedValue();
+            }
+        }
 
         /// <summary>
         /// Gets the value value.
@@ -24,6 +25,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Gets the value value.
         /// </summary>
-        string Value { get; }
+        string Microsoft.Azure.Management.Monitor.Fluent.Models.ILocalizableString.Value
+        {
+            get
+            {
+                return this.Value();
+            }
+        }
     }
 }

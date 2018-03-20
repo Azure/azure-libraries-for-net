@@ -1,13 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Monitor.Fluent
 {
-    using Microsoft.Azure.Management.Monitor.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
+    using System;
+    using Microsoft.Azure.Management.Monitor.Fluent.Models;
 
     /// <summary>
     /// The entirety of a Activity Logs query definition.
@@ -19,6 +18,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter,
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute
     {
+
     }
 
     /// <summary>
@@ -26,14 +26,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IActivityLogs :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<MonitorManager>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<IActivityLogsOperations>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Monitor.Fluent.IActivityLogsOperations>
     {
+
         /// <summary>
-        /// Gets Begins a definition for a new Activity log query.
+        /// Begins a definition for a new Activity log query.
         /// </summary>
-        /// <summary>
-        /// Gets the stage of start time filter definition.
-        /// </summary>
+        /// <return>The stage of start time filter definition.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataStartTimeFilter DefineQuery();
     }
 
@@ -43,12 +42,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     public interface IWithActivityLogsSelectFilter :
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute
     {
+
         /// <summary>
-        /// Filters events for a given resource provider.
+        /// Filters events for a given correlation id.
         /// </summary>
-        /// <param name="resourceProviderName">Specifies resource provider.</param>
+        /// <param name="correlationId">Specifies correlation id.</param>
         /// <return>The stage of Activity log filtering by type and query execution.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute FilterByResourceProvider(string resourceProviderName);
+        Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute FilterByCorrelationId(string correlationId);
 
         /// <summary>
         /// Filters events for a given resource.
@@ -65,11 +65,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute FilterByResourceGroup(string resourceGroupName);
 
         /// <summary>
-        /// Filters events for a given correlation id.
+        /// Filters events for a given resource provider.
         /// </summary>
-        /// <param name="correlationId">Specifies correlation id.</param>
+        /// <param name="resourceProviderName">Specifies resource provider.</param>
         /// <return>The stage of Activity log filtering by type and query execution.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute FilterByCorrelationId(string correlationId);
+        Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute FilterByResourceProvider(string resourceProviderName);
     }
 
     /// <summary>
@@ -77,21 +77,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IWithActivityLogsQueryExecute
     {
+
         /// <summary>
-        /// Gets Executes the query.
+        /// Executes the query.
         /// </summary>
-        /// <summary>
-        /// Gets Activity Log events received after query execution.
-        /// </summary>
+        /// <return>Activity Log events received after query execution.</return>
         System.Collections.Generic.IEnumerable<Models.IEventData> Execute();
 
         /// <summary>
-        /// Gets Executes the query.
+        /// Executes the query.
         /// </summary>
-        /// <summary>
-        /// Gets a representation of the deferred computation of Activity Log query call.
-        /// </summary>
-        Task<IPagedCollection<IEventData>> ExecuteAsync(CancellationToken cancellationToken);
+        /// <return>A representation of the deferred computation of Activity Log query call.</return>
+        Task<Models.IEventData> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 
     /// <summary>
@@ -99,6 +96,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IWithEventDataStartTimeFilter
     {
+
         /// <summary>
         /// Sets the start time for Activity Log query filter.
         /// </summary>
@@ -112,6 +110,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IActivityLogsQueryDefinitionStages
     {
+
     }
 
     /// <summary>
@@ -119,18 +118,19 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IWithEventDataFieldFilter
     {
-        /// <summary>
-        /// Selects data fields that will be populated in the server response.
-        /// </summary>
-        /// <param name="responseProperties">Field names in the server response.</param>
-        /// <return>The stage of Activity log filtering by type and query execution.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter WithResponseProperties(params EventDataPropertyName[] responseProperties);
 
         /// <summary>
         /// Sets the server response to include all the available properties.
         /// </summary>
         /// <return>The stage of Activity log filtering by type and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter WithAllPropertiesInResponse();
+
+        /// <summary>
+        /// Selects data fields that will be populated in the server response.
+        /// </summary>
+        /// <param name="responseProperties">Field names in the server response.</param>
+        /// <return>The stage of Activity log filtering by type and query execution.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter WithResponseProperties(params EventDataPropertyName[] responseProperties);
     }
 
     /// <summary>
@@ -138,6 +138,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public interface IWithEventDataEndFilter
     {
+
         /// <summary>
         /// Sets the end time for Activity Log query filter.
         /// </summary>
