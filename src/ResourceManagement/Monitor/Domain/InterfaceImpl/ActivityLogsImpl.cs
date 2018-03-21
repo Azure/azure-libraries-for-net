@@ -59,6 +59,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
+        /// Filters events that were generated at the Tenant level.
+        /// </summary>
+        /// <return>The stage of Activity log filtering by Tenant level and query execution.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute.FilterAtTenantLevel()
+        {
+            return this.FilterAtTenantLevel() as Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute;
+        }
+
+        /// <summary>
         /// Filters events for a given correlation id.
         /// </summary>
         /// <param name="correlationId">Specifies correlation id.</param>
@@ -96,6 +105,24 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter.FilterByResourceProvider(string resourceProviderName)
         {
             return this.FilterByResourceProvider(resourceProviderName) as Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute;
+        }
+
+        /// <summary>
+        /// Lists available event categories supported in the Activity Logs Service.
+        /// </summary>
+        /// <return>List of available event categories supported in the Activity Logs Service.</return>
+        System.Collections.Generic.IReadOnlyList<Models.ILocalizableString> Microsoft.Azure.Management.Monitor.Fluent.IActivityLogs.ListEventCategories()
+        {
+            return this.ListEventCategories() as System.Collections.Generic.IReadOnlyList<Models.ILocalizableString>;
+        }
+
+        /// <summary>
+        /// Lists available event categories supported in the Activity Logs Service.
+        /// </summary>
+        /// <return>List of available event categories supported in the Activity Logs Service.</return>
+        async Task<System.Collections.Generic.IReadOnlyList<Models.ILocalizableString>> Microsoft.Azure.Management.Monitor.Fluent.IActivityLogs.ListEventCategoriesAsync(CancellationToken cancellationToken)
+        {
+            return await this.ListEventCategoriesAsync(cancellationToken) as System.Collections.Generic.IReadOnlyList<Models.ILocalizableString>;
         }
 
         /// <summary>

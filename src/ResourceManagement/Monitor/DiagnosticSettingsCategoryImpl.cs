@@ -20,13 +20,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
         }
 
-        ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:7DA2BFC813B4E08F49E31A0D74C1FF67
+        ///GENMHASH:3E38805ED0E7BA3CAEE31311D032A21C:61C1065B307679F3800C701AE0D87070
         public string Name()
         {
             return this.Inner.Name;
         }
 
-        ///GENMHASH:8442F1C1132907DE46B62B277F4EE9B7:789AA043CDBDBA6398FA32836AC7078A
+        ///GENMHASH:8442F1C1132907DE46B62B277F4EE9B7:0099E33AD7B0D0CA14F4A08C7CD8119F
         public CategoryType Type()
         {
             return this.Inner.CategoryType;

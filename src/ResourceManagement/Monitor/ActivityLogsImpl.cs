@@ -19,18 +19,20 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         IActivityLogs,
         IActivityLogsQueryDefinition
     {
+        private bool filterForTenant;
         private string filterString;
         private MonitorManager myManager;
         private DateTime queryEndTime;
         private DateTime queryStartTime;
         private HashSet<string> responsePropertySelector;
 
-        ///GENMHASH:657DEC775ABB08A370F0E7B424DF2C55:C0EC7ED8BF010608572FA41DC6CDF04A
+        ///GENMHASH:657DEC775ABB08A370F0E7B424DF2C55:2F1B9317851B2A1DD48CC2ED2AA07143
         internal ActivityLogsImpl(MonitorManager monitorManager)
         {
             this.myManager = monitorManager;
             this.responsePropertySelector = new HashSet<string>();
             this.filterString = "";
+            this.filterForTenant = false;
         }
 
         ///GENMHASH:024411138CED6DE639DA12D726BD0621:834C35BC52D5E712B2EE3999934B62E5
@@ -71,11 +73,31 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 cancellationToken);
         }
 
-        ///GENMHASH:914F5848297276F1D8C78263F5BE935D:E4A7AD73EECF0FFC0F7D2B35F1958707
+        ///GENMHASH:EA6A4C027BF47CC52B95F02B557B4A40:DC8B9F137B1D502452AF2DD36012BA63
+        private IEnumerable<IEventData> ListEventDataForTenant(string filter)
+        {
+            return Extensions.Synchronize(() => this.Manager().Inner.TenantActivityLogs.ListAsync(filter, CreatePropertyFilter()))
+             .AsContinuousCollection(link => Extensions.Synchronize(() => this.Manager().Inner.TenantActivityLogs.ListNextAsync(link)))
+             .Select(inner => new EventDataImpl(inner));
+        }
+
+        ///GENMHASH:8FC9B471C1A78BF1D3EBC410128DE0FA:A581C3311414879F15C3BB031BF1F5A5
+        private async Task<IPagedCollection<IEventData>> ListEventDataForTenantAsync(string filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await PagedCollection<IEventData, EventDataInner>.LoadPage(
+                async (cancellation) => await this.Manager().Inner.TenantActivityLogs.ListAsync(filter, CreatePropertyFilter(), cancellationToken),
+                async (nextLink, cancellation) => await this.Manager().Inner.TenantActivityLogs.ListNextAsync(nextLink, cancellation),
+                (inner) => new EventDataImpl(inner),
+                true,
+                cancellationToken);
+        }
+		
+        ///GENMHASH:914F5848297276F1D8C78263F5BE935D:295B4DBA4EF3CDAC9D498BAF8DAB131F
         public IWithEventDataStartTimeFilter DefineQuery()
         {
             this.responsePropertySelector.Clear();
             this.filterString = "";
+            this.filterForTenant = false;
             return this;
         }
 
@@ -86,16 +108,31 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this;
         }
 
-        ///GENMHASH:6E40675090A7C5A5E2DC401C96A422D5:DED0877369AA81243941763543066448
+        ///GENMHASH:6E40675090A7C5A5E2DC401C96A422D5:D9CC57125A6433E06763A35AA50F44DF
         public IEnumerable<Models.IEventData> Execute()
         {
+            if (this.filterForTenant)
+            {
+                return ListEventDataForTenant(GetOdataFilterString() + this.filterString + " eventChannels eq 'Admin, Operation'");
+            }
             return ListEventData(GetOdataFilterString() + this.filterString);
         }
 
-        ///GENMHASH:28267C95BE469468FC3C62D4CF4CCA7C:D3DC14964164EE8B95A32B0D682B296E
+        ///GENMHASH:28267C95BE469468FC3C62D4CF4CCA7C:F7D4D3D83965F2CAF36159C081016C40
         public async Task<IPagedCollection<IEventData>> ExecuteAsync(CancellationToken cancellationToken)
         {
+            if (this.filterForTenant)
+            {
+                return await ListEventDataForTenantAsync(GetOdataFilterString() + this.filterString + " eventChannels eq 'Admin, Operation'");
+            }
             return await ListEventDataAsync(GetOdataFilterString() + this.filterString, cancellationToken);
+        }
+
+        ///GENMHASH:F9AA0F78087650E68B1DEE08F26A8EC9:51829AEAB69FA856409258ADAF5B2B08
+        public ActivityLogsImpl FilterAtTenantLevel()
+        {
+            this.filterForTenant = true;
+            return this;
         }
 
         ///GENMHASH:6C04BF10CFC9018CA61EC48D69CCFFC4:D91695419640E79A341E8B6E40B9C518
@@ -135,6 +172,20 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
         }
 
+        ///GENMHASH:BECC31966AF171B5D462326D3806A2C9:2DF33786C02E42C345D1AB03B3DE2FD6
+        public IReadOnlyList<Models.ILocalizableString> ListEventCategories()
+        {
+            return Extensions.Synchronize(() => ListEventCategoriesAsync());
+        }
+
+        ///GENMHASH:FDF86E3C0954DF96F806851F8D0E9022:63C88E9F65C9F2F07A5D1B56DC85A9E3
+        public async Task<IReadOnlyList<Models.ILocalizableString>> ListEventCategoriesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return (await this.Manager().Inner.EventCategories.ListAsync(cancellationToken))
+                    .Select(i => new LocalizableStringImpl(i))
+                    .ToList();
+        }
+		
         ///GENMHASH:B6961E0C7CB3A9659DE0E1489F44A936:363E4D62FCA795A36F9CB60513C86AFA
         public MonitorManager Manager()
         {

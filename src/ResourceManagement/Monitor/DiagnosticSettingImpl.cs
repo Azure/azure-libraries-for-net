@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         private string resourceId;
 
 
-        ///GENMHASH:6D9B44965E58C7AF4C88C69BB9C414BF:92BC8E3AE001F46AACC2163892DA5D91
+        ///GENMHASH:6D9B44965E58C7AF4C88C69BB9C414BF:C0E061407A15A42809F90D36822F65BD
         internal DiagnosticSettingImpl(string name, DiagnosticSettingsResourceInner innerModel, MonitorManager monitorManager)
             : base(name, innerModel)
         {
