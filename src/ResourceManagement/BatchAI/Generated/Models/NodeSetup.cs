@@ -37,10 +37,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// download/install software.</param>
         /// <param name="mountVolumes">Information on shared volumes to be used
         /// by jobs.</param>
-        public NodeSetup(SetupTask setupTask = default(SetupTask), MountVolumes mountVolumes = default(MountVolumes))
+        /// <param name="performanceCountersSettings">Specifies settings for
+        /// performance counters collecting and uploading.</param>
+        public NodeSetup(SetupTask setupTask = default(SetupTask), MountVolumes mountVolumes = default(MountVolumes), PerformanceCountersSettings performanceCountersSettings = default(PerformanceCountersSettings))
         {
             SetupTask = setupTask;
             MountVolumes = mountVolumes;
+            PerformanceCountersSettings = performanceCountersSettings;
             CustomInit();
         }
 
@@ -63,8 +66,20 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <summary>
         /// Gets or sets information on shared volumes to be used by jobs.
         /// </summary>
+        /// <remarks>
+        /// Specified mount volumes will be available to all jobs executing on
+        /// the cluster. The volumes will be mounted at location specified by
+        /// $AZ_BATCHAI_MOUNT_ROOT environment variable.
+        /// </remarks>
         [JsonProperty(PropertyName = "mountVolumes")]
         public MountVolumes MountVolumes { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies settings for performance counters collecting
+        /// and uploading.
+        /// </summary>
+        [JsonProperty(PropertyName = "performanceCountersSettings")]
+        public PerformanceCountersSettings PerformanceCountersSettings { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -77,6 +92,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
             if (SetupTask != null)
             {
                 SetupTask.Validate();
+            }
+            if (PerformanceCountersSettings != null)
+            {
+                PerformanceCountersSettings.Validate();
             }
         }
     }

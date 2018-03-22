@@ -129,7 +129,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             createParameters.Cluster = new Models.ResourceId(parent.Id);
-            createParameters.Location = Inner.Location;
             await Manager.Inner.Jobs.CreateAsync(parent.ResourceGroupName, this.Name, createParameters);
             return this;
         }
@@ -316,7 +315,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             WithExistingResourceGroup(parent.ResourceGroupName);
         }
 
-        public IReadOnlyList<EnvironmentSetting> EnvironmentVariables()
+        public IReadOnlyList<EnvironmentVariable> EnvironmentVariables()
         {
             return Inner.EnvironmentVariables.ToList();
         }

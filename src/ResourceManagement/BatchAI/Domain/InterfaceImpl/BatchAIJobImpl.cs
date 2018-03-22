@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// variables are set by the Batch AI Service: AZ_BATCHAI_PS_HOSTS,
         /// AZ_BATCHAI_WORKER_HOSTS.
         /// </summary>
-        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.EnvironmentSetting> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.EnvironmentVariables
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.EnvironmentVariable> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.EnvironmentVariables
         {
             get
             {
-                return this.EnvironmentVariables() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.EnvironmentSetting>;
+                return this.EnvironmentVariables() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.EnvironmentVariable>;
             }
         }
 

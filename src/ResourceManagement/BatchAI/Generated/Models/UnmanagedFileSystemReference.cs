@@ -57,8 +57,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// node where the file system will be mounted.
         /// </summary>
         /// <remarks>
-        /// Note that all file shares will be mounted under
-        /// $AZ_BATCHAI_MOUNT_ROOT location.
+        /// Note that all cluster level unmanaged file system will be mounted
+        /// under $AZ_BATCHAI_MOUNT_ROOT location and job level unmanaged file
+        /// system will be mounted under $AZ_BATCHAI_JOB_MOUNT_ROOT.
         /// </remarks>
         [JsonProperty(PropertyName = "relativeMountPath")]
         public string RelativeMountPath { get; set; }

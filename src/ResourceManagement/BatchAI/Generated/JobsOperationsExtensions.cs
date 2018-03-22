@@ -187,8 +187,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             }
 
             /// <summary>
-            /// List all files inside the given output directory (Only if the output
-            /// directory is on Azure File Share or Azure Storage container).
+            /// List all directories and files inside the given directory of the output
+            /// directory (Only if the output directory is on Azure File Share or Azure
+            /// Storage container).
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -350,8 +351,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             }
 
             /// <summary>
-            /// List all files inside the given output directory (Only if the output
-            /// directory is on Azure File Share or Azure Storage container).
+            /// List all directories and files inside the given directory of the output
+            /// directory (Only if the output directory is on Azure File Share or Azure
+            /// Storage container).
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

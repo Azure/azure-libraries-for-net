@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// variables are set by the Batch AI Service: AZ_BATCHAI_PS_HOSTS,
         /// AZ_BATCHAI_WORKER_HOSTS.
         /// </summary>
-        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.EnvironmentSetting> EnvironmentVariables { get; }
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.EnvironmentVariable> EnvironmentVariables { get; }
 
         /// <summary>
         /// Gets the settings for Chainer job.

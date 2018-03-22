@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        private IList<EnvironmentSetting> EnsureEnvironmentSettings()
+        private IList<EnvironmentVariable> EnsureEnvironmentSettings()
         {
             if (Inner.EnvironmentVariables == null)
             {
-                Inner.EnvironmentVariables = new List<EnvironmentSetting>();
+                Inner.EnvironmentVariables = new List<EnvironmentVariable>();
             }
             return Inner.EnvironmentVariables;
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public NodeSetupTaskImpl WithEnvironmentVariable(string name, string value)
         {
-            EnsureEnvironmentSettings().Add(new EnvironmentSetting(name, value));
+            EnsureEnvironmentSettings().Add(new EnvironmentVariable(name, value));
             return this;
         }
 
