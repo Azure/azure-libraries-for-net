@@ -6,8 +6,10 @@ using Fluent.Tests.Common;
 using Microsoft.Azure.Management.Monitor.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
+using Microsoft.Rest.Azure;
 using System;
 using System.Linq;
+using System.Net;
 using Xunit;
 
 namespace Fluent.Tests
@@ -74,6 +76,36 @@ namespace Fluent.Tests
                     Assert.Null(ev.HttpRequest);
                     Assert.Null(ev.Level);
                 }
+
+
+                // List Event Categories
+                var eventCategories = azure.ActivityLogs.ListEventCategories();
+                Assert.NotNull(eventCategories);
+                Assert.True(eventCategories.Any());
+
+                // List Activity logs at tenant level is not allowed for the current tenant 
+                try
+                {
+                    azure.ActivityLogs
+                            .DefineQuery()
+                            .StartingFrom(recordDateTime.AddDays(-30))
+                            .EndsBefore(recordDateTime)
+                            .WithResponseProperties(
+                                EventDataPropertyName.ResourceId,
+                                EventDataPropertyName.EventTimestamp,
+                                EventDataPropertyName.OperationName,
+                                EventDataPropertyName.EventName)
+                            .FilterByResource(vm.Id)
+                            .FilterAtTenantLevel()
+                            .Execute();
+                }
+                catch (ErrorResponseException er)
+                {
+                    // should throw "The client '...' with object id '...' does not have authorization to perform action
+                    // 'microsoft.insights/eventtypes/values/read' over scope '/providers/microsoft.insights/eventtypes/management'.
+                    Assert.Equal(HttpStatusCode.Forbidden, er.Response.StatusCode);
+                }
+
             }
         }
 

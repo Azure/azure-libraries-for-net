@@ -34,6 +34,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <return>The stage of start time filter definition.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataStartTimeFilter DefineQuery();
+
+        /// <summary>
+        /// Lists available event categories supported in the Activity Logs Service.
+        /// </summary>
+        /// <return>List of available event categories supported in the Activity Logs Service.</return>
+        System.Collections.Generic.IReadOnlyList<Models.ILocalizableString> ListEventCategories();
+
+        /// <summary>
+        /// Lists available event categories supported in the Activity Logs Service.
+        /// </summary>
+        /// <return>List of available event categories supported in the Activity Logs Service.</return>
+        Task<System.Collections.Generic.IReadOnlyList<Models.ILocalizableString>> ListEventCategoriesAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 
     /// <summary>
@@ -89,6 +101,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <return>A representation of the deferred computation of Activity Log query call.</return>
         Task<Models.IEventData> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Filters events that were generated at the Tenant level.
+        /// </summary>
+        /// <return>The stage of Activity log filtering by Tenant level and query execution.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute FilterAtTenantLevel();
     }
 
     /// <summary>

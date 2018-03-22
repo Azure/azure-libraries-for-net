@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             return this.inner.ResourceId;
         }
 
-        ///GENMHASH:75A38F9E6FBA8C676A2F326679329965:910A51D04DA74674472E2E6CDF8345AE
+        ///GENMHASH:1BEF988E815365B083848B8359E54AFC:910A51D04DA74674472E2E6CDF8345AE
         public MetricDefinitionImpl SelectTop(int top)
         {
             this.top = top;
