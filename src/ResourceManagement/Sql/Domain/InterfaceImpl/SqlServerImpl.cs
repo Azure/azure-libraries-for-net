@@ -5,15 +5,20 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
     using Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.SqlDatabaseActionsDefinition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.SqlElasticPoolActionsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRuleOperations.SqlFirewallRuleActionsDefinition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update;
-    using Microsoft.Azure.Management.Sql.Fluent.Models;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlServerDnsAliasOperations.SqlServerDnsAliasActionsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlServerKeyOperations.SqlServerKeyActionsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRule.Definition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRuleOperations.SqlVirtualNetworkRuleActionsDefinition;
     using System.Collections.Generic;
     using System;
 
@@ -168,6 +173,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets returns entry point to manage SQL Server DNS aliases for this server.
+        /// </summary>
+        SqlServerDnsAliasOperations.SqlServerDnsAliasActionsDefinition.ISqlServerDnsAliasActionsDefinition Microsoft.Azure.Management.Sql.Fluent.ISqlServer.DnsAliases
+        {
+            get
+            {
+                return this.DnsAliases() as SqlServerDnsAliasOperations.SqlServerDnsAliasActionsDefinition.ISqlServerDnsAliasActionsDefinition;
+            }
+        }
+
+        /// <summary>
         /// Sets the Azure services default access to this server to false.
         /// The firewall rule named "AllowAllWindowsAzureIps" will be removed from the SQL server.
         /// </summary>
@@ -207,6 +223,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets returns entry point to manage SQL Failover Group for this server.
+        /// </summary>
+        SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition Microsoft.Azure.Management.Sql.Fluent.ISqlServer.FailoverGroups
+        {
+            get
+            {
+                return this.FailoverGroups() as SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition;
+            }
+        }
+
+        /// <summary>
         /// Sets an Active Directory administrator to this server.
         /// Azure Active Directory authentication allows you to centrally manage identity and access
         /// to your Azure SQL Database V12.
@@ -220,6 +247,37 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets a SQL server automatic tuning state and options.
+        /// </summary>
+        /// <return>The SQL server automatic tuning state and options.</return>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlServerAutomaticTuning Microsoft.Azure.Management.Sql.Fluent.ISqlServer.GetServerAutomaticTuning()
+        {
+            return this.GetServerAutomaticTuning() as Microsoft.Azure.Management.Sql.Fluent.ISqlServerAutomaticTuning;
+        }
+
+        /// <summary>
+        /// Gets returns entry point to manage SQL Virtual Network Rule for this server.
+        /// </summary>
+        SqlVirtualNetworkRuleOperations.SqlVirtualNetworkRuleActionsDefinition.ISqlVirtualNetworkRuleActionsDefinition Microsoft.Azure.Management.Sql.Fluent.ISqlServer.VirtualNetworkRules
+        {
+            get
+            {
+                return this.VirtualNetworkRules() as SqlVirtualNetworkRuleOperations.SqlVirtualNetworkRuleActionsDefinition.ISqlVirtualNetworkRuleActionsDefinition;
+            }
+        }
+
+        /// <summary>
+        /// Gets returns entry point to manage SQL Server Keys for this server.
+        /// </summary>
+        SqlServerKeyOperations.SqlServerKeyActionsDefinition.ISqlServerKeyActionsDefinition Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ServerKeys
+        {
+            get
+            {
+                return this.ServerKeys() as SqlServerKeyOperations.SqlServerKeyActionsDefinition.ISqlServerKeyActionsDefinition;
+            }
+        }
+
+        /// <summary>
         /// Gets fully qualified name of the SQL Server.
         /// </summary>
         string Microsoft.Azure.Management.Sql.Fluent.ISqlServer.FullyQualifiedDomainName
@@ -227,6 +285,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.FullyQualifiedDomainName();
+            }
+        }
+
+        /// <summary>
+        /// Gets true if Managed Service Identity is enabled for the SQL server.
+        /// </summary>
+        bool Microsoft.Azure.Management.Sql.Fluent.ISqlServer.IsManagedServiceIdentityEnabled
+        {
+            get
+            {
+                return this.IsManagedServiceIdentityEnabled();
             }
         }
 
@@ -304,6 +373,18 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory service principal ID
+        /// assigned to the SQL server.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.ISqlServer.SystemAssignedManagedServiceIdentityPrincipalId
+        {
+            get
+            {
+                return this.SystemAssignedManagedServiceIdentityPrincipalId();
+            }
+        }
+
+        /// <summary>
         /// Removes the Active Directory administrator from this server.
         /// </summary>
         void Microsoft.Azure.Management.Sql.Fluent.ISqlServer.RemoveActiveDirectoryAdministrator()
@@ -324,6 +405,29 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the type of Managed Service Identity used for the SQL server.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ManagedServiceIdentityType
+        {
+            get
+            {
+                return this.ManagedServiceIdentityType() as string;
+            }
+        }
+
+        /// <summary>
+        /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory tenant ID assigned
+        /// to the SQL server.
+        /// </summary>
+        string Microsoft.Azure.Management.Sql.Fluent.ISqlServer.SystemAssignedManagedServiceIdentityTenantId
+        {
+            get
+            {
+                return this.SystemAssignedManagedServiceIdentityTenantId();
+            }
+        }
+
+        /// <summary>
         /// Gets the state of the server.
         /// </summary>
         string Microsoft.Azure.Management.Sql.Fluent.ISqlServer.State
@@ -332,6 +436,34 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 return this.State();
             }
+        }
+
+        /// <summary>
+        /// Sets a system assigned (local) Managed Service Identity (MSI) for the SQL server resource.
+        /// </summary>
+        /// <return>Next stage of the SQL Server definition.</return>
+        SqlServer.Definition.IWithCreate SqlServer.Definition.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity()
+        {
+            return this.WithSystemAssignedManagedServiceIdentity() as SqlServer.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Sets a system assigned (local) Managed Service Identity (MSI) for the SQL server resource.
+        /// </summary>
+        /// <return>Next stage of the SQL Server definition.</return>
+        SqlServer.Update.IUpdate SqlServer.Update.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity()
+        {
+            return this.WithSystemAssignedManagedServiceIdentity() as SqlServer.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Begins the definition of a new SQL Virtual Network Rule to be added to this server.
+        /// </summary>
+        /// <param name="virtualNetworkRuleName">The name of the new SQL Virtual Network Rule.</param>
+        /// <return>The first stage of the new SQL Virtual Network Rule definition.</return>
+        SqlVirtualNetworkRule.Definition.IBlank<SqlServer.Definition.IWithCreate> SqlServer.Definition.IWithVirtualNetworkRule.DefineVirtualNetworkRule(string virtualNetworkRuleName)
+        {
+            return this.DefineVirtualNetworkRule(virtualNetworkRuleName) as SqlVirtualNetworkRule.Definition.IBlank<SqlServer.Definition.IWithCreate>;
         }
 
         /// <summary>

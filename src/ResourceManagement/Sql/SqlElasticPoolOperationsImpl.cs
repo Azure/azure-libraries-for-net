@@ -147,6 +147,22 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return epResult.AsReadOnly();
         }
 
+        ///GENMHASH:2EA8D9073369A6E1267C1FB74F86952A:3FA6AF4D257E45CE5540FB3347D737E9
+        public async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>> ListBySqlServerAsync(ISqlServer sqlServer, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            List<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> epResult = new List<ISqlElasticPool>();
+            var epInners = await sqlServer.Manager.Inner.ElasticPools
+                .ListByServerAsync(sqlServer.ResourceGroupName, sqlServer.Name, cancellationToken);
+            if (epInners != null)
+            {
+                foreach (var inner in epInners)
+                {
+                    epResult.Add(new SqlElasticPoolImpl(inner.Name, (SqlServerImpl)sqlServer, inner, sqlServer.Manager));
+                }
+            }
+            return epResult.AsReadOnly();
+        }
+
         ///GENMHASH:206E829E50B031B66F6EA9C7402231F9:FA828C83F50D26DFD2153BD3CCEFC82D
         public ISqlElasticPool Get(string name)
         {
@@ -172,6 +188,25 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 var inner = await this.sqlServerManager.Inner.ElasticPools
                     .GetAsync(resourceGroupName, sqlServerName, name, cancellationToken);
                 return inner != null ? new SqlElasticPoolImpl(resourceGroupName, sqlServerName, inner.Location, inner.Name, inner, sqlServerManager) : null;
+            }
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+        }
+
+        ///GENMHASH:48BA5938680939720DEA90858B8FC7E4:E9FF7173291C37BB90131AFD98056DFB
+        public async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> GetBySqlServerAsync(ISqlServer sqlServer, string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            try
+            {
+                var inner = await sqlServer.Manager.Inner.ElasticPools
+                    .GetAsync(sqlServer.ResourceGroupName, sqlServer.Name, name, cancellationToken);
+                return inner != null ? new SqlElasticPoolImpl(inner.Name, (SqlServerImpl)sqlServer, inner, sqlServer.Manager) : null;
             }
             catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {

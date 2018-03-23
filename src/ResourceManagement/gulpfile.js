@@ -108,6 +108,7 @@ var codegen = function (project, cb) {
         ` --csharp.output-folder=${outputDir} ` +
         ` --csharp.license-header=MICROSOFT_MIT_NO_CODEGEN ` +
         ` --csharp.clear-output-folder=false ` +
+        ` --use=@microsoft.azure/autorest.csharp@preview ` +
         autorestUseArg +
         regenManager +
         ' --package-version=1.3.0 ' +

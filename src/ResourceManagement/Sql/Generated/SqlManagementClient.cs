@@ -255,11 +255,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public virtual IVirtualNetworkRulesOperations VirtualNetworkRules { get; private set; }
 
         /// <summary>
-        /// Gets the IDatabaseOperations.
-        /// </summary>
-        public virtual IDatabaseOperations DatabaseOperations { get; private set; }
-
-        /// <summary>
         /// Gets the IServerAutomaticTuningOperations.
         /// </summary>
         public virtual IServerAutomaticTuningOperations ServerAutomaticTuning { get; private set; }
@@ -273,6 +268,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Gets the IRestorePointsOperations.
         /// </summary>
         public virtual IRestorePointsOperations RestorePoints { get; private set; }
+
+        /// <summary>
+        /// Gets the IDatabaseOperations.
+        /// </summary>
+        public virtual IDatabaseOperations DatabaseOperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IElasticPoolOperations.
+        /// </summary>
+        public virtual IElasticPoolOperations ElasticPoolOperations { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
@@ -512,10 +517,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             SyncMembers = new SyncMembersOperations(this);
             SubscriptionUsages = new SubscriptionUsagesOperations(this);
             VirtualNetworkRules = new VirtualNetworkRulesOperations(this);
-            DatabaseOperations = new DatabaseOperations(this);
             ServerAutomaticTuning = new ServerAutomaticTuningOperations(this);
             ServerDnsAliases = new ServerDnsAliasesOperations(this);
             RestorePoints = new RestorePointsOperations(this);
+            DatabaseOperations = new DatabaseOperations(this);
+            ElasticPoolOperations = new ElasticPoolOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

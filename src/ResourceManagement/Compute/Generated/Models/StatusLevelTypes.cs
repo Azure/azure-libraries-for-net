@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this StatusLevelTypes value)
         {
-            switch( value )
+            switch (value)
             {
                 case StatusLevelTypes.Info:
                     return "Info";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static StatusLevelTypes? ParseStatusLevelTypes(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Info":
                     return StatusLevelTypes.Info;

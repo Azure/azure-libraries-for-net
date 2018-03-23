@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// <param name="actualState">Automatic tuning actual state. Possible
         /// values include: 'Custom', 'Auto', 'Unspecified'</param>
         /// <param name="options">Automatic tuning options definition.</param>
-        public ServerAutomaticTuningInner(string id = default(string), string name = default(string), string type = default(string), AutomaticTuningServerMode? desiredState = default(AutomaticTuningServerMode?), AutomaticTuningServerMode? actualState = default(AutomaticTuningServerMode?), IDictionary<string, AutomaticTuningServerOptions> options = default(IDictionary<string, AutomaticTuningServerOptions>))
+        public ServerAutomaticTuningInner(string id = default(string), string name = default(string), string type = default(string), AutomaticTuningServerMode desiredState = default(AutomaticTuningServerMode), AutomaticTuningServerMode actualState = default(AutomaticTuningServerMode), IDictionary<string, AutomaticTuningServerOptions> options = default(IDictionary<string, AutomaticTuningServerOptions>))
             : base(id, name, type)
         {
             DesiredState = desiredState;
@@ -59,14 +59,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent.Models
         /// include: 'Custom', 'Auto', 'Unspecified'
         /// </summary>
         [JsonProperty(PropertyName = "properties.desiredState")]
-        public AutomaticTuningServerMode? DesiredState { get; set; }
+        public AutomaticTuningServerMode DesiredState { get; set; }
 
         /// <summary>
         /// Gets automatic tuning actual state. Possible values include:
         /// 'Custom', 'Auto', 'Unspecified'
         /// </summary>
         [JsonProperty(PropertyName = "properties.actualState")]
-        public AutomaticTuningServerMode? ActualState { get; private set; }
+        public AutomaticTuningServerMode ActualState { get; private set; }
 
         /// <summary>
         /// Gets or sets automatic tuning options definition.

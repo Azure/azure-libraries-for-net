@@ -6,11 +6,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Sql.Fluent.Models;
     using Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.SqlDatabaseActionsDefinition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.SqlElasticPoolActionsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRuleOperations.SqlFirewallRuleActionsDefinition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update;
-    using Microsoft.Azure.Management.Sql.Fluent.Models;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlServerDnsAliasOperations.SqlServerDnsAliasActionsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlServerKeyOperations.SqlServerKeyActionsDefinition;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRuleOperations.SqlVirtualNetworkRuleActionsDefinition;
     using System.Collections.Generic;
 
     /// <summary>
@@ -28,9 +32,35 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         string AdministratorLogin { get; }
 
         /// <summary>
+        /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory tenant ID assigned
+        /// to the SQL server.
+        /// </summary>
+        string SystemAssignedManagedServiceIdentityTenantId { get; }
+
+        /// <summary>
+        /// Gets returns entry point to manage SQL Virtual Network Rule for this server.
+        /// </summary>
+        SqlVirtualNetworkRuleOperations.SqlVirtualNetworkRuleActionsDefinition.ISqlVirtualNetworkRuleActionsDefinition VirtualNetworkRules { get; }
+
+        /// <summary>
+        /// Gets true if Managed Service Identity is enabled for the SQL server.
+        /// </summary>
+        bool IsManagedServiceIdentityEnabled { get; }
+
+        /// <summary>
+        /// Gets returns entry point to manage SQL Failover Group for this server.
+        /// </summary>
+        SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition FailoverGroups { get; }
+
+        /// <summary>
         /// Gets entry point to manage Databases for this SQL server.
         /// </summary>
         SqlDatabaseOperations.SqlDatabaseActionsDefinition.ISqlDatabaseActionsDefinition Databases { get; }
+
+        /// <summary>
+        /// Gets returns entry point to manage SQL Server DNS aliases for this server.
+        /// </summary>
+        SqlServerDnsAliasOperations.SqlServerDnsAliasActionsDefinition.ISqlServerDnsAliasActionsDefinition DnsAliases { get; }
 
         /// <summary>
         /// Removes the Active Directory administrator from this server.
@@ -60,9 +90,31 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         void RemoveAccessFromAzureServices();
 
         /// <summary>
+        /// Gets a SQL server automatic tuning state and options.
+        /// </summary>
+        /// <return>The SQL server automatic tuning state and options.</return>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlServerAutomaticTuning GetServerAutomaticTuning();
+
+        /// <summary>
         /// Gets returns entry point to manage the SQL Elastic Pools for this server.
         /// </summary>
         SqlElasticPoolOperations.SqlElasticPoolActionsDefinition.ISqlElasticPoolActionsDefinition ElasticPools { get; }
+
+        /// <summary>
+        /// Gets the type of Managed Service Identity used for the SQL server.
+        /// </summary>
+        string ManagedServiceIdentityType { get; }
+
+        /// <summary>
+        /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory service principal ID
+        /// assigned to the SQL server.
+        /// </summary>
+        string SystemAssignedManagedServiceIdentityPrincipalId { get; }
+
+        /// <summary>
+        /// Gets returns entry point to manage SQL Server Keys for this server.
+        /// </summary>
+        SqlServerKeyOperations.SqlServerKeyActionsDefinition.ISqlServerKeyActionsDefinition ServerKeys { get; }
 
         /// <return>The list of information on all service objectives.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceObjective> ListServiceObjectives();

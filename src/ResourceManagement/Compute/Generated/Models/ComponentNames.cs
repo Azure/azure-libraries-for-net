@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this ComponentNames value)
         {
-            switch( value )
+            switch (value)
             {
                 case ComponentNames.MicrosoftWindowsShellSetup:
                     return "Microsoft-Windows-Shell-Setup";
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static ComponentNames? ParseComponentNames(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Microsoft-Windows-Shell-Setup":
                     return ComponentNames.MicrosoftWindowsShellSetup;

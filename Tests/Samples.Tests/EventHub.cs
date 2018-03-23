@@ -36,16 +36,5 @@ namespace Samples.Tests
                 ManageEventHub.Program.RunSample(rollUpClient);
             }
         }
-
-        [Fact]
-        [Trait("Samples", "EventHub")]
-        public void ManageEventHubEventsTest()
-        {
-            using (var context = FluentMockContext.Start(this.GetType().FullName))
-            {
-                var rollUpClient = TestHelper.CreateRollupClient();
-                ManageEventHubEvents.Program.RunSample(rollUpClient);
-            }
-        }
     }
 }

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="data">An array of data points representing the metric
         /// values.  This is only returned if a result type of data is
         /// specified.</param>
-        public TimeSeriesElement(IList<MetadataValueInner> metadatavalues = default(IList<MetadataValueInner>), IList<MetricValue> data = default(IList<MetricValue>))
+        public TimeSeriesElement(IList<MetadataValue> metadatavalues = default(IList<MetadataValue>), IList<MetricValue> data = default(IList<MetricValue>))
         {
             Metadatavalues = metadatavalues;
             Data = data;
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// in the call.
         /// </summary>
         [JsonProperty(PropertyName = "metadatavalues")]
-        public IList<MetadataValueInner> Metadatavalues { get; set; }
+        public IList<MetadataValue> Metadatavalues { get; set; }
 
         /// <summary>
         /// Gets or sets an array of data points representing the metric

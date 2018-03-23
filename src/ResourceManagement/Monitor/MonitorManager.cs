@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     {
         private IActivityLogs activityLogs;
         private IMetricDefinitions metricDefinitions;
-        private IDiagnosticSettings diagnosticSettings;
 
         private static IMonitorManagementClient GetInnerClient(RestClient restClient, string subscriptionId)
         {
@@ -112,18 +111,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 return this.metricDefinitions;
             }
         }
-
-        public IDiagnosticSettings DiagnosticSettings
-        {
-            get
-            {
-                if (this.diagnosticSettings == null)
-                {
-                    this.diagnosticSettings = new DiagnosticSettingsImpl(this);
-                }
-                return this.diagnosticSettings;
-            }
-        }
     }
 
     /// <summary>
@@ -140,10 +127,5 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Gets the Azure Metric Definitions API entry point
         /// </summary>
         IMetricDefinitions MetricDefinitions { get; }
-
-        /// <summary>
-        /// Gets the Azure Diagnostic Settings API entry point
-        /// </summary>
-        IDiagnosticSettings DiagnosticSettings { get; }
     }
 }

@@ -904,7 +904,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the storage account type of the OS managed disk. A null value will be returned if the
         /// virtual machine scale set is based on un-managed disk.
         /// </summary>
-        Models.StorageAccountTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.ManagedOSDiskStorageAccountType
+        Models.StorageAccountTypes? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.ManagedOSDiskStorageAccountType
         {
             get
             {

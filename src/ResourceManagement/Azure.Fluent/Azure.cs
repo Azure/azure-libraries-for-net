@@ -478,14 +478,6 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        public IDiagnosticSettings DiagnosticSettings
-        {
-            get
-            {
-                return monitorManager.DiagnosticSettings;
-            }
-        }
-
         public IEventHubNamespaces EventHubNamespaces
         {
             get
@@ -834,11 +826,6 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to listing metric definitions in Azure
         /// </summary>
         IMetricDefinitions MetricDefinitions { get; }
-
-        /// <summary>
-        /// Entry point to Azure Diagnostic Settings management.
-        /// </summary>
-        IDiagnosticSettings DiagnosticSettings { get; }
     }
 
     public interface IAzure : IAzureBeta

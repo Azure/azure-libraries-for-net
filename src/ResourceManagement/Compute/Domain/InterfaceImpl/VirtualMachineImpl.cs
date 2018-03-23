@@ -1473,7 +1473,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the storage account type of the managed disk backing OS disk.
         /// </summary>
-        Models.StorageAccountTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.OSDiskStorageAccountType
+        Models.StorageAccountTypes? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.OSDiskStorageAccountType
         {
             get
             {

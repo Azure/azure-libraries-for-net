@@ -89,21 +89,12 @@
       </_NetCorePackagesToPublish>
     </ItemGroup>
 
-    <ItemGroup>
-      <_SymbolPackagesToPublish Include="$(PackageOutputDir)\$(NetCorePackageName)*.symbols.nupkg"
-                             Exclude="$(PackageOutputDir)\$(NetCorePackageName)*.nupkg">
-      </_SymbolPackagesToPublish>
-    </ItemGroup>
-
     <PropertyGroup>
       <ActualSource Condition=" '$(NuGetPublishingSource)' == '' "></ActualSource>
       <ActualSource Condition=" '$(NuGetPublishingSource)' != '' "> -Source $(NuGetPublishingSource)</ActualSource>
     </PropertyGroup>
     
     <Exec Command="$(NuGetCommand) push &quot;%(_NetCorePackagesToPublish.Identity)&quot; $(NuGetKey)$(ActualSource)"
-          IgnoreExitCode="true" />
-
-    <Exec Command="$(NuGetCommand) push &quot;%(_SymbolPackagesToPublish.Identity)&quot; $(NuGetKey) -Source https://nuget.smbsrc.net/"
           IgnoreExitCode="true" />
   </Target>
   

@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition
     using Microsoft.Azure.Management.Storage.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using System;
 
     /// <summary>
     /// The SQL Database definition to set a restore point as the source database.
@@ -366,6 +367,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition
         /// <param name="restorePoint">The restore point.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition.IWithAttachAllOptions<ParentT> FromRestorePoint(IRestorePoint restorePoint);
+
+        /// <summary>
+        /// Creates a new database from a restore point.
+        /// </summary>
+        /// <param name="restorePoint">The restore point.</param>
+        /// <param name="restorePointDateTime">Date and time to restore from.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition.IWithAttachAllOptions<ParentT> FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime);
     }
 
     /// <summary>
@@ -420,6 +429,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition
         /// <param name="restorePoint">The restore point.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<ParentT> FromRestorePoint(IRestorePoint restorePoint);
+
+        /// <summary>
+        /// Creates a new database from a restore point.
+        /// </summary>
+        /// <param name="restorePoint">The restore point.</param>
+        /// <param name="restorePointDateTime">Date and time to restore from.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<ParentT> FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime);
     }
 
     /// <summary>

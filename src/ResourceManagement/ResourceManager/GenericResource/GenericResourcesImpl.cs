@@ -160,11 +160,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             throw new NotSupportedException("Delete just by resource group and name is not supported. Please use other overloads.");
         }
 
-        public async override Task<IPagedCollection<IGenericResource>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IPagedCollection<IGenericResource>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IGenericResource, GenericResourceInner>.LoadPage(
-                async (cancellation) => await Manager.Inner.Resources.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellation),
-                Manager.Inner.Resources.ListByResourceGroupNextAsync, WrapModel, loadAllPages, cancellationToken);
+                async (cancellation) => await Manager.Inner.ResourceGroups.ListResourcesAsync(resourceGroupName, cancellationToken: cancellation),
+                Manager.Inner.ResourceGroups.ListResourcesNextAsync, WrapModel, loadAllPages, cancellationToken);
         }
 
         protected async override Task<IPage<GenericResourceInner>> ListInnerAsync(CancellationToken cancellationToken)
@@ -179,27 +179,27 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
 
         protected async override Task<IPage<GenericResourceInner>> ListInnerByGroupAsync(string resourceGroupName, CancellationToken cancellationToken)
         {
-            return await Manager.Inner.Resources.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellationToken);
+            return await Manager.Inner.ResourceGroups.ListResourcesAsync(resourceGroupName, cancellationToken: cancellationToken);
         }
 
         protected async override Task<IPage<GenericResourceInner>> ListInnerByGroupNextAsync(string link, CancellationToken cancellationToken)
         {
-            return await Manager.Inner.Resources.ListByResourceGroupNextAsync(link, cancellationToken);
+            return await Manager.Inner.ResourceGroups.ListResourcesNextAsync(link, cancellationToken);
         }
 
         public IEnumerable<IGenericResource> ListByTag(string resourceGroupName, string tagName, string tagValue)
         {
-            return WrapList(Extensions.Synchronize(() => Manager.Inner.Resources.ListByResourceGroupAsync(
+            return WrapList(Extensions.Synchronize(() => Manager.Inner.ResourceGroups.ListResourcesAsync(
                     resourceGroupName, ResourceUtils.CreateODataFilterForTags(tagName, tagValue)))
-                    .AsContinuousCollection((nextLink) => Extensions.Synchronize(() => Manager.Inner.Resources.ListByResourceGroupNextAsync(nextLink))));
+                    .AsContinuousCollection((nextLink) => Extensions.Synchronize(() => Manager.Inner.ResourceGroups.ListResourcesNextAsync(nextLink))));
         }
 
         public async Task<IPagedCollection<IGenericResource>> ListByTagAsync(string resourceGroupName, string tagName, string tagValue, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IGenericResource, GenericResourceInner>.LoadPage(
-                async (cancellation) => await Manager.Inner.Resources.ListByResourceGroupAsync(
+                async (cancellation) => await Manager.Inner.ResourceGroups.ListResourcesAsync(
                     resourceGroupName, ResourceUtils.CreateODataFilterForTags(tagName, tagValue), cancellationToken: cancellation),
-                Manager.Inner.Resources.ListByResourceGroupNextAsync,
+                Manager.Inner.ResourceGroups.ListResourcesNextAsync,
                 WrapModel, loadAllPages, cancellationToken);
         }
     }
