@@ -124,7 +124,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             // If the key URI is "https://YourVaultName.Vault.Azure.Net/keys/YourKeyName/01234567890123456789012345678901",
             // then the Server Key Name should be formatted as: "YourVaultName_YourKeyName_01234567890123456789012345678901"
             string[] items = uri.Split('/');
-            this.serverKeyName = $"{items[2].Split('.')[0]}_{items[4]}_{items[5]}";
+            string vaultName = items[2].Split('.')[0];
+            string keyName = items[4];
+            string keyVersion = items[5];
+            this.serverKeyName = $"{vaultName}_{keyName}_{keyVersion}";
             return this;
         }
 
