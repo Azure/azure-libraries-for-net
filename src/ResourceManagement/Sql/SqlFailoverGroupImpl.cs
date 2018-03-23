@@ -87,14 +87,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             this.sqlServerManager = sqlServerManager;
             if (innerObject != null && innerObject.Id != null)
             {
-                try
+                if (innerObject.Id != null)
                 {
                     ResourceId resourceId = ResourceId.FromString(innerObject.Id);
                     this.resourceGroupName = resourceId.ResourceGroupName;
                     this.sqlServerName = resourceId.Parent.Name;
                     this.sqlServerLocation = innerObject.Location;
                 }
-                catch (Exception) { }
             }
         }
 
