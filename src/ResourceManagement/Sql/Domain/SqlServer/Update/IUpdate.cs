@@ -101,8 +101,22 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update
         Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update.IWithElasticPool,
         Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update.IWithDatabase,
         Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update.IWithFirewallRule,
+        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update.IWithSystemAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update.IUpdate>
     {
+    }
+
+    /// <summary>
+    /// A SQL Server definition setting the managed service identity.
+    /// </summary>
+    public interface IWithSystemAssignedManagedServiceIdentity  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Sets a system assigned (local) Managed Service Identity (MSI) for the SQL server resource.
+        /// </summary>
+        /// <return>Next stage of the SQL Server definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Update.IUpdate WithSystemAssignedManagedServiceIdentity();
     }
 
     /// <summary>

@@ -64,7 +64,7 @@ namespace Fluent.Tests.Compute
                         // Assert.NotNull(sku.DiskSkuType.ToString());
                         if (sku.DiskSkuType != null)
                         {
-                            Assert.Equal(sku.DiskSkuType.ToString().ToLowerInvariant(), sku.Name.ToString().ToLowerInvariant());
+                            Assert.Equal(sku.DiskSkuType.ToString().ToLowerInvariant(), sku.Name.ToString().Replace("_", string.Empty).ToLowerInvariant());
                         }
                         Assert.Null(sku.VirtualMachineSizeType);
                         Assert.Null(sku.AvailabilitySetSkuType);
@@ -78,7 +78,7 @@ namespace Fluent.Tests.Compute
                         // Assert.NotNull(sku.DiskSkuType);
                         if (sku.DiskSkuType != null)
                         {
-                            Assert.Equal(sku.DiskSkuType.ToString().ToLowerInvariant(), sku.Name.ToString().ToLowerInvariant());
+                            Assert.Equal(sku.DiskSkuType.ToString().ToLowerInvariant(), sku.Name.ToString().Replace("_", string.Empty).ToLowerInvariant());
                         }
                         Assert.Null(sku.VirtualMachineSizeType);
                         Assert.Null(sku.AvailabilitySetSkuType);

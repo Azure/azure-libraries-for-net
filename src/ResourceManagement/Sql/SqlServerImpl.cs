@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
     using Microsoft.Rest.Azure;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRuleOperations.SqlVirtualNetworkRuleActionsDefinition;
 
     /// <summary>
     /// Implementation for SqlServer and its parent interfaces.
@@ -45,12 +46,22 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private List<SqlFirewallRuleImpl> sqlFirewallRulesToCreateOrUpdate = new List<SqlFirewallRuleImpl>();
         private List<string> sqlFirewallRulesToDelete = new List<string>();
 
+        private List<SqlVirtualNetworkRuleImpl> sqlVirtualNetworkRulesToCreateOrUpdate = new List<SqlVirtualNetworkRuleImpl>();
+
         private List<SqlElasticPoolImpl> sqlElasticPoolsToCreateOrUpdate = new List<SqlElasticPoolImpl>();
         private List<string> sqlElasticPoolsToDelete = new List<string>();
 
         private List<SqlDatabaseImpl> sqlDatabasesToCreateOrUpdate = new List<SqlDatabaseImpl>();
         private List<SqlDatabaseImpl> sqlDatabasesWithElasticPoolToCreateOrUpdate = new List<SqlDatabaseImpl>();
         private List<string> sqlDatabasesToDelete = new List<string>();
+
+        private ISqlDatabaseActionsDefinition databases;
+        private ISqlElasticPoolActionsDefinition elasticPools;
+        private ISqlFirewallRuleActionsDefinition firewallRules;
+        private SqlVirtualNetworkRuleOperations.SqlVirtualNetworkRuleActionsDefinition.ISqlVirtualNetworkRuleActionsDefinition virtualNetworkRules;
+        private SqlServerKeyOperations.SqlServerKeyActionsDefinition.ISqlServerKeyActionsDefinition serverKeys;
+        private SqlServerDnsAliasOperations.SqlServerDnsAliasActionsDefinition.ISqlServerDnsAliasActionsDefinition dnsAliases;
+        private SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition failoverGroups;
 
 
         ///GENMHASH:FED6CA0448AFD6EE7D63F8D84B7C6C26:4E9D1D31C4E764F2191FF855F590821F
@@ -95,6 +106,54 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             var firewallRule = new SqlFirewallRuleImpl(name, this, new FirewallRuleInner(), this.Manager);
             this.sqlFirewallRulesToCreateOrUpdate.Add(firewallRule);
             return firewallRule;
+        }
+
+        ///GENMHASH:E7847943ABDC87B73F83616D49AA0FC4:6758DFDDEB9847CA500BC889138460F3
+        public SqlVirtualNetworkRule.Definition.IBlank<SqlServer.Definition.IWithCreate> DefineVirtualNetworkRule(string virtualNetworkRuleName)
+        {
+            var vnetRule = new SqlVirtualNetworkRuleImpl(virtualNetworkRuleName, this, new Models.VirtualNetworkRuleInner(), this.Manager);
+            this.sqlVirtualNetworkRulesToCreateOrUpdate.Add(vnetRule);
+            return vnetRule;
+        }
+
+        ///GENMHASH:ED2CFE8848802E73EC1E094FD7531ECC:C4FC288CE09C0A0767F6161FA8C70470
+        public ISqlVirtualNetworkRuleActionsDefinition VirtualNetworkRules()
+        {
+            if (this.virtualNetworkRules == null)
+            {
+                this.virtualNetworkRules = new SqlVirtualNetworkRuleOperationsImpl(this, this.Manager);
+            }
+            return this.virtualNetworkRules;
+        }
+
+        ///GENMHASH:1EF63C8C02FD01147851B5DFEA2E69BD:E0C9B95CE87F77B3DB92C5A544CDFAA2
+        public SqlServerKeyOperations.SqlServerKeyActionsDefinition.ISqlServerKeyActionsDefinition ServerKeys()
+        {
+            if (this.serverKeys == null)
+            {
+                this.serverKeys = new SqlServerKeyOperationsImpl(this, this.Manager);
+            }
+            return this.serverKeys;
+        }
+
+        ///GENMHASH:7F723CF72B72C34A91B63032AF06AECB:4555DA4DF1C311015A284E0D283CF71D
+        public SqlServerImpl WithSystemAssignedManagedServiceIdentity()
+        {
+            this.Inner.Identity = new ResourceIdentity();
+            this.Inner.Identity.Type = IdentityType.SystemAssigned;
+            return this;
+        }
+
+        ///GENMHASH:28F05A97A27982A7F92482B99325EBF3:83F9F65DE9FB35F8FDB098A59B0374A4
+        public string SystemAssignedManagedServiceIdentityTenantId()
+        {
+            return this.Inner.Identity?.TenantId?.ToString();
+        }
+
+        ///GENMHASH:BC4103A90A606609FAB346997701A4DE:B857B0EEB8AF84B4C965D7D896F13006
+        public string ManagedServiceIdentityType()
+        {
+            return this.Inner.Identity?.Type;
         }
 
         ///GENMHASH:2A59E18DA93663D485FB24124FE696D7:5D4984EAFAEDA4C174C8D71531DE2856
@@ -151,6 +210,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return this;
         }
 
+        ///GENMHASH:9019C44FB9C28F62603D9972D45A9522:A1032E9F64FFB6493467A3DB97A0116C
+        public bool IsManagedServiceIdentityEnabled()
+        {
+            return this.Inner.Identity != null && this.Inner.Identity.Type != null && this.Inner.Identity.Type.Equals(IdentityType.SystemAssigned);
+        }
+
         ///GENMHASH:2F58B86CF4C09A3821196E375EB636F4:AA91D65BA65D340B46D6B88D4467855D
         public SqlServerImpl WithAdministratorLogin(string administratorLogin)
         {
@@ -163,6 +228,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             this.Inner.AdministratorLoginPassword = administratorLoginPassword;
             return this;
+        }
+
+        ///GENMHASH:1FE0A47E23B755CDB471E95CFF0DB53B:5D0403E58B037C71B8C4BB957D912EBE
+        public SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition FailoverGroups()
+        {
+            if (this.failoverGroups == null)
+            {
+                this.failoverGroups = new SqlFailoverGroupOperationsImpl(this, this.Manager);
+            }
+            return this.failoverGroups;
         }
 
         ///GENMHASH:42238C96020583EAD41C40C184F554ED:4DCE841EF0A7240735E632B7BE9A261D
@@ -230,7 +305,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:DF46C62E0E8998CD0340B3F8A136F135:02BE7356BA27A5AA002198DE62969F52
         public ISqlDatabaseActionsDefinition Databases()
         {
-            return new SqlDatabaseOperationsImpl(this, this.Manager);
+            if (this.databases == null)
+            {
+                this.databases = new SqlDatabaseOperationsImpl(this, this.Manager);
+            }
+            return this.databases;
         }
 
         ///GENMHASH:39211D199FB6D28F49ADF0BA2BA3CF1E:C61C684B45B07539B0E5FEFC139FEDDC
@@ -238,6 +317,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             this.sqlDatabasesToDelete.Add(databaseName);
             return this;
+        }
+
+        ///GENMHASH:42E970DCB01F51542CCDD026AE4BD947:5D5AB82F7992CFD43224D3F1360B4D51
+        public SqlServerDnsAliasOperations.SqlServerDnsAliasActionsDefinition.ISqlServerDnsAliasActionsDefinition DnsAliases()
+        {
+            if (this.dnsAliases == null)
+            {
+                this.dnsAliases = new SqlServerDnsAliasOperationsImpl(this, this.Manager);
+            }
+            return this.dnsAliases;
         }
 
         ///GENMHASH:1130C7B9E2673D9024ACFFC4705A8B49:182C479ECA149DB94974EDE6D0E58994
@@ -274,10 +363,22 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             }
         }
 
+        ///GENMHASH:5C8C07A67780BE308E299F4C61976FFB:7E3228F52C5EA7764537D9FA0750DC8E
+        public ISqlServerAutomaticTuning GetServerAutomaticTuning()
+        {
+            var serverAutomaticTuningInner = Extensions.Synchronize(() => this.Manager.Inner.ServerAutomaticTuning
+                .GetAsync(this.ResourceGroupName, this.Name));
+            return serverAutomaticTuningInner != null ? new SqlServerAutomaticTuningImpl(this, serverAutomaticTuningInner) : null;
+        }
+
         ///GENMHASH:22ED13819FBF2CA919B55726AC1FB656:2D4BB539678CAB8C520F10044E2C7968
         public ISqlElasticPoolActionsDefinition ElasticPools()
         {
-            return new SqlElasticPoolOperationsImpl(this, this.Manager);
+            if (this.elasticPools == null)
+            {
+                this.elasticPools = new SqlElasticPoolOperationsImpl(this, this.Manager);
+            }
+            return this.elasticPools;
         }
 
         ///GENMHASH:15C6DE336A70D5E1EDFAC74C3066EED7:9C29DD32907A6122759FBE531E3E19EA
@@ -358,6 +459,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             }
         }
 
+        ///GENMHASH:87673CC4832F4C7743B7F31A22932B78:503077D37D02B80A1D14F95781AD6F24
+        public string SystemAssignedManagedServiceIdentityPrincipalId()
+        {
+            return this.Inner.Identity?.PrincipalId?.ToString();
+        }
+
         ///GENMHASH:D1A254F5015CA208E094ACEC31626CE3:68467397F577EB08788291BD38EF9B4E
         public ISqlFirewallRule EnableAccessFromAzureServices()
         {
@@ -396,7 +503,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:7DDEADFB2FB27BEC42C0B993AB65C3CB:514904B05756E018F32C6B8219C69559
         public ISqlFirewallRuleActionsDefinition FirewallRules()
         {
-            return new SqlFirewallRuleOperationsImpl(this, this.Manager);
+            if (this.firewallRules == null)
+            {
+                this.firewallRules = new SqlFirewallRuleOperationsImpl(this, this.Manager);
+            }
+            return this.firewallRules;
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:1A74F5AF3A99B90A121C907190687B02
@@ -477,9 +588,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 // create/update all elastic pools marked as to be created/updated
                 .Union(this.sqlElasticPoolsToCreateOrUpdate
                     .Select(async epItem => await epItem.CreateResourceAsync(cancellationToken)))
-                // create/update all databases marked as to be created/updated
+                // create/update all firewall rules marked as to be created/updated
                 .Union(this.sqlFirewallRulesToCreateOrUpdate
-                    .Select(async firewallRuleItem => await firewallRuleItem.CreateResourceAsync(cancellationToken)));
+                    .Select(async firewallRuleItem => await firewallRuleItem.CreateResourceAsync(cancellationToken)))
+                // create/update all virtual network rules marked as to be created/updated
+                .Union(this.sqlVirtualNetworkRulesToCreateOrUpdate
+                    .Select(async vnetRuleItem => await vnetRuleItem.CreateResourceAsync(cancellationToken)));
             await Task.WhenAll(allTasks);
 
             foreach (var db in this.sqlDatabasesToCreateOrUpdate.Where(dbItem => dbItem.ElasticPoolName() != null))
@@ -491,6 +605,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             await Task.WhenAll(this.sqlDatabasesWithElasticPoolToCreateOrUpdate.Select( async dbItem => await dbItem.CreateResourceAsync(cancellationToken)));        
 
             this.sqlADAdminObject = null;
+            this.sqlVirtualNetworkRulesToCreateOrUpdate.Clear();
             this.sqlFirewallRulesToCreateOrUpdate.Clear();
             this.sqlFirewallRulesToDelete.Clear();
             this.sqlElasticPoolsToCreateOrUpdate.Clear();

@@ -10,7 +10,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Azure.OData;
     using Models;
     using Newtonsoft.Json;
     using System.Collections;
@@ -55,9 +54,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name='resourceUri'>
         /// The identifier of the resource.
         /// </param>
-        /// <param name='odataQuery'>
-        /// OData parameters to apply to the operation.
-        /// </param>
         /// <param name='timespan'>
         /// The timespan of the query. It is a string with the following format
         /// 'startDateTime_ISO/endDateTime_ISO'.
@@ -65,8 +61,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name='interval'>
         /// The interval (i.e. timegrain) of the query.
         /// </param>
-        /// <param name='metricnames'>
-        /// The names of the metrics (comma separated) to retrieve.
+        /// <param name='metric'>
+        /// The name of the metric to retrieve.
         /// </param>
         /// <param name='aggregation'>
         /// The list of aggregation types (comma separated) to retrieve.
@@ -81,13 +77,23 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Only one order can be specified.
         /// Examples: sum asc.
         /// </param>
+        /// <param name='filter'>
+        /// The **$filter** is used to reduce the set of metric data
+        /// returned.&lt;br&gt;Example:&lt;br&gt;Metric contains metadata A, B and
+        /// C.&lt;br&gt;- Return all time series of C where A = a1 and B = b1 or
+        /// b2&lt;br&gt;**$filter=A eq ‘a1’ and B eq ‘b1’ or B eq ‘b2’ and C eq
+        /// ‘*’**&lt;br&gt;- Invalid variant:&lt;br&gt;**$filter=A eq ‘a1’ and B eq
+        /// ‘b1’ and C eq ‘*’ or B = ‘b2’**&lt;br&gt;This is invalid because the
+        /// logical or operator cannot separate two different metadata
+        /// names.&lt;br&gt;- Return all time series where A = a1, B = b1 and C =
+        /// c1:&lt;br&gt;**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘c1’**&lt;br&gt;-
+        /// Return all time series where A = a1&lt;br&gt;**$filter=A eq ‘a1’ and B eq
+        /// ‘*’ and C eq ‘*’**.
+        /// </param>
         /// <param name='resultType'>
         /// Reduces the set of data collected. The syntax allowed depends on the
         /// operation. See the operation's description for details. Possible values
         /// include: 'Data', 'Metadata'
-        /// </param>
-        /// <param name='metricnamespace'>
-        /// Metric namespace to query metric definitions for.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -110,13 +116,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ResponseInner>> ListWithHttpMessagesAsync(string resourceUri, ODataQuery<MetadataValueInner> odataQuery = default(ODataQuery<MetadataValueInner>), string timespan = default(string), System.TimeSpan? interval = default(System.TimeSpan?), string metricnames = default(string), string aggregation = default(string), int? top = default(int?), string orderby = default(string), ResultType? resultType = default(ResultType?), string metricnamespace = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ResponseInner>> ListWithHttpMessagesAsync(string resourceUri, string timespan = default(string), System.TimeSpan? interval = default(System.TimeSpan?), string metric = default(string), string aggregation = default(string), int? top = default(int?), string orderby = default(string), string filter = default(string), ResultType? resultType = default(ResultType?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceUri == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceUri");
             }
-            string apiVersion = "2018-01-01";
+            string apiVersion = "2017-05-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -124,17 +130,16 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("odataQuery", odataQuery);
                 tracingParameters.Add("resourceUri", resourceUri);
                 tracingParameters.Add("timespan", timespan);
                 tracingParameters.Add("interval", interval);
-                tracingParameters.Add("metricnames", metricnames);
+                tracingParameters.Add("metric", metric);
                 tracingParameters.Add("aggregation", aggregation);
                 tracingParameters.Add("top", top);
                 tracingParameters.Add("orderby", orderby);
+                tracingParameters.Add("filter", filter);
                 tracingParameters.Add("resultType", resultType);
                 tracingParameters.Add("apiVersion", apiVersion);
-                tracingParameters.Add("metricnamespace", metricnamespace);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
@@ -143,14 +148,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{resourceUri}/providers/microsoft.insights/metrics").ToString();
             _url = _url.Replace("{resourceUri}", resourceUri);
             List<string> _queryParameters = new List<string>();
-            if (odataQuery != null)
-            {
-                var _odataFilter = odataQuery.ToString();
-                if (!string.IsNullOrEmpty(_odataFilter))
-                {
-                    _queryParameters.Add(_odataFilter);
-                }
-            }
             if (timespan != null)
             {
                 _queryParameters.Add(string.Format("timespan={0}", System.Uri.EscapeDataString(timespan)));
@@ -159,9 +156,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 _queryParameters.Add(string.Format("interval={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(interval, Client.SerializationSettings).Trim('"'))));
             }
-            if (metricnames != null)
+            if (metric != null)
             {
-                _queryParameters.Add(string.Format("metricnames={0}", System.Uri.EscapeDataString(metricnames)));
+                _queryParameters.Add(string.Format("metric={0}", System.Uri.EscapeDataString(metric)));
             }
             if (aggregation != null)
             {
@@ -169,11 +166,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
             if (top != null)
             {
-                _queryParameters.Add(string.Format("top={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(top, Client.SerializationSettings).Trim('"'))));
+                _queryParameters.Add(string.Format("$top={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(top, Client.SerializationSettings).Trim('"'))));
             }
             if (orderby != null)
             {
-                _queryParameters.Add(string.Format("orderby={0}", System.Uri.EscapeDataString(orderby)));
+                _queryParameters.Add(string.Format("$orderby={0}", System.Uri.EscapeDataString(orderby)));
+            }
+            if (filter != null)
+            {
+                _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
             }
             if (resultType != null)
             {
@@ -182,10 +183,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
-            }
-            if (metricnamespace != null)
-            {
-                _queryParameters.Add(string.Format("metricnamespace={0}", System.Uri.EscapeDataString(metricnamespace)));
             }
             if (_queryParameters.Count > 0)
             {

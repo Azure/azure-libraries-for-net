@@ -64,11 +64,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
 
         /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
         /// Gets the IAvailabilitySetsOperations.
         /// </summary>
         IAvailabilitySetsOperations AvailabilitySets { get; }
@@ -129,16 +124,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMs { get; }
 
         /// <summary>
-        /// Gets the ILogAnalyticsOperations.
-        /// </summary>
-        ILogAnalyticsOperations LogAnalytics { get; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineRunCommandsOperations.
-        /// </summary>
-        IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; }
-
-        /// <summary>
         /// Gets the IResourceSkusOperations.
         /// </summary>
         IResourceSkusOperations ResourceSkus { get; }
@@ -152,6 +137,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the ISnapshotsOperations.
         /// </summary>
         ISnapshotsOperations Snapshots { get; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineRunCommandsOperations.
+        /// </summary>
+        IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; }
 
     }
 }

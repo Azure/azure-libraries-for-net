@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the storage account type of the disk.
         /// </summary>
-        Models.StorageAccountTypes StorageAccountType { get; }
+        Models.StorageAccountTypes? StorageAccountType { get; }
 
         /// <summary>
         /// Gets the creation method used while creating this disk.

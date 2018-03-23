@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// for the managed disk. Possible values are: Standard_LRS or
         /// Premium_LRS. Possible values include: 'Standard_LRS',
         /// 'Premium_LRS'</param>
-        public ImageOSDisk(OperatingSystemTypes osType, OperatingSystemStateTypes osState, ResourceManager.Fluent.SubResource snapshot = default(ResourceManager.Fluent.SubResource), ResourceManager.Fluent.SubResource managedDisk = default(ResourceManager.Fluent.SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), string storageAccountType = default(string))
+        public ImageOSDisk(OperatingSystemTypes osType, OperatingSystemStateTypes osState, Microsoft.Azure.Management.ResourceManager.Fluent.SubResource snapshot = default(Microsoft.Azure.Management.ResourceManager.Fluent.SubResource), Microsoft.Azure.Management.ResourceManager.Fluent.SubResource managedDisk = default(Microsoft.Azure.Management.ResourceManager.Fluent.SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), StorageAccountTypes? storageAccountType = default(StorageAccountTypes?))
         {
             OsType = osType;
             OsState = osState;
@@ -93,13 +93,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets the snapshot.
         /// </summary>
         [JsonProperty(PropertyName = "snapshot")]
-        public ResourceManager.Fluent.SubResource Snapshot { get; set; }
+        public Microsoft.Azure.Management.ResourceManager.Fluent.SubResource Snapshot { get; set; }
 
         /// <summary>
         /// Gets or sets the managedDisk.
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
-        public ResourceManager.Fluent.SubResource ManagedDisk { get; set; }
+        public Microsoft.Azure.Management.ResourceManager.Fluent.SubResource ManagedDisk { get; set; }
 
         /// <summary>
         /// Gets or sets the Virtual Hard Disk.
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// values include: 'Standard_LRS', 'Premium_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
-        public string StorageAccountType { get; set; }
+        public StorageAccountTypes? StorageAccountType { get; set; }
 
         /// <summary>
         /// Validate the object.

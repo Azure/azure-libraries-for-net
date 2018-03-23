@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPoolOperations.Definition;
     using Microsoft.Azure.Management.Storage.Fluent;
+    using System;
 
     internal partial class SqlDatabaseForElasticPoolImpl 
     {
@@ -134,6 +135,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithRestorePointDatabaseAfterElasticPoolBeta<SqlElasticPoolOperations.Definition.IWithCreate>.FromRestorePoint(IRestorePoint restorePoint)
         {
             return this.FromRestorePoint(restorePoint) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Creates a new database from a restore point.
+        /// </summary>
+        /// <param name="restorePoint">The restore point.</param>
+        /// <param name="restorePointDateTime">Date and time to restore from.</param>
+        /// <return>The next stage of the definition.</return>
+        SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithRestorePointDatabaseAfterElasticPoolBeta<SqlElasticPoolOperations.Definition.IWithCreate>.FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
+        {
+            return this.FromRestorePoint(restorePoint, restorePointDateTime) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate>;
         }
 
         /// <param name="sharedAccessKey">The shared access key to use; it must be preceded with a "?.".</param>

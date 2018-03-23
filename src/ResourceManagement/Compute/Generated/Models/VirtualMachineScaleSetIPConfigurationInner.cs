@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// can reference inbound nat pools of one public and one internal load
         /// balancer. Multiple scale sets cannot use the same load
         /// balancer</param>
-        public VirtualMachineScaleSetIPConfigurationInner(string name, string id = default(string), ApiEntityReference subnet = default(ApiEntityReference), bool? primary = default(bool?), VirtualMachineScaleSetPublicIPAddressConfiguration publicIPAddressConfiguration = default(VirtualMachineScaleSetPublicIPAddressConfiguration), string privateIPAddressVersion = default(string), IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource> applicationGatewayBackendAddressPools = default(IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource>), IList<ResourceManager.Fluent.SubResource> loadBalancerBackendAddressPools = default(IList<ResourceManager.Fluent.SubResource>), IList<ResourceManager.Fluent.SubResource> loadBalancerInboundNatPools = default(IList<ResourceManager.Fluent.SubResource>))
+        public VirtualMachineScaleSetIPConfigurationInner(string name, string id = default(string), ApiEntityReference subnet = default(ApiEntityReference), bool? primary = default(bool?), VirtualMachineScaleSetPublicIPAddressConfiguration publicIPAddressConfiguration = default(VirtualMachineScaleSetPublicIPAddressConfiguration), string privateIPAddressVersion = default(string), IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource> applicationGatewayBackendAddressPools = default(IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource>), IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource> loadBalancerBackendAddressPools = default(IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource>), IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource> loadBalancerInboundNatPools = default(IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource>))
             : base(id)
         {
             Name = name;
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// cannot use the same load balancer
         /// </summary>
         [JsonProperty(PropertyName = "properties.loadBalancerInboundNatPools")]
-        public IList<ResourceManager.Fluent.SubResource> LoadBalancerInboundNatPools { get; set; }
+        public IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource> LoadBalancerInboundNatPools { get; set; }
 
         /// <summary>
         /// Validate the object.

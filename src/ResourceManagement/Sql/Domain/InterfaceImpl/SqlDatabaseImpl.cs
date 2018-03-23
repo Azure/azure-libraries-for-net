@@ -332,6 +332,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return this.ListUsages() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IDatabaseMetric>;
         }
 
+        /// <summary>
+        /// Renames the database asynchronously.
+        /// </summary>
+        /// <param name="newDatabaseName">The new name for the database.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.RenameAsync(string newDatabaseName, CancellationToken cancellationToken)
+        {
+            return await this.RenameAsync(newDatabaseName, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+        }
+
         /// <param name="filter">An OData filter expression that describes a subset of metrics to return.</param>
         /// <return>A representation of the deferred computation of the metrics for this database.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetric>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListMetricsAsync(string filter, CancellationToken cancellationToken)
@@ -412,6 +422,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return this.ListMetricDefinitions() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricDefinition>;
         }
 
+        /// <summary>
+        /// Renames the database.
+        /// </summary>
+        /// <param name="newDatabaseName">The new name for the database.</param>
+        /// <return>The renamed SQL database.</return>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.Rename(string newDatabaseName)
+        {
+            return this.Rename(newDatabaseName) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+        }
+
         /// <param name="filter">An OData filter expression that describes a subset of metrics to return.</param>
         /// <return>The list of metrics for this database.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetric> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListMetrics(string filter)
@@ -450,6 +470,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 return this.RequestedServiceObjectiveId();
             }
+        }
+
+        /// <summary>
+        /// Gets a SQL database automatic tuning state and options.
+        /// </summary>
+        /// <return>The SQL database automatic tuning state and options.</return>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseAutomaticTuning Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.GetDatabaseAutomaticTuning()
+        {
+            return this.GetDatabaseAutomaticTuning() as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseAutomaticTuning;
         }
 
         /// <summary>
@@ -618,6 +647,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Asynchronously lists the SQL database usage metrics.
+        /// </summary>
+        /// <return>A representation of the deferred computation of this call returning the SQL database usage metrics.</return>
+        async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric>> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListUsageMetricsAsync(CancellationToken cancellationToken)
+        {
+            return await this.ListUsageMetricsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric>;
+        }
+
+        /// <summary>
         /// Deletes the database from the server.
         /// </summary>
         void Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.Delete()
@@ -635,6 +673,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 return this.Edition();
             }
+        }
+
+        /// <summary>
+        /// Lists the SQL database usage metrics.
+        /// </summary>
+        /// <return>The SQL database usage metrics.</return>
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric> Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.ListUsageMetrics()
+        {
+            return this.ListUsageMetrics() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric>;
         }
 
         /// <summary>
@@ -813,10 +860,32 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Creates a new database from a restore point.
         /// </summary>
         /// <param name="restorePoint">The restore point.</param>
+        /// <param name="restorePointDateTime">Date and time to restore from.</param>
+        /// <return>The next stage of the definition.</return>
+        SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithRestorePointDatabaseBeta<SqlServer.Definition.IWithCreate>.FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
+        {
+            return this.FromRestorePoint(restorePoint, restorePointDateTime) as SqlDatabase.Definition.IWithAttachAllOptions<SqlServer.Definition.IWithCreate>;
+        }
+
+        /// <summary>
+        /// Creates a new database from a restore point.
+        /// </summary>
+        /// <param name="restorePoint">The restore point.</param>
         /// <return>The next stage of the definition.</return>
         SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithRestorePointDatabaseBeta.FromRestorePoint(IRestorePoint restorePoint)
         {
             return this.FromRestorePoint(restorePoint) as SqlDatabaseOperations.Definition.IWithCreateAllOptions;
+        }
+
+        /// <summary>
+        /// Creates a new database from a restore point.
+        /// </summary>
+        /// <param name="restorePoint">The restore point.</param>
+        /// <param name="restorePointDateTime">Date and time to restore from.</param>
+        /// <return>The next stage of the definition.</return>
+        SqlDatabaseOperations.Definition.IWithCreateAllOptions SqlDatabaseOperations.Definition.IWithRestorePointDatabaseBeta.FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
+        {
+            return this.FromRestorePoint(restorePoint, restorePointDateTime) as SqlDatabaseOperations.Definition.IWithCreateAllOptions;
         }
 
         /// <summary>
@@ -964,6 +1033,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Creates a new database from a restore point.
+        /// </summary>
+        /// <param name="restorePoint">The restore point.</param>
+        /// <param name="restorePointDateTime">Date and time to restore from.</param>
+        /// <return>The next stage of the definition.</return>
+        SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate> SqlDatabase.Definition.IWithRestorePointDatabaseAfterElasticPoolBeta<SqlServer.Definition.IWithCreate>.FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
+        {
+            return this.FromRestorePoint(restorePoint, restorePointDateTime) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlServer.Definition.IWithCreate>;
+        }
+
+        /// <summary>
         /// Sets the service level objective for the SQL Database.
         /// </summary>
         /// <param name="serviceLevelObjective">Service level objected for the SQL Database.</param>
@@ -1026,6 +1106,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions SqlDatabaseOperations.Definition.IWithRestorePointDatabaseAfterElasticPoolBeta.FromRestorePoint(IRestorePoint restorePoint)
         {
             return this.FromRestorePoint(restorePoint) as SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions;
+        }
+
+        /// <summary>
+        /// Creates a new database from a restore point.
+        /// </summary>
+        /// <param name="restorePoint">The restore point.</param>
+        /// <param name="restorePointDateTime">Date and time to restore from.</param>
+        /// <return>The next stage of the definition.</return>
+        SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions SqlDatabaseOperations.Definition.IWithRestorePointDatabaseAfterElasticPoolBeta.FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
+        {
+            return this.FromRestorePoint(restorePoint, restorePointDateTime) as SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions;
         }
 
         /// <summary>

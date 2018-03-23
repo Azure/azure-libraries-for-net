@@ -8,7 +8,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -43,19 +42,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// **ReadWrite** &lt;br&gt;&lt;br&gt; Default: **None for Standard
         /// storage. ReadOnly for Premium storage**. Possible values include:
         /// 'None', 'ReadOnly', 'ReadWrite'</param>
-        /// <param name="writeAcceleratorEnabled">Specifies whether
-        /// writeAccelerator should be enabled or disabled on the disk.</param>
         /// <param name="diskSizeGB">Specifies the size of an empty data disk
         /// in gigabytes. This element can be used to overwrite the name of the
         /// disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value
         /// cannot be larger than 1023 GB</param>
         /// <param name="managedDisk">The managed disk parameters.</param>
-        public VirtualMachineScaleSetDataDisk(int lun, string createOption, string name = default(string), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters))
+        public VirtualMachineScaleSetDataDisk(int lun, DiskCreateOptionTypes createOption, string name = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters))
         {
             Name = name;
             Lun = lun;
             Caching = caching;
-            WriteAcceleratorEnabled = writeAcceleratorEnabled;
             CreateOption = createOption;
             DiskSizeGB = diskSizeGB;
             ManagedDisk = managedDisk;
@@ -95,18 +91,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public CachingTypes? Caching { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether writeAccelerator should be enabled
-        /// or disabled on the disk.
-        /// </summary>
-        [JsonProperty(PropertyName = "writeAcceleratorEnabled")]
-        public bool? WriteAcceleratorEnabled { get; set; }
-
-        /// <summary>
         /// Gets or sets the create option. Possible values include:
         /// 'FromImage', 'Empty', 'Attach'
         /// </summary>
         [JsonProperty(PropertyName = "createOption")]
-        public string CreateOption { get; set; }
+        public DiskCreateOptionTypes CreateOption { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the size of an empty data disk in gigabytes.
@@ -126,15 +115,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (CreateOption == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "CreateOption");
-            }
         }
     }
 }

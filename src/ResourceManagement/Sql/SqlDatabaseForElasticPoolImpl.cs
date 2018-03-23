@@ -88,6 +88,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return this;
         }
 
+        ///GENMHASH:65DFD5CF3EED2BB07512CC188E7D8F8A:AFBA1099FDE55B08EE2A943E817A4A4B
+        public SqlDatabaseForElasticPoolImpl FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
+        {
+            this.sqlDatabase.FromRestorePoint(restorePoint, restorePointDateTime);
+            return this;
+        }
+
         ///GENMHASH:B23645FC2F779DBC6F44B880C488B561:208D36D798E4BCCB374607A6BF5CA205
         public SqlDatabaseForElasticPoolImpl WithMaxSizeBytes(long maxSizeBytes)
         {

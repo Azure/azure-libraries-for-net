@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// for the managed disk. Possible values are: Standard_LRS or
         /// Premium_LRS. Possible values include: 'Standard_LRS',
         /// 'Premium_LRS'</param>
-        public VirtualMachineScaleSetManagedDiskParameters(string storageAccountType = default(string))
+        public VirtualMachineScaleSetManagedDiskParameters(StorageAccountTypes? storageAccountType = default(StorageAccountTypes?))
         {
             StorageAccountType = storageAccountType;
             CustomInit();
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// values include: 'Standard_LRS', 'Premium_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
-        public string StorageAccountType { get; set; }
+        public StorageAccountTypes? StorageAccountType { get; set; }
 
     }
 }

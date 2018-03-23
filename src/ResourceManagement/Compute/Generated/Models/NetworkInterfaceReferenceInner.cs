@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a network interface reference.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class NetworkInterfaceReferenceInner : ResourceManager.Fluent.SubResource
+    public partial class NetworkInterfaceReferenceInner : Microsoft.Azure.Management.ResourceManager.Fluent.SubResource
     {
         /// <summary>
         /// Initializes a new instance of the NetworkInterfaceReferenceInner

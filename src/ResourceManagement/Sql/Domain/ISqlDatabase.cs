@@ -32,6 +32,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         string ElasticPoolName { get; }
 
         /// <summary>
+        /// Lists the SQL database usage metrics.
+        /// </summary>
+        /// <return>The SQL database usage metrics.</return>
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric> ListUsageMetrics();
+
+        /// <summary>
         /// Gets the name of the region the resource is in.
         /// </summary>
         string RegionName { get; }
@@ -74,6 +80,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetric> ListMetrics(string filter);
 
         /// <summary>
+        /// Gets a SQL database automatic tuning state and options.
+        /// </summary>
+        /// <return>The SQL database automatic tuning state and options.</return>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseAutomaticTuning GetDatabaseAutomaticTuning();
+
+        /// <summary>
         /// Gets the defaultSecondaryLocation value.
         /// </summary>
         string DefaultSecondaryLocation { get; }
@@ -106,6 +118,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
 
         /// <return>A representation of the deferred computation of the metric definitions for this database.</return>
         Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricDefinition>> ListMetricDefinitionsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Asynchronously lists the SQL database usage metrics.
+        /// </summary>
+        /// <return>A representation of the deferred computation of this call returning the SQL database usage metrics.</return>
+        Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric>> ListUsageMetricsAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets the recovery period start date of the Azure SQL Database. This
@@ -161,6 +179,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IRestorePoint> ListRestorePoints();
 
         /// <summary>
+        /// Renames the database asynchronously.
+        /// </summary>
+        /// <param name="newDatabaseName">The new name for the database.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        Task<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> RenameAsync(string newDatabaseName, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// Gets the creation date of the Azure SQL Database.
         /// </summary>
         System.DateTime? CreationDate { get; }
@@ -174,6 +199,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Gets the Service Level Objective of the Azure SQL Database.
         /// </summary>
         string ServiceLevelObjective { get; }
+
+        /// <summary>
+        /// Renames the database.
+        /// </summary>
+        /// <param name="newDatabaseName">The new name for the database.</param>
+        /// <return>The renamed SQL database.</return>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase Rename(string newDatabaseName);
 
         /// <return>SqlWarehouse instance for more operations.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlWarehouse AsWarehouse();

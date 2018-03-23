@@ -1,10 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-
 namespace Microsoft.Azure.Management.Monitor.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Management.Monitor.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Entry point for Monitor Metric Definitions API.
@@ -13,7 +15,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<MonitorManager>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinitionsOperations>
     {
-
         /// <summary>
         /// Lists Metric Definitions for a given resource.
         /// </summary>
@@ -26,6 +27,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
         /// <return>A representation of the deferred computation of Metric Definitions list call.</return>
-        Task<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition> ListByResourceAsync(string resourceId, CancellationToken cancellationToken = default(CancellationToken));
+        Task<IReadOnlyList<IMetricDefinition>> ListByResourceAsync(string resourceId, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

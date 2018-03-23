@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this OperatingSystemTypes value)
         {
-            switch( value )
+            switch (value)
             {
                 case OperatingSystemTypes.Windows:
                     return "Windows";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static OperatingSystemTypes? ParseOperatingSystemTypes(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Windows":
                     return OperatingSystemTypes.Windows;
