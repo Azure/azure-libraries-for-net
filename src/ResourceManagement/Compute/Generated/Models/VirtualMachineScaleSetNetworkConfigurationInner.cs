@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// network interfaces.</param>
         /// <param name="enableIPForwarding">Whether IP forwarding enabled on
         /// this NIC.</param>
-        public VirtualMachineScaleSetNetworkConfigurationInner(string name, IList<VirtualMachineScaleSetIPConfigurationInner> ipConfigurations, string id = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), Microsoft.Azure.Management.ResourceManager.Fluent.SubResource networkSecurityGroup = default(Microsoft.Azure.Management.ResourceManager.Fluent.SubResource), VirtualMachineScaleSetNetworkConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetNetworkConfigurationDnsSettings), bool? enableIPForwarding = default(bool?))
+        public VirtualMachineScaleSetNetworkConfigurationInner(string name, IList<VirtualMachineScaleSetIPConfigurationInner> ipConfigurations, string id = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), ResourceManager.Fluent.SubResource networkSecurityGroup = default(ResourceManager.Fluent.SubResource), VirtualMachineScaleSetNetworkConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetNetworkConfigurationDnsSettings), bool? enableIPForwarding = default(bool?))
             : base(id)
         {
             Name = name;
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets the network security group.
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkSecurityGroup")]
-        public Microsoft.Azure.Management.ResourceManager.Fluent.SubResource NetworkSecurityGroup { get; set; }
+        public ResourceManager.Fluent.SubResource NetworkSecurityGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the dns settings to be applied on the network

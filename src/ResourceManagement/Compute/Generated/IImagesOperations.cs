@@ -50,6 +50,34 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </exception>
         Task<AzureOperationResponse<ImageInner>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, ImageInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Update an image.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='imageName'>
+        /// The name of the image.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Update Image operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ImageInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, ImageUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Deletes an Image.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -173,6 +201,34 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<ImageInner>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, ImageInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Update an image.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='imageName'>
+        /// The name of the image.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Update Image operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ImageInner>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, ImageUpdateInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes an Image.
         /// </summary>

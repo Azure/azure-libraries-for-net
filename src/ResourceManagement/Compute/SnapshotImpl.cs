@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public SnapshotImpl WithDataFromDisk(string managedDiskId)
         {
             Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Copy;
+            Inner.CreationData.CreateOption = DiskCreateOption.Copy.ToString();
             Inner.CreationData.SourceResourceId = managedDiskId;
             return this;
         }
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner.OsType = OperatingSystemTypes.Linux;
             Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Import;
+            Inner.CreationData.CreateOption = DiskCreateOption.Import.ToString();
             Inner.CreationData.SourceUri = vhdUrl;
             return this;
         }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public SnapshotImpl WithDataFromSnapshot(string snapshotId)
         {
             Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Copy;
+            Inner.CreationData.CreateOption = DiskCreateOption.Copy.ToString();
             Inner.CreationData.SourceResourceId = snapshotId;
             return this;
         }
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public async Task<string> GrantAccessAsync(int accessDurationInSeconds, CancellationToken cancellationToken = default(CancellationToken))
         {
             GrantAccessDataInner grantAccessDataInner = new GrantAccessDataInner();
-            grantAccessDataInner.Access = AccessLevel.Read;
+            grantAccessDataInner.Access = AccessLevel.Read.ToString();
             grantAccessDataInner.DurationInSeconds = accessDurationInSeconds;
 
             AccessUriInner accessUriInner = await Manager.Inner.Snapshots.GrantAccessAsync(
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner.OsType = OperatingSystemTypes.Windows;
             Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Copy;
+            Inner.CreationData.CreateOption = DiskCreateOption.Copy.ToString();
             Inner.CreationData.SourceResourceId = sourceDiskId;
             return this;
         }
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner.OsType = OperatingSystemTypes.Linux;
             Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Copy;
+            Inner.CreationData.CreateOption = DiskCreateOption.Copy.ToString();
             Inner.CreationData.SourceResourceId = sourceDiskId;
             return this;
         }
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public SnapshotImpl WithDataFromVhd(string vhdUrl)
         {
             Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Import;
+            Inner.CreationData.CreateOption = DiskCreateOption.Import.ToString();
             Inner.CreationData.SourceUri = vhdUrl;
             return this;
         }
@@ -186,7 +186,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:D85E911348B4AD36294F154A7C700412:507C952D65DEB7C06C2758D22266AB43
         public DiskCreateOption CreationMethod()
         {
-            return Inner.CreationData.CreateOption;
+            if (Inner.CreationData.CreateOption == null)
+            {
+                return null;
+            }
+            return DiskCreateOption.Parse(Inner.CreationData.CreateOption);
         }
 
         ///GENMHASH:28C892DD6868506954A9B3D406FE4710:E57D05C8BB272E6441E14E0F73F93F60
@@ -194,7 +198,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner.OsType = OperatingSystemTypes.Windows;
             Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Import;
+            Inner.CreationData.CreateOption = DiskCreateOption.Import.ToString();
             Inner.CreationData.SourceUri = vhdUrl;
             return this;
         }
@@ -202,10 +206,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:26BC80239F0CCAAB14CDBC15A85351B8:5C4E68981DCB985DABC30CE2B145CC62
         public SnapshotImpl WithSku(DiskSkuTypes sku)
         {
-            Inner.Sku = new DiskSku
+            SnapshotSku snapshotSku = new SnapshotSku
             {
-                Name = sku.AccountType
+                Name = sku.AccountType.ToString()
             };
+            Inner.Sku = snapshotSku;
             return this;
         }
 
@@ -214,7 +219,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner.OsType = OperatingSystemTypes.Windows;
             Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Copy;
+            Inner.CreationData.CreateOption = DiskCreateOption.Copy.ToString();
             Inner.CreationData.SourceResourceId = sourceSnapshotId;
             return this;
         }
@@ -262,9 +267,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:A57B8C47BCE45BC6F3DA10CAF14C67BE
         public DiskSkuTypes Sku()
         {
-            if (Inner.Sku != null && Inner.Sku.Name != null && Inner.Sku.Name.HasValue)
+            if (Inner.Sku != null && Inner.Sku.Name != null && Inner.Sku.Name != null)
             {
-                return DiskSkuTypes.FromStorageAccountType(Inner.Sku.Name.Value);
+                return DiskSkuTypes.FromStorageAccountType(StorageAccountTypes.Parse(Inner.Sku.Name));
             }
             return null;
         }
@@ -274,7 +279,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner.OsType = OperatingSystemTypes.Linux;
             Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Copy;
+            Inner.CreationData.CreateOption = DiskCreateOption.Copy.ToString();
             Inner.CreationData.SourceResourceId = sourceSnapshotId;
             return this;
         }

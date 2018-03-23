@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the storage account type of the disk.
         /// </summary>
-        Models.StorageAccountTypes? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.StorageAccountType
+        Models.StorageAccountTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.StorageAccountType
         {
             get
             {
