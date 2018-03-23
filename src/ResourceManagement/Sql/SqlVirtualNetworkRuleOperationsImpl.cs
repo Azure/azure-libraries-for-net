@@ -153,49 +153,78 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return Extensions.Synchronize(() => this.GetByIdAsync(id));
         }
 
-        public Task<ISqlVirtualNetworkRule> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<ISqlVirtualNetworkRule> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            if (id == null)
+            {
+                throw new ArgumentNullException(id);
+            }
+            var resourceId = ResourceId.FromString(id);
+            return await this.GetBySqlServerAsync(resourceId.ResourceGroupName, resourceId.Parent.Name, resourceId.Name, cancellationToken);
         }
 
         public void DeleteById(string id)
         {
-            throw new NotImplementedException();
+            Extensions.Synchronize(() => this.DeleteByIdAsync(id));
         }
 
-        public Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            if (id == null)
+            {
+                throw new ArgumentNullException(id);
+            }
+            var resourceId = ResourceId.FromString(id);
+            await this.DeleteBySqlServerAsync(resourceId.ResourceGroupName, resourceId.Parent.Name, resourceId.Name, cancellationToken);
         }
 
         public ISqlVirtualNetworkRule Get(string name)
         {
-            throw new NotImplementedException();
+            return Extensions.Synchronize(() => this.GetAsync(name));
         }
 
-        public Task DeleteAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task DeleteAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            if (sqlServer == null)
+            {
+                return;
+            }
+            await this.DeleteBySqlServerAsync(this.sqlServer.ResourceGroupName, this.sqlServer.Name, name, cancellationToken);
         }
 
-        public Task<ISqlVirtualNetworkRule> GetAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<ISqlVirtualNetworkRule> GetAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            if (sqlServer == null)
+            {
+                return null;
+            }
+            return await this.GetBySqlServerAsync(this.sqlServer.ResourceGroupName, this.sqlServer.Name, name, cancellationToken);
         }
 
         public IReadOnlyList<ISqlVirtualNetworkRule> List()
         {
-            throw new NotImplementedException();
+            if (sqlServer == null)
+            {
+                return null;
+            }
+            return Extensions.Synchronize(() => this.ListAsync());
         }
 
         public void Delete(string name)
         {
-            throw new NotImplementedException();
+            if (sqlServer != null)
+            {
+                Extensions.Synchronize(() => this.DeleteAsync(name));
+            }
         }
 
-        public Task<IReadOnlyList<ISqlVirtualNetworkRule>> ListAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IReadOnlyList<ISqlVirtualNetworkRule>> ListAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            if (this.sqlServer == null)
+            {
+                return null;
+            }
+            return await this.ListBySqlServerAsync(this.sqlServer.ResourceGroupName, this.sqlServer.Name, cancellationToken);
         }
     }
 }

@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             var serverKeyInner = await this.sqlServerManager.Inner.ServerKeys
                 .CreateOrUpdateAsync(this.resourceGroupName, this.sqlServerName, this.serverKeyName, this.Inner, cancellationToken);
             this.SetInner(serverKeyInner);
-            return serverKeyInner != null ? this : null;
+            return this;
         }
 
         public ISqlServerKey Refresh()

@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             var serverDnsAliasInner = await this.sqlServerManager.Inner.ServerDnsAliases
                 .CreateOrUpdateAsync(this.resourceGroupName, this.sqlServerName, this.Name(), cancellationToken);
             this.SetInner(serverDnsAliasInner);
-            return serverDnsAliasInner != null ? this : null;
+            return this;
         }
 
         public ISqlServerDnsAlias Refresh()

@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             var failoverGroupInner = await this.sqlServerManager.Inner.FailoverGroups
                 .CreateOrUpdateAsync(this.resourceGroupName, this.sqlServerName, this.Name(), this.Inner, cancellationToken);
             this.SetInner(failoverGroupInner);
-            return failoverGroupInner != null ? this : null;
+            return this;
         }
 
         ///GENMHASH:24DCA35ADCDF86A8A58340A3C0947F91:C0E448625A6CEF0869254B602F9C3284

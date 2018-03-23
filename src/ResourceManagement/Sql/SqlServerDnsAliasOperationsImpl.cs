@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:6296EBA2A3987F54D7F72FBAD6479C42:43BF008A6256BDEA0A296AB514FC7683
         public async Task AcquireAsync(string dnsAliasName, string sqlServerId, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await this.AcquireAsync(this.sqlServer.ResourceGroupName, this.sqlServer.Name, dnsAliasName, sqlServerId);
+            await this.AcquireAsync(this.sqlServer.ResourceGroupName, this.sqlServer.Name, dnsAliasName, sqlServerId, cancellationToken);
         }
 
         ///GENMHASH:03C6F391A16F96A5127D98827B5423FA:634F4EA35A79279119891B659AC7FCD5

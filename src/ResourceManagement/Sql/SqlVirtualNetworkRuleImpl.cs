@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             var virtualNetworkRuleInner = await this.sqlServerManager.Inner.VirtualNetworkRules
                 .CreateOrUpdateAsync(this.resourceGroupName, this.sqlServerName, this.Name(), this.Inner, cancellationToken);
             this.SetInner(virtualNetworkRuleInner);
-            return virtualNetworkRuleInner != null ? this : null;
+            return this;
         }
 
         public ISqlVirtualNetworkRule Refresh()

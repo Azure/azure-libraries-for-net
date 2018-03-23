@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 .UpdateAsync(this.resourceGroupName, this.sqlServerName, this.sqlDatabaseName, this.Inner, cancellationToken);
             this.SetInner(databaseAutomaticTuningInner);
             this.automaticTuningOptionsMap = (databaseAutomaticTuningInner != null && databaseAutomaticTuningInner.Options != null) ? new Dictionary<string, AutomaticTuningOptions>(databaseAutomaticTuningInner.Options) : new Dictionary<string, AutomaticTuningOptions>();
-            return databaseAutomaticTuningInner != null ? this : null;
+            return this;
         }
 
         ///GENMHASH:7A26D184347EA91F532899FC93DA3E8B:4DCBBC7A68AC87C60BAB31C86F86FB9B

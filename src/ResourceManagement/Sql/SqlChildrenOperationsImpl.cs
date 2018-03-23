@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             return await this.GetBySqlServerAsync(ResourceUtils.GroupFromResourceId(id),
                 ResourceUtils.NameFromResourceId(ResourceUtils.ParentRelativePathFromResourceId(id)),
-                ResourceUtils.NameFromResourceId(id));
+                ResourceUtils.NameFromResourceId(id), cancellationToken);
         }
 
         ///GENMHASH:CFA8F482B43AF8D63CC08E2DEC651ED3:DCEEEF4375DAE606E6DAD8A9FDADD8F9
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             await this.DeleteBySqlServerAsync(ResourceUtils.GroupFromResourceId(id),
                 ResourceUtils.NameFromResourceId(ResourceUtils.ParentRelativePathFromResourceId(id)),
-                ResourceUtils.NameFromResourceId(id));
+                ResourceUtils.NameFromResourceId(id), cancellationToken);
         }
 
         ///GENMHASH:BEDEF34E57C25BFA34A4AB1C8430428E:B209E1E0E54E3F8E692FC2C81F448D0A
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             if (this.sqlServer == null) {
                 return;
             }
-            await this.DeleteBySqlServerAsync(this.sqlServer.ResourceGroupName, this.sqlServer.Name, name);
+            await this.DeleteBySqlServerAsync(this.sqlServer.ResourceGroupName, this.sqlServer.Name, name, cancellationToken);
         }
 
         ///GENMHASH:AF8385463FD062B3C56A3F22F51DFEE4:99973FBFF821702A2BB96E3D93713E2C
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 return default(FluentModelT);
             }
-            return await this.GetBySqlServerAsync(this.sqlServer, name);
+            return await this.GetBySqlServerAsync(this.sqlServer, name, cancellationToken);
         }
 
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:4640FD0E6A2FE534EAF965B21BFE4C06
