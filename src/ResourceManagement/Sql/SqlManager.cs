@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 SubscriptionId = subscriptionId
             })
         {
+            this.tenantId = tenantId;
         }
 
         #region SqlManager builder
