@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// The disks and snapshots sku name. Can be Standard_LRS or Premium_LRS.
+    /// The disks sku name. Can be Standard_LRS or Premium_LRS.
     /// </summary>
     public partial class DiskSku
     {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="name">The sku name. Possible values include:
         /// 'Standard_LRS', 'Premium_LRS'</param>
         /// <param name="tier">The sku tier.</param>
-        public DiskSku(StorageAccountTypes? name = default(StorageAccountTypes?), string tier = default(string))
+        public DiskSku(string name = default(string), string tier = default(string))
         {
             Name = name;
             Tier = tier;
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Premium_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public StorageAccountTypes? Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets the sku tier.

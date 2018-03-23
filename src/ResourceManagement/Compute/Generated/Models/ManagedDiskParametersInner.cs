@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// The parameters of a managed disk.
     /// </summary>
-    public partial class ManagedDiskParametersInner : Microsoft.Azure.Management.ResourceManager.Fluent.SubResource
+    public partial class ManagedDiskParametersInner : ResourceManager.Fluent.SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ManagedDiskParametersInner class.
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// for the managed disk. Possible values are: Standard_LRS or
         /// Premium_LRS. Possible values include: 'Standard_LRS',
         /// 'Premium_LRS'</param>
-        public ManagedDiskParametersInner(string id = default(string), StorageAccountTypes? storageAccountType = default(StorageAccountTypes?))
+        public ManagedDiskParametersInner(string id = default(string), string storageAccountType = default(string))
             : base(id)
         {
             StorageAccountType = storageAccountType;
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// values include: 'Standard_LRS', 'Premium_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        public string StorageAccountType { get; set; }
 
     }
 }

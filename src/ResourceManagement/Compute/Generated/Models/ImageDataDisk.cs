@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// for the managed disk. Possible values are: Standard_LRS or
         /// Premium_LRS. Possible values include: 'Standard_LRS',
         /// 'Premium_LRS'</param>
-        public ImageDataDisk(int lun, Microsoft.Azure.Management.ResourceManager.Fluent.SubResource snapshot = default(Microsoft.Azure.Management.ResourceManager.Fluent.SubResource), Microsoft.Azure.Management.ResourceManager.Fluent.SubResource managedDisk = default(Microsoft.Azure.Management.ResourceManager.Fluent.SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), StorageAccountTypes? storageAccountType = default(StorageAccountTypes?))
+        public ImageDataDisk(int lun, ResourceManager.Fluent.SubResource snapshot = default(ResourceManager.Fluent.SubResource), ResourceManager.Fluent.SubResource managedDisk = default(ResourceManager.Fluent.SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), string storageAccountType = default(string))
         {
             Lun = lun;
             Snapshot = snapshot;
@@ -79,13 +79,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets the snapshot.
         /// </summary>
         [JsonProperty(PropertyName = "snapshot")]
-        public Microsoft.Azure.Management.ResourceManager.Fluent.SubResource Snapshot { get; set; }
+        public ResourceManager.Fluent.SubResource Snapshot { get; set; }
 
         /// <summary>
         /// Gets or sets the managedDisk.
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
-        public Microsoft.Azure.Management.ResourceManager.Fluent.SubResource ManagedDisk { get; set; }
+        public ResourceManager.Fluent.SubResource ManagedDisk { get; set; }
 
         /// <summary>
         /// Gets or sets the Virtual Hard Disk.
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// values include: 'Standard_LRS', 'Premium_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        public string StorageAccountType { get; set; }
 
         /// <summary>
         /// Validate the object.

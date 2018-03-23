@@ -69,6 +69,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
+
+        /// <summary>
         /// Gets the IAvailabilitySetsOperations.
         /// </summary>
         public virtual IAvailabilitySetsOperations AvailabilitySets { get; private set; }
@@ -129,6 +134,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public virtual IVirtualMachineScaleSetVMsOperations VirtualMachineScaleSetVMs { get; private set; }
 
         /// <summary>
+        /// Gets the ILogAnalyticsOperations.
+        /// </summary>
+        public virtual ILogAnalyticsOperations LogAnalytics { get; private set; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineRunCommandsOperations.
+        /// </summary>
+        public virtual IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; private set; }
+
+        /// <summary>
         /// Gets the IResourceSkusOperations.
         /// </summary>
         public virtual IResourceSkusOperations ResourceSkus { get; private set; }
@@ -142,11 +157,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the ISnapshotsOperations.
         /// </summary>
         public virtual ISnapshotsOperations Snapshots { get; private set; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineRunCommandsOperations.
-        /// </summary>
-        public virtual IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ComputeManagementClient class.
@@ -349,6 +359,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         private void Initialize()
         {
+            Operations = new Operations(this);
             AvailabilitySets = new AvailabilitySetsOperations(this);
             VirtualMachineExtensionImages = new VirtualMachineExtensionImagesOperations(this);
             VirtualMachineExtensions = new VirtualMachineExtensionsOperations(this);
@@ -361,10 +372,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             VirtualMachineScaleSetExtensions = new VirtualMachineScaleSetExtensionsOperations(this);
             VirtualMachineScaleSetRollingUpgrades = new VirtualMachineScaleSetRollingUpgradesOperations(this);
             VirtualMachineScaleSetVMs = new VirtualMachineScaleSetVMsOperations(this);
+            LogAnalytics = new LogAnalyticsOperations(this);
+            VirtualMachineRunCommands = new VirtualMachineRunCommandsOperations(this);
             ResourceSkus = new ResourceSkusOperations(this);
             Disks = new DisksOperations(this);
             Snapshots = new SnapshotsOperations(this);
-            VirtualMachineRunCommands = new VirtualMachineRunCommandsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

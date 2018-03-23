@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the storage account type of the OS managed disk. A null value will be returned if the
         /// virtual machine scale set is based on un-managed disk.
         /// </summary>
-        Models.StorageAccountTypes? ManagedOSDiskStorageAccountType { get; }
+        Models.StorageAccountTypes ManagedOSDiskStorageAccountType { get; }
 
         /// <summary>
         /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory service principal ID
