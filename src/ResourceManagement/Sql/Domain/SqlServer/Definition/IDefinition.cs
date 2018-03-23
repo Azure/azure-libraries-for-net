@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition
 {
+    using Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRule.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Sql.Fluent;
@@ -9,6 +10,20 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition
     using Microsoft.Azure.Management.Sql.Fluent.SqlFirewallRule.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlDatabase.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Definition;
+
+    /// <summary>
+    /// The stage of the SQL Server definition allowing to specify the SQL Virtual Network Rules.
+    /// </summary>
+    public interface IWithVirtualNetworkRule  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Begins the definition of a new SQL Virtual Network Rule to be added to this server.
+        /// </summary>
+        /// <param name="virtualNetworkRuleName">The name of the new SQL Virtual Network Rule.</param>
+        /// <return>The first stage of the new SQL Virtual Network Rule definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRule.Definition.IBlank<Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithCreate> DefineVirtualNetworkRule(string virtualNetworkRuleName);
+    }
 
     /// <summary>
     /// A SQL Server definition with sufficient inputs to create a new
@@ -19,9 +34,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlServer>,
         Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithActiveDirectoryAdministrator,
+        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithSystemAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithElasticPool,
         Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithDatabase,
         Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithFirewallRule,
+        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithVirtualNetworkRule,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithCreate>
     {
     }
@@ -78,6 +95,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition
         Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithFirewallRule,
         Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithCreate
     {
+    }
+
+    /// <summary>
+    /// A SQL Server definition setting the managed service identity.
+    /// </summary>
+    public interface IWithSystemAssignedManagedServiceIdentity  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Sets a system assigned (local) Managed Service Identity (MSI) for the SQL server resource.
+        /// </summary>
+        /// <return>Next stage of the SQL Server definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition.IWithCreate WithSystemAssignedManagedServiceIdentity();
     }
 
     /// <summary>

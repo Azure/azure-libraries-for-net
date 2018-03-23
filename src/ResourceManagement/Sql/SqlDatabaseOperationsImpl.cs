@@ -182,6 +182,41 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             }
         }
 
+        ///GENMHASH:48BA5938680939720DEA90858B8FC7E4:131DBD7FC4DF46861698DE59CE4FDCED
+        public async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> GetBySqlServerAsync(ISqlServer sqlServer, string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            try
+            {
+                var inner = await this.sqlServerManager.Inner.Databases
+                    .GetAsync(sqlServer.ResourceGroupName, sqlServer.Name, name, cancellationToken: cancellationToken);
+                return inner != null ? new SqlDatabaseImpl(inner.Name, (SqlServerImpl)sqlServer, inner, sqlServer.Manager) : null;
+            }
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+        }
+
+        ///GENMHASH:2EA8D9073369A6E1267C1FB74F86952A:9790D012FA64E47343F12DB13F0AA212
+        public async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>> ListBySqlServerAsync(ISqlServer sqlServer, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            List<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> dbResult = new List<ISqlDatabase>();
+            var dbInners = await sqlServer.Manager.Inner.Databases
+                .ListByServerAsync(sqlServer.ResourceGroupName, sqlServer.Name, cancellationToken: cancellationToken);
+            if (dbInners != null)
+            {
+                foreach (var inner in dbInners)
+                {
+                    dbResult.Add(new SqlDatabaseImpl(inner.Name, (SqlServerImpl)sqlServer, inner, sqlServer.Manager));
+                }
+            }
+            return dbResult.AsReadOnly();
+        }
+
         ///GENMHASH:4ABAEC77990815B01AA39D981ECF5CA5:DAA87F8B2FA9A103785B6A089AA99696
         public void DeleteBySqlServer(string resourceGroupName, string sqlServerName, string name)
         {
