@@ -71,11 +71,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     }
 
     /// <summary>
+    /// The stage of an image definition allowing to enable zone resiliency.
+    /// </summary>
+    public interface IWithZoneResilient :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// Specifies that zone resiliency should be enabled for the image.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreate WithZoneResilient();
+    }
+
+    /// <summary>
     /// The stage of an image definition containing all the required inputs for
     /// the resource to be created, but also allowing
     /// for any other optional settings to be specified.
     /// </summary>
     public interface IWithCreate :
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithZoneResilient,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineCustomImage>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreate>
     {

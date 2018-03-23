@@ -42,6 +42,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update
         /// </summary>
         /// <param name="sku">SKU type.</param>
         /// <return>The next stage of the update.</return>
+        [System.Obsolete("Update.IWithSku.WithSku(DiskSkuTypes) is deprecated use Update.IWithSku.WithSku(SnapshotSkuType) instead.")]
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update.IUpdate WithSku(DiskSkuTypes sku);
+
+        /// <summary>
+        /// Specifies the SKU type.
+        /// </summary>
+        /// <param name="sku">SKU type.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update.IUpdate WithSku(SnapshotSkuType sku);
     }
 }

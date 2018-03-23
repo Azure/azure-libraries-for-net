@@ -890,6 +890,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the type of Managed Service Identity used for the virtual machine scale set.
+        /// </summary>
+        Models.VirtualMachinePriorityTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.VirtualMachinePriority
+        {
+            get
+            {
+                return this.VirtualMachinePriority();
+            }
+        }
+
+        /// <summary>
         /// Gets the storage blob endpoint uri if boot diagnostics is enabled for the virtual machine scale set.
         /// </summary>
         string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.BootDiagnosticsStorageUri
@@ -1762,6 +1773,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Specifies the priority of the virtual machines in the scale set.
+        /// </summary>
+        /// <param name="priority">The priority.</param>
+        /// <return>The next stage of the definition.</return>urn>
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithVirtualMachinePriority(VirtualMachinePriorityTypes priority)
+        {
+            return this.WithVirtualMachinePriority(priority) as VirtualMachineScaleSet.Definition.IWithCreate;
+        }
+
+        /// <summary>
         /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
         /// </summary>
         /// <param name="storageAccount">An existing storage account to be uses to store the boot diagnostics.</param>
@@ -1770,6 +1791,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             return this.WithBootDiagnostics(storageAccount) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate;
         }
+
 
         /// <summary>
         /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.

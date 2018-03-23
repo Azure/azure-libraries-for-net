@@ -79,7 +79,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
         /// </summary>
         /// <param name="sku">SKU type.</param>
         /// <return>The next stage of the definition.</return>
+        [System.Obsolete("Definition.IWithSku.WithSku(DiskSkuTypes) is deprecated use Definition.IWithSku.WithSku(SnapshotSkuType) instead.")]
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithSku(DiskSkuTypes sku);
+
+        /// <summary>
+        /// Specifies the SKU type.
+        /// </summary>
+        /// <param name="sku">SKU type.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithSku(SnapshotSkuType sku);
     }
 
     /// <summary>

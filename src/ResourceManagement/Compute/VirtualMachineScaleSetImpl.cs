@@ -645,6 +645,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this.bootDiagnosticsHandler.BootDiagnosticsStorageUri();
         }
 
+        ///GENMHASH:C5E4011AAE57A5F6132092A4B8B874FF:36531E34809D3A8C9FAE365A128266D5
+        public VirtualMachinePriorityTypes VirtualMachinePriority()
+        {
+            if (this.Inner.VirtualMachineProfile != null && this.Inner.VirtualMachineProfile.Priority != null)
+            {
+                return VirtualMachinePriorityTypes.Parse(this.Inner.VirtualMachineProfile.Priority);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         ///GENMHASH:02A68214692E8DA4CC34E5FE55E3C918:150375C199EA874367AE081B87D5F2FD
         public StorageAccountTypes ManagedOSDiskStorageAccountType()
@@ -2308,6 +2320,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineScaleSetImpl WithoutBootDiagnostics()
         {
             this.bootDiagnosticsHandler.WithoutBootDiagnostics();
+            return this;
+        }
+
+        ///GENMHASH:6519A067F8EC19017417E77E98CBFAB4:29848F9AE1C8DDE847A8C3F172BFE8CE
+        public VirtualMachineScaleSetImpl WithVirtualMachinePriority(VirtualMachinePriorityTypes priority)
+        {
+            this.Inner.VirtualMachineProfile.Priority = priority.ToString();
             return this;
         }
 

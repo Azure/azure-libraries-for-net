@@ -29,6 +29,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Models.ResourceIdentityType? ManagedServiceIdentityType { get; }
 
         /// <summary>
+        /// Gets the priority of virtual machines in the scale set.
+        /// </summary>
+        Models.VirtualMachinePriorityTypes VirtualMachinePriority { get; }
+
+        /// <summary>
         /// Gets true if boot diagnostics is enabled for the virtual machine scale set.
         /// </summary>
         bool IsBootDiagnosticsEnabled { get; }
