@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         private BatchAIJobImpl parent;
 
         ///GENMHASH:707BC02F2A19144A8CCDF27A204F85CA:CA53B7BE62B1D1854755EDD010D28892
-        protected  OutputDirectorySettingsImpl(OutputDirectory inner, BatchAIJobImpl parent)
+        public OutputDirectorySettingsImpl(OutputDirectory inner, BatchAIJobImpl parent)
             : base(inner)
         {
             this.parent = parent;

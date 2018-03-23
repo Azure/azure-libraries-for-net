@@ -47,6 +47,15 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             EnsureContainerSettings().ImageSourceRegistry = containerImageSettings.Inner;
         }
 
+        ///GENMHASH:4FAFAB18615996B56CCEB8BFCFE23ACC:AF1BAE64EA189C8AA1969355AFE86576
+        internal void AttachOutputDirectory(OutputDirectorySettingsImpl outputDirectorySettings)
+        {
+            if (createParameters.OutputDirectories == null) {
+                createParameters.OutputDirectories = new List<OutputDirectory>();
+            }
+            createParameters.OutputDirectories.Add(outputDirectorySettings.Inner);
+        }
+
         ///GENMHASH:C796F226047BC1B11AF35DC9FF304304:4425A9599A84FC42448DE66CC23625A4
         internal void AttachPyTorchSettings(PyTorchImpl pyTorch)
         {
@@ -101,6 +110,15 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.ContainerSettings;
         }
 
+        ///GENMHASH:CFB683D3617B006FFB78656F84281F44:103EED3DBBE3F4A4AF306B467C5B1187
+        public Models.OutputDirectorySettings.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefineOutputDirectory(string id)
+        {
+            return new OutputDirectorySettingsImpl(new OutputDirectory()
+            {
+                Id = id
+            }, this);
+        }
+        
         ///GENMHASH:278C07978C1DF117DBB062CC3DFD9D2A:93DE4F82471F2A0A009361D200635543
         public ToolTypeSettings.PyTorch.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefinePyTorch()
         {

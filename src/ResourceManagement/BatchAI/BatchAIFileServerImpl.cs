@@ -54,23 +54,31 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
+        ///GENMHASH:724C7623D19A41D0DA37EDEDF5B45340:E0613BA7E2936CBE7482C98B6400EA39
+        public IWithVMSize WithDataDisks(int diskSizeInGB, int diskCount, StorageAccountType storageAccountType, CachingType cachingType)
+        {
+            DataDisks dataDisks = EnsureDataDisks();
+            dataDisks.DiskSizeInGB = diskSizeInGB;
+            dataDisks.DiskCount = diskCount;
+            dataDisks.StorageAccountType = storageAccountType == null ? null : storageAccountType.Value;
+            dataDisks.CachingType = cachingType;
+            return this;
+        }
+
+
         ///GENMHASH:0FBBECB150CBC82F165D8BA614AB135A:8E1100FECC94D8D02A007E94A2829ADE
         public IWithCreate WithSubnet(string subnetId)
         {
-            //$ createParameters.WithSubnet(new ResourceId().WithId(subnetId));
-            //$ return this;
-
-            return null;
+            createParameters.Subnet = new ResourceId(subnetId);
+            return this;
         }
 
-                ///GENMHASH:9047F7688B1B60794F60BC930616198C:611CA1FC53B66F8126B3A71A8F7A964F
-                public IWithCreate WithSubnet(string networkId, string subnetName)
-                {
-                    //$ createParameters.WithSubnet(new ResourceId().WithId(networkId + "/subnets/" + subnetName));
-                    //$ return this;
-
-                    return null;
-                }
+        ///GENMHASH:9047F7688B1B60794F60BC930616198C:611CA1FC53B66F8126B3A71A8F7A964F
+        public IWithCreate WithSubnet(string networkId, string subnetName)
+        {
+            createParameters.Subnet = new ResourceId(networkId + "/subnets/" + subnetName);
+            return this;
+        }
 
         public BatchAIFileServerImpl WithUserName(string userName)
         {

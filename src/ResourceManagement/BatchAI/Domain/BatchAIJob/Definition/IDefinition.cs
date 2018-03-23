@@ -72,7 +72,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate WithContainerImage(string image);
     }
 
-    public interface IWithOutputDirectory 
+    public interface IWithOutputDirectory  :
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithOutputDirectoryBeta
     {
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate WithOutputDirectory(string id, string pathPrefix);
     }

@@ -294,6 +294,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             }
         }
 
+        /// <param name="id">The name for the output directory.</param>
+        /// <return>The nest stage of the definition for output directory settings.</return>
+        Models.OutputDirectorySettings.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithOutputDirectoryBeta.DefineOutputDirectory(string id)
+        {
+            return this.DefineOutputDirectory(id) as Models.OutputDirectorySettings.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
+        }
+
         /// <summary>
         /// List all files inside the given output directory (Only if the output directory is on Azure File Share or Azure Storage container).
         /// </summary>
