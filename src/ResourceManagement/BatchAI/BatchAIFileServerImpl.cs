@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             createParameters.Location = this.RegionName;
             createParameters.Tags = this.Inner.Tags;
-            await Manager.Inner.FileServers.CreateAsync(ResourceGroupName, Name, createParameters);
+            SetInner(await Manager.Inner.FileServers.CreateAsync(ResourceGroupName, Name, createParameters));
             return this;
         }
 

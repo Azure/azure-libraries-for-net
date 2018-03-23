@@ -26,6 +26,13 @@ namespace Fluent.Tests
     {
         private static Region REGION = Region.USWest2;
 
+        public BatchAI(ITestOutputHelper output)
+        {
+             TestHelper.TestLogger = output;
+             ServiceClientTracing.IsEnabled = true;
+             ServiceClientTracing.AddTracingInterceptor(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         public void CreateUpdate()
         {
@@ -115,7 +122,6 @@ namespace Fluent.Tests
             {
                 string groupName = SdkContext.RandomResourceName("rg", 10);
                 string clusterName = SdkContext.RandomResourceName("cluster", 15);
-                string saName = SdkContext.RandomResourceName("sa", 15);
                 string shareName = "myfileshare";
                 string shareMountPath = "azurefileshare";
                 string blobFileSystemPath = "myblobsystem";
@@ -169,7 +175,7 @@ namespace Fluent.Tests
                 job.Refresh();
                 Assert.Equal(groupName, job.ResourceGroupName);
 
-                manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+                manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
             }
         }
 
@@ -179,7 +185,6 @@ namespace Fluent.Tests
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 string groupName = SdkContext.RandomResourceName("rg", 10);
-                string clusterName = SdkContext.RandomResourceName("cluster", 15);
                 string vnetName = SdkContext.RandomResourceName("vnet", 10);
                 string fsName = SdkContext.RandomResourceName("fs", 15);
                 string shareName = "myfileshare";
@@ -213,7 +218,7 @@ namespace Fluent.Tests
                 Assert.Equal(network.Id + "/subnets/" + subnetName, fileServer.Subnet.Id);
                 Assert.Equal(CachingType.Readwrite, fileServer.DataDisks.CachingType);
 
-                manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+                manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
             }
         }
     }

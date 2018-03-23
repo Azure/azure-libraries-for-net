@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System.Collections.ObjectModel;
 using System.Linq;
 using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
@@ -232,7 +233,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             createParameters.Cluster = new Models.ResourceId(parent.Id);
-            await Manager.Inner.Jobs.CreateAsync(parent.ResourceGroupName, this.Name, createParameters);
+            createParameters.Location = parent.RegionName;
+            var inner = await Manager.Inner.Jobs.CreateAsync(parent.ResourceGroupName, this.Name, createParameters);
+            SetInner(inner);
             return this;
         }
 
@@ -253,6 +256,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.OutputDirectory> OutputDirectories()
         {
+            if (this.Inner.OutputDirectories == null || this.Inner.OutputDirectories.Count == 0)
+            {
+                return new List<OutputDirectory>();
+            }
             return Inner.OutputDirectories.ToList();
         }
 
