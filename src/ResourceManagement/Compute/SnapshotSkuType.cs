@@ -80,6 +80,24 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
         }
 
+        /// <summary>
+        /// Parses a value into a snapshot SKU type and creates a new SnapshotSkuType instance if not found among
+        /// the existing ones.
+        /// </summary>
+        /// <param name="snapshotSku">a snapshot SKU type name</param>
+        /// <returns>the parsed or created snapshot SKU type</returns>
+        public static SnapshotSkuType FromSnapshotSku(SnapshotSku snapshotSku)
+        {
+            if (snapshotSku == null || snapshotSku.Name == null)
+            {
+                return null;
+            }
+            else
+            {
+                return FromStorageAccountType(SnapshotStorageAccountTypes.Parse(snapshotSku.Name));
+            }
+        }
+
         public SnapshotStorageAccountTypes AccountType
         {
             get

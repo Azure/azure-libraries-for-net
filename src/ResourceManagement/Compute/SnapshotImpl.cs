@@ -214,6 +214,30 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        ///GENMHASH:9E43D8BC283E297FB09F74B50D967B51:82D76CF0DAD29D42162C63B7BC7F03C3
+        public SnapshotImpl WithSku(SnapshotSkuType sku)
+        {
+            SnapshotSku snapshotSku = new SnapshotSku
+            {
+                Name = sku.AccountType.ToString()
+            };
+            Inner.Sku = snapshotSku;
+            return this;
+        }
+
+        ///GENMHASH:9EF4A08D221595621FDCAFD7FD09AFE2:9F5E274C5B39892886E4AC37B1E8AB04
+        public SnapshotSkuType SkuType()
+        {
+            if (this.Inner.Sku == null)
+            {
+                return null;
+            }
+            else
+            {
+                return SnapshotSkuType.FromSnapshotSku(this.Inner.Sku);
+            }
+        }
+
         ///GENMHASH:27B8AD5B496821160B763BEE4B6DAB47:A99E5BCABB2F6C6A293C01FAEA00D27B
         public SnapshotImpl WithWindowsFromSnapshot(string sourceSnapshotId)
         {

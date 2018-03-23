@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// Defines values for SnapshotStorageAccountTypes.
     /// </summary>
-    public class SnapshotStorageAccountTypes : ExpandableStringEnum<SnapshotStorageAccountTypes>
+    public class SnapshotStorageAccountTypes : ExpandableStringEnum<SnapshotStorageAccountTypes>, IBeta
     {
         public static readonly SnapshotStorageAccountTypes StandardLRS = Parse("Standard_LRS");
         public static readonly SnapshotStorageAccountTypes PremiumLRS = Parse("Premium_LRS");
