@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             var serverAutomaticTuningInner = await this.sqlServerManager.Inner.ServerAutomaticTuning
                 .UpdateAsync(this.resourceGroupName, this.sqlServerName, this.Inner, cancellationToken);
             this.SetInner(serverAutomaticTuningInner);
-            return serverAutomaticTuningInner != null ? this : null;
+            return this;
         }
 
         ///GENMHASH:7A26D184347EA91F532899FC93DA3E8B:4DCBBC7A68AC87C60BAB31C86F86FB9B
