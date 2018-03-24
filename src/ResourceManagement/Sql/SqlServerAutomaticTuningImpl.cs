@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:17950B8F2EC46B114539E23F9F4D3EA2:EBF69F3A6BD7C5BE989345C27B59C5FE
         public Microsoft.Azure.Management.Sql.Fluent.Models.AutomaticTuningServerMode DesiredState()
         {
-            return Inner.DesiredState;
+            return Inner.DesiredState.GetValueOrDefault();
         }
 
         ///GENMHASH:93F5525F475C77754B229151C3005F4B:F84ED1C7DC13C78E0925116541403988
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:46FCAAD720A5853AB2F1C89F7C97E965:E67C7E62D91ADAFD5268264E7A04F0F3
         public AutomaticTuningServerMode ActualState()
         {
-            return Inner.ActualState;
+            return Inner.ActualState.GetValueOrDefault();
         }
 
         ///GENMHASH:86AFBCBC33BD6FBDB22DED1DB6D3E547:148B6255C8A72414E287E21584076723

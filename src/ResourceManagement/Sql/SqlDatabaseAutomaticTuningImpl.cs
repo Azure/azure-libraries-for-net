@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             this.sqlServerName = database.sqlServerName;
             this.sqlDatabaseName = database.Name();
             this.key = Guid.NewGuid().ToString();
-            this.automaticTuningOptionsMap = (innerObject != null && innerObject.Options != null) ? new Dictionary<string, AutomaticTuningOptions>(innerObject.Options) : new Dictionary<string, AutomaticTuningOptions>();
+            this.automaticTuningOptionsMap = new Dictionary<string, AutomaticTuningOptions>();
         }
 
         ///GENMHASH:7DFD4E2C4BFE1C1A223F1E9652CEA12E:095451E62832B6CE321960A429995E7F
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             this.sqlServerName = sqlServerName;
             this.sqlDatabaseName = sqlDatabaseName;
             this.key = Guid.NewGuid().ToString();
-            this.automaticTuningOptionsMap = (innerObject != null && innerObject.Options != null) ? new Dictionary<string, AutomaticTuningOptions>(innerObject.Options) : new Dictionary<string, AutomaticTuningOptions>();
+            this.automaticTuningOptionsMap = new Dictionary<string, AutomaticTuningOptions>();
         }
 
         ///GENMHASH:17950B8F2EC46B114539E23F9F4D3EA2:EBF69F3A6BD7C5BE989345C27B59C5FE
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:86AFBCBC33BD6FBDB22DED1DB6D3E547:ADFE9FCB8F4C9777490569C237BE3AF2
         public IReadOnlyDictionary<string,Models.AutomaticTuningOptions> TuningOptions()
         {
-            return this.automaticTuningOptionsMap;
+            return new Dictionary<string, Models.AutomaticTuningOptions>(this.Inner.Options);
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:43F027909441F9AB58CFB6522AD56111
