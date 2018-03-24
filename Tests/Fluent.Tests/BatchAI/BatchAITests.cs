@@ -25,14 +25,7 @@ namespace Fluent.Tests
     public class BatchAI
     {
         private static Region REGION = Region.USWest2;
-
-        public BatchAI(ITestOutputHelper output)
-        {
-             TestHelper.TestLogger = output;
-             ServiceClientTracing.IsEnabled = true;
-             ServiceClientTracing.AddTracingInterceptor(new XunitTracingInterceptor(output));
-        }
-
+      
         [Fact]
         public void CreateUpdate()
         {
