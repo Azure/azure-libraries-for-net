@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public BatchAIJobImpl WithEnvironmentVariableSecretValue(string name, string keyVaultId, string secretUrl)
         {
             KeyVaultSecretReference secretReference = new KeyVaultSecretReference(new Models.ResourceId(keyVaultId), secretUrl);
-            EnsureEnvironmentVariablesWithSecrets().Add(new EnvironmentVariableWithSecretValue(name, valueSecretReference: secretReference);
+            EnsureEnvironmentVariablesWithSecrets().Add(new EnvironmentVariableWithSecretValue(name, valueSecretReference: secretReference));
             return this;
         }
 

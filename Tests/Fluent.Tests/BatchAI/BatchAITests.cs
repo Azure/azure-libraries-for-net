@@ -155,15 +155,16 @@ namespace Fluent.Tests
                 Assert.Equal(groupName, job.ResourceGroupName);
                 Assert.Equal(2, job.OutputDirectories.Count);
                 OutputDirectory outputDirectory = null;
-//                for (OutputDirectory directory : job.outputDirectories())
-//                {
-//                    if ("OUTPUT".equalsIgnoreCase(directory.id()))
-//                    {
-//                        outputDirectory = directory;
-//                    }
-//                }
-//                Assert.NotNull(outputDirectory);
-//                Assert.Equal("suffix", outputDirectory.PathSuffix.toLowerCase());
+                foreach (OutputDirectory directory in job.OutputDirectories)
+                {
+                    if ("OUTPUT".Equals(directory.Id.ToUpper()))
+                    {
+                        outputDirectory = directory;
+                        break;
+                    }
+                }
+                Assert.NotNull(outputDirectory);
+                Assert.Equal("suffix", outputDirectory.PathSuffix.ToLower());
 
                 job.Refresh();
                 Assert.Equal(groupName, job.ResourceGroupName);
