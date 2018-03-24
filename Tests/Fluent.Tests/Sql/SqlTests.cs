@@ -3,6 +3,7 @@
 
 using Azure.Tests;
 using Fluent.Tests.Common;
+using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Sql.Fluent;
 using Microsoft.Azure.Management.Sql.Fluent.Models;
@@ -67,6 +68,323 @@ namespace Fluent.Tests
                         .Create();
                 Assert.NotNull(sqlServer.Databases.List());
                 rollUpClient.SqlServers.DeleteById(sqlServer.Id);
+
+                DeleteResourceGroup(GroupName);
+            }
+        }
+
+        [Fact]
+        public void canCRUDSqlFailoverGroup()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                GenerateNewRGAndSqlServerNameForTest();
+                var rollUpClient = TestHelper.CreateRollupClient();
+
+                string rgName = GroupName;
+                string sqlPrimaryServerName = SdkContext.RandomResourceName("sqlpri", 22);
+                string sqlSecondaryServerName = SdkContext.RandomResourceName("sqlsec", 22);
+                string sqlOtherServerName = SdkContext.RandomResourceName("sql000", 22);
+                string failoverGroupName = SdkContext.RandomResourceName("fg", 22);
+                string failoverGroupName2 = SdkContext.RandomResourceName("fg2", 22);
+                string dbName = "dbSample";
+                string administratorLogin = "sqladmin";
+                string administratorPassword = "N0t@P@ssw0rd!";
+
+                // Create
+                var sqlPrimaryServer = rollUpClient.SqlServers.Define(sqlPrimaryServerName)
+                    .WithRegion(Region.USSouthCentral)
+                    .WithNewResourceGroup(rgName)
+                    .WithAdministratorLogin(administratorLogin)
+                    .WithAdministratorPassword(administratorPassword)
+                    .DefineDatabase(dbName)
+                        .FromSample(SampleName.AdventureWorksLT)
+                        .WithStandardEdition(SqlDatabaseStandardServiceObjective.S0)
+                        .Attach()
+                    .Create();
+
+                var sqlSecondaryServer = rollUpClient.SqlServers.Define(sqlSecondaryServerName)
+                    .WithRegion(Region.USWest)
+                    .WithExistingResourceGroup(rgName)
+                    .WithAdministratorLogin(administratorLogin)
+                    .WithAdministratorPassword(administratorPassword)
+                    .Create();
+
+                var sqlOtherServer = rollUpClient.SqlServers.Define(sqlOtherServerName)
+                    .WithRegion(Region.USCentral)
+                    .WithExistingResourceGroup(rgName)
+                    .WithAdministratorLogin(administratorLogin)
+                    .WithAdministratorPassword(administratorPassword)
+                    .Create();
+
+                var failoverGroup = sqlPrimaryServer.FailoverGroups.Define(failoverGroupName)
+                    .WithManualReadWriteEndpointPolicy()
+                    .WithPartnerServerId(sqlSecondaryServer.Id)
+                    .WithReadOnlyEndpointPolicyDisabled()
+                    .Create();
+
+                Assert.NotNull(failoverGroup);
+                Assert.Equal(failoverGroupName, failoverGroup.Name);
+                Assert.Equal(rgName, failoverGroup.ResourceGroupName);
+                Assert.Equal(sqlPrimaryServerName, failoverGroup.SqlServerName);
+                Assert.Equal(FailoverGroupReplicationRole.Primary, failoverGroup.ReplicationRole);
+                Assert.Equal(1, failoverGroup.PartnerServers.Count);
+                Assert.Equal(sqlSecondaryServer.Id, failoverGroup.PartnerServers[0].Id);
+                Assert.Equal(FailoverGroupReplicationRole.Secondary.Value, failoverGroup.PartnerServers[0].ReplicationRole);
+                Assert.Equal(0, failoverGroup.Databases.Count);
+                Assert.Equal(0, failoverGroup.ReadWriteEndpointDataLossGracePeriodMinutes);
+                Assert.Equal(ReadWriteEndpointFailoverPolicy.Manual, failoverGroup.ReadWriteEndpointPolicy);
+                Assert.Equal(ReadOnlyEndpointFailoverPolicy.Disabled, failoverGroup.ReadOnlyEndpointPolicy);
+
+                var failoverGroupOnPartner = sqlSecondaryServer.FailoverGroups.Get(failoverGroup.Name);
+                Assert.Equal(failoverGroupName, failoverGroupOnPartner.Name);
+                Assert.Equal(rgName, failoverGroupOnPartner.ResourceGroupName);
+                Assert.Equal(sqlSecondaryServerName, failoverGroupOnPartner.SqlServerName);
+                Assert.Equal(FailoverGroupReplicationRole.Secondary, failoverGroupOnPartner.ReplicationRole);
+                Assert.Equal(1, failoverGroupOnPartner.PartnerServers.Count);
+                Assert.Equal(sqlPrimaryServer.Id, failoverGroupOnPartner.PartnerServers[0].Id);
+                Assert.Equal(FailoverGroupReplicationRole.Primary.Value, failoverGroupOnPartner.PartnerServers[0].ReplicationRole);
+                Assert.Equal(0, failoverGroupOnPartner.Databases.Count);
+                Assert.Equal(0, failoverGroupOnPartner.ReadWriteEndpointDataLossGracePeriodMinutes);
+                Assert.Equal(ReadWriteEndpointFailoverPolicy.Manual, failoverGroupOnPartner.ReadWriteEndpointPolicy);
+                Assert.Equal(ReadOnlyEndpointFailoverPolicy.Disabled, failoverGroupOnPartner.ReadOnlyEndpointPolicy);
+
+                var failoverGroup2 = sqlPrimaryServer.FailoverGroups.Define(failoverGroupName2)
+                    .WithAutomaticReadWriteEndpointPolicyAndDataLossGracePeriod(120)
+                    .WithPartnerServerId(sqlOtherServer.Id)
+                    .WithReadOnlyEndpointPolicyEnabled()
+                    .Create();
+                Assert.NotNull(failoverGroup2);
+                Assert.Equal(failoverGroupName2, failoverGroup2.Name);
+                Assert.Equal(rgName, failoverGroup2.ResourceGroupName);
+                Assert.Equal(sqlPrimaryServerName, failoverGroup2.SqlServerName);
+                Assert.Equal(FailoverGroupReplicationRole.Primary, failoverGroup2.ReplicationRole);
+                Assert.Equal(1, failoverGroup2.PartnerServers.Count);
+                Assert.Equal(sqlOtherServer.Id, failoverGroup2.PartnerServers[0].Id);
+                Assert.Equal(FailoverGroupReplicationRole.Secondary.Value, failoverGroup2.PartnerServers[0].ReplicationRole);
+                Assert.Equal(0, failoverGroup2.Databases.Count);
+                Assert.Equal(120, failoverGroup2.ReadWriteEndpointDataLossGracePeriodMinutes);
+                Assert.Equal(ReadWriteEndpointFailoverPolicy.Automatic, failoverGroup2.ReadWriteEndpointPolicy);
+                Assert.Equal(ReadOnlyEndpointFailoverPolicy.Enabled, failoverGroup2.ReadOnlyEndpointPolicy);
+
+                failoverGroup.Update()
+                    .WithAutomaticReadWriteEndpointPolicyAndDataLossGracePeriod(120)
+                    .WithReadOnlyEndpointPolicyEnabled()
+                    .WithTag("tag1", "value1")
+                    .Apply();
+                Assert.Equal(120, failoverGroup.ReadWriteEndpointDataLossGracePeriodMinutes);
+                Assert.Equal(ReadWriteEndpointFailoverPolicy.Automatic, failoverGroup.ReadWriteEndpointPolicy);
+                Assert.Equal(ReadOnlyEndpointFailoverPolicy.Enabled, failoverGroup.ReadOnlyEndpointPolicy);
+
+                var db = sqlPrimaryServer.Databases.Get(dbName);
+                failoverGroup.Update()
+                    .WithManualReadWriteEndpointPolicy()
+                    .WithReadOnlyEndpointPolicyDisabled()
+                    .WithNewDatabaseId(db.Id)
+                    .Apply();
+                Assert.Equal(1, failoverGroup.Databases.Count);
+                Assert.Equal(db.Id, failoverGroup.Databases[0]);
+                Assert.Equal(0, failoverGroup.ReadWriteEndpointDataLossGracePeriodMinutes);
+                Assert.Equal(ReadWriteEndpointFailoverPolicy.Manual, failoverGroup.ReadWriteEndpointPolicy);
+                Assert.Equal(ReadOnlyEndpointFailoverPolicy.Disabled, failoverGroup.ReadOnlyEndpointPolicy);
+
+                var failoverGroupsList = sqlPrimaryServer.FailoverGroups.List();
+                Assert.Equal(2, failoverGroupsList.Count);
+
+                failoverGroupsList = sqlSecondaryServer.FailoverGroups.List();
+                Assert.Equal(1, failoverGroupsList.Count);
+
+                sqlPrimaryServer.FailoverGroups.Delete(failoverGroup2.Name);
+
+                DeleteResourceGroup(GroupName);
+            }
+        }
+
+        [Fact]
+        public void canChangeSqlServerAndDatabaseAutomaticTuning()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                GenerateNewRGAndSqlServerNameForTest();
+                var rollUpClient = TestHelper.CreateRollupClient();
+                string rgName = GroupName;
+                string sqlServerName = SqlServerName;
+                string sqlServerAdminName = "sqladmin";
+                string sqlServerAdminPassword = "N0t@P@ssw0rd!";
+                string databaseName = "db-from-sample";
+
+
+                // Create
+                var sqlServer = rollUpClient
+                    .SqlServers
+                    .Define(sqlServerName)
+                    .WithRegion(Region.USSouthCentral)
+                    .WithNewResourceGroup(rgName)
+                    .WithAdministratorLogin(sqlServerAdminName)
+                    .WithAdministratorPassword(sqlServerAdminPassword)
+                    .DefineDatabase(databaseName)
+                        .FromSample(SampleName.AdventureWorksLT)
+                        .WithBasicEdition()
+                        .Attach()
+                    .Create();
+                var dbFromSample = sqlServer.Databases.Get(databaseName);
+                Assert.NotNull(dbFromSample);
+                Assert.Equal(DatabaseEditions.Basic, dbFromSample.Edition);
+
+                var serverAutomaticTuning = sqlServer.GetServerAutomaticTuning();
+                Assert.Equal(AutomaticTuningServerMode.Unspecified, serverAutomaticTuning.DesiredState);
+                Assert.Equal(AutomaticTuningServerMode.Unspecified, serverAutomaticTuning.ActualState);
+                Assert.Equal(4, serverAutomaticTuning.TuningOptions.Count);
+
+                serverAutomaticTuning.Update()
+                    .WithAutomaticTuningMode(AutomaticTuningServerMode.Auto)
+                    .WithAutomaticTuningOption("createIndex", AutomaticTuningOptionModeDesired.Off)
+                    .WithAutomaticTuningOption("dropIndex", AutomaticTuningOptionModeDesired.On)
+                    .WithAutomaticTuningOption("forceLastGoodPlan", AutomaticTuningOptionModeDesired.Default)
+                    .Apply();
+                Assert.Equal(AutomaticTuningServerMode.Auto, serverAutomaticTuning.DesiredState);
+                Assert.Equal(AutomaticTuningServerMode.Auto, serverAutomaticTuning.ActualState);
+                Assert.Equal(AutomaticTuningOptionModeDesired.Off, serverAutomaticTuning.TuningOptions["createIndex"].DesiredState);
+                Assert.Equal(AutomaticTuningOptionModeActual.Off, serverAutomaticTuning.TuningOptions["createIndex"].ActualState);
+                Assert.Equal(AutomaticTuningOptionModeDesired.On, serverAutomaticTuning.TuningOptions["dropIndex"].DesiredState);
+                Assert.Equal(AutomaticTuningOptionModeActual.On, serverAutomaticTuning.TuningOptions["dropIndex"].ActualState);
+                Assert.Equal(AutomaticTuningOptionModeDesired.Default, serverAutomaticTuning.TuningOptions["forceLastGoodPlan"].DesiredState);
+
+                var databaseAutomaticTuning = dbFromSample.GetDatabaseAutomaticTuning();
+                Assert.Equal(4, databaseAutomaticTuning.TuningOptions.Count);
+
+                // The following results in "InternalServerError" at the moment
+                databaseAutomaticTuning.Update()
+                    .WithAutomaticTuningMode(AutomaticTuningMode.Auto)
+                    .WithAutomaticTuningOption("createIndex", AutomaticTuningOptionModeDesired.Off)
+                    .WithAutomaticTuningOption("dropIndex", AutomaticTuningOptionModeDesired.On)
+                    .WithAutomaticTuningOption("forceLastGoodPlan", AutomaticTuningOptionModeDesired.Default)
+                    .Apply();
+                Assert.Equal(AutomaticTuningMode.Auto, databaseAutomaticTuning.DesiredState);
+                Assert.Equal(AutomaticTuningMode.Auto, databaseAutomaticTuning.ActualState);
+                Assert.Equal(AutomaticTuningOptionModeDesired.Off, databaseAutomaticTuning.TuningOptions["createIndex"].DesiredState);
+                Assert.Equal(AutomaticTuningOptionModeActual.Off, databaseAutomaticTuning.TuningOptions["createIndex"].ActualState);
+                Assert.Equal(AutomaticTuningOptionModeDesired.On, databaseAutomaticTuning.TuningOptions["dropIndex"].DesiredState);
+                Assert.Equal(AutomaticTuningOptionModeActual.On, databaseAutomaticTuning.TuningOptions["dropIndex"].ActualState);
+                Assert.Equal(AutomaticTuningOptionModeDesired.Default, databaseAutomaticTuning.TuningOptions["forceLastGoodPlan"].DesiredState);
+
+                // cleanup
+                dbFromSample.Delete();
+                rollUpClient.SqlServers.DeleteByResourceGroup(rgName, sqlServerName);
+
+                DeleteResourceGroup(GroupName);
+            }
+        }
+
+        [Fact]
+        public void canCreateAndAquireServerDnsAlias()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                GenerateNewRGAndSqlServerNameForTest();
+                var rollUpClient = TestHelper.CreateRollupClient();
+                string rgName = GroupName;
+                string sqlServerName1 = SqlServerName + "1";
+                string sqlServerName2 = SqlServerName + "2";
+                string sqlServerAdminName = "sqladmin";
+                string sqlServerAdminPassword = "N0t@P@ssw0rd!";
+
+                // Create
+                var sqlServer1 = rollUpClient.SqlServers.Define(sqlServerName1)
+                    .WithRegion(Region.USSouthCentral)
+                    .WithNewResourceGroup(rgName)
+                    .WithAdministratorLogin(sqlServerAdminName)
+                    .WithAdministratorPassword(sqlServerAdminPassword)
+                    .Create();
+                Assert.NotNull(sqlServer1);
+
+                var dnsAlias = sqlServer1.DnsAliases
+                    .Define(SqlServerName)
+                    .Create();
+
+                Assert.NotNull(dnsAlias);
+                Assert.Equal(rgName, dnsAlias.ResourceGroupName);
+                Assert.Equal(sqlServerName1, dnsAlias.SqlServerName);
+
+                dnsAlias = rollUpClient.SqlServers.DnsAliases
+                    .GetBySqlServer(rgName, sqlServerName1, SqlServerName);
+                Assert.NotNull(dnsAlias);
+                Assert.Equal(rgName, dnsAlias.ResourceGroupName);
+                Assert.Equal(sqlServerName1, dnsAlias.SqlServerName);
+
+                Assert.Equal(1, sqlServer1.Databases.List().Count);
+
+                var sqlServer2 = rollUpClient.SqlServers.Define(sqlServerName2)
+                    .WithRegion(Region.USSouthCentral)
+                    .WithNewResourceGroup(rgName)
+                    .WithAdministratorLogin(sqlServerAdminName)
+                    .WithAdministratorPassword(sqlServerAdminPassword)
+                    .Create();
+                Assert.NotNull(sqlServer2);
+
+                sqlServer2.DnsAliases.Acquire(SqlServerName, sqlServer1.Id);
+                SdkContext.DelayProvider.Delay(3 * 60 * 1000);
+
+                dnsAlias = sqlServer2.DnsAliases.Get(SqlServerName);
+                Assert.NotNull(dnsAlias);
+                Assert.Equal(rgName, dnsAlias.ResourceGroupName);
+                Assert.Equal(sqlServerName2, dnsAlias.SqlServerName);
+
+                // cleanup
+                dnsAlias.Delete();
+
+                DeleteResourceGroup(GroupName);
+            }
+        }
+
+        [Fact]
+        public void canGetSqlServerCapabilitiesAndCreateIdentity()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                GenerateNewRGAndSqlServerNameForTest();
+                var rollUpClient = TestHelper.CreateRollupClient();
+
+                string rgName = GroupName;
+                string sqlServerName = SqlServerName;
+                string sqlServerAdminName = "sqladmin";
+                string sqlServerAdminPassword = "N0t@P@ssw0rd!";
+                string databaseName = "db-from-sample";
+
+                var regionCapabilities = rollUpClient.SqlServers.GetCapabilitiesByRegion(Region.USEast);
+                Assert.NotNull(regionCapabilities);
+                Assert.NotNull(regionCapabilities.SupportedCapabilitiesByServerVersion["12.0"]);
+                Assert.True(regionCapabilities.SupportedCapabilitiesByServerVersion["12.0"].SupportedEditions.Count > 0);
+                Assert.True(regionCapabilities.SupportedCapabilitiesByServerVersion["12.0"].SupportedElasticPoolEditions.Count > 0);
+
+                // Create
+                var sqlServer = rollUpClient.SqlServers
+                    .Define(sqlServerName)
+                    .WithRegion(Region.USSouthCentral)
+                    .WithNewResourceGroup(rgName)
+                    .WithAdministratorLogin(sqlServerAdminName)
+                    .WithAdministratorPassword(sqlServerAdminPassword)
+                    .WithSystemAssignedManagedServiceIdentity()
+                    .DefineDatabase(databaseName)
+                        .FromSample(SampleName.AdventureWorksLT)
+                        .WithBasicEdition()
+                        .Attach()
+                    .Create();
+                var dbFromSample = sqlServer.Databases.Get(databaseName);
+                Assert.NotNull(dbFromSample);
+                Assert.Equal(DatabaseEditions.Basic, dbFromSample.Edition);
+
+                Assert.True(sqlServer.IsManagedServiceIdentityEnabled);
+                Assert.NotNull(sqlServer.SystemAssignedManagedServiceIdentityTenantId);
+                Assert.NotNull(sqlServer.SystemAssignedManagedServiceIdentityPrincipalId);
+
+                sqlServer.Update()
+                    .WithSystemAssignedManagedServiceIdentity()
+                    .Apply();
+                Assert.True(sqlServer.IsManagedServiceIdentityEnabled);
+                Assert.NotNull(sqlServer.SystemAssignedManagedServiceIdentityTenantId);
+                Assert.NotNull(sqlServer.SystemAssignedManagedServiceIdentityPrincipalId);
+
 
                 DeleteResourceGroup(GroupName);
             }

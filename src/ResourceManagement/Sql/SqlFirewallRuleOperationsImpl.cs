@@ -138,6 +138,21 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return firewallRules.AsReadOnly();
         }
 
+        ///GENMHASH:2EA8D9073369A6E1267C1FB74F86952A:D8E0F4DFFB7F05F6B24DE7D662D8D81E
+        public async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule>> ListBySqlServerAsync(ISqlServer sqlServer, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            List<ISqlFirewallRule> firewallRules = new List<ISqlFirewallRule>();
+            var firewallRuleInners = await sqlServer.Manager.Inner.FirewallRules.ListByServerAsync(sqlServer.ResourceGroupName, sqlServer.Name, cancellationToken);
+            if (firewallRuleInners != null)
+            {
+                foreach (var firewallInner in firewallRuleInners)
+                {
+                    firewallRules.Add(new SqlFirewallRuleImpl(firewallInner.Name, (SqlServerImpl)sqlServer, firewallInner, sqlServer.Manager));
+                }
+            }
+            return firewallRules.AsReadOnly();
+        }
+
         ///GENMHASH:206E829E50B031B66F6EA9C7402231F9:FA828C83F50D26DFD2153BD3CCEFC82D
         public ISqlFirewallRule Get(string name)
         {
@@ -163,6 +178,25 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 var firewallRuleInner = await this.sqlServerManager.Inner.FirewallRules
                     .GetAsync(resourceGroupName, sqlServerName, name, cancellationToken);
                 return firewallRuleInner != null ? new SqlFirewallRuleImpl(resourceGroupName, sqlServerName, firewallRuleInner.Name, firewallRuleInner, sqlServerManager) : null;
+            }
+            catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return null;
+            }
+        }
+
+        ///GENMHASH:48BA5938680939720DEA90858B8FC7E4:88B8D4CD3199DE6F67E88AD534A75856
+        public async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule> GetBySqlServerAsync(ISqlServer sqlServer, string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            try
+            {
+                var firewallRuleInner = await sqlServer.Manager.Inner.FirewallRules
+                    .GetAsync(sqlServer.ResourceGroupName, sqlServer.Name, name, cancellationToken);
+                return firewallRuleInner != null ? new SqlFirewallRuleImpl(firewallRuleInner.Name, (SqlServerImpl)sqlServer, firewallRuleInner, sqlServer.Manager) : null;
             }
             catch (CloudException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
