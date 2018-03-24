@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
                 PortProperty = port,
                 Protocol = ContainerGroupNetworkProtocol.TCP
             });
-            this.WithInternalPort(port);
+            this.WithInternalTcpPort(port);
 
             return this;
         }
@@ -93,8 +93,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return this;
         }
 
-        ///GENMHASH:0872885322A92A458CDD1D6B2ACC4C4F:AC06F5B158CD4065B62D1154DB162932
-        public ContainerImpl WithInternalPort(int port)
+        public ContainerImpl WithInternalTcpPort(int port)
         {
             if (this.innerContainer.Ports == null)
             {
@@ -102,18 +101,43 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             }
             this.innerContainer.Ports.Add(new ContainerPort
             {
-                Port = port
+                Port = port,
+                Protocol = "TCP"
             });
 
             return this;
         }
 
-        ///GENMHASH:75C9253FF3F9500CD3DBE3B10C7B770E:5E9ACDDAC6AA38C75542D99D3000D173
-        public ContainerImpl WithInternalPorts(params int[] ports)
+        public ContainerImpl WithInternalUdpPort(int port)
+        {
+            if (this.innerContainer.Ports == null)
+            {
+                this.innerContainer.Ports = new List<ContainerPort>();
+            }
+            this.innerContainer.Ports.Add(new ContainerPort
+            {
+                Port = port,
+                Protocol = "UDP"
+            });
+
+            return this;
+        }
+
+        public ContainerImpl WithInternalTcpPorts(params int[] ports)
         {
             foreach (var port in ports)
             {
-                this.WithInternalPort(port);
+                this.WithInternalTcpPort(port);
+            }
+
+            return this;
+        }
+
+        public ContainerImpl WithInternalUdpPorts(params int[] ports)
+        {
+            foreach (var port in ports)
+            {
+                this.WithInternalUdpPort(port);
             }
 
             return this;
@@ -138,6 +162,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
                 PortProperty = port,
                 Protocol = ContainerGroupNetworkProtocol.UDP
             });
+            this.WithInternalUdpPort(port);
 
             return this;
         }

@@ -10,27 +10,51 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
     internal partial class ContainerImpl 
     {
         /// <summary>
-        /// Specifies the container's port is available to internal clients only (other container instances within the container group).
+        /// Specifies the container's TCP port is available to internal clients only (other container instances within the container group).
         /// Containers within a group can reach each other via localhost on the ports that they have exposed,
         /// even if those ports are not exposed externally on the group's IP address.
         /// </summary>
         /// <param name="port">TCP port to be exposed internally.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithInternalPort(int port)
+        ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithInternalTcpPort(int port)
         {
-            return this.WithInternalPort(port) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithInternalTcpPort(port) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
         }
 
         /// <summary>
-        /// Specifies the container's ports are available to internal clients only (other container instances within the container group).
+        /// Specifies the container's UDP port is available to internal clients only (other container instances within the container group).
+        /// Containers within a group can reach each other via localhost on the ports that they have exposed,
+        /// even if those ports are not exposed externally on the group's IP address.
+        /// </summary>
+        /// <param name="port">UDP port to be exposed internally.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithInternalUdpPort(int port)
+        {
+            return this.WithInternalUdpPort(port) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+        }
+
+        /// <summary>
+        /// Specifies the container's TCP ports are available to internal clients only (other container instances within the container group).
         /// Containers within a group can reach each other via localhost on the ports that they have exposed,
         /// even if those ports are not exposed externally on the group's IP address.
         /// </summary>
         /// <param name="ports">Array of TCP ports to be exposed internally.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithInternalPorts(params int[] ports)
+        ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithInternalTcpPorts(params int[] ports)
         {
-            return this.WithInternalPorts(ports) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithInternalTcpPorts(ports) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+        }
+
+        /// <summary>
+        /// Specifies the container's UDP ports are available to internal clients only (other container instances within the container group).
+        /// Containers within a group can reach each other via localhost on the ports that they have exposed,
+        /// even if those ports are not exposed externally on the group's IP address.
+        /// </summary>
+        /// <param name="ports">Array of UDP ports to be exposed internally.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithInternalUdpPorts(params int[] ports)
+        {
+            return this.WithInternalUdpPorts(ports) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
         }
 
         /// <summary>
