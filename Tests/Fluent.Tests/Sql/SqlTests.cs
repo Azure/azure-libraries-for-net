@@ -238,9 +238,9 @@ namespace Fluent.Tests
 
                 serverAutomaticTuning.Update()
                     .WithAutomaticTuningMode(AutomaticTuningServerMode.Auto)
-                    .WithAutomaticTuningOptions("createIndex", AutomaticTuningOptionModeDesired.Off)
-                    .WithAutomaticTuningOptions("dropIndex", AutomaticTuningOptionModeDesired.On)
-                    .WithAutomaticTuningOptions("forceLastGoodPlan", AutomaticTuningOptionModeDesired.Default)
+                    .WithAutomaticTuningOption("createIndex", AutomaticTuningOptionModeDesired.Off)
+                    .WithAutomaticTuningOption("dropIndex", AutomaticTuningOptionModeDesired.On)
+                    .WithAutomaticTuningOption("forceLastGoodPlan", AutomaticTuningOptionModeDesired.Default)
                     .Apply();
                 Assert.Equal(AutomaticTuningServerMode.Auto, serverAutomaticTuning.DesiredState);
                 Assert.Equal(AutomaticTuningServerMode.Auto, serverAutomaticTuning.ActualState);
@@ -256,9 +256,9 @@ namespace Fluent.Tests
                 // The following results in "InternalServerError" at the moment
                 databaseAutomaticTuning.Update()
                     .WithAutomaticTuningMode(AutomaticTuningMode.Auto)
-                    .WithAutomaticTuningOptions("createIndex", AutomaticTuningOptionModeDesired.Off)
-                    .WithAutomaticTuningOptions("dropIndex", AutomaticTuningOptionModeDesired.On)
-                    .WithAutomaticTuningOptions("forceLastGoodPlan", AutomaticTuningOptionModeDesired.Default)
+                    .WithAutomaticTuningOption("createIndex", AutomaticTuningOptionModeDesired.Off)
+                    .WithAutomaticTuningOption("dropIndex", AutomaticTuningOptionModeDesired.On)
+                    .WithAutomaticTuningOption("forceLastGoodPlan", AutomaticTuningOptionModeDesired.Default)
                     .Apply();
                 Assert.Equal(AutomaticTuningMode.Auto, databaseAutomaticTuning.DesiredState);
                 Assert.Equal(AutomaticTuningMode.Auto, databaseAutomaticTuning.ActualState);

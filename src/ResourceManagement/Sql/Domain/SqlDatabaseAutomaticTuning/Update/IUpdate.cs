@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseAutomaticTuning.Updat
         /// </summary>
         /// <param name="tuningOptionName">Tuning option name (.</param>
         /// <return>Next stage of the update.</return>
-        Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseAutomaticTuning.Update.IUpdate WithAutomaticTuningOptions(string tuningOptionName, AutomaticTuningOptionModeDesired desiredState);
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseAutomaticTuning.Update.IUpdate WithAutomaticTuningOption(string tuningOptionName, AutomaticTuningOptionModeDesired desiredState);
 
         /// <summary>
         /// Sets the various SQL database automatic tuning options desired state.

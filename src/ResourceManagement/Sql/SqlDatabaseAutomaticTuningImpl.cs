@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:83E91F2084686A41CC7FEC4FD3AABFFB:620CE1631318B71036774A9D6D922199
-        public SqlDatabaseAutomaticTuningImpl WithAutomaticTuningOptions(string tuningOptionName, AutomaticTuningOptionModeDesired desiredState)
+        public SqlDatabaseAutomaticTuningImpl WithAutomaticTuningOption(string tuningOptionName, AutomaticTuningOptionModeDesired desiredState)
         {
             if (this.automaticTuningOptionsMap == null) {
                 this.automaticTuningOptionsMap = new Dictionary<string, AutomaticTuningOptions>();

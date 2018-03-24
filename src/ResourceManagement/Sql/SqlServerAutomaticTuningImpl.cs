@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:83E91F2084686A41CC7FEC4FD3AABFFB:7CD5D685622F1E16B5C558CB56626C01
-        public SqlServerAutomaticTuningImpl WithAutomaticTuningOptions(string tuningOptionName, AutomaticTuningOptionModeDesired desiredState)
+        public SqlServerAutomaticTuningImpl WithAutomaticTuningOption(string tuningOptionName, AutomaticTuningOptionModeDesired desiredState)
         {
             if (this.Inner.Options == null) {
                 this.Inner.Options = new Dictionary<string, AutomaticTuningServerOptions>();

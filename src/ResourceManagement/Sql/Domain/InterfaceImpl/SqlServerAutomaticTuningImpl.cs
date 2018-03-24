@@ -102,9 +102,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         /// <param name="tuningOptionName">Tuning option name (.</param>
         /// <return>Next stage of the update.</return>
-        SqlServerAutomaticTuning.Update.IUpdate SqlServerAutomaticTuning.Update.IWithAutomaticTuningOptions.WithAutomaticTuningOptions(string tuningOptionName, AutomaticTuningOptionModeDesired desiredState)
+        SqlServerAutomaticTuning.Update.IUpdate SqlServerAutomaticTuning.Update.IWithAutomaticTuningOptions.WithAutomaticTuningOption(string tuningOptionName, AutomaticTuningOptionModeDesired desiredState)
         {
-            return this.WithAutomaticTuningOptions(tuningOptionName, desiredState) as SqlServerAutomaticTuning.Update.IUpdate;
+            return this.WithAutomaticTuningOption(tuningOptionName, desiredState) as SqlServerAutomaticTuning.Update.IUpdate;
         }
 
         /// <summary>
