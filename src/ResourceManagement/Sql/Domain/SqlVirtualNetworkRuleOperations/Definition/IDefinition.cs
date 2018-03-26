@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRuleOperations.
         /// <summary>
         /// Gets The next stage of the definition.
         /// </summary>
-        Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRuleOperations.Definition.IWithCreate IgnoreMissingSqlServiceEndpoint { get; }
+        Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRuleOperations.Definition.IWithCreate IgnoreMissingSqlServiceEndpoint();
     }
 
     /// <summary>

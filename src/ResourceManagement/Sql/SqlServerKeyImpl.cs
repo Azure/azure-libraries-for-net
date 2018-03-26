@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         ///GENMHASH:6A2970A94B2DD4A859B00B9B9D9691AD:6475F0E6B085A35B081FA09FFCBDDBF8
         public Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region Region()
         {
-            return Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region.Create(this.Inner.Location);
+            return this.Inner.Location != null ? Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region.Create(this.Inner.Location) : null;
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:9C622B7760E8AA499BCF909CBA2DEBA0
