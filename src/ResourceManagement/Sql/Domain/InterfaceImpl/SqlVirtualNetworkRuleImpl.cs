@@ -104,12 +104,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets The next stage of the definition.
         /// </summary>
-        SqlVirtualNetworkRule.Update.IUpdate SqlVirtualNetworkRule.Update.IWithServiceEndpoint.IgnoreMissingSqlServiceEndpoint
+        SqlVirtualNetworkRule.Update.IUpdate SqlVirtualNetworkRule.Update.IWithServiceEndpoint.IgnoreMissingSqlServiceEndpoint()
         {
-            get
-            {
-                return this.IgnoreMissingSqlServiceEndpoint() as SqlVirtualNetworkRule.Update.IUpdate;
-            }
+            return this.IgnoreMissingSqlServiceEndpoint() as SqlVirtualNetworkRule.Update.IUpdate;
         }
 
         /// <summary>
@@ -120,12 +117,9 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <summary>
         /// Gets The next stage of the definition.
         /// </summary>
-        SqlVirtualNetworkRuleOperations.Definition.IWithCreate SqlVirtualNetworkRuleOperations.Definition.IWithServiceEndpoint.IgnoreMissingSqlServiceEndpoint
+        SqlVirtualNetworkRuleOperations.Definition.IWithCreate SqlVirtualNetworkRuleOperations.Definition.IWithServiceEndpoint.IgnoreMissingSqlServiceEndpoint()
         {
-            get
-            {
-                return this.IgnoreMissingSqlServiceEndpoint() as SqlVirtualNetworkRuleOperations.Definition.IWithCreate;
-            }
+            return this.IgnoreMissingSqlServiceEndpoint() as SqlVirtualNetworkRuleOperations.Definition.IWithCreate;
         }
 
         /// <summary>

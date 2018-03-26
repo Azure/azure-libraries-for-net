@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRule.Update
         /// <summary>
         /// Gets The next stage of the definition.
         /// </summary>
-        Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRule.Update.IUpdate IgnoreMissingSqlServiceEndpoint { get; }
+        Microsoft.Azure.Management.Sql.Fluent.SqlVirtualNetworkRule.Update.IUpdate IgnoreMissingSqlServiceEndpoint();
     }
 
     /// <summary>

@@ -81,5 +81,61 @@ namespace Samples.Tests
                 ManageSqlImportExportDatabase.Program.RunSample(rollUpClient);
             }
         }
+
+        [Fact(Skip = "Manual only test: requires http calls to SqlClient data plane")]
+        [Trait("Samples", "Sql")]
+        public void GettingSqlServerMetricsTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                GettingSqlServerMetrics.Program.RunSample(rollUpClient);
+            }
+        }
+
+        [Fact]
+        [Trait("Samples", "Sql")]
+        public void ManageSqlFailoverGroupsTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ManageSqlFailoverGroups.Program.RunSample(rollUpClient);
+            }
+        }
+
+        [Fact(Skip = "Manual only test: requires http calls to SqlClient data plane")]
+        [Trait("Samples", "Sql")]
+        public void ManageSqlServerDnsAliasesTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ManageSqlServerDnsAliases.Program.RunSample(rollUpClient);
+            }
+        }
+
+        [Fact]
+        [Trait("Samples", "Sql")]
+        public void ManageSqlVirtualNetworkRulesTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ManageSqlVirtualNetworkRules.Program.RunSample(rollUpClient);
+            }
+        }
+
+        [Fact(Skip = "Manual only test: requires http calls to Key Vault data plane")]
+        [Trait("Samples", "Sql")]
+        public void ManageSqlServerKeysWithAzureKeyVaultKeyTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                ManageSqlServerKeysWithAzureKeyVaultKey.Program.RunSample(rollUpClient, "ObjectId");
+            }
+        }
+
     }
 }

@@ -1375,6 +1375,61 @@ namespace Microsoft.Azure.Management.Samples.Common
             Utilities.Log(builder.ToString());
         }
 
+        public static void PrintSqlVirtualNetworkRule(ISqlVirtualNetworkRule virtualNetworkRule)
+        {
+            var builder = new StringBuilder().Append("SQL virtual network rule: ").Append(virtualNetworkRule.Id)
+                .Append("Name: ").Append(virtualNetworkRule.Name)
+                .Append("\n\tResource group: ").Append(virtualNetworkRule.ResourceGroupName)
+                .Append("\n\tSqlServer Name: ").Append(virtualNetworkRule.SqlServerName)
+                .Append("\n\tSubnet ID: ").Append(virtualNetworkRule.SubnetId)
+                .Append("\n\tState: ").Append(virtualNetworkRule.State);
+
+            Utilities.Log(builder.ToString());
+        }
+
+        public static void PrintSqlFailoverGroup(ISqlFailoverGroup failoverGroup)
+        {
+            var builder = new StringBuilder().Append("SQL Failover Group: ").Append(failoverGroup.Id)
+                .Append("Name: ").Append(failoverGroup.Name)
+                .Append("\n\tResource group: ").Append(failoverGroup.ResourceGroupName)
+                .Append("\n\tSqlServer Name: ").Append(failoverGroup.SqlServerName)
+                .Append("\n\tRead-write endpoint policy: ").Append(failoverGroup.ReadWriteEndpointPolicy)
+                .Append("\n\tData loss grace period: ").Append(failoverGroup.ReadWriteEndpointDataLossGracePeriodMinutes)
+                .Append("\n\tRead-only endpoint policy: ").Append(failoverGroup.ReadOnlyEndpointPolicy)
+                .Append("\n\tReplication state: ").Append(failoverGroup.ReplicationState)
+                .Append("\n\tReplication role: ").Append(failoverGroup.ReplicationRole);
+            builder.Append("\n\tPartner Servers: ");
+            foreach (var item in failoverGroup.PartnerServers)
+            {
+                builder
+                    .Append("\n\t\tId: ").Append(item.Id)
+                    .Append("\n\t\tLocation: ").Append(item.Location)
+                    .Append("\n\t\tReplication role: ").Append(item.ReplicationRole);
+            }
+            builder.Append("\n\tDatabases: ");
+            foreach (var databaseId in failoverGroup.Databases)
+            {
+                builder.Append("\n\t\tID: ").Append(databaseId);
+            }
+
+            Utilities.Log(builder.ToString());
+        }
+
+        public static void PrintSqlServerKey(ISqlServerKey serverKey)
+        {
+            var builder = new StringBuilder().Append("SQL server key: ").Append(serverKey.Id)
+                .Append("Name: ").Append(serverKey.Name)
+                .Append("\n\tResource group: ").Append(serverKey.ResourceGroupName)
+                .Append("\n\tSqlServer Name: ").Append(serverKey.SqlServerName)
+                .Append("\n\tRegion: ").Append(serverKey.Region != null ? serverKey.Region.Name : "")
+                .Append("\n\tServer Key Type: ").Append(serverKey.ServerKeyType)
+                .Append("\n\tServer Key URI: ").Append(serverKey.Uri)
+                .Append("\n\tServer Key Thumbprint: ").Append(serverKey.Thumbprint)
+                .Append("\n\tServer Key Creation Date: ").Append(serverKey.CreationDate != null ? serverKey.CreationDate.ToString() : "");
+
+            Utilities.Log(builder.ToString());
+        }
+
         public static void PrintElasticPool(ISqlElasticPool elasticPool)
         {
             var builder = new StringBuilder().Append("Sql elastic pool: ").Append(elasticPool.Id)
@@ -1430,6 +1485,56 @@ namespace Microsoft.Azure.Management.Samples.Common
                     .Append("\n\tError code of activity: ").Append(databaseActivity.ErrorCode)
                     .Append("\n\tError message of activity: ").Append(databaseActivity.ErrorMessage)
                     .Append("\n\tError severity of activity: ").Append(databaseActivity.ErrorSeverity);
+
+            Utilities.Log(builder.ToString());
+        }
+
+        public static void PrintSqlMetric(ISqlSubscriptionUsageMetric subscriptionUsageMetric)
+        {
+            var builder = new StringBuilder().Append("SQL Subscription Usage Metric: ").Append(subscriptionUsageMetric.Id)
+                .Append("Name: ").Append(subscriptionUsageMetric.Name)
+                .Append("\n\tDisplay Name: ").Append(subscriptionUsageMetric.DisplayName)
+                .Append("\n\tCurrent Value: ").Append(subscriptionUsageMetric.CurrentValue)
+                .Append("\n\tLimit: ").Append(subscriptionUsageMetric.Limit)
+                .Append("\n\tUnit: ").Append(subscriptionUsageMetric.Unit)
+                .Append("\n\tType: ").Append(subscriptionUsageMetric.Type);
+
+            Utilities.Log(builder.ToString());
+        }
+
+        public static void PrintSqlMetric(ISqlDatabaseUsageMetric dbUsageMetric)
+        {
+            var builder = new StringBuilder().Append("SQL Database Usage Metric")
+                .Append("Name: ").Append(dbUsageMetric.Name)
+                .Append("\n\tResource Name: ").Append(dbUsageMetric.ResourceName)
+                .Append("\n\tDisplay Name: ").Append(dbUsageMetric.DisplayName)
+                .Append("\n\tCurrent Value: ").Append(dbUsageMetric.CurrentValue)
+                .Append("\n\tLimit: ").Append(dbUsageMetric.Limit)
+                .Append("\n\tUnit: ").Append(dbUsageMetric.Unit)
+                .Append("\n\tNext Reset Time: ").Append(dbUsageMetric.NextResetTime.GetValueOrDefault().ToString());
+
+            Utilities.Log(builder.ToString());
+        }
+
+        public static void PrintSqlMetric(ISqlDatabaseMetric dbMetric)
+        {
+            StringBuilder builder = new StringBuilder().Append("SQL Database Metric")
+                .Append("Name: ").Append(dbMetric.Name)
+                .Append("\n\tStart Time: ").Append(dbMetric.StartTime)
+                .Append("\n\tEnd Time: ").Append(dbMetric.EndTime)
+                .Append("\n\tTime Grain: ").Append(dbMetric.TimeGrain)
+                .Append("\n\tUnit: ").Append(dbMetric.Unit);
+            foreach (var metricValue in dbMetric.MetricValues)
+            {
+                builder
+                    .Append("\n\tMetric Value: ")
+                    .Append("\n\t\tCount: ").Append(metricValue.Count)
+                    .Append("\n\t\tAverage: ").Append(metricValue.Average)
+                    .Append("\n\t\tMaximum: ").Append(metricValue.Maximum)
+                    .Append("\n\t\tMinimum: ").Append(metricValue.Minimum)
+                    .Append("\n\t\tTimestamp: ").Append(metricValue.Timestamp)
+                    .Append("\n\t\tTotal: ").Append(metricValue.Total);
+            }
 
             Utilities.Log(builder.ToString());
         }
