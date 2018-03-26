@@ -49,13 +49,23 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// <param name="enabledForTemplateDeployment">Property to specify
         /// whether Azure Resource Manager is permitted to retrieve secrets
         /// from the key vault.</param>
-        /// <param name="enableSoftDelete">Property to specify whether the
-        /// 'soft delete' functionality is enabled for this key vault. It does
-        /// not accept false value.</param>
+        /// <param name="enableSoftDelete">Property specifying whether
+        /// recoverable deletion is enabled for this key vault. Setting this
+        /// property to true activates the soft delete feature, whereby vaults
+        /// or vault entities can be recovered after deletion. Enabling this
+        /// functionality is irreversible - that is, the property does not
+        /// accept false as its value.</param>
         /// <param name="createMode">The vault's create mode to indicate
         /// whether the vault need to be recovered or not. Possible values
         /// include: 'recover', 'default'</param>
-        public VaultProperties(System.Guid tenantId, Sku sku, IList<AccessPolicyEntry> accessPolicies = default(IList<AccessPolicyEntry>), string vaultUri = default(string), bool? enabledForDeployment = default(bool?), bool? enabledForDiskEncryption = default(bool?), bool? enabledForTemplateDeployment = default(bool?), bool? enableSoftDelete = default(bool?), CreateMode? createMode = default(CreateMode?))
+        /// <param name="enablePurgeProtection">Property specifying whether
+        /// protection against purge is enabled for this vault. Setting this
+        /// property to true activates protection against purge for this vault
+        /// and its content - only the Key Vault service may initiate a hard,
+        /// irrecoverable deletion. The setting is effective only if soft
+        /// delete is also enabled. Enabling this functionality is irreversible
+        /// - that is, the property does not accept false as its value.</param>
+        public VaultProperties(System.Guid tenantId, Sku sku, IList<AccessPolicyEntry> accessPolicies = default(IList<AccessPolicyEntry>), string vaultUri = default(string), bool? enabledForDeployment = default(bool?), bool? enabledForDiskEncryption = default(bool?), bool? enabledForTemplateDeployment = default(bool?), bool? enableSoftDelete = default(bool?), CreateMode? createMode = default(CreateMode?), bool? enablePurgeProtection = default(bool?))
         {
             TenantId = tenantId;
             Sku = sku;
@@ -66,6 +76,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
             EnabledForTemplateDeployment = enabledForTemplateDeployment;
             EnableSoftDelete = enableSoftDelete;
             CreateMode = createMode;
+            EnablePurgeProtection = enablePurgeProtection;
             CustomInit();
         }
 
@@ -96,11 +107,11 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         public IList<AccessPolicyEntry> AccessPolicies { get; set; }
 
         /// <summary>
-        /// Gets the URI of the vault for performing operations on keys and
-        /// secrets.
+        /// Gets or sets the URI of the vault for performing operations on keys
+        /// and secrets.
         /// </summary>
         [JsonProperty(PropertyName = "vaultUri")]
-        public string VaultUri { get; private set; }
+        public string VaultUri { get; set; }
 
         /// <summary>
         /// Gets or sets property to specify whether Azure Virtual Machines are
@@ -125,9 +136,12 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         public bool? EnabledForTemplateDeployment { get; set; }
 
         /// <summary>
-        /// Gets or sets property to specify whether the 'soft delete'
-        /// functionality is enabled for this key vault. It does not accept
-        /// false value.
+        /// Gets or sets property specifying whether recoverable deletion is
+        /// enabled for this key vault. Setting this property to true activates
+        /// the soft delete feature, whereby vaults or vault entities can be
+        /// recovered after deletion. Enabling this functionality is
+        /// irreversible - that is, the property does not accept false as its
+        /// value.
         /// </summary>
         [JsonProperty(PropertyName = "enableSoftDelete")]
         public bool? EnableSoftDelete { get; set; }
@@ -139,6 +153,18 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "createMode")]
         public CreateMode? CreateMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets property specifying whether protection against purge
+        /// is enabled for this vault. Setting this property to true activates
+        /// protection against purge for this vault and its content - only the
+        /// Key Vault service may initiate a hard, irrecoverable deletion. The
+        /// setting is effective only if soft delete is also enabled. Enabling
+        /// this functionality is irreversible - that is, the property does not
+        /// accept false as its value.
+        /// </summary>
+        [JsonProperty(PropertyName = "enablePurgeProtection")]
+        public bool? EnablePurgeProtection { get; set; }
 
         /// <summary>
         /// Validate the object.
