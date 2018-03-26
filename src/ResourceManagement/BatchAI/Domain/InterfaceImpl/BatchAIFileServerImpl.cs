@@ -136,5 +136,18 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             return this.WithDataDisks(diskSizeInGB, diskCount, storageAccountType) as BatchAIFileServer.Definition.IWithVMSize;
         }
+
+        /// <summary>
+        /// Specifies settings for the data disks which would be created for the file server.
+        /// </summary>
+        /// <param name="diskSizeInGB">Initial disk size in GB for blank data disks.</param>
+        /// <param name="diskCount">Number of data disks to be attached to the VM. RAID level 0 will be applied in the case of multiple disks.</param>
+        /// <param name="storageAccountType">Type of storage account to be used on the disk.</param>
+        /// <param name="cachingType">Caching type.</param>
+        /// <return>The next stage of the definition.</return>
+        BatchAIFileServer.Definition.IWithVMSize BatchAIFileServer.Definition.IWithDataDisks.WithDataDisks(int diskSizeInGB, int diskCount, StorageAccountType storageAccountType, CachingType cachingType)
+        {
+            return this.WithDataDisks(diskSizeInGB, diskCount, storageAccountType, cachingType) as BatchAIFileServer.Definition.IWithVMSize;
+        }
     }
 }

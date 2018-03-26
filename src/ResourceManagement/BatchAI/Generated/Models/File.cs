@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Properties of the file.
+    /// Properties of the file or directory.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class File
@@ -30,15 +30,19 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the File class.
         /// </summary>
-        /// <param name="name">file name</param>
-        /// <param name="downloadUrl">file downloand url, example:
-        /// https://mystg.blob.core.windows.net/mycontainer/myModel_1.dnn</param>
+        /// <param name="name">Name of the file.</param>
+        /// <param name="isDirectory">Indicates if the file is a
+        /// directory.</param>
+        /// <param name="downloadUrl">Will contain an URL to download the
+        /// corresponding file. The downloadUrl is not returned for
+        /// directories.</param>
         /// <param name="lastModified">The time at which the file was last
         /// modified.</param>
         /// <param name="contentLength">The file size.</param>
-        public File(string name, string downloadUrl, System.DateTime? lastModified = default(System.DateTime?), long? contentLength = default(long?))
+        public File(string name, bool isDirectory, string downloadUrl = default(string), System.DateTime? lastModified = default(System.DateTime?), long? contentLength = default(long?))
         {
             Name = name;
+            IsDirectory = isDirectory;
             DownloadUrl = downloadUrl;
             LastModified = lastModified;
             ContentLength = contentLength;
@@ -51,22 +55,21 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets file name
+        /// Gets or sets name of the file.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets file downloand url, example:
-        /// https://mystg.blob.core.windows.net/mycontainer/myModel_1.dnn
+        /// Gets or sets indicates if the file is a directory.
         /// </summary>
-        /// <remarks>
-        /// This will be returned only if the model has been archived. During
-        /// job run, this won't be returned and customers can use SSH tunneling
-        /// to download. Users can use Get Remote Login Information API to get
-        /// the IP address and port information of all the compute nodes
-        /// running the job.
-        /// </remarks>
+        [JsonProperty(PropertyName = "isDirectory")]
+        public bool IsDirectory { get; set; }
+
+        /// <summary>
+        /// Gets or sets will contain an URL to download the corresponding
+        /// file. The downloadUrl is not returned for directories.
+        /// </summary>
         [JsonProperty(PropertyName = "downloadUrl")]
         public string DownloadUrl { get; set; }
 
@@ -99,10 +102,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
             if (Name == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Name");
-            }
-            if (DownloadUrl == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "DownloadUrl");
             }
         }
     }

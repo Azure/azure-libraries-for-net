@@ -25,7 +25,7 @@ namespace Fluent.Tests
     public class BatchAI
     {
         private static Region REGION = Region.USWest2;
-
+      
         [Fact]
         public void CreateUpdate()
         {
@@ -33,6 +33,7 @@ namespace Fluent.Tests
             {
                 string groupName = SdkContext.RandomResourceName("rg", 10);
                 string clusterName = SdkContext.RandomResourceName("cluster", 15);
+                string vnetName = SdkContext.RandomResourceName("vnet", 10);
                 string saName = SdkContext.RandomResourceName("sa", 15);
                 string shareName = "myfileshare";
                 string shareMountPath = "azurefileshare";
@@ -41,8 +42,17 @@ namespace Fluent.Tests
                 string userName = "tirekicker";
                 string storageAccountKey = "dummy_key";
                 string fileShareUri = "dummy_uri";
+                string subnetName = "MySubnet";
 
                 var manager = TestHelper.CreateBatchAIManager();
+                var networkManager = TestHelper.CreateNetworkManager();
+
+                INetwork network = networkManager.Networks.Define(vnetName)
+                    .WithRegion(REGION)
+                    .WithNewResourceGroup(groupName)
+                    .WithAddressSpace("192.168.0.0/16")
+                    .WithSubnet(subnetName, "192.168.200.0/24")
+                    .Create();
 
                 IBatchAICluster cluster = manager.BatchAIClusters.Define(clusterName)
                     .WithRegion(REGION)
@@ -68,6 +78,10 @@ namespace Fluent.Tests
                         .WithRelativeMountPath(blobFileSystemPath)
                         .WithAccountKey(storageAccountKey)
                         .Attach()
+                    .WithVirtualMachineImage("microsoft-ads", "linux-data-science-vm-ubuntu", "linuxdsvmubuntu")
+                    .WithSubnet(network.Id, subnetName)
+                    .WithAppInsightsComponentId("appinsightsId")
+                    .WithInstrumentationKey("appInsightsKey")
                     .WithTag("tag1", "value1")
                     .Create();
                 Assert.Equal(AllocationState.Steady, cluster.AllocationState);
@@ -77,6 +91,9 @@ namespace Fluent.Tests
                 Assert.Equal(shareMountPath, cluster.NodeSetup.MountVolumes.AzureFileShares.ElementAt(0).RelativeMountPath);
                 Assert.Equal(1, cluster.NodeSetup.MountVolumes.AzureBlobFileSystems.Count);
                 Assert.Equal(blobFileSystemPath, cluster.NodeSetup.MountVolumes.AzureBlobFileSystems.ElementAt(0).RelativeMountPath);
+                Assert.Equal(network.Id + "/subnets/" + subnetName, cluster.Subnet.Id);
+                Assert.Equal("appinsightsId", cluster.NodeSetup.PerformanceCountersSettings.AppInsightsReference.Component.Id);
+                Assert.Equal("linux-data-science-vm-ubuntu", cluster.VirtualMachineConfiguration.ImageReference.Offer);
 
                 cluster.Update()
                     .WithAutoScale(1, 2, 2)
@@ -98,7 +115,6 @@ namespace Fluent.Tests
             {
                 string groupName = SdkContext.RandomResourceName("rg", 10);
                 string clusterName = SdkContext.RandomResourceName("cluster", 15);
-                string saName = SdkContext.RandomResourceName("sa", 15);
                 string shareName = "myfileshare";
                 string shareMountPath = "azurefileshare";
                 string blobFileSystemPath = "myblobsystem";
@@ -129,14 +145,31 @@ namespace Fluent.Tests
                         .Attach()
                     .WithInputDirectory("SAMPLE", "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/mnistcntksample")
                     .WithOutputDirectory("MODEL", "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/model")
+                    .DefineOutputDirectory("OUTPUT")
+                        .WithPathPrefix("$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/output")
+                        .WithCreateNew(true)
+                        .WithPathSuffix("suffix")
+                        .Attach()
                     .WithContainerImage("microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0")
                     .Create();
                 Assert.Equal(groupName, job.ResourceGroupName);
+                Assert.Equal(2, job.OutputDirectories.Count);
+                OutputDirectory outputDirectory = null;
+                foreach (OutputDirectory directory in job.OutputDirectories)
+                {
+                    if ("OUTPUT".Equals(directory.Id.ToUpper()))
+                    {
+                        outputDirectory = directory;
+                        break;
+                    }
+                }
+                Assert.NotNull(outputDirectory);
+                Assert.Equal("suffix", outputDirectory.PathSuffix.ToLower());
 
                 job.Refresh();
                 Assert.Equal(groupName, job.ResourceGroupName);
 
-                manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+                manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
             }
         }
 
@@ -146,7 +179,7 @@ namespace Fluent.Tests
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 string groupName = SdkContext.RandomResourceName("rg", 10);
-                string clusterName = SdkContext.RandomResourceName("cluster", 15);
+                string vnetName = SdkContext.RandomResourceName("vnet", 10);
                 string fsName = SdkContext.RandomResourceName("fs", 15);
                 string shareName = "myfileshare";
                 string shareMountPath = "azurefileshare";
@@ -155,19 +188,31 @@ namespace Fluent.Tests
                 string userName = "tirekicker";
                 string storageAccountKey = "dummy_key";
                 string fileShareUri = "dummy_uri";
+                string subnetName = "MySubnet";
 
                 var manager = TestHelper.CreateBatchAIManager();
+                var networkManager = TestHelper.CreateNetworkManager();
+
+                INetwork network = networkManager.Networks.Define(vnetName)
+                    .WithRegion(REGION)
+                    .WithNewResourceGroup(groupName)
+                    .WithAddressSpace("192.168.0.0/16")
+                    .WithSubnet(subnetName, "192.168.200.0/24")
+                    .Create();
 
                 IBatchAIFileServer fileServer = manager.BatchAIFileServers.Define(fsName)
                     .WithRegion(REGION)
                     .WithNewResourceGroup(groupName)
-                    .WithDataDisks(10, 2, StorageAccountType.StandardLRS)
+                    .WithDataDisks(10, 2, StorageAccountType.StandardLRS, CachingType.Readwrite)
                     .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
                     .WithUserName(userName)
                     .WithPassword("MyPassword!")
+                    .WithSubnet(network.Id, subnetName)
                     .Create();
-               
-                manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+                Assert.Equal(network.Id + "/subnets/" + subnetName, fileServer.Subnet.Id);
+                Assert.Equal(CachingType.Readwrite, fileServer.DataDisks.CachingType);
+
+                manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
             }
         }
     }

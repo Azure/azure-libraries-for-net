@@ -27,13 +27,22 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        private IList<EnvironmentSetting> EnsureEnvironmentSettings()
+        private IList<EnvironmentVariable> EnsureEnvironmentVariables()
         {
             if (Inner.EnvironmentVariables == null)
             {
-                Inner.EnvironmentVariables = new List<EnvironmentSetting>();
+                Inner.EnvironmentVariables = new List<EnvironmentVariable>();
             }
             return Inner.EnvironmentVariables;
+        }
+
+        ///GENMHASH:5E03E122BA1157E26580A70A3DDCFC38:0F2E17AE5B0FFC742A50B16C0B8ECA93
+        private IList<Microsoft.Azure.Management.BatchAI.Fluent.Models.EnvironmentVariableWithSecretValue> EnsureEnvironmentVariablesWithSecrets()
+        {
+            if (Inner.Secrets == null) {
+                Inner.Secrets = new List<EnvironmentVariableWithSecretValue>();
+            }
+            return Inner.Secrets;
         }
 
         public NodeSetupTaskImpl WithCommandLine(string commandLine)
@@ -42,9 +51,25 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
+        ///GENMHASH:446B156BB626194DD2A3F46642818AF8:551F630EC4E164B1BDC4E1F286DA3951
         public NodeSetupTaskImpl WithEnvironmentVariable(string name, string value)
         {
-            EnsureEnvironmentSettings().Add(new EnvironmentSetting(name, value));
+            EnsureEnvironmentVariables().Add(new EnvironmentVariable(name, value));
+            return this;
+        }
+
+        ///GENMHASH:997F16B1AEBB01217D1CAE2B03B8B73E:E4346C9A19D9DCFF2986204E3D4749B1
+        public NodeSetupTaskImpl WithEnvironmentVariableSecretValue(string name, string value)
+        {
+            EnsureEnvironmentVariablesWithSecrets().Add(new EnvironmentVariableWithSecretValue(name, value));
+            return this;
+        }
+
+        ///GENMHASH:AB0BF9D0BEA18CD334AAF69A466D74DB:244EAB58A02E8C0EA8858C0AA028A77B
+        public NodeSetupTaskImpl WithEnvironmentVariableSecretValue(string name, string keyVaultId, string secretUrl)
+        {
+            KeyVaultSecretReference secretReference = new KeyVaultSecretReference(new Models.ResourceId(keyVaultId), secretUrl);
+            EnsureEnvironmentVariablesWithSecrets().Add(new EnvironmentVariableWithSecretValue(name, valueSecretReference: secretReference));
             return this;
         }
 

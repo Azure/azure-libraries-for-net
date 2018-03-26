@@ -28,6 +28,33 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition
     }
 
     /// <summary>
+        /// The stage of the setup task definition allowing to specify environment variables with secrets.
+        /// </summary>
+        /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+        public interface IWithEnvironmentVariableSecretValue<ParentT>
+        {
+
+            /// <summary>
+            /// Sets the value of the environment variable. This value will never be reported
+            /// back by Batch AI.
+            /// </summary>
+            /// <param name="name">Name of the variable to set.</param>
+            /// <param name="value">Value of the variable to set.</param>
+            /// <return>The next stage of the definition.</return>
+            Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithAttach<ParentT> WithEnvironmentVariableSecretValue(string name, string value);
+
+            /// <summary>
+            /// Specifies KeyVault Store and Secret which contains the value for the
+            /// environment variable.
+            /// </summary>
+            /// <param name="name">Name of the variable to set.</param>
+            /// <param name="keyVaultId">Fully qualified resource Id for the Key Vault.</param>
+            /// <param name="secretUrl">The URL referencing a secret in a Key Vault.</param>
+            /// <return>The next stage of the definition.</return>
+            Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithAttach<ParentT> WithEnvironmentVariableSecretValue(string name, string keyVaultId, string secretUrl);
+        }
+
+    /// <summary>
     /// The entirety of a setup task definition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
@@ -62,7 +89,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition
     public interface IWithAttach<ParentT>  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
         Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithElevatedMode<ParentT>,
-        Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithEnvironmentVariable<ParentT>
+        Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithEnvironmentVariable<ParentT>,
+        Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithEnvironmentVariableSecretValue<ParentT>
     {
     }
 
