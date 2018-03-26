@@ -15,22 +15,22 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
     /// <summary>
     /// A collection of environment variables to set.
     /// </summary>
-    public partial class EnvironmentSetting
+    public partial class EnvironmentVariable
     {
         /// <summary>
-        /// Initializes a new instance of the EnvironmentSetting class.
+        /// Initializes a new instance of the EnvironmentVariable class.
         /// </summary>
-        public EnvironmentSetting()
+        public EnvironmentVariable()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the EnvironmentSetting class.
+        /// Initializes a new instance of the EnvironmentVariable class.
         /// </summary>
         /// <param name="name">The name of the environment variable.</param>
         /// <param name="value">The value of the environment variable.</param>
-        public EnvironmentSetting(string name, string value = default(string))
+        public EnvironmentVariable(string name, string value)
         {
             Name = name;
             Value = value;
@@ -65,6 +65,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
             if (Name == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Name");
+            }
+            if (Value == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Value");
             }
         }
     }

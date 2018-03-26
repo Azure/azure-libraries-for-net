@@ -47,5 +47,31 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             return this.WithEnvironmentVariable(name, value) as NodeSetupTask.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate>;
         }
+
+        /// <summary>
+                /// Sets the value of the environment variable. This value will never be reported
+                /// back by Batch AI.
+                /// </summary>
+                /// <param name="name">Name of the variable to set.</param>
+                /// <param name="value">Value of the variable to set.</param>
+                /// <return>The next stage of the definition.</return>
+                NodeSetupTask.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate> NodeSetupTask.Definition.IWithEnvironmentVariableSecretValue<BatchAICluster.Definition.IWithCreate>.WithEnvironmentVariableSecretValue(string name, string value)
+                {
+                    return this.WithEnvironmentVariableSecretValue(name, value) as NodeSetupTask.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate>;
+                }
+
+                /// <summary>
+                /// Specifies KeyVault Store and Secret which contains the value for the
+                /// environment variable.
+                /// </summary>
+                /// <param name="name">Name of the variable to set.</param>
+                /// <param name="keyVaultId">Fully qualified resource Id for the Key Vault.</param>
+                /// <param name="secretUrl">The URL referencing a secret in a Key Vault.</param>
+                /// <return>The next stage of the definition.</return>
+                NodeSetupTask.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate> NodeSetupTask.Definition.IWithEnvironmentVariableSecretValue<BatchAICluster.Definition.IWithCreate>.WithEnvironmentVariableSecretValue(string name, string keyVaultId, string secretUrl)
+                {
+                    return this.WithEnvironmentVariableSecretValue(name, keyVaultId, secretUrl) as NodeSetupTask.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate>;
+                }
+
     }
 }

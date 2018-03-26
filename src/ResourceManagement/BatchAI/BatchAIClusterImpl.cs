@@ -4,6 +4,7 @@
 using System.Linq;
 using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
+using Microsoft.Azure.Management.BatchAI.Fluent.Models.HasMountVolumes.Definition;
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
@@ -34,7 +35,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             >,
         IBatchAICluster,
         IDefinition,
-        IUpdate
+        IUpdate,
+        IHasMountVolumes
     {
         private ClusterCreateParametersInner createParameters = new ClusterCreateParametersInner();
         private ClusterUpdateParametersInner updateParameters = new ClusterUpdateParametersInner();
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.ScaleSettings;
         }
 
-        internal void AttachAzureFileShare(AzureFileShareImpl azureFileShare)
+        public void AttachAzureFileShare(IAzureFileShare azureFileShare)
         {
             MountVolumes mountVolumes = EnsureMountVolumes();
             if (mountVolumes.AzureFileShares == null)
@@ -57,6 +59,15 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 mountVolumes.AzureFileShares = new List<AzureFileShareReference>();
             }
             mountVolumes.AzureFileShares.Add(azureFileShare.Inner);
+        }
+        
+        ///GENMHASH:79E7B5F57E7A55B8022A9F81FB2832E4:7C1531DE4EE7AADF3A9DE8D5322ED09E
+        private VirtualMachineConfiguration EnsureVirtualMachineConfiguration()
+        {
+            if (createParameters.VirtualMachineConfiguration == null) {
+                createParameters.VirtualMachineConfiguration = new VirtualMachineConfiguration();
+            }
+            return createParameters.VirtualMachineConfiguration;
         }
 
         public string AdminUserName()
@@ -96,6 +107,16 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                     Manual = manualScaleSettings
                 };
             }
+            return this;
+        }
+
+        ///GENMHASH:8ECD7B3C8DA59F0FC5E941AF96916A64:F82EF884290F848890E0C2FC1B043762
+        public BatchAIClusterImpl WithAppInsightsComponentId(string resoureId)
+        {
+            if (EnsureNodeSetup().PerformanceCountersSettings == null) {
+                createParameters.NodeSetup.PerformanceCountersSettings = new PerformanceCountersSettings();
+            }
+            createParameters.NodeSetup.PerformanceCountersSettings.AppInsightsReference = new AppInsightsReference(new Microsoft.Azure.Management.BatchAI.Fluent.Models.ResourceId(resoureId));
             return this;
         }
 
@@ -164,7 +185,22 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        internal void AttachFileServer(IFileServer fileServer)
+        ///GENMHASH:83F0E69474676B2E7534F18D11A21891:A1C24922FD14BD9574624199DCC78B5A
+        public BatchAIClusterImpl WithInstrumentationKey(string instrumentationKey)
+        {
+            createParameters.NodeSetup.PerformanceCountersSettings.AppInsightsReference.InstrumentationKey = instrumentationKey;
+            return this;
+        }
+
+        ///GENMHASH:1E540FB781C7D754D9A77BF3CEB2BB62:B3B08191E1FBBF1EE9EAF5570BA0E690
+        public BatchAIClusterImpl WithInstrumentationKeySecretReference(string keyVaultId, string secretUrl)
+        {
+            createParameters.NodeSetup.PerformanceCountersSettings.AppInsightsReference.InstrumentationKeySecretReference = 
+                new KeyVaultSecretReference(new Microsoft.Azure.Management.BatchAI.Fluent.Models.ResourceId(keyVaultId), secretUrl);
+            return this;
+        }
+
+        public void AttachFileServer(IFileServer fileServer)
         {
             MountVolumes mountVolumes = EnsureMountVolumes();
             if (mountVolumes.FileServers == null)
@@ -203,6 +239,20 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
+        ///GENMHASH:0FBBECB150CBC82F165D8BA614AB135A:8E1100FECC94D8D02A007E94A2829ADE
+        public BatchAIClusterImpl WithSubnet(string subnetId)
+        {
+            createParameters.Subnet = new Microsoft.Azure.Management.BatchAI.Fluent.Models.ResourceId(subnetId);
+            return this;
+        }
+
+        ///GENMHASH:9047F7688B1B60794F60BC930616198C:611CA1FC53B66F8126B3A71A8F7A964F
+        public BatchAIClusterImpl WithSubnet(string networkId, string subnetName)
+        {
+            createParameters.Subnet = new Microsoft.Azure.Management.BatchAI.Fluent.Models.ResourceId(networkId + "/subnets/" + subnetName);
+            return this;
+        }
+        
         public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             if (IsInCreateMode)
@@ -282,7 +332,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        internal void AttachAzureBlobFileSystem(IAzureBlobFileSystem azureBlobFileSystem)
+        public void AttachAzureBlobFileSystem(IAzureBlobFileSystem azureBlobFileSystem)
         {
             MountVolumes mountVolumes = EnsureMountVolumes();
             if (mountVolumes.AzureBlobFileSystems == null)
@@ -290,6 +340,29 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 mountVolumes.AzureBlobFileSystems = new List<AzureBlobFileSystemReference>();
             }
             mountVolumes.AzureBlobFileSystems.Add(azureBlobFileSystem.Inner);
+        }
+
+        ///GENMHASH:8FD3D042874B91534262149F9B16CC76:7707C8D2DF092BD275DF1CCA4461871C
+        public BatchAIClusterImpl WithVirtualMachineImage(string publisher, string offer, string sku, string version)
+        {
+            EnsureVirtualMachineConfiguration().ImageReference = new ImageReference(publisher, offer, sku, version: version);
+            return this;
+        }
+
+
+        ///GENMHASH:B166B7BCC6015427AA49700F74E26B41:DDEF7A7581AF3154679A44E30F9482F0
+        public BatchAIClusterImpl WithVirtualMachineImage(string publisher, string offer, string sku)
+        {
+            EnsureVirtualMachineConfiguration().ImageReference = new ImageReference(publisher, offer, sku);
+            return this;
+        }
+
+        ///GENMHASH:330BEF56BC4BAABD4D60D9E7BBB003BD:F677D454D78B6BC6CECA1BCA3E282E27
+        public BatchAIClusterImpl WithVirtualMachineImageId(string virtualMachineImageId, string publisher, string offer, string sku)
+        {
+            EnsureVirtualMachineConfiguration().ImageReference =
+                new ImageReference(publisher, offer, sku, virtualMachineImageId: virtualMachineImageId);
+            return this;
         }
 
         public BatchAIClusterImpl WithVMSize(string vmSize)

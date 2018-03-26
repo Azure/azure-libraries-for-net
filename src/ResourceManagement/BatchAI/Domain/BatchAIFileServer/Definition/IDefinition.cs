@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition
     public interface IWithCreate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithCreate>,
-        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithUserCredentials
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithUserCredentials,
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithSubnet
     {
     }
 
@@ -66,7 +67,47 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition
 
     public interface IWithDataDisks 
     {
+        /// <summary>
+        /// Specifies settings for the data disks which would be created for the file server.
+        /// </summary>
+        /// <param name="diskSizeInGB">Initial disk size in GB for blank data disks.</param>
+        /// <param name="diskCount">Number of data disks to be attached to the VM. RAID level 0 will be applied in the case of multiple disks.</param>
+        /// <param name="storageAccountType">Type of storage account to be used on the disk.</param>
+        /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithVMSize WithDataDisks(int diskSizeInGB, int diskCount, StorageAccountType storageAccountType);
+
+        /// <summary>
+        /// Specifies settings for the data disks which would be created for the file server.
+        /// </summary>
+        /// <param name="diskSizeInGB">Initial disk size in GB for blank data disks.</param>
+        /// <param name="diskCount">Number of data disks to be attached to the VM. RAID level 0 will be applied in the case of multiple disks.</param>
+        /// <param name="storageAccountType">Type of storage account to be used on the disk.</param>
+        /// <param name="cachingType">Caching type.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithVMSize WithDataDisks(int diskSizeInGB, int diskCount, StorageAccountType storageAccountType, CachingType cachingType);
+    }
+
+    /// <summary>
+    /// Defines subnet for the file server.
+    /// </summary>
+    public interface IWithSubnet  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies subnet id.
+        /// </summary>
+        /// <param name="subnetId">Identifier of the subnet.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithCreate WithSubnet(string subnetId);
+
+        /// <summary>
+        /// Specifies network id and subnet name within this network.
+        /// </summary>
+        /// <param name="networkId">Identifier of the network.</param>
+        /// <param name="subnetName">Subnet name.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithCreate WithSubnet(string networkId, string subnetName);
     }
 
     public interface IWithUserName 

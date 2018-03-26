@@ -38,6 +38,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <param name="priority">Priority associated with the job.</param>
         /// <param name="cluster">Specifies the Id of the cluster on which this
         /// job will run.</param>
+        /// <param name="mountVolumes">Information on mount volumes to be used
+        /// by the job.</param>
+        /// <param name="jobOutputDirectoryPathSegment">A segment of job's
+        /// output directories path created by BatchAI.</param>
         /// <param name="nodeCount">Number of compute nodes to run the job
         /// on.</param>
         /// <param name="containerSettings">If provided the job will run in the
@@ -45,6 +49,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <param name="toolType">The toolkit type of this job.</param>
         /// <param name="cntkSettings">Specifies the settings for CNTK (aka
         /// Microsoft Cognitive Toolkit) job.</param>
+        /// <param name="pyTorchSettings">Specifies the settings for pyTorch
+        /// job.</param>
         /// <param name="tensorFlowSettings">Specifies the settings for Tensor
         /// Flow job.</param>
         /// <param name="caffeSettings">Specifies the settings for Caffe
@@ -60,9 +66,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <param name="inputDirectories">Specifies the list of input
         /// directories for the Job.</param>
         /// <param name="outputDirectories">Specifies the list of output
-        /// directories where the models will be created. .</param>
+        /// directories where the models will be created.</param>
         /// <param name="environmentVariables">Additional environment variables
-        /// to be passed to the job.</param>
+        /// to set on the job.</param>
+        /// <param name="secrets">Additional environment variables with secret
+        /// values to set on the job.</param>
         /// <param name="constraints">Constraints associated with the
         /// Job.</param>
         /// <param name="creationTime">The job creation time.</param>
@@ -76,16 +84,19 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// job entered its current execution state.</param>
         /// <param name="executionInfo">Contains information about the
         /// execution of a job in the Azure Batch service.</param>
-        public JobInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string experimentName = default(string), int? priority = default(int?), ResourceId cluster = default(ResourceId), int? nodeCount = default(int?), ContainerSettings containerSettings = default(ContainerSettings), string toolType = default(string), CNTKsettings cntkSettings = default(CNTKsettings), TensorFlowSettings tensorFlowSettings = default(TensorFlowSettings), CaffeSettings caffeSettings = default(CaffeSettings), ChainerSettings chainerSettings = default(ChainerSettings), CustomToolkitSettings customToolkitSettings = default(CustomToolkitSettings), JobPreparation jobPreparation = default(JobPreparation), string stdOutErrPathPrefix = default(string), IList<InputDirectory> inputDirectories = default(IList<InputDirectory>), IList<OutputDirectory> outputDirectories = default(IList<OutputDirectory>), IList<EnvironmentSetting> environmentVariables = default(IList<EnvironmentSetting>), JobPropertiesConstraints constraints = default(JobPropertiesConstraints), System.DateTime? creationTime = default(System.DateTime?), ProvisioningState provisioningState = default(ProvisioningState), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), ExecutionState? executionState = default(ExecutionState?), System.DateTime? executionStateTransitionTime = default(System.DateTime?), JobPropertiesExecutionInfo executionInfo = default(JobPropertiesExecutionInfo))
+        public JobInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string experimentName = default(string), int? priority = default(int?), ResourceId cluster = default(ResourceId), MountVolumes mountVolumes = default(MountVolumes), string jobOutputDirectoryPathSegment = default(string), int? nodeCount = default(int?), ContainerSettings containerSettings = default(ContainerSettings), string toolType = default(string), CNTKsettings cntkSettings = default(CNTKsettings), PyTorchSettings pyTorchSettings = default(PyTorchSettings), TensorFlowSettings tensorFlowSettings = default(TensorFlowSettings), CaffeSettings caffeSettings = default(CaffeSettings), ChainerSettings chainerSettings = default(ChainerSettings), CustomToolkitSettings customToolkitSettings = default(CustomToolkitSettings), JobPreparation jobPreparation = default(JobPreparation), string stdOutErrPathPrefix = default(string), IList<InputDirectory> inputDirectories = default(IList<InputDirectory>), IList<OutputDirectory> outputDirectories = default(IList<OutputDirectory>), IList<EnvironmentVariable> environmentVariables = default(IList<EnvironmentVariable>), IList<EnvironmentVariableWithSecretValue> secrets = default(IList<EnvironmentVariableWithSecretValue>), JobPropertiesConstraints constraints = default(JobPropertiesConstraints), System.DateTime? creationTime = default(System.DateTime?), ProvisioningState provisioningState = default(ProvisioningState), System.DateTime? provisioningStateTransitionTime = default(System.DateTime?), ExecutionState? executionState = default(ExecutionState?), System.DateTime? executionStateTransitionTime = default(System.DateTime?), JobPropertiesExecutionInfo executionInfo = default(JobPropertiesExecutionInfo))
             : base(location, id, name, type, tags)
         {
             ExperimentName = experimentName;
             Priority = priority;
             Cluster = cluster;
+            MountVolumes = mountVolumes;
+            JobOutputDirectoryPathSegment = jobOutputDirectoryPathSegment;
             NodeCount = nodeCount;
             ContainerSettings = containerSettings;
             ToolType = toolType;
             CntkSettings = cntkSettings;
+            PyTorchSettings = pyTorchSettings;
             TensorFlowSettings = tensorFlowSettings;
             CaffeSettings = caffeSettings;
             ChainerSettings = chainerSettings;
@@ -95,6 +106,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
             InputDirectories = inputDirectories;
             OutputDirectories = outputDirectories;
             EnvironmentVariables = environmentVariables;
+            Secrets = secrets;
             Constraints = constraints;
             CreationTime = creationTime;
             ProvisioningState = provisioningState;
@@ -135,6 +147,31 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         public ResourceId Cluster { get; set; }
 
         /// <summary>
+        /// Gets or sets information on mount volumes to be used by the job.
+        /// </summary>
+        /// <remarks>
+        /// These volumes will be mounted before the job execution and will be
+        /// unmouted after the job completion. The volumes will be mounted at
+        /// location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment
+        /// variable.
+        /// </remarks>
+        [JsonProperty(PropertyName = "properties.mountVolumes")]
+        public MountVolumes MountVolumes { get; set; }
+
+        /// <summary>
+        /// Gets or sets a segment of job's output directories path created by
+        /// BatchAI.
+        /// </summary>
+        /// <remarks>
+        /// Batch AI creates job's output directories under an unique path to
+        /// avoid conflicts between jobs. This value contains a path segment
+        /// generated by Batch AI to make the path unique and can be used to
+        /// find the output directory on the node or mounted filesystem.
+        /// </remarks>
+        [JsonProperty(PropertyName = "properties.jobOutputDirectoryPathSegment")]
+        public string JobOutputDirectoryPathSegment { get; set; }
+
+        /// <summary>
         /// Gets or sets number of compute nodes to run the job on.
         /// </summary>
         /// <remarks>
@@ -160,8 +197,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// </summary>
         /// <remarks>
         /// Possible values are: cntk, tensorflow, caffe, caffe2, chainer,
-        /// custom. Possible values include: 'cntk', 'tensorflow', 'caffe',
-        /// 'caffe2', 'chainer', 'custom'
+        /// pytorch, custom. Possible values include: 'cntk', 'tensorflow',
+        /// 'caffe', 'caffe2', 'chainer', 'custom'
         /// </remarks>
         [JsonProperty(PropertyName = "properties.toolType")]
         public string ToolType { get; set; }
@@ -172,6 +209,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.cntkSettings")]
         public CNTKsettings CntkSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the settings for pyTorch job.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.pyTorchSettings")]
+        public PyTorchSettings PyTorchSettings { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the settings for Tensor Flow job.
@@ -223,24 +266,31 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 
         /// <summary>
         /// Gets or sets specifies the list of output directories where the
-        /// models will be created. .
+        /// models will be created.
         /// </summary>
         [JsonProperty(PropertyName = "properties.outputDirectories")]
         public IList<OutputDirectory> OutputDirectories { get; set; }
 
         /// <summary>
-        /// Gets or sets additional environment variables to be passed to the
-        /// job.
+        /// Gets or sets additional environment variables to set on the job.
         /// </summary>
         /// <remarks>
-        /// Batch AI services sets the following environment variables for all
-        /// jobs: AZ_BATCHAI_INPUT_id, AZ_BATCHAI_OUTPUT_id,
-        /// AZ_BATCHAI_NUM_GPUS_PER_NODE, For distributed TensorFlow jobs,
-        /// following additional environment variables are set by the Batch AI
-        /// Service: AZ_BATCHAI_PS_HOSTS, AZ_BATCHAI_WORKER_HOSTS.
+        /// Batch AI will setup these additional environment variables for the
+        /// job.
         /// </remarks>
         [JsonProperty(PropertyName = "properties.environmentVariables")]
-        public IList<EnvironmentSetting> EnvironmentVariables { get; set; }
+        public IList<EnvironmentVariable> EnvironmentVariables { get; set; }
+
+        /// <summary>
+        /// Gets or sets additional environment variables with secret values to
+        /// set on the job.
+        /// </summary>
+        /// <remarks>
+        /// Batch AI will setup these additional environment variables for the
+        /// job. Server will never report values of these variables back.
+        /// </remarks>
+        [JsonProperty(PropertyName = "properties.secrets")]
+        public IList<EnvironmentVariableWithSecretValue> Secrets { get; set; }
 
         /// <summary>
         /// Gets or sets constraints associated with the Job.
@@ -328,6 +378,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
             {
                 ContainerSettings.Validate();
             }
+            if (PyTorchSettings != null)
+            {
+                PyTorchSettings.Validate();
+            }
             if (TensorFlowSettings != null)
             {
                 TensorFlowSettings.Validate();
@@ -369,6 +423,20 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
                         element2.Validate();
                     }
                 }
+            }
+            if (Secrets != null)
+            {
+                foreach (var element3 in Secrets)
+                {
+                    if (element3 != null)
+                    {
+                        element3.Validate();
+                    }
+                }
+            }
+            if (ExecutionInfo != null)
+            {
+                ExecutionInfo.Validate();
             }
         }
     }
