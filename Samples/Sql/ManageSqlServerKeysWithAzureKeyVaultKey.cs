@@ -1,21 +1,34 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.KeyVault.Fluent.Models;
 using Microsoft.Azure.Management.Network.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Samples.Common;
 using Microsoft.Azure.Management.Sql.Fluent;
 using Microsoft.Azure.Management.Sql.Fluent.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace ManageSqlServerKeysWithAzureKeyVaultKey
 {
     public class Program
+
     {
+        private static string Azure_SP_ClientId;
+        private static string Azure_SP_Secret;
+
         private static readonly string sqlServerName = SdkContext.RandomResourceName("sqlserver", 20);
         private static readonly string rgName = SdkContext.RandomResourceName("rgsql", 20);
         private static readonly string dbName = "dbSample";
@@ -31,7 +44,7 @@ namespace ManageSqlServerKeysWithAzureKeyVaultKey
          *  - Create, get, list and delete SQL Server Keys
          *  - Delete SQL Server
          */
-        public static void RunSample(IAzure azure, string objectId)
+        public static void RunSample(IAzure azure)
         {
             try
             {
@@ -52,7 +65,11 @@ namespace ManageSqlServerKeysWithAzureKeyVaultKey
                 // ============================================================
                 // Create an Azure Key Vault and set the access policies.
                 Utilities.Log("Creating an Azure Key Vault and set the access policies");
-
+                InitializeCredentials(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
+                if (Azure_SP_ClientId == null || Azure_SP_Secret == null)
+                {
+                    throw new ArgumentNullException("Missing Client ID and Secret");
+                }
                 var vault = azure.Vaults.Define(vaultName)
                     .WithRegion(Region.USSouthCentral)
                     .WithExistingResourceGroup(rgName)
@@ -61,26 +78,22 @@ namespace ManageSqlServerKeysWithAzureKeyVaultKey
                         .AllowKeyPermissions(KeyPermissions.WrapKey, KeyPermissions.UnwrapKey, KeyPermissions.Get, KeyPermissions.List)
                         .Attach()
                     .DefineAccessPolicy()
-                        .ForServicePrincipal(objectId)
+                        .ForServicePrincipal(Azure_SP_ClientId)
                         .AllowKeyAllPermissions()
                         .Attach()
                     .Create();
 
                 SdkContext.DelayProvider.Delay(3 * 60 * 1000);
 
-                // Work around to Vault key APIs
-                string keyUri = "https://YourVaultName.Vault.Azure.Net/keys/YourKeyName/01234567890123456789012345678901";
-                
-                //var keyBundle = vault.Keys.Define(keyName)
-                //    .WithKeyTypeToCreate(JsonWebKeyType.Rsa)
-                //    .WithKeyOperations(JsonWebKeyOperation.AllOperations)
-                //    .Create();
+                // ============================================================
+                // Create a SQL server key with Azure Key Vault key.
+                Utilities.Log("Creating a SQL server key with Azure Key Vault key");
 
-                //// ============================================================
-                //// Create a SQL server key with Azure Key Vault key.
-                //Utilities.Log("Creating a SQL server key with Azure Key Vault key");
+                KeyVaultClient kvClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(GetToken));
+                var keyBundle = kvClient.CreateKeyAsync(vault.VaultUri, keyName, JsonWebKeyType.Rsa,
+                    keyOps: JsonWebKeyOperation.AllOperations).GetAwaiter().GetResult();
 
-                //keyUri = keyBundle.JsonWebKey().kid();
+                string keyUri = keyBundle.Key.Kid;
 
                 // Work around for SQL server key name must be formatted as "vault_key_version"
                 string serverKeyName = $"{vaultName}_{keyName}_" +
@@ -134,6 +147,7 @@ namespace ManageSqlServerKeysWithAzureKeyVaultKey
                 }
             }
         }
+
         public static void Main(string[] args)
         {
             try
@@ -151,12 +165,98 @@ namespace ManageSqlServerKeysWithAzureKeyVaultKey
                 // Print selected subscription
                 Utilities.Log("Selected subscription: " + azure.SubscriptionId);
 
-                RunSample(azure, credentials.ClientId);
+
+                RunSample(azure);
             }
             catch (Exception e)
             {
                 Utilities.Log(e.ToString());
             }
         }
+
+        //the method that will be provided to the KeyVaultClient
+        public static async Task<string> GetToken(string authority, string resource, string scope)
+        {
+            //=================================================================
+            // Authenticate
+            var authContext = new AuthenticationContext(authority);
+            ClientCredential clientCred = new ClientCredential(Azure_SP_ClientId, Azure_SP_Secret);
+            AuthenticationResult result = await authContext.AcquireTokenAsync(resource, clientCred);
+
+            if (result == null)
+                throw new InvalidOperationException("Failed to obtain the JWT token");
+
+            return result.AccessToken;
+        }
+
+        public static void InitializeCredentials(string authFile)
+        {
+            var config = new Dictionary<string, string>()
+            {
+                { "authurl", AzureEnvironment.AzureGlobalCloud.AuthenticationEndpoint },
+                { "baseurl", AzureEnvironment.AzureGlobalCloud.ResourceManagerEndpoint },
+                { "managementuri", AzureEnvironment.AzureGlobalCloud.ManagementEndpoint },
+                { "graphurl", AzureEnvironment.AzureGlobalCloud.GraphEndpoint }
+            };
+
+            var lines = File.ReadLines(authFile);
+            if (lines.First().Trim().StartsWith("{"))
+            {
+                string json = string.Join("", lines);
+                AuthFile jsonConfig = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<AuthFile>(json);
+                jsonConfig.GetType()
+                    .GetFields(BindingFlags.Instance | BindingFlags.NonPublic)
+                    .ToList()
+                    .ForEach(info => config[info.Name] = (string)info.GetValue(jsonConfig));
+            }
+            else
+            {
+                lines.All(line =>
+                {
+                    if (line.Trim().StartsWith("#"))
+                        return true; // Ignore comments
+                    var keyVal = line.Trim().Split(new char[] { '=' }, 2);
+                    if (keyVal.Length < 2)
+                        return true; // Ignore lines that don't look like $$$=$$$
+                    config[keyVal[0].ToLowerInvariant()] = keyVal[1];
+                    return true;
+                });
+            }
+            Azure_SP_ClientId = config["client"];
+            Azure_SP_Secret = config["key"];
+        }
+        private class AuthFile
+        {
+            [JsonProperty("clientId")]
+            private string client;
+
+            [JsonProperty("tenantId")]
+            private string tenant;
+
+            [JsonProperty("clientSecret")]
+            private string key;
+
+            [JsonProperty("clientCertificate")]
+            private string certificate;
+
+            [JsonProperty("clientCertificatePassword")]
+            private string certificatepassword;
+
+            [JsonProperty("subscriptionId")]
+            private string subscription;
+
+            [JsonProperty("activeDirectoryEndpointUrl")]
+            private string authurl;
+
+            [JsonProperty("resourceManagerEndpointUrl")]
+            private string baseurl;
+
+            [JsonProperty("managementEndpointUrl")]
+            private string managementuri;
+
+            [JsonProperty("activeDirectoryGraphResourceId")]
+            private string graphurl;
+        }
+
     }
 }

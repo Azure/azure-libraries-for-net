@@ -133,7 +133,7 @@ namespace Samples.Tests
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 var rollUpClient = TestHelper.CreateRollupClient();
-                ManageSqlServerKeysWithAzureKeyVaultKey.Program.RunSample(rollUpClient, "ObjectId");
+                ManageSqlServerKeysWithAzureKeyVaultKey.Program.RunSample(rollUpClient);
             }
         }
 
