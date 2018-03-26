@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:4D03AEE57198D17CD3696CC56B467F2B:C53E1C1BD65826C0F9A2EF5BCBD283F4
         public UnmanagedDataDiskImpl FromImage(int imageLun)
         {
-            Inner.CreateOption = DiskCreateOptionTypes.FromImage;
+            Inner.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
             Inner.Lun = imageLun;
             return this;
         }
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:5989C68B78A7796C5344EB1BA406F61C:CAE3210BD862043FDDDDDCEA6F38692E
         public UnmanagedDataDiskImpl WithExistingVhd(string storageAccountName, string containerName, string vhdName)
         {
-            Inner.CreateOption = DiskCreateOptionTypes.Attach;
+            Inner.CreateOption = DiskCreateOptionTypes.Attach.ToString();
             Inner.Vhd = new VirtualHardDisk();
             Inner.Vhd.Uri = BlobUrl(storageAccountName, containerName, vhdName);
             return this;
@@ -168,7 +168,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:D85E911348B4AD36294F154A7C700412:BFD5BBE75FF2933909C9A5EE4D96DB28
         public DiskCreateOptionTypes CreationMethod()
         {
-            return Inner.CreateOption;
+            if (Inner.CreateOption == null)
+            {
+                return null;
+            }
+            return DiskCreateOptionTypes.Parse(Inner.CreateOption);
         }
 
         ///GENMHASH:C7091D00973B3F300E66AD6FC3B9988D:54AEB1FA4318E2287B56DE751B25DB84
@@ -234,7 +238,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:6D0A07B7BA2CC9D76E93E7DDD3FCD168:F0DBEF25393BFAD18455A742CA0EFE14
         public UnmanagedDataDiskImpl WithNewVhd(int sizeInGB)
         {
-            Inner.CreateOption = DiskCreateOptionTypes.Empty;
+            Inner.CreateOption = DiskCreateOptionTypes.Empty.ToString();
             Inner.DiskSizeGB = sizeInGB;
             return this;
         }

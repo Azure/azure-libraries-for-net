@@ -55,7 +55,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the resource group.
         /// </param>
         /// <param name='diskName'>
-        /// The name of the disk within the given subscription and resource group.
+        /// The name of the managed disk that is being created. The name can't be
+        /// changed after the disk is created. Supported characters for the name are
+        /// a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
         /// </param>
         /// <param name='disk'>
         /// Disk object supplied in the body of the Put disk operation.
@@ -80,7 +82,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the resource group.
         /// </param>
         /// <param name='diskName'>
-        /// The name of the disk within the given subscription and resource group.
+        /// The name of the managed disk that is being created. The name can't be
+        /// changed after the disk is created. Supported characters for the name are
+        /// a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
         /// </param>
         /// <param name='disk'>
         /// Disk object supplied in the body of the Patch disk operation.
@@ -105,7 +109,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the resource group.
         /// </param>
         /// <param name='diskName'>
-        /// The name of the disk within the given subscription and resource group.
+        /// The name of the managed disk that is being created. The name can't be
+        /// changed after the disk is created. Supported characters for the name are
+        /// a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -142,7 +148,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "diskName");
             }
-            string apiVersion = "2017-03-30";
+            string apiVersion = "2018-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -193,7 +199,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -231,7 +237,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -299,7 +305,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the resource group.
         /// </param>
         /// <param name='diskName'>
-        /// The name of the disk within the given subscription and resource group.
+        /// The name of the managed disk that is being created. The name can't be
+        /// changed after the disk is created. Supported characters for the name are
+        /// a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -351,7 +359,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
-            string apiVersion = "2017-03-30";
+            string apiVersion = "2018-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -400,7 +408,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -438,7 +446,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -529,7 +537,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2017-03-30";
+            string apiVersion = "2018-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -576,7 +584,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -614,7 +622,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -682,7 +690,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the resource group.
         /// </param>
         /// <param name='diskName'>
-        /// The name of the disk within the given subscription and resource group.
+        /// The name of the managed disk that is being created. The name can't be
+        /// changed after the disk is created. Supported characters for the name are
+        /// a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
         /// </param>
         /// <param name='grantAccessData'>
         /// Access data object supplied in the body of the get disk access operation.
@@ -707,7 +717,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the resource group.
         /// </param>
         /// <param name='diskName'>
-        /// The name of the disk within the given subscription and resource group.
+        /// The name of the managed disk that is being created. The name can't be
+        /// changed after the disk is created. Supported characters for the name are
+        /// a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -729,7 +741,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the resource group.
         /// </param>
         /// <param name='diskName'>
-        /// The name of the disk within the given subscription and resource group.
+        /// The name of the managed disk that is being created. The name can't be
+        /// changed after the disk is created. Supported characters for the name are
+        /// a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
         /// </param>
         /// <param name='disk'>
         /// Disk object supplied in the body of the Put disk operation.
@@ -777,7 +791,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 disk.Validate();
             }
-            string apiVersion = "2017-03-30";
+            string apiVersion = "2018-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -829,7 +843,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -841,11 +855,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (disk != null)
+            if(disk != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(disk, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -873,7 +887,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -959,7 +973,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the resource group.
         /// </param>
         /// <param name='diskName'>
-        /// The name of the disk within the given subscription and resource group.
+        /// The name of the managed disk that is being created. The name can't be
+        /// changed after the disk is created. Supported characters for the name are
+        /// a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
         /// </param>
         /// <param name='disk'>
         /// Disk object supplied in the body of the Patch disk operation.
@@ -1003,7 +1019,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "disk");
             }
-            string apiVersion = "2017-03-30";
+            string apiVersion = "2018-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1055,7 +1071,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1067,11 +1083,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (disk != null)
+            if(disk != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(disk, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -1099,7 +1115,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -1185,7 +1201,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the resource group.
         /// </param>
         /// <param name='diskName'>
-        /// The name of the disk within the given subscription and resource group.
+        /// The name of the managed disk that is being created. The name can't be
+        /// changed after the disk is created. Supported characters for the name are
+        /// a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1222,7 +1240,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "diskName");
             }
-            string apiVersion = "2017-03-30";
+            string apiVersion = "2018-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1273,7 +1291,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1311,7 +1329,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -1379,7 +1397,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the resource group.
         /// </param>
         /// <param name='diskName'>
-        /// The name of the disk within the given subscription and resource group.
+        /// The name of the managed disk that is being created. The name can't be
+        /// changed after the disk is created. Supported characters for the name are
+        /// a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
         /// </param>
         /// <param name='grantAccessData'>
         /// Access data object supplied in the body of the get disk access operation.
@@ -1427,7 +1447,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 grantAccessData.Validate();
             }
-            string apiVersion = "2017-03-30";
+            string apiVersion = "2018-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1479,7 +1499,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1491,11 +1511,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             // Serialize Request
             string _requestContent = null;
-            if (grantAccessData != null)
+            if(grantAccessData != null)
             {
                 _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(grantAccessData, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (Client.Credentials != null)
@@ -1523,7 +1543,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -1591,7 +1611,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// The name of the resource group.
         /// </param>
         /// <param name='diskName'>
-        /// The name of the disk within the given subscription and resource group.
+        /// The name of the managed disk that is being created. The name can't be
+        /// changed after the disk is created. Supported characters for the name are
+        /// a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1628,7 +1650,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "diskName");
             }
-            string apiVersion = "2017-03-30";
+            string apiVersion = "2018-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1679,7 +1701,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1717,7 +1739,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -1852,7 +1874,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -1890,7 +1912,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);
@@ -2025,7 +2047,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -2063,7 +2085,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new CloudException(_errorBody.Message);

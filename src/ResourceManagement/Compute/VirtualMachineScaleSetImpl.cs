@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             userImageVhd.Uri = imageUrl;
             Inner
                     .VirtualMachineProfile
-                    .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
+                    .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
             Inner
                     .VirtualMachineProfile
                     .StorageProfile.OsDisk.Image = userImageVhd;
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner
                 .VirtualMachineProfile
-                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
+                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
             Inner
                 .VirtualMachineProfile
                 .StorageProfile.ImageReference = imageReference.Inner;
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:B97D8C3B1AC557A077AC173B1DB0B348:4CD85EE98AD4F7CBC33994D722986AE5
         private bool IsOSDiskFromImage(VirtualMachineScaleSetOSDisk osDisk)
         {
-            return osDisk.CreateOption == DiskCreateOptionTypes.FromImage;
+            return osDisk.CreateOption == DiskCreateOptionTypes.FromImage.ToString();
         }
 
         ///GENMHASH:062EA8E95730159A684C56D3DFCB4846:2E75CE480B794ADCA106E649FAD94DB6
@@ -645,21 +645,37 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this.bootDiagnosticsHandler.BootDiagnosticsStorageUri();
         }
 
+        ///GENMHASH:C5E4011AAE57A5F6132092A4B8B874FF:36531E34809D3A8C9FAE365A128266D5
+        public VirtualMachinePriorityTypes VirtualMachinePriority()
+        {
+            if (this.Inner.VirtualMachineProfile != null && this.Inner.VirtualMachineProfile.Priority != null)
+            {
+                return VirtualMachinePriorityTypes.Parse(this.Inner.VirtualMachineProfile.Priority);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         ///GENMHASH:02A68214692E8DA4CC34E5FE55E3C918:150375C199EA874367AE081B87D5F2FD
-        public StorageAccountTypes? ManagedOSDiskStorageAccountType()
+        public StorageAccountTypes ManagedOSDiskStorageAccountType()
         {
             if (this.Inner.VirtualMachineProfile != null
                 && this.Inner.VirtualMachineProfile.StorageProfile != null
                 && this.Inner.VirtualMachineProfile.StorageProfile.OsDisk != null
                 && this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk != null)
             {
-                return this.Inner
+               var accountType = this.Inner
                 .VirtualMachineProfile
                 .StorageProfile
                 .OsDisk
                 .ManagedDisk
                 .StorageAccountType;
+                if (accountType != null)
+                {
+                    return StorageAccountTypes.Parse(accountType);
+                }
             }
             return null;
         }
@@ -1063,7 +1079,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineScaleSetImpl WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
             VirtualMachineScaleSetManagedDiskParameters managedDiskParameters = new VirtualMachineScaleSetManagedDiskParameters();
-            managedDiskParameters.StorageAccountType = storageAccountType;
+            managedDiskParameters.StorageAccountType = storageAccountType.ToString();
             this.managedDataDisks.newDisksFromImage.Add(new VirtualMachineScaleSetDataDisk()
             {
                 Lun = imageLun,
@@ -1137,7 +1153,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             imageReferenceInner.Id = customImageId;
             Inner
                 .VirtualMachineProfile
-                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
+                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
             Inner
                 .VirtualMachineProfile
                 .StorageProfile.ImageReference = imageReferenceInner;
@@ -1164,7 +1180,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     .OsDisk
                     .ManagedDisk = new VirtualMachineScaleSetManagedDiskParameters
                     {
-                        StorageAccountType = accountType
+                        StorageAccountType = accountType.ToString()
                     };
             return this;
         }
@@ -1212,7 +1228,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             imageReferenceInner.Id = customImageId;
             Inner
                 .VirtualMachineProfile
-                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
+                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
             Inner
                 .VirtualMachineProfile
                 .StorageProfile.ImageReference = imageReferenceInner;
@@ -1395,7 +1411,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     if (osDisk.ManagedDisk.StorageAccountType == null)
                     {
                         osDisk.ManagedDisk
-                            .StorageAccountType = StorageAccountTypes.StandardLRS;
+                            .StorageAccountType = StorageAccountTypes.StandardLRS.ToString();
                     }
                     osDisk.VhdContainers = null;
                     // We won't set osDisk.Name() explicitly for managed disk, if it is null CRP generates unique
@@ -1540,7 +1556,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             userImageVhd.Uri = imageUrl;
             Inner
                 .VirtualMachineProfile
-                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
+                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
             Inner
                 .VirtualMachineProfile
                 .StorageProfile.OsDisk.Image = userImageVhd;
@@ -1623,7 +1639,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner
                 .VirtualMachineProfile
-                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
+                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
             Inner
                 .VirtualMachineProfile
                 .StorageProfile.ImageReference = imageReference.Inner;
@@ -2210,7 +2226,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             ThrowIfManagedDiskDisabled(ManagedUnmanagedDiskErrors.VMSS_Both_Unmanaged_And_Managed_Disk_Not_Aallowed);
             VirtualMachineScaleSetManagedDiskParameters managedDiskParameters = new VirtualMachineScaleSetManagedDiskParameters();
-            managedDiskParameters.StorageAccountType = storageAccountType;
+            managedDiskParameters.StorageAccountType = storageAccountType.ToString();
             this.managedDataDisks.implicitDisksToAssociate.Add(new VirtualMachineScaleSetDataDisk()
             {
                 Lun = lun,
@@ -2307,6 +2323,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        ///GENMHASH:6519A067F8EC19017417E77E98CBFAB4:29848F9AE1C8DDE847A8C3F172BFE8CE
+        public VirtualMachineScaleSetImpl WithVirtualMachinePriority(VirtualMachinePriorityTypes priority)
+        {
+            this.Inner.VirtualMachineProfile.Priority = priority.ToString();
+            return this;
+        }
+
         ///GENMHASH:9C4A541B9A2E22540116BFA125189F57:2F8856B5F0BA5E1B741D68C6CED48D9A
         public VirtualMachineScaleSetImpl WithoutDataDisk(int lun)
         {
@@ -2364,7 +2387,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             public IList<Models.VirtualMachineScaleSetDataDisk> newDisksFromImage;
             private VirtualMachineScaleSetImpl vmss;
             private CachingTypes? defaultCachingType;
-            private StorageAccountTypes? defaultStorageAccountType;
+            private StorageAccountTypes defaultStorageAccountType;
 
             internal ManagedDataDiskCollection(VirtualMachineScaleSetImpl vmss)
             {
@@ -2469,7 +2492,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 var dataDisks = storageProfile.DataDisks;
                 foreach (var dataDisk in this.newDisksFromImage)
                 {
-                    dataDisk.CreateOption = DiskCreateOptionTypes.FromImage;
+                    dataDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
                     // Don't set default caching type for the disk, either user has to specify it explicitly or let CRP pick
                     // it from the image
                     dataDisk.Name = null;
@@ -2517,11 +2540,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             ///GENMHASH:647794DB64052F8555CB8ABDABF9F24D:419FDCEEC4AAB55470C80A42C1D69868
             private StorageAccountTypes GetDefaultStorageAccountType()
             {
-                if (defaultStorageAccountType == null || !defaultStorageAccountType.HasValue)
+                if (defaultStorageAccountType == null)
                 {
                     return StorageAccountTypes.StandardLRS;
                 }
-                return defaultStorageAccountType.Value;
+                return defaultStorageAccountType;
             }
 
             ///GENMHASH:0E80C978BE389A20F8B9BDDCBC308EBF:0EC63377965A94AB9FD183B5A71C65E2
@@ -2534,7 +2557,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 var dataDisks = storageProfile.DataDisks;
                 foreach (var dataDisk in this.implicitDisksToAssociate)
                 {
-                    dataDisk.CreateOption = DiskCreateOptionTypes.Empty;
+                    dataDisk.CreateOption = DiskCreateOptionTypes.Empty.ToString();
                     if (dataDisk.Lun == -1)
                     {
                         dataDisk.Lun = nextLun();
@@ -2549,7 +2572,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     }
                     if (dataDisk.ManagedDisk.StorageAccountType == null)
                     {
-                        dataDisk.ManagedDisk.StorageAccountType = GetDefaultStorageAccountType();
+                        dataDisk.ManagedDisk.StorageAccountType = GetDefaultStorageAccountType().ToString();
                     }
                     dataDisk.Name = null;
                     dataDisks.Add(dataDisk);

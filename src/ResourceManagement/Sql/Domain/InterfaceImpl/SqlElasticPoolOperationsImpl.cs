@@ -220,6 +220,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Asynchronously gets the information about a child resource from Azure SQL server, identifying it by its name and its resource group.
+        /// </summary>
+        /// <param name="sqlServer">The SQL server parent resource.</param>
+        /// <param name="name">The name of the child resource.</param>
+        /// <return>A representation of the deferred computation of this call returning the found resource.</return>
+        async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.GetBySqlServerAsync(ISqlServer sqlServer, string name, CancellationToken cancellationToken)
+        {
+            return await this.GetBySqlServerAsync(sqlServer, name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+        }
+
+        /// <summary>
         /// Gets the information about a child resource from Azure SQL server using the resource ID.
         /// </summary>
         /// <param name="id">The ID of the resource.</param>
@@ -249,6 +260,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.ListBySqlServerAsync(string resourceGroupName, string sqlServerName, CancellationToken cancellationToken)
         {
             return await this.ListBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken) as IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>;
+        }
+
+        /// <summary>
+        /// Asynchronously lists Azure SQL child resources of the specified Azure SQL server in the specified resource group.
+        /// </summary>
+        /// <param name="sqlServer">The parent Azure SQL server.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.ListBySqlServerAsync(ISqlServer sqlServer, CancellationToken cancellationToken)
+        {
+            return await this.ListBySqlServerAsync(sqlServer, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>;
         }
 
         /// <summary>

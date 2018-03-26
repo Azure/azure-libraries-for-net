@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition
     using Microsoft.Azure.Management.Sql.Fluent.SqlElasticPool.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.Storage.Fluent;
+    using System;
 
     /// <summary>
     /// The SQL Database definition to set a restorable dropped database as the source database.
@@ -200,7 +201,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition
     /// specify.
     /// </summary>
     public interface IWithCreateFinal  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<IWithCreateFinal>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateFinal>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>
     {
     }
@@ -380,6 +381,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition
         /// <param name="restorePoint">The restore point.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions FromRestorePoint(IRestorePoint restorePoint);
+
+        /// <summary>
+        /// Creates a new database from a restore point.
+        /// </summary>
+        /// <param name="restorePoint">The restore point.</param>
+        /// <param name="restorePointDateTime">Date and time to restore from.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateAfterElasticPoolOptions FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime);
     }
 
     /// <summary>
@@ -564,6 +573,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition
         /// <param name="restorePoint">The restore point.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateAllOptions FromRestorePoint(IRestorePoint restorePoint);
+
+        /// <summary>
+        /// Creates a new database from a restore point.
+        /// </summary>
+        /// <param name="restorePoint">The restore point.</param>
+        /// <param name="restorePointDateTime">Date and time to restore from.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Sql.Fluent.SqlDatabaseOperations.Definition.IWithCreateAllOptions FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime);
     }
 
     /// <summary>

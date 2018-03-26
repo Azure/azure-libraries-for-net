@@ -286,6 +286,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        ///GENMHASH:537F29E79A7364F3A35685DEF6DBCFD5:A76B36D8B51C491169876CE58CACE9B2
+        public VirtualMachineCustomImageImpl WithZoneResilient()
+        {
+            if (Inner.StorageProfile == null)
+            {
+                Inner.StorageProfile = new ImageStorageProfile();
+            }
+            Inner.StorageProfile.ZoneResilient = true;
+            return this;
+        }
+
         ///GENMHASH:317134690AC492A13AB6664204ABFD95:2CD52FED9DD80D3ACA7A05FE17CBFC89
         public VirtualMachineCustomImageImpl WithLinuxFromSnapshot(ISnapshot sourceSnapshot, OperatingSystemStateTypes osState)
         {

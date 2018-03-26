@@ -67,7 +67,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="resourceGroupName">The name of the resource group to list the resources from.</param>
         /// <param name="sqlServerName">The name of parent Azure SQL server.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        Task<IReadOnlyList<T>> ListBySqlServerAsync(string resourceGroupName, string sqlServerName, CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IReadOnlyList<T>> ListBySqlServerAsync(string resourceGroupName, string sqlServerName, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Asynchronously lists Azure SQL child resources of the specified Azure SQL server in the specified resource group.
+        /// </summary>
+        /// <param name="sqlServer">The parent Azure SQL server.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        Task<System.Collections.Generic.IReadOnlyList<T>> ListBySqlServerAsync(ISqlServer sqlServer, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Asynchronously gets the information about a child resource from Azure SQL server using the resource ID.
@@ -84,6 +91,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="name">The name of the child resource.</param>
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         Task<T> GetBySqlServerAsync(string resourceGroupName, string sqlServerName, string name, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Asynchronously gets the information about a child resource from Azure SQL server, identifying it by its name and its resource group.
+        /// </summary>
+        /// <param name="sqlServer">The SQL server parent resource.</param>
+        /// <param name="name">The name of the child resource.</param>
+        /// <return>A representation of the deferred computation of this call returning the found resource.</return>
+        Task<T> GetBySqlServerAsync(ISqlServer sqlServer, string name, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes a child resource from Azure SQL server, identifying it by its name and its resource group.

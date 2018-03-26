@@ -61,11 +61,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Gets the snapshot SKU type.
         /// </summary>
+        [System.Obsolete("Sku getter is deprecated use ISnapshot.SkuType instead.")]
         Models.DiskSkuTypes Sku { get; }
 
         /// <summary>
         /// Gets the snapshot creation method.
         /// </summary>
         Models.DiskCreateOption CreationMethod { get; }
+
+        /// <summary>
+        /// Gets the snapshot SKU type.
+        /// </summary>
+        Microsoft.Azure.Management.Compute.Fluent.SnapshotSkuType SkuType { get; }
     }
 }

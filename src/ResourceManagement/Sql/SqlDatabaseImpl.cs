@@ -40,19 +40,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         SqlDatabase.Definition.IWithExistingDatabaseAfterElasticPool<SqlServer.Definition.IWithCreate>,
         SqlDatabase.Definition.IWithStorageKeyAfterElasticPool<SqlServer.Definition.IWithCreate>,
         SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlServer.Definition.IWithCreate>,
-        SqlDatabase.Definition.IWithRestorePointDatabaseAfterElasticPool<SqlServer.Definition.IWithCreate>,
         IUpdate,
         SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool,
         SqlDatabaseOperations.Definition.IWithStorageKeyAfterElasticPool,
         SqlDatabaseOperations.Definition.IWithAuthenticationAfterElasticPool,
-        SqlDatabaseOperations.Definition.IWithRestorePointDatabaseAfterElasticPool,
         IWithCreateAfterElasticPoolOptions,
         ISqlDatabaseOperationsDefinition
     {
-        protected ISqlManager sqlServerManager;
-        protected string resourceGroupName;
-        protected string sqlServerName;
-        protected string sqlServerLocation;
+        internal ISqlManager sqlServerManager;
+        internal string resourceGroupName;
+        internal string sqlServerName;
+        internal string sqlServerLocation;
         private SqlElasticPoolImpl parentSqlElasticPool;
         ICreatable<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> sqlElasticPoolCreatable;
         private bool isPatchUpdate;
@@ -159,6 +157,12 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return this;
         }
 
+        ///GENMHASH:376C162D9E950FA8A14B198790B45E34:5BF104F4489A5E42BAC27A2492EFC800
+        public IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric> ListUsageMetrics()
+        {
+            return Extensions.Synchronize(() => this.ListUsageMetricsAsync());
+        }
+
         ///GENMHASH:D2C5B9B5EC8B12A40F6CC3A999383810:AA70F16BA24A6FB5F01832A54902603A
         public Guid? CurrentServiceObjectiveId()
         {
@@ -205,6 +209,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return this;
         }
 
+        ///GENMHASH:B793713C1E6696E957FDFDD58A692C32:6F6FD3F1EE6142188DD9CD51E89E8125
+        public ISqlDatabaseAutomaticTuning GetDatabaseAutomaticTuning()
+        {
+            var databaseAutomaticTuningInner = Extensions.Synchronize(() => this.sqlServerManager.Inner.DatabaseAutomaticTuning
+                .GetAsync(this.resourceGroupName, this.sqlServerName, this.Name()));
+            return databaseAutomaticTuningInner != null ? new SqlDatabaseAutomaticTuningImpl(this, databaseAutomaticTuningInner) : null;
+        }
+
         ///GENMHASH:68AE3BBF06B3A5F31F06F3A6A3469188:CF334608A3F1A8CD53872D1D3F94B016
         public string DefaultSecondaryLocation()
         {
@@ -243,9 +255,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /////GENMHASH:7A9E1ACC5D9B5ED3EF93A2ABFD978F14:1F4B6D4F1D6BA088BF475B965981DC9B
         //internal void AddParentDependency(IHasTaskGroup parentDependency)
         //{
-        //    //$ this.AddDependency(parentDependency);
-        //    //$ }
-
+        //    this.AddDependency(parentDependency);
         //}
 
         ///GENMHASH:FA6C4C8AE7729C6D128F00A0883B7A82:050D474227760B6267EFCEC6085DD2B2
@@ -626,6 +636,22 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 .ImportFrom(storageAccount, containerName, fileName);
         }
 
+        ///GENMHASH:D07614EC964723EC7E563278F8FD0BE6:9903ECC9F8F5837D63A44DAA11F79C8E
+        public async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric>> ListUsageMetricsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            List<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseUsageMetric> usageMetricList = new List<ISqlDatabaseUsageMetric>();
+            var databaseUsageInners = await this.sqlServerManager.Inner.DatabaseUsages
+                .ListByDatabaseAsync(this.resourceGroupName, this.sqlServerName, this.Name(), cancellationToken);
+            if (databaseUsageInners != null)
+            {
+                foreach (var databaseUsageInner in databaseUsageInners)
+                {
+                    usageMetricList.Add(new SqlDatabaseUsageMetricImpl(databaseUsageInner));
+                }
+            }
+            return usageMetricList.AsReadOnly();
+        }
+
         ///GENMHASH:41180B8AE28244EF8581E555D8B35D2B:59963B0DFB54839D345581B895AFA980
         public string DatabaseId()
         {
@@ -732,8 +758,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             this.Inner.RequestedServiceObjectiveName = null;
             this.Inner.ElasticPoolName = parentSqlElasticPool.Name();
 
-            // future dependency tracking note
-            //$ this.AddDependency(sqlElasticPool);
+            // Future dependency tracking note
+            // this.AddDependency(sqlElasticPool);
 
             return this;
         }
@@ -742,6 +768,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricDefinition> ListMetricDefinitions()
         {
             return Extensions.Synchronize(() => this.ListMetricDefinitionsAsync());
+        }
+
+        ///GENMHASH:E5ABDAE624DDFF518B3732327DAE080E:4F48A6821129951A21572526EC7AD923
+        public async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> RenameAsync(string newDatabaseName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            ResourceId resourceId = ResourceId.FromString(this.Id());
+            String newId = $"{resourceId.Parent.Id}/databases/{newDatabaseName}";
+            await this.sqlServerManager.Inner.Databases
+                .RenameAsync(this.resourceGroupName, this.sqlServerName, this.Name(), newId, cancellationToken);
+            return await this.sqlServerManager.SqlServers.Databases
+                .GetBySqlServerAsync(this.resourceGroupName, this.sqlServerName, newDatabaseName, cancellationToken);
         }
 
         ///GENMHASH:85FBE37563F3ADEA0037149593562508:FFD4FFA925AA8688B4B8288DE2CD55F3
@@ -768,11 +805,25 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             return this;
         }
 
+        ///GENMHASH:65DFD5CF3EED2BB07512CC188E7D8F8A:668E0DBB00202029F024E9733E6C0BD2
+        public SqlDatabaseImpl FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
+        {
+            this.Inner.RestorePointInTime = restorePointDateTime;
+            return this.WithSourceDatabase(restorePoint.DatabaseId)
+                .WithMode(CreateMode.PointInTimeRestore);
+        }
+
         ///GENMHASH:7A0398C4BB6EBF42CC817EE638D40E9C:BF44555315B4D8F7DE5B31B09438FA0A
         public string ParentId()
         {
             var resourceId = ResourceId.FromString(this.Id());
             return resourceId.Parent.Id;
+        }
+
+        ///GENMHASH:75380AC1C8F8C473AF028534126AA5D4:25C18B002519A132E6FD1BDD0AAEAC82
+        public ISqlDatabase Rename(string newDatabaseName)
+        {
+            return Extensions.Synchronize(() => this.RenameAsync(newDatabaseName));
         }
 
         ///GENMHASH:7E720FDC940A2922809B9D27EFCACBCD:47BE206E881D06DAD00CE167DAE60229
@@ -1020,7 +1071,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             // Future reference when enabling the proper framework which will track dependencies 
             // This is the beginning of the update flow
-            //$ super.PrepareUpdate();
+            // super.PrepareUpdate();
             return this;
         }
 

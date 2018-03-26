@@ -1,14 +1,15 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-
-namespace Microsoft.Azure.Management.Monitor.Fluent
+namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Collections.Generic;
     /// <summary>
-    /// Defines values for EventData Property Names in the server reponse.
+    /// Defines values for EventDataPropertyName.
     /// </summary>
-    public class EventDataPropertyName : ExpandableStringEnum<EventDataPropertyName>
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuRXZlbnREYXRhUHJvcGVydHlOYW1l
+    public sealed partial class EventDataPropertyName : ExpandableStringEnum<EventDataPropertyName>
     {
         public static readonly EventDataPropertyName Authorization = Parse("authorization");
         public static readonly EventDataPropertyName Claims = Parse("claims");

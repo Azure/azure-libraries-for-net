@@ -449,13 +449,22 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ParentT> WithExternalTcpPort(int port);
 
         /// <summary>
-        /// Specifies the container's ports are available to internal clients only (other container instances within the container group).
+        /// Specifies the container's TCP ports are available to internal clients only (other container instances within the container group).
         /// Containers within a group can reach each other via localhost on the ports that they have exposed,
         /// even if those ports are not exposed externally on the group's IP address.
         /// </summary>
         /// <param name="ports">Array of TCP ports to be exposed internally.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ParentT> WithInternalPorts(params int[] ports);
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ParentT> WithInternalTcpPorts(params int[] ports);
+
+        /// <summary>
+        /// Specifies the container's UDP ports are available to internal clients only (other container instances within the container group).
+        /// Containers within a group can reach each other via localhost on the ports that they have exposed,
+        /// even if those ports are not exposed externally on the group's IP address.
+        /// </summary>
+        /// <param name="ports">Array of UDP ports to be exposed internally.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ParentT> WithInternalUdpPorts(params int[] ports);
 
         /// <summary>
         /// Specifies the container's UDP ports available to external clients.
@@ -469,13 +478,22 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ParentT> WithExternalUdpPorts(params int[] ports);
 
         /// <summary>
-        /// Specifies the container's port is available to internal clients only (other container instances within the container group).
+        /// Specifies the container's TCP port is available to internal clients only (other container instances within the container group).
         /// Containers within a group can reach each other via localhost on the ports that they have exposed,
         /// even if those ports are not exposed externally on the group's IP address.
         /// </summary>
         /// <param name="port">TCP port to be exposed internally.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ParentT> WithInternalPort(int port);
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ParentT> WithInternalTcpPort(int port);
+
+        /// <summary>
+        /// Specifies the container's UDP port is available to internal clients only (other container instances within the container group).
+        /// Containers within a group can reach each other via localhost on the ports that they have exposed,
+        /// even if those ports are not exposed externally on the group's IP address.
+        /// </summary>
+        /// <param name="port">UDP port to be exposed internally.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ParentT> WithInternalUdpPort(int port);
 
         /// <summary>
         /// Specifies the container's TCP ports available to external clients.

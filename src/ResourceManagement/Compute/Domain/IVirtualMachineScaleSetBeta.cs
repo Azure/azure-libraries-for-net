@@ -29,6 +29,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Models.ResourceIdentityType? ManagedServiceIdentityType { get; }
 
         /// <summary>
+        /// Gets the priority of virtual machines in the scale set.
+        /// </summary>
+        Models.VirtualMachinePriorityTypes VirtualMachinePriority { get; }
+
+        /// <summary>
         /// Gets true if boot diagnostics is enabled for the virtual machine scale set.
         /// </summary>
         bool IsBootDiagnosticsEnabled { get; }
@@ -42,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the storage account type of the OS managed disk. A null value will be returned if the
         /// virtual machine scale set is based on un-managed disk.
         /// </summary>
-        Models.StorageAccountTypes? ManagedOSDiskStorageAccountType { get; }
+        Models.StorageAccountTypes ManagedOSDiskStorageAccountType { get; }
 
         /// <summary>
         /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory service principal ID

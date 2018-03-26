@@ -6,6 +6,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.Sql.Fluent.SqlServer.Definition;
     using Microsoft.Azure.Management.Sql.Fluent.Models;
+    using System.Threading.Tasks;
+    using System.Threading;
 
     internal partial class SqlServersImpl 
     {
@@ -26,6 +28,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         SqlServer.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<SqlServer.Definition.IBlank>.Define(string name)
         {
             return this.Define(name) as SqlServer.Definition.IBlank;
+        }
+
+        /// <summary>
+        /// Gets the Azure SQL server capabilities for a given Azure region.
+        /// </summary>
+        /// <param name="region">The location to get the Azure SQL server capabilities for.</param>
+        /// <return>The server capabilities object.</return>
+        Microsoft.Azure.Management.Sql.Fluent.IRegionCapabilities Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.GetCapabilitiesByRegion(Region region)
+        {
+            return this.GetCapabilitiesByRegion(region) as Microsoft.Azure.Management.Sql.Fluent.IRegionCapabilities;
         }
 
         /// <summary>
@@ -51,6 +63,37 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the Azure SQL server capabilities for a given Azure region asynchronously.
+        /// </summary>
+        /// <param name="region">The location to get the Azure SQL server capabilities for.</param>
+        /// <return>A representation of the future computation of this call, returning the server capabilities object.</return>
+        async Task<Microsoft.Azure.Management.Sql.Fluent.IRegionCapabilities> Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.GetCapabilitiesByRegionAsync(Region region, CancellationToken cancellationToken)
+        {
+            return await this.GetCapabilitiesByRegionAsync(region, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.IRegionCapabilities;
+        }
+
+        /// <summary>
+        /// Lists the Azure SQL server usages for a given Azure region.
+        /// </summary>
+        /// <param name="region">The location to get the Azure SQL server usages for.</param>
+        /// <return>The SQL usage object.</return>
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSubscriptionUsageMetric> Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.ListUsageByRegion(Region region)
+        {
+            return this.ListUsageByRegion(region) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSubscriptionUsageMetric>;
+        }
+
+        /// <summary>
+        /// Gets the SQL Server DNS aliases API entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAliasOperations Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.DnsAliases
+        {
+            get
+            {
+                return this.DnsAliases() as Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAliasOperations;
+            }
+        }
+
+        /// <summary>
         /// Gets the SQL Server Elastic Pools API entry point.
         /// </summary>
         Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPoolOperations Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.ElasticPools
@@ -58,6 +101,69 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             get
             {
                 return this.ElasticPools() as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPoolOperations;
+            }
+        }
+
+        /// <summary>
+        /// Gets the SQL Server VirtualNetwork Rules API entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlVirtualNetworkRuleOperations Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.VirtualNetworkRules
+        {
+            get
+            {
+                return this.VirtualNetworkRules() as Microsoft.Azure.Management.Sql.Fluent.ISqlVirtualNetworkRuleOperations;
+            }
+        }
+
+        /// <summary>
+        /// Checks if container registry name is valid and is not in use asynchronously.
+        /// </summary>
+        /// <param name="name">The container registry name to check.</param>
+        /// <return>A representation of the future computation of this call, returning whether the name is available or other info if not.</return>
+        async Task<Microsoft.Azure.Management.Sql.Fluent.ICheckNameAvailabilityResult> Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.CheckNameAvailabilityAsync(string name, CancellationToken cancellationToken)
+        {
+            return await this.CheckNameAvailabilityAsync(name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ICheckNameAvailabilityResult;
+        }
+
+        /// <summary>
+        /// Checks if the specified container registry name is valid and available.
+        /// </summary>
+        /// <param name="name">The container registry name to check.</param>
+        /// <return>Whether the name is available and other info if not.</return>
+        Microsoft.Azure.Management.Sql.Fluent.ICheckNameAvailabilityResult Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.CheckNameAvailability(string name)
+        {
+            return this.CheckNameAvailability(name) as Microsoft.Azure.Management.Sql.Fluent.ICheckNameAvailabilityResult;
+        }
+
+        /// <summary>
+        /// Lists the Azure SQL server usages for a given Azure region asynchronously.
+        /// </summary>
+        /// <param name="region">The location to get the Azure SQL server usages for.</param>
+        /// <return>A representation of the future computation of this call, returning the server usages object.</return>
+        async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSubscriptionUsageMetric>> Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.ListUsageByRegionAsync(Region region, CancellationToken cancellationToken)
+        {
+            return await this.ListUsageByRegionAsync(region, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSubscriptionUsageMetric>;
+        }
+
+        /// <summary>
+        /// Gets the SQL Server Key entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlServerKeyOperations Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.ServerKeys
+        {
+            get
+            {
+                return this.ServerKeys() as Microsoft.Azure.Management.Sql.Fluent.ISqlServerKeyOperations;
+            }
+        }
+
+        /// <summary>
+        /// Gets the SQL Failover Group API entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroupOperations Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.FailoverGroups
+        {
+            get
+            {
+                return this.FailoverGroups() as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroupOperations;
             }
         }
     }

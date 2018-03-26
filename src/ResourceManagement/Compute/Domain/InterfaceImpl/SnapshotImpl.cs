@@ -167,10 +167,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Specifies the account type.
+        /// Specifies the SKU type.
         /// </summary>
         /// <param name="sku">SKU type.</param>
         /// <return>The next stage of the update.</return>
+        [System.Obsolete("Update.IWithSku.WithSku(DiskSkuTypes) is deprecated use Update.IWithSku.WithSku(SnapshotSkuType) instead.")]
         Snapshot.Update.IUpdate Snapshot.Update.IWithSku.WithSku(DiskSkuTypes sku)
         {
             return this.WithSku(sku) as Snapshot.Update.IUpdate;
@@ -180,10 +181,43 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Specifies the SKU type.
         /// </summary>
         /// <param name="sku">SKU type.</param>
+        /// <return>The next stage of the update.</return>
+        Snapshot.Update.IUpdate Snapshot.Update.IWithSku.WithSku(SnapshotSkuType sku)
+        {
+            return this.WithSku(sku) as Snapshot.Update.IUpdate;
+        }
+
+        /// <summary>
+        /// Specifies the SKU type.
+        /// </summary>
+        /// <deprecated>Use  WithSku.withSku(SnapshotSkuType) instead.</deprecated>
+        /// <param name="sku">SKU type.</param>
         /// <return>The next stage of the definition.</return>
+        [System.Obsolete("Definition.IWithSku.WithSku(DiskSkuTypes) is deprecated use Definition.IWithSku.WithSku(SnapshotSkuType) instead.")]
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithSku.WithSku(DiskSkuTypes sku)
         {
             return this.WithSku(sku) as Snapshot.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specifies the SKU type.
+        /// </summary>
+        /// <param name="sku">SKU type.</param>
+        /// <return>The next stage of the definition.</return>
+        Snapshot.Definition.IWithCreate Snapshot.Definition.IWithSku.WithSku(SnapshotSkuType sku)
+        {
+            return this.WithSku(sku) as Snapshot.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Gets the snapshot SKU type.
+        /// </summary>
+        Microsoft.Azure.Management.Compute.Fluent.SnapshotSkuType Microsoft.Azure.Management.Compute.Fluent.ISnapshot.SkuType
+        {
+            get
+            {
+                return this.SkuType() as Microsoft.Azure.Management.Compute.Fluent.SnapshotSkuType;
+            }
         }
 
         /// <summary>

@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:529D413DA27B62CF8FA74DD34751A761:2AB50F106A2C0F2D00579F7B1825D8B0
-        public StorageAccountTypes? StorageAccountType()
+        public StorageAccountTypes StorageAccountType()
         {
-            if (Inner.ManagedDisk == null)
+            if (Inner.ManagedDisk == null || Inner.ManagedDisk.StorageAccountType == null)
             {
                 return null;
             }
-            return Inner.ManagedDisk.StorageAccountType;
+            return StorageAccountTypes.Parse(Inner.ManagedDisk.StorageAccountType);
         }
 
         ///GENMHASH:ACA2D5620579D8158A29586CA1FF4BC6:FBF1D26DE5D0CBA789F0BA74B22FDAAC
@@ -69,7 +69,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:D85E911348B4AD36294F154A7C700412:BFD5BBE75FF2933909C9A5EE4D96DB28
         public DiskCreateOptionTypes CreationMethod()
         {
-            return Inner.CreateOption;
+            if (Inner.CreateOption == null)
+            {
+                return null;
+            }
+            return DiskCreateOptionTypes.Parse(Inner.CreateOption);
         }
     }
 }

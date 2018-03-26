@@ -72,6 +72,7 @@ namespace QueryMetricsAndActivityLogs
                                 .Execute();
 
                         Utilities.Log("Metrics for '" + storageAccount.Id + "':");
+                        Utilities.Log("Namespacse: " + metricCollection.Namespace);
                         Utilities.Log("Query time: " + metricCollection.Timespan);
                         Utilities.Log("Time Grain: " + metricCollection.Interval);
                         Utilities.Log("Cost: " + metricCollection.Cost);

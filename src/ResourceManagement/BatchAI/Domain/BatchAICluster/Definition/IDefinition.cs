@@ -27,41 +27,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithUserCredentials,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithVMPriority,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithSetupTask,
-        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithMountVolumes,
+        Microsoft.Azure.Management.BatchAI.Fluent.Models.HasMountVolumes.Definition.IWithMountVolumes<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate>,
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithAppInsightsResourceId,
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithVirtualMachineImage,
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithSubnet,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate>
     {
-    }
 
-    /// <summary>
-    /// Defines the volumes to mount on the cluster.
-    /// </summary>
-    public interface IWithMountVolumes
-    {
-        /// <summary>
-        /// Begins the definition of Azure file share reference to be mounted on each cluster node.
-        /// </summary>
-        /// <return>The first stage of file share reference definition.</return>
-        AzureFileShare.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineAzureFileShare();
-
-        /// <summary>
-        /// Begins the definition of Azure blob file system reference to be mounted on each cluster node.
-        /// </summary>
-        /// <return>The first stage of Azure blob file system reference definition.</return>
-       AzureBlobFileSystem.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineAzureBlobFileSystem();
-
-        /// <summary>
-        /// Begins the definition of Azure file server reference.
-        /// </summary>
-        /// <return>The first stage of file server reference definition.</return>
-        FileServer.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate> DefineFileServer();
-
-        /// <summary>
-        /// Specifies the details of the file system to mount on the compute cluster nodes.
-        /// </summary>
-        /// <param name="mountCommand">Command used to mount the unmanaged file system.</param>
-        /// <param name="relativeMountPath">The relative path on the compute cluster node where the file system will be mounted.</param>
-        /// <return>The next stage of Batch AI cluster definition.</return>
-        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate WithUnmanagedFileSystem(string mountCommand, string relativeMountPath);
     }
 
     /// <summary>
@@ -101,6 +73,94 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
     /// </summary>
     public interface IBlank  :  IDefinitionWithRegion<IWithGroup>
     {
+    }
+
+        /// <summary>
+        /// Specifies Azure Application Insights information for performance counters reporting.
+        /// </summary>
+        public interface IWithAppInsightsResourceId  :
+            Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+        {
+
+            /// <param name="resoureId">Azure Application Insights component resource id.</param>
+            /// <return>The next stage of the definition.</return>
+            Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithAppInsightsKey WithAppInsightsComponentId(string resoureId);
+        }
+
+     public interface IWithAppInsightsKey  :
+            Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+        {
+
+            /// <param name="instrumentationKey">Value of the Azure Application Insights instrumentation key.</param>
+            /// <return>The next stage of the definition.</return>
+            Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate WithInstrumentationKey(string instrumentationKey);
+
+            /// <summary>
+            /// Specifies KeyVault Store and Secret which contains the value for the instrumentation key.
+            /// </summary>
+            /// <param name="keyVaultId">Fully qualified resource Id for the Key Vault.</param>
+            /// <param name="secretUrl">The URL referencing a secret in a Key Vault.</param>
+            /// <return>The next stage of the definition.</return>
+            Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate WithInstrumentationKeySecretReference(string keyVaultId, string secretUrl);
+        }
+        /// <summary>
+        /// Specifies virtual machine image.
+        /// </summary>
+        public interface IWithVirtualMachineImage  :
+            Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+        {
+
+        /// <summary>
+        /// Specifies virtual machine image.
+        /// </summary>
+        /// <param name="publisher">Publisher of the image.</param>
+        /// <param name="offer">Offer of the image.</param>
+        /// <param name="sku">Sku of the image.</param>
+        /// <param name="version">Version of the image.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate WithVirtualMachineImage(string publisher, string offer, string sku, string version);
+
+        /// <summary>
+        /// Specifies virtual machine image.
+        /// </summary>
+        /// <param name="publisher">Publisher of the image.</param>
+        /// <param name="offer">Offer of the image.</param>
+        /// <param name="sku">Sku of the image.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate WithVirtualMachineImage(string publisher, string offer, string sku);
+
+        /// <summary>
+        /// Computes nodes of the cluster will be created using this custom image. This is of the form
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}.
+        /// The virtual machine image must be in the same region and subscription as
+        /// the cluster. For information about the firewall settings for the Batch
+        /// node agent to communicate with the Batch service see
+        /// https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+        /// Note, you need to provide publisher, offer and sku of the base OS image
+        /// of which the custom image has been derived from.
+        /// </summary>
+        /// <param name="virtualMachineImageId">The ARM resource identifier of the virtual machine image.</param>
+        /// <param name="publisher">Publisher of the image.</param>
+        /// <param name="offer">Offer of the image.</param>
+        /// <param name="sku">Sku of the image.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate WithVirtualMachineImageId(string virtualMachineImageId, string publisher, string offer, string sku);
+    }
+
+    /// <summary>
+    /// Defines subnet for the cluster.
+    /// </summary>
+    public interface IWithSubnet  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <param name="subnetId">Identifier of the subnet.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate WithSubnet(string subnetId);
+
+        /// <param name="networkId">Identifier of the network.</param>
+        /// <param name="subnetName">Subnet name.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate WithSubnet(string networkId, string subnetName);
     }
 
     /// <summary>
@@ -179,10 +239,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithUserName,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithUserCredentials,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithScaleSettings,
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithAppInsightsKey,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate
     {
     }
-
     /// <summary>
     /// The stage of a Batch AI cluster definition allowing the resource group to be specified.
     /// </summary>

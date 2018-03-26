@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SshConfiguration class.
         /// </summary>
-        /// <param name="userAccountSettings">Settings for user account of
-        /// VMs.</param>
+        /// <param name="userAccountSettings">Settings for user account to be
+        /// created on a node.</param>
         /// <param name="publicIPsToAllow">List of source IP ranges to allow
-        /// SSH connection to VM.</param>
+        /// SSH connection to a node.</param>
         public SshConfiguration(UserAccountSettings userAccountSettings, IList<string> publicIPsToAllow = default(IList<string>))
         {
             PublicIPsToAllow = publicIPsToAllow;
@@ -47,18 +47,18 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of source IP ranges to allow SSH connection to
-        /// VM.
+        /// Gets or sets list of source IP ranges to allow SSH connection to a
+        /// node.
         /// </summary>
         /// <remarks>
         /// Default value is '*' can be used to match all source IPs. Maximum
-        /// number of publicIPs that can be specified are 400.
+        /// number of IP ranges that can be specified are 400.
         /// </remarks>
         [JsonProperty(PropertyName = "publicIPsToAllow")]
         public IList<string> PublicIPsToAllow { get; set; }
 
         /// <summary>
-        /// Gets or sets settings for user account of VMs.
+        /// Gets or sets settings for user account to be created on a node.
         /// </summary>
         [JsonProperty(PropertyName = "userAccountSettings")]
         public UserAccountSettings UserAccountSettings { get; set; }

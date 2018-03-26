@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             CancellationToken cancellationToken = default(CancellationToken))
         {
             GrantAccessDataInner grantAccessDataInner = new GrantAccessDataInner();
-            grantAccessDataInner.Access = accessLevel;
+            grantAccessDataInner.Access = accessLevel.ToString();
             grantAccessDataInner.DurationInSeconds = accessDuration;
             AccessUriInner accessUriInner = await Inner.GrantAccessAsync(resourceGroupName,
                 diskName,

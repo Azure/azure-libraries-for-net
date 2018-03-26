@@ -23,6 +23,31 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition
     }
 
     /// <summary>
+    /// The stage of the Batch AI job definition allowing to specify environment variables with secrets.
+    /// </summary>
+    public interface IWithEnvironmentVariableSecretValue
+    {
+        /// <summary>
+        /// Sets the value of the environment variable. This value will never be reported
+        /// back by Batch AI.
+        /// </summary>
+        /// <param name="name">Name of the variable to set.</param>
+        /// <param name="value">Value of the variable to set.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate WithEnvironmentVariableSecretValue(string name, string value);
+
+        /// <summary>
+        /// Specifies KeyVault Store and Secret which contains the value for the
+        /// environment variable.
+        /// </summary>
+        /// <param name="name">Name of the variable to set.</param>
+        /// <param name="keyVaultId">Fully qualified resource Id for the Key Vault.</param>
+        /// <param name="secretUrl">The URL referencing a secret in a Key Vault.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate WithEnvironmentVariableSecretValue(string name, string keyVaultId, string secretUrl);
+    }
+
+    /// <summary>
     /// The stage of a virtual network gateway connection definition with sufficient inputs to create a new connection in the cloud,
     /// but exposing additional optional settings to specify.
     /// </summary>
@@ -47,7 +72,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate WithContainerImage(string image);
     }
 
-    public interface IWithOutputDirectory 
+    public interface IWithOutputDirectory  :
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithOutputDirectoryBeta
     {
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate WithOutputDirectory(string id, string pathPrefix);
     }
@@ -83,6 +109,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition
         ToolTypeSettings.TensorFlow.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineTensorflow();
 
         ToolTypeSettings.Caffe.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineCaffe();
+
+        ToolTypeSettings.PyTorch.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefinePyTorch();
     }
 
     /// <summary>
@@ -105,6 +133,17 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition
         /// <return>The next staeg of the definition.</return>
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithStdOutErrPathPrefix WithNodeCount(int nodeCount);
     }
+    /// <summary>
+    /// Allows to specify environment variables.
+    /// </summary>
+    public interface IWithEnvironmentVariable
+    {
+        /// <param name="name">Name of the variable to set.</param>
+        /// <param name="value">Value of the variable to set.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate WithEnvironmentVariable(string name, string value);
+    }
+
 
     /// <summary>
     /// The entirety of the Batch AI job definition.
@@ -121,5 +160,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition
     public interface IWithInputDirectory 
     {
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate WithInputDirectory(string id, string path);
+    }
+
+    public interface IWithOutputDirectoryBeta  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <param name="id">The name for the output directory.</param>
+        /// <return>The nest stage of the definition for output directory settings.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.Models.OutputDirectorySettings.Definition.IBlank<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCreate> DefineOutputDirectory(string id);
     }
 }

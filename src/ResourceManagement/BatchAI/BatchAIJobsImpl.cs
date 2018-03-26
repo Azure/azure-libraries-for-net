@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected override BatchAIJobImpl WrapModel(string name)
         {
-            return new BatchAIJobImpl(name, parent, new JobInner());
+            return new BatchAIJobImpl(name, parent, new JobInner(location: parent.RegionName));
         }
 
         protected override IBatchAIJob WrapModel(JobInner inner)

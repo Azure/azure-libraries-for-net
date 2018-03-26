@@ -246,5 +246,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             return this.WithOSDiskCaching(cachingType) as VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings;
         }
+
+        /// <summary>
+        /// Specifies that zone resiliency should be enabled for the image.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineCustomImage.Definition.IWithCreate VirtualMachineCustomImage.Definition.IWithZoneResilient.WithZoneResilient()
+        {
+            return this.WithZoneResilient() as VirtualMachineCustomImage.Definition.IWithCreate;
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// Fetches list of databases by making call to Azure.
         /// </summary>
         /// <return>A representation of the deferred computation of the databases in this recommended elastic pool.</return>
-        Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>> ListDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>> ListDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets the edition of the Azure SQL Recommended Elastic Pool. The
