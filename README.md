@@ -1,7 +1,8 @@
+[![Build Status](https://travis-ci.org/Azure/azure-libraries-for-net.svg?style=flat-square&label=build&branch=master)](https://travis-ci.org/Azure/azure-libraries-for-net)
 
 # Azure Management Libraries for .NET
 
-This README is based on the released stable version (1.7). If you are looking for other releases, see [More Information](#more-information)
+This README is based on the released stable version (1.8). If you are looking for other releases, see [More Information](#more-information)
 
 The Azure Management Libraries for .NET is a higher-level, object-oriented API for managing Azure resources. Libraries are built on the lower-level, request-response style [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest) and can run side-by-side with [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest).
 
@@ -21,7 +22,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
 * [More information](#more-information)
 
 ## Feature Availability and Road Map
-:triangular_flag_on_post: *as of Version 1.7*
+:triangular_flag_on_post: *as of Version 1.8*
 
 <table>
   <tr>
@@ -44,7 +45,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
   </tr>
   <tr>
     <td>SQL Database</td>
-    <td>Databases<br>Firewalls<br>Elastic pools<br>import, export, recover and restore dbs</td>
+    <td>Databases<br>Firewalls and virtual network<br>Elastic pools<br>Import, export, recover and restore dbs<br>Failover groups and replication links<br>DNS aliasing and metrics</td>
     <td></td>
     <td valign="top">More features</td>
   </tr>
@@ -58,7 +59,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
     <td>More services</td>
     <td>Resource Manager<br>Key Vault<br>Redis<br>CDN<br>Batch<br>Service bus</td>
     <td valign="top">Web apps<br>Function Apps<br>Graph RBAC<br>Cosmos DB<br>Monitor<br>Batch AI<br>Search<br>Event Hub</td>
-    <td valign="top">Data Lake</td>
+    <td valign="top">Data Lake<br>More Monitor features<br>Logic Apps<br>Event Grid</td>
   </tr>
   <tr>
     <td>Fundamentals</td>
@@ -434,6 +435,11 @@ var database = sqlServer.Databases.Define(databaseName)
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-databases-across-regions">Manage SQL databases across regions</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-import-export-db">Import and export SQL databases</a></li>
 <li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-recover-restore-db">Restore and recover SQL databases</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-get-sql-metrics">Get SQL Database metrics</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-failover-groups">Manage SQL Database Failover Groups</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-server-dns-aliases">Manage SQL Server DNL aliases</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-sql-secrets-in-key-vault">Manage SQL secrets (Server Keys) in Azure Key Vault</a></li>
+<li><a href="https://github.com/Azure-Samples/sql-database-dotnet-manage-virtual-network-rules">Manage SQL Virtual Network Rules</a></li>
 </ul></td>
   </tr>
 <tr>
@@ -520,6 +526,7 @@ var database = sqlServer.Databases.Define(databaseName)
     <td>Monitor</td>
     <td><ul style="list-style-type:circle">
 <li><a href="https://github.com/Azure-Samples/monitor-dotnet-query-metrics-activitylogs">Get metrics and activity logs for a resource</a></li>
+<li><a href="https://github.com/Azure-Samples/eventhub-dotnet-manage-event-hub-events">Stream Azure Service Logs and Metrics for consumption through Event Hub</a></li>
 </ul></td>
   </tr>
 
@@ -555,6 +562,7 @@ var database = sqlServer.Databases.Define(databaseName)
     <td><ul style="list-style-type:circle">
 <li><a href="https://github.com/Azure-Samples/eventhub-dotnet-manage-event-hub">Manage event hub and associated resources</a></li>
 <li><a href="https://github.com/Azure-Samples/eventhub-dotnet-manage-event-hub-geo-disaster-recovery">Manage event hub geo-disaster recovery</a></li>
+<li><a href="https://github.com/Azure-Samples/eventhub-dotnet-manage-event-hub-events">Stream Azure Service Logs and Metrics for consumption through Event Hub</a></li>
 </ul></td>
   </tr>
   
@@ -564,9 +572,9 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ### Latest stable release
 
-**1.7** release builds are available on NuGet:
+**1.8** release builds are available on NuGet:
 
-|Azure Management Library                     | Package name                                        | Stable (1.7 release) |
+|Azure Management Library                     | Package name                                        | Stable                 |
 |---------------------------------------------|-----------------------------------------------------|------------------------|
 |Azure Management Client (wrapper package)    | `Microsoft.Azure.Management.Fluent`                 | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) |
 |App Service (Web Apps and Functions)         | `Microsoft.Azure.Management.AppService.Fluent`      | [![NuGet](https://img.shields.io/nuget/v/Microsoft.Azure.Management.AppService.Fluent.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Microsoft.Azure.Management.AppService.Fluent/) |
@@ -603,7 +611,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ## Upgrading from older versions
 
-If you are migrating your code from 1.6.x to 1.7.x, you can use these release notes for [preparing your code for 1.7 from 1.6](./notes/prepare-for-1.7.md).
+If you are migrating your code from 1.7.x to 1.8.x, you can use these release notes for [preparing your code for 1.8 from 1.7](./notes/prepare-for-1.8.md).
 
 In general, Azure Libraries for .Net follow [semantic versioning](http://semver.org/), so user code should continue working in a compatible fashion between minor versions of the same major version release train, with the following caveats:
 
@@ -638,6 +646,7 @@ If you would like to become an active contributor to this project please follow 
 
 | Version           | SHA1                                                                                      | Remarks                                               |
 |-------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| 1.8               | [1.8](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.8)          | Tagged release for 1.8 version of Azure management libraries |
 | 1.7               | [1.7](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.7)          | Tagged release for 1.7 version of Azure management libraries |
 | 1.6               | [1.6](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.6)          | Tagged release for 1.6 version of Azure management libraries |
 | 1.4               | [1.4](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.4)          | Tagged release for 1.4 version of Azure management libraries |
