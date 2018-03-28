@@ -84,7 +84,6 @@ namespace Fluent.Tests
                     {
                         Assert.True(false);
                     }
-                    Assert.Equal(3, redisCaches.Count());
 
                     // Get
                     var redisCacheGet = redisManager.RedisCaches.GetByResourceGroup(GroupName, CacheName);
@@ -196,13 +195,13 @@ namespace Fluent.Tests
                 {
                     try
                     {
-                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName);
+                        TestHelper.CreateResourceManager().ResourceGroups.BeginDeleteByName(GroupName);
                     }
                     catch
                     { }
                     try
                     {
-                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName2);
+                        TestHelper.CreateResourceManager().ResourceGroups.BeginDeleteByName(GroupName2);
                     }
                     catch
                     { }
