@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
     /// The resource model definition for a ARM proxy resource. It will have
     /// everything other than required location and tags
     /// </summary>
-    public partial class ProxyResourceInner
+    public partial class ProxyResourceInner : IResource
     {
         /// <summary>
         /// Initializes a new instance of the ProxyResourceInner class.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ProxyResourceInner class.
         /// </summary>
-        public ProxyResourceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public ProxyResourceInner(string id = default(string), string name = default(string), string type = default(string))
         {
             Id = id;
             Name = name;

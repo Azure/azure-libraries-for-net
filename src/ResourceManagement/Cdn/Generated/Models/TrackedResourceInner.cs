@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// Initializes a new instance of the TrackedResourceInner class.
         /// </summary>
         public TrackedResourceInner()
+            : base()
         {
-            CustomInit();
         }
 
         /// <summary>
@@ -36,40 +36,6 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         public TrackedResourceInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
             : base(location, id, name, type, tags)
         {
-            Location = location;
-            Tags = tags;
-            CustomInit();
-        }
-
-        /// <summary>
-        /// An initialization method that performs custom operations like setting defaults
-        /// </summary>
-        partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets resource location.
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets resource tags.
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Location == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Location");
-            }
         }
     }
 }

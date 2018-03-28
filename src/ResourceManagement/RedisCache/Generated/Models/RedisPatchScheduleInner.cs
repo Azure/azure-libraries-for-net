@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Management.Redis.Fluent.Models
         /// </summary>
         /// <param name="scheduleEntries">List of patch schedules for a Redis
         /// cache.</param>
-        public RedisPatchScheduleInner(IList<ScheduleEntryInner> scheduleEntries, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(location, id, name, type, tags)
+        public RedisPatchScheduleInner(IList<ScheduleEntryInner> scheduleEntries, string id = default(string), string name = default(string), string type = default(string))
+            : base(id, name, type)
         {
             ScheduleEntries = scheduleEntries;
             CustomInit();

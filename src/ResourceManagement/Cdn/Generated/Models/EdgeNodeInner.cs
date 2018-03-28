@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
         /// Initializes a new instance of the EdgeNodeInner class.
         /// </summary>
         /// <param name="ipAddressGroups">List of ip address groups.</param>
-        public EdgeNodeInner(IList<IpAddressGroup> ipAddressGroups, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(location, id, name, type, tags)
+        public EdgeNodeInner(IList<IpAddressGroup> ipAddressGroups, string id = default(string), string name = default(string), string type = default(string))
+            : base(id, name, type)
         {
             IpAddressGroups = ipAddressGroups;
             CustomInit();

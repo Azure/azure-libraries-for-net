@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.Redis.Fluent.Models
         /// include: 'Primary', 'Secondary'</param>
         /// <param name="provisioningState">Terminal state of the link between
         /// primary and secondary redis cache.</param>
-        public RedisLinkedServerWithPropertiesInner(string linkedRedisCacheId, string linkedRedisCacheLocation, ReplicationRole serverRole, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string))
-            : base(location, id, name, type, tags)
+        public RedisLinkedServerWithPropertiesInner(string linkedRedisCacheId, string linkedRedisCacheLocation, ReplicationRole serverRole, string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string))
+            : base(id, name, type)
         {
             LinkedRedisCacheId = linkedRedisCacheId;
             LinkedRedisCacheLocation = linkedRedisCacheLocation;

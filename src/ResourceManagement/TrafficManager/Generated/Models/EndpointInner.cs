@@ -68,8 +68,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         /// this endpoint when using the ‘Geographic’ traffic routing method.
         /// Please consult Traffic Manager Geographic documentation for a full
         /// list of accepted values.</param>
-        public EndpointInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string targetResourceId = default(string), string target = default(string), string endpointStatus = default(string), long? weight = default(long?), long? priority = default(long?), string endpointLocation = default(string), string endpointMonitorStatus = default(string), long? minChildEndpoints = default(long?), IList<string> geoMapping = default(IList<string>))
-            : base(location, id, name, type, tags)
+        public EndpointInner(string id = default(string), string name = default(string), string type = default(string), string targetResourceId = default(string), string target = default(string), string endpointStatus = default(string), long? weight = default(long?), long? priority = default(long?), string endpointLocation = default(string), string endpointMonitorStatus = default(string), long? minChildEndpoints = default(long?), IList<string> geoMapping = default(IList<string>))
+            : base(id, name, type)
         {
             TargetResourceId = targetResourceId;
             Target = target;

@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
+    using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -18,29 +19,39 @@ namespace Microsoft.Azure.Management.Cdn.Fluent.Models
     /// The resource model definition for a ARM proxy resource. It will have
     /// everything other than required location and tags
     /// </summary>
-    public partial class ProxyResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class ProxyResourceInner : IResource
     {
         /// <summary>
-        /// Initializes a new instance of the ProxyResourceInner class.
+        /// Defines shared properties of an Azure resource.
         /// </summary>
-        public ProxyResourceInner()
+        public ProxyResourceInner() { }
+
+        /// <summary>
+        /// Initializes a new instance of the Resource class.
+        /// </summary>
+        public ProxyResourceInner(string id = default(string), string name = default(string), string type = default(string))
         {
-            CustomInit();
+            Id = id;
+            Name = name;
+            Type = type;
         }
 
         /// <summary>
-        /// Initializes a new instance of the ProxyResourceInner class.
+        /// Resource Id
         /// </summary>
-        public ProxyResourceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(location, id, name, type, tags)
-        {
-            CustomInit();
-        }
+        [JsonProperty(PropertyName = "id")]
+        public virtual string Id { get; protected set; }
 
         /// <summary>
-        /// An initialization method that performs custom operations like setting defaults
+        /// Resource name
         /// </summary>
-        partial void CustomInit();
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
 
+        /// <summary>
+        /// Resource type
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
     }
 }

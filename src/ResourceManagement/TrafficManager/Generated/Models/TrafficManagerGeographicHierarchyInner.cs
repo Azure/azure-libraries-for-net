@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent.Models
         /// <param name="geographicHierarchy">The region at the root of the
         /// hierarchy from all the regions in the hierarchy can be
         /// retrieved.</param>
-        public TrafficManagerGeographicHierarchyInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Microsoft.Azure.Management.TrafficManager.Fluent.Models.RegionInner geographicHierarchy = default(Microsoft.Azure.Management.TrafficManager.Fluent.Models.RegionInner))
-            : base(location, id, name, type, tags)
+        public TrafficManagerGeographicHierarchyInner(string id = default(string), string name = default(string), string type = default(string), Microsoft.Azure.Management.TrafficManager.Fluent.Models.RegionInner geographicHierarchy = default(Microsoft.Azure.Management.TrafficManager.Fluent.Models.RegionInner))
+            : base(id, name, type)
         {
             GeographicHierarchy = geographicHierarchy;
             CustomInit();

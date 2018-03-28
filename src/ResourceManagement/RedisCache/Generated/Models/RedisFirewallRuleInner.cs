@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Management.Redis.Fluent.Models
         /// range</param>
         /// <param name="endIP">highest IP address included in the
         /// range</param>
-        public RedisFirewallRuleInner(string startIP, string endIP, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
-            : base(location, id, name, type, tags)
+        public RedisFirewallRuleInner(string startIP, string endIP, string id = default(string), string name = default(string), string type = default(string))
+            : base(id, name, type)
         {
             StartIP = startIP;
             EndIP = endIP;
