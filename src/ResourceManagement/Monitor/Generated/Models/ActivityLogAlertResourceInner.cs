@@ -8,7 +8,6 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// An activity log alert resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ActivityLogAlertResourceInner : Resource
+    public partial class ActivityLogAlertResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the ActivityLogAlertResourceInner

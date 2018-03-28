@@ -136,5 +136,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         IMetricBaselineOperations MetricBaseline { get; }
 
+        /// <summary>
+        /// Gets the IMetricAlertsOperations.
+        /// </summary>
+        IMetricAlertsOperations MetricAlerts { get; }
+
+        /// <summary>
+        /// Gets the IMetricAlertsStatusOperations.
+        /// </summary>
+        IMetricAlertsStatusOperations MetricAlertsStatus { get; }
+
     }
 }

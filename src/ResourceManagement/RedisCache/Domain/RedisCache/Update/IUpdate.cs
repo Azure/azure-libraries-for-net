@@ -63,21 +63,6 @@ namespace Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update
         Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update.IWithRedisConfiguration
     {
         /// <summary>
-        /// Assigns the specified subnet to this instance of Redis Cache.
-        /// </summary>
-        /// <param name="networkResource">Instance of Network object.</param>
-        /// <param name="subnetName">The name of the subnet.</param>
-        /// <return>The next stage of Redis Cache update.</return>
-        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update.IUpdate WithSubnet(IHasId networkResource, string subnetName);
-
-        /// <summary>
-        /// Sets Redis Cache static IP. Required when deploying a Redis Cache inside an existing Azure Virtual Network.
-        /// </summary>
-        /// <param name="staticIP">The staticIP value to set.</param>
-        /// <return>The next stage of Redis Cache update.</return>
-        Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update.IUpdate WithStaticIP(string staticIP);
-
-        /// <summary>
         /// The number of shards to be created on a Premium Cluster Cache.
         /// </summary>
         /// <param name="shardCount">The shard count value to set.</param>

@@ -142,6 +142,16 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         public virtual IMetricBaselineOperations MetricBaseline { get; private set; }
 
         /// <summary>
+        /// Gets the IMetricAlertsOperations.
+        /// </summary>
+        public virtual IMetricAlertsOperations MetricAlerts { get; private set; }
+
+        /// <summary>
+        /// Gets the IMetricAlertsStatusOperations.
+        /// </summary>
+        public virtual IMetricAlertsStatusOperations MetricAlertsStatus { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the MonitorManagementClient class.
         /// </summary>
         /// <param name='handlers'>
@@ -357,6 +367,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             MetricDefinitions = new MetricDefinitionsOperations(this);
             Metrics = new MetricsOperations(this);
             MetricBaseline = new MetricBaselineOperations(this);
+            MetricAlerts = new MetricAlertsOperations(this);
+            MetricAlertsStatus = new MetricAlertsStatusOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -393,6 +405,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<RuleCondition>("odata.type"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<RuleAction>("odata.type"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<RuleAction>("odata.type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<MetricAlertCriteria>("odata.type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<MetricAlertCriteria>("odata.type"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());

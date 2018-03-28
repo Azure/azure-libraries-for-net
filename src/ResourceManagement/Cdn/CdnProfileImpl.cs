@@ -240,8 +240,8 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         ///GENMHASH:89CD44AA5060CAB16CB0AF1FB046BC64:38BC374AC5D46ED852675FD772CAFDAD
         public IEnumerable<ResourceUsage> ListResourceUsage()
         {
-            return Extensions.Synchronize(() => Manager.Inner.Profiles.ListResourceUsageAsync(ResourceGroupName, Name))
-                .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.Inner.Profiles.ListResourceUsageNextAsync(link)))
+            return Extensions.Synchronize(() => Manager.Inner.Profiles.ListResourceUsageInnerAsync(ResourceGroupName, Name))
+                .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.Inner.Profiles.ListResourceUsageInnerNextAsync(link)))
                 .Select(inner => new ResourceUsage(inner));
         }
 
