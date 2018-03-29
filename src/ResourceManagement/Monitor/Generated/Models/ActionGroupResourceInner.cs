@@ -51,7 +51,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="automationRunbookReceivers">The list of
         /// AutomationRunbook receivers that are part of this action
         /// group.</param>
-        public ActionGroupResourceInner(string groupShortName, bool enabled, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<EmailReceiver> emailReceivers = default(IList<EmailReceiver>), IList<SmsReceiver> smsReceivers = default(IList<SmsReceiver>), IList<WebhookReceiver> webhookReceivers = default(IList<WebhookReceiver>), IList<ItsmReceiver> itsmReceivers = default(IList<ItsmReceiver>), IList<AzureAppPushReceiver> azureAppPushReceivers = default(IList<AzureAppPushReceiver>), IList<AutomationRunbookReceiver> automationRunbookReceivers = default(IList<AutomationRunbookReceiver>))
+        /// <param name="voiceReceivers">The list of voice receivers that are
+        /// part of this action group.</param>
+        /// <param name="logicAppReceivers">The list of logic app receivers
+        /// that are part of this action group.</param>
+        /// <param name="azureFunctionReceivers">The list of azure function
+        /// receivers that are part of this action group.</param>
+        public ActionGroupResourceInner(string groupShortName, bool enabled, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<EmailReceiver> emailReceivers = default(IList<EmailReceiver>), IList<SmsReceiver> smsReceivers = default(IList<SmsReceiver>), IList<WebhookReceiver> webhookReceivers = default(IList<WebhookReceiver>), IList<ItsmReceiver> itsmReceivers = default(IList<ItsmReceiver>), IList<AzureAppPushReceiver> azureAppPushReceivers = default(IList<AzureAppPushReceiver>), IList<AutomationRunbookReceiver> automationRunbookReceivers = default(IList<AutomationRunbookReceiver>), IList<VoiceReceiver> voiceReceivers = default(IList<VoiceReceiver>), IList<LogicAppReceiver> logicAppReceivers = default(IList<LogicAppReceiver>), IList<AzureFunctionReceiver> azureFunctionReceivers = default(IList<AzureFunctionReceiver>))
             : base(location, id, name, type, tags)
         {
             GroupShortName = groupShortName;
@@ -62,6 +68,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             ItsmReceivers = itsmReceivers;
             AzureAppPushReceivers = azureAppPushReceivers;
             AutomationRunbookReceivers = automationRunbookReceivers;
+            VoiceReceivers = voiceReceivers;
+            LogicAppReceivers = logicAppReceivers;
+            AzureFunctionReceivers = azureFunctionReceivers;
             CustomInit();
         }
 
@@ -126,6 +135,27 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.automationRunbookReceivers")]
         public IList<AutomationRunbookReceiver> AutomationRunbookReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of voice receivers that are part of this
+        /// action group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.voiceReceivers")]
+        public IList<VoiceReceiver> VoiceReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of logic app receivers that are part of this
+        /// action group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.logicAppReceivers")]
+        public IList<LogicAppReceiver> LogicAppReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of azure function receivers that are part of
+        /// this action group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.azureFunctionReceivers")]
+        public IList<AzureFunctionReceiver> AzureFunctionReceivers { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -203,6 +233,36 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                     if (element5 != null)
                     {
                         element5.Validate();
+                    }
+                }
+            }
+            if (VoiceReceivers != null)
+            {
+                foreach (var element6 in VoiceReceivers)
+                {
+                    if (element6 != null)
+                    {
+                        element6.Validate();
+                    }
+                }
+            }
+            if (LogicAppReceivers != null)
+            {
+                foreach (var element7 in LogicAppReceivers)
+                {
+                    if (element7 != null)
+                    {
+                        element7.Validate();
+                    }
+                }
+            }
+            if (AzureFunctionReceivers != null)
+            {
+                foreach (var element8 in AzureFunctionReceivers)
+                {
+                    if (element8 != null)
+                    {
+                        element8.Validate();
                     }
                 }
             }
