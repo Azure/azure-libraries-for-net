@@ -8,7 +8,6 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// The alert rule resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AlertRuleResourceInner : Resource
+    public partial class AlertRuleResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the AlertRuleResourceInner class.

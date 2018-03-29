@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
                 }
                 else
                 {
-                    updateParameters.SubnetId = subnetId;
+                    throw new NotSupportedException("Subnet cannot be modified during update operation.");
                 }
             }
 
@@ -259,8 +259,8 @@ namespace Microsoft.Azure.Management.Redis.Fluent
                 }
             }
             return (patchSchedules == null ||
-                    patchSchedules.ScheduleEntriesProperty == null) ? null : patchSchedules
-                                                                                .ScheduleEntriesProperty
+                    patchSchedules.ScheduleEntries == null) ? null : patchSchedules
+                                                                                .ScheduleEntries
                                                                                 .Select(ps => new ScheduleEntry(ps))
                                                                                 .ToList();
         }
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
             }
             else
             {
-                updateParameters.StaticIP = staticIP;
+                throw new NotSupportedException("Static IP cannot be modified during update operation.");
             }
 
             return this;
@@ -363,17 +363,17 @@ namespace Microsoft.Azure.Management.Redis.Fluent
             {
                 var parameters = new RedisPatchScheduleInner
                 {
-                    ScheduleEntriesProperty = new List<ScheduleEntryInner>()
+                    ScheduleEntries = new List<ScheduleEntryInner>()
                 };
                 foreach (ScheduleEntry entry in this.scheduleEntries.Values)
                 {
-                    parameters.ScheduleEntriesProperty.Add(entry.Inner);
+                    parameters.ScheduleEntries.Add(entry.Inner);
                 }
 
                 var scheduleEntriesUpdated = await Manager.Inner.PatchSchedules.CreateOrUpdateAsync(
-                    ResourceGroupName, Name, parameters.ScheduleEntriesProperty, cancellationToken);
+                    ResourceGroupName, Name, parameters.ScheduleEntries, cancellationToken);
                 scheduleEntries.Clear();
-                foreach (ScheduleEntryInner entry in scheduleEntriesUpdated.ScheduleEntriesProperty)
+                foreach (ScheduleEntryInner entry in scheduleEntriesUpdated.ScheduleEntries)
                 {
                     scheduleEntries.Add(entry.DayOfWeek, new ScheduleEntry(entry));
                 }
