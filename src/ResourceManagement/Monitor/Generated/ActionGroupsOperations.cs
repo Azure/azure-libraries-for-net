@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2017-04-01";
+            string apiVersion = "2018-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2017-04-01";
+            string apiVersion = "2018-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2017-04-01";
+            string apiVersion = "2018-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "actionGroupPatch");
             }
-            string apiVersion = "2017-04-01";
+            string apiVersion = "2018-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2017-04-01";
+            string apiVersion = "2018-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1042,7 +1042,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2017-04-01";
+            string apiVersion = "2018-03-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1234,7 +1234,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "receiverName");
             }
-            string apiVersion = "2017-04-01";
+            string apiVersion = "2018-03-01";
             EnableRequest enableRequest = new EnableRequest();
             if (receiverName != null)
             {
