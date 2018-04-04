@@ -83,6 +83,12 @@
     "package": "Microsoft.Azure.Management.ContainerService.Fluent",
     "args": "--payload-flattening-threshold=1 --tag=package-2017-09 --title=ContainerServiceManagementClient --description=\"Container Service Client\""
   },
+  "cosmosdb": {
+    "dir": "CosmosDB",
+    "source": "specification/cosmos-db/resource-manager/readme.md",
+    "package": "Microsoft.Azure.Management.CosmosDB.Fluent",
+    "args": "--payload-flattening-threshold=1 --tag=package-2015-04"
+  },
   "customerinsights": {
     "dir": "CustomerInsights",
     "source": "specification/customer-insights/resource-manager/readme.md",
@@ -100,12 +106,6 @@
     "source": "specification/dns/resource-manager/readme.md",
     "package": "Microsoft.Azure.Management.Dns.Fluent",
     "args": "--payload-flattening-threshold=1 --tag=package-2016-04"
-  },
-  "documentdb": {
-    "dir": "DocumentDB",
-    "source": "specification/cosmos-db/resource-manager/readme.md",
-    "package": "Microsoft.Azure.Management.DocumentDB.Fluent",
-    "args": "--payload-flattening-threshold=1 --tag=package-2015-04"
   },
   "eventhub": {
     "dir": "EventHub",

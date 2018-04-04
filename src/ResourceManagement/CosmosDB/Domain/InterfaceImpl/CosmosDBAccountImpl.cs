@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
     using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition;
     using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
@@ -15,6 +16,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <summary>
         /// The database account kind for the CosmosDB account.
         /// </summary>
+        /// <param name="kind">The account kind.</param>
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKind.WithKind(string kind)
         {
@@ -162,9 +164,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <return>The connection strings for the specified Azure CosmosDB database account.</return>
-        async Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListConnectionStringsAsync(CancellationToken cancellationToken)
+        async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListConnectionStringsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListConnectionStringsAsync(cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner;
+            return await this.ListConnectionStringsAsync(cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult;
         }
 
         /// <summary>
@@ -249,9 +251,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
-        async Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeysAsync(CancellationToken cancellationToken)
+        async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeysAsync(CancellationToken cancellationToken)
         {
-            return await this.ListKeysAsync(cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner;
+            return await this.ListKeysAsync(cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult;
         }
 
         /// <summary>
@@ -266,9 +268,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeys()
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeys()
         {
-            return this.ListKeys() as Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner;
+            return this.ListKeys() as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult;
         }
 
         /// <summary>
@@ -283,9 +285,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
 
         /// <return>The connection strings for the specified Azure CosmosDB database account.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListConnectionStrings()
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListConnectionStrings()
         {
-            return this.ListConnectionStrings() as Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner;
+            return this.ListConnectionStrings() as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult;
+        }
+
+        /// <return>The read-only access keys for the specified Azure CosmosDB database account.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListReadOnlyKeys()
+        {
+            return this.ListReadOnlyKeys() as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult;
+        }
+
+        /// <return>The read-only access keys for the specified Azure CosmosDB database account.</return>
+        async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListReadOnlyKeysAsync(CancellationToken cancellationToken)
+        {
+            return await this.ListReadOnlyKeysAsync(cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult;
         }
     }
 }

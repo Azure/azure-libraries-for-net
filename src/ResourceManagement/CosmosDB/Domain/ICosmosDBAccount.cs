@@ -4,13 +4,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
     using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
 
     /// <summary>
-    /// An immutable client-side representation of an Azure cosmos db.
+    /// An immutable client-side representation of an Azure Cosmos DB.
     /// </summary>
     /// <remarks>
     /// (Beta: This functionality is in preview and as such is subject to change in non-backwards compatible ways in
@@ -34,10 +35,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         Microsoft.Azure.Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel DefaultConsistencyLevel { get; }
 
         /// <return>The connection strings for the specified Azure CosmosDB database account.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner ListConnectionStrings();
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult ListConnectionStrings();
 
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
-        Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner> ListKeysAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> ListKeysAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets specifies the set of IP addresses or IP address ranges in CIDR form.
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         string IPRangeFilter { get; }
 
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner ListKeys();
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult ListKeys();
 
         /// <summary>
         /// Gets the consistency policy for the CosmosDB database account.
@@ -77,7 +78,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         Task RegenerateKeyAsync(string keyKind, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <return>The connection strings for the specified Azure CosmosDB database account.</return>
-        Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner> ListConnectionStringsAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult> ListConnectionStringsAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>The read-only access keys for the specified Azure CosmosDB database account.</return>
+        Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult> ListReadOnlyKeysAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <return>The read-only access keys for the specified Azure CosmosDB database account.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult ListReadOnlyKeys();
 
         /// <param name="keyKind">The key kind.</param>
         void RegenerateKey(string keyKind);

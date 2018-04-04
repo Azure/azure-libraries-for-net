@@ -8,14 +8,14 @@ using System.Linq;
 
 namespace Microsoft.Azure.Management.CosmosDB.Fluent
 {
-    public class CosmosDBManager : Manager<IDocumentDB>, ICosmosDBManager
+    public class CosmosDBManager : Manager<ICosmosDB>, ICosmosDBManager
     {
         #region Fluent private collections
         private ICosmosDBAccounts databaseAccounts;
         #endregion
 
         public CosmosDBManager(RestClient restClient, string subscriptionId) :
-            base(restClient, subscriptionId, new DocumentDB(
+            base(restClient, subscriptionId, new CosmosDB(
                 new Uri(restClient.BaseUri),
                     restClient.Credentials,
                     restClient.RootHttpHandler,
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         }
     }
 
-    public interface ICosmosDBManager : IManager<IDocumentDB>
+    public interface ICosmosDBManager : IManager<ICosmosDB>
     {
         ICosmosDBAccounts CosmosDBAccounts { get; }
     }

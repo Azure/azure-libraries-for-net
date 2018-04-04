@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <summary>
         /// The database account kind for the CosmosDB account.
         /// </summary>
+        /// <param name="kind">The account kind.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy WithKind(string kind);
     }
