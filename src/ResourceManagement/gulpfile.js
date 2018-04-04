@@ -110,6 +110,7 @@ var codegen = function (project, cb) {
         ` --csharp.clear-output-folder=false ` +
         autorestUseArg +
         regenManager +
+	' --use=@microsoft.azure/autorest.csharp@preview' +
         ' --package-version=1.3.0 ' +
         ' --runtime-version=3.3.10 ' +
         autoRestArgs;

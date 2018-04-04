@@ -123,10 +123,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.Inner.WriteLocations as IReadOnlyList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location>;
         }
 
-        public async Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner> ListKeysAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> ListKeysAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.DatabaseAccounts.ListKeysAsync(this.ResourceGroupName,
+            var result = await this.Manager.Inner.DatabaseAccounts.ListKeysAsync(this.ResourceGroupName,
                 this.Name);
+            return result != null ? new DatabaseAccountListKeysResultImpl(result) : null;
         }
 
         public override async Task<Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
@@ -134,7 +135,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return await this.DoDatabaseUpdateCreateAsync(cancellationToken);
         }
 
-        public Models.DatabaseAccountListKeysResultInner ListKeys()
+        public IDatabaseAccountListKeysResult ListKeys()
         {
             return Extensions.Synchronize(() => this.ListKeysAsync());
         }
@@ -203,10 +204,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.Inner.ConsistencyPolicy = policy;
         }
 
-        public async Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner> ListConnectionStringsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult> ListConnectionStringsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.DatabaseAccounts.ListConnectionStringsAsync(this.ResourceGroupName,
+            var result = await this.Manager.Inner.DatabaseAccounts.ListConnectionStringsAsync(this.ResourceGroupName,
                 this.Name);
+            return result != null ? new DatabaseAccountListConnectionStringsResultImpl(result) : null;
         }
 
         public async Task RegenerateKeyAsync(string keyKind, CancellationToken cancellationToken = default(CancellationToken))
@@ -244,7 +246,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this.Inner.ConsistencyPolicy.DefaultConsistencyLevel;
         }
 
-        public Models.DatabaseAccountListConnectionStringsResultInner ListConnectionStrings()
+        public IDatabaseAccountListConnectionStringsResult ListConnectionStrings()
         {
             return Extensions.Synchronize(() => this.ListConnectionStringsAsync());
         }
@@ -364,5 +366,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             this.WithoutTag(key);
             return this;
         }
+
+        ///GENMHASH:199BC8B250DE6FDC60059ADB2A4D8A17:0D023FA55B68AD0828AD9BF823383A9A
+        public IDatabaseAccountListReadOnlyKeysResult ListReadOnlyKeys()
+        {
+            return Extensions.Synchronize(() => this.ListReadOnlyKeysAsync());
+        }
+
+        ///GENMHASH:53B98D29180D0703E1A1842F17ACDE80:FC86BA20A774722CAD5A76DA690B6B40
+        public async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult> ListReadOnlyKeysAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var result = await this.Manager.Inner.DatabaseAccounts
+                .ListReadOnlyKeysAsync(this.ResourceGroupName, this.Name);
+            return result != null ? new DatabaseAccountListReadOnlyKeysResultImpl(result) : null;
+        }
+
     }
 }
