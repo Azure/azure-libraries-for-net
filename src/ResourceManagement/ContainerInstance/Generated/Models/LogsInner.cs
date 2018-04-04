@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the content of the log.
+        /// Gets the content of the log.
         /// </summary>
         [JsonProperty(PropertyName = "content")]
-        public string Content { get; set; }
+        public string Content { get; private set; }
 
     }
 }

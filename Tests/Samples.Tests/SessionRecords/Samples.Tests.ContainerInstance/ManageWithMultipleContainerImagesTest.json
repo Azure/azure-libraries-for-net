@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourcegroups/rgaciab7064583?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlZ3JvdXBzL3JnYWNpYWI3MDY0NTgzP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/rgaci642678261?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL3JnYWNpNjQyNjc4MjYxP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
@@ -13,18 +13,18 @@
           "28"
         ],
         "x-ms-client-request-id": [
-          "5005b79a-a2b0-454f-9620-e3dd48feb74a"
+          "735a8dbf-5376-40a2-a5ca-377727f6eca4"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.6.0.0",
-          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.8.0.0",
+          "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaciab7064583\",\r\n  \"name\": \"rgaciab7064583\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261\",\r\n  \"name\": \"rgaci642678261\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "181"
@@ -39,57 +39,60 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 06 Feb 2018 19:53:54 GMT"
+          "Tue, 03 Apr 2018 20:43:29 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-request-id": [
-          "7dee7d09-6858-4b75-90ca-ccc645186e89"
+          "1145abfc-3a06-45cf-8dd8-ab9f918b0a22"
         ],
         "x-ms-correlation-request-id": [
-          "7dee7d09-6858-4b75-90ca-ccc645186e89"
+          "1145abfc-3a06-45cf-8dd8-ab9f918b0a22"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180206T195354Z:7dee7d09-6858-4b75-90ca-ccc645186e89"
+          "WESTUS2:20180403T204329Z:1145abfc-3a06-45cf-8dd8-ab9f918b0a22"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaciab7064583/providers/Microsoft.ContainerInstance/containerGroups/acisample348743128?api-version=2018-02-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpYWI3MDY0NTgzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvY29udGFpbmVyR3JvdXBzL2FjaXNhbXBsZTM0ODc0MzEyOD9hcGktdmVyc2lvbj0yMDE4LTAyLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261/providers/Microsoft.ContainerInstance/containerGroups/acisample4fb302612?api-version=2018-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnYWNpNjQyNjc4MjYxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvY29udGFpbmVyR3JvdXBzL2FjaXNhbXBsZTRmYjMwMjYxMj9hcGktdmVyc2lvbj0yMDE4LTA0LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"acisample348743128-1\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-helloworld\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"acisample348743128-2\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-tutorial-sidecar\",\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"Public\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"acisample4fb302612-1\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-helloworld\",\r\n          \"ports\": [\r\n            {\r\n              \"protocol\": \"TCP\",\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"acisample4fb302612-2\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-tutorial-sidecar\",\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"Public\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "995"
+          "1029"
         ],
         "x-ms-client-request-id": [
-          "a7f126b2-488d-48b2-8d1e-3be444f08b77"
+          "f377084a-31f5-4d37-a1a0-94b2feba9286"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
-          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.8.0.0",
+          "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"acisample348743128-1\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-helloworld\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"acisample348743128-2\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-tutorial-sidecar\",\r\n          \"ports\": [],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"13.92.169.185\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaciab7064583/providers/Microsoft.ContainerInstance/containerGroups/acisample348743128\",\r\n  \"name\": \"acisample348743128\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"acisample4fb302612-1\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-helloworld\",\r\n          \"ports\": [\r\n            {\r\n              \"protocol\": \"TCP\",\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"acisample4fb302612-2\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-tutorial-sidecar\",\r\n          \"ports\": [],\r\n          \"environmentVariables\": [],\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"13.92.215.17\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Pending\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261/providers/Microsoft.ContainerInstance/containerGroups/acisample4fb302612\",\r\n  \"name\": \"acisample4fb302612\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "876"
+          "892"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -101,10 +104,13 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 06 Feb 2018 19:53:57 GMT"
+          "Tue, 03 Apr 2018 20:43:33 GMT"
         ],
         "Pragma": [
           "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.ContainerInstance/locations/East US/operations/2c4b10f8-3055-49aa-ae04-a22841180acd?api-version=2018-02-01-preview"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests-pt5m": [
           "19"
@@ -113,42 +119,39 @@
           "59"
         ],
         "x-ms-request-id": [
-          "eastus:11fc17c2-97e4-47ad-8601-689d90f7596e"
+          "eastus:2c4b10f8-3055-49aa-ae04-a22841180acd"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "5a02cd66-52de-4c51-bc75-711913482997"
+          "79f18859-9a05-4250-8f5a-92f50f562053"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180206T195357Z:5a02cd66-52de-4c51-bc75-711913482997"
+          "WESTUS2:20180403T204333Z:79f18859-9a05-4250-8f5a-92f50f562053"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaciab7064583/providers/Microsoft.ContainerInstance/containerGroups/acisample348743128?api-version=2018-02-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpYWI3MDY0NTgzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvY29udGFpbmVyR3JvdXBzL2FjaXNhbXBsZTM0ODc0MzEyOD9hcGktdmVyc2lvbj0yMDE4LTAyLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/providers/Microsoft.ContainerInstance/locations/East%20US/operations/2c4b10f8-3055-49aa-ae04-a22841180acd?api-version=2018-02-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvbG9jYXRpb25zL0Vhc3QlMjBVUy9vcGVyYXRpb25zLzJjNGIxMGY4LTMwNTUtNDlhYS1hZTA0LWEyMjg0MTE4MGFjZD9hcGktdmVyc2lvbj0yMDE4LTAyLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c66da8d3-f9f1-464e-8ed5-91adf6e8ba27"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
-          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.8.0.0",
+          "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"acisample348743128-1\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-helloworld\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"instanceView\": {\r\n            \"restartCount\": 0,\r\n            \"currentState\": {\r\n              \"state\": \"Running\",\r\n              \"startTime\": \"2018-02-06T19:54:06Z\",\r\n              \"detailStatus\": \"\"\r\n            },\r\n            \"events\": [\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:00Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:00Z\",\r\n                \"name\": \"Pulling\",\r\n                \"message\": \"pulling image \\\"microsoft/aci-helloworld\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"name\": \"Pulled\",\r\n                \"message\": \"Successfully pulled image \\\"microsoft/aci-helloworld\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"name\": \"Created\",\r\n                \"message\": \"Created container with id d8b50fe50e62962007792896e5eeff0ed7d52c26f01b301c0f66e07a0b421b77\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"name\": \"Started\",\r\n                \"message\": \"Started container with id d8b50fe50e62962007792896e5eeff0ed7d52c26f01b301c0f66e07a0b421b77\",\r\n                \"type\": \"Normal\"\r\n              }\r\n            ]\r\n          },\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"acisample348743128-2\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-tutorial-sidecar\",\r\n          \"ports\": [],\r\n          \"environmentVariables\": [],\r\n          \"instanceView\": {\r\n            \"restartCount\": 0,\r\n            \"currentState\": {\r\n              \"state\": \"Running\",\r\n              \"startTime\": \"2018-02-06T19:54:08Z\",\r\n              \"detailStatus\": \"\"\r\n            },\r\n            \"events\": [\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"name\": \"Pulling\",\r\n                \"message\": \"pulling image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:07Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:07Z\",\r\n                \"name\": \"Pulled\",\r\n                \"message\": \"Successfully pulled image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:08Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:08Z\",\r\n                \"name\": \"Created\",\r\n                \"message\": \"Created container with id 86648c957b9984329b39b89eb2c2dc3e970f0bf928c1d27c116901d748dcda0f\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:08Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:08Z\",\r\n                \"name\": \"Started\",\r\n                \"message\": \"Started container with id 86648c957b9984329b39b89eb2c2dc3e970f0bf928c1d27c116901d748dcda0f\",\r\n                \"type\": \"Normal\"\r\n              }\r\n            ]\r\n          },\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"13.92.169.185\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Running\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaciab7064583/providers/Microsoft.ContainerInstance/containerGroups/acisample348743128\",\r\n  \"name\": \"acisample348743128\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261/providers/Microsoft.ContainerInstance/containerGroups/acisample4fb302612\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-04-03T20:43:33.2103719Z\",\r\n  \"properties\": {\r\n    \"events\": [\r\n      {\r\n        \"count\": 1,\r\n        \"firstTimestamp\": \"2018-04-03T20:43:38Z\",\r\n        \"lastTimestamp\": \"2018-04-03T20:43:38Z\",\r\n        \"name\": \"Pulling\",\r\n        \"message\": \"pulling image \\\"microsoft/aci-helloworld\\\"\",\r\n        \"type\": \"Normal\"\r\n      },\r\n      {\r\n        \"count\": 1,\r\n        \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n        \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n        \"name\": \"Pulled\",\r\n        \"message\": \"Successfully pulled image \\\"microsoft/aci-helloworld\\\"\",\r\n        \"type\": \"Normal\"\r\n      },\r\n      {\r\n        \"count\": 1,\r\n        \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n        \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n        \"name\": \"Created\",\r\n        \"message\": \"Created container with id abe5c48c027981506064b6f3ce63f9770d4146a996baf9393f726a0f00ed1802\",\r\n        \"type\": \"Normal\"\r\n      },\r\n      {\r\n        \"count\": 1,\r\n        \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n        \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n        \"name\": \"Started\",\r\n        \"message\": \"Started container with id abe5c48c027981506064b6f3ce63f9770d4146a996baf9393f726a0f00ed1802\",\r\n        \"type\": \"Normal\"\r\n      },\r\n      {\r\n        \"count\": 1,\r\n        \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n        \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n        \"name\": \"Pulling\",\r\n        \"message\": \"pulling image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n        \"type\": \"Normal\"\r\n      },\r\n      {\r\n        \"count\": 1,\r\n        \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n        \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n        \"name\": \"Pulled\",\r\n        \"message\": \"Successfully pulled image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n        \"type\": \"Normal\"\r\n      },\r\n      {\r\n        \"count\": 1,\r\n        \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n        \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n        \"name\": \"Created\",\r\n        \"message\": \"Created container with id 986c335d56c3c10dce8c6e1a28fa4a5f583cf29f9b4a5273a4b3521b1a520528\",\r\n        \"type\": \"Normal\"\r\n      },\r\n      {\r\n        \"count\": 1,\r\n        \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n        \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n        \"name\": \"Started\",\r\n        \"message\": \"Started container with id 986c335d56c3c10dce8c6e1a28fa4a5f583cf29f9b4a5273a4b3521b1a520528\",\r\n        \"type\": \"Normal\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -160,7 +163,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 06 Feb 2018 19:54:17 GMT"
+          "Tue, 03 Apr 2018 20:44:03 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -173,162 +176,39 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "eastus:a7d8fb51-f201-45f4-b58c-f116f9c0e0b1"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
-        ],
-        "x-ms-correlation-request-id": [
-          "b52307cb-1405-496b-a3c2-6ac1b3d20225"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180206T195418Z:b52307cb-1405-496b-a3c2-6ac1b3d20225"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaciab7064583/providers/Microsoft.ContainerInstance/containerGroups/acisample348743128/containers/acisample348743128-1/logs?api-version=2018-02-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpYWI3MDY0NTgzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvY29udGFpbmVyR3JvdXBzL2FjaXNhbXBsZTM0ODc0MzEyOC9jb250YWluZXJzL2FjaXNhbXBsZTM0ODc0MzEyOC0xL2xvZ3M/YXBpLXZlcnNpb249MjAxOC0wMi0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "6c2a1d63-fa8f-482c-a798-2224b5e6f726"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
-          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"content\": \"listening on port 80\\n::1 - - [06/Feb/2018:19:54:08 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [06/Feb/2018:19:54:11 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [06/Feb/2018:19:54:14 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [06/Feb/2018:19:54:17 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 06 Feb 2018 19:54:18 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Vary": [
-          "Accept-Encoding",
-          "Accept-Encoding"
-        ],
-        "x-ms-request-id": [
-          "eastus:f4b7edbb-aa48-4530-b3dc-d9f4bfdecffd"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14994"
-        ],
-        "x-ms-correlation-request-id": [
-          "79b262b9-c040-4f65-8985-6cc8cb007b20"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180206T195418Z:79b262b9-c040-4f65-8985-6cc8cb007b20"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaciab7064583/providers/Microsoft.ContainerInstance/containerGroups/acisample348743128/containers/acisample348743128-2/logs?api-version=2018-02-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpYWI3MDY0NTgzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvY29udGFpbmVyR3JvdXBzL2FjaXNhbXBsZTM0ODc0MzEyOC9jb250YWluZXJzL2FjaXNhbXBsZTM0ODc0MzEyOC0yL2xvZ3M/YXBpLXZlcnNpb249MjAxOC0wMi0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "eadb4d6a-76e5-4e39-9264-4443acbb3043"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
-          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"content\": \"\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-02-06 19:54:08\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 06 Feb 2018 19:54:08 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-02-06 19:54:11\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 06 Feb 2018 19:54:11 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-02-06 19:54:14\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 06 Feb 2018 19:54:14 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-02-06 19:54:17\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 06 Feb 2018 19:54:17 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\n\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 06 Feb 2018 19:54:18 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Vary": [
-          "Accept-Encoding",
-          "Accept-Encoding"
-        ],
-        "x-ms-request-id": [
-          "eastus:6d04a7ae-37cf-4b2d-8f74-14574d0eb3af"
+          "eastus:72fd4f0b-fc06-41d2-a51b-840288d8f22b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "14993"
         ],
         "x-ms-correlation-request-id": [
-          "6600e153-810f-436c-a66a-eee61bd6f242"
+          "8acb3410-ad51-4fb6-96f6-a8e956ea8169"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180206T195418Z:6600e153-810f-436c-a66a-eee61bd6f242"
+          "WESTUS2:20180403T204404Z:8acb3410-ad51-4fb6-96f6-a8e956ea8169"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaciab7064583/providers/Microsoft.ContainerInstance/containerGroups/acisample348743128?api-version=2018-02-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlR3JvdXBzL3JnYWNpYWI3MDY0NTgzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvY29udGFpbmVyR3JvdXBzL2FjaXNhbXBsZTM0ODc0MzEyOD9hcGktdmVyc2lvbj0yMDE4LTAyLTAxLXByZXZpZXc=",
-      "RequestMethod": "DELETE",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261/providers/Microsoft.ContainerInstance/containerGroups/acisample4fb302612?api-version=2018-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnYWNpNjQyNjc4MjYxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvY29udGFpbmVyR3JvdXBzL2FjaXNhbXBsZTRmYjMwMjYxMj9hcGktdmVyc2lvbj0yMDE4LTA0LTAx",
+      "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "be5ee9eb-0691-4f67-aed8-c86bbe37ef4b"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.6.0.0",
-          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.8.0.0",
+          "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"acisample348743128-1\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-helloworld\",\r\n          \"ports\": [\r\n            {\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"instanceView\": {\r\n            \"restartCount\": 0,\r\n            \"currentState\": {\r\n              \"state\": \"Running\",\r\n              \"startTime\": \"2018-02-06T19:54:06Z\",\r\n              \"detailStatus\": \"\"\r\n            },\r\n            \"events\": [\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:00Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:00Z\",\r\n                \"name\": \"Pulling\",\r\n                \"message\": \"pulling image \\\"microsoft/aci-helloworld\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"name\": \"Pulled\",\r\n                \"message\": \"Successfully pulled image \\\"microsoft/aci-helloworld\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"name\": \"Created\",\r\n                \"message\": \"Created container with id d8b50fe50e62962007792896e5eeff0ed7d52c26f01b301c0f66e07a0b421b77\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"name\": \"Started\",\r\n                \"message\": \"Started container with id d8b50fe50e62962007792896e5eeff0ed7d52c26f01b301c0f66e07a0b421b77\",\r\n                \"type\": \"Normal\"\r\n              }\r\n            ]\r\n          },\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"acisample348743128-2\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-tutorial-sidecar\",\r\n          \"ports\": [],\r\n          \"environmentVariables\": [],\r\n          \"instanceView\": {\r\n            \"restartCount\": 0,\r\n            \"currentState\": {\r\n              \"state\": \"Running\",\r\n              \"startTime\": \"2018-02-06T19:54:08Z\",\r\n              \"detailStatus\": \"\"\r\n            },\r\n            \"events\": [\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:06Z\",\r\n                \"name\": \"Pulling\",\r\n                \"message\": \"pulling image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:07Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:07Z\",\r\n                \"name\": \"Pulled\",\r\n                \"message\": \"Successfully pulled image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:08Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:08Z\",\r\n                \"name\": \"Created\",\r\n                \"message\": \"Created container with id 86648c957b9984329b39b89eb2c2dc3e970f0bf928c1d27c116901d748dcda0f\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-02-06T19:54:08Z\",\r\n                \"lastTimestamp\": \"2018-02-06T19:54:08Z\",\r\n                \"name\": \"Started\",\r\n                \"message\": \"Started container with id 86648c957b9984329b39b89eb2c2dc3e970f0bf928c1d27c116901d748dcda0f\",\r\n                \"type\": \"Normal\"\r\n              }\r\n            ]\r\n          },\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"13.92.169.185\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Running\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourceGroups/rgaciab7064583/providers/Microsoft.ContainerInstance/containerGroups/acisample348743128\",\r\n  \"name\": \"acisample348743128\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"acisample4fb302612-1\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-helloworld\",\r\n          \"ports\": [\r\n            {\r\n              \"protocol\": \"TCP\",\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"instanceView\": {\r\n            \"restartCount\": 0,\r\n            \"currentState\": {\r\n              \"state\": \"Running\",\r\n              \"startTime\": \"2018-04-03T20:43:44Z\",\r\n              \"detailStatus\": \"\"\r\n            },\r\n            \"events\": [\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:38Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:38Z\",\r\n                \"name\": \"Pulling\",\r\n                \"message\": \"pulling image \\\"microsoft/aci-helloworld\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Pulled\",\r\n                \"message\": \"Successfully pulled image \\\"microsoft/aci-helloworld\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Created\",\r\n                \"message\": \"Created container with id abe5c48c027981506064b6f3ce63f9770d4146a996baf9393f726a0f00ed1802\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Started\",\r\n                \"message\": \"Started container with id abe5c48c027981506064b6f3ce63f9770d4146a996baf9393f726a0f00ed1802\",\r\n                \"type\": \"Normal\"\r\n              }\r\n            ]\r\n          },\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"acisample4fb302612-2\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-tutorial-sidecar\",\r\n          \"ports\": [],\r\n          \"environmentVariables\": [],\r\n          \"instanceView\": {\r\n            \"restartCount\": 0,\r\n            \"currentState\": {\r\n              \"state\": \"Running\",\r\n              \"startTime\": \"2018-04-03T20:43:46Z\",\r\n              \"detailStatus\": \"\"\r\n            },\r\n            \"events\": [\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Pulling\",\r\n                \"message\": \"pulling image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"name\": \"Pulled\",\r\n                \"message\": \"Successfully pulled image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"name\": \"Created\",\r\n                \"message\": \"Created container with id 986c335d56c3c10dce8c6e1a28fa4a5f583cf29f9b4a5273a4b3521b1a520528\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"name\": \"Started\",\r\n                \"message\": \"Started container with id 986c335d56c3c10dce8c6e1a28fa4a5f583cf29f9b4a5273a4b3521b1a520528\",\r\n                \"type\": \"Normal\"\r\n              }\r\n            ]\r\n          },\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"13.92.215.17\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Running\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261/providers/Microsoft.ContainerInstance/containerGroups/acisample4fb302612\",\r\n  \"name\": \"acisample4fb302612\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -340,7 +220,259 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 06 Feb 2018 19:54:19 GMT"
+          "Tue, 03 Apr 2018 20:44:04 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Vary": [
+          "Accept-Encoding",
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "eastus:9055ecee-a3d6-4f64-9807-b578ebcd4c3e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-correlation-request-id": [
+          "4c005cc8-8767-4c85-bb99-f3a57c47027a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180403T204404Z:4c005cc8-8767-4c85-bb99-f3a57c47027a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261/providers/Microsoft.ContainerInstance/containerGroups/acisample4fb302612?api-version=2018-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnYWNpNjQyNjc4MjYxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvY29udGFpbmVyR3JvdXBzL2FjaXNhbXBsZTRmYjMwMjYxMj9hcGktdmVyc2lvbj0yMDE4LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "89314502-209d-402d-ad56-5ff599dc86f4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.8.0.0",
+          "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"acisample4fb302612-1\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-helloworld\",\r\n          \"ports\": [\r\n            {\r\n              \"protocol\": \"TCP\",\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"instanceView\": {\r\n            \"restartCount\": 0,\r\n            \"currentState\": {\r\n              \"state\": \"Running\",\r\n              \"startTime\": \"2018-04-03T20:43:44Z\",\r\n              \"detailStatus\": \"\"\r\n            },\r\n            \"events\": [\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:38Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:38Z\",\r\n                \"name\": \"Pulling\",\r\n                \"message\": \"pulling image \\\"microsoft/aci-helloworld\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Pulled\",\r\n                \"message\": \"Successfully pulled image \\\"microsoft/aci-helloworld\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Created\",\r\n                \"message\": \"Created container with id abe5c48c027981506064b6f3ce63f9770d4146a996baf9393f726a0f00ed1802\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Started\",\r\n                \"message\": \"Started container with id abe5c48c027981506064b6f3ce63f9770d4146a996baf9393f726a0f00ed1802\",\r\n                \"type\": \"Normal\"\r\n              }\r\n            ]\r\n          },\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"acisample4fb302612-2\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-tutorial-sidecar\",\r\n          \"ports\": [],\r\n          \"environmentVariables\": [],\r\n          \"instanceView\": {\r\n            \"restartCount\": 0,\r\n            \"currentState\": {\r\n              \"state\": \"Running\",\r\n              \"startTime\": \"2018-04-03T20:43:46Z\",\r\n              \"detailStatus\": \"\"\r\n            },\r\n            \"events\": [\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Pulling\",\r\n                \"message\": \"pulling image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"name\": \"Pulled\",\r\n                \"message\": \"Successfully pulled image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"name\": \"Created\",\r\n                \"message\": \"Created container with id 986c335d56c3c10dce8c6e1a28fa4a5f583cf29f9b4a5273a4b3521b1a520528\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"name\": \"Started\",\r\n                \"message\": \"Started container with id 986c335d56c3c10dce8c6e1a28fa4a5f583cf29f9b4a5273a4b3521b1a520528\",\r\n                \"type\": \"Normal\"\r\n              }\r\n            ]\r\n          },\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"13.92.215.17\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Running\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261/providers/Microsoft.ContainerInstance/containerGroups/acisample4fb302612\",\r\n  \"name\": \"acisample4fb302612\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 03 Apr 2018 20:44:24 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Vary": [
+          "Accept-Encoding",
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "eastus:7467d843-98b1-4ada-9d8b-1180066c03d7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-correlation-request-id": [
+          "828744e8-a773-44b9-bfb1-77e321c3c39b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180403T204424Z:828744e8-a773-44b9-bfb1-77e321c3c39b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261/providers/Microsoft.ContainerInstance/containerGroups/acisample4fb302612/containers/acisample4fb302612-1/logs?api-version=2018-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnYWNpNjQyNjc4MjYxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvY29udGFpbmVyR3JvdXBzL2FjaXNhbXBsZTRmYjMwMjYxMi9jb250YWluZXJzL2FjaXNhbXBsZTRmYjMwMjYxMi0xL2xvZ3M/YXBpLXZlcnNpb249MjAxOC0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2285499c-d2b7-4b78-81c1-0df7aaab65c0"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.8.0.0",
+          "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"content\": \"listening on port 80\\n::1 - - [03/Apr/2018:20:43:46 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:43:49 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:43:52 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:43:55 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:43:58 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:44:01 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:44:04 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:44:07 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:44:10 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:44:14 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:44:17 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:44:20 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n::1 - - [03/Apr/2018:20:44:23 +0000] \\\"HEAD / HTTP/1.1\\\" 200 1663 \\\"-\\\" \\\"curl/7.54.0\\\"\\n\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 03 Apr 2018 20:44:24 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Vary": [
+          "Accept-Encoding",
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "eastus:3bce0318-eb0a-4ae0-9e70-1e8eb8cc3b28"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-correlation-request-id": [
+          "911a589b-dd3f-4c68-9bfb-fb60e75014bd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180403T204425Z:911a589b-dd3f-4c68-9bfb-fb60e75014bd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261/providers/Microsoft.ContainerInstance/containerGroups/acisample4fb302612/containers/acisample4fb302612-2/logs?api-version=2018-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnYWNpNjQyNjc4MjYxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvY29udGFpbmVyR3JvdXBzL2FjaXNhbXBsZTRmYjMwMjYxMi9jb250YWluZXJzL2FjaXNhbXBsZTRmYjMwMjYxMi0yL2xvZ3M/YXBpLXZlcnNpb249MjAxOC0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f354dbbe-02cf-4dd6-a4e4-63fff7a62054"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.8.0.0",
+          "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"content\": \"  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:43:46\\n\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:43:46 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:43:49\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:43:49 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:43:52\\n\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:43:52 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:43:55\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:43:55 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:43:58\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:43:58 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:44:01\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:44:01 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:44:04\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:44:04 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:44:07\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\nHTTP/1.1 200 OK\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:44:07 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:44:10\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:44:10 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:44:13\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:44:14 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:44:17\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:44:17 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:44:20\\n\\nHTTP/1.1 200 OK\\r\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:44:20 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\n\\u001b[H\\u001b[JEvery 3s: curl -I http://localhost                          2018-04-03 20:44:23\\n\\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\\n                                 Dload  Upload   Total   Spent    Left  Speed\\nHTTP/1.1 200 OK\\r\\n\\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\r  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\\nX-Powered-By: Express\\r\\nAccept-Ranges: bytes\\r\\nCache-Control: public, max-age=0\\r\\nLast-Modified: Wed, 29 Nov 2017 06:40:40 GMT\\r\\nETag: W/\\\"67f-16006818640\\\"\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nContent-Length: 1663\\r\\nDate: Tue, 03 Apr 2018 20:44:23 GMT\\r\\nConnection: keep-alive\\r\\n\\r\\n\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 03 Apr 2018 20:44:24 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Vary": [
+          "Accept-Encoding",
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "eastus:f45a1f6a-446f-4a41-aed3-b59118b23309"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "38cad04e-c963-4c56-9dcc-3e18f8f19aac"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180403T204425Z:38cad04e-c963-4c56-9dcc-3e18f8f19aac"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261/providers/Microsoft.ContainerInstance/containerGroups/acisample4fb302612?api-version=2018-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlR3JvdXBzL3JnYWNpNjQyNjc4MjYxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29udGFpbmVySW5zdGFuY2UvY29udGFpbmVyR3JvdXBzL2FjaXNhbXBsZTRmYjMwMjYxMj9hcGktdmVyc2lvbj0yMDE4LTA0LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6129adb2-69c8-4978-9283-87adb70910d3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerInstanceManagementClient/1.8.0.0",
+          "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"containers\": [\r\n      {\r\n        \"name\": \"acisample4fb302612-1\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-helloworld\",\r\n          \"ports\": [\r\n            {\r\n              \"protocol\": \"TCP\",\r\n              \"port\": 80\r\n            }\r\n          ],\r\n          \"environmentVariables\": [],\r\n          \"instanceView\": {\r\n            \"restartCount\": 0,\r\n            \"currentState\": {\r\n              \"state\": \"Running\",\r\n              \"startTime\": \"2018-04-03T20:43:44Z\",\r\n              \"detailStatus\": \"\"\r\n            },\r\n            \"events\": [\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:38Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:38Z\",\r\n                \"name\": \"Pulling\",\r\n                \"message\": \"pulling image \\\"microsoft/aci-helloworld\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Pulled\",\r\n                \"message\": \"Successfully pulled image \\\"microsoft/aci-helloworld\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Created\",\r\n                \"message\": \"Created container with id abe5c48c027981506064b6f3ce63f9770d4146a996baf9393f726a0f00ed1802\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Started\",\r\n                \"message\": \"Started container with id abe5c48c027981506064b6f3ce63f9770d4146a996baf9393f726a0f00ed1802\",\r\n                \"type\": \"Normal\"\r\n              }\r\n            ]\r\n          },\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"acisample4fb302612-2\",\r\n        \"properties\": {\r\n          \"image\": \"microsoft/aci-tutorial-sidecar\",\r\n          \"ports\": [],\r\n          \"environmentVariables\": [],\r\n          \"instanceView\": {\r\n            \"restartCount\": 0,\r\n            \"currentState\": {\r\n              \"state\": \"Running\",\r\n              \"startTime\": \"2018-04-03T20:43:46Z\",\r\n              \"detailStatus\": \"\"\r\n            },\r\n            \"events\": [\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:44Z\",\r\n                \"name\": \"Pulling\",\r\n                \"message\": \"pulling image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"name\": \"Pulled\",\r\n                \"message\": \"Successfully pulled image \\\"microsoft/aci-tutorial-sidecar\\\"\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"name\": \"Created\",\r\n                \"message\": \"Created container with id 986c335d56c3c10dce8c6e1a28fa4a5f583cf29f9b4a5273a4b3521b1a520528\",\r\n                \"type\": \"Normal\"\r\n              },\r\n              {\r\n                \"count\": 1,\r\n                \"firstTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"lastTimestamp\": \"2018-04-03T20:43:46Z\",\r\n                \"name\": \"Started\",\r\n                \"message\": \"Started container with id 986c335d56c3c10dce8c6e1a28fa4a5f583cf29f9b4a5273a4b3521b1a520528\",\r\n                \"type\": \"Normal\"\r\n              }\r\n            ]\r\n          },\r\n          \"resources\": {\r\n            \"requests\": {\r\n              \"memoryInGB\": 1.0,\r\n              \"cpu\": 0.5\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"restartPolicy\": \"Never\",\r\n    \"ipAddress\": {\r\n      \"ports\": [\r\n        {\r\n          \"protocol\": \"TCP\",\r\n          \"port\": 80\r\n        }\r\n      ],\r\n      \"ip\": \"13.92.215.17\",\r\n      \"type\": \"Public\"\r\n    },\r\n    \"osType\": \"Linux\",\r\n    \"instanceView\": {\r\n      \"events\": [],\r\n      \"state\": \"Running\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourceGroups/rgaci642678261/providers/Microsoft.ContainerInstance/containerGroups/acisample4fb302612\",\r\n  \"name\": \"acisample4fb302612\",\r\n  \"type\": \"Microsoft.ContainerInstance/containerGroups\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {}\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 03 Apr 2018 20:44:26 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -359,39 +491,42 @@
           "149"
         ],
         "x-ms-request-id": [
-          "eastus:3b4a331e-e1cd-44e3-9f43-53ef7f703066"
+          "eastus:7d42fa6d-820f-4841-8bb6-b5bb16a2a838"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "a3cd718c-d8f4-4fa8-b869-2c62836aeaeb"
+          "9246f002-6967-48b4-9b17-9b3eff8d9d73"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180206T195419Z:a3cd718c-d8f4-4fa8-b869-2c62836aeaeb"
+          "WESTUS2:20180403T204427Z:9246f002-6967-48b4-9b17-9b3eff8d9d73"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/resourcegroups/rgaciab7064583?api-version=2017-05-10",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmZhNTJmMjctYmUxMi00Y2FkLWIxZWEtYzJjMjQxYjZjY2ViL3Jlc291cmNlZ3JvdXBzL3JnYWNpYWI3MDY0NTgzP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestUri": "/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/resourcegroups/rgaci642678261?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWM2MzhjZjQtNjA4Zi00ZWU2LWI2ODAtYzMyOWU4MjRjM2E4L3Jlc291cmNlZ3JvdXBzL3JnYWNpNjQyNjc4MjYxP2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "183f9f7f-9035-4626-90df-4ab2cb7dd920"
+          "cc4a8511-c360-4de3-b40b-0670ec59c33f"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.6.25211.01",
-          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.6.0.0",
-          "MacAddressHash/48561cb96dfeab86643d10462d4a86a08176670d4e373b4472299d416c9fee25"
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.8.0.0",
+          "MacAddressHash/796552baf35e2996b3452164e266e3a6cb6e6d28ab140e023a21a5ad3b8e11f1"
         ]
       },
       "ResponseBody": "",
@@ -406,31 +541,34 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 06 Feb 2018 19:54:20 GMT"
+          "Tue, 03 Apr 2018 20:44:28 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/ffa52f27-be12-4cad-b1ea-c2c241b6cceb/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR0FDSUFCNzA2NDU4My1FQVNUVVMiLCJqb2JMb2NhdGlvbiI6ImVhc3R1cyJ9?api-version=2016-02-01"
+          "https://management.azure.com/subscriptions/1c638cf4-608f-4ee6-b680-c329e824c3a8/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR0FDSTY0MjY3ODI2MS1FQVNUVVMiLCJqb2JMb2NhdGlvbiI6ImVhc3R1cyJ9?api-version=2017-05-10"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1196"
         ],
         "x-ms-request-id": [
-          "72ca739d-a0ac-43f5-bc0e-6ce90a809f1c"
+          "e6d168fd-f9be-42b6-9f69-418d604baaed"
         ],
         "x-ms-correlation-request-id": [
-          "72ca739d-a0ac-43f5-bc0e-6ce90a809f1c"
+          "e6d168fd-f9be-42b6-9f69-418d604baaed"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180206T195421Z:72ca739d-a0ac-43f5-bc0e-6ce90a809f1c"
+          "WESTUS2:20180403T204428Z:e6d168fd-f9be-42b6-9f69-418d604baaed"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ]
       },
       "StatusCode": 202
@@ -438,13 +576,13 @@
   ],
   "Names": {
     "ManageWithMultipleContainerImagesTest": [
-      "rgaciab7064583",
-      "acisample348743128"
+      "rgaci642678261",
+      "acisample4fb302612"
     ]
   },
   "Variables": {
-    "ServicePrincipal": "26bdda7f-4c22-4e48-8524-7c44e2cdbe38",
+    "ServicePrincipal": "aabd680f-74de-4690-bf94-f40142e0a187",
     "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "SubscriptionId": "ffa52f27-be12-4cad-b1ea-c2c241b6cceb"
+    "SubscriptionId": "1c638cf4-608f-4ee6-b680-c329e824c3a8"
   }
 }
