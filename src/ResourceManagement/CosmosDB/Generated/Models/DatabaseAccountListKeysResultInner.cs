@@ -69,13 +69,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// <summary>
         /// Gets base 64 encoded value of the primary read-only key.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.primaryReadonlyMasterKey")]
+        [JsonProperty(PropertyName = "primaryReadonlyMasterKey")]
         public string PrimaryReadonlyMasterKey { get; private set; }
 
         /// <summary>
         /// Gets base 64 encoded value of the secondary read-only key.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.secondaryReadonlyMasterKey")]
+        [JsonProperty(PropertyName = "secondaryReadonlyMasterKey")]
         public string SecondaryReadonlyMasterKey { get; private set; }
 
     }
