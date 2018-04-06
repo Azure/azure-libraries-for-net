@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         internal PublicIPAddressImpl WithStaticIP()
         {
 
-            Inner.PublicIPAllocationMethod = Models.IPAllocationMethod.Static.ToString();
+            Inner.PublicIPAllocationMethod = Models.IPAllocationMethod.Static;
             return this;
         }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:E601A7030461C04378EF23ACF207D4C2:6F94222AD7A6FAA5BDB1F4A8C2336D54
         internal PublicIPAddressImpl WithDynamicIP()
         {
-            Inner.PublicIPAllocationMethod = Models.IPAllocationMethod.Dynamic.ToString();
+            Inner.PublicIPAllocationMethod = Models.IPAllocationMethod.Dynamic;
             return this;
         }
 
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:493B1EDB88EACA3A476D936362A5B14C:FCE799745FA15D3EA39692B492C8E747
         internal IPVersion Version()
         {
-            return IPVersion.Parse(Inner.PublicIPAddressVersion);
+            return Inner.PublicIPAddressVersion;
         }
 
 

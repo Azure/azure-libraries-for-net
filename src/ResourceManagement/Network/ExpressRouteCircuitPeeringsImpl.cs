@@ -68,13 +68,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:ECAE06A61F07DA1F3D1A8D023A8B2918:DDB2BB043185E9D0C3266308196FB6CC
         public ExpressRouteCircuitPeeringImpl DefineMicrosoftPeering()
         {
-            return new ExpressRouteCircuitPeeringImpl(parent, new ExpressRouteCircuitPeeringInner(), Inner, ExpressRouteCircuitPeeringType.MicrosoftPeering);
+            return new ExpressRouteCircuitPeeringImpl(parent, new ExpressRouteCircuitPeeringInner(), Inner, ExpressRoutePeeringType.MicrosoftPeering);
         }
 
         ///GENMHASH:21D478F33B98E8BA003B0CA8A77DC927:E43675D6B0AF2246CC7B27D4E8ADDC2C
         public ExpressRouteCircuitPeeringImpl DefineAzurePublicPeering()
         {
-            return new ExpressRouteCircuitPeeringImpl(parent, new ExpressRouteCircuitPeeringInner(), Inner, ExpressRouteCircuitPeeringType.AzurePublicPeering);
+            return new ExpressRouteCircuitPeeringImpl(parent, new ExpressRouteCircuitPeeringInner(), Inner, ExpressRoutePeeringType.AzurePublicPeering);
         }
 
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:921F345925153FFB7B665161B62A21A2:EF8777BA4B3D684F2BED0D68FF019106
         public ExpressRouteCircuitPeeringImpl DefineAzurePrivatePeering()
         {
-            return new ExpressRouteCircuitPeeringImpl(parent, new ExpressRouteCircuitPeeringInner(), Inner, ExpressRouteCircuitPeeringType.AzurePrivatePeering);
+            return new ExpressRouteCircuitPeeringImpl(parent, new ExpressRouteCircuitPeeringInner(), Inner, ExpressRoutePeeringType.AzurePrivatePeering);
         }
 
         /// <return>An observable emits packet captures in this collection.</return>
@@ -102,13 +102,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         protected override ExpressRouteCircuitPeeringImpl WrapModel(string name)
         {
             ExpressRouteCircuitPeeringInner inner = new ExpressRouteCircuitPeeringInner() { Name = name };
-            return new ExpressRouteCircuitPeeringImpl(parent, inner, Inner, ExpressRouteCircuitPeeringType.Parse(name));
+            return new ExpressRouteCircuitPeeringImpl(parent, inner, Inner, ExpressRoutePeeringType.Parse(name));
         }
 
         ///GENMHASH:90E449BE53BE2022DD4BD866D5A6C29C:DD8B5257C314F4DDE0536EE2BF670307
         protected override IExpressRouteCircuitPeering WrapModel(ExpressRouteCircuitPeeringInner inner)
         {
-            return inner != null ? new ExpressRouteCircuitPeeringImpl(parent, inner, Inner, ExpressRouteCircuitPeeringType.Parse(inner.PeeringType)) : null;
+            return inner != null ? new ExpressRouteCircuitPeeringImpl(parent, inner, Inner, inner.PeeringType) : null;
         }
 
         /// <summary>

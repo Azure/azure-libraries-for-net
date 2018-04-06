@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:D684E7477889A9013C81FAD82F69C54F:BD249A015EF71106387B78281489583A
         public ApplicationGatewayProtocol Protocol()
         {
-            return ApplicationGatewayProtocol.Parse(Inner.Protocol);
+            return Inner.Protocol;
         }
 
 
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (Inner.CookieBasedAffinity != null)
             {
-                return Inner.CookieBasedAffinity.ToLower().Equals(ApplicationGatewayCookieBasedAffinity.Enabled.ToLower());
+                return Inner.CookieBasedAffinity.Equals(ApplicationGatewayCookieBasedAffinity.Enabled);
             }
             else
             {

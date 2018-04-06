@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the peer ASN.
         /// </summary>
-        int PeerAsn { get; }
+        long PeerAsn { get; }
 
         /// <summary>
         /// Gets the secondary address prefix.
@@ -91,11 +91,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets peering state.
         /// </summary>
-        Models.ExpressRouteCircuitPeeringState State { get; }
+        Models.ExpressRoutePeeringState State { get; }
 
         /// <summary>
         /// Gets peering type.
         /// </summary>
-        Models.ExpressRouteCircuitPeeringType PeeringType { get; }
+        Models.ExpressRoutePeeringType PeeringType { get; }
     }
 }

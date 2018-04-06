@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FCB784E90DCC27EAC6AD4B4C988E2752:925E8594616C741FD699EF2269B3D731
         public IPAllocationMethod PrivateIPAllocationMethod()
         {
-            return IPAllocationMethod.Parse(Inner.PrivateIPAllocationMethod);
+            return Inner.PrivateIPAllocationMethod;
         }
 
         #endregion

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IDefinition
     {
         private NetworkWatcherImpl parent;
-        private NextHopParametersInner parameters = new NextHopParametersInner();
+        private NextHopParameters parameters = new NextHopParameters();
         private NextHopResultInner result;
 
         ///GENMHASH:CBA62609044BF002539F794F631D1AEF:319608FF6209541FDFD5A9FAD1FF1198
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:41D73337A94BA1CFBD7B6D9FBD76CDA8:D00386D7D70F0650EF6FCDD113398AD0
         public NextHopType NextHopType()
         {
-            return Models.NextHopType.Parse(result.NextHopType);
+            return result.NextHopType;
 
         }
 

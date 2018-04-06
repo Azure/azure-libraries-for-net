@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IDefinition
     {
         private NetworkWatcherImpl parent;
-        private TroubleshootingParametersInner parameters = new TroubleshootingParametersInner();
+        private TroubleshootingParameters parameters = new TroubleshootingParameters();
         private TroubleshootingResultInner result;
         ///GENMHASH:FD5D5A8D6904B467321E345BE1FA424E:8AB87020DE6C711CD971F3D80C33DD83
         public INetworkWatcher Parent()

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IDefinition
     {
         private NetworkWatcherImpl parent;
-        private ConnectivityParametersInner parameters = new ConnectivityParametersInner();
+        private ConnectivityParameters parameters = new ConnectivityParameters();
         private ConnectivityInformationInner result;
         ///GENMHASH:7099791AF90C47ACDEDA5E7DCAC2262C:01CB734F343C6462053765168A26F354
         private ConnectivitySource EnsureConnectivitySource()

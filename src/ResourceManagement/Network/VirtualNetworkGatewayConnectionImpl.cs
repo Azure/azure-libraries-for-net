@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:8D609444E5B12F47A2302B445E89BEE5:43AD2FCE7B0EAA8CBA41E52CCCA78770
         public VirtualNetworkGatewayConnectionType ConnectionType()
         {
-            return VirtualNetworkGatewayConnectionType.Parse(Inner.ConnectionType);
+            return Inner.ConnectionType;
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:C6001AE2B48A1402A8313022A5CF5590
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:629786B45F85F8E289D849497FF3EB84:328FF3B049F2421E1BB77C26A4256370
         public VirtualNetworkGatewayConnectionImpl WithVNetToVNet()
         {
-            Inner.ConnectionType = VirtualNetworkGatewayConnectionType.Vnet2Vnet.Value;
+            Inner.ConnectionType = VirtualNetworkGatewayConnectionType.Vnet2Vnet;
             return this;
         }
 
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:C70D23F4587F98FF6D0A29A186DD0C1E:7AD73DFFC315FFB18F7BA235DFC6F4ED
         public VirtualNetworkGatewayConnectionImpl WithExpressRoute(string circuitId)
         {
-            Inner.ConnectionType = VirtualNetworkGatewayConnectionType.ExpressRoute.Value;
+            Inner.ConnectionType = VirtualNetworkGatewayConnectionType.ExpressRoute;
             Inner.Peer = new SubResource()
             {
                 Id = circuitId
@@ -251,13 +251,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FEB663768504525640BBFB5A208F3B76:BC57D6829223294BCF9ED45D4B96D238
         public VirtualNetworkGatewayConnectionStatus ConnectionStatus()
         {
-            return VirtualNetworkGatewayConnectionStatus.Parse(Inner.ConnectionStatus);
+            return Inner.ConnectionStatus;
         }
 
         ///GENMHASH:21044C5DE2790341DFD3F758A2850299:735429DEBDE0B3FC24266278F000BE53
         public VirtualNetworkGatewayConnectionImpl WithSiteToSite()
         {
-            Inner.ConnectionType = VirtualNetworkGatewayConnectionType.IPsec.Value;
+            Inner.ConnectionType = VirtualNetworkGatewayConnectionType.IPsec;
             return this;
         }
 

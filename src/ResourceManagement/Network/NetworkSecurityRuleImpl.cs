@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
 
         ///GENMHASH:0F15C8D59C688FCCC302100A25E672D1:8E47A7551FAA8958BCB5314D0E665506
-        internal NetworkSecurityRuleImpl WithProtocol(string protocol)
+        internal NetworkSecurityRuleImpl WithProtocol(SecurityRuleProtocol protocol)
         {
             Inner.Protocol = protocol;
             return this;
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
 
         ///GENMHASH:14771CE9D31356489E7AB40C9C8F2695:68114EBD3902CF391D25CC7FD0C082C1
-        private NetworkSecurityRuleImpl WithDirection(string direction)
+        private NetworkSecurityRuleImpl WithDirection(SecurityRuleDirection direction)
         {
             Inner.Direction = direction;
             return this;
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
 
         ///GENMHASH:704CF58AF600E909FFE3ECF15FF9CD85:8E627CC12F1DC0336E359140C6E63246
-        private NetworkSecurityRuleImpl WithAccess(string permission)
+        private NetworkSecurityRuleImpl WithAccess(SecurityRuleAccess permission)
         {
             Inner.Access = permission;
             return this;

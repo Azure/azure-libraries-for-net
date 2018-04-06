@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:D684E7477889A9013C81FAD82F69C54F:BD249A015EF71106387B78281489583A
         internal TransportProtocol Protocol()
         {
-            return TransportProtocol.Parse(Inner.Protocol);
+            return Inner.Protocol;
         }
 
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:178F3E3CE98D4024826A091913F44F62:266824FDF79AEA8AE608736C3BC62D2D
         internal LoadDistribution LoadDistribution()
         {
-            return Models.LoadDistribution.Parse(Inner.LoadDistribution);
+            return Inner.LoadDistribution;
         }
 
 
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:475A4755B19EB893208FCC08E7664C5B:8E47A7551FAA8958BCB5314D0E665506
         internal LoadBalancingRuleImpl WithProtocol(TransportProtocol protocol)
         {
-            Inner.Protocol = protocol.ToString();
+            Inner.Protocol = protocol;
             return this;
         }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:129F1484DB6983FA49EB300EBE8BB614:4E4D7CE935C5CC210DA1EEB68CB3F817
         internal LoadBalancingRuleImpl WithLoadDistribution(LoadDistribution loadDistribution)
         {
-            Inner.LoadDistribution = loadDistribution.ToString();
+            Inner.LoadDistribution = loadDistribution;
             return this;
         }
 

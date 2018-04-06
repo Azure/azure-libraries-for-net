@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IDefinition
     {
         private NetworkWatcherImpl parent;
-        private VerificationIPFlowParametersInner parameters = new VerificationIPFlowParametersInner();
+        private VerificationIPFlowParameters parameters = new VerificationIPFlowParameters();
         private VerificationIPFlowResultInner result;
 
         ///GENMHASH:FD5D5A8D6904B467321E345BE1FA424E:8AB87020DE6C711CD971F3D80C33DD83
@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:AD2631B1DB33BADA121356C1B30A8CEF:22CA551C34302C2ECB41398C91A06993
         public Models.Access Access()
         {
-            return Models.Access.Parse(result.Access);
+            return result.Access;
         }
 
 
         ///GENMHASH:BB86B1F07AADE33841AA4762FF3CC20E:B387E3DD8624B2499C0BDB4DDC202E72
-        public VerificationIPFlowImpl WithProtocol(Protocol protocol)
+        public VerificationIPFlowImpl WithProtocol(IpFlowProtocol protocol)
         {
-            parameters.Protocol = protocol.Value;
+            parameters.Protocol = protocol;
             return this;
         }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:CD439A9A0EEB2CF0133E315FD689D362:5889115CA9827174846B143D1E5C28CE
         public VerificationIPFlowImpl WithDirection(Direction direction)
         {
-            parameters.Direction = direction.Value;
+            parameters.Direction = direction;
             return this;
         }
 
@@ -135,14 +135,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FA2535431E8DE1A68BC05577993DEAFF:D55D5BD9867C55095428F74D81048912
         public IWithLocalIP WithTCP()
         {
-            return WithProtocol(Protocol.TCP);
+            return WithProtocol(IpFlowProtocol.TCP);
         }
 
 
         ///GENMHASH:D36AEA2E8788C46661B7C3DA03646E23:4082802774A0A2A4DD57F3F46876C1CE
         public IWithLocalIP WithUDP()
         {
-            return WithProtocol(Protocol.UDP);
+            return WithProtocol(IpFlowProtocol.UDP);
         }
 
         public override async Task<IVerificationIPFlow> ExecuteAsync(CancellationToken cancellationToken = new CancellationToken(), bool multiThreaded = true)

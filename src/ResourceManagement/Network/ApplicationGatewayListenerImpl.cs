@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FA888A1E446DDA9E368D1EF43B428BAC:0FE70D5AE03341449A2D980808F522FC
         public ApplicationGatewayListenerImpl WithHttps()
         {
-            Inner.Protocol = ApplicationGatewayProtocol.Https.ToString();
+            Inner.Protocol = ApplicationGatewayProtocol.Https;
             return this;
         }
 
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:604F12B361C77B3E3AD5768A73BA6DCF:ABADA5A8E77FDA08CD893ADDC4895F32
         public ApplicationGatewayListenerImpl WithHttp()
         {
-            Inner.Protocol = ApplicationGatewayProtocol.Http.ToString();
+            Inner.Protocol = ApplicationGatewayProtocol.Http;
             return this;
         }
 
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:D684E7477889A9013C81FAD82F69C54F:BD249A015EF71106387B78281489583A
         public ApplicationGatewayProtocol Protocol()
         {
-            return ApplicationGatewayProtocol.Parse(Inner.Protocol);
+            return Inner.Protocol;
         }
 
 
