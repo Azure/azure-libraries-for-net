@@ -103,8 +103,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:32A8B56FE180FA4429482D706189DEA2:9462BB1488F8B757A53382E31550B2EC
         public async Task<IHostNameBinding> CreateAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var hostNameBindingInner = parent is IDeploymentSlot
-                    ? await parent.Manager.Inner.WebApps.CreateOrUpdateHostNameBindingSlotAsync(parent.ResourceGroupName, ((IDeploymentSlot)parent).Parent.Name, name, Inner, parent.Name)
+            var hostNameBindingInner = parent is IDeploymentSlot deploymentSlot
+                    ? await parent.Manager.Inner.WebApps.CreateOrUpdateHostNameBindingSlotAsync(parent.ResourceGroupName, deploymentSlot.Parent.Name, name, Inner, deploymentSlot.Name)
                     : await parent.Manager.Inner.WebApps.CreateOrUpdateHostNameBindingAsync(parent.ResourceGroupName, parent.Name, name, Inner);
             SetInner(hostNameBindingInner);
 
