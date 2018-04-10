@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 foreach (var peering in Inner.Peerings)
                 {
-                    expressRouteCircuitPeerings[peering.Name] = new ExpressRouteCircuitPeeringImpl(this, peering, Manager.Inner.ExpressRouteCircuitPeerings, ExpressRouteCircuitPeeringType.Parse(peering.PeeringType));
+                    expressRouteCircuitPeerings[peering.Name] = new ExpressRouteCircuitPeeringImpl(this, peering, Manager.Inner.ExpressRouteCircuitPeerings, peering.PeeringType);
                 }
             }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:D8FCD961D6BE6B83CB9C046D9F26E057:59190BD3B464A70A33E345C37A98560E
         public ServiceProviderProvisioningState ServiceProviderProvisioningState()
         {
-            return Models.ServiceProviderProvisioningState.Parse(Inner.ServiceProviderProvisioningState);
+            return Inner.ServiceProviderProvisioningState;
         }
 
         ///GENMHASH:99D5BF64EA8AA0E287C9B6F77AAD6FC4:3DB04077E6BABC0FB5A5ACDA19D11309

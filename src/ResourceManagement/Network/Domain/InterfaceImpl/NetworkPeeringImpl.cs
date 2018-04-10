@@ -120,11 +120,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the state of the peering between the two networks.
         /// </summary>
-        Models.NetworkPeeringState Microsoft.Azure.Management.Network.Fluent.INetworkPeering.State
+        Models.VirtualNetworkPeeringState Microsoft.Azure.Management.Network.Fluent.INetworkPeering.State
         {
             get
             {
-                return this.State() as Models.NetworkPeeringState;
+                return this.State() as Models.VirtualNetworkPeeringState;
             }
         }
 

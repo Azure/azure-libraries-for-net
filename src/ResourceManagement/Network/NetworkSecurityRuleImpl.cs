@@ -37,21 +37,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:671DFCB9FF648490A9325E2CEF729A98:1264D4A5A514AF0E1D906F6555100DBC
         internal string Direction()
         {
-            return Inner.Direction;
+            return Inner.Direction.Value;
         }
 
 
         ///GENMHASH:D684E7477889A9013C81FAD82F69C54F:BD249A015EF71106387B78281489583A
         internal string Protocol()
         {
-            return Inner.Protocol;
+            return Inner.Protocol.Value;
         }
 
 
         ///GENMHASH:AD2631B1DB33BADA121356C1B30A8CEF:819A1711E476A574A29B65A8EF3D6B6D
         internal string Access()
         {
-            return Inner.Access;
+            return Inner.Access.Value;
         }
 
 
@@ -142,9 +142,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
 
         ///GENMHASH:0F15C8D59C688FCCC302100A25E672D1:8E47A7551FAA8958BCB5314D0E665506
-        internal NetworkSecurityRuleImpl WithProtocol(SecurityRuleProtocol protocol)
+        internal NetworkSecurityRuleImpl WithProtocol(string protocol)
         {
-            Inner.Protocol = protocol;
+            Inner.Protocol = SecurityRuleProtocol.Parse(protocol);
             return this;
         }
 
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:1928BF3A1A64CC113C96C62B2E19BC60:2F619F28559C25A5F73AEB7C7E089FBE
         internal NetworkSecurityRuleImpl WithAnyProtocol()
         {
-            return WithProtocol(SecurityRuleProtocol.Asterisk);
+            return WithProtocol(SecurityRuleProtocol.Asterisk.Value);
         }
         #endregion
 

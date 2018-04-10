@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="skuTier">A SKU tier.</param>
         /// <param name="skuFamily">An SKU family.</param>
         ///GENMHASH:1C1AC2081EDF467E58696D79BFED26DF:7E16A0307E12AFD2D0B6FA7988E995EB
-        public ExpressRouteCircuitSkuType(String skuTier, String skuFamily) : this(new ExpressRouteCircuitSku(skuTier + "_" + skuFamily, skuTier, skuFamily))
+        public ExpressRouteCircuitSkuType(ExpressRouteCircuitSkuTier skuTier, ExpressRouteCircuitSkuFamily skuFamily) : this(new ExpressRouteCircuitSku(skuTier + "_" + skuFamily, skuTier, skuFamily))
         {
         }
 

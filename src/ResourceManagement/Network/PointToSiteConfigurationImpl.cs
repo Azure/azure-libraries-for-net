@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public PointToSiteConfigurationImpl WithSstpOnly()
         {
-            Inner.VpnClientProtocols = new List<string>{VpnClientProtocol.SSTP.Value};
+            Inner.VpnClientProtocols = new List<VpnClientProtocol>{VpnClientProtocol.SSTP};
             return this;
         }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public PointToSiteConfigurationImpl WithIkeV2Only()
         {
-            Inner.VpnClientProtocols = new List<string> {VpnClientProtocol.IkeV2.Value};
+            Inner.VpnClientProtocols = new List<VpnClientProtocol> {VpnClientProtocol.IkeV2};
             return this;
         }
 

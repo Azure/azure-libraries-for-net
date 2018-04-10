@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuTG9hZEJhbGFuY2VyU2t1VHlwZQ==
     public class LoadBalancerSkuType : ExpandableStringEnum<LoadBalancerSkuType>
     {
-        public static readonly LoadBalancerSkuType Basic = Parse(LoadBalancerSkuName.Basic);
-        public static readonly LoadBalancerSkuType Standard = Parse(LoadBalancerSkuName.Standard);
+        public static readonly LoadBalancerSkuType Basic = Parse(LoadBalancerSkuName.Basic.Value);
+        public static readonly LoadBalancerSkuType Standard = Parse(LoadBalancerSkuName.Standard.Value);
     }
 }

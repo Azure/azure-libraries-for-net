@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// 'Failed'.</param>
         /// <param name="etag">Gets a unique read-only string that changes
         /// whenever the resource is updated.</param>
-        public RouteTableInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<RouteInner> routes = default(IList<RouteInner>), IList<SubnetInner> subnets = default(IList<SubnetInner>), bool? disableBgpRoutePropagation = default(bool?), string provisioningState = default(string), string etag = default(string))
+        public RouteTableInner(string location = default(string) , string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<RouteInner> routes = default(IList<RouteInner>), IList<SubnetInner> subnets = default(IList<SubnetInner>), bool? disableBgpRoutePropagation = default(bool?), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Routes = routes;
@@ -114,7 +114,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </exception>
         public override void Validate()
         {
-            base.Validate();
             if (Routes != null)
             {
                 foreach (var element in Routes)

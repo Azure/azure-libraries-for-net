@@ -140,9 +140,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:AEE17FD09F624712647F5EBCEC141EA5:034BCA494728ED6A04C4FDDDF51A9FE6
-        public NetworkPeeringState State()
+        public VirtualNetworkPeeringState State()
         {
-            return NetworkPeeringState.Parse(Inner.PeeringState);
+            return Inner.PeeringState;
         }
 
         ///GENMHASH:787CAB4CA1B6FFC990D0F22E05F7F245:ADC90767AEC7E624B4F4EFDC2F51DD6C

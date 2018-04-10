@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// the resource is updated.</param>
         /// <param name="zones">A list of availability zones denoting the IP
         /// allocated for the resource needs to come from.</param>
-        public PublicIPAddressInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), PublicIPAddressSku sku = default(PublicIPAddressSku), IPAllocationMethod publicIPAllocationMethod = default(IPAllocationMethod), IPVersion publicIPAddressVersion = default(IPVersion), IPConfigurationInner ipConfiguration = default(IPConfigurationInner), PublicIPAddressDnsSettings dnsSettings = default(PublicIPAddressDnsSettings), IList<IpTag> ipTags = default(IList<IpTag>), string ipAddress = default(string), int? idleTimeoutInMinutes = default(int?), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
+        public PublicIPAddressInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), PublicIPAddressSku sku = default(PublicIPAddressSku), IPAllocationMethod publicIPAllocationMethod = default(IPAllocationMethod), IPVersion publicIPAddressVersion = default(IPVersion), IPConfigurationInner ipConfiguration = default(IPConfigurationInner), PublicIPAddressDnsSettings dnsSettings = default(PublicIPAddressDnsSettings), IList<IpTag> ipTags = default(IList<IpTag>), string ipAddress = default(string), int? idleTimeoutInMinutes = default(int?), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -183,7 +183,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </exception>
         public override void Validate()
         {
-            base.Validate();
         }
     }
 }

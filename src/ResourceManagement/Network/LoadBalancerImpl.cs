@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 ProbeInner inner = new ProbeInner()
                 {
                     Name = name,
-                    Protocol = ProbeProtocol.Tcp.ToString()
+                    Protocol = ProbeProtocol.Tcp
                 };
 
                 return new LoadBalancerProbeImpl(inner, this);
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 ProbeInner inner = new ProbeInner()
                 {
                     Name = name,
-                    Protocol = ProbeProtocol.Http.ToString(),
+                    Protocol = ProbeProtocol.Http,
                     Port = 80
                 };
 
@@ -737,7 +737,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 return null;
             }
-            return LoadBalancerSkuType.Parse(this.Inner.Sku.Name);
+            return LoadBalancerSkuType.Parse(this.Inner.Sku.Name.Value);
         }
 
         ///GENMHASH:840DEA7030527F277A11984D70E2E76B:1B5B4D6A6A16556B13473A11AA9FE0C7
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             //
             this.Inner.Sku = new LoadBalancerSku
             {
-                Name = skuType.ToString()
+                Name = LoadBalancerSkuName.Parse(skuType.ToString())
             };
             return this;
         }

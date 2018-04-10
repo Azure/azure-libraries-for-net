@@ -420,8 +420,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             VirtualNetworkGatewaySku sku = new VirtualNetworkGatewaySku()
             {
                 // same sku tier as sku name
-                Name = skuName.Value,
-                Tier = skuName.Value
+                Name = skuName,
+                Tier = VirtualNetworkGatewaySkuTier.Parse(skuName.Value)
             };
             Inner.Sku = sku;
             return this;

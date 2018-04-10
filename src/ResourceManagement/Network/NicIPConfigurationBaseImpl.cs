@@ -62,14 +62,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FCB784E90DCC27EAC6AD4B4C988E2752:925E8594616C741FD699EF2269B3D731
         internal IPAllocationMethod PrivateIPAllocationMethod()
         {
-            return IPAllocationMethod.Parse(Inner.PrivateIPAllocationMethod);
+            return Inner.PrivateIPAllocationMethod;
         }
 
 
         ///GENMHASH:572B5A1179A4B2EF64D68C0E25834020:D53CEB54EB83B4CD2AFB7B489DE5E4E6
         internal IPVersion PrivateIPAddressVersion()
         {
-            return IPVersion.Parse(Inner.PrivateIPAddressVersion);
+            return Inner.PrivateIPAddressVersion;
         }
 
 

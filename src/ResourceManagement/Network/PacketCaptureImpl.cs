@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:99D5BF64EA8AA0E287C9B6F77AAD6FC4:3DB04077E6BABC0FB5A5ACDA19D11309
         public ProvisioningState ProvisioningState()
         {
-            return Models.ProvisioningState.Parse(Inner.ProvisioningState);
+            return Inner.ProvisioningState;
         }
 
 

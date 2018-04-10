@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:41D73337A94BA1CFBD7B6D9FBD76CDA8:3FBB22911E1E512603F245E0624E5230
         public RouteNextHopType NextHopType()
         {
-            return RouteNextHopType.Parse(Inner.NextHopType);
+            return Inner.NextHopType;
         }
 
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:EFA460D76414989C19313238DD20AA41:CEBC3F1E3A32B8EA1607917FBF09520A
         public RouteImpl WithNextHopToVirtualAppliance(string ipAddress)
         {
-            Inner.NextHopType = RouteNextHopType.VirtualAppliance.ToString();
+            Inner.NextHopType = RouteNextHopType.VirtualAppliance;
             Inner.NextHopIpAddress = ipAddress;
             return this;
         }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:8250561E62A0930DA1780FF8F83EA1AE:F0C4F9C231DA6D3EC53103DC8186BB72
         public RouteImpl WithNextHop(RouteNextHopType nextHopType)
         {
-            Inner.NextHopType = nextHopType.ToString();
+            Inner.NextHopType = nextHopType;
             return this;
         }
 

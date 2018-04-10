@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FCB784E90DCC27EAC6AD4B4C988E2752:AD76D34D3002AB3E39DB6F1AF087B2A7
         public IPAllocationMethod PrivateIPAllocationMethod()
         {
-            return IPAllocationMethod.Parse(Inner.PrivateIPAllocationMethod);
+            return Inner.PrivateIPAllocationMethod;
         }
 
         ///GENMHASH:5EF934D4E2CF202DF23C026435D9F6D6:E2FB3C470570EB032EC48D6BFD6A7AFF

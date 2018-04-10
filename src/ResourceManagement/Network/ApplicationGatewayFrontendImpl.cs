@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public ApplicationGatewayFrontendImpl WithPrivateIPAddressDynamic()
         {
             Inner.PrivateIPAddress = null;
-            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Dynamic.ToString();
+            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Dynamic;
             return this;
         }
 
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public ApplicationGatewayFrontendImpl WithPrivateIPAddressStatic(string ipAddress)
         {
             Inner.PrivateIPAddress = ipAddress;
-            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Static.ToString();
+            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Static;
             return this;
         }
 

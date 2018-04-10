@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="protocol">A transport protocol.</param>
         /// <return>The next stage of the definition.</return>
-        VerificationIPFlow.Definition.IWithLocalIP HasProtocol.Definition.IWithProtocol<VerificationIPFlow.Definition.IWithLocalIP, Models.Protocol>.WithProtocol(Protocol protocol)
+        VerificationIPFlow.Definition.IWithLocalIP HasProtocol.Definition.IWithProtocol<VerificationIPFlow.Definition.IWithLocalIP, Models.IpFlowProtocol>.WithProtocol(IpFlowProtocol protocol)
         {
             return this.WithProtocol(protocol) as VerificationIPFlow.Definition.IWithLocalIP;
         }

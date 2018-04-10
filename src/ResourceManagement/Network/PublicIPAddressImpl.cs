@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             //
             this.Inner.Sku = new PublicIPAddressSku
             {
-                Name = skuType.ToString()
+                Name = PublicIPAddressSkuName.Parse(skuType.ToString())
             };
             return this;
         }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 return null;
             }
-            return PublicIPSkuType.Parse(this.Inner.Sku.Name);
+            return PublicIPSkuType.Parse(this.Inner.Sku.Name.Value);
         }
 
         ///GENMHASH:969BC7B1870284D2FCF3192BD82F142F:5DAA827087A429B57970263E396335D1
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:7248510394946B110C799F104E023F9D:00D88D2717A616B24525A5934BEBB4F1
         internal IPAllocationMethod IPAllocationMethod()
         {
-            return Models.IPAllocationMethod.Parse(Inner.PublicIPAllocationMethod);
+            return Inner.PublicIPAllocationMethod;
         }
 
 

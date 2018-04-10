@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:A473E8C551A81C93BD8EA73FE99E314B:D6F3848D67AE407B04179F01B8D24165
         public ApplicationGatewayBackendHttpConfigurationImpl WithProtocol(ApplicationGatewayProtocol protocol)
         {
-            Inner.Protocol = protocol?.ToString();
+            Inner.Protocol = protocol;
             return this;
         }
 

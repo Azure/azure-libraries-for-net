@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:D684E7477889A9013C81FAD82F69C54F:BD249A015EF71106387B78281489583A
         internal ProbeProtocol Protocol()
         {
-            return ProbeProtocol.Parse(Inner.Protocol);
+            return Inner.Protocol;
         }
 
 

@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definitio
     /// Protocol to be verified on. Possible values include: 'TCP', 'UDP'.
     /// </summary>
     public interface IWithProtocol :
-        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definition.IWithLocalIP, Microsoft.Azure.Management.Network.Fluent.Models.Protocol>
+        Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.VerificationIPFlow.Definition.IWithLocalIP, Microsoft.Azure.Management.Network.Fluent.Models.IpFlowProtocol>
     {
         /// <summary>
         /// Set TCP protocol.
