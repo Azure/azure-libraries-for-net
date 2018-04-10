@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Definition
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.ActionDefinition.IActionDefinition<Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Definition.IWithCreate> DefineReceiver(string actionNamePrefix);
 
         /// <summary>
-        /// Sets the short name of the action group. This will be used in SMS messages. Maximum length cannot exceed 15 symbols.
+        /// Sets the short name of the action group. This will be used in SMS messages. Maximum length cannot exceed 12 symbols.
         /// </summary>
-        /// <param name="shortName">Short name of the action group. Cannot exceed 15 symbols.</param>
+        /// <param name="shortName">Short name of the action group. Cannot exceed 12 symbols.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Definition.IWithCreate WithShortName(string shortName);
     }

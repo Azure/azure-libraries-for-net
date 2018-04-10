@@ -194,9 +194,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IUpdate WithoutReceiver(string actionNamePrefix);
 
         /// <summary>
-        /// Sets the short name of the action group. This will be used in SMS messages. Maximum length cannot exceed 15 symbols.
+        /// Sets the short name of the action group. This will be used in SMS messages. Maximum length cannot exceed 12 symbols.
         /// </summary>
-        /// <param name="shortName">Short name of the action group. Cannot exceed 15 symbols.</param>
+        /// <param name="shortName">Short name of the action group. Cannot exceed 12 symbols.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IUpdate WithShortName(string shortName);
     }
