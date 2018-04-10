@@ -6,6 +6,7 @@ using Fluent.Tests.Common;
 using Microsoft.Azure.Management.Monitor.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.Azure;
 using System;
 using System.Linq;
@@ -209,7 +210,92 @@ namespace Fluent.Tests
             }
         }
 
-        private void CheckDiagnosticSettingValues(IDiagnosticSetting expected, IDiagnosticSetting actual)
+        [Fact]
+        public void CanCRUDActionGroups()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var rgName = SdkContext.RandomResourceName("jMonitor_", 18);
+                var saName = SdkContext.RandomResourceName("jMonitorSa", 18);
+                var dsName = SdkContext.RandomResourceName("jMonitorDs_", 18);
+                var ehName = SdkContext.RandomResourceName("jMonitorEH", 18);
+                var azure = TestHelper.CreateRollupClient();
+                try
+                {
+                    var ag = azure.ActionGroups.Define("simpleActionGroup")
+                        .WithNewResourceGroup(rgName, Region.AustraliaSouthEast)
+                        .DefineReceiver("first")
+                            .WithAzureAppPush("azurepush@outlook.com")
+                            .WithEmail("justemail@outlook.com")
+                            .WithSms("1", "4255655665")
+                            .WithVoice("1", "2062066050")
+                            .WithWebhook("https://www.rate.am")
+                            .Attach()
+                        .DefineReceiver("second")
+                            .WithEmail("secondemail@outlook.com")
+                            .WithWebhook("https://www.spyur.am")
+                            .Attach()
+                        .Create();
+
+                    Assert.NotNull(ag);
+                    Assert.Equal("simpleAction", ag.ShortName);
+                    Assert.NotNull(ag.AzureAppPushReceivers);
+                    Assert.Equal(1, ag.AzureAppPushReceivers.Count);
+                    Assert.NotNull(ag.SmsReceivers);
+                    Assert.Equal(1, ag.SmsReceivers.Count);
+                    Assert.NotNull(ag.VoiceReceivers);
+                    Assert.Equal(1, ag.VoiceReceivers.Count);
+                    Assert.NotNull(ag.EmailReceivers);
+                    Assert.Equal(2, ag.EmailReceivers.Count);
+                    Assert.NotNull(ag.WebhookReceivers);
+                    Assert.Equal(2, ag.WebhookReceivers.Count);
+                    Assert.StartsWith("first", ag.EmailReceivers[0].Name);
+                    Assert.StartsWith("second", ag.EmailReceivers[1].Name);
+
+                    ag.Update()
+                            .DefineReceiver("third")
+                                .WithWebhook("https://www.news.am")
+                                .Attach()
+                            .UpdateReceiver("first")
+                                .WithoutSms()
+                                .Parent()
+                            .WithoutReceiver("second")
+                            .Apply();
+
+
+                    Assert.Equal(2, ag.WebhookReceivers.Count);
+                    Assert.Equal(1, ag.EmailReceivers.Count);
+                    Assert.Equal(0, ag.SmsReceivers.Count);
+
+                    var agGet = azure.ActionGroups.GetById(ag.Id);
+                    Assert.Equal("simpleAction", agGet.ShortName);
+                    Assert.Equal(2, agGet.WebhookReceivers.Count);
+                    Assert.Equal(1, agGet.EmailReceivers.Count);
+                    Assert.Equal(0, agGet.SmsReceivers.Count);
+
+                    azure.ActionGroups.EnableReceiver(agGet.ResourceGroupName, agGet.Name, agGet.EmailReceivers.First().Name);
+
+                    var agListByRg = azure.ActionGroups.ListByResourceGroup(rgName);
+                    Assert.NotNull(agListByRg);
+                    Assert.Single(agListByRg);
+
+                    var agList = azure.ActionGroups.List();
+                    Assert.NotNull(agListByRg);
+                    Assert.True(agListByRg.Count() > 0);
+
+                    azure.ActionGroups.DeleteById(ag.Id);
+                    agListByRg = azure.ActionGroups.ListByResourceGroup(rgName);
+                    Assert.Empty(agListByRg);
+
+                }
+                finally
+                {
+                    azure.ResourceGroups.BeginDeleteByName(rgName);
+                }
+            }
+        }
+
+            private void CheckDiagnosticSettingValues(IDiagnosticSetting expected, IDiagnosticSetting actual)
         {
             Assert.Equal(expected.ResourceId, actual.ResourceId, ignoreCase: true);
             Assert.Equal(expected.Name, actual.Name, ignoreCase: true);
