@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private ISqlFailoverGroupOperations failoverGroups;
         private ISqlServerKeyOperations serverKeys;
         private ISqlServerDnsAliasOperations dnsAliases;
+        private ISqlEncryptionProtectorOperations sqlEncryptionProtectors;
+        private ISqlSyncGroupOperations sqlSyncGroups;
+        private ISqlSyncMemberOperations sqlSyncMembers;
+
 
         ///GENMHASH:CD99F9712BCAD6B97E57591564CBC327:E4EB5400B898EAB4E389857A2249916F
         public SqlServersImpl(ISqlManager manager)
@@ -148,6 +152,35 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 this.failoverGroups = new SqlFailoverGroupOperationsImpl(this.Manager);
             }
             return this.failoverGroups;
+        }
+
+        ///GENMHASH:A35FDCFAF0B4252668DF8A64517A10A7:B1CCC878A1CDD9D3F57BBFE9048EB8AC
+        public ISqlEncryptionProtectorOperations EncryptionProtectors()
+        {
+            if (this.sqlEncryptionProtectors == null) {
+                this.sqlEncryptionProtectors = new SqlEncryptionProtectorOperationsImpl(this.Manager);
+            }
+            return this.sqlEncryptionProtectors;
+        }
+
+        ///GENMHASH:2AEEDA573EC9A50B62216BE3C228E186:F7C2697357E2248BD05827E37DA0EBEE
+        public ISqlSyncGroupOperations SyncGroups()
+        {
+            if (this.sqlSyncGroups == null)
+            {
+                this.sqlSyncGroups = new SqlSyncGroupOperationsImpl(this.Manager);
+            }
+            return this.sqlSyncGroups;
+        }
+
+        ///GENMHASH:691A3310F6A70FA4B372698CC1C9AFAD:398E750211561F092D8C273738EF899F
+        public ISqlSyncMemberOperations SyncMembers()
+        {
+            if (this.sqlSyncMembers == null)
+            {
+                this.sqlSyncMembers = new SqlSyncMemberOperationsImpl(this.Manager);
+            }
+            return this.sqlSyncMembers;
         }
 
         ///GENMHASH:0B0968A0B36C8F64E70BD2B0368E05D6:0BCCBE8A491142FDC3A6BE9B95AA1AC9

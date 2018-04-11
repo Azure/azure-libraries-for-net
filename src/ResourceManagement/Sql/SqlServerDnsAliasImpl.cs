@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private string sqlServerName;
         private string name;
 
-        string ICreatable<ISqlServerDnsAlias>.Name => throw new NotImplementedException();
+        string ICreatable<ISqlServerDnsAlias>.Name => this.Name();
 
         /// <summary>
         /// Creates an instance of external child resource in-memory.

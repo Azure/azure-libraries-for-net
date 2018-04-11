@@ -52,9 +52,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPoolOperations ElasticPools { get; }
 
         /// <summary>
+        /// Gets the SQL Sync Group entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMemberOperations SyncMembers { get; }
+
+        /// <summary>
         /// Gets the SQL Server VirtualNetwork Rules API entry point.
         /// </summary>
         Microsoft.Azure.Management.Sql.Fluent.ISqlVirtualNetworkRuleOperations VirtualNetworkRules { get; }
+
+        /// <summary>
+        /// Gets the SQL Sync Group entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupOperations SyncGroups { get; }
 
         /// <summary>
         /// Gets the SQL Server Key entry point.
@@ -74,6 +84,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="name">The container registry name to check.</param>
         /// <return>Whether the name is available and other info if not.</return>
         Microsoft.Azure.Management.Sql.Fluent.ICheckNameAvailabilityResult CheckNameAvailability(string name);
+
+        /// <summary>
+        /// Gets the SQL Encryption Protector entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations EncryptionProtectors { get; }
 
         /// <summary>
         /// Gets the SQL Failover Group API entry point.
