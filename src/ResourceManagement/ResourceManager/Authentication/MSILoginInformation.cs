@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+using System;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 {
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         /// <summary>
         /// Get or Set the MSI extension port to retrieve access token from.
         /// </summary>
+        [Obsolete("Port is used for MSI VM extension based login, login using MSI VM extension is deprecated infavour of IMDS based login")]
         public int? Port
         {
             get; set;
