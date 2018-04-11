@@ -486,6 +486,14 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IActionGroups ActionGroups
+        {
+            get
+            {
+                return monitorManager.ActionGroups;
+            }
+        }
+
         public IEventHubNamespaces EventHubNamespaces
         {
             get
@@ -839,6 +847,11 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Azure Diagnostic Settings management.
         /// </summary>
         IDiagnosticSettings DiagnosticSettings { get; }
+
+        /// <summary>
+        /// Entry point to Azure Action Groups management.
+        /// </summary>
+        IActionGroups ActionGroups { get; }
     }
 
     public interface IAzure : IAzureBeta

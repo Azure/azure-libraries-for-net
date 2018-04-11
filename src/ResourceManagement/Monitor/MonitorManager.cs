@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         private IActivityLogs activityLogs;
         private IMetricDefinitions metricDefinitions;
         private IDiagnosticSettings diagnosticSettings;
+        private IActionGroups actionGroups;
 
         private static IMonitorManagementClient GetInnerClient(RestClient restClient, string subscriptionId)
         {
@@ -124,6 +125,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 return this.diagnosticSettings;
             }
         }
+
+        public IActionGroups ActionGroups
+        {
+            get
+            {
+                if (this.actionGroups == null)
+                {
+                    this.actionGroups = new ActionGroupsImpl(this);
+                }
+                return this.actionGroups;
+            }
+        }
     }
 
     /// <summary>
@@ -145,5 +158,10 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Gets the Azure Diagnostic Settings API entry point
         /// </summary>
         IDiagnosticSettings DiagnosticSettings { get; }
+
+        /// <summary>
+        /// Gets the Azure Action Groups API entry point
+        /// </summary>
+        IActionGroups ActionGroups { get; }
     }
 }

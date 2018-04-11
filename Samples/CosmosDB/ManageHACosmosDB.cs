@@ -13,6 +13,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 using Microsoft.Azure.Management.Samples.Common;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -75,7 +76,7 @@ namespace HACosmosDB
                 // Get credentials for the CosmosDB.
 
                 Console.WriteLine("Get credentials for the CosmosDB");
-                DatabaseAccountListKeysResultInner databaseAccountListKeysResult = cosmosDBAccount.ListKeys();
+                var databaseAccountListKeysResult = cosmosDBAccount.ListKeys();
                 string masterKey = databaseAccountListKeysResult.PrimaryMasterKey;
                 string endPoint = cosmosDBAccount.DocumentEndpoint;
 
@@ -88,7 +89,14 @@ namespace HACosmosDB
                 //============================================================
                 // Delete CosmosDB
                 Console.WriteLine("Deleting the CosmosDB");
-                azure.CosmosDBAccounts.DeleteById(cosmosDBAccount.Id);
+                // work around CosmosDB service issue returning 404 CloudException on delete operation
+                try
+                {
+                    azure.CosmosDBAccounts.DeleteById(cosmosDBAccount.Id);
+                }
+                catch (CloudException)
+                {
+                }
                 Console.WriteLine("Deleted the CosmosDB");
             }
             finally
@@ -96,7 +104,7 @@ namespace HACosmosDB
                 try
                 {
                     Utilities.Log("Deleting resource group: " + rgName);
-                    azure.ResourceGroups.DeleteByName(rgName);
+                    azure.ResourceGroups.BeginDeleteByName(rgName);
                     Utilities.Log("Deleted resource group: " + rgName);
                 }
                 catch (NullReferenceException)

@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         where FluentResourceT : IFluentResourceT
         where ManagerT : IManagerBase
     {
-        public TopLevelModifiableResources(InnerCollectionT innerCollection, ManagerT manager) : base(innerCollection, manager)
+        public TopLevelModifiableResources(InnerCollectionT innerCollection, ManagerT manager) 
+            : base(innerCollection, manager)
         {
         }
 

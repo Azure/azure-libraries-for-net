@@ -5,12 +5,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition;
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
     /// <summary>
-    /// Entry point to cosmos db management API.
+    /// Entry point to Cosmos DB management API.
     /// </summary>
     /// <remarks>
     /// (Beta: This functionality is in preview and as such is subject to change in non-backwards compatible ways in
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="groupName">The group name.</param>
         /// <param name="accountName">The account name.</param>
         /// <return>A list of connection strings.</return>
-        Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner> ListConnectionStringsAsync(string groupName, string accountName, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult> ListConnectionStringsAsync(string groupName, string accountName, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Lists the connection strings for the specified Azure CosmosDB database account.
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="groupName">The group name.</param>
         /// <param name="accountName">The account name.</param>
         /// <return>A list of connection strings.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner ListConnectionStrings(string groupName, string accountName);
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult ListConnectionStrings(string groupName, string accountName);
 
         /// <summary>
         /// Lists the access keys for the specified Azure CosmosDB database account.
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="groupName">The group name.</param>
         /// <param name="accountName">The account name.</param>
         /// <return>A list of keys.</return>
-        Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner> ListKeysAsync(string groupName, string accountName, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> ListKeysAsync(string groupName, string accountName, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Lists the access keys for the specified Azure CosmosDB database account.
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="groupName">The group name.</param>
         /// <param name="accountName">The account name.</param>
         /// <return>A list of keys.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner ListKeys(string groupName, string accountName);
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult ListKeys(string groupName, string accountName);
 
         /// <summary>
         /// Regenerates an access key for the specified Azure CosmosDB database account.
@@ -99,5 +100,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="accountName">The account name.</param>
         /// <param name="failoverPolicies">The list of failover policies.</param>
         void FailoverPriorityChange(string groupName, string accountName, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location> failoverPolicies);
+
+        /// <summary>
+        /// Lists the read-only access keys for the specified Azure CosmosDB database account.
+        /// </summary>
+        /// <param name="groupName">The group name.</param>
+        /// <param name="accountName">The account name.</param>
+        /// <return>A list of keys.</return>
+        Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult> ListReadOnlyKeysAsync(string groupName, string accountName, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Lists the read-only access keys for the specified Azure CosmosDB database account.
+        /// </summary>
+        /// <param name="groupName">The group name.</param>
+        /// <param name="accountName">The account name.</param>
+        /// <return>A list of keys.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult ListReadOnlyKeys(string groupName, string accountName);
     }
 }

@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition;
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
@@ -74,9 +75,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="groupName">The group name.</param>
         /// <param name="accountName">The account name.</param>
         /// <return>A list of keys.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.ListKeys(string groupName, string accountName)
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.ListKeys(string groupName, string accountName)
         {
-            return this.ListKeys(groupName, accountName) as Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner;
+            return this.ListKeys(groupName, accountName) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult;
         }
 
         /// <summary>
@@ -85,9 +86,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="groupName">The group name.</param>
         /// <param name="accountName">The account name.</param>
         /// <return>A list of connection strings.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.ListConnectionStrings(string groupName, string accountName)
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.ListConnectionStrings(string groupName, string accountName)
         {
-            return this.ListConnectionStrings(groupName, accountName) as Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner;
+            return this.ListConnectionStrings(groupName, accountName) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult;
         }
 
         /// <summary>
@@ -150,9 +151,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="groupName">The group name.</param>
         /// <param name="accountName">The account name.</param>
         /// <return>A list of keys.</return>
-        async Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.ListKeysAsync(string groupName, string accountName, CancellationToken cancellationToken)
+        async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.ListKeysAsync(string groupName, string accountName, CancellationToken cancellationToken)
         {
-            return await this.ListKeysAsync(groupName, accountName, cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListKeysResultInner;
+            return await this.ListKeysAsync(groupName, accountName, cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult;
         }
 
         /// <summary>
@@ -161,9 +162,31 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="groupName">The group name.</param>
         /// <param name="accountName">The account name.</param>
         /// <return>A list of connection strings.</return>
-        async Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.ListConnectionStringsAsync(string groupName, string accountName, CancellationToken cancellationToken)
+        async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.ListConnectionStringsAsync(string groupName, string accountName, CancellationToken cancellationToken)
         {
-            return await this.ListConnectionStringsAsync(groupName, accountName, cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner;
+            return await this.ListConnectionStringsAsync(groupName, accountName, cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult;
+        }
+		
+        /// <summary>
+        /// Lists the read-only access keys for the specified Azure CosmosDB database account.
+        /// </summary>
+        /// <param name="groupName">The group name.</param>
+        /// <param name="accountName">The account name.</param>
+        /// <return>A list of keys.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.ListReadOnlyKeys(string groupName, string accountName)
+        {
+            return this.ListReadOnlyKeys(groupName, accountName) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult;
+        }
+
+        /// <summary>
+        /// Lists the read-only access keys for the specified Azure CosmosDB database account.
+        /// </summary>
+        /// <param name="groupName">The group name.</param>
+        /// <param name="accountName">The account name.</param>
+        /// <return>A list of keys.</return>
+        async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccounts.ListReadOnlyKeysAsync(string groupName, string accountName, CancellationToken cancellationToken)
+        {
+            return await this.ListReadOnlyKeysAsync(groupName, accountName, cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult;
         }
     }
 }

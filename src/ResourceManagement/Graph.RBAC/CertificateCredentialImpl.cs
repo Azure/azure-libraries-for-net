@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             return name;
         }
 
-        public async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async override Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             throw new NotSupportedException("Cannot refresh credentials.");
         }

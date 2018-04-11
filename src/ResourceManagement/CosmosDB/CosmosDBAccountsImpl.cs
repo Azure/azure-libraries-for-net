@@ -110,19 +110,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             await this.Manager.Inner.DatabaseAccounts.FailoverPriorityChangeAsync(groupName, accountName, policyInners);
         }
 
-        public Models.DatabaseAccountListConnectionStringsResultInner ListConnectionStrings(string groupName, string accountName)
+        public IDatabaseAccountListConnectionStringsResult ListConnectionStrings(string groupName, string accountName)
         {
             return Extensions.Synchronize(() => this.ListConnectionStringsAsync(groupName, accountName));
         }
 
-        public Models.DatabaseAccountListKeysResultInner ListKeys(string groupName, string accountName)
+        public IDatabaseAccountListKeysResult ListKeys(string groupName, string accountName)
         {
             return Extensions.Synchronize(() => this.ListKeysAsync(groupName, accountName));
         }
 
-        public async Task<Models.DatabaseAccountListKeysResultInner> ListKeysAsync(string groupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IDatabaseAccountListKeysResult> ListKeysAsync(string groupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Inner.ListKeysAsync(groupName, accountName, cancellationToken);
+            var result = await this.Inner.ListKeysAsync(groupName, accountName, cancellationToken);
+            return result != null ? new DatabaseAccountListKeysResultImpl(result) : null;
         }
 
         public void FailoverPriorityChange(string groupName, string accountName, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location> failoverLocations)
@@ -135,14 +136,29 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             await this.Manager.Inner.DatabaseAccounts.RegenerateKeyAsync(groupName, accountName, keyKind);
         }
 
-        public async Task<Microsoft.Azure.Management.CosmosDB.Fluent.Models.DatabaseAccountListConnectionStringsResultInner> ListConnectionStringsAsync(string groupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult> ListConnectionStringsAsync(string groupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.DatabaseAccounts.ListConnectionStringsAsync(groupName, accountName);
+            var result = await this.Manager.Inner.DatabaseAccounts.ListConnectionStringsAsync(groupName, accountName);
+            return result != null ? new DatabaseAccountListConnectionStringsResultImpl(result) : null;
         }
 
         public void RegenerateKey(string groupName, string accountName, string keyKind)
         {
             Extensions.Synchronize(() => this.RegenerateKeyAsync(groupName, accountName, keyKind));
+        }
+
+        ///GENMHASH:199BC8B250DE6FDC60059ADB2A4D8A17:0D023FA55B68AD0828AD9BF823383A9A
+        public IDatabaseAccountListReadOnlyKeysResult ListReadOnlyKeys(string groupName, string accountName)
+        {
+            return Extensions.Synchronize(() => this.ListReadOnlyKeysAsync(groupName, accountName));
+        }
+
+        ///GENMHASH:53B98D29180D0703E1A1842F17ACDE80:FC86BA20A774722CAD5A76DA690B6B40
+        public async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult> ListReadOnlyKeysAsync(string groupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var result = await this.Manager.Inner.DatabaseAccounts
+                .ListReadOnlyKeysAsync(groupName, accountName);
+            return result != null ? new DatabaseAccountListReadOnlyKeysResultImpl(result) : null;
         }
     }
 }

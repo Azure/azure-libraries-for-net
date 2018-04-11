@@ -87,5 +87,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// </summary>
         IContainerLogsOperations ContainerLogs { get; }
 
+        /// <summary>
+        /// Gets the IStartContainerOperations.
+        /// </summary>
+        IStartContainerOperations StartContainer { get; }
+
     }
 }
