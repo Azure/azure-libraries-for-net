@@ -33,9 +33,9 @@ namespace Fluent.Tests
 
         public Sql(ITestOutputHelper output)
         {
-            TestHelper.TestLogger = output;
-            ServiceClientTracing.IsEnabled = true;
-            ServiceClientTracing.AddTracingInterceptor(new XunitTracingInterceptor(output));
+            //TestHelper.TestLogger = output;
+            //ServiceClientTracing.IsEnabled = true;
+            //ServiceClientTracing.AddTracingInterceptor(new XunitTracingInterceptor(output));
         }
 
 
