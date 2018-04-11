@@ -164,7 +164,7 @@ namespace ManageNetworkWatcher
                 IVerificationIPFlow verificationIPFlow = nw.VerifyIPFlow()
                     .WithTargetResourceId(vm.Id)
                     .WithDirection(Direction.Outbound)
-                    .WithProtocol(Protocol.TCP)
+                    .WithProtocol(IpFlowProtocol.TCP)
                     .WithLocalIPAddress(ipAddress)
                     .WithRemoteIPAddress("8.8.8.8")
                     .WithLocalPort("443")
@@ -184,7 +184,9 @@ namespace ManageNetworkWatcher
                 //============================================================
                 // Retrieve network topology for a resource group
                 Utilities.Log("Getting topology...");
-                ITopology topology = nw.GetTopology(rgName);
+                ITopology topology = nw.Topology()
+                    .WithTargetResourceGroup(rgName)
+                    .Execute();
                 Utilities.Print(topology);
 
                 //============================================================

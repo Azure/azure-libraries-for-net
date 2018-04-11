@@ -77,7 +77,7 @@ namespace Fluent.Tests.Compute
                         .FromAnyPort()
                         .ToAnyAddress()
                         .ToPort(80)
-                        .WithProtocol(SecurityRuleProtocol.Tcp)
+                        .WithProtocol(SecurityRuleProtocol.Tcp.Value)
                         .Attach()
                     .DefineRule("DenyInternetOutGoing")
                         .DenyOutbound()

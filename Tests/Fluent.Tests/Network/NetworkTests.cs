@@ -65,7 +65,7 @@ namespace Fluent.Tests.Network
                 localPeering = localPeerings.FirstOrDefault();
                 Assert.NotNull(localPeering);
                 Assert.Equal("peer0", localPeering.Name, true);
-                Assert.Equal(NetworkPeeringState.Connected, localPeering.State);
+                Assert.Equal(VirtualNetworkPeeringState.Connected, localPeering.State);
                 Assert.True(localPeering.IsTrafficForwardingFromRemoteNetworkAllowed);
                 Assert.False(localPeering.CheckAccessBetweenNetworks());
                 Assert.Equal(NetworkPeeringGatewayUse.ByRemoteNetwork, localPeering.GatewayUse);
@@ -76,7 +76,7 @@ namespace Fluent.Tests.Network
                 INetworkPeering remotePeering = localPeering.GetRemotePeering();
                 Assert.NotNull(remotePeering);
                 Assert.Equal(localNetwork.Id, remotePeering.RemoteNetworkId, true);
-                Assert.Equal(NetworkPeeringState.Connected, remotePeering.State);
+                Assert.Equal(VirtualNetworkPeeringState.Connected, remotePeering.State);
                 Assert.True(remotePeering.IsTrafficForwardingFromRemoteNetworkAllowed);
                 Assert.False(remotePeering.CheckAccessBetweenNetworks());
                 Assert.Equal(NetworkPeeringGatewayUse.None, remotePeering.GatewayUse);

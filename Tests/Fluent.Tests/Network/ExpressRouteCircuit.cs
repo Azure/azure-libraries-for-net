@@ -79,8 +79,8 @@ namespace Fluent.Tests.Network
                     .WithPeerAsn(100)
                     .Create();
                 Assert.Equal(1, erc.PeeringsMap.Count);
-                Assert.True(erc.PeeringsMap.ContainsKey(ExpressRouteCircuitPeeringType.MicrosoftPeering.ToString()));
-                var peering = erc.PeeringsMap[ExpressRouteCircuitPeeringType.MicrosoftPeering.ToString()]
+                Assert.True(erc.PeeringsMap.ContainsKey(ExpressRoutePeeringType.MicrosoftPeering.ToString()));
+                var peering = erc.PeeringsMap[ExpressRoutePeeringType.MicrosoftPeering.ToString()]
                         .Update()
                         .WithVlanId(300)
                         .WithPeerAsn(101)

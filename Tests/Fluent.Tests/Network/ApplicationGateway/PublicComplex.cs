@@ -122,7 +122,7 @@ namespace Fluent.Tests.Network.ApplicationGateway
                         .WithAffinityCookieName("cookie")
                         .Attach()
 
-                    .WithDisabledSslProtocols(ApplicationGatewaySslProtocol.TlsV1_0, ApplicationGatewaySslProtocol.TlsV1_1)
+                    .WithDisabledSslProtocols(ApplicationGatewaySslProtocol.TLSv10, ApplicationGatewaySslProtocol.TLSv11)
                     .Create();
             }
             catch
@@ -252,9 +252,9 @@ namespace Fluent.Tests.Network.ApplicationGateway
 
             // Verify SSL policy - disabled protocols  
             Assert.Equal(2, appGateway.DisabledSslProtocols.Count);
-            Assert.Contains(ApplicationGatewaySslProtocol.TlsV1_0, appGateway.DisabledSslProtocols);
-            Assert.Contains(ApplicationGatewaySslProtocol.TlsV1_1, appGateway.DisabledSslProtocols);
-            Assert.True(!appGateway.DisabledSslProtocols.Contains(ApplicationGatewaySslProtocol.TlsV1_2));
+            Assert.Contains(ApplicationGatewaySslProtocol.TLSv10, appGateway.DisabledSslProtocols);
+            Assert.Contains(ApplicationGatewaySslProtocol.TLSv11, appGateway.DisabledSslProtocols);
+            Assert.True(!appGateway.DisabledSslProtocols.Contains(ApplicationGatewaySslProtocol.TLSv12));
 
             return appGateway;
         }
@@ -291,7 +291,7 @@ namespace Fluent.Tests.Network.ApplicationGateway
                     .WithoutHealthyHttpResponseStatusCodeRanges()
                     .WithHealthyHttpResponseBodyContents(null)
                     .Parent()
-                .WithoutDisabledSslProtocols(ApplicationGatewaySslProtocol.TlsV1_0, ApplicationGatewaySslProtocol.TlsV1_1)
+                .WithoutDisabledSslProtocols(ApplicationGatewaySslProtocol.TLSv10, ApplicationGatewaySslProtocol.TLSv11)
                 .WithTag("tag1", "value1")
                 .WithTag("tag2", "value2")
                 .Apply();

@@ -81,7 +81,9 @@ namespace Fluent.Tests.Network
                 // pre-create VMs to show topology on
                 ICreatedResources<IVirtualMachine> virtualMachines = EnsureNetwork(manager, computeManager, resourcesGroupName);
                 var vm0 = virtualMachines.ElementAt(0);
-                ITopology topology = nw.GetTopology(vm0.ResourceGroupName);
+                ITopology topology = nw.Topology()
+                    .WithTargetResourceGroup(vm0.ResourceGroupName)
+                    .Execute();
                 Assert.Equal(11, topology.Resources.Count);
                 Assert.True(topology.Resources.ContainsKey(vm0.PrimaryNetworkInterfaceId));
                 Assert.Equal(4, topology.Resources[vm0.PrimaryNetworkInterfaceId].Associations.Count);
@@ -115,7 +117,7 @@ namespace Fluent.Tests.Network
                 IVerificationIPFlow verificationIPFlow = nw.VerifyIPFlow()
                     .WithTargetResourceId(vm0.Id)
                     .WithDirection(Direction.Outbound)
-                    .WithProtocol(Protocol.TCP)
+                    .WithProtocol(IpFlowProtocol.TCP)
                     .WithLocalIPAddress("10.0.0.4")
                     .WithRemoteIPAddress("8.8.8.8")
                     .WithLocalPort("443")
@@ -141,7 +143,7 @@ namespace Fluent.Tests.Network
                 Assert.Single(packetCaptures);
                 Assert.Equal("NewPacketCapture", packetCapture.Name);
                 Assert.Equal(1500, packetCapture.TimeLimitInSeconds);
-                Assert.Equal(PcProtocol.TCP.Value, packetCapture.Filters[0].Protocol);
+                Assert.Equal(PcProtocol.TCP, packetCapture.Filters[0].Protocol);
                 Assert.Equal("127.0.0.1;127.0.0.5", packetCapture.Filters[0].LocalIPAddress);
                 //        Assert.assertEquals("Running", packetCapture.getStatus().packetCaptureStatus().toString());
                 packetCapture.Stop();
@@ -155,7 +157,7 @@ namespace Fluent.Tests.Network
                 Assert.Equal("Reachable", connectivityCheck.ConnectionStatus.ToString());
 
                 computeManager.VirtualMachines.DeleteById(virtualMachines.ElementAt(1).Id);
-                topology.Refresh();
+                topology.Execute();
                 Assert.Equal(10, topology.Resources.Count);
 
                 manager.ResourceManager.ResourceGroups.DeleteByName(nw.ResourceGroupName);
