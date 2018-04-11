@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         private Dictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential> cachedCertificateCredentials;
         private Dictionary<string, IRoleAssignment> cachedRoleAssignments;
 
-        private ServicePrincipalCreateParametersInner createParameters;
+        private ServicePrincipalCreateParameters createParameters;
         private ICreatable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryApplication> applicationCreatable;
         private Dictionary<string, BuiltInRole> rolesToCreate;
         private ISet<string> rolesToDelete;
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             : base(innerObject.DisplayName, innerObject)
         {
             this.manager = manager;
-            this.createParameters = new ServicePrincipalCreateParametersInner
+            this.createParameters = new ServicePrincipalCreateParameters
             {
                 AccountEnabled = true
             };
@@ -295,10 +295,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 }
                 await Manager().Inner.ServicePrincipals.UpdateKeyCredentialsAsync(
                     sp.Id,
-                    new KeyCredentialsUpdateParametersInner
-                    {
-                        Value = newCerts.Values.Select(c => c.Inner).ToList()
-                    },
+                    newCerts.Values.Select(c => c.Inner).ToList(),
                     cancellationToken);
             }
             if (passwordCredentialsToCreate.Count > 0 || passwordCredentialsToDelete.Count > 0)
@@ -314,10 +311,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 }
                 await Manager().Inner.ServicePrincipals.UpdatePasswordCredentialsAsync(
                     sp.Id,
-                    new PasswordCredentialsUpdateParametersInner
-                    {
-                        Value = newPasses.Values.Select(c => c.Inner).ToList()
-                    },
+                    newPasses.Values.Select(c => c.Inner).ToList(),
                     cancellationToken);
             }
 

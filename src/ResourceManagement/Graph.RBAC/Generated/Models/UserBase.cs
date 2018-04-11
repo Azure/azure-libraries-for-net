@@ -13,28 +13,21 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Active Directory user information.
-    /// </summary>
-    [Newtonsoft.Json.JsonObject("User")]
-    public partial class UserInner : DirectoryObject
+    public partial class UserBase
     {
         /// <summary>
-        /// Initializes a new instance of the UserInner class.
+        /// Initializes a new instance of the UserBase class.
         /// </summary>
-        public UserInner()
+        public UserBase()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UserInner class.
+        /// Initializes a new instance of the UserBase class.
         /// </summary>
         /// <param name="additionalProperties">Unmatched properties from the
         /// message are deserialized this collection</param>
-        /// <param name="objectId">The object ID.</param>
-        /// <param name="deletionTimestamp">The time at which the directory
-        /// object was deleted.</param>
         /// <param name="immutableId">This must be specified if you are using a
         /// federated domain for the user's userPrincipalName (UPN) property
         /// when creating a new user account. It is used to associate an
@@ -50,28 +43,14 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// <param name="userType">A string value that can be used to classify
         /// user types in your directory, such as 'Member' and 'Guest'.
         /// Possible values include: 'Member', 'Guest'</param>
-        /// <param name="accountEnabled">Whether the account is
-        /// enabled.</param>
-        /// <param name="displayName">The display name of the user.</param>
-        /// <param name="userPrincipalName">The principal name of the
-        /// user.</param>
-        /// <param name="mailNickname">The mail alias for the user.</param>
-        /// <param name="mail">The primary email address of the user.</param>
-        /// <param name="signInNames">The sign-in names of the user.</param>
-        public UserInner(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string objectId = default(string), System.DateTime? deletionTimestamp = default(System.DateTime?), string immutableId = default(string), string usageLocation = default(string), string givenName = default(string), string surname = default(string), UserType userType = default(UserType), bool? accountEnabled = default(bool?), string displayName = default(string), string userPrincipalName = default(string), string mailNickname = default(string), string mail = default(string), IList<SignInName> signInNames = default(IList<SignInName>))
-            : base(additionalProperties, objectId, deletionTimestamp)
+        public UserBase(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string immutableId = default(string), string usageLocation = default(string), string givenName = default(string), string surname = default(string), UserType userType = default(UserType))
         {
+            AdditionalProperties = additionalProperties;
             ImmutableId = immutableId;
             UsageLocation = usageLocation;
             GivenName = givenName;
             Surname = surname;
             UserType = userType;
-            AccountEnabled = accountEnabled;
-            DisplayName = displayName;
-            UserPrincipalName = userPrincipalName;
-            MailNickname = mailNickname;
-            Mail = mail;
-            SignInNames = signInNames;
             CustomInit();
         }
 
@@ -79,6 +58,13 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets unmatched properties from the message are deserialized
+        /// this collection
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, object> AdditionalProperties { get; set; }
 
         /// <summary>
         /// Gets or sets this must be specified if you are using a federated
@@ -117,42 +103,6 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "userType")]
         public UserType UserType { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether the account is enabled.
-        /// </summary>
-        [JsonProperty(PropertyName = "accountEnabled")]
-        public bool? AccountEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets the display name of the user.
-        /// </summary>
-        [JsonProperty(PropertyName = "displayName")]
-        public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the principal name of the user.
-        /// </summary>
-        [JsonProperty(PropertyName = "userPrincipalName")]
-        public string UserPrincipalName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the mail alias for the user.
-        /// </summary>
-        [JsonProperty(PropertyName = "mailNickname")]
-        public string MailNickname { get; set; }
-
-        /// <summary>
-        /// Gets or sets the primary email address of the user.
-        /// </summary>
-        [JsonProperty(PropertyName = "mail")]
-        public string Mail { get; set; }
-
-        /// <summary>
-        /// Gets or sets the sign-in names of the user.
-        /// </summary>
-        [JsonProperty(PropertyName = "signInNames")]
-        public IList<SignInName> SignInNames { get; set; }
 
     }
 }

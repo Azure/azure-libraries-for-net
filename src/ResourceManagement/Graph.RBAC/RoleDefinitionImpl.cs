@@ -32,13 +32,14 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             return manager;
         }
 
-        public ISet<Models.Permission> Permissions()
+        public ISet<IPermission> Permissions()
         {
-            if (Inner.Properties == null)
+            var ret = new HashSet<IPermission>();
+            foreach (var inner in Inner.Permissions)
             {
-                return null;
+                ret.Add(new PermissionImpl(inner));
             }
-            return new HashSet<Models.Permission>(Inner.Properties.Permissions);
+            return ret;
         }
 
         internal RoleDefinitionImpl(RoleDefinitionInner innerObject, GraphRbacManager manager)
@@ -54,20 +55,12 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public string RoleName()
         {
-            if (Inner.Properties == null)
-            {
-                return null;
-            }
-            return Inner.Properties.RoleName;
+            return Inner.RoleName;
         }
 
         public string Description()
         {
-            if (Inner.Properties == null)
-            {
-                return null;
-            }
-            return Inner.Properties.Description;
+            return Inner.Description;
         }
 
         public string Id()
@@ -77,20 +70,13 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public string Type()
         {
-            if (Inner.Properties == null)
-            {
-                return null;
-            }
-            return Inner.Properties.Type;
+
+            return Inner.Type;
         }
 
         public ISet<string> AssignableScopes()
         {
-            if (Inner.Properties == null)
-            {
-                return null;
-            }
-            return new HashSet<string>(Inner.Properties.AssignableScopes);
+            return new HashSet<string>(Inner.AssignableScopes);
         }
     }
 }

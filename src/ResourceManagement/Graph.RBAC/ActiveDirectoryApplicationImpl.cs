@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         IHasCredential<IUpdate>
     {
         private GraphRbacManager manager;
-        private ApplicationCreateParametersInner createParameters;
-        private ApplicationUpdateParametersInner updateParameters;
+        private ApplicationCreateParameters createParameters;
+        private ApplicationUpdateParameters updateParameters;
         private Dictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential> cachedPasswordCredentials;
         private Dictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential> cachedCertificateCredentials;
 
@@ -108,11 +108,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             : base(innerObject.DisplayName, innerObject)
         {
             this.manager = manager;
-            this.createParameters = new ApplicationCreateParametersInner
+            this.createParameters = new ApplicationCreateParameters
             {
                 DisplayName = innerObject.DisplayName
             };
-            this.updateParameters = new ApplicationUpdateParametersInner
+            this.updateParameters = new ApplicationUpdateParameters
             {
                 DisplayName = innerObject.DisplayName
             };

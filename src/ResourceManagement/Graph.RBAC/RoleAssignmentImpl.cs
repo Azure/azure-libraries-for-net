@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             return WithScope(resource.Id);
         }
 
-        internal RoleAssignmentImpl(RoleAssignmentInner innerObject, GraphRbacManager manager)
-            : base(innerObject.Name, innerObject)
+        internal RoleAssignmentImpl(string name, RoleAssignmentInner innerObject, GraphRbacManager manager)
+            : base(name, innerObject)
         {
             this.manager = manager;
         }
@@ -91,11 +91,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public string PrincipalId()
         {
-            if (Inner.Properties == null)
-            {
-                return null;
-            }
-            return Inner.Properties.PrincipalId;
+            return Inner.PrincipalId;
         }
 
         public RoleAssignmentImpl ForObjectId(string objectId)
@@ -111,11 +107,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public string RoleDefinitionId()
         {
-            if (Inner.Properties == null)
-            {
-                return null;
-            }
-            return Inner.Properties.RoleDefinitionId;
+            return Inner.RoleDefinitionId;
         }
 
         public RoleAssignmentImpl WithRoleDefinition(string roleDefinitionId)
@@ -126,20 +118,12 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public string Scope()
         {
-            if (Inner.Properties == null)
-            {
-                return null;
-            }
-            return Inner.Properties.Scope;
+            return Inner.Scope;
         }
 
         public RoleAssignmentImpl WithScope(string scope)
         {
-            if (Inner.Properties == null)
-            {
-                Inner.Properties = new RoleAssignmentPropertiesWithScope();
-            }
-            Inner.Properties.Scope = scope;
+            Inner.Scope = scope;
             return this;
         }
 
@@ -188,7 +172,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 }
             }
 
-            var propertiesInner = new RoleAssignmentPropertiesInner
+            var propertiesInner = new RoleAssignmentCreateParameters
             {
                 PrincipalId = objectId,
                 RoleDefinitionId = roleDefinitionId
