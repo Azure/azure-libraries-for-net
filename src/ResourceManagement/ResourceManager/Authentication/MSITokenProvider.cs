@@ -29,6 +29,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         private readonly string resource;
         private readonly MSILoginInformation msiLoginInformation;
 
+        private const string  imdsEndpoint = "http://169.254.169.254/metadata/identity/oauth2/token";
+        private const string imdsMsiApiVersion = "2018-02-01";
+        private const string appServiceMsiApiVersion = "2017-09-01";
+
+
         /// <summary>
         /// Creates MSITokenProvider.
         /// </summary>
@@ -74,7 +79,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         {
             var endpoint = Environment.GetEnvironmentVariable("MSI_ENDPOINT") ?? throw new ArgumentNullException("MSI_ENDPOINT");
             var secret = Environment.GetEnvironmentVariable("MSI_SECRET") ?? throw new ArgumentNullException("MSI_SECRET");
-            HttpRequestMessage msiRequest = new HttpRequestMessage(HttpMethod.Get, $"{endpoint}?resource={resource}&api-version=2017-09-01");
+            HttpRequestMessage msiRequest = new HttpRequestMessage(HttpMethod.Get, $"{endpoint}?resource={resource}&api-version={MSITokenProvider.appServiceMsiApiVersion}");
             msiRequest.Headers.Add("Metadata", "true");
             msiRequest.Headers.Add("Secret", secret);
 
@@ -177,11 +182,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 
         private async Task<MSIToken> RetrieveTokenFromIMDSWithRetryAsync(string resource, CancellationToken cancellationToken)
         {
-            var uriBuilder = new UriBuilder("http://169.254.169.254/metadata/identity/oauth2/token");
+            var uriBuilder = new UriBuilder(MSITokenProvider.imdsEndpoint);
             //
             var query = new Dictionary<string, string>
             {
-                ["api-version"] = "2018-02-01",
+                ["api-version"] = MSITokenProvider.imdsMsiApiVersion,
                 ["resource"] = resource
             };
             if (this.msiLoginInformation.UserAssignedIdentityObjectId != null)
@@ -217,7 +222,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                         {
 
                             int retryTimeout = retrySlots[new Random().Next(retry)];
-                            await Task.Delay(retryTimeout * 1000);
+                            await SdkContext.DelayProvider.DelayAsync(retryTimeout * 1000, cancellationToken);
                             retry++;
                         }
                         else if (statusCode != 200)
