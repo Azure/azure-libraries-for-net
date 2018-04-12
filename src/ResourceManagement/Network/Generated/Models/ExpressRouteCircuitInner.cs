@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="gatewayManagerEtag">The GatewayManager Etag.</param>
         /// <param name="etag">Gets a unique read-only string that changes
         /// whenever the resource is updated.</param>
-        public ExpressRouteCircuitInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExpressRouteCircuitSku sku = default(ExpressRouteCircuitSku), bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), ServiceProviderProvisioningState serviceProviderProvisioningState = default(ServiceProviderProvisioningState), IList<ExpressRouteCircuitAuthorizationInner> authorizations = default(IList<ExpressRouteCircuitAuthorizationInner>), IList<ExpressRouteCircuitPeeringInner> peerings = default(IList<ExpressRouteCircuitPeeringInner>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), string provisioningState = default(string), string gatewayManagerEtag = default(string), string etag = default(string))
+        public ExpressRouteCircuitInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExpressRouteCircuitSku sku = default(ExpressRouteCircuitSku), bool? allowClassicOperations = default(bool?), string circuitProvisioningState = default(string), ServiceProviderProvisioningState serviceProviderProvisioningState = default(ServiceProviderProvisioningState), IList<ExpressRouteCircuitAuthorizationInner> authorizations = default(IList<ExpressRouteCircuitAuthorizationInner>), IList<ExpressRouteCircuitPeeringInner> peerings = default(IList<ExpressRouteCircuitPeeringInner>), string serviceKey = default(string), string serviceProviderNotes = default(string), ExpressRouteCircuitServiceProviderProperties serviceProviderProperties = default(ExpressRouteCircuitServiceProviderProperties), string provisioningState = default(string), string gatewayManagerEtag = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -157,5 +157,24 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Peerings != null)
+            {
+                foreach (var element in Peerings)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+        }
     }
 }

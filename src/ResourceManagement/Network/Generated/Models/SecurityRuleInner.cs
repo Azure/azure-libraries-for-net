@@ -266,6 +266,26 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Direction");
             }
+            if (SourceApplicationSecurityGroups != null)
+            {
+                foreach (var element in SourceApplicationSecurityGroups)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (DestinationApplicationSecurityGroups != null)
+            {
+                foreach (var element1 in DestinationApplicationSecurityGroups)
+                {
+                    if (element1 != null)
+                    {
+                        element1.Validate();
+                    }
+                }
+            }
         }
     }
 }

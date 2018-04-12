@@ -245,6 +245,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             {
                 throw new ValidationException(ValidationRules.InclusiveMinimum, "PeerASN", 1);
             }
+            if (RouteFilter != null)
+            {
+                RouteFilter.Validate();
+            }
         }
     }
 }

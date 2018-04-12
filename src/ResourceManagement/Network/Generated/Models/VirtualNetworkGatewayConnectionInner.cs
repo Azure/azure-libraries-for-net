@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// 'Updating', 'Deleting', and 'Failed'.</param>
         /// <param name="etag">Gets a unique read-only string that changes
         /// whenever the resource is updated.</param>
-        public VirtualNetworkGatewayConnectionInner(VirtualNetworkGatewayInner virtualNetworkGateway1, VirtualNetworkGatewayConnectionType connectionType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string authorizationKey = default(string), VirtualNetworkGatewayInner virtualNetworkGateway2 = default(VirtualNetworkGatewayInner), LocalNetworkGatewayInner localNetworkGateway2 = default(LocalNetworkGatewayInner), int? routingWeight = default(int?), string sharedKey = default(string), VirtualNetworkGatewayConnectionStatus connectionStatus = default(VirtualNetworkGatewayConnectionStatus), IList<TunnelConnectionHealth> tunnelConnectionStatus = default(IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), Management.ResourceManager.Fluent.SubResource peer = default(Management.ResourceManager.Fluent.SubResource), bool? enableBgp = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), IList<IpsecPolicy> ipsecPolicies = default(IList<IpsecPolicy>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public VirtualNetworkGatewayConnectionInner(string location, VirtualNetworkGatewayInner virtualNetworkGateway1, VirtualNetworkGatewayConnectionType connectionType, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string authorizationKey = default(string), VirtualNetworkGatewayInner virtualNetworkGateway2 = default(VirtualNetworkGatewayInner), LocalNetworkGatewayInner localNetworkGateway2 = default(LocalNetworkGatewayInner), int? routingWeight = default(int?), string sharedKey = default(string), VirtualNetworkGatewayConnectionStatus connectionStatus = default(VirtualNetworkGatewayConnectionStatus), IList<TunnelConnectionHealth> tunnelConnectionStatus = default(IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), Management.ResourceManager.Fluent.SubResource peer = default(Management.ResourceManager.Fluent.SubResource), bool? enableBgp = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), IList<IpsecPolicy> ipsecPolicies = default(IList<IpsecPolicy>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             AuthorizationKey = authorizationKey;
@@ -234,6 +234,18 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             if (ConnectionType == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ConnectionType");
+            }
+            if (VirtualNetworkGateway1 != null)
+            {
+                VirtualNetworkGateway1.Validate();
+            }
+            if (VirtualNetworkGateway2 != null)
+            {
+                VirtualNetworkGateway2.Validate();
+            }
+            if (LocalNetworkGateway2 != null)
+            {
+                LocalNetworkGateway2.Validate();
             }
             if (IpsecPolicies != null)
             {

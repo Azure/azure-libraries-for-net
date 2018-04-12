@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// associated with the virtual network.</param>
         /// <param name="etag">Gets a unique read-only string that changes
         /// whenever the resource is updated.</param>
-        public VirtualNetworkInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), AddressSpace addressSpace = default(AddressSpace), DhcpOptions dhcpOptions = default(DhcpOptions), IList<SubnetInner> subnets = default(IList<SubnetInner>), IList<VirtualNetworkPeeringInner> virtualNetworkPeerings = default(IList<VirtualNetworkPeeringInner>), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDdosProtection = default(bool?), bool? enableVmProtection = default(bool?), Management.ResourceManager.Fluent.SubResource ddosProtectionPlan = default(Management.ResourceManager.Fluent.SubResource), string etag = default(string))
+        public VirtualNetworkInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), AddressSpace addressSpace = default(AddressSpace), DhcpOptions dhcpOptions = default(DhcpOptions), IList<SubnetInner> subnets = default(IList<SubnetInner>), IList<VirtualNetworkPeeringInner> virtualNetworkPeerings = default(IList<VirtualNetworkPeeringInner>), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDdosProtection = default(bool?), bool? enableVmProtection = default(bool?), Management.ResourceManager.Fluent.SubResource ddosProtectionPlan = default(Management.ResourceManager.Fluent.SubResource), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             AddressSpace = addressSpace;
@@ -148,5 +148,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+        }
     }
 }
