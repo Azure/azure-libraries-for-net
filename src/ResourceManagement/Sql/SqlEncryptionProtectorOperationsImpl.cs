@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             List<Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtector> encryptionProtectors = new List<ISqlEncryptionProtector>();
             var encryptionProtectorInners = await this.sqlServerManager.Inner.EncryptionProtectors
-                .ListByServerAsync(sqlServer.ResourceGroupName, sqlServer.Name);
+                .ListByServerAsync(sqlServer.ResourceGroupName, sqlServer.Name, cancellationToken);
             if (encryptionProtectorInners != null)
             {
                 foreach (var encryptionProtectorInner in encryptionProtectorInners)

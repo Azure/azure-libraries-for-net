@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public string ParentId()
         {
             var resourceId = ResourceId.FromString(this.Id());
-            return resourceId.Parent.Id;
+            return resourceId?.Parent?.Id;
         }
 
         ///GENMHASH:75380AC1C8F8C473AF028534126AA5D4:25C18B002519A132E6FD1BDD0AAEAC82

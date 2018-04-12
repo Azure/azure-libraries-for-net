@@ -88,17 +88,14 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             this.name = name;
             this.sqlServerManager = sqlServerManager;
-            if (innerObject != null && innerObject.Id != null)
+            if (innerObject?.Id != null)
             {
-                if (innerObject.Id != null)
-                {
-                    ResourceId resourceId = ResourceId.FromString(innerObject.Id);
-                    this.resourceGroupName = resourceId?.ResourceGroupName;
-                    this.sqlServerName = resourceId?.Parent?.Parent?.Parent?.Name;
-                    this.sqlDatabaseName = resourceId?.Parent?.Parent?.Name;
-                    this.sqlSyncGroupName = resourceId?.Parent?.Name;
-                    this.name = resourceId?.Name;
-                }
+                ResourceId resourceId = ResourceId.FromString(innerObject.Id);
+                this.resourceGroupName = resourceId?.ResourceGroupName;
+                this.sqlServerName = resourceId?.Parent?.Parent?.Parent?.Name;
+                this.sqlDatabaseName = resourceId?.Parent?.Parent?.Name;
+                this.sqlSyncGroupName = resourceId?.Parent?.Name;
+                this.name = resourceId?.Name;
             }
         }
 
@@ -309,7 +306,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public string ParentId()
         {
             var resourceId = ResourceId.FromString(this.Id());
-            return resourceId.Parent.Id;
+            return resourceId?.Parent?.Id;
         }
 
         ///GENMHASH:AF40DAB933F8B3F7B0F9B5DF8CA667F7:BDB25FFB52E063698BA7165F98332656
