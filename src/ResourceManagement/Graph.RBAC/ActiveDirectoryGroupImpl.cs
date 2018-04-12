@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         ActiveDirectoryGroup.Update.IUpdate
     {
         private GraphRbacManager manager;
-        private GroupCreateParametersInner createParameters;
+        private GroupCreateParameters createParameters;
         private ISet<string> membersToAdd;
         private ISet<string> membersToRemove;
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             : base(innerModel.DisplayName, innerModel)
         {
             this.manager = manager;
-            this.createParameters = new GroupCreateParametersInner
+            this.createParameters = new GroupCreateParameters
             {
                 DisplayName = innerModel.DisplayName
             };
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 foreach (string add in membersToAdd)
                 {
-                    await manager.Inner.Groups.AddMemberAsync(Id(), new GroupAddMemberParametersInner
+                    await manager.Inner.Groups.AddMemberAsync(Id(), new GroupAddMemberParameters
                     {
                         Url = add
                     }, cancellationToken);

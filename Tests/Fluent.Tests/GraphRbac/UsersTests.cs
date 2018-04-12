@@ -21,7 +21,7 @@ namespace Fluent.Tests.Graph.RBAC
     public class Users
     {
 
-        [Fact]
+        [Fact(Skip = "Requires special tenant")]
         public void CanGetUserByEmail()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))

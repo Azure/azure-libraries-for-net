@@ -90,15 +90,12 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 return null;
             }
-            return new RoleAssignmentImpl(roleAssignmentInner, manager);
+            return new RoleAssignmentImpl(roleAssignmentInner.Name, roleAssignmentInner, manager);
         }
 
         protected override RoleAssignmentImpl WrapModel(string name)
         {
-            return new RoleAssignmentImpl(new RoleAssignmentInner
-            {
-                Name = name
-            }, manager);
+            return new RoleAssignmentImpl(name, new RoleAssignmentInner(), manager);
         }
 
         public override void DeleteById(string id)

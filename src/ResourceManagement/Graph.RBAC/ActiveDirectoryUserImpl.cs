@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         ActiveDirectoryUser.Update.IUpdate
     {
         private GraphRbacManager manager;
-        private UserCreateParametersInner createParameters;
-        private UserUpdateParametersInner updateParameters;
+        private UserCreateParameters createParameters;
+        private UserUpdateParameters updateParameters;
         private string emailAlias;
 
         string IHasId.Id => Inner.ObjectId;
@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 : base(innerObject.DisplayName, innerObject)
         {
             this.manager = manager;
-            this.createParameters = new UserCreateParametersInner
+            this.createParameters = new UserCreateParameters
             {
                 DisplayName = Name,
                 AccountEnabled = true
             };
-            this.updateParameters = new UserUpdateParametersInner
+            this.updateParameters = new UserUpdateParameters
             {
                 DisplayName = Name
             };
@@ -55,7 +55,11 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public string SignInName()
         {
-            return Inner.SignInName;
+            if (Inner.SignInNames == null || Inner.SignInNames.Count == 0)
+            {
+                return null;
+            }
+            return Inner.SignInNames[0].Value;
         }
 
         public string Id()
