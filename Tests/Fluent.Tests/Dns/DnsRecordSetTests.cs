@@ -3,6 +3,7 @@
 
 using Azure.Tests;
 using Fluent.Tests.Common;
+using Microsoft.Azure.Management.Dns.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -30,6 +31,7 @@ namespace Fluent.Tests.Dns
                 {
                     var dnsZone = azure.DnsZones.Define(topLevelDomain)
                             .WithNewResourceGroup(groupName, region)
+                            .WithPrivateAccess()
                             .DefineARecordSet("www")
                                 .WithIPv4Address("23.96.104.40")
                                 .WithIPv4Address("24.97.105.41")
@@ -40,6 +42,9 @@ namespace Fluent.Tests.Dns
                                 .WithIPv6Address("2001:0db8:85a3:0000:0000:8a2e:0370:7334")
                                 .WithIPv6Address("2002:0db9:85a4:0000:0000:8a2e:0371:7335")
                                 .WithETagCheck()
+                                .Attach()
+                            .DefineCaaRecordSet("caaName")
+                                .WithRecord(4, "sometag", "someValue")
                                 .Attach()
                             .DefineCNameRecordSet("documents")
                                 .WithAlias("doc.contoso.com")
@@ -66,11 +71,22 @@ namespace Fluent.Tests.Dns
                     var cnameRecordSets = dnsZone.CNameRecordSets.List();
                     Assert.True(cnameRecordSets.Count() == 2);
 
+                    // Check Caa records
+                    var caaRecordSets = dnsZone.CaaRecordSets.List();
+                    Assert.Single(caaRecordSets);
+                    Assert.StartsWith("caaname", caaRecordSets.First().Name);
+                    Assert.Equal("someValue", caaRecordSets.First().Records.First().Value, ignoreCase: true);
+                    Assert.Equal(4, caaRecordSets.First().Records.First().Flags);
+                    Assert.StartsWith("caaname.www.contoso", caaRecordSets.First().Fqdn);
+
+                    Assert.Equal(ZoneType.Private, dnsZone.AccessType);
+
                     AggregateException compositeException = null;
                     try
                     {
                         azure.DnsZones.Define(topLevelDomain)
                                 .WithNewResourceGroup(groupName, region)
+                                .WithPrivateAccess()
                                 .DefineARecordSet("www")
                                     .WithIPv4Address("23.96.104.40")
                                     .WithIPv4Address("24.97.105.41")
@@ -158,6 +174,9 @@ namespace Fluent.Tests.Dns
                     Assert.True(aaaaRecordSets.Count() == 1);
                     var aaaaRecordSet = aaaaRecordSets.ElementAt(0);
                     Assert.NotNull(aaaaRecordSet.ETag);
+
+                    // by default zone access type should be public
+                    Assert.Equal(ZoneType.Public, dnsZone.AccessType);
 
                     // Try updates with invalid eTag
                     //

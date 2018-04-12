@@ -39,7 +39,7 @@ namespace Fluent.Tests.WebApp
                     .Create();
                 Assert.NotNull(webApp);
                 var response = await TestHelper.CheckAddress("http://" + WebAppName + "." + "azurewebsites.Net");
-                Assert.Equal(HttpStatusCode.OK.ToString(), response.StatusCode.ToString());
+                Assert.Equal(System.Net.HttpStatusCode.OK.ToString(), response.StatusCode.ToString());
 
                 var body = await response.Content.ReadAsStringAsync();
                 Assert.NotNull(body);
