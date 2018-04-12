@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     using Newtonsoft.Json;
     using Microsoft.Rest;
 
-    public partial class Resource : Rest.Azure.IResource
+    public partial class Resource : ProxyResource
     {
         /// <summary>
         /// Defines shared properties of an Azure resource.
@@ -18,31 +18,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Initializes a new instance of the Resource class.
         /// </summary>
         public Resource(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            : base(id, name, type)
         {
-            Id = id;
-            Name = name;
-            Type = type;
             Location = location;
             Tags = tags;
         }
-
-        /// <summary>
-        /// Resource Id
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public virtual string Id { get; protected set; }
-
-        /// <summary>
-        /// Resource name
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Resource type
-        /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
 
         /// <summary>
         /// Resource location
