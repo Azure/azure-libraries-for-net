@@ -75,7 +75,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ProvisioningState = provisioningState;
             Etag = etag;
             Zones = zones;
-            Id = id;
             CustomInit();
         }
 
@@ -165,24 +164,5 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "zones")]
         public IList<string> Zones { get; set; }
 
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public new string Id
-        {
-            get { return base.Id; }
-            set { base.Id = value; }
-        }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-        }
     }
 }

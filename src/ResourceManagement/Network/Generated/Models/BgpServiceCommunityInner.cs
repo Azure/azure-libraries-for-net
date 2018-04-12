@@ -37,12 +37,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="serviceName">The name of the bgp community. e.g.
         /// Skype.</param>
         /// <param name="bgpCommunities">Get a list of bgp communities.</param>
-        public BgpServiceCommunityInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string serviceName = default(string), IList<BGPCommunity> bgpCommunities = default(IList<BGPCommunity>))
+        public BgpServiceCommunityInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string serviceName = default(string), IList<BGPCommunity> bgpCommunities = default(IList<BGPCommunity>))
             : base(location, id, name, type, tags)
         {
             ServiceName = serviceName;
             BgpCommunities = bgpCommunities;
-            Id = id;
             CustomInit();
         }
 
@@ -63,25 +62,5 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "properties.bgpCommunities")]
         public IList<BGPCommunity> BgpCommunities { get; set; }
 
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public new string Id
-        {
-            get { return base.Id; }
-            set { base.Id = value; }
-        }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// 'Failed'.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public LoadBalancerInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), LoadBalancerSku sku = default(LoadBalancerSku), IList<FrontendIPConfigurationInner> frontendIPConfigurations = default(IList<FrontendIPConfigurationInner>), IList<BackendAddressPoolInner> backendAddressPools = default(IList<BackendAddressPoolInner>), IList<LoadBalancingRuleInner> loadBalancingRules = default(IList<LoadBalancingRuleInner>), IList<ProbeInner> probes = default(IList<ProbeInner>), IList<InboundNatRuleInner> inboundNatRules = default(IList<InboundNatRuleInner>), IList<InboundNatPoolInner> inboundNatPools = default(IList<InboundNatPoolInner>), IList<OutboundNatRuleInner> outboundNatRules = default(IList<OutboundNatRuleInner>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public LoadBalancerInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), LoadBalancerSku sku = default(LoadBalancerSku), IList<FrontendIPConfigurationInner> frontendIPConfigurations = default(IList<FrontendIPConfigurationInner>), IList<BackendAddressPoolInner> backendAddressPools = default(IList<BackendAddressPoolInner>), IList<LoadBalancingRuleInner> loadBalancingRules = default(IList<LoadBalancingRuleInner>), IList<ProbeInner> probes = default(IList<ProbeInner>), IList<InboundNatRuleInner> inboundNatRules = default(IList<InboundNatRuleInner>), IList<InboundNatPoolInner> inboundNatPools = default(IList<InboundNatPoolInner>), IList<OutboundNatRuleInner> outboundNatRules = default(IList<OutboundNatRuleInner>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -82,7 +82,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
             Etag = etag;
-            Id = id;
             CustomInit();
         }
 
@@ -178,65 +177,5 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
 
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public new string Id
-        {
-            get { return base.Id; }
-            set { base.Id = value; }
-        }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-            if (LoadBalancingRules != null)
-            {
-                foreach (var element in LoadBalancingRules)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-            if (Probes != null)
-            {
-                foreach (var element1 in Probes)
-                {
-                    if (element1 != null)
-                    {
-                        element1.Validate();
-                    }
-                }
-            }
-            if (InboundNatPools != null)
-            {
-                foreach (var element2 in InboundNatPools)
-                {
-                    if (element2 != null)
-                    {
-                        element2.Validate();
-                    }
-                }
-            }
-            if (OutboundNatRules != null)
-            {
-                foreach (var element3 in OutboundNatRules)
-                {
-                    if (element3 != null)
-                    {
-                        element3.Validate();
-                    }
-                }
-            }
-        }
     }
 }

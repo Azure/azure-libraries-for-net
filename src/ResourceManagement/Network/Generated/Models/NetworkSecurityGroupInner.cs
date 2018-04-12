@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// and 'Failed'.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public NetworkSecurityGroupInner(string location = default(string) , string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SecurityRuleInner> securityRules = default(IList<SecurityRuleInner>), IList<SecurityRuleInner> defaultSecurityRules = default(IList<SecurityRuleInner>), IList<NetworkInterfaceInner> networkInterfaces = default(IList<NetworkInterfaceInner>), IList<SubnetInner> subnets = default(IList<SubnetInner>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public NetworkSecurityGroupInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SecurityRuleInner> securityRules = default(IList<SecurityRuleInner>), IList<SecurityRuleInner> defaultSecurityRules = default(IList<SecurityRuleInner>), IList<NetworkInterfaceInner> networkInterfaces = default(IList<NetworkInterfaceInner>), IList<SubnetInner> subnets = default(IList<SubnetInner>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             SecurityRules = securityRules;
@@ -59,7 +59,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
             Etag = etag;
-            Id = id;
             CustomInit();
         }
 
@@ -114,55 +113,5 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
 
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public new string Id
-        {
-            get { return base.Id; }
-            set { base.Id = value; }
-        }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-            if (SecurityRules != null)
-            {
-                foreach (var element in SecurityRules)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-            if (DefaultSecurityRules != null)
-            {
-                foreach (var element1 in DefaultSecurityRules)
-                {
-                    if (element1 != null)
-                    {
-                        element1.Validate();
-                    }
-                }
-            }
-            if (NetworkInterfaces != null)
-            {
-                foreach (var element2 in NetworkInterfaces)
-                {
-                    if (element2 != null)
-                    {
-                        element2.Validate();
-                    }
-                }
-            }
-        }
     }
 }

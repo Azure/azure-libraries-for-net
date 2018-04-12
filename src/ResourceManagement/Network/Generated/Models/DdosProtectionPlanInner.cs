@@ -46,14 +46,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// read-only.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public DdosProtectionPlanInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceGuid = default(string), string provisioningState = default(string), IList<Management.ResourceManager.Fluent.SubResource> virtualNetworks = default(IList<Management.ResourceManager.Fluent.SubResource>), string etag = default(string))
+        public DdosProtectionPlanInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceGuid = default(string), string provisioningState = default(string), IList<Management.ResourceManager.Fluent.SubResource> virtualNetworks = default(IList<Management.ResourceManager.Fluent.SubResource>), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
             VirtualNetworks = virtualNetworks;
             Etag = etag;
-            Id = id;
             CustomInit();
         }
 
@@ -93,25 +92,5 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
 
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public new string Id
-        {
-            get { return base.Id; }
-            set { base.Id = value; }
-        }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

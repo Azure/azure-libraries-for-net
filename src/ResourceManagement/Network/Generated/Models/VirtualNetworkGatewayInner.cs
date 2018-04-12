@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// 'Deleting', and 'Failed'.</param>
         /// <param name="etag">Gets a unique read-only string that changes
         /// whenever the resource is updated.</param>
-        public VirtualNetworkGatewayInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<VirtualNetworkGatewayIPConfigurationInner> ipConfigurations = default(IList<VirtualNetworkGatewayIPConfigurationInner>), VirtualNetworkGatewayType gatewayType = default(VirtualNetworkGatewayType), VpnType vpnType = default(VpnType), bool? enableBgp = default(bool?), bool? activeActive = default(bool?), Management.ResourceManager.Fluent.SubResource gatewayDefaultSite = default(Management.ResourceManager.Fluent.SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), BgpSettings bgpSettings = default(BgpSettings), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public VirtualNetworkGatewayInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<VirtualNetworkGatewayIPConfigurationInner> ipConfigurations = default(IList<VirtualNetworkGatewayIPConfigurationInner>), VirtualNetworkGatewayType gatewayType = default(VirtualNetworkGatewayType), VpnType vpnType = default(VpnType), bool? enableBgp = default(bool?), bool? activeActive = default(bool?), Management.ResourceManager.Fluent.SubResource gatewayDefaultSite = default(Management.ResourceManager.Fluent.SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), BgpSettings bgpSettings = default(BgpSettings), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             IpConfigurations = ipConfigurations;
@@ -79,7 +79,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
             Etag = etag;
-            Id = id;
             CustomInit();
         }
 
@@ -172,25 +171,5 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; set; }
 
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public new string Id
-        {
-            get { return base.Id; }
-            set { base.Id = value; }
-        }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using Management.ResourceManager.Fluent;
     using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for EffectiveRouteState.
     /// </summary>
@@ -19,6 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     /// Determine base value for a given allowed value if exists, else return
     /// the value itself
     /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<EffectiveRouteState>))]
     public class EffectiveRouteState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<EffectiveRouteState>
     {
         public static readonly EffectiveRouteState Active = Parse("Active");

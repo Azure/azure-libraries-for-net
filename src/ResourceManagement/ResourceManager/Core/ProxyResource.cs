@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         /// Resource Id. Setter is protected because Id needs to be set in Network resources.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public virtual string Id { get; protected set; }
+        public virtual string Id { get; set; }
 
         /// <summary>
         /// Resource name

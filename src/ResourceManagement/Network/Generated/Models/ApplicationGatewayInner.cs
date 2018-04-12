@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="zones">A list of availability zones denoting where the resource needs to come from.</param>
-        public ApplicationGatewayInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ApplicationGatewaySku sku = default(ApplicationGatewaySku), ApplicationGatewaySslPolicy sslPolicy = default(ApplicationGatewaySslPolicy), ApplicationGatewayOperationalState operationalState = default(ApplicationGatewayOperationalState), IList<ApplicationGatewayIPConfigurationInner> gatewayIPConfigurations = default(IList<ApplicationGatewayIPConfigurationInner>), IList<ApplicationGatewayAuthenticationCertificateInner> authenticationCertificates = default(IList<ApplicationGatewayAuthenticationCertificateInner>), IList<ApplicationGatewaySslCertificateInner> sslCertificates = default(IList<ApplicationGatewaySslCertificateInner>), IList<ApplicationGatewayFrontendIPConfigurationInner> frontendIPConfigurations = default(IList<ApplicationGatewayFrontendIPConfigurationInner>), IList<ApplicationGatewayFrontendPortInner> frontendPorts = default(IList<ApplicationGatewayFrontendPortInner>), IList<ApplicationGatewayProbeInner> probes = default(IList<ApplicationGatewayProbeInner>), IList<ApplicationGatewayBackendAddressPoolInner> backendAddressPools = default(IList<ApplicationGatewayBackendAddressPoolInner>), IList<ApplicationGatewayBackendHttpSettingsInner> backendHttpSettingsCollection = default(IList<ApplicationGatewayBackendHttpSettingsInner>), IList<ApplicationGatewayHttpListenerInner> httpListeners = default(IList<ApplicationGatewayHttpListenerInner>), IList<ApplicationGatewayUrlPathMapInner> urlPathMaps = default(IList<ApplicationGatewayUrlPathMapInner>), IList<ApplicationGatewayRequestRoutingRuleInner> requestRoutingRules = default(IList<ApplicationGatewayRequestRoutingRuleInner>), IList<ApplicationGatewayRedirectConfigurationInner> redirectConfigurations = default(IList<ApplicationGatewayRedirectConfigurationInner>), ApplicationGatewayWebApplicationFirewallConfiguration webApplicationFirewallConfiguration = default(ApplicationGatewayWebApplicationFirewallConfiguration), bool? enableHttp2 = default(bool?), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
+        public ApplicationGatewayInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ApplicationGatewaySku sku = default(ApplicationGatewaySku), ApplicationGatewaySslPolicy sslPolicy = default(ApplicationGatewaySslPolicy), ApplicationGatewayOperationalState operationalState = default(ApplicationGatewayOperationalState), IList<ApplicationGatewayIPConfigurationInner> gatewayIPConfigurations = default(IList<ApplicationGatewayIPConfigurationInner>), IList<ApplicationGatewayAuthenticationCertificateInner> authenticationCertificates = default(IList<ApplicationGatewayAuthenticationCertificateInner>), IList<ApplicationGatewaySslCertificateInner> sslCertificates = default(IList<ApplicationGatewaySslCertificateInner>), IList<ApplicationGatewayFrontendIPConfigurationInner> frontendIPConfigurations = default(IList<ApplicationGatewayFrontendIPConfigurationInner>), IList<ApplicationGatewayFrontendPortInner> frontendPorts = default(IList<ApplicationGatewayFrontendPortInner>), IList<ApplicationGatewayProbeInner> probes = default(IList<ApplicationGatewayProbeInner>), IList<ApplicationGatewayBackendAddressPoolInner> backendAddressPools = default(IList<ApplicationGatewayBackendAddressPoolInner>), IList<ApplicationGatewayBackendHttpSettingsInner> backendHttpSettingsCollection = default(IList<ApplicationGatewayBackendHttpSettingsInner>), IList<ApplicationGatewayHttpListenerInner> httpListeners = default(IList<ApplicationGatewayHttpListenerInner>), IList<ApplicationGatewayUrlPathMapInner> urlPathMaps = default(IList<ApplicationGatewayUrlPathMapInner>), IList<ApplicationGatewayRequestRoutingRuleInner> requestRoutingRules = default(IList<ApplicationGatewayRequestRoutingRuleInner>), IList<ApplicationGatewayRedirectConfigurationInner> redirectConfigurations = default(IList<ApplicationGatewayRedirectConfigurationInner>), ApplicationGatewayWebApplicationFirewallConfiguration webApplicationFirewallConfiguration = default(ApplicationGatewayWebApplicationFirewallConfiguration), bool? enableHttp2 = default(bool?), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -100,7 +100,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ProvisioningState = provisioningState;
             Etag = etag;
             Zones = zones;
-            Id = id;
             CustomInit();
         }
 
@@ -249,24 +248,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<string> Zones { get; set; }
 
         /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public new string Id
-        {
-            get { return base.Id; }
-            set { base.Id = value; }
-        }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public override void Validate()
+        public virtual void Validate()
         {
-            base.Validate();
             if (BackendHttpSettingsCollection != null)
             {
                 foreach (var element in BackendHttpSettingsCollection)

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="peerings">The list of peerings.</param>
         /// <param name="etag">Gets a unique read-only string that changes
         /// whenever the resource is updated.</param>
-        public ExpressRouteCrossConnectionInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), int? sTag = default(int?), string peeringLocation = default(string), int? bandwidthInMbps = default(int?), ExpressRouteCircuitReference expressRouteCircuit = default(ExpressRouteCircuitReference), ServiceProviderProvisioningState serviceProviderProvisioningState = default(ServiceProviderProvisioningState), string serviceProviderNotes = default(string), string provisioningState = default(string), IList<ExpressRouteCrossConnectionPeeringInner> peerings = default(IList<ExpressRouteCrossConnectionPeeringInner>), string etag = default(string))
+        public ExpressRouteCrossConnectionInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), int? sTag = default(int?), string peeringLocation = default(string), int? bandwidthInMbps = default(int?), ExpressRouteCircuitReference expressRouteCircuit = default(ExpressRouteCircuitReference), ServiceProviderProvisioningState serviceProviderProvisioningState = default(ServiceProviderProvisioningState), string serviceProviderNotes = default(string), string provisioningState = default(string), IList<ExpressRouteCrossConnectionPeeringInner> peerings = default(IList<ExpressRouteCrossConnectionPeeringInner>), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             PrimaryAzurePort = primaryAzurePort;
@@ -73,7 +73,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             ProvisioningState = provisioningState;
             Peerings = peerings;
             Etag = etag;
-            Id = id;
             CustomInit();
         }
 
@@ -101,22 +100,22 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public int? STag { get; private set; }
 
         /// <summary>
-        /// Gets the peering location of the ExpressRoute circuit.
+        /// Gets or sets the peering location of the ExpressRoute circuit.
         /// </summary>
         [JsonProperty(PropertyName = "properties.peeringLocation")]
-        public string PeeringLocation { get; private set; }
+        public string PeeringLocation { get; set; }
 
         /// <summary>
-        /// Gets the circuit bandwidth In Mbps.
+        /// Gets or sets the circuit bandwidth In Mbps.
         /// </summary>
         [JsonProperty(PropertyName = "properties.bandwidthInMbps")]
-        public int? BandwidthInMbps { get; private set; }
+        public int? BandwidthInMbps { get; set; }
 
         /// <summary>
-        /// Gets the ExpressRouteCircuit
+        /// Gets or sets the ExpressRouteCircuit
         /// </summary>
         [JsonProperty(PropertyName = "properties.expressRouteCircuit")]
-        public ExpressRouteCircuitReference ExpressRouteCircuit { get; private set; }
+        public ExpressRouteCircuitReference ExpressRouteCircuit { get; set; }
 
         /// <summary>
         /// Gets or sets the provisioning state of the circuit in the
@@ -154,35 +153,5 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
 
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public new string Id
-        {
-            get { return base.Id; }
-            set { base.Id = value; }
-        }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-            if (Peerings != null)
-            {
-                foreach (var element in Peerings)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-        }
     }
 }

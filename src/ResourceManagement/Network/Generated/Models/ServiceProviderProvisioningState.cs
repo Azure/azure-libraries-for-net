@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using Management.ResourceManager.Fluent;
     using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ServiceProviderProvisioningState.
     /// </summary>
@@ -19,6 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     /// Determine base value for a given allowed value if exists, else return
     /// the value itself
     /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ServiceProviderProvisioningState>))]
     public class ServiceProviderProvisioningState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ServiceProviderProvisioningState>
     {
         public static readonly ServiceProviderProvisioningState NotProvisioned = Parse("NotProvisioned");

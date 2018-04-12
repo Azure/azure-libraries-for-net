@@ -43,14 +43,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// and 'Failed'.</param>
         /// <param name="etag">Gets a unique read-only string that changes
         /// whenever the resource is updated.</param>
-        public RouteFilterInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<RouteFilterRuleInner> rules = default(IList<RouteFilterRuleInner>), IList<ExpressRouteCircuitPeeringInner> peerings = default(IList<ExpressRouteCircuitPeeringInner>), string provisioningState = default(string), string etag = default(string))
+        public RouteFilterInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<RouteFilterRuleInner> rules = default(IList<RouteFilterRuleInner>), IList<ExpressRouteCircuitPeeringInner> peerings = default(IList<ExpressRouteCircuitPeeringInner>), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Rules = rules;
             Peerings = peerings;
             ProvisioningState = provisioningState;
             Etag = etag;
-            Id = id;
             CustomInit();
         }
 
@@ -87,45 +86,5 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
 
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public new string Id
-        {
-            get { return base.Id; }
-            set { base.Id = value; }
-        }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-            if (Rules != null)
-            {
-                foreach (var element in Rules)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-            if (Peerings != null)
-            {
-                foreach (var element1 in Peerings)
-                {
-                    if (element1 != null)
-                    {
-                        element1.Validate();
-                    }
-                }
-            }
-        }
     }
 }

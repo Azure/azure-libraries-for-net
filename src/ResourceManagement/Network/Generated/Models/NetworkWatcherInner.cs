@@ -39,12 +39,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="provisioningState">The provisioning state of the
         /// resource. Possible values include: 'Succeeded', 'Updating',
         /// 'Deleting', 'Failed'</param>
-        public NetworkWatcherInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), ProvisioningState provisioningState = default(ProvisioningState))
+        public NetworkWatcherInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), ProvisioningState provisioningState = default(ProvisioningState))
             : base(location, id, name, type, tags)
         {
             Etag = etag;
             ProvisioningState = provisioningState;
-            Id = id;
             CustomInit();
         }
 
@@ -67,25 +66,5 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public ProvisioningState ProvisioningState { get; private set; }
 
-        /// <summary>
-        /// Gets or sets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public new string Id
-        {
-            get { return base.Id; }
-            set { base.Id = value; }
-        }
-
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }
