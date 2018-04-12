@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IDefinition
     {
         private TopologyInner inner;
-        private TopologyParameters parameters;
+        private TopologyParameters parameters = new TopologyParameters();
         private NetworkWatcherImpl parent;
         private Dictionary<string,Models.TopologyResource> resources;
 
