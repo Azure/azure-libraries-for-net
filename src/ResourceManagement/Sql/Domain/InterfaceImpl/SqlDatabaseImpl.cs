@@ -361,6 +361,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the SQL Sync Group entry point for the current database.
+        /// </summary>
+        SqlSyncGroupOperations.SqlSyncGroupActionsDefinition.ISqlSyncGroupActionsDefinition Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase.SyncGroups
+        {
+            get
+            {
+                return this.SyncGroups() as SqlSyncGroupOperations.SqlSyncGroupActionsDefinition.ISqlSyncGroupActionsDefinition;
+            }
+        }
+
+        /// <summary>
         /// Deletes the database asynchronously.
         /// </summary>
         /// <return>A representation of the deferred computation of this call.</return>

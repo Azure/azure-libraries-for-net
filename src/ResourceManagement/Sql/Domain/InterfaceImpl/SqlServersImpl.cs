@@ -116,6 +116,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets the SQL Sync Group entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMemberOperations Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.SyncMembers
+        {
+            get
+            {
+                return this.SyncMembers() as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMemberOperations;
+            }
+        }
+
+        /// <summary>
         /// Checks if container registry name is valid and is not in use asynchronously.
         /// </summary>
         /// <param name="name">The container registry name to check.</param>
@@ -143,6 +154,28 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSubscriptionUsageMetric>> Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.ListUsageByRegionAsync(Region region, CancellationToken cancellationToken)
         {
             return await this.ListUsageByRegionAsync(region, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSubscriptionUsageMetric>;
+        }
+
+        /// <summary>
+        /// Gets the SQL Sync Group entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupOperations Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.SyncGroups
+        {
+            get
+            {
+                return this.SyncGroups() as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupOperations;
+            }
+        }
+
+        /// <summary>
+        /// Gets the SQL Encryption Protector entry point.
+        /// </summary>
+        Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.EncryptionProtectors
+        {
+            get
+            {
+                return this.EncryptionProtectors() as Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations;
+            }
         }
 
         /// <summary>

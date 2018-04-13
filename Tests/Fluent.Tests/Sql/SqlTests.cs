@@ -7,6 +7,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Sql.Fluent;
 using Microsoft.Azure.Management.Sql.Fluent.Models;
+using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
@@ -15,6 +16,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Fluent.Tests
 {
@@ -28,6 +30,14 @@ namespace Fluent.Tests
         private static readonly string SqlFirewallRuleName = "firewallrule1";
         private static readonly string StartIPAddress = "10.102.1.10";
         private static readonly string EndIPAddress = "10.102.1.12";
+
+        public Sql(ITestOutputHelper output)
+        {
+            //TestHelper.TestLogger = output;
+            //ServiceClientTracing.IsEnabled = true;
+            //ServiceClientTracing.AddTracingInterceptor(new XunitTracingInterceptor(output));
+        }
+
 
         private static void GenerateNewRGAndSqlServerNameForTest([CallerMemberName] string methodName = "testframework_failed")
         {
@@ -49,6 +59,140 @@ namespace Fluent.Tests
             }
             catch
             {
+            }
+        }
+
+        [Fact]
+        public void CanCRUDSqlSyncMember()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                GenerateNewRGAndSqlServerNameForTest();
+                var rollUpClient = TestHelper.CreateRollupClient();
+                string sqlServerName = SdkContext.RandomResourceName("sqlpri", 22);
+                string dbName = SdkContext.RandomResourceName("dbSample", 15);
+                string dbSyncName = SdkContext.RandomResourceName("dbSync", 15);
+                string dbMemberName = SdkContext.RandomResourceName("dbMember", 15);
+                string syncGroupName = SdkContext.RandomResourceName("groupName", 15);
+                string syncMemberName = SdkContext.RandomResourceName("memberName", 15);
+                string administratorLogin = "sqladmin";
+                string administratorPassword = "N0t@P@ssw0rd!";
+
+
+                // Create
+                var sqlPrimaryServer = rollUpClient.SqlServers.Define(sqlServerName)
+                    .WithRegion(Region.USSouthCentral)
+                    .WithNewResourceGroup(GroupName)
+                    .WithAdministratorLogin(administratorLogin)
+                    .WithAdministratorPassword(administratorPassword)
+                    .DefineDatabase(dbName)
+                        .FromSample(SampleName.AdventureWorksLT)
+                        .WithStandardEdition(SqlDatabaseStandardServiceObjective.S0)
+                        .Attach()
+                    .DefineDatabase(dbSyncName)
+                        .WithStandardEdition(SqlDatabaseStandardServiceObjective.S0)
+                        .Attach()
+                    .DefineDatabase(dbMemberName)
+                        .WithStandardEdition(SqlDatabaseStandardServiceObjective.S0)
+                        .Attach()
+                    .Create();
+
+                var dbSource = sqlPrimaryServer.Databases.Get(dbName);
+                var dbSync = sqlPrimaryServer.Databases.Get(dbSyncName);
+                var dbMember = sqlPrimaryServer.Databases.Get(dbMemberName);
+
+                var sqlSyncGroup = dbSync.SyncGroups.Define(syncGroupName)
+                    .WithSyncDatabaseId(dbSource.Id)
+                    .WithDatabaseUserName(administratorLogin)
+                    .WithDatabasePassword(administratorPassword)
+                    .WithConflictResolutionPolicyHubWins()
+                    .WithInterval(-1)
+                    .Create();
+                Assert.NotNull(sqlSyncGroup);
+
+                var sqlSyncMember = sqlSyncGroup.SyncMembers.Define(syncMemberName)
+                    .WithMemberSqlDatabase(dbMember)
+                    .WithMemberUserName(administratorLogin)
+                    .WithMemberPassword(administratorPassword)
+                    .WithMemberDatabaseType(SyncMemberDbType.AzureSqlDatabase)
+                    .WithDatabaseType(SyncDirection.OneWayHubToMember)
+                    .Create();
+                Assert.NotNull(sqlSyncMember);
+
+                sqlSyncMember.Update()
+                    .WithDatabaseType(SyncDirection.Bidirectional)
+                    .WithMemberUserName(administratorLogin)
+                    .WithMemberPassword(administratorPassword)
+                    .WithMemberDatabaseType(SyncMemberDbType.AzureSqlDatabase)
+                    .Apply();
+
+                Assert.True(sqlSyncGroup.SyncMembers.List().Count() > 0);
+
+                sqlSyncMember = rollUpClient.SqlServers.SyncMembers.GetBySqlServer(GroupName, sqlServerName, dbSyncName, syncGroupName, syncMemberName);
+                Assert.NotNull(sqlSyncMember);
+
+                sqlSyncMember.Delete();
+
+                sqlSyncGroup.Delete();
+
+            }
+        }
+
+        [Fact]
+        public void CanCRUDSqlSyncGroup()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                GenerateNewRGAndSqlServerNameForTest();
+                var rollUpClient = TestHelper.CreateRollupClient();
+                string sqlServerName = SdkContext.RandomResourceName("sqlpri", 22);
+                string dbName = SdkContext.RandomResourceName("dbSample", 15);
+                string dbSyncName = SdkContext.RandomResourceName("dbSync", 15);
+                string syncGroupName = SdkContext.RandomResourceName("groupName", 15);
+                string administratorLogin = "sqladmin";
+                string administratorPassword = "N0t@P@ssw0rd!";
+                Region region = Region.USWest2;
+
+                // Create
+                var sqlPrimaryServer = rollUpClient.SqlServers.Define(sqlServerName)
+                .WithRegion(region)
+                .WithNewResourceGroup(GroupName)
+                .WithAdministratorLogin(administratorLogin)
+                .WithAdministratorPassword(administratorPassword)
+                .DefineDatabase(dbName)
+                    .FromSample(SampleName.AdventureWorksLT)
+                    .WithStandardEdition(SqlDatabaseStandardServiceObjective.S0)
+                    .Attach()
+                .DefineDatabase(dbSyncName)
+                    .WithStandardEdition(SqlDatabaseStandardServiceObjective.S0)
+                    .Attach()
+                .Create();
+
+                var dbSource = sqlPrimaryServer.Databases.Get(dbName);
+                var dbSync = sqlPrimaryServer.Databases.Get(dbSyncName);
+
+                var sqlSyncGroup = dbSync.SyncGroups.Define(syncGroupName)
+                    .WithSyncDatabaseId(dbSource.Id)
+                    .WithDatabaseUserName(administratorLogin)
+                    .WithDatabasePassword(administratorPassword)
+                    .WithConflictResolutionPolicyHubWins()
+                    .WithInterval(-1)
+                    .Create();
+
+                Assert.NotNull(sqlSyncGroup);
+
+                sqlSyncGroup.Update()
+                    .WithInterval(600)
+                    .WithConflictResolutionPolicyMemberWins()
+                    .Apply();
+
+                Assert.True(rollUpClient.SqlServers.SyncGroups.ListSyncDatabaseIds(region).Count() > 0);
+                Assert.True(dbSync.SyncGroups.List().Count() > 0);
+
+                sqlSyncGroup = rollUpClient.SqlServers.SyncGroups.GetBySqlServer(GroupName, sqlServerName, dbSyncName, syncGroupName);
+                Assert.NotNull(sqlSyncGroup);
+
+                sqlSyncGroup.Delete();
             }
         }
 

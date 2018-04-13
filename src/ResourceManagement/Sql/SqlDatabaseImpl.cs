@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Rest.Azure;
+    using Microsoft.Azure.Management.Sql.Fluent.SqlSyncGroupOperations.SqlSyncGroupActionsDefinition;
 
     /// <summary>
     /// Implementation for SqlDatabase and its parent interfaces.
@@ -57,6 +58,8 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private ImportRequestInner importRequestInner;
         private IStorageAccount storageAccount;
         private readonly string name;
+
+        private SqlSyncGroupOperationsImpl syncGroupOps;
 
         string ICreatable<ISqlDatabase>.Name => this.Name();
 
@@ -130,6 +133,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public override string Name()
         {
             return this.name;
+        }
+
+        ///GENMHASH:2AEEDA573EC9A50B62216BE3C228E186:9AC714CB5012CC7E3C25F0728F8230EB
+        public ISqlSyncGroupActionsDefinition SyncGroups()
+        {
+            if (this.syncGroupOps == null)
+            {
+                this.syncGroupOps = new SqlSyncGroupOperationsImpl(this, this.sqlServerManager);
+            }
+            return this.syncGroupOps;
         }
 
         ///GENMHASH:A2A1505BCC6291F30BC2E2AC16639B19:5AFDD1B9912D08695516C8D33256ADB0
@@ -817,7 +830,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         public string ParentId()
         {
             var resourceId = ResourceId.FromString(this.Id());
-            return resourceId.Parent.Id;
+            return resourceId?.Parent?.Id;
         }
 
         ///GENMHASH:75380AC1C8F8C473AF028534126AA5D4:25C18B002519A132E6FD1BDD0AAEAC82

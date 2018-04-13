@@ -48,6 +48,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         bool IsManagedServiceIdentityEnabled { get; }
 
         /// <summary>
+        /// Gets returns entry point to manage SQL Encryption Protector for this server.
+        /// </summary>
+        SqlEncryptionProtectorOperations.SqlEncryptionProtectorActionsDefinition.ISqlEncryptionProtectorActionsDefinition EncryptionProtectors { get; }
+
+        /// <summary>
         /// Gets returns entry point to manage SQL Failover Group for this server.
         /// </summary>
         SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition FailoverGroups { get; }

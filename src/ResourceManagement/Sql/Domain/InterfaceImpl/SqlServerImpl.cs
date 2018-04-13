@@ -373,6 +373,17 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         /// <summary>
+        /// Gets returns entry point to manage SQL Encryption Protector for this server.
+        /// </summary>
+        SqlEncryptionProtectorOperations.SqlEncryptionProtectorActionsDefinition.ISqlEncryptionProtectorActionsDefinition Microsoft.Azure.Management.Sql.Fluent.ISqlServer.EncryptionProtectors
+        {
+            get
+            {
+                return this.EncryptionProtectors() as SqlEncryptionProtectorOperations.SqlEncryptionProtectorActionsDefinition.ISqlEncryptionProtectorActionsDefinition;
+            }
+        }
+
+        /// <summary>
         /// Gets the System Assigned (Local) Managed Service Identity specific Active Directory service principal ID
         /// assigned to the SQL server.
         /// </summary>

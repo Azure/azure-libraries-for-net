@@ -51,6 +51,11 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         string Edition { get; }
 
         /// <summary>
+        /// Gets the SQL Sync Group entry point for the current database.
+        /// </summary>
+        SqlSyncGroupOperations.SqlSyncGroupActionsDefinition.ISqlSyncGroupActionsDefinition SyncGroups { get; }
+
+        /// <summary>
         /// Gets an Azure SQL Database Transparent Data Encryption for this database.
         /// </summary>
         /// <return>A representation of the deferred computation of an Azure SQL Database Transparent Data Encryption for this database.</return>

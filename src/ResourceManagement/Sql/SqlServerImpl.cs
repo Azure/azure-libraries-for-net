@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         private SqlServerKeyOperations.SqlServerKeyActionsDefinition.ISqlServerKeyActionsDefinition serverKeys;
         private SqlServerDnsAliasOperations.SqlServerDnsAliasActionsDefinition.ISqlServerDnsAliasActionsDefinition dnsAliases;
         private SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition failoverGroups;
+        private SqlEncryptionProtectorOperations.SqlEncryptionProtectorActionsDefinition.ISqlEncryptionProtectorActionsDefinition sqlEncryptionProtectorsOperations;
 
 
         ///GENMHASH:FED6CA0448AFD6EE7D63F8D84B7C6C26:4E9D1D31C4E764F2191FF855F590821F
@@ -228,6 +229,16 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             this.Inner.AdministratorLoginPassword = administratorLoginPassword;
             return this;
+        }
+
+        ///GENMHASH:A35FDCFAF0B4252668DF8A64517A10A7:E00C39EDE1568124FF586B54427C9393
+        public SqlEncryptionProtectorOperations.SqlEncryptionProtectorActionsDefinition.ISqlEncryptionProtectorActionsDefinition EncryptionProtectors()
+        {
+            if (this.sqlEncryptionProtectorsOperations == null)
+            {
+                this.sqlEncryptionProtectorsOperations = new SqlEncryptionProtectorOperationsImpl(this, this.Manager);
+            }
+            return this.sqlEncryptionProtectorsOperations;
         }
 
         ///GENMHASH:1FE0A47E23B755CDB471E95CFF0DB53B:5D0403E58B037C71B8C4BB957D912EBE
