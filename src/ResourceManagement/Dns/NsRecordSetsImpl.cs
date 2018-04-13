@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         INSRecordSets
     {
         ///GENMHASH:C5867A000D4912C160F6F94159505827:AB06D3EB417EB24BBBD90FAD00AFAD76
-        internal NSRecordSetsImpl(DnsZoneImpl dnsZone) 
-			: base(dnsZone, RecordType.NS)
+        internal NSRecordSetsImpl(DnsZoneImpl dnsZone)
+            : base(dnsZone, RecordType.NS)
         {
         }
 
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                                                                 recordsetnamesuffix: recordSetNameSuffix))
                                                                 .AsContinuousCollection(link => Extensions.Synchronize(() => dnsZone.Manager.Inner.RecordSets.ListByTypeNextAsync(link))));
         }
-		
+
         ///GENMHASH:64B3FB1F01DFC1156B75305640537ED6:6ABA6F3C2D4325C9176D80BB4E70E2B8
         protected async override Task<IPagedCollection<INSRecordSet>> ListInternAsync(string recordSetNameSuffix, int? pageSize, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -50,13 +50,13 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:A65D7F670CB73E56248FA5B252060BCD:5F707291D14DA5598B0C79A53C240FCC
         protected override INSRecordSet WrapModel(RecordSetInner inner)
         {
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new NSRecordSetImpl(inner.Name, dnsZone, inner);
         }
-		
+
         ///GENMHASH:5C58E472AE184041661005E7B2D7EE30:0A49A0336CCC3F7A7573EA68B07F0500
         public async override Task<INSRecordSet> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 recordType,
                 cancellationToken);
 
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new NSRecordSetImpl(inner.Name, dnsZone, inner);
         }
 

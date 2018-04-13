@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     {
 
         ///GENMHASH:4136E00FD2D74B5CCF6653A06CCE195E:90FA9D38445FC1A7EA8298AA2C095642
-        internal ARecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel) 
-			: base(name, Enum.GetName(typeof(RecordType), Models.RecordType.A), parent, innerModel)
+        internal ARecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.A), parent, innerModel)
         {
         }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             }
             return resource;
         }
-				
+
         ///GENMHASH:04586DB2C8D9E7DB2F3AB47785D5A15A:F328364702E41F21DD4388BDA9FC5770
         public IReadOnlyList<string> IPv4Addresses()
         {

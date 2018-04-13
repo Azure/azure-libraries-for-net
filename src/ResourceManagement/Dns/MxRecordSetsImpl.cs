@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         IMXRecordSets
     {
         ///GENMHASH:14AE18696E6F84E16A1DFEA287A79275:F8E87D142BE7B967C3D37E08C8777506
-        internal MXRecordSetsImpl(DnsZoneImpl dnsZone) 
-			: base(dnsZone, RecordType.MX)
+        internal MXRecordSetsImpl(DnsZoneImpl dnsZone)
+            : base(dnsZone, RecordType.MX)
         {
         }
 
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:A65D7F670CB73E56248FA5B252060BCD:DC4FF2A84773DB187EB6D9E5EEE7D21A
         protected override IMXRecordSet WrapModel(RecordSetInner inner)
         {
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new MXRecordSetImpl(inner.Name, dnsZone, inner);
         }
 
@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 name,
                 recordType,
                 cancellationToken);
-            if (inner == null) 
-			{
-            	return null;
+            if (inner == null)
+            {
+                return null;
             }
             return new MXRecordSetImpl(inner.Name, dnsZone, inner);
         }

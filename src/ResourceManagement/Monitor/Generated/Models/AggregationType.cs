@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this AggregationType value)
         {
-            switch( value )
+            switch (value)
             {
                 case AggregationType.None:
                     return "None";
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static AggregationType? ParseAggregationType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "None":
                     return AggregationType.None;

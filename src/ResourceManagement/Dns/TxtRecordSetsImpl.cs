@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ITxtRecordSets
     {
         ///GENMHASH:DE142040F109CD3B229E5070C0CA4D4F:3D4AA50D3AD17F26B290CAD1D1D863EA
-        internal TxtRecordSetsImpl(DnsZoneImpl dnsZone) 
-			: base(dnsZone, RecordType.TXT)
+        internal TxtRecordSetsImpl(DnsZoneImpl dnsZone)
+            : base(dnsZone, RecordType.TXT)
         {
         }
 
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:A65D7F670CB73E56248FA5B252060BCD:130D11B36B3C96A2E5061419A038F3A8
         protected override ITxtRecordSet WrapModel(RecordSetInner inner)
         {
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new TxtRecordSetImpl(inner.Name, dnsZone, inner);
         }
 
@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 recordType,
                 cancellationToken);
 
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new TxtRecordSetImpl(inner.Name, dnsZone, inner);
         }
 

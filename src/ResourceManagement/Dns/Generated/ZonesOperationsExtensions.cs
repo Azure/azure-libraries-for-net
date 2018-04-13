@@ -21,232 +21,232 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// </summary>
     public static partial class ZonesOperationsExtensions
     {
-            /// <summary>
-            /// Creates or updates a DNS zone. Does not modify DNS records within the zone.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='zoneName'>
-            /// The name of the DNS zone (without a terminating dot).
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the CreateOrUpdate operation.
-            /// </param>
-            /// <param name='ifMatch'>
-            /// The etag of the DNS zone. Omit this value to always overwrite the current
-            /// zone. Specify the last-seen etag value to prevent accidentally overwritting
-            /// any concurrent changes.
-            /// </param>
-            /// <param name='ifNoneMatch'>
-            /// Set to '*' to allow a new DNS zone to be created, but to prevent updating
-            /// an existing zone. Other values will be ignored.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ZoneInner> CreateOrUpdateAsync(this IZonesOperations operations, string resourceGroupName, string zoneName, ZoneInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Creates or updates a DNS zone. Does not modify DNS records within the zone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the CreateOrUpdate operation.
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of the DNS zone. Omit this value to always overwrite the current
+        /// zone. Specify the last-seen etag value to prevent accidentally overwritting
+        /// any concurrent changes.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// Set to '*' to allow a new DNS zone to be created, but to prevent updating
+        /// an existing zone. Other values will be ignored.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<ZoneInner> CreateOrUpdateAsync(this IZonesOperations operations, string resourceGroupName, string zoneName, ZoneInner parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, zoneName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, zoneName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Deletes a DNS zone. WARNING: All DNS records in the zone will also be
-            /// deleted. This operation cannot be undone.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='zoneName'>
-            /// The name of the DNS zone (without a terminating dot).
-            /// </param>
-            /// <param name='ifMatch'>
-            /// The etag of the DNS zone. Omit this value to always delete the current
-            /// zone. Specify the last-seen etag value to prevent accidentally deleting any
-            /// concurrent changes.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IZonesOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, zoneName, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
+        /// <summary>
+        /// Deletes a DNS zone. WARNING: All DNS records in the zone will also be
+        /// deleted. This operation cannot be undone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of the DNS zone. Omit this value to always delete the current
+        /// zone. Specify the last-seen etag value to prevent accidentally deleting any
+        /// concurrent changes.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task DeleteAsync(this IZonesOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, zoneName, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
 
-            /// <summary>
-            /// Gets a DNS zone. Retrieves the zone properties, but not the record sets
-            /// within the zone.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='zoneName'>
-            /// The name of the DNS zone (without a terminating dot).
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ZoneInner> GetAsync(this IZonesOperations operations, string resourceGroupName, string zoneName, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets a DNS zone. Retrieves the zone properties, but not the record sets
+        /// within the zone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<ZoneInner> GetAsync(this IZonesOperations operations, string resourceGroupName, string zoneName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, zoneName, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, zoneName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Updates a DNS zone. Does not modify DNS records within the zone.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='zoneName'>
-            /// The name of the DNS zone (without a terminating dot).
-            /// </param>
-            /// <param name='ifMatch'>
-            /// The etag of the DNS zone. Omit this value to always overwrite the current
-            /// zone. Specify the last-seen etag value to prevent accidentally overwritting
-            /// any concurrent changes.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ZoneInner> UpdateAsync(this IZonesOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Updates a DNS zone. Does not modify DNS records within the zone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of the DNS zone. Omit this value to always overwrite the current
+        /// zone. Specify the last-seen etag value to prevent accidentally overwritting
+        /// any concurrent changes.
+        /// </param>
+        /// <param name='tags'>
+        /// Resource tags.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<ZoneInner> UpdateAsync(this IZonesOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, zoneName, ifMatch, tags, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, zoneName, ifMatch, tags, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Lists the DNS zones within a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='top'>
-            /// The maximum number of record sets to return. If not specified, returns up
-            /// to 100 record sets.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<ZoneInner>> ListByResourceGroupAsync(this IZonesOperations operations, string resourceGroupName, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Lists the DNS zones within a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='top'>
+        /// The maximum number of record sets to return. If not specified, returns up
+        /// to 100 record sets.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<ZoneInner>> ListByResourceGroupAsync(this IZonesOperations operations, string resourceGroupName, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, top, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, top, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Lists the DNS zones in all resource groups in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='top'>
-            /// The maximum number of DNS zones to return. If not specified, returns up to
-            /// 100 zones.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<ZoneInner>> ListAsync(this IZonesOperations operations, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Lists the DNS zones in all resource groups in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='top'>
+        /// The maximum number of DNS zones to return. If not specified, returns up to
+        /// 100 zones.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<ZoneInner>> ListAsync(this IZonesOperations operations, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(top, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(top, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Deletes a DNS zone. WARNING: All DNS records in the zone will also be
-            /// deleted. This operation cannot be undone.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='zoneName'>
-            /// The name of the DNS zone (without a terminating dot).
-            /// </param>
-            /// <param name='ifMatch'>
-            /// The etag of the DNS zone. Omit this value to always delete the current
-            /// zone. Specify the last-seen etag value to prevent accidentally deleting any
-            /// concurrent changes.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginDeleteAsync(this IZonesOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, zoneName, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
+        /// <summary>
+        /// Deletes a DNS zone. WARNING: All DNS records in the zone will also be
+        /// deleted. This operation cannot be undone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of the DNS zone. Omit this value to always delete the current
+        /// zone. Specify the last-seen etag value to prevent accidentally deleting any
+        /// concurrent changes.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task BeginDeleteAsync(this IZonesOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, zoneName, ifMatch, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
 
-            /// <summary>
-            /// Lists the DNS zones within a resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<ZoneInner>> ListByResourceGroupNextAsync(this IZonesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Lists the DNS zones within a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<ZoneInner>> ListByResourceGroupNextAsync(this IZonesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Lists the DNS zones in all resource groups in a subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<ZoneInner>> ListNextAsync(this IZonesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Lists the DNS zones in all resource groups in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<ZoneInner>> ListNextAsync(this IZonesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

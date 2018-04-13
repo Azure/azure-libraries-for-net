@@ -12,8 +12,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure DNS Zone.
     /// </summary>
-    public interface IDnsZone  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Dns.Fluent.IDnsZoneManager,Models.ZoneInner>,
+    public interface IDnsZone :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Dns.Fluent.IDnsZoneManager, Models.ZoneInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Dns.Fluent.IDnsZone>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<DnsZone.Update.IUpdate>
     {

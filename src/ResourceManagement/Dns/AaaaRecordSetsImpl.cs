@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         IAaaaRecordSets
     {
         ///GENMHASH:4DBB29DC0AB074A2ADEBE0995A37B2FD:26612A7251FED5BBA8E632A591DFE1BF
-        internal AaaaRecordSetsImpl(DnsZoneImpl dnsZone) 
-			: base(dnsZone, RecordType.AAAA)
+        internal AaaaRecordSetsImpl(DnsZoneImpl dnsZone)
+            : base(dnsZone, RecordType.AAAA)
         {
         }
 
@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:A65D7F670CB73E56248FA5B252060BCD:0B3E2A2CA99FEE8D024AAE98E6686F31
         protected override IAaaaRecordSet WrapModel(RecordSetInner inner)
         {
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new AaaaRecordSetImpl(inner.Name, dnsZone, inner);
         }
-				
+
         ///GENMHASH:5C58E472AE184041661005E7B2D7EE30:1C98931F95D44FECAC6AD9E31FBF6559
         public async override Task<IAaaaRecordSet> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 name,
                 recordType,
                 cancellationToken);
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new AaaaRecordSetImpl(inner.Name, dnsZone, inner);
         }
     }

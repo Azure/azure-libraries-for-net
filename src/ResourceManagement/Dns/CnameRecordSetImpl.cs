@@ -15,8 +15,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     {
 
         ///GENMHASH:2FAAC2E68CA201E834513D95AF3AB0E9:800ED21D063D1854C18CE481A01079EB
-        internal CNameRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel) 
-			: base(name, Enum.GetName(typeof(RecordType), Models.RecordType.CNAME), parent, innerModel)
+        internal CNameRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.CNAME), parent, innerModel)
         {
         }
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 CnameRecord = new CnameRecord()
             });
         }
-		
+
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:AF11C8A7E2B299112E3CED7714F622A7
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {

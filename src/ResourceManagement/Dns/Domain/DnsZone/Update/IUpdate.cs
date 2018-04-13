@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Update
     /// <summary>
     /// The stage of the DNS zone update allowing to specify record set.
     /// </summary>
-    public interface IWithRecordSet 
+    public interface IWithRecordSet
     {
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Update
     /// <summary>
     /// The stage of the DNS zone update allowing to enable ETag validation.
     /// </summary>
-    public interface IWithETagCheck 
+    public interface IWithETagCheck
     {
 
         /// <summary>
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Update
     /// <summary>
     /// The stage of the DNS zone update allowing to specify Zone access type.
     /// </summary>
-    public interface IWithZoneType 
+    public interface IWithZoneType
     {
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Update
     /// The template for an update operation, containing all the settings that can be modified.
     /// Call  Update.apply() to apply the changes to the resource in Azure.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Dns.Fluent.IDnsZone>,
         Microsoft.Azure.Management.Dns.Fluent.DnsZone.Update.IWithRecordSet,
         Microsoft.Azure.Management.Dns.Fluent.DnsZone.Update.IWithETagCheck,

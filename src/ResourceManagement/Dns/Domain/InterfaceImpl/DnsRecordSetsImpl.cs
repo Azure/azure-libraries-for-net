@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     using Microsoft.Azure.Management.Dns.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class DnsRecordSetsImpl 
+    internal partial class DnsRecordSetsImpl
     {
     }
 }

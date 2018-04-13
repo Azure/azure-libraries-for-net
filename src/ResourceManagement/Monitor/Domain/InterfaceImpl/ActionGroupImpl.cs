@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class ActionGroupImpl 
+    internal partial class ActionGroupImpl
     {
         /// <summary>
         /// Gets the automationRunbookReceivers value.

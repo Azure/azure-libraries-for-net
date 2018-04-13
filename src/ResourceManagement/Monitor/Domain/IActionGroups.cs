@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// Entry point for Action Group management API.
     /// </summary>
-    public interface IActionGroups  :
+    public interface IActionGroups :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<ActionGroup.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Monitor.Fluent.IActionGroup>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Monitor.Fluent.IActionGroup>,

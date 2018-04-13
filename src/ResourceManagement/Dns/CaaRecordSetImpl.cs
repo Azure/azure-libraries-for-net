@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// Implementation of CaaRecordSet.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmRucy5pbXBsZW1lbnRhdGlvbi5DYWFSZWNvcmRTZXRJbXBs
-    internal partial class CaaRecordSetImpl  :
+    internal partial class CaaRecordSetImpl :
         DnsRecordSetImpl,
         ICaaRecordSet
     {
         ///GENMHASH:AFBEDFBC176015E810C704516E312343:85D6A5010FF9177B5375652BA9EBB48F
-        internal  CaaRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+        internal CaaRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
             : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.CAA), parent, innerModel)
         {
         }

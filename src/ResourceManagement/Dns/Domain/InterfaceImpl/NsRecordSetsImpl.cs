@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class NSRecordSetsImpl 
+    internal partial class NSRecordSetsImpl
     {
         /// <summary>
         /// Gets the information about a resource from Azure based on the resource name within the current resource group.

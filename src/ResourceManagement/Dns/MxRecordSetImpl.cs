@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     {
 
         ///GENMHASH:8C062CAD2CB6B3A3EB1A20739BD955B8:5205B04345D2FBE96BA2D2EEA5D0B4B0
-        internal MXRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel) 
-			: base(name, Enum.GetName(typeof(RecordType), Models.RecordType.MX), parent, innerModel)
+        internal MXRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.MX), parent, innerModel)
         {
         }
 

@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the NS record set definition allowing to add or remove a NS record.
     /// </summary>
-    public interface IWithNSRecordNameServer 
+    public interface IWithNSRecordNameServer
     {
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the SOA record definition allowing to update its attributes.
     /// </summary>
-    public interface IWithSoaRecordAttributes 
+    public interface IWithSoaRecordAttributes
     {
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the SRV record definition allowing to add or remove service record.
     /// </summary>
-    public interface IWithSrvRecordEntry 
+    public interface IWithSrvRecordEntry
     {
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The set of configurations that can be updated for DNS record set irrespective of their type  RecordType.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.ISettable<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Update.IUpdate>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IWithTtl,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IWithMetadata,
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the MX record set definition allowing to add or remove MX record.
     /// </summary>
-    public interface IWithMXRecordMailExchange 
+    public interface IWithMXRecordMailExchange
     {
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the AAAA record set update allowing to add or remove AAAA record.
     /// </summary>
-    public interface IWithAaaaRecordIPv6Address 
+    public interface IWithAaaaRecordIPv6Address
     {
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the CNAME record set update allowing to update the CNAME record.
     /// </summary>
-    public interface IWithCNameRecordAlias 
+    public interface IWithCNameRecordAlias
     {
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the CName record set definition allowing to add or remove CName record.
     /// </summary>
-    public interface IWithPtrRecordTargetDomainName 
+    public interface IWithPtrRecordTargetDomainName
     {
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the record set update allowing to enable ETag validation.
     /// </summary>
-    public interface IWithETagCheck 
+    public interface IWithETagCheck
     {
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the Txt record definition allowing to add or remove TXT record.
     /// </summary>
-    public interface IWithTxtRecordTextValue 
+    public interface IWithTxtRecordTextValue
     {
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the record set update allowing to specify TTL for the records in this record set.
     /// </summary>
-    public interface IWithTtl 
+    public interface IWithTtl
     {
 
         /// <summary>
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// An update allowing metadata to be modified for the resource.
     /// </summary>
-    public interface IWithMetadata 
+    public interface IWithMetadata
     {
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the A record set update allowing to add or remove A record.
     /// </summary>
-    public interface IWithARecordIPv4Address 
+    public interface IWithARecordIPv4Address
     {
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update
     /// <summary>
     /// The stage of the Caa record definition allowing to add or remove service record.
     /// </summary>
-    public interface IWithCaaRecordEntry 
+    public interface IWithCaaRecordEntry
     {
 
         /// <summary>

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// Entry point to DNS zone management API in Azure.
     /// </summary>
-    public interface IDnsZones  :
+    public interface IDnsZones :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<DnsZone.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Dns.Fluent.IDnsZone>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Dns.Fluent.IDnsZone>,

@@ -15,8 +15,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         IPtrRecordSet
     {
         ///GENMHASH:92861CF149AF1B5720B293888EEEDA75:A233F56DB913EF6DC1BCF10C95C23CD2
-        internal PtrRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel) 
-			: base(name, Enum.GetName(typeof(RecordType), Models.RecordType.PTR), parent, innerModel)
+        internal PtrRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.PTR), parent, innerModel)
         {
         }
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                     PtrRecords = new List<PtrRecord>()
                 });
         }
-		
+
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:8254A32ABF739B147B00EFE318330056
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {

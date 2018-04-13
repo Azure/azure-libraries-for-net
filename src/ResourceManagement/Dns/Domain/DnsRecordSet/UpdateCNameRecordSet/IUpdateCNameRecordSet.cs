@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateCNameRecordSe
     /// <summary>
     /// The entirety of CNAME record set update as part of parent DNS zone update.
     /// </summary>
-    public interface IUpdateCNameRecordSet  :
+    public interface IUpdateCNameRecordSet :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IWithCNameRecordAlias,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IUpdate
     {

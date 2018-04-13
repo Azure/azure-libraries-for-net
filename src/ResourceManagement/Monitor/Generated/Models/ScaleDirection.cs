@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this ScaleDirection value)
         {
-            switch( value )
+            switch (value)
             {
                 case ScaleDirection.None:
                     return "None";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static ScaleDirection? ParseScaleDirection(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "None":
                     return ScaleDirection.None;

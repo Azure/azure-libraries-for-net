@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// </summary>
         /// <param name="parent">The parent DNS zone of the record set.</param>
         ///GENMHASH:679769A0C3AB0DC0D68CC67BCE854713:D191C7503BF1FFF7DC0169944F6D7D1D
-        internal DnsRecordSetsImpl(DnsZoneImpl parent) 
+        internal DnsRecordSetsImpl(DnsZoneImpl parent)
             : base(parent, "RecordSet")
         {
         }

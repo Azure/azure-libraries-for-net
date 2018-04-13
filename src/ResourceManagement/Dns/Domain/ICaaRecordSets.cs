@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// Entry point to Caa record sets in a DNS zone.
     /// </summary>
-    public interface ICaaRecordSets  :
+    public interface ICaaRecordSets :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<Microsoft.Azure.Management.Dns.Fluent.ICaaRecordSet>
     {
 

@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
 {
     using System.Collections.Generic;
 
-    internal partial class DnsRecordSetImpl 
+    internal partial class DnsRecordSetImpl
     {
         /// <summary>
         /// Gets the etag associated with the record set.
@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <summary>
         /// Gets the metadata associated with this record set.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet.Metadata
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet.Metadata
         {
             get
             {
-                return this.Metadata() as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.Metadata() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
             }
         }
 
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         }
     }
 
-    public partial class ETagState 
+    public partial class ETagState
     {
     }
 }

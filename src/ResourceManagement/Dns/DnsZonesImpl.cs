@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         IDnsZones
     {
         ///GENMHASH:F6A0AFFF7CA56B78765E68E54D0DBD52:BF1A0B6AF7B2DE0C94B618D0F4D5E98C
-        internal DnsZonesImpl(DnsZoneManager dnsZoneManager) 
+        internal DnsZonesImpl(DnsZoneManager dnsZoneManager)
             : base(dnsZoneManager.Inner.Zones, dnsZoneManager)
         {
         }
@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         public async Task DeleteByIdAsync(string id, string eTagValue, CancellationToken cancellationToken = default(CancellationToken))
         {
             await DeleteByResourceGroupNameAsync(
-                ResourceUtils.GroupFromResourceId(id), 
-                ResourceUtils.NameFromResourceId(id), 
-                eTagValue, 
+                ResourceUtils.GroupFromResourceId(id),
+                ResourceUtils.NameFromResourceId(id),
+                eTagValue,
                 cancellationToken: cancellationToken);
         }
 

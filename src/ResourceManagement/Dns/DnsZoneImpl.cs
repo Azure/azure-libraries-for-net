@@ -42,12 +42,12 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         private DnsRecordSetsImpl recordSetsImpl;
 
         ///GENMHASH:75C092938493254EC4132CCB45D76CAB:BAB5977A5FF45F43A2CD21012A939082
-        internal DnsZoneImpl(string name, ZoneInner innerModel, IDnsZoneManager dnsZoneManager) 
+        internal DnsZoneImpl(string name, ZoneInner innerModel, IDnsZoneManager dnsZoneManager)
             : base(name, innerModel, dnsZoneManager)
         {
             recordSetsImpl = new DnsRecordSetsImpl(this);
             InitRecordSets();
-            if(this.IsInCreateMode) 
+            if (this.IsInCreateMode)
             {
                 // Set the zone type to Public by default
                 this.Inner.ZoneType = ZoneType.Public;
@@ -241,10 +241,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         public ISoaRecordSet GetSoaRecordSet()
         {
             RecordSetInner inner = Extensions.Synchronize(() => Manager.Inner.RecordSets.GetAsync(ResourceGroupName, Name, "@", RecordType.SOA));
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new SoaRecordSetImpl(inner.Name, this, inner);
         }
 
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:B1C8DA2EAF2EFC4F4883789EACB97ADD:26C20804645352591062A08FD1BF06E2
         public IReadOnlyList<string> RegistrationVirtualNetworkIds()
         {
-            if(this.Inner.RegistrationVirtualNetworks == null ||
+            if (this.Inner.RegistrationVirtualNetworks == null ||
                 !this.Inner.RegistrationVirtualNetworks.Any())
             {
                 return new List<string>();
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:4DD4D85C5B408CD0398C0BFCDACCFC59:70DF09D2DA62505CEB5693EBF06B1A6A
         public DnsRecordSetImpl UpdateCaaRecordSet(string name)
         {
-			return recordSetsImpl.UpdateCaaRecordSet(name);
+            return recordSetsImpl.UpdateCaaRecordSet(name);
         }
 
         ///GENMHASH:4F52CFFC8EB4D698DB3A4C3B1E187BD0:DD495C2B3433CCF1AE44BD065A83D4D1
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:F4C7F9EA94A9693843E357C30B270500:5DBA625780CF1008200ACB582C26A988
         public DnsZoneImpl WithoutCaaRecordSet(string name)
         {
-			return this.WithoutCaaRecordSet(name, null);
+            return this.WithoutCaaRecordSet(name, null);
         }
 
         ///GENMHASH:E515F51C44205F030312A4B9FE9FFF71:CF737C5D3AF62EEDAA79CE3B56DD5250
@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                                                             .Select(rvn => new SubResource(rvn))
                                                             .ToList();
             }
-            if(resolutionVirtualNetworkIds != null && resolutionVirtualNetworkIds.Any())
+            if (resolutionVirtualNetworkIds != null && resolutionVirtualNetworkIds.Any())
             {
                 this.Inner.ResolutionVirtualNetworks = resolutionVirtualNetworkIds
                                                             .Select(rvn => new SubResource(rvn))

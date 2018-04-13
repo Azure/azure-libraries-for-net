@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ISoaRecordSet
     {
         ///GENMHASH:40D443F5CF33E623D8735D11FA9AA272:F37195DEC2DAF5E42D75500A7C14DF53
-        internal SoaRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel) 
-			: base(name, Enum.GetName(typeof(RecordType), Models.RecordType.SOA), parent, innerModel)
+        internal SoaRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.SOA), parent, innerModel)
         {
         }
-		
+
         ///GENMHASH:DFAB33AB354FE7A9B333D1933F46C9EC:66D4CAE93790AA3D5990859ACA36DA1D
         internal static SoaRecordSetImpl NewRecordSet(DnsZoneImpl parent)
         {
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 SoaRecord = new SoaRecord()
             });
         }
-		
+
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:352DEB81080973F0DD8A640958597C6B
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             Inner.SoaRecord = new SoaRecord();
             return resource;
         }
-		
+
         ///GENMHASH:336FEA01421A8435A2D03E2E622EC294:E42DE42A88E9C5F585C74E76DA54EF39
         public SoaRecord Record()
         {

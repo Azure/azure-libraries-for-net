@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class DnsZoneImpl 
+    internal partial class DnsZoneImpl
     {
         /// <summary>
         /// Gets entry point to manage record sets in this zone containing AAAA (IPv6 address) records.

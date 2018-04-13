@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// An immutable client-side representation of an CAA (service) record set in Azure DNS Zone.
     /// </summary>
-    public interface ICaaRecordSet  :
+    public interface ICaaRecordSet :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet
     {
 

@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateSrvRecordSet
     /// <summary>
     /// The entirety of a SRV record set update as a part of parent DNS zone update.
     /// </summary>
-    public interface IUpdateSrvRecordSet  :
+    public interface IUpdateSrvRecordSet :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IWithSrvRecordEntry,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IUpdate
     {

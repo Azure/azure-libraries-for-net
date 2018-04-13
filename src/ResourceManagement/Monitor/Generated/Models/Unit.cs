@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this Unit value)
         {
-            switch( value )
+            switch (value)
             {
                 case Unit.Count:
                     return "Count";
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static Unit? ParseUnit(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Count":
                     return Unit.Count;

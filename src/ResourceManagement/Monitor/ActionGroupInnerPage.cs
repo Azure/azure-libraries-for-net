@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Monitor.Fluent
 {
-    internal class ActionGroupInnerPage : 
+    internal class ActionGroupInnerPage :
         Wrapper<IEnumerable<ActionGroupResourceInner>>,
         IPage<ActionGroupResourceInner>
     {

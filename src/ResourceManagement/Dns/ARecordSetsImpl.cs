@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         IARecordSets
     {
         ///GENMHASH:E10F3F1B0497821B014BAFEF65431F45:27F2A74380A4DC207BDE34AFB4DFAE90
-        internal ARecordSetsImpl(DnsZoneImpl dnsZone) 
-			: base(dnsZone, RecordType.A)
+        internal ARecordSetsImpl(DnsZoneImpl dnsZone)
+            : base(dnsZone, RecordType.A)
         {
         }
-        
+
         ///GENMHASH:B94D04B9D91F75559A6D8E405D4A72FD:EEA14E280E95338CD14E31A7F62111C8
         protected override IEnumerable<IARecordSet> ListIntern(string recordSetNameSuffix, int? pageSize)
         {
@@ -50,13 +50,13 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:A65D7F670CB73E56248FA5B252060BCD:CE9DBED116E6E117C7BF5BDC4CB2151D
         protected override IARecordSet WrapModel(RecordSetInner inner)
         {
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new ARecordSetImpl(inner.Name, dnsZone, inner);
         }
-				
+
         ///GENMHASH:5C58E472AE184041661005E7B2D7EE30:E16F0B1987E35A10ADAE4962EE6952F6
         public async override Task<IARecordSet> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 name,
                 recordType,
                 cancellationToken);
-			if (inner == null) 
-			{
-				return null;
-			}				
+            if (inner == null)
+            {
+                return null;
+            }
             return new ARecordSetImpl(inner.Name, dnsZone, inner);
-        }		
+        }
     }
 }

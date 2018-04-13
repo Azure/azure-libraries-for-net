@@ -21,24 +21,24 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public static partial class EventCategoriesOperationsExtensions
     {
-            /// <summary>
-            /// Get the list of available event categories supported in the Activity Logs
-            /// Service.&lt;br&gt;The current list includes the following: Administrative,
-            /// Security, ServiceHealth, Alert, Recommendation, Policy.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IEnumerable<LocalizableString>> ListAsync(this IEventCategoriesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Get the list of available event categories supported in the Activity Logs
+        /// Service.&lt;br&gt;The current list includes the following: Administrative,
+        /// Security, ServiceHealth, Alert, Recommendation, Policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IEnumerable<LocalizableString>> ListAsync(this IEventCategoriesOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

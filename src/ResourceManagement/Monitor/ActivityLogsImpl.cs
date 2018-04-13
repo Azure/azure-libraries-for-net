@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 true,
                 cancellationToken);
         }
-		
+
         ///GENMHASH:914F5848297276F1D8C78263F5BE935D:295B4DBA4EF3CDAC9D498BAF8DAB131F
         public IWithEventDataStartTimeFilter DefineQuery()
         {
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                     .Select(i => new LocalizableStringImpl(i))
                     .ToList();
         }
-		
+
         ///GENMHASH:B6961E0C7CB3A9659DE0E1489F44A936:363E4D62FCA795A36F9CB60513C86AFA
         public MonitorManager Manager()
         {

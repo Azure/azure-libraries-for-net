@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// An immutable client-side representation of a TXT (text) record set in Azure DNS Zone.
     /// </summary>
-    public interface ITxtRecordSet  :
+    public interface ITxtRecordSet :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet
     {
 

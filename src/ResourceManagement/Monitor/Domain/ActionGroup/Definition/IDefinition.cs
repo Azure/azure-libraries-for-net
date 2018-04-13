@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Definition
     /// <summary>
     /// The first stage of a Action Group definition allowing the resource group to be specified.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroupAndRegion<Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Definition.IWithCreate>
     {
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Definition
     /// The stage of the definition which contains all the minimum required inputs for the resource to be created
     /// but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Monitor.Fluent.IActionGroup>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Definition.IWithCreate>
     {

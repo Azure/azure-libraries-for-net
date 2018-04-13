@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// Entry point to AAAA record sets in a DNS zone.
     /// </summary>
-    public interface IAaaaRecordSets  :
+    public interface IAaaaRecordSets :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<Microsoft.Azure.Management.Dns.Fluent.IAaaaRecordSet>
     {
 

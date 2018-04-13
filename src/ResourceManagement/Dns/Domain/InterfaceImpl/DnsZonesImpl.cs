@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class DnsZonesImpl 
+    internal partial class DnsZonesImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <param name="eTagValue">The ETag value to set on IfMatch header for concurrency protection.</param>
         void Microsoft.Azure.Management.Dns.Fluent.IDnsZones.DeleteById(string id, string eTagValue)
         {
- 
+
             this.DeleteById(id, eTagValue);
         }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>A representation of the deferred computation this delete call.</return>
         async Task Microsoft.Azure.Management.Dns.Fluent.IDnsZones.DeleteByIdAsync(string id, string eTagValue, CancellationToken cancellationToken)
         {
- 
+
             await this.DeleteByIdAsync(id, eTagValue, cancellationToken);
         }
 
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <param name="eTagValue">The ETag value to set on IfMatch header for concurrency protection.</param>
         void Microsoft.Azure.Management.Dns.Fluent.IDnsZones.DeleteByResourceGroupName(string resourceGroupName, string zoneName, string eTagValue)
         {
- 
+
             this.DeleteByResourceGroupName(resourceGroupName, zoneName, eTagValue);
         }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>A representation of the deferred computation this delete call.</return>
         async Task Microsoft.Azure.Management.Dns.Fluent.IDnsZones.DeleteByResourceGroupNameAsync(string resourceGroupName, string zoneName, string eTagValue, CancellationToken cancellationToken)
         {
- 
+
             await this.DeleteByResourceGroupNameAsync(resourceGroupName, zoneName, eTagValue, cancellationToken);
         }
     }

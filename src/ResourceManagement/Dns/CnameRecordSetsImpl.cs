@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ICNameRecordSets
     {
         ///GENMHASH:7FD3C6284190B406493F8F2FF172B5CE:CAE53F98875842CF0B80A3559888C9F6
-        internal CNameRecordSetsImpl(DnsZoneImpl dnsZone) 
-			: base(dnsZone, RecordType.CNAME)
+        internal CNameRecordSetsImpl(DnsZoneImpl dnsZone)
+            : base(dnsZone, RecordType.CNAME)
         {
         }
 
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:A65D7F670CB73E56248FA5B252060BCD:A820C479EE13ACB7C4803D8AFA9BD197
         protected override ICNameRecordSet WrapModel(RecordSetInner inner)
         {
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new CNameRecordSetImpl(inner.Name, dnsZone, inner);
         }
 
@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 name,
                 recordType,
                 cancellationToken);
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new CNameRecordSetImpl(inner.Name, dnsZone, inner);
         }
 

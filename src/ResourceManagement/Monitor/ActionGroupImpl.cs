@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// Implementation for ActionGroup.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uQWN0aW9uR3JvdXBJbXBs
-    internal partial class ActionGroupImpl  :
+    internal partial class ActionGroupImpl :
         GroupableResource<
             IActionGroup,
             ActionGroupResourceInner,
@@ -36,28 +36,28 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         IWithActionUpdateDefinition
     {
         private string actionReceiverPrefix;
-        private Dictionary<string,Models.AzureAppPushReceiver> appActionReceivers;
+        private Dictionary<string, Models.AzureAppPushReceiver> appActionReceivers;
         private static readonly string appActionSuffix = "_-AzureAppAction-";
-        private IDictionary<string,Models.EmailReceiver> emailReceivers;
+        private IDictionary<string, Models.EmailReceiver> emailReceivers;
         private static readonly string emailSuffix = "_-EmailAction-";
-        private Dictionary<string,Models.AzureFunctionReceiver> functionReceivers;
+        private Dictionary<string, Models.AzureFunctionReceiver> functionReceivers;
         private static readonly string functionSuffix = " (F)";
-        private Dictionary<string,Models.ItsmReceiver> itsmReceivers;
+        private Dictionary<string, Models.ItsmReceiver> itsmReceivers;
         private static readonly string itsmSuffix = " (ITSM)";
-        private Dictionary<string,Models.LogicAppReceiver> logicReceivers;
+        private Dictionary<string, Models.LogicAppReceiver> logicReceivers;
         private static readonly string logicSuffix = " (LA)";
-        private Dictionary<string,Models.AutomationRunbookReceiver> runBookReceivers;
+        private Dictionary<string, Models.AutomationRunbookReceiver> runBookReceivers;
         private static readonly string runBookSuffix = " (RB)";
-        private Dictionary<string,Models.SmsReceiver> smsReceivers;
+        private Dictionary<string, Models.SmsReceiver> smsReceivers;
         private static readonly string smsSuffix = "_-SMSAction-";
-        private Dictionary<string,Models.VoiceReceiver> voiceReceivers;
+        private Dictionary<string, Models.VoiceReceiver> voiceReceivers;
         private static readonly string voiceSuffix = "_-VoiceAction-";
-        private Dictionary<string,Models.WebhookReceiver> webhookReceivers;
+        private Dictionary<string, Models.WebhookReceiver> webhookReceivers;
         private static readonly string webhookSuffix = " (WH)";
         private MonitorManager myManager;
 
         ///GENMHASH:41BEC53C7D3065426CE12D60045E5A76:341B6F75035D50428BA8408A5F9310C5
-        internal  ActionGroupImpl(string name, ActionGroupResourceInner innerModel, IMonitorManager monitorManager)
+        internal ActionGroupImpl(string name, ActionGroupResourceInner innerModel, IMonitorManager monitorManager)
             : base(name, innerModel, monitorManager)
         {
             this.actionReceiverPrefix = "";
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 {
                     this.Inner.EmailReceivers.Clear();
                 }
-                ((List<EmailReceiver>) this.Inner.EmailReceivers).AddRange(this.emailReceivers.Values);
+                ((List<EmailReceiver>)this.Inner.EmailReceivers).AddRange(this.emailReceivers.Values);
             }
             else
             {
@@ -432,15 +432,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             var compositeKey = this.actionReceiverPrefix + runBookSuffix;
             var arr = new AutomationRunbookReceiver
-                {
-                    Name = compositeKey,
-                    AutomationAccountId = automationAccountId,
-                    RunbookName = runbookName,
-                    WebhookResourceId = webhookResourceId,
-                    IsGlobalRunbook = isGlobalRunbook
-                };
+            {
+                Name = compositeKey,
+                AutomationAccountId = automationAccountId,
+                RunbookName = runbookName,
+                WebhookResourceId = webhookResourceId,
+                IsGlobalRunbook = isGlobalRunbook
+            };
 
-            this.runBookReceivers[compositeKey] =  arr;
+            this.runBookReceivers[compositeKey] = arr;
             return this;
         }
 
@@ -451,10 +451,10 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             var compositeKey = this.actionReceiverPrefix + appActionSuffix;
             var ar = new AzureAppPushReceiver
-                {
-                    Name = compositeKey,
-                    EmailAddress = emailAddress
-                };
+            {
+                Name = compositeKey,
+                EmailAddress = emailAddress
+            };
             this.appActionReceivers[compositeKey] = ar;
 
             return this;
@@ -467,12 +467,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             var compositeKey = this.actionReceiverPrefix + functionSuffix;
             var afr = new AzureFunctionReceiver
-                {
-                    Name = compositeKey,
-                    FunctionAppResourceId = functionAppResourceId,
-                    FunctionName = functionName,
-                    HttpTriggerUrl = httpTriggerUrl
-                };
+            {
+                Name = compositeKey,
+                FunctionAppResourceId = functionAppResourceId,
+                FunctionName = functionName,
+                HttpTriggerUrl = httpTriggerUrl
+            };
 
             this.functionReceivers[compositeKey] = afr;
             return this;
@@ -485,10 +485,10 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             var compositeKey = this.actionReceiverPrefix + emailSuffix;
             var er = new EmailReceiver
-                {
-                    Name = compositeKey,
-                    EmailAddress = emailAddress
-                };
+            {
+                Name = compositeKey,
+                EmailAddress = emailAddress
+            };
 
             this.emailReceivers[compositeKey] = er;
             return this;
@@ -501,13 +501,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             var compositeKey = this.actionReceiverPrefix + itsmSuffix;
             var ir = new ItsmReceiver
-                {
-                    Name = compositeKey,
-                    WorkspaceId = workspaceId,
-                    ConnectionId = connectionId,
-                    Region = region,
-                    TicketConfiguration = ticketConfiguration
-                };
+            {
+                Name = compositeKey,
+                WorkspaceId = workspaceId,
+                ConnectionId = connectionId,
+                Region = region,
+                TicketConfiguration = ticketConfiguration
+            };
             this.itsmReceivers[compositeKey] = ir;
             return this;
         }
@@ -519,11 +519,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             var compositeKey = this.actionReceiverPrefix + logicSuffix;
             var lr = new LogicAppReceiver
-                {
-                    Name = compositeKey,
-                    ResourceId = logicAppResourceId,
-                    CallbackUrl = callbackUrl
-                };
+            {
+                Name = compositeKey,
+                ResourceId = logicAppResourceId,
+                CallbackUrl = callbackUrl
+            };
             this.logicReceivers[compositeKey] = lr;
             return this;
         }
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             {
                 this.functionReceivers.Remove(actionReceiverPrefix);
             }
-            
+
             return this;
         }
 
@@ -710,11 +710,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             var compositeKey = this.actionReceiverPrefix + voiceSuffix;
             var vr = new VoiceReceiver
-                {
-                    Name = compositeKey,
-                    CountryCode = countryCode,
-                    PhoneNumber = phoneNumber
-                };
+            {
+                Name = compositeKey,
+                CountryCode = countryCode,
+                PhoneNumber = phoneNumber
+            };
             this.voiceReceivers[compositeKey] = vr;
             return this;
         }
@@ -726,10 +726,10 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             var compositeKey = this.actionReceiverPrefix + webhookSuffix;
             var wr = new WebhookReceiver
-                {
-                    Name =compositeKey,
-                    ServiceUri = serviceUri
-                };
+            {
+                Name = compositeKey,
+                ServiceUri = serviceUri
+            };
             this.webhookReceivers[compositeKey] = wr;
 
             return this;

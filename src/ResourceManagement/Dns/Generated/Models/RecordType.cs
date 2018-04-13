@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.Models
 
         internal static string ToSerializedValue(this RecordType value)
         {
-            switch( value )
+            switch (value)
             {
                 case RecordType.A:
                     return "A";
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.Models
 
         internal static RecordType? ParseRecordType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "A":
                     return RecordType.A;

@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     using Microsoft.Azure.Management.Dns.Fluent.Models;
     using System.Collections.Generic;
 
-    internal partial class CaaRecordSetImpl 
+    internal partial class CaaRecordSetImpl
     {
         /// <summary>
         /// Gets the CAA records in this record set.

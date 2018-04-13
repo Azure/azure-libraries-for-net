@@ -6,8 +6,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Action Group.
     /// </summary>
-    public interface IActionGroup  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<IMonitorManager,Models.ActionGroupResourceInner>,
+    public interface IActionGroup :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<IMonitorManager, Models.ActionGroupResourceInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Monitor.Fluent.IActionGroup>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<ActionGroup.Update.IUpdate>
     {

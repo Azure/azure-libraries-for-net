@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     using Microsoft.Azure.Management.Dns.Fluent.Models;
     using System.Collections.Generic;
 
-    internal partial class MXRecordSetImpl 
+    internal partial class MXRecordSetImpl
     {
         /// <summary>
         /// Gets the MX records in this record set.

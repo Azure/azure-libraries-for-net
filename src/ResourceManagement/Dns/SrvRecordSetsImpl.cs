@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ISrvRecordSets
     {
         ///GENMHASH:F6AC4F639ACD7D3649D1E9E4FBAC70D5:BF38006148958FF93DDC264903D97FC3
-        internal SrvRecordSetsImpl(DnsZoneImpl dnsZone) 
-			: base(dnsZone, RecordType.SRV)
+        internal SrvRecordSetsImpl(DnsZoneImpl dnsZone)
+            : base(dnsZone, RecordType.SRV)
         {
         }
 
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ///GENMHASH:A65D7F670CB73E56248FA5B252060BCD:F81320A2FAFA57074458BCE6FE1DA3D7
         protected override ISrvRecordSet WrapModel(RecordSetInner inner)
         {
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new SrvRecordSetImpl(inner.Name, dnsZone, inner);
         }
 
@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 recordType,
                 cancellationToken);
 
-			if (inner == null) 
-			{
-				return null;
-			}
+            if (inner == null)
+            {
+                return null;
+            }
             return new SrvRecordSetImpl(inner.Name, dnsZone, inner);
         }
 

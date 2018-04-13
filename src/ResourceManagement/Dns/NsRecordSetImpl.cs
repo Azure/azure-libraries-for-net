@@ -15,8 +15,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         INSRecordSet
     {
         ///GENMHASH:A32DA1B10AD690D0DB576BF48E9106A5:7270289553046B6B86F20D5FF6F86E21
-        internal NSRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel) 
-			: base(name, Enum.GetName(typeof(RecordType), Models.RecordType.NS), parent, innerModel)
+        internal NSRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.NS), parent, innerModel)
         {
         }
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 NsRecords = new List<NsRecord>()
             });
         }
-				
+
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:E6E1BF61694F9FB722424D294C6DFFA4
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {

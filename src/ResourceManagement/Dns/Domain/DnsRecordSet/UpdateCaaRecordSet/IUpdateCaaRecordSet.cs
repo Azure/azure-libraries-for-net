@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateCaaRecordSet
     /// <summary>
     /// The entirety of a Caa record set update as a part of parent DNS zone update.
     /// </summary>
-    public interface IUpdateCaaRecordSet  :
+    public interface IUpdateCaaRecordSet :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IWithCaaRecordEntry,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IUpdate
     {

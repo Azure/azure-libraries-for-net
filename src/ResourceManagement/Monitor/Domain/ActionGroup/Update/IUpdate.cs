@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
     /// <summary>
     /// The template for an update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Monitor.Fluent.IActionGroup>,
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionDefinition,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IUpdate>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
     /// <summary>
     /// Receivers action update stage allowing to set each receiver's configuration.
     /// </summary>
-    public interface IWithActionUpdateDefinition 
+    public interface IWithActionUpdateDefinition
     {
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
     /// <summary>
     /// The stage of update which contains all the top level fields and transition stages to receiver updates.
     /// </summary>
-    public interface IWithActionDefinition 
+    public interface IWithActionDefinition
     {
 
         /// <summary>

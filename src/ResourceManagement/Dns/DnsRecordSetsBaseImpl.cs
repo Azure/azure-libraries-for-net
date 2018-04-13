@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
 
         ///GENMHASH:64B3FB1F01DFC1156B75305640537ED6:27E486AB74A10242FF421C0798DDC450
         protected abstract Task<IPagedCollection<RecordSetT>> ListInternAsync(string recordSetNameSuffix, int? pageSize, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
-        
-		///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:8702BABF19DCC459AC95CE748259A3D1
+
+        ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:8702BABF19DCC459AC95CE748259A3D1
         public IEnumerable<RecordSetT> List()
         {
             return ListIntern(null, null);
@@ -83,8 +83,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         public Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>> ListAsync(string recordSetNameSuffix, int pageSize, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return ListInternAsync(recordSetNameSuffix, pageSize);
-        }		
-						
+        }
+
         ///GENMHASH:FD5D5A8D6904B467321E345BE1FA424E:E19B1A43B8D006D892A5880F9F29D599
         public IDnsZone Parent()
         {

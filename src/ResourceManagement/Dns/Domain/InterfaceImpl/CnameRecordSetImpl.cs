@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
 {
     using Microsoft.Azure.Management.Dns.Fluent.Models;
 
-    internal partial class CNameRecordSetImpl 
+    internal partial class CNameRecordSetImpl
     {
         /// <summary>
         /// Gets the canonical name (without a terminating dot) of CName record in this record set.

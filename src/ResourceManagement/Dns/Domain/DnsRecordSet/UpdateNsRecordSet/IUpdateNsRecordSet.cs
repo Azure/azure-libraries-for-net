@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateNSRecordSet
     /// <summary>
     /// The entirety of a NS record set update as a part of parent DNS zone update.
     /// </summary>
-    public interface IUpdateNSRecordSet  :
+    public interface IUpdateNSRecordSet :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IWithNSRecordNameServer,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Update.IUpdate
     {

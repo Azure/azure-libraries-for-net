@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// An immutable client-side representation of a PTR (pointer) record set in Azure DNS Zone.
     /// </summary>
-    public interface IPtrRecordSet  :
+    public interface IPtrRecordSet :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet
     {
 

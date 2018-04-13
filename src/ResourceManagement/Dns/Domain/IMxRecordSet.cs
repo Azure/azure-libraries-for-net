@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// An immutable client-side representation of an MX (mail exchange) record set in an Azure DNS Zone.
     /// </summary>
-    public interface IMXRecordSet  :
+    public interface IMXRecordSet :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet
     {
 

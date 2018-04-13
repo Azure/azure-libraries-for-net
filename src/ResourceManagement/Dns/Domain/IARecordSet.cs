@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     /// <summary>
     /// An immutable client-side representation of a A (IPv4) record set in Azure DNS Zone.
     /// </summary>
-    public interface IARecordSet  :
+    public interface IARecordSet :
         Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet
     {
 

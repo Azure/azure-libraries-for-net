@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     using Microsoft.Azure.Management.Dns.Fluent.Models;
     using System.Collections.Generic;
 
-    internal partial class SrvRecordSetImpl 
+    internal partial class SrvRecordSetImpl
     {
         /// <summary>
         /// Gets the SRV records in this record set.

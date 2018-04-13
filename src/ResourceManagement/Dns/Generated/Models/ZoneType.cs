@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.Models
 
         internal static string ToSerializedValue(this ZoneType value)
         {
-            switch( value )
+            switch (value)
             {
                 case ZoneType.Public:
                     return "Public";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.Models
 
         internal static ZoneType? ParseZoneType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Public":
                     return ZoneType.Public;

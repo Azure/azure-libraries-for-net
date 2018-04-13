@@ -30,16 +30,16 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         protected string type;
 
         ///GENMHASH:6A42EB03FFE33A200BEB62492956E6E8:6BF10A0FF5A6F77B66504E985BF7084C
-        internal DnsRecordSetImpl(string name, string type, DnsZoneImpl parent, RecordSetInner innerModel) 
-			: base(name, parent, innerModel)
+        internal DnsRecordSetImpl(string name, string type, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, parent, innerModel)
         {
-			this.type = type;
-			
+            this.type = type;
+
             this.recordSetRemoveInfo = new RecordSetInner
             {
                 ARecords = new List<ARecord>(),
                 AaaaRecords = new List<AaaaRecord>(),
-				CaaRecords = new List<CaaRecord>(),
+                CaaRecords = new List<CaaRecord>(),
                 CnameRecord = new CnameRecord(),
                 MxRecords = new List<MxRecord>(),
                 NsRecords = new List<NsRecord>(),
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             this.eTagState.WithExplicitETagCheckOnDelete(eTagValue);
             return this;
         }
-	
+
         ///GENMHASH:F9C01790C5D58B1748BB35183FF3B0D8:000E3438232752188E9F410E5DCAC466
         private async Task<IDnsRecordSet> CreateOrUpdateAsync(RecordSetInner resource, CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             this.eTagState.Clear();
             return this;
         }
-					
+
         ///GENMHASH:4F856FB578CC3E1352902BE5686B7CC9:D624DD59AB1913F5FF4AECA70621F115
         private RecordSetInner Prepare(RecordSetInner resource)
         {
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 Name(),
                 RecordType(), cancellationToken: cancellationToken);
         }
-		
+
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:B566554D9AFEED430A7C1AC9E97ADBDB
         protected virtual RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             return await CreateOrUpdateAsync(Inner, cancellationToken);
         }
-        
+
         ///GENMHASH:E24A9768E91CD60E963E43F00AA1FDFE:2B9DD1C564ED2E952CDE4348D8C25EE7
         public async override Task DeleteAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 return Inner.Id;
             }
         }
-                                
+
         ///GENMHASH:12F281B8230A0FD8CE8A0DF277EF885D:DF7D49CE4CC74DB0E5D593989B78CB8D
         public IReadOnlyDictionary<string, string> Metadata()
         {
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             Inner.SrvRecords
                 .Add(new SrvRecord { Target = target, Port = port, Priority = priority, Weight = weight });
             return this;
-        }     
+        }
 
         ///GENMHASH:6D37E4EB187608D1444EE0B12AEEAB67:4B5F1BDCC88474FFF19319243A41B6F7
         public DnsRecordSetImpl WithRefreshTimeInSeconds(long refreshTimeInSeconds)
@@ -492,9 +492,9 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             private bool doImplicitETagCheckOnUpdate;
             private string eTagOnDelete;
             private string eTagOnUpdate;
-        
+
             ///GENMHASH:7F12CEB5CD4DF5F0961FA9BDFD4F1275:27E486AB74A10242FF421C0798DDC450
-            public  ETagState()
+            public ETagState()
             {
             }
 
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 }
                 return null;
             }
-            
+
             ///GENMHASH:C8126BDFD9A21FF4295AF1F12B4EA871:99938E9DF848049CBB209F4237FC0B7B
             public ETagState WithExplicitETagCheckOnDelete(string eTagValue)
             {

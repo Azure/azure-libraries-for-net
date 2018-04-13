@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal abstract partial class DnsRecordSetsBaseImpl<RecordSetT,RecordSetImplT> 
+    internal abstract partial class DnsRecordSetsBaseImpl<RecordSetT, RecordSetImplT>
     {
         /// <summary>
         /// Gets the parent of this child object.
