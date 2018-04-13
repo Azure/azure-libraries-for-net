@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <PackageId>Microsoft.Azure.Management.CognitiveServices.Fluent</PackageId>
-        <Version>1.8.0-beta</Version>
+        <Version>1.9.0-beta</Version>
         <AssemblyName>Microsoft.Azure.Management.CognitiveServices.Fluent</AssemblyName>
         <RootNamespace>Microsoft.Azure.Management.CognitiveServices.Fluent</RootNamespace>
         <AssemblyTitle>Microsoft Azure CognitiveServices Management Library</AssemblyTitle>
@@ -28,7 +28,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.10" />
-        <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="1.8.0" />
+        <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="1.9.0" />
     </ItemGroup>
     <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
         <DefineConstants>$(DefineConstants);NETSTANDARD13;PORTABLE</DefineConstants>
