@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// suites.</param>
         /// <param name="availableProtocols">List of available Ssl
         /// protocols.</param>
-        public ApplicationGatewayAvailableSslOptionsInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<Management.ResourceManager.Fluent.SubResource> predefinedPolicies = default(IList<Management.ResourceManager.Fluent.SubResource>), ApplicationGatewaySslPolicyName defaultPolicy = default(ApplicationGatewaySslPolicyName), IList<ApplicationGatewaySslCipherSuite> availableCipherSuites = default(IList<ApplicationGatewaySslCipherSuite>), IList<ApplicationGatewaySslProtocol> availableProtocols = default(IList<ApplicationGatewaySslProtocol>))
+        public ApplicationGatewayAvailableSslOptionsInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<Management.ResourceManager.Fluent.SubResource> predefinedPolicies = default(IList<Management.ResourceManager.Fluent.SubResource>), ApplicationGatewaySslPolicyName defaultPolicy = default(ApplicationGatewaySslPolicyName), IList<ApplicationGatewaySslCipherSuite> availableCipherSuites = default(IList<ApplicationGatewaySslCipherSuite>), IList<ApplicationGatewaySslProtocol> availableProtocols = default(IList<ApplicationGatewaySslProtocol>))
             : base(location, id, name, type, tags)
         {
             PredefinedPolicies = predefinedPolicies;

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// firewall rule set.</param>
         /// <param name="provisioningState">The provisioning state of the web
         /// application firewall rule set.</param>
-        public ApplicationGatewayFirewallRuleSetInner(string location, string ruleSetType, string ruleSetVersion, IList<ApplicationGatewayFirewallRuleGroup> ruleGroups, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string))
+        public ApplicationGatewayFirewallRuleSetInner(string ruleSetType, string ruleSetVersion, IList<ApplicationGatewayFirewallRuleGroup> ruleGroups, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;

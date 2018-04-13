@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// 'Succeeded', 'Updating', 'Deleting', and 'Failed'.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ApplicationSecurityGroupInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public ApplicationSecurityGroupInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             ResourceGuid = resourceGuid;

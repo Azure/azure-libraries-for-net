@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// and 'Failed'.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public NetworkSecurityGroupInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SecurityRuleInner> securityRules = default(IList<SecurityRuleInner>), IList<SecurityRuleInner> defaultSecurityRules = default(IList<SecurityRuleInner>), IList<NetworkInterfaceInner> networkInterfaces = default(IList<NetworkInterfaceInner>), IList<SubnetInner> subnets = default(IList<SubnetInner>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public NetworkSecurityGroupInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SecurityRuleInner> securityRules = default(IList<SecurityRuleInner>), IList<SecurityRuleInner> defaultSecurityRules = default(IList<SecurityRuleInner>), IList<NetworkInterfaceInner> networkInterfaces = default(IList<NetworkInterfaceInner>), IList<SubnetInner> subnets = default(IList<SubnetInner>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             SecurityRules = securityRules;

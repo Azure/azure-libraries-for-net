@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="serviceName">The name of the bgp community. e.g.
         /// Skype.</param>
         /// <param name="bgpCommunities">Get a list of bgp communities.</param>
-        public BgpServiceCommunityInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string serviceName = default(string), IList<BGPCommunity> bgpCommunities = default(IList<BGPCommunity>))
+        public BgpServiceCommunityInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string serviceName = default(string), IList<BGPCommunity> bgpCommunities = default(IList<BGPCommunity>))
             : base(location, id, name, type, tags)
         {
             ServiceName = serviceName;

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// and 'Failed'.</param>
         /// <param name="etag">Gets a unique read-only string that changes
         /// whenever the resource is updated.</param>
-        public RouteFilterInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<RouteFilterRuleInner> rules = default(IList<RouteFilterRuleInner>), IList<ExpressRouteCircuitPeeringInner> peerings = default(IList<ExpressRouteCircuitPeeringInner>), string provisioningState = default(string), string etag = default(string))
+        public RouteFilterInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<RouteFilterRuleInner> rules = default(IList<RouteFilterRuleInner>), IList<ExpressRouteCircuitPeeringInner> peerings = default(IList<ExpressRouteCircuitPeeringInner>), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Rules = rules;
