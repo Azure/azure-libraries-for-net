@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal partial class ActionGroupsImpl 
+    internal partial class ActionGroupsImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name="receiverName">The name of the receiver to resubscribe.</param>
         void Microsoft.Azure.Management.Monitor.Fluent.IActionGroups.EnableReceiver(string resourceGroupName, string actionGroupName, string receiverName)
         {
- 
+
             this.EnableReceiver(resourceGroupName, actionGroupName, receiverName);
         }
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task Microsoft.Azure.Management.Monitor.Fluent.IActionGroups.EnableReceiverAsync(string resourceGroupName, string actionGroupName, string receiverName, CancellationToken cancellationToken)
         {
- 
+
             await this.EnableReceiverAsync(resourceGroupName, actionGroupName, receiverName, cancellationToken);
         }
     }

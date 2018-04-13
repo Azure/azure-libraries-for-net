@@ -15,12 +15,23 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         DnsRecordSetImpl,
         ITxtRecordSet
     {
-        ///GENMHASH:CDD40393B54202CD5F601C8951933BA5:3F5F2CC7F3C4A3B943EC7C1953A9D2E5
-        internal TxtRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
+        ///GENMHASH:BCDFEFE12CEE04070A4BEFF0946CAA2C:51674516D8D4498FBB083895496288A6
+        internal TxtRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.TXT), parent, innerModel)
         {
         }
 
-        ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:A6CAFC362ACBF08FA397C2EA60D22E1C
+        ///GENMHASH:8ABF9B557B42803047EF280885243BA8:E3F7C8F53700022EA914AF1C82CAD188
+        internal static TxtRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
+        {
+            return new TxtRecordSetImpl(name, parent,
+            new RecordSetInner
+            {
+                TxtRecords = new List<TxtRecord>()
+            });
+        }
+
+        ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:EE1172F9D1290826C7FCCEB7011C5DBF
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
             if (Inner.TxtRecords != null && Inner.TxtRecords.Count > 0)
@@ -67,18 +78,6 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 return Inner.TxtRecords?.ToList();
             }
             return new List<TxtRecord>();
-        }
-
-        ///GENMHASH:AEA8C8A92DBF6D46B8137727B5EEFACA:39B0573F34E150A79B6172F2B15E69E9
-        internal static TxtRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
-        {
-            return new TxtRecordSetImpl(parent,
-            new RecordSetInner
-            {
-                Name = name,
-                Type = Enum.GetName(typeof(RecordType), Models.RecordType.TXT),
-                TxtRecords = new List<TxtRecord>()
-            });
         }
     }
 }

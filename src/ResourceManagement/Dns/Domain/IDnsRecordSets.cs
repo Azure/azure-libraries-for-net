@@ -1,12 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Dns.Fluent
 {
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
     /// Base interface for all record sets.
@@ -17,6 +18,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<RecordSetT>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Dns.Fluent.IDnsZone>
     {
+
         /// <summary>
         /// Lists all the record sets with the given suffix.
         /// </summary>
@@ -62,6 +64,5 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <param name="pageSize">The maximum number of record sets in a page.</param>
         /// <return>An observable that emits record sets.</return>
         Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>> ListAsync(string recordSetNameSuffix, int pageSize, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
-
     }
 }

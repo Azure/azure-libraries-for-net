@@ -15,7 +15,23 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         IMXRecordSet
     {
 
-        ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:0D98BE0584279084FC4D20C014B0932B
+        ///GENMHASH:8C062CAD2CB6B3A3EB1A20739BD955B8:5205B04345D2FBE96BA2D2EEA5D0B4B0
+        internal MXRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.MX), parent, innerModel)
+        {
+        }
+
+        ///GENMHASH:8ABF9B557B42803047EF280885243BA8:022D9C60C58262185036CF6D6C366BCA
+        internal static MXRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
+        {
+            return new MXRecordSetImpl(name, parent,
+                new RecordSetInner
+                {
+                    MxRecords = new List<MxRecord>()
+                });
+        }
+
+        ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:3DADD08418376111AE3468B0B95AA093
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
             if (Inner.MxRecords != null && Inner.MxRecords.Count > 0)
@@ -70,23 +86,6 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 }
             }
             return records;
-        }
-
-        ///GENMHASH:274A275E58B0BA3B1ED50C81170E88FC:3F5F2CC7F3C4A3B943EC7C1953A9D2E5
-        internal MXRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
-        {
-        }
-
-        ///GENMHASH:AEA8C8A92DBF6D46B8137727B5EEFACA:844B1A3C2A17D6AAEE5DCBD858D6A293
-        internal static MXRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
-        {
-            return new MXRecordSetImpl(parent,
-                new RecordSetInner
-                {
-                    Name = name,
-                    Type = Enum.GetName(typeof(RecordType), Models.RecordType.MX),
-                    MxRecords = new List<MxRecord>()
-                });
         }
     }
 }

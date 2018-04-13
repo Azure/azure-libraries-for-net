@@ -14,6 +14,21 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         DnsRecordSetImpl,
         IPtrRecordSet
     {
+        ///GENMHASH:92861CF149AF1B5720B293888EEEDA75:A233F56DB913EF6DC1BCF10C95C23CD2
+        internal PtrRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.PTR), parent, innerModel)
+        {
+        }
+
+        ///GENMHASH:8ABF9B557B42803047EF280885243BA8:3A9FAA9DA036938CC040B66812450789
+        internal static PtrRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
+        {
+            return new PtrRecordSetImpl(name, parent,
+                new RecordSetInner
+                {
+                    PtrRecords = new List<PtrRecord>()
+                });
+        }
 
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:8254A32ABF739B147B00EFE318330056
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
@@ -65,23 +80,6 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 }
             }
             return targetDomainNames;
-        }
-
-        ///GENMHASH:626ADA7635E8C9E10AE63FDF8E70C4FE:3F5F2CC7F3C4A3B943EC7C1953A9D2E5
-        internal PtrRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
-        {
-        }
-
-        ///GENMHASH:AEA8C8A92DBF6D46B8137727B5EEFACA:854410776AE83C4AE59DD946AEEEB94B
-        internal static PtrRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
-        {
-            return new PtrRecordSetImpl(parent,
-                new RecordSetInner
-                {
-                    Name = name,
-                    Type = Enum.GetName(typeof(RecordType), Models.RecordType.PTR),
-                    PtrRecords = new List<PtrRecord>()
-                });
         }
     }
 }

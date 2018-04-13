@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this CategoryType value)
         {
-            switch( value )
+            switch (value)
             {
                 case CategoryType.Metrics:
                     return "Metrics";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static CategoryType? ParseCategoryType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Metrics":
                     return CategoryType.Metrics;

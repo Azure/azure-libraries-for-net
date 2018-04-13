@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.ActionDefinition
     /// Receivers action definition allowing to set each receiver's configuration.
     /// </summary>
     /// <typeparam name="ParentT">The next stage of the definition.</typeparam>
-    public interface IActionDefinition<ParentT> 
+    public interface IActionDefinition<ParentT>
     {
 
         /// <summary>

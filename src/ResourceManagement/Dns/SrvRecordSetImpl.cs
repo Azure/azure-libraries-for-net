@@ -16,6 +16,22 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ISrvRecordSet
     {
 
+        ///GENMHASH:B46DD34ABBC3142ED4A8857508419C59:ED3E0337D025AEE884C0C7C7FDDE4BD9
+        internal SrvRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.SRV), parent, innerModel)
+        {
+        }
+
+        ///GENMHASH:8ABF9B557B42803047EF280885243BA8:654BF3189E94D614AE9787B77F73D530
+        internal static SrvRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
+        {
+            return new SrvRecordSetImpl(name, parent,
+            new RecordSetInner
+            {
+                SrvRecords = new List<SrvRecord>()
+            });
+        }
+
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:53BB67595D71CD0CA502C876E02949C2
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
@@ -65,20 +81,6 @@ namespace Microsoft.Azure.Management.Dns.Fluent
             return new List<SrvRecord>();
         }
 
-        ///GENMHASH:AEA8C8A92DBF6D46B8137727B5EEFACA:CB203AB264B7FDA759C81987060D51B8
-        internal static SrvRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
-        {
-            return new SrvRecordSetImpl(parent,
-            new RecordSetInner
-            {
-                Name = name,
-                Type = Enum.GetName(typeof(RecordType), Models.RecordType.SRV),
-                SrvRecords = new List<SrvRecord>()
-            });
-        }
 
-        internal SrvRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
-        {
-        }
     }
 }

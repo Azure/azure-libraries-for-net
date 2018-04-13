@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this TimeAggregationType value)
         {
-            switch( value )
+            switch (value)
             {
                 case TimeAggregationType.Average:
                     return "Average";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static TimeAggregationType? ParseTimeAggregationType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Average":
                     return TimeAggregationType.Average;

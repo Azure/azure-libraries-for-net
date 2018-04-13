@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// Implementation for  ActionGroups.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uQWN0aW9uR3JvdXBzSW1wbA==
-    internal partial class ActionGroupsImpl  :
+    internal partial class ActionGroupsImpl :
         TopLevelModifiableResources<
             IActionGroup,
             ActionGroupImpl,
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:9E619B51D5E165AEF3A23C6514BC77EE:AECBC18A38FFDE66B453DB48997167D3
         protected override IActionGroup WrapModel(ActionGroupResourceInner inner)
         {
-            if (inner ==  null)
+            if (inner == null)
             {
                 return null;
             }

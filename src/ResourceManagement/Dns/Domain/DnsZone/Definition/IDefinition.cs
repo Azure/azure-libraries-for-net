@@ -1,12 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition
 {
-    using Microsoft.Azure.Management.Dns.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
-    using Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The entirety of the DNS zone definition.
@@ -15,6 +12,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition
         Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IBlank,
         Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate
     {
+
     }
 
     /// <summary>
@@ -25,8 +23,10 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Dns.Fluent.IDnsZone>,
         Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithRecordSet,
         Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithETagCheck,
+        Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithZoneType,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate>
     {
+
     }
 
     /// <summary>
@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition
     /// </summary>
     public interface IWithETagCheck
     {
+
         /// <summary>
         /// Specifies that If-None-Match header needs to set to  to prevent updating an existing DNS zone.
         /// </summary>
@@ -42,11 +43,39 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition
     }
 
     /// <summary>
+    /// The stage of the DNS zone definition allowing to specify Zone access type.
+    /// </summary>
+    public interface IWithZoneType
+    {
+
+        /// <summary>
+        /// Sets the type of this zone to Private.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate WithPrivateAccess();
+
+        /// <summary>
+        /// Sets the type of this zone to Private.
+        /// </summary>
+        /// <param name="registrationVirtualNetworkIds">A list of references to virtual networks that register hostnames in this DNS zone.</param>
+        /// <param name="resolutionVirtualNetworkIds">A list of references to virtual networks that resolve records in this DNS zone.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate WithPrivateAccess(IList<string> registrationVirtualNetworkIds, IList<string> resolutionVirtualNetworkIds);
+
+        /// <summary>
+        /// Sets the type of this zone to Public (default behavior).
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate WithPublicAccess();
+    }
+
+    /// <summary>
     /// The stage of the DNS zone definition allowing to specify the resource group.
     /// </summary>
     public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroupAndRegion<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate>
     {
+
     }
 
     /// <summary>
@@ -54,6 +83,49 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition
     /// </summary>
     public interface IWithRecordSet
     {
+
+        /// <summary>
+        /// Specifies definition of an AAAA record set.
+        /// </summary>
+        /// <param name="name">Name of the AAAA record set.</param>
+        /// <return>The stage representing configuration for the AAAA record set.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IAaaaRecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineAaaaRecordSet(string name);
+
+        /// <summary>
+        /// Specifies definition of an A record set.
+        /// </summary>
+        /// <param name="name">Name of the A record set.</param>
+        /// <return>The stage representing configuration for the A record set.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IARecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineARecordSet(string name);
+
+        /// <summary>
+        /// Specifies definition of a Caa record set.
+        /// </summary>
+        /// <param name="name">The name of the Caa record set.</param>
+        /// <return>The stage representing configuration for the Caa record set.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.ICaaRecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineCaaRecordSet(string name);
+
+        /// <summary>
+        /// Specifies definition of a CNAME record set.
+        /// </summary>
+        /// <param name="name">Name of the CNAME record set.</param>
+        /// <return>The next stage of DNS zone definition.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.ICNameRecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineCNameRecordSet(string name);
+
+        /// <summary>
+        /// Specifies definition of a MX record set.
+        /// </summary>
+        /// <param name="name">Name of the MX record set.</param>
+        /// <return>The stage representing configuration for the MX record set.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IMXRecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineMXRecordSet(string name);
+
+        /// <summary>
+        /// Specifies definition of an NS record set.
+        /// </summary>
+        /// <param name="name">Name of the NS record set.</param>
+        /// <return>The stage representing configuration for the NS record set.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.INSRecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineNSRecordSet(string name);
+
         /// <summary>
         /// Specifies definition of a PTR record set.
         /// </summary>
@@ -69,20 +141,6 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.ISrvRecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineSrvRecordSet(string name);
 
         /// <summary>
-        /// Specifies definition of an AAAA record set.
-        /// </summary>
-        /// <param name="name">Name of the AAAA record set.</param>
-        /// <return>The stage representing configuration for the AAAA record set.</return>
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IAaaaRecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineAaaaRecordSet(string name);
-
-        /// <summary>
-        /// Specifies definition of an NS record set.
-        /// </summary>
-        /// <param name="name">Name of the NS record set.</param>
-        /// <return>The stage representing configuration for the NS record set.</return>
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.INSRecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineNSRecordSet(string name);
-
-        /// <summary>
         /// Specifies definition of a TXT record set.
         /// </summary>
         /// <param name="name">The name of the TXT record set.</param>
@@ -93,29 +151,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition
         /// Specifies definition of a CNAME record set.
         /// </summary>
         /// <param name="name">Name of the CNAME record set.</param>
-        /// <return>The next stage of DNS zone definition.</return>
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.ICNameRecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineCNameRecordSet(string name);
-
-        /// <summary>
-        /// Specifies definition of a CNAME record set.
-        /// </summary>
-        /// <param name="name">Name of the CNAME record set.</param>
         /// <param name="alias">The CNAME record alias.</param>
         /// <return>The next stage of DNS zone definition.</return>
         Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate WithCNameRecordSet(string name, string alias);
-
-        /// <summary>
-        /// Specifies definition of a MX record set.
-        /// </summary>
-        /// <param name="name">Name of the MX record set.</param>
-        /// <return>The stage representing configuration for the MX record set.</return>
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IMXRecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineMXRecordSet(string name);
-
-        /// <summary>
-        /// Specifies definition of an A record set.
-        /// </summary>
-        /// <param name="name">Name of the A record set.</param>
-        /// <return>The stage representing configuration for the A record set.</return>
-        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.Definition.IARecordSetBlank<Microsoft.Azure.Management.Dns.Fluent.DnsZone.Definition.IWithCreate> DefineARecordSet(string name);
     }
 }

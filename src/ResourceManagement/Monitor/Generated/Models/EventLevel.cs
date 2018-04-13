@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this EventLevel value)
         {
-            switch( value )
+            switch (value)
             {
                 case EventLevel.Critical:
                     return "Critical";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static EventLevel? ParseEventLevel(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Critical":
                     return EventLevel.Critical;

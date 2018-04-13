@@ -1,17 +1,24 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Management.Dns.Fluent
 {
+    using System.Threading;
+    using System.Threading.Tasks;
+
     internal abstract partial class DnsRecordSetsBaseImpl<RecordSetT, RecordSetImplT>
     {
+        /// <summary>
+        /// Gets the parent of this child object.
+        /// </summary>
+        Microsoft.Azure.Management.Dns.Fluent.IDnsZone Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Dns.Fluent.IDnsZone>.Parent
+        {
+            get
+            {
+                return this.Parent() as Microsoft.Azure.Management.Dns.Fluent.IDnsZone;
+            }
+        }
+
         /// <summary>
         /// Lists all the record sets with the given suffix.
         /// </summary>
@@ -45,6 +52,15 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         }
 
         /// <summary>
+        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// </summary>
+        /// <return>List of resources.</return>
+        System.Collections.Generic.IEnumerable<RecordSetT> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<RecordSetT>.List()
+        {
+            return this.List() as System.Collections.Generic.IEnumerable<RecordSetT>;
+        }
+
+        /// <summary>
         /// Lists all the record sets with the given suffix.
         /// </summary>
         /// <param name="recordSetNameSuffix">The record set name suffix.</param>
@@ -74,15 +90,6 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>> Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<RecordSetT>.ListAsync(string recordSetNameSuffix, int pageSize, bool loadAllPages, CancellationToken cancellationToken)
         {
             return await this.ListAsync(recordSetNameSuffix, pageSize, loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>;
-        }
-
-        /// <summary>
-        /// Lists all the resources of the specified type in the currently selected subscription.
-        /// </summary>
-        /// <return>List of resources.</return>
-        System.Collections.Generic.IEnumerable<RecordSetT> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<RecordSetT>.List()
-        {
-            return this.List() as System.Collections.Generic.IEnumerable<RecordSetT>;
         }
 
         /// <summary>

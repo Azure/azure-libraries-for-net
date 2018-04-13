@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
@@ -10,6 +11,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithMXRecordMailExchange<ParentT>
     {
+
         /// <summary>
         /// Creates and assigns priority to a MX record with the provided mail exchange server in this record set.
         /// </summary>
@@ -26,6 +28,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     public interface ICNameRecordSetBlank<ParentT> :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithCNameRecordAlias<ParentT>
     {
+
     }
 
     /// <summary>
@@ -34,6 +37,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithARecordIPv4Address<ParentT>
     {
+
         /// <summary>
         /// Creates an A record with the provided IPv4 address in this record set.
         /// </summary>
@@ -48,6 +52,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithSrvRecordEntry<ParentT>
     {
+
         /// <summary>
         /// Specifies a service record for a service.
         /// </summary>
@@ -60,11 +65,29 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     }
 
     /// <summary>
+    /// The stage of the Caa record definition allowing to add first service record.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithCaaRecordEntry<ParentT>
+    {
+
+        /// <summary>
+        /// Specifies a Caa record for a service.
+        /// </summary>
+        /// <param name="flags">The flags for this CAA record as an integer between 0 and 255.</param>
+        /// <param name="tag">The tag for this CAA record.</param>
+        /// <param name="value">The value for this CAA record.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithCaaRecordEntryOrAttachable<ParentT> WithRecord(int flags, string tag, string value);
+    }
+
+    /// <summary>
     /// The stage of a CNAME record definition allowing to add alias.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithCNameRecordAlias<ParentT>
     {
+
         /// <summary>
         /// Creates a CNAME record with the provided alias.
         /// </summary>
@@ -80,6 +103,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     public interface IMXRecordSetBlank<ParentT> :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithMXRecordMailExchange<ParentT>
     {
+
     }
 
     /// <summary>
@@ -89,6 +113,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     public interface IWithCNameRecordSetAttachable<ParentT> :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAttach<ParentT>
     {
+
     }
 
     /// <summary>
@@ -97,6 +122,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithETagCheck<ParentT>
     {
+
         /// <summary>
         /// Specifies that If-None-Match header needs to set to  to prevent updating an existing record set.
         /// </summary>
@@ -111,6 +137,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     public interface ISrvRecordSetBlank<ParentT> :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithSrvRecordEntry<ParentT>
     {
+
     }
 
     /// <summary>
@@ -119,6 +146,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithTxtRecordTextValue<ParentT>
     {
+
         /// <summary>
         /// Creates a TXT record with the given text in this record set.
         /// </summary>
@@ -134,6 +162,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     public interface ITxtRecordSetBlank<ParentT> :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithTxtRecordTextValue<ParentT>
     {
+
     }
 
     /// <summary>
@@ -145,6 +174,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithSrvRecordEntry<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAttach<ParentT>
     {
+
     }
 
     /// <summary>
@@ -156,6 +186,17 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithARecordIPv4Address<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAttach<ParentT>
     {
+
+    }
+
+    /// <summary>
+    /// The first stage of a Caa record definition.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface ICaaRecordSetBlank<ParentT> :
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithCaaRecordEntry<ParentT>
+    {
+
     }
 
     /// <summary>
@@ -167,6 +208,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithMXRecordMailExchange<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAttach<ParentT>
     {
+
     }
 
     /// <summary>
@@ -178,6 +220,19 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithNSRecordNameServer<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAttach<ParentT>
     {
+
+    }
+
+    /// <summary>
+    /// The stage of the Caa record set definition allowing to add additional Caa records or attach the record set
+    /// to the parent.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithCaaRecordEntryOrAttachable<ParentT> :
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithCaaRecordEntry<ParentT>,
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAttach<ParentT>
+    {
+
     }
 
     /// <summary>
@@ -189,6 +244,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAaaaRecordIPv6Address<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAttach<ParentT>
     {
+
     }
 
     /// <summary>
@@ -198,6 +254,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     public interface IARecordSetBlank<ParentT> :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithARecordIPv4Address<ParentT>
     {
+
     }
 
     /// <summary>
@@ -213,6 +270,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithMetadata<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithETagCheck<ParentT>
     {
+
     }
 
     /// <summary>
@@ -222,6 +280,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     public interface IAaaaRecordSetBlank<ParentT> :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAaaaRecordIPv6Address<ParentT>
     {
+
     }
 
     /// <summary>
@@ -230,6 +289,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithNSRecordNameServer<ParentT>
     {
+
         /// <summary>
         /// Creates a NS record with the provided name server in this record set.
         /// </summary>
@@ -244,6 +304,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithMetadata<ParentT>
     {
+
         /// <summary>
         /// Adds a tag to the resource.
         /// </summary>
@@ -264,6 +325,9 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IAaaaRecordSetBlank<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAaaaRecordIPv6Address<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAaaaRecordIPv6AddressOrAttachable<ParentT>,
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.ICaaRecordSetBlank<ParentT>,
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithCaaRecordEntry<ParentT>,
+        Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithCaaRecordEntryOrAttachable<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.ICNameRecordSetBlank<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithCNameRecordAlias<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithCNameRecordSetAttachable<ParentT>,
@@ -284,6 +348,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithTxtRecordTextValueOrAttachable<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAttach<ParentT>
     {
+
     }
 
     /// <summary>
@@ -293,6 +358,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     public interface IPtrRecordSetBlank<ParentT> :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithPtrRecordTargetDomainName<ParentT>
     {
+
     }
 
     /// <summary>
@@ -301,6 +367,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithTtl<ParentT>
     {
+
         /// <summary>
         /// Specifies the TTL for the records in the record set.
         /// </summary>
@@ -315,6 +382,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithPtrRecordTargetDomainName<ParentT>
     {
+
         /// <summary>
         /// Creates a PTR record with the provided target domain name in this record set.
         /// </summary>
@@ -330,6 +398,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     public interface INSRecordSetBlank<ParentT> :
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithNSRecordNameServer<ParentT>
     {
+
     }
 
     /// <summary>
@@ -341,6 +410,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithTxtRecordTextValue<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAttach<ParentT>
     {
+
     }
 
     /// <summary>
@@ -349,6 +419,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithAaaaRecordIPv6Address<ParentT>
     {
+
         /// <summary>
         /// Creates an AAAA record with the provided IPv6 address in this record set.
         /// </summary>
@@ -366,5 +437,6 @@ namespace Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithPtrRecordTargetDomainName<ParentT>,
         Microsoft.Azure.Management.Dns.Fluent.DnsRecordSet.UpdateDefinition.IWithAttach<ParentT>
     {
+
     }
 }

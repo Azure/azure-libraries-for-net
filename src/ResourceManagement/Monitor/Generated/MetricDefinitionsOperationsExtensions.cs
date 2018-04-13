@@ -21,28 +21,28 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public static partial class MetricDefinitionsOperationsExtensions
     {
-            /// <summary>
-            /// Lists the metric definitions for the resource.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceUri'>
-            /// The identifier of the resource.
-            /// </param>
-            /// <param name='metricnamespace'>
-            /// Metric namespace to query metric definitions for.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IEnumerable<MetricDefinition>> ListAsync(this IMetricDefinitionsOperations operations, string resourceUri, string metricnamespace = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Lists the metric definitions for the resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceUri'>
+        /// The identifier of the resource.
+        /// </param>
+        /// <param name='metricnamespace'>
+        /// Metric namespace to query metric definitions for.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IEnumerable<MetricDefinition>> ListAsync(this IMetricDefinitionsOperations operations, string resourceUri, string metricnamespace = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceUri, metricnamespace, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceUri, metricnamespace, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

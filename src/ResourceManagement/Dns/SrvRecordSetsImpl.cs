@@ -16,24 +16,24 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         DnsRecordSetsBaseImpl<ISrvRecordSet, SrvRecordSetImpl>,
         ISrvRecordSets
     {
-        ///GENMHASH:F6AC4F639ACD7D3649D1E9E4FBAC70D5:F8E87D142BE7B967C3D37E08C8777506
-        internal SrvRecordSetsImpl(DnsZoneImpl dnsZone) : base(dnsZone, RecordType.SRV)
+        ///GENMHASH:F6AC4F639ACD7D3649D1E9E4FBAC70D5:BF38006148958FF93DDC264903D97FC3
+        internal SrvRecordSetsImpl(DnsZoneImpl dnsZone)
+            : base(dnsZone, RecordType.SRV)
         {
         }
 
-        ///GENMHASH:5C58E472AE184041661005E7B2D7EE30:9B1E66984EB587120759257A76F0B2FF
-        public async override Task<ISrvRecordSet> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        ///GENMHASH:B94D04B9D91F75559A6D8E405D4A72FD:EEA14E280E95338CD14E31A7F62111C8
+        protected override IEnumerable<ISrvRecordSet> ListIntern(string recordSetNameSuffix, int? pageSize)
         {
-            RecordSetInner inner = await dnsZone.Manager.Inner.RecordSets.GetAsync(
-                dnsZone.ResourceGroupName,
-                dnsZone.Name,
-                name,
-                recordType,
-                cancellationToken);
-            return new SrvRecordSetImpl(dnsZone, inner);
+            return WrapList(Extensions.Synchronize(() => dnsZone.Manager.Inner.RecordSets.ListByTypeAsync(dnsZone.ResourceGroupName,
+                                                                dnsZone.Name,
+                                                                recordType,
+                                                                top: pageSize,
+                                                                recordsetnamesuffix: recordSetNameSuffix))
+                                                .AsContinuousCollection(link => Extensions.Synchronize(() => dnsZone.Manager.Inner.RecordSets.ListByTypeNextAsync(link))));
         }
 
-        ///GENMHASH:64B3FB1F01DFC1156B75305640537ED6:5FBBFA72E54ACBDCF0107B6E15885E22
+        ///GENMHASH:64B3FB1F01DFC1156B75305640537ED6:6382D181836A0C870ECE45FB1B78C0A1
         protected async override Task<IPagedCollection<ISrvRecordSet>> ListInternAsync(string recordSetNameSuffix, int? pageSize, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<ISrvRecordSet, RecordSetInner>.LoadPage(
@@ -47,21 +47,34 @@ namespace Microsoft.Azure.Management.Dns.Fluent
                 WrapModel, loadAllPages, cancellationToken);
         }
 
-        ///GENMHASH:B94D04B9D91F75559A6D8E405D4A72FD:01A172482B1E120E31032E5543713776
-        protected override IEnumerable<ISrvRecordSet> ListIntern(string recordSetNameSuffix, int? pageSize)
-        {
-            return WrapList(Extensions.Synchronize(() => dnsZone.Manager.Inner.RecordSets.ListByTypeAsync(dnsZone.ResourceGroupName,
-                                                                dnsZone.Name,
-                                                                recordType,
-                                                                top: pageSize,
-                                                                recordsetnamesuffix: recordSetNameSuffix))
-                                                .AsContinuousCollection(link => Extensions.Synchronize(() => dnsZone.Manager.Inner.RecordSets.ListByTypeNextAsync(link))));
-        }
-
-        ///GENMHASH:A65D7F670CB73E56248FA5B252060BCD:BAA4ACA3AC07B56B82C6B16D77059D51
+        ///GENMHASH:A65D7F670CB73E56248FA5B252060BCD:F81320A2FAFA57074458BCE6FE1DA3D7
         protected override ISrvRecordSet WrapModel(RecordSetInner inner)
         {
-            return new SrvRecordSetImpl(dnsZone, inner);
+            if (inner == null)
+            {
+                return null;
+            }
+            return new SrvRecordSetImpl(inner.Name, dnsZone, inner);
         }
+
+        ///GENMHASH:5C58E472AE184041661005E7B2D7EE30:2C90DDB8AC278D08D4CDAFC1D9F95C70
+        public async override Task<ISrvRecordSet> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            RecordSetInner inner = await dnsZone.Manager.Inner.RecordSets.GetAsync(
+                dnsZone.ResourceGroupName,
+                dnsZone.Name,
+                name,
+                recordType,
+                cancellationToken);
+
+            if (inner == null)
+            {
+                return null;
+            }
+            return new SrvRecordSetImpl(inner.Name, dnsZone, inner);
+        }
+
+
+
     }
 }

@@ -22,34 +22,20 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         protected readonly DnsZoneImpl dnsZone;
         protected readonly RecordType recordType;
 
-        ///GENMHASH:6B78047BDDCD605061F877C7337AA07F:27E486AB74A10242FF421C0798DDC450
-        internal DnsRecordSetsBaseImpl(DnsZoneImpl dnsZone, RecordType recordType)
+        ///GENMHASH:FEDB7F220B55FBCF26C74D8847CC0339:3FF9B9ACD922596547A4C6A948225060
+        internal DnsRecordSetsBaseImpl(DnsZoneImpl parent, RecordType recordType)
         {
-            this.dnsZone = dnsZone;
+            this.dnsZone = parent;
             this.recordType = recordType;
         }
 
         public abstract Task<RecordSetT> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
 
-        ///GENMHASH:64B3FB1F01DFC1156B75305640537ED6:27E486AB74A10242FF421C0798DDC450
-        protected abstract Task<IPagedCollection<RecordSetT>> ListInternAsync(string recordSetNameSuffix, int? pageSize, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
-
         ///GENMHASH:B94D04B9D91F75559A6D8E405D4A72FD:27E486AB74A10242FF421C0798DDC450
         protected abstract IEnumerable<RecordSetT> ListIntern(string recordSetNameSuffix, int? pageSize);
 
-        ///GENMHASH:FD5D5A8D6904B467321E345BE1FA424E:E19B1A43B8D006D892A5880F9F29D599
-        public IDnsZone Parent
-        {
-            get
-            {
-                return this.dnsZone;
-            }
-        }
-
-        public RecordSetT GetByName(string name)
-        {
-            return Extensions.Synchronize(() => GetByNameAsync(name));
-        }
+        ///GENMHASH:64B3FB1F01DFC1156B75305640537ED6:27E486AB74A10242FF421C0798DDC450
+        protected abstract Task<IPagedCollection<RecordSetT>> ListInternAsync(string recordSetNameSuffix, int? pageSize, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken));
 
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:8702BABF19DCC459AC95CE748259A3D1
         public IEnumerable<RecordSetT> List()
@@ -97,6 +83,17 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         public Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>> ListAsync(string recordSetNameSuffix, int pageSize, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             return ListInternAsync(recordSetNameSuffix, pageSize);
+        }
+
+        ///GENMHASH:FD5D5A8D6904B467321E345BE1FA424E:E19B1A43B8D006D892A5880F9F29D599
+        public IDnsZone Parent()
+        {
+            return this.dnsZone;
+        }
+
+        public RecordSetT GetByName(string name)
+        {
+            return Extensions.Synchronize(() => GetByNameAsync(name));
         }
     }
 }

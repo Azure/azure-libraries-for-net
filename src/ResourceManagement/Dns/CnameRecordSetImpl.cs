@@ -14,28 +14,28 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         ICNameRecordSet
     {
 
+        ///GENMHASH:2FAAC2E68CA201E834513D95AF3AB0E9:800ED21D063D1854C18CE481A01079EB
+        internal CNameRecordSetImpl(string name, DnsZoneImpl parent, RecordSetInner innerModel)
+            : base(name, Enum.GetName(typeof(RecordType), Models.RecordType.CNAME), parent, innerModel)
+        {
+        }
+
+        ///GENMHASH:8ABF9B557B42803047EF280885243BA8:4AE55D0B92E4F80757DBF4938ADDE5C3
+        internal static CNameRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
+        {
+            return new CNameRecordSetImpl(name, parent,
+            new RecordSetInner
+            {
+                CnameRecord = new CnameRecord()
+            });
+        }
+
         ///GENMHASH:7D787B3687385E18B312D5F6D6DA9444:AF11C8A7E2B299112E3CED7714F622A7
         protected override RecordSetInner PrepareForUpdate(RecordSetInner resource)
         {
             return resource;
         }
 
-        ///GENMHASH:E5A5F4A2DE55AF67359951B8714E8E37:3F5F2CC7F3C4A3B943EC7C1953A9D2E5
-        internal CNameRecordSetImpl(DnsZoneImpl parent, RecordSetInner innerModel) : base(parent, innerModel)
-        {
-        }
-
-        ///GENMHASH:AEA8C8A92DBF6D46B8137727B5EEFACA:D5B3BC12D1EBABAB93ACF0C43C024873
-        internal static CNameRecordSetImpl NewRecordSet(string name, DnsZoneImpl parent)
-        {
-            return new CNameRecordSetImpl(parent,
-            new RecordSetInner
-            {
-                Name = name,
-                Type = Enum.GetName(typeof(RecordType), Models.RecordType.CNAME),
-                CnameRecord = new CnameRecord()
-            });
-        }
 
         ///GENMHASH:90659807B6B17ED9B2E619F2F74829BA:5F97BB0D1B58FFF4810D8B3F037EC111
         public string CanonicalName()

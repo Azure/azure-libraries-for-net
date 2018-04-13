@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this ScaleType value)
         {
-            switch( value )
+            switch (value)
             {
                 case ScaleType.ChangeCount:
                     return "ChangeCount";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static ScaleType? ParseScaleType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "ChangeCount":
                     return ScaleType.ChangeCount;

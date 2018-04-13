@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Dns.Fluent
 {
     using Microsoft.Azure.Management.Dns.Fluent.Models;
@@ -13,10 +14,16 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IExternalChildResource<Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet, Microsoft.Azure.Management.Dns.Fluent.IDnsZone>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.RecordSetInner>
     {
+
         /// <summary>
-        /// Gets TTL of the records in this record set.
+        /// Gets the etag associated with the record set.
         /// </summary>
-        long TimeToLive { get; }
+        string ETag { get; }
+
+        /// <summary>
+        /// Gets the fully qualified domain name of the record set.
+        /// </summary>
+        string Fqdn { get; }
 
         /// <summary>
         /// Gets the metadata associated with this record set.
@@ -29,8 +36,8 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         Models.RecordType RecordType { get; }
 
         /// <summary>
-        /// Gets the etag associated with the record set.
+        /// Gets TTL of the records in this record set.
         /// </summary>
-        string ETag { get; }
+        long TimeToLive { get; }
     }
 }
