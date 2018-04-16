@@ -17,7 +17,7 @@ install:
   - sudo apt-get install dotnet-dev-1.0.4 -y
 script:
 - |-
-  ./test_on_linux.sh
+  ./test_on_linux.sh || travis_terminate 1;
    if [[ $TRAVIS_PULL_REQUEST == "false" ]] && [[ $TRAVIS_BRANCH == "master" ]]; then
     ./ci/create_image.sh ;
   fi
