@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             get
             {
-                return this.Manager() as MonitorManager;
+                return this.Manager();
             }
         }
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The stage of start time filter definition.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataStartTimeFilter Microsoft.Azure.Management.Monitor.Fluent.IActivityLogs.DefineQuery()
         {
-            return this.DefineQuery() as Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataStartTimeFilter;
+            return this.DefineQuery();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The stage of optional query parameter definition and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataFieldFilter Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataEndFilter.EndsBefore(DateTime endTime)
         {
-            return this.EndsBefore(endTime) as Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataFieldFilter;
+            return this.EndsBefore(endTime);
         }
 
         /// <summary>
@@ -46,16 +46,16 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>Activity Log events received after query execution.</return>
         System.Collections.Generic.IEnumerable<Models.IEventData> Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute.Execute()
         {
-            return this.Execute() as System.Collections.Generic.IEnumerable<Models.IEventData>;
+            return this.Execute();
         }
 
         /// <summary>
         /// Executes the query.
         /// </summary>
         /// <return>A representation of the deferred computation of Activity Log query call.</return>
-        async Task<Models.IEventData> Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute.ExecuteAsync(CancellationToken cancellationToken)
+        async Task<System.Collections.Generic.IEnumerable<Models.IEventData>> Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute.ExecuteAsync(CancellationToken cancellationToken)
         {
-            return await this.ExecuteAsync(cancellationToken) as Models.IEventData;
+            return await this.ExecuteAsync(cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The stage of Activity log filtering by Tenant level and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute.FilterAtTenantLevel()
         {
-            return this.FilterAtTenantLevel() as Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute;
+            return this.FilterAtTenantLevel();
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The stage of Activity log filtering by type and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter.FilterByCorrelationId(string correlationId)
         {
-            return this.FilterByCorrelationId(correlationId) as Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute;
+            return this.FilterByCorrelationId(correlationId);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The stage of Activity log filtering by type and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter.FilterByResource(string resourceId)
         {
-            return this.FilterByResource(resourceId) as Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute;
+            return this.FilterByResource(resourceId);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The stage of Activity log filtering by type and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter.FilterByResourceGroup(string resourceGroupName)
         {
-            return this.FilterByResourceGroup(resourceGroupName) as Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute;
+            return this.FilterByResourceGroup(resourceGroupName);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The stage of Activity log filtering by type and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter.FilterByResourceProvider(string resourceProviderName)
         {
-            return this.FilterByResourceProvider(resourceProviderName) as Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsQueryExecute;
+            return this.FilterByResourceProvider(resourceProviderName);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>List of available event categories supported in the Activity Logs Service.</return>
         System.Collections.Generic.IReadOnlyList<Models.ILocalizableString> Microsoft.Azure.Management.Monitor.Fluent.IActivityLogs.ListEventCategories()
         {
-            return this.ListEventCategories() as System.Collections.Generic.IReadOnlyList<Models.ILocalizableString>;
+            return this.ListEventCategories();
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>List of available event categories supported in the Activity Logs Service.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Models.ILocalizableString>> Microsoft.Azure.Management.Monitor.Fluent.IActivityLogs.ListEventCategoriesAsync(CancellationToken cancellationToken)
         {
-            return await this.ListEventCategoriesAsync(cancellationToken) as System.Collections.Generic.IReadOnlyList<Models.ILocalizableString>;
+            return await this.ListEventCategoriesAsync(cancellationToken);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The stage of end time filter definition.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataEndFilter Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataStartTimeFilter.StartingFrom(DateTime startTime)
         {
-            return this.StartingFrom(startTime) as Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataEndFilter;
+            return this.StartingFrom(startTime);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The stage of Activity log filtering by type and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataFieldFilter.WithAllPropertiesInResponse()
         {
-            return this.WithAllPropertiesInResponse() as Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter;
+            return this.WithAllPropertiesInResponse();
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The stage of Activity log filtering by type and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter Microsoft.Azure.Management.Monitor.Fluent.IWithEventDataFieldFilter.WithResponseProperties(params EventDataPropertyName[] responseProperties)
         {
-            return this.WithResponseProperties(responseProperties) as Microsoft.Azure.Management.Monitor.Fluent.IWithActivityLogsSelectFilter;
+            return this.WithResponseProperties(responseProperties);
         }
     }
 }

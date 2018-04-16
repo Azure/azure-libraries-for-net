@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The first stage of the new resource definition.</return>
         ActionGroup.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<ActionGroup.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as ActionGroup.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>

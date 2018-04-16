@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Executes the query.
         /// </summary>
         /// <return>A representation of the deferred computation of Activity Log query call.</return>
-        Task<Models.IEventData> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IEnumerable<Models.IEventData>> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Filters events that were generated at the Tenant level.

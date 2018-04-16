@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             get
             {
-                return this.Manager() as MonitorManager;
+                return this.Manager();
             }
         }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>The first stage of the new resource definition.</return>
         DiagnosticSetting.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<DiagnosticSetting.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as DiagnosticSetting.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>A representation of the deferred computation of this call returning the resource ID of each successfully deleted resource.</return>
         async Task<System.Collections.Generic.IEnumerable<string>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsBatchDeletion.DeleteByIdsAsync(IList<string> ids, CancellationToken cancellationToken)
         {
-            return await this.DeleteByIdsAsync(ids, cancellationToken) as System.Collections.Generic.IEnumerable<string>;
+            return await this.DeleteByIdsAsync(ids, cancellationToken);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>A representation of the deferred computation of this call returning the resource ID of each successfully deleted resource.</return>
         async Task<System.Collections.Generic.IEnumerable<string>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsBatchDeletion.DeleteByIdsAsync(string[] ids, CancellationToken cancellationToken)
         {
-            return await this.DeleteByIdsAsync(ids, cancellationToken) as System.Collections.Generic.IEnumerable<string>;
+            return await this.DeleteByIdsAsync(ids, cancellationToken);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSettings.Get(string resourceId, string name)
         {
-            return this.Get(resourceId, name) as Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting;
+            return this.Get(resourceId, name);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting> Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSettings.GetAsync(string resourceId, string name, CancellationToken cancellationToken)
         {
-            return await this.GetAsync(resourceId, name, cancellationToken) as Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting;
+            return await this.GetAsync(resourceId, name, cancellationToken);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting;
+            return this.GetById(id);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>Diagnostic Setting category available for the resource.</return>
         Models.IDiagnosticSettingsCategory Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSettings.GetCategory(string resourceId, string name)
         {
-            return this.GetCategory(resourceId, name) as Models.IDiagnosticSettingsCategory;
+            return this.GetCategory(resourceId, name);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>Diagnostic Setting category available for the resource.</return>
         async Task<Models.IDiagnosticSettingsCategory> Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSettings.GetCategoryAsync(string resourceId, string name, CancellationToken cancellationToken)
         {
-            return await this.GetCategoryAsync(resourceId, name, cancellationToken) as Models.IDiagnosticSettingsCategory;
+            return await this.GetCategoryAsync(resourceId, name, cancellationToken);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting> Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSettings.ListByResource(string resourceId)
         {
-            return this.ListByResource(resourceId) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting>;
+            return this.ListByResource(resourceId);
         }
 
         /// <summary>
@@ -191,9 +191,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="resourceId">That Diagnostic Setting is associated with.</param>
         /// <return>List of resources.</return>
-        async Task<Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting> Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSettings.ListByResourceAsync(string resourceId, CancellationToken cancellationToken)
+        async Task<System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting>> Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSettings.ListByResourceAsync(string resourceId, CancellationToken cancellationToken)
         {
-            return await this.ListByResourceAsync(resourceId, cancellationToken) as Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting;
+            return await this.ListByResourceAsync(resourceId, cancellationToken);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>List of Diagnostic Settings category available for the resource.</return>
         System.Collections.Generic.IReadOnlyList<Models.IDiagnosticSettingsCategory> Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSettings.ListCategoriesByResource(string resourceId)
         {
-            return this.ListCategoriesByResource(resourceId) as System.Collections.Generic.IReadOnlyList<Models.IDiagnosticSettingsCategory>;
+            return this.ListCategoriesByResource(resourceId);
         }
 
         /// <summary>
@@ -211,9 +211,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="resourceId">Of the requested resource.</param>
         /// <return>List of Diagnostic Settings category available for the resource.</return>
-        async Task<Models.IDiagnosticSettingsCategory> Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSettings.ListCategoriesByResourceAsync(string resourceId, CancellationToken cancellationToken)
+        async Task<System.Collections.Generic.IReadOnlyList<Models.IDiagnosticSettingsCategory>> Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSettings.ListCategoriesByResourceAsync(string resourceId, CancellationToken cancellationToken)
         {
-            return await this.ListCategoriesByResourceAsync(resourceId, cancellationToken) as Models.IDiagnosticSettingsCategory;
+            return await this.ListCategoriesByResourceAsync(resourceId, cancellationToken);
         }
     }
 }
