@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="resourceId">That Diagnostic Setting is associated with.</param>
         /// <return>List of resources.</return>
-        Task<Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting> ListByResourceAsync(string resourceId, CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Monitor.Fluent.IDiagnosticSetting>> ListByResourceAsync(string resourceId, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Lists all the Diagnostic Settings categories for Log and Metric Settings for a specific resource.
@@ -93,6 +93,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="resourceId">Of the requested resource.</param>
         /// <return>List of Diagnostic Settings category available for the resource.</return>
-        Task<Models.IDiagnosticSettingsCategory> ListCategoriesByResourceAsync(string resourceId, CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IReadOnlyList<Models.IDiagnosticSettingsCategory>> ListCategoriesByResourceAsync(string resourceId, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

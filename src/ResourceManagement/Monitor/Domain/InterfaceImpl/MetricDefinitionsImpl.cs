@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             get
             {
-                return this.Manager() as MonitorManager;
+                return this.Manager();
             }
         }
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <return>List of metric definitions.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition> Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinitions.ListByResource(string resourceId)
         {
-            return this.ListByResource(resourceId) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition>;
+            return this.ListByResource(resourceId);
         }
 
         /// <summary>
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
         /// <return>A representation of the deferred computation of Metric Definitions list call.</return>
-        async Task<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition> Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinitions.ListByResourceAsync(string resourceId, CancellationToken cancellationToken)
+        async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition>> Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinitions.ListByResourceAsync(string resourceId, CancellationToken cancellationToken)
         {
-            return await this.ListByResourceAsync(resourceId, cancellationToken) as Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition;
+            return await this.ListByResourceAsync(resourceId, cancellationToken);
         }
     }
 }

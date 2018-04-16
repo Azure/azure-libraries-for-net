@@ -26,6 +26,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
         /// <return>A representation of the deferred computation of Metric Definitions list call.</return>
-        Task<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition> ListByResourceAsync(string resourceId, CancellationToken cancellationToken = default(CancellationToken));
+        Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition>> ListByResourceAsync(string resourceId, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
