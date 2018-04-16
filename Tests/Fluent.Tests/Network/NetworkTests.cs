@@ -18,12 +18,6 @@ namespace Fluent.Tests.Network
 {
     public class Network
     {
-//        public Network(ITestOutputHelper output)
-//        {
-//            TestHelper.TestLogger = output;
-//            ServiceClientTracing.IsEnabled = true;
-//            ServiceClientTracing.AddTracingInterceptor(new XunitTracingInterceptor(output));
-//        }
         [Fact]
         public void CreateUpdatePeering()
         {

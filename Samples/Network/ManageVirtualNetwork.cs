@@ -111,7 +111,7 @@ namespace ManageVirtualNetwork
                             .FromAnyPort()
                             .ToAnyAddress()
                             .ToPort(80)
-                            .WithProtocol(SecurityRuleProtocol.Tcp.Value)
+                            .WithProtocol(SecurityRuleProtocol.Tcp)
                             .Attach()
                         .DefineRule("DenyInternetOutGoing")
                             .DenyOutbound()

@@ -17,12 +17,6 @@ namespace Fluent.Tests.Network
 {
     public class NSG
     {
-//        public NSG(ITestOutputHelper output)
-//         {
-//             TestHelper.TestLogger = output;
-//             ServiceClientTracing.IsEnabled = true;
-//             ServiceClientTracing.AddTracingInterceptor(new XunitTracingInterceptor(output));
-//         }
         [Fact]
         public void CreateUpdate()
         {
@@ -45,7 +39,7 @@ namespace Fluent.Tests.Network
                         .FromPort(80)
                         .ToAnyAddress()
                         .ToPort(80)
-                        .WithProtocol(SecurityRuleProtocol.Tcp.Value)
+                        .WithProtocol(SecurityRuleProtocol.Tcp)
                         .Attach()
                     .DefineRule("rule2")
                         .AllowInbound()
@@ -95,7 +89,7 @@ namespace Fluent.Tests.Network
                         .FromAnyPort()
                         .ToAnyAddress()
                         .ToAnyPort()
-                        .WithProtocol(SecurityRuleProtocol.Udp.Value)
+                        .WithProtocol(SecurityRuleProtocol.Udp)
                         .Attach()
                     .WithoutRule("rule1")
                     .UpdateRule("rule2")

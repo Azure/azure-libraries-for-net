@@ -133,6 +133,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDe
         /// </summary>
         /// <param name="protocol">One of the supported protocols.</param>
         /// <return>The next stage of the definition.</return>
+        [Obsolete("Use WithProtocol(SecurityRuleProtocol protocol) instead")]
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDefinition.IWithAttach<ParentT> WithProtocol(string protocol);
     }
 
