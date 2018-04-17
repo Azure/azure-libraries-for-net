@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (inner.Identity != null)
             {
-                return inner.Identity.Type;
+                return ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(inner.Identity.Type);
             }
             return null;
         }
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return;
                 }
-                var parsedIdentityType = vmssInner.Identity.Type;
+                ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(vmssInner.Identity.Type);
                 if (parsedIdentityType.Equals(ResourceIdentityType.None)
                     || parsedIdentityType.Equals(ResourceIdentityType.SystemAssigned))
                 {
@@ -284,16 +284,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 vmssInner.Identity = new VirtualMachineScaleSetIdentity();
             }
 
-            ResourceIdentityType? parsedIdentityType = vmssInner.Identity.Type;
+            ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(vmssInner.Identity.Type);
             if (parsedIdentityType == null
                     || parsedIdentityType.Equals(ResourceIdentityType.None)
                     || parsedIdentityType.Equals(identityType))
             {
-                vmssInner.Identity.Type = identityType;
+                vmssInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(identityType);
             }
             else
             {
-                vmssInner.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                vmssInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssignedUserAssigned);
             }
             if (vmssInner.Identity.IdentityIds == null)
             {
