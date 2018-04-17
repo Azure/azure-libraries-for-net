@@ -28,6 +28,7 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
          */
         public static void RunSample(IAzure azure)
         {
+            var identityName = Utilities.CreateRandomName("idt");
             var linuxVMName = Utilities.CreateRandomName("VM1");
             var rgName = Utilities.CreateRandomName("rgCOMV");
             var pipName = Utilities.CreateRandomName("pip1");
@@ -36,11 +37,21 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
             var region = Region.USWestCentral;
 
             var installScript = "https://raw.githubusercontent.com/Azure/azure-libraries-for-net/master/Samples/Asset/create_resources_with_msi.sh";
-            var installCommand = "bash create_resources_with_msi.sh {stgName} {rgName} {location}";
+            var installCommand = "bash create_resources_with_msi.sh {identityId} {stgName} {rgName} {location}";
             List<String> fileUris = new List<String>();
             fileUris.Add(installScript);
             try
             {
+                //=============================================================
+                // Create an identity with access to current resource group
+
+                var identity = azure.Identities
+                    .Define(identityName)
+                        .WithRegion(region)
+                        .WithNewResourceGroup(rgName)
+                        .WithAccessToCurrentResourceGroup(BuiltInRole.Contributor)
+                        .Create();
+
                 //=============================================================
                 // Create a Linux VM with MSI enabled for contributor access to the current resource group
 
@@ -58,8 +69,7 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
                     .WithRootPassword(password)
                     .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
                     .WithOSDiskCaching(CachingTypes.ReadWrite)
-                    .WithSystemAssignedManagedServiceIdentity()
-                    .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
+                    .WithExistingUserAssignedManagedServiceIdentity(identity)
                     .Create();
 
                 Utilities.Log("Created virtual machine with MSI enabled");
@@ -69,6 +79,7 @@ namespace ManageStorageFromMSIEnabledVirtualMachine
                 //
                 var stgName = Utilities.CreateRandomName("st44");
                 installCommand = installCommand
+                                .Replace("{identityId}", identity.Id)
                                 .Replace("{stgName}", stgName)
                                 .Replace("{rgName}", rgName)
                                 .Replace("{location}", region.Name);
