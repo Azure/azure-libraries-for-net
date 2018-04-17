@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (inner.Identity != null)
             {
-                return inner.Identity.Type;
+                return ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(inner.Identity.Type);
             }
             return null;
         }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return;
                 }
-                var parsedIdentityType = virtualMachineInner.Identity.Type;
+                ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(virtualMachineInner.Identity.Type);
                 if (parsedIdentityType.Equals(ResourceIdentityType.None)
                     || parsedIdentityType.Equals(ResourceIdentityType.SystemAssigned))
                 {
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 return false;
             }
-            ResourceIdentityType? parsedIdentityType = VMInner.Identity.Type;
+            ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(VMInner.Identity.Type);
             if (parsedIdentityType == null || parsedIdentityType.Equals(ResourceIdentityType.None))
             {
                 return false;
@@ -347,16 +347,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 vmInner.Identity = new VirtualMachineIdentity();
             }
 
-            ResourceIdentityType? parsedIdentityType = vmInner.Identity.Type;
+            ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(vmInner.Identity.Type);
             if (parsedIdentityType == null
                     || parsedIdentityType.Equals(ResourceIdentityType.None)
                     || parsedIdentityType.Equals(identityType))
             {
-                vmInner.Identity.Type = identityType;
+                vmInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(identityType);
             }
             else
             {
-                vmInner.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                vmInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssignedUserAssigned);
             }
             if (vmInner.Identity.IdentityIds == null)
             {
