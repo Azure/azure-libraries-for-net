@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:96D02FBE55488E00AEE491603ECDA545:8E47A7551FAA8958BCB5314D0E665506
         public PCFilterImpl WithProtocol(PcProtocol protocol)
         {
-            Inner.Protocol = protocol.Value;
+            Inner.Protocol = protocol;
             return this;
         }
 
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:D684E7477889A9013C81FAD82F69C54F:BD249A015EF71106387B78281489583A
         public PcProtocol Protocol()
         {
-            return PcProtocol.Parse(Inner.Protocol);
+            return Inner.Protocol;
         }
 
 

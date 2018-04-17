@@ -1,5 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using System;
+using Microsoft.Azure.Management.Network.Fluent.Models;
+
 namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDefinition
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
@@ -133,7 +137,15 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDe
         /// </summary>
         /// <param name="protocol">One of the supported protocols.</param>
         /// <return>The next stage of the definition.</return>
+        [Obsolete("Use WithProtocol(SecurityRuleProtocol protocol) instead")]
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDefinition.IWithAttach<ParentT> WithProtocol(string protocol);
+
+        /// <summary>
+        /// Specifies the protocol that this rule applies to.
+        /// </summary>
+        /// <param name="protocol">One of the supported protocols.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDefinition.IWithAttach<ParentT> WithProtocol(SecurityRuleProtocol protocol);
     }
 
     /// <summary>

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         IDefinition
     {
         private NetworkWatcherImpl parent;
-        private ConnectivityParametersInner parameters = new ConnectivityParametersInner();
+        private ConnectivityParameters parameters = new ConnectivityParameters();
         private ConnectivityInformationInner result;
         ///GENMHASH:7099791AF90C47ACDEDA5E7DCAC2262C:01CB734F343C6462053765168A26F354
         private ConnectivitySource EnsureConnectivitySource()
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FEB663768504525640BBFB5A208F3B76:604674CBADE49147ABB656FB35848A27
         public Microsoft.Azure.Management.Network.Fluent.Models.ConnectionStatus ConnectionStatus()
         {
-            return Microsoft.Azure.Management.Network.Fluent.Models.ConnectionStatus.Parse(result.ConnectionStatus);
+            return result.ConnectionStatus;
         }
 
         ///GENMHASH:C12D19550E9A52E850122F1D8B46F8F8:086B6C086549309C625D249938B171B9

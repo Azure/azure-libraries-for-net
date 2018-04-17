@@ -2,33 +2,25 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Network.Fluent
 {
+    using Microsoft.Azure.Management.Network.Fluent.Models;
+    using Microsoft.Azure.Management.Network.Fluent.Topology.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Management.Network.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System.Collections.Generic;
-    using System;
 
     internal partial class TopologyImpl
     {
         /// <summary>
-        /// Refreshes the resource to sync with Azure.
+        /// Gets the datetime when the topology was initially created for the resource
+        /// group.
         /// </summary>
-        /// <return>The Observable to refreshed resource.</return>
-        async Task<Microsoft.Azure.Management.Network.Fluent.ITopology> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.ITopology>.RefreshAsync(CancellationToken cancellationToken)
-        {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.ITopology;
-        }
-
-        /// <summary>
-        /// Gets the parent of this child object.
-        /// </summary>
-        Microsoft.Azure.Management.Network.Fluent.INetworkWatcher Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>.Parent
+        System.DateTime Microsoft.Azure.Management.Network.Fluent.ITopology.CreatedTime
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.INetworkWatcher;
+                return this.CreatedTime();
             }
         }
 
@@ -44,13 +36,24 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets name of resource group this topology represents.
+        /// Gets the datetime when the topology was last modified.
         /// </summary>
-        string Microsoft.Azure.Management.Network.Fluent.ITopology.ResourceGroupName
+        System.DateTime Microsoft.Azure.Management.Network.Fluent.ITopology.LastModifiedTime
         {
             get
             {
-                return this.ResourceGroupName();
+                return this.LastModifiedTime();
+            }
+        }
+
+        /// <summary>
+        /// Gets the parent of this child object.
+        /// </summary>
+        Microsoft.Azure.Management.Network.Fluent.INetworkWatcher Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>.Parent
+        {
+            get
+            {
+                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.INetworkWatcher;
             }
         }
 
@@ -66,26 +69,44 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets the datetime when the topology was last modified.
+        /// Gets parameters used to query this topology.
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Network.Fluent.ITopology.LastModifiedTime
+        Models.TopologyParameters Microsoft.Azure.Management.Network.Fluent.ITopology.TopologyParameters
         {
             get
             {
-                return this.LastModifiedTime();
+                return this.TopologyParameters() as Models.TopologyParameters;
             }
         }
 
         /// <summary>
-        /// Gets the datetime when the topology was initially created for the resource
-        /// group.
+        /// Set the target virtual network.
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Network.Fluent.ITopology.CreatedTime
+        /// <param name="networkId">The target network id value to set.</param>
+        /// <return>The Topology object itself.</return>
+        Topology.Definition.IWithExecuteAndSubnet Topology.Definition.IWithTargetNetwork.WithTargetNetwork(string networkId)
         {
-            get
-            {
-                return this.CreatedTime();
-            }
+            return this.WithTargetNetwork(networkId) as Topology.Definition.IWithExecuteAndSubnet;
+        }
+
+        /// <summary>
+        /// Set the targetResourceId value.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the target resource group to perform getTopology on.</param>
+        /// <return>The Topology object itself.</return>
+        Topology.Definition.IWithExecute Topology.Definition.IWithTargetResourceGroup.WithTargetResourceGroup(string resourceGroupName)
+        {
+            return this.WithTargetResourceGroup(resourceGroupName) as Topology.Definition.IWithExecute;
+        }
+
+        /// <summary>
+        /// Set the subnetName value.
+        /// </summary>
+        /// <param name="subnetName">The destinationIPAddress value to set.</param>
+        /// <return>The Topology object itself.</return>
+        Topology.Definition.IWithExecute Topology.Definition.IWithTargetSubnet.WithTargetSubnet(string subnetName)
+        {
+            return this.WithTargetSubnet(subnetName) as Topology.Definition.IWithExecute;
         }
     }
 }

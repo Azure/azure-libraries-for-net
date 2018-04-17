@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:0BDDE35CB8B3DD88A33C6363C54C0AF4:A53FB902D8052D360814DFFA0B1CEB40
         public VirtualNetworkGatewayType GatewayType()
         {
-            return VirtualNetworkGatewayType.Parse(Inner.GatewayType);
+            return Inner.GatewayType;
         }
 
         ///GENMHASH:7B35A850EB3ED4D45443736E5DA5F56D:D1DF4B3C91F52A00A90DDD465919E483
@@ -209,16 +209,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:CD9D1A4AC3ED441D00B98B9B320AC09D:BF1BB51B936203E7C498DE394C7D6437
         public VirtualNetworkGatewayImpl WithPolicyBasedVpn()
         {
-            Inner.GatewayType = VirtualNetworkGatewayType.Vpn.Value;
-            Inner.VpnType = Models.VpnType.PolicyBased.Value;
+            Inner.GatewayType = VirtualNetworkGatewayType.Vpn;
+            Inner.VpnType = Models.VpnType.PolicyBased;
             return this;
         }
 
         ///GENMHASH:7BCFE88DA79B70F3091D2820BC2AD538:235D0452060ED10B1F26C762062BDAC8
         public VirtualNetworkGatewayImpl WithRouteBasedVpn()
         {
-            Inner.GatewayType = VirtualNetworkGatewayType.Vpn.Value;
-            Inner.VpnType = Models.VpnType.RouteBased.Value;
+            Inner.GatewayType = VirtualNetworkGatewayType.Vpn;
+            Inner.VpnType = Models.VpnType.RouteBased;
             return this;
         }
         ///GENMHASH:5F33673C89B8C86CEB000C662B79A4D9:6EC0094C76D2A9C5B6105BABB8EAA58C
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public async Task<string> GenerateVpnProfileAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             using (var result = await Manager.Inner.VirtualNetworkGateways
-                .GenerateVpnProfileWithHttpMessagesAsync(ResourceGroupName, Name, new VpnClientParametersInner(), cancellationToken: cancellationToken))
+                .GenerateVpnProfileWithHttpMessagesAsync(ResourceGroupName, Name, new VpnClientParameters(), cancellationToken: cancellationToken))
             {
                 if (result.Body != null) return result.Body;
 
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:E40693A780061FC1A156598B974969F1:BB97F4F4051A2B51D3862BFF3B7F9556
         public VirtualNetworkGatewayImpl WithExpressRoute()
         {
-            Inner.GatewayType = VirtualNetworkGatewayType.ExpressRoute.Value;
+            Inner.GatewayType = VirtualNetworkGatewayType.ExpressRoute;
             return this;
         }
 
@@ -420,8 +420,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             VirtualNetworkGatewaySku sku = new VirtualNetworkGatewaySku()
             {
                 // same sku tier as sku name
-                Name = skuName.Value,
-                Tier = skuName.Value
+                Name = skuName,
+                Tier = VirtualNetworkGatewaySkuTier.Parse(skuName.Value)
             };
             Inner.Sku = sku;
             return this;
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:EB9010098916DB0783BD4F8210557775:9DED2E4BB6BF3B4B59C279F025D54359
         public VpnType VpnType()
         {
-            return Models.VpnType.Parse(Inner.VpnType);
+            return Inner.VpnType;
         }
 
         ///GENMHASH:30845DAECBF61D7211678C9DC6EC7B14:80D31269AE598B94897682B4DE95A6D1

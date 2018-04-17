@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FCB784E90DCC27EAC6AD4B4C988E2752:925E8594616C741FD699EF2269B3D731
         public IPAllocationMethod PrivateIPAllocationMethod()
         {
-            return IPAllocationMethod.Parse(Inner.PrivateIPAllocationMethod);
+            return Inner.PrivateIPAllocationMethod;
         }
 
         #endregion
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public ApplicationGatewayFrontendImpl WithPrivateIPAddressDynamic()
         {
             Inner.PrivateIPAddress = null;
-            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Dynamic.ToString();
+            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Dynamic;
             return this;
         }
 
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public ApplicationGatewayFrontendImpl WithPrivateIPAddressStatic(string ipAddress)
         {
             Inner.PrivateIPAddress = ipAddress;
-            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Static.ToString();
+            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Static;
             return this;
         }
 

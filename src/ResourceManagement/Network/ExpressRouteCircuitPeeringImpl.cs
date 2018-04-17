@@ -117,9 +117,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:AEE17FD09F624712647F5EBCEC141EA5:A2B4C8D5515FE0A160E2214A60FB99A6
-        public ExpressRouteCircuitPeeringState State()
+        public ExpressRoutePeeringState State()
         {
-            return ExpressRouteCircuitPeeringState.Parse(Inner.State);
+            return Inner.State;
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:4FC30E0F6EB4AA975F91CB9D7C798AFE
@@ -135,9 +135,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:485C72CDD911A007F5A804436A3BCA68:FF479A489725561C2045B0642CCBCCED
-        public ExpressRouteCircuitPeeringType PeeringType()
+        public ExpressRoutePeeringType PeeringType()
         {
-            return ExpressRouteCircuitPeeringType.Parse(Inner.PeeringType);
+            return Inner.PeeringType;
         }
 
         ///GENMHASH:5B4E75310952352A341A438C97BCDE27:43D5810028C5A1E8F807D845A5FC84BD
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:4F6F8EB53B615AA4FDE4C8CD06427C19:655E227778C880919192F106CB2F1726
-        public int PeerAsn()
+        public long PeerAsn()
         {
             return Inner.PeerASN.HasValue ? Inner.PeerASN.Value : 0;
         }
@@ -198,13 +198,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:F1FF74FECF7AD81993920CCBF4D96B40:34F765B181E581705C5B1FEB895758A1
-        internal ExpressRouteCircuitPeeringImpl(ExpressRouteCircuitImpl parent, ExpressRouteCircuitPeeringInner innerObject, IExpressRouteCircuitPeeringsOperations client, ExpressRouteCircuitPeeringType type)
+        internal ExpressRouteCircuitPeeringImpl(ExpressRouteCircuitImpl parent, ExpressRouteCircuitPeeringInner innerObject, IExpressRouteCircuitPeeringsOperations client, ExpressRoutePeeringType type)
             : base(type.Value, innerObject, parent.Manager)
         {
             this.client = client;
             this.parent = parent;
             stats = new ExpressRouteCircuitStatsImpl(innerObject.Stats);
-            Inner.PeeringType = type.Value;
+            Inner.PeeringType = type;
         }
     }
 }

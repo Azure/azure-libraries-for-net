@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:D684E7477889A9013C81FAD82F69C54F:BD249A015EF71106387B78281489583A
         internal TransportProtocol Protocol()
         {
-            return TransportProtocol.Parse(Inner.Protocol);
+            return Inner.Protocol;
         }
 
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:475A4755B19EB893208FCC08E7664C5B:8E47A7551FAA8958BCB5314D0E665506
         internal LoadBalancerInboundNatPoolImpl WithProtocol(TransportProtocol protocol)
         {
-            Inner.Protocol = protocol.ToString();
+            Inner.Protocol = protocol;
             return this;
         }
 

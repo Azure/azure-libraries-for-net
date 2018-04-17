@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             //
             this.Inner.Sku = new PublicIPAddressSku
             {
-                Name = skuType.ToString()
+                Name = PublicIPAddressSkuName.Parse(skuType.ToString())
             };
             return this;
         }
@@ -96,14 +96,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 return null;
             }
-            return PublicIPSkuType.Parse(this.Inner.Sku.Name);
+            return PublicIPSkuType.Parse(this.Inner.Sku.Name.Value);
         }
 
         ///GENMHASH:969BC7B1870284D2FCF3192BD82F142F:5DAA827087A429B57970263E396335D1
         internal PublicIPAddressImpl WithStaticIP()
         {
 
-            Inner.PublicIPAllocationMethod = Models.IPAllocationMethod.Static.ToString();
+            Inner.PublicIPAllocationMethod = Models.IPAllocationMethod.Static;
             return this;
         }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:E601A7030461C04378EF23ACF207D4C2:6F94222AD7A6FAA5BDB1F4A8C2336D54
         internal PublicIPAddressImpl WithDynamicIP()
         {
-            Inner.PublicIPAllocationMethod = Models.IPAllocationMethod.Dynamic.ToString();
+            Inner.PublicIPAllocationMethod = Models.IPAllocationMethod.Dynamic;
             return this;
         }
 
@@ -156,14 +156,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:7248510394946B110C799F104E023F9D:00D88D2717A616B24525A5934BEBB4F1
         internal IPAllocationMethod IPAllocationMethod()
         {
-            return Models.IPAllocationMethod.Parse(Inner.PublicIPAllocationMethod);
+            return Inner.PublicIPAllocationMethod;
         }
 
 
         ///GENMHASH:493B1EDB88EACA3A476D936362A5B14C:FCE799745FA15D3EA39692B492C8E747
         internal IPVersion Version()
         {
-            return IPVersion.Parse(Inner.PublicIPAddressVersion);
+            return Inner.PublicIPAddressVersion;
         }
 
 

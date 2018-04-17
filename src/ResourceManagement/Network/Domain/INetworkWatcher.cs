@@ -40,25 +40,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.Network.Fluent.IPacketCaptures PacketCaptures { get; }
 
         /// <summary>
-        /// Gets network topology of a given resource group asynchronously.
-        /// </summary>
-        /// <param name="targetResourceGroup">The name of the target resource group to perform getTopology on.</param>
-        /// <return>Current network topology by resource group.</return>
-        Task<Microsoft.Azure.Management.Network.Fluent.ITopology> GetTopologyAsync(string targetResourceGroup, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// Verifies the possibility of establishing a direct TCP connection from a virtual machine to a given endpoint
         /// including another virtual machine or an arbitrary remote server.
         /// </summary>
         /// <return>A stage to specify parameters for connectivity check.</return>
         ConnectivityCheck.Definition.IToDestination CheckConnectivity();
-
-        /// <summary>
-        /// Gets network topology of a given resource group.
-        /// </summary>
-        /// <param name="targetResourceGroup">The name of the target resource group to perform getTopology on.</param>
-        /// <return>Current network topology by resource group.</return>
-        Microsoft.Azure.Management.Network.Fluent.ITopology GetTopology(string targetResourceGroup);
 
         /// <summary>
         /// Gets the information on the configuration of flow log.
@@ -93,5 +79,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="vmId">ID of the target VM.</param>
         /// <return>The configured and effective security group rules on the specified VM.</return>
         Task<Microsoft.Azure.Management.Network.Fluent.ISecurityGroupView> GetSecurityGroupViewAsync(string vmId, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// First step specifying parameters to get topology of a resource group.
+        /// </summary>
+        /// <return>Current network topology by resource group.</return>
+        Topology.Definition.IWithTargetResourceGroup Topology();
     }
 }

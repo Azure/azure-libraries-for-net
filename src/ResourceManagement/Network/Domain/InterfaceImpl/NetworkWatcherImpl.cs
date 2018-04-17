@@ -45,13 +45,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
-        /// Gets network topology of a given resource group asynchronously.
+        /// First step specifying parameters to get topology of a resource group.
         /// </summary>
-        /// <param name="targetResourceGroup">The name of the target resource group to perform getTopology on.</param>
         /// <return>Current network topology by resource group.</return>
-        async Task<Microsoft.Azure.Management.Network.Fluent.ITopology> Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.GetTopologyAsync(string targetResourceGroup, CancellationToken cancellationToken)
+        Topology.Definition.IWithTargetResourceGroup Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.Topology()
         {
-            return await this.GetTopologyAsync(targetResourceGroup, cancellationToken) as Microsoft.Azure.Management.Network.Fluent.ITopology;
+            return this.Topology() as Topology.Definition.IWithTargetResourceGroup;
         }
 
         /// <summary>
@@ -80,16 +79,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
         VerificationIPFlow.Definition.IWithTargetResource Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.VerifyIPFlow()
         {
             return this.VerifyIPFlow() as VerificationIPFlow.Definition.IWithTargetResource;
-        }
-
-        /// <summary>
-        /// Gets network topology of a given resource group.
-        /// </summary>
-        /// <param name="targetResourceGroup">The name of the target resource group to perform getTopology on.</param>
-        /// <return>Current network topology by resource group.</return>
-        Microsoft.Azure.Management.Network.Fluent.ITopology Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.GetTopology(string targetResourceGroup)
-        {
-            return this.GetTopology(targetResourceGroup) as Microsoft.Azure.Management.Network.Fluent.ITopology;
         }
 
         /// <summary>

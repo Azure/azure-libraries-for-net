@@ -226,9 +226,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
             if (protocol != null)
             {
                 var policy = ensureSslPolicy();
-                if (!policy.DisabledSslProtocols.Contains(protocol.ToString()))
+                if (!policy.DisabledSslProtocols.Contains(protocol))
                 {
-                    policy.DisabledSslProtocols.Add(protocol.ToString());
+                    policy.DisabledSslProtocols.Add(protocol);
                 }
             }
             return this;
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (Inner.SslPolicy != null && Inner.SslPolicy.DisabledSslProtocols != null)
             {
-                Inner.SslPolicy.DisabledSslProtocols.Remove(protocol.ToString());
+                Inner.SslPolicy.DisabledSslProtocols.Remove(protocol);
                 if (Inner.SslPolicy.DisabledSslProtocols.Count == 0)
                 {
                     WithoutAnyDisabledSslProtocols();
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             var protocols = policy.DisabledSslProtocols;
             if (protocols == null)
             {
-                protocols = new List<string>();
+                protocols = new List<ApplicationGatewaySslProtocol>();
                 policy.DisabledSslProtocols = protocols;
             }
             return policy;
@@ -311,9 +311,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
             else
             {
-                foreach (string protocol in Inner.SslPolicy.DisabledSslProtocols)
+                foreach (ApplicationGatewaySslProtocol protocol in Inner.SslPolicy.DisabledSslProtocols)
                 {
-                    protocols.Add(ApplicationGatewaySslProtocol.Parse(protocol));
+                    protocols.Add(protocol);
                 }
                 return protocols;
             }
@@ -977,7 +977,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
             var sku = new ApplicationGatewaySku()
             {
-                Name = skuName.ToString(),
+                Name = skuName,
                 Capacity = count
             };
 
@@ -1050,7 +1050,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:56D5F87F4F5A3E1857D2D243C076EE30:59E2C0788337FAEAF9283E6BBEF1463E
         public ApplicationGatewayOperationalState OperationalState()
         {
-            return ApplicationGatewayOperationalState.Parse(Inner.OperationalState);
+            return Inner.OperationalState;
         }
 
 
@@ -1081,7 +1081,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (Sku() != null && Sku().Name != null)
             {
-                return ApplicationGatewaySkuName.Parse(Sku().Name);
+                return Sku().Name;
             }
             else
             {
@@ -1207,7 +1207,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:43E446F640DC3345BDBD9A3378F2018A
             if (Sku() != null && Sku().Tier != null)
             {
-                return ApplicationGatewayTier.Parse(Sku().Tier);
+                return Sku().Tier;
             }
             else
             {

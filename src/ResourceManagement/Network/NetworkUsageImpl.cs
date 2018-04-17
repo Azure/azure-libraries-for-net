@@ -7,9 +7,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Management.Network.Fluent.Models;
     using Management.ResourceManager.Fluent.Core;
 
-    internal class NetworkUsageImpl : Wrapper<Usage>, INetworkUsage
+    internal class NetworkUsageImpl : Wrapper<UsageInner>, INetworkUsage
     {
-        public NetworkUsageImpl(Usage inner) : base(inner)
+        public NetworkUsageImpl(UsageInner inner) : base(inner)
         {
         }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return NetworkUsageUnit.Parse(Usage.Unit);
+                return NetworkUsageUnit.Parse(UsageInner.Unit);
             }
         }
     }

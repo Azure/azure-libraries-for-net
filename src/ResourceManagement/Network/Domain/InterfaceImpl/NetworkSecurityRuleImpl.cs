@@ -67,6 +67,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Specifies the protocol that this rule applies to.
+        /// </summary>
+        /// <param name="protocol">One of the supported protocols.</param>
+        /// <return>The next stage of the definition.</return>
+        NetworkSecurityRule.Definition.IWithAttach<NetworkSecurityGroup.Definition.IWithCreate> NetworkSecurityRule.Definition.IWithProtocol<NetworkSecurityGroup.Definition.IWithCreate>.WithProtocol(SecurityRuleProtocol protocol)
+        {
+            return this.WithProtocol(protocol) as NetworkSecurityRule.Definition.IWithAttach<NetworkSecurityGroup.Definition.IWithCreate>;
+        }
+
+        /// <summary>
         /// Makes this rule apply to any supported protocol.
         /// </summary>
         /// <return>The next stage of the definition.</return>
@@ -81,6 +91,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="protocol">One of the supported protocols.</param>
         /// <return>The next stage of the definition.</return>
         NetworkSecurityRule.UpdateDefinition.IWithAttach<NetworkSecurityGroup.Update.IUpdate> NetworkSecurityRule.UpdateDefinition.IWithProtocol<NetworkSecurityGroup.Update.IUpdate>.WithProtocol(string protocol)
+        {
+            return this.WithProtocol(protocol) as NetworkSecurityRule.UpdateDefinition.IWithAttach<NetworkSecurityGroup.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the protocol that this rule applies to.
+        /// </summary>
+        /// <param name="protocol">One of the supported protocols.</param>
+        /// <return>The next stage of the definition.</return>
+        NetworkSecurityRule.UpdateDefinition.IWithAttach<NetworkSecurityGroup.Update.IUpdate> NetworkSecurityRule.UpdateDefinition.IWithProtocol<NetworkSecurityGroup.Update.IUpdate>.WithProtocol(SecurityRuleProtocol protocol)
         {
             return this.WithProtocol(protocol) as NetworkSecurityRule.UpdateDefinition.IWithAttach<NetworkSecurityGroup.Update.IUpdate>;
         }

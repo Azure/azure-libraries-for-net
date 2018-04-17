@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the state of the peering between the two networks.
         /// </summary>
-        Models.NetworkPeeringState State { get; }
+        Models.VirtualNetworkPeeringState State { get; }
 
         /// <summary>
         /// Gets the type of gateway use enabled for this network.

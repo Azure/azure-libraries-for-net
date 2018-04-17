@@ -55,30 +55,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return packetCaptures;
         }
 
-
-        ///GENMHASH:4DDB33095C13CB51497915455C29A983:DE3DB564A33EAA9D4E3B95FAC0C611CF
-        public async Task<Microsoft.Azure.Management.Network.Fluent.ITopology> GetTopologyAsync(
-            string targetResourceGroup, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var response = await this.Manager.Inner.NetworkWatchers
-                .GetTopologyAsync(this.ResourceGroupName, this.Name, targetResourceGroup);
-            return new TopologyImpl(this, response, targetResourceGroup);
-        }
-
         ///GENMHASH:6ADE0CC8B76996D06BE85035269E8EC9:8852F6E8948BB93D289E3C993AA4F3B7
         public ConnectivityCheckImpl CheckConnectivity()
         {
             return new ConnectivityCheckImpl(this);
         }
-
-        ///GENMHASH:E85C9E0FD0DD69D8054769E60F0023E7:08E9F33BF19AA5A33146856680A21489
-        public TopologyImpl GetTopology(string targetResourceGroup)
-        {
-            TopologyInner topologyInner = Extensions.Synchronize(() => this.Manager.Inner.NetworkWatchers
-                .GetTopologyAsync(this.ResourceGroupName, this.Name, targetResourceGroup));
-            return new TopologyImpl(this, topologyInner, targetResourceGroup);
-        }
-
 
         ///GENMHASH:F57C7696A3ED75E619C8E1A9DFE5EA61:9938198EE6EDB0DC20C3A7100AD87595
         public IFlowLogSettings GetFlowLogSettings(string nsgId)
@@ -138,6 +119,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        ///GENMHASH:E4A3944A84B2B14B8970F2EDB1A93DFF:A4A98DC2FF2FF460C68A01A5E459AB5F
+        public TopologyImpl Topology()
+        {
+            return new TopologyImpl(this);
+        }
 
         ///GENMHASH:39EDCBB843031828E5101FAF38C0D8AF:6961C7D54DE752340917E5F05FB8EAE2
         public async Task<Microsoft.Azure.Management.Network.Fluent.ISecurityGroupView> GetSecurityGroupViewAsync(

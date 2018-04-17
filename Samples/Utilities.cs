@@ -2132,7 +2132,9 @@ namespace Microsoft.Azure.Management.Samples.Common
         public static void Print(ITopology resource)
         {
             StringBuilder sb = new StringBuilder().Append("Topology: ").Append(resource.Id)
-                .Append("\n\tResource group: ").Append(resource.ResourceGroupName)
+                .Append("\n\tResource group: ").Append(resource.TopologyParameters.TargetResourceGroupName)
+                .Append("\n\tTarget vitual network: ").Append(resource.TopologyParameters.TargetVirtualNetwork)
+                .Append("\n\tTarget subnet: ").Append(resource.TopologyParameters.TargetSubnet)
                 .Append("\n\tCreated time: ").Append(resource.CreatedTime)
                 .Append("\n\tLast modified time: ").Append(resource.LastModifiedTime);
             foreach (var tr in resource.Resources.Values)

@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets the peer ASN.
         /// </summary>
-        int Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering.PeerAsn
+        long Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering.PeerAsn
         {
             get
             {
@@ -155,11 +155,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets peering state.
         /// </summary>
-        Models.ExpressRouteCircuitPeeringState Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering.State
+        Models.ExpressRoutePeeringState Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering.State
         {
             get
             {
-                return this.State() as Models.ExpressRouteCircuitPeeringState;
+                return this.State() as Models.ExpressRoutePeeringState;
             }
         }
 
@@ -177,11 +177,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <summary>
         /// Gets peering type.
         /// </summary>
-        Models.ExpressRouteCircuitPeeringType Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering.PeeringType
+        Models.ExpressRoutePeeringType Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering.PeeringType
         {
             get
             {
-                return this.PeeringType() as Models.ExpressRouteCircuitPeeringType;
+                return this.PeeringType() as Models.ExpressRoutePeeringType;
             }
         }
 

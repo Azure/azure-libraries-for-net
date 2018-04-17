@@ -65,13 +65,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:8442F1C1132907DE46B62B277F4EE9B7:B2FD2E689A3D5C83A53AB170D8E5D8DA
         public ApplicationGatewayRedirectType Type()
         {
-            return ApplicationGatewayRedirectType.Parse(Inner.RedirectType);
+            return Inner.RedirectType;
         }
 
         ///GENMHASH:9B4152A79A63ABA2300034A9B0E203BE:AD804E3F5A0A2B29EC6FA82A929F31D4
         public ApplicationGatewayRedirectConfigurationImpl WithType(ApplicationGatewayRedirectType redirectType)
         {
-            Inner.RedirectType = redirectType?.ToString();
+            Inner.RedirectType = redirectType;
             return this;
         }
 

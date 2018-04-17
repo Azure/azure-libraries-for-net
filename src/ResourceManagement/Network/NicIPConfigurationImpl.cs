@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:26224359DA104EABE1EDF7F491D110F7:BF9C09A5F85740EB1DF5E781C47B92F3
         internal NicIPConfigurationImpl WithPrivateIPAddressDynamic()
         {
-            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Dynamic.ToString();
+            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Dynamic;
             Inner.PrivateIPAddress = null;
             return this;
         }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:9946B3475EBD5468D4462F188EEE86C2:B0B83C63E323AAB22F60069661B51903
         internal NicIPConfigurationImpl WithPrivateIPAddressStatic(string staticPrivateIPAddress)
         {
-            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Static.ToString();
+            Inner.PrivateIPAllocationMethod = IPAllocationMethod.Static;
             Inner.PrivateIPAddress = staticPrivateIPAddress;
             return this;
         }
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <returns>public ip SubResource</returns>
 
         ///GENMHASH:B45B91A2577A6C77086C36AFAD21CB6C:0762B331D53D3FF3CD6E97D46248B648
-        private SubResource PublicIPToAssociate()
+        private PublicIPAddressInner PublicIPToAssociate()
         {
             string pipId = null;
             if (removePrimaryPublicIPAssociation)
@@ -376,13 +376,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
             if (pipId != null)
             {
-                return new SubResource(pipId);
+                return new PublicIPAddressInner(id: pipId);
             }
             else if (!isInCreateMode)
             {
                 if (Inner.PublicIPAddress != null)
                 {
-                    return new SubResource(Inner.PublicIPAddress.Id);
+                    return new PublicIPAddressInner(id: Inner.PublicIPAddress.Id);
                 }
             }
             return null;
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:DEFD17C7FB8B2DE605F5B8314F21538C:98C9348F48818CBA9BE5411158A7ECB2
         internal NicIPConfigurationImpl WithPrivateIPVersion(IPVersion ipVersion)
         {
-            Inner.PrivateIPAddressVersion = ipVersion.ToString();
+            Inner.PrivateIPAddressVersion = ipVersion;
             return this;
         }
 

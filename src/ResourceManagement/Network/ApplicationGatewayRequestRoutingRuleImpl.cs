@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:597B4CCFA9884BBB039FE1B734196FBB:9BB7A8FF5376A1E35A43987311B73DC5
         public ApplicationGatewayRequestRoutingRuleType RuleType()
         {
-            return ApplicationGatewayRequestRoutingRuleType.Parse(Inner.RuleType);
+            return Inner.RuleType;
         }
 
         ///GENMHASH:5AC5C38B890C28F2C14CCD5CC0A89B49:0B03E9DA7912B73A5E88BD6441153E80

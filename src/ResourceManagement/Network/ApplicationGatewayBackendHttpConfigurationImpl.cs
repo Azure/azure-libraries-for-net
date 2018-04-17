@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:D684E7477889A9013C81FAD82F69C54F:BD249A015EF71106387B78281489583A
         public ApplicationGatewayProtocol Protocol()
         {
-            return ApplicationGatewayProtocol.Parse(Inner.Protocol);
+            return Inner.Protocol;
         }
 
 
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (Inner.CookieBasedAffinity != null)
             {
-                return Inner.CookieBasedAffinity.ToLower().Equals(ApplicationGatewayCookieBasedAffinity.Enabled.ToLower());
+                return Inner.CookieBasedAffinity.Equals(ApplicationGatewayCookieBasedAffinity.Enabled);
             }
             else
             {
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:A473E8C551A81C93BD8EA73FE99E314B:D6F3848D67AE407B04179F01B8D24165
         public ApplicationGatewayBackendHttpConfigurationImpl WithProtocol(ApplicationGatewayProtocol protocol)
         {
-            Inner.Protocol = protocol?.ToString();
+            Inner.Protocol = protocol;
             return this;
         }
 

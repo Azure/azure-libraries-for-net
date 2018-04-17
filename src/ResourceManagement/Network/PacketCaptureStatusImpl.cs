@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:FD831087F4F6D367288620E870CFEADF:29B42AAA7BBB787804889088EECFB694
         public PcStatus PacketCaptureStatus()
         {
-            return PcStatus.Parse(Inner.PacketCaptureStatus);
+            return Inner.PacketCaptureStatus;
         }
 
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             var list = new List<PcError>();
             foreach (var item in Inner.PacketCaptureError)
             {
-                list.Add(PcError.Parse(item));
+                list.Add(item);
             }
             return list.AsReadOnly();
         }

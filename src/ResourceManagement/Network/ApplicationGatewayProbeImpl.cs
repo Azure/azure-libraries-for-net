@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:A473E8C551A81C93BD8EA73FE99E314B:8E47A7551FAA8958BCB5314D0E665506
         public ApplicationGatewayProbeImpl WithProtocol(ApplicationGatewayProtocol protocol)
         {
-            Inner.Protocol = protocol.Value;
+            Inner.Protocol = protocol;
             return this;
         }
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:D684E7477889A9013C81FAD82F69C54F:BD249A015EF71106387B78281489583A
         public ApplicationGatewayProtocol Protocol()
         {
-            return ApplicationGatewayProtocol.Parse(Inner.Protocol);
+            return Inner.Protocol;
         }
 
 

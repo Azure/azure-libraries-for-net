@@ -10,12 +10,13 @@ using Fluent.Tests.Common;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Azure.Tests;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
+using Microsoft.Rest;
+using Xunit.Abstractions;
 
 namespace Fluent.Tests.Network
 {
     public class NSG
     {
-
         [Fact]
         public void CreateUpdate()
         {
@@ -25,7 +26,7 @@ namespace Fluent.Tests.Network
                 string resourceGroupName = "rg" + testId;
                 string nsgName = "nsg" + testId;
                 string nicName = "nic" + testId;
-                Region region = Region.USEast;
+                Region region = Region.USSouthCentral;
 
                 #region Create
                 var manager = TestHelper.CreateNetworkManager();

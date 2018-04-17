@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    internal class NetworkUsagesImpl : ReadableWrappers<INetworkUsage, NetworkUsageImpl, Usage>, INetworkUsages
+    internal class NetworkUsagesImpl : ReadableWrappers<INetworkUsage, NetworkUsageImpl, UsageInner>, INetworkUsages
     {
         private INetworkManagementClient client;
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public async Task<IPagedCollection<INetworkUsage>> ListByRegionAsync(string regionName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<INetworkUsage, Usage>.LoadPage(
+            return await PagedCollection<INetworkUsage, UsageInner>.LoadPage(
                  async (cancellation) => await client.Usages.ListAsync(regionName, cancellation),
                  client.Usages.ListNextAsync,
                  WrapModel,
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                  cancellationToken);
         }
 
-        protected override INetworkUsage WrapModel(Usage inner)
+        protected override INetworkUsage WrapModel(UsageInner inner)
         {
             if (inner == null)
             {

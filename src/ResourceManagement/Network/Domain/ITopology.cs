@@ -13,19 +13,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
     public interface ITopology :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IExecutable<Microsoft.Azure.Management.Network.Fluent.ITopology>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.TopologyInner>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.ITopology>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher>
     {
-        /// <summary>
-        /// Gets name of resource group this topology represents.
-        /// </summary>
-        string ResourceGroupName { get; }
-
-        /// <summary>
-        /// Gets the datetime when the topology was last modified.
-        /// </summary>
-        System.DateTime LastModifiedTime { get; }
 
         /// <summary>
         /// Gets the datetime when the topology was initially created for the resource
@@ -34,13 +25,23 @@ namespace Microsoft.Azure.Management.Network.Fluent
         System.DateTime CreatedTime { get; }
 
         /// <summary>
+        /// Gets GUID representing the id.
+        /// </summary>
+        string Id { get; }
+
+        /// <summary>
+        /// Gets the datetime when the topology was last modified.
+        /// </summary>
+        System.DateTime LastModifiedTime { get; }
+
+        /// <summary>
         /// Gets The resources in this topology.
         /// </summary>
         System.Collections.Generic.IReadOnlyDictionary<string, Models.TopologyResource> Resources { get; }
 
         /// <summary>
-        /// Gets GUID representing the id.
+        /// Gets parameters used to query this topology.
         /// </summary>
-        string Id { get; }
+        Models.TopologyParameters TopologyParameters { get; }
     }
 }
