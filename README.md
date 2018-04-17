@@ -2,7 +2,7 @@
 
 # Azure Management Libraries for .NET
 
-This README is based on the released stable version (1.8). If you are looking for other releases, see [More Information](#more-information)
+This README is based on the released stable version (1.9). If you are looking for other releases, see [More Information](#more-information)
 
 The Azure Management Libraries for .NET is a higher-level, object-oriented API for managing Azure resources. Libraries are built on the lower-level, request-response style [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest) and can run side-by-side with [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest).
 
@@ -22,7 +22,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
 * [More information](#more-information)
 
 ## Feature Availability and Road Map
-:triangular_flag_on_post: *as of Version 1.8*
+:triangular_flag_on_post: *as of Version 1.9*
 
 <table>
   <tr>
@@ -45,7 +45,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
   </tr>
   <tr>
     <td>SQL Database</td>
-    <td>Databases<br>Firewalls and virtual network<br>Elastic pools<br>Import, export, recover and restore dbs<br>Failover groups and replication links<br>DNS aliasing and metrics</td>
+    <td>Databases<br>Firewalls and virtual network<br>Elastic pools<br>Import, export, recover and restore dbs<br>Failover groups and replication links<br>DNS aliasing and metrics<br>Sync groups<br>Encryption protectors</td>
     <td></td>
     <td valign="top">More features</td>
   </tr>
@@ -572,7 +572,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ### Latest stable release
 
-**1.8** release builds are available on NuGet:
+**1.9** release builds are available on NuGet:
 
 |Azure Management Library                     | Package name                                        | Stable                 |
 |---------------------------------------------|-----------------------------------------------------|------------------------|
@@ -611,7 +611,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ## Upgrading from older versions
 
-If you are migrating your code from 1.7.x to 1.8.x, you can use these release notes for [preparing your code for 1.8 from 1.7](./notes/prepare-for-1.8.md).
+If you are migrating your code from 1.8.x to 1.9.x, you can use these release notes for [preparing your code for 1.9 from 1.8](./notes/prepare-for-1.9.md).
 
 In general, Azure Libraries for .Net follow [semantic versioning](http://semver.org/), so user code should continue working in a compatible fashion between minor versions of the same major version release train, with the following caveats:
 
@@ -646,6 +646,7 @@ If you would like to become an active contributor to this project please follow 
 
 | Version           | SHA1                                                                                      | Remarks                                               |
 |-------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| 1.9               | [1.9](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.9)          | Tagged release for 1.9 version of Azure management libraries |
 | 1.8               | [1.8](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.8)          | Tagged release for 1.8 version of Azure management libraries |
 | 1.7               | [1.7](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.7)          | Tagged release for 1.7 version of Azure management libraries |
 | 1.6               | [1.6](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.6)          | Tagged release for 1.6 version of Azure management libraries |
