@@ -249,7 +249,7 @@ namespace Samples.Tests
             }
         }
 
-        [Fact(Skip = "Skipping for now - looks like a service side issue")]
+        [Fact]
         [Trait("Samples", "Compute")]
         public void ManageStorageFromMSIEnabledVirtualMachineTest()
         {
