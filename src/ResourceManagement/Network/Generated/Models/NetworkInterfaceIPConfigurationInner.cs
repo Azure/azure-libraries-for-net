@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public NetworkInterfaceIPConfigurationInner(string id = default(string), IList<ApplicationGatewayBackendAddressPoolInner> applicationGatewayBackendAddressPools = default(IList<ApplicationGatewayBackendAddressPoolInner>), IList<BackendAddressPoolInner> loadBalancerBackendAddressPools = default(IList<BackendAddressPoolInner>), IList<InboundNatRuleInner> loadBalancerInboundNatRules = default(IList<InboundNatRuleInner>), string privateIPAddress = default(string), IPAllocationMethod privateIPAllocationMethod = default(IPAllocationMethod), IPVersion privateIPAddressVersion = default(IPVersion), SubnetInner subnet = default(SubnetInner), bool? primary = default(bool?), PublicIPAddressInner publicIPAddress = default(PublicIPAddressInner), IList<ApplicationSecurityGroupInner> applicationSecurityGroups = default(IList<ApplicationSecurityGroupInner>), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public NetworkInterfaceIPConfigurationInner(string id = default(string), IList<ApplicationGatewayBackendAddressPoolInner> applicationGatewayBackendAddressPools = default(IList<ApplicationGatewayBackendAddressPoolInner>), IList<BackendAddressPoolInner> loadBalancerBackendAddressPools = default(IList<BackendAddressPoolInner>), IList<InboundNatRuleInner> loadBalancerInboundNatRules = default(IList<InboundNatRuleInner>), string privateIPAddress = default(string), IPAllocationMethod privateIPAllocationMethod = default(IPAllocationMethod), IPVersion privateIPAddressVersion = default(IPVersion), SubnetInner subnet = default(SubnetInner), bool? primary = default(bool?), SubResource publicIPAddress = default(SubResource), IList<ApplicationSecurityGroupInner> applicationSecurityGroups = default(IList<ApplicationSecurityGroupInner>), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             ApplicationGatewayBackendAddressPools = applicationGatewayBackendAddressPools;
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Gets or sets public IP address bound to the IP configuration.
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicIPAddress")]
-        public PublicIPAddressInner PublicIPAddress { get; set; }
+        public SubResource PublicIPAddress { get; set; }
 
         /// <summary>
         /// Gets or sets application security groups in which the IP

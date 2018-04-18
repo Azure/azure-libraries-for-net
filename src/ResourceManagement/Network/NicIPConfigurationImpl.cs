@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <returns>public ip SubResource</returns>
 
         ///GENMHASH:B45B91A2577A6C77086C36AFAD21CB6C:0762B331D53D3FF3CD6E97D46248B648
-        private PublicIPAddressInner PublicIPToAssociate()
+        private SubResource PublicIPToAssociate()
         {
             string pipId = null;
             if (removePrimaryPublicIPAssociation)
@@ -376,13 +376,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
             if (pipId != null)
             {
-                return new PublicIPAddressInner(id: pipId);
+                return new SubResource(pipId);
             }
             else if (!isInCreateMode)
             {
                 if (Inner.PublicIPAddress != null)
                 {
-                    return new PublicIPAddressInner(id: Inner.PublicIPAddress.Id);
+                    return new SubResource(Inner.PublicIPAddress.Id);
                 }
             }
             return null;

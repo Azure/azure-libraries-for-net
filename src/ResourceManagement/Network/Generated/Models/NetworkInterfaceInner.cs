@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// and 'Failed'.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public NetworkInterfaceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource virtualMachine = default(Management.ResourceManager.Fluent.SubResource), NetworkSecurityGroupInner networkSecurityGroup = default(NetworkSecurityGroupInner), IList<NetworkInterfaceIPConfigurationInner> ipConfigurations = default(IList<NetworkInterfaceIPConfigurationInner>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? enableIPForwarding = default(bool?), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public NetworkInterfaceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Management.ResourceManager.Fluent.SubResource virtualMachine = default(Management.ResourceManager.Fluent.SubResource), SubResource networkSecurityGroup = default(SubResource), IList<NetworkInterfaceIPConfigurationInner> ipConfigurations = default(IList<NetworkInterfaceIPConfigurationInner>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? enableIPForwarding = default(bool?), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             VirtualMachine = virtualMachine;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Gets or sets the reference of the NetworkSecurityGroup resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkSecurityGroup")]
-        public NetworkSecurityGroupInner NetworkSecurityGroup { get; set; }
+        public SubResource NetworkSecurityGroup { get; set; }
 
         /// <summary>
         /// Gets or sets a list of IPConfigurations of the network interface.
@@ -159,10 +159,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (NetworkSecurityGroup != null)
-            {
-                NetworkSecurityGroup.Validate();
-            }
         }
     }
 }

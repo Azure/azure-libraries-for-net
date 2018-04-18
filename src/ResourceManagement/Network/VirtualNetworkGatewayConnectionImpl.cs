@@ -67,7 +67,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:AC21A10EE2E745A89E94E447800452C1:A029F579BEAF734FDD0D1A010CE89549
         private void BeforeCreating()
         {
-            VirtualNetworkGatewayInner virtualNetworkGatewayRef = new VirtualNetworkGatewayInner(id: parent.Id);
+            SubResource virtualNetworkGatewayRef = new SubResource()
+            {
+                Id = parent.Id
+            };
             Inner.VirtualNetworkGateway1 = virtualNetworkGatewayRef;
             Inner.Location = Parent().RegionName;
         }
@@ -106,7 +109,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:04D6D858FF61D37F76DA127C20A5ABF9:DFC8C1E6C2A0BC0C3178B00DC329D6B7
         public VirtualNetworkGatewayConnectionImpl WithLocalNetworkGateway(ILocalNetworkGateway localNetworkGateway)
         {
-            LocalNetworkGatewayInner localNetworkGatewayRef = new LocalNetworkGatewayInner(id: localNetworkGateway.Id);
+            SubResource localNetworkGatewayRef = new SubResource()
+            {
+                Id = localNetworkGateway.Id
+            };
             Inner.LocalNetworkGateway2 = localNetworkGatewayRef;
             return this;
         }
@@ -120,7 +126,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:1526F9C6D16D576524554408BA6A97AD:5EBA369C1D9EE8D92A96DC8E7D452DF1
         public VirtualNetworkGatewayConnectionImpl WithSecondVirtualNetworkGateway(IVirtualNetworkGateway virtualNetworkGateway2)
         {
-            VirtualNetworkGatewayInner virtualNetworkGateway2Ref = new VirtualNetworkGatewayInner(id: virtualNetworkGateway2.Id);
+            SubResource virtualNetworkGateway2Ref = new SubResource()
+            {
+                Id = virtualNetworkGateway2.Id
+            };
             Inner.VirtualNetworkGateway2 = virtualNetworkGateway2Ref;
             return this;
         }
