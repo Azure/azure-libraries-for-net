@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// 'Updating', 'Deleting', and 'Failed'.</param>
         /// <param name="etag">Gets a unique read-only string that changes
         /// whenever the resource is updated.</param>
-        public VirtualNetworkGatewayConnectionInner(SubResource virtualNetworkGateway1, VirtualNetworkGatewayConnectionType connectionType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string authorizationKey = default(string), SubResource virtualNetworkGateway2 = default(SubResource), SubResource localNetworkGateway2 = default(SubResource), int? routingWeight = default(int?), string sharedKey = default(string), VirtualNetworkGatewayConnectionStatus connectionStatus = default(VirtualNetworkGatewayConnectionStatus), IList<TunnelConnectionHealth> tunnelConnectionStatus = default(IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), Management.ResourceManager.Fluent.SubResource peer = default(Management.ResourceManager.Fluent.SubResource), bool? enableBgp = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), IList<IpsecPolicy> ipsecPolicies = default(IList<IpsecPolicy>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public VirtualNetworkGatewayConnectionInner(Management.ResourceManager.Fluent.SubResource virtualNetworkGateway1, VirtualNetworkGatewayConnectionType connectionType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string authorizationKey = default(string), Management.ResourceManager.Fluent.SubResource virtualNetworkGateway2 = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource localNetworkGateway2 = default(Management.ResourceManager.Fluent.SubResource), int? routingWeight = default(int?), string sharedKey = default(string), VirtualNetworkGatewayConnectionStatus connectionStatus = default(VirtualNetworkGatewayConnectionStatus), IList<TunnelConnectionHealth> tunnelConnectionStatus = default(IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), Management.ResourceManager.Fluent.SubResource peer = default(Management.ResourceManager.Fluent.SubResource), bool? enableBgp = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), IList<IpsecPolicy> ipsecPolicies = default(IList<IpsecPolicy>), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             AuthorizationKey = authorizationKey;
@@ -111,19 +111,19 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Gets or sets the reference to virtual network gateway resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualNetworkGateway1")]
-        public SubResource VirtualNetworkGateway1 { get; set; }
+        public Management.ResourceManager.Fluent.SubResource VirtualNetworkGateway1 { get; set; }
 
         /// <summary>
         /// Gets or sets the reference to virtual network gateway resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualNetworkGateway2")]
-        public SubResource VirtualNetworkGateway2 { get; set; }
+        public Management.ResourceManager.Fluent.SubResource VirtualNetworkGateway2 { get; set; }
 
         /// <summary>
         /// Gets or sets the reference to local network gateway resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.localNetworkGateway2")]
-        public SubResource LocalNetworkGateway2 { get; set; }
+        public Management.ResourceManager.Fluent.SubResource LocalNetworkGateway2 { get; set; }
 
         /// <summary>
         /// Gets or sets gateway connection type. Possible values are:

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public IPConfigurationInner(string id = default(string), string privateIPAddress = default(string), IPAllocationMethod privateIPAllocationMethod = default(IPAllocationMethod), SubnetInner subnet = default(SubnetInner), PublicIPAddressInner publicIPAddress = default(PublicIPAddressInner), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        public IPConfigurationInner(string id = default(string), string privateIPAddress = default(string), IPAllocationMethod privateIPAllocationMethod = default(IPAllocationMethod), Management.ResourceManager.Fluent.SubResource subnet = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource publicIPAddress = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string))
             : base(id)
         {
             PrivateIPAddress = privateIPAddress;
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Gets or sets the reference of the subnet resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.subnet")]
-        public SubnetInner Subnet { get; set; }
+        public Management.ResourceManager.Fluent.SubResource Subnet { get; set; }
 
         /// <summary>
         /// Gets or sets the reference of the public IP resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicIPAddress")]
-        public PublicIPAddressInner PublicIPAddress { get; set; }
+        public Management.ResourceManager.Fluent.SubResource PublicIPAddress { get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the public IP resource. Possible
