@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:E8683B20FED733D23930E96CCD1EB0A2:9BD654DDBDD539A635C896FC16E2469D
         internal LoadBalancerFrontendImpl WithExistingSubnet(string parentNetworkResourceId, string subnetName)
         {
-            Inner.Subnet = new SubnetInner(id: parentNetworkResourceId + "/subnets/" + subnetName);
+            Inner.Subnet = new SubResource(parentNetworkResourceId + "/subnets/" + subnetName);
             Inner.PublicIPAddress = null; // Ensure no conflicting public and private settings
             return this;
         }
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:3C078CA3D79C59C878B566E6BDD55B86:83A90EFEAD457402C1239221C836C923
         internal LoadBalancerFrontendImpl WithExistingPublicIPAddress(string resourceId)
         {
-            var pipRef = new PublicIPAddressInner(id: resourceId);
+            var pipRef = new SubResource(id: resourceId);
             Inner.PublicIPAddress = pipRef;
 
             // Ensure no conflicting public and private settings
