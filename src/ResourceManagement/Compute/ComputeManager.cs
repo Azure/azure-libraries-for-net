@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             storageManager = StorageManager.Authenticate(restClient, subscriptionId);
             networkManager = NetworkManager.Authenticate(restClient, subscriptionId);
-            rbacManager = GraphRbacManager.Authenticate(restClient, ((AzureCredentials)(restClient.Credentials)).TenantId);
+            rbacManager = GraphRbacManager.Authenticate(restClient, restClient.Credentials.TenantId);
         }
 
         #endregion

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             string graphEndpoint = AzureEnvironment.AzureGlobalCloud.GraphEndpoint;
             if (restClient.Credentials is AzureCredentials)
             {
-                graphEndpoint = ((AzureCredentials)restClient.Credentials).Environment.GraphEndpoint;
+                graphEndpoint = restClient.Credentials.Environment.GraphEndpoint;
             }
             inner = new GraphRbacManagementClient(new Uri(graphEndpoint),
                 restClient.Credentials,
