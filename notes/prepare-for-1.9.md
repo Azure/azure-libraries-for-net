@@ -63,7 +63,14 @@ The following methods and/or types have been changed in V1.9 compared to the pre
     <td><code>long PeerAsn();</code></td>
     <td>Return type changed.</td>
     <td><a href="https://github.com/Azure/azure-libraries-for-net/pull/267">PR #267 </a></td>
-  </tr>                
+  </tr>
+  <tr>
+    <td><code>NetworkPeering</code></td>
+    <td><code>NetworkPeeringState NetworkPeering.State</code></td>
+    <td><code>VirtualNetworkPeeringState NetworkPeering.State</code></td>
+    <td>Return type changed.</td>
+    <td><a href="https://github.com/Azure/azure-libraries-for-net/pull/267">PR #267 </a></td>
+  </tr>                      
 </table>
 
 
