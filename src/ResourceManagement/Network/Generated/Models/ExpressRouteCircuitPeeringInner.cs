@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public ExpressRouteCircuitPeeringInner(string id = default(string), ExpressRoutePeeringType peeringType = default(ExpressRoutePeeringType), ExpressRoutePeeringState state = default(ExpressRoutePeeringState), int? azureASN = default(int?), long? peerASN = default(long?), string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), string sharedKey = default(string), int? vlanId = default(int?), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), ExpressRouteCircuitStatsInner stats = default(ExpressRouteCircuitStatsInner), string provisioningState = default(string), string gatewayManagerEtag = default(string), string lastModifiedBy = default(string), RouteFilterInner routeFilter = default(RouteFilterInner), Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig = default(Ipv6ExpressRouteCircuitPeeringConfig), IList<ExpressRouteCircuitConnectionInner> connections = default(IList<ExpressRouteCircuitConnectionInner>), string name = default(string), string etag = default(string))
+        public ExpressRouteCircuitPeeringInner(string id = default(string), ExpressRoutePeeringType peeringType = default(ExpressRoutePeeringType), ExpressRoutePeeringState state = default(ExpressRoutePeeringState), int? azureASN = default(int?), long? peerASN = default(long?), string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), string sharedKey = default(string), int? vlanId = default(int?), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), ExpressRouteCircuitStatsInner stats = default(ExpressRouteCircuitStatsInner), string provisioningState = default(string), string gatewayManagerEtag = default(string), string lastModifiedBy = default(string), Management.ResourceManager.Fluent.SubResource routeFilter = default(Management.ResourceManager.Fluent.SubResource), Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig = default(Ipv6ExpressRouteCircuitPeeringConfig), IList<ExpressRouteCircuitConnectionInner> connections = default(IList<ExpressRouteCircuitConnectionInner>), string name = default(string), string etag = default(string))
             : base(id)
         {
             PeeringType = peeringType;
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Gets or sets the reference of the RouteFilter resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.routeFilter")]
-        public RouteFilterInner RouteFilter { get; set; }
+        public Management.ResourceManager.Fluent.SubResource RouteFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the IPv6 peering configuration.
@@ -244,10 +244,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             if (PeerASN < 1)
             {
                 throw new ValidationException(ValidationRules.InclusiveMinimum, "PeerASN", 1);
-            }
-            if (RouteFilter != null)
-            {
-                RouteFilter.Validate();
             }
         }
     }

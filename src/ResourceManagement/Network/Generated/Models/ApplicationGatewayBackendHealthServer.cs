@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// backend server.</param>
         /// <param name="health">Health of backend server. Possible values
         /// include: 'Unknown', 'Up', 'Down', 'Partial', 'Draining'</param>
-        public ApplicationGatewayBackendHealthServer(string address = default(string), NetworkInterfaceIPConfigurationInner ipConfiguration = default(NetworkInterfaceIPConfigurationInner), ApplicationGatewayBackendHealthServerHealth health = default(ApplicationGatewayBackendHealthServerHealth))
+        public ApplicationGatewayBackendHealthServer(string address = default(string), Management.ResourceManager.Fluent.SubResource ipConfiguration = default(Management.ResourceManager.Fluent.SubResource), ApplicationGatewayBackendHealthServerHealth health = default(ApplicationGatewayBackendHealthServerHealth))
         {
             Address = address;
             IpConfiguration = ipConfiguration;
@@ -57,7 +59,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Gets or sets reference of IP configuration of backend server.
         /// </summary>
         [JsonProperty(PropertyName = "ipConfiguration")]
-        public NetworkInterfaceIPConfigurationInner IpConfiguration { get; set; }
+        public Management.ResourceManager.Fluent.SubResource IpConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets health of backend server. Possible values include:

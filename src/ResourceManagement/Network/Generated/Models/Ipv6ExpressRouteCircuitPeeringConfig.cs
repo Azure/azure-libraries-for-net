@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="state">The state of peering. Possible values are:
         /// 'Disabled' and 'Enabled'. Possible values include: 'Disabled',
         /// 'Enabled'</param>
-        public Ipv6ExpressRouteCircuitPeeringConfig(string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), RouteFilterInner routeFilter = default(RouteFilterInner), ExpressRouteCircuitPeeringState state = default(ExpressRouteCircuitPeeringState))
+        public Ipv6ExpressRouteCircuitPeeringConfig(string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), Management.ResourceManager.Fluent.SubResource routeFilter = default(Management.ResourceManager.Fluent.SubResource), ExpressRouteCircuitPeeringState state = default(ExpressRouteCircuitPeeringState))
         {
             PrimaryPeerAddressPrefix = primaryPeerAddressPrefix;
             SecondaryPeerAddressPrefix = secondaryPeerAddressPrefix;
@@ -77,7 +79,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Gets or sets the reference of the RouteFilter resource.
         /// </summary>
         [JsonProperty(PropertyName = "routeFilter")]
-        public RouteFilterInner RouteFilter { get; set; }
+        public Management.ResourceManager.Fluent.SubResource RouteFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the state of peering. Possible values are: 'Disabled'

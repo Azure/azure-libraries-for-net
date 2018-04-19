@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -35,7 +37,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// ApplicationGatewayBackendHttpSettings resource.</param>
         /// <param name="servers">List of ApplicationGatewayBackendHealthServer
         /// resources.</param>
-        public ApplicationGatewayBackendHealthHttpSettings(ApplicationGatewayBackendHttpSettingsInner backendHttpSettings = default(ApplicationGatewayBackendHttpSettingsInner), IList<ApplicationGatewayBackendHealthServer> servers = default(IList<ApplicationGatewayBackendHealthServer>))
+        public ApplicationGatewayBackendHealthHttpSettings(Management.ResourceManager.Fluent.SubResource backendHttpSettings = default(Management.ResourceManager.Fluent.SubResource), IList<ApplicationGatewayBackendHealthServer> servers = default(IList<ApplicationGatewayBackendHealthServer>))
         {
             BackendHttpSettings = backendHttpSettings;
             Servers = servers;
@@ -52,7 +54,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource.
         /// </summary>
         [JsonProperty(PropertyName = "backendHttpSettings")]
-        public ApplicationGatewayBackendHttpSettingsInner BackendHttpSettings { get; set; }
+        public Management.ResourceManager.Fluent.SubResource BackendHttpSettings { get; set; }
 
         /// <summary>
         /// Gets or sets list of ApplicationGatewayBackendHealthServer
@@ -61,18 +63,5 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         [JsonProperty(PropertyName = "servers")]
         public IList<ApplicationGatewayBackendHealthServer> Servers { get; set; }
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (BackendHttpSettings != null)
-            {
-                BackendHttpSettings.Validate();
-            }
-        }
     }
 }

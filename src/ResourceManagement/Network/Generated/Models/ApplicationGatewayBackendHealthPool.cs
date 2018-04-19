@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -35,7 +37,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// ApplicationGatewayBackendAddressPool resource.</param>
         /// <param name="backendHttpSettingsCollection">List of
         /// ApplicationGatewayBackendHealthHttpSettings resources.</param>
-        public ApplicationGatewayBackendHealthPool(ApplicationGatewayBackendAddressPoolInner backendAddressPool = default(ApplicationGatewayBackendAddressPoolInner), IList<ApplicationGatewayBackendHealthHttpSettings> backendHttpSettingsCollection = default(IList<ApplicationGatewayBackendHealthHttpSettings>))
+        public ApplicationGatewayBackendHealthPool(Management.ResourceManager.Fluent.SubResource backendAddressPool = default(Management.ResourceManager.Fluent.SubResource), IList<ApplicationGatewayBackendHealthHttpSettings> backendHttpSettingsCollection = default(IList<ApplicationGatewayBackendHealthHttpSettings>))
         {
             BackendAddressPool = backendAddressPool;
             BackendHttpSettingsCollection = backendHttpSettingsCollection;
@@ -52,7 +54,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// resource.
         /// </summary>
         [JsonProperty(PropertyName = "backendAddressPool")]
-        public ApplicationGatewayBackendAddressPoolInner BackendAddressPool { get; set; }
+        public Management.ResourceManager.Fluent.SubResource BackendAddressPool { get; set; }
 
         /// <summary>
         /// Gets or sets list of ApplicationGatewayBackendHealthHttpSettings
