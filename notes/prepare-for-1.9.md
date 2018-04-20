@@ -23,6 +23,13 @@ The following methods and/or types have been changed in V1.9 compared to the pre
     <th align=left>Ref</th>
   </tr>
   <tr>
+    <td><code>Authentication flow</code></td>
+    <td><code>Credentials</code> property of <code>RestClient</code> class was of type <code>ServiceClientCredentials</code></td>
+    <td><code>Credentials</code> property of <code>RestClient</code> class is now of type<code>AzureCredentials</code></td>
+    <td><code>AzureCredentials</code> has a new constructor that accepts <code>ServiceClientCredentials</code> parameter. This will enable handling authentication process outside Fluent SDK framework and using acuired token during Fluent SDK communication by passing in <code>ServiceClientCredentials</code></td>
+    <td><a href="https://github.com/Azure/azure-libraries-for-net/pull/195">PR #195 </a></td>
+  </tr>
+  <tr>
     <td><code>NetworkWatcher</code></td>
     <td><code>.GetTopology(string targetResourceGroup)</code></td>
     <td><code>.Topology().WithTargetResourceGroup(string resourceGroupName).WithTargetNetwork(string networkId).WithTargetSubnet(string subnetName).Execute()</code> where <code>WithTargetNetwork()</code> and <code>WithTargetSubnet()</code> are optional</td>
