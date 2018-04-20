@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Dimensions() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.ILocalizableString>;
+                return this.Dimensions();
             }
         }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Manager() as MonitorManager;
+                return this.Manager();
             }
         }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.MetricAvailabilities() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.MetricAvailability>;
+                return this.MetricAvailabilities();
             }
         }
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Name() as Microsoft.Azure.Management.Monitor.Fluent.Models.ILocalizableString;
+                return this.Name();
             }
         }
 
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.SupportedAggregationTypes() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.AggregationType>;
+                return this.SupportedAggregationTypes();
             }
         }
 
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of start time filter definition.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricStartTimeFilter Microsoft.Azure.Management.Monitor.Fluent.IMetricDefinition.DefineQuery()
         {
-            return this.DefineQuery() as Microsoft.Azure.Management.Monitor.Fluent.IWithMetricStartTimeFilter;
+            return this.DefineQuery();
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of optional query parameter definition and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithMetricEndFilter.EndsBefore(DateTime endTime)
         {
-            return this.EndsBefore(endTime) as Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute;
+            return this.EndsBefore(endTime);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>Metric collection received after query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.Models.IMetricCollection Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute.Execute()
         {
-            return this.Execute() as Microsoft.Azure.Management.Monitor.Fluent.Models.IMetricCollection;
+            return this.Execute();
         }
 
         /// <summary>
@@ -196,7 +196,17 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>A representation of the deferred computation of Metric collection query call.</return>
         async Task<Microsoft.Azure.Management.Monitor.Fluent.Models.IMetricCollection> Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute.ExecuteAsync(CancellationToken cancellationToken)
         {
-            return await this.ExecuteAsync(cancellationToken) as Microsoft.Azure.Management.Monitor.Fluent.Models.IMetricCollection;
+            return await this.ExecuteAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// Filters Metrics for a given namespace.
+        /// </summary>
+        /// <param name="namespaceName">Metric namespace to query metric definitions for.</param>
+        /// <return>The stage of optional query parameter definition and query execution.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute.FilterByNamespace(string namespaceName)
+        {
+            return this.FilterByNamespace(namespaceName);
         }
 
         /// <summary>
@@ -208,7 +218,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of optional query parameter definition and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute.OrderBy(string orderBy)
         {
-            return this.OrderBy(orderBy) as Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute;
+            return this.OrderBy(orderBy);
         }
 
         /// <summary>
@@ -220,7 +230,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of optional query parameter definition and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute.SelectTop(int top)
         {
-            return this.SelectTop(top) as Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute;
+            return this.SelectTop(top);
         }
 
         /// <summary>
@@ -230,7 +240,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of end time filter definition.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricEndFilter Microsoft.Azure.Management.Monitor.Fluent.IWithMetricStartTimeFilter.StartingFrom(DateTime startTime)
         {
-            return this.StartingFrom(startTime) as Microsoft.Azure.Management.Monitor.Fluent.IWithMetricEndFilter;
+            return this.StartingFrom(startTime);
         }
 
         /// <summary>
@@ -240,7 +250,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of optional query parameter definition and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute.WithAggregation(string aggregation)
         {
-            return this.WithAggregation(aggregation) as Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute;
+            return this.WithAggregation(aggregation);
         }
 
         /// <summary>
@@ -250,7 +260,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of optional query parameter definition and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute.WithInterval(TimeSpan interval)
         {
-            return this.WithInterval(interval) as Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute;
+            return this.WithInterval(interval);
         }
 
         /// <summary>
@@ -271,7 +281,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of optional query parameter definition and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute.WithOdataFilter(string odataFilter)
         {
-            return this.WithOdataFilter(odataFilter) as Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute;
+            return this.WithOdataFilter(odataFilter);
         }
 
         /// <summary>
@@ -281,7 +291,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of optional query parameter definition and query execution.</return>
         Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute.WithResultType(ResultType resultType)
         {
-            return this.WithResultType(resultType) as Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute;
+            return this.WithResultType(resultType);
         }
     }
 }

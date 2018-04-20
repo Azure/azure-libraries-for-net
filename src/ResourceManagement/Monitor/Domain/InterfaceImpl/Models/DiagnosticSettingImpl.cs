@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Logs() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.LogSettings>;
+                return this.Logs();
             }
         }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Manager() as MonitorManager;
+                return this.Manager();
             }
         }
 
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Metrics() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.MetricSettings>;
+                return this.Metrics();
             }
         }
 
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of creating Diagnostic Settings.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithDiagnosticLogRecipient.WithEventHub(string eventHubAuthorizationRuleId)
         {
-            return this.WithEventHub(eventHubAuthorizationRuleId) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate;
+            return this.WithEventHub(eventHubAuthorizationRuleId);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of creating Diagnostic Settings.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithDiagnosticLogRecipient.WithEventHub(string eventHubAuthorizationRuleId, string eventHubName)
         {
-            return this.WithEventHub(eventHubAuthorizationRuleId, eventHubName) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate;
+            return this.WithEventHub(eventHubAuthorizationRuleId, eventHubName);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithEventHub.WithEventHub(string eventHubAuthorizationRuleId)
         {
-            return this.WithEventHub(eventHubAuthorizationRuleId) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithEventHub(eventHubAuthorizationRuleId);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithEventHub.WithEventHub(string eventHubAuthorizationRuleId, string eventHubName)
         {
-            return this.WithEventHub(eventHubAuthorizationRuleId, eventHubName) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithEventHub(eventHubAuthorizationRuleId, eventHubName);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of creating Diagnostic Settings.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate.WithLog(string category, int retentionDays)
         {
-            return this.WithLog(category, retentionDays) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate;
+            return this.WithLog(category, retentionDays);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithMetricAndLogs.WithLog(string category, int retentionDays)
         {
-            return this.WithLog(category, retentionDays) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithLog(category, retentionDays);
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithLogAnalytics.WithLogAnalytics(string workspaceId)
         {
-            return this.WithLogAnalytics(workspaceId) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithLogAnalytics(workspaceId);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of creating Diagnostic Settings.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithDiagnosticLogRecipient.WithLogAnalytics(string workspaceId)
         {
-            return this.WithLogAnalytics(workspaceId) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate;
+            return this.WithLogAnalytics(workspaceId);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of creating Diagnostic Settings.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate.WithLogsAndMetrics(IEnumerable<Microsoft.Azure.Management.Monitor.Fluent.Models.IDiagnosticSettingsCategory> categories, TimeSpan timeGrain, int retentionDays)
         {
-            return this.WithLogsAndMetrics(categories, timeGrain, retentionDays) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate;
+            return this.WithLogsAndMetrics(categories, timeGrain, retentionDays);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithMetricAndLogs.WithLogsAndMetrics(IEnumerable<Microsoft.Azure.Management.Monitor.Fluent.Models.IDiagnosticSettingsCategory> categories, TimeSpan timeGrain, int retentionDays)
         {
-            return this.WithLogsAndMetrics(categories, timeGrain, retentionDays) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithLogsAndMetrics(categories, timeGrain, retentionDays);
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of creating Diagnostic Settings.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate.WithMetric(string category, TimeSpan timeGrain, int retentionDays)
         {
-            return this.WithMetric(category, timeGrain, retentionDays) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate;
+            return this.WithMetric(category, timeGrain, retentionDays);
         }
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithMetricAndLogs.WithMetric(string category, TimeSpan timeGrain, int retentionDays)
         {
-            return this.WithMetric(category, timeGrain, retentionDays) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithMetric(category, timeGrain, retentionDays);
         }
 
         /// <summary>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithEventHub.WithoutEventHub()
         {
-            return this.WithoutEventHub() as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithoutEventHub();
         }
 
         /// <summary>
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithMetricAndLogs.WithoutLog(string category)
         {
-            return this.WithoutLog(category) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithoutLog(category);
         }
 
         /// <summary>
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithLogAnalytics.WithoutLogAnalytics()
         {
-            return this.WithoutLogAnalytics() as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithoutLogAnalytics();
         }
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithMetricAndLogs.WithoutLogs()
         {
-            return this.WithoutLogs() as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithoutLogs();
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithMetricAndLogs.WithoutMetric(string category)
         {
-            return this.WithoutMetric(category) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithoutMetric(category);
         }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithMetricAndLogs.WithoutMetrics()
         {
-            return this.WithoutMetrics() as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithoutMetrics();
         }
 
         /// <summary>
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithStorageAccount.WithoutStorageAccount()
         {
-            return this.WithoutStorageAccount() as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithoutStorageAccount();
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of selecting data recipient.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithDiagnosticLogRecipient Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IBlank.WithResource(string resourceId)
         {
-            return this.WithResource(resourceId) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithDiagnosticLogRecipient;
+            return this.WithResource(resourceId);
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The next stage of the Diagnostic Settings update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IWithStorageAccount.WithStorageAccount(string storageAccountId)
         {
-            return this.WithStorageAccount(storageAccountId) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Update.IUpdate;
+            return this.WithStorageAccount(storageAccountId);
         }
 
         /// <summary>
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <return>The stage of creating Diagnostic Settings.</return>
         Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithDiagnosticLogRecipient.WithStorageAccount(string storageAccountId)
         {
-            return this.WithStorageAccount(storageAccountId) as Microsoft.Azure.Management.Monitor.Fluent.DiagnosticSetting.Definition.IWithCreate;
+            return this.WithStorageAccount(storageAccountId);
         }
     }
 }

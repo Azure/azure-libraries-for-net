@@ -156,6 +156,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         Task<Models.IMetricCollection> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// Filters Metrics for a given namespace.
+        /// </summary>
+        /// <param name="namespaceName">Metric namespace to query metric definitions for.</param>
+        /// <return>The stage of optional query parameter definition and query execution.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.IWithMetricsQueryExecute FilterByNamespace(string namespaceName);
+
+        /// <summary>
         /// Sets the aggregation to use for sorting results and the direction of the sort.
         /// Only one order can be specified.
         /// Examples: sum asc.

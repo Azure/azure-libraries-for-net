@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         private static readonly string webhookSuffix = " (WH)";
         private MonitorManager myManager;
 
-        ///GENMHASH:41BEC53C7D3065426CE12D60045E5A76:341B6F75035D50428BA8408A5F9310C5
+        ///GENMHASH:41BEC53C7D3065426CE12D60045E5A76:62D1D1E233FE3541B287099A447FD5C1
         internal ActionGroupImpl(string name, ActionGroupResourceInner innerModel, IMonitorManager monitorManager)
             : base(name, innerModel, monitorManager)
         {
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this;
         }
 
-        ///GENMHASH:2D5550FE29FD7200AB73B6351C2A661F:7E584DCA0E58753155F56D5C1CA274D5
+        ///GENMHASH:2D5550FE29FD7200AB73B6351C2A661F:7692C7C7A43C2D3C31B341647F5EF686
         public ActionGroupImpl DefineReceiver(string actionNamePrefix)
         {
             return this.UpdateReceiver(actionNamePrefix);
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this;
         }
 
-        ///GENMHASH:29EAC07C793D2A0E5EB067301A745E12:94C2861E00C71F3E37ECAF895E6FC358
+        ///GENMHASH:29EAC07C793D2A0E5EB067301A745E12:1239BA4DDECAC5CB19A72AFF5EF502B0
         public ActionGroupImpl WithAzureFunction(string functionAppResourceId, string functionName, string httpTriggerUrl)
         {
             this.WithoutAzureFunction();
@@ -631,6 +631,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             this.WithoutLogicApp();
             this.WithoutAzureFunction();
             this.WithoutWebhook();
+			this.WithoutItsm();
             return this.Parent();
         }
 
