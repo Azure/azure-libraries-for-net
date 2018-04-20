@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Authorization() as Microsoft.Azure.Management.Monitor.Fluent.Models.SenderAuthorization;
+                return this.Authorization();
             }
         }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Category() as Microsoft.Azure.Management.Monitor.Fluent.Models.ILocalizableString;
+                return this.Category();
             }
         }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Claims() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
+                return this.Claims();
             }
         }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.EventName() as Microsoft.Azure.Management.Monitor.Fluent.Models.ILocalizableString;
+                return this.EventName();
             }
         }
 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.HttpRequest() as Microsoft.Azure.Management.Monitor.Fluent.Models.HttpRequestInfo;
+                return this.HttpRequest();
             }
         }
 
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.OperationName() as Microsoft.Azure.Management.Monitor.Fluent.Models.ILocalizableString;
+                return this.OperationName();
             }
         }
 
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Properties() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
+                return this.Properties();
             }
         }
 
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.ResourceProviderName() as Microsoft.Azure.Management.Monitor.Fluent.Models.ILocalizableString;
+                return this.ResourceProviderName();
             }
         }
 
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.ResourceType() as Microsoft.Azure.Management.Monitor.Fluent.Models.ILocalizableString;
+                return this.ResourceType();
             }
         }
 
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Status() as Microsoft.Azure.Management.Monitor.Fluent.Models.ILocalizableString;
+                return this.Status();
             }
         }
 
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.SubStatus() as Microsoft.Azure.Management.Monitor.Fluent.Models.ILocalizableString;
+                return this.SubStatus();
             }
         }
 

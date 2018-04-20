@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         {
             get
             {
-                return this.Metrics() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.Metric>;
+                return this.Metrics();
             }
         }
 

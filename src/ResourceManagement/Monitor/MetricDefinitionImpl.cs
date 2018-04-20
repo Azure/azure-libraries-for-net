@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         private TimeSpan? interval;
         private MonitorManager myManager;
         private ILocalizableString name;
+        private string namespaceFilter;
         private string odataFilter;
         private string orderBy;
         private DateTime queryEndTime;
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             }
         }
 
-        ///GENMHASH:914F5848297276F1D8C78263F5BE935D:0A9FBB52D71FD812653CFC7FB6D8E4FE
+        ///GENMHASH:914F5848297276F1D8C78263F5BE935D:7B90F5AD1D9A5637A3B8A78F84705439
         public MetricDefinitionImpl DefineQuery()
         {
             this.aggreagation = null;
@@ -60,6 +61,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             this.resultType = null;
             this.top = null;
             this.orderBy = null;
+			this.namespaceFilter = null;
             return this;
         }
 
@@ -97,8 +99,15 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 top: this.top,
                 orderby: this.orderBy,
                 resultType: this.resultType,
-                metricnamespace: this.inner.NamespaceProperty,
+                metricnamespace: this.namespaceFilter,
                 cancellationToken: cancellationToken));
+        }
+				
+        ///GENMHASH:30DFB33704A983BFEBC6F8D37F219647:18AE7F3EA61B4C339E19BC91FFA86A38
+        public IWithMetricsQueryExecute FilterByNamespace(string namespaceName)
+        {
+			this.namespaceFilter = namespaceName;
+			return this;
         }
 
         ///GENMHASH:ACA2D5620579D8158A29586CA1FF4BC6:9FCCB4B796E8FFF1419FB39498ED40F5
