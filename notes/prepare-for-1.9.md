@@ -44,26 +44,33 @@ The following methods and/or types have been changed in V1.9 compared to the pre
     <td><a href="https://github.com/Azure/azure-libraries-for-net/pull/267">PR #267 </a></td>
   </tr>
   <tr>
-    <td><code>ExpressRouteCircuit</code></td>
-    <td><code>ExpressRouteCircuitPeeringType PeeringType();</code></td>
-    <td><code>ExpressRoutePeeringType PeeringType();</code></td>
-    <td>Return type changed.</td>
+    <td><code>ExpressRouteCircuitPeering</code></td>
+    <td><code>ExpressRouteCircuitPeeringType PeeringType</code></td>
+    <td><code>ExpressRoutePeeringType PeeringType</code></td>
+    <td>Property type changed.</td>
     <td><a href="https://github.com/Azure/azure-libraries-for-net/pull/267">PR #267 </a></td>
   </tr>
   <tr>
-    <td><code>ExpressRouteCircuit</code></td>
-    <td><code>ExpressRouteCircuitPeeringState state();</code></td>
-    <td><code>ExpressRoutePeeringState state();</code></td>
-    <td>Return type changed.</td>
+    <td><code>ExpressRouteCircuitPeering</code></td>
+    <td><code>ExpressRouteCircuitPeeringState State</code></td>
+    <td><code>ExpressRoutePeeringState State</code></td>
+    <td>Property type changed.</td>
     <td><a href="https://github.com/Azure/azure-libraries-for-net/pull/267">PR #267 </a></td>
   </tr>
   <tr>
-    <td><code>ExpressRouteCircuit</code></td>
-    <td><code>int PeerAsn();</code></td>
-    <td><code>long PeerAsn();</code></td>
-    <td>Return type changed.</td>
+    <td><code>ExpressRouteCircuitPeering</code></td>
+    <td><code>int PeerAsn</code></td>
+    <td><code>long PeerAsn</code></td>
+    <td>Property type changed.</td>
     <td><a href="https://github.com/Azure/azure-libraries-for-net/pull/267">PR #267 </a></td>
-  </tr>                
+  </tr>
+  <tr>
+    <td><code>NetworkPeering</code></td>
+    <td><code>NetworkPeeringState State</code></td>
+    <td><code>VirtualNetworkPeeringState State</code></td>
+    <td>Property type changed.</td>
+    <td><a href="https://github.com/Azure/azure-libraries-for-net/pull/267">PR #267 </a></td>
+  </tr>                      
 </table>
 
 
