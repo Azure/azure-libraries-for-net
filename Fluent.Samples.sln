@@ -49,6 +49,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.ContainerService.Fluent", "src\ResourceManagement\ContainerService\Microsoft.Azure.Management.ContainerService.Fluent.csproj", "{F81455F5-0CB3-4A7A-A13D-077F594CBD75}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.EventHub.Fluent", "src\ResourceManagement\EventHub\Microsoft.Azure.Management.EventHub.Fluent.csproj", "{EB4FF941-6ECF-4697-8F79-061142CC5B69}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Msi.Fluent", "src\ResourceManagement\Msi\Microsoft.Azure.Management.Msi.Fluent.csproj", "{4F3CF653-3C37-4C93-B406-B0CDB267F8B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Monitor.Fluent", "src\ResourceManagement\Monitor\Microsoft.Azure.Management.Monitor.Fluent.csproj", "{F6E6E3E1-70DD-4197-97EC-6509566D4295}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.BatchAI.Fluent", "src\ResourceManagement\BatchAI\Microsoft.Azure.Management.BatchAI.Fluent.csproj", "{841266F6-2A58-4949-A152-8877F6924921}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +151,22 @@ Global
 		{F81455F5-0CB3-4A7A-A13D-077F594CBD75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F81455F5-0CB3-4A7A-A13D-077F594CBD75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F81455F5-0CB3-4A7A-A13D-077F594CBD75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB4FF941-6ECF-4697-8F79-061142CC5B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB4FF941-6ECF-4697-8F79-061142CC5B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB4FF941-6ECF-4697-8F79-061142CC5B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB4FF941-6ECF-4697-8F79-061142CC5B69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F3CF653-3C37-4C93-B406-B0CDB267F8B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F3CF653-3C37-4C93-B406-B0CDB267F8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F3CF653-3C37-4C93-B406-B0CDB267F8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F3CF653-3C37-4C93-B406-B0CDB267F8B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6E6E3E1-70DD-4197-97EC-6509566D4295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6E6E3E1-70DD-4197-97EC-6509566D4295}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6E6E3E1-70DD-4197-97EC-6509566D4295}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6E6E3E1-70DD-4197-97EC-6509566D4295}.Release|Any CPU.Build.0 = Release|Any CPU
+		{841266F6-2A58-4949-A152-8877F6924921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{841266F6-2A58-4949-A152-8877F6924921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{841266F6-2A58-4949-A152-8877F6924921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{841266F6-2A58-4949-A152-8877F6924921}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -169,5 +193,12 @@ Global
 		{9F243841-FE48-425C-92E1-5AE6C64937A1} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 		{C6CDAC36-043D-42F0-871B-FAF1C55E2C30} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
 		{F81455F5-0CB3-4A7A-A13D-077F594CBD75} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
+		{EB4FF941-6ECF-4697-8F79-061142CC5B69} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
+		{4F3CF653-3C37-4C93-B406-B0CDB267F8B3} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
+		{F6E6E3E1-70DD-4197-97EC-6509566D4295} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
+		{841266F6-2A58-4949-A152-8877F6924921} = {6FB01238-DA67-4BC0-98B7-01F07947419F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCAC8476-7582-43A8-AA57-752A9EB9A24F}
 	EndGlobalSection
 EndGlobal
