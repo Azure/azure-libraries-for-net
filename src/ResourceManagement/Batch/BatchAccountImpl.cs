@@ -137,10 +137,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         ///GENMHASH:837770291CB03D6C2AB9BDA889A5B07D:916D2188C6A5919A33DB6C700CE38C2A
         internal async Task<BatchAccountKeys> RegenerateKeysAsync(AccountKeyType keyType, CancellationToken cancellationToken = default(CancellationToken))
         {
-            BatchAccountKeysInner keys = await Manager.Inner.BatchAccount.RegenerateKeyAsync(ResourceGroupName, Name, new BatchAccountRegenerateKeyParametersInner
-            {
-                KeyName = keyType
-            }, cancellationToken);
+            BatchAccountKeysInner keys = await Manager.Inner.BatchAccount.RegenerateKeyAsync(ResourceGroupName, Name, keyType, cancellationToken);
             return new BatchAccountKeys(keys.Primary, keys.Secondary);
         }
 
