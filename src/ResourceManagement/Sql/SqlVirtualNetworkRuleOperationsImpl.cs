@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
     using System;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Rest.Azure;
+    using System.Linq;
 
     /// <summary>
     /// Implementation for SQL Virtual Network Rule operations.
@@ -110,9 +111,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 return null;
             }
-            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            catch (AggregateException ex)
             {
-                return null;
+                if(ex.InnerExceptions != null)
+                {
+                    var cloudEx = (CloudException) ex.InnerExceptions.FirstOrDefault(e => e is CloudException);
+                    if(cloudEx != null &&
+                       cloudEx.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }
+
+                throw ex;
             }
         }
 
@@ -129,9 +140,19 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             {
                 return null;
             }
-            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            catch (AggregateException ex)
             {
-                return null;
+                if(ex.InnerExceptions != null)
+                {
+                    var cloudEx = (CloudException) ex.InnerExceptions.FirstOrDefault(e => e is CloudException);
+                    if(cloudEx != null &&
+                       cloudEx.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }
+
+                throw ex;
             }
         }
 

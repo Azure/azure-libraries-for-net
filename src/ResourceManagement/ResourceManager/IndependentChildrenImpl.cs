@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
     using System.Collections.Generic;
     using Rest.Azure;
     using System;
+    using System.Linq;
 
     /// <summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnJlc291cmNlcy5mbHVlbnRjb3JlLmFybS5jb2xsZWN0aW9uLmltcGxlbWVudGF0aW9uLkluZGVwZW5kZW50Q2hpbGRyZW5JbXBs
@@ -70,9 +71,19 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             {
                 return null;
             }
-            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            catch (AggregateException ex)
             {
-                return null;
+                if(ex.InnerExceptions != null)
+                {
+                    var cloudEx = (CloudException) ex.InnerExceptions.FirstOrDefault(e => e is CloudException);
+                    if(cloudEx != null &&
+                       cloudEx.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }
+
+                throw ex;
             }
         }
 
@@ -92,9 +103,19 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             {
                 return null;
             }
-            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            catch (AggregateException ex)
             {
-                return null;
+                if(ex.InnerExceptions != null)
+                {
+                    var cloudEx = (CloudException) ex.InnerExceptions.FirstOrDefault(e => e is CloudException);
+                    if(cloudEx != null &&
+                       cloudEx.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }
+
+                throw ex;
             }
         }
 
@@ -108,9 +129,19 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             {
                 return null;
             }
-            catch (AggregateException ex) when ((ex.InnerExceptions[0] as CloudException).Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            catch (AggregateException ex)
             {
-                return null;
+                if(ex.InnerExceptions != null)
+                {
+                    var cloudEx = (CloudException) ex.InnerExceptions.FirstOrDefault(e => e is CloudException);
+                    if(cloudEx != null &&
+                       cloudEx.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        return null;
+                    }
+                }
+
+                throw ex;
             }
         }
 
