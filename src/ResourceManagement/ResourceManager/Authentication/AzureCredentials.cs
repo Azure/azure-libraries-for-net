@@ -70,8 +70,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             string tenantId, AzureEnvironment environment)
             : this(tenantId, environment)
         {
-            credentialsCache[new Uri(Environment.ManagementEndpoint)] = armCredentials;
-            credentialsCache[new Uri(Environment.GraphEndpoint)] = graphCredentials;
+            if (armCredentials != null)
+            {
+                credentialsCache[new Uri(Environment.ManagementEndpoint)] = armCredentials;
+            }
+            if (graphCredentials != null)
+            {
+                credentialsCache[new Uri(Environment.GraphEndpoint)] = graphCredentials;
+            }
         }
 
         private AzureCredentials(string tenantId, AzureEnvironment environment)
