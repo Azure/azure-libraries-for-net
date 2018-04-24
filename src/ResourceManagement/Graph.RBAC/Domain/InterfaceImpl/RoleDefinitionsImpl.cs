@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>An immutable representation of the role definition.</return>
         async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition> Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinitions.GetByScopeAndRoleNameAsync(string scope, string roleName, CancellationToken cancellationToken)
         {
-            return await this.GetByScopeAndRoleNameAsync(scope, roleName, cancellationToken) as Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition;
+            return await this.GetByScopeAndRoleNameAsync(scope, roleName, cancellationToken);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>An immutable representation of the role definition.</return>
         Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinitions.GetByScopeAndRoleName(string scope, string roleName)
         {
-            return this.GetByScopeAndRoleName(scope, roleName) as Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition;
+            return this.GetByScopeAndRoleName(scope, roleName);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>A list of role definitions.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition> Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinitions.ListByScope(string scope)
         {
-            return this.ListByScope(scope) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition>;
+            return this.ListByScope(scope);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>An immutable representation of the role definition.</return>
         async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition> Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinitions.GetByScopeAsync(string scope, string name, CancellationToken cancellationToken)
         {
-            return await this.GetByScopeAsync(scope, name, cancellationToken) as Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition;
+            return await this.GetByScopeAsync(scope, name, cancellationToken);
         }
 
         /// <summary>
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// </summary>
         /// <param name="scope">The scope of the role definition.</param>
         /// <return>An observable of role definitions.</return>
-        async Task<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition> Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinitions.ListByScopeAsync(string scope, CancellationToken cancellationToken)
+        async Task<System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition>> Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinitions.ListByScopeAsync(string scope, CancellationToken cancellationToken)
         {
-            return await this.ListByScopeAsync(scope, cancellationToken) as Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition;
+            return await this.ListByScopeAsync(scope, cancellationToken);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>An immutable representation of the role definition.</return>
         Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinitions.GetByScope(string scope, string name)
         {
-            return this.GetByScope(scope, name) as Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleDefinition;
+            return this.GetByScope(scope, name);
         }
     }
 }
