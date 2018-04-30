@@ -71,7 +71,7 @@
     
     <Message Text="Generating NuGet library" Importance="high" />
 
-    <Exec Command="dotnet pack Fluent.SDK.sln --configuration $(Configuration) --include-symbols" />
+    <Exec Command="dotnet pack Fluent.SDK.sln --configuration $(Configuration) --include-symbols --no-build" />
 
     <ItemGroup>
       <_NetCorePackages Include="src\ResourceManagement\**\bin\$(Configuration)\*.nupkg" />
@@ -89,12 +89,6 @@
       </_NetCorePackagesToPublish>
     </ItemGroup>
 
-    <ItemGroup>
-      <_SymbolPackagesToPublish Include="$(PackageOutputDir)\$(NetCorePackageName)*.symbols.nupkg"
-                             Exclude="$(PackageOutputDir)\$(NetCorePackageName)*.nupkg">
-      </_SymbolPackagesToPublish>
-    </ItemGroup>
-
     <PropertyGroup>
       <ActualSource Condition=" '$(NuGetPublishingSource)' == '' "></ActualSource>
       <ActualSource Condition=" '$(NuGetPublishingSource)' != '' "> -Source $(NuGetPublishingSource)</ActualSource>
@@ -103,8 +97,6 @@
     <Exec Command="$(NuGetCommand) push &quot;%(_NetCorePackagesToPublish.Identity)&quot; $(NuGetKey)$(ActualSource)"
           IgnoreExitCode="true" />
 
-    <Exec Command="$(NuGetCommand) push &quot;%(_SymbolPackagesToPublish.Identity)&quot; $(NuGetKey) -Source https://nuget.smbsrc.net/"
-          IgnoreExitCode="true" />
   </Target>
   
 </Project>

@@ -70,6 +70,7 @@
   
   <PropertyGroup>
     <NuGetCommand>&quot;$(LibraryToolsFolder)\nuget.exe&quot;</NuGetCommand>
+    <Pdb2PdbCommand>&quot;$(LibraryToolsFolder)\Pdb2Pdb\Pdb2Pdb.exe&quot;</Pdb2PdbCommand>
   </PropertyGroup>
 
   <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.WindowsAzure.Build.Tasks.dll"  />
@@ -306,4 +307,20 @@
     <Exec Command="$(ZipExe) a -tzip -mx9 -r -y $(PackageOutputDir)\%(_NetCorePackages.Filename).nupkg" WorkingDirectory="$(PackageOutputDir)\%(_NetCorePackages.Filename)" />
   </Target>
   
+  <Target Name="PublishSymbols">
+  <PropertyGroup>
+    <PackageOutputDir_test>D:\temp\LocalFeed\archive\archive\binaries\packages</PackageOutputDir_test>
+  </PropertyGroup>
+
+    <ItemGroup>
+      <DllFiles Include="$(PackageOutputDir_test)\*.symbols\lib\**\*.dll">
+      </DllFiles>
+    </ItemGroup>
+
+    <Message Text="Found dll files: &quot;%(DllFiles.Identity)&quot;" />  
+
+    <Exec Command="$(Pdb2PdbCommand) &quot;%(DllFiles.Identity)&quot; /out &quot;$(PackageOutputDir_test)\Symbols\%(DllFiles.RelativeDir)&quot;"
+      IgnoreExitCode="true" />
+
+  </Target>
 </Project>

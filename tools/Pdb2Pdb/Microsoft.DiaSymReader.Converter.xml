@@ -1,0 +1,867 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.DiaSymReader.Converter</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.CodeAnalysis.PooledObjects.ArrayBuilder`1.Enumerator">
+            <summary>
+            struct enumerator used in foreach.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.PooledObjects.ArrayBuilder`1.ToImmutable">
+            <summary>
+            Realizes the array.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.PooledObjects.ArrayBuilder`1.SetItem(System.Int32,`0)">
+            <summary>
+            Write <paramref name="value"/> to slot <paramref name="index"/>. 
+            Fills in unallocated slots preceding the <paramref name="index"/>, if any.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.PooledObjects.ArrayBuilder`1.ToImmutableOrNull">
+            <summary>
+            Realizes the array.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.PooledObjects.ArrayBuilder`1.ToDowncastedImmutable``1">
+            <summary>
+            Realizes the array, downcasting each element to a derived type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.PooledObjects.ArrayBuilder`1.ToImmutableAndFree">
+            <summary>
+            Realizes the array and disposes the builder in one operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.PooledObjects.ObjectPool`1">
+            <summary>
+            Generic implementation of object pooling pattern with predefined pool size limit. The main
+            purpose is that limited number of frequently used objects can be kept in the pool for
+            further recycling.
+            
+            Notes: 
+            1) it is not the goal to keep all returned objects. Pool is not meant for storage. If there
+               is no space in the pool, extra returned objects will be dropped.
+            
+            2) it is implied that if object was obtained from a pool, the caller will return it back in
+               a relatively short time. Keeping checked out objects for long durations is ok, but 
+               reduces usefulness of pooling. Just new up your own.
+            
+            Not returning objects to the pool in not detrimental to the pool's work, but is a bad practice. 
+            Rationale: 
+               If there is no intent for reusing the object, do not use pool - just use "new". 
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.PooledObjects.ObjectPool`1.Factory">
+            <remarks>
+            Not using System.Func{T} because this file is linked into the (debugger) Formatter,
+            which does not have that type (since it compiles against .NET 2.0).
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.PooledObjects.ObjectPool`1.Allocate">
+            <summary>
+            Produces an instance.
+            </summary>
+            <remarks>
+            Search strategy is a simple linear probing which is chosen for it cache-friendliness.
+            Note that Free will try to store recycled objects close to the start thus statistically 
+            reducing how far we will typically search.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.PooledObjects.ObjectPool`1.Free(`0)">
+            <summary>
+            Returns objects to the pool.
+            </summary>
+            <remarks>
+            Search strategy is a simple linear probing which is chosen for it cache-friendliness.
+            Note that Free will try to store recycled objects close to the start thus statistically 
+            reducing how far we will typically search in Allocate.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.PooledObjects.ObjectPool`1.ForgetTrackedObject(`0,`0)">
+            <summary>
+            Removes an object from leak tracking.  
+            
+            This is called when an object is returned to the pool.  It may also be explicitly 
+            called if an object allocated from the pool is intentionally not being returned
+            to the pool.  This can be of use with pooled arrays if the consumer wants to 
+            return a larger array to the pool than was originally allocated.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.PooledObjects.PooledStringBuilder">
+            <summary>
+            The usage is:
+                   var inst = PooledStringBuilder.GetInstance();
+                   var sb = inst.builder;
+                   ... Do Stuff...
+                   ... sb.ToString() ...
+                   inst.Free();
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.PooledObjects.PooledStringBuilder.CreatePool(System.Int32)">
+            <summary>
+            If someone need to create a private pool
+            </summary>
+            <param name="size">The size of the pool.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoConstants">
+            <summary>
+            Constants for producing and consuming streams of binary custom debug info.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoEncoder.ToArray">
+            <exception cref="T:System.InvalidOperationException">More than <see cref="F:System.Byte.MaxValue"/> records added.</exception>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind">
+            <summary>
+            The kinds of custom debug info that we know how to interpret.
+            The values correspond to possible values of the "kind" byte
+            in the record header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind.UsingGroups">
+            <summary>
+            C# only. Encodes the sizes of using groups that are applicable to the method.
+            The actual import strings are stored separately trhu ISymUnmanagedWriter.UsingNamespace.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind.ForwardMethodInfo">
+            <summary>
+            C# only. Indicates that per-method debug information (import strings) is stored on another method, 
+            whose token is specified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind.ForwardModuleInfo">
+            <summary>
+            C# only. Indicates that per-module debug information (assembly reference aliases) is stored on another method, 
+            whose token is specified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind.StateMachineHoistedLocalScopes">
+            <summary>
+            C# only. Specifies local scopes for state machine hoisted local variables.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind.StateMachineTypeName">
+            <summary>
+            C# and VB. The name of the state machine type. Emitted for async and iterator kick-off methods.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind.DynamicLocals">
+            <summary>
+            C# only. Dynamic flags for local variables and constants.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind.EditAndContinueLocalSlotMap">
+            <summary>
+            C# and VB. Encodes EnC local variable slot map.
+            See https://github.com/dotnet/corefx/blob/master/src/System.Reflection.Metadata/specs/PortablePdb-Metadata.md#EditAndContinueLocalSlotMap.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind.EditAndContinueLambdaMap">
+            <summary>
+            C# and VB. Encodes EnC lambda map.
+            See https://github.com/dotnet/corefx/blob/master/src/System.Reflection.Metadata/specs/PortablePdb-Metadata.md#EditAndContinueLambdaAndClosureMap.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind.TupleElementNames">
+            <summary>
+            C# and VB. Tuple element names for local variables and constants.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader">
+            <summary>
+            A collection of utility method for consuming custom debug info from a PDB.
+            </summary>
+            <remarks>
+            This is not a public API, so we're just going to let bad offsets fail on their own.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.ReadGlobalHeader(System.Byte[],System.Int32@,System.Byte@,System.Byte@)">
+            <summary>
+            This is the first header in the custom debug info blob.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.ReadRecordHeader(System.Byte[],System.Int32@,System.Byte@,Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind@,System.Int32@,System.Int32@)">
+            <summary>
+            After the global header (see <see cref="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.ReadGlobalHeader(System.Byte[],System.Int32@,System.Byte@,System.Byte@)"/> comes list of custom debug info record.
+            Each record begins with a standard header.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.TryGetCustomDebugInfoRecord(System.Byte[],Microsoft.CodeAnalysis.Debugging.CustomDebugInfoKind)">
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.GetCustomDebugInfoRecords(System.Byte[])">
+            <remarks>
+            Exposed for <see cref="T:Roslyn.Test.PdbUtilities.PdbToXmlConverter"/>.
+            </remarks>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.DecodeUsingRecord(System.Collections.Immutable.ImmutableArray{System.Byte})">
+            <summary>
+            For each namespace declaration enclosing a method (innermost-to-outermost), there is a count
+            of the number of imports in that declaration.
+            </summary>
+            <remarks>
+            There's always at least one entry (for the global namespace).
+            Exposed for <see cref="T:Roslyn.Test.PdbUtilities.PdbToXmlConverter"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.DecodeForwardRecord(System.Collections.Immutable.ImmutableArray{System.Byte})">
+            <summary>
+            This indicates that further information can be obtained by looking at the custom debug
+            info of another method (specified by token).
+            </summary>
+            <remarks>
+            Appears when multiple method would otherwise have identical using records (see <see cref="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.DecodeUsingRecord(System.Collections.Immutable.ImmutableArray{System.Byte})"/>).
+            Exposed for <see cref="T:Roslyn.Test.PdbUtilities.PdbToXmlConverter"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.DecodeForwardToModuleRecord(System.Collections.Immutable.ImmutableArray{System.Byte})">
+            <summary>
+            This indicates that further information can be obtained by looking at the custom debug
+            info of another method (specified by token).
+            </summary>
+            <remarks>
+            Appears when there are extern aliases and edit-and-continue is disabled.
+            Exposed for <see cref="T:Roslyn.Test.PdbUtilities.PdbToXmlConverter"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.DecodeStateMachineHoistedLocalScopesRecord(System.Collections.Immutable.ImmutableArray{System.Byte})">
+            <summary>
+            Scopes of state machine hoisted local variables.
+            </summary>
+            <remarks>
+            Exposed for <see cref="T:Roslyn.Test.PdbUtilities.PdbToXmlConverter"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.DecodeForwardIteratorRecord(System.Collections.Immutable.ImmutableArray{System.Byte})">
+            <summary>
+            Indicates that this method is the iterator state machine for the method named in the record.
+            </summary>
+            <remarks>
+            Appears when are iterator methods.
+            Exposed for <see cref="T:Roslyn.Test.PdbUtilities.PdbToXmlConverter"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.DecodeDynamicLocalsRecord(System.Collections.Immutable.ImmutableArray{System.Byte})">
+            <summary>
+            Does for locals what System.Runtime.CompilerServices.DynamicAttribute does for parameters, return types, and fields.
+            In particular, indicates which occurrences of <see cref="T:System.Object"/> in the signature are really dynamic.
+            </summary>
+            <remarks>
+            Appears when there are dynamic locals.
+            Exposed for <see cref="T:Roslyn.Test.PdbUtilities.PdbToXmlConverter"/>.
+            </remarks>
+            <exception cref="T:System.InvalidOperationException">Bad data.</exception>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.DecodeTupleElementNamesRecord(System.Collections.Immutable.ImmutableArray{System.Byte})">
+            <summary>
+            Tuple element names for locals.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.ReadRawRecordBody(System.Byte[],System.Int32@,System.Int32,System.Collections.Immutable.ImmutableArray{System.Byte}@)">
+            <summary>
+            Returns the raw bytes of a record.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.SkipRecord(System.Byte[],System.Int32@,System.Int32)">
+            <summary>
+            Skips past a record.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.GetCSharpGroupedImportStrings``1(System.Int32,``0,System.Func{System.Int32,``0,System.Byte[]},System.Func{System.Int32,``0,System.Collections.Immutable.ImmutableArray{System.String}},System.Collections.Immutable.ImmutableArray{System.String}@)">
+            <summary>
+            Get the import strings for a given method, following forward pointers as necessary.
+            </summary>
+            <returns>
+            For each namespace enclosing the method, a list of import strings, innermost to outermost.
+            There should always be at least one entry, for the global namespace.
+            </returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.GetVisualBasicImportStrings``1(System.Int32,``0,System.Func{System.Int32,``0,System.Collections.Immutable.ImmutableArray{System.String}})">
+            <summary>
+            Get the import strings for a given method, following forward pointers as necessary.
+            </summary>
+            <returns>
+            A list of import strings.  There should always be at least one entry, for the global namespace.
+            </returns>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.TryParseCSharpImportString(System.String,System.String@,System.String@,System.String@,Microsoft.CodeAnalysis.Debugging.ImportTargetKind@)">
+            <summary>
+            Parse a string representing a C# using (or extern alias) directive.
+            </summary>
+            <remarks>
+            <![CDATA[
+            For C#:
+             "USystem" -> <namespace name="System" />
+             "AS USystem" -> <alias name="S" target="System" kind="namespace" />
+             "AC TSystem.Console" -> <alias name="C" target="System.Console" kind="type" />
+             "AS ESystem alias" -> <alias name="S" qualifier="alias" target="System" kind="type" />
+             "XOldLib" -> <extern alias="OldLib" />
+             "ZOldLib assembly" -> <externinfo name="OldLib" assembly="assembly" />
+             "ESystem alias" -> <namespace qualifier="alias" name="System" />
+             "TSystem.Math" -> <type name="System.Math" />
+            ]]>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.TryParseVisualBasicImportString(System.String,System.String@,System.String@,Microsoft.CodeAnalysis.Debugging.ImportTargetKind@,Microsoft.CodeAnalysis.Debugging.VBImportScopeKind@)">
+            <summary>
+            Parse a string representing a VB import statement.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="import"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">Format of <paramref name="import"/> is not valid.</exception>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.Debugging.CustomDebugInfoReader.ReadUtf8String(System.Collections.Immutable.ImmutableArray{System.Byte},System.Int32@)">
+            <summary>
+            Read UTF8 string with null terminator.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.ImportTargetKind.Namespace">
+            <summary>
+            C# or VB namespace import.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.ImportTargetKind.Type">
+            <summary>
+            C# or VB type import.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.ImportTargetKind.NamespaceOrType">
+            <summary>
+            VB namespace or type alias target (not specified).
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.ImportTargetKind.Assembly">
+            <summary>
+            C# extern alias.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.ImportTargetKind.XmlNamespace">
+            <summary>
+            VB XML import.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.ImportTargetKind.MethodToken">
+            <summary>
+            VB forwarding information (i.e. another method has the imports for this one).
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.ImportTargetKind.CurrentNamespace">
+            <summary>
+            VB containing namespace (not an import).
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.ImportTargetKind.DefaultNamespace">
+            <summary>
+            VB root namespace (not an import).
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.ImportTargetKind.Defunct">
+            <summary>
+            A kind that is no longer used.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.StateMachineHoistedLocalScope.StartOffset">
+            <summary>
+            The offset of the first operation in the scope.
+            </summary>
+        </member>
+        <member name="F:Microsoft.CodeAnalysis.Debugging.StateMachineHoistedLocalScope.EndOffset">
+            <summary>
+            The offset of the first operation outside of the scope, or the method body length.
+            If zero then <see cref="F:Microsoft.CodeAnalysis.Debugging.StateMachineHoistedLocalScope.StartOffset"/> is also zero and the slot represents a synthesized local.
+            </summary>
+        </member>
+        <member name="F:Microsoft.DiaSymReader.Tools.MetadataModel._lazyStandaloneSignatureMap">
+            <summary>
+            Maps standalone signature blobs to a handle. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.Tools.MetadataModel.GetSerializedTypeName(System.Reflection.Metadata.EntityHandle)">
+            <returns>Null if serialized type name format is not supported for the specified type.</returns>
+        </member>
+        <member name="T:Microsoft.DiaSymReader.Tools.MetadataModel.StateMachineAttributeValueDecoder">
+            <summary>
+            The only argument of state machine attributes is <see cref="T:System.Type"/>, 
+            so we only need to implement enough to get the serialized type name out.
+            </summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.PdbConverter.Default">
+            <summary>
+            An instance of <see cref="T:Microsoft.DiaSymReader.Tools.PdbConverter"/> with no diagnostic reporting.
+            </summary>
+        </member>
+        <member name="F:Microsoft.DiaSymReader.Tools.PdbConverter._diagnosticReporterOpt">
+            <summary>
+            Creates PDB converter with an optional callback invoked whenever a diagnostic is to be reported.
+            </summary>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.Tools.PdbConverter.IsPortable(System.IO.Stream)">
+            <summary>
+            Checks whether given PDB stream has Portable format.
+            </summary>
+            <param name="pdbStream">Stream.</param>
+            <returns>Returns true if the given stream starts with a Portable PDB signature.</returns>
+            <exception cref="T:System.ArgumentException"><paramref name="pdbStream"/> does not support read and seek operations.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="pdbStream"/> is null.</exception>
+            <exception cref="T:System.IO.IOException">IO error while reading from or writing to a stream.</exception>
+            <exception cref="T:System.ObjectDisposedException">Stream has been disposed while reading.</exception>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.Tools.PdbConverter.ConvertWindowsToPortable(System.IO.Stream,System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Converts Windows PDB stream to Portable PDB.
+            </summary>
+            <param name="peStream">PE image stream (.dll or .exe)</param>
+            <param name="sourcePdbStream">Source stream of Windows PDB data. Must be readable.</param>
+            <param name="targetPdbStream">Target stream of Portable PDB data. Must be writable.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="peStream"/>, <paramref name="sourcePdbStream"/>, or <paramref name="targetPdbStream"/> is null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="peStream"/> does not support read and seek operations.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="sourcePdbStream"/> does not support reading.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="targetPdbStream"/> does not support writing.</exception>
+            <exception cref="T:System.BadImageFormatException">The format of the PE image or the source PDB image is invalid.</exception>
+            <exception cref="T:System.IO.InvalidDataException">The PDB doesn't match the CodeView Debug Directory record in the PE image.</exception>
+            <exception cref="T:System.IO.IOException">IO error while reading from or writing to a stream.</exception>
+            <exception cref="T:System.ObjectDisposedException">Stream has been disposed while reading/writing.</exception>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.Tools.PdbConverter.ConvertWindowsToPortable(System.Reflection.PortableExecutable.PEReader,System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Converts Windows PDB stream to Portable PDB.
+            </summary>
+            <param name="peReader">PE image stream (.dll or .exe)</param>
+            <param name="sourcePdbStream">Source stream of Windows PDB data. Must be readable.</param>
+            <param name="targetPdbStream">Target stream of Portable PDB data. Must be writable.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="peReader"/>, <paramref name="sourcePdbStream"/>, or <paramref name="targetPdbStream"/> is null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="sourcePdbStream"/> does not support reading.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="targetPdbStream"/> does not support writing.</exception>
+            <exception cref="T:System.BadImageFormatException">The format of the PE image or the PDB stream is invalid.</exception>
+            <exception cref="T:System.IO.InvalidDataException">The PDB doesn't match the CodeView Debug Directory record in the PE image.</exception>
+            <exception cref="T:System.IO.IOException">IO error while reading from or writing to a stream.</exception>
+            <exception cref="T:System.ObjectDisposedException">Stream has been disposed while reading/writing.</exception>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.Tools.PdbConverter.ConvertPortableToWindows(System.IO.Stream,System.IO.Stream,System.IO.Stream,Microsoft.DiaSymReader.Tools.PortablePdbConversionOptions)">
+            <summary>
+            Converts Portable PDB stream to Windows PDB.
+            </summary>
+            <param name="peStream">PE image stream (.dll or .exe)</param>
+            <param name="sourcePdbStream">Source stream of Portable PDB data. Must be readable.</param>
+            <param name="targetPdbStream">Target stream of Windows PDB data. Must be writable.</param>
+            <param name="options">Conversion options.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="peStream"/>, <paramref name="sourcePdbStream"/>, or <paramref name="targetPdbStream"/> is null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="peStream"/> does not support read and seek operations.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="sourcePdbStream"/> does not support reading.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="targetPdbStream"/> does not support writing.</exception>
+            <exception cref="T:System.BadImageFormatException">The format of the PE image or the source PDB image is invalid.</exception>
+            <exception cref="T:System.IO.InvalidDataException">The PDB doesn't match the CodeView Debug Directory record in the PE image.</exception>
+            <exception cref="T:System.IO.IOException">IO error while reading from or writing to a stream.</exception>
+            <exception cref="T:System.ObjectDisposedException">Stream has been disposed while reading/writing.</exception>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.Tools.PdbConverter.ConvertPortableToWindows(System.Reflection.PortableExecutable.PEReader,System.IO.Stream,System.IO.Stream,Microsoft.DiaSymReader.Tools.PortablePdbConversionOptions)">
+            <summary>
+            Converts Portable PDB stream to Windows PDB.
+            </summary>
+            <param name="peReader">PE reader.</param>
+            <param name="sourcePdbStream">Source stream of Portable PDB data. Must be readable.</param>
+            <param name="targetPdbStream">Target stream of Windows PDB data. Must be writable.</param>
+            <param name="options">Conversion options.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="peReader"/>, <paramref name="sourcePdbStream"/>, or <paramref name="targetPdbStream"/> is null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="sourcePdbStream"/> does not support reading.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="targetPdbStream"/> does not support writing.</exception>
+            <exception cref="T:System.BadImageFormatException">The format of the PE image or the source PDB image is invalid.</exception>
+            <exception cref="T:System.IO.InvalidDataException">The PDB doesn't match the CodeView Debug Directory record in the PE image.</exception>
+            <exception cref="T:System.IO.IOException">IO error while reading from or writing to a stream.</exception>
+            <exception cref="T:System.ObjectDisposedException">Stream has been disposed while reading/writing.</exception>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.Tools.PdbConverter.ConvertPortableToWindows(System.Reflection.PortableExecutable.PEReader,System.Reflection.Metadata.MetadataReader,System.IO.Stream,Microsoft.DiaSymReader.Tools.PortablePdbConversionOptions)">
+            <summary>
+            Converts Portable PDB to Windows PDB.
+            </summary>
+            <param name="peReader">PE reader.</param>
+            <param name="pdbReader">Portable PDB reader.</param>
+            <param name="targetPdbStream">Target stream of Windows PDB data. Must be writable.</param>
+            <param name="options">Conversion options.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="peReader"/>, <paramref name="pdbReader"/>, or <paramref name="targetPdbStream"/> is null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="targetPdbStream"/> does not support writing.</exception>
+            <exception cref="T:System.BadImageFormatException">The format of the PE image or the source PDB image is invalid.</exception>
+            <exception cref="T:System.IO.InvalidDataException">The PDB doesn't match the CodeView Debug Directory record in the PE image.</exception>
+            <exception cref="T:System.IO.IOException">IO error while reading from or writing to a stream.</exception>
+            <exception cref="T:System.ObjectDisposedException">Stream has been disposed while reading/writing.</exception>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.Tools.PdbConverter.ConvertPortableToWindows(System.Reflection.PortableExecutable.PEReader,System.Reflection.Metadata.MetadataReader,Microsoft.DiaSymReader.SymUnmanagedWriter,Microsoft.DiaSymReader.Tools.PortablePdbConversionOptions)">
+            <summary>
+            Converts Portable PDB stream to Windows PDB.
+            </summary>
+            <param name="peReader">PE reader.</param>
+            <param name="pdbReader">Portable PDB reader.</param>
+            <param name="pdbWriter">PDB writer.</param>
+            <param name="options">Conversion options.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="peReader"/>, <paramref name="pdbReader"/>, or <paramref name="pdbWriter"/> is null.</exception>
+            <exception cref="T:System.BadImageFormatException">The format of the PE image or the source PDB image is invalid.</exception>
+            <exception cref="T:System.IO.InvalidDataException">The PDB doesn't match the CodeView Debug Directory record in the PE image.</exception>
+            <exception cref="T:System.IO.IOException">IO error while reading from or writing to a stream.</exception>
+        </member>
+        <member name="F:Microsoft.DiaSymReader.Tools.PdbConverterPortableToWindows.MaxEntityNameLength">
+            <summary>
+            This is the maximum length of a string in the PDB, assuming it is in UTF-8 format 
+            and not (yet) null-terminated.
+            </summary>
+            <remarks>
+            Used for import strings, locals, and local constants.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.Tools.PdbConverterWindowsToPortable.Convert(System.Reflection.PortableExecutable.PEReader,System.IO.Stream,System.IO.Stream)">
+            <exception cref="T:System.Runtime.InteropServices.COMException">Invalid PDB format.</exception>
+            <exception cref="T:System.IO.InvalidDataException">The content of <paramref name="sourcePdbStream"/> doesn't match the CodeView Debug Directory record in the PE image.</exception>
+        </member>
+        <member name="T:Microsoft.DiaSymReader.Tools.PortablePdbConversionOptions">
+            <summary>
+            Portable to Windows PDB conversion options.
+            </summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.PortablePdbConversionOptions.SuppressSourceLinkConversion">
+            <summary>
+            When converting to Windows PDB do not convert Source Link to srcsrv.
+            </summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.PortablePdbConversionOptions.SrcSvrVariables">
+            <summary>
+            Additional variable definitions to add to variable section of the srcsvr stream.
+            </summary>
+        </member>
+        <member name="T:Microsoft.DiaSymReader.Tools.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.Resources.MetadataNotAvailable">
+            <summary>
+              Looks up a localized string similar to Metadata not available.
+            </summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.Resources.StreamMustBeReadable">
+            <summary>
+              Looks up a localized string similar to Stream must be readable.
+            </summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.Resources.StreamMustBeSeakable">
+            <summary>
+              Looks up a localized string similar to Stream must be seakable.
+            </summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.Resources.StreamMustBeWritable">
+            <summary>
+              Looks up a localized string similar to Stream must be writable.
+            </summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidPdbFormat">
+            <summary>Invalid PDB format: {0}</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidUserEntryPointInSourcePdb">
+            <summary>Invalid user entry point in the source PDB</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.MetadataNotAvailable">
+            <summary>Metadata not available</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.SpecifiedPEBuiltWithPortablePdb">
+            <summary>Specified PE was built with Portable PDB</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.SpecifiedPEFileHasNoAssociatedPdb">
+            <summary>Specified PE file doesn't have any PDB associated with it</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.StreamMustBeReadable">
+            <summary>Stream must be readable</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.StreamMustBeSeakable">
+            <summary>Stream must be seakable</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.StreamMustBeWritable">
+            <summary>Stream must be writable</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.MethodAssociatedWithLocalScopeHasNoBody">
+            <summary>Method associated with local scope has no body</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.MethodContainingLocalVariablesHasNoLocalSignature">
+            <summary>Method containing local variables has no local signature</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.LocalConstantNameTooLong">
+            <summary>Local constant name too long</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.LocalVariableNameTooLong">
+            <summary>Local constant name too long</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.ImportStringTooLong">
+            <summary>Import string is too long. Ignoring the import: '{0}'</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.LocalScopeRangesNestingIsInvalid">
+            <summary>Local scope ranges nesting is invalid</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.UnsupportedImportType">
+            <summary>The type of import is not supported (type token {0:X8})</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.UndefinedAssemblyReferenceAlias">
+            <summary>An extern alias was not defined for assembly reference {0:X8}</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.UnknownImportDefinitionKind">
+            <summary>Unknown import definition kind: {0}</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.DiagnosticLocation">
+            <summary>token 0x{0:X8}</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.ForwardedToUndefinedMethod">
+            <summary>ForwardMethodInfo custom debug information forwards to non-existent method: 0x{0:X8}</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.ForwardedToMethodWithNoScope">
+            <summary>ForwardMethodInfo custom debug information forwards to a method with no scope: 0x{0:X8}</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.BothForwardMethodInfoAndImportsSpecified">
+            <summary>Both ForwardMethodInfo custom debug information and imports are specified</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidStateMachineTypeName">
+            <summary>Invalid type name specified in StateMachineTypeName custom debug information: {0}</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.BothStateMachineTypeNameAndImportsSpecified">
+            <summary>Both StateMachineTypeName custom debug information and imports are specified</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.DuplicateDynamicLocals">
+            <summary>Multiple DynamicLocals custom debug information records specified for the same local variable slot: {0}</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.DuplicateTupleElementNamesForSlot">
+            <summary>Multiple TupleElementNames custom debug information records specified for the same local variable slot: {0}</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.DuplicateTupleElementNamesForConstant">
+            <summary>Multiple TupleElementNames custom debug information records specified for the same local constant: '{0}' [{1}, {2})</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidImportStringFormat">
+            <summary>The format of import string is invalid: '{0}'</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidEntryPointToken">
+            <summary>The format of import string is invalid: '{0}'</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidScopeILOffsetRange">
+            <summary>Invalid scope IL offset range: [{0}, {1})</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidLocalVariableData">
+            <summary>Invalid local variable data</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidLocalConstantData">
+            <summary>Invalid local constant data</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidLocalConstantSignature">
+            <summary>Invalid local constant signature: '{0}'</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidLocalScope">
+            <summary>Invalid local scope</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidSequencePointDocument">
+            <summary>Invalid sequence point document name: '{0}'</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.UnmappedDocumentName">
+            <summary>Document name doesn't match any pattern in Source Link: '{0}'</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.UrlSchemeIsNotHttp">
+            <summary>The scheme of URL specified in Source Link is not http/https: '{0}'</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.NoSupportedUrlsFoundInSourceLink">
+            <summary>No supported well-formed URLs found in Source Link</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.PdbNotMatchingDebugDirectory">
+            <summary>The PDB doesn't match debug directory record in the PE file</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidSourceLinkData">
+            <summary>Invalid Source Link data</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidSourceLink">
+            <summary>Invalid Source Link: {0}</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.MalformedSourceLinkUrl">
+            <summary>Malformed Source Link URL: '{0}'</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidSourceServerData">
+            <summary>Invalid srcsrv data</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidEmbeddedSource">
+            <summary>Invalid embedded source associated with document '{0}'</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InconsistentStateMachineMethodMapping">
+            <summary>Inconsistent state machine method mapping -- MoveNext method is associated with two distinct kickoff methods: 0x{0:X8} and 0x{1:X8}</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidJsonDataFormat">
+            <summary>The JSON format is invalid</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidSrcSvrVariableName">
+            <summary>Invalid srcsvr variable name: '{0}'</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.ReservedSrcSvrVariableName">
+            <summary>Variable '{0}' can't be set explicitly</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.InvalidSrcSvrVariableValue">
+            <summary>Value of srcsvr variable '{0}' contains invalid characters</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.SourceChecksumAlgorithmSizeMismatch">
+            <summary>Source file checksum size doesn't match the hash algorithm '{0}': '{1}'</summary>
+        </member>
+        <member name="P:Microsoft.DiaSymReader.Tools.ConverterResources.None">
+            <summary>none</summary>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.PortablePdb.MetadataUtilities.DecodeHoistedLocalScopes(System.Reflection.Metadata.BlobReader)">
+            <exception cref="T:System.BadImageFormatException">Invalid data format.</exception>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.PortablePdb.MetadataUtilities.ReadDynamicCustomDebugInformation(System.Reflection.Metadata.MetadataReader,System.Reflection.Metadata.EntityHandle)">
+            <exception cref="T:System.BadImageFormatException">Invalid data format.</exception>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.PortablePdb.MetadataUtilities.DecodeDynamicFlags(System.Reflection.Metadata.BlobReader)">
+            <exception cref="T:System.BadImageFormatException">Invalid data format.</exception>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.PortablePdb.MetadataUtilities.ReadTupleCustomDebugInformation(System.Reflection.Metadata.MetadataReader,System.Reflection.Metadata.EntityHandle)">
+            <exception cref="T:System.BadImageFormatException">Invalid data format.</exception>
+        </member>
+        <member name="M:Microsoft.DiaSymReader.PortablePdb.MetadataUtilities.DecodeTupleElementNames(System.Reflection.Metadata.BlobReader)">
+            <exception cref="T:System.BadImageFormatException">Invalid data format.</exception>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.Combine(System.Int32,System.Int32)">
+            <summary>
+            This is how VB Anonymous Types combine hash values for fields.
+            </summary>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.Combine``1(``0,System.Int32)">
+            <summary>
+            This is how VB Anonymous Types combine hash values for fields.
+            PERF: Do not use with enum types because that involves multiple
+            unnecessary boxing operations.  Unfortunately, we can't constrain
+            T to "non-enum", so we'll use a more restrictive constraint.
+            </summary>
+        </member>
+        <member name="F:Roslyn.Utilities.Hash.FnvOffsetBias">
+            <summary>
+            The offset bias value used in the FNV-1a algorithm
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            </summary>
+        </member>
+        <member name="F:Roslyn.Utilities.Hash.FnvPrime">
+            <summary>
+            The generative factor used in the FNV-1a algorithm
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            </summary>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.GetFNVHashCode(System.Byte[])">
+            <summary>
+            Compute the FNV-1a hash of a sequence of bytes
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            </summary>
+            <param name="data">The sequence of bytes</param>
+            <returns>The FNV-1a hash of <paramref name="data"/></returns>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.GetFNVHashCode(System.Byte*,System.Int32,System.Boolean@)">
+            <summary>
+            Compute the FNV-1a hash of a sequence of bytes and determines if the byte
+            sequence is valid ASCII and hence the hash code matches a char sequence
+            encoding the same text.
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            </summary>
+            <param name="data">The sequence of bytes that are likely to be ASCII text.</param>
+            <param name="length">The length of the sequence.</param>
+            <param name="isAscii">True if the sequence contains only characters in the ASCII range.</param>
+            <returns>The FNV-1a hash of <paramref name="data"/></returns>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.GetFNVHashCode(System.Collections.Immutable.ImmutableArray{System.Byte})">
+            <summary>
+            Compute the FNV-1a hash of a sequence of bytes
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            </summary>
+            <param name="data">The sequence of bytes</param>
+            <returns>The FNV-1a hash of <paramref name="data"/></returns>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.GetFNVHashCode(System.String,System.Int32,System.Int32)">
+            <summary>
+            Compute the hashcode of a sub-string using FNV-1a
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            Note: FNV-1a was developed and tuned for 8-bit sequences. We're using it here
+            for 16-bit Unicode chars on the understanding that the majority of chars will
+            fit into 8-bits and, therefore, the algorithm will retain its desirable traits
+            for generating hash codes.
+            </summary>
+            <param name="text">The input string</param>
+            <param name="start">The start index of the first character to hash</param>
+            <param name="length">The number of characters, beginning with <paramref name="start"/> to hash</param>
+            <returns>The FNV-1a hash code of the substring beginning at <paramref name="start"/> and ending after <paramref name="length"/> characters.</returns>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.GetFNVHashCode(System.String,System.Int32)">
+            <summary>
+            Compute the hashcode of a sub-string using FNV-1a
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            </summary>
+            <param name="text">The input string</param>
+            <param name="start">The start index of the first character to hash</param>
+            <returns>The FNV-1a hash code of the substring beginning at <paramref name="start"/> and ending at the end of the string.</returns>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.GetFNVHashCode(System.String)">
+            <summary>
+            Compute the hashcode of a string using FNV-1a
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            </summary>
+            <param name="text">The input string</param>
+            <returns>The FNV-1a hash code of <paramref name="text"/></returns>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.GetFNVHashCode(System.Text.StringBuilder)">
+            <summary>
+            Compute the hashcode of a string using FNV-1a
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            </summary>
+            <param name="text">The input string</param>
+            <returns>The FNV-1a hash code of <paramref name="text"/></returns>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.GetFNVHashCode(System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Compute the hashcode of a sub string using FNV-1a
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            </summary>
+            <param name="text">The input string as a char array</param>
+            <param name="start">The start index of the first character to hash</param>
+            <param name="length">The number of characters, beginning with <paramref name="start"/> to hash</param>
+            <returns>The FNV-1a hash code of the substring beginning at <paramref name="start"/> and ending after <paramref name="length"/> characters.</returns>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.GetFNVHashCode(System.Char)">
+            <summary>
+            Compute the hashcode of a single character using the FNV-1a algorithm
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            Note: In general, this isn't any more useful than "char.GetHashCode". However,
+            it may be needed if you need to generate the same hash code as a string or
+            substring with just a single character.
+            </summary>
+            <param name="ch">The character to hash</param>
+            <returns>The FNV-1a hash code of the character.</returns>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.CombineFNVHash(System.Int32,System.String)">
+            <summary>
+            Combine a string with an existing FNV-1a hash code
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            </summary>
+            <param name="hashCode">The accumulated hash code</param>
+            <param name="text">The string to combine</param>
+            <returns>The result of combining <paramref name="hashCode"/> with <paramref name="text"/> using the FNV-1a algorithm</returns>
+        </member>
+        <member name="M:Roslyn.Utilities.Hash.CombineFNVHash(System.Int32,System.Char)">
+            <summary>
+            Combine a char with an existing FNV-1a hash code
+            See http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
+            </summary>
+            <param name="hashCode">The accumulated hash code</param>
+            <param name="ch">The new character to combine</param>
+            <returns>The result of combining <paramref name="hashCode"/> with <paramref name="ch"/> using the FNV-1a algorithm</returns>
+        </member>
+    </members>
+</doc>
