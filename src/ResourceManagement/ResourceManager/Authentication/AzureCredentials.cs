@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 // no token available for communication
                 else
                 {
-                    throw new AuthenticationException($"Cannot communicate with server. No authentication token available for '{adSettings.TokenAudience}'.");
+                    throw new RestException($"Cannot communicate with server. No authentication token available for '{adSettings.TokenAudience}'.");
                 }
             }
             await credentialsCache[adSettings.TokenAudience].ProcessHttpRequestAsync(request, cancellationToken);
