@@ -556,5 +556,15 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
+
+        internal static Dictionary<string, List<string>> SetJsonAcceptHeader()
+        {
+            // "Accept", "application/json"
+            // SqlManagementClient.SetJsonAcceptHeader();
+            Dictionary<string, List<string>> header = new Dictionary<string, List<string>>();
+            header.Add("Accept", new List<string>());
+            header["Accept"].Add("application/json");
+            return header;
+        }
     }
 }
