@@ -103,12 +103,15 @@ namespace Fluent.Tests.Network.ApplicationGateway
                 .WithSize(ApplicationGatewaySkuName.StandardMedium)
                 .WithFrontendPort(81, "port81")         // Add a new port
                 .WithoutBackendIPAddress("11.1.1.1")    // Remove from all existing backends
+                .DefineSslCertificate("testSSL")
+                    .WithPfxFromFile(new FileInfo(Path.Combine("Assets", "myTest._pfx")))
+                    .WithPfxPassword("Abc123")
+                    .Attach()
                 .DefineListener("listener2")
                     .WithPrivateFrontend()
                     .WithFrontendPort(81)
                     .WithHttps()
-                    .WithSslCertificateFromPfxFile(new FileInfo(Path.Combine("Assets", "myTest._pfx")))
-                    .WithSslCertificatePassword("Abc123")
+                    .WithSslCertificate("testSSL")
                     .Attach()
                 .DefineBackend("backend2")
                     .WithIPAddress("11.1.1.3")
