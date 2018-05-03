@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:0263B1F6C1D2EA8755C6E28644653147:00DFE9718DCBB33CB69317A9896AE9D7
         protected override async Task<Models.NetworkSecurityGroupInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.NetworkSecurityGroups.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags);
+            return await this.Manager.Inner.NetworkSecurityGroups.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
         }
 
         ///GENMHASH:6823FCC8CD86F0A33002CFB751DEA302:1B86A0897B3C9C09B427B720B9ED7DDE
