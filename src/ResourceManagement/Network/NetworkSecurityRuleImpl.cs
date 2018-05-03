@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         NetworkSecurityRule.UpdateDefinition.IUpdateDefinition<NetworkSecurityGroup.Update.IUpdate>,
         NetworkSecurityRule.Update.IUpdate
     {
+        private Dictionary<string, ApplicationSecurityGroupInner> sourceAsgs = new Dictionary<string, ApplicationSecurityGroupInner>();
+        private Dictionary<string, ApplicationSecurityGroupInner> destinationAsgs = new Dictionary<string, ApplicationSecurityGroupInner>();
 
         ///GENMHASH:F6CF73FF4B137FB1F39A4CF3F1978CDB:C0847EA0CDA78F6D91EFD239C70F0FA7
         internal NetworkSecurityRuleImpl(SecurityRuleInner inner, NetworkSecurityGroupImpl parent) : base(inner, parent)
@@ -299,11 +301,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:2B7FF25B14EF62E55CC8805B824E0366:11B5B307793C3F9FF1E037CD73A12C40
         public NetworkSecurityRuleImpl WithDestinationApplicationSecurityGroup(string id)
         {
-            //$ destinationAsgs.Put(id, new ApplicationSecurityGroupInner().WithId(id));
-            //$ Inner.WithDestinationAddressPrefix(null);
-            //$ Inner.WithDestinationAddressPrefixes(null);
-            //$ return this;
-
+            destinationAsgs[id] = new ApplicationSecurityGroupInner(id: id);
+            Inner.DestinationAddressPrefix = null;
+            Inner.DestinationAddressPrefixes = null;
             return this;
         }
 
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public NetworkSecurityRuleImpl WithSourceApplicationSecurityGroup(string id)
         {
 
-            //$ sourceAsgs.Put(id, new ApplicationSecurityGroupInner().WithId(id));
+            sourceAsgs[id] = new ApplicationSecurityGroupInner(id : id);
             Inner.SourceAddressPrefix = null;
             Inner.SourceAddressPrefixes = null;
 

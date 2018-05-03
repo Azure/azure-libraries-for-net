@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System.Linq;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using Microsoft.Azure;
@@ -46,10 +48,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:575791C5B65702BB0207EBB86C505DCF
         public override async Task<Microsoft.Azure.Management.Network.Fluent.IDdosProtectionPlan> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return this.Manager().Inner.DdosProtectionPlans().CreateOrUpdateAsync(resourceGroupName(), name(), Inner)
-            //$ .Map(innerToFluentMap(this));
-
-            return null;
+            SetInner(await this.Manager.Inner.DdosProtectionPlans.CreateOrUpdateAsync(ResourceGroupName, Name, Inner));
+           return null;
         }
 
         ///GENMHASH:99D5BF64EA8AA0E287C9B6F77AAD6FC4:3DB04077E6BABC0FB5A5ACDA19D11309
@@ -67,9 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:3432D5F9AA6D1AC31DF96CB75325C37A:A14ACA04E5E1D457B8AC97821B48DDD6
         public IReadOnlyList<SubResource> VirtualNetworks()
         {
-            //$ return Collections.UnmodifiableList(Inner.VirtualNetworks());
-
-            return null;
+            return Inner.VirtualNetworks.ToList();
         }
     }
 }

@@ -41,23 +41,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:BCABB5578B0BD7DC8F8C22F4769FD3DE:02984D22C1D2E484D62F2595E7B0E86C
         public IVirtualNetworkGatewayConnection ApplyTags()
         {
-            //$ return applyTagsAsync().ToBlocking().Last();
-
-            return null;
+            return Extensions.Synchronize(() => ApplyTagsAsync());
         }
 
         ///GENMHASH:6B8BA63027964E06F44A927837B450A0:BA32A105329DC11B026CC971C7538262
         public async Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> ApplyTagsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return this.Manager().Inner.VirtualNetworkGatewayConnections().UpdateTagsAsync(resourceGroupName(), name(), Inner.GetTags())
-            //$ .FlatMap(new Func1<VirtualNetworkGatewayConnectionListEntityInner, Observable<VirtualNetworkGatewayConnection>>() {
-            //$ @Override
-            //$ public Observable<VirtualNetworkGatewayConnection> call(VirtualNetworkGatewayConnectionListEntityInner inner) {
-            //$ return refreshAsync();
-            //$ }
-            //$ });
-
-            return null;
+            await Manager.Inner.VirtualNetworkGatewayConnections.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags);
+            await RefreshAsync();
+            return this;
         }
 
         ///GENMHASH:F0389EF26F16D377233CEA0243D3C2D3:002AE7D0BF403F77853FCC09647B9C5D

@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             : base(name, innerModel, networkManager)
         {
             packetCaptures = new PacketCapturesImpl(networkManager.Inner.PacketCaptures, this);
+            connectionMonitors = new ConnectionMonitorsImpl(networkManager.Inner.ConnectionMonitors, this);
         }
 
 
@@ -53,17 +54,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:E57B0EEDF58A342B01A5F4CF76030BAC:4CDB58B16C3B63EB3194D9C1D695E7C7
         public AvailableProvidersImpl AvailableProviders()
         {
-            //$ return new AvailableProvidersImpl(this);
-
-            return null;
+            return new AvailableProvidersImpl(this);
         }
 
         ///GENMHASH:1470B429A1D139BF4EBFE36C097746F5:D5E9DFF45F32337A2A4B1D2D29D7F031
         public AzureReachabilityReportImpl AzureReachabilityReport()
         {
-            //$ return new AzureReachabilityReportImpl(this);
-
-            return null;
+            return new AzureReachabilityReportImpl(this);
         }
 
         ///GENMHASH:8C3F7A74AC5004631D21F8903860DC6B:E33BD6B245B7E9C2814D6C577505B7F9
@@ -81,9 +78,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:E3A05E297410D043611B64D370D8BA54:094A9222342E6F539E7A7FB5FD5A5920
         public ConnectionMonitorsImpl ConnectionMonitors()
         {
-            //$ return connectionMonitors;
-
-            return null;
+            return connectionMonitors;
         }
 
         ///GENMHASH:F57C7696A3ED75E619C8E1A9DFE5EA61:9938198EE6EDB0DC20C3A7100AD87595

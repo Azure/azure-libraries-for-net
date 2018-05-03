@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System.Linq;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using Microsoft.Azure.Management.Network.Fluent.Models;
@@ -30,9 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:BE1EA957D0BFB4FE19638B8E97D6071D:3AE0E4C8B5F32B836364999BCF8BD994
         public IReadOnlyList<Models.ConnectionStateSnapshot> States()
         {
-            //$ return Collections.UnmodifiableList(Inner.States());
-
-            return null;
+            return Inner.States.ToList();
         }
     }
 }
