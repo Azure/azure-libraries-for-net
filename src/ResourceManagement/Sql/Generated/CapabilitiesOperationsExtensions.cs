@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<LocationCapabilitiesInner> ListByLocationAsync(this ICapabilitiesOperations operations, string locationId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(locationId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(locationId, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

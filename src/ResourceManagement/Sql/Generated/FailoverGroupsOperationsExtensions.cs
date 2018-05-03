@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<FailoverGroupInner> GetAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<FailoverGroupInner> CreateOrUpdateAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, FailoverGroupInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task DeleteAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<FailoverGroupInner> UpdateAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, FailoverGroupUpdateInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<FailoverGroupInner>> ListByServerAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<FailoverGroupInner> FailoverAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.FailoverWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.FailoverWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<FailoverGroupInner> ForceFailoverAllowDataLossAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ForceFailoverAllowDataLossWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ForceFailoverAllowDataLossWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<FailoverGroupInner> BeginCreateOrUpdateAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, FailoverGroupInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task BeginDeleteAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<FailoverGroupInner> BeginUpdateAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, FailoverGroupUpdateInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<FailoverGroupInner> BeginFailoverAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginFailoverWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginFailoverWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<FailoverGroupInner> BeginForceFailoverAllowDataLossAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginForceFailoverAllowDataLossWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginForceFailoverAllowDataLossWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<FailoverGroupInner>> ListByServerNextAsync(this IFailoverGroupsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByServerNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByServerNextWithHttpMessagesAsync(nextPageLink, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

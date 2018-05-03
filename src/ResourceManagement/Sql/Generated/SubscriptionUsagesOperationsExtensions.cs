@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<SubscriptionUsageInner>> ListByLocationAsync(this ISubscriptionUsagesOperations operations, string locationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(locationName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(locationName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<SubscriptionUsageInner> GetAsync(this ISubscriptionUsagesOperations operations, string locationName, string usageName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(locationName, usageName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(locationName, usageName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<SubscriptionUsageInner>> ListByLocationNextAsync(this ISubscriptionUsagesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByLocationNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByLocationNextWithHttpMessagesAsync(nextPageLink, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
