@@ -33,9 +33,33 @@ namespace Microsoft.Azure.Management.Network.Fluent
             INetworkManager>,
         IVirtualNetworkGatewayConnection,
         IDefinition,
-        IUpdate
+        IUpdate,
+        IAppliableWithTags<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>
     {
         private IVirtualNetworkGateway parent;
+
+        ///GENMHASH:BCABB5578B0BD7DC8F8C22F4769FD3DE:02984D22C1D2E484D62F2595E7B0E86C
+        public IVirtualNetworkGatewayConnection ApplyTags()
+        {
+            //$ return applyTagsAsync().ToBlocking().Last();
+
+            return null;
+        }
+
+        ///GENMHASH:6B8BA63027964E06F44A927837B450A0:BA32A105329DC11B026CC971C7538262
+        public async Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> ApplyTagsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            //$ return this.Manager().Inner.VirtualNetworkGatewayConnections().UpdateTagsAsync(resourceGroupName(), name(), Inner.GetTags())
+            //$ .FlatMap(new Func1<VirtualNetworkGatewayConnectionListEntityInner, Observable<VirtualNetworkGatewayConnection>>() {
+            //$ @Override
+            //$ public Observable<VirtualNetworkGatewayConnection> call(VirtualNetworkGatewayConnectionListEntityInner inner) {
+            //$ return refreshAsync();
+            //$ }
+            //$ });
+
+            return null;
+        }
+
         ///GENMHASH:F0389EF26F16D377233CEA0243D3C2D3:002AE7D0BF403F77853FCC09647B9C5D
         public string LocalNetworkGateway2Id()
         {
@@ -115,6 +139,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             };
             Inner.LocalNetworkGateway2 = localNetworkGatewayRef;
             return this;
+        }
+
+        ///GENMHASH:DD514B859A01D5FDAFF5D26EACDFE197:40A980295F5EA8FF8304DA8C06E899BF
+        public VirtualNetworkGatewayConnectionImpl UpdateTags()
+        {
+             return this;
         }
 
         ///GENMHASH:63E7CC3AA7BB3CB910E5D0EE8931223C:05BC5F2415598E47C21323CD8B084A89
@@ -274,16 +304,45 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return new ReadOnlyCollection<TunnelConnectionHealth>(Inner.TunnelConnectionStatus);
         }
 
-        public IWithCreate WithTags(IDictionary<string, string> tags)
+//        public VirtualNetworkGatewayConnectionImpl WithTags(IDictionary<string, string> tags)
+//        {
+//            base.WithTags(tags);
+//            return this;
+//        }
+//
+//        public VirtualNetworkGatewayConnectionImpl WithTag(string key, string value)
+//        {
+//            base.WithTag(key, value);
+//            return this;
+//        }
+        UpdatableWithTags.UpdatableWithTags.IUpdateWithTags<IVirtualNetworkGatewayConnection> IUpdatableWithTags<IVirtualNetworkGatewayConnection>.UpdateTags()
         {
-            base.WithTags(tags);
-            return this;
+            return UpdateTags();
         }
 
-        public IWithCreate WithTag(string key, string value)
+        IWithCreate IDefinitionWithTags<IWithCreate>.WithTags(IDictionary<string, string> tags)
         {
-            base.WithTag(key, value);
-            return this;
+            throw new System.NotImplementedException();
+        }
+
+        IUpdate IUpdateWithTags<IUpdate>.WithTag(string key, string value)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IUpdate IUpdateWithTags<IUpdate>.WithoutTag(string key)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IUpdate IUpdateWithTags<IUpdate>.WithTags(IDictionary<string, string> tags)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IWithCreate IDefinitionWithTags<IWithCreate>.WithTag(string key, string value)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

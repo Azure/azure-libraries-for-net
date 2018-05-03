@@ -1,5 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using Microsoft.Azure.Management.Network.Fluent.UpdatableWithTags.UpdatableWithTags;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using System.Threading.Tasks;
@@ -17,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uUm91dGVUYWJsZUltcGw=
     internal partial class RouteTableImpl :
-        GroupableParentResource<IRouteTable,
+        GroupableParentResourceWithTags<IRouteTable,
             RouteTableInner,
             RouteTableImpl,
             INetworkManager,
@@ -132,6 +135,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        ///GENMHASH:0263B1F6C1D2EA8755C6E28644653147:9D293E1AA04D2C3CD8EDA9D8EB8FEDDD
+        protected override async Task<Models.RouteTableInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.Inner.RouteTables.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags);
+        }
 
         ///GENMHASH:F9626EDD83A5083970F3624D111D5F9A:7C77591C832F84A949CE9BF6525CCF9B
         public IReadOnlyDictionary<string, IRoute> Routes()
@@ -165,5 +173,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             routes.Remove(name);
             return this;
         }
+
+        public bool IsBgpRoutePropagationDisabled { get; }
     }
 }

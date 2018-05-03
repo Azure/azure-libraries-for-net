@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System.Linq;
+using Microsoft.Azure.Management.Network.Fluent.UpdatableWithTags.UpdatableWithTags;
 
 namespace Microsoft.Azure.Management.Network.Fluent
 {
@@ -491,6 +492,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 Name = name
             };
             return new VirtualNetworkGatewayIPConfigurationImpl(inner, this);
+        }
+
+        public IUpdateWithTags<IVirtualNetworkGateway> UpdateTags()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -148,5 +148,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 .CheckConnectivityAsync(parent.ResourceGroupName, parent.Name, parameters);
             return this;
         }
+
+        ///GENMHASH:BB86B1F07AADE33841AA4762FF3CC20E:B387E3DD8624B2499C0BDB4DDC202E72
+        public ConnectivityCheckImpl WithProtocol(Protocol protocol)
+        {
+            //$ parameters.WithProtocol(protocol);
+            //$ return this;
+
+            return this;
+        }
     }
 }

@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition
     /// </summary>
     public interface IWithExecute :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IExecutable<Microsoft.Azure.Management.Network.Fluent.IConnectivityCheck>,
-        Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition.IFromSourcePort
+        Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition.IFromSourcePort,
+    Microsoft.Azure.Management.Network.Fluent.HasProtocol.Definition.IWithProtocol<Microsoft.Azure.Management.Network.Fluent.ConnectivityCheck.Definition.IWithExecute,Microsoft.Azure.Management.Network.Fluent.Models.Protocol>
     {
     }
 

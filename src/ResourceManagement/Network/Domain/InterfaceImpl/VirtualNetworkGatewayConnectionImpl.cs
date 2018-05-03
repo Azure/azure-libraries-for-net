@@ -332,5 +332,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return this.WithSecondVirtualNetworkGateway(virtualNetworkGateway2) as VirtualNetworkGatewayConnection.Definition.IWithSharedKey;
         }
+
+        public IAppliableWithTags<IVirtualNetworkGatewayConnection> WithoutTag(string key)
+        {
+            return this.WithoutTag(key) as IAppliableWithTags<IVirtualNetworkGatewayConnection>;
+        }
+
+        public IAppliableWithTags<IVirtualNetworkGatewayConnection> WithTag(string key, string value)
+        {
+            this.WithTag(key, value);
+            return this as IAppliableWithTags<IVirtualNetworkGatewayConnection>;
+        }
+
+        public IAppliableWithTags<IVirtualNetworkGatewayConnection> WithTags(IDictionary<string, string> tags)
+        {
+            return this.WithTags(tags) as IAppliableWithTags<IVirtualNetworkGatewayConnection>;
+        }
     }
 }

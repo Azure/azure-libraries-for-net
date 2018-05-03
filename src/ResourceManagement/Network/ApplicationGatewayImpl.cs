@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uQXBwbGljYXRpb25HYXRld2F5SW1wbA==
     internal partial class ApplicationGatewayImpl :
-        GroupableParentResource<IApplicationGateway,
+        GroupableParentResourceWithTags<IApplicationGateway,
             ApplicationGatewayInner,
             ApplicationGatewayImpl,
             INetworkManager,
@@ -375,7 +375,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return WithoutPublicFrontend();
         }
 
+        ///GENMHASH:0263B1F6C1D2EA8755C6E28644653147:C2A348673547AB17A3E43B0CDED4C1ED
+        protected async Task<Models.ApplicationGatewayInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            //$ return this.Manager().Inner.ApplicationGateways().UpdateTagsAsync(resourceGroupName(), name(), Inner.GetTags());
 
+            return null;
+        }
         ///GENMHASH:52541ED0C8AE1806DF3F2DF0DE092357:D02F16FB7F9F848339457F517542934A
         public ApplicationGatewayImpl WithNewPublicIPAddress(ICreatable<IPublicIPAddress> creatable)
         {

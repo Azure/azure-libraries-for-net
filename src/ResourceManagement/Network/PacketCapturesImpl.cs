@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public override void DeleteById(string id)
         {
-            throw new System.NotImplementedException();
+            Extensions.Synchronize(() => DeleteByIdAsync(id));
         }
 
 

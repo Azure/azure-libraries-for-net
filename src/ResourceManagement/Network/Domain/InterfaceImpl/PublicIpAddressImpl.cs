@@ -1,5 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using System.Threading;
@@ -144,7 +147,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 return this.IPAllocationMethod() as Models.IPAllocationMethod;
             }
         }
-
+        UpdatableWithTags.UpdatableWithTags.IUpdateWithTags<IPublicIPAddress> IUpdatableWithTags<IPublicIPAddress>.UpdateTags()
+        {
+            return UpdateTags();
+        }
         /// <summary>
         /// Specifies the timeout (in minutes) for an idle connection.
         /// </summary>
@@ -305,6 +311,23 @@ namespace Microsoft.Azure.Management.Network.Fluent
         PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithSku.WithSku(PublicIPSkuType skuType)
         {
             return this.WithSku(skuType) as PublicIPAddress.Definition.IWithCreate;
+        }
+
+
+        public IAppliableWithTags<IPublicIPAddress> WithoutTag(string key)
+        {
+            return this.WithoutTag(key) as IAppliableWithTags<IPublicIPAddress>;
+        }
+
+        public IAppliableWithTags<IPublicIPAddress> WithTag(string key, string value)
+        {
+            this.WithTag(key, value);
+            return this as IAppliableWithTags<IPublicIPAddress>;
+        }
+
+        public IAppliableWithTags<IPublicIPAddress> WithTags(IDictionary<string, string> tags)
+        {
+            return this.WithTags(tags) as IAppliableWithTags<IPublicIPAddress>;
         }
     }
 }

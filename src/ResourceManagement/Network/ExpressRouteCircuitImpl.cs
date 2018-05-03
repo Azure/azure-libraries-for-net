@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uRXhwcmVzc1JvdXRlQ2lyY3VpdEltcGw=
     internal partial class ExpressRouteCircuitImpl :
-        GroupableParentResource<
+        GroupableParentResourceWithTags<
             IExpressRouteCircuit,
             ExpressRouteCircuitInner,
             ExpressRouteCircuitImpl,
@@ -145,6 +145,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             Inner.Sku = sku.Sku();
             return this;
+        }
+
+        ///GENMHASH:0263B1F6C1D2EA8755C6E28644653147:B6AF4318DCA2628C503284303A321B0F
+        protected override async Task<Models.ExpressRouteCircuitInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.Inner.ExpressRouteCircuits.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags);
         }
 
         ///GENMHASH:6156CBBE562DB102D30D00D0F72FF564:CC801AA6C2F51CD8A1E0CA4F52068A83

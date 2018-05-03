@@ -140,5 +140,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return this.FromSourceVirtualMachine(vm) as ConnectivityCheck.Definition.IWithExecute;
         }
+
+        /// <summary>
+        /// Specifies the transport protocol.
+        /// </summary>
+        /// <param name="protocol">A transport protocol.</param>
+        /// <return>The next stage of the definition.</return>
+        ConnectivityCheck.Definition.IWithExecute HasProtocol.Definition.IWithProtocol<ConnectivityCheck.Definition.IWithExecute,Models.Protocol>.WithProtocol(Protocol protocol)
+        {
+            return this.WithProtocol(protocol);
+        }
     }
 }

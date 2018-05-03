@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
 
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uTG9hZEJhbGFuY2VySW1wbA==
-    internal partial class LoadBalancerImpl : GroupableParentResource<
+    internal partial class LoadBalancerImpl : GroupableParentResourceWithTags<
             ILoadBalancer,
             LoadBalancerInner,
             LoadBalancerImpl,
@@ -397,6 +397,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        ///GENMHASH:0263B1F6C1D2EA8755C6E28644653147:C6B0AD6FE5D6917AA9B6FD514C966827
+        protected override async Task<Models.LoadBalancerInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.Inner.LoadBalancers.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
+        }
 
         ///GENMHASH:380B462B2D97E5D84F07F3F7B18F67AF:9A9DA0D7B5F5A30A997CC412F2B0BE8B
         internal LoadBalancerImpl WithExistingVirtualMachine(IHasNetworkInterfaces vm, string backendName)
