@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:1928BF3A1A64CC113C96C62B2E19BC60:2F619F28559C25A5F73AEB7C7E089FBE
         internal NetworkSecurityRuleImpl WithAnyProtocol()
         {
-            return WithProtocol(SecurityRuleProtocol.Asterisk.Value);
+            return WithProtocol(SecurityRuleProtocol.Asterisk);
         }
         #endregion
 
