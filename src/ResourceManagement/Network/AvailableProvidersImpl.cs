@@ -35,23 +35,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:2C6EAE1A0B195DB734B33ADDB4203F3F:B40D655DCD341BFB1E761F25EE1B87D6
         private void InitializeResourcesFromInner()
         {
-            //$ this.providersByCountry = new TreeMap<>();
-            //$ List<AvailableProvidersListCountry> availableProvidersList = this.Inner.Countries();
-            //$ if (availableProvidersList != null) {
-            //$ foreach(var resource in availableProvidersList) {
-            //$ this.providersByCountry.Put(resource.CountryName(), resource);
-            //$ }
-            //$ }
-            //$ }
-
+            providersByCountry = new Dictionary<string, AvailableProvidersListCountry>();
+            var inners = Inner().Countries;
+            if (inners != null)
+            {
+                foreach (var inner in inners)
+                {
+                    providersByCountry[inner.CountryName] = inner;
+                }
+            }
         }
 
         ///GENMHASH:23A4346B0B0D770DF432AC5949EE9666:7A31B9AAF5466328BC49ECCDA3102A92
         public AvailableProvidersListParameters AvailableProvidersParameters()
         {
-            //$ return parameters;
-
-            return null;
+            return parameters;
         }
 
         ///GENMHASH:637F0A3522F2C635C23E54FAAD79CBEA:2F3886FC773DF9FABF63CDBC571E5451
@@ -79,62 +77,57 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:02D4291678B9DD815B24067695A568FE:CBB7D90388387B638B8F355DFCA9DB53
         public IReadOnlyDictionary<string,Models.AvailableProvidersListCountry> ProvidersByCountry()
         {
-            //$ return Collections.UnmodifiableMap(this.providersByCountry);
-
-            return null;
+            return this.providersByCountry as IReadOnlyDictionary<string, AvailableProvidersListCountry>;
         }
 
         ///GENMHASH:C69ABFB260D78D792D404EC3BF958ED7:BC72AF070CE5DBB4DA29D4F2E31326A3
         public AvailableProvidersImpl WithAzureLocation(string azureLocation)
         {
-            //$ if (parameters.AzureLocations() == null) {
-            //$ parameters.WithAzureLocations(new ArrayList<String>());
-            //$ }
-            //$ parameters.AzureLocations().Add(azureLocation);
-            //$ return this;
-
+            if (parameters.AzureLocations == null) {
+                parameters.AzureLocations = new List<string>();
+            }
+            parameters.AzureLocations.Add(azureLocation);
             return this;
         }
 
         ///GENMHASH:DBE908B51C2C3ACC09544176732C78B3:DBA36CA1C37ED3DF4C9385ED3FCE6A83
         public AvailableProvidersImpl WithAzureLocations(params string[] azureLocations)
         {
-            //$ parameters.WithAzureLocations(Arrays.AsList(azureLocations));
-            //$ return this;
-
+            if (parameters.AzureLocations == null)
+            {
+                parameters.AzureLocations = new List<string>();
+            }
+            foreach (var location in azureLocations)
+            {
+                parameters.AzureLocations.Add(location);
+            }
             return this;
         }
 
         ///GENMHASH:79B40BC8608C55BE421D10368B0976C1:96C65C9DA3972BEFA81DC69060C3E54B
         public AvailableProvidersImpl WithCity(string city)
         {
-            //$ parameters.WithCity(city);
-            //$ return this;
-
+            parameters.City = city;
             return this;
         }
 
         ///GENMHASH:EDA6C55DA7B7CC343CABE6D814140EA9:8DC8CE367538B8FE24ACCADF429E8EC5
         public AvailableProvidersImpl WithCountry(string country)
         {
-            //$ parameters.WithCountry(country);
-            //$ return this;
-
+            parameters.Country = country;
             return this;
         }
 
         ///GENMHASH:9F6E4390422675F2E5488C65F0A3E8E5:098BC7C46E9AD37B1829B1585080C79C
         public AvailableProvidersImpl WithState(string state)
         {
-            //$ parameters.WithState(state);
-            //$ return this;
-
+            parameters.State = state;
             return this;
         }
 
         AvailableProvidersListInner IHasInner<AvailableProvidersListInner>.Inner
         {
-            get { throw new System.NotImplementedException(); }
+            get { return Inner(); }
         }
     }
 }

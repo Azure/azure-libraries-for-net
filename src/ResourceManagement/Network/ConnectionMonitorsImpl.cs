@@ -1,6 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System;
+using System.Linq;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using Microsoft.Azure.Management.Network.Fluent.ConnectionMonitor.Definition;
@@ -102,29 +105,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:7C0CDAA3ED1A40FCFEC405E9D09BCB2B
         public IEnumerable<Microsoft.Azure.Management.Network.Fluent.IConnectionMonitor> List()
         {
-            //$ return (new PagedListConverter<ConnectionMonitorResultInner, ConnectionMonitor>() {
-            //$ @Override
-            //$ public Observable<ConnectionMonitor> typeConvertAsync(ConnectionMonitorResultInner inner) {
-            //$ return Observable.Just((ConnectionMonitor) wrapModel(inner));
-            //$ }
-            //$ }).Convert(ReadableWrappersImpl.ConvertToPagedList(Inner.List(parent.ResourceGroupName(), parent.Name())));
-
-            return null;
+            Func<ConnectionMonitorResultInner, IConnectionMonitor> converter = inner =>
+            {
+                return ((ConnectionMonitorImpl)WrapModel(inner));
+            };
+            return Extensions.Synchronize(() => Inner.ListAsync(parent.ResourceGroupName, parent.Name))
+                .Select(inner => converter(inner));
         }
 
         /// <return>An observable emits connection monitors in this collection.</return>
         ///GENMHASH:7F5BEBF638B801886F5E13E6CCFF6A4E:1BD69DE9A692366A5C81FE75F43DA924
         public async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IConnectionMonitor>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ Observable<List<ConnectionMonitorResultInner>> list = Inner.ListAsync(parent.ResourceGroupName(), parent.Name());
-            //$ return ReadableWrappersImpl.ConvertListToInnerAsync(list).Map(new Func1<ConnectionMonitorResultInner, ConnectionMonitor>() {
-            //$ @Override
-            //$ public ConnectionMonitor call(ConnectionMonitorResultInner inner) {
-            //$ return wrapModel(inner);
-            //$ }
-            //$ });
-
-            return null;
+            var innerConnectionMonitors = await Inner.ListAsync(parent.ResourceGroupName, parent.Name, cancellationToken);
+            var result = innerConnectionMonitors.Select((innerPacketCapture) => WrapModel(innerPacketCapture));
+            return PagedCollection<IConnectionMonitor, ConnectionMonitorResultInner>.CreateFromEnumerable(result);
         }
     }
 }

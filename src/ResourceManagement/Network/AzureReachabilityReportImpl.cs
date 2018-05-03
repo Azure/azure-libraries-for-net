@@ -75,18 +75,24 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:4FE530CF34C22FA621A20EC7342C5275:2CB8A0991EDDDCF72582C9946B051367
         public IReadOnlyList<Models.AzureReachabilityReportItem> ReachabilityReport()
         {
-            //return Collections.UnmodifiableList(inner.ReachabilityReport());
-
-            return null;
+            List<AzureReachabilityReportItem> result = new List<AzureReachabilityReportItem>();
+            if (this.Inner().ReachabilityReport != null)
+            {
+                result.AddRange(this.Inner().ReachabilityReport);
+            }
+            return result.AsReadOnly();
         }
 
         ///GENMHASH:DBE908B51C2C3ACC09544176732C78B3:DBA36CA1C37ED3DF4C9385ED3FCE6A83
         public IWithExecute WithAzureLocations(params string[] azureLocations)
         {
-            //$ parameters.WithAzureLocations(Arrays.AsList(azureLocations));
-            //$ return this;
+            this.parameters.AzureLocations = new List<String>();
+            foreach (var id in azureLocations)
+            {
+                this.parameters.AzureLocations.Add(id);
+            }
 
-            return null;
+            return this;
         }
 
         ///GENMHASH:C4FF9250259C19995B551B017771F384:E389C065ACF7E72C2E6424B83216EEB7
@@ -120,10 +126,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:F524E41F91C15EEEE804F9935D7208A0:576339BA7B4830E4C48F96C379A9FA2C
         public IWithExecute WithProviders(params string[] providers)
         {
-            //$ parameters.WithProviders(Arrays.AsList(providers));
-            //$ return this;
+            this.parameters.Providers = new List<String>();
+            foreach (var id in providers)
+            {
+                this.parameters.Providers.Add(id);
+            }
 
-            return null;
+            return this;
         }
 
         ///GENMHASH:99D252694C3BCB6EB9B8CD48B089D0F9:01DBD646E603079CE2678567D30B518A
