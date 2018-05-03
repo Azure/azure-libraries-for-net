@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:754810EA5144700BBB078C6E55E8C153
         protected override async Task<Models.ConnectionMonitorResultInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.client.GetAsync(parent.ResourceGroupName, parent.Name, Name);
+            return await this.client.GetAsync(parent.ResourceGroupName, parent.Name, Name, cancellationToken);
         }
 
         ///GENMHASH:C5D89656612B3B4FD5897FBFC88C3AFB:72EB2BF07E27ECC8589DC1335BAC8634
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public override async Task<Microsoft.Azure.Management.Network.Fluent.IConnectionMonitor> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             SetInner(await this.client.CreateOrUpdateAsync(parent.ResourceGroupName, parent.Name, this.Name,
-                createParameters));
+                createParameters, cancellationToken));
 
             return this;
         }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:A409C3D3741509AF429A05127B5E4382:58F7FC16B9BBD602D0D4676357994540
         public  async Task<Microsoft.Azure.Management.Network.Fluent.IConnectionMonitorQueryResult> QueryAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return new ConnectionMonitorQueryResultImpl(await this.client.QueryAsync(parent.ResourceGroupName, parent.Name, Name));
+            return new ConnectionMonitorQueryResultImpl(await this.client.QueryAsync(parent.ResourceGroupName, parent.Name, Name, cancellationToken));
         }
 
         ///GENMHASH:32ABF27B7A32286845C5FAFE717F8E4D:E5A3D960F98D36AB45F0D6541D43C4D9

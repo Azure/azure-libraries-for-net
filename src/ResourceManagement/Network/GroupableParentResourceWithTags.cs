@@ -80,23 +80,5 @@ namespace Microsoft.Azure.Management.Network.Fluent
             SetInner(inner);
             return this as FluentResourceT;
         }
-
-//        public IAppliableWithTags<IFluentResourceT> WithoutTag(string key)
-//        {
-//            base.WithoutTag(key);
-//            return this as IAppliableWithTags<IFluentResourceT>;
-//        }
-//
-//        public IAppliableWithTags<IFluentResourceT> WithTag(string key, string value)
-//        {
-//            base.WithTag(key, value);
-//            return this as IAppliableWithTags<IFluentResourceT>;
-//        }
-//
-//        public IAppliableWithTags<IFluentResourceT> WithTags(IDictionary<string, string> tags)
-//        {
-//            base.WithTags(tags);
-//            return this as IAppliableWithTags<IFluentResourceT>;
-//        }
     }
 }

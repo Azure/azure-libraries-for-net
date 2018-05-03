@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:637F0A3522F2C635C23E54FAAD79CBEA:4891FA97A857767ACE1138F0F8DDD55F
-        public override async Task<IAzureReachabilityReport> ExecuteAsync(CancellationToken cancellationToken = new CancellationToken(), bool multiThreaded = true)
+        public override async Task<IAzureReachabilityReport> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken), bool multiThreaded = true)
         {
             this.inner =
                 await parent.Manager.Inner.NetworkWatchers.GetAzureReachabilityReportAsync(parent.ResourceGroupName,
-                    parent.Name, parameters); 
+                    parent.Name, parameters, cancellationToken); 
             return this;
         }
 

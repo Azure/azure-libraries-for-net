@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var response = await this.Manager.Inner.NetworkWatchers.CreateOrUpdateAsync(
-                this.ResourceGroupName, this.Name, this.Inner);
+                this.ResourceGroupName, this.Name, this.Inner, cancellationToken);
             SetInner(response);
             return this;
         }
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             string vmId, CancellationToken cancellationToken = default(CancellationToken))
         {
             var response = await this.Manager.Inner.NetworkWatchers
-                .GetVMSecurityRulesAsync(this.ResourceGroupName, this.Name, vmId);
+                .GetVMSecurityRulesAsync(this.ResourceGroupName, this.Name, vmId, cancellationToken);
             return new SecurityGroupViewImpl(this, response, vmId);
         }
 
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:6B8BA63027964E06F44A927837B450A0:73A3E3DE52EE39671B79DFFC66BC8B20
         public async Task<Microsoft.Azure.Management.Network.Fluent.INetworkWatcher> ApplyTagsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inner = await Manager.Inner.NetworkWatchers.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags);
+            var inner = await Manager.Inner.NetworkWatchers.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
             SetInner(inner);
             return this;
         }

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
         }
 
-///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:2A983980B1FCFB22A7F725D9E0344B2C
+        ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:2A983980B1FCFB22A7F725D9E0344B2C
         protected override ConnectionMonitorImpl WrapModel(string name)
         {
             return new ConnectionMonitorImpl(name, parent, new ConnectionMonitorResultInner(), Inner);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public override async Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             ResourceId resourceId = ResourceId.FromString(id);
-            await this.innerCollection.DeleteAsync(resourceId.ResourceGroupName, resourceId.Parent.Name, resourceId.Name);
+            await this.innerCollection.DeleteAsync(resourceId.ResourceGroupName, resourceId.Parent.Name, resourceId.Name, cancellationToken);
         }
 
         ///GENMHASH:C2DC9CFAB6C291D220DD4F29AFF1BBEC:7459D8B9F8BB0A1EBD2FC4702A86F2F5
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:971272FEE209B8A9A552B92179C1F926:E5B162BD6005B3BA236ADFAE6CA0A4CF
         public async Task DeleteByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await this.innerCollection.DeleteAsync(parent.ResourceGroupName, parent.Name, name);
+            await this.innerCollection.DeleteAsync(parent.ResourceGroupName, parent.Name, name, cancellationToken);
         }
 
         ///GENMHASH:5C58E472AE184041661005E7B2D7EE30:6B6D1D91AC2FCE3076EBD61D0DB099CF
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:885F10CFCF9E6A9547B0702B4BBD8C9E:2AE56F064529C0748B82B77D0D690DFC
         public async Task<Microsoft.Azure.Management.Network.Fluent.IConnectionMonitor> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inner = await innerCollection.GetAsync(parent.ResourceGroupName, parent.Name, name);
+            var inner = await innerCollection.GetAsync(parent.ResourceGroupName, parent.Name, name, cancellationToken);
             return (WrapModel(inner));
         }
 

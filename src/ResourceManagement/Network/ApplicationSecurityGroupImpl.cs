@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:BDDD85C8E6A1C36157B6E800B5A47964
         public override async Task<Microsoft.Azure.Management.Network.Fluent.IApplicationSecurityGroup> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            SetInner(await this.Manager.Inner.ApplicationSecurityGroups.CreateOrUpdateAsync(ResourceGroupName, Name, Inner));
+            SetInner(await this.Manager.Inner.ApplicationSecurityGroups.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken));
             return this;
         }
 

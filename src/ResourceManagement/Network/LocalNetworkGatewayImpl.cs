@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:6B8BA63027964E06F44A927837B450A0:73A3E3DE52EE39671B79DFFC66BC8B20
         public async Task<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway> ApplyTagsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inner = await Manager.Inner.LocalNetworkGateways.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags);
+            var inner = await Manager.Inner.LocalNetworkGateways.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
             SetInner(inner);
             return this;
         }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:BBBF85453ECDDF99A3961ECF45244C82
         protected async override Task<Models.LocalNetworkGatewayInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.LocalNetworkGateways.GetAsync(this.ResourceGroupName, this.Name);
+            return await this.Manager.Inner.LocalNetworkGateways.GetAsync(this.ResourceGroupName, this.Name, cancellationToken);
         }
 
         ///GENMHASH:FFC621DA0580E44927EBEA8D394C1105:84CEF0775356674F2DF43DA4215FAB0F
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:D2A6D2A6D9D7D04639AA5B3E46602E45
         public async override Task<ILocalNetworkGateway> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var response = await Manager.Inner.LocalNetworkGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner);
+            var response = await Manager.Inner.LocalNetworkGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
             SetInner(response);
             return this;
         }
