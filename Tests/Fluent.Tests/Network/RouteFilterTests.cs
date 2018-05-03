@@ -22,10 +22,6 @@ namespace Fluent.Tests.Network
             {
                 string testId = SdkContext.RandomResourceName("", 9);
                 string resourceGroupName = "rg" + testId;
-                string routeTableName = "rt" + testId;
-                string networkName = "net" + testId;
-                Region region = Region.USEast;
-                string[] routeNames = new string[] { "route1", "route2", "route3" };
                 string rfName = SdkContext.RandomResourceName("rf", 15);
 
                 var manager = TestHelper.CreateNetworkManager();
@@ -48,6 +44,44 @@ namespace Fluent.Tests.Network
                 manager.RouteFilters.DeleteById(routeFilter.Id);
                 rfList = manager.RouteFilters.ListByResourceGroup(resourceGroupName);
                 Assert.True(!rfList.Any());
+            }
+        }
+
+        [Fact]
+        public void CanCreateRouteFilterRule()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string testId = SdkContext.RandomResourceName("", 9);
+                string rfName = "rf" + testId;
+                string resourceGroupName = "rg" + testId;
+                string ruleName = "mynewrule";
+                var manager = TestHelper.CreateNetworkManager();
+                IRouteFilter routeFilter = manager.RouteFilters.Define(rfName)
+                    .WithRegion(Region.USSouthCentral)
+                    .WithNewResourceGroup(resourceGroupName)
+                    .Create();
+                routeFilter.Update()
+                    .DefineRule(ruleName)
+                    .WithBgpCommunity("12076:5010")
+                    .Attach()
+                    .Apply();
+                Assert.Equal(1, routeFilter.Rules.Count);
+                IRouteFilterRule rule;
+                routeFilter.Rules.TryGetValue(ruleName, out rule);
+                Assert.NotNull(rule);
+                Assert.Equal(1, rule.Communities.Count);
+                Assert.Equal("12076:5010", rule.Communities.ElementAt(0));
+
+                routeFilter.Update()
+                    .UpdateRule(ruleName)
+                    .WithBgpCommunities("12076:51005", "12076:51026")
+                    .DenyAccess
+                    .Parent()
+                    .Apply();
+                routeFilter.Rules.TryGetValue(ruleName, out rule);
+                Assert.Equal(2, rule.Communities.Count);
+                Assert.Equal(Access.Deny, rule.Access);
             }
         }
 
