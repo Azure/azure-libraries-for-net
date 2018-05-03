@@ -17,19 +17,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
     {
 
         ///GENMHASH:FD54A2B29ECEE1DA96AE3CE42664355A:C0C35E00AF4E17F141675A2C05C7067B
-        internal  ConnectionMonitorQueryResultImpl(ConnectionMonitorQueryResultInner innerObject)
+        internal  ConnectionMonitorQueryResultImpl(ConnectionMonitorQueryResultInner innerObject) : base(innerObject)
         {
-            //$ super(innerObject);
-            //$ }
-
         }
 
         ///GENMHASH:802DC4018203AC698750EC649E9CBA0A:C5FCD01CBC4E6659F54A8FE3551CFEF1
         public ConnectionMonitorSourceStatus SourceStatus()
         {
-            //$ return Inner.SourceStatus();
-
-            return null;
+            return Inner.SourceStatus;
         }
 
         ///GENMHASH:BE1EA957D0BFB4FE19638B8E97D6071D:3AE0E4C8B5F32B836364999BCF8BD994

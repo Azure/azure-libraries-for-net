@@ -248,6 +248,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definiti
         /// </summary>
         /// <param name="protocol">One of the supported protocols.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithAttach<ParentT> WithProtocol(string protocol);
+        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition.IWithAttach<ParentT> WithProtocol(SecurityRuleProtocol protocol);
     }
 }

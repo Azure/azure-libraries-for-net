@@ -376,11 +376,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         ///GENMHASH:0263B1F6C1D2EA8755C6E28644653147:C2A348673547AB17A3E43B0CDED4C1ED
-        protected async Task<Models.ApplicationGatewayInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<Models.ApplicationGatewayInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return this.Manager().Inner.ApplicationGateways().UpdateTagsAsync(resourceGroupName(), name(), Inner.GetTags());
-
-            return null;
+            return await this.Manager.Inner.ApplicationGateways.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags);
         }
         ///GENMHASH:52541ED0C8AE1806DF3F2DF0DE092357:D02F16FB7F9F848339457F517542934A
         public ApplicationGatewayImpl WithNewPublicIPAddress(ICreatable<IPublicIPAddress> creatable)

@@ -148,14 +148,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         #region Protocol
 
-
-        ///GENMHASH:0F15C8D59C688FCCC302100A25E672D1:8E47A7551FAA8958BCB5314D0E665506
-        internal NetworkSecurityRuleImpl WithProtocol(string protocol)
-        {
-            Inner.Protocol = SecurityRuleProtocol.Parse(protocol);
-            return this;
-        }
-
         ///GENMHASH:CA0F48388132710245BD9C972F7457A4:3C1AFE09D6F3461448B58077F1A3D334
         public ISet<string> DestinationApplicationSecurityGroupIds()
         {

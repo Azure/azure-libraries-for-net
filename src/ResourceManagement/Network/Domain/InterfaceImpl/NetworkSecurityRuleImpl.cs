@@ -696,7 +696,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="protocol">One of the supported protocols.</param>
         /// <return>The next stage of the definition.</return>
-        NetworkSecurityRule.Definition.IWithAttach<NetworkSecurityGroup.Definition.IWithCreate> NetworkSecurityRule.Definition.IWithProtocol<NetworkSecurityGroup.Definition.IWithCreate>.WithProtocol(string protocol)
+        NetworkSecurityRule.Definition.IWithAttach<NetworkSecurityGroup.Definition.IWithCreate> NetworkSecurityRule.Definition.IWithProtocol<NetworkSecurityGroup.Definition.IWithCreate>.WithProtocol(SecurityRuleProtocol protocol)
         {
             return this.WithProtocol(protocol);
         }
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="protocol">One of the supported protocols.</param>
         /// <return>The next stage of the definition.</return>
-        NetworkSecurityRule.UpdateDefinition.IWithAttach<NetworkSecurityGroup.Update.IUpdate> NetworkSecurityRule.UpdateDefinition.IWithProtocol<NetworkSecurityGroup.Update.IUpdate>.WithProtocol(string protocol)
+        NetworkSecurityRule.UpdateDefinition.IWithAttach<NetworkSecurityGroup.Update.IUpdate> NetworkSecurityRule.UpdateDefinition.IWithProtocol<NetworkSecurityGroup.Update.IUpdate>.WithProtocol(SecurityRuleProtocol protocol)
         {
             return this.WithProtocol(protocol);
         }
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         /// <param name="protocol">One of the supported protocols.</param>
         /// <return>The next stage of the definition.</return>
-        NetworkSecurityRule.Update.IUpdate NetworkSecurityRule.Update.IWithProtocol.WithProtocol(string protocol)
+        NetworkSecurityRule.Update.IUpdate NetworkSecurityRule.Update.IWithProtocol.WithProtocol(SecurityRuleProtocol protocol)
         {
             return this.WithProtocol(protocol);
         }

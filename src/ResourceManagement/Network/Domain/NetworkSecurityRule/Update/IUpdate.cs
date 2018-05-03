@@ -1,5 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using Microsoft.Azure.Management.Network.Fluent.Models;
+
 namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
 {
     using Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Update;
@@ -109,7 +112,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
         /// </summary>
         /// <param name="protocol">One of the supported protocols.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IUpdate WithProtocol(string protocol);
+        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IUpdate WithProtocol(SecurityRuleProtocol protocol);
     }
 
     /// <summary>
