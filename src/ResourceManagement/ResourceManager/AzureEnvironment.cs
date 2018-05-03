@@ -1,8 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Management.ResourceManager.Fluent
 {
@@ -12,6 +13,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
         {
             AzureGlobalCloud = new AzureEnvironment()
             {
+                Name = nameof(AzureGlobalCloud),
                 AuthenticationEndpoint = "https://login.microsoftonline.com/",
                 ResourceManagerEndpoint = "https://management.azure.com/",
                 ManagementEndpoint = "https://management.core.windows.net/",
@@ -20,6 +22,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             };
             AzureChinaCloud = new AzureEnvironment()
             {
+                Name = nameof(AzureChinaCloud),
                 AuthenticationEndpoint = "https://login.chinacloudapi.cn/",
                 ResourceManagerEndpoint = "https://management.chinacloudapi.cn/",
                 ManagementEndpoint = "https://management.core.chinacloudapi.cn/",
@@ -28,6 +31,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             };
             AzureUSGovernment = new AzureEnvironment()
             {
+                Name = nameof(AzureUSGovernment),
                 AuthenticationEndpoint = "https://login-us.microsoftonline.com/",
                 ResourceManagerEndpoint = "https://management.usgovcloudapi.net/",
                 ManagementEndpoint = "https://management.core.usgovcloudapi.net",
@@ -36,6 +40,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             };
             AzureGermanCloud = new AzureEnvironment()
             {
+                Name = nameof(AzureGermanCloud),
                 AuthenticationEndpoint = "https://login.microsoftonline.de/",
                 ResourceManagerEndpoint = "https://management.microsoftazure.de/",
                 ManagementEndpoint = "https://management.core.cloudapi.de",
@@ -43,6 +48,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 StorageEndpointSuffix = ".core.cloudapi.de"
             };
         }
+
+        /// <summary>
+        /// Name for the cloud environment
+        /// </summary>
+        public string Name { get; set; }
 
         /// <summary>
         /// Azure active directory service endpoint to get OAuth token to access ARM resource
@@ -100,5 +110,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 yield return AzureGermanCloud;
             }
         }
+
+        /// <summary>
+        /// Parse cloud environment name based on <see cref="KnownEnvironments"/>
+        /// </summary>
+        /// <param name="name">Cloud environment name</param>
+        /// <returns>An AzureEnvironment, or null if no matching environment found</returns>
+        public static AzureEnvironment FromName(string name) 
+            => KnownEnvironments.FirstOrDefault(env => string.Equals(env.Name, name, StringComparison.OrdinalIgnoreCase));
     }
 }
