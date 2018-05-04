@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithDataModelAzureTable()
         {
-            return this.WithDataModelAzureTable() as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+            return this.WithDataModelAzureTable();
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithDataModelSql()
         {
-            return this.WithDataModelSql() as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+            return this.WithDataModelSql();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithDataModelMongoDB()
         {
-            return this.WithDataModelMongoDB() as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+            return this.WithDataModelMongoDB();
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithDataModelCassandra()
         {
-            return this.WithDataModelCassandra() as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+            return this.WithDataModelCassandra();
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKind.WithKind(string kind)
         {
-            return this.WithKind(kind) as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+            return this.WithKind(kind);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithKind(DatabaseAccountKind kind, params Capability[] capabilities)
         {
-            return this.WithKind(kind, capabilities) as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+            return this.WithKind(kind, capabilities);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithDataModelGremlin()
         {
-            return this.WithDataModelGremlin() as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+            return this.WithDataModelGremlin();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithConsistencyPolicy.WithSessionConsistency()
         {
-            return this.WithSessionConsistency() as CosmosDBAccount.Update.IWithOptionals;
+            return this.WithSessionConsistency();
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithConsistencyPolicy.WithBoundedStalenessConsistency(int maxStalenessPrefix, int maxIntervalInSeconds)
         {
-            return this.WithBoundedStalenessConsistency(maxStalenessPrefix, maxIntervalInSeconds) as CosmosDBAccount.Update.IWithOptionals;
+            return this.WithBoundedStalenessConsistency(maxStalenessPrefix, maxIntervalInSeconds);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithConsistencyPolicy.WithEventualConsistency()
         {
-            return this.WithEventualConsistency() as CosmosDBAccount.Update.IWithOptionals;
+            return this.WithEventualConsistency();
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithConsistencyPolicy.WithStrongConsistency()
         {
-            return this.WithStrongConsistency() as CosmosDBAccount.Update.IWithOptionals;
+            return this.WithStrongConsistency();
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithWriteReplication CosmosDBAccount.Definition.IWithConsistencyPolicy.WithSessionConsistency()
         {
-            return this.WithSessionConsistency() as CosmosDBAccount.Definition.IWithWriteReplication;
+            return this.WithSessionConsistency();
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithWriteReplication CosmosDBAccount.Definition.IWithConsistencyPolicy.WithBoundedStalenessConsistency(int maxStalenessPrefix, int maxIntervalInSeconds)
         {
-            return this.WithBoundedStalenessConsistency(maxStalenessPrefix, maxIntervalInSeconds) as CosmosDBAccount.Definition.IWithWriteReplication;
+            return this.WithBoundedStalenessConsistency(maxStalenessPrefix, maxIntervalInSeconds);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithWriteReplication CosmosDBAccount.Definition.IWithConsistencyPolicy.WithEventualConsistency()
         {
-            return this.WithEventualConsistency() as CosmosDBAccount.Definition.IWithWriteReplication;
+            return this.WithEventualConsistency();
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithConsistencyPolicy.WithStrongConsistency()
         {
-            return this.WithStrongConsistency() as CosmosDBAccount.Definition.IWithCreate;
+            return this.WithStrongConsistency();
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage.</return>
         CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithReadReplication.WithReadReplication(Region region)
         {
-            return this.WithReadReplication(region) as CosmosDBAccount.Definition.IWithCreate;
+            return this.WithReadReplication(region);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithIpRangeFilter.WithIpRangeFilter(string ipRangeFilter)
         {
-            return this.WithIpRangeFilter(ipRangeFilter) as CosmosDBAccount.Update.IWithOptionals;
+            return this.WithIpRangeFilter(ipRangeFilter);
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage of the definition.</return>
         CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithIpRangeFilter.WithIpRangeFilter(string ipRangeFilter)
         {
-            return this.WithIpRangeFilter(ipRangeFilter) as CosmosDBAccount.Definition.IWithCreate;
+            return this.WithIpRangeFilter(ipRangeFilter);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage.</return>
         CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithWriteReplication.WithWriteReplication(Region region)
         {
-            return this.WithWriteReplication(region) as CosmosDBAccount.Definition.IWithCreate;
+            return this.WithWriteReplication(region);
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage.</return>
         CosmosDBAccount.Update.IWithReadLocations CosmosDBAccount.Update.IWithReadLocations.WithoutReadReplication(Region region)
         {
-            return this.WithoutReadReplication(region) as CosmosDBAccount.Update.IWithReadLocations;
+            return this.WithoutReadReplication(region);
         }
 
         /// <summary>
@@ -216,13 +216,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The next stage.</return>
         CosmosDBAccount.Update.IWithReadLocations CosmosDBAccount.Update.IWithReadLocations.WithReadReplication(Region region)
         {
-            return this.WithReadReplication(region) as CosmosDBAccount.Update.IWithReadLocations;
+            return this.WithReadReplication(region);
         }
 
         /// <return>The connection strings for the specified Azure CosmosDB database account.</return>
         async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListConnectionStringsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListConnectionStringsAsync(cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult;
+            return await this.ListConnectionStringsAsync(cancellationToken);
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             get
             {
-                return this.ReadableReplications() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location>;
+                return this.ReadableReplications();
             }
         }
 
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             get
             {
-                return this.WritableReplications() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.Location>;
+                return this.WritableReplications();
             }
         }
 
@@ -302,14 +302,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             get
             {
-                return this.ConsistencyPolicy() as Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConsistencyPolicy;
+                return this.ConsistencyPolicy();
             }
         }
 
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
         async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeysAsync(CancellationToken cancellationToken)
         {
-            return await this.ListKeysAsync(cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult;
+            return await this.ListKeysAsync(cancellationToken);
         }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The access keys for the specified Azure CosmosDB database account.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListKeys()
         {
-            return this.ListKeys() as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListKeysResult;
+            return this.ListKeys();
         }
 
         /// <summary>
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             get
             {
-                return this.Kind() as string;
+                return this.Kind();
             }
         }
 
@@ -347,26 +347,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             get
             {
-                return this.Capabilities() as System.Collections.Generic.IReadOnlyList<Models.Capability>;
+                return this.Capabilities();
             }
         }
 
         /// <return>The connection strings for the specified Azure CosmosDB database account.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListConnectionStrings()
         {
-            return this.ListConnectionStrings() as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult;
+            return this.ListConnectionStrings();
         }
 
         /// <return>The read-only access keys for the specified Azure CosmosDB database account.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListReadOnlyKeys()
         {
-            return this.ListReadOnlyKeys() as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult;
+            return this.ListReadOnlyKeys();
         }
 
         /// <return>The read-only access keys for the specified Azure CosmosDB database account.</return>
         async Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListReadOnlyKeysAsync(CancellationToken cancellationToken)
         {
-            return await this.ListReadOnlyKeysAsync(cancellationToken) as Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult;
+            return await this.ListReadOnlyKeysAsync(cancellationToken);
         }
     }
 }
