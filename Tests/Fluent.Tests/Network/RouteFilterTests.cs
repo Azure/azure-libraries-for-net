@@ -30,7 +30,6 @@ namespace Fluent.Tests.Network
                     .WithNewResourceGroup(resourceGroupName)
                     .WithTag("tag1", "value1")
                     .Create();
-                Print(routeFilter);
                 string tag1;
                 Assert.True(routeFilter.Tags.TryGetValue("tag1", out tag1));
                 Assert.Equal("value1", tag1);
