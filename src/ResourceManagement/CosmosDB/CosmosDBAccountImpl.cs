@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using System.Collections.Generic;
     using ResourceManager.Fluent.Core.Resource.Update;
     using System;
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 
     /// <summary>
     /// The implementation for DatabaseAccount.
@@ -100,6 +101,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             createUpdateParametersInner.ConsistencyPolicy = inner.ConsistencyPolicy;
             createUpdateParametersInner.IpRangeFilter = inner.IpRangeFilter;
             createUpdateParametersInner.Kind = inner.Kind;
+            createUpdateParametersInner.Capabilities = inner.Capabilities;
             createUpdateParametersInner.Tags = inner.Tags;
             this.AddLocationsForCreateUpdateParameters(createUpdateParametersInner, this.failoverPolicies);
             return createUpdateParametersInner;
@@ -379,6 +381,71 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             var result = await this.Manager.Inner.DatabaseAccounts
                 .ListReadOnlyKeysAsync(this.ResourceGroupName, this.Name);
             return result != null ? new DatabaseAccountListReadOnlyKeysResultImpl(result) : null;
+        }
+
+
+        ///GENMHASH:6A08D79B3D058AD12B94D8E88D3A66BB:CBB08B5D2F8EBB6B1A4BE51DA2907810
+        public CosmosDBAccountImpl WithDataModelGremlin()
+        {
+            this.Inner.Kind = DatabaseAccountKind.Others.Value;
+            List<Capability> capabilities = new List<Capability>();
+            capabilities.Add(new Capability("EnableGremlin"));
+            this.Inner.Capabilities = capabilities;
+
+            return this;
+        }
+
+        ///GENMHASH:34B523C69C7FD510214D27D478D971AA:49F5455D8963DDB2BE21EA8B38B4C7BE
+        public CosmosDBAccountImpl WithDataModelCassandra()
+        {
+            this.Inner.Kind = DatabaseAccountKind.Others.Value;
+            List<Capability> capabilities = new List<Capability>();
+            capabilities.Add(new Capability("EnableCassandra"));
+            this.Inner.Capabilities = capabilities;
+
+            return this;
+        }
+
+        ///GENMHASH:FE98547B907685F667775CEF9663148D:443A834D31456201597F04A15B4BD4A4
+        public CosmosDBAccountImpl WithDataModelMongoDB()
+        {
+            this.Inner.Kind = DatabaseAccountKind.MongoDB.Value;
+
+            return this;
+        }
+
+        ///GENMHASH:D21A1256B8AE75B30461590AB84F759B:5B9CF5267A2EC5C6DB95D90298E3ADB2
+        public CosmosDBAccountImpl WithDataModelSql()
+        {
+            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB.Value;
+
+            return this;
+        }
+
+        ///GENMHASH:CA81479D1B8439CD804916091691404E:3032A4A8923DA7CE6CCD1FF98076F538
+        public CosmosDBAccountImpl WithDataModelAzureTable()
+        {
+            this.Inner.Kind = DatabaseAccountKind.Others.Value;
+            List<Capability> capabilities = new List<Capability>();
+            capabilities.Add(new Capability("EnableTable"));
+            this.Inner.Capabilities = capabilities;
+
+            return this;
+        }
+
+        ///GENMHASH:A86A41D6B877011AC6B43DCB0D23965B:1E42DEC842C982C7303E6EE753676F51
+        public CosmosDBAccountImpl WithKind(DatabaseAccountKind kind, params Capability[] capabilities)
+        {
+            this.Inner.Kind = kind.Value;
+            this.Inner.Capabilities = capabilities;
+            return this;
+        }
+
+        ///GENMHASH:35EB1A31F5F9EE9C1A764577CD186B0D:C38E77AA90C47C0D1306953EF1EEE431
+        public IReadOnlyList<Models.Capability> Capabilities()
+        {
+            List<Capability> capabilities = new List<Capability>(this.Inner.Capabilities);
+            return capabilities.AsReadOnly();
         }
 
     }

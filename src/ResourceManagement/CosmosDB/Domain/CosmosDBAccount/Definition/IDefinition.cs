@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 
     /// <summary>
     /// The stage of the cosmos db definition allowing to specify the resource group.
@@ -19,7 +20,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     /// <summary>
     /// The stage of the cosmos db definition allowing to set the database account kind.
     /// </summary>
-    public interface IWithKind
+    public interface IWithKind  :
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithKindBeta
     {
         /// <summary>
         /// The database account kind for the CosmosDB account.
@@ -27,6 +29,52 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="kind">The account kind.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy WithKind(string kind);
+
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db definition allowing to set the database account kind.
+    /// </summary>
+    public interface IWithKindBeta  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+        /// <summary>
+        /// The database account kind for the CosmosDB account.
+        /// </summary>
+        /// <param name="kind">The account kind.</param>
+        /// <param name="capabilities">The list of Cosmos DB capabilities for the account.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy WithKind(DatabaseAccountKind kind, params Capability[] capabilities);
+
+        /// <summary>
+        /// Creates a Cassandra CosmosDB account.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy WithDataModelCassandra();
+
+        /// <summary>
+        /// Creates a MongoDB CosmosDB account.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy WithDataModelMongoDB();
+
+        /// <summary>
+        /// Creates an Azure Table CosmosDB account.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy WithDataModelAzureTable();
+
+        /// <summary>
+        /// Creates a Gremlin CosmosDB account.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy WithDataModelGremlin();
+
+        /// <summary>
+        /// Creates a SQL CosmosDB account.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy WithDataModelSql();
     }
 
     /// <summary>

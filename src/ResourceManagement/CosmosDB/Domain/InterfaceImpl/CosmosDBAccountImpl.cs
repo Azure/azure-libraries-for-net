@@ -14,6 +14,42 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     public partial class CosmosDBAccountImpl
     {
         /// <summary>
+        /// Creates an Azure Table CosmosDB account.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithDataModelAzureTable()
+        {
+            return this.WithDataModelAzureTable() as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+        }
+
+        /// <summary>
+        /// Creates a SQL CosmosDB account.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithDataModelSql()
+        {
+            return this.WithDataModelSql() as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+        }
+
+        /// <summary>
+        /// Creates a MongoDB CosmosDB account.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithDataModelMongoDB()
+        {
+            return this.WithDataModelMongoDB() as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+        }
+
+        /// <summary>
+        /// Creates a Cassandra CosmosDB account.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithDataModelCassandra()
+        {
+            return this.WithDataModelCassandra() as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+        }
+
+        /// <summary>
         /// The database account kind for the CosmosDB account.
         /// </summary>
         /// <param name="kind">The account kind.</param>
@@ -21,6 +57,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKind.WithKind(string kind)
         {
             return this.WithKind(kind) as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+        }
+
+        /// <summary>
+        /// The database account kind for the CosmosDB account.
+        /// </summary>
+        /// <param name="kind">The account kind.</param>
+        /// <param name="capabilities">The list of Cosmos DB capabilities for the account.</param>
+        /// <return>The next stage of the definition.</return>
+        CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithKind(DatabaseAccountKind kind, params Capability[] capabilities)
+        {
+            return this.WithKind(kind, capabilities) as CosmosDBAccount.Definition.IWithConsistencyPolicy;
+        }
+
+        /// <summary>
+        /// Creates a Gremlin CosmosDB account.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        CosmosDBAccount.Definition.IWithConsistencyPolicy CosmosDBAccount.Definition.IWithKindBeta.WithDataModelGremlin()
+        {
+            return this.WithDataModelGremlin() as CosmosDBAccount.Definition.IWithConsistencyPolicy;
         }
 
         /// <summary>
@@ -281,6 +337,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             get
             {
                 return this.Kind() as string;
+            }
+        }
+
+        /// <summary>
+        /// Gets a list that contains the Cosmos DB capabilities.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<Models.Capability> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.Capabilities
+        {
+            get
+            {
+                return this.Capabilities() as System.Collections.Generic.IReadOnlyList<Models.Capability>;
             }
         }
 
