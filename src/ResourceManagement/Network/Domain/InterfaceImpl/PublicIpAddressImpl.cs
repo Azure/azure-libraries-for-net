@@ -316,18 +316,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public IAppliableWithTags<IPublicIPAddress> WithoutTag(string key)
         {
-            return this.WithoutTag(key);
+            return base.WithoutTag(key);
         }
 
         public IAppliableWithTags<IPublicIPAddress> WithTag(string key, string value)
         {
-            this.WithTag(key, value);
-            return this;
+            return base.WithTag(key, value);
         }
 
         public IAppliableWithTags<IPublicIPAddress> WithTags(IDictionary<string, string> tags)
         {
-            return this.WithTags(tags);
+            return base.WithTags(tags);
         }
     }
 }

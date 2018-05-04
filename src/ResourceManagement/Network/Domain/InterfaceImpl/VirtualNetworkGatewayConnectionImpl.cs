@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public IAppliableWithTags<IVirtualNetworkGatewayConnection> WithoutTag(string key)
         {
-            return this.WithoutTag(key);
+            return base.WithoutTag(key);
         }
 
         public IAppliableWithTags<IVirtualNetworkGatewayConnection> WithTag(string key, string value)

@@ -126,18 +126,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public IAppliableWithTags<INetworkWatcher> WithoutTag(string key)
         {
-            return this.WithoutTag(key);
+            return base.WithoutTag(key);
         }
 
         public IAppliableWithTags<INetworkWatcher> WithTag(string key, string value)
         {
-            this.WithTag(key, value);
-            return this;
+            return base.WithTag(key, value);
         }
 
         public IAppliableWithTags<INetworkWatcher> WithTags(IDictionary<string, string> tags)
         {
-            return this.WithTags(tags);
+            return base.WithTags(tags);
         }
     }
 }

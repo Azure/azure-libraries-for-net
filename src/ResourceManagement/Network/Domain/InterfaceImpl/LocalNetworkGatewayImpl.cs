@@ -56,18 +56,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public IAppliableWithTags<ILocalNetworkGateway> WithoutTag(string key)
         {
-            return this.WithoutTag(key) as IAppliableWithTags<ILocalNetworkGateway>;
+            return base.WithoutTag(key);
         }
 
         public IAppliableWithTags<ILocalNetworkGateway> WithTag(string key, string value)
         {
-            this.WithTag(key, value);
-            return this as IAppliableWithTags<ILocalNetworkGateway>;
+            return base.WithTag(key, value);
         }
 
         public IAppliableWithTags<ILocalNetworkGateway> WithTags(IDictionary<string, string> tags)
         {
-            return this.WithTags(tags) as IAppliableWithTags<ILocalNetworkGateway>;
+            return base.WithTags(tags);
         }
 
         /// <summary>
