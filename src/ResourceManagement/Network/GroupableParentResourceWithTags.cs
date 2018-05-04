@@ -39,7 +39,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
             IDefinitionAfterRegion,
             IDefinitionAfterResourceGroup,
             DefTypeWithTags,
-            UTypeWithTags>
+            UTypeWithTags>,
+        IUpdateWithTags<IFluentResourceT>,
+        IAppliableWithTags<IFluentResourceT>
         where FluentResourceT : GroupableParentResource<IFluentResourceT,
             InnerResourceT,
             FluentResourceT,
@@ -68,10 +70,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 return this as IUpdateWithTags<IFluentResourceT>;
             }
-            throw new Exception($"Unable to cast '{this.Type}' to '{typeof(IUpdateWithTags<IFluentResourceT>)}'");
+
+            throw new Exception($"Unable to cast '{this.GetType()}' to '{typeof(IUpdateWithTags<IFluentResourceT>)}'");
         }
 
-        public IFluentResourceT applyTags()
+        public IFluentResourceT ApplyTags()
         {
             return Extensions.Synchronize(() => ApplyTagsAsync());
         }
@@ -86,7 +89,22 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 return this as FluentResourceT;
             }
-            throw new Exception($"Unable to cast '{this.Type}' to '{typeof(FluentResourceT)}'");
+            throw new Exception($"Unable to cast '{this.GetType()}' to '{typeof(FluentResourceT)}'");
+        }
+
+        public IAppliableWithTags<IFluentResourceT> WithoutTag(string key)
+        {
+            return (IAppliableWithTags<IFluentResourceT>)base.WithoutTag(key);
+        }
+
+        public IAppliableWithTags<IFluentResourceT> WithTag(string key, string value)
+        {
+            return (IAppliableWithTags<IFluentResourceT>)base.WithTag(key, value);
+        }
+
+        public IAppliableWithTags<IFluentResourceT> WithTags(IDictionary<string, string> tags)
+        {
+            return (IAppliableWithTags<IFluentResourceT>)base.WithTags(tags);
         }
     }
 }
