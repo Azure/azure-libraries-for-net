@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// @param <FluentModelImplT> the implementation type of the fluent model type
     /// @param <ManagerT> the service manager type
     /// </summary>
-    public abstract partial class GroupableParentResourceWithTags<
+    public abstract class GroupableParentResourceWithTags<
         IFluentResourceT,
         InnerResourceT,
         FluentResourceT,
@@ -78,7 +78,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             var inner = await ApplyTagsToInnerAsync(cancellationToken);
             SetInner(inner);
-            return this as FluentResourceT;
+            if (this is FluentResourceT)
+            {
+                return this as FluentResourceT;
+            }
+            throw new Exception($"Unable to cast '{this.Type}' to '{typeof(FluentResourceT)}'");
         }
     }
 }

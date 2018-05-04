@@ -43,6 +43,33 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Disable the routes learned by BGP on that route table.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        RouteTable.Update.IUpdate RouteTable.Update.IWithBgpRoutePropagation.WithDisableBgpRoutePropagation()
+        {
+            return this.WithDisableBgpRoutePropagation();
+        }
+
+        /// <summary>
+        /// Disable the routes learned by BGP on that route table.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        RouteTable.Definition.IWithCreate RouteTable.Definition.IWithBgpRoutePropagation.WithDisableBgpRoutePropagation()
+        {
+            return this.WithDisableBgpRoutePropagation();
+        }
+
+        /// <summary>
+        /// Enable the routes learned by BGP on that route table.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        RouteTable.Update.IUpdate RouteTable.Update.IWithBgpRoutePropagation.WithEnableBgpRoutePropagation()
+        {
+            return this.WithEnableBgpRoutePropagation();
+        }
+
+        /// <summary>
         /// Creates a non-virtual appliance route.
         /// The name is generated automatically.
         /// </summary>

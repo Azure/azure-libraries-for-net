@@ -59,6 +59,20 @@ namespace Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition
     }
 
     /// <summary>
+    /// The stage of the route table definition allowing to specify whether to disable the routes learned by BGP on that route table.
+    /// </summary>
+    public interface IWithBgpRoutePropagation  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Disable the routes learned by BGP on that route table.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IWithCreate WithDisableBgpRoutePropagation();
+    }
+
+    /// <summary>
     /// The stage of a route table definition which contains all the minimum required inputs for
     /// the resource to be created (via  WithCreate.create()), but also allows
     /// for any other optional settings to be specified.
@@ -66,7 +80,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition
     public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.IRouteTable>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IWithCreate>,
-        Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IWithRoute
+        Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IWithRoute,
+        Microsoft.Azure.Management.Network.Fluent.RouteTable.Definition.IWithBgpRoutePropagation
     {
     }
 

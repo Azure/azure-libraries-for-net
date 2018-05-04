@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:0263B1F6C1D2EA8755C6E28644653147:9D293E1AA04D2C3CD8EDA9D8EB8FEDDD
         protected override async Task<Models.RouteTableInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.RouteTables.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags);
+            return await this.Manager.Inner.RouteTables.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
         }
 
         ///GENMHASH:F9626EDD83A5083970F3624D111D5F9A:7C77591C832F84A949CE9BF6525CCF9B
@@ -166,6 +166,19 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return null;
         }
 
+        ///GENMHASH:48090CE1ECC3F9620A9E2BB1E2D78471:853299A9ECAAFE839D8D49BA28B0ED5F
+        public RouteTableImpl WithDisableBgpRoutePropagation()
+        {
+            Inner.DisableBgpRoutePropagation = true;
+            return this;
+        }
+
+        ///GENMHASH:3584AFD9BA64CCF9269A3634C588C672:74F46E4861E0C5B77AAB336B880451C1
+        public RouteTableImpl WithEnableBgpRoutePropagation()
+        {
+            Inner.DisableBgpRoutePropagation = false;
+            return this;
+        }
 
         ///GENMHASH:7E8C2CF692FADDB1CA4FDD208175D2BD:DA4ECB14ABD20F728F32A3B6D3951691
         public IUpdate WithoutRoute(string name)

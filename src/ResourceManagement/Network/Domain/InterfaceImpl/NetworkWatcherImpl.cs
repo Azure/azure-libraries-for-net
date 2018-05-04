@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.GetSecurityGroupViewAsync(string vmId,
                 CancellationToken cancellationToken)
         {
-            return await this.GetSecurityGroupViewAsync(vmId, cancellationToken) as
-                Microsoft.Azure.Management.Network.Fluent.ISecurityGroupView;
+            return await this.GetSecurityGroupViewAsync(vmId, cancellationToken);
         }
 
         /// <summary>
@@ -112,8 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.GetFlowLogSettingsAsync(string nsgId,
                 CancellationToken cancellationToken)
         {
-            return await this.GetFlowLogSettingsAsync(nsgId, cancellationToken) as
-                Microsoft.Azure.Management.Network.Fluent.IFlowLogSettings;
+            return await this.GetFlowLogSettingsAsync(nsgId, cancellationToken);
         }
 
         /// <summary>

@@ -1,5 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using System.Threading;
@@ -340,13 +344,37 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public IAppliableWithTags<IVirtualNetworkGatewayConnection> WithTag(string key, string value)
         {
-            this.WithTag(key, value);
-            return this;
+            return base.WithTag(key, value);
         }
 
         public IAppliableWithTags<IVirtualNetworkGatewayConnection> WithTags(IDictionary<string, string> tags)
         {
-            return this.WithTags(tags);
+            return base.WithTags(tags);
+        }
+
+        IWithCreate IDefinitionWithTags<IWithCreate>.WithTags(IDictionary<string, string> tags)
+        {
+            return base.WithTags(tags);
+        }
+
+        IUpdate IUpdateWithTags<IUpdate>.WithTag(string key, string value)
+        {
+            return base.WithTag(key, value);
+        }
+
+        IUpdate IUpdateWithTags<IUpdate>.WithoutTag(string key)
+        {
+            return base.WithoutTag(key);
+        }
+
+        IUpdate IUpdateWithTags<IUpdate>.WithTags(IDictionary<string, string> tags)
+        {
+            return base.WithTags(tags);
+        }
+
+        IWithCreate IDefinitionWithTags<IWithCreate>.WithTag(string key, string value)
+        {
+            return base.WithTag(key, value);
         }
     }
 }

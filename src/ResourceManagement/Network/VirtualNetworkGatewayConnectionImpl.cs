@@ -300,30 +300,5 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return UpdateTags();
         }
-
-        IWithCreate IDefinitionWithTags<IWithCreate>.WithTags(IDictionary<string, string> tags)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IUpdate IUpdateWithTags<IUpdate>.WithTag(string key, string value)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IUpdate IUpdateWithTags<IUpdate>.WithoutTag(string key)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IUpdate IUpdateWithTags<IUpdate>.WithTags(IDictionary<string, string> tags)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IWithCreate IDefinitionWithTags<IWithCreate>.WithTag(string key, string value)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
