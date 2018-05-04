@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             get
             {
-                return this.ConnectionStrings() as System.Collections.Generic.IReadOnlyList<Models.DatabaseAccountConnectionString>;
+                return this.ConnectionStrings();
             }
         }
     }
