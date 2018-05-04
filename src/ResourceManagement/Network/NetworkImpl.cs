@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 WithExistingDdosProtectionPlan(ddosProtectionPlan.Id);   
             }
             ddosProtectionPlanCreatable = null;
-            return await this.Manager.Inner.VirtualNetworks.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner);
+            return await this.Manager.Inner.VirtualNetworks.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken);
         }
 
         ///GENMHASH:6A291EDC22581C4F2CC3D65986E9F5A3:B5C775B96E4C8B181BD73D9F917D80A6

@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:AAC56B9AF93DB5A1FE5E71C6B5316254
         protected override async Task<Models.RouteFilterInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.RouteFilters.GetAsync(this.ResourceGroupName, this.Name);
+            return await this.Manager.Inner.RouteFilters.GetAsync(this.ResourceGroupName, this.Name, cancellationToken: cancellationToken);
         }
 
         ///GENMHASH:6D9F740D6D73C56877B02D9F1C96F6E7:6E5895BA20C96C9A69E8F96FF93CA745

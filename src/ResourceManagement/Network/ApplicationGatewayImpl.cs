@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:0263B1F6C1D2EA8755C6E28644653147:C2A348673547AB17A3E43B0CDED4C1ED
         protected override async Task<Models.ApplicationGatewayInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.ApplicationGateways.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags);
+            return await this.Manager.Inner.ApplicationGateways.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
         }
         ///GENMHASH:52541ED0C8AE1806DF3F2DF0DE092357:D02F16FB7F9F848339457F517542934A
         public ApplicationGatewayImpl WithNewPublicIPAddress(ICreatable<IPublicIPAddress> creatable)
@@ -1956,7 +1956,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public async Task<IReadOnlyDictionary<string, IApplicationGatewayBackendHealth>> CheckBackendHealthAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             Dictionary<string, IApplicationGatewayBackendHealth> backendHealths = new Dictionary<string, IApplicationGatewayBackendHealth>();
-            var inner = await Manager.Inner.ApplicationGateways.BackendHealthAsync(ResourceGroupName, Name);
+            var inner = await Manager.Inner.ApplicationGateways.BackendHealthAsync(ResourceGroupName, Name, cancellationToken: cancellationToken);
             if (inner != null)
             {
                 foreach (var healthInner in inner.BackendAddressPools)

@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:6B8BA63027964E06F44A927837B450A0:BA32A105329DC11B026CC971C7538262
         public async Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> ApplyTagsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Manager.Inner.VirtualNetworkGatewayConnections.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags);
+            await Manager.Inner.VirtualNetworkGatewayConnections.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
             await RefreshAsync();
             return this;
         }
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public async override Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             BeforeCreating();
-            var connectionInner = await this.Manager.Inner.VirtualNetworkGatewayConnections.CreateOrUpdateAsync(parent.ResourceGroupName, this.Name, Inner);
+            var connectionInner = await this.Manager.Inner.VirtualNetworkGatewayConnections.CreateOrUpdateAsync(parent.ResourceGroupName, this.Name, Inner, cancellationToken);
             SetInner(connectionInner);
             return this;
         }
@@ -296,17 +296,6 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return new ReadOnlyCollection<TunnelConnectionHealth>(Inner.TunnelConnectionStatus);
         }
 
-//        public VirtualNetworkGatewayConnectionImpl WithTags(IDictionary<string, string> tags)
-//        {
-//            base.WithTags(tags);
-//            return this;
-//        }
-//
-//        public VirtualNetworkGatewayConnectionImpl WithTag(string key, string value)
-//        {
-//            base.WithTag(key, value);
-//            return this;
-//        }
         UpdatableWithTags.UpdatableWithTags.IUpdateWithTags<IVirtualNetworkGatewayConnection> IUpdatableWithTags<IVirtualNetworkGatewayConnection>.UpdateTags()
         {
             return UpdateTags();

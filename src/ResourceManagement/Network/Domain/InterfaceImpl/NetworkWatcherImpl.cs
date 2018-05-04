@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.Network.Fluent.IFlowLogSettings
             Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.GetFlowLogSettings(string nsgId)
         {
-            return this.GetFlowLogSettings(nsgId) as Microsoft.Azure.Management.Network.Fluent.IFlowLogSettings;
+            return this.GetFlowLogSettings(nsgId);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A stage to specify parameters for next hop.</return>
         NextHop.Definition.IWithTargetResource Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.NextHop()
         {
-            return this.NextHop() as NextHop.Definition.IWithTargetResource;
+            return this.NextHop();
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Topology.Definition.IWithTargetResourceGroup Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.
             Topology()
         {
-            return this.Topology() as Topology.Definition.IWithTargetResourceGroup;
+            return this.Topology();
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Troubleshooting.Definition.IWithTargetResource Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.
             Troubleshoot()
         {
-            return this.Troubleshoot() as Troubleshooting.Definition.IWithTargetResource;
+            return this.Troubleshoot();
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ConnectivityCheck.Definition.IToDestination Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.
             CheckConnectivity()
         {
-            return this.CheckConnectivity() as ConnectivityCheck.Definition.IToDestination;
+            return this.CheckConnectivity();
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         VerificationIPFlow.Definition.IWithTargetResource Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.
             VerifyIPFlow()
         {
-            return this.VerifyIPFlow() as VerificationIPFlow.Definition.IWithTargetResource;
+            return this.VerifyIPFlow();
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.Network.Fluent.ISecurityGroupView
             Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.GetSecurityGroupView(string vmId)
         {
-            return this.GetSecurityGroupView(vmId) as Microsoft.Azure.Management.Network.Fluent.ISecurityGroupView;
+            return this.GetSecurityGroupView(vmId);
         }
 
         /// <summary>
@@ -122,24 +122,24 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.Network.Fluent.IPacketCaptures
             Microsoft.Azure.Management.Network.Fluent.INetworkWatcher.PacketCaptures
         {
-            get { return this.PacketCaptures() as Microsoft.Azure.Management.Network.Fluent.IPacketCaptures; }
+            get { return this.PacketCaptures(); }
         }
 
 
         public IAppliableWithTags<INetworkWatcher> WithoutTag(string key)
         {
-            return this.WithoutTag(key) as IAppliableWithTags<INetworkWatcher>;
+            return this.WithoutTag(key);
         }
 
         public IAppliableWithTags<INetworkWatcher> WithTag(string key, string value)
         {
             this.WithTag(key, value);
-            return this as IAppliableWithTags<INetworkWatcher>;
+            return this;
         }
 
         public IAppliableWithTags<INetworkWatcher> WithTags(IDictionary<string, string> tags)
         {
-            return this.WithTags(tags) as IAppliableWithTags<INetworkWatcher>;
+            return this.WithTags(tags);
         }
     }
 }

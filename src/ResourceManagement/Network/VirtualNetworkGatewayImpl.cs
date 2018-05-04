@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5SW1wbA==
     internal partial class VirtualNetworkGatewayImpl :
-        GroupableParentResource<IVirtualNetworkGateway,
+        GroupableParentResourceWithTags<IVirtualNetworkGateway,
             VirtualNetworkGatewayInner,
             VirtualNetworkGatewayImpl,
             INetworkManager,
@@ -494,9 +494,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return new VirtualNetworkGatewayIPConfigurationImpl(inner, this);
         }
 
-        public IUpdateWithTags<IVirtualNetworkGateway> UpdateTags()
+        protected override async Task<VirtualNetworkGatewayInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            return await this.Manager.Inner.VirtualNetworkGateways.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
         }
     }
 }

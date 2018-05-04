@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayConnection.Definition.IWithCreate VirtualNetworkGatewayConnection.Definition.IWithSharedKey.WithSharedKey(string sharedKey)
         {
-            return this.WithSharedKey(sharedKey) as VirtualNetworkGatewayConnection.Definition.IWithCreate;
+            return this.WithSharedKey(sharedKey);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         VirtualNetworkGatewayConnection.Update.IUpdate VirtualNetworkGatewayConnection.Update.IWithSharedKey.WithSharedKey(string sharedKey)
         {
-            return this.WithSharedKey(sharedKey) as VirtualNetworkGatewayConnection.Update.IUpdate;
+            return this.WithSharedKey(sharedKey);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.TunnelConnectionStatus() as System.Collections.Generic.IReadOnlyCollection<Models.TunnelConnectionHealth>;
+                return this.TunnelConnectionStatus();
             }
         }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.ConnectionStatus() as Models.VirtualNetworkGatewayConnectionStatus;
+                return this.ConnectionStatus();
             }
         }
 
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.ConnectionType() as Models.VirtualNetworkGatewayConnectionType;
+                return this.ConnectionType();
             }
         }
 
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.IpsecPolicies() as System.Collections.Generic.IReadOnlyCollection<Models.IpsecPolicy>;
+                return this.IpsecPolicies();
             }
         }
 
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway;
+                return this.Parent();
             }
         }
 
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayConnection.Definition.IWithSharedKey VirtualNetworkGatewayConnection.Definition.IWithLocalNetworkGateway.WithLocalNetworkGateway(ILocalNetworkGateway localNetworkGateway)
         {
-            return this.WithLocalNetworkGateway(localNetworkGateway) as VirtualNetworkGatewayConnection.Definition.IWithSharedKey;
+            return this.WithLocalNetworkGateway(localNetworkGateway);
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayConnection.Definition.IWithCreate VirtualNetworkGatewayConnection.Definition.IWithAuthorization.WithAuthorization(string authorizationKey)
         {
-            return this.WithAuthorization(authorizationKey) as VirtualNetworkGatewayConnection.Definition.IWithCreate;
+            return this.WithAuthorization(authorizationKey);
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         VirtualNetworkGatewayConnection.Update.IUpdate VirtualNetworkGatewayConnection.Update.IWithAuthorization.WithAuthorization(string authorizationKey)
         {
-            return this.WithAuthorization(authorizationKey) as VirtualNetworkGatewayConnection.Update.IUpdate;
+            return this.WithAuthorization(authorizationKey);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayConnection.Definition.IWithCreate VirtualNetworkGatewayConnection.Definition.IWithBgp.WithBgp()
         {
-            return this.WithBgp() as VirtualNetworkGatewayConnection.Definition.IWithCreate;
+            return this.WithBgp();
         }
 
         /// <summary>
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         VirtualNetworkGatewayConnection.Update.IUpdate VirtualNetworkGatewayConnection.Update.IWithBgp.WithoutBgp()
         {
-            return this.WithoutBgp() as VirtualNetworkGatewayConnection.Update.IUpdate;
+            return this.WithoutBgp();
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         VirtualNetworkGatewayConnection.Update.IUpdate VirtualNetworkGatewayConnection.Update.IWithBgp.WithBgp()
         {
-            return this.WithBgp() as VirtualNetworkGatewayConnection.Update.IUpdate;
+            return this.WithBgp();
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>Next stage of definition, allowing to specify local network gateway.</return>
         VirtualNetworkGatewayConnection.Definition.IWithLocalNetworkGateway VirtualNetworkGatewayConnection.Definition.IWithConnectionType.WithSiteToSite()
         {
-            return this.WithSiteToSite() as VirtualNetworkGatewayConnection.Definition.IWithLocalNetworkGateway;
+            return this.WithSiteToSite();
         }
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition, allowing to specify virtual network gateway to connect to.</return>
         VirtualNetworkGatewayConnection.Definition.IWithSecondVirtualNetworkGateway VirtualNetworkGatewayConnection.Definition.IWithConnectionType.WithVNetToVNet()
         {
-            return this.WithVNetToVNet() as VirtualNetworkGatewayConnection.Definition.IWithSecondVirtualNetworkGateway;
+            return this.WithVNetToVNet();
         }
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>Next stage of definition.</return>
         VirtualNetworkGatewayConnection.Definition.IWithCreate VirtualNetworkGatewayConnection.Definition.IWithConnectionType.WithExpressRoute(string circuitId)
         {
-            return this.WithExpressRoute(circuitId) as VirtualNetworkGatewayConnection.Definition.IWithCreate;
+            return this.WithExpressRoute(circuitId);
         }
 
         /// <summary>
@@ -323,30 +323,30 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayConnection.Definition.IWithCreate VirtualNetworkGatewayConnection.Definition.IWithConnectionType.WithExpressRoute(IExpressRouteCircuit circuit)
         {
-            return this.WithExpressRoute(circuit) as VirtualNetworkGatewayConnection.Definition.IWithCreate;
+            return this.WithExpressRoute(circuit);
         }
 
         /// <param name="virtualNetworkGateway2">Virtual network gateway to connect to.</param>
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayConnection.Definition.IWithSharedKey VirtualNetworkGatewayConnection.Definition.IWithSecondVirtualNetworkGateway.WithSecondVirtualNetworkGateway(IVirtualNetworkGateway virtualNetworkGateway2)
         {
-            return this.WithSecondVirtualNetworkGateway(virtualNetworkGateway2) as VirtualNetworkGatewayConnection.Definition.IWithSharedKey;
+            return this.WithSecondVirtualNetworkGateway(virtualNetworkGateway2);
         }
 
         public IAppliableWithTags<IVirtualNetworkGatewayConnection> WithoutTag(string key)
         {
-            return this.WithoutTag(key) as IAppliableWithTags<IVirtualNetworkGatewayConnection>;
+            return this.WithoutTag(key);
         }
 
         public IAppliableWithTags<IVirtualNetworkGatewayConnection> WithTag(string key, string value)
         {
             this.WithTag(key, value);
-            return this as IAppliableWithTags<IVirtualNetworkGatewayConnection>;
+            return this;
         }
 
         public IAppliableWithTags<IVirtualNetworkGatewayConnection> WithTags(IDictionary<string, string> tags)
         {
-            return this.WithTags(tags) as IAppliableWithTags<IVirtualNetworkGatewayConnection>;
+            return this.WithTags(tags);
         }
     }
 }

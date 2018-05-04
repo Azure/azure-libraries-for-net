@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:02D4291678B9DD815B24067695A568FE:CBB7D90388387B638B8F355DFCA9DB53
         public IReadOnlyDictionary<string,Models.AvailableProvidersListCountry> ProvidersByCountry()
         {
-            return this.providersByCountry as IReadOnlyDictionary<string, AvailableProvidersListCountry>;
+            return this.providersByCountry;
         }
 
         ///GENMHASH:C69ABFB260D78D792D404EC3BF958ED7:BC72AF070CE5DBB4DA29D4F2E31326A3
