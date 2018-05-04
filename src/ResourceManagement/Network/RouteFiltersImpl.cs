@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         protected override async Task<RouteFilterInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
         {
-            return await Inner.GetAsync(groupName, name);
+            return await Inner.GetAsync(groupName, name, cancellationToken: cancellationToken);
         }
 
         protected override async Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)

@@ -64,7 +64,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public IUpdateWithTags<IFluentResourceT> UpdateTags()
         {
-            return this as IUpdateWithTags<IFluentResourceT>;
+            if (this is IUpdateWithTags<IFluentResourceT>)
+            {
+                return this as IUpdateWithTags<IFluentResourceT>;
+            }
+            throw new Exception($"Unable to cast '{this.Type}' to '{typeof(IUpdateWithTags<IFluentResourceT>)}'");
         }
 
         public IFluentResourceT applyTags()
