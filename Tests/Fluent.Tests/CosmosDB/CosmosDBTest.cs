@@ -38,7 +38,7 @@ namespace Fluent.Tests
                             .Create();
 
                     Assert.Equal(databaseAccount.Name, dbName.ToLower());
-                    Assert.Equal(DatabaseAccountKind.GlobalDocumentDB, databaseAccount.Kind);
+                    Assert.Equal(DatabaseAccountKind.GlobalDocumentDB.Value, databaseAccount.Kind);
                     Assert.Equal(1, databaseAccount.WritableReplications.Count);
                     Assert.Equal(2, databaseAccount.ReadableReplications.Count);
                     Assert.Equal(DefaultConsistencyLevel.Session, databaseAccount.DefaultConsistencyLevel);
