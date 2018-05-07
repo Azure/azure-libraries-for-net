@@ -17,6 +17,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
     internal partial class RouteTableImpl
     {
         /// <summary>
+        /// Gets whether to disable the routes learned by BGP on that route
+        /// table. True means disable.
+        /// </summary>
+        bool Microsoft.Azure.Management.Network.Fluent.IRouteTableBeta.IsBgpRoutePropagationDisabled
+        {
+            get
+            {
+                return this.IsBgpRoutePropagationDisabled();
+            }
+        }
+
+        /// <summary>
         /// Refreshes the resource to sync with Azure.
         /// </summary>
         /// <return>The Observable to refreshed resource.</return>

@@ -146,7 +146,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return routes as IReadOnlyDictionary<string, IRoute>;
         }
-
+      ///GENMHASH:CA0DBD667E0654A7211BC0437FBC9A27:244E7559FC8DE1016EE1F8A8E013C39D
+        public bool IsBgpRoutePropagationDisabled()
+        {
+            return Inner.DisableBgpRoutePropagation.GetValueOrDefault();
+        }
 
         ///GENMHASH:E78D7ACAEEE05A0117BC7B6E41B0D53B:062BFEFE0393BE2C1D9F8B1A963FDE23
         public IReadOnlyList<ISubnet> ListAssociatedSubnets()
@@ -186,7 +190,5 @@ namespace Microsoft.Azure.Management.Network.Fluent
             routes.Remove(name);
             return this;
         }
-
-        public bool IsBgpRoutePropagationDisabled { get; }
     }
 }
