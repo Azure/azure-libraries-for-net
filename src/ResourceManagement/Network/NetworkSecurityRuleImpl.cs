@@ -1,10 +1,18 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using ResourceManager.Fluent.Core;
     using Management.Network.Fluent.Models;
     using ResourceManager.Fluent.Core.ChildResourceActions;
+    using Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Update;
+    using Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.UpdateDefinition;
+    using Microsoft.Azure.Management.Network.Fluent.NetworkSecurityGroup.Definition;
+    using Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition;
 
     /// <summary>
     /// Implementation for NetworkSecurityRule and its create and update interfaces.
@@ -18,6 +26,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         NetworkSecurityRule.UpdateDefinition.IUpdateDefinition<NetworkSecurityGroup.Update.IUpdate>,
         NetworkSecurityRule.Update.IUpdate
     {
+        private Dictionary<string, ApplicationSecurityGroupInner> sourceAsgs = new Dictionary<string, ApplicationSecurityGroupInner>();
+        private Dictionary<string, ApplicationSecurityGroupInner> destinationAsgs = new Dictionary<string, ApplicationSecurityGroupInner>();
 
         ///GENMHASH:F6CF73FF4B137FB1F39A4CF3F1978CDB:C0847EA0CDA78F6D91EFD239C70F0FA7
         internal NetworkSecurityRuleImpl(SecurityRuleInner inner, NetworkSecurityGroupImpl parent) : base(inner, parent)
@@ -140,12 +150,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         #region Protocol
 
-
-        ///GENMHASH:0F15C8D59C688FCCC302100A25E672D1:8E47A7551FAA8958BCB5314D0E665506
-        internal NetworkSecurityRuleImpl WithProtocol(string protocol)
+        ///GENMHASH:CA0F48388132710245BD9C972F7457A4:3C1AFE09D6F3461448B58077F1A3D334
+        public ISet<string> DestinationApplicationSecurityGroupIds()
         {
-            Inner.Protocol = SecurityRuleProtocol.Parse(protocol);
-            return this;
+            return new HashSet<string>(Inner.DestinationApplicationSecurityGroups.Select(asg => asg.Id));
         }
 
         internal NetworkSecurityRuleImpl WithProtocol(SecurityRuleProtocol protocol)
@@ -157,7 +165,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:1928BF3A1A64CC113C96C62B2E19BC60:2F619F28559C25A5F73AEB7C7E089FBE
         internal NetworkSecurityRuleImpl WithAnyProtocol()
         {
-            return WithProtocol(SecurityRuleProtocol.Asterisk.Value);
+            return WithProtocol(SecurityRuleProtocol.Asterisk);
         }
         #endregion
 
@@ -198,6 +206,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        ///GENMHASH:093EC9C7D2F8A52ACF0F5E3F19A16A57:612C8F975A318A0CC7F3BEB8E0DE5308
+        public ISet<string> SourceApplicationSecurityGroupIds()
+        {
+            return new HashSet<string>(Inner.SourceApplicationSecurityGroups.Select(asg => asg.Id));
+        }
 
         ///GENMHASH:CFD60AE93A914AF9C3AFC89544B4E5F9:A6EF93A5D8C69AD2AEA75D286605280F
         internal NetworkSecurityRuleImpl FromPortRange(int from, int to)
@@ -285,7 +298,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
             Inner.Direction = direction;
             return this;
         }
-
+        ///GENMHASH:2B7FF25B14EF62E55CC8805B824E0366:11B5B307793C3F9FF1E037CD73A12C40
+        public NetworkSecurityRuleImpl WithDestinationApplicationSecurityGroup(string id)
+        {
+            destinationAsgs[id] = new ApplicationSecurityGroupInner(id: id);
+            Inner.DestinationAddressPrefix = null;
+            Inner.DestinationAddressPrefixes = null;
+            return this;
+        }
 
         ///GENMHASH:704CF58AF600E909FFE3ECF15FF9CD85:8E627CC12F1DC0336E359140C6E63246
         private NetworkSecurityRuleImpl WithAccess(SecurityRuleAccess permission)
@@ -304,5 +324,16 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return Parent.WithRule(this);
         }
         #endregion
+
+        ///GENMHASH:A6BD27BDA73F3A8D110E59E9BC1BF594:B3E2FF55E7190758DABFDE8C609EEECA
+        public NetworkSecurityRuleImpl WithSourceApplicationSecurityGroup(string id)
+        {
+
+            sourceAsgs[id] = new ApplicationSecurityGroupInner(id : id);
+            Inner.SourceAddressPrefix = null;
+            Inner.SourceAddressPrefixes = null;
+
+            return this;
+        }
     }
 }

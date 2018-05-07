@@ -33,9 +33,25 @@ namespace Microsoft.Azure.Management.Network.Fluent
             INetworkManager>,
         IVirtualNetworkGatewayConnection,
         IDefinition,
-        IUpdate
+        IUpdate,
+        IAppliableWithTags<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>
     {
         private IVirtualNetworkGateway parent;
+
+        ///GENMHASH:BCABB5578B0BD7DC8F8C22F4769FD3DE:02984D22C1D2E484D62F2595E7B0E86C
+        public IVirtualNetworkGatewayConnection ApplyTags()
+        {
+            return Extensions.Synchronize(() => ApplyTagsAsync());
+        }
+
+        ///GENMHASH:6B8BA63027964E06F44A927837B450A0:BA32A105329DC11B026CC971C7538262
+        public async Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> ApplyTagsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await Manager.Inner.VirtualNetworkGatewayConnections.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
+            await RefreshAsync();
+            return this;
+        }
+
         ///GENMHASH:F0389EF26F16D377233CEA0243D3C2D3:002AE7D0BF403F77853FCC09647B9C5D
         public string LocalNetworkGateway2Id()
         {
@@ -117,6 +133,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        ///GENMHASH:DD514B859A01D5FDAFF5D26EACDFE197:40A980295F5EA8FF8304DA8C06E899BF
+        public VirtualNetworkGatewayConnectionImpl UpdateTags()
+        {
+             return this;
+        }
+
         ///GENMHASH:63E7CC3AA7BB3CB910E5D0EE8931223C:05BC5F2415598E47C21323CD8B084A89
         public bool UsePolicyBasedTrafficSelectors()
         {
@@ -156,7 +178,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public async override Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             BeforeCreating();
-            var connectionInner = await this.Manager.Inner.VirtualNetworkGatewayConnections.CreateOrUpdateAsync(parent.ResourceGroupName, this.Name, Inner);
+            var connectionInner = await this.Manager.Inner.VirtualNetworkGatewayConnections.CreateOrUpdateAsync(parent.ResourceGroupName, this.Name, Inner, cancellationToken);
             SetInner(connectionInner);
             return this;
         }
@@ -274,16 +296,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return new ReadOnlyCollection<TunnelConnectionHealth>(Inner.TunnelConnectionStatus);
         }
 
-        public IWithCreate WithTags(IDictionary<string, string> tags)
+        UpdatableWithTags.UpdatableWithTags.IUpdateWithTags<IVirtualNetworkGatewayConnection> IUpdatableWithTags<IVirtualNetworkGatewayConnection>.UpdateTags()
         {
-            base.WithTags(tags);
-            return this;
-        }
-
-        public IWithCreate WithTag(string key, string value)
-        {
-            base.WithTag(key, value);
-            return this;
+            return UpdateTags();
         }
     }
 }

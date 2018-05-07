@@ -115,6 +115,16 @@ namespace Fluent.Tests.Network
                     .Apply();
                 Assert.True(resource.Tags.ContainsKey("tag1"));
                 Assert.Empty(resource.Routes);
+
+                resource.UpdateTags()
+                    .WithoutTag("tag1")
+                    .WithTag("tag3", "value3")
+                    .ApplyTags();
+                Assert.False(resource.Tags.ContainsKey("tag1"));
+                string value3;
+                resource.Tags.TryGetValue("tag3", out value3);
+                Assert.Equal("value3", value3);
+
                 #endregion
 
                 #region Delete

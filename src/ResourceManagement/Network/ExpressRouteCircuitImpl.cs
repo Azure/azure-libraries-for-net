@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uRXhwcmVzc1JvdXRlQ2lyY3VpdEltcGw=
     internal partial class ExpressRouteCircuitImpl :
-        GroupableParentResource<
+        GroupableParentResourceWithTags<
             IExpressRouteCircuit,
             ExpressRouteCircuitInner,
             ExpressRouteCircuitImpl,
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:359B78C1848B4A526D723F29D8C8C558:61D79376AC9D01EA7059F6BD84206AB4
         protected override async Task<Models.ExpressRouteCircuitInner> CreateInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Manager.Inner.ExpressRouteCircuits.CreateOrUpdateAsync(ResourceGroupName, Name, Inner);
+            return await Manager.Inner.ExpressRouteCircuits.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
         }
 
         ///GENMHASH:AC21A10EE2E745A89E94E447800452C1:4A8A08F876EE1B1D8B0D8521C4C08D8D
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:94AB303D28E23177449985C742EA7495
         protected override async Task<Models.ExpressRouteCircuitInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.ExpressRouteCircuits.GetAsync(ResourceGroupName, this.Name);
+            return await this.Manager.Inner.ExpressRouteCircuits.GetAsync(ResourceGroupName, this.Name, cancellationToken);
         }
 
         ///GENMHASH:7C102FC888A44580A6E10E7FF69A5CC6:65FBF79C40CABC2B89EEE9134C216675
@@ -145,6 +145,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             Inner.Sku = sku.Sku();
             return this;
+        }
+
+        ///GENMHASH:0263B1F6C1D2EA8755C6E28644653147:B6AF4318DCA2628C503284303A321B0F
+        protected override async Task<Models.ExpressRouteCircuitInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.Inner.ExpressRouteCircuits.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
         }
 
         ///GENMHASH:6156CBBE562DB102D30D00D0F72FF564:CC801AA6C2F51CD8A1E0CA4F52068A83

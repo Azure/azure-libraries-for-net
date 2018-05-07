@@ -207,12 +207,39 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        /// <returns>entry point to managing Azure Local Network Gateways</returns>
+        /// <returns>entry point to managing Azure Express Route Circuits</returns>
         public IExpressRouteCircuits ExpressRouteCircuits
         {
             get
             {
                 return networkManager.ExpressRouteCircuits;
+            }
+        }
+
+        /// <returns>entry point to managing Application Security Gropus</returns>
+        public IApplicationSecurityGroups ApplicationSecurityGroups
+        {
+            get
+            {
+                return networkManager.ApplicationSecurityGroups;
+            }
+        }
+
+        /// <returns>entry point to managing Route Filters</returns>
+        public IRouteFilters RouteFilters
+        {
+            get
+            {
+                return networkManager.RouteFilters;
+            }
+        }
+
+        /// <returns>entry point to managing DDoS protection plans</returns>
+        public IDdosProtectionPlans DdosProtectionPlans
+        {
+            get
+            {
+                return networkManager.DdosProtectionPlans;
             }
         }
 
@@ -772,6 +799,21 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Azure Express Route Circuits management
         /// </summary>
         IExpressRouteCircuits ExpressRouteCircuits { get; }
+
+        /// <summary>
+        /// Entry point to Application Security Groups management
+        /// </summary>
+        IApplicationSecurityGroups ApplicationSecurityGroups{ get; }
+
+        /// <summary>
+        /// Entry point to Route Filters management
+        /// </summary>
+        IRouteFilters RouteFilters { get; }
+
+        /// <summary>
+        /// Entry point to Azure DDoS protection plans management
+        /// </summary>
+        IDdosProtectionPlans DdosProtectionPlans { get; }
 
         /// <summary>
         /// Entry point to Azure Web App management.

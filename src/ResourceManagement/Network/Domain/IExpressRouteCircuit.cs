@@ -15,7 +15,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.ExpressRouteCircuitInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<ExpressRouteCircuit.Update.IUpdate>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<ExpressRouteCircuit.Update.IUpdate>,
+        Microsoft.Azure.Management.Network.Fluent.IUpdatableWithTags<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit>
     {
         /// <summary>
         /// Gets the flag indicating if classic operations allowed.

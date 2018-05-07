@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnect
     /// </summary>
     public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Update.IUpdate>,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Update.IWithBgp,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Update.IWithSharedKey,
         Microsoft.Azure.Management.Network.Fluent.VirtualNetworkGatewayConnection.Update.IWithAuthorization

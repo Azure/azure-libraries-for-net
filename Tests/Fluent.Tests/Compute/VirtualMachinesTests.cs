@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Azure.Management.Network.Fluent.Models;
 using Xunit;
 
 namespace Fluent.Tests.Compute.VirtualMachine
@@ -48,7 +49,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .FromPort(80)
                             .ToAnyAddress()
                             .ToPort(80)
-                            .WithProtocol("tcp")
+                            .WithProtocol(SecurityRuleProtocol.Tcp)
                             .Attach()
                         .Create();
 

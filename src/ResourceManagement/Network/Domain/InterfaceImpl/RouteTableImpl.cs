@@ -17,6 +17,18 @@ namespace Microsoft.Azure.Management.Network.Fluent
     internal partial class RouteTableImpl
     {
         /// <summary>
+        /// Gets whether to disable the routes learned by BGP on that route
+        /// table. True means disable.
+        /// </summary>
+        bool Microsoft.Azure.Management.Network.Fluent.IRouteTableBeta.IsBgpRoutePropagationDisabled
+        {
+            get
+            {
+                return this.IsBgpRoutePropagationDisabled();
+            }
+        }
+
+        /// <summary>
         /// Refreshes the resource to sync with Azure.
         /// </summary>
         /// <return>The Observable to refreshed resource.</return>
@@ -40,6 +52,33 @@ namespace Microsoft.Azure.Management.Network.Fluent
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Network.Fluent.ISubnet> Microsoft.Azure.Management.Network.Fluent.IHasAssociatedSubnets.ListAssociatedSubnets()
         {
             return this.ListAssociatedSubnets() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Network.Fluent.ISubnet>;
+        }
+
+        /// <summary>
+        /// Disable the routes learned by BGP on that route table.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        RouteTable.Update.IUpdate RouteTable.Update.IWithBgpRoutePropagation.WithDisableBgpRoutePropagation()
+        {
+            return this.WithDisableBgpRoutePropagation();
+        }
+
+        /// <summary>
+        /// Disable the routes learned by BGP on that route table.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        RouteTable.Definition.IWithCreate RouteTable.Definition.IWithBgpRoutePropagation.WithDisableBgpRoutePropagation()
+        {
+            return this.WithDisableBgpRoutePropagation();
+        }
+
+        /// <summary>
+        /// Enable the routes learned by BGP on that route table.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        RouteTable.Update.IUpdate RouteTable.Update.IWithBgpRoutePropagation.WithEnableBgpRoutePropagation()
+        {
+            return this.WithEnableBgpRoutePropagation();
         }
 
         /// <summary>

@@ -1,5 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using System.Threading;
@@ -41,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Version() as Models.IPVersion;
+                return this.Version();
             }
         }
 
@@ -70,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The load balancer public frontend that this public IP address is assigned to.</return>
         Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPublicFrontend Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress.GetAssignedLoadBalancerFrontend()
         {
-            return this.GetAssignedLoadBalancerFrontend() as Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPublicFrontend;
+            return this.GetAssignedLoadBalancerFrontend();
         }
 
         /// <summary>
@@ -91,7 +94,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Sku() as Microsoft.Azure.Management.Network.Fluent.Models.PublicIPSkuType;
+                return this.Sku();
             }
         }
 
@@ -102,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.AvailabilityZones() as System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>;
+                return this.AvailabilityZones();
             }
         }
 
@@ -120,7 +123,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The network interface IP configuration that this public IP address is assigned to.</return>
         Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress.GetAssignedNetworkInterfaceIPConfiguration()
         {
-            return this.GetAssignedNetworkInterfaceIPConfiguration() as Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration;
+            return this.GetAssignedNetworkInterfaceIPConfiguration();
         }
 
         /// <summary>
@@ -141,10 +144,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.IPAllocationMethod() as Models.IPAllocationMethod;
+                return this.IPAllocationMethod();
             }
         }
-
+        UpdatableWithTags.UpdatableWithTags.IUpdateWithTags<IPublicIPAddress> IUpdatableWithTags<IPublicIPAddress>.UpdateTags()
+        {
+            return UpdateTags();
+        }
         /// <summary>
         /// Specifies the timeout (in minutes) for an idle connection.
         /// </summary>
@@ -152,7 +158,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the resource update.</return>
         PublicIPAddress.Update.IUpdate PublicIPAddress.Update.IWithIdleTimout.WithIdleTimeoutInMinutes(int minutes)
         {
-            return this.WithIdleTimeoutInMinutes(minutes) as PublicIPAddress.Update.IUpdate;
+            return this.WithIdleTimeoutInMinutes(minutes);
         }
 
         /// <summary>
@@ -162,7 +168,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithReverseFQDN.WithReverseFqdn(string reverseFQDN)
         {
-            return this.WithReverseFqdn(reverseFQDN) as PublicIPAddress.Definition.IWithCreate;
+            return this.WithReverseFqdn(reverseFQDN);
         }
 
         /// <summary>
@@ -171,7 +177,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithReverseFQDN.WithoutReverseFqdn()
         {
-            return this.WithoutReverseFqdn() as PublicIPAddress.Definition.IWithCreate;
+            return this.WithoutReverseFqdn();
         }
 
         /// <summary>
@@ -181,7 +187,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the resource update.</return>
         PublicIPAddress.Update.IUpdate PublicIPAddress.Update.IWithReverseFQDN.WithReverseFqdn(string reverseFQDN)
         {
-            return this.WithReverseFqdn(reverseFQDN) as PublicIPAddress.Update.IUpdate;
+            return this.WithReverseFqdn(reverseFQDN);
         }
 
         /// <summary>
@@ -190,7 +196,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the resource update.</return>
         PublicIPAddress.Update.IUpdate PublicIPAddress.Update.IWithReverseFQDN.WithoutReverseFqdn()
         {
-            return this.WithoutReverseFqdn() as PublicIPAddress.Update.IUpdate;
+            return this.WithoutReverseFqdn();
         }
 
         /// <summary>
@@ -200,7 +206,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithLeafDomainLabel.WithoutLeafDomainLabel()
         {
-            return this.WithoutLeafDomainLabel() as PublicIPAddress.Definition.IWithCreate;
+            return this.WithoutLeafDomainLabel();
         }
 
         /// <summary>
@@ -212,7 +218,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithLeafDomainLabel.WithLeafDomainLabel(string dnsName)
         {
-            return this.WithLeafDomainLabel(dnsName) as PublicIPAddress.Definition.IWithCreate;
+            return this.WithLeafDomainLabel(dnsName);
         }
 
         /// <summary>
@@ -222,7 +228,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the resource update.</return>
         PublicIPAddress.Update.IUpdate PublicIPAddress.Update.IWithLeafDomainLabel.WithoutLeafDomainLabel()
         {
-            return this.WithoutLeafDomainLabel() as PublicIPAddress.Update.IUpdate;
+            return this.WithoutLeafDomainLabel();
         }
 
         /// <summary>
@@ -234,7 +240,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the resource update.</return>
         PublicIPAddress.Update.IUpdate PublicIPAddress.Update.IWithLeafDomainLabel.WithLeafDomainLabel(string dnsName)
         {
-            return this.WithLeafDomainLabel(dnsName) as PublicIPAddress.Update.IUpdate;
+            return this.WithLeafDomainLabel(dnsName);
         }
 
         /// <summary>
@@ -245,7 +251,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithIPAddress.WithStaticIP()
         {
-            return this.WithStaticIP() as PublicIPAddress.Definition.IWithCreate;
+            return this.WithStaticIP();
         }
 
         /// <summary>
@@ -254,7 +260,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithIPAddress.WithDynamicIP()
         {
-            return this.WithDynamicIP() as PublicIPAddress.Definition.IWithCreate;
+            return this.WithDynamicIP();
         }
 
         /// <summary>
@@ -265,7 +271,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the resource update.</return>
         PublicIPAddress.Update.IUpdate PublicIPAddress.Update.IWithIPAddress.WithStaticIP()
         {
-            return this.WithStaticIP() as PublicIPAddress.Update.IUpdate;
+            return this.WithStaticIP();
         }
 
         /// <summary>
@@ -274,7 +280,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the resource update.</return>
         PublicIPAddress.Update.IUpdate PublicIPAddress.Update.IWithIPAddress.WithDynamicIP()
         {
-            return this.WithDynamicIP() as PublicIPAddress.Update.IUpdate;
+            return this.WithDynamicIP();
         }
 
         /// <summary>
@@ -284,7 +290,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithIdleTimeout.WithIdleTimeoutInMinutes(int minutes)
         {
-            return this.WithIdleTimeoutInMinutes(minutes) as PublicIPAddress.Definition.IWithCreate;
+            return this.WithIdleTimeoutInMinutes(minutes);
         }
 
         /// <summary>
@@ -294,7 +300,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
         {
-            return this.WithAvailabilityZone(zoneId) as PublicIPAddress.Definition.IWithCreate;
+            return this.WithAvailabilityZone(zoneId);
         }
 
         /// <summary>
@@ -304,7 +310,23 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PublicIPAddress.Definition.IWithCreate PublicIPAddress.Definition.IWithSku.WithSku(PublicIPSkuType skuType)
         {
-            return this.WithSku(skuType) as PublicIPAddress.Definition.IWithCreate;
+            return this.WithSku(skuType);
+        }
+
+
+        public IAppliableWithTags<IPublicIPAddress> WithoutTag(string key)
+        {
+            return base.WithoutTag(key);
+        }
+
+        public IAppliableWithTags<IPublicIPAddress> WithTag(string key, string value)
+        {
+            return base.WithTag(key, value);
+        }
+
+        public IAppliableWithTags<IPublicIPAddress> WithTags(IDictionary<string, string> tags)
+        {
+            return base.WithTags(tags);
         }
     }
 }

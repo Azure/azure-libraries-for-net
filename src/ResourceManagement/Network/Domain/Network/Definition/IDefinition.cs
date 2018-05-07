@@ -8,6 +8,28 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
     using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// The stage of the virtual network definition allowing to specify DDoS protection plan.
+    /// </summary>
+    public interface IWithDdosProtectionPlan
+    {
+
+        /// <summary>
+        /// Associates existing DDoS protection plan with the virtual network.
+        /// </summary>
+        /// <param name="planId">DDoS protection plan resource id.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreateAndSubnet WithExistingDdosProtectionPlan(string planId);
+
+        /// <summary>
+        /// Creates a new DDoS protection plan in the same region and group as the virtual network and associates it with the resource.
+        /// The internal name the DDoS protection plan will be derived from the resource's name.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreateAndSubnet WithNewDdosProtectionPlan();
+    }
 
     /// <summary>
     /// The entirety of the virtual network definition.
@@ -78,6 +100,20 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
     public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreate>
     {
+
+    }
+
+    /// <summary>
+    /// The stage of the virtual network definition allowing to enable VM protection for all the subnets in the virtual network.
+    /// </summary>
+    public interface IWithVmProtection
+    {
+
+        /// <summary>
+        /// Enable VM protection for all the subnets in the virtual network.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreateAndSubnet WithVmProtection();
     }
 
     /// <summary>
@@ -88,16 +124,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
     /// </summary>
     public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Network.Fluent.INetwork>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreate>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreate>,
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithDdosProtectionPlan,
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithVmProtection
     {
-        /// <summary>
-        /// Specifies the IP address of an existing DNS server to associate with the virtual network.
-        /// Note this method's effect is additive, i.e. each time it is used, a new dns server is added
-        /// to the network.
-        /// </summary>
-        /// <param name="ipAddress">The IP address of the DNS server.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreate WithDnsServer(string ipAddress);
 
         /// <summary>
         /// Explicitly adds an address space to the virtual network.
@@ -110,5 +140,14 @@ namespace Microsoft.Azure.Management.Network.Fluent.Network.Definition
         /// <param name="cidr">The CIDR representation of the address space.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreateAndSubnet WithAddressSpace(string cidr);
+
+        /// <summary>
+        /// Specifies the IP address of an existing DNS server to associate with the virtual network.
+        /// Note this method's effect is additive, i.e. each time it is used, a new dns server is added
+        /// to the network.
+        /// </summary>
+        /// <param name="ipAddress">The IP address of the DNS server.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.Network.Definition.IWithCreate WithDnsServer(string ipAddress);
     }
 }

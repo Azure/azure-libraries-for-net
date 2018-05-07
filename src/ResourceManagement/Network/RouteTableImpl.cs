@@ -1,5 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using Microsoft.Azure.Management.Network.Fluent.UpdatableWithTags.UpdatableWithTags;
+
 namespace Microsoft.Azure.Management.Network.Fluent
 {
     using System.Threading.Tasks;
@@ -17,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uUm91dGVUYWJsZUltcGw=
     internal partial class RouteTableImpl :
-        GroupableParentResource<IRouteTable,
+        GroupableParentResourceWithTags<IRouteTable,
             RouteTableInner,
             RouteTableImpl,
             INetworkManager,
@@ -132,13 +135,22 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        ///GENMHASH:0263B1F6C1D2EA8755C6E28644653147:9D293E1AA04D2C3CD8EDA9D8EB8FEDDD
+        protected override async Task<Models.RouteTableInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.Inner.RouteTables.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
+        }
 
         ///GENMHASH:F9626EDD83A5083970F3624D111D5F9A:7C77591C832F84A949CE9BF6525CCF9B
         public IReadOnlyDictionary<string, IRoute> Routes()
         {
             return routes as IReadOnlyDictionary<string, IRoute>;
         }
-
+      ///GENMHASH:CA0DBD667E0654A7211BC0437FBC9A27:244E7559FC8DE1016EE1F8A8E013C39D
+        public bool IsBgpRoutePropagationDisabled()
+        {
+            return Inner.DisableBgpRoutePropagation.GetValueOrDefault();
+        }
 
         ///GENMHASH:E78D7ACAEEE05A0117BC7B6E41B0D53B:062BFEFE0393BE2C1D9F8B1A963FDE23
         public IReadOnlyList<ISubnet> ListAssociatedSubnets()
@@ -158,6 +170,19 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return null;
         }
 
+        ///GENMHASH:48090CE1ECC3F9620A9E2BB1E2D78471:853299A9ECAAFE839D8D49BA28B0ED5F
+        public RouteTableImpl WithDisableBgpRoutePropagation()
+        {
+            Inner.DisableBgpRoutePropagation = true;
+            return this;
+        }
+
+        ///GENMHASH:3584AFD9BA64CCF9269A3634C588C672:74F46E4861E0C5B77AAB336B880451C1
+        public RouteTableImpl WithEnableBgpRoutePropagation()
+        {
+            Inner.DisableBgpRoutePropagation = false;
+            return this;
+        }
 
         ///GENMHASH:7E8C2CF692FADDB1CA4FDD208175D2BD:DA4ECB14ABD20F728F32A3B6D3951691
         public IUpdate WithoutRoute(string name)
