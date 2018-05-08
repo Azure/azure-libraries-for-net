@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update
         /// <summary>
         /// Gets the next stage of storage account update.
         /// </summary>
-        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate UpgradeToGeneralPurposeAccountKindV2 { get; }
+        Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate UpgradeToGeneralPurposeAccountKindV2();
     }
 
     /// <summary>
