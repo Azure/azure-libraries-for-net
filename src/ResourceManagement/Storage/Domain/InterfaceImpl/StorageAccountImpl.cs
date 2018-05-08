@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.AccountStatuses() as Microsoft.Azure.Management.Storage.Fluent.AccountStatuses;
+                return this.AccountStatuses();
             }
         }
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The access keys for this storage account.</return>
         System.Collections.Generic.IReadOnlyList<Models.StorageAccountKey> Microsoft.Azure.Management.Storage.Fluent.IStorageAccount.GetKeys()
         {
-            return this.GetKeys() as System.Collections.Generic.IReadOnlyList<Models.StorageAccountKey>;
+            return this.GetKeys();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.CustomDomain() as Models.CustomDomain;
+                return this.CustomDomain();
             }
         }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.EncryptionKeySource() as Microsoft.Azure.Management.Storage.Fluent.StorageAccountEncryptionKeySource;
+                return this.EncryptionKeySource();
             }
         }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The generated access keys for this storage account.</return>
         System.Collections.Generic.IReadOnlyList<Models.StorageAccountKey> Microsoft.Azure.Management.Storage.Fluent.IStorageAccount.RegenerateKey(string keyName)
         {
-            return this.RegenerateKey(keyName) as System.Collections.Generic.IReadOnlyList<Models.StorageAccountKey>;
+            return this.RegenerateKey(keyName);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.Sku() as Models.Sku;
+                return this.Sku();
             }
         }
 
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.Encryption() as Models.Encryption;
+                return this.Encryption();
             }
         }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.EndPoints() as Microsoft.Azure.Management.Storage.Fluent.PublicEndpoints;
+                return this.EndPoints();
             }
         }
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.EncryptionStatuses() as System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.Storage.Fluent.StorageService, Microsoft.Azure.Management.Storage.Fluent.IStorageAccountEncryptionStatus>;
+                return this.EncryptionStatuses();
             }
         }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>A representation of the deferred computation of this call, returning the regenerated access key.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Models.StorageAccountKey>> Microsoft.Azure.Management.Storage.Fluent.IStorageAccount.RegenerateKeyAsync(string keyName, CancellationToken cancellationToken)
         {
-            return await this.RegenerateKeyAsync(keyName, cancellationToken) as System.Collections.Generic.IReadOnlyList<Models.StorageAccountKey>;
+            return await this.RegenerateKeyAsync(keyName, cancellationToken);
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>A representation of the deferred computation of this call, returning the access keys.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Models.StorageAccountKey>> Microsoft.Azure.Management.Storage.Fluent.IStorageAccount.GetKeysAsync(CancellationToken cancellationToken)
         {
-            return await this.GetKeysAsync(cancellationToken) as System.Collections.Generic.IReadOnlyList<Models.StorageAccountKey>;
+            return await this.GetKeysAsync(cancellationToken);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryption.WithEncryption()
         {
-            return this.WithEncryption() as StorageAccount.Update.IUpdate;
+            return this.WithEncryption();
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryption.WithoutEncryption()
         {
-            return this.WithoutEncryption() as StorageAccount.Update.IUpdate;
+            return this.WithoutEncryption();
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryption.WithEncryption()
         {
-            return this.WithEncryption() as StorageAccount.Definition.IWithCreate;
+            return this.WithEncryption();
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreateAndAccessTier StorageAccount.Definition.IWithBlobStorageAccountKind.WithBlobStorageAccountKind()
         {
-            return this.WithBlobStorageAccountKind() as StorageAccount.Definition.IWithCreateAndAccessTier;
+            return this.WithBlobStorageAccountKind();
         }
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithAccessTier.WithAccessTier(AccessTier accessTier)
         {
-            return this.WithAccessTier(accessTier) as StorageAccount.Update.IUpdate;
+            return this.WithAccessTier(accessTier);
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithGeneralPurposeAccountKind.WithGeneralPurposeAccountKind()
         {
-            return this.WithGeneralPurposeAccountKind() as StorageAccount.Definition.IWithCreate;
+            return this.WithGeneralPurposeAccountKind();
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The stage of new resource update.</return>
         StorageAccount.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<StorageAccount.Update.IUpdate>.Update()
         {
-            return this.Update() as StorageAccount.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithSku.WithSku(SkuName skuName)
         {
-            return this.WithSku(skuName) as StorageAccount.Update.IUpdate;
+            return this.WithSku(skuName);
         }
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithSkuBeta.WithSku(StorageAccountSkuType sku)
         {
-            return this.WithSku(sku) as StorageAccount.Update.IUpdate;
+            return this.WithSku(sku);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithSku.WithSku(SkuName skuName)
         {
-            return this.WithSku(skuName) as StorageAccount.Definition.IWithCreate;
+            return this.WithSku(skuName);
         }
 
 
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.SkuType() as Microsoft.Azure.Management.Storage.Fluent.StorageAccountSkuType;
+                return this.SkuType();
             }
         }
 
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.IPAddressRangesWithAccess() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.IPAddressRangesWithAccess();
             }
         }
 
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.IPAddressesWithAccess() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.IPAddressesWithAccess();
             }
         }
 
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.NetworkSubnetsWithAccess() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.NetworkSubnetsWithAccess();
             }
         }
 
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutIpAddressAccess(string ipAddress)
         {
-            return this.WithoutIpAddressAccess(ipAddress) as StorageAccount.Update.IUpdate;
+            return this.WithoutIpAddressAccess(ipAddress);
         }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutReadAccessToMetricsFromAnyNetwork()
         {
-            return this.WithoutReadAccessToMetricsFromAnyNetwork() as StorageAccount.Update.IUpdate;
+            return this.WithoutReadAccessToMetricsFromAnyNetwork();
         }
 
         /// <summary>
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromIpAddressRange(string ipAddressCidr)
         {
-            return this.WithAccessFromIpAddressRange(ipAddressCidr) as StorageAccount.Update.IUpdate;
+            return this.WithAccessFromIpAddressRange(ipAddressCidr);
         }
 
         /// <summary>
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromSelectedNetworks()
         {
-            return this.WithAccessFromSelectedNetworks() as StorageAccount.Update.IUpdate;
+            return this.WithAccessFromSelectedNetworks();
         }
 
         /// <summary>
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutReadAccessToLoggingFromAnyNetwork()
         {
-            return this.WithoutReadAccessToLoggingFromAnyNetwork() as StorageAccount.Update.IUpdate;
+            return this.WithoutReadAccessToLoggingFromAnyNetwork();
         }
 
         /// <summary>
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithReadAccessToMetricsFromAnyNetwork()
         {
-            return this.WithReadAccessToMetricsFromAnyNetwork() as StorageAccount.Update.IUpdate;
+            return this.WithReadAccessToMetricsFromAnyNetwork();
         }
 
         /// <summary>
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromIpAddress(string ipAddress)
         {
-            return this.WithAccessFromIpAddress(ipAddress) as StorageAccount.Update.IUpdate;
+            return this.WithAccessFromIpAddress(ipAddress);
         }
 
         /// <summary>
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromAzureServices()
         {
-            return this.WithAccessFromAzureServices() as StorageAccount.Update.IUpdate;
+            return this.WithAccessFromAzureServices();
         }
 
         /// <summary>
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutNetworkSubnetAccess(string subnetId)
         {
-            return this.WithoutNetworkSubnetAccess(subnetId) as StorageAccount.Update.IUpdate;
+            return this.WithoutNetworkSubnetAccess(subnetId);
         }
 
         /// <summary>
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutIpAddressRangeAccess(string ipAddressCidr)
         {
-            return this.WithoutIpAddressRangeAccess(ipAddressCidr) as StorageAccount.Update.IUpdate;
+            return this.WithoutIpAddressRangeAccess(ipAddressCidr);
         }
 
         /// <summary>
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithReadAccessToLogEntriesFromAnyNetwork()
         {
-            return this.WithReadAccessToLogEntriesFromAnyNetwork() as StorageAccount.Update.IUpdate;
+            return this.WithReadAccessToLogEntriesFromAnyNetwork();
         }
 
         /// <summary>
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromNetworkSubnet(string subnetId)
         {
-            return this.WithAccessFromNetworkSubnet(subnetId) as StorageAccount.Update.IUpdate;
+            return this.WithAccessFromNetworkSubnet(subnetId);
         }
 
         /// <summary>
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithoutAccessFromAzureServices()
         {
-            return this.WithoutAccessFromAzureServices() as StorageAccount.Update.IUpdate;
+            return this.WithoutAccessFromAzureServices();
         }
 
         /// <summary>
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithNetworkAccess.WithAccessFromAllNetworks()
         {
-            return this.WithAccessFromAllNetworks() as StorageAccount.Update.IUpdate;
+            return this.WithAccessFromAllNetworks();
         }
 
         /// <summary>
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromIpAddressRange(string ipAddressCidr)
         {
-            return this.WithAccessFromIpAddressRange(ipAddressCidr) as StorageAccount.Definition.IWithCreate;
+            return this.WithAccessFromIpAddressRange(ipAddressCidr);
         }
 
         /// <summary>
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromSelectedNetworks()
         {
-            return this.WithAccessFromSelectedNetworks() as StorageAccount.Definition.IWithCreate;
+            return this.WithAccessFromSelectedNetworks();
         }
 
         /// <summary>
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithReadAccessToMetricsFromAnyNetwork()
         {
-            return this.WithReadAccessToMetricsFromAnyNetwork() as StorageAccount.Definition.IWithCreate;
+            return this.WithReadAccessToMetricsFromAnyNetwork();
         }
 
         /// <summary>
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromIpAddress(string ipAddress)
         {
-            return this.WithAccessFromIpAddress(ipAddress) as StorageAccount.Definition.IWithCreate;
+            return this.WithAccessFromIpAddress(ipAddress);
         }
 
         /// <summary>
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromAzureServices()
         {
-            return this.WithAccessFromAzureServices() as StorageAccount.Definition.IWithCreate;
+            return this.WithAccessFromAzureServices();
         }
 
         /// <summary>
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithReadAccessToLogEntriesFromAnyNetwork()
         {
-            return this.WithReadAccessToLogEntriesFromAnyNetwork() as StorageAccount.Definition.IWithCreate;
+            return this.WithReadAccessToLogEntriesFromAnyNetwork();
         }
 
         /// <summary>
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromNetworkSubnet(string subnetId)
         {
-            return this.WithAccessFromNetworkSubnet(subnetId) as StorageAccount.Definition.IWithCreate;
+            return this.WithAccessFromNetworkSubnet(subnetId);
         }
 
         /// <summary>
@@ -646,7 +646,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithNetworkAccess.WithAccessFromAllNetworks()
         {
-            return this.WithAccessFromAllNetworks() as StorageAccount.Definition.IWithCreate;
+            return this.WithAccessFromAllNetworks();
         }
 
         /// <summary>
@@ -655,12 +655,9 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <summary>
         /// Gets the next stage of storage account update.
         /// </summary>
-        StorageAccount.Update.IUpdate StorageAccount.Update.IWithUpgrade.UpgradeToGeneralPurposeAccountKindV2
+        StorageAccount.Update.IUpdate StorageAccount.Update.IWithUpgrade.UpgradeToGeneralPurposeAccountKindV2()
         {
-            get
-            {
-                return this.UpgradeToGeneralPurposeAccountKindV2() as StorageAccount.Update.IUpdate;
-            }
+            return this.UpgradeToGeneralPurposeAccountKindV2();
         }
 
         /// <summary>
@@ -669,7 +666,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>He next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithFileEncryption()
         {
-            return this.WithFileEncryption() as StorageAccount.Update.IUpdate;
+            return this.WithFileEncryption();
         }
 
         /// <summary>
@@ -678,7 +675,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>He next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithoutFileEncryption()
         {
-            return this.WithoutFileEncryption() as StorageAccount.Update.IUpdate;
+            return this.WithoutFileEncryption();
         }
 
         /// <summary>
@@ -687,7 +684,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithBlobEncryption()
         {
-            return this.WithBlobEncryption() as StorageAccount.Update.IUpdate;
+            return this.WithBlobEncryption();
         }
 
         /// <summary>
@@ -696,7 +693,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithoutBlobEncryption()
         {
-            return this.WithoutBlobEncryption() as StorageAccount.Update.IUpdate;
+            return this.WithoutBlobEncryption();
         }
 
         /// <summary>
@@ -708,7 +705,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithEncryptionBeta.WithEncryptionKeyFromKeyVault(string keyVaultUri, string keyName, string keyVersion)
         {
-            return this.WithEncryptionKeyFromKeyVault(keyVaultUri, keyName, keyVersion) as StorageAccount.Update.IUpdate;
+            return this.WithEncryptionKeyFromKeyVault(keyVaultUri, keyName, keyVersion);
         }
 
         /// <summary>
@@ -717,7 +714,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithFileEncryption()
         {
-            return this.WithFileEncryption() as StorageAccount.Definition.IWithCreate;
+            return this.WithFileEncryption();
         }
 
         /// <summary>
@@ -726,7 +723,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>He next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithoutFileEncryption()
         {
-            return this.WithoutFileEncryption() as StorageAccount.Definition.IWithCreate;
+            return this.WithoutFileEncryption();
         }
 
         /// <summary>
@@ -735,7 +732,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithBlobEncryption()
         {
-            return this.WithBlobEncryption() as StorageAccount.Definition.IWithCreate;
+            return this.WithBlobEncryption();
         }
 
         /// <summary>
@@ -744,7 +741,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithoutBlobEncryption()
         {
-            return this.WithoutBlobEncryption() as StorageAccount.Definition.IWithCreate;
+            return this.WithoutBlobEncryption();
         }
 
         /// <summary>
@@ -756,7 +753,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithEncryptionBeta.WithEncryptionKeyFromKeyVault(string keyVaultUri, string keyName, string keyVersion)
         {
-            return this.WithEncryptionKeyFromKeyVault(keyVaultUri, keyName, keyVersion) as StorageAccount.Definition.IWithCreate;
+            return this.WithEncryptionKeyFromKeyVault(keyVaultUri, keyName, keyVersion);
         }
 
         /// <summary>
@@ -766,7 +763,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithGeneralPurposeAccountKind.WithGeneralPurposeAccountKindV2()
         {
-            return this.WithGeneralPurposeAccountKindV2() as StorageAccount.Definition.IWithCreate;
+            return this.WithGeneralPurposeAccountKindV2();
         }
 
         /// <summary>
@@ -775,7 +772,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithManagedServiceIdentityBeta.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithSystemAssignedManagedServiceIdentity() as StorageAccount.Update.IUpdate;
+            return this.WithSystemAssignedManagedServiceIdentity();
         }
 
         /// <summary>
@@ -784,7 +781,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithManagedServiceIdentityBeta.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithSystemAssignedManagedServiceIdentity() as StorageAccount.Definition.IWithCreate;
+            return this.WithSystemAssignedManagedServiceIdentity();
         }
 
         /// <summary>
@@ -793,7 +790,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithAccessTraffic.WithHttpAndHttpsTraffic()
         {
-            return this.WithHttpAndHttpsTraffic() as StorageAccount.Update.IUpdate;
+            return this.WithHttpAndHttpsTraffic();
         }
 
         /// <summary>
@@ -802,7 +799,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithAccessTraffic.WithOnlyHttpsTraffic()
         {
-            return this.WithOnlyHttpsTraffic() as StorageAccount.Update.IUpdate;
+            return this.WithOnlyHttpsTraffic();
         }
 
         /// <summary>
@@ -811,7 +808,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithAccessTraffic.WithOnlyHttpsTraffic()
         {
-            return this.WithOnlyHttpsTraffic() as StorageAccount.Definition.IWithCreate;
+            return this.WithOnlyHttpsTraffic();
         }
 
         /// <summary>
@@ -821,7 +818,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithSkuBeta.WithSku(StorageAccountSkuType sku)
         {
-            return this.WithSku(sku) as StorageAccount.Definition.IWithCreate;
+            return this.WithSku(sku);
         }
 
         /// <summary>
@@ -831,7 +828,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithCustomDomain.WithCustomDomain(CustomDomain customDomain)
         {
-            return this.WithCustomDomain(customDomain) as StorageAccount.Update.IUpdate;
+            return this.WithCustomDomain(customDomain);
         }
 
         /// <summary>
@@ -841,7 +838,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithCustomDomain.WithCustomDomain(string name)
         {
-            return this.WithCustomDomain(name) as StorageAccount.Update.IUpdate;
+            return this.WithCustomDomain(name);
         }
 
         /// <summary>
@@ -852,7 +849,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account update.</return>
         StorageAccount.Update.IUpdate StorageAccount.Update.IWithCustomDomain.WithCustomDomain(string name, bool useSubDomain)
         {
-            return this.WithCustomDomain(name, useSubDomain) as StorageAccount.Update.IUpdate;
+            return this.WithCustomDomain(name, useSubDomain);
         }
 
         /// <summary>
@@ -862,7 +859,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithCustomDomain.WithCustomDomain(CustomDomain customDomain)
         {
-            return this.WithCustomDomain(customDomain) as StorageAccount.Definition.IWithCreate;
+            return this.WithCustomDomain(customDomain);
         }
 
         /// <summary>
@@ -872,7 +869,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithCustomDomain.WithCustomDomain(string name)
         {
-            return this.WithCustomDomain(name) as StorageAccount.Definition.IWithCreate;
+            return this.WithCustomDomain(name);
         }
 
         /// <summary>
@@ -883,7 +880,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithCustomDomain.WithCustomDomain(string name, bool useSubDomain)
         {
-            return this.WithCustomDomain(name, useSubDomain) as StorageAccount.Definition.IWithCreate;
+            return this.WithCustomDomain(name, useSubDomain);
         }
 
         /// <summary>
@@ -892,7 +889,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Storage.Fluent.IStorageAccount;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -905,7 +902,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The next stage of storage account definition.</return>
         StorageAccount.Definition.IWithCreate StorageAccount.Definition.IWithCreateAndAccessTier.WithAccessTier(AccessTier accessTier)
         {
-            return this.WithAccessTier(accessTier) as StorageAccount.Definition.IWithCreate;
+            return this.WithAccessTier(accessTier);
         }
     }
 }
