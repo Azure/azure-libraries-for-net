@@ -27,9 +27,10 @@ namespace Fluent.Tests.Network
                 string lngwName = "lngw" + testId;
                 Region region = Region.USSouthCentral;
 
-                #region Create
                 var manager = TestHelper.CreateNetworkManager();
 
+                try
+                { 
                 ILocalNetworkGateway gateway = manager.LocalNetworkGateways.Define(lngwName)
                     .WithRegion(region)
                     .WithNewResourceGroup(resourceGroupName)
@@ -40,9 +41,7 @@ namespace Fluent.Tests.Network
                 Assert.Equal("40.71.184.214", gateway.IPAddress);
                 Assert.Equal(2, gateway.AddressSpaces.Count);
                 Assert.True(gateway.AddressSpaces.Contains("192.168.4.0/27"));
-                #endregion
 
-                #region Update
                 gateway.Update()
                     .WithoutAddressSpace("192.168.3.0/24")
                     .WithIPAddress("40.71.184.216")
@@ -61,12 +60,18 @@ namespace Fluent.Tests.Network
                 string value3;
                 gateway.Tags.TryGetValue("tag3", out value3);
                 Assert.Equal("value3", value3);
-                #endregion
 
-                #region Delete
                 manager.LocalNetworkGateways.DeleteById(gateway.Id);
                 manager.ResourceManager.ResourceGroups.DeleteByName(gateway.ResourceGroupName);
-                #endregion
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(resourceGroupName);
+                    }
+                    catch { }
+                }
             }
         }
     }

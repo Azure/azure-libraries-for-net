@@ -23,22 +23,33 @@ namespace Fluent.Tests.WebApp
                 var keyVaultManager = TestHelper.CreateKeyVaultManager();
                 var appServiceManager = TestHelper.CreateAppServiceManager();
 
-                var vault = keyVaultManager.Vaults.GetByResourceGroup(GroupName, "bananagraphwebapp319com");
-                var certificate = appServiceManager.AppServiceCertificates.Define("bananacert")
-                    .WithRegion(Region.USWest)
-                    .WithExistingResourceGroup(GroupName)
-                    .WithExistingCertificateOrder(appServiceManager.AppServiceCertificateOrders.GetByResourceGroup(GroupName, "graphwebapp319"))
-                    .Create();
-                Assert.NotNull(certificate);
+                try
+                {
+                    var vault = keyVaultManager.Vaults.GetByResourceGroup(GroupName, "bananagraphwebapp319com");
+                    var certificate = appServiceManager.AppServiceCertificates.Define("bananacert")
+                        .WithRegion(Region.USWest)
+                        .WithExistingResourceGroup(GroupName)
+                        .WithExistingCertificateOrder(appServiceManager.AppServiceCertificateOrders.GetByResourceGroup(GroupName, "graphwebapp319"))
+                        .Create();
+                    Assert.NotNull(certificate);
 
-                // CREATE
-                certificate = appServiceManager.AppServiceCertificates.Define(CertificateName)
-                    .WithRegion(Region.USEast)
-                    .WithExistingResourceGroup(GroupName)
-                    .WithPfxFile("/Users/jianghlu/Documents/code/certs/myserver.Pfx")
-                    .WithPfxPassword("StrongPass!123")
-                    .Create();
-                Assert.NotNull(certificate);
+                    // CREATE
+                    certificate = appServiceManager.AppServiceCertificates.Define(CertificateName)
+                        .WithRegion(Region.USEast)
+                        .WithExistingResourceGroup(GroupName)
+                        .WithPfxFile("/Users/jianghlu/Documents/code/certs/myserver.Pfx")
+                        .WithPfxPassword("StrongPass!123")
+                        .Create();
+                    Assert.NotNull(certificate);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName);
+                    }
+                    catch { }
+                }
             }
         }
     }

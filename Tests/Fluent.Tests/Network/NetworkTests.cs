@@ -30,101 +30,112 @@ namespace Fluent.Tests.Network
                 string networkName2 = "netB" + testId;
                 var networks = TestHelper.CreateNetworkManager().Networks;
 
-                // Create networks
-                ICreatable<INetwork> remoteNetworkDefinition = networks.Define(networkName2)
-                        .WithRegion(region)
-                        .WithNewResourceGroup(groupName)
-                        .WithAddressSpace("10.1.0.0/27")
-                        .WithSubnet("subnet3", "10.1.0.0/27");
+                try
+                { 
+                    // Create networks
+                    ICreatable<INetwork> remoteNetworkDefinition = networks.Define(networkName2)
+                            .WithRegion(region)
+                            .WithNewResourceGroup(groupName)
+                            .WithAddressSpace("10.1.0.0/27")
+                            .WithSubnet("subnet3", "10.1.0.0/27");
 
-                ICreatable<INetwork> localNetworkDefinition = networks.Define(networkName)
-                        .WithRegion(region)
-                        .WithNewResourceGroup(groupName)
-                        .WithAddressSpace("10.0.0.0/27")
-                        .WithSubnet("subnet1", "10.0.0.0/28")
-                        .WithSubnet("subnet2", "10.0.0.16/28");
+                    ICreatable<INetwork> localNetworkDefinition = networks.Define(networkName)
+                            .WithRegion(region)
+                            .WithNewResourceGroup(groupName)
+                            .WithAddressSpace("10.0.0.0/27")
+                            .WithSubnet("subnet1", "10.0.0.0/28")
+                            .WithSubnet("subnet2", "10.0.0.16/28");
 
-                var createdNetworks = networks.Create(remoteNetworkDefinition, localNetworkDefinition);
-                INetwork localNetwork = createdNetworks.FirstOrDefault(o => o.Key == localNetworkDefinition.Key);
-                Assert.NotNull(localNetwork);
-                INetwork remoteNetwork = createdNetworks.FirstOrDefault(o => o.Key == remoteNetworkDefinition.Key);
-                Assert.NotNull(remoteNetwork);
+                    var createdNetworks = networks.Create(remoteNetworkDefinition, localNetworkDefinition);
+                    INetwork localNetwork = createdNetworks.FirstOrDefault(o => o.Key == localNetworkDefinition.Key);
+                    Assert.NotNull(localNetwork);
+                    INetwork remoteNetwork = createdNetworks.FirstOrDefault(o => o.Key == remoteNetworkDefinition.Key);
+                    Assert.NotNull(remoteNetwork);
 
-                // Create peering
-                INetworkPeering localPeering = localNetwork.Peerings.Define("peer0")
-                    .WithRemoteNetwork(remoteNetwork)
+                    // Create peering
+                    INetworkPeering localPeering = localNetwork.Peerings.Define("peer0")
+                        .WithRemoteNetwork(remoteNetwork)
 
-                    // Optionals
-                    .WithTrafficForwardingBetweenBothNetworks()
-                    .WithoutAccessFromEitherNetwork()
-                    .WithGatewayUseByRemoteNetworkAllowed()
-                    .Create();
+                        // Optionals
+                        .WithTrafficForwardingBetweenBothNetworks()
+                        .WithoutAccessFromEitherNetwork()
+                        .WithGatewayUseByRemoteNetworkAllowed()
+                        .Create();
 
-                // Verify local peering
-                Assert.NotNull(localNetwork.Peerings);
-                var localPeerings = localNetwork.Peerings.List();
-                Assert.Single(localPeerings);
-                localPeering = localPeerings.FirstOrDefault();
-                Assert.NotNull(localPeering);
-                Assert.Equal("peer0", localPeering.Name, true);
-                Assert.Equal(VirtualNetworkPeeringState.Connected, localPeering.State);
-                Assert.True(localPeering.IsTrafficForwardingFromRemoteNetworkAllowed);
-                Assert.False(localPeering.CheckAccessBetweenNetworks());
-                Assert.Equal(NetworkPeeringGatewayUse.ByRemoteNetwork, localPeering.GatewayUse);
+                    // Verify local peering
+                    Assert.NotNull(localNetwork.Peerings);
+                    var localPeerings = localNetwork.Peerings.List();
+                    Assert.Single(localPeerings);
+                    localPeering = localPeerings.FirstOrDefault();
+                    Assert.NotNull(localPeering);
+                    Assert.Equal("peer0", localPeering.Name, true);
+                    Assert.Equal(VirtualNetworkPeeringState.Connected, localPeering.State);
+                    Assert.True(localPeering.IsTrafficForwardingFromRemoteNetworkAllowed);
+                    Assert.False(localPeering.CheckAccessBetweenNetworks());
+                    Assert.Equal(NetworkPeeringGatewayUse.ByRemoteNetwork, localPeering.GatewayUse);
 
-                // Verify remote peering
-                Assert.NotNull(remoteNetwork.Peerings);
-                Assert.Single(remoteNetwork.Peerings.List());
-                INetworkPeering remotePeering = localPeering.GetRemotePeering();
-                Assert.NotNull(remotePeering);
-                Assert.Equal(localNetwork.Id, remotePeering.RemoteNetworkId, true);
-                Assert.Equal(VirtualNetworkPeeringState.Connected, remotePeering.State);
-                Assert.True(remotePeering.IsTrafficForwardingFromRemoteNetworkAllowed);
-                Assert.False(remotePeering.CheckAccessBetweenNetworks());
-                Assert.Equal(NetworkPeeringGatewayUse.None, remotePeering.GatewayUse);
+                    // Verify remote peering
+                    Assert.NotNull(remoteNetwork.Peerings);
+                    Assert.Single(remoteNetwork.Peerings.List());
+                    INetworkPeering remotePeering = localPeering.GetRemotePeering();
+                    Assert.NotNull(remotePeering);
+                    Assert.Equal(localNetwork.Id, remotePeering.RemoteNetworkId, true);
+                    Assert.Equal(VirtualNetworkPeeringState.Connected, remotePeering.State);
+                    Assert.True(remotePeering.IsTrafficForwardingFromRemoteNetworkAllowed);
+                    Assert.False(remotePeering.CheckAccessBetweenNetworks());
+                    Assert.Equal(NetworkPeeringGatewayUse.None, remotePeering.GatewayUse);
 
-                // Update peering
-                localPeering = localNetwork.Peerings.List().FirstOrDefault();
-                Assert.NotNull(localPeering);
+                    // Update peering
+                    localPeering = localNetwork.Peerings.List().FirstOrDefault();
+                    Assert.NotNull(localPeering);
 
-                // Verify remote IP invisibility to local network before peering
-                remoteNetwork = localPeering.GetRemoteNetwork();
-                Assert.NotNull(remoteNetwork);
-                ISubnet remoteSubnet = remoteNetwork.Subnets["subnet3"];
-                Assert.NotNull(remoteSubnet);
-                var remoteAvailableIPs = remoteSubnet.ListAvailablePrivateIPAddresses();
-                Assert.NotNull(remoteAvailableIPs);
-                Assert.NotEmpty(remoteAvailableIPs);
-                string remoteTestIP = remoteAvailableIPs.FirstOrDefault();
-                Assert.False(localNetwork.IsPrivateIPAddressAvailable(remoteTestIP));
+                    // Verify remote IP invisibility to local network before peering
+                    remoteNetwork = localPeering.GetRemoteNetwork();
+                    Assert.NotNull(remoteNetwork);
+                    ISubnet remoteSubnet = remoteNetwork.Subnets["subnet3"];
+                    Assert.NotNull(remoteSubnet);
+                    var remoteAvailableIPs = remoteSubnet.ListAvailablePrivateIPAddresses();
+                    Assert.NotNull(remoteAvailableIPs);
+                    Assert.NotEmpty(remoteAvailableIPs);
+                    string remoteTestIP = remoteAvailableIPs.FirstOrDefault();
+                    Assert.False(localNetwork.IsPrivateIPAddressAvailable(remoteTestIP));
 
-                localPeering.Update()
-                    .WithoutTrafficForwardingFromEitherNetwork()
-                    .WithAccessBetweenBothNetworks()
-                    .WithoutAnyGatewayUse()
-                    .Apply();
+                    localPeering.Update()
+                        .WithoutTrafficForwardingFromEitherNetwork()
+                        .WithAccessBetweenBothNetworks()
+                        .WithoutAnyGatewayUse()
+                        .Apply();
 
-                // Verify local peering changes
-                Assert.False(localPeering.IsTrafficForwardingFromRemoteNetworkAllowed);
-                Assert.True(localPeering.CheckAccessBetweenNetworks());
-                Assert.Equal(NetworkPeeringGatewayUse.None, localPeering.GatewayUse);
+                    // Verify local peering changes
+                    Assert.False(localPeering.IsTrafficForwardingFromRemoteNetworkAllowed);
+                    Assert.True(localPeering.CheckAccessBetweenNetworks());
+                    Assert.Equal(NetworkPeeringGatewayUse.None, localPeering.GatewayUse);
 
-                // Verify remote peering changes
-                remotePeering = localPeering.GetRemotePeering();
-                Assert.NotNull(remotePeering);
-                Assert.False(remotePeering.IsTrafficForwardingFromRemoteNetworkAllowed);
-                Assert.True(remotePeering.CheckAccessBetweenNetworks());
-                Assert.Equal(NetworkPeeringGatewayUse.None, remotePeering.GatewayUse);
+                    // Verify remote peering changes
+                    remotePeering = localPeering.GetRemotePeering();
+                    Assert.NotNull(remotePeering);
+                    Assert.False(remotePeering.IsTrafficForwardingFromRemoteNetworkAllowed);
+                    Assert.True(remotePeering.CheckAccessBetweenNetworks());
+                    Assert.Equal(NetworkPeeringGatewayUse.None, remotePeering.GatewayUse);
 
-                // Delete the peering
-                localNetwork.Peerings.DeleteById(remotePeering.Id);
+                    // Delete the peering
+                    localNetwork.Peerings.DeleteById(remotePeering.Id);
 
-                // Verify deletion
-                Assert.Empty(localNetwork.Peerings.List());
-                Assert.Empty(remoteNetwork.Peerings.List());
+                    // Verify deletion
+                    Assert.Empty(localNetwork.Peerings.List());
+                    Assert.Empty(remoteNetwork.Peerings.List());
 
-                // Cleanup
-                networks.Manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
+                    // Cleanup
+                    networks.Manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(groupName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -139,96 +150,107 @@ namespace Fluent.Tests.Network
                 var region = Region.USWest;
                 var groupName = "rg" + testId;
 
-                // Create an NSG
-                var manager = TestHelper.CreateNetworkManager();
-                var nsg = manager.NetworkSecurityGroups.Define("nsg" + testId)
-                    .WithRegion(region)
-                    .WithNewResourceGroup(groupName)
-                    .Create();
-
-                // Create a network
-                INetwork network = manager.Networks.Define(newName)
+                try
+                { 
+                    // Create an NSG
+                    var manager = TestHelper.CreateNetworkManager();
+                    var nsg = manager.NetworkSecurityGroups.Define("nsg" + testId)
                         .WithRegion(region)
                         .WithNewResourceGroup(groupName)
-                        .WithAddressSpace("10.0.0.0/28")
-                        .WithAddressSpace("10.1.0.0/28")
-                        .WithSubnet("subnetA", "10.0.0.0/29")
-                        .DefineSubnet("subnetB")
-                            .WithAddressPrefix("10.0.0.8/29")
-                            .WithExistingNetworkSecurityGroup(nsg)
-                            .Attach()
                         .Create();
 
-                // Verify address spaces
-                Assert.Equal(2, network.AddressSpaces.Count);
-                Assert.Contains("10.1.0.0/28", network.AddressSpaces);
+                    // Create a network
+                    INetwork network = manager.Networks.Define(newName)
+                            .WithRegion(region)
+                            .WithNewResourceGroup(groupName)
+                            .WithAddressSpace("10.0.0.0/28")
+                            .WithAddressSpace("10.1.0.0/28")
+                            .WithSubnet("subnetA", "10.0.0.0/29")
+                            .DefineSubnet("subnetB")
+                                .WithAddressPrefix("10.0.0.8/29")
+                                .WithExistingNetworkSecurityGroup(nsg)
+                                .Attach()
+                            .Create();
 
-                // Verify subnets
-                Assert.Equal(2, network.Subnets.Count);
-                ISubnet subnet = network.Subnets["subnetA"];
-                Assert.Equal("10.0.0.0/29", subnet.AddressPrefix);
-                subnet = network.Subnets["subnetB"];
-                Assert.Equal("10.0.0.8/29", subnet.AddressPrefix);
-                Assert.Equal(nsg.Id, subnet.NetworkSecurityGroupId, ignoreCase: true);
+                    // Verify address spaces
+                    Assert.Equal(2, network.AddressSpaces.Count);
+                    Assert.Contains("10.1.0.0/28", network.AddressSpaces);
 
-                // Verify NSG
-                var subnets = nsg.Refresh().ListAssociatedSubnets();
-                Assert.Equal(1, subnets.Count);
-                subnet = subnets[0];
-                Assert.Equal("subnetB", subnet.Name, ignoreCase: true);
-                Assert.Equal(subnet.Parent.Name, newName, ignoreCase: true);
-                Assert.NotNull(subnet.NetworkSecurityGroupId);
-                INetworkSecurityGroup nsg2 = subnet.GetNetworkSecurityGroup();
-                Assert.NotNull(nsg2);
-                Assert.Equal(nsg2.Id, nsg.Id, ignoreCase: true);
+                    // Verify subnets
+                    Assert.Equal(2, network.Subnets.Count);
+                    ISubnet subnet = network.Subnets["subnetA"];
+                    Assert.Equal("10.0.0.0/29", subnet.AddressPrefix);
+                    subnet = network.Subnets["subnetB"];
+                    Assert.Equal("10.0.0.8/29", subnet.AddressPrefix);
+                    Assert.Equal(nsg.Id, subnet.NetworkSecurityGroupId, ignoreCase: true);
 
-                network = manager.Networks.GetByResourceGroup(groupName, newName);
-                network = network.Update()
-                    .WithTag("tag1", "value1")
-                    .WithTag("tag2", "value2")
-                    .WithAddressSpace("141.25.0.0/16")
-                    .WithoutAddressSpace("10.1.0.0/28")
-                    .WithSubnet("subnetC", "141.25.0.0/29")
-                    .WithoutSubnet("subnetA")
-                    .UpdateSubnet("subnetB")
-                        .WithAddressPrefix("141.25.0.8/29")
-                        .WithoutNetworkSecurityGroup()
-                        .Parent()
-                    .DefineSubnet("subnetD")
-                        .WithAddressPrefix("141.25.0.16/29")
-                        .WithExistingNetworkSecurityGroup(nsg)
-                        .Attach()
-                    .Apply();
+                    // Verify NSG
+                    var subnets = nsg.Refresh().ListAssociatedSubnets();
+                    Assert.Equal(1, subnets.Count);
+                    subnet = subnets[0];
+                    Assert.Equal("subnetB", subnet.Name, ignoreCase: true);
+                    Assert.Equal(subnet.Parent.Name, newName, ignoreCase: true);
+                    Assert.NotNull(subnet.NetworkSecurityGroupId);
+                    INetworkSecurityGroup nsg2 = subnet.GetNetworkSecurityGroup();
+                    Assert.NotNull(nsg2);
+                    Assert.Equal(nsg2.Id, nsg.Id, ignoreCase: true);
 
-                // Verify address spaces
-                Assert.Equal(2, network.AddressSpaces.Count);
-                Assert.DoesNotContain("10.1.0.0/28", network.AddressSpaces);
+                    network = manager.Networks.GetByResourceGroup(groupName, newName);
+                    network = network.Update()
+                        .WithTag("tag1", "value1")
+                        .WithTag("tag2", "value2")
+                        .WithAddressSpace("141.25.0.0/16")
+                        .WithoutAddressSpace("10.1.0.0/28")
+                        .WithSubnet("subnetC", "141.25.0.0/29")
+                        .WithoutSubnet("subnetA")
+                        .UpdateSubnet("subnetB")
+                            .WithAddressPrefix("141.25.0.8/29")
+                            .WithoutNetworkSecurityGroup()
+                            .Parent()
+                        .DefineSubnet("subnetD")
+                            .WithAddressPrefix("141.25.0.16/29")
+                            .WithExistingNetworkSecurityGroup(nsg)
+                            .Attach()
+                        .Apply();
 
-                // Verify subnets
-                Assert.Equal(3, network.Subnets.Count);
-                Assert.False(network.Subnets.ContainsKey("subnetA"));
+                    // Verify address spaces
+                    Assert.Equal(2, network.AddressSpaces.Count);
+                    Assert.DoesNotContain("10.1.0.0/28", network.AddressSpaces);
 
-                Assert.True(network.Subnets.ContainsKey("subnetB"));
-                subnet = network.Subnets["subnetB"];
-                Assert.Equal("141.25.0.8/29", subnet.AddressPrefix);
-                Assert.Null(subnet.NetworkSecurityGroupId);
+                    // Verify subnets
+                    Assert.Equal(3, network.Subnets.Count);
+                    Assert.False(network.Subnets.ContainsKey("subnetA"));
 
-                Assert.True(network.Subnets.ContainsKey("subnetC"));
-                subnet = network.Subnets["subnetC"];
-                Assert.Equal("141.25.0.0/29", subnet.AddressPrefix);
-                Assert.Null(subnet.NetworkSecurityGroupId);
+                    Assert.True(network.Subnets.ContainsKey("subnetB"));
+                    subnet = network.Subnets["subnetB"];
+                    Assert.Equal("141.25.0.8/29", subnet.AddressPrefix);
+                    Assert.Null(subnet.NetworkSecurityGroupId);
 
-                Assert.True(network.Subnets.ContainsKey("subnetD"));
-                subnet = network.Subnets["subnetD"];
-                Assert.NotNull(subnet);
-                Assert.Equal("141.25.0.16/29", subnet.AddressPrefix);
-                Assert.Equal(nsg.Id, subnet.NetworkSecurityGroupId, ignoreCase: true);
+                    Assert.True(network.Subnets.ContainsKey("subnetC"));
+                    subnet = network.Subnets["subnetC"];
+                    Assert.Equal("141.25.0.0/29", subnet.AddressPrefix);
+                    Assert.Null(subnet.NetworkSecurityGroupId);
 
-                Assert.True(network.Tags.ContainsKey("tag1"));
+                    Assert.True(network.Subnets.ContainsKey("subnetD"));
+                    subnet = network.Subnets["subnetD"];
+                    Assert.NotNull(subnet);
+                    Assert.Equal("141.25.0.16/29", subnet.AddressPrefix);
+                    Assert.Equal(nsg.Id, subnet.NetworkSecurityGroupId, ignoreCase: true);
 
-                manager.Networks.DeleteById(network.Id);
-                manager.NetworkSecurityGroups.DeleteById(nsg.Id);
-                manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
+                    Assert.True(network.Tags.ContainsKey("tag1"));
+
+                    manager.Networks.DeleteById(network.Id);
+                    manager.NetworkSecurityGroups.DeleteById(nsg.Id);
+                    manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(groupName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -244,86 +266,97 @@ namespace Fluent.Tests.Network
 
                 var manager = TestHelper.CreateNetworkManager();
 
-                // Create a network
-                INetwork network = manager.Networks.Define(nwName)
-                        .WithRegion(region)
-                        .WithNewResourceGroup(groupName)
-                        .WithAddressSpace("10.0.0.0/28")
-                        .WithSubnet("subnetA", "10.0.0.0/29")
-                        .DefineSubnet("subnetB")
-                            .WithAddressPrefix("10.0.0.8/29")
+                try
+                { 
+                    // Create a network
+                    INetwork network = manager.Networks.Define(nwName)
+                            .WithRegion(region)
+                            .WithNewResourceGroup(groupName)
+                            .WithAddressSpace("10.0.0.0/28")
+                            .WithSubnet("subnetA", "10.0.0.0/29")
+                            .DefineSubnet("subnetB")
+                                .WithAddressPrefix("10.0.0.8/29")
+                                .WithAccessFromService(ServiceEndpointType.MicrosoftStorage)
+                                .Attach()
+                            .Create();
+
+                    // Verify address spaces
+                    Assert.Single(network.AddressSpaces);
+                    Assert.Contains("10.0.0.0/28", network.AddressSpaces);
+
+                    // Verify subnets
+                    Assert.Equal(2, network.Subnets.Count);
+                    Assert.True(network.Subnets.ContainsKey("subnetA"));
+
+                    ISubnet subnet = network.Subnets["subnetA"];
+                    Assert.Equal("10.0.0.0/29", subnet.AddressPrefix);
+
+                    Assert.True(network.Subnets.ContainsKey("subnetB"));
+                    subnet = network.Subnets["subnetB"];
+                    Assert.Equal("10.0.0.8/29", subnet.AddressPrefix);
+                    Assert.NotNull(subnet.ServicesWithAccess);
+                    Assert.True(subnet.ServicesWithAccess.ContainsKey(ServiceEndpointType.MicrosoftStorage));
+                    Assert.True(subnet.ServicesWithAccess[ServiceEndpointType.MicrosoftStorage].Count > 0);
+
+                    network = network.Update()
+                        .WithTag("tag1", "value1")
+                        .WithTag("tag2", "value2")
+                        .WithAddressSpace("141.25.0.0/16")
+                        .WithoutAddressSpace("10.1.0.0/28")
+                        .WithSubnet("subnetC", "141.25.0.0/29")
+                        .WithoutSubnet("subnetA")
+                        .UpdateSubnet("subnetB")
+                            .WithAddressPrefix("141.25.0.8/29")
+                            .WithoutAccessFromService(ServiceEndpointType.MicrosoftStorage)
+                            .Parent()
+                        .DefineSubnet("subnetD")
+                            .WithAddressPrefix("141.25.0.16/29")
                             .WithAccessFromService(ServiceEndpointType.MicrosoftStorage)
                             .Attach()
-                        .Create();
+                        .Apply();
 
-                // Verify address spaces
-                Assert.Single(network.AddressSpaces);
-                Assert.Contains("10.0.0.0/28", network.AddressSpaces);
+                    Assert.True(network.Tags.ContainsKey("tag1"));
 
-                // Verify subnets
-                Assert.Equal(2, network.Subnets.Count);
-                Assert.True(network.Subnets.ContainsKey("subnetA"));
+                    // Verify address spaces
+                    Assert.Equal(2, network.AddressSpaces.Count);
+                    Assert.DoesNotContain("10.1.0.0/28", network.AddressSpaces);
 
-                ISubnet subnet = network.Subnets["subnetA"];
-                Assert.Equal("10.0.0.0/29", subnet.AddressPrefix);
+                    // Verify subnets
+                    Assert.Equal(3, network.Subnets.Count);
+                    Assert.False(network.Subnets.ContainsKey("subnetA"));
 
-                Assert.True(network.Subnets.ContainsKey("subnetB"));
-                subnet = network.Subnets["subnetB"];
-                Assert.Equal("10.0.0.8/29", subnet.AddressPrefix);
-                Assert.NotNull(subnet.ServicesWithAccess);
-                Assert.True(subnet.ServicesWithAccess.ContainsKey(ServiceEndpointType.MicrosoftStorage));
-                Assert.True(subnet.ServicesWithAccess[ServiceEndpointType.MicrosoftStorage].Count > 0);
+                    Assert.True(network.Subnets.ContainsKey("subnetB"));
+                    subnet = network.Subnets["subnetB"];
+                    Assert.NotNull(subnet);
+                    Assert.Equal("141.25.0.8/29", subnet.AddressPrefix);
+                    Assert.NotNull(subnet.ServicesWithAccess);
+                    Assert.Empty(subnet.ServicesWithAccess);
 
-                network = network.Update()
-                    .WithTag("tag1", "value1")
-                    .WithTag("tag2", "value2")
-                    .WithAddressSpace("141.25.0.0/16")
-                    .WithoutAddressSpace("10.1.0.0/28")
-                    .WithSubnet("subnetC", "141.25.0.0/29")
-                    .WithoutSubnet("subnetA")
-                    .UpdateSubnet("subnetB")
-                        .WithAddressPrefix("141.25.0.8/29")
-                        .WithoutAccessFromService(ServiceEndpointType.MicrosoftStorage)
-                        .Parent()
-                    .DefineSubnet("subnetD")
-                        .WithAddressPrefix("141.25.0.16/29")
-                        .WithAccessFromService(ServiceEndpointType.MicrosoftStorage)
-                        .Attach()
-                    .Apply();
+                    Assert.True(network.Subnets.ContainsKey("subnetC"));
+                    subnet = network.Subnets["subnetC"];
+                    Assert.NotNull(subnet);
+                    Assert.Equal("141.25.0.0/29", subnet.AddressPrefix);
 
-                Assert.True(network.Tags.ContainsKey("tag1"));
-
-                // Verify address spaces
-                Assert.Equal(2, network.AddressSpaces.Count);
-                Assert.DoesNotContain("10.1.0.0/28", network.AddressSpaces);
-
-                // Verify subnets
-                Assert.Equal(3, network.Subnets.Count);
-                Assert.False(network.Subnets.ContainsKey("subnetA"));
-
-                Assert.True(network.Subnets.ContainsKey("subnetB"));
-                subnet = network.Subnets["subnetB"];
-                Assert.NotNull(subnet);
-                Assert.Equal("141.25.0.8/29", subnet.AddressPrefix);
-                Assert.NotNull(subnet.ServicesWithAccess);
-                Assert.Empty(subnet.ServicesWithAccess);
-
-                Assert.True(network.Subnets.ContainsKey("subnetC"));
-                subnet = network.Subnets["subnetC"];
-                Assert.NotNull(subnet);
-                Assert.Equal("141.25.0.0/29", subnet.AddressPrefix);
-
-                Assert.True(network.Subnets.ContainsKey("subnetD"));
-                subnet = network.Subnets["subnetD"];
-                Assert.NotNull(subnet);
-                Assert.Equal("141.25.0.16/29", subnet.AddressPrefix);
-                Assert.NotNull(subnet.ServicesWithAccess);
-                Assert.True(subnet.ServicesWithAccess.ContainsKey(ServiceEndpointType.MicrosoftStorage));
-                manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+                    Assert.True(network.Subnets.ContainsKey("subnetD"));
+                    subnet = network.Subnets["subnetD"];
+                    Assert.NotNull(subnet);
+                    Assert.Equal("141.25.0.16/29", subnet.AddressPrefix);
+                    Assert.NotNull(subnet.ServicesWithAccess);
+                    Assert.True(subnet.ServicesWithAccess.ContainsKey(ServiceEndpointType.MicrosoftStorage));
+                    manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(groupName);
+                    }
+                    catch { }
+                }
             }
         }
 
-        public void print(INetwork resource)
+        internal void Print(INetwork resource)
         {
             var info = new StringBuilder();
             info.Append("INetwork: ").Append(resource.Id)

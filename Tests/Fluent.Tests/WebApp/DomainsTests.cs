@@ -21,29 +21,40 @@ namespace Fluent.Tests.WebApp
             {
                 var appServiceManager = TestHelper.CreateAppServiceManager();
 
-                // CREATE
-                var domain = appServiceManager.AppServiceDomains.Define(DomainName)
-                    .WithExistingResourceGroup(GroupName)
-                    .DefineRegistrantContact()
-                        .WithFirstName("Jianghao")
-                        .WithLastName("Lu")
-                        .WithEmail("jianghlu@microsoft.Com")
-                        .WithAddressLine1("1 Microsoft Way")
-                        .WithCity("Seattle")
-                        .WithStateOrProvince("WA")
-                        .WithCountry(CountryISOCode.UnitedStates)
-                        .WithPostalCode("98101")
-                        .WithPhoneCountryCode(CountryPhoneCode.UnitedStates)
-                        .WithPhoneNumber("4258828080")
-                        .Attach()
-                    .WithDomainPrivacyEnabled(true)
-                    .WithAutoRenewEnabled(true)
-                    .Create();
-                //        Domain domain = appServiceManager.Domains().GetByGroup(RG_NAME, DOMAIN_NAME);
-                Assert.NotNull(domain);
-                domain.Update()
-                    .WithAutoRenewEnabled(false)
-                    .Apply();
+                try
+                {
+                    // CREATE
+                    var domain = appServiceManager.AppServiceDomains.Define(DomainName)
+                        .WithExistingResourceGroup(GroupName)
+                        .DefineRegistrantContact()
+                            .WithFirstName("Jianghao")
+                            .WithLastName("Lu")
+                            .WithEmail("jianghlu@microsoft.Com")
+                            .WithAddressLine1("1 Microsoft Way")
+                            .WithCity("Seattle")
+                            .WithStateOrProvince("WA")
+                            .WithCountry(CountryISOCode.UnitedStates)
+                            .WithPostalCode("98101")
+                            .WithPhoneCountryCode(CountryPhoneCode.UnitedStates)
+                            .WithPhoneNumber("4258828080")
+                            .Attach()
+                        .WithDomainPrivacyEnabled(true)
+                        .WithAutoRenewEnabled(true)
+                        .Create();
+                    //        Domain domain = appServiceManager.Domains().GetByGroup(RG_NAME, DOMAIN_NAME);
+                    Assert.NotNull(domain);
+                    domain.Update()
+                        .WithAutoRenewEnabled(false)
+                        .Apply();
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName);
+                    }
+                    catch { }
+                }
             }
         }
     }

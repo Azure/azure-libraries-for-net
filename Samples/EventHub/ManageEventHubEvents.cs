@@ -24,7 +24,6 @@ namespace ManageEventHubEvents
     {
         public static void RunSample(IAzure azure)
         {
-            string storageAccountConnectionStringFormat = "DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1};EndpointSuffix=core.windows.net";
             Region region = Region.USEast;
             string rgName = SdkContext.RandomResourceName("rgEvHb", 15);
             string namespaceName = SdkContext.RandomResourceName("ns", 15);

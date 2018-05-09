@@ -23,46 +23,57 @@ namespace Fluent.Tests.WebApp
 
                 var appServiceManager = TestHelper.CreateAppServiceManager();
 
-                // CREATE
-                var appServicePlan = appServiceManager.AppServicePlans
-                    .Define(AppServicePlanName)
-                    .WithRegion(Region.USWest)
-                    .WithNewResourceGroup(GroupName)
-                    .WithPricingTier(PricingTier.PremiumP1)
-                    .WithOperatingSystem(OperatingSystem.Windows)
-                    .WithPerSiteScaling(false)
-                    .WithCapacity(2)
-                    .Create();
-                Assert.NotNull(appServicePlan);
-                Assert.Equal(PricingTier.PremiumP1, appServicePlan.PricingTier);
-                Assert.False(appServicePlan.PerSiteScaling);
-                Assert.Equal(2, appServicePlan.Capacity);
-                Assert.Equal(0, appServicePlan.NumberOfWebApps);
-                Assert.Equal(20, appServicePlan.MaxInstances);
-                // GET
-                Assert.NotNull(appServiceManager.AppServicePlans.GetByResourceGroup(GroupName, AppServicePlanName));
-                // LIST
-                var appServicePlans = appServiceManager.AppServicePlans.ListByResourceGroup(GroupName);
-                var found = false;
-                foreach (var asp in appServicePlans)
+                try
                 {
-                    if (AppServicePlanName.Equals(asp.Name))
+                    // CREATE
+                    var appServicePlan = appServiceManager.AppServicePlans
+                        .Define(AppServicePlanName)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName)
+                        .WithPricingTier(PricingTier.PremiumP1)
+                        .WithOperatingSystem(OperatingSystem.Windows)
+                        .WithPerSiteScaling(false)
+                        .WithCapacity(2)
+                        .Create();
+                    Assert.NotNull(appServicePlan);
+                    Assert.Equal(PricingTier.PremiumP1, appServicePlan.PricingTier);
+                    Assert.False(appServicePlan.PerSiteScaling);
+                    Assert.Equal(2, appServicePlan.Capacity);
+                    Assert.Equal(0, appServicePlan.NumberOfWebApps);
+                    Assert.Equal(20, appServicePlan.MaxInstances);
+                    // GET
+                    Assert.NotNull(appServiceManager.AppServicePlans.GetByResourceGroup(GroupName, AppServicePlanName));
+                    // LIST
+                    var appServicePlans = appServiceManager.AppServicePlans.ListByResourceGroup(GroupName);
+                    var found = false;
+                    foreach (var asp in appServicePlans)
                     {
-                        found = true;
-                        break;
+                        if (AppServicePlanName.Equals(asp.Name))
+                        {
+                            found = true;
+                            break;
+                        }
                     }
+                    Assert.True(found);
+                    // UPDATE
+                    appServicePlan = appServicePlan.Update()
+                        .WithPricingTier(PricingTier.StandardS1)
+                        .WithPerSiteScaling(true)
+                        .WithCapacity(3)
+                        .Apply();
+                    Assert.NotNull(appServicePlan);
+                    Assert.Equal(PricingTier.StandardS1, appServicePlan.PricingTier);
+                    Assert.True(appServicePlan.PerSiteScaling);
+                    Assert.Equal(3, appServicePlan.Capacity);
                 }
-                Assert.True(found);
-                // UPDATE
-                appServicePlan = appServicePlan.Update()
-                    .WithPricingTier(PricingTier.StandardS1)
-                    .WithPerSiteScaling(true)
-                    .WithCapacity(3)
-                    .Apply();
-                Assert.NotNull(appServicePlan);
-                Assert.Equal(PricingTier.StandardS1, appServicePlan.PricingTier);
-                Assert.True(appServicePlan.PerSiteScaling);
-                Assert.Equal(3, appServicePlan.Capacity);
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName);
+                    }
+                    catch { }
+                }
             }
         }
     }

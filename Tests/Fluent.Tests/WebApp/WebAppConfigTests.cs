@@ -26,66 +26,77 @@ namespace Fluent.Tests.WebApp
 
                 var appServiceManager = TestHelper.CreateAppServiceManager();
 
-                // Create with new app service plan
-                appServiceManager.WebApps.Define(WebAppName)
-                    .WithRegion(Region.USWest)
-                    .WithNewResourceGroup(GroupName)
-                    .WithNewWindowsPlan(PricingTier.BasicB1)
-                    .WithNetFrameworkVersion(NetFrameworkVersion.V3_0)
-                    .Create();
+                try
+                {
+                    // Create with new app service plan
+                    appServiceManager.WebApps.Define(WebAppName)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName)
+                        .WithNewWindowsPlan(PricingTier.BasicB1)
+                        .WithNetFrameworkVersion(NetFrameworkVersion.V3_0)
+                        .Create();
 
-                var webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
-                Assert.NotNull(webApp);
-                Assert.Equal(Region.USWest, webApp.Region);
-                Assert.Equal(NetFrameworkVersion.V3_0, webApp.NetFrameworkVersion);
+                    var webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
+                    Assert.NotNull(webApp);
+                    Assert.Equal(Region.USWest, webApp.Region);
+                    Assert.Equal(NetFrameworkVersion.V3_0, webApp.NetFrameworkVersion);
 
-                // Java version
-                webApp.Update()
-                    .WithJavaVersion(JavaVersion.V7_51)
-                    .WithWebContainer(WebContainer.Tomcat7_0_50)
-                    .Apply();
-                webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
-                Assert.Equal(JavaVersion.V7_51, webApp.JavaVersion);
-
-                // Python version
-                webApp.Update()
-                    .WithPythonVersion(PythonVersion.V34)
-                    .Apply();
-                webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
-                Assert.Equal(PythonVersion.V34, webApp.PythonVersion);
-
-                // Default documents
-                var documentSize = webApp.DefaultDocuments.Count;
-                webApp.Update()
-                        .WithDefaultDocument("somedocument.Html")
+                    // Java version
+                    webApp.Update()
+                        .WithJavaVersion(JavaVersion.V7_51)
+                        .WithWebContainer(WebContainer.Tomcat7_0_50)
                         .Apply();
-                webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
-                Assert.Equal(documentSize + 1, webApp.DefaultDocuments.Count);
-                Assert.Contains("somedocument.Html", webApp.DefaultDocuments);
+                    webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
+                    Assert.Equal(JavaVersion.V7_51, webApp.JavaVersion);
 
-                // App settings
-                webApp.Update()
-                        .WithAppSetting("appkey", "appvalue")
-                        .WithStickyAppSetting("stickykey", "stickyvalue")
+                    // Python version
+                    webApp.Update()
+                        .WithPythonVersion(PythonVersion.V34)
                         .Apply();
-                webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
-                var appSettingMap = webApp.GetAppSettings();
-                Assert.Equal("appvalue", appSettingMap["appkey"].Value);
-                Assert.False(appSettingMap["appkey"].Sticky);
-                Assert.Equal("stickyvalue", appSettingMap["stickykey"].Value);
-                Assert.True(appSettingMap["stickykey"].Sticky);
+                    webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
+                    Assert.Equal(PythonVersion.V34, webApp.PythonVersion);
 
-                // Connection strings
-                webApp.Update()
-                        .WithConnectionString("connectionName", "connectionValue", ConnectionStringType.Custom)
-                        .WithStickyConnectionString("stickyName", "stickyValue", ConnectionStringType.Custom)
-                        .Apply();
-                webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
-                var connectionStringMap = webApp.GetConnectionStrings();
-                Assert.Equal("connectionValue", connectionStringMap["connectionName"].Value);
-                Assert.False(connectionStringMap["connectionName"].Sticky);
-                Assert.Equal("stickyValue", connectionStringMap["stickyName"].Value);
-                Assert.True(connectionStringMap["stickyName"].Sticky);
+                    // Default documents
+                    var documentSize = webApp.DefaultDocuments.Count;
+                    webApp.Update()
+                            .WithDefaultDocument("somedocument.Html")
+                            .Apply();
+                    webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
+                    Assert.Equal(documentSize + 1, webApp.DefaultDocuments.Count);
+                    Assert.Contains("somedocument.Html", webApp.DefaultDocuments);
+
+                    // App settings
+                    webApp.Update()
+                            .WithAppSetting("appkey", "appvalue")
+                            .WithStickyAppSetting("stickykey", "stickyvalue")
+                            .Apply();
+                    webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
+                    var appSettingMap = webApp.GetAppSettings();
+                    Assert.Equal("appvalue", appSettingMap["appkey"].Value);
+                    Assert.False(appSettingMap["appkey"].Sticky);
+                    Assert.Equal("stickyvalue", appSettingMap["stickykey"].Value);
+                    Assert.True(appSettingMap["stickykey"].Sticky);
+
+                    // Connection strings
+                    webApp.Update()
+                            .WithConnectionString("connectionName", "connectionValue", ConnectionStringType.Custom)
+                            .WithStickyConnectionString("stickyName", "stickyValue", ConnectionStringType.Custom)
+                            .Apply();
+                    webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName, WebAppName);
+                    var connectionStringMap = webApp.GetConnectionStrings();
+                    Assert.Equal("connectionValue", connectionStringMap["connectionName"].Value);
+                    Assert.False(connectionStringMap["connectionName"].Sticky);
+                    Assert.Equal("stickyValue", connectionStringMap["stickyName"].Value);
+                    Assert.True(connectionStringMap["stickyName"].Sticky);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName);
+                    }
+                    catch { }
+                }
             }
         }
     }

@@ -371,7 +371,7 @@ namespace Fluent.Tests.EventHub
                                 .WithDataCaptureEnabled()
                                 .Apply();
                     }
-                    catch (ArgumentException ex)
+                    catch
                     {
                         exceptionThrown = true;
                     }

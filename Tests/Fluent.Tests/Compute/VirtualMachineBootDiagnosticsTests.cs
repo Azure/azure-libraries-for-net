@@ -22,24 +22,35 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string rgName = TestUtilities.GenerateName("vmbdtest");
                 string regionName = "eastus";
                 string vmName = "javavm";
-
                 var azure = TestHelper.CreateRollupClient();
-                IVirtualMachine virtualMachine = azure.VirtualMachines
-                    .Define(vmName)
-                    .WithRegion(regionName)
-                    .WithNewResourceGroup(rgName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithoutPrimaryPublicIPAddress()
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                    .WithRootUsername("Foo12")
-                    .WithRootPassword("abc!@#F0orL")
-                    .WithBootDiagnostics()
-                    .Create();
 
-                Assert.NotNull(virtualMachine);
-                Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
-                Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
+                try
+                {
+                    IVirtualMachine virtualMachine = azure.VirtualMachines
+                        .Define(vmName)
+                        .WithRegion(regionName)
+                        .WithNewResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("Foo12")
+                        .WithRootPassword("abc!@#F0orL")
+                        .WithBootDiagnostics()
+                        .Create();
+
+                    Assert.NotNull(virtualMachine);
+                    Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
+                    Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -55,28 +66,40 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 var azure = TestHelper.CreateRollupClient();
 
-                var creatableStorageAccount = azure.StorageAccounts
+                try
+                {
+                    var creatableStorageAccount = azure.StorageAccounts
                     .Define(storageName)
                     .WithRegion(regionName)
                     .WithNewResourceGroup(rgName);
 
-                var virtualMachine = azure.VirtualMachines
-                    .Define(vmName)
-                    .WithRegion(regionName)
-                    .WithNewResourceGroup(rgName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithoutPrimaryPublicIPAddress()
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                    .WithRootUsername("Foo12")
-                    .WithRootPassword("abc!@#F0orL")
-                    .WithBootDiagnostics(creatableStorageAccount)
-                    .Create();
+                    var virtualMachine = azure.VirtualMachines
+                        .Define(vmName)
+                        .WithRegion(regionName)
+                        .WithNewResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("Foo12")
+                        .WithRootPassword("abc!@#F0orL")
+                        .WithBootDiagnostics(creatableStorageAccount)
+                        .Create();
 
-                Assert.NotNull(virtualMachine);
-                Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
-                Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
-                Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
+                    Assert.NotNull(virtualMachine);
+                    Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
+                    Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
+                    Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                        azure.StorageAccounts.DeleteByResourceGroup(rgName, storageName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -92,29 +115,41 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 var azure = TestHelper.CreateRollupClient();
 
-                var storageAccount = azure.StorageAccounts
+                try
+                {
+                    var storageAccount = azure.StorageAccounts
                     .Define(storageName)
                     .WithRegion(regionName)
                     .WithNewResourceGroup(rgName)
                     .Create();
 
-                IVirtualMachine virtualMachine = azure.VirtualMachines
-                    .Define(vmName)
-                    .WithRegion(regionName)
-                    .WithNewResourceGroup(rgName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithoutPrimaryPublicIPAddress()
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                    .WithRootUsername("Foo12")
-                    .WithRootPassword("abc!@#F0orL")
-                    .WithBootDiagnostics(storageAccount)
-                    .Create();
+                    IVirtualMachine virtualMachine = azure.VirtualMachines
+                        .Define(vmName)
+                        .WithRegion(regionName)
+                        .WithNewResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("Foo12")
+                        .WithRootPassword("abc!@#F0orL")
+                        .WithBootDiagnostics(storageAccount)
+                        .Create();
 
-                Assert.NotNull(virtualMachine);
-                Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
-                Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
-                Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
+                    Assert.NotNull(virtualMachine);
+                    Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
+                    Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
+                    Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                        azure.StorageAccounts.DeleteByResourceGroup(rgName, storageName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -128,30 +163,42 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string vmName = "javavm";
 
                 var azure = TestHelper.CreateRollupClient();
-                var virtualMachine = azure.VirtualMachines
-                    .Define(vmName)
-                    .WithRegion(regionName)
-                    .WithNewResourceGroup(rgName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithoutPrimaryPublicIPAddress()
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                    .WithRootUsername("Foo12")
-                    .WithRootPassword("abc!@#F0orL")
-                    .WithBootDiagnostics()
-                    .Create();
 
-                Assert.NotNull(virtualMachine);
-                Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
-                Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
+                try
+                {
+                    var virtualMachine = azure.VirtualMachines
+                        .Define(vmName)
+                        .WithRegion(regionName)
+                        .WithNewResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("Foo12")
+                        .WithRootPassword("abc!@#F0orL")
+                        .WithBootDiagnostics()
+                        .Create();
 
-                virtualMachine.Update()
-                    .WithoutBootDiagnostics()
-                    .Apply();
+                    Assert.NotNull(virtualMachine);
+                    Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
+                    Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
 
-                Assert.False(virtualMachine.IsBootDiagnosticsEnabled);
-                // Disabling boot diagnostics will not remove the storage uri from the vm payload.
-                Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
+                    virtualMachine.Update()
+                        .WithoutBootDiagnostics()
+                        .Apply();
+
+                    Assert.False(virtualMachine.IsBootDiagnosticsEnabled);
+                    // Disabling boot diagnostics will not remove the storage uri from the vm payload.
+                    Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -165,7 +212,10 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string vmName = "javavm";
 
                 var azure = TestHelper.CreateRollupClient();
-                var virtualMachine = azure.VirtualMachines
+
+                try
+                {
+                    var virtualMachine = azure.VirtualMachines
                     .Define(vmName)
                     .WithRegion(regionName)
                     .WithNewResourceGroup(rgName)
@@ -179,11 +229,20 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     .WithBootDiagnostics()
                     .Create();
 
-                Assert.NotNull(virtualMachine);
-                Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
-                Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
-                Assert.NotNull(virtualMachine.OSUnmanagedDiskVhdUri);
-                Assert.StartsWith(virtualMachine.BootDiagnosticsStorageUri.ToLower(), virtualMachine.OSUnmanagedDiskVhdUri.ToLower());
+                    Assert.NotNull(virtualMachine);
+                    Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
+                    Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
+                    Assert.NotNull(virtualMachine.OSUnmanagedDiskVhdUri);
+                    Assert.StartsWith(virtualMachine.BootDiagnosticsStorageUri.ToLower(), virtualMachine.OSUnmanagedDiskVhdUri.ToLower());
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -199,30 +258,42 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 var azure = TestHelper.CreateRollupClient();
 
-                var storageAccount = azure.StorageAccounts
-                    .Define(storageName)
-                    .WithRegion(regionName)
-                    .WithNewResourceGroup(rgName)
-                    .Create();
+                try
+                { 
+                    var storageAccount = azure.StorageAccounts
+                        .Define(storageName)
+                        .WithRegion(regionName)
+                        .WithNewResourceGroup(rgName)
+                        .Create();
 
-                var virtualMachine = azure.VirtualMachines
-                    .Define(vmName)
-                    .WithRegion(regionName)
-                    .WithNewResourceGroup(rgName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithoutPrimaryPublicIPAddress()
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                    .WithRootUsername("Foo12")
-                    .WithRootPassword("abc!@#F0orL")
-                    .WithUnmanagedDisks()
-                    .WithBootDiagnostics(storageAccount)  // This storage account must be shared by disk and boot diagnostics
-                    .Create();
+                    var virtualMachine = azure.VirtualMachines
+                        .Define(vmName)
+                        .WithRegion(regionName)
+                        .WithNewResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("Foo12")
+                        .WithRootPassword("abc!@#F0orL")
+                        .WithUnmanagedDisks()
+                        .WithBootDiagnostics(storageAccount)  // This storage account must be shared by disk and boot diagnostics
+                        .Create();
 
-                Assert.NotNull(virtualMachine);
-                Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
-                Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
-                Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
+                    Assert.NotNull(virtualMachine);
+                    Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
+                    Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
+                    Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                        azure.StorageAccounts.DeleteByResourceGroup(rgName, storageName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -237,39 +308,50 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 var azure = TestHelper.CreateRollupClient();
 
-                var virtualMachine1 = azure.VirtualMachines
-                    .Define(vmName)
-                    .WithRegion(regionName)
-                    .WithNewResourceGroup(rgName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithoutPrimaryPublicIPAddress()
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                    .WithRootUsername("Foo12")
-                    .WithRootPassword("abc!@#F0orL")
-                    .WithUnmanagedDisks()
-                    .Create();
+                try
+                { 
+                    var virtualMachine1 = azure.VirtualMachines
+                        .Define(vmName)
+                        .WithRegion(regionName)
+                        .WithNewResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("Foo12")
+                        .WithRootPassword("abc!@#F0orL")
+                        .WithUnmanagedDisks()
+                        .Create();
 
-                var osDiskVhd = virtualMachine1.OSUnmanagedDiskVhdUri;
-                Assert.NotNull(osDiskVhd);
-                azure.VirtualMachines.DeleteById(virtualMachine1.Id);
+                    var osDiskVhd = virtualMachine1.OSUnmanagedDiskVhdUri;
+                    Assert.NotNull(osDiskVhd);
+                    azure.VirtualMachines.DeleteById(virtualMachine1.Id);
 
-                var virtualMachine2 = azure.VirtualMachines
-                    .Define(vmName)
-                    .WithRegion(regionName)
-                    .WithNewResourceGroup(rgName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithoutPrimaryPublicIPAddress()
-                    .WithSpecializedOSUnmanagedDisk(osDiskVhd, Microsoft.Azure.Management.Compute.Fluent.Models.OperatingSystemTypes.Linux)
-                    .WithBootDiagnostics()  // A new storage account should be created and used
-                    .Create();
+                    var virtualMachine2 = azure.VirtualMachines
+                        .Define(vmName)
+                        .WithRegion(regionName)
+                        .WithNewResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithSpecializedOSUnmanagedDisk(osDiskVhd, Microsoft.Azure.Management.Compute.Fluent.Models.OperatingSystemTypes.Linux)
+                        .WithBootDiagnostics()  // A new storage account should be created and used
+                        .Create();
 
-                Assert.NotNull(virtualMachine2);
-                Assert.True(virtualMachine2.IsBootDiagnosticsEnabled);
-                Assert.NotNull(virtualMachine2.BootDiagnosticsStorageUri);
-                Assert.NotNull(virtualMachine2.OSUnmanagedDiskVhdUri);
-                Assert.False(virtualMachine2.OSUnmanagedDiskVhdUri.ToLower().StartsWith(virtualMachine2.BootDiagnosticsStorageUri.ToLower()));
+                    Assert.NotNull(virtualMachine2);
+                    Assert.True(virtualMachine2.IsBootDiagnosticsEnabled);
+                    Assert.NotNull(virtualMachine2.BootDiagnosticsStorageUri);
+                    Assert.NotNull(virtualMachine2.OSUnmanagedDiskVhdUri);
+                    Assert.False(virtualMachine2.OSUnmanagedDiskVhdUri.ToLower().StartsWith(virtualMachine2.BootDiagnosticsStorageUri.ToLower()));
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -285,31 +367,43 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 var azure = TestHelper.CreateRollupClient();
 
-                var creatableStorageAccount = azure.StorageAccounts
-                    .Define(storageName)
-                    .WithRegion(regionName)
-                    .WithNewResourceGroup(rgName);
+                try
+                { 
+                    var creatableStorageAccount = azure.StorageAccounts
+                        .Define(storageName)
+                        .WithRegion(regionName)
+                        .WithNewResourceGroup(rgName);
 
-                var virtualMachine = azure.VirtualMachines
-                    .Define(vmName)
-                    .WithRegion(regionName)
-                    .WithNewResourceGroup(rgName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithoutPrimaryPublicIPAddress()
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                    .WithRootUsername("Foo12")
-                    .WithRootPassword("abc!@#F0orL")
-                    .WithUnmanagedDisks()
-                    .WithBootDiagnostics(creatableStorageAccount)
-                    .Create();
+                    var virtualMachine = azure.VirtualMachines
+                        .Define(vmName)
+                        .WithRegion(regionName)
+                        .WithNewResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("Foo12")
+                        .WithRootPassword("abc!@#F0orL")
+                        .WithUnmanagedDisks()
+                        .WithBootDiagnostics(creatableStorageAccount)
+                        .Create();
 
-                Assert.NotNull(virtualMachine);
-                Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
-                Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
-                Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
-                // There should be a different storage account created for the OS Disk
-                Assert.False(virtualMachine.OSUnmanagedDiskVhdUri.ToLower().StartsWith(virtualMachine.BootDiagnosticsStorageUri.ToLower()));
+                    Assert.NotNull(virtualMachine);
+                    Assert.True(virtualMachine.IsBootDiagnosticsEnabled);
+                    Assert.NotNull(virtualMachine.BootDiagnosticsStorageUri);
+                    Assert.Contains(storageName, virtualMachine.BootDiagnosticsStorageUri);
+                    // There should be a different storage account created for the OS Disk
+                    Assert.False(virtualMachine.OSUnmanagedDiskVhdUri.ToLower().StartsWith(virtualMachine.BootDiagnosticsStorageUri.ToLower()));
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                        azure.StorageAccounts.DeleteByResourceGroup(rgName, storageName);
+                    }
+                    catch { }
+                }
             }
         }
     }

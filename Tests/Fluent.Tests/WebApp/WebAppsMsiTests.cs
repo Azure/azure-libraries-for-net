@@ -32,36 +32,47 @@ namespace Fluent.Tests.WebApp
 
                 var appServiceManager = TestHelper.CreateAppServiceManager();
 
-                // Create with new app service plan
-                var webApp = appServiceManager.WebApps.Define(WebAppName1)
-                    .WithRegion(Region.USWest)
-                    .WithNewResourceGroup(GroupName1)
-                    .WithNewWindowsPlan(PricingTier.BasicB1)
-                    .WithRemoteDebuggingEnabled(RemoteVisualStudioVersion.VS2013)
-                    .WithSystemAssignedManagedServiceIdentity()
-                    .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
-                    .WithJavaVersion(JavaVersion.V8Newest)
-                    .WithWebContainer(WebContainer.Tomcat8_0Newest)
-                    .Create();
-                Assert.NotNull(webApp);
-                Assert.Equal(Region.USWest, webApp.Region);
-                var plan = appServiceManager.AppServicePlans.GetById(webApp.AppServicePlanId);
-                Assert.NotNull(plan);
-                Assert.Equal(Region.USWest, plan.Region);
-                Assert.Equal(PricingTier.BasicB1, plan.PricingTier);
-                Assert.NotNull(webApp.SystemAssignedManagedServiceIdentityPrincipalId);
-                Assert.NotNull(webApp.SystemAssignedManagedServiceIdentityTenantId);
-
-                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                try
                 {
-                    UploadFileToWebApp(webApp.GetPublishingProfile(), Path.Combine(".", "Assets", "appservicemsi.war"));
+                    // Create with new app service plan
+                    var webApp = appServiceManager.WebApps.Define(WebAppName1)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName1)
+                        .WithNewWindowsPlan(PricingTier.BasicB1)
+                        .WithRemoteDebuggingEnabled(RemoteVisualStudioVersion.VS2013)
+                        .WithSystemAssignedManagedServiceIdentity()
+                        .WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole.Contributor)
+                        .WithJavaVersion(JavaVersion.V8Newest)
+                        .WithWebContainer(WebContainer.Tomcat8_0Newest)
+                        .Create();
+                    Assert.NotNull(webApp);
+                    Assert.Equal(Region.USWest, webApp.Region);
+                    var plan = appServiceManager.AppServicePlans.GetById(webApp.AppServicePlanId);
+                    Assert.NotNull(plan);
+                    Assert.Equal(Region.USWest, plan.Region);
+                    Assert.Equal(PricingTier.BasicB1, plan.PricingTier);
+                    Assert.NotNull(webApp.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(webApp.SystemAssignedManagedServiceIdentityTenantId);
 
-                    SdkContext.DelayProvider.Delay(10000);
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        UploadFileToWebApp(webApp.GetPublishingProfile(), Path.Combine(".", "Assets", "appservicemsi.war"));
 
-                    string response = CheckAddress("http://" + WebAppName1 + "." + "azurewebsites.net/appservicemsi/");
-                    Assert.NotNull(response);
-                    Assert.Contains(webApp.ResourceGroupName, response);
-                    Assert.Contains(webApp.Id, response);
+                        SdkContext.DelayProvider.Delay(10000);
+
+                        string response = CheckAddress("http://" + WebAppName1 + "." + "azurewebsites.net/appservicemsi/");
+                        Assert.NotNull(response);
+                        Assert.Contains(webApp.ResourceGroupName, response);
+                        Assert.Contains(webApp.Id, response);
+                    }
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
+                    }
+                    catch { }
                 }
             }
         }
