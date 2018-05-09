@@ -33,64 +33,80 @@ namespace Fluent.Tests.WebApp
 
                 var appServiceManager = TestHelper.CreateAppServiceManager();
 
-                // Create with consumption plan
-                var functionApp1 = appServiceManager.FunctionApps.Define(WebAppName1)
-                    .WithRegion(Region.USWest)
-                    .WithNewResourceGroup(GroupName1)
-                    .Create();
-                Assert.NotNull(functionApp1);
-                Assert.Equal(Region.USWest, functionApp1.Region);
-                var plan1 = appServiceManager.AppServicePlans.GetById(functionApp1.AppServicePlanId);
-                Assert.NotNull(plan1);
-                Assert.Equal(Region.USWest, plan1.Region);
-                Assert.Equal(new PricingTier("Dynamic", "Y1"), plan1.PricingTier);
+                try
+                {
+                    // Create with consumption plan
+                    var functionApp1 = appServiceManager.FunctionApps.Define(WebAppName1)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName1)
+                        .Create();
+                    Assert.NotNull(functionApp1);
+                    Assert.Equal(Region.USWest, functionApp1.Region);
+                    var plan1 = appServiceManager.AppServicePlans.GetById(functionApp1.AppServicePlanId);
+                    Assert.NotNull(plan1);
+                    Assert.Equal(Region.USWest, plan1.Region);
+                    Assert.Equal(new PricingTier("Dynamic", "Y1"), plan1.PricingTier);
 
-                // Create in a new group with existing consumption plan
-                var functionApp2 = appServiceManager.FunctionApps.Define(WebAppName2)
-                    .WithExistingAppServicePlan(plan1)
-                    .WithNewResourceGroup(GroupName2)
-                    .WithExistingStorageAccount(functionApp1.StorageAccount)
-                    .Create();
-                Assert.NotNull(functionApp2);
-                Assert.Equal(Region.USWest, functionApp2.Region);
+                    // Create in a new group with existing consumption plan
+                    var functionApp2 = appServiceManager.FunctionApps.Define(WebAppName2)
+                        .WithExistingAppServicePlan(plan1)
+                        .WithNewResourceGroup(GroupName2)
+                        .WithExistingStorageAccount(functionApp1.StorageAccount)
+                        .Create();
+                    Assert.NotNull(functionApp2);
+                    Assert.Equal(Region.USWest, functionApp2.Region);
 
-                // Create with app service plan
-                var functionApp3 = appServiceManager.FunctionApps.Define(WebAppName3)
-                    .WithRegion(Region.USWest)
-                    .WithExistingResourceGroup(GroupName2)
-                    .WithNewAppServicePlan(PricingTier.BasicB1)
-                    .WithExistingStorageAccount(functionApp1.StorageAccount)
-                    .Create();
-                Assert.NotNull(functionApp3);
-                Assert.Equal(Region.USWest, functionApp3.Region);
+                    // Create with app service plan
+                    var functionApp3 = appServiceManager.FunctionApps.Define(WebAppName3)
+                        .WithRegion(Region.USWest)
+                        .WithExistingResourceGroup(GroupName2)
+                        .WithNewAppServicePlan(PricingTier.BasicB1)
+                        .WithExistingStorageAccount(functionApp1.StorageAccount)
+                        .Create();
+                    Assert.NotNull(functionApp3);
+                    Assert.Equal(Region.USWest, functionApp3.Region);
 
-                // Get
-                var functionApp = appServiceManager.FunctionApps.GetByResourceGroup(GroupName1, functionApp1.Name);
-                Assert.Equal(functionApp1.Id, functionApp.Id);
-                functionApp = appServiceManager.FunctionApps.GetById(functionApp2.Id);
-                Assert.Equal(functionApp2.Name, functionApp.Name);
+                    // Get
+                    var functionApp = appServiceManager.FunctionApps.GetByResourceGroup(GroupName1, functionApp1.Name);
+                    Assert.Equal(functionApp1.Id, functionApp.Id);
+                    functionApp = appServiceManager.FunctionApps.GetById(functionApp2.Id);
+                    Assert.Equal(functionApp2.Name, functionApp.Name);
 
-                // List
-                var functionApps = appServiceManager.FunctionApps.ListByResourceGroup(GroupName1);
-                Assert.Single(functionApps);
-                functionApps = appServiceManager.FunctionApps.ListByResourceGroup(GroupName2);
-                Assert.Equal(2, functionApps.Count());
+                    // List
+                    var functionApps = appServiceManager.FunctionApps.ListByResourceGroup(GroupName1);
+                    Assert.Single(functionApps);
+                    functionApps = appServiceManager.FunctionApps.ListByResourceGroup(GroupName2);
+                    Assert.Equal(2, functionApps.Count());
 
-                // Update
-                functionApp2.Update()
-                    .WithNewStorageAccount(StorageName1, Microsoft.Azure.Management.Storage.Fluent.Models.SkuName.StandardGRS)
-                    .Apply();
-                Assert.Equal(StorageName1, functionApp2.StorageAccount.Name);
+                    // Update
+                    functionApp2.Update()
+                        .WithNewStorageAccount(StorageName1, Microsoft.Azure.Management.Storage.Fluent.Models.SkuName.StandardGRS)
+                        .Apply();
+                    Assert.Equal(StorageName1, functionApp2.StorageAccount.Name);
 
-                // Scale
-                functionApp3.Update()
-                    .WithNewAppServicePlan(PricingTier.StandardS2)
-                    .Apply();
-                var plan2 = appServiceManager.AppServicePlans.GetById(functionApp3.AppServicePlanId);
-                Assert.NotNull(plan2);
-                Assert.NotEqual(plan1.Id, plan2.Id);
-                Assert.Equal(Region.USWest, plan2.Region);
-                Assert.Equal(PricingTier.StandardS2, plan2.PricingTier);
+                    // Scale
+                    functionApp3.Update()
+                        .WithNewAppServicePlan(PricingTier.StandardS2)
+                        .Apply();
+                    var plan2 = appServiceManager.AppServicePlans.GetById(functionApp3.AppServicePlanId);
+                    Assert.NotNull(plan2);
+                    Assert.NotEqual(plan1.Id, plan2.Id);
+                    Assert.Equal(Region.USWest, plan2.Region);
+                    Assert.Equal(PricingTier.StandardS2, plan2.PricingTier);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
+                    }
+                    catch { }
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName2);
+                    }
+                    catch { }
+                }
             }
         }
     }

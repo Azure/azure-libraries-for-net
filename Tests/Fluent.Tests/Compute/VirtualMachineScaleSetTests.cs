@@ -45,100 +45,111 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 var azure = TestHelper.CreateRollupClient();
 
-                var resourceGroup = azure.ResourceGroups
-                    .Define(rgName)
-                    .WithRegion(Location)
-                    .Create();
-
-                var storageAccount = azure.StorageAccounts
-                    .Define(TestUtilities.GenerateName("stg"))
-                    .WithRegion(Location)
-                    .WithExistingResourceGroup(resourceGroup)
-                    .Create();
-
-                var keys = storageAccount.GetKeys();
-                Assert.NotNull(keys);
-                Assert.True(keys.Count() > 0);
-                var storageAccountKey = keys.First();
-                string uri = prepareCustomScriptStorageUri(storageAccount.Name, storageAccountKey.Value, "scripts");
-                List<string> fileUris = new List<string>();
-                fileUris.Add(uri);
-
-                var network = azure.Networks
-                        .Define(TestUtilities.GenerateName("vmssvnet"))
+                try
+                { 
+                    var resourceGroup = azure.ResourceGroups
+                        .Define(rgName)
                         .WithRegion(Location)
-                        .WithExistingResourceGroup(resourceGroup)
-                        .WithAddressSpace("10.0.0.0/28")
-                        .WithSubnet("subnet1", "10.0.0.0/28")
                         .Create();
 
-                var virtualMachineScaleSet = azure.VirtualMachineScaleSets.Define(vmssName)
+                    var storageAccount = azure.StorageAccounts
+                        .Define(TestUtilities.GenerateName("stg"))
                         .WithRegion(Location)
                         .WithExistingResourceGroup(resourceGroup)
-                        .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
-                        .WithExistingPrimaryNetworkSubnet(network, "subnet1")
-                        .WithoutPrimaryInternetFacingLoadBalancer()
-                        .WithoutPrimaryInternalLoadBalancer()
-                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                        .WithRootUsername(uname)
-                        .WithRootPassword(password)
-                        .WithUnmanagedDisks()
-                        .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
-                        .WithExistingStorageAccount(storageAccount)
-                        .DefineNewExtension("CustomScriptForLinux")
-                            .WithPublisher("Microsoft.OSTCExtensions")
-                            .WithType("CustomScriptForLinux")
-                            .WithVersion("1.4")
-                            .WithMinorVersionAutoUpgrade()
-                            .WithPublicSetting("fileUris", fileUris)
-                            .WithProtectedSetting("commandToExecute", "bash install_apache.sh")
-                            .WithProtectedSetting("storageAccountName", storageAccount.Name)
-                            .WithProtectedSetting("storageAccountKey", storageAccountKey.Value)
-                            .Attach()
                         .Create();
-                // Validate extensions after create
-                //
-                var extensions = virtualMachineScaleSet.Extensions;
-                Assert.NotNull(extensions);
-                Assert.Equal(1, extensions.Count);
-                Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
-                var extension = extensions["CustomScriptForLinux"];
-                Assert.NotNull(extension.PublicSettings);
-                Assert.Equal(1, extension.PublicSettings.Count);
-                Assert.NotNull(extension.PublicSettingsAsJsonString);
-                // Retrieve scale set
-                var scaleSet = azure
-                        .VirtualMachineScaleSets
-                        .GetById(virtualMachineScaleSet.Id);
-                // Validate extensions after get
-                //
-                extensions = virtualMachineScaleSet.Extensions;
-                Assert.NotNull(extensions);
-                Assert.Equal(1, extensions.Count);
-                Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
-                extension = extensions["CustomScriptForLinux"];
-                Assert.NotNull(extension.PublicSettings);
-                Assert.Equal(1, extension.PublicSettings.Count);
-                Assert.NotNull(extension.PublicSettingsAsJsonString);
-                // Update VMSS capacity
-                //
-                int newCapacity = (int)(scaleSet.Capacity + 1);
-                virtualMachineScaleSet.Update()
-                        .WithCapacity(newCapacity)
-                        .Apply();
-                // Validate updated capacity
-                //
-                Assert.Equal(newCapacity, virtualMachineScaleSet.Capacity);
-                // Validate extensions after update
-                //
-                extensions = virtualMachineScaleSet.Extensions;
-                Assert.NotNull(extensions);
-                Assert.Equal(1, extensions.Count);
-                Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
-                extension = extensions["CustomScriptForLinux"];
-                Assert.NotNull(extension.PublicSettings);
-                Assert.Equal(1, extension.PublicSettings.Count);
-                Assert.NotNull(extension.PublicSettingsAsJsonString);
+
+                    var keys = storageAccount.GetKeys();
+                    Assert.NotNull(keys);
+                    Assert.True(keys.Count() > 0);
+                    var storageAccountKey = keys.First();
+                    string uri = prepareCustomScriptStorageUri(storageAccount.Name, storageAccountKey.Value, "scripts");
+                    List<string> fileUris = new List<string>();
+                    fileUris.Add(uri);
+
+                    var network = azure.Networks
+                            .Define(TestUtilities.GenerateName("vmssvnet"))
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithAddressSpace("10.0.0.0/28")
+                            .WithSubnet("subnet1", "10.0.0.0/28")
+                            .Create();
+
+                    var virtualMachineScaleSet = azure.VirtualMachineScaleSets.Define(vmssName)
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
+                            .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                            .WithoutPrimaryInternetFacingLoadBalancer()
+                            .WithoutPrimaryInternalLoadBalancer()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                            .WithRootUsername(uname)
+                            .WithRootPassword(password)
+                            .WithUnmanagedDisks()
+                            .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
+                            .WithExistingStorageAccount(storageAccount)
+                            .DefineNewExtension("CustomScriptForLinux")
+                                .WithPublisher("Microsoft.OSTCExtensions")
+                                .WithType("CustomScriptForLinux")
+                                .WithVersion("1.4")
+                                .WithMinorVersionAutoUpgrade()
+                                .WithPublicSetting("fileUris", fileUris)
+                                .WithProtectedSetting("commandToExecute", "bash install_apache.sh")
+                                .WithProtectedSetting("storageAccountName", storageAccount.Name)
+                                .WithProtectedSetting("storageAccountKey", storageAccountKey.Value)
+                                .Attach()
+                            .Create();
+                    // Validate extensions after create
+                    //
+                    var extensions = virtualMachineScaleSet.Extensions;
+                    Assert.NotNull(extensions);
+                    Assert.Equal(1, extensions.Count);
+                    Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
+                    var extension = extensions["CustomScriptForLinux"];
+                    Assert.NotNull(extension.PublicSettings);
+                    Assert.Equal(1, extension.PublicSettings.Count);
+                    Assert.NotNull(extension.PublicSettingsAsJsonString);
+                    // Retrieve scale set
+                    var scaleSet = azure
+                            .VirtualMachineScaleSets
+                            .GetById(virtualMachineScaleSet.Id);
+                    // Validate extensions after get
+                    //
+                    extensions = virtualMachineScaleSet.Extensions;
+                    Assert.NotNull(extensions);
+                    Assert.Equal(1, extensions.Count);
+                    Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
+                    extension = extensions["CustomScriptForLinux"];
+                    Assert.NotNull(extension.PublicSettings);
+                    Assert.Equal(1, extension.PublicSettings.Count);
+                    Assert.NotNull(extension.PublicSettingsAsJsonString);
+                    // Update VMSS capacity
+                    //
+                    int newCapacity = (int)(scaleSet.Capacity + 1);
+                    virtualMachineScaleSet.Update()
+                            .WithCapacity(newCapacity)
+                            .Apply();
+                    // Validate updated capacity
+                    //
+                    Assert.Equal(newCapacity, virtualMachineScaleSet.Capacity);
+                    // Validate extensions after update
+                    //
+                    extensions = virtualMachineScaleSet.Extensions;
+                    Assert.NotNull(extensions);
+                    Assert.Equal(1, extensions.Count);
+                    Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
+                    extension = extensions["CustomScriptForLinux"];
+                    Assert.NotNull(extension.PublicSettings);
+                    Assert.Equal(1, extension.PublicSettings.Count);
+                    Assert.NotNull(extension.PublicSettingsAsJsonString);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -156,140 +167,151 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 var azure = TestHelper.CreateRollupClient();
 
-                var resourceGroup = azure.ResourceGroups
-                    .Define(rgName)
-                    .WithRegion(Location)
-                    .Create();
-
-                var storageAccount = azure.StorageAccounts
-                    .Define(TestUtilities.GenerateName("stg"))
-                    .WithRegion(Location)
-                    .WithExistingResourceGroup(resourceGroup)
-                    .Create();
-
-                var keys = storageAccount.GetKeys();
-                Assert.NotNull(keys);
-                Assert.True(keys.Count() > 0);
-                var storageAccountKey = keys.First();
-                string uri = prepareCustomScriptStorageUri(storageAccount.Name, storageAccountKey.Value, "scripts");
-                List<string> fileUris = new List<string>();
-                fileUris.Add(uri);
-
-                var network = azure.Networks
-                        .Define(TestUtilities.GenerateName("vmssvnet"))
+                try
+                { 
+                    var resourceGroup = azure.ResourceGroups
+                        .Define(rgName)
                         .WithRegion(Location)
-                        .WithExistingResourceGroup(resourceGroup)
-                        .WithAddressSpace("10.0.0.0/28")
-                        .WithSubnet("subnet1", "10.0.0.0/28")
                         .Create();
 
-                var virtualMachineScaleSet = azure.VirtualMachineScaleSets.Define(vmssName)
+                    var storageAccount = azure.StorageAccounts
+                        .Define(TestUtilities.GenerateName("stg"))
                         .WithRegion(Location)
                         .WithExistingResourceGroup(resourceGroup)
-                        .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
-                        .WithExistingPrimaryNetworkSubnet(network, "subnet1")
-                        .WithoutPrimaryInternetFacingLoadBalancer()
-                        .WithoutPrimaryInternalLoadBalancer()
-                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                        .WithRootUsername(uname)
-                        .WithRootPassword(password)
-                        .WithUnmanagedDisks()
-                        .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
-                        .WithExistingStorageAccount(storageAccount)
-                        .DefineNewExtension("CustomScriptForLinux")
-                            .WithPublisher("Microsoft.OSTCExtensions")
-                            .WithType("CustomScriptForLinux")
-                            .WithVersion("1.4")
-                            .WithMinorVersionAutoUpgrade()
-                            .WithPublicSetting("fileUris", fileUris)
-                            .WithProtectedSetting("commandToExecute", "bash install_apache.sh")
+                        .Create();
+
+                    var keys = storageAccount.GetKeys();
+                    Assert.NotNull(keys);
+                    Assert.True(keys.Count() > 0);
+                    var storageAccountKey = keys.First();
+                    string uri = prepareCustomScriptStorageUri(storageAccount.Name, storageAccountKey.Value, "scripts");
+                    List<string> fileUris = new List<string>();
+                    fileUris.Add(uri);
+
+                    var network = azure.Networks
+                            .Define(TestUtilities.GenerateName("vmssvnet"))
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithAddressSpace("10.0.0.0/28")
+                            .WithSubnet("subnet1", "10.0.0.0/28")
+                            .Create();
+
+                    var virtualMachineScaleSet = azure.VirtualMachineScaleSets.Define(vmssName)
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
+                            .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                            .WithoutPrimaryInternetFacingLoadBalancer()
+                            .WithoutPrimaryInternalLoadBalancer()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                            .WithRootUsername(uname)
+                            .WithRootPassword(password)
+                            .WithUnmanagedDisks()
+                            .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
+                            .WithExistingStorageAccount(storageAccount)
+                            .DefineNewExtension("CustomScriptForLinux")
+                                .WithPublisher("Microsoft.OSTCExtensions")
+                                .WithType("CustomScriptForLinux")
+                                .WithVersion("1.4")
+                                .WithMinorVersionAutoUpgrade()
+                                .WithPublicSetting("fileUris", fileUris)
+                                .WithProtectedSetting("commandToExecute", "bash install_apache.sh")
+                                .WithProtectedSetting("storageAccountName", storageAccount.Name)
+                                .WithProtectedSetting("storageAccountKey", storageAccountKey.Value)
+                                .Attach()
+                            .Create();
+                    // Validate extensions after create
+                    //
+                    var extensions = virtualMachineScaleSet.Extensions;
+                    Assert.NotNull(extensions);
+                    Assert.Equal(1, extensions.Count);
+                    Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
+                    var customScriptExtension = extensions["CustomScriptForLinux"];
+                    Assert.NotNull(customScriptExtension);
+                    Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension.PublisherName);
+                    Assert.Equal("CustomScriptForLinux", customScriptExtension.TypeName);
+                    Assert.NotNull(customScriptExtension.PublicSettings);
+                    Assert.Equal(1, customScriptExtension.PublicSettings.Count);
+                    Assert.NotNull(customScriptExtension.PublicSettingsAsJsonString);
+                    Assert.True(customScriptExtension.AutoUpgradeMinorVersionEnabled);
+
+                    // Special check for C# implementation, seems runtime changed the actual type of public settings from 
+                    // dictionary to Newtonsoft.Json.Linq.JObject. In future such changes needs to be catched before attemptting
+                    // inner conversion hence the below special validation (not applicable for Java)
+                    //
+                    Assert.NotNull(customScriptExtension.Inner);
+                    Assert.NotNull(customScriptExtension.Inner.Settings);
+                    bool isJObject = customScriptExtension.Inner.Settings is JObject;
+                    bool isDictionary = customScriptExtension.Inner.Settings is IDictionary<string, object>;
+                    Assert.True(isJObject || isDictionary);
+
+                    // Ensure the public settings are accessible, the protected settings won't be returned from the service.
+                    //
+                    var publicSettings = customScriptExtension.PublicSettings;
+                    Assert.NotNull(publicSettings);
+                    Assert.Equal(1, publicSettings.Count);
+                    Assert.True(publicSettings.ContainsKey("fileUris"));
+                    string fileUrisString = (publicSettings["fileUris"]).ToString();
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.Contains(uri, fileUrisString);
+                    }
+
+                    /*** UPDATE THE EXTENSION WITH NEW PUBLIC AND PROTECTED SETTINGS **/
+
+                    // Regenerate the storage account key
+                    //
+                    storageAccount.RegenerateKey(storageAccountKey.KeyName);
+                    keys = storageAccount.GetKeys();
+                    Assert.NotNull(keys);
+                    Assert.True(keys.Count() > 0);
+                    var updatedStorageAccountKey = keys.FirstOrDefault(key => key.KeyName.Equals(storageAccountKey.KeyName, StringComparison.OrdinalIgnoreCase));
+                    Assert.NotNull(updatedStorageAccountKey);
+                    Assert.NotEqual(updatedStorageAccountKey.Value, storageAccountKey.Value);
+
+                    // Upload the script to a different container ("scripts2") in the same storage account
+                    //
+                    var uri2 = prepareCustomScriptStorageUri(storageAccount.Name, updatedStorageAccountKey.Value, "scripts2");
+                    List<string> fileUris2 = new List<string>();
+                    fileUris2.Add(uri2);
+                    string commandToExecute2 = "bash install_apache.sh";
+
+                    virtualMachineScaleSet.Update()
+                        .UpdateExtension("CustomScriptForLinux")
+                            .WithPublicSetting("fileUris", fileUris2)
+                            .WithProtectedSetting("commandToExecute", commandToExecute2)
                             .WithProtectedSetting("storageAccountName", storageAccount.Name)
-                            .WithProtectedSetting("storageAccountKey", storageAccountKey.Value)
-                            .Attach()
-                        .Create();
-                // Validate extensions after create
-                //
-                var extensions = virtualMachineScaleSet.Extensions;
-                Assert.NotNull(extensions);
-                Assert.Equal(1, extensions.Count);
-                Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
-                var customScriptExtension = extensions["CustomScriptForLinux"];
-                Assert.NotNull(customScriptExtension);
-                Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension.PublisherName);
-                Assert.Equal("CustomScriptForLinux", customScriptExtension.TypeName);
-                Assert.NotNull(customScriptExtension.PublicSettings);
-                Assert.Equal(1, customScriptExtension.PublicSettings.Count);
-                Assert.NotNull(customScriptExtension.PublicSettingsAsJsonString);
-                Assert.True(customScriptExtension.AutoUpgradeMinorVersionEnabled);
+                            .WithProtectedSetting("storageAccountKey", updatedStorageAccountKey.Value)
+                            .Parent()
+                        .Apply();
 
-                // Special check for C# implementation, seems runtime changed the actual type of public settings from 
-                // dictionary to Newtonsoft.Json.Linq.JObject. In future such changes needs to be catched before attemptting
-                // inner conversion hence the below special validation (not applicable for Java)
-                //
-                Assert.NotNull(customScriptExtension.Inner);
-                Assert.NotNull(customScriptExtension.Inner.Settings);
-                bool isJObject = customScriptExtension.Inner.Settings is JObject;
-                bool isDictionary = customScriptExtension.Inner.Settings is IDictionary<string, object>;
-                Assert.True(isJObject || isDictionary);
+                    extensions = virtualMachineScaleSet.Extensions;
+                    Assert.NotNull(extensions);
+                    Assert.Equal(1, extensions.Count);
+                    Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
+                    var customScriptExtension2 = extensions["CustomScriptForLinux"];
+                    Assert.NotNull(customScriptExtension2);
+                    Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension2.PublisherName);
+                    Assert.Equal("CustomScriptForLinux", customScriptExtension2.TypeName);
+                    Assert.True(customScriptExtension2.AutoUpgradeMinorVersionEnabled);
 
-                // Ensure the public settings are accessible, the protected settings won't be returned from the service.
-                //
-                var publicSettings = customScriptExtension.PublicSettings;
-                Assert.NotNull(publicSettings);
-                Assert.Equal(1, publicSettings.Count);
-                Assert.True(publicSettings.ContainsKey("fileUris"));
-                string fileUrisString = (publicSettings["fileUris"]).ToString();
-                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
-                {
-                    Assert.Contains(uri, fileUrisString);
+                    var publicSettings2 = customScriptExtension2.PublicSettings;
+                    Assert.NotNull(publicSettings2);
+                    Assert.Equal(1, publicSettings2.Count);
+                    Assert.True(publicSettings2.ContainsKey("fileUris"));
+                    string fileUris2String = (publicSettings2["fileUris"]).ToString();
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.Contains(uri2, fileUris2String);
+                    }
                 }
-
-                /*** UPDATE THE EXTENSION WITH NEW PUBLIC AND PROTECTED SETTINGS **/
-
-                // Regenerate the storage account key
-                //
-                storageAccount.RegenerateKey(storageAccountKey.KeyName);
-                keys = storageAccount.GetKeys();
-                Assert.NotNull(keys);
-                Assert.True(keys.Count() > 0);
-                var updatedStorageAccountKey = keys.FirstOrDefault(key => key.KeyName.Equals(storageAccountKey.KeyName, StringComparison.OrdinalIgnoreCase));
-                Assert.NotNull(updatedStorageAccountKey);
-                Assert.NotEqual(updatedStorageAccountKey.Value, storageAccountKey.Value);
-
-                // Upload the script to a different container ("scripts2") in the same storage account
-                //
-                var uri2 = prepareCustomScriptStorageUri(storageAccount.Name, updatedStorageAccountKey.Value, "scripts2");
-                List<string> fileUris2 = new List<string>();
-                fileUris2.Add(uri2);
-                string commandToExecute2 = "bash install_apache.sh";
-
-                virtualMachineScaleSet.Update()
-                    .UpdateExtension("CustomScriptForLinux")
-                        .WithPublicSetting("fileUris", fileUris2)
-                        .WithProtectedSetting("commandToExecute", commandToExecute2)
-                        .WithProtectedSetting("storageAccountName", storageAccount.Name)
-                        .WithProtectedSetting("storageAccountKey", updatedStorageAccountKey.Value)
-                        .Parent()
-                    .Apply();
-
-                extensions = virtualMachineScaleSet.Extensions;
-                Assert.NotNull(extensions);
-                Assert.Equal(1, extensions.Count);
-                Assert.True(extensions.ContainsKey("CustomScriptForLinux"));
-                var customScriptExtension2 = extensions["CustomScriptForLinux"];
-                Assert.NotNull(customScriptExtension2);
-                Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension2.PublisherName);
-                Assert.Equal("CustomScriptForLinux", customScriptExtension2.TypeName);
-                Assert.True(customScriptExtension2.AutoUpgradeMinorVersionEnabled);
-
-                var publicSettings2 = customScriptExtension2.PublicSettings;
-                Assert.NotNull(publicSettings2);
-                Assert.Equal(1, publicSettings2.Count);
-                Assert.True(publicSettings2.ContainsKey("fileUris"));
-                string fileUris2String = (publicSettings2["fileUris"]).ToString();
-                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                finally
                 {
-                    Assert.Contains(uri2, fileUris2String);
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
                 }
             }
         }
@@ -308,59 +330,70 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 var azure = TestHelper.CreateRollupClient();
 
-                IResourceGroup resourceGroup = azure.ResourceGroups
-                    .Define(rgName)
-                    .WithRegion(Location)
-                    .Create();
-
-                INetwork network = azure
-                    .Networks
-                    .Define(TestUtilities.GenerateName("vmssvnet"))
-                    .WithRegion(Location)
-                    .WithExistingResourceGroup(resourceGroup)
-                    .WithAddressSpace("10.0.0.0/28")
-                    .WithSubnet("subnet1", "10.0.0.0/28")
-                    .Create();
-
-                ILoadBalancer publicLoadBalancer = CreateHttpLoadBalancers(azure, resourceGroup, "1", Location);
-                IVirtualMachineScaleSet virtualMachineScaleSet = azure.VirtualMachineScaleSets
-                        .Define(vmssName)
+                try
+                { 
+                    IResourceGroup resourceGroup = azure.ResourceGroups
+                        .Define(rgName)
                         .WithRegion(Location)
-                        .WithExistingResourceGroup(resourceGroup)
-                        .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
-                        .WithExistingPrimaryNetworkSubnet(network, "subnet1")
-                        .WithExistingPrimaryInternetFacingLoadBalancer(publicLoadBalancer)
-                        .WithoutPrimaryInternalLoadBalancer()
-                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                        .WithRootUsername("jvuser")
-                        .WithRootPassword("123OData!@#123")
-                        .WithUnmanagedDisks()
-                        .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
-                        .WithNewStorageAccount(TestUtilities.GenerateName("stg2"))
-                        .DefineNewExtension("CustomScriptForLinux")
-                            .WithPublisher("Microsoft.OSTCExtensions")
-                            .WithType("CustomScriptForLinux")
-                            .WithVersion("1.4")
-                            .WithMinorVersionAutoUpgrade()
-                            .WithPublicSetting("fileUris", fileUris)
-                            .WithPublicSetting("commandToExecute", installCommand)
-                        .Attach()
                         .Create();
 
-                IReadOnlyList<string> publicIPAddressIds = virtualMachineScaleSet.PrimaryPublicIPAddressIds;
-                IPublicIPAddress publicIPAddress = azure.PublicIPAddresses
-                        .GetById(publicIPAddressIds[0]);
+                    INetwork network = azure
+                        .Networks
+                        .Define(TestUtilities.GenerateName("vmssvnet"))
+                        .WithRegion(Location)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithAddressSpace("10.0.0.0/28")
+                        .WithSubnet("subnet1", "10.0.0.0/28")
+                        .Create();
 
-                string fqdn = publicIPAddress.Fqdn;
-                Assert.NotNull(fqdn);
+                    ILoadBalancer publicLoadBalancer = CreateHttpLoadBalancers(azure, resourceGroup, "1", Location);
+                    IVirtualMachineScaleSet virtualMachineScaleSet = azure.VirtualMachineScaleSets
+                            .Define(vmssName)
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
+                            .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                            .WithExistingPrimaryInternetFacingLoadBalancer(publicLoadBalancer)
+                            .WithoutPrimaryInternalLoadBalancer()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                            .WithRootUsername("jvuser")
+                            .WithRootPassword("123OData!@#123")
+                            .WithUnmanagedDisks()
+                            .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
+                            .WithNewStorageAccount(TestUtilities.GenerateName("stg2"))
+                            .DefineNewExtension("CustomScriptForLinux")
+                                .WithPublisher("Microsoft.OSTCExtensions")
+                                .WithType("CustomScriptForLinux")
+                                .WithVersion("1.4")
+                                .WithMinorVersionAutoUpgrade()
+                                .WithPublicSetting("fileUris", fileUris)
+                                .WithPublicSetting("commandToExecute", installCommand)
+                            .Attach()
+                            .Create();
 
-                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    IReadOnlyList<string> publicIPAddressIds = virtualMachineScaleSet.PrimaryPublicIPAddressIds;
+                    IPublicIPAddress publicIPAddress = azure.PublicIPAddresses
+                            .GetById(publicIPAddressIds[0]);
+
+                    string fqdn = publicIPAddress.Fqdn;
+                    Assert.NotNull(fqdn);
+
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        // Assert public load balancing connection
+                        HttpClient client = new HttpClient();
+                        client.BaseAddress = new Uri("http://" + fqdn);
+                        HttpResponseMessage response = client.GetAsync("/").Result;
+                        Assert.True(response.IsSuccessStatusCode);
+                    }
+                }
+                finally
                 {
-                    // Assert public load balancing connection
-                    HttpClient client = new HttpClient();
-                    client.BaseAddress = new Uri("http://" + fqdn);
-                    HttpResponseMessage response = client.GetAsync("/").Result;
-                    Assert.True(response.IsSuccessStatusCode);
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
                 }
             }
         }
@@ -375,215 +408,226 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 var azure = TestHelper.CreateRollupClient();
 
-                IResourceGroup resourceGroup = azure.ResourceGroups
-                    .Define(rgName)
-                    .WithRegion(Location)
-                    .Create();
-
-                INetwork network = azure
-                    .Networks
-                    .Define("vmssvnet")
-                    .WithRegion(Location)
-                    .WithExistingResourceGroup(resourceGroup)
-                    .WithAddressSpace("10.0.0.0/28")
-                    .WithSubnet("subnet1", "10.0.0.0/28")
-                    .Create();
-
-                ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1", LoadBalancerSkuType.Basic, Location);
-                List<string> backends = new List<string>();
-                foreach (string backend in publicLoadBalancer.Backends.Keys)
+                try
                 {
-                    backends.Add(backend);
-                }
-                Assert.True(backends.Count() == 2);
+                    IResourceGroup resourceGroup = azure.ResourceGroups
+                        .Define(rgName)
+                        .WithRegion(Location)
+                        .Create();
 
-                IVirtualMachineScaleSet virtualMachineScaleSet = azure.VirtualMachineScaleSets
-                    .Define(vmss_name)
-                    .WithRegion(Location)
-                    .WithExistingResourceGroup(resourceGroup)
-                    .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
-                    .WithExistingPrimaryNetworkSubnet(network, "subnet1")
-                    .WithExistingPrimaryInternetFacingLoadBalancer(publicLoadBalancer)
-                    .WithPrimaryInternetFacingLoadBalancerBackends(backends[0], backends[1])
-                    .WithoutPrimaryInternalLoadBalancer()
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                    .WithRootUsername("jvuser")
-                    .WithRootPassword("123OData!@#123")
-                    .WithUnmanagedDisks()
-                    .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
-                    .WithNewStorageAccount(TestUtilities.GenerateName("stg3"))
-                    .WithUpgradeMode(UpgradeMode.Manual)
-                    .Create();
+                    INetwork network = azure
+                        .Networks
+                        .Define("vmssvnet")
+                        .WithRegion(Location)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithAddressSpace("10.0.0.0/28")
+                        .WithSubnet("subnet1", "10.0.0.0/28")
+                        .Create();
 
-                Assert.Null(virtualMachineScaleSet.GetPrimaryInternalLoadBalancer());
-                Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends().Count() == 0);
-                Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools().Count() == 0);
-
-                Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternetFacingLoadBalancer());
-                Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends().Count() == 2);
-                Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools().Count() == 2);
-
-                var primaryNetwork = virtualMachineScaleSet.GetPrimaryNetwork();
-                Assert.NotNull(primaryNetwork.Id);
-
-                var nics = virtualMachineScaleSet.ListNetworkInterfaces();
-                int nicCount = 0;
-                foreach (var nic in nics)
-                {
-                    nicCount++;
-                    Assert.NotNull(nic.Id);
-                    Assert.StartsWith(virtualMachineScaleSet.Id.ToLower(), nic.VirtualMachineId.ToLower());
-                    Assert.NotNull(nic.MacAddress);
-                    Assert.NotNull(nic.DnsServers);
-                    Assert.NotNull(nic.AppliedDnsServers);
-                    var ipConfigs = nic.IPConfigurations;
-                    Assert.Single(ipConfigs);
-                    foreach (var ipConfig in ipConfigs.Values)
+                    ILoadBalancer publicLoadBalancer = CreateInternetFacingLoadBalancer(azure, resourceGroup, "1", LoadBalancerSkuType.Basic, Location);
+                    List<string> backends = new List<string>();
+                    foreach (string backend in publicLoadBalancer.Backends.Keys)
                     {
-                        Assert.NotNull(ipConfig);
-                        Assert.True(ipConfig.IsPrimary);
-                        Assert.NotNull(ipConfig.SubnetName);
-                        Assert.True(string.Compare(primaryNetwork.Id, ipConfig.NetworkId, true) == 0);
-                        Assert.NotNull(ipConfig.PrivateIPAddress);
-                        Assert.NotNull(ipConfig.PrivateIPAddressVersion);
-                        Assert.NotNull(ipConfig.PrivateIPAllocationMethod);
-                        var lbBackends = ipConfig.ListAssociatedLoadBalancerBackends();
-                        // VMSS is created with a internet facing LB with two Backend pools so there will be two
-                        // backends in ip-config as well
-                        Assert.Equal(2, lbBackends.Count);
-                        foreach (var lbBackend in lbBackends)
+                        backends.Add(backend);
+                    }
+                    Assert.True(backends.Count() == 2);
+
+                    IVirtualMachineScaleSet virtualMachineScaleSet = azure.VirtualMachineScaleSets
+                        .Define(vmss_name)
+                        .WithRegion(Location)
+                        .WithExistingResourceGroup(resourceGroup)
+                        .WithSku(VirtualMachineScaleSetSkuTypes.StandardA0)
+                        .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                        .WithExistingPrimaryInternetFacingLoadBalancer(publicLoadBalancer)
+                        .WithPrimaryInternetFacingLoadBalancerBackends(backends[0], backends[1])
+                        .WithoutPrimaryInternalLoadBalancer()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername("jvuser")
+                        .WithRootPassword("123OData!@#123")
+                        .WithUnmanagedDisks()
+                        .WithNewStorageAccount(TestUtilities.GenerateName("stg"))
+                        .WithNewStorageAccount(TestUtilities.GenerateName("stg3"))
+                        .WithUpgradeMode(UpgradeMode.Manual)
+                        .Create();
+
+                    Assert.Null(virtualMachineScaleSet.GetPrimaryInternalLoadBalancer());
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends().Count() == 0);
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools().Count() == 0);
+
+                    Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternetFacingLoadBalancer());
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends().Count() == 2);
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools().Count() == 2);
+
+                    var primaryNetwork = virtualMachineScaleSet.GetPrimaryNetwork();
+                    Assert.NotNull(primaryNetwork.Id);
+
+                    var nics = virtualMachineScaleSet.ListNetworkInterfaces();
+                    int nicCount = 0;
+                    foreach (var nic in nics)
+                    {
+                        nicCount++;
+                        Assert.NotNull(nic.Id);
+                        Assert.StartsWith(virtualMachineScaleSet.Id.ToLower(), nic.VirtualMachineId.ToLower());
+                        Assert.NotNull(nic.MacAddress);
+                        Assert.NotNull(nic.DnsServers);
+                        Assert.NotNull(nic.AppliedDnsServers);
+                        var ipConfigs = nic.IPConfigurations;
+                        Assert.Single(ipConfigs);
+                        foreach (var ipConfig in ipConfigs.Values)
                         {
-                            var lbRules = lbBackend.LoadBalancingRules;
-                            Assert.Equal(1, lbRules.Count);
-                            foreach (var rule in lbRules.Values)
+                            Assert.NotNull(ipConfig);
+                            Assert.True(ipConfig.IsPrimary);
+                            Assert.NotNull(ipConfig.SubnetName);
+                            Assert.True(string.Compare(primaryNetwork.Id, ipConfig.NetworkId, true) == 0);
+                            Assert.NotNull(ipConfig.PrivateIPAddress);
+                            Assert.NotNull(ipConfig.PrivateIPAddressVersion);
+                            Assert.NotNull(ipConfig.PrivateIPAllocationMethod);
+                            var lbBackends = ipConfig.ListAssociatedLoadBalancerBackends();
+                            // VMSS is created with a internet facing LB with two Backend pools so there will be two
+                            // backends in ip-config as well
+                            Assert.Equal(2, lbBackends.Count);
+                            foreach (var lbBackend in lbBackends)
                             {
-                                Assert.NotNull(rule);
-                                Assert.True((rule.FrontendPort == 80 && rule.BackendPort == 80) ||
-                                            (rule.FrontendPort == 443 && rule.BackendPort == 443));
+                                var lbRules = lbBackend.LoadBalancingRules;
+                                Assert.Equal(1, lbRules.Count);
+                                foreach (var rule in lbRules.Values)
+                                {
+                                    Assert.NotNull(rule);
+                                    Assert.True((rule.FrontendPort == 80 && rule.BackendPort == 80) ||
+                                                (rule.FrontendPort == 443 && rule.BackendPort == 443));
+                                }
+                            }
+                            var lbNatRules = ipConfig.ListAssociatedLoadBalancerInboundNatRules();
+                            // VMSS is created with a internet facing LB with two nat pools so there will be two
+                            //  nat rules in ip-config as well
+                            Assert.Equal(2, lbNatRules.Count);
+                            foreach (var lbNatRule in lbNatRules)
+                            {
+                                Assert.True((lbNatRule.FrontendPort >= 5000 && lbNatRule.FrontendPort <= 5099) ||
+                                            (lbNatRule.FrontendPort >= 6000 && lbNatRule.FrontendPort <= 6099));
+                                Assert.True(lbNatRule.BackendPort == 22 || lbNatRule.BackendPort == 23);
                             }
                         }
-                        var lbNatRules = ipConfig.ListAssociatedLoadBalancerInboundNatRules();
-                        // VMSS is created with a internet facing LB with two nat pools so there will be two
-                        //  nat rules in ip-config as well
-                        Assert.Equal(2, lbNatRules.Count);
-                        foreach (var lbNatRule in lbNatRules)
+                    }
+
+                    Assert.True(nicCount > 0);
+
+                    Assert.Equal(2, virtualMachineScaleSet.VhdContainers.Count());
+                    Assert.Equal(virtualMachineScaleSet.Sku, VirtualMachineScaleSetSkuTypes.StandardA0);
+                    // Check defaults
+                    Assert.True(virtualMachineScaleSet.UpgradeModel == UpgradeMode.Manual);
+                    Assert.Equal(2, virtualMachineScaleSet.Capacity);
+                    // Fetch the primary Virtual network
+                    primaryNetwork = virtualMachineScaleSet.GetPrimaryNetwork();
+
+                    string inboundNatPoolToRemove = null;
+                    foreach (string inboundNatPoolName in virtualMachineScaleSet
+                                                            .ListPrimaryInternetFacingLoadBalancerInboundNatPools()
+                                                            .Keys)
+                    {
+                        var pool = virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools()[inboundNatPoolName];
+                        if (pool.FrontendPortRangeStart == 6000)
                         {
-                            Assert.True((lbNatRule.FrontendPort >= 5000 && lbNatRule.FrontendPort <= 5099) ||
-                                        (lbNatRule.FrontendPort >= 6000 && lbNatRule.FrontendPort <= 6099));
-                            Assert.True(lbNatRule.BackendPort == 22 || lbNatRule.BackendPort == 23);
+                            inboundNatPoolToRemove = inboundNatPoolName;
+                            break;
                         }
                     }
-                }
+                    Assert.True(inboundNatPoolToRemove != null, "Could not find nat pool entry with front endport start at 6000");
 
-                Assert.True(nicCount > 0);
+                    ILoadBalancer internalLoadBalancer = CreateInternalLoadBalancer(azure, resourceGroup,
+                        primaryNetwork,
+                        "1",
+                        Location);
 
-                Assert.Equal(2, virtualMachineScaleSet.VhdContainers.Count());
-                Assert.Equal(virtualMachineScaleSet.Sku, VirtualMachineScaleSetSkuTypes.StandardA0);
-                // Check defaults
-                Assert.True(virtualMachineScaleSet.UpgradeModel == UpgradeMode.Manual);
-                Assert.Equal(2, virtualMachineScaleSet.Capacity);
-                // Fetch the primary Virtual network
-                primaryNetwork = virtualMachineScaleSet.GetPrimaryNetwork();
+                    virtualMachineScaleSet
+                        .Update()
+                        .WithExistingPrimaryInternalLoadBalancer(internalLoadBalancer)
+                        .WithoutPrimaryInternetFacingLoadBalancerNatPools(inboundNatPoolToRemove) // Remove one NatPool
+                        .Apply();
 
-                string inboundNatPoolToRemove = null;
-                foreach (string inboundNatPoolName in virtualMachineScaleSet
-                                                        .ListPrimaryInternetFacingLoadBalancerInboundNatPools()
-                                                        .Keys)
-                {
-                    var pool = virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools()[inboundNatPoolName];
-                    if (pool.FrontendPortRangeStart == 6000)
+                    virtualMachineScaleSet = azure
+                        .VirtualMachineScaleSets
+                        .GetByResourceGroup(rgName, vmss_name);
+
+                    // Check LB after update 
+                    //
+                    Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternetFacingLoadBalancer());
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends().Count() == 2);
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools().Count() == 1);
+
+                    Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternalLoadBalancer());
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends().Count() == 2);
+                    Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools().Count() == 2);
+
+                    // Check NIC + IPConfig after update
+                    //
+                    nics = virtualMachineScaleSet.ListNetworkInterfaces();
+                    nicCount = 0;
+                    foreach (var nic in nics)
                     {
-                        inboundNatPoolToRemove = inboundNatPoolName;
-                        break;
-                    }
-                }
-                Assert.True(inboundNatPoolToRemove != null, "Could not find nat pool entry with front endport start at 6000");
-
-                ILoadBalancer internalLoadBalancer = CreateInternalLoadBalancer(azure, resourceGroup,
-                    primaryNetwork,
-                    "1", 
-                    Location);
-
-                virtualMachineScaleSet
-                    .Update()
-                    .WithExistingPrimaryInternalLoadBalancer(internalLoadBalancer)
-                    .WithoutPrimaryInternetFacingLoadBalancerNatPools(inboundNatPoolToRemove) // Remove one NatPool
-                    .Apply();
-
-                virtualMachineScaleSet = azure
-                    .VirtualMachineScaleSets
-                    .GetByResourceGroup(rgName, vmss_name);
-
-                // Check LB after update 
-                //
-                Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternetFacingLoadBalancer());
-                Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends().Count() == 2);
-                Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools().Count() == 1);
-
-                Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternalLoadBalancer());
-                Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends().Count() == 2);
-                Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools().Count() == 2);
-
-                // Check NIC + IPConfig after update
-                //
-                nics = virtualMachineScaleSet.ListNetworkInterfaces();
-                nicCount = 0;
-                foreach (var nic in nics)
-                {
-                    nicCount++;
-                    var ipConfigs = nic.IPConfigurations;
-                    Assert.Equal(1, ipConfigs.Count);
-                    foreach (var ipConfig in ipConfigs.Values)
-                    {
-                        Assert.NotNull(ipConfig);
-                        var lbBackends = ipConfig.ListAssociatedLoadBalancerBackends();
-                        Assert.NotNull(lbBackends);
-                        // Updated VMSS has a internet facing LB with two backend pools and a internal LB with two
-                        // backend pools so there should be 4 backends in ip-config
-                        // #1: But this is not always happening, it seems update is really happening only
-                        // for subset of vms [TODO: Report this to network team]
-                        // Assert.True(lbBackends.Count == 4);
-
-                        foreach (var lbBackend in lbBackends)
+                        nicCount++;
+                        var ipConfigs = nic.IPConfigurations;
+                        Assert.Equal(1, ipConfigs.Count);
+                        foreach (var ipConfig in ipConfigs.Values)
                         {
-                            var lbRules = lbBackend.LoadBalancingRules;
-                            Assert.Equal(1, lbRules.Count);
-                            foreach (var rule in lbRules.Values)
+                            Assert.NotNull(ipConfig);
+                            var lbBackends = ipConfig.ListAssociatedLoadBalancerBackends();
+                            Assert.NotNull(lbBackends);
+                            // Updated VMSS has a internet facing LB with two backend pools and a internal LB with two
+                            // backend pools so there should be 4 backends in ip-config
+                            // #1: But this is not always happening, it seems update is really happening only
+                            // for subset of vms [TODO: Report this to network team]
+                            // Assert.True(lbBackends.Count == 4);
+
+                            foreach (var lbBackend in lbBackends)
                             {
-                                Assert.NotNull(rule);
-                                Assert.True((rule.FrontendPort == 80 && rule.BackendPort == 80) ||
-                                            (rule.FrontendPort == 443 && rule.BackendPort == 443) ||
-                                            (rule.FrontendPort == 1000 && rule.BackendPort == 1000) ||
-                                            (rule.FrontendPort == 1001 && rule.BackendPort == 1001));
+                                var lbRules = lbBackend.LoadBalancingRules;
+                                Assert.Equal(1, lbRules.Count);
+                                foreach (var rule in lbRules.Values)
+                                {
+                                    Assert.NotNull(rule);
+                                    Assert.True((rule.FrontendPort == 80 && rule.BackendPort == 80) ||
+                                                (rule.FrontendPort == 443 && rule.BackendPort == 443) ||
+                                                (rule.FrontendPort == 1000 && rule.BackendPort == 1000) ||
+                                                (rule.FrontendPort == 1001 && rule.BackendPort == 1001));
+                                }
+                            }
+
+                            var lbNatRules = ipConfig.ListAssociatedLoadBalancerInboundNatRules();
+                            // Updated VMSS has a internet facing LB with one nat pool and a internal LB with two
+                            // nat pools so there should be 3 nat rule in ip-config
+                            // Same issue as above #1  
+                            // But this is not always happening, it seems update is really happening only
+                            // for subset of vms [TODO: Report this to network team]
+                            // Assert.Equal(lbNatRules.Count(), 3);
+
+                            foreach (var lbNatRule in lbNatRules)
+                            {
+                                // As mentioned above some chnages are not propgating to all VM instances 6000+ should be there
+                                Assert.True((lbNatRule.FrontendPort >= 6000 && lbNatRule.FrontendPort <= 6099) ||
+                                            (lbNatRule.FrontendPort >= 5000 && lbNatRule.FrontendPort <= 5099) ||
+                                            (lbNatRule.FrontendPort >= 8000 && lbNatRule.FrontendPort <= 8099) ||
+                                            (lbNatRule.FrontendPort >= 9000 && lbNatRule.FrontendPort <= 9099));
+
+                                // Same as above
+                                Assert.True(lbNatRule.BackendPort == 23 ||
+                                            lbNatRule.BackendPort == 22 ||
+                                            lbNatRule.BackendPort == 44 ||
+                                            lbNatRule.BackendPort == 45);
                             }
                         }
-
-                        var lbNatRules = ipConfig.ListAssociatedLoadBalancerInboundNatRules();
-                        // Updated VMSS has a internet facing LB with one nat pool and a internal LB with two
-                        // nat pools so there should be 3 nat rule in ip-config
-                        // Same issue as above #1  
-                        // But this is not always happening, it seems update is really happening only
-                        // for subset of vms [TODO: Report this to network team]
-                        // Assert.Equal(lbNatRules.Count(), 3);
-
-                        foreach (var lbNatRule in lbNatRules)
-                        {
-                            // As mentioned above some chnages are not propgating to all VM instances 6000+ should be there
-                            Assert.True((lbNatRule.FrontendPort >= 6000 && lbNatRule.FrontendPort <= 6099) ||
-                                        (lbNatRule.FrontendPort >= 5000 && lbNatRule.FrontendPort <= 5099) ||
-                                        (lbNatRule.FrontendPort >= 8000 && lbNatRule.FrontendPort <= 8099) ||
-                                        (lbNatRule.FrontendPort >= 9000 && lbNatRule.FrontendPort <= 9099));
-
-                            // Same as above
-                            Assert.True(lbNatRule.BackendPort == 23 ||
-                                        lbNatRule.BackendPort == 22 ||
-                                        lbNatRule.BackendPort == 44 ||
-                                        lbNatRule.BackendPort == 45);
-                        }
                     }
+                    Assert.True(nicCount > 0);
+                    CheckVMInstances(virtualMachineScaleSet);
                 }
-                Assert.True(nicCount > 0);
-                CheckVMInstances(virtualMachineScaleSet);
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
 

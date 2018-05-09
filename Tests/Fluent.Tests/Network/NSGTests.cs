@@ -28,89 +28,90 @@ namespace Fluent.Tests.Network
                 string nicName = "nic" + testId;
                 Region region = Region.USSouthCentral;
 
-                #region Create
-                var manager = TestHelper.CreateNetworkManager();
-                var nsg = manager.NetworkSecurityGroups.Define(nsgName)
-                    .WithRegion(region)
-                    .WithNewResourceGroup(resourceGroupName)
-                    .DefineRule("rule1")
-                        .AllowOutbound()
-                        .FromAnyAddress()
-                        .FromPort(80)
-                        .ToAnyAddress()
-                        .ToPort(80)
-                        .WithProtocol(SecurityRuleProtocol.Tcp)
-                        .Attach()
-                    .DefineRule("rule2")
-                        .AllowInbound()
-                        .FromAnyAddress()
-                        .FromAnyPort()
-                        .ToAnyAddress()
-                        .ToPortRange(22, 25)
-                        .WithAnyProtocol()
-                        .WithPriority(200)
-                        .WithDescription("foo!!")
-                        .Attach()
-                    .Create();
-
-                var nic = manager.NetworkInterfaces.Define(nicName)
-                        .WithRegion(nsg.Region)
-                        .WithExistingResourceGroup(nsg.ResourceGroupName)
-                        .WithNewPrimaryNetwork("10.0.0.0/28")
-                        .WithPrimaryPrivateIPAddressDynamic()
-                        .WithExistingNetworkSecurityGroup(nsg)
+                try
+                {
+                    var manager = TestHelper.CreateNetworkManager();
+                    var nsg = manager.NetworkSecurityGroups.Define(nsgName)
+                        .WithRegion(region)
+                        .WithNewResourceGroup(resourceGroupName)
+                        .DefineRule("rule1")
+                            .AllowOutbound()
+                            .FromAnyAddress()
+                            .FromPort(80)
+                            .ToAnyAddress()
+                            .ToPort(80)
+                            .WithProtocol(SecurityRuleProtocol.Tcp)
+                            .Attach()
+                        .DefineRule("rule2")
+                            .AllowInbound()
+                            .FromAnyAddress()
+                            .FromAnyPort()
+                            .ToAnyAddress()
+                            .ToPortRange(22, 25)
+                            .WithAnyProtocol()
+                            .WithPriority(200)
+                            .WithDescription("foo!!")
+                            .Attach()
                         .Create();
 
-                nsg.Refresh();
+                    var nic = manager.NetworkInterfaces.Define(nicName)
+                            .WithRegion(nsg.Region)
+                            .WithExistingResourceGroup(nsg.ResourceGroupName)
+                            .WithNewPrimaryNetwork("10.0.0.0/28")
+                            .WithPrimaryPrivateIPAddressDynamic()
+                            .WithExistingNetworkSecurityGroup(nsg)
+                            .Create();
 
-                // Verify
-                Assert.True(nsg.Region.Equals(region));
-                Assert.True(nsg.SecurityRules.Count == 2);
+                    nsg.Refresh();
 
-                // Confirm NIC association
-                Assert.Equal(1, nsg.NetworkInterfaceIds.Count);
-                Assert.True(nsg.NetworkInterfaceIds.Contains(nic.Id.ToLower()));
+                    // Verify
+                    Assert.True(nsg.Region.Equals(region));
+                    Assert.True(nsg.SecurityRules.Count == 2);
 
-                #endregion
+                    // Confirm NIC association
+                    Assert.Equal(1, nsg.NetworkInterfaceIds.Count);
+                    Assert.True(nsg.NetworkInterfaceIds.Contains(nic.Id.ToLower()));
 
+                    var resource = manager.NetworkSecurityGroups.GetByResourceGroup(resourceGroupName, nsgName);
 
-                #region Read
-                var resource = manager.NetworkSecurityGroups.GetByResourceGroup(resourceGroupName, nsgName);
-                #endregion
+                    resource = resource.Update()
+                        .WithoutRule("rule1")
+                        .WithTag("tag1", "value1")
+                        .WithTag("tag2", "value2")
+                        .DefineRule("rule3")
+                            .AllowInbound()
+                            .FromAnyAddress()
+                            .FromAnyPort()
+                            .ToAnyAddress()
+                            .ToAnyPort()
+                            .WithProtocol(SecurityRuleProtocol.Udp)
+                            .Attach()
+                        .WithoutRule("rule1")
+                        .UpdateRule("rule2")
+                            .DenyInbound()
+                            .FromAddress("100.0.0.0/29")
+                            .FromPort(88)
+                            .WithPriority(300)
+                            .WithDescription("bar!!!")
+                            .Parent()
+                        .Apply();
+                    Assert.True(resource.Tags.ContainsKey("tag1"));
 
-                #region Update
-                resource = resource.Update()
-                    .WithoutRule("rule1")
-                    .WithTag("tag1", "value1")
-                    .WithTag("tag2", "value2")
-                    .DefineRule("rule3")
-                        .AllowInbound()
-                        .FromAnyAddress()
-                        .FromAnyPort()
-                        .ToAnyAddress()
-                        .ToAnyPort()
-                        .WithProtocol(SecurityRuleProtocol.Udp)
-                        .Attach()
-                    .WithoutRule("rule1")
-                    .UpdateRule("rule2")
-                        .DenyInbound()
-                        .FromAddress("100.0.0.0/29")
-                        .FromPort(88)
-                        .WithPriority(300)
-                        .WithDescription("bar!!!")
-                        .Parent()
-                    .Apply();
-                Assert.True(resource.Tags.ContainsKey("tag1"));
-                #endregion
-
-                #region Delete
-                manager.NetworkSecurityGroups.DeleteById(resource.Id);
-                manager.ResourceManager.ResourceGroups.DeleteByName(resource.ResourceGroupName);
-                #endregion
+                    manager.NetworkSecurityGroups.DeleteById(resource.Id);
+                    manager.ResourceManager.ResourceGroups.DeleteByName(resource.ResourceGroupName);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(resourceGroupName);
+                    }
+                    catch { }
+                }
             }
         }
 
-        public void Print(INetworkSecurityGroup resource)
+        internal void Print(INetworkSecurityGroup resource)
         {
             var info = new StringBuilder();
             info.Append("NSG: ").Append(resource.Id)

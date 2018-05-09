@@ -29,8 +29,9 @@ namespace Fluent.Tests.Network
                 string asgName = "asg" + testId;
                 Region region = Region.USSouthCentral;
 
-                #region Create
                 var manager = TestHelper.CreateNetworkManager();
+                try
+                { 
 
                 IApplicationSecurityGroup applicationSecurityGroup = manager.ApplicationSecurityGroups.Define(asgName)
                     .WithRegion(Region.USSouthCentral)
@@ -40,21 +41,25 @@ namespace Fluent.Tests.Network
                 string tag1;
                 Assert.True(applicationSecurityGroup.Tags.TryGetValue("tag1", out tag1));
                 Assert.Equal("value1", tag1);
-                #endregion
 
-                #region List
                 var asgList = manager.ApplicationSecurityGroups.List();
                 Assert.True(asgList.IsAny());
 
                 asgList = manager.ApplicationSecurityGroups.ListByResourceGroup(resourceGroupName);
                 Assert.True(asgList.IsAny());
-                #endregion
 
-                #region Delete
                 manager.ApplicationSecurityGroups.DeleteById(applicationSecurityGroup.Id);
                 asgList = manager.ApplicationSecurityGroups.ListByResourceGroup(resourceGroupName);
                 Assert.True(!asgList.IsAny());
-                #endregion
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(resourceGroupName);
+                    }
+                    catch { }
+                }
             }
         }
     }

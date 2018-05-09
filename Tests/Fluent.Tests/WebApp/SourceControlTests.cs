@@ -26,24 +26,34 @@ namespace Fluent.Tests.WebApp
                 var AppServicePlanName = TestUtilities.GenerateName("java-asp-");
 
                 var appServiceManager = TestHelper.CreateAppServiceManager();
+                try
+                {
+                    // Create web app
+                    var webApp = appServiceManager.WebApps.Define(WebAppName)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName)
+                        .WithNewWindowsPlan(PricingTier.StandardS1)
+                        .DefineSourceControl()
+                            .WithPublicGitRepository("https://github.Com/jianghaolu/azure-site-test")
+                            .WithBranch("master")
+                            .Attach()
+                        .Create();
+                    Assert.NotNull(webApp);
+                    var response = await TestHelper.CheckAddress("http://" + WebAppName + "." + "azurewebsites.Net");
+                    Assert.Equal(System.Net.HttpStatusCode.OK.ToString(), response.StatusCode.ToString());
 
-                // Create web app
-                var webApp = appServiceManager.WebApps.Define(WebAppName)
-                    .WithRegion(Region.USWest)
-                    .WithNewResourceGroup(GroupName)
-                    .WithNewWindowsPlan(PricingTier.StandardS1)
-                    .DefineSourceControl()
-                        .WithPublicGitRepository("https://github.Com/jianghaolu/azure-site-test")
-                        .WithBranch("master")
-                        .Attach()
-                    .Create();
-                Assert.NotNull(webApp);
-                var response = await TestHelper.CheckAddress("http://" + WebAppName + "." + "azurewebsites.Net");
-                Assert.Equal(System.Net.HttpStatusCode.OK.ToString(), response.StatusCode.ToString());
-
-                var body = await response.Content.ReadAsStringAsync();
-                Assert.NotNull(body);
-                Assert.Contains("Hello world from linux 4", body);
+                    var body = await response.Content.ReadAsStringAsync();
+                    Assert.NotNull(body);
+                    Assert.Contains("Hello world from linux 4", body);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName);
+                    }
+                    catch { }
+                }
             }
         }
     }

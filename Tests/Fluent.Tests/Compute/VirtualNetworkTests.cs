@@ -33,81 +33,92 @@ namespace Fluent.Tests.Compute
             INetworkManager manager = TestHelper.CreateNetworkManager();
 
             string rgName = SdkContext.RandomResourceName("rgNEMV", 24);
-            INetworkSecurityGroup backEndSubnetNsg = manager.NetworkSecurityGroups
-                    .Define(vnet1BackEndSubnetNsgName)
-                    .WithRegion(Region.USEast)
-                    .WithExistingResourceGroup(rgName)
-                    .DefineRule("DenyInternetInComing")
-                        .DenyInbound()
-                        .FromAddress("INTERNET")
-                        .FromAnyPort()
-                        .ToAnyAddress()
-                        .ToAnyPort()
-                        .WithAnyProtocol()
-                        .Attach()
-                    .DefineRule("DenyInternetOutGoing")
-                        .DenyOutbound()
-                        .FromAnyAddress()
-                        .FromAnyPort()
-                        .ToAddress("INTERNET")
-                        .ToAnyPort()
-                        .WithAnyProtocol()
-                        .Attach()
-                    .Create();
+            try
+            { 
+                INetworkSecurityGroup backEndSubnetNsg = manager.NetworkSecurityGroups
+                        .Define(vnet1BackEndSubnetNsgName)
+                        .WithRegion(Region.USEast)
+                        .WithExistingResourceGroup(rgName)
+                        .DefineRule("DenyInternetInComing")
+                            .DenyInbound()
+                            .FromAddress("INTERNET")
+                            .FromAnyPort()
+                            .ToAnyAddress()
+                            .ToAnyPort()
+                            .WithAnyProtocol()
+                            .Attach()
+                        .DefineRule("DenyInternetOutGoing")
+                            .DenyOutbound()
+                            .FromAnyAddress()
+                            .FromAnyPort()
+                            .ToAddress("INTERNET")
+                            .ToAnyPort()
+                            .WithAnyProtocol()
+                            .Attach()
+                        .Create();
 
-            INetwork virtualNetwork1 = manager.Networks
-                    .Define(vnetName1)
-                    .WithRegion(Region.USEast)
-                    .WithExistingResourceGroup(rgName)
-                    .WithAddressSpace("192.168.0.0/16")
-                    .WithSubnet(vnet1FrontEndSubnetName, "192.168.1.0/24")
-                    .DefineSubnet(vnet1BackEndSubnetName)
-                        .WithAddressPrefix("192.168.2.0/24")
-                        .WithExistingNetworkSecurityGroup(backEndSubnetNsg)
-                        .Attach()
-                    .Create();
+                INetwork virtualNetwork1 = manager.Networks
+                        .Define(vnetName1)
+                        .WithRegion(Region.USEast)
+                        .WithExistingResourceGroup(rgName)
+                        .WithAddressSpace("192.168.0.0/16")
+                        .WithSubnet(vnet1FrontEndSubnetName, "192.168.1.0/24")
+                        .DefineSubnet(vnet1BackEndSubnetName)
+                            .WithAddressPrefix("192.168.2.0/24")
+                            .WithExistingNetworkSecurityGroup(backEndSubnetNsg)
+                            .Attach()
+                        .Create();
 
-            INetworkSecurityGroup frontEndSubnetNsg = manager.NetworkSecurityGroups
-                    .Define(vnet1FrontEndSubnetNsgName)
-                    .WithRegion(Region.USEast)
-                    .WithExistingResourceGroup(rgName)
-                    .DefineRule("AllowHttpInComing")
-                        .AllowInbound()
-                        .FromAddress("INTERNET")
-                        .FromAnyPort()
-                        .ToAnyAddress()
-                        .ToPort(80)
-                        .WithProtocol(SecurityRuleProtocol.Tcp)
-                        .Attach()
-                    .DefineRule("DenyInternetOutGoing")
-                        .DenyOutbound()
-                        .FromAnyAddress()
-                        .FromAnyPort()
-                        .ToAddress("INTERNET")
-                        .ToAnyPort()
-                        .WithAnyProtocol()
-                        .Attach()
-                    .Create();
+                INetworkSecurityGroup frontEndSubnetNsg = manager.NetworkSecurityGroups
+                        .Define(vnet1FrontEndSubnetNsgName)
+                        .WithRegion(Region.USEast)
+                        .WithExistingResourceGroup(rgName)
+                        .DefineRule("AllowHttpInComing")
+                            .AllowInbound()
+                            .FromAddress("INTERNET")
+                            .FromAnyPort()
+                            .ToAnyAddress()
+                            .ToPort(80)
+                            .WithProtocol(SecurityRuleProtocol.Tcp)
+                            .Attach()
+                        .DefineRule("DenyInternetOutGoing")
+                            .DenyOutbound()
+                            .FromAnyAddress()
+                            .FromAnyPort()
+                            .ToAddress("INTERNET")
+                            .ToAnyPort()
+                            .WithAnyProtocol()
+                            .Attach()
+                        .Create();
 
-            virtualNetwork1.Update()
-                    .UpdateSubnet(vnet1FrontEndSubnetName)
-                        .WithExistingNetworkSecurityGroup(frontEndSubnetNsg)
-                        .Parent()
-                    .Apply();
+                virtualNetwork1.Update()
+                        .UpdateSubnet(vnet1FrontEndSubnetName)
+                            .WithExistingNetworkSecurityGroup(frontEndSubnetNsg)
+                            .Parent()
+                        .Apply();
 
-            INetwork virtualNetwork2 = manager.Networks
-                    .Define(vnetName2)
-                    .WithRegion(Region.USEast)
-                    .WithNewResourceGroup(rgName)
-                    .Create();
+                INetwork virtualNetwork2 = manager.Networks
+                        .Define(vnetName2)
+                        .WithRegion(Region.USEast)
+                        .WithNewResourceGroup(rgName)
+                        .Create();
 
 
-            foreach (INetwork virtualNetwork in manager.Networks.ListByResourceGroup(rgName))
-            {
+                foreach (INetwork virtualNetwork in manager.Networks.ListByResourceGroup(rgName))
+                {
+                }
+
+
+                manager.Networks.DeleteById(virtualNetwork2.Id);
             }
-
-
-            manager.Networks.DeleteById(virtualNetwork2.Id);
+            finally
+            {
+                try
+                {
+                    TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(rgName);
+                }
+                catch { }
+            }
         }
     }
 }

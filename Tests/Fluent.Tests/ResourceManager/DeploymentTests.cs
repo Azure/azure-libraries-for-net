@@ -32,46 +32,57 @@ namespace Fluent.Tests.ResourceManager
             {
                 IResourceManager resourceManager = TestHelper.CreateResourceManager();
 
-                resourceManager.Deployments
-                    .Define(deploymentName1)
-                    .WithNewResourceGroup(rgName, Region.USEast)
-                    .WithTemplateLink(templateUri, contentVersion)
-                    .WithParametersLink(parametersUri, contentVersion)
-                    .WithMode(DeploymentMode.Complete)
-                    .Create();
+                try
+                {
+                    resourceManager.Deployments
+                        .Define(deploymentName1)
+                        .WithNewResourceGroup(rgName, Region.USEast)
+                        .WithTemplateLink(templateUri, contentVersion)
+                        .WithParametersLink(parametersUri, contentVersion)
+                        .WithMode(DeploymentMode.Complete)
+                        .Create();
 
-                // List
-                var deployments = resourceManager.Deployments.ListByResourceGroup(rgName);
-                var found = from dep in deployments
-                            where dep.Name.Equals(deploymentName1, StringComparison.OrdinalIgnoreCase)
-                            select dep;
+                    // List
+                    var deployments = resourceManager.Deployments.ListByResourceGroup(rgName);
+                    var found = from dep in deployments
+                                where dep.Name.Equals(deploymentName1, StringComparison.OrdinalIgnoreCase)
+                                select dep;
 
-                Assert.True(found != null);
+                    Assert.True(found != null);
 
-                // Check existence
-                Assert.True(resourceManager.Deployments.CheckExistence(rgName, deploymentName1));
+                    // Check existence
+                    Assert.True(resourceManager.Deployments.CheckExistence(rgName, deploymentName1));
 
-                // Get
-                var deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName1);
-                Assert.True(deployment != null);
-                Assert.True(deployment.ProvisioningState != null);
+                    // Get
+                    var deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName1);
+                    Assert.True(deployment != null);
+                    Assert.True(deployment.ProvisioningState != null);
 
-                // Try export template from deployment object
-                var exportedDeployment = deployment.ExportTemplate();
-                Assert.True(exportedDeployment.Template != null);
+                    // Try export template from deployment object
+                    var exportedDeployment = deployment.ExportTemplate();
+                    Assert.True(exportedDeployment.Template != null);
 
-                // Try export template using resourcegroup
-                var resourceGroup = resourceManager.ResourceGroups.GetByName(rgName);
-                var exportedRG = resourceGroup.ExportTemplate(ResourceGroupExportTemplateOptions.IncludeBoth);
-                Assert.True(exportedRG.Template != null);
+                    // Try export template using resourcegroup
+                    var resourceGroup = resourceManager.ResourceGroups.GetByName(rgName);
+                    var exportedRG = resourceGroup.ExportTemplate(ResourceGroupExportTemplateOptions.IncludeBoth);
+                    Assert.True(exportedRG.Template != null);
 
-                // Deployment operations
-                var deploymentOperations = deployment.DeploymentOperations.List();
-                Assert.Equal(2, deploymentOperations.Count());
-                IDeploymentOperation deploymentOperation = deployment.DeploymentOperations.GetById(deploymentOperations.First().OperationId);
-                Assert.NotNull(deploymentOperation);
+                    // Deployment operations
+                    var deploymentOperations = deployment.DeploymentOperations.List();
+                    Assert.Equal(2, deploymentOperations.Count());
+                    IDeploymentOperation deploymentOperation = deployment.DeploymentOperations.GetById(deploymentOperations.First().OperationId);
+                    Assert.NotNull(deploymentOperation);
 
-                resourceManager.GenericResources.Delete(rgName, "Microsoft.Network", "", "virtualnetworks", "VNet1", "2015-06-15");
+                    resourceManager.GenericResources.Delete(rgName, "Microsoft.Network", "", "virtualnetworks", "VNet1", "2015-06-15");
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -81,19 +92,30 @@ namespace Fluent.Tests.ResourceManager
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 IResourceManager resourceManager = TestHelper.CreateResourceManager();
-                resourceManager.Deployments
-                    .Define(deploymentName2)
-                    .WithNewResourceGroup(rgName, Region.USEast)
-                    .WithTemplateLink(templateUri, contentVersion)
-                    .WithParametersLink(parametersUri, contentVersion)
-                    .WithMode(DeploymentMode.Complete)
-                    .BeginCreate();
-                var deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName2);
-                Assert.Equal(deployment.Name, deploymentName2);
-                deployment.Cancel();
-                deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName2);
-                Assert.Equal("Canceled", deployment.ProvisioningState);
-                resourceManager.GenericResources.Delete(rgName, "Microsoft.Network", "", "virtualnetworks", "VNet1", "2015-06-15");
+                try
+                {
+                    resourceManager.Deployments
+                        .Define(deploymentName2)
+                        .WithNewResourceGroup(rgName, Region.USEast)
+                        .WithTemplateLink(templateUri, contentVersion)
+                        .WithParametersLink(parametersUri, contentVersion)
+                        .WithMode(DeploymentMode.Complete)
+                        .BeginCreate();
+                    var deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName2);
+                    Assert.Equal(deployment.Name, deploymentName2);
+                    deployment.Cancel();
+                    deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName2);
+                    Assert.Equal("Canceled", deployment.ProvisioningState);
+                    resourceManager.GenericResources.Delete(rgName, "Microsoft.Network", "", "virtualnetworks", "VNet1", "2015-06-15");
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -104,42 +126,53 @@ namespace Fluent.Tests.ResourceManager
             {
                 IResourceManager resourceManager = TestHelper.CreateResourceManager();
 
-                var deployment = resourceManager.Deployments
-                    .Define(deploymentName3)
-                    .WithNewResourceGroup(rgName, Region.USEast)
-                    .WithTemplateLink(templateUri, contentVersion)
-                    .WithParametersLink(parametersUri, contentVersion)
-                    .WithMode(DeploymentMode.Complete)
-                    .BeginCreate();
-                Assert.Equal(deploymentName3, deployment.Name);
-                deployment.Cancel();
-                deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName3);
-                Assert.Equal("Canceled", deployment.ProvisioningState);
+                try
+                {
+                    var deployment = resourceManager.Deployments
+                        .Define(deploymentName3)
+                        .WithNewResourceGroup(rgName, Region.USEast)
+                        .WithTemplateLink(templateUri, contentVersion)
+                        .WithParametersLink(parametersUri, contentVersion)
+                        .WithMode(DeploymentMode.Complete)
+                        .BeginCreate();
+                    Assert.Equal(deploymentName3, deployment.Name);
+                    deployment.Cancel();
+                    deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName3);
+                    Assert.Equal("Canceled", deployment.ProvisioningState);
 
-                deployment.Update()
-                    .WithTemplate(updateTemplate)
-                    .WithParameters(updateParameters)
-                    .WithMode(DeploymentMode.Incremental)
-                    .Apply();
-                deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName3);
-                Assert.True(deployment.Mode == DeploymentMode.Incremental);
-                Assert.Equal("Succeeded", deployment.ProvisioningState);
+                    deployment.Update()
+                        .WithTemplate(updateTemplate)
+                        .WithParameters(updateParameters)
+                        .WithMode(DeploymentMode.Incremental)
+                        .Apply();
+                    deployment = resourceManager.Deployments.GetByResourceGroup(rgName, deploymentName3);
+                    Assert.True(deployment.Mode == DeploymentMode.Incremental);
+                    Assert.Equal("Succeeded", deployment.ProvisioningState);
 
-                IGenericResource genericVnet = resourceManager.GenericResources.Get(
-                    rgName, 
-                    "Microsoft.Network", 
-                    "", 
-                    "virtualnetworks", 
-                    "VNet2", 
-                    "2015-06-15");
-                Assert.NotNull(genericVnet);
-                resourceManager.GenericResources.Delete(
-                    rgName, 
-                    "Microsoft.Network", 
-                    "", 
-                    "virtualnetworks", 
-                    "VNet2", 
-                    "2015-06-15");
+                    IGenericResource genericVnet = resourceManager.GenericResources.Get(
+                        rgName,
+                        "Microsoft.Network",
+                        "",
+                        "virtualnetworks",
+                        "VNet2",
+                        "2015-06-15");
+                    Assert.NotNull(genericVnet);
+                    resourceManager.GenericResources.Delete(
+                        rgName,
+                        "Microsoft.Network",
+                        "",
+                        "virtualnetworks",
+                        "VNet2",
+                        "2015-06-15");
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
     }

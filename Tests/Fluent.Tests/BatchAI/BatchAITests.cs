@@ -35,7 +35,6 @@ namespace Fluent.Tests
                 string clusterName = SdkContext.RandomResourceName("cluster", 15);
                 string vnetName = SdkContext.RandomResourceName("vnet", 10);
                 string saName = SdkContext.RandomResourceName("sa", 15);
-                string shareName = "myfileshare";
                 string shareMountPath = "azurefileshare";
                 string blobFileSystemPath = "myblobsystem";
                 string containerName = "mycontainer";
@@ -115,13 +114,7 @@ namespace Fluent.Tests
             {
                 string groupName = SdkContext.RandomResourceName("rg", 10);
                 string clusterName = SdkContext.RandomResourceName("cluster", 15);
-                string shareName = "myfileshare";
-                string shareMountPath = "azurefileshare";
-                string blobFileSystemPath = "myblobsystem";
-                string containerName = "mycontainer";
                 string userName = "tirekicker";
-                string storageAccountKey = "dummy_key";
-                string fileShareUri = "dummy_uri";
 
                 var manager = TestHelper.CreateBatchAIManager();
 
@@ -181,13 +174,7 @@ namespace Fluent.Tests
                 string groupName = SdkContext.RandomResourceName("rg", 10);
                 string vnetName = SdkContext.RandomResourceName("vnet", 10);
                 string fsName = SdkContext.RandomResourceName("fs", 15);
-                string shareName = "myfileshare";
-                string shareMountPath = "azurefileshare";
-                string blobFileSystemPath = "myblobsystem";
-                string containerName = "mycontainer";
                 string userName = "tirekicker";
-                string storageAccountKey = "dummy_key";
-                string fileShareUri = "dummy_uri";
                 string subnetName = "MySubnet";
 
                 var manager = TestHelper.CreateBatchAIManager();

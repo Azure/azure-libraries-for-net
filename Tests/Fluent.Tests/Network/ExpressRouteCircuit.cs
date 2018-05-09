@@ -26,29 +26,40 @@ namespace Fluent.Tests.Network
                 var groupName = SdkContext.RandomResourceName("rg", 6);
                 var manager = TestHelper.CreateNetworkManager();
 
-                // create Express Route Circuit
-                IExpressRouteCircuit erc = manager.ExpressRouteCircuits.Define(circuitName)
-                    .WithRegion(REGION)
-                    .WithNewResourceGroup(groupName)
-                    .WithServiceProvider("Microsoft ER Test")
-                    .WithPeeringLocation("Area51")
-                    .WithBandwidthInMbps(50)
-                    .WithSku(ExpressRouteCircuitSkuType.StandardMeteredData)
-                    .WithTag("tag1", "value1")
-                    .Create();
-                erc.Update()
-                    .WithTag("tag2", "value2")
-                    .WithoutTag("tag1")
-                    .WithBandwidthInMbps(200)
-                    .WithSku(ExpressRouteCircuitSkuType.PremiumUnlimitedData)
-                    .Apply();
-                erc.Refresh();
-                Assert.True(erc.Tags.ContainsKey("tag2"));
-                Assert.True(!erc.Tags.ContainsKey("tag1"));
-                Assert.Equal(200, erc.ServiceProviderProperties.BandwidthInMbps);
-                Assert.Equal(ExpressRouteCircuitSkuType.PremiumUnlimitedData, erc.Sku);
-                manager.ExpressRouteCircuits.DeleteById(erc.Id);
-                manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+                try
+                { 
+                    // create Express Route Circuit
+                    IExpressRouteCircuit erc = manager.ExpressRouteCircuits.Define(circuitName)
+                        .WithRegion(REGION)
+                        .WithNewResourceGroup(groupName)
+                        .WithServiceProvider("Microsoft ER Test")
+                        .WithPeeringLocation("Area51")
+                        .WithBandwidthInMbps(50)
+                        .WithSku(ExpressRouteCircuitSkuType.StandardMeteredData)
+                        .WithTag("tag1", "value1")
+                        .Create();
+                    erc.Update()
+                        .WithTag("tag2", "value2")
+                        .WithoutTag("tag1")
+                        .WithBandwidthInMbps(200)
+                        .WithSku(ExpressRouteCircuitSkuType.PremiumUnlimitedData)
+                        .Apply();
+                    erc.Refresh();
+                    Assert.True(erc.Tags.ContainsKey("tag2"));
+                    Assert.True(!erc.Tags.ContainsKey("tag1"));
+                    Assert.Equal(200, erc.ServiceProviderProperties.BandwidthInMbps);
+                    Assert.Equal(ExpressRouteCircuitSkuType.PremiumUnlimitedData, erc.Sku);
+                    manager.ExpressRouteCircuits.DeleteById(erc.Id);
+                    manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+                }
+                finally
+                {
+                    try
+                    {
+                        manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -61,35 +72,46 @@ namespace Fluent.Tests.Network
                 var groupName = SdkContext.RandomResourceName("rg", 6);
                 var manager = TestHelper.CreateNetworkManager();
 
-                // create Express Route Circuit
-                IExpressRouteCircuit erc = manager.ExpressRouteCircuits.Define(circuitName)
-                    .WithRegion(REGION)
-                    .WithNewResourceGroup(groupName)
-                    .WithServiceProvider("Microsoft ER Test")
-                    .WithPeeringLocation("Area51")
-                    .WithBandwidthInMbps(50)
-                    .WithSku(ExpressRouteCircuitSkuType.PremiumMeteredData)
-                    .WithTag("tag1", "value1")
-                    .Create();
-                erc.Peerings.DefineMicrosoftPeering()
-                    .WithAdvertisedPublicPrefixes("123.1.0.0/24")
-                    .WithPrimaryPeerAddressPrefix("123.0.0.0/30")
-                    .WithSecondaryPeerAddressPrefix("123.0.0.4/30")
-                    .WithVlanId(200)
-                    .WithPeerAsn(100)
-                    .Create();
-                Assert.Equal(1, erc.PeeringsMap.Count);
-                Assert.True(erc.PeeringsMap.ContainsKey(ExpressRoutePeeringType.MicrosoftPeering.ToString()));
-                var peering = erc.PeeringsMap[ExpressRoutePeeringType.MicrosoftPeering.ToString()]
-                        .Update()
-                        .WithVlanId(300)
-                        .WithPeerAsn(101)
-                        .WithSecondaryPeerAddressPrefix("123.0.0.8/30")
-                        .Apply();
-                Assert.Equal(300, peering.VlanId);
-                Assert.Equal(101, peering.PeerAsn);
-                Assert.Equal("123.0.0.8/30", peering.SecondaryPeerAddressPrefix);
-                manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
+                try
+                {
+                    // create Express Route Circuit
+                    IExpressRouteCircuit erc = manager.ExpressRouteCircuits.Define(circuitName)
+                        .WithRegion(REGION)
+                        .WithNewResourceGroup(groupName)
+                        .WithServiceProvider("Microsoft ER Test")
+                        .WithPeeringLocation("Area51")
+                        .WithBandwidthInMbps(50)
+                        .WithSku(ExpressRouteCircuitSkuType.PremiumMeteredData)
+                        .WithTag("tag1", "value1")
+                        .Create();
+                    erc.Peerings.DefineMicrosoftPeering()
+                        .WithAdvertisedPublicPrefixes("123.1.0.0/24")
+                        .WithPrimaryPeerAddressPrefix("123.0.0.0/30")
+                        .WithSecondaryPeerAddressPrefix("123.0.0.4/30")
+                        .WithVlanId(200)
+                        .WithPeerAsn(100)
+                        .Create();
+                    Assert.Equal(1, erc.PeeringsMap.Count);
+                    Assert.True(erc.PeeringsMap.ContainsKey(ExpressRoutePeeringType.MicrosoftPeering.ToString()));
+                    var peering = erc.PeeringsMap[ExpressRoutePeeringType.MicrosoftPeering.ToString()]
+                            .Update()
+                            .WithVlanId(300)
+                            .WithPeerAsn(101)
+                            .WithSecondaryPeerAddressPrefix("123.0.0.8/30")
+                            .Apply();
+                    Assert.Equal(300, peering.VlanId);
+                    Assert.Equal(101, peering.PeerAsn);
+                    Assert.Equal("123.0.0.8/30", peering.SecondaryPeerAddressPrefix);
+                    manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(groupName);
+                    }
+                    catch { }
+                }
             }
         }
     }

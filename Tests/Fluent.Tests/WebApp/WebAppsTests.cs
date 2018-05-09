@@ -28,51 +28,67 @@ namespace Fluent.Tests.WebApp
 
                 var appServiceManager = TestHelper.CreateAppServiceManager();
 
-                // Create with new app service plan
-                var webApp1 = appServiceManager.WebApps.Define(WebAppName1)
-                    .WithRegion(Region.USWest)
-                    .WithNewResourceGroup(GroupName1)
-                    .WithNewWindowsPlan(PricingTier.BasicB1)
-                    .WithRemoteDebuggingEnabled(RemoteVisualStudioVersion.VS2013)
-                    .Create();
-                Assert.NotNull(webApp1);
-                Assert.Equal(Region.USWest, webApp1.Region);
-                var plan1 = appServiceManager.AppServicePlans.GetById(webApp1.AppServicePlanId);
-                Assert.NotNull(plan1);
-                Assert.Equal(Region.USWest, plan1.Region);
-                Assert.Equal(PricingTier.BasicB1, plan1.PricingTier);
+                try
+                {
+                    // Create with new app service plan
+                    var webApp1 = appServiceManager.WebApps.Define(WebAppName1)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName1)
+                        .WithNewWindowsPlan(PricingTier.BasicB1)
+                        .WithRemoteDebuggingEnabled(RemoteVisualStudioVersion.VS2013)
+                        .Create();
+                    Assert.NotNull(webApp1);
+                    Assert.Equal(Region.USWest, webApp1.Region);
+                    var plan1 = appServiceManager.AppServicePlans.GetById(webApp1.AppServicePlanId);
+                    Assert.NotNull(plan1);
+                    Assert.Equal(Region.USWest, plan1.Region);
+                    Assert.Equal(PricingTier.BasicB1, plan1.PricingTier);
 
-                // Create in a new group with existing app service plan
-                var webApp2 = appServiceManager.WebApps.Define(WebAppName2)
-                    .WithExistingWindowsPlan(plan1)
-                    .WithNewResourceGroup(GroupName2)
-                    .Create();
-                Assert.NotNull(webApp2);
-                Assert.Equal(Region.USWest, webApp1.Region);
+                    // Create in a new group with existing app service plan
+                    var webApp2 = appServiceManager.WebApps.Define(WebAppName2)
+                        .WithExistingWindowsPlan(plan1)
+                        .WithNewResourceGroup(GroupName2)
+                        .Create();
+                    Assert.NotNull(webApp2);
+                    Assert.Equal(Region.USWest, webApp1.Region);
 
-                // Get
-                var webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName1, webApp1.Name);
-                Assert.Equal(webApp1.Id, webApp.Id);
-                webApp = appServiceManager.WebApps.GetById(webApp2.Id);
-                Assert.Equal(webApp2.Name, webApp.Name);
-                webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName1, "nonexist");
-                Assert.Null(webApp);
+                    // Get
+                    var webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName1, webApp1.Name);
+                    Assert.Equal(webApp1.Id, webApp.Id);
+                    webApp = appServiceManager.WebApps.GetById(webApp2.Id);
+                    Assert.Equal(webApp2.Name, webApp.Name);
+                    webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName1, "nonexist");
+                    Assert.Null(webApp);
 
-                // List
-                var webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName1);
-                Assert.Single(webApps);
-                webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName2);
-                Assert.Single(webApps);
+                    // List
+                    var webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName1);
+                    Assert.Single(webApps);
+                    webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName2);
+                    Assert.Single(webApps);
 
-                // Update
-                webApp1.Update()
-                    .WithNewAppServicePlan(PricingTier.StandardS2)
-                    .Apply();
-                var plan2 = appServiceManager.AppServicePlans.GetById(webApp1.AppServicePlanId);
-                Assert.NotNull(plan2);
-                Assert.NotEqual(plan1.Id, plan2.Id);
-                Assert.Equal(Region.USWest, plan2.Region);
-                Assert.Equal(PricingTier.StandardS2, plan2.PricingTier);
+                    // Update
+                    webApp1.Update()
+                        .WithNewAppServicePlan(PricingTier.StandardS2)
+                        .Apply();
+                    var plan2 = appServiceManager.AppServicePlans.GetById(webApp1.AppServicePlanId);
+                    Assert.NotNull(plan2);
+                    Assert.NotEqual(plan1.Id, plan2.Id);
+                    Assert.Equal(Region.USWest, plan2.Region);
+                    Assert.Equal(PricingTier.StandardS2, plan2.PricingTier);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
+                    }
+                    catch { }
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName2);
+                    }
+                    catch { }
+                }
             }
         }
     }
