@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<ElasticPoolInner> CreateOrUpdateAsync(this IElasticPoolsOperations operations, string resourceGroupName, string serverName, string elasticPoolName, ElasticPoolInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<ElasticPoolInner> UpdateAsync(this IElasticPoolsOperations operations, string resourceGroupName, string serverName, string elasticPoolName, ElasticPoolUpdateInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task DeleteAsync(this IElasticPoolsOperations operations, string resourceGroupName, string serverName, string elasticPoolName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<ElasticPoolInner> GetAsync(this IElasticPoolsOperations operations, string resourceGroupName, string serverName, string elasticPoolName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IEnumerable<ElasticPoolInner>> ListByServerAsync(this IElasticPoolsOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IEnumerable<Metric>> ListMetricsAsync(this IElasticPoolsOperations operations, string resourceGroupName, string serverName, string elasticPoolName, string filter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, filter, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, filter, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IEnumerable<MetricDefinition>> ListMetricDefinitionsAsync(this IElasticPoolsOperations operations, string resourceGroupName, string serverName, string elasticPoolName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<ElasticPoolInner> BeginCreateOrUpdateAsync(this IElasticPoolsOperations operations, string resourceGroupName, string serverName, string elasticPoolName, ElasticPoolInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<ElasticPoolInner> BeginUpdateAsync(this IElasticPoolsOperations operations, string resourceGroupName, string serverName, string elasticPoolName, ElasticPoolUpdateInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

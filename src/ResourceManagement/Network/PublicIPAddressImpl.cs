@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             PublicIPAddress.Update.IUpdate>,
         IPublicIPAddress,
         PublicIPAddress.Definition.IDefinition,
-        PublicIPAddress.Update.IUpdate
+        PublicIPAddress.Update.IUpdate,
+        IAppliableWithTags<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress>
     {
 
         ///GENMHASH:63A53AB51A7D5A79D8B7047D1A8C8CCF:3881994DCADCE14215F82F0CC81BDD88
@@ -286,6 +287,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 return null;
             }
+        }
+
+        ///GENMHASH:BCABB5578B0BD7DC8F8C22F4769FD3DE:02984D22C1D2E484D62F2595E7B0E86C
+        public IPublicIPAddress ApplyTags()
+        {
+            return Extensions.Synchronize(() => ApplyTagsAsync());
+        }
+
+        ///GENMHASH:6B8BA63027964E06F44A927837B450A0:73A3E3DE52EE39671B79DFFC66BC8B20
+        public async Task<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> ApplyTagsAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inner = await Manager.Inner.PublicIPAddresses.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
+            SetInner(inner);
+            return this;
+        }
+
+
+        ///GENMHASH:DD514B859A01D5FDAFF5D26EACDFE197:40A980295F5EA8FF8304DA8C06E899BF
+        public PublicIPAddressImpl UpdateTags()
+        {
+            return this;
         }
     }
 }

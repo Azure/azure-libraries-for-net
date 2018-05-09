@@ -26,104 +26,115 @@ namespace Fluent.Tests.Network
                 Region region = Region.USEast;
                 string[] routeNames = new string[] { "route1", "route2", "route3" };
 
-                #region Create
-                var manager = TestHelper.CreateNetworkManager();
-                var resource = manager.RouteTables
-                    .Define(routeTableName)
-                    .WithRegion(region)
-                    .WithNewResourceGroup(resourceGroupName)
-                    .DefineRoute(routeNames[0])
-                        .WithDestinationAddressPrefix("10.0.0.0/24")
-                        .WithNextHopToVirtualAppliance("10.1.0.4")
-                        .Attach()
-                    .DefineRoute(routeNames[1])
-                        .WithDestinationAddressPrefix("10.0.1.0/24")
-                        .WithNextHopToVirtualAppliance("10.1.0.5")
-                        .Attach()
-                    .Create();
+                try
+                { 
+                    var manager = TestHelper.CreateNetworkManager();
+                    var resource = manager.RouteTables
+                        .Define(routeTableName)
+                        .WithRegion(region)
+                        .WithNewResourceGroup(resourceGroupName)
+                        .DefineRoute(routeNames[0])
+                            .WithDestinationAddressPrefix("10.0.0.0/24")
+                            .WithNextHopToVirtualAppliance("10.1.0.4")
+                            .Attach()
+                        .DefineRoute(routeNames[1])
+                            .WithDestinationAddressPrefix("10.0.1.0/24")
+                            .WithNextHopToVirtualAppliance("10.1.0.5")
+                            .Attach()
+                        .Create();
 
-                Assert.NotNull(resource);
-                Assert.NotEmpty(resource.Routes);
-                Assert.Equal(2, resource.Routes.Count);
+                    Assert.NotNull(resource);
+                    Assert.NotEmpty(resource.Routes);
+                    Assert.Equal(2, resource.Routes.Count);
 
-                // Verify routes
-                IRoute route;
-                Assert.True(resource.Routes.TryGetValue(routeNames[0], out route));
-                Assert.Equal(routeNames[0], route.Name);
-                Assert.Equal("10.0.0.0/24", route.DestinationAddressPrefix);
-                Assert.Equal(RouteNextHopType.VirtualAppliance, route.NextHopType);
-                Assert.Equal("10.1.0.4", route.NextHopIPAddress);
+                    // Verify routes
+                    IRoute route;
+                    Assert.True(resource.Routes.TryGetValue(routeNames[0], out route));
+                    Assert.Equal(routeNames[0], route.Name);
+                    Assert.Equal("10.0.0.0/24", route.DestinationAddressPrefix);
+                    Assert.Equal(RouteNextHopType.VirtualAppliance, route.NextHopType);
+                    Assert.Equal("10.1.0.4", route.NextHopIPAddress);
 
-                Assert.True(resource.Routes.TryGetValue(routeNames[1], out route));
-                Assert.Equal(routeNames[1], route.Name);
-                Assert.Equal("10.0.1.0/24", route.DestinationAddressPrefix);
-                Assert.Equal(RouteNextHopType.VirtualAppliance, route.NextHopType);
-                Assert.Equal("10.1.0.5", route.NextHopIPAddress);
+                    Assert.True(resource.Routes.TryGetValue(routeNames[1], out route));
+                    Assert.Equal(routeNames[1], route.Name);
+                    Assert.Equal("10.0.1.0/24", route.DestinationAddressPrefix);
+                    Assert.Equal(RouteNextHopType.VirtualAppliance, route.NextHopType);
+                    Assert.Equal("10.1.0.5", route.NextHopIPAddress);
 
-                // Create a subnet that references the route table
-                manager.Networks.Define(networkName)
-                    .WithRegion(region)
-                    .WithExistingResourceGroup(resourceGroupName)
-                    .WithAddressSpace("10.0.0.0/22")
-                    .DefineSubnet("subnet1")
-                        .WithAddressPrefix("10.0.0.0/22")
-                        .WithExistingRouteTable(resource)
-                        .Attach()
-                    .Create();
+                    // Create a subnet that references the route table
+                    manager.Networks.Define(networkName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(resourceGroupName)
+                        .WithAddressSpace("10.0.0.0/22")
+                        .DefineSubnet("subnet1")
+                            .WithAddressPrefix("10.0.0.0/22")
+                            .WithExistingRouteTable(resource)
+                            .Attach()
+                        .Create();
 
-                var subnets = resource.Refresh().ListAssociatedSubnets();
-                Assert.Equal(1, subnets.Count);
-                Assert.Equal(resource.Id, subnets[0].RouteTableId);
+                    var subnets = resource.Refresh().ListAssociatedSubnets();
+                    Assert.Equal(1, subnets.Count);
+                    Assert.Equal(resource.Id, subnets[0].RouteTableId);
 
-                #endregion
+                    resource = manager.RouteTables.GetByResourceGroup(resourceGroupName, routeTableName);
+                    Assert.NotNull(resource);
 
-                #region Read
-                resource = manager.RouteTables.GetByResourceGroup(resourceGroupName, routeTableName);
-                Assert.NotNull(resource);
-                #endregion
+                    // Verify changing and adding routes
+                    resource = resource.Update()
+                        .UpdateRoute(routeNames[0])
+                            .WithDestinationAddressPrefix("10.0.0.0/25")
+                            .WithNextHopToVirtualAppliance("10.1.0.6")
+                            .Parent()
+                        .DefineRoute(routeNames[2])
+                            .WithDestinationAddressPrefix("10.0.2.0/24")
+                            .WithNextHopToVirtualAppliance("10.1.0.7")
+                            .Attach()
+                        .Apply();
 
-                #region Update
-                // Verify changing and adding routes
-                resource = resource.Update()
-                    .UpdateRoute(routeNames[0])
-                        .WithDestinationAddressPrefix("10.0.0.0/25")
-                        .WithNextHopToVirtualAppliance("10.1.0.6")
-                        .Parent()
-                    .DefineRoute(routeNames[2])
-                        .WithDestinationAddressPrefix("10.0.2.0/24")
-                        .WithNextHopToVirtualAppliance("10.1.0.7")
-                        .Attach()
-                    .Apply();
+                    Assert.NotEmpty(resource.Routes);
+                    Assert.Equal(3, resource.Routes.Count);
+                    Assert.True(resource.Routes.TryGetValue(routeNames[0], out route));
+                    Assert.Equal("10.0.0.0/25", route.DestinationAddressPrefix);
+                    Assert.Equal("10.1.0.6", route.NextHopIPAddress);
 
-                Assert.NotEmpty(resource.Routes);
-                Assert.Equal(3, resource.Routes.Count);
-                Assert.True(resource.Routes.TryGetValue(routeNames[0], out route));
-                Assert.Equal("10.0.0.0/25", route.DestinationAddressPrefix);
-                Assert.Equal("10.1.0.6", route.NextHopIPAddress);
+                    Assert.True(resource.Routes.TryGetValue(routeNames[2], out route));
+                    Assert.Equal("10.0.2.0/24", route.DestinationAddressPrefix);
+                    Assert.Equal("10.1.0.7", route.NextHopIPAddress);
 
-                Assert.True(resource.Routes.TryGetValue(routeNames[2], out route));
-                Assert.Equal("10.0.2.0/24", route.DestinationAddressPrefix);
-                Assert.Equal("10.1.0.7", route.NextHopIPAddress);
+                    // Verify removing last route
+                    resource = resource.Update()
+                        .WithoutRoute(routeNames[0])
+                        .WithoutRoute(routeNames[1])
+                        .WithoutRoute(routeNames[2])
+                        .WithTag("tag1", "value1")
+                        .WithTag("tag2", "value2")
+                        .Apply();
+                    Assert.True(resource.Tags.ContainsKey("tag1"));
+                    Assert.Empty(resource.Routes);
 
-                // Verify removing last route
-                resource = resource.Update()
-                    .WithoutRoute(routeNames[0])
-                    .WithoutRoute(routeNames[1])
-                    .WithoutRoute(routeNames[2])
-                    .WithTag("tag1", "value1")
-                    .WithTag("tag2", "value2")
-                    .Apply();
-                Assert.True(resource.Tags.ContainsKey("tag1"));
-                Assert.Empty(resource.Routes);
-                #endregion
+                    resource.UpdateTags()
+                        .WithoutTag("tag1")
+                        .WithTag("tag3", "value3")
+                        .ApplyTags();
+                    Assert.False(resource.Tags.ContainsKey("tag1"));
+                    string value3;
+                    resource.Tags.TryGetValue("tag3", out value3);
+                    Assert.Equal("value3", value3);
 
-                #region Delete
-                manager.ResourceManager.ResourceGroups.DeleteByName(resource.ResourceGroupName);
-                #endregion
+                    manager.ResourceManager.ResourceGroups.DeleteByName(resource.ResourceGroupName);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(resourceGroupName);
+                    }
+                    catch { }
+                }
             }
         }
 
-        public void Print(IRouteTable resource)
+        internal void Print(IRouteTable resource)
         {
             var info = new StringBuilder();
             info.Append("Route Table: ").Append(resource.Id)

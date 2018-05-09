@@ -61,7 +61,28 @@ namespace Microsoft.Azure.Management.Network.Fluent.RouteTable.Update
     public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IRouteTable>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.RouteTable.Update.IUpdate>,
-        Microsoft.Azure.Management.Network.Fluent.RouteTable.Update.IWithRoute
+        Microsoft.Azure.Management.Network.Fluent.RouteTable.Update.IWithRoute,
+        Microsoft.Azure.Management.Network.Fluent.RouteTable.Update.IWithBgpRoutePropagation
     {
+    }
+
+    /// <summary>
+    /// The stage of the route table update allowing to specify whether to disable the routes learned by BGP on that route table.
+    /// </summary>
+    public interface IWithBgpRoutePropagation  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Disable the routes learned by BGP on that route table.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.RouteTable.Update.IUpdate WithDisableBgpRoutePropagation();
+
+        /// <summary>
+        /// Enable the routes learned by BGP on that route table.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Network.Fluent.RouteTable.Update.IUpdate WithEnableBgpRoutePropagation();
     }
 }

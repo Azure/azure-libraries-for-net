@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<DataMaskingPolicyInner> CreateOrUpdateAsync(this IDataMaskingPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, DataMaskingPolicyInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<DataMaskingPolicyInner> GetAsync(this IDataMaskingPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

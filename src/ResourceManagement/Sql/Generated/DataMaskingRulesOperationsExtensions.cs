@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<DataMaskingRuleInner> CreateOrUpdateAsync(this IDataMaskingRulesOperations operations, string resourceGroupName, string serverName, string databaseName, string dataMaskingRuleName, DataMaskingRuleInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, dataMaskingRuleName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, dataMaskingRuleName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IEnumerable<DataMaskingRuleInner>> ListByDatabaseAsync(this IDataMaskingRulesOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

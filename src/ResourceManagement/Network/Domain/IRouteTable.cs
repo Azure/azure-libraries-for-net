@@ -15,7 +15,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.RouteTableInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IRouteTable>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<RouteTable.Update.IUpdate>,
-        Microsoft.Azure.Management.Network.Fluent.IHasAssociatedSubnets
+        Microsoft.Azure.Management.Network.Fluent.IUpdatableWithTags<Microsoft.Azure.Management.Network.Fluent.IRouteTable>,
+        Microsoft.Azure.Management.Network.Fluent.IHasAssociatedSubnets,
+        Microsoft.Azure.Management.Network.Fluent.IRouteTableBeta
     {
         /// <summary>
         /// Gets the routes of this route table.

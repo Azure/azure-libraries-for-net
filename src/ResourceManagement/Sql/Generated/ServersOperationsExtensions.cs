@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<CheckNameAvailabilityResponseInner> CheckNameAvailabilityAsync(this IServersOperations operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(name, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<ServerInner>> ListAsync(this IServersOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<ServerInner>> ListByResourceGroupAsync(this IServersOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<ServerInner> GetAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<ServerInner> CreateOrUpdateAsync(this IServersOperations operations, string resourceGroupName, string serverName, ServerInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task DeleteAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<ServerInner> UpdateAsync(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpdateInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<ServerInner> BeginCreateOrUpdateAsync(this IServersOperations operations, string resourceGroupName, string serverName, ServerInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task BeginDeleteAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<ServerInner> BeginUpdateAsync(this IServersOperations operations, string resourceGroupName, string serverName, ServerUpdateInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<ServerInner>> ListNextAsync(this IServersOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<ServerInner>> ListByResourceGroupNextAsync(this IServersOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<BackupLongTermRetentionPolicyInner> GetAsync(this IBackupLongTermRetentionPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<BackupLongTermRetentionPolicyInner> CreateOrUpdateAsync(this IBackupLongTermRetentionPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, BackupLongTermRetentionPolicyInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IEnumerable<BackupLongTermRetentionPolicyInner>> ListByDatabaseAsync(this IBackupLongTermRetentionPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<BackupLongTermRetentionPolicyInner> BeginCreateOrUpdateAsync(this IBackupLongTermRetentionPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, BackupLongTermRetentionPolicyInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task DeleteAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<ReplicationLinkInner> GetAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task FailoverAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.FailoverWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.FailoverWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task FailoverAllowDataLossAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.FailoverAllowDataLossWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.FailoverAllowDataLossWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IEnumerable<ReplicationLinkInner>> ListByDatabaseAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task BeginFailoverAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginFailoverWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginFailoverWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task BeginFailoverAllowDataLossAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginFailoverAllowDataLossWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginFailoverAllowDataLossWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

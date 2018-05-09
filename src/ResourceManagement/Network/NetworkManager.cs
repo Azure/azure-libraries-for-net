@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
         private VirtualNetworkGatewaysImpl virtualNetworkGateways;
         private LocalNetworkGatewaysImpl localNetworkGateways;
         private ExpressRouteCircuitsImpl expressRouteCircuits;
+        private ApplicationSecurityGroupsImpl applicationSecurityGroups;
+        private RouteFiltersImpl routeFilters;
+        private DdosProtectionPlansImpl ddosProtectionPlans;
 
         private NetworkManager(RestClient restClient, string subscriptionId) :
             base(restClient, subscriptionId, new NetworkManagementClient(new Uri(restClient.BaseUri),
@@ -269,6 +272,54 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 return expressRouteCircuits;
             }
         }
+
+        /// <summary>
+        /// return entry point to application security groups management
+        /// </summary>
+        public IApplicationSecurityGroups ApplicationSecurityGroups
+        {
+            get
+            {
+                if (applicationSecurityGroups == null)
+                {
+                    applicationSecurityGroups = new ApplicationSecurityGroupsImpl(this);
+                }
+
+                return applicationSecurityGroups;
+            }
+        }
+
+        /// <summary>
+        /// return entry point to route filters management
+        /// </summary>
+        public IRouteFilters RouteFilters
+        {
+            get
+            {
+                if (routeFilters == null)
+                {
+                    routeFilters = new RouteFiltersImpl(this);
+                }
+
+                return routeFilters;
+            }
+        }
+
+        /// <summary>
+        /// return entry point to DDoD protection plans management
+        /// </summary>
+        public IDdosProtectionPlans DdosProtectionPlans
+        {
+            get
+            {
+                if (ddosProtectionPlans == null)
+                {
+                    ddosProtectionPlans = new DdosProtectionPlansImpl(this);
+                }
+
+                return ddosProtectionPlans;
+            }
+        }
     }
 
     public interface INetworkManagerBeta : IBeta
@@ -292,6 +343,21 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// return entry point to express route circuits management
         /// </summary>
         IExpressRouteCircuits ExpressRouteCircuits { get; }
+
+        /// <summary>
+        /// return entry point to application security groups management
+        /// </summary>
+        IApplicationSecurityGroups ApplicationSecurityGroups { get; }
+
+        /// <summary>
+        /// return entry point to route filters management
+        /// </summary>
+        IRouteFilters RouteFilters { get; }
+
+        /// <summary>
+        /// return entry point to DDoS protection plans management
+        /// </summary>
+        IDdosProtectionPlans DdosProtectionPlans { get; }
     }
 
     public interface INetworkManager : INetworkManagerBeta, IManager<INetworkManagementClient>

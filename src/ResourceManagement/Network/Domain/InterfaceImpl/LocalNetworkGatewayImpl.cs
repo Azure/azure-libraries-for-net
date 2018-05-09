@@ -7,6 +7,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using Microsoft.Azure.Management.Network.Fluent.Models;
     using Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definition;
     using Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Update;
+    using Microsoft.Azure.Management.Network.Fluent.Models;
+    using Microsoft.Azure.Management.Network.Fluent.UpdatableWithTags.UpdatableWithTags;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Collections.Generic;
 
@@ -20,6 +22,51 @@ namespace Microsoft.Azure.Management.Network.Fluent
         LocalNetworkGateway.Update.IUpdate LocalNetworkGateway.Update.IWithAddressSpace.WithoutAddressSpace(string cidr)
         {
             return this.WithoutAddressSpace(cidr) as LocalNetworkGateway.Update.IUpdate;
+        }
+
+    /// <summary>
+        /// Execute the update request.
+        /// </summary>
+        /// <return>The updated resource.</return>
+        Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway Microsoft.Azure.Management.Network.Fluent.IAppliableWithTags<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway>.ApplyTags()
+        {
+            return this.ApplyTags();
+        }
+
+        /// <summary>
+        /// Execute the update request asynchronously.
+        /// </summary>
+        /// <return>The handle to the REST call.</return>
+        async Task<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway> Microsoft.Azure.Management.Network.Fluent.IAppliableWithTags<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway>.ApplyTagsAsync(CancellationToken cancellationToken)
+        {
+            return await this.ApplyTagsAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// Begins a tags update for a resource.
+        /// This is the beginning of the builder pattern used to update tags for a resources
+        /// in Azure. The final method completing the definition and starting the actual resource update
+        /// process in Azure is  AppliableWithTags.applyTags().
+        /// </summary>
+        /// <return>The stage of new resource update.</return>
+        UpdatableWithTags.UpdatableWithTags.IUpdateWithTags<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway> Microsoft.Azure.Management.Network.Fluent.IUpdatableWithTags<Microsoft.Azure.Management.Network.Fluent.ILocalNetworkGateway>.UpdateTags()
+        {
+            return this.UpdateTags();
+        }
+
+        public IAppliableWithTags<ILocalNetworkGateway> WithoutTag(string key)
+        {
+            return base.WithoutTag(key);
+        }
+
+        public IAppliableWithTags<ILocalNetworkGateway> WithTag(string key, string value)
+        {
+            return base.WithTag(key, value);
+        }
+
+        public IAppliableWithTags<ILocalNetworkGateway> WithTags(IDictionary<string, string> tags)
+        {
+            return base.WithTags(tags);
         }
 
         /// <summary>

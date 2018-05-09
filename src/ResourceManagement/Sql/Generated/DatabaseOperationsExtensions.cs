@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task CancelAsync(this IDatabaseOperations operations, string resourceGroupName, string serverName, string databaseName, System.Guid operationId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.CancelWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, operationId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.CancelWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, operationId, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<DatabaseOperation>> ListByDatabaseAsync(this IDatabaseOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<DatabaseOperation>> ListByDatabaseNextAsync(this IDatabaseOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByDatabaseNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByDatabaseNextWithHttpMessagesAsync(nextPageLink, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

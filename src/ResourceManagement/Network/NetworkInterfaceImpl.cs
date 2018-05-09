@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uTmV0d29ya0ludGVyZmFjZUltcGw=
     internal partial class NetworkInterfaceImpl :
-        GroupableParentResource<INetworkInterface,
+        GroupableParentResourceWithTags<INetworkInterface,
                 NetworkInterfaceInner,
                 NetworkInterfaceImpl,
                 INetworkManager,
@@ -582,6 +582,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             Inner.EnableAcceleratedNetworking = true;
             return this;
+        }
+
+        protected override async Task<NetworkInterfaceInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            return await this.Manager.Inner.NetworkInterfaces.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
         }
     }
 }

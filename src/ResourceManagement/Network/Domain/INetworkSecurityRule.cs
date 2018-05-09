@@ -43,6 +43,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Gets the destination port range that the rule applies to, in the format "##-##", where "" means any.
         /// </summary>
         string DestinationPortRange { get; }
+        /// <summary>
+        /// Gets list of application security group ids specified as destination.
+        /// </summary>
+        System.Collections.Generic.ISet<string> DestinationApplicationSecurityGroupIds { get; }
 
         /// <summary>
         /// Gets the user-defined description of the security rule.
@@ -59,5 +63,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// Gets the direction of the network traffic that the network security rule applies to.
         /// </summary>
         string Direction { get; }
+
+        /// <summary>
+        /// Gets list of application security group ids specified as source.
+        /// </summary>
+        System.Collections.Generic.ISet<string> SourceApplicationSecurityGroupIds { get; }
+
     }
 }

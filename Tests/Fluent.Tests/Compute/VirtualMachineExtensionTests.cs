@@ -31,42 +31,54 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 string vmName = "javavm";
 
                 var azure = TestHelper.CreateRollupClient();
-                var vm = azure.VirtualMachines
-                    .Define(vmName)
-                    .WithRegion(location)
-                    .WithNewResourceGroup(rgName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithoutPrimaryPublicIPAddress()
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
-                    .WithRootUsername("Foo12")
-                    .WithRootPassword("BaR@12abc!")
-                    .WithSize(VirtualMachineSizeTypes.StandardD3V2)
-                    .Create();
 
-                var availableSizes = vm.AvailableSizes();
+                try
+                { 
+                    var vm = azure.VirtualMachines
+                        .Define(vmName)
+                        .WithRegion(location)
+                        .WithNewResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
+                        .WithRootUsername("Foo12")
+                        .WithRootPassword("BaR@12abc!")
+                        .WithSize(VirtualMachineSizeTypes.StandardD3V2)
+                        .Create();
 
-                vm.Update()
-                    .DefineNewExtension("VMAccessForLinux")
-                        .WithPublisher("Microsoft.OSTCExtensions")
-                        .WithType("VMAccessForLinux")
-                        .WithVersion("1.4")
-                        .WithProtectedSetting("username", "Foo12")
-                        .WithProtectedSetting("password", "B12a6@12xyz!")
-                        .WithProtectedSetting("reset_ssh", "true")
-                    .Attach()
-                    .Apply();
+                    var availableSizes = vm.AvailableSizes();
 
-                Assert.True(vm.ListExtensions().Count() > 0);
-                Assert.True(vm.ListExtensions().ContainsKey("VMAccessForLinux"));
-
-                vm.Update()
-                        .UpdateExtension("VMAccessForLinux")
+                    vm.Update()
+                        .DefineNewExtension("VMAccessForLinux")
+                            .WithPublisher("Microsoft.OSTCExtensions")
+                            .WithType("VMAccessForLinux")
+                            .WithVersion("1.4")
                             .WithProtectedSetting("username", "Foo12")
-                            .WithProtectedSetting("password", "muy!234OR")
+                            .WithProtectedSetting("password", "B12a6@12xyz!")
                             .WithProtectedSetting("reset_ssh", "true")
-                        .Parent()
+                        .Attach()
                         .Apply();
+
+                    Assert.True(vm.ListExtensions().Count() > 0);
+                    Assert.True(vm.ListExtensions().ContainsKey("VMAccessForLinux"));
+
+                    vm.Update()
+                            .UpdateExtension("VMAccessForLinux")
+                                .WithProtectedSetting("username", "Foo12")
+                                .WithProtectedSetting("password", "muy!234OR")
+                                .WithProtectedSetting("reset_ssh", "true")
+                            .Parent()
+                            .Apply();
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -89,54 +101,65 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var azure = TestHelper.CreateRollupClient();
                 // Create Linux VM with a custom extension to install MySQL
                 //
-                var vm = azure.VirtualMachines
-                        .Define(vmName)
-                        .WithRegion(location)
-                        .WithNewResourceGroup(rgName)
-                        .WithNewPrimaryNetwork("10.0.0.0/28")
-                        .WithPrimaryPrivateIPAddressDynamic()
-                        .WithoutPrimaryPublicIPAddress()
-                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
-                        .WithRootUsername("Foo12")
-                        .WithRootPassword("BaR@12abc!")
-                        .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
-                        .DefineNewExtension("CustomScriptForLinux")
-                            .WithPublisher("Microsoft.OSTCExtensions")
-                            .WithType("CustomScriptForLinux")
-                            .WithVersion("1.4")
-                            .WithMinorVersionAutoUpgrade()
-                            .WithPublicSetting("fileUris", fileUris)
-                            .WithPublicSetting("commandToExecute", installCommand)
-                        .Attach()
-                        .Create();
+                try
+                { 
+                    var vm = azure.VirtualMachines
+                            .Define(vmName)
+                            .WithRegion(location)
+                            .WithNewResourceGroup(rgName)
+                            .WithNewPrimaryNetwork("10.0.0.0/28")
+                            .WithPrimaryPrivateIPAddressDynamic()
+                            .WithoutPrimaryPublicIPAddress()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
+                            .WithRootUsername("Foo12")
+                            .WithRootPassword("BaR@12abc!")
+                            .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                            .DefineNewExtension("CustomScriptForLinux")
+                                .WithPublisher("Microsoft.OSTCExtensions")
+                                .WithType("CustomScriptForLinux")
+                                .WithVersion("1.4")
+                                .WithMinorVersionAutoUpgrade()
+                                .WithPublicSetting("fileUris", fileUris)
+                                .WithPublicSetting("commandToExecute", installCommand)
+                            .Attach()
+                            .Create();
 
-                Assert.True(vm.ListExtensions().Count > 0);
-                Assert.True(vm.ListExtensions().ContainsKey("CustomScriptForLinux"));
-                IVirtualMachineExtension customScriptExtension;
-                Assert.True(vm.ListExtensions().TryGetValue("CustomScriptForLinux", out customScriptExtension));
-                Assert.NotNull(customScriptExtension);
-                Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension.PublisherName);
-                Assert.Equal("CustomScriptForLinux", customScriptExtension.TypeName);
-                Assert.True(customScriptExtension.AutoUpgradeMinorVersionEnabled);
+                    Assert.True(vm.ListExtensions().Count > 0);
+                    Assert.True(vm.ListExtensions().ContainsKey("CustomScriptForLinux"));
+                    IVirtualMachineExtension customScriptExtension;
+                    Assert.True(vm.ListExtensions().TryGetValue("CustomScriptForLinux", out customScriptExtension));
+                    Assert.NotNull(customScriptExtension);
+                    Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension.PublisherName);
+                    Assert.Equal("CustomScriptForLinux", customScriptExtension.TypeName);
+                    Assert.True(customScriptExtension.AutoUpgradeMinorVersionEnabled);
 
-                // Ensure the public settings are accessible, the protected settings won't be returned from the service.
-                //
-                var publicSettings = customScriptExtension.PublicSettings;
-                Assert.NotNull(publicSettings);
-                Assert.Equal(2, publicSettings.Count);
-                Assert.True(publicSettings.ContainsKey("fileUris"));
-                Assert.True(publicSettings.ContainsKey("commandToExecute"));
-                string commandToExecute = (string)publicSettings["commandToExecute"];
-                Assert.NotNull(commandToExecute);
-                Assert.Equal(commandToExecute, installCommand, true);
+                    // Ensure the public settings are accessible, the protected settings won't be returned from the service.
+                    //
+                    var publicSettings = customScriptExtension.PublicSettings;
+                    Assert.NotNull(publicSettings);
+                    Assert.Equal(2, publicSettings.Count);
+                    Assert.True(publicSettings.ContainsKey("fileUris"));
+                    Assert.True(publicSettings.ContainsKey("commandToExecute"));
+                    string commandToExecute = (string)publicSettings["commandToExecute"];
+                    Assert.NotNull(commandToExecute);
+                    Assert.Equal(commandToExecute, installCommand, true);
 
-                // Remove the custom extension
-                //
-                vm.Update()
-                        .WithoutExtension("CustomScriptForLinux")
-                        .Apply();
+                    // Remove the custom extension
+                    //
+                    vm.Update()
+                            .WithoutExtension("CustomScriptForLinux")
+                            .Apply();
 
-                Assert.True(vm.ListExtensions().Count() == 0);
+                    Assert.True(vm.ListExtensions().Count() == 0);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -153,80 +176,91 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 // Create a Linux VM
                 //
-                var vm = azure.VirtualMachines
-                    .Define(vmName)
-                    .WithRegion(location)
-                    .WithNewResourceGroup(rgName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithoutPrimaryPublicIPAddress()
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
-                    .WithRootUsername("Foo12")
-                    .WithRootPassword("BaR@12abc!")
-                    .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
-                    .DefineNewExtension("VMAccessForLinux")
-                        .WithPublisher("Microsoft.OSTCExtensions")
-                        .WithType("VMAccessForLinux")
-                        .WithVersion("1.4")
+                try
+                { 
+                    var vm = azure.VirtualMachines
+                        .Define(vmName)
+                        .WithRegion(location)
+                        .WithNewResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
+                        .WithRootUsername("Foo12")
+                        .WithRootPassword("BaR@12abc!")
+                        .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                        .DefineNewExtension("VMAccessForLinux")
+                            .WithPublisher("Microsoft.OSTCExtensions")
+                            .WithType("VMAccessForLinux")
+                            .WithVersion("1.4")
+                            .WithProtectedSetting("username", "Foo12")
+                            .WithProtectedSetting("password", "B12a6@12xyz!")
+                            .WithProtectedSetting("reset_ssh", "true")
+                        .Attach()
+                        .Create();
+
+                    Assert.True(vm.ListExtensions().Count() > 0);
+
+                    // Get the created virtual machine via VM List not by VM GET
+                    var virtualMachines = azure.VirtualMachines
+                        .ListByResourceGroup(rgName);
+                    IVirtualMachine vmWithExtensionReference = null;
+                    foreach (var virtualMachine in virtualMachines)
+                    {
+                        if (virtualMachine.Name.Equals(vmName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            vmWithExtensionReference = virtualMachine;
+                            break;
+                        }
+                    }
+                    // The VM retrieved from the list will contain extensions as reference (i.e. with only id)
+                    Assert.NotNull(vmWithExtensionReference);
+
+                    // Update the extension
+                    var vmWithExtensionUpdated = vmWithExtensionReference.Update()
+                        .UpdateExtension("VMAccessForLinux")
                         .WithProtectedSetting("username", "Foo12")
-                        .WithProtectedSetting("password", "B12a6@12xyz!")
+                        .WithProtectedSetting("password", "muy!234OR")
                         .WithProtectedSetting("reset_ssh", "true")
-                    .Attach()
-                    .Create();
+                        .Parent()
+                        .Apply();
 
-                Assert.True(vm.ListExtensions().Count() > 0);
-
-                // Get the created virtual machine via VM List not by VM GET
-                var virtualMachines = azure.VirtualMachines
-                    .ListByResourceGroup(rgName);
-                IVirtualMachine vmWithExtensionReference = null;
-                foreach (var virtualMachine in virtualMachines)
-                {
-                    if (virtualMachine.Name.Equals(vmName, StringComparison.OrdinalIgnoreCase))
+                    // Again getting VM with extension reference
+                    virtualMachines = azure.VirtualMachines
+                        .ListByResourceGroup(rgName);
+                    vmWithExtensionReference = null;
+                    foreach (var virtualMachine in virtualMachines)
                     {
                         vmWithExtensionReference = virtualMachine;
-                        break;
                     }
-                }
-                // The VM retrieved from the list will contain extensions as reference (i.e. with only id)
-                Assert.NotNull(vmWithExtensionReference);
 
-                // Update the extension
-                var vmWithExtensionUpdated = vmWithExtensionReference.Update()
-                    .UpdateExtension("VMAccessForLinux")
-                    .WithProtectedSetting("username", "Foo12")
-                    .WithProtectedSetting("password", "muy!234OR")
-                    .WithProtectedSetting("reset_ssh", "true")
-                    .Parent()
-                    .Apply();
+                    Assert.NotNull(vmWithExtensionReference);
 
-                // Again getting VM with extension reference
-                virtualMachines = azure.VirtualMachines
-                    .ListByResourceGroup(rgName);
-                vmWithExtensionReference = null;
-                foreach (var virtualMachine in virtualMachines)
-                {
-                    vmWithExtensionReference = virtualMachine;
-                }
-
-                Assert.NotNull(vmWithExtensionReference);
-
-                IVirtualMachineExtension accessExtension = null;
-                foreach (var extension in vmWithExtensionReference.ListExtensions().Values)
-                {
-                    if (extension.Name.Equals("VMAccessForLinux", StringComparison.OrdinalIgnoreCase))
+                    IVirtualMachineExtension accessExtension = null;
+                    foreach (var extension in vmWithExtensionReference.ListExtensions().Values)
                     {
-                        accessExtension = extension;
-                        break;
+                        if (extension.Name.Equals("VMAccessForLinux", StringComparison.OrdinalIgnoreCase))
+                        {
+                            accessExtension = extension;
+                            break;
+                        }
                     }
-                }
 
-                // Even though VM's inner contain just extension reference VirtualMachine::extensions()
-                // should resolve the reference and get full extension.
-                Assert.NotNull(accessExtension);
-                Assert.NotNull(accessExtension.PublisherName);
-                Assert.NotNull(accessExtension.TypeName);
-                Assert.NotNull(accessExtension.VersionName);
+                    // Even though VM's inner contain just extension reference VirtualMachine::extensions()
+                    // should resolve the reference and get full extension.
+                    Assert.NotNull(accessExtension);
+                    Assert.NotNull(accessExtension.PublisherName);
+                    Assert.NotNull(accessExtension.TypeName);
+                    Assert.NotNull(accessExtension.VersionName);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
+                }
             }
         }
 
@@ -242,125 +276,136 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                 var azure = TestHelper.CreateRollupClient();
 
-                var storageAccount = azure.StorageAccounts
-                    .Define(stgName)
-                    .WithRegion(Region.USEast2)
-                    .WithNewResourceGroup(rgName)
-                    .Create();
+                try
+                { 
+                    var storageAccount = azure.StorageAccounts
+                        .Define(stgName)
+                        .WithRegion(Region.USEast2)
+                        .WithNewResourceGroup(rgName)
+                        .Create();
 
-                /*** CREATE VIRTUAL MACHINE WITH AN EXTENSION **/
+                    /*** CREATE VIRTUAL MACHINE WITH AN EXTENSION **/
 
-                var keys = storageAccount.GetKeys();
-                Assert.NotNull(keys);
-                Assert.True(keys.Count() > 0);
-                var storageAccountKey = keys.First();
-                string uri = prepareCustomScriptStorageUri(storageAccount.Name, storageAccountKey.Value, "scripts");
+                    var keys = storageAccount.GetKeys();
+                    Assert.NotNull(keys);
+                    Assert.True(keys.Count() > 0);
+                    var storageAccountKey = keys.First();
+                    string uri = prepareCustomScriptStorageUri(storageAccount.Name, storageAccountKey.Value, "scripts");
 
-                List<string> fileUris = new List<string>();
-                fileUris.Add(uri);
-                string commandToExecute = "bash install_apache.sh";
+                    List<string> fileUris = new List<string>();
+                    fileUris.Add(uri);
+                    string commandToExecute = "bash install_apache.sh";
 
-                var vm = azure.VirtualMachines
-                    .Define(vmName)
-                    .WithRegion(region)
-                    .WithExistingResourceGroup(rgName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithoutPrimaryPublicIPAddress()
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
-                    .WithRootUsername("Foo12")
-                    .WithRootPassword("BaR@12abc!")
-                    .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
-                    .DefineNewExtension("CustomScriptForLinux")
-                        .WithPublisher("Microsoft.OSTCExtensions")
-                        .WithType("CustomScriptForLinux")
-                        .WithVersion("1.4")
-                        .WithMinorVersionAutoUpgrade()
-                        .WithPublicSetting("fileUris", fileUris)
-                        .WithProtectedSetting("commandToExecute", commandToExecute)
-                        .WithProtectedSetting("storageAccountName", storageAccount.Name)
-                        .WithProtectedSetting("storageAccountKey", storageAccountKey.Value)
-                        .Attach()
-                    .Create();
+                    var vm = azure.VirtualMachines
+                        .Define(vmName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(rgName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithoutPrimaryPublicIPAddress()
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer14_04_Lts)
+                        .WithRootUsername("Foo12")
+                        .WithRootPassword("BaR@12abc!")
+                        .WithSize(VirtualMachineSizeTypes.StandardDS3V2)
+                        .DefineNewExtension("CustomScriptForLinux")
+                            .WithPublisher("Microsoft.OSTCExtensions")
+                            .WithType("CustomScriptForLinux")
+                            .WithVersion("1.4")
+                            .WithMinorVersionAutoUpgrade()
+                            .WithPublicSetting("fileUris", fileUris)
+                            .WithProtectedSetting("commandToExecute", commandToExecute)
+                            .WithProtectedSetting("storageAccountName", storageAccount.Name)
+                            .WithProtectedSetting("storageAccountKey", storageAccountKey.Value)
+                            .Attach()
+                        .Create();
 
-                Assert.True(vm.ListExtensions().Count > 0);
-                Assert.True(vm.ListExtensions().ContainsKey("CustomScriptForLinux"));
-                IVirtualMachineExtension customScriptExtension;
-                Assert.True(vm.ListExtensions().TryGetValue("CustomScriptForLinux", out customScriptExtension));
-                Assert.NotNull(customScriptExtension);
-                Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension.PublisherName, true);
-                Assert.Equal("CustomScriptForLinux", customScriptExtension.TypeName, true);
-                Assert.True(customScriptExtension.AutoUpgradeMinorVersionEnabled);
+                    Assert.True(vm.ListExtensions().Count > 0);
+                    Assert.True(vm.ListExtensions().ContainsKey("CustomScriptForLinux"));
+                    IVirtualMachineExtension customScriptExtension;
+                    Assert.True(vm.ListExtensions().TryGetValue("CustomScriptForLinux", out customScriptExtension));
+                    Assert.NotNull(customScriptExtension);
+                    Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension.PublisherName, true);
+                    Assert.Equal("CustomScriptForLinux", customScriptExtension.TypeName, true);
+                    Assert.True(customScriptExtension.AutoUpgradeMinorVersionEnabled);
 
-                // Special check for C# implementation, seems runtime changed the actual type
-                // of public settings from dictionary to Newtonsoft.Json.Linq.JObject.
-                // In future such changes needs to be catched before attemptting inner conversion
-                // hence the below special validation (not applicable for Java)
-                //
-                Assert.NotNull(customScriptExtension.Inner);
-                Assert.NotNull(customScriptExtension.Inner.Settings);
-                bool isJObject = customScriptExtension.Inner.Settings is JObject;
-                bool isDictionary = customScriptExtension.Inner.Settings is IDictionary<string, object>;
-                Assert.True(isJObject || isDictionary);
+                    // Special check for C# implementation, seems runtime changed the actual type
+                    // of public settings from dictionary to Newtonsoft.Json.Linq.JObject.
+                    // In future such changes needs to be catched before attemptting inner conversion
+                    // hence the below special validation (not applicable for Java)
+                    //
+                    Assert.NotNull(customScriptExtension.Inner);
+                    Assert.NotNull(customScriptExtension.Inner.Settings);
+                    bool isJObject = customScriptExtension.Inner.Settings is JObject;
+                    bool isDictionary = customScriptExtension.Inner.Settings is IDictionary<string, object>;
+                    Assert.True(isJObject || isDictionary);
 
-                // Ensure the public settings are accessible, the protected settings won't be returned from the service.
-                //
-                var publicSettings = customScriptExtension.PublicSettings;
-                Assert.NotNull(publicSettings);
-                Assert.Equal(1, publicSettings.Count);
-                Assert.True(publicSettings.ContainsKey("fileUris"));
-                string fileUrisString = (publicSettings["fileUris"]).ToString();
-                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
-                {
-                    Assert.Contains(uri, fileUrisString);
+                    // Ensure the public settings are accessible, the protected settings won't be returned from the service.
+                    //
+                    var publicSettings = customScriptExtension.PublicSettings;
+                    Assert.NotNull(publicSettings);
+                    Assert.Equal(1, publicSettings.Count);
+                    Assert.True(publicSettings.ContainsKey("fileUris"));
+                    string fileUrisString = (publicSettings["fileUris"]).ToString();
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.Contains(uri, fileUrisString);
+                    }
+
+                    /*** UPDATE THE EXTENSION WITH NEW PUBLIC AND PROTECTED SETTINGS **/
+
+                    // Regenerate the storage account key
+                    //
+                    storageAccount.RegenerateKey(storageAccountKey.KeyName);
+                    keys = storageAccount.GetKeys();
+                    Assert.NotNull(keys);
+                    Assert.True(keys.Count() > 0);
+                    var updatedStorageAccountKey = keys.FirstOrDefault(key => key.KeyName.Equals(storageAccountKey.KeyName, StringComparison.OrdinalIgnoreCase));
+                    Assert.NotNull(updatedStorageAccountKey);
+                    Assert.NotEqual(updatedStorageAccountKey.Value, storageAccountKey.Value);
+
+                    // Upload the script to a different container ("scripts2") in the same storage account
+                    //
+                    var uri2 = prepareCustomScriptStorageUri(storageAccount.Name, updatedStorageAccountKey.Value, "scripts2");
+                    List<string> fileUris2 = new List<string>();
+                    fileUris2.Add(uri2);
+                    string commandToExecute2 = "bash install_apache.sh";
+
+                    vm.Update()
+                        .UpdateExtension("CustomScriptForLinux")
+                            .WithPublicSetting("fileUris", fileUris2)
+                            .WithProtectedSetting("commandToExecute", commandToExecute2)
+                            .WithProtectedSetting("storageAccountName", storageAccount.Name)
+                            .WithProtectedSetting("storageAccountKey", updatedStorageAccountKey.Value)
+                            .Parent()
+                        .Apply();
+
+                    Assert.True(vm.ListExtensions().Count > 0);
+                    Assert.True(vm.ListExtensions().ContainsKey("CustomScriptForLinux"));
+                    IVirtualMachineExtension customScriptExtension2;
+                    Assert.True(vm.ListExtensions().TryGetValue("CustomScriptForLinux", out customScriptExtension2));
+                    Assert.NotNull(customScriptExtension2);
+                    Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension2.PublisherName, true);
+                    Assert.Equal("CustomScriptForLinux", customScriptExtension2.TypeName, true);
+                    Assert.True(customScriptExtension2.AutoUpgradeMinorVersionEnabled);
+
+                    var publicSettings2 = customScriptExtension2.PublicSettings;
+                    Assert.NotNull(publicSettings2);
+                    Assert.Equal(1, publicSettings2.Count);
+                    Assert.True(publicSettings2.ContainsKey("fileUris"));
+
+                    string fileUris2String = (publicSettings2["fileUris"]).ToString();
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.Contains(uri2, fileUris2String);
+                    }
                 }
-
-                /*** UPDATE THE EXTENSION WITH NEW PUBLIC AND PROTECTED SETTINGS **/
-
-                // Regenerate the storage account key
-                //
-                storageAccount.RegenerateKey(storageAccountKey.KeyName);
-                keys = storageAccount.GetKeys();
-                Assert.NotNull(keys);
-                Assert.True(keys.Count() > 0);
-                var updatedStorageAccountKey = keys.FirstOrDefault(key => key.KeyName.Equals(storageAccountKey.KeyName, StringComparison.OrdinalIgnoreCase));
-                Assert.NotNull(updatedStorageAccountKey);
-                Assert.NotEqual(updatedStorageAccountKey.Value, storageAccountKey.Value);
-
-                // Upload the script to a different container ("scripts2") in the same storage account
-                //
-                var uri2 = prepareCustomScriptStorageUri(storageAccount.Name, updatedStorageAccountKey.Value, "scripts2");
-                List<string> fileUris2 = new List<string>();
-                fileUris2.Add(uri2);
-                string commandToExecute2 = "bash install_apache.sh";
-
-                vm.Update()
-                    .UpdateExtension("CustomScriptForLinux")
-                        .WithPublicSetting("fileUris", fileUris2)
-                        .WithProtectedSetting("commandToExecute", commandToExecute2)
-                        .WithProtectedSetting("storageAccountName", storageAccount.Name)
-                        .WithProtectedSetting("storageAccountKey", updatedStorageAccountKey.Value)
-                        .Parent()
-                    .Apply();
-
-                Assert.True(vm.ListExtensions().Count > 0);
-                Assert.True(vm.ListExtensions().ContainsKey("CustomScriptForLinux"));
-                IVirtualMachineExtension customScriptExtension2;
-                Assert.True(vm.ListExtensions().TryGetValue("CustomScriptForLinux", out customScriptExtension2));
-                Assert.NotNull(customScriptExtension2);
-                Assert.Equal("Microsoft.OSTCExtensions", customScriptExtension2.PublisherName, true);
-                Assert.Equal("CustomScriptForLinux", customScriptExtension2.TypeName, true);
-                Assert.True(customScriptExtension2.AutoUpgradeMinorVersionEnabled);
-
-                var publicSettings2 = customScriptExtension2.PublicSettings;
-                Assert.NotNull(publicSettings2);
-                Assert.Equal(1, publicSettings2.Count);
-                Assert.True(publicSettings2.ContainsKey("fileUris"));
-
-                string fileUris2String = (publicSettings2["fileUris"]).ToString();
-                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                finally
                 {
-                    Assert.Contains(uri2, fileUris2String);
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
                 }
             }
         }

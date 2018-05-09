@@ -85,5 +85,37 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             return this.WithPfxPassword(password) as ApplicationGatewaySslCertificate.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
         }
+
+
+        /// <summary>
+        /// Specifies the PFX (PKCS#12) file to get the private key content from.
+        /// </summary>
+        /// <param name="pfxFile">A file in the PFX format.</param>
+        /// <return>The next stage of the definition.</return>
+        /// <throws>System.IO.IOException when there are problems with the provided file.</throws>
+        ApplicationGatewaySslCertificate.UpdateDefinition.IWithPassword<ApplicationGateway.Update.IUpdate> ApplicationGatewaySslCertificate.UpdateDefinition.IWithData<ApplicationGateway.Update.IUpdate>.WithPfxFromFile(FileInfo pfxFile)
+        {
+            return this.WithPfxFromFile(pfxFile) as ApplicationGatewaySslCertificate.UpdateDefinition.IWithPassword<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the password currently used to protect the provided PFX content of the SSL certificate.
+        /// </summary>
+        /// <param name="password">A password.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewaySslCertificate.UpdateDefinition.IWithPassword<ApplicationGateway.Update.IUpdate> ApplicationGatewaySslCertificate.UpdateDefinition.IWithData<ApplicationGateway.Update.IUpdate>.WithPfxFromBytes(params byte[] pfxData)
+        {
+            return this.WithPfxFromBytes(pfxData) as ApplicationGatewaySslCertificate.UpdateDefinition.IWithPassword<ApplicationGateway.Update.IUpdate>;
+        }
+
+        /// <summary>
+        /// Specifies the password currently used to protect the provided PFX content of the SSL certificate.
+        /// </summary>
+        /// <param name="password">A password.</param>
+        /// <return>The next stage of the definition.</return>
+        ApplicationGatewaySslCertificate.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewaySslCertificate.UpdateDefinition.IWithPassword<ApplicationGateway.Update.IUpdate>.WithPfxPassword(string password)
+        {
+            return this.WithPfxPassword(password) as ApplicationGatewaySslCertificate.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+        }
     }
 }

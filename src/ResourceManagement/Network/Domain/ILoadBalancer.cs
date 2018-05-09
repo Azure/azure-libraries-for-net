@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.LoadBalancerInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.ILoadBalancer>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<LoadBalancer.Update.IUpdate>,
+        Microsoft.Azure.Management.Network.Fluent.IUpdatableWithTags<Microsoft.Azure.Management.Network.Fluent.ILoadBalancer>,
         Microsoft.Azure.Management.Network.Fluent.IHasLoadBalancingRules,
         Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBeta
     {

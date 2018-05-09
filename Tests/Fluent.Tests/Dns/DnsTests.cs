@@ -316,7 +316,8 @@ namespace Fluent.Tests.Dns
                     Assert.StartsWith("mail.contoso-mail-exchange1.com", mxRecordSet.Records[0].Exchange);
 
                     azure.DnsZones.DeleteById(dnsZone.Id);
-                } finally
+                }
+                finally
                 {
                     try
                     {

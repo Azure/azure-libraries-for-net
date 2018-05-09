@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System.Linq;
+using Microsoft.Azure.Management.Network.Fluent.UpdatableWithTags.UpdatableWithTags;
 
 namespace Microsoft.Azure.Management.Network.Fluent
 {
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm5ldHdvcmsuaW1wbGVtZW50YXRpb24uVmlydHVhbE5ldHdvcmtHYXRld2F5SW1wbA==
     internal partial class VirtualNetworkGatewayImpl :
-        GroupableParentResource<IVirtualNetworkGateway,
+        GroupableParentResourceWithTags<IVirtualNetworkGateway,
             VirtualNetworkGatewayInner,
             VirtualNetworkGatewayImpl,
             INetworkManager,
@@ -491,6 +492,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 Name = name
             };
             return new VirtualNetworkGatewayIPConfigurationImpl(inner, this);
+        }
+
+        protected override async Task<VirtualNetworkGatewayInner> ApplyTagsToInnerAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            return await this.Manager.Inner.VirtualNetworkGateways.UpdateTagsAsync(ResourceGroupName, Name, Inner.Tags, cancellationToken);
         }
     }
 }

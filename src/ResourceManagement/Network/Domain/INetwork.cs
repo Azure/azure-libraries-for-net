@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Network.Fluent.INetworkManager, Models.VirtualNetworkInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.INetwork>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<Network.Update.IUpdate>,
+        Microsoft.Azure.Management.Network.Fluent.IUpdatableWithTags<Microsoft.Azure.Management.Network.Fluent.INetwork>,
         Microsoft.Azure.Management.Network.Fluent.INetworkBeta
     {
         /// <summary>
@@ -23,9 +24,25 @@ namespace Microsoft.Azure.Management.Network.Fluent
         System.Collections.Generic.IReadOnlyList<string> AddressSpaces { get; }
 
         /// <summary>
+        /// Gets the DDoS protection plan id associated with the virtual network.
+        /// </summary>
+        string DdosProtectionPlanId { get; }
+
+        /// <summary>
         /// Gets list of DNS server IP addresses associated with this virtual network.
         /// </summary>
         System.Collections.Generic.IReadOnlyList<string> DnsServerIPs { get; }
+
+        /// <summary>
+        /// Gets whether DDoS protection is enabled for all the protected resources
+        /// in the virtual network. It requires a DDoS protection plan associated with the resource.
+        /// </summary>
+        bool IsDdosProtectionEnabled { get; }
+
+        /// <summary>
+        /// Gets whether VM protection is enabled for all the subnets in the virtual network.
+        /// </summary>
+        bool IsVmProtectionEnabled { get; }
 
         /// <summary>
         /// Gets subnets of this virtual network as a map indexed by subnet name

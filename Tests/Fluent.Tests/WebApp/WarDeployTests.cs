@@ -28,26 +28,37 @@ namespace Fluent.Tests.WebApp
 
                 var appServiceManager = TestHelper.CreateAppServiceManager();
 
-                // Create web app
-                var webApp = appServiceManager.WebApps.Define(WebAppName)
-                    .WithRegion(Region.USWest)
-                    .WithNewResourceGroup(GroupName)
-                    .WithNewWindowsPlan(PricingTier.StandardS1)
-                    .WithJavaVersion(JavaVersion.V8Newest)
-                    .WithWebContainer(WebContainer.Tomcat8_5Newest)
-                    .Create();
-
-                webApp.WarDeploy(new System.IO.FileInfo(Path.Combine(".", "Assets", "helloworld.war")));
-
-                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                try
                 {
-                    Assert.NotNull(webApp);
-                    var response = await TestHelper.CheckAddress("http://" + WebAppName + "." + "azurewebsites.net");
-                    Assert.Equal(System.Net.HttpStatusCode.OK.ToString(), response.StatusCode.ToString());
+                    // Create web app
+                    var webApp = appServiceManager.WebApps.Define(WebAppName)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName)
+                        .WithNewWindowsPlan(PricingTier.StandardS1)
+                        .WithJavaVersion(JavaVersion.V8Newest)
+                        .WithWebContainer(WebContainer.Tomcat8_5Newest)
+                        .Create();
 
-                    var body = await response.Content.ReadAsStringAsync();
-                    Assert.NotNull(body);
-                    Assert.Contains("Azure Samples Hello World", body);
+                    webApp.WarDeploy(new System.IO.FileInfo(Path.Combine(".", "Assets", "helloworld.war")));
+
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        Assert.NotNull(webApp);
+                        var response = await TestHelper.CheckAddress("http://" + WebAppName + "." + "azurewebsites.net");
+                        Assert.Equal(System.Net.HttpStatusCode.OK.ToString(), response.StatusCode.ToString());
+
+                        var body = await response.Content.ReadAsStringAsync();
+                        Assert.NotNull(body);
+                        Assert.Contains("Azure Samples Hello World", body);
+                    }
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName);
+                    }
+                    catch { }
                 }
             }
         }

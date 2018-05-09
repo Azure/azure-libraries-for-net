@@ -21,32 +21,43 @@ namespace Fluent.Tests.WebApp
             {
                 var appServiceManager = TestHelper.CreateAppServiceManager();
 
-                // CREATE
-                var certificateOrder = appServiceManager.AppServiceCertificateOrders
-                    .Define(CertificateName)
-                    .WithExistingResourceGroup(GroupName)
-                    .WithHostName("graph-dm7720.com")
-                    .WithStandardSku()
-                    .WithDomainVerification(appServiceManager.AppServiceDomains.GetByResourceGroup("javacsmrg9b9912262", "graph-dm7720.com"))
-                    .WithNewKeyVault("graphvault", Region.USWest)
-                    .WithValidYears(1)
-                    .Create();
-                Assert.NotNull(certificateOrder);
-                // GET
-                Assert.NotNull(appServiceManager.AppServiceCertificateOrders.GetByResourceGroup(GroupName, CertificateName));
-                // LIST
-                var certificateOrders = appServiceManager.AppServiceCertificateOrders.ListByResourceGroup(GroupName);
-                var found = false;
-                foreach (var co in certificateOrders)
+                try
                 {
-                    if (CertificateName.Equals(co.Name))
+                    // CREATE
+                    var certificateOrder = appServiceManager.AppServiceCertificateOrders
+                        .Define(CertificateName)
+                        .WithExistingResourceGroup(GroupName)
+                        .WithHostName("graph-dm7720.com")
+                        .WithStandardSku()
+                        .WithDomainVerification(appServiceManager.AppServiceDomains.GetByResourceGroup("javacsmrg9b9912262", "graph-dm7720.com"))
+                        .WithNewKeyVault("graphvault", Region.USWest)
+                        .WithValidYears(1)
+                        .Create();
+                    Assert.NotNull(certificateOrder);
+                    // GET
+                    Assert.NotNull(appServiceManager.AppServiceCertificateOrders.GetByResourceGroup(GroupName, CertificateName));
+                    // LIST
+                    var certificateOrders = appServiceManager.AppServiceCertificateOrders.ListByResourceGroup(GroupName);
+                    var found = false;
+                    foreach (var co in certificateOrders)
                     {
-                        found = true;
-                        break;
+                        if (CertificateName.Equals(co.Name))
+                        {
+                            found = true;
+                            break;
+                        }
                     }
+                    Assert.True(found);
+                    // UPDATE
                 }
-                Assert.True(found);
-                // UPDATE
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName);
+                    }
+                    catch { }
+                }
             }
         }
     }

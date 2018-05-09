@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <PackageId>Microsoft.Azure.Management.Monitor.Fluent</PackageId>
-        <Version>1.9.1</Version>
+        <Version>1.10.0</Version>
         <AssemblyName>Microsoft.Azure.Management.Monitor.Fluent</AssemblyName>
         <RootNamespace>Microsoft.Azure.Management.Monitor.Fluent</RootNamespace>
         <AssemblyTitle>Microsoft Azure Monitor Management Library</AssemblyTitle>
@@ -28,7 +28,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.10" />
-        <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="1.9.1" />
+        <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="1.10.0" />
     </ItemGroup>
     <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
         <DefineConstants>$(DefineConstants);NETSTANDARD13;PORTABLE</DefineConstants>
@@ -44,7 +44,6 @@
         <Reference Include="Microsoft.CSharp" />
         <Reference Include="System.Net" />
         <Reference Include="System.Net.Http" />
-        <Reference Include="System.Runtime" />
         <Reference Include="System.Runtime.Serialization" />
     </ItemGroup>
     <ItemGroup>

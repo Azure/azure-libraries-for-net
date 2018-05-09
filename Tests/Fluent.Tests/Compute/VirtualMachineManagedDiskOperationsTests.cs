@@ -602,6 +602,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             }
         }
 
+        [Fact]
         public void CanCreateVirtualMachineWithManagedDiskInManagedAvailabilitySet()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))

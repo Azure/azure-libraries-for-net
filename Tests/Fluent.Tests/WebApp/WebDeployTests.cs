@@ -24,27 +24,38 @@ namespace Fluent.Tests.WebApp
 
                 var appServiceManager = TestHelper.CreateAppServiceManager();
 
-                // Create with new app service plan
-                var webApp1 = appServiceManager.WebApps.Define(WebAppName1)
-                    .WithRegion(Region.USWest)
-                    .WithNewResourceGroup(GroupName1)
-                    .WithNewWindowsPlan(PricingTier.BasicB1)
-                    .WithNetFrameworkVersion(NetFrameworkVersion.V4_6)
-                    .Create();
-                Assert.NotNull(webApp1);
-                Assert.Equal(Region.USWest, webApp1.Region);
-                var plan1 = appServiceManager.AppServicePlans.GetById(webApp1.AppServicePlanId);
-                Assert.NotNull(plan1);
-                Assert.Equal(Region.USWest, plan1.Region);
-                Assert.Equal(PricingTier.BasicB1, plan1.PricingTier);
+                try
+                {
+                    // Create with new app service plan
+                    var webApp1 = appServiceManager.WebApps.Define(WebAppName1)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName1)
+                        .WithNewWindowsPlan(PricingTier.BasicB1)
+                        .WithNetFrameworkVersion(NetFrameworkVersion.V4_6)
+                        .Create();
+                    Assert.NotNull(webApp1);
+                    Assert.Equal(Region.USWest, webApp1.Region);
+                    var plan1 = appServiceManager.AppServicePlans.GetById(webApp1.AppServicePlanId);
+                    Assert.NotNull(plan1);
+                    Assert.Equal(Region.USWest, plan1.Region);
+                    Assert.Equal(PricingTier.BasicB1, plan1.PricingTier);
 
-                IWebDeployment deployment = webApp1.Deploy()
-                    .WithPackageUri("https://github.com/Azure/azure-libraries-for-net/raw/master/Tests/Fluent.Tests/Assets/bakery-webapp.zip")
-                    .WithExistingDeploymentsDeleted(true)
-                    .Execute();
+                    IWebDeployment deployment = webApp1.Deploy()
+                        .WithPackageUri("https://github.com/Azure/azure-libraries-for-net/raw/master/Tests/Fluent.Tests/Assets/bakery-webapp.zip")
+                        .WithExistingDeploymentsDeleted(true)
+                        .Execute();
 
-                Assert.NotNull(deployment);
-                Assert.True(deployment.Complete);
+                    Assert.NotNull(deployment);
+                    Assert.True(deployment.Complete);
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
+                    }
+                    catch { }
+                }
             }
         }
     }

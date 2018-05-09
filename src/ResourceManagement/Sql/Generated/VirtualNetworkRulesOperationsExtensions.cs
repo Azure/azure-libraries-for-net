@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<VirtualNetworkRuleInner> GetAsync(this IVirtualNetworkRulesOperations operations, string resourceGroupName, string serverName, string virtualNetworkRuleName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, virtualNetworkRuleName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, virtualNetworkRuleName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<VirtualNetworkRuleInner> CreateOrUpdateAsync(this IVirtualNetworkRulesOperations operations, string resourceGroupName, string serverName, string virtualNetworkRuleName, VirtualNetworkRuleInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, virtualNetworkRuleName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, virtualNetworkRuleName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task DeleteAsync(this IVirtualNetworkRulesOperations operations, string resourceGroupName, string serverName, string virtualNetworkRuleName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, virtualNetworkRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, virtualNetworkRuleName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<VirtualNetworkRuleInner>> ListByServerAsync(this IVirtualNetworkRulesOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<VirtualNetworkRuleInner> BeginCreateOrUpdateAsync(this IVirtualNetworkRulesOperations operations, string resourceGroupName, string serverName, string virtualNetworkRuleName, VirtualNetworkRuleInner parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, virtualNetworkRuleName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, virtualNetworkRuleName, parameters, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task BeginDeleteAsync(this IVirtualNetworkRulesOperations operations, string resourceGroupName, string serverName, string virtualNetworkRuleName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, virtualNetworkRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, virtualNetworkRuleName, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
             /// </param>
             public static async Task<IPage<VirtualNetworkRuleInner>> ListByServerNextAsync(this IVirtualNetworkRulesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByServerNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByServerNextWithHttpMessagesAsync(nextPageLink, SqlManagementClient.SetJsonAcceptHeader(), cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

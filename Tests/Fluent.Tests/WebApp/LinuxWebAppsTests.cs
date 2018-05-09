@@ -32,88 +32,104 @@ namespace Fluent.Tests.WebApp
 
                 var appServiceManager = TestHelper.CreateAppServiceManager();
 
-                // Create with new app service plan
-                var webApp1 = appServiceManager.WebApps.Define(WebAppName1)
-                    .WithRegion(Region.USWest)
-                    .WithNewResourceGroup(GroupName1)
-                    .WithNewLinuxPlan(PricingTier.BasicB1)
-                    .WithPublicDockerHubImage("wordpress")
-                    .Create();
-                Assert.NotNull(webApp1);
-                Assert.Equal(Region.USWest, webApp1.Region);
-                var plan1 = appServiceManager.AppServicePlans.GetById(webApp1.AppServicePlanId);
-                Assert.NotNull(plan1);
-                Assert.Equal(Region.USWest, plan1.Region);
-                Assert.Equal(PricingTier.BasicB1, plan1.PricingTier);
-                Assert.Equal(OperatingSystem.Linux, plan1.OperatingSystem);
-                Assert.Equal(OperatingSystem.Linux, webApp1.OperatingSystem);
-
-                // Create in a new group with existing app service plan
-                var webApp2 = appServiceManager.WebApps.Define(WebAppName2)
-                    .WithExistingWindowsPlan(plan1)
-                    .WithNewResourceGroup(GroupName2)
-                    .Create();
-                Assert.NotNull(webApp2);
-                Assert.Equal(Region.USWest, webApp2.Region);
-                Assert.Equal(OperatingSystem.Linux, webApp2.OperatingSystem);
-
-                // Get
-                var webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName1, webApp1.Name);
-                Assert.Equal(webApp1.Id, webApp.Id);
-                Assert.Equal(OperatingSystem.Linux, webApp.OperatingSystem);
-                webApp = appServiceManager.WebApps.GetById(webApp2.Id);
-                Assert.Equal(webApp2.Name, webApp.Name);
-                Assert.Equal(OperatingSystem.Linux, webApp.OperatingSystem);
-
-                // List
-                var webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName1);
-                Assert.Single(webApps);
-                webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName2);
-                Assert.Single(webApps);
-
-                // View logs
-                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                try
                 {
-                    // warm up
-                    CheckAddress("http://" + webApp.DefaultHostName);
-                }
-                Stream logs = webApp.GetContainerLogs();
-                Assert.True(logs.Length > 0);
-                Stream logsZip = webApp.GetContainerLogsZip();
-                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
-                {
-                    var archive = new ZipArchive(logsZip);
-                    var entry = archive.Entries[0];
-                    Assert.NotNull(entry);
-                    Stream stream = entry.Open();
-                    Assert.NotNull(stream);
-                    using (var memory = new MemoryStream())
+                    // Create with new app service plan
+                    var webApp1 = appServiceManager.WebApps.Define(WebAppName1)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName1)
+                        .WithNewLinuxPlan(PricingTier.BasicB1)
+                        .WithPublicDockerHubImage("wordpress")
+                        .Create();
+                    Assert.NotNull(webApp1);
+                    Assert.Equal(Region.USWest, webApp1.Region);
+                    var plan1 = appServiceManager.AppServicePlans.GetById(webApp1.AppServicePlanId);
+                    Assert.NotNull(plan1);
+                    Assert.Equal(Region.USWest, plan1.Region);
+                    Assert.Equal(PricingTier.BasicB1, plan1.PricingTier);
+                    Assert.Equal(OperatingSystem.Linux, plan1.OperatingSystem);
+                    Assert.Equal(OperatingSystem.Linux, webApp1.OperatingSystem);
+
+                    // Create in a new group with existing app service plan
+                    var webApp2 = appServiceManager.WebApps.Define(WebAppName2)
+                        .WithExistingWindowsPlan(plan1)
+                        .WithNewResourceGroup(GroupName2)
+                        .Create();
+                    Assert.NotNull(webApp2);
+                    Assert.Equal(Region.USWest, webApp2.Region);
+                    Assert.Equal(OperatingSystem.Linux, webApp2.OperatingSystem);
+
+                    // Get
+                    var webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName1, webApp1.Name);
+                    Assert.Equal(webApp1.Id, webApp.Id);
+                    Assert.Equal(OperatingSystem.Linux, webApp.OperatingSystem);
+                    webApp = appServiceManager.WebApps.GetById(webApp2.Id);
+                    Assert.Equal(webApp2.Name, webApp.Name);
+                    Assert.Equal(OperatingSystem.Linux, webApp.OperatingSystem);
+
+                    // List
+                    var webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName1);
+                    Assert.Single(webApps);
+                    webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName2);
+                    Assert.Single(webApps);
+
+                    // View logs
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
                     {
-                        stream.CopyTo(memory);
-                        Assert.True(memory.Length > 0);
+                        // warm up
+                        CheckAddress("http://" + webApp.DefaultHostName);
                     }
+                    Stream logs = webApp.GetContainerLogs();
+                    Assert.True(logs.Length > 0);
+                    Stream logsZip = webApp.GetContainerLogsZip();
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        var archive = new ZipArchive(logsZip);
+                        var entry = archive.Entries[0];
+                        Assert.NotNull(entry);
+                        Stream stream = entry.Open();
+                        Assert.NotNull(stream);
+                        using (var memory = new MemoryStream())
+                        {
+                            stream.CopyTo(memory);
+                            Assert.True(memory.Length > 0);
+                        }
+                    }
+
+                    // Update
+                    webApp1.Update()
+                        .WithNewAppServicePlan(PricingTier.StandardS2)
+                        .Apply();
+                    var plan2 = appServiceManager.AppServicePlans.GetById(webApp1.AppServicePlanId);
+                    Assert.NotNull(plan2);
+                    Assert.NotEqual(plan1.Id, plan2.Id);
+                    Assert.Equal(Region.USWest, plan2.Region);
+                    Assert.Equal(PricingTier.StandardS2, plan2.PricingTier);
+                    Assert.Equal(OperatingSystem.Linux, plan2.OperatingSystem);
+
+                    // Update 2
+                    webApp1.Update()
+                        .WithBuiltInImage(RuntimeStack.NodeJS_6_6)
+                        .DefineSourceControl()
+                            .WithPublicGitRepository("https://github.com/jianghaolu/azure-site-test")
+                            .WithBranch("master")
+                            .Attach()
+                        .Apply();
+                    Assert.NotNull(webApp1);
                 }
-
-                // Update
-                webApp1.Update()
-                    .WithNewAppServicePlan(PricingTier.StandardS2)
-                    .Apply();
-                var plan2 = appServiceManager.AppServicePlans.GetById(webApp1.AppServicePlanId);
-                Assert.NotNull(plan2);
-                Assert.NotEqual(plan1.Id, plan2.Id);
-                Assert.Equal(Region.USWest, plan2.Region);
-                Assert.Equal(PricingTier.StandardS2, plan2.PricingTier);
-                Assert.Equal(OperatingSystem.Linux, plan2.OperatingSystem);
-
-                // Update 2
-                webApp1.Update()
-                    .WithBuiltInImage(RuntimeStack.NodeJS_6_6)
-                    .DefineSourceControl()
-                        .WithPublicGitRepository("https://github.com/jianghaolu/azure-site-test")
-                        .WithBranch("master")
-                        .Attach()
-                    .Apply();
-                Assert.NotNull(webApp1);
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
+                    }
+                    catch { }
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName2);
+                    }
+                    catch { }
+                }
             }
         }
 

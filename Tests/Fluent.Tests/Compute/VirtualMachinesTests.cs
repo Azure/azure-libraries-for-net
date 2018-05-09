@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Azure.Management.Network.Fluent.Models;
 using Xunit;
 
 namespace Fluent.Tests.Compute.VirtualMachine
@@ -48,7 +49,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .FromPort(80)
                             .ToAnyAddress()
                             .ToPort(80)
-                            .WithProtocol("tcp")
+                            .WithProtocol(SecurityRuleProtocol.Tcp)
                             .Attach()
                         .Create();
 
@@ -294,35 +295,49 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var cloudInitEncodedString = Convert.ToBase64String(Encoding.ASCII.GetBytes("#cloud-config\r\npackages:\r\n - pwgen"));
 
                 var azure = TestHelper.CreateRollupClient();
+                string rgName = null;
 
-                var publicIPAddress = azure.PublicIPAddresses.Define(publicIPDnsLabel)
-                    .WithRegion(region)
-                    .WithNewResourceGroup()
-                    .WithLeafDomainLabel(publicIPDnsLabel)
-                    .Create();
+                try
+                { 
+                    var publicIPAddress = azure.PublicIPAddresses.Define(publicIPDnsLabel)
+                        .WithRegion(region)
+                        .WithNewResourceGroup()
+                        .WithLeafDomainLabel(publicIPDnsLabel)
+                        .Create();
 
-                var virtualMachine = azure.VirtualMachines.Define(vmName)
-                    .WithRegion(region)
-                    .WithExistingResourceGroup(publicIPAddress.ResourceGroupName)
-                    .WithNewPrimaryNetwork("10.0.0.0/28")
-                    .WithPrimaryPrivateIPAddressDynamic()
-                    .WithExistingPrimaryPublicIPAddress(publicIPAddress)
-                    .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                    .WithRootUsername(username)
-                    .WithRootPassword(password)
-                    .WithUnmanagedDisks()
-                    .WithCustomData(cloudInitEncodedString)
-                    .Create();
+                    rgName = publicIPAddress.ResourceGroupName;
 
-                publicIPAddress.Refresh();
-                Assert.True(publicIPAddress.HasAssignedNetworkInterface);
-                Assert.NotNull(publicIPAddress.Fqdn);
+                    var virtualMachine = azure.VirtualMachines.Define(vmName)
+                        .WithRegion(region)
+                        .WithExistingResourceGroup(publicIPAddress.ResourceGroupName)
+                        .WithNewPrimaryNetwork("10.0.0.0/28")
+                        .WithPrimaryPrivateIPAddressDynamic()
+                        .WithExistingPrimaryPublicIPAddress(publicIPAddress)
+                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                        .WithRootUsername(username)
+                        .WithRootPassword(password)
+                        .WithUnmanagedDisks()
+                        .WithCustomData(cloudInitEncodedString)
+                        .Create();
 
-                if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    publicIPAddress.Refresh();
+                    Assert.True(publicIPAddress.HasAssignedNetworkInterface);
+                    Assert.NotNull(publicIPAddress.Fqdn);
+
+                    if (HttpMockServer.Mode != HttpRecorderMode.Playback)
+                    {
+                        var commandOutput = TestHelper.TrySsh(publicIPAddress.Fqdn, 22, username, password, "pwgen;");
+
+                        Assert.DoesNotContain("the program 'pwgen' is currently not installed", commandOutput.ToLowerInvariant());
+                    }
+                }
+                finally
                 {
-                    var commandOutput = TestHelper.TrySsh(publicIPAddress.Fqdn, 22, username, password, "pwgen;");
-
-                    Assert.DoesNotContain("the program 'pwgen' is currently not installed", commandOutput.ToLowerInvariant());
+                    try
+                    {
+                        azure.ResourceGroups.DeleteByName(rgName);
+                    }
+                    catch { }
                 }
             }
         }
@@ -451,98 +466,109 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 var resourceManager = TestHelper.CreateResourceManager();
                 var storageManager = TestHelper.CreateStorageManager();
 
-                // Create a premium storage account for virtual machine data disk
-                //
-                var storageAccount = storageManager.StorageAccounts.Define(storageName)
-                        .WithRegion(Location)
-                        .WithNewResourceGroup(groupName)
-                        .WithSku(Microsoft.Azure.Management.Storage.Fluent.Models.SkuName.PremiumLRS)
-                        .Create();
+                try
+                { 
+                    // Create a premium storage account for virtual machine data disk
+                    //
+                    var storageAccount = storageManager.StorageAccounts.Define(storageName)
+                            .WithRegion(Location)
+                            .WithNewResourceGroup(groupName)
+                            .WithSku(Microsoft.Azure.Management.Storage.Fluent.Models.SkuName.PremiumLRS)
+                            .Create();
 
-                // Creates a virtual machine with an unmanaged data disk that gets stored in the above
-                // premium storage account
-                //
-                var virtualMachine = computeManager.VirtualMachines
-                        .Define(VMName)
-                        .WithRegion(Location)
-                        .WithExistingResourceGroup(groupName)
-                        .WithNewPrimaryNetwork("10.0.0.0/28")
-                        .WithPrimaryPrivateIPAddressDynamic()
-                        .WithoutPrimaryPublicIPAddress()
-                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                        .WithRootUsername("Foo12")
-                        .WithRootPassword("abc!@#F0orL")
-                        .WithUnmanagedDisks()
-                        .DefineUnmanagedDataDisk("disk1")
-                            .WithNewVhd(100)
-                            .WithLun(2)
-                            .StoreAt(storageAccount.Name, "diskvhds", "datadisk1vhd.vhd")
-                            .Attach()
-                        .DefineUnmanagedDataDisk("disk2")
-                            .WithNewVhd(100)
-                            .WithLun(3)
-                            .StoreAt(storageAccount.Name, "diskvhds", "datadisk2vhd.vhd")
-                            .Attach()
-                        .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
-                        .WithOSDiskCaching(CachingTypes.ReadWrite)
-                        .Create();
+                    // Creates a virtual machine with an unmanaged data disk that gets stored in the above
+                    // premium storage account
+                    //
+                    var virtualMachine = computeManager.VirtualMachines
+                            .Define(VMName)
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(groupName)
+                            .WithNewPrimaryNetwork("10.0.0.0/28")
+                            .WithPrimaryPrivateIPAddressDynamic()
+                            .WithoutPrimaryPublicIPAddress()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                            .WithRootUsername("Foo12")
+                            .WithRootPassword("abc!@#F0orL")
+                            .WithUnmanagedDisks()
+                            .DefineUnmanagedDataDisk("disk1")
+                                .WithNewVhd(100)
+                                .WithLun(2)
+                                .StoreAt(storageAccount.Name, "diskvhds", "datadisk1vhd.vhd")
+                                .Attach()
+                            .DefineUnmanagedDataDisk("disk2")
+                                .WithNewVhd(100)
+                                .WithLun(3)
+                                .StoreAt(storageAccount.Name, "diskvhds", "datadisk2vhd.vhd")
+                                .Attach()
+                            .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
+                            .WithOSDiskCaching(CachingTypes.ReadWrite)
+                            .Create();
 
-                // Validate the unmanaged data disks
-                //
-                var unmanagedDataDisks = virtualMachine.UnmanagedDataDisks;
-                Assert.NotNull(unmanagedDataDisks);
-                Assert.Equal(2, unmanagedDataDisks.Count);
-                var firstUnmanagedDataDisk = unmanagedDataDisks[2];
-                Assert.NotNull(firstUnmanagedDataDisk);
-                var secondUnmanagedDataDisk = unmanagedDataDisks[3];
-                Assert.NotNull(secondUnmanagedDataDisk);
-                var createdVhdUri1 = firstUnmanagedDataDisk.VhdUri;
-                var createdVhdUri2 = secondUnmanagedDataDisk.VhdUri;
-                Assert.NotNull(createdVhdUri1);
-                Assert.NotNull(createdVhdUri2);
+                    // Validate the unmanaged data disks
+                    //
+                    var unmanagedDataDisks = virtualMachine.UnmanagedDataDisks;
+                    Assert.NotNull(unmanagedDataDisks);
+                    Assert.Equal(2, unmanagedDataDisks.Count);
+                    var firstUnmanagedDataDisk = unmanagedDataDisks[2];
+                    Assert.NotNull(firstUnmanagedDataDisk);
+                    var secondUnmanagedDataDisk = unmanagedDataDisks[3];
+                    Assert.NotNull(secondUnmanagedDataDisk);
+                    var createdVhdUri1 = firstUnmanagedDataDisk.VhdUri;
+                    var createdVhdUri2 = secondUnmanagedDataDisk.VhdUri;
+                    Assert.NotNull(createdVhdUri1);
+                    Assert.NotNull(createdVhdUri2);
 
-                computeManager.VirtualMachines.DeleteById(virtualMachine.Id);
-                // Creates another virtual machine by attaching existing unmanaged data disk detached from the
-                // above virtual machine.
-                //
-                virtualMachine = computeManager.VirtualMachines
-                        .Define(VMName)
-                        .WithRegion(Location)
-                        .WithExistingResourceGroup(groupName)
-                        .WithNewPrimaryNetwork("10.0.0.0/28")
-                        .WithPrimaryPrivateIPAddressDynamic()
-                        .WithoutPrimaryPublicIPAddress()
-                        .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
-                        .WithRootUsername("Foo12")
-                        .WithRootPassword("abc!@#F0orL")
-                        .WithUnmanagedDisks()
-                        .WithExistingUnmanagedDataDisk(storageAccount.Name, "diskvhds", "datadisk1vhd.vhd")
-                        .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
-                        .Create();
-                // Gets the vm
-                //
-                virtualMachine = computeManager.VirtualMachines.GetById(virtualMachine.Id);
-                // Validate the unmanaged data disks
-                //
-                unmanagedDataDisks = virtualMachine.UnmanagedDataDisks;
-                Assert.NotNull(unmanagedDataDisks);
-                Assert.Equal(1, unmanagedDataDisks.Count);
-                firstUnmanagedDataDisk = unmanagedDataDisks.First().Value;
-                Assert.NotNull(firstUnmanagedDataDisk.VhdUri);
-                Assert.Equal(firstUnmanagedDataDisk.VhdUri, createdVhdUri1, ignoreCase: true);
-                // Update the VM by attaching another existing data disk
-                //
-                virtualMachine.Update()
-                        .WithExistingUnmanagedDataDisk(storageAccount.Name, "diskvhds", "datadisk2vhd.vhd")
-                        .Apply();
-                // Gets the vm
-                //
-                virtualMachine = computeManager.VirtualMachines.GetById(virtualMachine.Id);
-                // Validate the unmanaged data disks
-                //
-                unmanagedDataDisks = virtualMachine.UnmanagedDataDisks;
-                Assert.NotNull(unmanagedDataDisks);
-                Assert.Equal(2, unmanagedDataDisks.Count);
+                    computeManager.VirtualMachines.DeleteById(virtualMachine.Id);
+                    // Creates another virtual machine by attaching existing unmanaged data disk detached from the
+                    // above virtual machine.
+                    //
+                    virtualMachine = computeManager.VirtualMachines
+                            .Define(VMName)
+                            .WithRegion(Location)
+                            .WithExistingResourceGroup(groupName)
+                            .WithNewPrimaryNetwork("10.0.0.0/28")
+                            .WithPrimaryPrivateIPAddressDynamic()
+                            .WithoutPrimaryPublicIPAddress()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                            .WithRootUsername("Foo12")
+                            .WithRootPassword("abc!@#F0orL")
+                            .WithUnmanagedDisks()
+                            .WithExistingUnmanagedDataDisk(storageAccount.Name, "diskvhds", "datadisk1vhd.vhd")
+                            .WithSize(VirtualMachineSizeTypes.StandardDS2V2)
+                            .Create();
+                    // Gets the vm
+                    //
+                    virtualMachine = computeManager.VirtualMachines.GetById(virtualMachine.Id);
+                    // Validate the unmanaged data disks
+                    //
+                    unmanagedDataDisks = virtualMachine.UnmanagedDataDisks;
+                    Assert.NotNull(unmanagedDataDisks);
+                    Assert.Equal(1, unmanagedDataDisks.Count);
+                    firstUnmanagedDataDisk = unmanagedDataDisks.First().Value;
+                    Assert.NotNull(firstUnmanagedDataDisk.VhdUri);
+                    Assert.Equal(firstUnmanagedDataDisk.VhdUri, createdVhdUri1, ignoreCase: true);
+                    // Update the VM by attaching another existing data disk
+                    //
+                    virtualMachine.Update()
+                            .WithExistingUnmanagedDataDisk(storageAccount.Name, "diskvhds", "datadisk2vhd.vhd")
+                            .Apply();
+                    // Gets the vm
+                    //
+                    virtualMachine = computeManager.VirtualMachines.GetById(virtualMachine.Id);
+                    // Validate the unmanaged data disks
+                    //
+                    unmanagedDataDisks = virtualMachine.UnmanagedDataDisks;
+                    Assert.NotNull(unmanagedDataDisks);
+                    Assert.Equal(2, unmanagedDataDisks.Count);
+                }
+                finally
+                {
+                    try
+                    {
+                        resourceManager.ResourceGroups.DeleteByName(groupName);
+                    }
+                    catch { }
+                }
             }
         }
     }

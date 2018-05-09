@@ -149,7 +149,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
             }
-            _httpRequest.Headers.TryAddWithoutValidation("Accept", "application/json");
 
 
             if (customHeaders != null)
@@ -429,7 +428,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
             }
-            _httpRequest.Headers.TryAddWithoutValidation("Accept", "application/json");
 
 
             if (customHeaders != null)
@@ -699,7 +697,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
             }
-            _httpRequest.Headers.TryAddWithoutValidation("Accept", "application/json");
 
 
             if (customHeaders != null)
@@ -925,7 +922,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
             }
-            _httpRequest.Headers.TryAddWithoutValidation("Accept", "application/json");
 
 
             if (customHeaders != null)
@@ -1120,7 +1116,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
             }
-            _httpRequest.Headers.TryAddWithoutValidation("Accept", "application/json");
 
 
             if (customHeaders != null)
@@ -1331,7 +1326,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
             }
-            _httpRequest.Headers.TryAddWithoutValidation("Accept", "application/json");
 
 
             if (customHeaders != null)
@@ -1537,7 +1531,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
             }
-            _httpRequest.Headers.TryAddWithoutValidation("Accept", "application/json");
 
 
             if (customHeaders != null)
@@ -1711,7 +1704,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
             }
-            _httpRequest.Headers.TryAddWithoutValidation("Accept", "application/json");
 
 
             if (customHeaders != null)

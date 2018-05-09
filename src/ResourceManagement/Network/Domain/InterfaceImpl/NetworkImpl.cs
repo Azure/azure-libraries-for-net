@@ -40,12 +40,46 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Gets the DDoS protection plan id associated with the virtual network.
+        /// </summary>
+        string Microsoft.Azure.Management.Network.Fluent.INetwork.DdosProtectionPlanId
+        {
+            get
+            {
+                return this.DdosProtectionPlanId();
+            }
+        }
+
+        /// <summary>
         /// Refreshes the resource to sync with Azure.
         /// </summary>
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.INetwork> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.INetwork>.RefreshAsync(CancellationToken cancellationToken)
         {
             return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.INetwork;
+        }
+
+        /// <summary>
+        /// Gets whether DDoS protection is enabled for all the protected resources
+        /// in the virtual network. It requires a DDoS protection plan associated with the resource.
+        /// </summary>
+        bool Microsoft.Azure.Management.Network.Fluent.INetwork.IsDdosProtectionEnabled
+        {
+            get
+            {
+                return this.IsDdosProtectionEnabled();
+            }
+        }
+
+        /// <summary>
+        /// Gets whether VM protection is enabled for all the subnets in the virtual network.
+        /// </summary>
+        bool Microsoft.Azure.Management.Network.Fluent.INetwork.IsVmProtectionEnabled
+        {
+            get
+            {
+                return this.IsVmProtectionEnabled();
+            }
         }
 
         /// <summary>
@@ -230,6 +264,36 @@ namespace Microsoft.Azure.Management.Network.Fluent
         }
 
         /// <summary>
+        /// Associates existing DDoS protection plan with the virtual network.
+        /// </summary>
+        /// <param name="planId">DDoS protection plan resource id.</param>
+        /// <return>The next stage of the update.</return>
+        Network.Update.IUpdate Network.Update.IWithDdosProtectionPlan.WithExistingDdosProtectionPlan(string planId)
+        {
+            return this.WithExistingDdosProtectionPlan(planId);
+        }
+
+        /// <summary>
+        /// Associates existing DDoS protection plan with the virtual network.
+        /// </summary>
+        /// <param name="planId">DDoS protection plan resource id.</param>
+        /// <return>The next stage of the definition.</return>
+        Network.Definition.IWithCreateAndSubnet Network.Definition.IWithDdosProtectionPlan.WithExistingDdosProtectionPlan(string planId)
+        {
+            return this.WithExistingDdosProtectionPlan(planId);
+        }
+
+        /// <summary>
+        /// Creates a new DDoS protection plan in the same region and group as the virtual network and associates it with the resource.
+        /// The internal name the DDoS protection plan will be derived from the resource's name.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Network.Update.IUpdate Network.Update.IWithDdosProtectionPlan.WithNewDdosProtectionPlan()
+        {
+            return this.WithNewDdosProtectionPlan();
+        }
+
+        /// <summary>
         /// Specifies the IP address of an existing DNS server to associate with the virtual network.
         /// Note this method's effect is additive, i.e. each time it is used, a new dns server is added
         /// to the network.
@@ -239,6 +303,52 @@ namespace Microsoft.Azure.Management.Network.Fluent
         Network.Definition.IWithCreate Network.Definition.IWithCreate.WithDnsServer(string ipAddress)
         {
             return this.WithDnsServer(ipAddress) as Network.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Creates a new DDoS protection plan in the same region and group as the virtual network and associates it with the resource.
+        /// The internal name the DDoS protection plan will be derived from the resource's name.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Network.Definition.IWithCreateAndSubnet Network.Definition.IWithDdosProtectionPlan.WithNewDdosProtectionPlan()
+        {
+            return this.WithNewDdosProtectionPlan();
+        }
+
+        /// <summary>
+        /// Disassociates DDoS protection plan and disables Standard DDoS protection for this virtual network. Note: Plan resource is not deleted from Azure.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Network.Update.IUpdate Network.Update.IWithDdosProtectionPlan.WithoutDdosProtectionPlan()
+        {
+            return this.WithoutDdosProtectionPlan();
+        }
+
+        /// <summary>
+        /// Disable VM protection for all the subnets in the virtual network.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Network.Update.IUpdate Network.Update.IWithVmProtection.WithoutVmProtection()
+        {
+            return this.WithoutVmProtection();
+        }
+
+        /// <summary>
+        /// Enable VM protection for all the subnets in the virtual network.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Network.Update.IUpdate Network.Update.IWithVmProtection.WithVmProtection()
+        {
+            return this.WithVmProtection();
+        }
+
+        /// <summary>
+        /// Enable VM protection for all the subnets in the virtual network.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Network.Definition.IWithCreateAndSubnet Network.Definition.IWithVmProtection.WithVmProtection()
+        {
+            return this.WithVmProtection();
         }
     }
 }
