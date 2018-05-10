@@ -235,23 +235,27 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         ///GENMHASH:48D52F8A8C40347416FAC933CA8B4D2C:30647CF2486187FF144A4DA12361D549
-        public ContainerImpl WithStartingCommandLine(string commandLine)
+        public ContainerImpl WithStartingCommandLine(string executable)
         {
             if (innerContainer.Command == null)
             {
                 innerContainer.Command = new List<string>();
             }
-            innerContainer.Command.Add(commandLine);
+            innerContainer.Command.Add(executable);
 
             return this;
         }
 
-        ///GENMHASH:6428E7659CEA7CB8569742940D144B5C:C64852F349A25A3E24359DF90B113729
-        public ContainerImpl WithStartingCommandLines(params string[] commandLines)
+        ///GENMHASH:DA527139031876F1A4B5D5E8F24AF1E2:7ADA305C55DC8093C742238A774A5219
+        public ContainerImpl WithStartingCommandLine(string executable, params string[] parameters)
         {
-            foreach (var command in commandLines)
-            {
-                this.WithStartingCommandLine(command);
+            this.WithStartingCommandLine(executable);
+            if (parameters != null)
+			{
+            	foreach(var parameter in parameters)
+				{
+            		this.WithStartingCommandLine(parameter);
+            	}
             }
 
             return this;

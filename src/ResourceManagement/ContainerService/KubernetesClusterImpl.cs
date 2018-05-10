@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using System;
+    using System.Text;
 
     /// <summary>
     /// The implementation for KubernetesCluster and its create and update interfaces.
@@ -230,7 +231,16 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
                 {
                     this.Inner.KubernetesVersion = orchestratorsList.Orchestrators
                         .Where(o => o.OrchestratorType.Equals("Kubernetes", StringComparison.OrdinalIgnoreCase))
-                        .Select(o => o.OrchestratorVersion).OrderBy(o => o).Last();
+                        .Select(o => o.OrchestratorVersion).OrderBy(o => 
+                            {
+                                var splitted = o.Split('.');
+                                var result = new StringBuilder();
+                                foreach (var item in splitted)
+                                {
+                                    result.Append(item.PadLeft(15)); // limit to 15 extra padding that should be added
+                                }
+                                return result.ToString();
+                            }).Last();
                 }
             }
 
@@ -246,6 +256,14 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         public KubernetesClusterImpl WithVersion(KubernetesVersion kubernetesVersion)
         {
             this.Inner.KubernetesVersion = kubernetesVersion.ToString();
+
+            return this;
+        }
+
+        ///GENMHASH:5A056156A7C92738B7A05BFFB861E1B4:680AB4E250198E427BC1E5373E11C634
+        public KubernetesClusterImpl WithVersion(string kubernetesVersion)
+        {
+            this.Inner.KubernetesVersion = kubernetesVersion;
 
             return this;
         }

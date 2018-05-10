@@ -85,6 +85,28 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         System.Collections.Generic.IReadOnlyDictionary<string,Models.Container> Containers { get; }
 
         /// <summary>
+        /// Starts the exec command for a specific container instance.
+        /// </summary>
+        /// <param name="containerName">The container instance name.</param>
+        /// <param name="command">The command to be executed.</param>
+        /// <param name="row">The row size of the terminal.</param>
+        /// <param name="column">The column size of the terminal.</param>
+        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <return>The log lines from the end, up to the number specified.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerExecResponse ExecuteCommand(string containerName, string command, int row, int column);
+
+        /// <summary>
+        /// Starts the exec command for a specific container instance within the container group.
+        /// </summary>
+        /// <param name="containerName">The container instance name.</param>
+        /// <param name="command">The command to be executed.</param>
+        /// <param name="row">The row size of the terminal.</param>
+        /// <param name="column">The column size of the terminal.</param>
+        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <return>A representation of the future computation of this call.</return>
+        Task<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerExecResponse> ExecuteCommandAsync(string containerName, string command, int row, int column, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// Get the log content for the specified container instance within the container group.
         /// </summary>
         /// <param name="containerName">The container instance name.</param>
