@@ -14,6 +14,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using System.Threading.Tasks;
     using System;
     using System.Text;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// The implementation for KubernetesCluster and its create and update interfaces.
@@ -233,11 +234,32 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
                         .Where(o => o.OrchestratorType.Equals("Kubernetes", StringComparison.OrdinalIgnoreCase))
                         .Select(o => o.OrchestratorVersion).OrderBy(o => 
                             {
+                                // Order by version 
                                 var splitted = o.Split('.');
                                 var result = new StringBuilder();
                                 foreach (var item in splitted)
                                 {
-                                    result.Append(item.PadLeft(15)); // limit to 15 extra padding that should be added
+                                    var temp = Regex.Split(item, @"^(\d+)(.*)");
+                                    if (temp.Length > 2)
+                                    {
+                                        if (temp[2].Trim().Equals("")) // no "alpha" or "beta"
+                                        {
+                                            result.Append("~").Append(item.PadLeft(5)).Append(new string('~', 15));
+                                        }
+                                        else
+                                        {
+                                            result.Append("~").Append(temp[1].PadLeft(5)).Append(temp[2].PadRight(15));
+                                        }
+                                    }
+                                    else
+                                    if (Regex.Match(item, @"^\d+").Success) // numeric value only
+                                    {
+                                        result.Append("~").Append(item.PadLeft(5));
+                                    }
+                                    else
+                                    {
+                                        result.Append(" ").Append(item);
+                                    }
                                 }
                                 return result.ToString();
                             }).Last();
