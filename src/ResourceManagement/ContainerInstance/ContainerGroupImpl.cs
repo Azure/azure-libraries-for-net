@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             var containerExecRequestTerminalSize = new ContainerExecRequestTerminalSize() { Row = row, Column = column };
             var containerExecRequestInner = new Models.ContainerExecRequestInner() { Command = command, TerminalSize = containerExecRequestTerminalSize };
             var containerExecResponseInner = await this.Manager.Inner.StartContainer
-                .LaunchExecAsync(this.ResourceGroupName, this.Name, containerName, containerExecRequestInner);
+                .LaunchExecAsync(this.ResourceGroupName, this.Name, containerName, containerExecRequestInner, cancellationToken);
             return new ContainerExecResponseImpl(containerExecResponseInner);
         }
     }
