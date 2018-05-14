@@ -308,19 +308,20 @@
   </Target>
   
   <Target Name="PublishSymbols">
-  <PropertyGroup>
-    <PackageOutputDir_test>D:\temp\LocalFeed\archive\archive\binaries\packages</PackageOutputDir_test>
-  </PropertyGroup>
 
     <ItemGroup>
-      <DllFiles Include="$(PackageOutputDir_test)\*.symbols\lib\**\*.dll">
+      <DllFiles Include="$(PackageOutputDir)\*.symbols\lib\**\*.dll">
       </DllFiles>
     </ItemGroup>
 
     <Message Text="Found dll files: &quot;%(DllFiles.Identity)&quot;" />  
+    
+    <MakeDir Directories="$(PackageOutputDir)\..\Symbols\%(DllFiles.RecursiveDir)" />
 
-    <Exec Command="$(Pdb2PdbCommand) &quot;%(DllFiles.Identity)&quot; /out &quot;$(PackageOutputDir_test)\Symbols\%(DllFiles.RelativeDir)&quot;"
+    <Exec Command="$(Pdb2PdbCommand) %(DllFiles.Identity) /out $(PackageOutputDir)\..\Symbols\%(DllFiles.RecursiveDir)\%(DllFiles.Filename).pdb"
       IgnoreExitCode="true" />
 
+    <Exec Command="\\symbols\tools\createrequest.cmd -i tools\symbolPublish.txt -d .\requests -c -s"
+      IgnoreExitCode="true" />      
   </Target>
 </Project>
