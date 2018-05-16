@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using System;
+    using System.Text;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// The implementation for KubernetesCluster and its create and update interfaces.
@@ -230,7 +232,43 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
                 {
                     this.Inner.KubernetesVersion = orchestratorsList.Orchestrators
                         .Where(o => o.OrchestratorType.Equals("Kubernetes", StringComparison.OrdinalIgnoreCase))
-                        .Select(o => o.OrchestratorVersion).OrderBy(o => o).Last();
+                        .Select(o => o.OrchestratorVersion).OrderBy(o => 
+                            {
+                                // Build a string which can be safely order lexically using the initial version string as returned from the service
+                                var splitted = o.Split('.');
+                                var result = new StringBuilder();
+                                foreach (var item in splitted)
+                                {
+                                    var temp = Regex.Split(item, @"^(\d+)(.*)");
+                                    if (temp.Length > 2)
+                                    {
+                                        if (temp[1].Length > 5 || temp[2].Length > 15)
+                                        {
+                                            // Expect maximum of 100k numerical value for the major, minor etc and a maximum of 15 characters for the suffix (i.e. "-beta1", "SNAPSHOT" etc)
+                                            throw new System.ArgumentOutOfRangeException("Kubernetes version", $"Found unexpected version format: {o} ");
+                                        }
+                                        // Add extra padding so version "10.0" compared to "2.0" should be the higher version
+                                        if (temp[2].Trim().Equals("")) // no "alpha" or "beta"
+                                        {
+                                            result.Append("~").Append(item.PadLeft(5)).Append(new string('~', 15));
+                                        }
+                                        else
+                                        {
+                                            result.Append("~").Append(temp[1].PadLeft(5)).Append(temp[2].PadRight(15));
+                                        }
+                                    }
+                                    else if (Regex.Match(item, @"^\d+").Success) // numeric value only
+                                    {
+                                        // Version "1.0" compared to "1.0-beta" should be the higher version
+                                        result.Append("~").Append(item.PadLeft(5));
+                                    }
+                                    else
+                                    {
+                                        result.Append(" ").Append(item);
+                                    }
+                                }
+                                return result.ToString();
+                            }).Last();
                 }
             }
 
@@ -246,6 +284,14 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         public KubernetesClusterImpl WithVersion(KubernetesVersion kubernetesVersion)
         {
             this.Inner.KubernetesVersion = kubernetesVersion.ToString();
+
+            return this;
+        }
+
+        ///GENMHASH:5A056156A7C92738B7A05BFFB861E1B4:680AB4E250198E427BC1E5373E11C634
+        public KubernetesClusterImpl WithVersion(string kubernetesVersion)
+        {
+            this.Inner.KubernetesVersion = kubernetesVersion;
 
             return this;
         }

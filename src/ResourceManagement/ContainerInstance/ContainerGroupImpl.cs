@@ -446,5 +446,20 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return (this.Inner.IpAddress != null) ? this.Inner.IpAddress.Fqdn : null;
         }
 
+        ///GENMHASH:F4416221E7E4EB6A087BCA399AE5E9F6:A0E77E1086B086D8F0F97954516DA583
+        public IContainerExecResponse ExecuteCommand(string containerName, string command, int row, int column)
+        {
+            return Extensions.Synchronize(() => this.ExecuteCommandAsync(containerName, command, row, column));
+        }
+
+        ///GENMHASH:5D1452C0A2F0D2A020CBCC369E41D1F2:67CC4D00B6C73394256E4765E8876BE5
+        public async Task<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerExecResponse> ExecuteCommandAsync(string containerName, string command, int row, int column, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var containerExecRequestTerminalSize = new ContainerExecRequestTerminalSize() { Row = row, Column = column };
+            var containerExecRequestInner = new Models.ContainerExecRequestInner() { Command = command, TerminalSize = containerExecRequestTerminalSize };
+            var containerExecResponseInner = await this.Manager.Inner.StartContainer
+                .LaunchExecAsync(this.ResourceGroupName, this.Name, containerName, containerExecRequestInner, cancellationToken);
+            return new ContainerExecResponseImpl(containerExecResponseInner);
+        }
     }
 }

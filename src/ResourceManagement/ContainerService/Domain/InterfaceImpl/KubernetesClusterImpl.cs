@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         KubernetesCluster.Definition.IWithCreate KubernetesCluster.Definition.IWithDnsPrefix.WithDnsPrefix(string dnsPrefix)
         {
-            return this.WithDnsPrefix(dnsPrefix) as KubernetesCluster.Definition.IWithCreate;
+            return this.WithDnsPrefix(dnsPrefix);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         KubernetesCluster.Definition.IWithAgentPool KubernetesCluster.Definition.IWithKeyVaultSecret.WithKeyVaultSecret(string secretName)
         {
-            return this.WithKeyVaultSecret(secretName) as KubernetesCluster.Definition.IWithAgentPool;
+            return this.WithKeyVaultSecret(secretName);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         KubernetesCluster.Definition.IWithAgentPool KubernetesCluster.Definition.IWithKeyVaultSecret.WithKeyVaultSecret(string secretName, string secretVersion)
         {
-            return this.WithKeyVaultSecret(secretName, secretVersion) as KubernetesCluster.Definition.IWithAgentPool;
+            return this.WithKeyVaultSecret(secretName, secretVersion);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         KubernetesCluster.Definition.IWithServicePrincipalClientId KubernetesCluster.Definition.IWithLinuxSshKey.WithSshKey(string sshKeyData)
         {
-            return this.WithSshKey(sshKeyData) as KubernetesCluster.Definition.IWithServicePrincipalClientId;
+            return this.WithSshKey(sshKeyData);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The stage representing configuration for the agent pool profile.</return>
         KubernetesClusterAgentPool.Definition.IBlank<KubernetesCluster.Definition.IWithCreate> KubernetesCluster.Definition.IWithAgentPool.DefineAgentPool(string name)
         {
-            return this.DefineAgentPool(name) as KubernetesClusterAgentPool.Definition.IBlank<KubernetesCluster.Definition.IWithCreate>;
+            return this.DefineAgentPool(name);
         }
 
         /// <summary>
@@ -71,16 +71,26 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         KubernetesCluster.Definition.IWithLinuxSshKey KubernetesCluster.Definition.IWithLinuxRootUsername.WithRootUsername(string rootUserName)
         {
-            return this.WithRootUsername(rootUserName) as KubernetesCluster.Definition.IWithLinuxSshKey;
+            return this.WithRootUsername(rootUserName);
+        }
+
+        /// <summary>
+        /// Specifies the version for the Kubernetes cluster.
+        /// </summary>
+        /// <param name="kubernetesVersion">The kubernetes version.</param>
+        /// <return>The next stage of the definition.</return>
+        KubernetesCluster.Definition.IWithLinuxRootUsername KubernetesCluster.Definition.IWithVersion.WithVersion(string kubernetesVersion)
+        {
+            return this.WithVersion(kubernetesVersion);
         }
 
         /// <summary>
         /// Specifies the version for the Kubernetes cluster.
         /// </summary>
         /// <return>The next stage of the definition.</return>
-        KubernetesCluster.Definition.IWithDnsPrefix KubernetesCluster.Definition.IWithVersion.WithVersion(Microsoft.Azure.Management.ContainerService.Fluent.Models.KubernetesVersion kubernetesVersion)
+        KubernetesCluster.Definition.IWithLinuxRootUsername KubernetesCluster.Definition.IWithVersion.WithVersion(Microsoft.Azure.Management.ContainerService.Fluent.Models.KubernetesVersion kubernetesVersion)
         {
-            return this.WithVersion(kubernetesVersion) as KubernetesCluster.Definition.IWithDnsPrefix;
+            return this.WithVersion(kubernetesVersion);
         }
 
         /// <summary>
@@ -89,7 +99,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         KubernetesCluster.Definition.IWithLinuxRootUsername KubernetesCluster.Definition.IWithVersion.WithLatestVersion()
         {
-            return this.WithLatestVersion() as KubernetesCluster.Definition.IWithLinuxRootUsername;
+            return this.WithLatestVersion();
         }
 
         /// <summary>
@@ -99,7 +109,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage.</return>
         KubernetesCluster.Definition.IWithServicePrincipalProfile KubernetesCluster.Definition.IWithServicePrincipalClientId.WithServicePrincipalClientId(string clientId)
         {
-            return this.WithServicePrincipalClientId(clientId) as KubernetesCluster.Definition.IWithServicePrincipalProfile;
+            return this.WithServicePrincipalClientId(clientId);
         }
 
         /// <summary>
@@ -110,7 +120,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the update.</return>
         KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithUpdateAgentPoolCount.WithAgentVirtualMachineCount(string agentPoolName, int agentCount)
         {
-            return this.WithAgentVirtualMachineCount(agentPoolName, agentCount) as KubernetesCluster.Update.IUpdate;
+            return this.WithAgentVirtualMachineCount(agentPoolName, agentCount);
         }
 
         /// <summary>
@@ -120,7 +130,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the update.</return>
         KubernetesCluster.Update.IUpdate KubernetesCluster.Update.IWithUpdateAgentPoolCount.WithAgentVirtualMachineCount(int agentCount)
         {
-            return this.WithAgentVirtualMachineCount(agentCount) as KubernetesCluster.Update.IUpdate;
+            return this.WithAgentVirtualMachineCount(agentCount);
         }
 
         /// <summary>
@@ -130,7 +140,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage.</return>
         KubernetesCluster.Definition.IWithAgentPool KubernetesCluster.Definition.IWithServicePrincipalProfile.WithServicePrincipalSecret(string secret)
         {
-            return this.WithServicePrincipalSecret(secret) as KubernetesCluster.Definition.IWithAgentPool;
+            return this.WithServicePrincipalSecret(secret);
         }
 
         /// <summary>
@@ -140,7 +150,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage.</return>
         KubernetesCluster.Definition.IWithKeyVaultSecret KubernetesCluster.Definition.IWithServicePrincipalProfile.WithKeyVaultReference(string vaultId)
         {
-            return this.WithKeyVaultReference(vaultId) as KubernetesCluster.Definition.IWithKeyVaultSecret;
+            return this.WithKeyVaultReference(vaultId);
         }
 
         /// <summary>
@@ -172,7 +182,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             get
             {
-                return this.KeyVaultSecretReference() as Models.KeyVaultSecretRef;
+                return this.KeyVaultSecretReference();
             }
         }
 
@@ -183,7 +193,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             get
             {
-                return this.Version() as Microsoft.Azure.Management.ContainerService.Fluent.Models.KubernetesVersion;
+                return this.Version();
             }
         }
 
@@ -216,7 +226,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             get
             {
-                return this.AgentPools() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool>;
+                return this.AgentPools();
             }
         }
 

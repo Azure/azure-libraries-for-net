@@ -123,23 +123,24 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
-        /// Specifies the starting command lines.
+        /// Specifies the starting command line.
         /// </summary>
-        /// <param name="commandLines">The starting command lines the container will execute after it gets initialized.</param>
+        /// <param name="executable">The executable which it will call after initializing the container.</param>
+        /// <param name="parameters">The parameter list for the executable to be called.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithStartingCommandLine<ContainerGroup.Definition.IWithNextContainerInstance>.WithStartingCommandLines(params string[] commandLines)
+        ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithStartingCommandLineBeta<ContainerGroup.Definition.IWithNextContainerInstance>.WithStartingCommandLine(string executable, params string[] parameters)
         {
-            return this.WithStartingCommandLines(commandLines) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithStartingCommandLine(executable, parameters) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
         }
 
         /// <summary>
         /// Specifies the starting command line.
         /// </summary>
-        /// <param name="commandLine">The starting command line the container will execute after it gets initialized.</param>
+        /// <param name="executable">The executable or path to the executable that will be called after initializing the container.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithStartingCommandLine<ContainerGroup.Definition.IWithNextContainerInstance>.WithStartingCommandLine(string commandLine)
+        ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithStartingCommandLine<ContainerGroup.Definition.IWithNextContainerInstance>.WithStartingCommandLine(string executable)
         {
-            return this.WithStartingCommandLine(commandLine) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithStartingCommandLine(executable) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
         }
 
         /// <summary>

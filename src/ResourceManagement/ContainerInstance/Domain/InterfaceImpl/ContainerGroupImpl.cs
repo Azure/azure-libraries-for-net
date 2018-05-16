@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// </summary>
         /// <param name="name">The name of the empty directory volume.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerGroup.Definition.IWithFirstContainerInstance ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume.WithEmptyDirectoryVolume(string name)
+        ContainerGroup.Definition.IWithFirstContainerInstance ContainerGroup.Definition.IWithPrivateImageRegistryOrVolumeBeta.WithEmptyDirectoryVolume(string name)
         {
             return this.WithEmptyDirectoryVolume(name) as ContainerGroup.Definition.IWithFirstContainerInstance;
         }
@@ -282,6 +282,34 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             {
                 return this.ExternalUdpPorts();
             }
+        }
+
+        /// <summary>
+        /// Starts the exec command for a specific container instance.
+        /// </summary>
+        /// <param name="containerName">The container instance name.</param>
+        /// <param name="command">The command to be executed.</param>
+        /// <param name="row">The row size of the terminal.</param>
+        /// <param name="column">The column size of the terminal.</param>
+        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <return>The log lines from the end, up to the number specified.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerExecResponse Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.ExecuteCommand(string containerName, string command, int row, int column)
+        {
+            return this.ExecuteCommand(containerName, command, row, column);
+        }
+
+        /// <summary>
+        /// Starts the exec command for a specific container instance within the container group.
+        /// </summary>
+        /// <param name="containerName">The container instance name.</param>
+        /// <param name="command">The command to be executed.</param>
+        /// <param name="row">The row size of the terminal.</param>
+        /// <param name="column">The column size of the terminal.</param>
+        /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
+        /// <return>A representation of the future computation of this call.</return>
+        async Task<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerExecResponse> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.ExecuteCommandAsync(string containerName, string command, int row, int column, CancellationToken cancellationToken)
+        {
+            return await this.ExecuteCommandAsync(containerName, command, row, column, cancellationToken);
         }
 
         /// <summary>
