@@ -54,21 +54,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
 
         public override IEnumerable<ICosmosDBAccount> List()
         {
-            return Manager.ResourceManager.ResourceGroups.List()
-                                          .SelectMany(rg => ListByResourceGroup(rg.Name));
+            return Extensions.Synchronize(() => this.ListAsync());
         }
 
         public override async Task<IPagedCollection<ICosmosDBAccount>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var task = await Manager.ResourceManager.ResourceGroups.ListAsync(true, cancellationToken);
             return await PagedCollection<ICosmosDBAccount, Models.DatabaseAccountInner>.LoadPage(async (cancellation) =>
-            {
-                var resourceGroups = await Manager.ResourceManager.ResourceGroups.ListAsync(true, cancellation);
-                var containerService = await Task.WhenAll(resourceGroups.Select(async (rg) => await ListInnerByGroupAsync(rg.Name, cancellation)));
-                return containerService.SelectMany(x => x);
-            }, WrapModel, cancellationToken);
+                await this.Manager.Inner.DatabaseAccounts.ListAsync(cancellationToken), WrapModel, cancellationToken);
         }
 
+        public override IEnumerable<ICosmosDBAccount> ListByResourceGroup(string resourceGroupName)
+        {
+            return Extensions.Synchronize(() => this.ListByResourceGroupAsync(resourceGroupName));
+        }
+
+        public override async Task<IPagedCollection<ICosmosDBAccount>> ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await PagedCollection<ICosmosDBAccount, Models.DatabaseAccountInner>.LoadPage(async (cancellation) =>
+                await this.Manager.Inner.DatabaseAccounts.ListByResourceGroupAsync(resourceGroupName, cancellationToken), WrapModel, cancellationToken);
+        }
 
         protected override Task<IPage<Models.DatabaseAccountInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
