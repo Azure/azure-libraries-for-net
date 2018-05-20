@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The stage of the cosmos db definition allowing to specify the resource group.
@@ -30,6 +31,32 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy WithKind(string kind);
 
+    }
+
+    /// <summary>
+    /// The stage of the cosmos db definition allowing the definition of a Virtual Network ACL Rule.
+    /// </summary>
+    public interface IWithVirtualNetworkRule  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies a Virtual Network ACL Rule for the CosmosDB account.
+        /// </summary>
+        /// <param name="virtualNetworkId">The ID of a virtual network.</param>
+        /// <param name="subnetName">
+        /// The name of the subnet within the virtual network; the subnet must have the service
+        /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
+        /// </param>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithVirtualNetwork(string virtualNetworkId, string subnetName);
+
+        /// <summary>
+        /// Specifies the list of Virtual Network ACL Rules for the CosmosDB account.
+        /// </summary>
+        /// <param name="virtualNetworkRules">The list of Virtual Network ACL Rules.</param>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate WithVirtualNetworkRules(IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.VirtualNetworkRule> virtualNetworkRules);
     }
 
     /// <summary>
@@ -86,7 +113,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount>,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithConsistencyPolicy,
         Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithReadReplication,
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithIpRangeFilter
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithIpRangeFilter,
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithVirtualNetworkRule,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithCreate>
     {
     }
 
@@ -163,7 +192,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition
         /// <param name="maxStalenessPrefix">The max staleness prefix.</param>
         /// <param name="maxIntervalInSeconds">The max interval in seconds.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithWriteReplication WithBoundedStalenessConsistency(int maxStalenessPrefix, int maxIntervalInSeconds);
+        Microsoft.Azure.Management.CosmosDB.Fluent.CosmosDBAccount.Definition.IWithWriteReplication WithBoundedStalenessConsistency(long maxStalenessPrefix, int maxIntervalInSeconds);
 
         /// <summary>
         /// The strong consistency policy for the CosmosDB account.

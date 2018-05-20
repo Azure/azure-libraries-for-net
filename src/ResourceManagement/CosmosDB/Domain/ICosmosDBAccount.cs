@@ -85,11 +85,42 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <return>The connection strings for the specified Azure CosmosDB database account.</return>
         Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult> ListConnectionStringsAsync(CancellationToken cancellationToken = default(CancellationToken));
 
+        /// <summary>
+        /// Gets a list that contains the Cosmos DB Virtual Network ACL Rules (empty list if none is set).
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<Models.VirtualNetworkRule> VirtualNetworkRules { get; }
+
         /// <return>The read-only access keys for the specified Azure CosmosDB database account.</return>
         Task<Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult> ListReadOnlyKeysAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <return>The read-only access keys for the specified Azure CosmosDB database account.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListReadOnlyKeysResult ListReadOnlyKeys();
+
+        /// <summary>
+        /// It takes offline the specified region for the current Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name="region">Cosmos DB region.</param>
+        void OfflineRegion(Region region);
+
+        /// <summary>
+        /// Asynchronously it takes offline the specified region for the current Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name="region">Cosmos DB region.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        Task OfflineRegionAsync(Region region, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// It brings online the specified region for the current Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name="region">Cosmos DB region.</param>
+        void OnlineRegion(Region region);
+
+        /// <summary>
+        /// Asynchronously it brings online the specified region for the current Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name="region">Cosmos DB region.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        Task OnlineRegionAsync(Region region, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <param name="keyKind">The key kind.</param>
         void RegenerateKey(string keyKind);

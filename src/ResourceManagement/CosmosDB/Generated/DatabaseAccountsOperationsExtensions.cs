@@ -230,6 +230,54 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
 
             /// <summary>
+            /// Offline the specified region for the specified Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='region'>
+            /// Cosmos DB region, with spaces between words and each word capitalized.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task OfflineRegionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string region, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.OfflineRegionWithHttpMessagesAsync(resourceGroupName, accountName, region, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Online the specified region for the specified Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='region'>
+            /// Cosmos DB region, with spaces between words and each word capitalized.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task OnlineRegionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string region, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.OnlineRegionWithHttpMessagesAsync(resourceGroupName, accountName, region, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Lists the read-only access keys for the specified Azure Cosmos DB database
             /// account.
             /// </summary>
@@ -478,6 +526,54 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             public static async Task BeginFailoverPriorityChangeAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, IList<FailoverPolicyInner> failoverPoliciesProperty, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginFailoverPriorityChangeWithHttpMessagesAsync(resourceGroupName, accountName, failoverPoliciesProperty, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Offline the specified region for the specified Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='region'>
+            /// Cosmos DB region, with spaces between words and each word capitalized.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginOfflineRegionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string region, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginOfflineRegionWithHttpMessagesAsync(resourceGroupName, accountName, region, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Online the specified region for the specified Azure Cosmos DB database
+            /// account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of an Azure resource group.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='region'>
+            /// Cosmos DB region, with spaces between words and each word capitalized.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginOnlineRegionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string region, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginOnlineRegionWithHttpMessagesAsync(resourceGroupName, accountName, region, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

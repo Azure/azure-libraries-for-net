@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// <param name="maxStalenessPrefix">The max staleness prefix.</param>
         /// <param name="maxIntervalInSeconds">The max interval in seconds.</param>
         /// <return>The next stage of the definition.</return>
-        CosmosDBAccount.Definition.IWithWriteReplication CosmosDBAccount.Definition.IWithConsistencyPolicy.WithBoundedStalenessConsistency(int maxStalenessPrefix, int maxIntervalInSeconds)
+        CosmosDBAccount.Definition.IWithWriteReplication CosmosDBAccount.Definition.IWithConsistencyPolicy.WithBoundedStalenessConsistency(long maxStalenessPrefix, int maxIntervalInSeconds)
         {
             return this.WithBoundedStalenessConsistency(maxStalenessPrefix, maxIntervalInSeconds);
         }
@@ -351,6 +351,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             }
         }
 
+        /// <summary>
+        /// Gets a list that contains the Cosmos DB Virtual Network ACL Rules (empty list if none is set).
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<Models.VirtualNetworkRule> Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.VirtualNetworkRules
+        {
+            get
+            {
+                return this.VirtualNetworkRules();
+            }
+        }
+
         /// <return>The connection strings for the specified Azure CosmosDB database account.</return>
         Microsoft.Azure.Management.CosmosDB.Fluent.IDatabaseAccountListConnectionStringsResult Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.ListConnectionStrings()
         {
@@ -368,5 +379,113 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             return await this.ListReadOnlyKeysAsync(cancellationToken);
         }
+
+        /// <summary>
+        /// It takes offline the specified region for the current Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name="region">Cosmos DB region.</param>
+        void Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OfflineRegion(Region region)
+        {
+ 
+            this.OfflineRegion(region);
+        }
+
+        /// <summary>
+        /// Asynchronously it takes offline the specified region for the current Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name="region">Cosmos DB region.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OfflineRegionAsync(Region region, CancellationToken cancellationToken)
+        {
+ 
+            await this.OfflineRegionAsync(region, cancellationToken);
+        }
+
+        /// <summary>
+        /// It brings online the specified region for the current Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name="region">Cosmos DB region.</param>
+        void Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OnlineRegion(Region region)
+        {
+ 
+            this.OnlineRegion(region);
+        }
+
+        /// <summary>
+        /// Asynchronously it brings online the specified region for the current Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name="region">Cosmos DB region.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.CosmosDB.Fluent.ICosmosDBAccount.OnlineRegionAsync(Region region, CancellationToken cancellationToken)
+        {
+ 
+            await this.OnlineRegionAsync(region, cancellationToken);
+        }
+
+        /// <summary>
+        /// Removes a Virtual Network ACL Rule for the CosmosDB account.
+        /// </summary>
+        /// <param name="virtualNetworkId">The ID of a virtual network.</param>
+        /// <param name="subnetName">
+        /// The name of the subnet within the virtual network; the subnet must have the service
+        /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
+        /// </param>
+        /// <return>The next stage of the update definition.</return>
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithoutVirtualNetwork(string virtualNetworkId, string subnetName)
+        {
+            return this.WithoutVirtualNetwork(virtualNetworkId, subnetName);
+        }
+
+        /// <summary>
+        /// Specifies a Virtual Network ACL Rule for the CosmosDB account.
+        /// </summary>
+        /// <param name="virtualNetworkId">The ID of a virtual network.</param>
+        /// <param name="subnetName">
+        /// The name of the subnet within the virtual network; the subnet must have the service
+        /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
+        /// </param>
+        /// <return>The next stage.</return>
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetwork(string virtualNetworkId, string subnetName)
+        {
+            return this.WithVirtualNetwork(virtualNetworkId, subnetName);
+        }
+
+        /// <summary>
+        /// Specifies a new Virtual Network ACL Rule for the CosmosDB account.
+        /// </summary>
+        /// <param name="virtualNetworkId">The ID of a virtual network.</param>
+        /// <param name="subnetName">
+        /// The name of the subnet within the virtual network; the subnet must have the service
+        /// endpoints enabled for 'Microsoft.AzureCosmosDB'.
+        /// </param>
+        /// <return>The next stage of the update definition.</return>
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetwork(string virtualNetworkId, string subnetName)
+        {
+            return this.WithVirtualNetwork(virtualNetworkId, subnetName);
+        }
+
+        /// <summary>
+        /// Specifies the list of Virtual Network ACL Rules for the CosmosDB account.
+        /// </summary>
+        /// <param name="virtualNetworkRules">The list of Virtual Network ACL Rules.</param>
+        /// <return>The next stage.</return>
+        CosmosDBAccount.Definition.IWithCreate CosmosDBAccount.Definition.IWithVirtualNetworkRule.WithVirtualNetworkRules(IList<Models.VirtualNetworkRule> virtualNetworkRules)
+        {
+            return this.WithVirtualNetworkRules(virtualNetworkRules);
+        }
+
+        /// <summary>
+        /// A Virtual Network ACL Rule for the CosmosDB account.
+        /// </summary>
+        /// <param name="virtualNetworkRules">
+        /// The list of Virtual Network ACL Rules (an empty list value
+        /// will remove all the rules).
+        /// </param>
+        /// <return>The next stage of the update definition.</return>
+        CosmosDBAccount.Update.IWithOptionals CosmosDBAccount.Update.IWithVirtualNetworkRule.WithVirtualNetworkRules(IList<Models.VirtualNetworkRule> virtualNetworkRules)
+        {
+            return this.WithVirtualNetworkRules(virtualNetworkRules);
+        }
+
     }
 }

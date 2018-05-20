@@ -46,6 +46,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// to be included as the allowed list of client IPs for a given
         /// database account. IP addresses/ranges must be comma separated and
         /// must not contain any spaces.</param>
+        /// <param name="isVirtualNetworkFilterEnabled">Flag to indicate
+        /// whether to enable/disable Virtual Network ACL rules.</param>
         /// <param name="enableAutomaticFailover">Enables automatic failover of
         /// the write region in the rare event that the region is unavailable
         /// due to an outage. Automatic failover will result in a new write
@@ -61,7 +63,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// locations enabled for the Cosmos DB account.</param>
         /// <param name="failoverPolicies">An array that contains the regions
         /// ordered by their failover priorities.</param>
-        public DatabaseAccountInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string kind = default(string), string provisioningState = default(string), string documentEndpoint = default(string), DatabaseAccountOfferType? databaseAccountOfferType = default(DatabaseAccountOfferType?), string ipRangeFilter = default(string), bool? enableAutomaticFailover = default(bool?), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), IList<Capability> capabilities = default(IList<Capability>), IList<Location> writeLocations = default(IList<Location>), IList<Location> readLocations = default(IList<Location>), IList<FailoverPolicyInner> failoverPolicies = default(IList<FailoverPolicyInner>))
+        /// <param name="virtualNetworkRules">List of Virtual Network ACL rules
+        /// configured for the Cosmos DB account.</param>
+        public DatabaseAccountInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string kind = default(string), string provisioningState = default(string), string documentEndpoint = default(string), DatabaseAccountOfferType? databaseAccountOfferType = default(DatabaseAccountOfferType?), string ipRangeFilter = default(string), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), IList<Capability> capabilities = default(IList<Capability>), IList<Location> writeLocations = default(IList<Location>), IList<Location> readLocations = default(IList<Location>), IList<FailoverPolicyInner> failoverPolicies = default(IList<FailoverPolicyInner>), IList<VirtualNetworkRule> virtualNetworkRules = default(IList<VirtualNetworkRule>))
             : base(location, id, name, type, tags)
         {
             Kind = kind;
@@ -69,12 +73,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
             DocumentEndpoint = documentEndpoint;
             DatabaseAccountOfferType = databaseAccountOfferType;
             IpRangeFilter = ipRangeFilter;
+            IsVirtualNetworkFilterEnabled = isVirtualNetworkFilterEnabled;
             EnableAutomaticFailover = enableAutomaticFailover;
             ConsistencyPolicy = consistencyPolicy;
             Capabilities = capabilities;
             WriteLocations = writeLocations;
             ReadLocations = readLocations;
             FailoverPolicies = failoverPolicies;
+            VirtualNetworkRules = virtualNetworkRules;
             CustomInit();
         }
 
@@ -120,6 +126,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         public string IpRangeFilter { get; set; }
 
         /// <summary>
+        /// Gets or sets flag to indicate whether to enable/disable Virtual
+        /// Network ACL rules.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isVirtualNetworkFilterEnabled")]
+        public bool? IsVirtualNetworkFilterEnabled { get; set; }
+
+        /// <summary>
         /// Gets or sets enables automatic failover of the write region in the
         /// rare event that the region is unavailable due to an outage.
         /// Automatic failover will result in a new write region for the
@@ -162,6 +175,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.failoverPolicies")]
         public IList<FailoverPolicyInner> FailoverPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets or sets list of Virtual Network ACL rules configured for the
+        /// Cosmos DB account.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.virtualNetworkRules")]
+        public IList<VirtualNetworkRule> VirtualNetworkRules { get; set; }
 
         /// <summary>
         /// Validate the object.

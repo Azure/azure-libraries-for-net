@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
     using ResourceManager.Fluent.Core.Resource.Update;
     using System;
     using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
+    using System.Linq;
 
     /// <summary>
     /// The implementation for DatabaseAccount.
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicyInner> failoverPolicies;
         private bool hasFailoverPolicyChanges;
         private const int maxDelayDueToMissingFailovers = 5000 * 12 * 10;
+        private Dictionary<string,Models.VirtualNetworkRule> virtualNetworkRulesMap;
 
         public CosmosDBAccountImpl WithReadReplication(Region region)
         {
@@ -103,6 +105,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             createUpdateParametersInner.Kind = inner.Kind;
             createUpdateParametersInner.Capabilities = inner.Capabilities;
             createUpdateParametersInner.Tags = inner.Tags;
+            createUpdateParametersInner.IsVirtualNetworkFilterEnabled = inner.IsVirtualNetworkFilterEnabled;
+            if (virtualNetworkRulesMap != null)
+            {
+                createUpdateParametersInner.VirtualNetworkRules = virtualNetworkRulesMap.Values.ToList();
+                virtualNetworkRulesMap = null;
+            }
             this.AddLocationsForCreateUpdateParameters(createUpdateParametersInner, this.failoverPolicies);
             return createUpdateParametersInner;
         }
@@ -193,7 +201,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        private void SetConsistencyPolicy(Models.DefaultConsistencyLevel level, int maxIntervalInSeconds, long maxStalenessPrefix)
+        private void SetConsistencyPolicy(Models.DefaultConsistencyLevel level, long maxStalenessPrefix, int maxIntervalInSeconds)
         {
             var policy = new Models.ConsistencyPolicy();
             policy.DefaultConsistencyLevel = level;
@@ -230,7 +238,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
             return this;
         }
 
-        public CosmosDBAccountImpl WithBoundedStalenessConsistency(int maxStalenessPrefix, int maxIntervalInSeconds)
+        public CosmosDBAccountImpl WithBoundedStalenessConsistency(long maxStalenessPrefix, int maxIntervalInSeconds)
         {
             this.SetConsistencyPolicy(Models.DefaultConsistencyLevel.BoundedStaleness,
                 maxStalenessPrefix,
@@ -387,10 +395,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         ///GENMHASH:6A08D79B3D058AD12B94D8E88D3A66BB:CBB08B5D2F8EBB6B1A4BE51DA2907810
         public CosmosDBAccountImpl WithDataModelGremlin()
         {
-            this.Inner.Kind = DatabaseAccountKind.Others.Value;
+            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB.Value;
             List<Capability> capabilities = new List<Capability>();
             capabilities.Add(new Capability("EnableGremlin"));
             this.Inner.Capabilities = capabilities;
+            this.WithTag("defaultExperience", "Graph");
 
             return this;
         }
@@ -398,11 +407,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         ///GENMHASH:34B523C69C7FD510214D27D478D971AA:49F5455D8963DDB2BE21EA8B38B4C7BE
         public CosmosDBAccountImpl WithDataModelCassandra()
         {
-            this.Inner.Kind = DatabaseAccountKind.Others.Value;
+            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB.Value;
             List<Capability> capabilities = new List<Capability>();
             capabilities.Add(new Capability("EnableCassandra"));
             this.Inner.Capabilities = capabilities;
-
+            this.WithTag("defaultExperience", "Cassandra");
             return this;
         }
 
@@ -425,10 +434,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         ///GENMHASH:CA81479D1B8439CD804916091691404E:3032A4A8923DA7CE6CCD1FF98076F538
         public CosmosDBAccountImpl WithDataModelAzureTable()
         {
-            this.Inner.Kind = DatabaseAccountKind.Others.Value;
+            this.Inner.Kind = DatabaseAccountKind.GlobalDocumentDB.Value;
             List<Capability> capabilities = new List<Capability>();
             capabilities.Add(new Capability("EnableTable"));
             this.Inner.Capabilities = capabilities;
+            this.WithTag("defaultExperience", "Table");
 
             return this;
         }
@@ -446,6 +456,95 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         {
             List<Capability> capabilities = new List<Capability>(this.Inner.Capabilities);
             return capabilities.AsReadOnly();
+        }
+
+        ///GENMHASH:AC3242CC7AFA5FD11163B235DA2E6D85:F7D80B9BD1E3B78FD1EE1DF1FBB4845E
+        public CosmosDBAccountImpl WithVirtualNetwork(string virtualNetworkId, string subnetName)
+        {
+            this.Inner.IsVirtualNetworkFilterEnabled = true;
+            string vnetId = virtualNetworkId + "/subnets/" + subnetName;
+            EnsureVirtualNetworkRules().Add(vnetId, new VirtualNetworkRule() { Id = vnetId });
+            return this;
+        }
+
+        ///GENMHASH:2BAA9926FD32E7ED76BE6DA4E3CFDF0A:EC13F18969F111A4EF37992607E9430C
+        public CosmosDBAccountImpl WithVirtualNetworkRules(IList<Models.VirtualNetworkRule> virtualNetworkRules)
+        {
+            var vnetRules = EnsureVirtualNetworkRules();
+            if (virtualNetworkRules == null || virtualNetworkRules.Count == 0)
+            {
+                vnetRules.Clear();
+                this.Inner.IsVirtualNetworkFilterEnabled = false;
+            }
+            else
+            {
+                this.Inner.IsVirtualNetworkFilterEnabled = true;
+                foreach (var vnetRule in virtualNetworkRules)
+                {
+                    this.virtualNetworkRulesMap.Add(vnetRule.Id, vnetRule);
+                }
+            }
+            return this;
+        }
+
+        ///GENMHASH:17381C8EEA34CDB3DCBE083E7F6D6502:89110E5415CB9D8F19001F6DD8615C07
+        public CosmosDBAccountImpl WithoutVirtualNetwork(string virtualNetworkId, string subnetName)
+        {
+            var vnetRules = EnsureVirtualNetworkRules();
+            vnetRules.Remove(virtualNetworkId + "/subnets/" + subnetName);
+            if (vnetRules.Count == 0)
+            {
+                this.Inner.IsVirtualNetworkFilterEnabled = false;
+            }
+            return this;
+        }
+
+        ///GENMHASH:ED2CFE8848802E73EC1E094FD7531ECC:49712209F38177A621F85B96C0B5A1BD
+        public IReadOnlyList<Models.VirtualNetworkRule> VirtualNetworkRules()
+        {
+            List<VirtualNetworkRule> result = (this.Inner != null && this.Inner.VirtualNetworkRules != null) ? new List<VirtualNetworkRule>(this.Inner.VirtualNetworkRules) : new List<VirtualNetworkRule>();
+            return result.AsReadOnly();
+        }
+
+        ///GENMHASH:9DD08936D3B4E402E37AEF19676FBBE5:B75CF3B3BDA8D4D5A2337A51BF9E22A0
+        private Dictionary<string,Models.VirtualNetworkRule> EnsureVirtualNetworkRules()
+        {
+            if (this.virtualNetworkRulesMap == null)
+            {
+                this.virtualNetworkRulesMap = new Dictionary<string, VirtualNetworkRule>();
+                if (this.Inner != null && this.Inner.VirtualNetworkRules != null)
+                {
+                    foreach (var item in this.Inner.VirtualNetworkRules)
+                    {
+                        this.virtualNetworkRulesMap.Add(item.Id, item);
+                    }
+                }
+            }
+            return this.virtualNetworkRulesMap;
+        }
+
+        ///GENMHASH:6E12523D3FA35427B421697F84BC8C8E:CF5AA1C3299F3EAB8439C499BFAD21B3
+        public void OfflineRegion(Region region)
+        {
+            Extensions.Synchronize(() => this.OfflineRegionAsync(region));
+        }
+
+        ///GENMHASH:ABD34DADCC62B1C6C4CAC76E3F30BA2A:BC9F58EA7772977E5CC09E30FDDA0E5F
+        public async Task OfflineRegionAsync(Region region, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await this.Manager.Inner.DatabaseAccounts.OfflineRegionAsync(this.ResourceGroupName, this.Name, region.Name, cancellationToken);
+        }
+
+        ///GENMHASH:A81623860EADE07F6CC2D783FF2781AF:5E28B3B12A4E565FD3BC928F3675CF8A
+        public void OnlineRegion(Region region)
+        {
+            Extensions.Synchronize(() => this.OnlineRegionAsync(region));
+        }
+
+        ///GENMHASH:0BDF69B81ED4468EAFAB0B382798913E:A9398126CC05684804C52BFD5F15265C
+        public async Task OnlineRegionAsync(Region region, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await this.Manager.Inner.DatabaseAccounts.OnlineRegionAsync(this.ResourceGroupName, this.Name, region.Name, cancellationToken);
         }
 
     }
