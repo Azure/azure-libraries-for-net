@@ -39,6 +39,17 @@ namespace Samples.Tests
 
         [Fact]
         [Trait("Samples", "CosmosDB")]
+        public void CosmosDBTableWithVnetRulesTest()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                CosmosDBTableWithVirtualNetworkRule.Program.RunSample(rollUpClient);
+            }
+        }
+
+        [Fact]
+        [Trait("Samples", "CosmosDB")]
         public void CosmosDBWithKindMongoDBTest()
         {
             using (var context = FluentMockContext.Start(this.GetType().FullName))
