@@ -54,27 +54,27 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// Get the log content for the specified container instance within a container group.
         /// </summary>
         /// <param name="resourceGroupName">The Azure resource group name.</param>
-        /// <param name="containerName">The container instance name.</param>
         /// <param name="containerGroupName">The container group name.</param>
+        /// <param name="containerName">The container instance name.</param>
         /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
         /// <return>All available log lines.</return>
-        string Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.GetLogContent(string resourceGroupName, string containerName, string containerGroupName)
+        string Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.GetLogContent(string resourceGroupName, string containerGroupName, string containerName)
         {
-            return this.GetLogContent(resourceGroupName, containerName, containerGroupName);
+            return this.GetLogContent(resourceGroupName, containerGroupName, containerName);
         }
 
         /// <summary>
         /// Get the log content for the specified container instance within a container group.
         /// </summary>
         /// <param name="resourceGroupName">The Azure resource group name.</param>
-        /// <param name="containerName">The container instance name.</param>
         /// <param name="containerGroupName">The container group name.</param>
+        /// <param name="containerName">The container instance name.</param>
         /// <param name="tailLineCount">Only get the last log lines up to this.</param>
         /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
         /// <return>The log lines from the end, up to the number specified.</return>
-        string Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.GetLogContent(string resourceGroupName, string containerName, string containerGroupName, int tailLineCount)
+        string Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.GetLogContent(string resourceGroupName, string containerGroupName, string containerName, int tailLineCount)
         {
-            return this.GetLogContent(resourceGroupName, containerName, containerGroupName, tailLineCount);
+            return this.GetLogContent(resourceGroupName, containerGroupName, containerName, tailLineCount);
         }
 
         /// <summary>
@@ -90,27 +90,27 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// Get the log content for the specified container instance within a container group.
         /// </summary>
         /// <param name="resourceGroupName">The Azure resource group name.</param>
-        /// <param name="containerName">The container instance name.</param>
         /// <param name="containerGroupName">The container group name.</param>
+        /// <param name="containerName">The container instance name.</param>
         /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
         /// <return>A representation of the future computation of this call.</return>
-        async Task<string> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.GetLogContentAsync(string resourceGroupName, string containerName, string containerGroupName, CancellationToken cancellationToken)
+        async Task<string> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.GetLogContentAsync(string resourceGroupName, string containerGroupName, string containerName, CancellationToken cancellationToken)
         {
-            return await this.GetLogContentAsync(resourceGroupName, containerName, containerGroupName, cancellationToken);
+            return await this.GetLogContentAsync(resourceGroupName, containerGroupName, containerName, cancellationToken);
         }
 
         /// <summary>
         /// Get the log content for the specified container instance within a container group.
         /// </summary>
         /// <param name="resourceGroupName">The Azure resource group name.</param>
-        /// <param name="containerName">The container instance name.</param>
         /// <param name="containerGroupName">The container group name.</param>
+        /// <param name="containerName">The container instance name.</param>
         /// <param name="tailLineCount">Only get the last log lines up to this.</param>
         /// <throws>IllegalArgumentException thrown if parameters fail the validation.</throws>
         /// <return>A representation of the future computation of this call.</return>
-        async Task<string> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.GetLogContentAsync(string resourceGroupName, string containerName, string containerGroupName, int tailLineCount, CancellationToken cancellationToken)
+        async Task<string> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.GetLogContentAsync(string resourceGroupName, string containerGroupName, string containerName, int tailLineCount, CancellationToken cancellationToken)
         {
-            return await this.GetLogContentAsync(resourceGroupName, containerName, containerGroupName, tailLineCount, cancellationToken);
+            return await this.GetLogContentAsync(resourceGroupName, containerGroupName, containerName, tailLineCount, cancellationToken);
         }
 
         /// <summary>
