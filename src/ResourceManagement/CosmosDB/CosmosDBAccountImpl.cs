@@ -299,19 +299,26 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         private void AddLocationsForCreateUpdateParameters(Models.DatabaseAccountCreateUpdateParametersInner createUpdateParametersInner, IList<Microsoft.Azure.Management.CosmosDB.Fluent.Models.FailoverPolicyInner> failoverPolicies)
         {
             List<Models.Location> locations = new List<Models.Location>();
-            for (int i = 0; i < failoverPolicies.Count; i++)
+            if (failoverPolicies.Count > 0)
             {
-                Models.FailoverPolicyInner policyInner = failoverPolicies[i];
+                for (int i = 0; i < failoverPolicies.Count; i++)
+                {
+                    Models.FailoverPolicyInner policyInner = failoverPolicies[i];
+                    Models.Location location = new Models.Location();
+                    location.FailoverPriority = i;
+                    location.LocationName = policyInner.LocationName;
+                    locations.Add(location);
+                }
+            }
+            else
+            {
                 Models.Location location = new Models.Location();
-                location.FailoverPriority = i;
-                location.LocationName = policyInner.LocationName;
+                location.FailoverPriority = 0;
+                location.LocationName = createUpdateParametersInner.Location;
                 locations.Add(location);
             }
 
-            if (locations.Count > 0)
-            {
-                createUpdateParametersInner.Locations = locations;
-            }
+            createUpdateParametersInner.Locations = locations;
         }
 
         public CosmosDBAccountImpl WithIpRangeFilter(string ipRangeFilter)
