@@ -89,14 +89,14 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         public async Task<byte[]> GetAdminKubeConfigContentsAsync(string resourceGroupName, string kubernetesCluster, CancellationToken cancellationToken = default(CancellationToken))
         {
             var profileInner = await this.Manager.Inner.ManagedClusters
-                .GetAccessProfilesAsync(resourceGroupName, kubernetesCluster, KubernetesClusterAccessProfileRole.ADMIN.ToString());
+                .GetAccessProfileAsync(resourceGroupName, kubernetesCluster, KubernetesClusterAccessProfileRole.ADMIN.ToString());
             if (profileInner == null)
             {
                 return new byte[0];
             }
             else
             {
-                return System.Convert.FromBase64String(profileInner.KubeConfig);
+                return profileInner.KubeConfig;
             }
         }
 
@@ -108,14 +108,14 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         public async Task<byte[]> GetUserKubeConfigContentsAsync(string resourceGroupName, string kubernetesCluster, CancellationToken cancellationToken = default(CancellationToken))
         {
             var profileInner = await this.Manager.Inner.ManagedClusters
-                .GetAccessProfilesAsync(resourceGroupName, kubernetesCluster, KubernetesClusterAccessProfileRole.USER.ToString());
+                .GetAccessProfileAsync(resourceGroupName, kubernetesCluster, KubernetesClusterAccessProfileRole.USER.ToString());
             if (profileInner == null)
             {
                 return new byte[0];
             }
             else
             {
-                return System.Convert.FromBase64String(profileInner.KubeConfig);
+                return profileInner.KubeConfig;
             }
         }
 
