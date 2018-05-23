@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         /// <param name="kubeConfig">Base64-encoded Kubernetes configuration
         /// file.</param>
-        public ManagedClusterAccessProfileInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string kubeConfig = default(string))
+        public ManagedClusterAccessProfileInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), byte[] kubeConfig = default(byte[]))
             : base(location, id, name, type, tags)
         {
             KubeConfig = kubeConfig;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// Gets or sets base64-encoded Kubernetes configuration file.
         /// </summary>
         [JsonProperty(PropertyName = "properties.kubeConfig")]
-        public string KubeConfig { get; set; }
+        public byte[] KubeConfig { get; set; }
 
     }
 }

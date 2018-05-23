@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             }
 
             /// <summary>
-            /// Gets access profile of a managed cluster.
+            /// Gets an access profile of a managed cluster.
             /// </summary>
             /// <remarks>
             /// Gets the accessProfile for the specified role name of the managed cluster
@@ -113,6 +113,36 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
+            public static async Task<ManagedClusterAccessProfileInner> GetAccessProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, string roleName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAccessProfileWithHttpMessagesAsync(resourceGroupName, resourceName, roleName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets access profile of a managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Use ManagedClusters_GetAccessProfile instead.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='roleName'>
+            /// The name of the role for managed cluster accessProfile resource.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            [System.Obsolete()]
             public static async Task<ManagedClusterAccessProfileInner> GetAccessProfilesAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, string roleName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetAccessProfilesWithHttpMessagesAsync(resourceGroupName, resourceName, roleName, null, cancellationToken).ConfigureAwait(false))
