@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     public class MSITokenProvider : ITokenProvider, IBeta
     {
         private readonly IList<int> retrySlots = new List<int>(new int[] { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765 });
-        private readonly int maxRetry;
         private ConcurrentDictionary<string, MSIToken> cache = new ConcurrentDictionary<string, MSIToken>();
         private static SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
-
+        
         private readonly string resource;
         private readonly MSILoginInformation msiLoginInformation;
 
         private const string  imdsEndpoint = "http://169.254.169.254/metadata/identity/oauth2/token";
+        private const int imdsUpgradeTimeInMs = 70 * 1000;
         private const string imdsMsiApiVersion = "2018-02-01";
         private const string appServiceMsiApiVersion = "2017-09-01";
 
@@ -120,10 +120,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             {
                 parameters.Add("msi_res_id", this.msiLoginInformation.UserAssignedIdentityResourceId);
             }
-            else
-            {
-                throw new ArgumentException("MSI: UserAssignedIdentityObjectId, UserAssignedIdentityClientId or UserAssignedIdentityResourceId must be set");
-            }
 
             msiRequest.Content = new FormUrlEncodedContent(parameters);
 
@@ -201,14 +197,13 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             {
                 query["msi_res_id"] = this.msiLoginInformation.UserAssignedIdentityResourceId;
             }
-            else
-            {
-                throw new ArgumentException("MSI: UserAssignedIdentityObjectId, UserAssignedIdentityClientId or UserAssignedIdentityResourceId must be set");
-            }
+            
             uriBuilder.Query = await new FormUrlEncodedContent(query).ReadAsStringAsync();
             string url = uriBuilder.ToString();
             //
             int retry = 1;
+            int maxRetry = retrySlots.Count;
+            //
             while (retry <= maxRetry)
             {
                 //
@@ -221,9 +216,17 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                         if (ShouldRetry(statusCode))
                         {
 
-                            int retryTimeout = retrySlots[new Random().Next(retry)];
-                            await SdkContext.DelayProvider.DelayAsync(retryTimeout * 1000, cancellationToken);
+                            int retryTimeoutInMs = retrySlots[new Random().Next(retry)] * 1000;
+                            retryTimeoutInMs = (statusCode == 410 && retryTimeoutInMs < imdsUpgradeTimeInMs) ? imdsUpgradeTimeInMs : retryTimeoutInMs;
                             retry++;
+                            if (retry > maxRetry)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                await SdkContext.DelayProvider.DelayAsync(retryTimeoutInMs, cancellationToken);
+                            }
                         }
                         else if (statusCode != 200)
                         {
@@ -259,7 +262,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 
         private static bool ShouldRetry(int statusCode)
         {
-            return (statusCode == 429 || statusCode == 404 || (statusCode >= 500 && statusCode <= 599));
+            return (statusCode == 410 || statusCode == 429 || statusCode == 404 || (statusCode >= 500 && statusCode <= 599));
         }
 
         private class MSIToken
