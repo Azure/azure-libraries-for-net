@@ -901,6 +901,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the eviction policy of the virtual machines in the scale set.
+        /// </summary>
+        Models.VirtualMachineEvictionPolicyTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.VirtualMachineEvictionPolicy
+        {
+            get
+            {
+                return this.VirtualMachineEvictionPolicy();
+            }
+        }
+
+        /// <summary>
         /// Gets the storage blob endpoint uri if boot diagnostics is enabled for the virtual machine scale set.
         /// </summary>
         string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetBeta.BootDiagnosticsStorageUri
@@ -1780,6 +1791,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithVirtualMachinePriority(VirtualMachinePriorityTypes priority)
         {
             return this.WithVirtualMachinePriority(priority) as VirtualMachineScaleSet.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specify that virtual machines in the scale set should be low priority VMs.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithLowPriorityVirtualMachine()
+        {
+            return this.WithLowPriorityVirtualMachine() as VirtualMachineScaleSet.Definition.IWithCreate;
+        }
+
+        /// <summary>
+        /// Specify that virtual machines in the scale set should be low priority VMs with
+        /// provided eviction policy.
+        /// </summary>
+        /// <param name="policy">eviction policy for the virtual machines in the scale set.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithLowPriorityVirtualMachine(VirtualMachineEvictionPolicyTypes policy)
+        {
+            return this.WithLowPriorityVirtualMachine(policy) as VirtualMachineScaleSet.Definition.IWithCreate;
         }
 
         /// <summary>

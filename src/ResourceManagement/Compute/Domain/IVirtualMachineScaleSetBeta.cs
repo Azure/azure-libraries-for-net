@@ -34,6 +34,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Models.VirtualMachinePriorityTypes VirtualMachinePriority { get; }
 
         /// <summary>
+        /// Gets the eviction policy of the virtual machines in the scale set.
+        /// </summary>
+        Models.VirtualMachineEvictionPolicyTypes VirtualMachineEvictionPolicy { get; }
+
+        /// <summary>
         /// Gets true if boot diagnostics is enabled for the virtual machine scale set.
         /// </summary>
         bool IsBootDiagnosticsEnabled { get; }
