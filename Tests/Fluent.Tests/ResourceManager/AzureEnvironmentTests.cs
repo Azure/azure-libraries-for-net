@@ -12,11 +12,11 @@ namespace Fluent.Tests.ResourceManager
         [Fact]
         public void FromName()
         {
-            Assert.Equal(AzureEnvironment.AzureGlobalCloud, AzureEnvironment.FromName("AzureGlobalCloud"));
+            Assert.Equal(AzureEnvironment.AzureGlobalCloud, AzureEnvironment.FromName("AzureCloud"));
             Assert.Equal(AzureEnvironment.AzureChinaCloud, AzureEnvironment.FromName("AzureChinaCloud"));
 
-            Assert.Equal(AzureEnvironment.AzureGlobalCloud, AzureEnvironment.FromName("AzuregLobalCloud"));
-            Assert.Equal(AzureEnvironment.AzureGlobalCloud, AzureEnvironment.FromName("azureglobalcloud"));
+            Assert.Equal(AzureEnvironment.AzureGlobalCloud, AzureEnvironment.FromName("AzurecLoud"));
+            Assert.Equal(AzureEnvironment.AzureGlobalCloud, AzureEnvironment.FromName("azurecloud"));
         }
 
         [Theory(Skip = "Temporary skipping to enable live test run")]
