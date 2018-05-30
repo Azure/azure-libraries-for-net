@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Azure.Management.TrafficManager.Fluent;
 using System;
 using System.Linq;
+using Microsoft.Azure.Management.Batchai.Fluent;
 using ISubscriptions = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscriptions;
 using ISubscription = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscription;
 using Microsoft.Azure.Management.ContainerInstance.Fluent;
@@ -481,6 +482,22 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IBatchAIJobs BatchAIJobs
+        {
+            get
+            {
+                return batchAIManager.BatchAIJobs;
+            }
+        }
+
+        public IBatchAIUsages BatchAIUsages
+        {
+            get
+            {
+                return batchAIManager.BatchAIUsages;
+            }
+        }
+
         public IBatchAIFileServers BatchAIFileServers
         {
             get
@@ -874,6 +891,16 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Batch AI file servers management.
         /// </summary>
         IBatchAIFileServers BatchAIFileServers { get; }
+
+        /// <summary>
+        /// Entry point to Batch AI file servers management.
+        /// </summary>
+        IBatchAIJobs BatchAIJobs { get; }
+
+        /// <summary>
+        /// Entry point to Batch AI file servers management.
+        /// </summary>
+        IBatchAIUsages BatchAIUsages { get; }
 
         /// <summary>
         /// Entry point to listing activity log events in Azure.

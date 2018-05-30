@@ -419,17 +419,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         }
 
         /// <summary>
-        /// Gets the entry point to Batch AI jobs management API for this cluster.
-        /// </summary>
-        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJobs Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster.Jobs
-        {
-            get
-            {
-                return this.Jobs() as Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJobs;
-            }
-        }
-
-        /// <summary>
         /// Gets the provisioning state of the cluster.
         /// </summary>
         Microsoft.Azure.Management.BatchAI.Fluent.Models.ProvisioningState Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster.ProvisioningState
