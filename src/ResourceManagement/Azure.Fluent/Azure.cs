@@ -893,12 +893,12 @@ namespace Microsoft.Azure.Management.Fluent
         IBatchAIFileServers BatchAIFileServers { get; }
 
         /// <summary>
-        /// Entry point to Batch AI file servers management.
+        /// Entry point to Batch AI jobs management.
         /// </summary>
         IBatchAIJobs BatchAIJobs { get; }
 
         /// <summary>
-        /// Entry point to Batch AI file servers management.
+        /// Entry point to Batch AI usages management.
         /// </summary>
         IBatchAIUsages BatchAIUsages { get; }
 
