@@ -11,7 +11,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     /// </summary>
     public class ContainerServiceVirtualMachineSizeTypes : ExpandableStringEnum<ContainerServiceVirtualMachineSizeTypes>
     {
-        public static readonly ContainerServiceVirtualMachineSizeTypes StandardA0 = Parse(ContainerServiceVMSizeTypes.StandardA0);
         public static readonly ContainerServiceVirtualMachineSizeTypes StandardA1 = Parse(ContainerServiceVMSizeTypes.StandardA1);
         public static readonly ContainerServiceVirtualMachineSizeTypes StandardA2 = Parse(ContainerServiceVMSizeTypes.StandardA2);
         public static readonly ContainerServiceVirtualMachineSizeTypes StandardA3 = Parse(ContainerServiceVMSizeTypes.StandardA3);

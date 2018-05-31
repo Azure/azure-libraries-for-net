@@ -82,8 +82,30 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition
     /// The first stage of Batch AI job definition.
     /// </summary>
     public interface IBlank  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithNodeCount>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithCluster
     {
+
+    }
+
+    /// <summary>
+    /// The stage of the Batch AI job definition allowing to specify cluster for the job.
+    /// </summary>
+    public interface IWithCluster
+    {
+
+        /// <summary>
+        /// Sets Batch AI cluster for the job.
+        /// </summary>
+        /// <param name="cluster">Batch AI cluster to run the job.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithNodeCount WithExistingCluster(IBatchAICluster cluster);
+
+        /// <summary>
+        /// Sets Batch AI cluster id for the job.
+        /// </summary>
+        /// <param name="clusterId">Batch AI cluster id.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIJob.Definition.IWithNodeCount WithExistingClusterId(string clusterId);
     }
 
     /// <summary>

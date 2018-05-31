@@ -103,8 +103,8 @@ namespace ManageBatchAI
                 // =============================================================
                 // Create Microsoft Cognitive Toolkit job to run on the cluster
                 Utilities.Log("Creating Batch AI job...");
-                IBatchAIJob job = cluster.Jobs.Define("myJob")
-                    .WithRegion(region)
+                IBatchAIJob job = azure.BatchAIJobs.Define("myJob")
+                    .WithExistingCluster(cluster)
                     .WithNodeCount(1)
                     .WithStdOutErrPathPrefix("$AZ_BATCHAI_MOUNT_ROOT/azurefileshare")
                     .DefineCognitiveToolkit()
