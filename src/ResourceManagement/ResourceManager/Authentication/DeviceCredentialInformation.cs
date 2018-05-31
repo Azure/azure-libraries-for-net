@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     {
         public string ClientId { get; set; }
 
-#if PORTABLE
+#if NETSTANDARD
         public Func<DeviceCodeResult, bool> DeviceCodeFlowHandler { get; set; }
 #endif
 

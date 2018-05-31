@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         private MSITokenProviderFactory msiTokenProviderFactory;
 
         private IDictionary<Uri, ServiceClientCredentials> credentialsCache;
-#if PORTABLE
+#if NETSTANDARD
         private DeviceCredentialInformation deviceCredentialInformation;
 #endif
 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         {
             get
             {
-#if PORTABLE
+#if NETSTANDARD
                 if (deviceCredentialInformation != null)
                 {
                     return deviceCredentialInformation.ClientId;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             credentialsCache = new Dictionary<Uri, ServiceClientCredentials>();
         }
 
-#if PORTABLE
+#if NETSTANDARD
         public AzureCredentials(DeviceCredentialInformation deviceCredentialInformation, string tenantId, AzureEnvironment environment)
             : this(tenantId, environment)
         {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                             TenantId, servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.Certificate, servicePrincipalLoginInformation.CertificatePassword, adSettings, TokenCache.DefaultShared);
                     }
                 }
-#if !PORTABLE
+#if !NETSTANDARD
                 else if (userLoginInformation != null)
                 {
                     credentialsCache[adSettings.TokenAudience] = await UserTokenProvider.LoginSilentAsync(
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                         userLoginInformation.Password, adSettings, TokenCache.DefaultShared);
                 }
 #endif
-#if PORTABLE
+#if NETSTANDARD
                 else if (deviceCredentialInformation != null)
                 {
                     credentialsCache[adSettings.TokenAudience] = await UserTokenProvider.LoginByDeviceCodeAsync(

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             }, tenantId, environment);
         }
 
-#if PORTABLE
+#if NETSTANDARD
         /// <summary>
         /// Creates a credentials object through device flow.
         /// </summary>
