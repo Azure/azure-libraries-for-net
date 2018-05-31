@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     {
         private ClusterCreateParametersInner createParameters = new ClusterCreateParametersInner();
         private ClusterUpdateParametersInner updateParameters = new ClusterUpdateParametersInner();
-        private BatchAIJobsImpl jobs;
         public Models.ResourceId Subnet()
         {
             return Inner.Subnet;
@@ -281,15 +280,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public AllocationState AllocationState()
         {
             return Inner.AllocationState.GetValueOrDefault();
-        }
-
-        public IBatchAIJobs Jobs()
-        {
-            if (jobs == null)
-            {
-                jobs = new BatchAIJobsImpl(this);
-            }
-            return jobs;
         }
 
         private ScaleSettings EnsureScaleSettings()

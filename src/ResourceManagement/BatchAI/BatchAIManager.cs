@@ -5,6 +5,7 @@
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using System;
 using System.Linq;
+using Microsoft.Azure.Management.Batchai.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
@@ -15,6 +16,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         #region Fluent private collections
         private IBatchAIClusters batchAIClusters;
         private IBatchAIFileServers batchAIFileServers;
+        private IBatchAIJobs batchAIJobs;
+        private IBatchAIUsages batchAIUsages;
         #endregion
 
         #region ctrs
@@ -111,6 +114,30 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 return batchAIFileServers;
             }
         }
+
+        public IBatchAIJobs BatchAIJobs
+        {
+            get
+            {
+                if (batchAIJobs == null)
+                {
+                    batchAIJobs = new BatchAIJobsImpl(this);
+                }
+                return batchAIJobs;
+            }
+        }
+
+        public IBatchAIUsages BatchAIUsages
+        {
+            get
+            {
+                if (batchAIUsages == null)
+                {
+                    batchAIUsages = new BatchAIUsagesImpl(this);
+                }
+                return batchAIUsages;
+            }
+        }
     }
     /// <summary>
     /// Entry point to Azure BatchAI resource management.
@@ -119,5 +146,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     {
         IBatchAIClusters BatchAIClusters { get; }
         IBatchAIFileServers BatchAIFileServers { get;  }
+        IBatchAIJobs BatchAIJobs { get; }
+        IBatchAIUsages BatchAIUsages { get; }
     }
 }

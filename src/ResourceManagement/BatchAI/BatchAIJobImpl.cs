@@ -232,7 +232,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            createParameters.Cluster = new Models.ResourceId(parent.Id);
+            if (parent == null)
+            {
+                parent = await Manager.BatchAIClusters.GetByIdAsync(createParameters.Cluster.Id, cancellationToken);
+            }
             createParameters.Location = parent.RegionName;
             var inner = await Manager.Inner.Jobs.CreateAsync(parent.ResourceGroupName, this.Name, createParameters, cancellationToken);
             SetInner(inner);
@@ -463,6 +466,22 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
+        ///GENMHASH:A851295FCC0E9F4FE107D9566C40A6D0:444BB1540F15B3A5BECC3E92D812699B
+        public BatchAIJobImpl WithExistingCluster(IBatchAICluster cluster)
+        {
+            parent = cluster;
+            createParameters.Cluster = new Models.ResourceId(cluster.Id);
+
+            return this;
+        }
+
+        ///GENMHASH:A1AF6041EECB4ABC084125DFBF602670:8843DDA8D11922F11FAC857055250E18
+        public BatchAIJobImpl WithExistingClusterId(string clusterId)
+        {
+            createParameters.Cluster = new Models.ResourceId(clusterId);
+            return this;
+        }
+
         public BatchAIJobImpl WithInputDirectory(string id, string path)
         {
             if (createParameters.InputDirectories == null)
@@ -482,11 +501,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        internal BatchAIJobImpl(string name, BatchAIClusterImpl parent, JobInner inner)
-            : base(name, inner, parent.Manager)
+        internal BatchAIJobImpl(string name, JobInner inner, IBatchAIManager manager)
+            : base(name, inner, manager)
         {
-            this.parent = parent;
-            WithExistingResourceGroup(parent.ResourceGroupName);
         }
 
         public ChainerSettings ChainerSettings()
