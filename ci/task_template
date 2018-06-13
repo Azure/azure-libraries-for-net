@@ -1,7 +1,7 @@
 {"ver": "1.0",
   "execution": {
     "command": "cd %testpath% && dotnet test --filter %testcase% -f netcoreapp1.1",
-    "recording": "%testpath%/bin/Debug/netcoreapp1.1/SessionRecords/%recordpath%/%testname%"
+    "recording": "%testpath%/bin/Debug/netcoreapp1.1/SessionRecords/%recordpath%/%testname%.json"
   },
   "classifier": {
     "identifier": "%testcase%",
