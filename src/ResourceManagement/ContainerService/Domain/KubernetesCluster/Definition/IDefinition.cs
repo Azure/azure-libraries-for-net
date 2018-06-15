@@ -26,17 +26,26 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
     /// </summary>
     public interface IWithVersion 
     {
-        /// <summary>
-        /// Specifies the version for the Kubernetes cluster.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithDnsPrefix WithVersion(Microsoft.Azure.Management.ContainerService.Fluent.Models.KubernetesVersion kubernetesVersion);
 
         /// <summary>
         /// Uses the latest version for the Kubernetes cluster.
         /// </summary>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithLinuxRootUsername WithLatestVersion();
+
+        /// <summary>
+        /// Specifies the version for the Kubernetes cluster.
+        /// </summary>
+        /// <param name="kubernetesVersion">The kubernetes version.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithLinuxRootUsername WithVersion(Models.KubernetesVersion kubernetesVersion);
+
+        /// <summary>
+        /// Specifies the version for the Kubernetes cluster.
+        /// </summary>
+        /// <param name="kubernetesVersion">The kubernetes version.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithLinuxRootUsername WithVersion(string kubernetesVersion);
     }
 
     /// <summary>

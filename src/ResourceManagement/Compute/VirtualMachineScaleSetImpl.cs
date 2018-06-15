@@ -658,6 +658,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
         }
 
+        public VirtualMachineEvictionPolicyTypes VirtualMachineEvictionPolicy()
+        {
+            if (this.Inner.VirtualMachineProfile != null && this.Inner.VirtualMachineProfile.EvictionPolicy != null)
+            {
+                return VirtualMachineEvictionPolicyTypes.Parse(this.Inner.VirtualMachineProfile.EvictionPolicy);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         ///GENMHASH:02A68214692E8DA4CC34E5FE55E3C918:150375C199EA874367AE081B87D5F2FD
         public StorageAccountTypes ManagedOSDiskStorageAccountType()
         {
@@ -2327,6 +2339,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineScaleSetImpl WithVirtualMachinePriority(VirtualMachinePriorityTypes priority)
         {
             this.Inner.VirtualMachineProfile.Priority = priority.ToString();
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithLowPriorityVirtualMachine()
+        {
+            this.WithVirtualMachinePriority(VirtualMachinePriorityTypes.Low);
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithLowPriorityVirtualMachine(VirtualMachineEvictionPolicyTypes policy)
+        {
+            this.WithLowPriorityVirtualMachine();
+            this.Inner.VirtualMachineProfile.EvictionPolicy = policy.ToString();
             return this;
         }
 

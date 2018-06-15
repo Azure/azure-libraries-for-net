@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     using System.Threading;
     using System.Threading.Tasks;
     using System;
+    using System.Text;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// The implementation for KubernetesCluster and its create and update interfaces.
@@ -32,7 +34,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         IDefinition,
         IUpdate
     {
-        private bool useLatestVersion;
         private byte[] adminKubeConfigContent;
         private byte[] userKubeConfigContent;
 
@@ -45,7 +46,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
                 this.Inner.AgentPoolProfiles = new List<ContainerServiceAgentPoolProfile>();
             }
 
-            this.useLatestVersion = false;
             this.adminKubeConfigContent = null;
             this.userKubeConfigContent = null;
         }
@@ -132,28 +132,28 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         private async Task<byte[]> GetAdminKubeConfigContentAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var profileInner = await this.Manager.Inner.ManagedClusters
-                .GetAccessProfilesAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.ADMIN.ToString(), cancellationToken: cancellationToken);
+                .GetAccessProfileAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.ADMIN.ToString(), cancellationToken: cancellationToken);
             if (profileInner == null)
             {
                 return new byte[0];
             }
             else
             {
-                return System.Convert.FromBase64String(profileInner.KubeConfig);
+                return profileInner.KubeConfig;
             }
         }
 
         private async Task<byte[]> GetUserKubeConfigContentAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var profileInner = await this.Manager.Inner.ManagedClusters
-                .GetAccessProfilesAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.USER.ToString(), cancellationToken: cancellationToken);
+                .GetAccessProfileAsync(this.ResourceGroupName, this.Name, KubernetesClusterAccessProfileRole.USER.ToString(), cancellationToken: cancellationToken);
             if (profileInner == null)
             {
                 return new byte[0];
             }
             else
             {
-                return System.Convert.FromBase64String(profileInner.KubeConfig);
+                return profileInner.KubeConfig;
             }
         }
 
@@ -223,16 +223,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             {
                 this.Inner.ServicePrincipalProfile = null;
             }
-            if (useLatestVersion)
-            {
-                var orchestratorsList = await this.Manager.Inner.ContainerServices.ListOrchestratorsAsync(this.RegionName, cancellationToken: cancellationToken);
-                if (orchestratorsList != null && orchestratorsList.Orchestrators != null && orchestratorsList.Orchestrators.Count > 0)
-                {
-                    this.Inner.KubernetesVersion = orchestratorsList.Orchestrators
-                        .Where(o => o.OrchestratorType.Equals("Kubernetes", StringComparison.OrdinalIgnoreCase))
-                        .Select(o => o.OrchestratorVersion).OrderBy(o => o).Last();
-                }
-            }
 
             var containerServiceInner = await this.Manager.Inner.ManagedClusters.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken);
             this.SetInner(containerServiceInner);
@@ -250,10 +240,18 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this;
         }
 
+        ///GENMHASH:5A056156A7C92738B7A05BFFB861E1B4:680AB4E250198E427BC1E5373E11C634
+        public KubernetesClusterImpl WithVersion(string kubernetesVersion)
+        {
+            this.Inner.KubernetesVersion = kubernetesVersion;
+
+            return this;
+        }
+
         ///GENMHASH:6E6C7ADDA062559C24E2355B35D0238B:8ECEC33D2E495291645C6C111C44D076
         public KubernetesClusterImpl WithLatestVersion()
         {
-            this.useLatestVersion = true;
+            this.Inner.KubernetesVersion = "";
 
             return this;
         }

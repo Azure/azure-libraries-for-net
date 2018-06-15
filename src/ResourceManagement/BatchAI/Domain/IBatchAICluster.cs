@@ -48,11 +48,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         Microsoft.Azure.Management.BatchAI.Fluent.Models.NodeStateCounts NodeStateCounts { get; }
 
         /// <summary>
-        /// Gets the entry point to Batch AI jobs management API for this cluster.
-        /// </summary>
-        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJobs Jobs { get; }
-
-        /// <summary>
         /// Gets the provisioning state transition time of the cluster.
         /// </summary>
         System.DateTime ProvisioningStateTransitionTime { get; }

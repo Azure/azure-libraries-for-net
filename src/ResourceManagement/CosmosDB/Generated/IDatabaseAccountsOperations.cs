@@ -251,6 +251,60 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// </exception>
         Task<AzureOperationResponse<DatabaseAccountListConnectionStringsResultInner>> ListConnectionStringsWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Offline the specified region for the specified Azure Cosmos DB
+        /// database account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='region'>
+        /// Cosmos DB region, with spaces between words and each word
+        /// capitalized.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> OfflineRegionWithHttpMessagesAsync(string resourceGroupName, string accountName, string region, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Online the specified region for the specified Azure Cosmos DB
+        /// database account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='region'>
+        /// Cosmos DB region, with spaces between words and each word
+        /// capitalized.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> OnlineRegionWithHttpMessagesAsync(string resourceGroupName, string accountName, string region, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Lists the read-only access keys for the specified Azure Cosmos DB
         /// database account.
         /// </summary>
@@ -520,6 +574,60 @@ namespace Microsoft.Azure.Management.CosmosDB.Fluent
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginFailoverPriorityChangeWithHttpMessagesAsync(string resourceGroupName, string accountName, IList<FailoverPolicyInner> failoverPoliciesProperty, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Offline the specified region for the specified Azure Cosmos DB
+        /// database account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='region'>
+        /// Cosmos DB region, with spaces between words and each word
+        /// capitalized.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginOfflineRegionWithHttpMessagesAsync(string resourceGroupName, string accountName, string region, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Online the specified region for the specified Azure Cosmos DB
+        /// database account.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of an Azure resource group.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='region'>
+        /// Cosmos DB region, with spaces between words and each word
+        /// capitalized.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginOnlineRegionWithHttpMessagesAsync(string resourceGroupName, string accountName, string region, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Regenerates an access key for the specified Azure Cosmos DB
         /// database account.

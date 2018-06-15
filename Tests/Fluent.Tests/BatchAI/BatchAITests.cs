@@ -128,8 +128,8 @@ namespace Fluent.Tests
                     .Create();
                 Assert.Equal(AllocationState.Steady, cluster.AllocationState);
                 Assert.Equal(userName, cluster.AdminUserName);
-                IBatchAIJob job = cluster.Jobs.Define("myJob")
-                    .WithRegion(REGION)
+                IBatchAIJob job = manager.BatchAIJobs.Define("myJob")
+                    .WithExistingClusterId(cluster.Id)
                     .WithNodeCount(1)
                     .WithStdOutErrPathPrefix("$AZ_BATCHAI_MOUNT_ROOT/azurefileshare")
                     .DefineCognitiveToolkit()
@@ -200,6 +200,17 @@ namespace Fluent.Tests
                 Assert.Equal(CachingType.Readwrite, fileServer.DataDisks.CachingType);
 
                 manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
+            }
+        }
+
+        [Fact]
+        public void CanListUsages()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var manager = TestHelper.CreateBatchAIManager();
+                var usages = manager.BatchAIUsages.ListByRegion(Region.EuropeWest);
+                Assert.NotNull(usages);
             }
         }
     }

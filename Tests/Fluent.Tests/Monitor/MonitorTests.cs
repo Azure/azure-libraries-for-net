@@ -205,7 +205,11 @@ namespace Fluent.Tests
                 }
                 finally
                 {
-                    azure.ResourceGroups.BeginDeleteByName(rgName);
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch {}
                 }
             }
         }
@@ -290,7 +294,11 @@ namespace Fluent.Tests
                 }
                 finally
                 {
-                    azure.ResourceGroups.BeginDeleteByName(rgName);
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch {}
                 }
             }
         }

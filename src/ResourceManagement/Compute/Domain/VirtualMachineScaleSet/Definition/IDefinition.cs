@@ -1033,5 +1033,19 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         /// <param name="priority">The priority.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate WithVirtualMachinePriority(VirtualMachinePriorityTypes priority);
+
+        /// <summary>
+        /// Specify that virtual machines in the scale set should be low priority VMs.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate WithLowPriorityVirtualMachine();
+
+        /// <summary>
+        /// Specify that virtual machines in the scale set should be low priority VMs with
+        /// provided eviction policy.
+        /// </summary>
+        /// <param name="policy">eviction policy for the virtual machines in the scale set.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate WithLowPriorityVirtualMachine(VirtualMachineEvictionPolicyTypes policy);
     }
 }

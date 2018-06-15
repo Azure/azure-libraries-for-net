@@ -312,21 +312,17 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     /// The stage of the container group definition allowing to specify a private image registry or a volume.
     /// </summary>
     public interface IWithPrivateImageRegistryOrVolume  :
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPrivateImageRegistry
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPrivateImageRegistry,
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithPrivateImageRegistryOrVolumeBeta
     {
-        /// <summary>
-        /// Specifies an empty directory volume that can be shared by the container instances in the container group.
-        /// </summary>
-        /// <param name="name">The name of the empty directory volume.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithFirstContainerInstance WithEmptyDirectoryVolume(string name);
 
         /// <summary>
-        /// Skips the definition of volumes to be shared by the container instances.
-        /// An IllegalArgumentException will be thrown if a container instance attempts to define a volume mounting.
+        /// Begins the definition of a volume that can be shared by the container instances in the container group.
+        /// The definition must be completed with a call to  VolumeDefinitionStages.WithVolumeAttach.attach().
         /// </summary>
+        /// <param name="name">The name of the volume.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithFirstContainerInstance WithoutVolume();
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IVolumeDefinitionBlank<Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithVolume> DefineVolume(string name);
 
         /// <summary>
         /// Specifies a new Azure file share name to be created.
@@ -337,12 +333,11 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithFirstContainerInstance WithNewAzureFileShareVolume(string volumeName, string shareName);
 
         /// <summary>
-        /// Begins the definition of a volume that can be shared by the container instances in the container group.
-        /// The definition must be completed with a call to  VolumeDefinitionStages.WithVolumeAttach.attach().
+        /// Skips the definition of volumes to be shared by the container instances.
+        /// An IllegalArgumentException will be thrown if a container instance attempts to define a volume mounting.
         /// </summary>
-        /// <param name="name">The name of the volume.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IVolumeDefinitionBlank<Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithVolume> DefineVolume(string name);
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithFirstContainerInstance WithoutVolume();
     }
 
     /// <summary>
@@ -367,21 +362,16 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     /// The stage of the container instance definition allowing to specify the starting command line.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithStartingCommandLine<ParentT> 
+    public interface IWithStartingCommandLine<ParentT>  :
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithStartingCommandLineBeta<ParentT>
     {
+
         /// <summary>
         /// Specifies the starting command line.
         /// </summary>
-        /// <param name="commandLine">The starting command line the container will execute after it gets initialized.</param>
+        /// <param name="executable">The executable or path to the executable that will be called after initializing the container.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithContainerInstanceAttach<ParentT> WithStartingCommandLine(string commandLine);
-
-        /// <summary>
-        /// Specifies the starting command lines.
-        /// </summary>
-        /// <param name="commandLines">The starting command lines the container will execute after it gets initialized.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithContainerInstanceAttach<ParentT> WithStartingCommandLines(params string[] commandLines);
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithContainerInstanceAttach<ParentT> WithStartingCommandLine(string executable);
     }
 
     /// <summary>
@@ -435,8 +425,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
     /// The stage of the container instance definition allowing to specify the container ports.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithPorts<ParentT> 
+    public interface IWithPorts<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
+
         /// <summary>
         /// Specifies the container's TCP port available to external clients.
         /// A public IP address will be create to allow external clients to reach the containers within the group.
@@ -674,6 +666,38 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         /// <param name="gitDirectoryName">The Git target directory name for the new volume.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithGitRevision<ParentT> WithGitDirectoryName(string gitDirectoryName);
+    }
+
+    /// <summary>
+    /// The stage of the container group definition allowing to specify a private image registry or a volume.
+    /// </summary>
+    public interface IWithPrivateImageRegistryOrVolumeBeta  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies an empty directory volume that can be shared by the container instances in the container group.
+        /// </summary>
+        /// <param name="name">The name of the empty directory volume.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithFirstContainerInstance WithEmptyDirectoryVolume(string name);
+    }
+
+    /// <summary>
+    /// The stage of the container instance definition allowing to specify the starting command line.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithStartingCommandLineBeta<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies the starting command lines.
+        /// </summary>
+        /// <param name="executable">The executable which it will call after initializing the container.</param>
+        /// <param name="parameters">The parameter list for the executable to be called.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithContainerInstanceAttach<ParentT> WithStartingCommandLine(string executable, params string[] parameters);
     }
 
     /// <summary>

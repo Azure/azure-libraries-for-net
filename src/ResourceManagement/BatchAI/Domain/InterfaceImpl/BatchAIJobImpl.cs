@@ -428,6 +428,26 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this.WithStdOutErrPathPrefix(stdOutErrPathPrefix) as BatchAIJob.Definition.IWithToolType;
         }
 
+        /// <summary>
+        /// Sets Batch AI cluster for the job.
+        /// </summary>
+        /// <param name="cluster">Batch AI cluster to run the job.</param>
+        /// <return>The next stage of the definition.</return>
+        BatchAIJob.Definition.IWithNodeCount BatchAIJob.Definition.IWithCluster.WithExistingCluster(IBatchAICluster cluster)
+        {
+            return this.WithExistingCluster(cluster);
+        }
+
+        /// <summary>
+        /// Sets Batch AI cluster id for the job.
+        /// </summary>
+        /// <param name="clusterId">Batch AI cluster id.</param>
+        /// <return>The next stage of the definition.</return>
+        BatchAIJob.Definition.IWithNodeCount BatchAIJob.Definition.IWithCluster.WithExistingClusterId(string clusterId)
+        {
+            return this.WithExistingClusterId(clusterId);
+        }
+
         /// <param name="commandLine">Command line to execute.</param>
         /// <return>The next stage of the definition.</return>
         BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithJobPreparation.WithCommandLine(string commandLine)

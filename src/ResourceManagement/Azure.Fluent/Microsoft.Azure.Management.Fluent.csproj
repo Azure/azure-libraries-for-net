@@ -1,81 +1,47 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Please do not move/edit code below this line -->
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('AzSdk.reference.props'))" />
+  <!-- Please do not move/edit code below this line -->
 
   <PropertyGroup>
-    <PackageId>Microsoft.Azure.Management.Fluent</PackageId>
-    <Version>1.10.0</Version>
-    <AssemblyName>Microsoft.Azure.Management.Fluent</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Management.Fluent</RootNamespace>
-    <AssemblyTitle>Microsoft Azure Management Client Library</AssemblyTitle>
-    <Authors>Microsoft</Authors>
-    <Copyright>© Microsoft Corporation. All rights reserved</Copyright>
     <Description>Provides management (Fluent) capabilities for Microsoft Azure.</Description>
-    <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</PackageIconUrl>
-    <PackageTags>Microsoft Azure Management Fluent;REST HTTP client;azureofficial;windowsazureofficial</PackageTags>
-    <PackageProjectUrl>https://github.com/Azure/azure-libraries-for-net/tree/master</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/Microsoft/dotnet/master/LICENSE</PackageLicenseUrl>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.11.1</Version>
+    <AssemblyName>Microsoft.Azure.Management.Fluent</AssemblyName>
+    <PackageId>Microsoft.Azure.Management.Fluent</PackageId>
+    <PackageTags>Microsoft Azure Management Fluent;Fluent</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>../../../tools/MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.3' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
-    <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard1.3' ">1.6.1</NetStandardImplicitPackageVersion>
-    <TargetFrameworks>net452;netstandard1.3</TargetFrameworks>
+    <TargetFrameworks>net452;netstandard1.4</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.AppService.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Batch.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.BatchAI.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Cdn.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.ContainerInstance.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.ContainerService.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.CosmosDB.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Dns.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Graph.RBAC.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.KeyVault.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Locks.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Monitor.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Msi.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Redis.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Search.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.ServiceBus.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Sql.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage.Fluent" Version="1.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.TrafficManager.Fluent" Version="1.10.0" />
+    <PackageReference Include="Microsoft.Azure.Management.AppService.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Batch.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.BatchAI.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Cdn.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.ContainerInstance.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.ContainerService.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.CosmosDB.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Dns.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Graph.RBAC.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Locks.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Monitor.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Msi.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Network.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Redis.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Search.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.ServiceBus.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage.Fluent" Version="1.11.1" />
+    <PackageReference Include="Microsoft.Azure.Management.TrafficManager.Fluent" Version="1.11.1" />
   </ItemGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
-    <DefineConstants>$(DefineConstants);NETSTANDARD13;PORTABLE</DefineConstants>
-  </PropertyGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
-  </ItemGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net452' ">
-    <DefineConstants>$(DefineConstants);NET45</DefineConstants>
-    <DebugType>portable</DebugType>
-  </PropertyGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Runtime.Serialization" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AppService\Microsoft.Azure.Management.AppService.Fluent.csproj" />
@@ -103,5 +69,4 @@
     <ProjectReference Include="..\Storage\Microsoft.Azure.Management.Storage.Fluent.csproj" />
     <ProjectReference Include="..\TrafficManager\Microsoft.Azure.Management.TrafficManager.Fluent.csproj" />
   </ItemGroup>
-
 </Project>

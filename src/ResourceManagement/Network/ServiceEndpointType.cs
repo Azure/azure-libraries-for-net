@@ -12,5 +12,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     {
         public static readonly ServiceEndpointType MicrosoftStorage = Parse("Microsoft.Storage");
         public static readonly ServiceEndpointType MicrosoftSql = Parse("Microsoft.Sql");
+        public static readonly ServiceEndpointType MicrosoftAzureCosmosDB = Parse("Microsoft.AzureCosmosDB");
     }
 }
