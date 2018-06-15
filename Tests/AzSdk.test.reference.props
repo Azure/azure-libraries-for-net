@@ -1,0 +1,14 @@
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('test.props'))" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.10" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.2" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.2" />
+    <PackageReference Include="SSH.NET" Version="2016.0.0" />
+    <PackageReference Include="WindowsAzure.Storage" Version="8.1.4" />
+    <PackageReference Include="System.Net.Http" Version="4.3.2" />
+    
+    <!-- This is needed for discovering tests in test explorer -->
+    <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />	
+  </ItemGroup>
+</Project>
