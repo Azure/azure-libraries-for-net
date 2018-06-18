@@ -78,6 +78,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         /// <param name="size">A size from the list of available sizes for the virtual machine.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithSize(VirtualMachineSizeTypes size);
+
+        /// <summary>
+        /// Specifies the license-type for the virtual machine.
+        /// </summary>
+        /// <param name="licenseType">The license-type that should be used for the virtual machine.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithLicenseType(string licenseType);
     }
 
     /// <summary>

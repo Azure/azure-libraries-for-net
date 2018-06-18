@@ -376,6 +376,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithSystemAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithUserAssignedManagedServiceIdentity
     {
+        /// <summary>
+        /// Specifies the license-type for the virtual machine.
+        /// </summary>
+        /// <param name="licenseType">The license-type that should be used for the virtual machine.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate WithLicenseType(string licenseType);
     }
 
     /// <summary>
