@@ -979,10 +979,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 count = 1; // Default instance count
             }
 
+            ApplicationGatewayTier tier = ApplicationGatewayTier.Standard;
+            if (skuName == ApplicationGatewaySkuName.WAFLarge || skuName == ApplicationGatewaySkuName.WAFMedium)
+            {
+                tier = ApplicationGatewayTier.WAF;
+            }
+
             var sku = new ApplicationGatewaySku()
             {
                 Name = skuName,
-                Capacity = count
+                Capacity = count,
+                Tier = tier,
             };
 
             Inner.Sku = sku;
