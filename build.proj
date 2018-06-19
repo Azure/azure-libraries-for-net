@@ -37,6 +37,8 @@
 
     <Copy SourceFiles="@(ConvertedSymbols)" DestinationFolder="\\aaptfile01\ADXSDK\Fluent\" />
 
+    <!--
     <Exec Command="\\symbols\tools\createrequest.cmd -i tools\symbolPublish.txt -d .\requests -c -s" IgnoreExitCode="true" />      
+    -->
   </Target>
 </Project>
