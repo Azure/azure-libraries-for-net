@@ -297,6 +297,17 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definitio
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithRedirectConfiguration,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithAvailabilityZone
     {
+        /// <summary>
+        /// Enables HTTP2 traffic on the Application Gateway.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithEnableHttp2();
+
+        /// <summary>
+        /// Disables HTTP2 traffic on the Application Gateway.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Definition.IWithCreate WithoutEnableHttp2();
     }
 
     /// <summary>
