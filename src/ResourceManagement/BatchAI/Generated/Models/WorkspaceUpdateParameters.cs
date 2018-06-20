@@ -9,28 +9,30 @@
 namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Custom tool kit job settings.
+    /// Workspace update parameters.
     /// </summary>
-    public partial class CustomToolkitSettings
+    public partial class WorkspaceUpdateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the CustomToolkitSettings class.
+        /// Initializes a new instance of the WorkspaceUpdateParameters class.
         /// </summary>
-        public CustomToolkitSettings()
+        public WorkspaceUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CustomToolkitSettings class.
+        /// Initializes a new instance of the WorkspaceUpdateParameters class.
         /// </summary>
-        /// <param name="commandLine">Command line.</param>
-        public CustomToolkitSettings(string commandLine = default(string))
+        /// <param name="tags">Tags.</param>
+        public WorkspaceUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
-            CommandLine = commandLine;
+            Tags = tags;
             CustomInit();
         }
 
@@ -40,13 +42,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets command line.
+        /// Gets or sets tags.
         /// </summary>
         /// <remarks>
-        /// The command line to execute on the master node.
+        /// The user specified tags associated with the Workspace.
         /// </remarks>
-        [JsonProperty(PropertyName = "commandLine")]
-        public string CommandLine { get; set; }
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
     }
 }

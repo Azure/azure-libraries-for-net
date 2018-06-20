@@ -12,25 +12,28 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Custom tool kit job settings.
+    /// Additional parameters for ListByExperiment operation.
     /// </summary>
-    public partial class CustomToolkitSettings
+    public partial class JobsListByExperimentOptions
     {
         /// <summary>
-        /// Initializes a new instance of the CustomToolkitSettings class.
+        /// Initializes a new instance of the JobsListByExperimentOptions
+        /// class.
         /// </summary>
-        public CustomToolkitSettings()
+        public JobsListByExperimentOptions()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CustomToolkitSettings class.
+        /// Initializes a new instance of the JobsListByExperimentOptions
+        /// class.
         /// </summary>
-        /// <param name="commandLine">Command line.</param>
-        public CustomToolkitSettings(string commandLine = default(string))
+        /// <param name="maxResults">The maximum number of items to return in
+        /// the response. A maximum of 1000 files can be returned.</param>
+        public JobsListByExperimentOptions(int? maxResults = default(int?))
         {
-            CommandLine = commandLine;
+            MaxResults = maxResults;
             CustomInit();
         }
 
@@ -40,13 +43,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets command line.
+        /// Gets or sets the maximum number of items to return in the response.
+        /// A maximum of 1000 files can be returned.
         /// </summary>
-        /// <remarks>
-        /// The command line to execute on the master node.
-        /// </remarks>
-        [JsonProperty(PropertyName = "commandLine")]
-        public string CommandLine { get; set; }
+        [Newtonsoft.Json.JsonIgnore]
+        public int? MaxResults { get; set; }
 
     }
 }

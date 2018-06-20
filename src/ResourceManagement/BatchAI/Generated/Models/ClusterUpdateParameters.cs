@@ -11,35 +11,28 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Parameters supplied to the Update operation.
+    /// Cluster update parameters.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ClusterUpdateParametersInner
+    public partial class ClusterUpdateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the ClusterUpdateParametersInner
-        /// class.
+        /// Initializes a new instance of the ClusterUpdateParameters class.
         /// </summary>
-        public ClusterUpdateParametersInner()
+        public ClusterUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ClusterUpdateParametersInner
-        /// class.
+        /// Initializes a new instance of the ClusterUpdateParameters class.
         /// </summary>
-        /// <param name="tags">The user specified tags associated with the
-        /// Cluster.</param>
-        /// <param name="scaleSettings">Desired scale for the cluster</param>
-        public ClusterUpdateParametersInner(IDictionary<string, string> tags = default(IDictionary<string, string>), ScaleSettings scaleSettings = default(ScaleSettings))
+        /// <param name="scaleSettings">Scale settings.</param>
+        public ClusterUpdateParameters(ScaleSettings scaleSettings = default(ScaleSettings))
         {
-            Tags = tags;
             ScaleSettings = scaleSettings;
             CustomInit();
         }
@@ -50,14 +43,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the user specified tags associated with the Cluster.
+        /// Gets or sets scale settings.
         /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
-
-        /// <summary>
-        /// Gets or sets desired scale for the cluster
-        /// </summary>
+        /// <remarks>
+        /// Desired scale settings for the cluster. Batch AI service supports
+        /// manual and auto scale clusters.
+        /// </remarks>
         [JsonProperty(PropertyName = "properties.scaleSettings")]
         public ScaleSettings ScaleSettings { get; set; }
 

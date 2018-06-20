@@ -13,25 +13,27 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Job preparation settings.
+    /// Custom MPI job settings.
     /// </summary>
-    public partial class JobPreparation
+    public partial class CustomMpiSettings
     {
         /// <summary>
-        /// Initializes a new instance of the JobPreparation class.
+        /// Initializes a new instance of the CustomMpiSettings class.
         /// </summary>
-        public JobPreparation()
+        public CustomMpiSettings()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the JobPreparation class.
+        /// Initializes a new instance of the CustomMpiSettings class.
         /// </summary>
         /// <param name="commandLine">Command line.</param>
-        public JobPreparation(string commandLine)
+        /// <param name="processCount">Process count.</param>
+        public CustomMpiSettings(string commandLine, int? processCount = default(int?))
         {
             CommandLine = commandLine;
+            ProcessCount = processCount;
             CustomInit();
         }
 
@@ -44,12 +46,21 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// Gets or sets command line.
         /// </summary>
         /// <remarks>
-        /// The command line to execute. If containerSettings is specified on
-        /// the job, this commandLine will be executed in the same container as
-        /// job. Otherwise it will be executed on the node.
+        /// The command line to be executed by mpi runtime on each compute
+        /// node.
         /// </remarks>
         [JsonProperty(PropertyName = "commandLine")]
         public string CommandLine { get; set; }
+
+        /// <summary>
+        /// Gets or sets process count.
+        /// </summary>
+        /// <remarks>
+        /// Number of processes to launch for the job execution. The default
+        /// value for this property is equal to nodeCount property
+        /// </remarks>
+        [JsonProperty(PropertyName = "processCount")]
+        public int? ProcessCount { get; set; }
 
         /// <summary>
         /// Validate the object.

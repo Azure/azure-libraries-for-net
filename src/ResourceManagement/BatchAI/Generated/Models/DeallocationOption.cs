@@ -8,63 +8,23 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using System.Runtime;
-    using System.Runtime.Serialization;
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for DeallocationOption.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum DeallocationOption
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<DeallocationOption>))]
+    public class DeallocationOption : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<DeallocationOption>
     {
-        [EnumMember(Value = "requeue")]
-        Requeue,
-        [EnumMember(Value = "terminate")]
-        Terminate,
-        [EnumMember(Value = "waitforjobcompletion")]
-        Waitforjobcompletion,
-        [EnumMember(Value = "unknown")]
-        Unknown
-    }
-    internal static class DeallocationOptionEnumExtension
-    {
-        internal static string ToSerializedValue(this DeallocationOption? value)
-        {
-            return value == null ? null : ((DeallocationOption)value).ToSerializedValue();
-        }
-
-        internal static string ToSerializedValue(this DeallocationOption value)
-        {
-            switch( value )
-            {
-                case DeallocationOption.Requeue:
-                    return "requeue";
-                case DeallocationOption.Terminate:
-                    return "terminate";
-                case DeallocationOption.Waitforjobcompletion:
-                    return "waitforjobcompletion";
-                case DeallocationOption.Unknown:
-                    return "unknown";
-            }
-            return null;
-        }
-
-        internal static DeallocationOption? ParseDeallocationOption(this string value)
-        {
-            switch( value )
-            {
-                case "requeue":
-                    return DeallocationOption.Requeue;
-                case "terminate":
-                    return DeallocationOption.Terminate;
-                case "waitforjobcompletion":
-                    return DeallocationOption.Waitforjobcompletion;
-                case "unknown":
-                    return DeallocationOption.Unknown;
-            }
-            return null;
-        }
+        public static readonly DeallocationOption Requeue = Parse("requeue");
+        public static readonly DeallocationOption Terminate = Parse("terminate");
+        public static readonly DeallocationOption Waitforjobcompletion = Parse("waitforjobcompletion");
     }
 }

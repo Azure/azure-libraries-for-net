@@ -10,30 +10,32 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Input directory for the job.
+    /// Workspace creation parameters.
     /// </summary>
-    public partial class InputDirectory
+    public partial class WorkspaceCreateParameters
     {
         /// <summary>
-        /// Initializes a new instance of the InputDirectory class.
+        /// Initializes a new instance of the WorkspaceCreateParameters class.
         /// </summary>
-        public InputDirectory()
+        public WorkspaceCreateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the InputDirectory class.
+        /// Initializes a new instance of the WorkspaceCreateParameters class.
         /// </summary>
-        /// <param name="id">ID.</param>
-        /// <param name="path">Path.</param>
-        public InputDirectory(string id, string path)
+        /// <param name="location">Location.</param>
+        /// <param name="tags">Tags.</param>
+        public WorkspaceCreateParameters(string location, IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
-            Id = id;
-            Path = path;
+            Location = location;
+            Tags = tags;
             CustomInit();
         }
 
@@ -43,24 +45,22 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets ID.
+        /// Gets or sets location.
         /// </summary>
         /// <remarks>
-        /// The ID for the input directory. The job can use
-        /// AZ_BATCHAI_INPUT_<id> environment variable to find the directory
-        /// path, where <id> is the value of id attribute.
+        /// The region in which to create the Workspace.
         /// </remarks>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets path.
+        /// Gets or sets tags.
         /// </summary>
         /// <remarks>
-        /// The path to the input directory.
+        /// The user specified tags associated with the Workspace.
         /// </remarks>
-        [JsonProperty(PropertyName = "path")]
-        public string Path { get; set; }
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -70,13 +70,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (Id == null)
+            if (Location == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Id");
-            }
-            if (Path == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Path");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Location");
             }
         }
     }

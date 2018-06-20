@@ -8,34 +8,33 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Caffe job settings.
+    /// Specifies the settings for Horovod job.
     /// </summary>
-    public partial class CaffeSettings
+    public partial class HorovodSettings
     {
         /// <summary>
-        /// Initializes a new instance of the CaffeSettings class.
+        /// Initializes a new instance of the HorovodSettings class.
         /// </summary>
-        public CaffeSettings()
+        public HorovodSettings()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CaffeSettings class.
+        /// Initializes a new instance of the HorovodSettings class.
         /// </summary>
-        /// <param name="configFilePath">Config file path.</param>
         /// <param name="pythonScriptFilePath">Python script file path.</param>
         /// <param name="pythonInterpreterPath">Python interpreter
         /// path.</param>
         /// <param name="commandLineArgs">Command line arguments.</param>
         /// <param name="processCount">Process count.</param>
-        public CaffeSettings(string configFilePath = default(string), string pythonScriptFilePath = default(string), string pythonInterpreterPath = default(string), string commandLineArgs = default(string), int? processCount = default(int?))
+        public HorovodSettings(string pythonScriptFilePath, string pythonInterpreterPath = default(string), string commandLineArgs = default(string), int? processCount = default(int?))
         {
-            ConfigFilePath = configFilePath;
             PythonScriptFilePath = pythonScriptFilePath;
             PythonInterpreterPath = pythonInterpreterPath;
             CommandLineArgs = commandLineArgs;
@@ -49,21 +48,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets config file path.
-        /// </summary>
-        /// <remarks>
-        /// Path of the config file for the job. This property cannot be
-        /// specified if pythonScriptFilePath is specified.
-        /// </remarks>
-        [JsonProperty(PropertyName = "configFilePath")]
-        public string ConfigFilePath { get; set; }
-
-        /// <summary>
         /// Gets or sets python script file path.
         /// </summary>
         /// <remarks>
-        /// Python script to execute. This property cannot be specified if
-        /// configFilePath is specified.
+        /// The python script to execute.
         /// </remarks>
         [JsonProperty(PropertyName = "pythonScriptFilePath")]
         public string PythonScriptFilePath { get; set; }
@@ -72,8 +60,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// Gets or sets python interpreter path.
         /// </summary>
         /// <remarks>
-        /// The path to the Python interpreter. The property can be specified
-        /// only if the pythonScriptFilePath is specified.
+        /// The path to the Python interpreter.
         /// </remarks>
         [JsonProperty(PropertyName = "pythonInterpreterPath")]
         public string PythonInterpreterPath { get; set; }
@@ -82,7 +69,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// Gets or sets command line arguments.
         /// </summary>
         /// <remarks>
-        /// Command line arguments that need to be passed to the Caffe job.
+        /// Command line arguments that need to be passed to the python script.
         /// </remarks>
         [JsonProperty(PropertyName = "commandLineArgs")]
         public string CommandLineArgs { get; set; }
@@ -97,5 +84,18 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         [JsonProperty(PropertyName = "processCount")]
         public int? ProcessCount { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (PythonScriptFilePath == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "PythonScriptFilePath");
+            }
+        }
     }
 }

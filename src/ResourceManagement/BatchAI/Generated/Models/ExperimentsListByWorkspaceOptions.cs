@@ -12,27 +12,28 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Constraints associated with the Job.
+    /// Additional parameters for ListByWorkspace operation.
     /// </summary>
-    public partial class JobBasePropertiesConstraints
+    public partial class ExperimentsListByWorkspaceOptions
     {
         /// <summary>
-        /// Initializes a new instance of the JobBasePropertiesConstraints
+        /// Initializes a new instance of the ExperimentsListByWorkspaceOptions
         /// class.
         /// </summary>
-        public JobBasePropertiesConstraints()
+        public ExperimentsListByWorkspaceOptions()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the JobBasePropertiesConstraints
+        /// Initializes a new instance of the ExperimentsListByWorkspaceOptions
         /// class.
         /// </summary>
-        /// <param name="maxWallClockTime">Max wall clock time.</param>
-        public JobBasePropertiesConstraints(System.TimeSpan? maxWallClockTime = default(System.TimeSpan?))
+        /// <param name="maxResults">The maximum number of items to return in
+        /// the response. A maximum of 1000 files can be returned.</param>
+        public ExperimentsListByWorkspaceOptions(int? maxResults = default(int?))
         {
-            MaxWallClockTime = maxWallClockTime;
+            MaxResults = maxResults;
             CustomInit();
         }
 
@@ -42,13 +43,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets max wall clock time.
+        /// Gets or sets the maximum number of items to return in the response.
+        /// A maximum of 1000 files can be returned.
         /// </summary>
-        /// <remarks>
-        /// Max time the job can run. Default value: 1 week.
-        /// </remarks>
-        [JsonProperty(PropertyName = "maxWallClockTime")]
-        public System.TimeSpan? MaxWallClockTime { get; set; }
+        [Newtonsoft.Json.JsonIgnore]
+        public int? MaxResults { get; set; }
 
     }
 }

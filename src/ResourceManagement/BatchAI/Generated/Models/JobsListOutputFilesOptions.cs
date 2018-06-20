@@ -15,20 +15,18 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
     /// <summary>
     /// Additional parameters for ListOutputFiles operation.
     /// </summary>
-    public partial class JobsListOutputFilesOptionsInner
+    public partial class JobsListOutputFilesOptions
     {
         /// <summary>
-        /// Initializes a new instance of the JobsListOutputFilesOptionsInner
-        /// class.
+        /// Initializes a new instance of the JobsListOutputFilesOptions class.
         /// </summary>
-        public JobsListOutputFilesOptionsInner()
+        public JobsListOutputFilesOptions()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the JobsListOutputFilesOptionsInner
-        /// class.
+        /// Initializes a new instance of the JobsListOutputFilesOptions class.
         /// </summary>
         /// <param name="outputdirectoryid">Id of the job output directory.
         /// This is the OutputDirectory--&gt;id parameter that is given by the
@@ -38,7 +36,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// the download link will expire.</param>
         /// <param name="maxResults">The maximum number of items to return in
         /// the response. A maximum of 1000 files can be returned.</param>
-        public JobsListOutputFilesOptionsInner(string outputdirectoryid, string directory = default(string), int? linkexpiryinminutes = default(int?), int? maxResults = default(int?))
+        public JobsListOutputFilesOptions(string outputdirectoryid, string directory = default(string), int? linkexpiryinminutes = default(int?), int? maxResults = default(int?))
         {
             Outputdirectoryid = outputdirectoryid;
             Directory = directory;

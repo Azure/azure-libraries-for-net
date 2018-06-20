@@ -12,23 +12,23 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// A REST API operation
+    /// A REST API operation.
     /// </summary>
     /// <remarks>
     /// Details of a REST API operation
     /// </remarks>
-    public partial class Operation
+    public partial class OperationInner
     {
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the OperationInner class.
         /// </summary>
-        public Operation()
+        public OperationInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Operation class.
+        /// Initializes a new instance of the OperationInner class.
         /// </summary>
         /// <param name="name">The operation name.</param>
         /// <param name="display">The object that describes the
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <param name="origin">The intended executor of the
         /// operation.</param>
         /// <param name="properties">Properties of the operation.</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string), object properties = default(object))
+        public OperationInner(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string), object properties = default(object))
         {
             Name = name;
             Display = display;
@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the operation name.
+        /// Gets the operation name.
         /// </summary>
         /// <remarks>
         /// This is of the format {provider}/{resource}/{operation}
         /// </remarks>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Gets or sets the object that describes the operation.
@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         public OperationDisplay Display { get; set; }
 
         /// <summary>
-        /// Gets or sets the intended executor of the operation.
+        /// Gets the intended executor of the operation.
         /// </summary>
         [JsonProperty(PropertyName = "origin")]
-        public string Origin { get; set; }
+        public string Origin { get; private set; }
 
         /// <summary>
         /// Gets or sets properties of the operation.

@@ -14,19 +14,15 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 
     using Newtonsoft.Json;
     /// <summary>
-    /// Defines values for ExecutionState.
+    /// Defines values for UsageUnit.
     /// </summary>
     /// <summary>
     /// Determine base value for a given allowed value if exists, else return
     /// the value itself
     /// </summary>
-    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ExecutionState>))]
-    public class ExecutionState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ExecutionState>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<UsageUnit>))]
+    public class UsageUnit : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<UsageUnit>
     {
-        public static readonly ExecutionState Queued = Parse("queued");
-        public static readonly ExecutionState Running = Parse("running");
-        public static readonly ExecutionState Terminating = Parse("terminating");
-        public static readonly ExecutionState Succeeded = Parse("succeeded");
-        public static readonly ExecutionState Failed = Parse("failed");
+        public static readonly UsageUnit Count = Parse("Count");
     }
 }
