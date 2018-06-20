@@ -72,14 +72,19 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the IUsageOperations.
+        /// Gets the IUsagesOperations.
         /// </summary>
-        IUsageOperations Usage { get; }
+        IUsagesOperations Usages { get; }
 
         /// <summary>
-        /// Gets the IClustersOperations.
+        /// Gets the IWorkspacesOperations.
         /// </summary>
-        IClustersOperations Clusters { get; }
+        IWorkspacesOperations Workspaces { get; }
+
+        /// <summary>
+        /// Gets the IExperimentsOperations.
+        /// </summary>
+        IExperimentsOperations Experiments { get; }
 
         /// <summary>
         /// Gets the IJobsOperations.
@@ -90,6 +95,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// Gets the IFileServersOperations.
         /// </summary>
         IFileServersOperations FileServers { get; }
+
+        /// <summary>
+        /// Gets the IClustersOperations.
+        /// </summary>
+        IClustersOperations Clusters { get; }
 
     }
 }

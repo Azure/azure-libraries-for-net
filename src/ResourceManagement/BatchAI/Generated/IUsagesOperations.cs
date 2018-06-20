@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// UsageOperations operations.
+    /// UsagesOperations operations.
     /// </summary>
-    public partial interface IUsageOperations
+    public partial interface IUsagesOperations
     {
         /// <summary>
         /// Gets the current usage information as well as limits for Batch AI
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Usage>>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<UsageInner>>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the current usage information as well as limits for Batch AI
         /// resources for given subscription.
@@ -66,6 +66,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Usage>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<UsageInner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

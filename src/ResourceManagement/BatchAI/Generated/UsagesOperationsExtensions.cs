@@ -15,9 +15,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for UsageOperations.
+    /// Extension methods for UsagesOperations.
     /// </summary>
-    public static partial class UsageOperationsExtensions
+    public static partial class UsagesOperationsExtensions
     {
             /// <summary>
             /// Gets the current usage information as well as limits for Batch AI resources
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Usage>> ListAsync(this IUsageOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<UsageInner>> ListAsync(this IUsagesOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Usage>> ListNextAsync(this IUsageOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<UsageInner>> ListNextAsync(this IUsagesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

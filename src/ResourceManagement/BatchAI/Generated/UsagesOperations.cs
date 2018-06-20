@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// UsageOperations operations.
+    /// UsagesOperations operations.
     /// </summary>
-    internal partial class UsageOperations : IServiceOperations<BatchAIManagementClient>, IUsageOperations
+    internal partial class UsagesOperations : IServiceOperations<BatchAIManagementClient>, IUsagesOperations
     {
         /// <summary>
-        /// Initializes a new instance of the UsageOperations class.
+        /// Initializes a new instance of the UsagesOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal UsageOperations(BatchAIManagementClient client)
+        internal UsagesOperations(BatchAIManagementClient client)
         {
             if (client == null)
             {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<Usage>>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<UsageInner>>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<Usage>>();
+            var _result = new AzureOperationResponse<IPage<UsageInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<Usage>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<UsageInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<Usage>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<UsageInner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<Usage>>();
+            var _result = new AzureOperationResponse<IPage<UsageInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<Usage>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<UsageInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

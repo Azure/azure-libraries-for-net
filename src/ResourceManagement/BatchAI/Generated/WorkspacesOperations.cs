@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// JobsOperations operations.
+    /// WorkspacesOperations operations.
     /// </summary>
-    internal partial class JobsOperations : IServiceOperations<BatchAIManagementClient>, IJobsOperations
+    internal partial class WorkspacesOperations : IServiceOperations<BatchAIManagementClient>, IWorkspacesOperations
     {
         /// <summary>
-        /// Initializes a new instance of the JobsOperations class.
+        /// Initializes a new instance of the WorkspacesOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal JobsOperations(BatchAIManagementClient client)
+        internal WorkspacesOperations(BatchAIManagementClient client)
         {
             if (client == null)
             {
@@ -49,22 +49,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public BatchAIManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets a list of Jobs within the specified Experiment.
+        /// Gets a list of Workspaces associated with the given subscription.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace. Workspace names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='experimentName'>
-        /// The name of the experiment. Experiment names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='jobsListByExperimentOptions'>
+        /// <param name='workspacesListOptions'>
         /// Additional parameters for the operation
         /// </param>
         /// <param name='customHeaders'>
@@ -88,57 +75,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<JobInner>>> ListByExperimentWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, JobsListByExperimentOptions jobsListByExperimentOptions = default(JobsListByExperimentOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<WorkspaceInner>>> ListWithHttpMessagesAsync(WorkspacesListOptions workspacesListOptions = default(WorkspacesListOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (resourceGroupName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
-                }
-            }
-            if (workspaceName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "workspaceName");
-            }
-            if (workspaceName != null)
-            {
-                if (workspaceName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "workspaceName", 64);
-                }
-                if (workspaceName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "workspaceName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "workspaceName", "^[-\\w_]+$");
-                }
-            }
-            if (experimentName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "experimentName");
-            }
-            if (experimentName != null)
-            {
-                if (experimentName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "experimentName", 64);
-                }
-                if (experimentName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "experimentName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(experimentName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "experimentName", "^[-\\w_]+$");
-                }
-            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -148,9 +86,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             int? maxResults = default(int?);
-            if (jobsListByExperimentOptions != null)
+            if (workspacesListOptions != null)
             {
-                maxResults = jobsListByExperimentOptions.MaxResults;
+                maxResults = workspacesListOptions.MaxResults;
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -159,19 +97,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("workspaceName", workspaceName);
-                tracingParameters.Add("experimentName", experimentName);
                 tracingParameters.Add("maxResults", maxResults);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListByExperiment", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces/{workspaceName}/experiments/{experimentName}/jobs").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
-            _url = _url.Replace("{experimentName}", System.Uri.EscapeDataString(experimentName));
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.BatchAI/workspaces").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -275,7 +207,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<JobInner>>();
+            var _result = new AzureOperationResponse<IPage<WorkspaceInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -288,7 +220,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<JobInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<WorkspaceInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -308,96 +240,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         }
 
         /// <summary>
-        /// Creates a Job in the given Experiment.
+        /// Gets a list of Workspaces within the specified resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
         /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace. Workspace names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='experimentName'>
-        /// The name of the experiment. Experiment names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job within the specified resource group. Job names can only
-        /// contain a combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='parameters'>
-        /// The parameters to provide for job creation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async Task<AzureOperationResponse<JobInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, string jobName, JobCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            // Send Request
-            AzureOperationResponse<JobInner> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
-            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Deletes a Job.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace. Workspace names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='experimentName'>
-        /// The name of the experiment. Experiment names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job within the specified resource group. Job names can only
-        /// contain a combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, string jobName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            // Send request
-            AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, customHeaders, cancellationToken).ConfigureAwait(false);
-            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Gets information about a Job.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace. Workspace names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='experimentName'>
-        /// The name of the experiment. Experiment names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job within the specified resource group. Job names can only
-        /// contain a combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
+        /// <param name='workspacesListByResourceGroupOptions'>
+        /// Additional parameters for the operation
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -420,7 +269,246 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<JobInner>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, string jobName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<WorkspaceInner>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, WorkspacesListByResourceGroupOptions workspacesListByResourceGroupOptions = default(WorkspacesListByResourceGroupOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
+                }
+            }
+            if (Client.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+            if (Client.SubscriptionId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            int? maxResults = default(int?);
+            if (workspacesListByResourceGroupOptions != null)
+            {
+                maxResults = workspacesListByResourceGroupOptions.MaxResults;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("maxResults", maxResults);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "ListByResourceGroup", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces").ToString();
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (maxResults != null)
+            {
+                _queryParameters.Add(string.Format("maxresults={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(maxResults, Client.SerializationSettings).Trim('"'))));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (Client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<IPage<WorkspaceInner>>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<WorkspaceInner>>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Creates a Workspace.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace. Workspace names can only contain a combination
+        /// of alphanumeric characters along with dash (-) and underscore (_). The name
+        /// must be from 1 through 64 characters long.
+        /// </param>
+        /// <param name='parameters'>
+        /// Workspace creation parameters.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<WorkspaceInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, WorkspaceCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send Request
+            AzureOperationResponse<WorkspaceInner> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, workspaceName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Updates properties of a Workspace.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace. Workspace names can only contain a combination
+        /// of alphanumeric characters along with dash (-) and underscore (_). The name
+        /// must be from 1 through 64 characters long.
+        /// </param>
+        /// <param name='tags'>
+        /// Tags. The user specified tags associated with the Workspace.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<WorkspaceInner>> UpdateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -452,42 +540,260 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "workspaceName", "^[-\\w_]+$");
                 }
             }
-            if (experimentName == null)
+            if (Client.ApiVersion == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "experimentName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
-            if (experimentName != null)
+            if (Client.SubscriptionId == null)
             {
-                if (experimentName.Length > 64)
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            WorkspaceUpdateParameters parameters = new WorkspaceUpdateParameters();
+            if (tags != null)
+            {
+                parameters.Tags = tags;
+            }
+            // Tracing
+            bool _shouldTrace = ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("workspaceName", workspaceName);
+                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(_invocationId, this, "Update", tracingParameters);
+            }
+            // Construct URL
+            var _baseUrl = Client.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces/{workspaceName}").ToString();
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            List<string> _queryParameters = new List<string>();
+            if (Client.ApiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new HttpRequestMessage();
+            HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new HttpMethod("PATCH");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (Client.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
                 {
-                    throw new ValidationException(ValidationRules.MaxLength, "experimentName", 64);
+                    _httpRequest.Headers.Remove("accept-language");
                 }
-                if (experimentName.Length < 1)
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
+            }
+
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
                 {
-                    throw new ValidationException(ValidationRules.MinLength, "experimentName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(experimentName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "experimentName", "^[-\\w_]+$");
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
                 }
             }
-            if (jobName == null)
+
+            // Serialize Request
+            string _requestContent = null;
+            if(parameters != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "jobName");
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
-            if (jobName != null)
+            // Set Credentials
+            if (Client.Credentials != null)
             {
-                if (jobName.Length > 64)
+                cancellationToken.ThrowIfCancellationRequested();
+                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+            HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+            if ((int)_statusCode != 200)
+            {
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
                 {
-                    throw new ValidationException(ValidationRules.MaxLength, "jobName", 64);
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
                 }
-                if (jobName.Length < 1)
+                catch (JsonException)
                 {
-                    throw new ValidationException(ValidationRules.MinLength, "jobName", 1);
+                    // Ignore the exception
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(jobName, "^[-\\w_]+$"))
+                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
                 {
-                    throw new ValidationException(ValidationRules.Pattern, "jobName", "^[-\\w_]+$");
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new AzureOperationResponse<WorkspaceInner>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<WorkspaceInner>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+        }
+
+        /// <summary>
+        /// Deletes a Workspace.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace. Workspace names can only contain a combination
+        /// of alphanumeric characters along with dash (-) and underscore (_). The name
+        /// must be from 1 through 64 characters long.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // Send request
+            AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, customHeaders, cancellationToken).ConfigureAwait(false);
+            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets information about a Workspace.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace. Workspace names can only contain a combination
+        /// of alphanumeric characters along with dash (-) and underscore (_). The name
+        /// must be from 1 through 64 characters long.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async Task<AzureOperationResponse<WorkspaceInner>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
+                }
+            }
+            if (workspaceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "workspaceName");
+            }
+            if (workspaceName != null)
+            {
+                if (workspaceName.Length > 64)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "workspaceName", 64);
+                }
+                if (workspaceName.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "workspaceName", 1);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[-\\w_]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "workspaceName", "^[-\\w_]+$");
                 }
             }
             if (Client.ApiVersion == null)
@@ -507,18 +813,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("workspaceName", workspaceName);
-                tracingParameters.Add("experimentName", experimentName);
-                tracingParameters.Add("jobName", jobName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces/{workspaceName}/experiments/{experimentName}/jobs/{jobName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces/{workspaceName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
-            _url = _url.Replace("{experimentName}", System.Uri.EscapeDataString(experimentName));
-            _url = _url.Replace("{jobName}", System.Uri.EscapeDataString(jobName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -618,7 +920,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<JobInner>();
+            var _result = new AzureOperationResponse<WorkspaceInner>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -631,7 +933,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<JobInner>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<WorkspaceInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -651,9 +953,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         }
 
         /// <summary>
-        /// List all directories and files inside the given directory of the Job's
-        /// output directory (if the output directory is on Azure File Share or Azure
-        /// Storage Container).
+        /// Creates a Workspace.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -662,650 +962,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// The name of the workspace. Workspace names can only contain a combination
         /// of alphanumeric characters along with dash (-) and underscore (_). The name
         /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='experimentName'>
-        /// The name of the experiment. Experiment names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job within the specified resource group. Job names can only
-        /// contain a combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='jobsListOutputFilesOptions'>
-        /// Additional parameters for the operation
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse<IPage<File>>> ListOutputFilesWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, string jobName, JobsListOutputFilesOptions jobsListOutputFilesOptions, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (resourceGroupName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
-                }
-            }
-            if (workspaceName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "workspaceName");
-            }
-            if (workspaceName != null)
-            {
-                if (workspaceName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "workspaceName", 64);
-                }
-                if (workspaceName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "workspaceName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "workspaceName", "^[-\\w_]+$");
-                }
-            }
-            if (experimentName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "experimentName");
-            }
-            if (experimentName != null)
-            {
-                if (experimentName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "experimentName", 64);
-                }
-                if (experimentName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "experimentName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(experimentName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "experimentName", "^[-\\w_]+$");
-                }
-            }
-            if (jobName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "jobName");
-            }
-            if (jobName != null)
-            {
-                if (jobName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "jobName", 64);
-                }
-                if (jobName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "jobName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(jobName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "jobName", "^[-\\w_]+$");
-                }
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (jobsListOutputFilesOptions == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "jobsListOutputFilesOptions");
-            }
-            if (jobsListOutputFilesOptions != null)
-            {
-                jobsListOutputFilesOptions.Validate();
-            }
-            string outputdirectoryid = default(string);
-            if (jobsListOutputFilesOptions != null)
-            {
-                outputdirectoryid = jobsListOutputFilesOptions.Outputdirectoryid;
-            }
-            string directory = default(string);
-            if (jobsListOutputFilesOptions != null)
-            {
-                directory = jobsListOutputFilesOptions.Directory;
-            }
-            int? linkexpiryinminutes = default(int?);
-            if (jobsListOutputFilesOptions != null)
-            {
-                linkexpiryinminutes = jobsListOutputFilesOptions.Linkexpiryinminutes;
-            }
-            int? maxResults = default(int?);
-            if (jobsListOutputFilesOptions != null)
-            {
-                maxResults = jobsListOutputFilesOptions.MaxResults;
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("workspaceName", workspaceName);
-                tracingParameters.Add("experimentName", experimentName);
-                tracingParameters.Add("jobName", jobName);
-                tracingParameters.Add("outputdirectoryid", outputdirectoryid);
-                tracingParameters.Add("directory", directory);
-                tracingParameters.Add("linkexpiryinminutes", linkexpiryinminutes);
-                tracingParameters.Add("maxResults", maxResults);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListOutputFiles", tracingParameters);
-            }
-            // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces/{workspaceName}/experiments/{experimentName}/jobs/{jobName}/listOutputFiles").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
-            _url = _url.Replace("{experimentName}", System.Uri.EscapeDataString(experimentName));
-            _url = _url.Replace("{jobName}", System.Uri.EscapeDataString(jobName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (outputdirectoryid != null)
-            {
-                _queryParameters.Add(string.Format("outputdirectoryid={0}", System.Uri.EscapeDataString(outputdirectoryid)));
-            }
-            if (directory != null)
-            {
-                _queryParameters.Add(string.Format("directory={0}", System.Uri.EscapeDataString(directory)));
-            }
-            if (linkexpiryinminutes != null)
-            {
-                _queryParameters.Add(string.Format("linkexpiryinminutes={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(linkexpiryinminutes, Client.SerializationSettings).Trim('"'))));
-            }
-            if (maxResults != null)
-            {
-                _queryParameters.Add(string.Format("maxresults={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(maxResults, Client.SerializationSettings).Trim('"'))));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200)
-            {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse<IPage<File>>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<File>>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Gets a list of currently existing nodes which were used for the Job
-        /// execution. The returned information contains the node ID, its public IP and
-        /// SSH port.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace. Workspace names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='experimentName'>
-        /// The name of the experiment. Experiment names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job within the specified resource group. Job names can only
-        /// contain a combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse<IPage<RemoteLoginInformation>>> ListRemoteLoginInformationWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, string jobName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (resourceGroupName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
-                }
-            }
-            if (workspaceName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "workspaceName");
-            }
-            if (workspaceName != null)
-            {
-                if (workspaceName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "workspaceName", 64);
-                }
-                if (workspaceName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "workspaceName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "workspaceName", "^[-\\w_]+$");
-                }
-            }
-            if (experimentName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "experimentName");
-            }
-            if (experimentName != null)
-            {
-                if (experimentName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "experimentName", 64);
-                }
-                if (experimentName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "experimentName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(experimentName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "experimentName", "^[-\\w_]+$");
-                }
-            }
-            if (jobName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "jobName");
-            }
-            if (jobName != null)
-            {
-                if (jobName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "jobName", 64);
-                }
-                if (jobName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "jobName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(jobName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "jobName", "^[-\\w_]+$");
-                }
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("workspaceName", workspaceName);
-                tracingParameters.Add("experimentName", experimentName);
-                tracingParameters.Add("jobName", jobName);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListRemoteLoginInformation", tracingParameters);
-            }
-            // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces/{workspaceName}/experiments/{experimentName}/jobs/{jobName}/listRemoteLoginInformation").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
-            _url = _url.Replace("{experimentName}", System.Uri.EscapeDataString(experimentName));
-            _url = _url.Replace("{jobName}", System.Uri.EscapeDataString(jobName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200)
-            {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse<IPage<RemoteLoginInformation>>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<RemoteLoginInformation>>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Terminates a job.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace. Workspace names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='experimentName'>
-        /// The name of the experiment. Experiment names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job within the specified resource group. Job names can only
-        /// contain a combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async Task<AzureOperationResponse> TerminateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, string jobName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            // Send request
-            AzureOperationResponse _response = await BeginTerminateWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, customHeaders, cancellationToken).ConfigureAwait(false);
-            return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Creates a Job in the given Experiment.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace. Workspace names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='experimentName'>
-        /// The name of the experiment. Experiment names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job within the specified resource group. Job names can only
-        /// contain a combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
         /// </param>
         /// <param name='parameters'>
-        /// The parameters to provide for job creation.
+        /// Workspace creation parameters.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1328,7 +987,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<JobInner>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, string jobName, JobCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<WorkspaceInner>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, WorkspaceCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1358,44 +1017,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[-\\w_]+$"))
                 {
                     throw new ValidationException(ValidationRules.Pattern, "workspaceName", "^[-\\w_]+$");
-                }
-            }
-            if (experimentName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "experimentName");
-            }
-            if (experimentName != null)
-            {
-                if (experimentName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "experimentName", 64);
-                }
-                if (experimentName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "experimentName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(experimentName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "experimentName", "^[-\\w_]+$");
-                }
-            }
-            if (jobName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "jobName");
-            }
-            if (jobName != null)
-            {
-                if (jobName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "jobName", 64);
-                }
-                if (jobName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "jobName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(jobName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "jobName", "^[-\\w_]+$");
                 }
             }
             if (parameters == null)
@@ -1423,19 +1044,15 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("workspaceName", workspaceName);
-                tracingParameters.Add("experimentName", experimentName);
-                tracingParameters.Add("jobName", jobName);
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreate", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces/{workspaceName}/experiments/{experimentName}/jobs/{jobName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces/{workspaceName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
-            _url = _url.Replace("{experimentName}", System.Uri.EscapeDataString(experimentName));
-            _url = _url.Replace("{jobName}", System.Uri.EscapeDataString(jobName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -1541,7 +1158,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<JobInner>();
+            var _result = new AzureOperationResponse<WorkspaceInner>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1554,7 +1171,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<JobInner>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<WorkspaceInner>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -1574,7 +1191,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         }
 
         /// <summary>
-        /// Deletes a Job.
+        /// Deletes a Workspace.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -1583,16 +1200,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// The name of the workspace. Workspace names can only contain a combination
         /// of alphanumeric characters along with dash (-) and underscore (_). The name
         /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='experimentName'>
-        /// The name of the experiment. Experiment names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job within the specified resource group. Job names can only
-        /// contain a combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1612,7 +1219,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, string jobName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1644,44 +1251,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                     throw new ValidationException(ValidationRules.Pattern, "workspaceName", "^[-\\w_]+$");
                 }
             }
-            if (experimentName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "experimentName");
-            }
-            if (experimentName != null)
-            {
-                if (experimentName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "experimentName", 64);
-                }
-                if (experimentName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "experimentName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(experimentName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "experimentName", "^[-\\w_]+$");
-                }
-            }
-            if (jobName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "jobName");
-            }
-            if (jobName != null)
-            {
-                if (jobName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "jobName", 64);
-                }
-                if (jobName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "jobName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(jobName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "jobName", "^[-\\w_]+$");
-                }
-            }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -1699,18 +1268,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("workspaceName", workspaceName);
-                tracingParameters.Add("experimentName", experimentName);
-                tracingParameters.Add("jobName", jobName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginDelete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces/{workspaceName}/experiments/{experimentName}/jobs/{jobName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces/{workspaceName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
-            _url = _url.Replace("{experimentName}", System.Uri.EscapeDataString(experimentName));
-            _url = _url.Replace("{jobName}", System.Uri.EscapeDataString(jobName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -1825,258 +1390,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         }
 
         /// <summary>
-        /// Terminates a job.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace. Workspace names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='experimentName'>
-        /// The name of the experiment. Experiment names can only contain a combination
-        /// of alphanumeric characters along with dash (-) and underscore (_). The name
-        /// must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job within the specified resource group. Job names can only
-        /// contain a combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse> BeginTerminateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, string jobName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (resourceGroupName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
-            }
-            if (resourceGroupName != null)
-            {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._]+$");
-                }
-            }
-            if (workspaceName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "workspaceName");
-            }
-            if (workspaceName != null)
-            {
-                if (workspaceName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "workspaceName", 64);
-                }
-                if (workspaceName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "workspaceName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(workspaceName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "workspaceName", "^[-\\w_]+$");
-                }
-            }
-            if (experimentName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "experimentName");
-            }
-            if (experimentName != null)
-            {
-                if (experimentName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "experimentName", 64);
-                }
-                if (experimentName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "experimentName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(experimentName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "experimentName", "^[-\\w_]+$");
-                }
-            }
-            if (jobName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "jobName");
-            }
-            if (jobName != null)
-            {
-                if (jobName.Length > 64)
-                {
-                    throw new ValidationException(ValidationRules.MaxLength, "jobName", 64);
-                }
-                if (jobName.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "jobName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(jobName, "^[-\\w_]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "jobName", "^[-\\w_]+$");
-                }
-            }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("workspaceName", workspaceName);
-                tracingParameters.Add("experimentName", experimentName);
-                tracingParameters.Add("jobName", jobName);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "BeginTerminate", tracingParameters);
-            }
-            // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BatchAI/workspaces/{workspaceName}/experiments/{experimentName}/jobs/{jobName}/terminate").ToString();
-            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{workspaceName}", System.Uri.EscapeDataString(workspaceName));
-            _url = _url.Replace("{experimentName}", System.Uri.EscapeDataString(experimentName));
-            _url = _url.Replace("{jobName}", System.Uri.EscapeDataString(jobName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
-            {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
-            }
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200 && (int)_statusCode != 202)
-            {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Gets a list of Jobs within the specified Experiment.
+        /// Gets a list of Workspaces associated with the given subscription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -2102,7 +1416,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<JobInner>>> ListByExperimentNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<WorkspaceInner>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -2117,7 +1431,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListByExperimentNext", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListNext", tracingParameters);
             }
             // Construct URL
             string _url = "{nextLink}";
@@ -2216,7 +1530,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<JobInner>>();
+            var _result = new AzureOperationResponse<IPage<WorkspaceInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -2229,7 +1543,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<JobInner>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<WorkspaceInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -2249,9 +1563,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         }
 
         /// <summary>
-        /// List all directories and files inside the given directory of the Job's
-        /// output directory (if the output directory is on Azure File Share or Azure
-        /// Storage Container).
+        /// Gets a list of Workspaces within the specified resource group.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -2277,7 +1589,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<File>>> ListOutputFilesNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<WorkspaceInner>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -2292,7 +1604,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListOutputFilesNext", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListByResourceGroupNext", tracingParameters);
             }
             // Construct URL
             string _url = "{nextLink}";
@@ -2305,7 +1617,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
             HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
+            _httpRequest.Method = new HttpMethod("GET");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
@@ -2391,7 +1703,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<File>>();
+            var _result = new AzureOperationResponse<IPage<WorkspaceInner>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -2404,182 +1716,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<File>>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.Exit(_invocationId, _result);
-            }
-            return _result;
-        }
-
-        /// <summary>
-        /// Gets a list of currently existing nodes which were used for the Job
-        /// execution. The returned information contains the node ID, its public IP and
-        /// SSH port.
-        /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <exception cref="System.ArgumentNullException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        /// <return>
-        /// A response object containing the response body and response headers.
-        /// </return>
-        public async Task<AzureOperationResponse<IPage<RemoteLoginInformation>>> ListRemoteLoginInformationNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (nextPageLink == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
-            }
-            // Tracing
-            bool _shouldTrace = ServiceClientTracing.IsEnabled;
-            string _invocationId = null;
-            if (_shouldTrace)
-            {
-                _invocationId = ServiceClientTracing.NextInvocationId.ToString();
-                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("nextPageLink", nextPageLink);
-                tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "ListRemoteLoginInformationNext", tracingParameters);
-            }
-            // Construct URL
-            string _url = "{nextLink}";
-            _url = _url.Replace("{nextLink}", nextPageLink);
-            List<string> _queryParameters = new List<string>();
-            if (_queryParameters.Count > 0)
-            {
-                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
-            }
-            // Create HTTP transport objects
-            var _httpRequest = new HttpRequestMessage();
-            HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new HttpMethod("POST");
-            _httpRequest.RequestUri = new System.Uri(_url);
-            // Set Headers
-            if (Client.GenerateClientRequestId != null && Client.GenerateClientRequestId.Value)
-            {
-                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
-            }
-            if (Client.AcceptLanguage != null)
-            {
-                if (_httpRequest.Headers.Contains("accept-language"))
-                {
-                    _httpRequest.Headers.Remove("accept-language");
-                }
-                _httpRequest.Headers.TryAddWithoutValidation("accept-language", Client.AcceptLanguage);
-            }
-
-
-            if (customHeaders != null)
-            {
-                foreach(var _header in customHeaders)
-                {
-                    if (_httpRequest.Headers.Contains(_header.Key))
-                    {
-                        _httpRequest.Headers.Remove(_header.Key);
-                    }
-                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
-                }
-            }
-
-            // Serialize Request
-            string _requestContent = null;
-            // Set Credentials
-            if (Client.Credentials != null)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Client.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            }
-            // Send Request
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
-            }
-            cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
-            if (_shouldTrace)
-            {
-                ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
-            }
-            HttpStatusCode _statusCode = _httpResponse.StatusCode;
-            cancellationToken.ThrowIfCancellationRequested();
-            string _responseContent = null;
-            if ((int)_statusCode != 200)
-            {
-                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
-                try
-                {
-                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, Client.DeserializationSettings);
-                    if (_errorBody != null)
-                    {
-                        ex = new CloudException(_errorBody.Message);
-                        ex.Body = _errorBody;
-                    }
-                }
-                catch (JsonException)
-                {
-                    // Ignore the exception
-                }
-                ex.Request = new HttpRequestMessageWrapper(_httpRequest, _requestContent);
-                ex.Response = new HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
-                if (_shouldTrace)
-                {
-                    ServiceClientTracing.Error(_invocationId, ex);
-                }
-                _httpRequest.Dispose();
-                if (_httpResponse != null)
-                {
-                    _httpResponse.Dispose();
-                }
-                throw ex;
-            }
-            // Create Result
-            var _result = new AzureOperationResponse<IPage<RemoteLoginInformation>>();
-            _result.Request = _httpRequest;
-            _result.Response = _httpResponse;
-            if (_httpResponse.Headers.Contains("x-ms-request-id"))
-            {
-                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<RemoteLoginInformation>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<WorkspaceInner>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

@@ -20,13 +20,56 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     public static partial class JobsOperationsExtensions
     {
             /// <summary>
-            /// Adds a Job that gets executed on a cluster.
+            /// Gets a list of Jobs within the specified Experiment.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
             /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace. Workspace names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='experimentName'>
+            /// The name of the experiment. Experiment names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='jobsListByExperimentOptions'>
+            /// Additional parameters for the operation
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<JobInner>> ListByExperimentAsync(this IJobsOperations operations, string resourceGroupName, string workspaceName, string experimentName, JobsListByExperimentOptions jobsListByExperimentOptions = default(JobsListByExperimentOptions), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByExperimentWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobsListByExperimentOptions, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Creates a Job in the given Experiment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace. Workspace names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='experimentName'>
+            /// The name of the experiment. Experiment names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
             /// </param>
             /// <param name='jobName'>
             /// The name of the job within the specified resource group. Job names can only
@@ -39,22 +82,32 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<JobInner> CreateAsync(this IJobsOperations operations, string resourceGroupName, string jobName, JobCreateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<JobInner> CreateAsync(this IJobsOperations operations, string resourceGroupName, string workspaceName, string experimentName, string jobName, JobCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, jobName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Deletes the specified Batch AI job.
+            /// Deletes a Job.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
             /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace. Workspace names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='experimentName'>
+            /// The name of the experiment. Experiment names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
             /// </param>
             /// <param name='jobName'>
             /// The name of the job within the specified resource group. Job names can only
@@ -64,19 +117,29 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IJobsOperations operations, string resourceGroupName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IJobsOperations operations, string resourceGroupName, string workspaceName, string experimentName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
-            /// Gets information about the specified Batch AI job.
+            /// Gets information about a Job.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
             /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace. Workspace names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='experimentName'>
+            /// The name of the experiment. Experiment names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
             /// </param>
             /// <param name='jobName'>
             /// The name of the job within the specified resource group. Job names can only
@@ -86,17 +149,18 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<JobInner> GetAsync(this IJobsOperations operations, string resourceGroupName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<JobInner> GetAsync(this IJobsOperations operations, string resourceGroupName, string workspaceName, string experimentName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets the IP address and port information of all the compute nodes which are
-            /// used for job execution.
+            /// List all directories and files inside the given directory of the Job's
+            /// output directory (if the output directory is on Azure File Share or Azure
+            /// Storage Container).
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -104,98 +168,15 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='resourceGroupName'>
             /// Name of the resource group to which the resource belongs.
             /// </param>
-            /// <param name='jobName'>
-            /// The name of the job within the specified resource group. Job names can only
-            /// contain a combination of alphanumeric characters along with dash (-) and
-            /// underscore (_). The name must be from 1 through 64 characters long.
+            /// <param name='workspaceName'>
+            /// The name of the workspace. Workspace names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
             /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<RemoteLoginInformation>> ListRemoteLoginInformationAsync(this IJobsOperations operations, string resourceGroupName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListRemoteLoginInformationWithHttpMessagesAsync(resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Terminates a job.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobName'>
-            /// The name of the job within the specified resource group. Job names can only
-            /// contain a combination of alphanumeric characters along with dash (-) and
-            /// underscore (_). The name must be from 1 through 64 characters long.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task TerminateAsync(this IJobsOperations operations, string resourceGroupName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.TerminateWithHttpMessagesAsync(resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets information about the jobs associated with the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='jobsListOptions'>
-            /// Additional parameters for the operation
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<JobInner>> ListAsync(this IJobsOperations operations, JobsListOptionsInner jobsListOptions = default(JobsListOptionsInner), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(jobsListOptions, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets information about the Batch AI jobs associated within the specified
-            /// resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
-            /// </param>
-            /// <param name='jobsListByResourceGroupOptions'>
-            /// Additional parameters for the operation
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<JobInner>> ListByResourceGroupAsync(this IJobsOperations operations, string resourceGroupName, JobsListByResourceGroupOptionsInner jobsListByResourceGroupOptions = default(JobsListByResourceGroupOptionsInner), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, jobsListByResourceGroupOptions, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// List all directories and files inside the given directory of the output
-            /// directory (Only if the output directory is on Azure File Share or Azure
-            /// Storage container).
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// Name of the resource group to which the resource belongs.
+            /// <param name='experimentName'>
+            /// The name of the experiment. Experiment names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
             /// </param>
             /// <param name='jobName'>
             /// The name of the job within the specified resource group. Job names can only
@@ -208,22 +189,101 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<File>> ListOutputFilesAsync(this IJobsOperations operations, string resourceGroupName, string jobName, JobsListOutputFilesOptionsInner jobsListOutputFilesOptions, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<File>> ListOutputFilesAsync(this IJobsOperations operations, string resourceGroupName, string workspaceName, string experimentName, string jobName, JobsListOutputFilesOptions jobsListOutputFilesOptions, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListOutputFilesWithHttpMessagesAsync(resourceGroupName, jobName, jobsListOutputFilesOptions, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListOutputFilesWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, jobsListOutputFilesOptions, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Adds a Job that gets executed on a cluster.
+            /// Gets a list of currently existing nodes which were used for the Job
+            /// execution. The returned information contains the node ID, its public IP and
+            /// SSH port.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
             /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace. Workspace names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='experimentName'>
+            /// The name of the experiment. Experiment names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='jobName'>
+            /// The name of the job within the specified resource group. Job names can only
+            /// contain a combination of alphanumeric characters along with dash (-) and
+            /// underscore (_). The name must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<RemoteLoginInformation>> ListRemoteLoginInformationAsync(this IJobsOperations operations, string resourceGroupName, string workspaceName, string experimentName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListRemoteLoginInformationWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Terminates a job.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace. Workspace names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='experimentName'>
+            /// The name of the experiment. Experiment names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='jobName'>
+            /// The name of the job within the specified resource group. Job names can only
+            /// contain a combination of alphanumeric characters along with dash (-) and
+            /// underscore (_). The name must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task TerminateAsync(this IJobsOperations operations, string resourceGroupName, string workspaceName, string experimentName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.TerminateWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Creates a Job in the given Experiment.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace. Workspace names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='experimentName'>
+            /// The name of the experiment. Experiment names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
             /// </param>
             /// <param name='jobName'>
             /// The name of the job within the specified resource group. Job names can only
@@ -236,22 +296,32 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<JobInner> BeginCreateAsync(this IJobsOperations operations, string resourceGroupName, string jobName, JobCreateParametersInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<JobInner> BeginCreateAsync(this IJobsOperations operations, string resourceGroupName, string workspaceName, string experimentName, string jobName, JobCreateParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, jobName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Deletes the specified Batch AI job.
+            /// Deletes a Job.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
             /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace. Workspace names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='experimentName'>
+            /// The name of the experiment. Experiment names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
             /// </param>
             /// <param name='jobName'>
             /// The name of the job within the specified resource group. Job names can only
@@ -261,9 +331,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IJobsOperations operations, string resourceGroupName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this IJobsOperations operations, string resourceGroupName, string workspaceName, string experimentName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -275,6 +345,16 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='resourceGroupName'>
             /// Name of the resource group to which the resource belongs.
             /// </param>
+            /// <param name='workspaceName'>
+            /// The name of the workspace. Workspace names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
+            /// <param name='experimentName'>
+            /// The name of the experiment. Experiment names can only contain a combination
+            /// of alphanumeric characters along with dash (-) and underscore (_). The name
+            /// must be from 1 through 64 characters long.
+            /// </param>
             /// <param name='jobName'>
             /// The name of the job within the specified resource group. Job names can only
             /// contain a combination of alphanumeric characters along with dash (-) and
@@ -283,14 +363,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginTerminateAsync(this IJobsOperations operations, string resourceGroupName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginTerminateAsync(this IJobsOperations operations, string resourceGroupName, string workspaceName, string experimentName, string jobName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginTerminateWithHttpMessagesAsync(resourceGroupName, jobName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginTerminateWithHttpMessagesAsync(resourceGroupName, workspaceName, experimentName, jobName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
-            /// Gets the IP address and port information of all the compute nodes which are
-            /// used for job execution.
+            /// Gets a list of Jobs within the specified Experiment.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -301,59 +380,18 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<RemoteLoginInformation>> ListRemoteLoginInformationNextAsync(this IJobsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<JobInner>> ListByExperimentNextAsync(this IJobsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListRemoteLoginInformationNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByExperimentNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Gets information about the jobs associated with the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<JobInner>> ListNextAsync(this IJobsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets information about the Batch AI jobs associated within the specified
-            /// resource group.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<JobInner>> ListByResourceGroupNextAsync(this IJobsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// List all directories and files inside the given directory of the output
-            /// directory (Only if the output directory is on Azure File Share or Azure
-            /// Storage container).
+            /// List all directories and files inside the given directory of the Job's
+            /// output directory (if the output directory is on Azure File Share or Azure
+            /// Storage Container).
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -367,6 +405,28 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             public static async Task<IPage<File>> ListOutputFilesNextAsync(this IJobsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListOutputFilesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a list of currently existing nodes which were used for the Job
+            /// execution. The returned information contains the node ID, its public IP and
+            /// SSH port.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<RemoteLoginInformation>> ListRemoteLoginInformationNextAsync(this IJobsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListRemoteLoginInformationNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

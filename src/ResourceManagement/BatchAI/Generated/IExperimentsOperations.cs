@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     using System.Threading.Tasks;
 
     /// <summary>
-    /// FileServersOperations operations.
+    /// ExperimentsOperations operations.
     /// </summary>
-    public partial interface IFileServersOperations
+    public partial interface IExperimentsOperations
     {
         /// <summary>
-        /// Creates a File Server in the given workspace.
+        /// Gets a list of Experiments within the specified Workspace.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -32,107 +32,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// combination of alphanumeric characters along with dash (-) and
         /// underscore (_). The name must be from 1 through 64 characters long.
         /// </param>
-        /// <param name='fileServerName'>
-        /// The name of the file server within the specified resource group.
-        /// File server names can only contain a combination of alphanumeric
-        /// characters along with dash (-) and underscore (_). The name must be
-        /// from 1 through 64 characters long.
-        /// </param>
-        /// <param name='parameters'>
-        /// The parameters to provide for File Server creation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<FileServerInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string fileServerName, FileServerCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Deletes a File Server.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace. Workspace names can only contain a
-        /// combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='fileServerName'>
-        /// The name of the file server within the specified resource group.
-        /// File server names can only contain a combination of alphanumeric
-        /// characters along with dash (-) and underscore (_). The name must be
-        /// from 1 through 64 characters long.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string fileServerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets information about a File Server.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace. Workspace names can only contain a
-        /// combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='fileServerName'>
-        /// The name of the file server within the specified resource group.
-        /// File server names can only contain a combination of alphanumeric
-        /// characters along with dash (-) and underscore (_). The name must be
-        /// from 1 through 64 characters long.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<FileServerInner>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string fileServerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of File Servers associated with the specified
-        /// workspace.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// Name of the resource group to which the resource belongs.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// The name of the workspace. Workspace names can only contain a
-        /// combination of alphanumeric characters along with dash (-) and
-        /// underscore (_). The name must be from 1 through 64 characters long.
-        /// </param>
-        /// <param name='fileServersListByWorkspaceOptions'>
+        /// <param name='experimentsListByWorkspaceOptions'>
         /// Additional parameters for the operation
         /// </param>
         /// <param name='customHeaders'>
@@ -150,9 +50,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<FileServerInner>>> ListByWorkspaceWithHttpMessagesAsync(string resourceGroupName, string workspaceName, FileServersListByWorkspaceOptions fileServersListByWorkspaceOptions = default(FileServersListByWorkspaceOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ExperimentInner>>> ListByWorkspaceWithHttpMessagesAsync(string resourceGroupName, string workspaceName, ExperimentsListByWorkspaceOptions experimentsListByWorkspaceOptions = default(ExperimentsListByWorkspaceOptions), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates a File Server in the given workspace.
+        /// Creates an Experiment.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -162,14 +62,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// combination of alphanumeric characters along with dash (-) and
         /// underscore (_). The name must be from 1 through 64 characters long.
         /// </param>
-        /// <param name='fileServerName'>
-        /// The name of the file server within the specified resource group.
-        /// File server names can only contain a combination of alphanumeric
-        /// characters along with dash (-) and underscore (_). The name must be
-        /// from 1 through 64 characters long.
-        /// </param>
-        /// <param name='parameters'>
-        /// The parameters to provide for File Server creation.
+        /// <param name='experimentName'>
+        /// The name of the experiment. Experiment names can only contain a
+        /// combination of alphanumeric characters along with dash (-) and
+        /// underscore (_). The name must be from 1 through 64 characters long.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -186,9 +82,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<FileServerInner>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string fileServerName, FileServerCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ExperimentInner>> CreateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes a File Server.
+        /// Deletes an Experiment.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group to which the resource belongs.
@@ -198,11 +94,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// combination of alphanumeric characters along with dash (-) and
         /// underscore (_). The name must be from 1 through 64 characters long.
         /// </param>
-        /// <param name='fileServerName'>
-        /// The name of the file server within the specified resource group.
-        /// File server names can only contain a combination of alphanumeric
-        /// characters along with dash (-) and underscore (_). The name must be
-        /// from 1 through 64 characters long.
+        /// <param name='experimentName'>
+        /// The name of the experiment. Experiment names can only contain a
+        /// combination of alphanumeric characters along with dash (-) and
+        /// underscore (_). The name must be from 1 through 64 characters long.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -216,10 +111,102 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string fileServerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a list of File Servers associated with the specified
-        /// workspace.
+        /// Gets information about an Experiment.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace. Workspace names can only contain a
+        /// combination of alphanumeric characters along with dash (-) and
+        /// underscore (_). The name must be from 1 through 64 characters long.
+        /// </param>
+        /// <param name='experimentName'>
+        /// The name of the experiment. Experiment names can only contain a
+        /// combination of alphanumeric characters along with dash (-) and
+        /// underscore (_). The name must be from 1 through 64 characters long.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ExperimentInner>> GetWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Creates an Experiment.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace. Workspace names can only contain a
+        /// combination of alphanumeric characters along with dash (-) and
+        /// underscore (_). The name must be from 1 through 64 characters long.
+        /// </param>
+        /// <param name='experimentName'>
+        /// The name of the experiment. Experiment names can only contain a
+        /// combination of alphanumeric characters along with dash (-) and
+        /// underscore (_). The name must be from 1 through 64 characters long.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<ExperimentInner>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes an Experiment.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// Name of the resource group to which the resource belongs.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// The name of the workspace. Workspace names can only contain a
+        /// combination of alphanumeric characters along with dash (-) and
+        /// underscore (_). The name must be from 1 through 64 characters long.
+        /// </param>
+        /// <param name='experimentName'>
+        /// The name of the experiment. Experiment names can only contain a
+        /// combination of alphanumeric characters along with dash (-) and
+        /// underscore (_). The name must be from 1 through 64 characters long.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string workspaceName, string experimentName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets a list of Experiments within the specified Workspace.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -239,6 +226,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<FileServerInner>>> ListByWorkspaceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ExperimentInner>>> ListByWorkspaceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
