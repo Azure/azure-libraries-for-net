@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 token = await functionApp.Manager.Inner.WebApps
                     .GetFunctionsAdminTokenAsync(functionApp.ResourceGroupName, functionApp.Name, cancellationToken);
-                var base64Payload = token.Split(new char[] { '.' })[1]);
+                var base64Payload = token.Split(new char[] { '.' })[1];
                 for (int i = 0; i < base64Payload.Length % 4; i++) //Pad the jwt so conforms to Base64 spec
                 {
                     base64Payload += "=";
