@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// Checks that the redis cache name is valid and is not already in use.
         /// </summary>
         /// <param name='parameters'>
-        /// Parameters supplied to the CheckNameAvailability Redis operation.
+        /// Parameters supplied to the CheckNameAvailability Redis operation. The only
+        /// supported resource type is 'Microsoft.Cache/redis'
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -77,6 +78,10 @@ namespace Microsoft.Azure.Management.Redis.Fluent
             if (parameters == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
             }
             if (Client.ApiVersion == null)
             {
