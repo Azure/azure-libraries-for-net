@@ -65,14 +65,9 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:B1063F1468B82C4392D0981460DF0EE4:C67291A5B3D38919C766B2615DDE1A88
         public async Task<IEnumerable<Models.Operation>> ListOperationsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return this.Manager().Inner.Operations().ListAsync().FlatMap(new Func1<Page<OperationInner>, Observable<OperationInner>>() {
-            //$ @Override
-            //$ public Observable<OperationInner> call(Page<OperationInner> pageInner) {
-            //$ return Observable.From(pageInner.Items());
-            //$ }
-            //$ });
-
-            return null;
+            return await PagedCollection<Models.Operation, Models.Operation>.LoadPage(
+                async (cancellation) => await this.Manager.Inner.Operations.ListAsync(cancellation),
+                this.Manager.Inner.Operations.ListNextAsync, (i) => i, true, cancellationToken);
         }
 
         // Catch-up methods
