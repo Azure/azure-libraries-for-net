@@ -122,5 +122,15 @@ namespace Microsoft.Azure.Management.Redis.Fluent
 
             return null;
         }
+
+        // catchup methods
+        public void Clear()
+        {
+            foreach (var child in this.Collection.Values)
+            {
+                child.Inner.ScheduleEntries.Clear();
+            }
+            this.Collection.Clear();
+        }
     }
 }

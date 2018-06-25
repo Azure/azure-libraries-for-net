@@ -245,19 +245,22 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         }
         public async Task<IReadOnlyDictionary<string, Models.ReplicationRole>> ListLinkedServersAsync(CancellationToken cancellationToken)
         {
-            //$ Map<String, ReplicationRole> result = new TreeMap<>();
-            //$ PagedList<RedisLinkedServerWithPropertiesInner> paginatedResponse = this.Manager().Inner.LinkedServers().List(
-            //$ this.ResourceGroupName(),
-            //$ this.Name());
-            //$ 
-            //$ foreach(var linkedServer in paginatedResponse) {
-            //$ result.Put(linkedServer.Name(), linkedServer.ServerRole());
-            //$ }
-            //$ return result;
+            var result = new Dictionary<string, ReplicationRole>();
+            var pagedCollection = await PagedCollection<RedisLinkedServerWithPropertiesInner, RedisLinkedServerWithPropertiesInner>.LoadPage(
+                (ct) => this.Manager.Inner.LinkedServer.ListAsync(
+                    this.ResourceGroupName,
+                    this.Name,
+                    ct),
+                this.Manager.Inner.LinkedServer.ListNextAsync,
+                wrapModel: (inner) => inner,
+                loadAllPages: true,
+                cancellationToken: cancellationToken);
 
-            return Extensions.Synchronize(() => Manager.Inner.LinkedServer.ListAsync(ResourceGroupName, Name))
-                .AsContinuousCollection(link => Extensions.Synchronize(() => Manager.Inner.LinkedServer.ListNextAsync(link)))
-                .Select(inner => new ResourceUsage(inner));
+            foreach(var ls in pagedCollection)
+            {
+                result.Add(ls.Name, ls.ServerRole);
+            }
+            return result;
         }
 
         ///GENMHASH:CC99BC6F0FDDE008E581A6EB944FE764:2F561CD7250F8DA4909525E84A8A91F0
@@ -275,9 +278,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:BA9FE1A345F36511B9799F44C9F3C739:9D27A7D6C296B69955557E8EA784238E
         public TlsVersion MinimumTlsVersion()
         {
-            //$ return this.Inner.MinimumTlsVersion();
-
-            return null;
+            return TlsVersion.Parse(this.Inner.MinimumTlsVersion);
         }
 
         ///GENMHASH:6D1D6050A5B64D726B268700D1D5B76A:B617C9AF570BA31ABDF18E43D8A277EA
@@ -290,13 +291,12 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:B99C181F2372E8A9AC28C8E7024F6ABD:4992C0D1E9DE06E14F14B6C38F5D33A4
         public IReadOnlyList<Models.ScheduleEntry> PatchSchedules()
         {
-            //$ List<ScheduleEntry> patchSchedules = listPatchSchedules();
-            //$ if (patchSchedules == null) {
-            //$ return new ArrayList<>();
-            //$ }
-            //$ return patchSchedules;
-
-            return null;
+            var patchSchedules = ListPatchSchedules();
+            if (patchSchedules == null)
+            {
+                return new List<ScheduleEntry>();
+            }
+            return patchSchedules;
         }
 
         ///GENMHASH:BF1200B4E784F046AF04467F35BAC1C4:F0090A6ECB1B91C3BCFD966232A4C1D4
@@ -327,17 +327,11 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:5A2D79502EDA81E37A36694062AEDC65:56A3157B284370C2F13CB40D1F2322C2
         public override async Task<Microsoft.Azure.Management.Redis.Fluent.IRedisCache> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return super.RefreshAsync().Map(new Func1<RedisCache, RedisCache>() {
-            //$ @Override
-            //$ public RedisCache call(RedisCache redisCache) {
-            //$ RedisCacheImpl impl = (RedisCacheImpl) redisCache;
-            //$ impl.FirewallRules.Refresh();
-            //$ impl.PatchSchedules.Refresh();
-            //$ return impl;
-            //$ }
-            //$ });
+            var retValue = await base.RefreshAsync(cancellationToken);
+            this.firewallRules.Refresh();
+            this.patchSchedules.Refresh();
 
-            return null;
+            return retValue;
         }
 
         ///GENMHASH:36C3CA891B448CCCA6D3BB4C29A31470:222A26931EAF5A1984B63F0B88A1D104
@@ -361,29 +355,37 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         {
             Extensions.Synchronize(() => this.RemoveLinkedServerAsync(linkedServerName, default(CancellationToken)));
         }
+
         public async Task RemoveLinkedServerAsync(string linkedServerName, CancellationToken cancellationToken)
         {
-            //$ RedisLinkedServerWithPropertiesInner linkedServer = this.Manager().Inner.LinkedServers().Get(this.ResourceGroupName(), this.Name(), linkedServerName);
-            //$ 
-            //$ this.Manager().Inner.LinkedServers().Delete(
-            //$ this.ResourceGroupName(),
-            //$ this.Name(),
-            //$ linkedServerName);
-            //$ 
-            //$ RedisResourceInner innerLinkedResource = null;
-            //$ RedisResourceInner innerResource = null;
-            //$ while (innerLinkedResource == null
-            //$ || innerLinkedResource.ProvisioningState() != ProvisioningState.SUCCEEDED
-            //$ || innerResource == null
-            //$ || innerResource.ProvisioningState() != ProvisioningState.SUCCEEDED) {
-            //$ SdkContext.Sleep(30 * 1000);
-            //$ 
-            //$ innerLinkedResource = this.Manager().Inner.Redis().GetByResourceGroup(
-            //$ ResourceUtils.GroupFromResourceId(linkedServer.Id()),
-            //$ ResourceUtils.NameFromResourceId(linkedServer.Id()));
-            //$ 
-            //$ innerResource = this.Manager().Inner.Redis().GetByResourceGroup(resourceGroupName(), name());
-            //$ }
+            var linkedServer = await this.Manager.Inner.LinkedServer.GetAsync(
+                this.ResourceGroupName, 
+                this.Name, 
+                linkedServerName, 
+                cancellationToken);
+
+            await this.Manager.Inner.LinkedServer.DeleteAsync(
+                this.ResourceGroupName,
+                this.Name,
+                linkedServerName,
+                cancellationToken);
+
+            RedisResourceInner innerLinkedResource = null;
+            RedisResourceInner innerResource = null;
+            while (innerLinkedResource == null ||
+                !(StringComparer.OrdinalIgnoreCase.Equals(innerLinkedResource.ProvisioningState, "Succeeded")) || 
+                innerResource == null ||
+                !(StringComparer.OrdinalIgnoreCase.Equals(innerResource.ProvisioningState, "Succeeded"))) 
+                {
+                    await SdkContext.DelayProvider.DelayAsync(30 * 1000, cancellationToken);
+
+                    innerLinkedResource = await this.Manager.Inner.Redis.GetAsync(
+                        ResourceUtils.GroupFromResourceId(linkedServer.Id),
+                        ResourceUtils.NameFromResourceId(linkedServer.Id),
+                        cancellationToken);
+
+                innerResource = await this.Manager.Inner.Redis.GetAsync(this.ResourceGroupName, this.Name);
+            }
 
         }
 
@@ -429,48 +431,21 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:507A92D4DCD93CE9595A78198DEBDFCF:2C6605A1B9906DB2844B193FD45B59DC
         public async Task<Microsoft.Azure.Management.Redis.Fluent.IRedisCache> UpdateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ RedisCacheImpl self = this;
-            //$ return this.Manager().Inner.Redis().UpdateAsync(resourceGroupName(), name(), updateParameters)
-            //$ .Map(innerToFluentMap(this))
-            //$ .DoOnNext(new Action1<RedisCache>() {
-            //$ @Override
-            //$ public void call(RedisCache redisCache) {
-            //$ while (!redisCache.ProvisioningState().EqualsIgnoreCase("Succeeded")) {
-            //$ SdkContext.Sleep(30 * 1000);
-            //$ 
-            //$ RedisResourceInner innerResource = self.Manager().Inner.Redis().GetByResourceGroup(resourceGroupName(), name());
-            //$ ((RedisCacheImpl) redisCache).SetInner(innerResource);
-            //$ self.SetInner(innerResource);
-            //$ self.PatchScheduleAdded = false;
-            //$ }
-            //$ }
-            //$ })
-            //$ .FlatMap(new Func1<RedisCache, Observable<RedisCache>>() {
-            //$ @Override
-            //$ public Observable<RedisCache> call(RedisCache redisCache) {
-            //$ return self.PatchSchedules.CommitAndGetAllAsync()
-            //$ .Map(new Func1<List<RedisPatchScheduleImpl>, RedisCache>() {
-            //$ @Override
-            //$ public RedisCache call(List<RedisPatchScheduleImpl> redisPatchSchedules) {
-            //$ return self;
-            //$ }
-            //$ });
-            //$ }
-            //$ })
-            //$ .FlatMap(new Func1<RedisCache, Observable<RedisCache>>() {
-            //$ @Override
-            //$ public Observable<RedisCache> call(RedisCache redisCache) {
-            //$ return self.FirewallRules.CommitAndGetAllAsync()
-            //$ .Map(new Func1<List<RedisFirewallRuleImpl>, RedisCache>() {
-            //$ @Override
-            //$ public RedisCache call(List<RedisFirewallRuleImpl> redisFirewallRules) {
-            //$ return self;
-            //$ }
-            //$ });
-            //$ }
-            //$ });
+            var inner = await this.Manager.Inner.Redis.UpdateAsync(this.ResourceGroupName, this.Name, this.updateParameters, cancellationToken);
 
-            return null;
+            this.patchScheduleAdded = false;
+            await this.patchSchedules.CommitAndGetAllAsync(cancellationToken);
+            await this.firewallRules.CommitAndGetAllAsync(cancellationToken);
+
+            while (!inner.ProvisioningState.Equals("Succeeded", StringComparison.OrdinalIgnoreCase) &&
+                            !cancellationToken.IsCancellationRequested)
+            {
+                await SdkContext.DelayProvider.DelayAsync(30 * 1000, cancellationToken);
+                inner = await Manager.Inner.Redis.GetAsync(ResourceGroupName, Name, cancellationToken);
+            }
+            SetInner(inner);
+
+            return this;
         }
 
         ///GENMHASH:8D7485C72B719CA5E190D69B6FF75F54:EF1EAF9D3B229FCBEC276D19464D4B8C
@@ -520,32 +495,30 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:27444C4877ED2027D36DD096AFCEC975:208D24B219CB244B8E7E15C1C233BB71
         public RedisCacheImpl WithFirewallRule(string name, string lowestIp, string highestIp)
         {
-            //$ RedisFirewallRuleImpl rule = this.firewallRules.DefineInlineFirewallRule(name);
-            //$ rule.Inner.WithStartIP(lowestIp);
-            //$ rule.Inner.WithEndIP(highestIp);
-            //$ return this.WithFirewallRule(rule);
-
-            return this;
+            var rule = this.firewallRules.DefineInlineFirewallRule(name);
+            rule.Inner.StartIP = lowestIp;
+            rule.Inner.EndIP = highestIp;
+            return this.WithFirewallRule(rule);
         }
 
         ///GENMHASH:9DD7CA9AD381ABB5D1493DAAF3F96082:03D221A25EEED0FA04EEC682976034E4
         public RedisCacheImpl WithFirewallRule(IRedisFirewallRule rule)
         {
-            //$ this.firewallRules.AddRule((RedisFirewallRuleImpl) rule);
-            //$ return this;
-
+            this.firewallRules.AddRule((RedisFirewallRuleImpl) rule);
             return this;
         }
 
         ///GENMHASH:BE6BA1183F3D45C65CDAC63F14746F24:D778A193C0BD265A4FDFF6A32CB536EE
         public RedisCacheImpl WithMinimumTlsVersion(TlsVersion tlsVersion)
         {
-            //$ if (isInCreateMode()) {
-            //$ createParameters.WithMinimumTlsVersion(tlsVersion);
-            //$ } else {
-            //$ updateParameters.WithMinimumTlsVersion(tlsVersion);
-            //$ }
-            //$ return this;
+            if (this.IsInCreateMode)
+            {
+                createParameters.MinimumTlsVersion = tlsVersion.ToString();
+            }
+            else
+            {
+                updateParameters.MinimumTlsVersion = tlsVersion.ToString();
+            }
 
             return this;
         }
@@ -567,18 +540,14 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:D14E9D120B5AE20CBE29EEDB19E51726:3F066B8EB25ED4C3056B3D5932415436
         public RedisCacheImpl WithoutFirewallRule(string name)
         {
-            //$ this.firewallRules.RemoveRule(name);
-            //$ return this;
-
+            this.firewallRules.RemoveRule(name);
             return this;
         }
 
         ///GENMHASH:8C4CA2E024576158A5143BDC2DE7DE06:85171B31CB90B5F24479806B7FAB77E4
         public RedisCacheImpl WithoutMinimumTlsVersion()
         {
-            //$ updateParameters.WithMinimumTlsVersion(null);
-            //$ return this;
-
+            updateParameters.MinimumTlsVersion = null;
             return this;
         }
 
@@ -595,24 +564,24 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:34437085ECDFE7A297C3DF96BE3FEEA5:7200AAC806BEBBFC459708D2C4E3E393
         public RedisCacheImpl WithoutPatchSchedule()
         {
-            //$ if (this.patchSchedules.PatchSchedulesAsMap().IsEmpty()) {
-            //$ return this;
-            //$ } else {
-            //$ this.patchSchedules.DeleteInlinePatchSchedule();
-            //$ }
-            //$ return this;
-
+            if (!this.patchSchedules.PatchSchedulesAsMap().Any())
+            {
+                return this;
+            }
+            else
+            {
+                this.patchSchedules.DeleteInlinePatchSchedule();
+            }
             return this;
         }
 
         ///GENMHASH:4F64337819291292917CAEDDE1BA957C:61DFF56DF837BA3A7526DB4C6FB3A760
         public RedisCacheImpl WithoutRedisConfiguration()
         {
-            //$ if (updateParameters.RedisConfiguration() != null) {
-            //$ updateParameters.RedisConfiguration().Clear();
-            //$ }
-            //$ return this;
-
+            if(updateParameters.RedisConfiguration != null)
+            {
+                updateParameters.RedisConfiguration.Clear();
+            }
             return this;
         }
         
@@ -647,32 +616,34 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:4DC611DFE1B12D88B1FBC380172484A4:37E898C983257376AD7BAA07B4E657C5
         public RedisCacheImpl WithPatchSchedule(IList<Models.ScheduleEntry> scheduleEntries)
         {
-            //$ this.patchSchedules.Clear();
-            //$ foreach(var entry in scheduleEntries) {
-            //$ this.WithPatchSchedule(entry);
-            //$ }
-            //$ return this;
-
+            this.patchSchedules.Clear();
+            foreach (var entry in scheduleEntries)
+            {
+                this.WithPatchSchedule(entry);
+            }
             return this;
         }
 
         ///GENMHASH:C11AE4C223D196AB7A57470F94A0CDC6:8297A81A7146CC702F9E8049568353EE
         public RedisCacheImpl WithPatchSchedule(ScheduleEntry scheduleEntry)
         {
-            //$ RedisPatchScheduleImpl psch = null;
-            //$ if (this.patchSchedules.PatchSchedulesAsMap().IsEmpty()) {
-            //$ psch = this.patchSchedules.DefineInlinePatchSchedule();
-            //$ this.patchScheduleAdded = true;
-            //$ psch.Inner.WithScheduleEntries(new ArrayList<ScheduleEntry>());
-            //$ this.patchSchedules.AddPatchSchedule(psch);
-            //$ } else if (!this.patchScheduleAdded) {
-            //$ psch = this.patchSchedules.UpdateInlinePatchSchedule();
-            //$ } else {
-            //$ psch = this.patchSchedules.GetPatchSchedule();
-            //$ }
-            //$ 
-            //$ psch.Inner.ScheduleEntries().Add(scheduleEntry);
-            //$ return this;
+            RedisPatchScheduleImpl psch = null;
+            if (!this.patchSchedules.PatchSchedulesAsMap().Any())
+            {
+                psch = this.patchSchedules.DefineInlinePatchSchedule();
+                this.patchScheduleAdded = true;
+                psch.Inner.ScheduleEntries = new List<ScheduleEntryInner>();
+                this.patchSchedules.AddPatchSchedule(psch);
+            }
+            else if (!this.patchScheduleAdded)
+            {
+                psch = this.patchSchedules.UpdateInlinePatchSchedule();
+            }
+            else
+            {
+                psch = this.patchSchedules.GetPatchSchedule();
+            }
+            psch.Inner.ScheduleEntries.Add(scheduleEntry.Inner);
             return this;
         }
 
@@ -836,14 +807,17 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:0FBBECB150CBC82F165D8BA614AB135A:56529187F77D48847569F37FE5DFB40C
         public RedisCacheImpl WithSubnet(string subnetId)
         {
-            //$ if (subnetId != null) {
-            //$ if (isInCreateMode()) {
-            //$ createParameters.WithSubnetId(subnetId);
-            //$ } else {
-            //$ throw new UnsupportedOperationException("Subnet cannot be modified during update operation.");
-            //$ }
-            //$ }
-            //$ return this;
+            if (subnetId != null)
+            {
+                if (this.IsInCreateMode)
+                {
+                    createParameters.SubnetId = subnetId;
+                }
+                else
+                {
+                    throw new NotSupportedException("Subnet cannot be modified during update operation.");
+                }
+            }
 
             return this;
         }
