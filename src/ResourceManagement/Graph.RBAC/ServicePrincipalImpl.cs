@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 }
                 foreach (ICertificateCredential create in certificateCredentialsToCreate)
                 {
-                    newCerts.Add(create.Id, create);
+                    newCerts.Add(create.Name, create);
                 }
                 await Manager().Inner.ServicePrincipals.UpdateKeyCredentialsAsync(
                     sp.Id,
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 }
                 foreach (IPasswordCredential create in passwordCredentialsToCreate)
                 {
-                    newPasses.Add(create.Id, create);
+                    newPasses.Add(create.Name, create);
                 }
                 await Manager().Inner.ServicePrincipals.UpdatePasswordCredentialsAsync(
                     sp.Id,
