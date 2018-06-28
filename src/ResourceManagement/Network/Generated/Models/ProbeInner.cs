@@ -35,10 +35,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the ProbeInner class.
         /// </summary>
         /// <param name="protocol">The protocol of the end point. Possible
-        /// values are: 'Http' or 'Tcp'. If 'Tcp' is specified, a received ACK
-        /// is required for the probe to be successful. If 'Http' is specified,
-        /// a 200 OK response from the specifies URI is required for the probe
-        /// to be successful. Possible values include: 'Http', 'Tcp'</param>
+        /// values are: 'Http', 'Tcp', or 'Https'. If 'Tcp' is specified, a
+        /// received ACK is required for the probe to be successful. If 'Http'
+        /// or 'Https' is specified, a 200 OK response from the specifies URI
+        /// is required for the probe to be successful. Possible values
+        /// include: 'Http', 'Tcp', 'Https'</param>
         /// <param name="port">The port for communicating the probe. Possible
         /// values range from 1 to 65535, inclusive.</param>
         /// <param name="loadBalancingRules">The load balancer rules that use
@@ -93,10 +94,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
 
         /// <summary>
         /// Gets or sets the protocol of the end point. Possible values are:
-        /// 'Http' or 'Tcp'. If 'Tcp' is specified, a received ACK is required
-        /// for the probe to be successful. If 'Http' is specified, a 200 OK
-        /// response from the specifies URI is required for the probe to be
-        /// successful. Possible values include: 'Http', 'Tcp'
+        /// 'Http', 'Tcp', or 'Https'. If 'Tcp' is specified, a received ACK is
+        /// required for the probe to be successful. If 'Http' or 'Https' is
+        /// specified, a 200 OK response from the specifies URI is required for
+        /// the probe to be successful. Possible values include: 'Http', 'Tcp',
+        /// 'Https'
         /// </summary>
         [JsonProperty(PropertyName = "properties.protocol")]
         public ProbeProtocol Protocol { get; set; }

@@ -25,5 +25,6 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     {
         public static readonly ProbeProtocol Http = Parse("Http");
         public static readonly ProbeProtocol Tcp = Parse("Tcp");
+        public static readonly ProbeProtocol Https = Parse("Https");
     }
 }

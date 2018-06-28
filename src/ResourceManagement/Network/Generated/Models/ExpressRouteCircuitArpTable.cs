@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the ExpressRouteCircuitArpTable
         /// class.
         /// </summary>
-        /// <param name="age">Age</param>
-        /// <param name="interfaceProperty">Interface</param>
+        /// <param name="age">Entry age in minutes</param>
+        /// <param name="interfaceProperty">Interface address</param>
         /// <param name="ipAddress">The IP address.</param>
         /// <param name="macAddress">The MAC address.</param>
         public ExpressRouteCircuitArpTable(int? age = default(int?), string interfaceProperty = default(string), string ipAddress = default(string), string macAddress = default(string))
@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets age
+        /// Gets or sets entry age in minutes
         /// </summary>
         [JsonProperty(PropertyName = "age")]
         public int? Age { get; set; }
 
         /// <summary>
-        /// Gets or sets interface
+        /// Gets or sets interface address
         /// </summary>
         [JsonProperty(PropertyName = "interface")]
         public string InterfaceProperty { get; set; }
