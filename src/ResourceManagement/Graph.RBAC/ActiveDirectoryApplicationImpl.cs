@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             foreach (var cred in keyCredentials)
             {
                 ICertificateCredential cert = new CertificateCredentialImpl<IActiveDirectoryApplication>(cred);
-                this.cachedCertificateCredentials.Add(cert.Name, cert);
+                this.cachedCertificateCredentials.Add(cert.Id, cert);
             }
 
             IEnumerable<Models.PasswordCredential> passwordCredentials = await manager.Inner.Applications.ListPasswordCredentialsAsync(Id(), cancellationToken);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             foreach (var cred in passwordCredentials)
             {
                 IPasswordCredential cert = new PasswordCredentialImpl<IActiveDirectoryApplication>(cred);
-                this.cachedPasswordCredentials.Add(cert.Name, cert);
+                this.cachedPasswordCredentials.Add(cert.Id, cert);
             }
 
             return this;
@@ -290,15 +290,23 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public ActiveDirectoryApplicationImpl WithoutCredential(string name)
         {
-            if (cachedPasswordCredentials.ContainsKey(name))
+            foreach (var credential in cachedPasswordCredentials)
             {
-                cachedPasswordCredentials.Remove(name);
-                updateParameters.PasswordCredentials = cachedPasswordCredentials.Values.Select(pc => pc.Inner).ToList();
+                if (name.Equals(credential.Value.Name))
+                {
+                    cachedPasswordCredentials.Remove(credential.Value.Id);
+                    updateParameters.PasswordCredentials = cachedPasswordCredentials.Values.Select(pc => pc.Inner).ToList();
+                    return this;
+                }
             }
-            else if (cachedCertificateCredentials.ContainsKey(name))
+            foreach (var credential in cachedCertificateCredentials)
             {
-                cachedCertificateCredentials.Remove(name);
-                updateParameters.KeyCredentials = cachedCertificateCredentials.Values.Select(pc => pc.Inner).ToList();
+                if (name.Equals(credential.Value.Name))
+                {
+                    cachedCertificateCredentials.Remove(credential.Value.Id);
+                    updateParameters.KeyCredentials = cachedCertificateCredentials.Values.Select(pc => pc.Inner).ToList();
+                    return this;
+                }
             }
             return this;
         }
