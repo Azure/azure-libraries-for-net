@@ -7,11 +7,13 @@ namespace Microsoft.Azure.Management.Redis.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Linq;
     using System.Collections.Generic;
+    using Microsoft.Rest.Azure;
+    using System.Net;
 
     /// <summary>
     /// Represents a Redis patch schedule collection associated with a Redis cache instance.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnJlZGlzLmltcGxlbWVudGF0aW9uLlJlZGlzUGF0Y2hTY2hlZHVsZXNJbXBs
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LnJlZGlzLmltcGxlbWVudGF0aW9uLlJlZGlzUGF0Y2hTY2hlZHVsZXNJbXBs
     internal partial class RedisPatchSchedulesImpl :
         ExternalChildResourcesCached<RedisPatchScheduleImpl,
             IRedisPatchSchedule,
@@ -47,7 +49,23 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:6A122C62EB559D6E6E53725061B422FB:7EDDB3D4663F077E51B9DEED8CBEA81F
         protected override IList<Microsoft.Azure.Management.Redis.Fluent.RedisPatchScheduleImpl> ListChildResources()
         {
-            return Extensions.Synchronize(() => this.Parent.Manager.Inner.PatchSchedules.ListByRedisResourceAsync(this.Parent.ResourceGroupName, this.Parent.Name))
+            IPage<RedisPatchScheduleInner> retValue = null;
+
+            try
+            {
+                retValue = Extensions.Synchronize(() => this.Parent.Manager.Inner.PatchSchedules.ListByRedisResourceAsync(this.Parent.ResourceGroupName, this.Parent.Name));
+            }
+            catch (CloudException ex) when (HttpStatusCode.NotFound == ex.Response.StatusCode)
+            {
+                // no exception should be thrown if the error code is "404 Not Found"
+            }
+
+            if(retValue == null)
+            {
+                return new List<RedisPatchScheduleImpl>();
+            }
+
+            return retValue
                     .AsContinuousCollection(link => Extensions.Synchronize(() => this.Parent.Manager.Inner.PatchSchedules.ListByRedisResourceNextAsync(link)))
                     .Select(inner => new RedisPatchScheduleImpl(inner.Name, this.Parent, inner))
                     .ToList();

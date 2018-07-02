@@ -94,14 +94,21 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:2CC95DA2D798C6EF07E41FBEC0E626D1
         public async override Task<Microsoft.Azure.Management.Redis.Fluent.IRedisCache> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            createParameters.Location = this.RegionName;
-            createParameters.Tags = this.Inner.Tags;
-            this.patchScheduleAdded = false;
-            var inner = await Manager.Inner.Redis.CreateAsync(ResourceGroupName, Name, createParameters, cancellationToken);
-            SetInner(inner);
-            await firewallRules.CommitAndGetAllAsync(cancellationToken);
-            await patchSchedules.CommitAndGetAllAsync(cancellationToken);
-            return this;
+            if (IsInCreateMode)
+            {
+                createParameters.Location = this.RegionName;
+                createParameters.Tags = this.Inner.Tags;
+                this.patchScheduleAdded = false;
+                var inner = await Manager.Inner.Redis.CreateAsync(ResourceGroupName, Name, createParameters, cancellationToken);
+                SetInner(inner);
+                await firewallRules.CommitAndGetAllAsync(cancellationToken);
+                await patchSchedules.CommitAndGetAllAsync(cancellationToken);
+                return this;
+            }
+            else
+            {
+                return await UpdateResourceAsync(cancellationToken);
+            }
         }
 
         ///GENMHASH:3D7C4113A3F55E3E31A8AB77D2A98BC2:E643704D760CED098185123C4FD327DC
@@ -436,7 +443,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
             this.patchScheduleAdded = false;
             await this.patchSchedules.CommitAndGetAllAsync(cancellationToken);
             await this.firewallRules.CommitAndGetAllAsync(cancellationToken);
-
+            
             while (!inner.ProvisioningState.Equals("Succeeded", StringComparison.OrdinalIgnoreCase) &&
                             !cancellationToken.IsCancellationRequested)
             {
