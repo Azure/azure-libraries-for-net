@@ -61,6 +61,10 @@ namespace Fluent.Tests
                             .WithPremiumSku(2)
                             .WithRedisConfiguration("maxclients", "2")
                             .WithNonSslPort()
+                            .WithFirewallRule("rule1", "192.168.0.1", "192.168.0.4")
+                            .WithFirewallRule("rule2", "192.168.0.10", "192.168.0.40")
+                            // Server throws "The 'minimumTlsVersion' property is not yet supported." exception. Uncomment when fixed.
+                            //.WithMinimumTlsVersion(TlsVersion.OneFullStopOne)
                             .Create();
 
                     var redisCache = redisCacheDefinition1;
@@ -149,11 +153,22 @@ namespace Fluent.Tests
                     // Premium SKU Functionality
                     var premiumCache = redisCachePremium.AsPremium();
                     Assert.Equal(SkuFamily.P, premiumCache.Sku.Family);
+                    Assert.Equal(2, premiumCache.FirewallRules.Count);
+                    Assert.True(premiumCache.FirewallRules.ContainsKey("rule1"));
+                    Assert.True(premiumCache.FirewallRules.ContainsKey("rule2"));
 
                     // Redis configuration update
                     premiumCache.Update()
                             .WithRedisConfiguration("maxclients", "3")
+                            .WithoutFirewallRule("rule1")
+                            .WithFirewallRule("rule3", "192.168.0.10", "192.168.0.104")
+                            .WithoutMinimumTlsVersion()
                             .Apply();
+
+                    Assert.Equal(2, premiumCache.FirewallRules.Count);
+                    Assert.True(premiumCache.FirewallRules.ContainsKey("rule2"));
+                    Assert.True(premiumCache.FirewallRules.ContainsKey("rule3"));
+                    Assert.False(premiumCache.FirewallRules.ContainsKey("rule1"));
 
                     premiumCache.Update()
                             .WithoutRedisConfiguration("maxclients")
@@ -163,11 +178,13 @@ namespace Fluent.Tests
                             .WithoutRedisConfiguration()
                             .Apply();
 
+                    Assert.Equal(0, premiumCache.PatchSchedules.Count);
                     premiumCache.Update()
                             .WithPatchSchedule(Microsoft.Azure.Management.Redis.Fluent.Models.DayOfWeek.Monday, 1)
                             .WithPatchSchedule(Microsoft.Azure.Management.Redis.Fluent.Models.DayOfWeek.Tuesday, 5)
                             .Apply();
 
+                    Assert.Equal(2, premiumCache.PatchSchedules.Count);
                     // Reboot
                     premiumCache.ForceReboot(RebootType.AllNodes);
 
@@ -190,6 +207,89 @@ namespace Fluent.Tests
                     //                  The SAS token is poorly formatted.\r\nRequestID=ed105089-b93b-427e-9cbb-d78ed80d23b0",
                     //      "target":null}}
                     // com.microsoft.azure.CloudException: One of the SAS URIs provided could not be used for the following reason: The SAS token is poorly formatted.
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.BeginDeleteByName(GroupName);
+                    }
+                    catch
+                    { }
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.BeginDeleteByName(GroupName2);
+                    }
+                    catch
+                    { }
+                }
+            }
+        }
+
+        [Fact]
+        public void CanCRUDLinkedServers()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                var GroupName = TestUtilities.GenerateName("javacsmrg");
+                var GroupName2 = GroupName + "Second";
+                var CacheName = TestUtilities.GenerateName("javacsmrc");
+                var CacheName2 = CacheName + "Second";
+                var CacheName3 = CacheName + "Third";
+                var storageAccountName = TestUtilities.GenerateName("javacsmsa");
+
+                try
+                {
+                    var redisManager = TestHelper.CreateRedisManager();
+
+                    var rgg = redisManager.RedisCaches
+                            .Define(CacheName3)
+                            .WithRegion(Region.USCentral)
+                            .WithNewResourceGroup(GroupName2)
+                            .WithPremiumSku(2)
+                            .WithPatchSchedule(Microsoft.Azure.Management.Redis.Fluent.Models.DayOfWeek.Sunday, 5, TimeSpan.FromHours(5))
+                            .WithRedisConfiguration("maxclients", "2")
+                            .WithNonSslPort()
+                            .WithFirewallRule("rule1", "192.168.0.1", "192.168.0.4")
+                            .WithFirewallRule("rule2", "192.168.0.10", "192.168.0.40")
+                            .Create();
+
+                    var rggLinked = redisManager.RedisCaches
+                            .Define(CacheName2)
+                            .WithRegion(Region.USEast2)
+                            .WithExistingResourceGroup(GroupName2)
+                            .WithPremiumSku(2)
+                            .Create();
+
+                    Assert.NotNull(rgg);
+                    Assert.NotNull(rggLinked);
+
+                    var premiumRgg = rgg.AsPremium();
+
+                    var llName = premiumRgg.AddLinkedServer(rggLinked.Id, rggLinked.RegionName, ReplicationRole.Primary);
+
+                    Assert.Equal(ResourceUtils.NameFromResourceId(rggLinked.Id), llName);
+
+                    var linkedServers = premiumRgg.ListLinkedServers();
+                    Assert.Equal(1, linkedServers.Count);
+                    Assert.Contains(llName, linkedServers.Keys);
+                    Assert.Equal(ReplicationRole.Primary, linkedServers[llName]);
+
+                    var repRole = premiumRgg.GetLinkedServerRole(llName);
+                    Assert.Equal(ReplicationRole.Primary, repRole);
+
+                    premiumRgg.RemoveLinkedServer(llName);
+
+                    rgg.Update()
+                            .WithoutPatchSchedule()
+                            .Apply();
+
+                    rggLinked.Update()
+                            .WithFirewallRule("rulesmhule", "192.168.1.10", "192.168.1.20")
+                            .Apply();
+
+                    linkedServers = premiumRgg.ListLinkedServers();
+                    Assert.Equal(0, linkedServers.Count);
                 }
                 finally
                 {

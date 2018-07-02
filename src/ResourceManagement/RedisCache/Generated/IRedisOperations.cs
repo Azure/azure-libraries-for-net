@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// </summary>
         /// <param name='parameters'>
         /// Parameters supplied to the CheckNameAvailability Redis operation.
+        /// The only supported resource type is 'Microsoft.Cache/redis'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

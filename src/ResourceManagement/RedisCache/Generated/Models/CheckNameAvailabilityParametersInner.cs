@@ -8,11 +8,12 @@
 
 namespace Microsoft.Azure.Management.Redis.Fluent.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Parameters body to pass for  name availability check.
+    /// Parameters body to pass for resource name availability check.
     /// </summary>
     public partial class CheckNameAvailabilityParametersInner
     {
@@ -30,8 +31,10 @@ namespace Microsoft.Azure.Management.Redis.Fluent.Models
         /// CheckNameAvailabilityParametersInner class.
         /// </summary>
         /// <param name="name">Resource name.</param>
-        /// <param name="type">Resource type.</param>
-        public CheckNameAvailabilityParametersInner(string name = default(string), string type = default(string))
+        /// <param name="type">Resource type. The only legal value of this
+        /// property for checking redis cache name availability is
+        /// 'Microsoft.Cache/redis'.</param>
+        public CheckNameAvailabilityParametersInner(string name, string type)
         {
             Name = name;
             Type = type;
@@ -50,10 +53,29 @@ namespace Microsoft.Azure.Management.Redis.Fluent.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets resource type.
+        /// Gets or sets resource type. The only legal value of this property
+        /// for checking redis cache name availability is
+        /// 'Microsoft.Cache/redis'.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Name == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
+            }
+            if (Type == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Type");
+            }
+        }
     }
 }
