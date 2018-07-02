@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         // the name of the network interface.
         private string nicName;
         // references to all ip configuration.
-        private IDictionary<string, INicIPConfiguration> nicIPConfigurations;
+        private Dictionary<string, INicIPConfiguration> nicIPConfigurations;
         // unique key of a creatable network security group to be associated with the network interface.
         private string creatableNetworkSecurityGroupKey;
         // reference to an network security group to be associated with the network interface.
@@ -394,15 +394,15 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
 
         ///GENMHASH:9647B31AF7C6E31D3F4BB97FF05EB53A:09E7A363E9118CFD8751EA41C3C67496
-        internal IList<string> AppliedDnsServers()
+        internal IReadOnlyList<string> AppliedDnsServers()
         {
-            List<string> dnsServers = new List<string>();
+            var dnsServers = new List<string>();
             if (Inner.DnsSettings == null)
                 return dnsServers;
             else if (Inner.DnsSettings.AppliedDnsServers == null)
                 return dnsServers;
             else
-                return Inner.DnsSettings.AppliedDnsServers;
+                return (List<string>) Inner.DnsSettings.AppliedDnsServers;
         }
 
 
@@ -414,9 +414,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
 
         ///GENMHASH:B1AD13DA0902D51846B309BF1324B456:D8A5A5DCA213B9C68C3EE5D7C1AB3B0D
-        internal IList<string> DnsServers()
+        internal IReadOnlyList<string> DnsServers()
         {
-            return DnsServerIPs;
+            return (List<string>) DnsServerIPs;
         }
 
 
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return PrimaryIPConfiguration().PrivateIPAllocationMethod();
         }
 
-        internal IDictionary<string, INicIPConfiguration> IPConfigurations()
+        internal IReadOnlyDictionary<string, INicIPConfiguration> IPConfigurations()
         {
             return nicIPConfigurations;
         }

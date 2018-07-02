@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the parent definition.</return>
         BatchAIJob.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<BatchAIJob.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as BatchAIJob.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ContainerImageSettings.Definition.IWithRegistryCredentials<BatchAIJob.Definition.IWithCreate>.WithRegistryPassword(string password)
         {
-            return this.WithRegistryPassword(password) as ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithRegistryPassword(password);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// </summary>
         ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ContainerImageSettings.Definition.IWithRegistryCredentials<BatchAIJob.Definition.IWithCreate>.WithRegistrySecretReference(string keyVaultId, string secretUrl)
         {
-            return this.WithRegistrySecretReference(keyVaultId, secretUrl) as ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithRegistrySecretReference(keyVaultId, secretUrl);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>.WithRegistryUrl(string serverUrl)
         {
-            return this.WithRegistryUrl(serverUrl) as ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithRegistryUrl(serverUrl);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerImageSettings.Definition.IWithRegistryCredentials<BatchAIJob.Definition.IWithCreate> ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>.WithRegistryUsername(string username)
         {
-            return this.WithRegistryUsername(username) as ContainerImageSettings.Definition.IWithRegistryCredentials<BatchAIJob.Definition.IWithCreate>;
+            return this.WithRegistryUsername(username);
         }
     }
 }

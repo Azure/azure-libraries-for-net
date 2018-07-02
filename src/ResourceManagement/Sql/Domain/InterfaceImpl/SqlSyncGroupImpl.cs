@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroupOperations.Definition.IWithCreate SqlSyncGroupOperations.Definition.IWithConflictResolutionPolicy.WithConflictResolutionPolicyHubWins()
         {
-            return this.WithConflictResolutionPolicyHubWins() as SqlSyncGroupOperations.Definition.IWithCreate;
+            return this.WithConflictResolutionPolicyHubWins();
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroupOperations.Definition.IWithCreate SqlSyncGroupOperations.Definition.IWithConflictResolutionPolicy.WithConflictResolutionPolicyMemberWins()
         {
-            return this.WithConflictResolutionPolicyMemberWins() as SqlSyncGroupOperations.Definition.IWithCreate;
+            return this.WithConflictResolutionPolicyMemberWins();
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroup.Update.IUpdate SqlSyncGroup.Update.IWithConflictResolutionPolicy.WithConflictResolutionPolicyHubWins()
         {
-            return this.WithConflictResolutionPolicyHubWins() as SqlSyncGroup.Update.IUpdate;
+            return this.WithConflictResolutionPolicyHubWins();
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroup.Update.IUpdate SqlSyncGroup.Update.IWithConflictResolutionPolicy.WithConflictResolutionPolicyMemberWins()
         {
-            return this.WithConflictResolutionPolicyMemberWins() as SqlSyncGroup.Update.IUpdate;
+            return this.WithConflictResolutionPolicyMemberWins();
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroupOperations.Definition.IWithCreate SqlSyncGroupOperations.Definition.IWithSchema.WithSchema(SyncGroupSchema schema)
         {
-            return this.WithSchema(schema) as SqlSyncGroupOperations.Definition.IWithCreate;
+            return this.WithSchema(schema);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroup.Update.IUpdate SqlSyncGroup.Update.IWithSchema.WithSchema(SyncGroupSchema schema)
         {
-            return this.WithSchema(schema) as SqlSyncGroup.Update.IUpdate;
+            return this.WithSchema(schema);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroupOperations.Definition.IWithSyncGroupDatabase SqlSyncGroupOperations.Definition.IWithSqlServer.WithExistingSqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.WithExistingSqlServer(resourceGroupName, sqlServerName) as SqlSyncGroupOperations.Definition.IWithSyncGroupDatabase;
+            return this.WithExistingSqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroupOperations.Definition.IWithSyncDatabaseId SqlSyncGroupOperations.Definition.IWithSqlServer.WithExistingSqlDatabase(ISqlDatabase sqlDatabase)
         {
-            return this.WithExistingSqlDatabase(sqlDatabase) as SqlSyncGroupOperations.Definition.IWithSyncDatabaseId;
+            return this.WithExistingSqlDatabase(sqlDatabase);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroupOperations.Definition.IWithCreate SqlSyncGroupOperations.Definition.IWithInterval.WithInterval(int interval)
         {
-            return this.WithInterval(interval) as SqlSyncGroupOperations.Definition.IWithCreate;
+            return this.WithInterval(interval);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroup.Update.IUpdate SqlSyncGroup.Update.IWithInterval.WithInterval(int interval)
         {
-            return this.WithInterval(interval) as SqlSyncGroup.Update.IUpdate;
+            return this.WithInterval(interval);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ConflictResolutionPolicy() as Models.SyncConflictResolutionPolicy;
+                return this.ConflictResolutionPolicy();
             }
         }
 
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The paged list of SyncFullSchemaProperty objects if successful.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncFullSchemaProperty> Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup.ListHubSchemas()
         {
-            return this.ListHubSchemas() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncFullSchemaProperty>;
+            return this.ListHubSchemas();
         }
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.SyncMembers() as SqlSyncMemberOperations.SqlSyncMemberActionsDefinition.ISqlSyncMemberActionsDefinition;
+                return this.SyncMembers();
             }
         }
 
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.SyncState() as Models.SyncGroupState;
+                return this.SyncState();
             }
         }
 
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Schema() as Models.SyncGroupSchema;
+                return this.Schema();
             }
         }
 
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncFullSchemaProperty>> Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup.ListHubSchemasAsync(CancellationToken cancellationToken)
         {
-            return await this.ListHubSchemasAsync(cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncFullSchemaProperty>;
+            return await this.ListHubSchemasAsync(cancellationToken);
         }
 
         /// <summary>
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the group log property objects if successful.</return>
         async Task<IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty>> Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup.ListLogsAsync(string startTime, string endTime, string type, CancellationToken cancellationToken)
         {
-            return await this.ListLogsAsync(startTime, endTime, type, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty>;
+            return await this.ListLogsAsync(startTime, endTime, type, cancellationToken);
         }
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The paged list containing the group log property objects if successful.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty> Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup.ListLogs(string startTime, string endTime, string type)
         {
-            return this.ListLogs(startTime, endTime, type) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupLogProperty>;
+            return this.ListLogs(startTime, endTime, type);
         }
 
         /// <summary>
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroupOperations.Definition.IWithSyncDatabaseId SqlSyncGroupOperations.Definition.IWithSyncGroupDatabase.WithExistingDatabaseName(string databaseName)
         {
-            return this.WithExistingDatabaseName(databaseName) as SqlSyncGroupOperations.Definition.IWithSyncDatabaseId;
+            return this.WithExistingDatabaseName(databaseName);
         }
 
         /// <summary>
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The stage of new resource update.</return>
         SqlSyncGroup.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlSyncGroup.Update.IUpdate>.Update()
         {
-            return this.Update() as SqlSyncGroup.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroupOperations.Definition.IWithDatabasePassword SqlSyncGroupOperations.Definition.IWithDatabaseUserName.WithDatabaseUserName(string userName)
         {
-            return this.WithDatabaseUserName(userName) as SqlSyncGroupOperations.Definition.IWithDatabasePassword;
+            return this.WithDatabaseUserName(userName);
         }
 
         /// <summary>
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroup.Update.IUpdate SqlSyncGroup.Update.IWithDatabaseUserName.WithDatabaseUserName(string userName)
         {
-            return this.WithDatabaseUserName(userName) as SqlSyncGroup.Update.IUpdate;
+            return this.WithDatabaseUserName(userName);
         }
 
         /// <summary>
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroupOperations.Definition.IWithDatabaseUserName SqlSyncGroupOperations.Definition.IWithSyncDatabaseId.WithSyncDatabaseId(string syncDatabaseId)
         {
-            return this.WithSyncDatabaseId(syncDatabaseId) as SqlSyncGroupOperations.Definition.IWithDatabaseUserName;
+            return this.WithSyncDatabaseId(syncDatabaseId);
         }
 
         /// <summary>
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroup.Update.IUpdate SqlSyncGroup.Update.IWithSyncDatabaseId.WithSyncDatabaseId(string databaseId)
         {
-            return this.WithSyncDatabaseId(databaseId) as SqlSyncGroup.Update.IUpdate;
+            return this.WithSyncDatabaseId(databaseId);
         }
 
         /// <summary>
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroupOperations.Definition.IWithConflictResolutionPolicy SqlSyncGroupOperations.Definition.IWithDatabasePassword.WithDatabasePassword(string password)
         {
-            return this.WithDatabasePassword(password) as SqlSyncGroupOperations.Definition.IWithConflictResolutionPolicy;
+            return this.WithDatabasePassword(password);
         }
 
         /// <summary>
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncGroup.Update.IUpdate SqlSyncGroup.Update.IWithDatabasePassword.WithDatabasePassword(string password)
         {
-            return this.WithDatabasePassword(password) as SqlSyncGroup.Update.IUpdate;
+            return this.WithDatabasePassword(password);
         }
     }
 }

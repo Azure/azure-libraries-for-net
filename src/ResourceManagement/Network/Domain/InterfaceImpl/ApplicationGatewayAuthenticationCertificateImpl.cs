@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ApplicationGateway.Update.IUpdate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayAuthenticationCertificate.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayAuthenticationCertificate.Definition.IWithData<ApplicationGateway.Definition.IWithCreate>.FromBytes(params byte[] derData)
         {
-            return this.FromBytes(derData) as ApplicationGatewayAuthenticationCertificate.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.FromBytes(derData);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <throws>IOException when there are problems reading the certificate file.</throws>
         ApplicationGatewayAuthenticationCertificate.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayAuthenticationCertificate.Definition.IWithData<ApplicationGateway.Definition.IWithCreate>.FromFile(FileInfo certificateFile)
         {
-            return this.FromFile(certificateFile) as ApplicationGatewayAuthenticationCertificate.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.FromFile(certificateFile);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayAuthenticationCertificate.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayAuthenticationCertificate.Definition.IWithData<ApplicationGateway.Definition.IWithCreate>.FromBase64(string base64data)
         {
-            return this.FromBase64(base64data) as ApplicationGatewayAuthenticationCertificate.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.FromBase64(base64data);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithData<ApplicationGateway.Update.IUpdate>.FromBytes(params byte[] data)
         {
-            return this.FromBytes(data) as ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.FromBytes(data);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <throws>IOException when there are problems reading the certificate file.</throws>
         ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithData<ApplicationGateway.Update.IUpdate>.FromFile(FileInfo certificateFile)
         {
-            return this.FromFile(certificateFile) as ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.FromFile(certificateFile);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithData<ApplicationGateway.Update.IUpdate>.FromBase64(string base64data)
         {
-            return this.FromBase64(base64data) as ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.FromBase64(base64data);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ApplicationGateway.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Definition.IWithCreate;
+            return this.Attach();
         }
     }
 }

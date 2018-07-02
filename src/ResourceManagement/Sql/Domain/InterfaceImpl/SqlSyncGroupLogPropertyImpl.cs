@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Type() as Models.SyncGroupLogType;
+                return this.Type();
             }
         }
 

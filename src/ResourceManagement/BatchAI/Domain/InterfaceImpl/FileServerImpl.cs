@@ -10,22 +10,22 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     {
         FileServer.Definition.IWithRelativeMountPath<BatchAICluster.Definition.IWithCreate> FileServer.Definition.IWithFileServer<BatchAICluster.Definition.IWithCreate>.WithFileServerId(string fileServerId)
         {
-            return this.WithFileServerId(fileServerId) as FileServer.Definition.IWithRelativeMountPath<BatchAICluster.Definition.IWithCreate>;
+            return this.WithFileServerId(fileServerId);
         }
 
         FileServer.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate> FileServer.Definition.IWithMountOptions<BatchAICluster.Definition.IWithCreate>.WithMountOptions(string mountOptions)
         {
-            return this.WithMountOptions(mountOptions) as FileServer.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate>;
+            return this.WithMountOptions(mountOptions);
         }
 
         FileServer.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate> FileServer.Definition.IWithRelativeMountPath<BatchAICluster.Definition.IWithCreate>.WithRelativeMountPath(string mountPath)
         {
-            return this.WithRelativeMountPath(mountPath) as FileServer.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate>;
+            return this.WithRelativeMountPath(mountPath);
         }
 
         FileServer.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate> FileServer.Definition.IWithSourceDirectory<BatchAICluster.Definition.IWithCreate>.WithSourceDirectory(string sourceDirectory)
         {
-            return this.WithSourceDirectory(sourceDirectory) as FileServer.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate>;
+            return this.WithSourceDirectory(sourceDirectory);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>.ListByRegion(string regionName)
         {
-            return this.ListByRegion(regionName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>;
+            return this.ListByRegion(regionName);
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>.ListByRegion(Region region)
         {
-            return this.ListByRegion(region) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>;
+            return this.ListByRegion(region);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The skus list.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku> Microsoft.Azure.Management.Compute.Fluent.IComputeSkus.ListbyRegionAndResourceType(Region region, ComputeResourceType resourceType)
         {
-            return this.ListbyRegionAndResourceType(region, resourceType) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>;
+            return this.ListbyRegionAndResourceType(region, resourceType);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The skus list.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku> Microsoft.Azure.Management.Compute.Fluent.IComputeSkus.ListByResourceType(ComputeResourceType resourceType)
         {
-            return this.ListByResourceType(resourceType) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>;
+            return this.ListByResourceType(resourceType);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>;
+            return this.List();
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IComputeSku>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IComputeSku>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Manager() as Microsoft.Azure.Management.Compute.Fluent.IComputeManager;
+                return this.Manager();
             }
         }
     }

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The first stage of the new resource definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Manager as Microsoft.Azure.Management.ServiceBus.Fluent.IServiceBusManager;
+                return this.Manager;
             }
         }
     }

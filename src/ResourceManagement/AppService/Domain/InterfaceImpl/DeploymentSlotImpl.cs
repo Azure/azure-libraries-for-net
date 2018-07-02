@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DeploymentSlot.Definition.IWithCreate DeploymentSlot.Definition.IWithConfiguration.WithConfigurationFromParent()
         {
-            return this.WithConfigurationFromParent() as DeploymentSlot.Definition.IWithCreate;
+            return this.WithConfigurationFromParent();
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DeploymentSlot.Definition.IWithCreate DeploymentSlot.Definition.IWithConfiguration.WithConfigurationFromWebApp(IWebApp webApp)
         {
-            return this.WithConfigurationFromWebApp(webApp) as DeploymentSlot.Definition.IWithCreate;
+            return this.WithConfigurationFromWebApp(webApp);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithCreate DeploymentSlot.Definition.IWithConfiguration.WithConfigurationFromDeploymentSlot(IDeploymentSlot deploymentSlot)
         {
-            return this.WithConfigurationFromDeploymentSlot(deploymentSlot) as DeploymentSlot.Definition.IWithCreate;
+            return this.WithConfigurationFromDeploymentSlot(deploymentSlot);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.DeploymentSlot.Definition.IWithCreate DeploymentSlot.Definition.IWithConfiguration.WithBrandNewConfiguration()
         {
-            return this.WithBrandNewConfiguration() as DeploymentSlot.Definition.IWithCreate;
+            return this.WithBrandNewConfiguration();
         }
 
         /// <summary>

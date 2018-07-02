@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new resource definition.</return>
         NetworkSecurityGroup.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<NetworkSecurityGroup.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as NetworkSecurityGroup.Definition.IBlank;
+            return this.Define(name);
         }
     }
 }

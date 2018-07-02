@@ -9,6 +9,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
     using LoadBalancerBackend.Definition;
     using LoadBalancerBackend.UpdateDefinition;
     using LoadBalancerBackend.Update;
+    using System.Linq;
 
     /// <summary>
     /// Implementation for Backend.
@@ -50,9 +51,9 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
 
         ///GENMHASH:4EDB057B59A7F7BB0C722F8A1399C004:A2F94AF9792429D630DA94FCC75CFD8B
-        internal IDictionary<string, ILoadBalancingRule> LoadBalancingRules()
+        internal IReadOnlyDictionary<string, ILoadBalancingRule> LoadBalancingRules()
         {
-            IDictionary<string, ILoadBalancingRule> rules = new SortedDictionary<string, ILoadBalancingRule>();
+            var rules = new SortedDictionary<string, ILoadBalancingRule>();
             if (Inner.LoadBalancingRules != null)
             {
                 foreach (var inner in Inner.LoadBalancingRules)
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 }
             }
 
-            return rules;
+            return (IReadOnlyDictionary<string, ILoadBalancingRule>) rules;
         }
 
 

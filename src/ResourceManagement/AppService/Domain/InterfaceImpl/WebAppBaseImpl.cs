@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSourceControl<FluentT>.WithoutSourceControl()
         {
-            return this.WithoutSourceControl() as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithoutSourceControl();
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSourceControl<FluentT>.WithLocalGitSourceControl()
         {
-            return this.WithLocalGitSourceControl() as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithLocalGitSourceControl();
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The first stage of a source control definition.</return>
         WebAppSourceControl.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>> WebAppBase.Update.IWithSourceControl<FluentT>.DefineSourceControl()
         {
-            return this.DefineSourceControl() as WebAppSourceControl.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.DefineSourceControl();
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSourceControl<FluentT>.WithLocalGitSourceControl()
         {
-            return this.WithLocalGitSourceControl() as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithLocalGitSourceControl();
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The first stage of a source control definition.</return>
         WebAppSourceControl.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>> WebAppBase.Definition.IWithSourceControl<FluentT>.DefineSourceControl()
         {
-            return this.DefineSourceControl() as WebAppSourceControl.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.DefineSourceControl();
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSystemAssignedIdentityBasedAccess<FluentT>.WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSystemAssignedIdentityBasedAccess<FluentT>.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSystemAssignedIdentityBasedAccess<FluentT>.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSystemAssignedIdentityBasedAccess<FluentT>.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app definition.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithManagedServiceIdentity<FluentT>.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithSystemAssignedManagedServiceIdentity() as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithSystemAssignedManagedServiceIdentity();
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app definition.</return>
         WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithManagedServiceIdentity<FluentT>.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithSystemAssignedManagedServiceIdentity() as WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>;
+            return this.WithSystemAssignedManagedServiceIdentity();
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithScmSiteAlsoStopped<FluentT>.WithScmSiteAlsoStopped(bool scmSiteAlsoStopped)
         {
-            return this.WithScmSiteAlsoStopped(scmSiteAlsoStopped) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithScmSiteAlsoStopped(scmSiteAlsoStopped);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithScmSiteAlsoStopped<FluentT>.WithScmSiteAlsoStopped(bool scmSiteAlsoStopped)
         {
-            return this.WithScmSiteAlsoStopped(scmSiteAlsoStopped) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithScmSiteAlsoStopped(scmSiteAlsoStopped);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>.WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role) as WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId) as WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId);
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role) as WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role);
         }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT> WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId) as WebAppBase.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate<FluentT>;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAppSettings<FluentT>.WithAppSettingStickiness(string key, bool sticky)
         {
-            return this.WithAppSettingStickiness(key, sticky) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithAppSettingStickiness(key, sticky);
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAppSettings<FluentT>.WithStickyAppSettings(IDictionary<string,string> settings)
         {
-            return this.WithStickyAppSettings(settings) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithStickyAppSettings(settings);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAppSettings<FluentT>.WithAppSettings(IDictionary<string,string> settings)
         {
-            return this.WithAppSettings(settings) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithAppSettings(settings);
         }
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAppSettings<FluentT>.WithAppSetting(string key, string value)
         {
-            return this.WithAppSetting(key, value) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithAppSetting(key, value);
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAppSettings<FluentT>.WithoutAppSetting(string key)
         {
-            return this.WithoutAppSetting(key) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithoutAppSetting(key);
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAppSettings<FluentT>.WithStickyAppSetting(string key, string value)
         {
-            return this.WithStickyAppSetting(key, value) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithStickyAppSetting(key, value);
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithAppSettings<FluentT>.WithStickyAppSettings(IDictionary<string,string> settings)
         {
-            return this.WithStickyAppSettings(settings) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithStickyAppSettings(settings);
         }
 
         /// <summary>
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithAppSettings<FluentT>.WithAppSettings(IDictionary<string,string> settings)
         {
-            return this.WithAppSettings(settings) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithAppSettings(settings);
         }
 
         /// <summary>
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithAppSettings<FluentT>.WithAppSetting(string key, string value)
         {
-            return this.WithAppSetting(key, value) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithAppSetting(key, value);
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithAppSettings<FluentT>.WithStickyAppSetting(string key, string value)
         {
-            return this.WithStickyAppSetting(key, value) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithStickyAppSetting(key, value);
         }
 
         /// <summary>
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithAuthentication<FluentT>.WithoutAuthentication()
         {
-            return this.WithoutAuthentication() as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithoutAuthentication();
         }
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The first stage of an authentication definition.</return>
         WebAppAuthentication.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>> WebAppBase.Update.IWithAuthentication<FluentT>.DefineAuthentication()
         {
-            return this.DefineAuthentication() as WebAppAuthentication.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.DefineAuthentication();
         }
 
         /// <summary>
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The first stage of an authentication definition.</return>
         WebAppAuthentication.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>> WebAppBase.Definition.IWithAuthentication<FluentT>.DefineAuthentication()
         {
-            return this.DefineAuthentication() as WebAppAuthentication.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.DefineAuthentication();
         }
 
         /// <summary>
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithHostNameSslBinding<FluentT>.WithoutSslBinding(string hostname)
         {
-            return this.WithoutSslBinding(hostname) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithoutSslBinding(hostname);
         }
 
         /// <summary>
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The first stage of an SSL binding definition.</return>
         HostNameSslBinding.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>> WebAppBase.Update.IWithHostNameSslBinding<FluentT>.DefineSslBinding()
         {
-            return this.DefineSslBinding() as HostNameSslBinding.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.DefineSslBinding();
         }
 
         /// <summary>
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The first stage of an SSL binding definition.</return>
         HostNameSslBinding.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>> WebAppBase.Definition.IWithHostNameSslBinding<FluentT>.DefineSslBinding()
         {
-            return this.DefineSslBinding() as HostNameSslBinding.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.DefineSslBinding();
         }
 
         /// <summary>
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithConnectionString<FluentT>.WithConnectionString(string name, string value, ConnectionStringType type)
         {
-            return this.WithConnectionString(name, value, type) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithConnectionString(name, value, type);
         }
 
         /// <summary>
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithConnectionString<FluentT>.WithStickyConnectionString(string name, string value, ConnectionStringType type)
         {
-            return this.WithStickyConnectionString(name, value, type) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithStickyConnectionString(name, value, type);
         }
 
         /// <summary>
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithConnectionString<FluentT>.WithoutConnectionString(string name)
         {
-            return this.WithoutConnectionString(name) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithoutConnectionString(name);
         }
 
         /// <summary>
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithConnectionString<FluentT>.WithConnectionStringStickiness(string name, bool sticky)
         {
-            return this.WithConnectionStringStickiness(name, sticky) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithConnectionStringStickiness(name, sticky);
         }
 
         /// <summary>
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithConnectionString<FluentT>.WithConnectionString(string name, string value, ConnectionStringType type)
         {
-            return this.WithConnectionString(name, value, type) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithConnectionString(name, value, type);
         }
 
         /// <summary>
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithConnectionString<FluentT>.WithStickyConnectionString(string name, string value, ConnectionStringType type)
         {
-            return this.WithStickyConnectionString(name, value, type) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithStickyConnectionString(name, value, type);
         }
 
         /// <summary>
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithHostNameBinding<FluentT>.WithThirdPartyHostnameBinding(string domain, params string[] hostnames)
         {
-            return this.WithThirdPartyHostnameBinding(domain, hostnames) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithThirdPartyHostnameBinding(domain, hostnames);
         }
 
         /// <summary>
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithHostNameBinding<FluentT>.WithManagedHostnameBindings(IAppServiceDomain domain, params string[] hostnames)
         {
-            return this.WithManagedHostnameBindings(domain, hostnames) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithManagedHostnameBindings(domain, hostnames);
         }
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The first stage of a hostname binding update.</return>
         HostNameBinding.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>> WebAppBase.Update.IWithHostNameBinding<FluentT>.DefineHostnameBinding()
         {
-            return this.DefineHostnameBinding() as HostNameBinding.UpdateDefinition.IBlank<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.DefineHostnameBinding();
         }
 
         /// <summary>
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithHostNameBinding<FluentT>.WithoutHostnameBinding(string hostname)
         {
-            return this.WithoutHostnameBinding(hostname) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithoutHostnameBinding(hostname);
         }
 
         /// <summary>
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithHostNameBinding<FluentT>.WithThirdPartyHostnameBinding(string domain, params string[] hostnames)
         {
-            return this.WithThirdPartyHostnameBinding(domain, hostnames) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithThirdPartyHostnameBinding(domain, hostnames);
         }
 
         /// <summary>
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithHostNameBinding<FluentT>.WithManagedHostnameBindings(IAppServiceDomain domain, params string[] hostnames)
         {
-            return this.WithManagedHostnameBindings(domain, hostnames) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithManagedHostnameBindings(domain, hostnames);
         }
 
         /// <summary>
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The first stage of a hostname binding definition.</return>
         HostNameBinding.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>> WebAppBase.Definition.IWithHostNameBinding<FluentT>.DefineHostnameBinding()
         {
-            return this.DefineHostnameBinding() as HostNameBinding.Definition.IBlank<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.DefineHostnameBinding();
         }
 
         /// <summary>
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithDefaultDocuments(IList<string> documents)
         {
-            return this.WithDefaultDocuments(documents) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithDefaultDocuments(documents);
         }
 
         /// <summary>
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithWebSocketsEnabled(bool enabled)
         {
-            return this.WithWebSocketsEnabled(enabled) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithWebSocketsEnabled(enabled);
         }
 
         /// <summary>
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithoutJava()
         {
-            return this.WithoutJava() as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithoutJava();
         }
 
         /// <summary>
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IWithWebContainer<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithJavaVersion(JavaVersion version)
         {
-            return this.WithJavaVersion(version) as WebAppBase.Update.IWithWebContainer<FluentT>;
+            return this.WithJavaVersion(version);
         }
 
         /// <summary>
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithRemoteDebuggingDisabled()
         {
-            return this.WithRemoteDebuggingDisabled() as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithRemoteDebuggingDisabled();
         }
 
         /// <summary>
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithWebAppAlwaysOn(bool alwaysOn)
         {
-            return this.WithWebAppAlwaysOn(alwaysOn) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithWebAppAlwaysOn(alwaysOn);
         }
 
         /// <summary>
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithoutDefaultDocument(string document)
         {
-            return this.WithoutDefaultDocument(document) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithoutDefaultDocument(document);
         }
 
         /// <summary>
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithPlatformArchitecture(PlatformArchitecture platform)
         {
-            return this.WithPlatformArchitecture(platform) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithPlatformArchitecture(platform);
         }
 
         /// <summary>
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithDefaultDocument(string document)
         {
-            return this.WithDefaultDocument(document) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithDefaultDocument(document);
         }
 
         /// <summary>
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithNetFrameworkVersion(NetFrameworkVersion version)
         {
-            return this.WithNetFrameworkVersion(version) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithNetFrameworkVersion(version);
         }
 
         /// <summary>
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithPhpVersion(PhpVersion version)
         {
-            return this.WithPhpVersion(version) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithPhpVersion(version);
         }
 
         /// <summary>
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithoutPython()
         {
-            return this.WithoutPython() as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithoutPython();
         }
 
         /// <summary>
@@ -645,7 +645,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithAutoSwapSlotName(string slotName)
         {
-            return this.WithAutoSwapSlotName(slotName) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithAutoSwapSlotName(slotName);
         }
 
         /// <summary>
@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithRemoteDebuggingEnabled(RemoteVisualStudioVersion remoteVisualStudioVersion)
         {
-            return this.WithRemoteDebuggingEnabled(remoteVisualStudioVersion) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithRemoteDebuggingEnabled(remoteVisualStudioVersion);
         }
 
         /// <summary>
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithManagedPipelineMode(ManagedPipelineMode managedPipelineMode)
         {
-            return this.WithManagedPipelineMode(managedPipelineMode) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithManagedPipelineMode(managedPipelineMode);
         }
 
         /// <summary>
@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithPythonVersion(PythonVersion version)
         {
-            return this.WithPythonVersion(version) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithPythonVersion(version);
         }
 
         /// <summary>
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithDefaultDocuments(IList<string> documents)
         {
-            return this.WithDefaultDocuments(documents) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithDefaultDocuments(documents);
         }
 
         /// <summary>
@@ -695,7 +695,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithWebSocketsEnabled(bool enabled)
         {
-            return this.WithWebSocketsEnabled(enabled) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithWebSocketsEnabled(enabled);
         }
 
         /// <summary>
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithoutPhp()
         {
-            return this.WithoutPhp() as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithoutPhp();
         }
 
         /// <summary>
@@ -714,7 +714,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithWebContainer<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithJavaVersion(JavaVersion version)
         {
-            return this.WithJavaVersion(version) as WebAppBase.Definition.IWithWebContainer<FluentT>;
+            return this.WithJavaVersion(version);
         }
 
         /// <summary>
@@ -723,7 +723,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithRemoteDebuggingDisabled()
         {
-            return this.WithRemoteDebuggingDisabled() as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithRemoteDebuggingDisabled();
         }
 
         /// <summary>
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithWebAppAlwaysOn(bool alwaysOn)
         {
-            return this.WithWebAppAlwaysOn(alwaysOn) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithWebAppAlwaysOn(alwaysOn);
         }
 
         /// <summary>
@@ -743,7 +743,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithoutDefaultDocument(string document)
         {
-            return this.WithoutDefaultDocument(document) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithoutDefaultDocument(document);
         }
 
         /// <summary>
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithPlatformArchitecture(PlatformArchitecture platform)
         {
-            return this.WithPlatformArchitecture(platform) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithPlatformArchitecture(platform);
         }
 
         /// <summary>
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithDefaultDocument(string document)
         {
-            return this.WithDefaultDocument(document) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithDefaultDocument(document);
         }
 
         /// <summary>
@@ -773,7 +773,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithNetFrameworkVersion(NetFrameworkVersion version)
         {
-            return this.WithNetFrameworkVersion(version) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithNetFrameworkVersion(version);
         }
 
         /// <summary>
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithPhpVersion(PhpVersion version)
         {
-            return this.WithPhpVersion(version) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithPhpVersion(version);
         }
 
         /// <summary>
@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithAutoSwapSlotName(string slotName)
         {
-            return this.WithAutoSwapSlotName(slotName) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithAutoSwapSlotName(slotName);
         }
 
         /// <summary>
@@ -803,7 +803,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithRemoteDebuggingEnabled(RemoteVisualStudioVersion remoteVisualStudioVersion)
         {
-            return this.WithRemoteDebuggingEnabled(remoteVisualStudioVersion) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithRemoteDebuggingEnabled(remoteVisualStudioVersion);
         }
 
         /// <summary>
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithManagedPipelineMode(ManagedPipelineMode managedPipelineMode)
         {
-            return this.WithManagedPipelineMode(managedPipelineMode) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithManagedPipelineMode(managedPipelineMode);
         }
 
         /// <summary>
@@ -823,7 +823,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithPythonVersion(PythonVersion version)
         {
-            return this.WithPythonVersion(version) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithPythonVersion(version);
         }
 
         /// <summary>
@@ -833,7 +833,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithClientAffinityEnabled<FluentT>.WithClientAffinityEnabled(bool enabled)
         {
-            return this.WithClientAffinityEnabled(enabled) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithClientAffinityEnabled(enabled);
         }
 
         /// <summary>
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithClientAffinityEnabled<FluentT>.WithClientAffinityEnabled(bool enabled)
         {
-            return this.WithClientAffinityEnabled(enabled) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithClientAffinityEnabled(enabled);
         }
 
         /// <summary>
@@ -854,7 +854,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithDiagnosticLogging<FluentT>.WithContainerLoggingEnabled(int quotaInMB, int retentionDays)
         {
-            return this.WithContainerLoggingEnabled(quotaInMB, retentionDays) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithContainerLoggingEnabled(quotaInMB, retentionDays);
         }
 
         /// <summary>
@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithDiagnosticLogging<FluentT>.WithContainerLoggingEnabled()
         {
-            return this.WithContainerLoggingEnabled() as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithContainerLoggingEnabled();
         }
 
         /// <summary>
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithDiagnosticLogging<FluentT>.WithContainerLoggingDisabled()
         {
-            return this.WithContainerLoggingDisabled() as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithContainerLoggingDisabled();
         }
 
         /// <summary>
@@ -884,7 +884,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithDiagnosticLogging<FluentT>.WithContainerLoggingEnabled(int quotaInMB, int retentionDays)
         {
-            return this.WithContainerLoggingEnabled(quotaInMB, retentionDays) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithContainerLoggingEnabled(quotaInMB, retentionDays);
         }
 
         /// <summary>
@@ -894,7 +894,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithDiagnosticLogging<FluentT>.WithContainerLoggingEnabled()
         {
-            return this.WithContainerLoggingEnabled() as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithContainerLoggingEnabled();
         }
 
         /// <summary>
@@ -903,7 +903,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithDiagnosticLogging<FluentT>.WithContainerLoggingDisabled()
         {
-            return this.WithContainerLoggingDisabled() as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithContainerLoggingDisabled();
         }
 
         /// <summary>
@@ -913,7 +913,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithClientCertEnabled<FluentT>.WithClientCertEnabled(bool enabled)
         {
-            return this.WithClientCertEnabled(enabled) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithClientCertEnabled(enabled);
         }
 
         /// <summary>
@@ -923,7 +923,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithClientCertEnabled<FluentT>.WithClientCertEnabled(bool enabled)
         {
-            return this.WithClientCertEnabled(enabled) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithClientCertEnabled(enabled);
         }
 
         /// <summary>
@@ -933,7 +933,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithWebContainer<FluentT>.WithWebContainer(WebContainer webContainer)
         {
-            return this.WithWebContainer(webContainer) as WebAppBase.Update.IUpdate<FluentT>;
+            return this.WithWebContainer(webContainer);
         }
 
         /// <summary>
@@ -943,13 +943,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithWebContainer<FluentT>.WithWebContainer(WebContainer webContainer)
         {
-            return this.WithWebContainer(webContainer) as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.WithWebContainer(webContainer);
         }
 
         /// <return>The connection strings defined on the web app.</return>
         async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStringsAsync(CancellationToken cancellationToken)
         {
-            return await this.GetConnectionStringsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
+            return await this.GetConnectionStringsAsync(cancellationToken);
         }
 
         /// <summary>
@@ -981,7 +981,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.RemoteDebuggingVersion() as Microsoft.Azure.Management.AppService.Fluent.RemoteVisualStudioVersion;
+                return this.RemoteDebuggingVersion();
             }
         }
 
@@ -1071,7 +1071,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.PhpVersion() as Microsoft.Azure.Management.AppService.Fluent.PhpVersion;
+                return this.PhpVersion();
             }
         }
 
@@ -1135,7 +1135,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The connection strings defined on the web app.</return>
         System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetConnectionStrings()
         {
-            return this.GetConnectionStrings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IConnectionString>;
+            return this.GetConnectionStrings();
         }
 
         /// <summary>
@@ -1167,7 +1167,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.DefaultDocuments() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.DefaultDocuments();
             }
         }
 
@@ -1178,7 +1178,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.PythonVersion() as Microsoft.Azure.Management.AppService.Fluent.PythonVersion;
+                return this.PythonVersion();
             }
         }
 
@@ -1188,7 +1188,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>A stage to create web deployment.</return>
         WebDeployment.Definition.IWithPackageUri Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.Deploy()
         {
-            return this.Deploy() as WebDeployment.Definition.IWithPackageUri;
+            return this.Deploy();
         }
 
         /// <summary>
@@ -1209,7 +1209,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.HostNames() as System.Collections.Generic.ISet<string>;
+                return this.HostNames();
             }
         }
 
@@ -1228,13 +1228,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The app settings defined on the web app.</return>
         async Task<System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAppSettingsAsync(CancellationToken cancellationToken)
         {
-            return await this.GetAppSettingsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
+            return await this.GetAppSettingsAsync(cancellationToken);
         }
 
         /// <return>The app settings defined on the web app.</return>
         System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAppSettings()
         {
-            return this.GetAppSettings() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.AppService.Fluent.IAppSetting>;
+            return this.GetAppSettings();
         }
 
         /// <summary>
@@ -1251,7 +1251,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The authentication configuration defined on the web app.</return>
         Microsoft.Azure.Management.AppService.Fluent.IWebAppAuthentication Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAuthenticationConfig()
         {
-            return this.GetAuthenticationConfig() as Microsoft.Azure.Management.AppService.Fluent.IWebAppAuthentication;
+            return this.GetAuthenticationConfig();
         }
 
         /// <summary>
@@ -1261,7 +1261,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.NetFrameworkVersion() as Microsoft.Azure.Management.AppService.Fluent.NetFrameworkVersion;
+                return this.NetFrameworkVersion();
             }
         }
 
@@ -1272,7 +1272,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.HostNameSslStates() as System.Collections.Generic.IReadOnlyDictionary<string,Models.HostNameSslState>;
+                return this.HostNameSslStates();
             }
         }
 
@@ -1285,7 +1285,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.OutboundIPAddresses() as System.Collections.Generic.ISet<string>;
+                return this.OutboundIPAddresses();
             }
         }
 
@@ -1297,7 +1297,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.TrafficManagerHostNames() as System.Collections.Generic.ISet<string>;
+                return this.TrafficManagerHostNames();
             }
         }
 
@@ -1342,7 +1342,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.JavaVersion() as Microsoft.Azure.Management.AppService.Fluent.JavaVersion;
+                return this.JavaVersion();
             }
         }
 
@@ -1353,7 +1353,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.CloningInfo() as Models.CloningInfo;
+                return this.CloningInfo();
             }
         }
 
@@ -1364,7 +1364,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.EnabledHostNames() as System.Collections.Generic.ISet<string>;
+                return this.EnabledHostNames();
             }
         }
 
@@ -1437,7 +1437,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The authentication configuration defined on the web app.</return>
         async Task<Microsoft.Azure.Management.AppService.Fluent.IWebAppAuthentication> Microsoft.Azure.Management.AppService.Fluent.IWebAppBase.GetAuthenticationConfigAsync(CancellationToken cancellationToken)
         {
-            return await this.GetAuthenticationConfigAsync(cancellationToken) as Microsoft.Azure.Management.AppService.Fluent.IWebAppAuthentication;
+            return await this.GetAuthenticationConfigAsync(cancellationToken);
         }
     }
 }

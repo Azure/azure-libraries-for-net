@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.TargetDomainNames() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.TargetDomainNames();
             }
         }
     }

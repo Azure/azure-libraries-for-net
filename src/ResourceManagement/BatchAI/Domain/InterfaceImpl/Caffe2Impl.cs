@@ -14,17 +14,17 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     {
         ToolTypeSettings.Caffe2.Definition.IWithAttachAndPythonInterpreter<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.Caffe2.Definition.IWithPython<BatchAIJob.Definition.IWithCreate>.WithPythonScriptFile(string pythonScriptFilePath)
         {
-            return this.WithPythonScriptFile(pythonScriptFilePath) as ToolTypeSettings.Caffe2.Definition.IWithAttachAndPythonInterpreter<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPythonScriptFile(pythonScriptFilePath);
         }
 
         IWithAttach<IWithCreate> ToolTypeSettings.HasCommandLineArgs.Definition.IWithCommandLineArgs<IWithAttach<IWithCreate>>.WithCommandLineArgs(string commandLineArgs)
         {
-            return this.WithCommandLineArgs(commandLineArgs) as ToolTypeSettings.Caffe2.Definition.IWithAttach<IWithCreate>;
+            return this.WithCommandLineArgs(commandLineArgs);
         }
 
         IWithAttach<IWithCreate> IWithPythonInterpreter<IWithAttach<IWithCreate>>.WithPythonInterpreterPath(string path)
         {
-            return this.WithPythonInterpreterPath(path) as ToolTypeSettings.Caffe2.Definition.IWithAttach<IWithCreate>;
+            return this.WithPythonInterpreterPath(path);
         }
     }
 }

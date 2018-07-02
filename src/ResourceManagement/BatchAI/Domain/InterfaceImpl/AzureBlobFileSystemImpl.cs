@@ -13,32 +13,32 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     {
         AzureBlobFileSystem.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate> AzureBlobFileSystem.Definition.IWithAzureStorageCredentials<BatchAICluster.Definition.IWithCreate>.WithKeyVaultSecretReference(KeyVaultSecretReference keyVaultSecretReference)
         {
-            return this.WithKeyVaultSecretReference(keyVaultSecretReference) as AzureBlobFileSystem.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate>;
+            return this.WithKeyVaultSecretReference(keyVaultSecretReference);
         }
 
         AzureBlobFileSystem.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate> AzureBlobFileSystem.Definition.IWithAzureStorageCredentials<BatchAICluster.Definition.IWithCreate>.WithAccountKey(string accountKey)
         {
-            return this.WithAccountKey(accountKey) as AzureBlobFileSystem.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate>;
+            return this.WithAccountKey(accountKey);
         }
 
         AzureBlobFileSystem.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate> AzureBlobFileSystem.Definition.IWithMountOptions<BatchAICluster.Definition.IWithCreate>.WithMountOptions(string mountOptions)
         {
-            return this.WithMountOptions(mountOptions) as AzureBlobFileSystem.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate>;
+            return this.WithMountOptions(mountOptions);
         }
 
         AzureBlobFileSystem.Definition.IWithAzureStorageCredentials<BatchAICluster.Definition.IWithCreate> AzureBlobFileSystem.Definition.IWithRelativeMountPath<BatchAICluster.Definition.IWithCreate>.WithRelativeMountPath(string mountPath)
         {
-            return this.WithRelativeMountPath(mountPath) as AzureBlobFileSystem.Definition.IWithAzureStorageCredentials<BatchAICluster.Definition.IWithCreate>;
+            return this.WithRelativeMountPath(mountPath);
         }
 
         AzureBlobFileSystem.Definition.IWithRelativeMountPath<BatchAICluster.Definition.IWithCreate> AzureBlobFileSystem.Definition.IWithStorageContainerName<BatchAICluster.Definition.IWithCreate>.WithContainerName(string containerName)
         {
-            return this.WithContainerName(containerName) as AzureBlobFileSystem.Definition.IWithRelativeMountPath<BatchAICluster.Definition.IWithCreate>;
+            return this.WithContainerName(containerName);
         }
 
         AzureBlobFileSystem.Definition.IWithStorageContainerName<BatchAICluster.Definition.IWithCreate> AzureBlobFileSystem.Definition.IWithStorageAccount<BatchAICluster.Definition.IWithCreate>.WithStorageAccountName(string storageAccountName)
         {
-            return this.WithStorageAccountName(storageAccountName) as AzureBlobFileSystem.Definition.IWithStorageContainerName<BatchAICluster.Definition.IWithCreate>;
+            return this.WithStorageAccountName(storageAccountName);
         }
     }
 }

@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the consumer group definition.</return>
         EventHubConsumerGroup.Definition.IWithCreate EventHubConsumerGroup.Definition.IWithEventHub.WithExistingEventHub(IEventHub eventHub)
         {
-            return this.WithExistingEventHub(eventHub) as EventHubConsumerGroup.Definition.IWithCreate;
+            return this.WithExistingEventHub(eventHub);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the consumer group definition.</return>
         EventHubConsumerGroup.Definition.IWithCreate EventHubConsumerGroup.Definition.IWithEventHub.WithExistingEventHubId(string eventHubId)
         {
-            return this.WithExistingEventHubId(eventHubId) as EventHubConsumerGroup.Definition.IWithCreate;
+            return this.WithExistingEventHubId(eventHubId);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the consumer group definition.</return>
         EventHubConsumerGroup.Definition.IWithCreate EventHubConsumerGroup.Definition.IWithEventHub.WithExistingEventHub(string resourceGroupName, string namespaceName, string eventHubName)
         {
-            return this.WithExistingEventHub(resourceGroupName, namespaceName, eventHubName) as EventHubConsumerGroup.Definition.IWithCreate;
+            return this.WithExistingEventHub(resourceGroupName, namespaceName, eventHubName);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the consumer group update.</return>
         EventHubConsumerGroup.Update.IUpdate EventHubConsumerGroup.Update.IWithUserMetadata.WithUserMetadata(string metadata)
         {
-            return this.WithUserMetadata(metadata) as EventHubConsumerGroup.Update.IUpdate;
+            return this.WithUserMetadata(metadata);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the consumer group definition.</return>
         EventHubConsumerGroup.Definition.IWithCreate EventHubConsumerGroup.Definition.IWithUserMetadata.WithUserMetadata(string metadata)
         {
-            return this.WithUserMetadata(metadata) as EventHubConsumerGroup.Definition.IWithCreate;
+            return this.WithUserMetadata(metadata);
         }
     }
 }

@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Version() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion;
+                return this.Version();
             }
         }
 

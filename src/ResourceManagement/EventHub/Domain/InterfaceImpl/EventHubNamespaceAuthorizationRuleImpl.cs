@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The next stage of the definition.</return>
         EventHubNamespaceAuthorizationRule.Definition.IWithAccessPolicy EventHubNamespaceAuthorizationRule.Definition.IWithNamespace.WithExistingNamespaceId(string namespaceResourceId)
         {
-            return this.WithExistingNamespaceId(namespaceResourceId) as EventHubNamespaceAuthorizationRule.Definition.IWithAccessPolicy;
+            return this.WithExistingNamespaceId(namespaceResourceId);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The next stage of the definition.</return>
         EventHubNamespaceAuthorizationRule.Definition.IWithAccessPolicy EventHubNamespaceAuthorizationRule.Definition.IWithNamespace.WithExistingNamespace(string resourceGroupName, string namespaceName)
         {
-            return this.WithExistingNamespace(resourceGroupName, namespaceName) as EventHubNamespaceAuthorizationRule.Definition.IWithAccessPolicy;
+            return this.WithExistingNamespace(resourceGroupName, namespaceName);
         }
 
         /// <summary>
@@ -59,38 +59,38 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The next stage of the definition.</return>
         EventHubNamespaceAuthorizationRule.Definition.IWithAccessPolicy EventHubNamespaceAuthorizationRule.Definition.IWithNamespace.WithExistingNamespace(IEventHubNamespace ehNamespace)
         {
-            return this.WithExistingNamespace(ehNamespace) as EventHubNamespaceAuthorizationRule.Definition.IWithAccessPolicy;
+            return this.WithExistingNamespace(ehNamespace);
         }
 
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Definition.IWithCreate AuthorizationRule.Definition.IWithListen<Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Definition.IWithCreate>.WithListenAccess()
         {
-            return base.WithListeningEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Definition.IWithCreate;
+            return base.WithListeningEnabled();
         }
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Definition.IWithCreate AuthorizationRule.Definition.IWithSend<Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Definition.IWithCreate>.WithSendAccess()
         {
-            return base.WithSendingEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Definition.IWithCreate;
+            return base.WithSendingEnabled();
         }
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Definition.IWithCreate AuthorizationRule.Definition.IWithManage<Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Definition.IWithCreate>.WithManageAccess()
         {
-            return base.WithManagementEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Definition.IWithCreate;
+            return base.WithManagementEnabled();
         }
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Update.IUpdate AuthorizationRule.Update.IWithListen<Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Update.IUpdate>.WithListenAccess()
         {
-            return base.WithListeningEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Update.IUpdate;
+            return base.WithListeningEnabled();
         }
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Update.IUpdate AuthorizationRule.Update.IWithSend<Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Update.IUpdate>.WithSendAccess()
         {
-            return base.WithSendingEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Update.IUpdate;
+            return base.WithSendingEnabled();
         }
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Update.IUpdate AuthorizationRule.Update.IWithManage<Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Update.IUpdate>.WithManageAccess()
         {
-            return base.WithManagementEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceAuthorizationRule.Update.IUpdate;
+            return base.WithManagementEnabled();
         }
     }
 }

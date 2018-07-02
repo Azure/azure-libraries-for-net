@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The first stage of the new resource definition.</return>
         EventHubConsumerGroup.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<EventHubConsumerGroup.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as EventHubConsumerGroup.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup;
+            return this.GetById(id);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The consumer group.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroups.GetByName(string resourceGroupName, string namespaceName, string eventHubName, string name)
         {
-            return this.GetByName(resourceGroupName, namespaceName, eventHubName, name) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup;
+            return this.GetByName(resourceGroupName, namespaceName, eventHubName, name);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits the consumer group.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroups.GetByNameAsync(string resourceGroupName, string namespaceName, string eventHubName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetByNameAsync(resourceGroupName, namespaceName, eventHubName, name, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup;
+            return await this.GetByNameAsync(resourceGroupName, namespaceName, eventHubName, name, cancellationToken);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>List of consumer groups.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroups.ListByEventHub(string resourceGroupName, string namespaceName, string eventHubName)
         {
-            return this.ListByEventHub(resourceGroupName, namespaceName, eventHubName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup>;
+            return this.ListByEventHub(resourceGroupName, namespaceName, eventHubName);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits the consumer groups.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup>> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroups.ListByEventHubAsync(string resourceGroupName, string namespaceName, string eventHubName, CancellationToken cancellationToken)
         {
-            return await this.ListByEventHubAsync(resourceGroupName, namespaceName, eventHubName, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup>;
+            return await this.ListByEventHubAsync(resourceGroupName, namespaceName, eventHubName, cancellationToken);
         }
 
         /// <summary>

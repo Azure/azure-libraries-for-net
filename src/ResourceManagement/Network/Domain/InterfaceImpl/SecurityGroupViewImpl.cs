@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.ISecurityGroupView> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.ISecurityGroupView>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.ISecurityGroupView;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.INetworkWatcher;
+                return this.Parent();
             }
         }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.NetworkInterfaces() as System.Collections.Generic.IReadOnlyDictionary<string, Models.SecurityGroupNetworkInterface>;
+                return this.NetworkInterfaces();
             }
         }
     }

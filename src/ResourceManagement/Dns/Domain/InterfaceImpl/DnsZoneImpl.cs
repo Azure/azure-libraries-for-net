@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.AaaaRecordSets() as Microsoft.Azure.Management.Dns.Fluent.IAaaaRecordSets;
+                return this.AaaaRecordSets();
             }
         }
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.ARecordSets() as Microsoft.Azure.Management.Dns.Fluent.IARecordSets;
+                return this.ARecordSets();
             }
         }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.CaaRecordSets() as Microsoft.Azure.Management.Dns.Fluent.ICaaRecordSets;
+                return this.CaaRecordSets();
             }
         }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.CNameRecordSets() as Microsoft.Azure.Management.Dns.Fluent.ICNameRecordSets;
+                return this.CNameRecordSets();
             }
         }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.MXRecordSets() as Microsoft.Azure.Management.Dns.Fluent.IMXRecordSets;
+                return this.MXRecordSets();
             }
         }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.NameServers() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.NameServers();
             }
         }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.NSRecordSets() as Microsoft.Azure.Management.Dns.Fluent.INSRecordSets;
+                return this.NSRecordSets();
             }
         }
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.PtrRecordSets() as Microsoft.Azure.Management.Dns.Fluent.IPtrRecordSets;
+                return this.PtrRecordSets();
             }
         }
 
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.RegistrationVirtualNetworkIds() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.RegistrationVirtualNetworkIds();
             }
         }
 
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.ResolutionVirtualNetworkIds() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.ResolutionVirtualNetworkIds();
             }
         }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.SrvRecordSets() as Microsoft.Azure.Management.Dns.Fluent.ISrvRecordSets;
+                return this.SrvRecordSets();
             }
         }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.TxtRecordSets() as Microsoft.Azure.Management.Dns.Fluent.ITxtRecordSets;
+                return this.TxtRecordSets();
             }
         }
 
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the AAAA record set.</return>
         DnsRecordSet.UpdateDefinition.IAaaaRecordSetBlank<DnsZone.Update.IUpdate> DnsZone.Update.IWithRecordSet.DefineAaaaRecordSet(string name)
         {
-            return this.DefineAaaaRecordSet(name) as DnsRecordSet.UpdateDefinition.IAaaaRecordSetBlank<DnsZone.Update.IUpdate>;
+            return this.DefineAaaaRecordSet(name);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the AAAA record set.</return>
         DnsRecordSet.Definition.IAaaaRecordSetBlank<DnsZone.Definition.IWithCreate> DnsZone.Definition.IWithRecordSet.DefineAaaaRecordSet(string name)
         {
-            return this.DefineAaaaRecordSet(name) as DnsRecordSet.Definition.IAaaaRecordSetBlank<DnsZone.Definition.IWithCreate>;
+            return this.DefineAaaaRecordSet(name);
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the A record set.</return>
         DnsRecordSet.UpdateDefinition.IARecordSetBlank<DnsZone.Update.IUpdate> DnsZone.Update.IWithRecordSet.DefineARecordSet(string name)
         {
-            return this.DefineARecordSet(name) as DnsRecordSet.UpdateDefinition.IARecordSetBlank<DnsZone.Update.IUpdate>;
+            return this.DefineARecordSet(name);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the A record set.</return>
         DnsRecordSet.Definition.IARecordSetBlank<DnsZone.Definition.IWithCreate> DnsZone.Definition.IWithRecordSet.DefineARecordSet(string name)
         {
-            return this.DefineARecordSet(name) as DnsRecordSet.Definition.IARecordSetBlank<DnsZone.Definition.IWithCreate>;
+            return this.DefineARecordSet(name);
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the Caa record set.</return>
         DnsRecordSet.UpdateDefinition.ICaaRecordSetBlank<DnsZone.Update.IUpdate> DnsZone.Update.IWithRecordSet.DefineCaaRecordSet(string name)
         {
-            return this.DefineCaaRecordSet(name) as DnsRecordSet.UpdateDefinition.ICaaRecordSetBlank<DnsZone.Update.IUpdate>;
+            return this.DefineCaaRecordSet(name);
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the Caa record set.</return>
         DnsRecordSet.Definition.ICaaRecordSetBlank<DnsZone.Definition.IWithCreate> DnsZone.Definition.IWithRecordSet.DefineCaaRecordSet(string name)
         {
-            return this.DefineCaaRecordSet(name) as DnsRecordSet.Definition.ICaaRecordSetBlank<DnsZone.Definition.IWithCreate>;
+            return this.DefineCaaRecordSet(name);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone definition.</return>
         DnsRecordSet.UpdateDefinition.ICNameRecordSetBlank<DnsZone.Update.IUpdate> DnsZone.Update.IWithRecordSet.DefineCNameRecordSet(string name)
         {
-            return this.DefineCNameRecordSet(name) as DnsRecordSet.UpdateDefinition.ICNameRecordSetBlank<DnsZone.Update.IUpdate>;
+            return this.DefineCNameRecordSet(name);
         }
 
         /// <summary>
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone definition.</return>
         DnsRecordSet.Definition.ICNameRecordSetBlank<DnsZone.Definition.IWithCreate> DnsZone.Definition.IWithRecordSet.DefineCNameRecordSet(string name)
         {
-            return this.DefineCNameRecordSet(name) as DnsRecordSet.Definition.ICNameRecordSetBlank<DnsZone.Definition.IWithCreate>;
+            return this.DefineCNameRecordSet(name);
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the MX record set.</return>
         DnsRecordSet.UpdateDefinition.IMXRecordSetBlank<DnsZone.Update.IUpdate> DnsZone.Update.IWithRecordSet.DefineMXRecordSet(string name)
         {
-            return this.DefineMXRecordSet(name) as DnsRecordSet.UpdateDefinition.IMXRecordSetBlank<DnsZone.Update.IUpdate>;
+            return this.DefineMXRecordSet(name);
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the MX record set.</return>
         DnsRecordSet.Definition.IMXRecordSetBlank<DnsZone.Definition.IWithCreate> DnsZone.Definition.IWithRecordSet.DefineMXRecordSet(string name)
         {
-            return this.DefineMXRecordSet(name) as DnsRecordSet.Definition.IMXRecordSetBlank<DnsZone.Definition.IWithCreate>;
+            return this.DefineMXRecordSet(name);
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the NS record set.</return>
         DnsRecordSet.UpdateDefinition.INSRecordSetBlank<DnsZone.Update.IUpdate> DnsZone.Update.IWithRecordSet.DefineNSRecordSet(string name)
         {
-            return this.DefineNSRecordSet(name) as DnsRecordSet.UpdateDefinition.INSRecordSetBlank<DnsZone.Update.IUpdate>;
+            return this.DefineNSRecordSet(name);
         }
 
         /// <summary>
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the NS record set.</return>
         DnsRecordSet.Definition.INSRecordSetBlank<DnsZone.Definition.IWithCreate> DnsZone.Definition.IWithRecordSet.DefineNSRecordSet(string name)
         {
-            return this.DefineNSRecordSet(name) as DnsRecordSet.Definition.INSRecordSetBlank<DnsZone.Definition.IWithCreate>;
+            return this.DefineNSRecordSet(name);
         }
 
         /// <summary>
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the PTR record set.</return>
         DnsRecordSet.UpdateDefinition.IPtrRecordSetBlank<DnsZone.Update.IUpdate> DnsZone.Update.IWithRecordSet.DefinePtrRecordSet(string name)
         {
-            return this.DefinePtrRecordSet(name) as DnsRecordSet.UpdateDefinition.IPtrRecordSetBlank<DnsZone.Update.IUpdate>;
+            return this.DefinePtrRecordSet(name);
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the PTR record set.</return>
         DnsRecordSet.Definition.IPtrRecordSetBlank<DnsZone.Definition.IWithCreate> DnsZone.Definition.IWithRecordSet.DefinePtrRecordSet(string name)
         {
-            return this.DefinePtrRecordSet(name) as DnsRecordSet.Definition.IPtrRecordSetBlank<DnsZone.Definition.IWithCreate>;
+            return this.DefinePtrRecordSet(name);
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the SRV record set.</return>
         DnsRecordSet.UpdateDefinition.ISrvRecordSetBlank<DnsZone.Update.IUpdate> DnsZone.Update.IWithRecordSet.DefineSrvRecordSet(string name)
         {
-            return this.DefineSrvRecordSet(name) as DnsRecordSet.UpdateDefinition.ISrvRecordSetBlank<DnsZone.Update.IUpdate>;
+            return this.DefineSrvRecordSet(name);
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the SRV record set.</return>
         DnsRecordSet.Definition.ISrvRecordSetBlank<DnsZone.Definition.IWithCreate> DnsZone.Definition.IWithRecordSet.DefineSrvRecordSet(string name)
         {
-            return this.DefineSrvRecordSet(name) as DnsRecordSet.Definition.ISrvRecordSetBlank<DnsZone.Definition.IWithCreate>;
+            return this.DefineSrvRecordSet(name);
         }
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the TXT record set.</return>
         DnsRecordSet.UpdateDefinition.ITxtRecordSetBlank<DnsZone.Update.IUpdate> DnsZone.Update.IWithRecordSet.DefineTxtRecordSet(string name)
         {
-            return this.DefineTxtRecordSet(name) as DnsRecordSet.UpdateDefinition.ITxtRecordSetBlank<DnsZone.Update.IUpdate>;
+            return this.DefineTxtRecordSet(name);
         }
 
         /// <summary>
@@ -362,19 +362,19 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the TXT record set.</return>
         DnsRecordSet.Definition.ITxtRecordSetBlank<DnsZone.Definition.IWithCreate> DnsZone.Definition.IWithRecordSet.DefineTxtRecordSet(string name)
         {
-            return this.DefineTxtRecordSet(name) as DnsRecordSet.Definition.ITxtRecordSetBlank<DnsZone.Definition.IWithCreate>;
+            return this.DefineTxtRecordSet(name);
         }
 
         /// <return>The record set containing SOA (start of authority) record associated with this DNS zone.</return>
         Microsoft.Azure.Management.Dns.Fluent.ISoaRecordSet Microsoft.Azure.Management.Dns.Fluent.IDnsZone.GetSoaRecordSet()
         {
-            return this.GetSoaRecordSet() as Microsoft.Azure.Management.Dns.Fluent.ISoaRecordSet;
+            return this.GetSoaRecordSet();
         }
 
         /// <return>The record sets in this zone.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet> Microsoft.Azure.Management.Dns.Fluent.IDnsZone.ListRecordSets()
         {
-            return this.ListRecordSets() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet>;
+            return this.ListRecordSets();
         }
 
         /// <summary>
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The record sets.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet> Microsoft.Azure.Management.Dns.Fluent.IDnsZone.ListRecordSets(string recordSetNameSuffix)
         {
-            return this.ListRecordSets(recordSetNameSuffix) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet>;
+            return this.ListRecordSets(recordSetNameSuffix);
         }
 
         /// <summary>
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The record sets.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet> Microsoft.Azure.Management.Dns.Fluent.IDnsZone.ListRecordSets(int pageSize)
         {
-            return this.ListRecordSets(pageSize) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet>;
+            return this.ListRecordSets(pageSize);
         }
 
         /// <summary>
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The record sets.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet> Microsoft.Azure.Management.Dns.Fluent.IDnsZone.ListRecordSets(string recordSetNameSuffix, int pageSize)
         {
-            return this.ListRecordSets(recordSetNameSuffix, pageSize) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSet>;
+            return this.ListRecordSets(recordSetNameSuffix, pageSize);
         }
 
         /// <summary>
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Dns.Fluent.IDnsZone> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Dns.Fluent.IDnsZone>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Dns.Fluent.IDnsZone;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the AAAA record set.</return>
         DnsRecordSet.UpdateAaaaRecordSet.IUpdateAaaaRecordSet DnsZone.Update.IWithRecordSet.UpdateAaaaRecordSet(string name)
         {
-            return this.UpdateAaaaRecordSet(name) as DnsRecordSet.UpdateAaaaRecordSet.IUpdateAaaaRecordSet;
+            return this.UpdateAaaaRecordSet(name);
         }
 
         /// <summary>
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the A record set.</return>
         DnsRecordSet.UpdateARecordSet.IUpdateARecordSet DnsZone.Update.IWithRecordSet.UpdateARecordSet(string name)
         {
-            return this.UpdateARecordSet(name) as DnsRecordSet.UpdateARecordSet.IUpdateARecordSet;
+            return this.UpdateARecordSet(name);
         }
 
         /// <summary>
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the Caa record set.</return>
         DnsRecordSet.UpdateCaaRecordSet.IUpdateCaaRecordSet DnsZone.Update.IWithRecordSet.UpdateCaaRecordSet(string name)
         {
-            return this.UpdateCaaRecordSet(name) as DnsRecordSet.UpdateCaaRecordSet.IUpdateCaaRecordSet;
+            return this.UpdateCaaRecordSet(name);
         }
 
         /// <summary>
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the CNAME record set.</return>
         DnsRecordSet.UpdateCNameRecordSet.IUpdateCNameRecordSet DnsZone.Update.IWithRecordSet.UpdateCNameRecordSet(string name)
         {
-            return this.UpdateCNameRecordSet(name) as DnsRecordSet.UpdateCNameRecordSet.IUpdateCNameRecordSet;
+            return this.UpdateCNameRecordSet(name);
         }
 
         /// <summary>
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the MX record set.</return>
         DnsRecordSet.UpdateMXRecordSet.IUpdateMXRecordSet DnsZone.Update.IWithRecordSet.UpdateMXRecordSet(string name)
         {
-            return this.UpdateMXRecordSet(name) as DnsRecordSet.UpdateMXRecordSet.IUpdateMXRecordSet;
+            return this.UpdateMXRecordSet(name);
         }
 
         /// <summary>
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the NS record set.</return>
         DnsRecordSet.UpdateNSRecordSet.IUpdateNSRecordSet DnsZone.Update.IWithRecordSet.UpdateNSRecordSet(string name)
         {
-            return this.UpdateNSRecordSet(name) as DnsRecordSet.UpdateNSRecordSet.IUpdateNSRecordSet;
+            return this.UpdateNSRecordSet(name);
         }
 
         /// <summary>
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the PTR record set.</return>
         DnsRecordSet.UpdatePtrRecordSet.IUpdatePtrRecordSet DnsZone.Update.IWithRecordSet.UpdatePtrRecordSet(string name)
         {
-            return this.UpdatePtrRecordSet(name) as DnsRecordSet.UpdatePtrRecordSet.IUpdatePtrRecordSet;
+            return this.UpdatePtrRecordSet(name);
         }
 
         /// <summary>
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the TXT record set.</return>
         DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord DnsZone.Update.IWithRecordSet.UpdateSoaRecord()
         {
-            return this.UpdateSoaRecord() as DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord;
+            return this.UpdateSoaRecord();
         }
 
         /// <summary>
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the SRV record set.</return>
         DnsRecordSet.UpdateSrvRecordSet.IUpdateSrvRecordSet DnsZone.Update.IWithRecordSet.UpdateSrvRecordSet(string name)
         {
-            return this.UpdateSrvRecordSet(name) as DnsRecordSet.UpdateSrvRecordSet.IUpdateSrvRecordSet;
+            return this.UpdateSrvRecordSet(name);
         }
 
         /// <summary>
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The stage representing configuration for the TXT record set.</return>
         DnsRecordSet.UpdateTxtRecordSet.IUpdateTxtRecordSet DnsZone.Update.IWithRecordSet.UpdateTxtRecordSet(string name)
         {
-            return this.UpdateTxtRecordSet(name) as DnsRecordSet.UpdateTxtRecordSet.IUpdateTxtRecordSet;
+            return this.UpdateTxtRecordSet(name);
         }
 
         /// <summary>
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone definition.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithCNameRecordSet(string name, string alias)
         {
-            return this.WithCNameRecordSet(name, alias) as DnsZone.Update.IUpdate;
+            return this.WithCNameRecordSet(name, alias);
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone definition.</return>
         DnsZone.Definition.IWithCreate DnsZone.Definition.IWithRecordSet.WithCNameRecordSet(string name, string alias)
         {
-            return this.WithCNameRecordSet(name, alias) as DnsZone.Definition.IWithCreate;
+            return this.WithCNameRecordSet(name, alias);
         }
 
         /// <summary>
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithETagCheck.WithETagCheck()
         {
-            return this.WithETagCheck() as DnsZone.Update.IUpdate;
+            return this.WithETagCheck();
         }
 
         /// <summary>
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithETagCheck.WithETagCheck(string eTagValue)
         {
-            return this.WithETagCheck(eTagValue) as DnsZone.Update.IUpdate;
+            return this.WithETagCheck(eTagValue);
         }
 
         /// <summary>
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsZone.Definition.IWithCreate DnsZone.Definition.IWithETagCheck.WithETagCheck()
         {
-            return this.WithETagCheck() as DnsZone.Definition.IWithCreate;
+            return this.WithETagCheck();
         }
 
         /// <summary>
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutAaaaRecordSet(string name)
         {
-            return this.WithoutAaaaRecordSet(name) as DnsZone.Update.IUpdate;
+            return this.WithoutAaaaRecordSet(name);
         }
 
         /// <summary>
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutAaaaRecordSet(string name, string eTagValue)
         {
-            return this.WithoutAaaaRecordSet(name, eTagValue) as DnsZone.Update.IUpdate;
+            return this.WithoutAaaaRecordSet(name, eTagValue);
         }
 
         /// <summary>
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutARecordSet(string name)
         {
-            return this.WithoutARecordSet(name) as DnsZone.Update.IUpdate;
+            return this.WithoutARecordSet(name);
         }
 
         /// <summary>
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutARecordSet(string name, string eTagValue)
         {
-            return this.WithoutARecordSet(name, eTagValue) as DnsZone.Update.IUpdate;
+            return this.WithoutARecordSet(name, eTagValue);
         }
 
         /// <summary>
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutCaaRecordSet(string name)
         {
-            return this.WithoutCaaRecordSet(name) as DnsZone.Update.IUpdate;
+            return this.WithoutCaaRecordSet(name);
         }
 
         /// <summary>
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutCaaRecordSet(string name, string eTagValue)
         {
-            return this.WithoutCaaRecordSet(name, eTagValue) as DnsZone.Update.IUpdate;
+            return this.WithoutCaaRecordSet(name, eTagValue);
         }
 
         /// <summary>
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutCNameRecordSet(string name)
         {
-            return this.WithoutCNameRecordSet(name) as DnsZone.Update.IUpdate;
+            return this.WithoutCNameRecordSet(name);
         }
 
         /// <summary>
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutCNameRecordSet(string name, string eTagValue)
         {
-            return this.WithoutCNameRecordSet(name, eTagValue) as DnsZone.Update.IUpdate;
+            return this.WithoutCNameRecordSet(name, eTagValue);
         }
 
         /// <summary>
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutMXRecordSet(string name)
         {
-            return this.WithoutMXRecordSet(name) as DnsZone.Update.IUpdate;
+            return this.WithoutMXRecordSet(name);
         }
 
         /// <summary>
@@ -671,7 +671,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutMXRecordSet(string name, string eTagValue)
         {
-            return this.WithoutMXRecordSet(name, eTagValue) as DnsZone.Update.IUpdate;
+            return this.WithoutMXRecordSet(name, eTagValue);
         }
 
         /// <summary>
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutNSRecordSet(string name)
         {
-            return this.WithoutNSRecordSet(name) as DnsZone.Update.IUpdate;
+            return this.WithoutNSRecordSet(name);
         }
 
         /// <summary>
@@ -692,7 +692,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutNSRecordSet(string name, string eTagValue)
         {
-            return this.WithoutNSRecordSet(name, eTagValue) as DnsZone.Update.IUpdate;
+            return this.WithoutNSRecordSet(name, eTagValue);
         }
 
         /// <summary>
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutPtrRecordSet(string name)
         {
-            return this.WithoutPtrRecordSet(name) as DnsZone.Update.IUpdate;
+            return this.WithoutPtrRecordSet(name);
         }
 
         /// <summary>
@@ -713,7 +713,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutPtrRecordSet(string name, string eTagValue)
         {
-            return this.WithoutPtrRecordSet(name, eTagValue) as DnsZone.Update.IUpdate;
+            return this.WithoutPtrRecordSet(name, eTagValue);
         }
 
         /// <summary>
@@ -723,7 +723,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutSrvRecordSet(string name)
         {
-            return this.WithoutSrvRecordSet(name) as DnsZone.Update.IUpdate;
+            return this.WithoutSrvRecordSet(name);
         }
 
         /// <summary>
@@ -734,7 +734,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutSrvRecordSet(string name, string eTagValue)
         {
-            return this.WithoutSrvRecordSet(name, eTagValue) as DnsZone.Update.IUpdate;
+            return this.WithoutSrvRecordSet(name, eTagValue);
         }
 
         /// <summary>
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutTxtRecordSet(string name)
         {
-            return this.WithoutTxtRecordSet(name) as DnsZone.Update.IUpdate;
+            return this.WithoutTxtRecordSet(name);
         }
 
         /// <summary>
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of DNS zone update.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithRecordSet.WithoutTxtRecordSet(string name, string eTagValue)
         {
-            return this.WithoutTxtRecordSet(name, eTagValue) as DnsZone.Update.IUpdate;
+            return this.WithoutTxtRecordSet(name, eTagValue);
         }
 
         /// <summary>
@@ -764,7 +764,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithZoneType.WithPrivateAccess()
         {
-            return this.WithPrivateAccess() as DnsZone.Update.IUpdate;
+            return this.WithPrivateAccess();
         }
 
         /// <summary>
@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithZoneType.WithPrivateAccess(IList<string> registrationVirtualNetworkIds, IList<string> resolutionVirtualNetworkIds)
         {
-            return this.WithPrivateAccess(registrationVirtualNetworkIds, resolutionVirtualNetworkIds) as DnsZone.Update.IUpdate;
+            return this.WithPrivateAccess(registrationVirtualNetworkIds, resolutionVirtualNetworkIds);
         }
 
         /// <summary>
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsZone.Definition.IWithCreate DnsZone.Definition.IWithZoneType.WithPrivateAccess()
         {
-            return this.WithPrivateAccess() as DnsZone.Definition.IWithCreate;
+            return this.WithPrivateAccess();
         }
 
         /// <summary>
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsZone.Definition.IWithCreate DnsZone.Definition.IWithZoneType.WithPrivateAccess(IList<string> registrationVirtualNetworkIds, IList<string> resolutionVirtualNetworkIds)
         {
-            return this.WithPrivateAccess(registrationVirtualNetworkIds, resolutionVirtualNetworkIds) as DnsZone.Definition.IWithCreate;
+            return this.WithPrivateAccess(registrationVirtualNetworkIds, resolutionVirtualNetworkIds);
         }
 
         /// <summary>
@@ -804,7 +804,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsZone.Update.IUpdate DnsZone.Update.IWithZoneType.WithPublicAccess()
         {
-            return this.WithPublicAccess() as DnsZone.Update.IUpdate;
+            return this.WithPublicAccess();
         }
 
         /// <summary>
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsZone.Definition.IWithCreate DnsZone.Definition.IWithZoneType.WithPublicAccess()
         {
-            return this.WithPublicAccess() as DnsZone.Definition.IWithCreate;
+            return this.WithPublicAccess();
         }
     }
 }

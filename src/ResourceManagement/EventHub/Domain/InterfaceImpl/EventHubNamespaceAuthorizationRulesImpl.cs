@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The first stage of the new resource definition.</return>
         EventHubNamespaceAuthorizationRule.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<EventHubNamespaceAuthorizationRule.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as EventHubNamespaceAuthorizationRule.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The authorization rule.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRules.GetByName(string resourceGroupName, string namespaceName, string name)
         {
-            return this.GetByName(resourceGroupName, namespaceName, name) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule;
+            return this.GetByName(resourceGroupName, namespaceName, name);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits the authorization rules.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule>> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRules.ListByNamespaceAsync(string resourceGroupName, string namespaceName, CancellationToken cancellationToken)
         {
-            return await this.ListByNamespaceAsync(resourceGroupName, namespaceName, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule>;
+            return await this.ListByNamespaceAsync(resourceGroupName, namespaceName, cancellationToken);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits the authorization rule.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRules.GetByNameAsync(string resourceGroupName, string namespaceName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetByNameAsync(resourceGroupName, namespaceName, name, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule;
+            return await this.GetByNameAsync(resourceGroupName, namespaceName, name, cancellationToken);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>List of authorization rules.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRules.ListByNamespace(string resourceGroupName, string namespaceName)
         {
-            return this.ListByNamespace(resourceGroupName, namespaceName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule>;
+            return this.ListByNamespace(resourceGroupName, namespaceName);
         }
     }
 }

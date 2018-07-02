@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.StorageAccountSku() as Microsoft.Azure.Management.Storage.Fluent.StorageAccountSkuType;
+                return this.StorageAccountSku();
             }
         }
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.Capabilities() as System.Collections.Generic.IReadOnlyList<Models.SKUCapability>;
+                return this.Capabilities();
             }
         }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.ResourceType() as Microsoft.Azure.Management.Storage.Fluent.StorageResourceType;
+                return this.ResourceType();
             }
         }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.Restrictions() as System.Collections.Generic.IReadOnlyList<Models.Restriction>;
+                return this.Restrictions();
             }
         }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.Regions() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region>;
+                return this.Regions();
             }
         }
 

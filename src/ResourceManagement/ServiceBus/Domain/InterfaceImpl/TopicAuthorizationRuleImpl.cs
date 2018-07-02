@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Manager as Microsoft.Azure.Management.ServiceBus.Fluent.IServiceBusManager;
+                return this.Manager;
             }
         }
 
@@ -50,19 +50,19 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Definition.IWithListen<Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IWithCreate>.WithListeningEnabled()
         {
-            return this.WithListeningEnabled() as Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IWithCreate;
+            return this.WithListeningEnabled();
         }
 
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update.IWithListen<Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Update.IUpdate>.WithListeningEnabled()
         {
-            return this.WithListeningEnabled() as Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Update.IUpdate;
+            return this.WithListeningEnabled();
         }
 
         /// <return>The primary, secondary keys and connection strings.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationKeys Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationRule<Microsoft.Azure.Management.ServiceBus.Fluent.ITopicAuthorizationRule>.GetKeys()
         {
-            return this.GetKeys() as Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationKeys;
+            return this.GetKeys();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Primary, secondary keys and connection strings.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationKeys Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationRule<Microsoft.Azure.Management.ServiceBus.Fluent.ITopicAuthorizationRule>.RegenerateKey(Policykey policykey)
         {
-            return this.RegenerateKey(policykey) as Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationKeys;
+            return this.RegenerateKey(policykey);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Stream that emits primary, secondary keys and connection strings.</return>
         async Task<Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationKeys> Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationRule<Microsoft.Azure.Management.ServiceBus.Fluent.ITopicAuthorizationRule>.RegenerateKeyAsync(Policykey policykey, CancellationToken cancellationToken)
         {
-            return await this.RegenerateKeyAsync(policykey, cancellationToken) as Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationKeys;
+            return await this.RegenerateKeyAsync(policykey, cancellationToken);
         }
 
         /// <summary>
@@ -92,26 +92,26 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Rights() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.ServiceBus.Fluent.Models.AccessRights>;
+                return this.Rights();
             }
         }
 
         /// <return>Stream that emits primary, secondary keys and connection strings.</return>
         async Task<Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationKeys> Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationRule<Microsoft.Azure.Management.ServiceBus.Fluent.ITopicAuthorizationRule>.GetKeysAsync(CancellationToken cancellationToken)
         {
-            return await this.GetKeysAsync(cancellationToken) as Microsoft.Azure.Management.ServiceBus.Fluent.IAuthorizationKeys;
+            return await this.GetKeysAsync(cancellationToken);
         }
 
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Definition.IWithManage<Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IWithCreate>.WithManagementEnabled()
         {
-            return this.WithManagementEnabled() as Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IWithCreate;
+            return this.WithManagementEnabled();
         }
 
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update.IWithManage<Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Update.IUpdate>.WithManagementEnabled()
         {
-            return this.WithManagementEnabled() as Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Update.IUpdate;
+            return this.WithManagementEnabled();
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Tags as System.Collections.Generic.IReadOnlyDictionary<string, string>;
+                return this.Tags;
             }
         }
 
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Region as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region;
             }
         }
 
@@ -194,13 +194,13 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Definition.IWithSend<Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IWithCreate>.WithSendingEnabled()
         {
-            return this.WithSendingEnabled() as Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Definition.IWithCreate;
+            return this.WithSendingEnabled();
         }
 
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.AuthorizationRule.Update.IWithSend<Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Update.IUpdate>.WithSendingEnabled()
         {
-            return this.WithSendingEnabled() as Microsoft.Azure.Management.ServiceBus.Fluent.TopicAuthorizationRule.Update.IUpdate;
+            return this.WithSendingEnabled();
         }
     }
 }

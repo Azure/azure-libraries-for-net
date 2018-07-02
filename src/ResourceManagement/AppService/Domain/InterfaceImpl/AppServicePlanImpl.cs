@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.PricingTier() as Microsoft.Azure.Management.AppService.Fluent.PricingTier;
+                return this.PricingTier();
             }
         }
 
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the app service plan update.</return>
         AppServicePlan.Update.IUpdate AppServicePlan.Update.IWithPricingTier.WithPricingTier(PricingTier pricingTier)
         {
-            return this.WithPricingTier(pricingTier) as AppServicePlan.Update.IUpdate;
+            return this.WithPricingTier(pricingTier);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServicePlan.Definition.IWithCreate AppServicePlan.Definition.IWithPricingTier.WithFreePricingTier()
         {
-            return this.WithFreePricingTier() as AppServicePlan.Definition.IWithCreate;
+            return this.WithFreePricingTier();
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServicePlan.Definition.IWithCreate AppServicePlan.Definition.IWithPricingTier.WithSharedPricingTier()
         {
-            return this.WithSharedPricingTier() as AppServicePlan.Definition.IWithCreate;
+            return this.WithSharedPricingTier();
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServicePlan.Definition.IWithOperatingSystem AppServicePlan.Definition.IWithPricingTier.WithPricingTier(PricingTier pricingTier)
         {
-            return this.WithPricingTier(pricingTier) as AppServicePlan.Definition.IWithOperatingSystem;
+            return this.WithPricingTier(pricingTier);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the app service plan update.</return>
         AppServicePlan.Update.IUpdate AppServicePlan.Update.IWithPerSiteScaling.WithPerSiteScaling(bool perSiteScaling)
         {
-            return this.WithPerSiteScaling(perSiteScaling) as AppServicePlan.Update.IUpdate;
+            return this.WithPerSiteScaling(perSiteScaling);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServicePlan.Definition.IWithCreate AppServicePlan.Definition.IWithPerSiteScaling.WithPerSiteScaling(bool perSiteScaling)
         {
-            return this.WithPerSiteScaling(perSiteScaling) as AppServicePlan.Definition.IWithCreate;
+            return this.WithPerSiteScaling(perSiteScaling);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of an app service plan update.</return>
         AppServicePlan.Update.IUpdate AppServicePlan.Update.IWithCapacity.WithCapacity(int capacity)
         {
-            return this.WithCapacity(capacity) as AppServicePlan.Update.IUpdate;
+            return this.WithCapacity(capacity);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of an app service plan definition.</return>
         AppServicePlan.Definition.IWithCreate AppServicePlan.Definition.IWithCapacity.WithCapacity(int capacity)
         {
-            return this.WithCapacity(capacity) as AppServicePlan.Definition.IWithCreate;
+            return this.WithCapacity(capacity);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServicePlan.Definition.IWithCreate AppServicePlan.Definition.IWithOperatingSystem.WithOperatingSystem(OperatingSystem operatingSystem)
         {
-            return this.WithOperatingSystem(operatingSystem) as AppServicePlan.Definition.IWithCreate;
+            return this.WithOperatingSystem(operatingSystem);
         }
     }
 }

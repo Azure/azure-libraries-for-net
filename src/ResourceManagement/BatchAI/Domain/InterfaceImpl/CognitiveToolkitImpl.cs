@@ -17,29 +17,29 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         ToolTypeSettings.CognitiveToolkit.Definition.IWithAttachAndPythonInterpreter<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.CognitiveToolkit.Definition.IWithLanguageType<BatchAIJob.Definition.IWithCreate>.WithPythonScriptFile(string pythonScriptFilePath)
         {
-            return this.WithPythonScriptFile(pythonScriptFilePath) as ToolTypeSettings.CognitiveToolkit.Definition.IWithAttachAndPythonInterpreter<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPythonScriptFile(pythonScriptFilePath);
         }
 
         /// <param name="configFilePath">Path of the config file.</param>
         /// <return>The next stage of the definition.</return>
         ToolTypeSettings.CognitiveToolkit.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.CognitiveToolkit.Definition.IWithLanguageType<BatchAIJob.Definition.IWithCreate>.WithBrainScript(string configFilePath)
         {
-            return this.WithBrainScript(configFilePath) as ToolTypeSettings.CognitiveToolkit.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithBrainScript(configFilePath);
         }
 
         IWithAttach<IWithCreate> IWithProcessCount<IWithAttach<IWithCreate>>.WithProcessCount(int processCount)
         {
-            return this.WithProcessCount(processCount) as ToolTypeSettings.CognitiveToolkit.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithProcessCount(processCount);
         }
 
         IWithAttach<IWithCreate> IWithCommandLineArgs<IWithAttach<IWithCreate>>.WithCommandLineArgs(string commandLineArgs)
         {
-            return this.WithCommandLineArgs(commandLineArgs) as ToolTypeSettings.CognitiveToolkit.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithCommandLineArgs(commandLineArgs);
         }
 
         IWithAttach<IWithCreate> IWithPythonInterpreter<IWithAttach<IWithCreate>>.WithPythonInterpreterPath(string path)
         {
-            return this.WithPythonInterpreterPath(path) as ToolTypeSettings.CognitiveToolkit.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPythonInterpreterPath(path);
         }
     }
 }

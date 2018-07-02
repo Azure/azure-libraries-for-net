@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Storage.Fluent.IStorageUsage> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Storage.Fluent.IStorageUsage>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Storage.Fluent.IStorageUsage>;
+            return this.List();
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IStorageUsage>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Storage.Fluent.IStorageUsage>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IStorageUsage>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.Manager() as Microsoft.Azure.Management.Storage.Fluent.IStorageManager;
+                return this.Manager();
             }
         }
     }

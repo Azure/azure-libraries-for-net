@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of the new resource definition.</return>
         VirtualMachine.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<VirtualMachine.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as VirtualMachine.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Sizes() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSizes;
+                return this.Sizes();
             }
         }
 

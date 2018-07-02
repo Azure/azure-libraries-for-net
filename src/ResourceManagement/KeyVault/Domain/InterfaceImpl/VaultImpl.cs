@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>the refreshed resource</returns>
         Microsoft.Azure.Management.KeyVault.Fluent.IVault Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.KeyVault.Fluent.IVault>.Refresh()
         {
-            return this.Refresh() as Microsoft.Azure.Management.KeyVault.Fluent.IVault;
+            return this.Refresh();
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             get
             {
-                return this.TenantId as string;
+                return this.TenantId;
             }
         }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             get
             {
-                return this.VaultUri as string;
+                return this.VaultUri;
             }
         }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             get
             {
-                return this.Sku as Microsoft.Azure.Management.KeyVault.Fluent.Models.Sku;
+                return this.Sku;
             }
         }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             get
             {
-                return this.AccessPolicies as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.KeyVault.Fluent.IAccessPolicy>;
+                return this.AccessPolicies;
             }
         }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithConfigurations.WithDiskEncryptionEnabled()
         {
-            return this.WithDiskEncryptionEnabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate;
+            return this.WithDiskEncryptionEnabled();
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithConfigurations.WithTemplateDeploymentEnabled()
         {
-            return this.WithTemplateDeploymentEnabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate;
+            return this.WithTemplateDeploymentEnabled();
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithConfigurations.WithDeploymentEnabled()
         {
-            return this.WithDeploymentEnabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate;
+            return this.WithDeploymentEnabled();
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithConfigurations.WithDeploymentDisabled()
         {
-            return this.WithDeploymentDisabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate;
+            return this.WithDeploymentDisabled();
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithConfigurations.WithTemplateDeploymentDisabled()
         {
-            return this.WithTemplateDeploymentDisabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate;
+            return this.WithTemplateDeploymentDisabled();
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithConfigurations.WithDiskEncryptionDisabled()
         {
-            return this.WithDiskEncryptionDisabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate;
+            return this.WithDiskEncryptionDisabled();
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The key vault update stage.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithConfigurations.WithDiskEncryptionEnabled()
         {
-            return this.WithDiskEncryptionEnabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate;
+            return this.WithDiskEncryptionEnabled();
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The key vault update stage.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithConfigurations.WithTemplateDeploymentEnabled()
         {
-            return this.WithTemplateDeploymentEnabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate;
+            return this.WithTemplateDeploymentEnabled();
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The key vault update stage.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithConfigurations.WithDeploymentEnabled()
         {
-            return this.WithDeploymentEnabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate;
+            return this.WithDeploymentEnabled();
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The key vault update stage.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithConfigurations.WithDeploymentDisabled()
         {
-            return this.WithDeploymentDisabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate;
+            return this.WithDeploymentDisabled();
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The key vault update stage.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithConfigurations.WithTemplateDeploymentDisabled()
         {
-            return this.WithTemplateDeploymentDisabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate;
+            return this.WithTemplateDeploymentDisabled();
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithConfigurations.WithDiskEncryptionDisabled()
         {
-            return this.WithDiskEncryptionDisabled() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate;
+            return this.WithDiskEncryptionDisabled();
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithAccessPolicy.WithEmptyAccessPolicy()
         {
-            return this.WithEmptyAccessPolicy() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate;
+            return this.WithEmptyAccessPolicy();
         }
 
         /// <summary>
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The first stage of the access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IBlank<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithAccessPolicy.DefineAccessPolicy()
         {
-            return this.DefineAccessPolicy() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IBlank<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.DefineAccessPolicy();
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithAccessPolicy.WithAccessPolicy(IAccessPolicy accessPolicy)
         {
-            return this.WithAccessPolicy(accessPolicy) as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate;
+            return this.WithAccessPolicy(accessPolicy);
         }
 
         /// <summary>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The key vault update stage.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithAccessPolicy.WithoutAccessPolicy(string objectId)
         {
-            return this.WithoutAccessPolicy(objectId) as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate;
+            return this.WithoutAccessPolicy(objectId);
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The first stage of the access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IBlank<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithAccessPolicy.DefineAccessPolicy()
         {
-            return this.DefineAccessPolicy() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IBlank<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.DefineAccessPolicy();
         }
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The update stage of the access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithAccessPolicy.UpdateAccessPolicy(string objectId)
         {
-            return this.UpdateAccessPolicy(objectId) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.UpdateAccessPolicy(objectId);
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The key vault update stage.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IWithAccessPolicy.WithAccessPolicy(IAccessPolicy accessPolicy)
         {
-            return this.WithAccessPolicy(accessPolicy) as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate;
+            return this.WithAccessPolicy(accessPolicy);
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of key vault definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithSku.WithSku(SkuName skuName)
         {
-            return this.WithSku(skuName) as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate;
+            return this.WithSku(skuName);
         }
     }
 }

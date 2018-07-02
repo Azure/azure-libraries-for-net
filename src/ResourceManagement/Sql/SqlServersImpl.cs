@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691
-        public ISqlServer Define(string name)
+        public SqlServerImpl Define(string name)
         {
             return WrapModel(name);
         }

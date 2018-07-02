@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the definition.</return>
         Application.UpdateDefinition.IWithAttach<BatchAccount.Update.IUpdate> Application.UpdateDefinition.IWithAttach<BatchAccount.Update.IUpdate>.WithAllowUpdates(bool allowUpdates)
         {
-            return this.WithAllowUpdates(allowUpdates) as Application.UpdateDefinition.IWithAttach<BatchAccount.Update.IUpdate>;
+            return this.WithAllowUpdates(allowUpdates);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the definition.</return>
         Application.UpdateDefinition.IWithAttach<BatchAccount.Update.IUpdate> Application.UpdateDefinition.IWithAttach<BatchAccount.Update.IUpdate>.WithDisplayName(string displayName)
         {
-            return this.WithDisplayName(displayName) as Application.UpdateDefinition.IWithAttach<BatchAccount.Update.IUpdate>;
+            return this.WithDisplayName(displayName);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the definition.</return>
         Application.Definition.IWithAttach<BatchAccount.Definition.IWithApplicationAndStorage> Application.Definition.IWithAttach<BatchAccount.Definition.IWithApplicationAndStorage>.WithAllowUpdates(bool allowUpdates)
         {
-            return this.WithAllowUpdates(allowUpdates) as Application.Definition.IWithAttach<BatchAccount.Definition.IWithApplicationAndStorage>;
+            return this.WithAllowUpdates(allowUpdates);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the definition.</return>
         Application.Definition.IWithAttach<BatchAccount.Definition.IWithApplicationAndStorage> Application.Definition.IWithAttach<BatchAccount.Definition.IWithApplicationAndStorage>.WithDisplayName(string displayName)
         {
-            return this.WithDisplayName(displayName) as Application.Definition.IWithAttach<BatchAccount.Definition.IWithApplicationAndStorage>;
+            return this.WithDisplayName(displayName);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the parent definition.</return>
         BatchAccount.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<BatchAccount.Update.IUpdate>.Attach()
         {
-            return this.Attach() as BatchAccount.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>Next stage to create the application.</return>
         Application.UpdateDefinition.IWithAttach<BatchAccount.Update.IUpdate> Application.UpdateDefinition.IWithApplicationPackage<BatchAccount.Update.IUpdate>.DefineNewApplicationPackage(string version)
         {
-            return this.DefineNewApplicationPackage(version) as Application.UpdateDefinition.IWithAttach<BatchAccount.Update.IUpdate>;
+            return this.DefineNewApplicationPackage(version);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the definition.</return>
         Application.Definition.IWithAttach<BatchAccount.Definition.IWithApplicationAndStorage> Application.Definition.IWithApplicationPackage<BatchAccount.Definition.IWithApplicationAndStorage>.DefineNewApplicationPackage(string applicationPackageName)
         {
-            return this.DefineNewApplicationPackage(applicationPackageName) as Application.Definition.IWithAttach<BatchAccount.Definition.IWithApplicationAndStorage>;
+            return this.DefineNewApplicationPackage(applicationPackageName);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the parent definition.</return>
         BatchAccount.Definition.IWithApplicationAndStorage Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<BatchAccount.Definition.IWithApplicationAndStorage>.Attach()
         {
-            return this.Attach() as BatchAccount.Definition.IWithApplicationAndStorage;
+            return this.Attach();
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the update.</return>
         Application.Update.IUpdate Application.Update.IWithOptionalProperties.WithAllowUpdates(bool allowUpdates)
         {
-            return this.WithAllowUpdates(allowUpdates) as Application.Update.IUpdate;
+            return this.WithAllowUpdates(allowUpdates);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the update.</return>
         Application.Update.IUpdate Application.Update.IWithOptionalProperties.WithDisplayName(string displayName)
         {
-            return this.WithDisplayName(displayName) as Application.Update.IUpdate;
+            return this.WithDisplayName(displayName);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         {
             get
             {
-                return this.ApplicationPackages() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Batch.Fluent.IApplicationPackage>;
+                return this.ApplicationPackages();
             }
         }
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>Next stage to create the application.</return>
         Application.Update.IUpdate Application.Update.IWithApplicationPackage.DefineNewApplicationPackage(string version)
         {
-            return this.DefineNewApplicationPackage(version) as Application.Update.IUpdate;
+            return this.DefineNewApplicationPackage(version);
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The stage representing updatable batch account definition.</return>
         Application.Update.IUpdate Application.Update.IWithApplicationPackage.WithoutApplicationPackage(string version)
         {
-            return this.WithoutApplicationPackage(version) as Application.Update.IUpdate;
+            return this.WithoutApplicationPackage(version);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LocalNetworkGateway.Update.IUpdate LocalNetworkGateway.Update.IWithAddressSpace.WithoutAddressSpace(string cidr)
         {
-            return this.WithoutAddressSpace(cidr) as LocalNetworkGateway.Update.IUpdate;
+            return this.WithoutAddressSpace(cidr);
         }
 
     /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LocalNetworkGateway.Update.IUpdate LocalNetworkGateway.Update.IWithAddressSpace.WithAddressSpace(string cidr)
         {
-            return this.WithAddressSpace(cidr) as LocalNetworkGateway.Update.IUpdate;
+            return this.WithAddressSpace(cidr);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="cidr">The CIDR representation of the local network site address space.</param>
         LocalNetworkGateway.Definition.IWithCreate LocalNetworkGateway.Definition.IWithAddressSpace.WithAddressSpace(string cidr)
         {
-            return this.WithAddressSpace(cidr) as LocalNetworkGateway.Definition.IWithCreate;
+            return this.WithAddressSpace(cidr);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.AddressSpaces() as System.Collections.Generic.ISet<string>;
+                return this.AddressSpaces();
             }
         }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.BgpSettings() as Models.BgpSettings;
+                return this.BgpSettings();
             }
         }
 
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         LocalNetworkGateway.Update.IUpdate LocalNetworkGateway.Update.IWithIPAddress.WithIPAddress(string ipAddress)
         {
-            return this.WithIPAddress(ipAddress) as LocalNetworkGateway.Update.IUpdate;
+            return this.WithIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LocalNetworkGateway.Definition.IWithAddressSpace LocalNetworkGateway.Definition.IWithIPAddress.WithIPAddress(string ipAddress)
         {
-            return this.WithIPAddress(ipAddress) as LocalNetworkGateway.Definition.IWithAddressSpace;
+            return this.WithIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LocalNetworkGateway.Update.IUpdate LocalNetworkGateway.Update.IWithBgp.WithBgp(long asn, string bgpPeeringAddress)
         {
-            return this.WithBgp(asn, bgpPeeringAddress) as LocalNetworkGateway.Update.IUpdate;
+            return this.WithBgp(asn, bgpPeeringAddress);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LocalNetworkGateway.Update.IUpdate LocalNetworkGateway.Update.IWithBgp.WithoutBgp()
         {
-            return this.WithoutBgp() as LocalNetworkGateway.Update.IUpdate;
+            return this.WithoutBgp();
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LocalNetworkGateway.Definition.IWithCreate LocalNetworkGateway.Definition.IWithBgp.WithBgp(long asn, string bgpPeeringAddress)
         {
-            return this.WithBgp(asn, bgpPeeringAddress) as LocalNetworkGateway.Definition.IWithCreate;
+            return this.WithBgp(asn, bgpPeeringAddress);
         }
     }
 }

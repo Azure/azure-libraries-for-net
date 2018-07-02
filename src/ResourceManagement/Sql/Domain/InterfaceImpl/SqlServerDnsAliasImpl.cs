@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlServerDnsAliasOperations.Definition.IWithCreate SqlServerDnsAliasOperations.Definition.IWithSqlServer.WithExistingSqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.WithExistingSqlServer(resourceGroupName, sqlServerName) as SqlServerDnsAliasOperations.Definition.IWithCreate;
+            return this.WithExistingSqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlServerDnsAliasOperations.Definition.IWithCreate SqlServerDnsAliasOperations.Definition.IWithSqlServer.WithExistingSqlServer(ISqlServer sqlServer)
         {
-            return this.WithExistingSqlServer(sqlServer) as SqlServerDnsAliasOperations.Definition.IWithCreate;
+            return this.WithExistingSqlServer(sqlServer);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlServerDnsAliasOperations.Definition.IWithCreate SqlServerDnsAliasOperations.Definition.IWithSqlServer.WithExistingSqlServerId(string sqlServerId)
         {
-            return this.WithExistingSqlServerId(sqlServerId) as SqlServerDnsAliasOperations.Definition.IWithCreate;
+            return this.WithExistingSqlServerId(sqlServerId);
         }
 
         /// <summary>

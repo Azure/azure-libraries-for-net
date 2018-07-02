@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of the new resource definition.</return>
         Snapshot.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Snapshot.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as Snapshot.Definition.IBlank;
+            return this.Define(name);
         }
     }
 }
