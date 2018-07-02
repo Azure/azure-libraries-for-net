@@ -26,9 +26,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 token = await functionApp.Manager.Inner.WebApps
                     .GetFunctionsAdminTokenAsync(functionApp.ResourceGroupName, functionApp.Name, cancellationToken);
-                string jwt = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(token.Split(new char[] { '.' })[1]));
+                var base64Payload = token.Split(new char[] { '.' })[1];
+                for (int i = 0; i < base64Payload.Length % 4; i++) //Pad the jwt so conforms to Base64 spec
+                {
+                    base64Payload += "=";
+                }
+                var payload = System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(base64Payload));
                 Regex regex = new Regex("\"exp\": *([0-9]+),");
-                Match match = regex.Match(jwt);
+                Match match = regex.Match(payload);
                 expire = long.Parse(match.Groups[1].Value);
             }
             request.Headers.Add("Authorization", "Bearer " + token);
