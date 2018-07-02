@@ -126,7 +126,7 @@ namespace Samples.Tests
                             .GetResult());
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot run because of service-side issue.")]
         [Trait("Samples", "Network")]
         public void ManageNetworkWatcherTest()
         {
