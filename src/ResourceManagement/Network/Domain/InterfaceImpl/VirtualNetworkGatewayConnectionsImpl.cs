@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new resource definition.</return>
         VirtualNetworkGatewayConnection.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<VirtualNetworkGatewayConnection.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as VirtualNetworkGatewayConnection.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway;
+                return this.Parent();
             }
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>;
+            return this.List();
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IVirtualNetworkGatewayConnection>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IVirtualNetworkGatewayConnection>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>.GetByName(string name)
         {
-            return this.GetByName(name) as Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection;
+            return this.GetByName(name);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByNameAsync<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>.GetByNameAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.GetByNameAsync(name, cancellationToken) as Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection;
+            return await this.GetByNameAsync(name, cancellationToken);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackend.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackend.Definition.IWithAddress<ApplicationGateway.Definition.IWithCreate>.WithIPAddress(string ipAddress)
         {
-            return this.WithIPAddress(ipAddress) as ApplicationGatewayBackend.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackend.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackend.Definition.IWithAddress<ApplicationGateway.Definition.IWithCreate>.WithFqdn(string fqdn)
         {
-            return this.WithFqdn(fqdn) as ApplicationGatewayBackend.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithFqdn(fqdn);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackend.UpdateDefinition.IWithAddress<ApplicationGateway.Update.IUpdate>.WithIPAddress(string ipAddress)
         {
-            return this.WithIPAddress(ipAddress) as ApplicationGatewayBackend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackend.UpdateDefinition.IWithAddress<ApplicationGateway.Update.IUpdate>.WithFqdn(string fqdn)
         {
-            return this.WithFqdn(fqdn) as ApplicationGatewayBackend.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithFqdn(fqdn);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ApplicationGateway.Update.IUpdate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackend.Update.IUpdate ApplicationGatewayBackend.Update.IWithAddress.WithoutIPAddress(string ipAddress)
         {
-            return this.WithoutIPAddress(ipAddress) as ApplicationGatewayBackend.Update.IUpdate;
+            return this.WithoutIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackend.Update.IUpdate ApplicationGatewayBackend.Update.IWithAddress.WithoutFqdn(string fqdn)
         {
-            return this.WithoutFqdn(fqdn) as ApplicationGatewayBackend.Update.IUpdate;
+            return this.WithoutFqdn(fqdn);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackend.Update.IUpdate ApplicationGatewayBackend.Update.IWithAddress.WithoutAddress(ApplicationGatewayBackendAddress address)
         {
-            return this.WithoutAddress(address) as ApplicationGatewayBackend.Update.IUpdate;
+            return this.WithoutAddress(address);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackend.Update.IUpdate ApplicationGatewayBackend.Update.IWithAddress.WithIPAddress(string ipAddress)
         {
-            return this.WithIPAddress(ipAddress) as ApplicationGatewayBackend.Update.IUpdate;
+            return this.WithIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackend.Update.IUpdate ApplicationGatewayBackend.Update.IWithAddress.WithFqdn(string fqdn)
         {
-            return this.WithFqdn(fqdn) as ApplicationGatewayBackend.Update.IUpdate;
+            return this.WithFqdn(fqdn);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.BackendNicIPConfigurationNames() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
+                return this.BackendNicIPConfigurationNames();
             }
         }
 
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Addresses() as System.Collections.Generic.IReadOnlyList<Models.ApplicationGatewayBackendAddress>;
+                return this.Addresses();
             }
         }
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ApplicationGateway.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Definition.IWithCreate;
+            return this.Attach();
         }
     }
 }

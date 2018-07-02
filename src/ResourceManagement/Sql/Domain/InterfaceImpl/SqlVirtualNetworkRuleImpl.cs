@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlVirtualNetworkRuleOperations.Definition.IWithSubnet SqlVirtualNetworkRuleOperations.Definition.IWithSqlServer.WithExistingSqlServerId(string sqlServerId)
         {
-            return this.WithExistingSqlServerId(sqlServerId) as SqlVirtualNetworkRuleOperations.Definition.IWithSubnet;
+            return this.WithExistingSqlServerId(sqlServerId);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlVirtualNetworkRuleOperations.Definition.IWithSubnet SqlVirtualNetworkRuleOperations.Definition.IWithSqlServer.WithExistingSqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.WithExistingSqlServer(resourceGroupName, sqlServerName) as SqlVirtualNetworkRuleOperations.Definition.IWithSubnet;
+            return this.WithExistingSqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlVirtualNetworkRuleOperations.Definition.IWithSubnet SqlVirtualNetworkRuleOperations.Definition.IWithSqlServer.WithExistingSqlServer(ISqlServer sqlServer)
         {
-            return this.WithExistingSqlServer(sqlServer) as SqlVirtualNetworkRuleOperations.Definition.IWithSubnet;
+            return this.WithExistingSqlServer(sqlServer);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the parent definition.</return>
         SqlServer.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<SqlServer.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as SqlServer.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The stage of new resource update.</return>
         SqlVirtualNetworkRule.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlVirtualNetworkRule.Update.IUpdate>.Update()
         {
-            return this.Update() as SqlVirtualNetworkRule.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.IgnoreMissingSqlServiceEndpoint() as SqlVirtualNetworkRule.Definition.IWithAttach<SqlServer.Definition.IWithCreate>;
+                return this.IgnoreMissingSqlServiceEndpoint();
             }
         }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlVirtualNetworkRule.Definition.IWithServiceEndpoint<SqlServer.Definition.IWithCreate> SqlVirtualNetworkRule.Definition.IWithSubnet<SqlServer.Definition.IWithCreate>.WithSubnet(string networkId, string subnetName)
         {
-            return this.WithSubnet(networkId, subnetName) as SqlVirtualNetworkRule.Definition.IWithServiceEndpoint<SqlServer.Definition.IWithCreate>;
+            return this.WithSubnet(networkId, subnetName);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         SqlVirtualNetworkRule.Update.IUpdate SqlVirtualNetworkRule.Update.IWithServiceEndpoint.IgnoreMissingSqlServiceEndpoint()
         {
-            return this.IgnoreMissingSqlServiceEndpoint() as SqlVirtualNetworkRule.Update.IUpdate;
+            return this.IgnoreMissingSqlServiceEndpoint();
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// </summary>
         SqlVirtualNetworkRuleOperations.Definition.IWithCreate SqlVirtualNetworkRuleOperations.Definition.IWithServiceEndpoint.IgnoreMissingSqlServiceEndpoint()
         {
-            return this.IgnoreMissingSqlServiceEndpoint() as SqlVirtualNetworkRuleOperations.Definition.IWithCreate;
+            return this.IgnoreMissingSqlServiceEndpoint();
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlVirtualNetworkRule.Update.IUpdate SqlVirtualNetworkRule.Update.IWithSubnet.WithSubnet(string networkId, string subnetName)
         {
-            return this.WithSubnet(networkId, subnetName) as SqlVirtualNetworkRule.Update.IUpdate;
+            return this.WithSubnet(networkId, subnetName);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlVirtualNetworkRuleOperations.Definition.IWithServiceEndpoint SqlVirtualNetworkRuleOperations.Definition.IWithSubnet.WithSubnet(string networkId, string subnetName)
         {
-            return this.WithSubnet(networkId, subnetName) as SqlVirtualNetworkRuleOperations.Definition.IWithServiceEndpoint;
+            return this.WithSubnet(networkId, subnetName);
         }
     }
 }

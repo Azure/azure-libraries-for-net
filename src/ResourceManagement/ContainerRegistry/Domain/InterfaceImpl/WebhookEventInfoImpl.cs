@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         {
             get
             {
-                return this.EventRequestMessage() as Models.EventRequestMessage;
+                return this.EventRequestMessage();
             }
         }
 
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         {
             get
             {
-                return this.EventResponseMessage() as Models.EventResponseMessage;
+                return this.EventResponseMessage();
             }
         }
     }

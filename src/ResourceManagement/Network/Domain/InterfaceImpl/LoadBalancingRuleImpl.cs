@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancingRule.Update.IUpdate HasProtocol.Update.IWithProtocol<LoadBalancingRule.Update.IUpdate, Models.TransportProtocol>.WithProtocol(TransportProtocol protocol)
         {
-            return this.WithProtocol(protocol) as LoadBalancingRule.Update.IUpdate;
+            return this.WithProtocol(protocol);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithFrontend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasProtocol.Definition.IWithProtocol<LoadBalancingRule.Definition.IWithFrontend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>, Models.TransportProtocol>.WithProtocol(TransportProtocol protocol)
         {
-            return this.WithProtocol(protocol) as LoadBalancingRule.Definition.IWithFrontend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.WithProtocol(protocol);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithFrontend<LoadBalancer.Update.IUpdate> HasProtocol.UpdateDefinition.IWithProtocol<LoadBalancingRule.UpdateDefinition.IWithFrontend<LoadBalancer.Update.IUpdate>, Models.TransportProtocol>.WithProtocol(TransportProtocol protocol)
         {
-            return this.WithProtocol(protocol) as LoadBalancingRule.UpdateDefinition.IWithFrontend<LoadBalancer.Update.IUpdate>;
+            return this.WithProtocol(protocol);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Update.IUpdate HasFloatingIP.Update.IWithFloatingIP<LoadBalancingRule.Update.IUpdate>.WithFloatingIP(bool enabled)
         {
-            return this.WithFloatingIP(enabled) as LoadBalancingRule.Update.IUpdate;
+            return this.WithFloatingIP(enabled);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Update.IUpdate HasFloatingIP.Update.IWithFloatingIP<LoadBalancingRule.Update.IUpdate>.WithFloatingIPEnabled()
         {
-            return this.WithFloatingIPEnabled() as LoadBalancingRule.Update.IUpdate;
+            return this.WithFloatingIPEnabled();
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Update.IUpdate HasFloatingIP.Update.IWithFloatingIP<LoadBalancingRule.Update.IUpdate>.WithFloatingIPDisabled()
         {
-            return this.WithFloatingIPDisabled() as LoadBalancingRule.Update.IUpdate;
+            return this.WithFloatingIPDisabled();
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFloatingIP.Definition.IWithFloatingIP<LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.WithFloatingIP(bool enabled)
         {
-            return this.WithFloatingIP(enabled) as LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.WithFloatingIP(enabled);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFloatingIP.Definition.IWithFloatingIP<LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.WithFloatingIPEnabled()
         {
-            return this.WithFloatingIPEnabled() as LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.WithFloatingIPEnabled();
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFloatingIP.Definition.IWithFloatingIP<LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.WithFloatingIPDisabled()
         {
-            return this.WithFloatingIPDisabled() as LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.WithFloatingIPDisabled();
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFloatingIP.UpdateDefinition.IWithFloatingIP<LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.WithFloatingIP(bool enabled)
         {
-            return this.WithFloatingIP(enabled) as LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
+            return this.WithFloatingIP(enabled);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFloatingIP.UpdateDefinition.IWithFloatingIP<LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.WithFloatingIPEnabled()
         {
-            return this.WithFloatingIPEnabled() as LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
+            return this.WithFloatingIPEnabled();
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasFloatingIP.UpdateDefinition.IWithFloatingIP<LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.WithFloatingIPDisabled()
         {
-            return this.WithFloatingIPDisabled() as LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
+            return this.WithFloatingIPDisabled();
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Update.IUpdate LoadBalancingRule.Update.IWithLoadDistribution.WithLoadDistribution(LoadDistribution loadDistribution)
         {
-            return this.WithLoadDistribution(loadDistribution) as LoadBalancingRule.Update.IUpdate;
+            return this.WithLoadDistribution(loadDistribution);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithBackendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> LoadBalancingRule.Definition.IWithBackend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>.ToBackend(string backendName)
         {
-            return this.ToBackend(backendName) as LoadBalancingRule.Definition.IWithBackendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.ToBackend(backendName);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithBackendPort<LoadBalancer.Update.IUpdate> LoadBalancingRule.UpdateDefinition.IWithBackend<LoadBalancer.Update.IUpdate>.ToBackend(string backendName)
         {
-            return this.ToBackend(backendName) as LoadBalancingRule.UpdateDefinition.IWithBackendPort<LoadBalancer.Update.IUpdate>;
+            return this.ToBackend(backendName);
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithBackendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> LoadBalancingRule.Definition.IWithVirtualMachine<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>.ToExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
         {
-            return this.ToExistingVirtualMachines(vms) as LoadBalancingRule.Definition.IWithBackendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.ToExistingVirtualMachines(vms);
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithBackendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> LoadBalancingRule.Definition.IWithVirtualMachine<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>.ToExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
         {
-            return this.ToExistingVirtualMachines(vms) as LoadBalancingRule.Definition.IWithBackendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.ToExistingVirtualMachines(vms);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithBackendPort<LoadBalancer.Update.IUpdate> LoadBalancingRule.UpdateDefinition.IWithVirtualMachine<LoadBalancer.Update.IUpdate>.ToExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
         {
-            return this.ToExistingVirtualMachines(vms) as LoadBalancingRule.UpdateDefinition.IWithBackendPort<LoadBalancer.Update.IUpdate>;
+            return this.ToExistingVirtualMachines(vms);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithBackendPort<LoadBalancer.Update.IUpdate> LoadBalancingRule.UpdateDefinition.IWithVirtualMachine<LoadBalancer.Update.IUpdate>.ToExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
         {
-            return this.ToExistingVirtualMachines(vms) as LoadBalancingRule.UpdateDefinition.IWithBackendPort<LoadBalancer.Update.IUpdate>;
+            return this.ToExistingVirtualMachines(vms);
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> LoadBalancingRule.Definition.IWithProbe<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>.WithProbe(string name)
         {
-            return this.WithProbe(name) as LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.WithProbe(name);
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> LoadBalancingRule.UpdateDefinition.IWithProbe<LoadBalancer.Update.IUpdate>.WithProbe(string name)
         {
-            return this.WithProbe(name) as LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
+            return this.WithProbe(name);
         }
 
         /// <summary>
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Frontend() as Microsoft.Azure.Management.Network.Fluent.ILoadBalancerFrontend;
+                return this.Frontend();
             }
         }
 
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         LoadBalancer.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<LoadBalancer.Update.IUpdate>.Attach()
         {
-            return this.Attach() as LoadBalancer.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancingRule.Update.IUpdate HasBackendPort.Update.IWithBackendPort<LoadBalancingRule.Update.IUpdate>.ToBackendPort(int port)
         {
-            return this.ToBackendPort(port) as LoadBalancingRule.Update.IUpdate;
+            return this.ToBackendPort(port);
         }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasBackendPort.Definition.IWithBackendPort<LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.ToBackendPort(int port)
         {
-            return this.ToBackendPort(port) as LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.ToBackendPort(port);
         }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> HasBackendPort.UpdateDefinition.IWithBackendPort<LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>>.ToBackendPort(int port)
         {
-            return this.ToBackendPort(port) as LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
+            return this.ToBackendPort(port);
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         LoadBalancer.Definition.IWithLBRuleOrNatOrCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>.Attach()
         {
-            return this.Attach() as LoadBalancer.Definition.IWithLBRuleOrNatOrCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Update.IUpdate HasFrontendPort.Update.IWithFrontendPort<LoadBalancingRule.Update.IUpdate>.FromFrontendPort(int port)
         {
-            return this.FromFrontendPort(port) as LoadBalancingRule.Update.IUpdate;
+            return this.FromFrontendPort(port);
         }
 
         /// <summary>
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithBackend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFrontendPort.Definition.IWithFrontendPort<LoadBalancingRule.Definition.IWithBackend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.FromFrontendPort(int port)
         {
-            return this.FromFrontendPort(port) as LoadBalancingRule.Definition.IWithBackend<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.FromFrontendPort(port);
         }
 
         /// <summary>
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithBackend<LoadBalancer.Update.IUpdate> HasFrontendPort.UpdateDefinition.IWithFrontendPort<LoadBalancingRule.UpdateDefinition.IWithBackend<LoadBalancer.Update.IUpdate>>.FromFrontendPort(int port)
         {
-            return this.FromFrontendPort(port) as LoadBalancingRule.UpdateDefinition.IWithBackend<LoadBalancer.Update.IUpdate>;
+            return this.FromFrontendPort(port);
         }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Probe() as Microsoft.Azure.Management.Network.Fluent.ILoadBalancerProbe;
+                return this.Probe();
             }
         }
 
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Backend() as Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend;
+                return this.Backend();
             }
         }
 
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.LoadDistribution() as Models.LoadDistribution;
+                return this.LoadDistribution();
             }
         }
 
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> LoadBalancingRule.Definition.IWithLoadDistribution<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>.WithLoadDistribution(LoadDistribution loadDistribution)
         {
-            return this.WithLoadDistribution(loadDistribution) as LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.WithLoadDistribution(loadDistribution);
         }
 
         /// <summary>
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> LoadBalancingRule.UpdateDefinition.IWithLoadDistribution<LoadBalancer.Update.IUpdate>.WithLoadDistribution(LoadDistribution loadDistribution)
         {
-            return this.WithLoadDistribution(loadDistribution) as LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
+            return this.WithLoadDistribution(loadDistribution);
         }
 
         /// <summary>
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> LoadBalancingRule.Definition.IWithIdleTimeoutInMinutes<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>.WithIdleTimeoutInMinutes(int minutes)
         {
-            return this.WithIdleTimeoutInMinutes(minutes) as LoadBalancingRule.Definition.IWithAttach<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.WithIdleTimeoutInMinutes(minutes);
         }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> LoadBalancingRule.UpdateDefinition.IWithIdleTimeoutInMinutes<LoadBalancer.Update.IUpdate>.WithIdleTimeoutInMinutes(int minutes)
         {
-            return this.WithIdleTimeoutInMinutes(minutes) as LoadBalancingRule.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
+            return this.WithIdleTimeoutInMinutes(minutes);
         }
 
         /// <summary>
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancingRule.Update.IUpdate HasFrontend.Update.IWithFrontend<LoadBalancingRule.Update.IUpdate>.FromFrontend(string frontendName)
         {
-            return this.FromFrontend(frontendName) as LoadBalancingRule.Update.IUpdate;
+            return this.FromFrontend(frontendName);
         }
 
         /// <summary>
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFrontend.Definition.IWithFrontend<LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.FromExistingSubnet(string networkResourceId, string subnetName)
         {
-            return this.FromExistingSubnet(networkResourceId, subnetName) as LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.FromExistingSubnet(networkResourceId, subnetName);
         }
 
         /// <summary>
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFrontend.Definition.IWithFrontend<LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.FromExistingSubnet(INetwork network, string subnetName)
         {
-            return this.FromExistingSubnet(network, subnetName) as LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.FromExistingSubnet(network, subnetName);
         }
 
         /// <summary>
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFrontend.Definition.IWithFrontend<LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.FromExistingSubnet(ISubnet subnet)
         {
-            return this.FromExistingSubnet(subnet) as LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.FromExistingSubnet(subnet);
         }
 
         /// <summary>
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFrontend.Definition.IWithFrontend<LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.FromFrontend(string frontendName)
         {
-            return this.FromFrontend(frontendName) as LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.FromFrontend(frontendName);
         }
 
         /// <summary>
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFrontend.Definition.IWithFrontend<LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.FromExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.FromExistingPublicIPAddress(publicIPAddress) as LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.FromExistingPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFrontend.Definition.IWithFrontend<LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.FromExistingPublicIPAddress(string resourceId)
         {
-            return this.FromExistingPublicIPAddress(resourceId) as LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.FromExistingPublicIPAddress(resourceId);
         }
 
         /// <summary>
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFrontend.Definition.IWithFrontend<LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.FromNewPublicIPAddress(string leafDnsLabel)
         {
-            return this.FromNewPublicIPAddress(leafDnsLabel) as LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.FromNewPublicIPAddress(leafDnsLabel);
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFrontend.Definition.IWithFrontend<LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.FromNewPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> pipDefinition)
         {
-            return this.FromNewPublicIPAddress(pipDefinition) as LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.FromNewPublicIPAddress(pipDefinition);
         }
 
         /// <summary>
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> HasFrontend.Definition.IWithFrontend<LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>>.FromNewPublicIPAddress()
         {
-            return this.FromNewPublicIPAddress() as LoadBalancingRule.Definition.IWithFrontendPort<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.FromNewPublicIPAddress();
         }
 
         /// <summary>
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>>.FromExistingSubnet(string networkResourceId, string subnetName)
         {
-            return this.FromExistingSubnet(networkResourceId, subnetName) as LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>;
+            return this.FromExistingSubnet(networkResourceId, subnetName);
         }
 
         /// <summary>
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>>.FromExistingSubnet(INetwork network, string subnetName)
         {
-            return this.FromExistingSubnet(network, subnetName) as LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>;
+            return this.FromExistingSubnet(network, subnetName);
         }
 
         /// <summary>
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>>.FromExistingSubnet(ISubnet subnet)
         {
-            return this.FromExistingSubnet(subnet) as LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>;
+            return this.FromExistingSubnet(subnet);
         }
 
         /// <summary>
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>>.FromFrontend(string frontendName)
         {
-            return this.FromFrontend(frontendName) as LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>;
+            return this.FromFrontend(frontendName);
         }
 
         /// <summary>
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>>.FromExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.FromExistingPublicIPAddress(publicIPAddress) as LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>;
+            return this.FromExistingPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate> HasFrontend.UpdateDefinition.IWithFrontend<LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>>.FromExistingPublicIPAddress(string resourceId)
         {
-            return this.FromExistingPublicIPAddress(resourceId) as LoadBalancingRule.UpdateDefinition.IWithFrontendPort<LoadBalancer.Update.IUpdate>;
+            return this.FromExistingPublicIPAddress(resourceId);
         }
 
         /// <summary>
@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancingRule.Update.IUpdate LoadBalancingRule.Update.IWithProbe.WithProbe(string name)
         {
-            return this.WithProbe(name) as LoadBalancingRule.Update.IUpdate;
+            return this.WithProbe(name);
         }
 
         /// <summary>
@@ -664,7 +664,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancingRule.Update.IUpdate LoadBalancingRule.Update.IWithProbe.WithoutProbe()
         {
-            return this.WithoutProbe() as LoadBalancingRule.Update.IUpdate;
+            return this.WithoutProbe();
         }
 
         /// <summary>
@@ -696,7 +696,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancingRule.Update.IUpdate LoadBalancingRule.Update.IWithIdleTimeoutInMinutes.WithIdleTimeoutInMinutes(int minutes)
         {
-            return this.WithIdleTimeoutInMinutes(minutes) as LoadBalancingRule.Update.IUpdate;
+            return this.WithIdleTimeoutInMinutes(minutes);
         }
 
         /// <summary>
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Protocol() as Models.TransportProtocol;
+                return this.Protocol();
             }
         }
     }

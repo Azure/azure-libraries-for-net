@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Capacity() as Models.ResourceSkuCapacity;
+                return this.Capacity();
             }
         }
 
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Costs() as System.Collections.Generic.IReadOnlyList<Models.ResourceSkuCosts>;
+                return this.Costs();
             }
         }
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Name() as Microsoft.Azure.Management.Compute.Fluent.ComputeSkuName;
+                return this.Name();
             }
         }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Capabilities() as System.Collections.Generic.IReadOnlyList<Models.ResourceSkuCapabilities>;
+                return this.Capabilities();
             }
         }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.ResourceType() as Microsoft.Azure.Management.Compute.Fluent.ComputeResourceType;
+                return this.ResourceType();
             }
         }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Restrictions() as System.Collections.Generic.IReadOnlyList<Models.ResourceSkuRestrictions>;
+                return this.Restrictions();
             }
         }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Zones() as System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region, System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>>;
+                return this.Zones();
             }
         }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.DiskSkuType() as Models.DiskSkuTypes;
+                return this.DiskSkuType();
             }
         }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.AvailabilitySetSkuType() as Models.AvailabilitySetSkuTypes;
+                return this.AvailabilitySetSkuType();
             }
         }
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Regions() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region>;
+                return this.Regions();
             }
         }
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.VirtualMachineSizeType() as Models.VirtualMachineSizeTypes;
+                return this.VirtualMachineSizeType();
             }
         }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Tier() as Microsoft.Azure.Management.Compute.Fluent.ComputeSkuTier;
+                return this.Tier();
             }
         }
 
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.ApiVersions() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.ApiVersions();
             }
         }
     }

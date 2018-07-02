@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The first stage of the new resource definition.</return>
         AppServiceCertificateOrder.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<AppServiceCertificateOrder.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as AppServiceCertificateOrder.Definition.IBlank;
+            return this.Define(name);
         }
     }
 }

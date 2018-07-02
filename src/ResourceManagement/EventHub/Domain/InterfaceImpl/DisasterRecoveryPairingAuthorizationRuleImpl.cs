@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>An observable that emits a single entity containing access keys (primary and secondary).</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationKey> Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule.GetKeysAsync(CancellationToken cancellationToken)
         {
-            return await this.GetKeysAsync(cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationKey;
+            return await this.GetKeysAsync(cancellationToken);
         }
 
         /// <summary>
@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             get
             {
-                return this.Rights() as System.Collections.Generic.IReadOnlyList<Management.EventHub.Fluent.Models.AccessRights>;
+                return this.Rights();
             }
         }
 
         /// <return>Entity containing access keys (primary and secondary).</return>
         Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationKey Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule.GetKeys()
         {
-            return this.GetKeys() as Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationKey;
+            return this.GetKeys();
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             get
             {
-                return this.Manager() as Management.EventHub.Fluent.EventHubManager;
+                return this.Manager();
             }
         }
     }

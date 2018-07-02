@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.IApplicationGateway;
+                return this.Parent();
             }
         }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.HttpConfigurationHealths() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationHealth>;
+                return this.HttpConfigurationHealths();
             }
         }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Backend() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackend;
+                return this.Backend();
             }
         }
     }

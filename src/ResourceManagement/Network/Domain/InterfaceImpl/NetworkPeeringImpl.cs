@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The remote network if it is in the same subscription, otherwise null.</return>
         Microsoft.Azure.Management.Network.Fluent.INetwork Microsoft.Azure.Management.Network.Fluent.INetworkPeering.GetRemoteNetwork()
         {
-            return this.GetRemoteNetwork() as Microsoft.Azure.Management.Network.Fluent.INetwork;
+            return this.GetRemoteNetwork();
         }
 
         /// <summary>
@@ -57,13 +57,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.INetwork> Microsoft.Azure.Management.Network.Fluent.INetworkPeering.GetRemoteNetworkAsync(CancellationToken cancellationToken)
         {
-            return await this.GetRemoteNetworkAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.INetwork;
+            return await this.GetRemoteNetworkAsync(cancellationToken);
         }
 
         /// <return>The associated matching peering on the remote network if it is in the same subscription, otherwise this future computation will evaluate to null.</return>
         Microsoft.Azure.Management.Network.Fluent.INetworkPeering Microsoft.Azure.Management.Network.Fluent.INetworkPeering.GetRemotePeering()
         {
-            return this.GetRemotePeering() as Microsoft.Azure.Management.Network.Fluent.INetworkPeering;
+            return this.GetRemotePeering();
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.INetworkPeering> Microsoft.Azure.Management.Network.Fluent.INetworkPeering.GetRemotePeeringAsync(CancellationToken cancellationToken)
         {
-            return await this.GetRemotePeeringAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.INetworkPeering;
+            return await this.GetRemotePeeringAsync(cancellationToken);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.State() as Models.VirtualNetworkPeeringState;
+                return this.State();
             }
         }
 
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithAccess.WithoutAccessFromEitherNetwork()
         {
-            return this.WithoutAccessFromEitherNetwork() as NetworkPeering.Update.IUpdate;
+            return this.WithoutAccessFromEitherNetwork();
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithAccess.WithAccessBetweenBothNetworks()
         {
-            return this.WithAccessBetweenBothNetworks() as NetworkPeering.Update.IUpdate;
+            return this.WithAccessBetweenBothNetworks();
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkPeering.Definition.IWithCreate NetworkPeering.Definition.IWithAccess.WithoutAccessFromEitherNetwork()
         {
-            return this.WithoutAccessFromEitherNetwork() as NetworkPeering.Definition.IWithCreate;
+            return this.WithoutAccessFromEitherNetwork();
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithGatewayUse.WithoutAnyGatewayUse()
         {
-            return this.WithoutAnyGatewayUse() as NetworkPeering.Update.IUpdate;
+            return this.WithoutAnyGatewayUse();
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithGatewayUse.WithGatewayUseOnRemoteNetworkStarted()
         {
-            return this.WithGatewayUseOnRemoteNetworkStarted() as NetworkPeering.Update.IUpdate;
+            return this.WithGatewayUseOnRemoteNetworkStarted();
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithGatewayUse.WithGatewayUseByRemoteNetworkStarted()
         {
-            return this.WithGatewayUseByRemoteNetworkStarted() as NetworkPeering.Update.IUpdate;
+            return this.WithGatewayUseByRemoteNetworkStarted();
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithGatewayUse.WithoutGatewayUseOnRemoteNetwork()
         {
-            return this.WithoutGatewayUseOnRemoteNetwork() as NetworkPeering.Update.IUpdate;
+            return this.WithoutGatewayUseOnRemoteNetwork();
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithGatewayUse.WithGatewayUseByRemoteNetworkAllowed()
         {
-            return this.WithGatewayUseByRemoteNetworkAllowed() as NetworkPeering.Update.IUpdate;
+            return this.WithGatewayUseByRemoteNetworkAllowed();
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithGatewayUse.WithoutGatewayUseByRemoteNetwork()
         {
-            return this.WithoutGatewayUseByRemoteNetwork() as NetworkPeering.Update.IUpdate;
+            return this.WithoutGatewayUseByRemoteNetwork();
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkPeering.Definition.IWithCreate NetworkPeering.Definition.IWithGatewayUse.WithoutAnyGatewayUse()
         {
-            return this.WithoutAnyGatewayUse() as NetworkPeering.Definition.IWithCreate;
+            return this.WithoutAnyGatewayUse();
         }
 
         /// <summary>
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkPeering.Definition.IWithCreate NetworkPeering.Definition.IWithGatewayUse.WithGatewayUseOnRemoteNetworkStarted()
         {
-            return this.WithGatewayUseOnRemoteNetworkStarted() as NetworkPeering.Definition.IWithCreate;
+            return this.WithGatewayUseOnRemoteNetworkStarted();
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkPeering.Definition.IWithCreate NetworkPeering.Definition.IWithGatewayUse.WithGatewayUseByRemoteNetworkStarted()
         {
-            return this.WithGatewayUseByRemoteNetworkStarted() as NetworkPeering.Definition.IWithCreate;
+            return this.WithGatewayUseByRemoteNetworkStarted();
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkPeering.Definition.IWithCreate NetworkPeering.Definition.IWithGatewayUse.WithGatewayUseByRemoteNetworkAllowed()
         {
-            return this.WithGatewayUseByRemoteNetworkAllowed() as NetworkPeering.Definition.IWithCreate;
+            return this.WithGatewayUseByRemoteNetworkAllowed();
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithTrafficForwarding.WithoutTrafficForwardingFromRemoteNetwork()
         {
-            return this.WithoutTrafficForwardingFromRemoteNetwork() as NetworkPeering.Update.IUpdate;
+            return this.WithoutTrafficForwardingFromRemoteNetwork();
         }
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithTrafficForwarding.WithoutTrafficForwardingToRemoteNetwork()
         {
-            return this.WithoutTrafficForwardingToRemoteNetwork() as NetworkPeering.Update.IUpdate;
+            return this.WithoutTrafficForwardingToRemoteNetwork();
         }
 
         /// <summary>
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithTrafficForwarding.WithTrafficForwardingToRemoteNetwork()
         {
-            return this.WithTrafficForwardingToRemoteNetwork() as NetworkPeering.Update.IUpdate;
+            return this.WithTrafficForwardingToRemoteNetwork();
         }
 
         /// <summary>
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithTrafficForwarding.WithoutTrafficForwardingFromEitherNetwork()
         {
-            return this.WithoutTrafficForwardingFromEitherNetwork() as NetworkPeering.Update.IUpdate;
+            return this.WithoutTrafficForwardingFromEitherNetwork();
         }
 
         /// <summary>
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithTrafficForwarding.WithTrafficForwardingBetweenBothNetworks()
         {
-            return this.WithTrafficForwardingBetweenBothNetworks() as NetworkPeering.Update.IUpdate;
+            return this.WithTrafficForwardingBetweenBothNetworks();
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkPeering.Update.IUpdate NetworkPeering.Update.IWithTrafficForwarding.WithTrafficForwardingFromRemoteNetwork()
         {
-            return this.WithTrafficForwardingFromRemoteNetwork() as NetworkPeering.Update.IUpdate;
+            return this.WithTrafficForwardingFromRemoteNetwork();
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         NetworkPeering.Definition.IWithCreate NetworkPeering.Definition.IWithTrafficForwarding.WithTrafficForwardingToRemoteNetwork()
         {
-            return this.WithTrafficForwardingToRemoteNetwork() as NetworkPeering.Definition.IWithCreate;
+            return this.WithTrafficForwardingToRemoteNetwork();
         }
 
         /// <summary>
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkPeering.Definition.IWithCreate NetworkPeering.Definition.IWithTrafficForwarding.WithTrafficForwardingBetweenBothNetworks()
         {
-            return this.WithTrafficForwardingBetweenBothNetworks() as NetworkPeering.Definition.IWithCreate;
+            return this.WithTrafficForwardingBetweenBothNetworks();
         }
 
         /// <summary>
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkPeering.Definition.IWithCreate NetworkPeering.Definition.IWithTrafficForwarding.WithTrafficForwardingFromRemoteNetwork()
         {
-            return this.WithTrafficForwardingFromRemoteNetwork() as NetworkPeering.Definition.IWithCreate;
+            return this.WithTrafficForwardingFromRemoteNetwork();
         }
 
         /// <summary>
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkPeering.Definition.IWithCreate NetworkPeering.Definition.IWithRemoteNetwork.WithRemoteNetwork(string resourceId)
         {
-            return this.WithRemoteNetwork(resourceId) as NetworkPeering.Definition.IWithCreate;
+            return this.WithRemoteNetwork(resourceId);
         }
 
         /// <summary>
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkPeering.Definition.IWithCreate NetworkPeering.Definition.IWithRemoteNetwork.WithRemoteNetwork(INetwork network)
         {
-            return this.WithRemoteNetwork(network) as NetworkPeering.Definition.IWithCreate;
+            return this.WithRemoteNetwork(network);
         }
     }
 }

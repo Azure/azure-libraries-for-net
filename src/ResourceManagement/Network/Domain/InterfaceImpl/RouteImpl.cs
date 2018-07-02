@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         RouteTable.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<RouteTable.Update.IUpdate>.Attach()
         {
-            return this.Attach() as RouteTable.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.NextHopType() as Models.RouteNextHopType;
+                return this.NextHopType();
             }
         }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         Route.Update.IUpdate Route.Update.IWithDestinationAddressPrefix.WithDestinationAddressPrefix(string cidr)
         {
-            return this.WithDestinationAddressPrefix(cidr) as Route.Update.IUpdate;
+            return this.WithDestinationAddressPrefix(cidr);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Route.Definition.IWithNextHopType<RouteTable.Definition.IWithCreate> Route.Definition.IWithDestinationAddressPrefix<RouteTable.Definition.IWithCreate>.WithDestinationAddressPrefix(string cidr)
         {
-            return this.WithDestinationAddressPrefix(cidr) as Route.Definition.IWithNextHopType<RouteTable.Definition.IWithCreate>;
+            return this.WithDestinationAddressPrefix(cidr);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Route.UpdateDefinition.IWithNextHopType<RouteTable.Update.IUpdate> Route.UpdateDefinition.IWithDestinationAddressPrefix<RouteTable.Update.IUpdate>.WithDestinationAddressPrefix(string cidr)
         {
-            return this.WithDestinationAddressPrefix(cidr) as Route.UpdateDefinition.IWithNextHopType<RouteTable.Update.IUpdate>;
+            return this.WithDestinationAddressPrefix(cidr);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Route.Definition.IWithAttach<RouteTable.Definition.IWithCreate> Route.Definition.IWithNextHopType<RouteTable.Definition.IWithCreate>.WithNextHop(RouteNextHopType nextHopType)
         {
-            return this.WithNextHop(nextHopType) as Route.Definition.IWithAttach<RouteTable.Definition.IWithCreate>;
+            return this.WithNextHop(nextHopType);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Route.Definition.IWithAttach<RouteTable.Definition.IWithCreate> Route.Definition.IWithNextHopType<RouteTable.Definition.IWithCreate>.WithNextHopToVirtualAppliance(string ipAddress)
         {
-            return this.WithNextHopToVirtualAppliance(ipAddress) as Route.Definition.IWithAttach<RouteTable.Definition.IWithCreate>;
+            return this.WithNextHopToVirtualAppliance(ipAddress);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Route.UpdateDefinition.IWithAttach<RouteTable.Update.IUpdate> Route.UpdateDefinition.IWithNextHopType<RouteTable.Update.IUpdate>.WithNextHop(RouteNextHopType nextHopType)
         {
-            return this.WithNextHop(nextHopType) as Route.UpdateDefinition.IWithAttach<RouteTable.Update.IUpdate>;
+            return this.WithNextHop(nextHopType);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Route.UpdateDefinition.IWithAttach<RouteTable.Update.IUpdate> Route.UpdateDefinition.IWithNextHopType<RouteTable.Update.IUpdate>.WithNextHopToVirtualAppliance(string ipAddress)
         {
-            return this.WithNextHopToVirtualAppliance(ipAddress) as Route.UpdateDefinition.IWithAttach<RouteTable.Update.IUpdate>;
+            return this.WithNextHopToVirtualAppliance(ipAddress);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         Route.Update.IUpdate Route.Update.IWithNextHopType.WithNextHop(RouteNextHopType nextHopType)
         {
-            return this.WithNextHop(nextHopType) as Route.Update.IUpdate;
+            return this.WithNextHop(nextHopType);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         Route.Update.IUpdate Route.Update.IWithNextHopType.WithNextHopToVirtualAppliance(string ipAddress)
         {
-            return this.WithNextHopToVirtualAppliance(ipAddress) as Route.Update.IUpdate;
+            return this.WithNextHopToVirtualAppliance(ipAddress);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         RouteTable.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<RouteTable.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as RouteTable.Definition.IWithCreate;
+            return this.Attach();
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Statuses() as System.Collections.Generic.IReadOnlyList<Models.InstanceViewStatus>;
+                return this.Statuses();
             }
         }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Sku() as Models.AvailabilitySetSkuTypes;
+                return this.Sku();
             }
         }
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.VirtualMachineIds() as System.Collections.Generic.ISet<string>;
+                return this.VirtualMachineIds();
             }
         }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The virtual machine sizes supported in the availability set.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize> Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet.ListVirtualMachineSizes()
         {
-            return this.ListVirtualMachineSizes() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>;
+            return this.ListVirtualMachineSizes();
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         AvailabilitySet.Definition.IWithCreate AvailabilitySet.Definition.IWithFaultDomainCount.WithFaultDomainCount(int faultDomainCount)
         {
-            return this.WithFaultDomainCount(faultDomainCount) as AvailabilitySet.Definition.IWithCreate;
+            return this.WithFaultDomainCount(faultDomainCount);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         AvailabilitySet.Definition.IWithCreate AvailabilitySet.Definition.IWithUpdateDomainCount.WithUpdateDomainCount(int updateDomainCount)
         {
-            return this.WithUpdateDomainCount(updateDomainCount) as AvailabilitySet.Definition.IWithCreate;
+            return this.WithUpdateDomainCount(updateDomainCount);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         AvailabilitySet.Update.IUpdate AvailabilitySet.Update.IWithSku.WithSku(AvailabilitySetSkuTypes skuType)
         {
-            return this.WithSku(skuType) as AvailabilitySet.Update.IUpdate;
+            return this.WithSku(skuType);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         AvailabilitySet.Definition.IWithCreate AvailabilitySet.Definition.IWithSku.WithSku(AvailabilitySetSkuTypes skuType)
         {
-            return this.WithSku(skuType) as AvailabilitySet.Definition.IWithCreate;
+            return this.WithSku(skuType);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         Network.Update.IUpdate Network.Update.IWithAddressSpace.WithAddressSpace(string cidr)
         {
-            return this.WithAddressSpace(cidr) as Network.Update.IUpdate;
+            return this.WithAddressSpace(cidr);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         Network.Update.IUpdate Network.Update.IWithAddressSpaceBeta.WithoutAddressSpace(string cidr)
         {
-            return this.WithoutAddressSpace(cidr) as Network.Update.IUpdate;
+            return this.WithoutAddressSpace(cidr);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.INetwork> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.INetwork>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.INetwork;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the subnet update description.</return>
         Subnet.Update.IUpdate Network.Update.IWithSubnet.UpdateSubnet(string name)
         {
-            return this.UpdateSubnet(name) as Subnet.Update.IUpdate;
+            return this.UpdateSubnet(name);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new subnet definition.</return>
         Subnet.UpdateDefinition.IBlank<Network.Update.IUpdate> Network.Update.IWithSubnet.DefineSubnet(string name)
         {
-            return this.DefineSubnet(name) as Subnet.UpdateDefinition.IBlank<Network.Update.IUpdate>;
+            return this.DefineSubnet(name);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the virtual network update.</return>
         Network.Update.IUpdate Network.Update.IWithSubnet.WithSubnet(string name, string cidr)
         {
-            return this.WithSubnet(name, cidr) as Network.Update.IUpdate;
+            return this.WithSubnet(name, cidr);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the virtual network update.</return>
         Network.Update.IUpdate Network.Update.IWithSubnet.WithSubnets(IDictionary<string, string> nameCidrPairs)
         {
-            return this.WithSubnets(nameCidrPairs) as Network.Update.IUpdate;
+            return this.WithSubnets(nameCidrPairs);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the virtual network update.</return>
         Network.Update.IUpdate Network.Update.IWithSubnet.WithoutSubnet(string name)
         {
-            return this.WithoutSubnet(name) as Network.Update.IUpdate;
+            return this.WithoutSubnet(name);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new subnet definition.</return>
         Subnet.Definition.IBlank<Network.Definition.IWithCreateAndSubnet> Network.Definition.IWithSubnet.DefineSubnet(string name)
         {
-            return this.DefineSubnet(name) as Subnet.Definition.IBlank<Network.Definition.IWithCreateAndSubnet>;
+            return this.DefineSubnet(name);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Network.Definition.IWithCreateAndSubnet Network.Definition.IWithSubnet.WithSubnet(string name, string cidr)
         {
-            return this.WithSubnet(name, cidr) as Network.Definition.IWithCreateAndSubnet;
+            return this.WithSubnet(name, cidr);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Network.Definition.IWithCreateAndSubnet Network.Definition.IWithSubnet.WithSubnets(IDictionary<string, string> nameCidrPairs)
         {
-            return this.WithSubnets(nameCidrPairs) as Network.Definition.IWithCreateAndSubnet;
+            return this.WithSubnets(nameCidrPairs);
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the virtual network update.</return>
         Network.Update.IUpdate Network.Update.IWithDnsServer.WithDnsServer(string ipAddress)
         {
-            return this.WithDnsServer(ipAddress) as Network.Update.IUpdate;
+            return this.WithDnsServer(ipAddress);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.DnsServerIPs() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.DnsServerIPs();
             }
         }
 
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Peerings() as Microsoft.Azure.Management.Network.Fluent.INetworkPeerings;
+                return this.Peerings();
             }
         }
 
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Subnets() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ISubnet>;
+                return this.Subnets();
             }
         }
 
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.AddressSpaces() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.AddressSpaces();
             }
         }
 
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Network.Definition.IWithCreateAndSubnet Network.Definition.IWithCreate.WithAddressSpace(string cidr)
         {
-            return this.WithAddressSpace(cidr) as Network.Definition.IWithCreateAndSubnet;
+            return this.WithAddressSpace(cidr);
         }
 
         /// <summary>
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Network.Definition.IWithCreate Network.Definition.IWithCreate.WithDnsServer(string ipAddress)
         {
-            return this.WithDnsServer(ipAddress) as Network.Definition.IWithCreate;
+            return this.WithDnsServer(ipAddress);
         }
 
         /// <summary>

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the disaster recovery pairing definition.</return>
         EventHubDisasterRecoveryPairing.Definition.IWithCreate EventHubDisasterRecoveryPairing.Definition.IWithSecondaryNamespace.WithExistingSecondaryNamespaceId(string namespaceId)
         {
-            return this.WithExistingSecondaryNamespaceId(namespaceId) as EventHubDisasterRecoveryPairing.Definition.IWithCreate;
+            return this.WithExistingSecondaryNamespaceId(namespaceId);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHubDisasterRecoveryPairing.Definition.IWithCreate EventHubDisasterRecoveryPairing.Definition.IWithSecondaryNamespace.WithNewSecondaryNamespace(ICreatable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespace> namespaceCreatable)
         {
-            return this.WithNewSecondaryNamespace(namespaceCreatable) as EventHubDisasterRecoveryPairing.Definition.IWithCreate;
+            return this.WithNewSecondaryNamespace(namespaceCreatable);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the disaster recovery pairing definition.</return>
         EventHubDisasterRecoveryPairing.Definition.IWithCreate EventHubDisasterRecoveryPairing.Definition.IWithSecondaryNamespace.WithExistingSecondaryNamespace(IEventHubNamespace ehNamespace)
         {
-            return this.WithExistingSecondaryNamespace(ehNamespace) as EventHubDisasterRecoveryPairing.Definition.IWithCreate;
+            return this.WithExistingSecondaryNamespace(ehNamespace);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the disaster recovery pairing update.</return>
         EventHubDisasterRecoveryPairing.Update.IUpdate EventHubDisasterRecoveryPairing.Update.IWithSecondaryNamespace.WithExistingSecondaryNamespaceId(string namespaceId)
         {
-            return this.WithExistingSecondaryNamespaceId(namespaceId) as EventHubDisasterRecoveryPairing.Update.IUpdate;
+            return this.WithExistingSecondaryNamespaceId(namespaceId);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the disaster recovery pairing update.</return>
         EventHubDisasterRecoveryPairing.Update.IUpdate EventHubDisasterRecoveryPairing.Update.IWithSecondaryNamespace.WithNewSecondaryNamespace(ICreatable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespace> namespaceCreatable)
         {
-            return this.WithNewSecondaryNamespace(namespaceCreatable) as EventHubDisasterRecoveryPairing.Update.IUpdate;
+            return this.WithNewSecondaryNamespace(namespaceCreatable);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the disaster recovery pairing update.</return>
         EventHubDisasterRecoveryPairing.Update.IUpdate EventHubDisasterRecoveryPairing.Update.IWithSecondaryNamespace.WithExistingSecondaryNamespace(IEventHubNamespace ehNamespace)
         {
-            return this.WithExistingSecondaryNamespace(ehNamespace) as EventHubDisasterRecoveryPairing.Update.IUpdate;
+            return this.WithExistingSecondaryNamespace(ehNamespace);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the disaster recovery pairing definition.</return>
         EventHubDisasterRecoveryPairing.Definition.IWithSecondaryNamespace EventHubDisasterRecoveryPairing.Definition.IWithPrimaryNamespace.WithExistingPrimaryNamespaceId(string namespaceId)
         {
-            return this.WithExistingPrimaryNamespaceId(namespaceId) as EventHubDisasterRecoveryPairing.Definition.IWithSecondaryNamespace;
+            return this.WithExistingPrimaryNamespaceId(namespaceId);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the disaster recovery pairing definition.</return>
         EventHubDisasterRecoveryPairing.Definition.IWithSecondaryNamespace EventHubDisasterRecoveryPairing.Definition.IWithPrimaryNamespace.WithNewPrimaryNamespace(ICreatable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespace> namespaceCreatable)
         {
-            return this.WithNewPrimaryNamespace(namespaceCreatable) as EventHubDisasterRecoveryPairing.Definition.IWithSecondaryNamespace;
+            return this.WithNewPrimaryNamespace(namespaceCreatable);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the disaster recovery pairing definition.</return>
         EventHubDisasterRecoveryPairing.Definition.IWithSecondaryNamespace EventHubDisasterRecoveryPairing.Definition.IWithPrimaryNamespace.WithExistingPrimaryNamespace(IEventHubNamespace ehNamespace)
         {
-            return this.WithExistingPrimaryNamespace(ehNamespace) as EventHubDisasterRecoveryPairing.Definition.IWithSecondaryNamespace;
+            return this.WithExistingPrimaryNamespace(ehNamespace);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the disaster recovery pairing definition.</return>
         EventHubDisasterRecoveryPairing.Definition.IWithSecondaryNamespace EventHubDisasterRecoveryPairing.Definition.IWithPrimaryNamespace.WithExistingPrimaryNamespace(string resourceGroupName, string namespaceName)
         {
-            return this.WithExistingPrimaryNamespace(resourceGroupName, namespaceName) as EventHubDisasterRecoveryPairing.Definition.IWithSecondaryNamespace;
+            return this.WithExistingPrimaryNamespace(resourceGroupName, namespaceName);
         }
 
         /// <summary>
@@ -203,13 +203,13 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The authorization rules for the event hub disaster recovery pairing.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing.ListAuthorizationRules()
         {
-            return this.ListAuthorizationRules() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule>;
+            return this.ListAuthorizationRules();
         }
 
         /// <return>The authorization rules for the event hub disaster recovery pairing.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule>> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing.ListAuthorizationRulesAsync(CancellationToken cancellationToken)
         {
-            return await this.ListAuthorizationRulesAsync(cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule>;
+            return await this.ListAuthorizationRulesAsync(cancellationToken);
         }
 
         /// <summary>

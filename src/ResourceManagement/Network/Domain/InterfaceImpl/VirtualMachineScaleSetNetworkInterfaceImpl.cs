@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.IPConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNicIPConfiguration>;
+                return this.IPConfigurations();
             }
         }
 
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PrimaryIPConfiguration() as Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNicIPConfiguration;
+                return this.PrimaryIPConfiguration();
             }
         }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The network security group associated with this network interface.</return>
         Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup Microsoft.Azure.Management.Network.Fluent.INetworkInterfaceBase.GetNetworkSecurityGroup()
         {
-            return this.GetNetworkSecurityGroup() as Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup;
+            return this.GetNetworkSecurityGroup();
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PrimaryPrivateIPAllocationMethod() as Models.IPAllocationMethod;
+                return this.PrimaryPrivateIPAllocationMethod();
             }
         }
 
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.AppliedDnsServers() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.AppliedDnsServers();
             }
         }
 
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.DnsServers() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.DnsServers();
             }
         }
 
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Manager() as Microsoft.Azure.Management.Network.Fluent.INetworkManager;
+                return this.Manager();
             }
         }
     }

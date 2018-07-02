@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The first stage of the new resource definition.</return>
         SearchService.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<SearchService.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as SearchService.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Search.Fluent.ISearchService> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Search.Fluent.ISearchService>.ListByResourceGroup(string resourceGroupName)
         {
-            return this.ListByResourceGroup(resourceGroupName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Search.Fluent.ISearchService>;
+            return this.ListByResourceGroup(resourceGroupName);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>A representation of the deferred computation of this call, returning whether the name is available or other info if not.</return>
         async Task<Microsoft.Azure.Management.Search.Fluent.ICheckNameAvailabilityResult> Microsoft.Azure.Management.Search.Fluent.ISearchServices.CheckNameAvailabilityAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.CheckNameAvailabilityAsync(name, cancellationToken) as Microsoft.Azure.Management.Search.Fluent.ICheckNameAvailabilityResult;
+            return await this.CheckNameAvailabilityAsync(name, cancellationToken);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task<IEnumerable<Microsoft.Azure.Management.Search.Fluent.IQueryKey>> Microsoft.Azure.Management.Search.Fluent.ISearchServices.ListQueryKeysAsync(string resourceGroupName, string searchServiceName, CancellationToken cancellationToken)
         {
-            return await this.ListQueryKeysAsync(resourceGroupName, searchServiceName, cancellationToken) as IEnumerable<Microsoft.Azure.Management.Search.Fluent.IQueryKey>;
+            return await this.ListQueryKeysAsync(resourceGroupName, searchServiceName, cancellationToken);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The AdminKeys object if successful.</return>
         Microsoft.Azure.Management.Search.Fluent.IAdminKeys Microsoft.Azure.Management.Search.Fluent.ISearchServices.GetAdminKeys(string resourceGroupName, string searchServiceName)
         {
-            return this.GetAdminKeys(resourceGroupName, searchServiceName) as Microsoft.Azure.Management.Search.Fluent.IAdminKeys;
+            return this.GetAdminKeys(resourceGroupName, searchServiceName);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>Whether the name is available and other info if not.</return>
         Microsoft.Azure.Management.Search.Fluent.ICheckNameAvailabilityResult Microsoft.Azure.Management.Search.Fluent.ISearchServices.CheckNameAvailability(string name)
         {
-            return this.CheckNameAvailability(name) as Microsoft.Azure.Management.Search.Fluent.ICheckNameAvailabilityResult;
+            return this.CheckNameAvailability(name);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The List&lt;QueryKey&gt; object if successful.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Search.Fluent.IQueryKey> Microsoft.Azure.Management.Search.Fluent.ISearchServices.ListQueryKeys(string resourceGroupName, string searchServiceName)
         {
-            return this.ListQueryKeys(resourceGroupName, searchServiceName) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Search.Fluent.IQueryKey>;
+            return this.ListQueryKeys(resourceGroupName, searchServiceName);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task<Microsoft.Azure.Management.Search.Fluent.IQueryKey> Microsoft.Azure.Management.Search.Fluent.ISearchServices.CreateQueryKeyAsync(string resourceGroupName, string searchServiceName, string name, CancellationToken cancellationToken)
         {
-            return await this.CreateQueryKeyAsync(resourceGroupName, searchServiceName, name, cancellationToken) as Microsoft.Azure.Management.Search.Fluent.IQueryKey;
+            return await this.CreateQueryKeyAsync(resourceGroupName, searchServiceName, name, cancellationToken);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task<Microsoft.Azure.Management.Search.Fluent.IAdminKeys> Microsoft.Azure.Management.Search.Fluent.ISearchServices.GetAdminKeysAsync(string resourceGroupName, string searchServiceName, CancellationToken cancellationToken)
         {
-            return await this.GetAdminKeysAsync(resourceGroupName, searchServiceName, cancellationToken) as Microsoft.Azure.Management.Search.Fluent.IAdminKeys;
+            return await this.GetAdminKeysAsync(resourceGroupName, searchServiceName, cancellationToken);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The observable to the AdminKeyResultInner object.</return>
         async Task<Microsoft.Azure.Management.Search.Fluent.IAdminKeys> Microsoft.Azure.Management.Search.Fluent.ISearchServices.RegenerateAdminKeysAsync(string resourceGroupName, string searchServiceName, AdminKeyKind keyKind, CancellationToken cancellationToken)
         {
-            return await this.RegenerateAdminKeysAsync(resourceGroupName, searchServiceName, keyKind, cancellationToken) as Microsoft.Azure.Management.Search.Fluent.IAdminKeys;
+            return await this.RegenerateAdminKeysAsync(resourceGroupName, searchServiceName, keyKind, cancellationToken);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The QueryKey object if successful.</return>
         Microsoft.Azure.Management.Search.Fluent.IQueryKey Microsoft.Azure.Management.Search.Fluent.ISearchServices.CreateQueryKey(string resourceGroupName, string searchServiceName, string name)
         {
-            return this.CreateQueryKey(resourceGroupName, searchServiceName, name) as Microsoft.Azure.Management.Search.Fluent.IQueryKey;
+            return this.CreateQueryKey(resourceGroupName, searchServiceName, name);
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The AdminKeys object if successful.</return>
         Microsoft.Azure.Management.Search.Fluent.IAdminKeys Microsoft.Azure.Management.Search.Fluent.ISearchServices.RegenerateAdminKeys(string resourceGroupName, string searchServiceName, AdminKeyKind keyKind)
         {
-            return this.RegenerateAdminKeys(resourceGroupName, searchServiceName, keyKind) as Microsoft.Azure.Management.Search.Fluent.IAdminKeys;
+            return this.RegenerateAdminKeys(resourceGroupName, searchServiceName, keyKind);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<ISearchService>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Search.Fluent.ISearchService>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<ISearchService>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Search.Fluent.ISearchService> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Search.Fluent.ISearchService>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Search.Fluent.ISearchService>;
+            return this.List();
         }
     }
 }

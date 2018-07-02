@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>Virtual machine extension image this version represents.</return>
         Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion.GetImage()
         {
-            return this.GetImage() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage;
+            return this.GetImage();
         }
 
         /// <return>Virtual machine extension image this version represents.</return>
         Task<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion.GetImageAsync(CancellationToken cancellationToken)
         {
-            return this.GetImageAsync(cancellationToken) as Task<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage>;
+            return this.GetImageAsync(cancellationToken);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Type() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageType;
+                return this.Type();
             }
         }
 

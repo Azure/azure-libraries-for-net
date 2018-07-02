@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new resource definition.</return>
         PacketCapture.Definition.IWithTarget Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<PacketCapture.Definition.IWithTarget>.Define(string name)
         {
-            return this.Define(name) as PacketCapture.Definition.IWithTarget;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IPacketCapture> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Network.Fluent.IPacketCapture>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IPacketCapture>;
+            return this.List();
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IPacketCapture>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Network.Fluent.IPacketCapture>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IPacketCapture>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Network.Fluent.IPacketCapture Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.Network.Fluent.IPacketCapture>.GetByName(string name)
         {
-            return this.GetByName(name) as Microsoft.Azure.Management.Network.Fluent.IPacketCapture;
+            return this.GetByName(name);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.IPacketCapture> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByNameAsync<Microsoft.Azure.Management.Network.Fluent.IPacketCapture>.GetByNameAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.GetByNameAsync(name, cancellationToken) as Microsoft.Azure.Management.Network.Fluent.IPacketCapture;
+            return await this.GetByNameAsync(name, cancellationToken);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The stage of the parent CDN profile update to return to after attaching this definition.</return>
         CdnProfile.Update.IUpdate CdnEndpoint.UpdateDefinition.IAttachablePremium<CdnProfile.Update.IUpdate>.Attach()
         {
-            return this.Attach() as CdnProfile.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The stage of the parent CDN profile definition to return to after attaching this definition.</return>
         CdnProfile.Definition.IWithPremiumVerizonCreate CdnEndpoint.Definition.IAttachablePremium<CdnProfile.Definition.IWithPremiumVerizonCreate>.Attach()
         {
-            return this.Attach() as CdnProfile.Definition.IWithPremiumVerizonCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Update.IUpdate>.WithPremiumOrigin(string originName, string originHostName)
         {
-            return this.WithPremiumOrigin(originName, originHostName) as CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>;
+            return this.WithPremiumOrigin(originName, originHostName);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Update.IUpdate>.WithPremiumOrigin(string originHostName)
         {
-            return this.WithPremiumOrigin(originHostName) as CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>;
+            return this.WithPremiumOrigin(originHostName);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnEndpoint.Definition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Definition.IWithPremiumVerizonCreate>.WithPremiumOrigin(string originName, string originHostName)
         {
-            return this.WithPremiumOrigin(originName, originHostName) as CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.WithPremiumOrigin(originName, originHostName);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnEndpoint.Definition.Blank.PremiumEndpoint.IPremiumEndpoint<CdnProfile.Definition.IWithPremiumVerizonCreate>.WithPremiumOrigin(string originHostName)
         {
-            return this.WithPremiumOrigin(originHostName) as CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.WithPremiumOrigin(originHostName);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>List of quotas and usages of geo filters and custom domains under the current endpoint.</return>
         System.Collections.Generic.IEnumerable<Models.ResourceUsage> Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.ListResourceUsage()
         {
-            return this.ListResourceUsage() as System.Collections.Generic.IEnumerable<Models.ResourceUsage>;
+            return this.ListResourceUsage();
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         {
             get
             {
-                return this.GeoFilters() as System.Collections.Generic.IReadOnlyList<Models.GeoFilter>;
+                return this.GeoFilters();
             }
         }
 
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>An observable of the result.</return>
         async Task<Microsoft.Azure.Management.Cdn.Fluent.CustomDomainValidationResult> Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.ValidateCustomDomainAsync(string hostName, CancellationToken cancellationToken)
         {
-            return await this.ValidateCustomDomainAsync(hostName, cancellationToken) as Microsoft.Azure.Management.Cdn.Fluent.CustomDomainValidationResult;
+            return await this.ValidateCustomDomainAsync(hostName, cancellationToken);
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         {
             get
             {
-                return this.ContentTypesToCompress() as System.Collections.Generic.ISet<string>;
+                return this.ContentTypesToCompress();
             }
         }
 
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         {
             get
             {
-                return this.CustomDomains() as System.Collections.Generic.ISet<string>;
+                return this.CustomDomains();
             }
         }
 
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The result of the action, if successful.</return>
         Microsoft.Azure.Management.Cdn.Fluent.CustomDomainValidationResult Microsoft.Azure.Management.Cdn.Fluent.ICdnEndpoint.ValidateCustomDomain(string hostName)
         {
-            return this.ValidateCustomDomain(hostName) as Microsoft.Azure.Management.Cdn.Fluent.CustomDomainValidationResult;
+            return this.ValidateCustomDomain(hostName);
         }
 
         /// <summary>
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithQueryStringCachingBehavior(QueryStringCachingBehavior cachingBehavior)
         {
-            return this.WithQueryStringCachingBehavior(cachingBehavior) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithQueryStringCachingBehavior(cachingBehavior);
         }
 
         /// <summary>
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithHttpPort(int httpPort)
         {
-            return this.WithHttpPort(httpPort) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithHttpPort(httpPort);
         }
 
         /// <summary>
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithGeoFilters(IList<Models.GeoFilter> geoFilters)
         {
-            return this.WithGeoFilters(geoFilters) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithGeoFilters(geoFilters);
         }
 
         /// <summary>
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithHttpsPort(int httpsPort)
         {
-            return this.WithHttpsPort(httpsPort) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithHttpsPort(httpsPort);
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithContentTypeToCompress(string contentTypeToCompress)
         {
-            return this.WithContentTypeToCompress(contentTypeToCompress) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithContentTypeToCompress(contentTypeToCompress);
         }
 
         /// <summary>
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithCustomDomain(string hostName)
         {
-            return this.WithCustomDomain(hostName) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithCustomDomain(hostName);
         }
 
         /// <summary>
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithContentTypesToCompress(ISet<string> contentTypesToCompress)
         {
-            return this.WithContentTypesToCompress(contentTypesToCompress) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithContentTypesToCompress(contentTypesToCompress);
         }
 
         /// <summary>
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithHostHeader(string hostHeader)
         {
-            return this.WithHostHeader(hostHeader) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithHostHeader(hostHeader);
         }
 
         /// <summary>
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithHttpsAllowed(bool httpsAllowed)
         {
-            return this.WithHttpsAllowed(httpsAllowed) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithHttpsAllowed(httpsAllowed);
         }
 
         /// <summary>
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithOriginPath(string originPath)
         {
-            return this.WithOriginPath(originPath) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithOriginPath(originPath);
         }
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithHttpAllowed(bool httpAllowed)
         {
-            return this.WithHttpAllowed(httpAllowed) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithHttpAllowed(httpAllowed);
         }
 
         /// <summary>
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithCompressionEnabled(bool compressionEnabled)
         {
-            return this.WithCompressionEnabled(compressionEnabled) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithCompressionEnabled(compressionEnabled);
         }
 
         /// <summary>
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithGeoFilter(string relativePath, GeoFilterActions action, CountryISOCode countryCode)
         {
-            return this.WithGeoFilter(relativePath, action, countryCode) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithGeoFilter(relativePath, action, countryCode);
         }
 
         /// <summary>
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>.WithGeoFilter(string relativePath, GeoFilterActions action, IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.CountryISOCode> countryCodes)
         {
-            return this.WithGeoFilter(relativePath, action, countryCodes) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithGeoFilter(relativePath, action, countryCodes);
         }
 
         /// <summary>
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The stage of the parent CDN profile update to return to after attaching this definition.</return>
         CdnProfile.Update.IUpdate CdnEndpoint.UpdateDefinition.IAttachableStandard<CdnProfile.Update.IUpdate>.Attach()
         {
-            return this.Attach() as CdnProfile.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The stage of the parent CDN profile definition to return to after attaching this definition.</return>
         CdnProfile.Definition.IWithStandardCreate CdnEndpoint.Definition.IAttachableStandard<CdnProfile.Definition.IWithStandardCreate>.Attach()
         {
-            return this.Attach() as CdnProfile.Definition.IWithStandardCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Update.IUpdate>.WithOrigin(string originName, string originHostName)
         {
-            return this.WithOrigin(originName, originHostName) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithOrigin(originName, originHostName);
         }
 
         /// <summary>
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Update.IUpdate>.WithOrigin(string originHostName)
         {
-            return this.WithOrigin(originHostName) as CdnEndpoint.UpdateDefinition.IWithStandardAttach<CdnProfile.Update.IUpdate>;
+            return this.WithOrigin(originHostName);
         }
 
         /// <summary>
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithoutContentTypeToCompress(string contentTypeToCompress)
         {
-            return this.WithoutContentTypeToCompress(contentTypeToCompress) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithoutContentTypeToCompress(contentTypeToCompress);
         }
 
         /// <summary>
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithQueryStringCachingBehavior(QueryStringCachingBehavior cachingBehavior)
         {
-            return this.WithQueryStringCachingBehavior(cachingBehavior) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithQueryStringCachingBehavior(cachingBehavior);
         }
 
         /// <summary>
@@ -578,7 +578,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithHttpPort(int httpPort)
         {
-            return this.WithHttpPort(httpPort) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithHttpPort(httpPort);
         }
 
         /// <summary>
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithGeoFilters(IList<Models.GeoFilter> geoFilters)
         {
-            return this.WithGeoFilters(geoFilters) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithGeoFilters(geoFilters);
         }
 
         /// <summary>
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithHttpsPort(int httpsPort)
         {
-            return this.WithHttpsPort(httpsPort) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithHttpsPort(httpsPort);
         }
 
         /// <summary>
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithContentTypeToCompress(string contentTypeToCompress)
         {
-            return this.WithContentTypeToCompress(contentTypeToCompress) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithContentTypeToCompress(contentTypeToCompress);
         }
 
         /// <summary>
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithCustomDomain(string hostName)
         {
-            return this.WithCustomDomain(hostName) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithCustomDomain(hostName);
         }
 
         /// <summary>
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithoutContentTypesToCompress()
         {
-            return this.WithoutContentTypesToCompress() as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithoutContentTypesToCompress();
         }
 
         /// <summary>
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithContentTypesToCompress(ISet<string> contentTypesToCompress)
         {
-            return this.WithContentTypesToCompress(contentTypesToCompress) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithContentTypesToCompress(contentTypesToCompress);
         }
 
         /// <summary>
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithHostHeader(string hostHeader)
         {
-            return this.WithHostHeader(hostHeader) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithHostHeader(hostHeader);
         }
 
         /// <summary>
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithHttpsAllowed(bool httpsAllowed)
         {
-            return this.WithHttpsAllowed(httpsAllowed) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithHttpsAllowed(httpsAllowed);
         }
 
         /// <summary>
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithOriginPath(string originPath)
         {
-            return this.WithOriginPath(originPath) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithOriginPath(originPath);
         }
 
         /// <summary>
@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithHttpAllowed(bool httpAllowed)
         {
-            return this.WithHttpAllowed(httpAllowed) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithHttpAllowed(httpAllowed);
         }
 
         /// <summary>
@@ -687,7 +687,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithoutGeoFilter(string relativePath)
         {
-            return this.WithoutGeoFilter(relativePath) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithoutGeoFilter(relativePath);
         }
 
         /// <summary>
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithCompressionEnabled(bool compressionEnabled)
         {
-            return this.WithCompressionEnabled(compressionEnabled) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithCompressionEnabled(compressionEnabled);
         }
 
         /// <summary>
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithoutGeoFilters()
         {
-            return this.WithoutGeoFilters() as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithoutGeoFilters();
         }
 
         /// <summary>
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithGeoFilter(string relativePath, GeoFilterActions action, CountryISOCode countryCode)
         {
-            return this.WithGeoFilter(relativePath, action, countryCode) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithGeoFilter(relativePath, action, countryCode);
         }
 
         /// <summary>
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithGeoFilter(string relativePath, GeoFilterActions action, IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.CountryISOCode> countryCodes)
         {
-            return this.WithGeoFilter(relativePath, action, countryCodes) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithGeoFilter(relativePath, action, countryCodes);
         }
 
         /// <summary>
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint.WithoutCustomDomain(string hostName)
         {
-            return this.WithoutCustomDomain(hostName) as CdnEndpoint.UpdateStandardEndpoint.IUpdateStandardEndpoint;
+            return this.WithoutCustomDomain(hostName);
         }
 
         /// <summary>
@@ -750,7 +750,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint.WithHttpPort(int httpPort)
         {
-            return this.WithHttpPort(httpPort) as CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint;
+            return this.WithHttpPort(httpPort);
         }
 
         /// <summary>
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint.WithHttpsPort(int httpsPort)
         {
-            return this.WithHttpsPort(httpsPort) as CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint;
+            return this.WithHttpsPort(httpsPort);
         }
 
         /// <summary>
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint.WithCustomDomain(string hostName)
         {
-            return this.WithCustomDomain(hostName) as CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint;
+            return this.WithCustomDomain(hostName);
         }
 
         /// <summary>
@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint.WithHostHeader(string hostHeader)
         {
-            return this.WithHostHeader(hostHeader) as CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint;
+            return this.WithHostHeader(hostHeader);
         }
 
         /// <summary>
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint.WithHttpsAllowed(bool httpsAllowed)
         {
-            return this.WithHttpsAllowed(httpsAllowed) as CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint;
+            return this.WithHttpsAllowed(httpsAllowed);
         }
 
         /// <summary>
@@ -800,7 +800,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint.WithOriginPath(string originPath)
         {
-            return this.WithOriginPath(originPath) as CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint;
+            return this.WithOriginPath(originPath);
         }
 
         /// <summary>
@@ -810,7 +810,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint.WithHttpAllowed(bool httpAllowed)
         {
-            return this.WithHttpAllowed(httpAllowed) as CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint;
+            return this.WithHttpAllowed(httpAllowed);
         }
 
         /// <summary>
@@ -820,7 +820,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the endpoint update.</return>
         CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint.WithoutCustomDomain(string hostName)
         {
-            return this.WithoutCustomDomain(hostName) as CdnEndpoint.UpdatePremiumEndpoint.IUpdatePremiumEndpoint;
+            return this.WithoutCustomDomain(hostName);
         }
 
         /// <summary>
@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>.WithHttpPort(int httpPort)
         {
-            return this.WithHttpPort(httpPort) as CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>;
+            return this.WithHttpPort(httpPort);
         }
 
         /// <summary>
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>.WithHttpsPort(int httpsPort)
         {
-            return this.WithHttpsPort(httpsPort) as CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>;
+            return this.WithHttpsPort(httpsPort);
         }
 
         /// <summary>
@@ -850,7 +850,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>.WithCustomDomain(string hostName)
         {
-            return this.WithCustomDomain(hostName) as CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>;
+            return this.WithCustomDomain(hostName);
         }
 
         /// <summary>
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>.WithHostHeader(string hostHeader)
         {
-            return this.WithHostHeader(hostHeader) as CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>;
+            return this.WithHostHeader(hostHeader);
         }
 
         /// <summary>
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>.WithHttpsAllowed(bool httpsAllowed)
         {
-            return this.WithHttpsAllowed(httpsAllowed) as CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>;
+            return this.WithHttpsAllowed(httpsAllowed);
         }
 
         /// <summary>
@@ -880,7 +880,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>.WithOriginPath(string originPath)
         {
-            return this.WithOriginPath(originPath) as CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>;
+            return this.WithOriginPath(originPath);
         }
 
         /// <summary>
@@ -890,7 +890,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate> CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>.WithHttpAllowed(bool httpAllowed)
         {
-            return this.WithHttpAllowed(httpAllowed) as CdnEndpoint.UpdateDefinition.IWithPremiumAttach<CdnProfile.Update.IUpdate>;
+            return this.WithHttpAllowed(httpAllowed);
         }
 
         /// <summary>
@@ -900,7 +900,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>.WithHttpPort(int httpPort)
         {
-            return this.WithHttpPort(httpPort) as CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.WithHttpPort(httpPort);
         }
 
         /// <summary>
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>.WithHttpsPort(int httpsPort)
         {
-            return this.WithHttpsPort(httpsPort) as CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.WithHttpsPort(httpsPort);
         }
 
         /// <summary>
@@ -920,7 +920,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>.WithCustomDomain(string hostName)
         {
-            return this.WithCustomDomain(hostName) as CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.WithCustomDomain(hostName);
         }
 
         /// <summary>
@@ -930,7 +930,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>.WithHostHeader(string hostHeader)
         {
-            return this.WithHostHeader(hostHeader) as CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.WithHostHeader(hostHeader);
         }
 
         /// <summary>
@@ -940,7 +940,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>.WithHttpsAllowed(bool httpsAllowed)
         {
-            return this.WithHttpsAllowed(httpsAllowed) as CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.WithHttpsAllowed(httpsAllowed);
         }
 
         /// <summary>
@@ -950,7 +950,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>.WithOriginPath(string originPath)
         {
-            return this.WithOriginPath(originPath) as CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.WithOriginPath(originPath);
         }
 
         /// <summary>
@@ -960,7 +960,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate> CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>.WithHttpAllowed(bool httpAllowed)
         {
-            return this.WithHttpAllowed(httpAllowed) as CdnEndpoint.Definition.IWithPremiumAttach<CdnProfile.Definition.IWithPremiumVerizonCreate>;
+            return this.WithHttpAllowed(httpAllowed);
         }
 
         /// <summary>
@@ -971,7 +971,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Definition.IWithStandardCreate>.WithOrigin(string originName, string originHostName)
         {
-            return this.WithOrigin(originName, originHostName) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithOrigin(originName, originHostName);
         }
 
         /// <summary>
@@ -981,7 +981,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.Blank.StandardEndpoint.IStandardEndpoint<CdnProfile.Definition.IWithStandardCreate>.WithOrigin(string originHostName)
         {
-            return this.WithOrigin(originHostName) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithOrigin(originHostName);
         }
 
         /// <summary>
@@ -991,7 +991,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithQueryStringCachingBehavior(QueryStringCachingBehavior cachingBehavior)
         {
-            return this.WithQueryStringCachingBehavior(cachingBehavior) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithQueryStringCachingBehavior(cachingBehavior);
         }
 
         /// <summary>
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithHttpPort(int httpPort)
         {
-            return this.WithHttpPort(httpPort) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithHttpPort(httpPort);
         }
 
         /// <summary>
@@ -1011,7 +1011,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithGeoFilters(IList<Models.GeoFilter> geoFilters)
         {
-            return this.WithGeoFilters(geoFilters) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithGeoFilters(geoFilters);
         }
 
         /// <summary>
@@ -1021,7 +1021,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithHttpsPort(int httpsPort)
         {
-            return this.WithHttpsPort(httpsPort) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithHttpsPort(httpsPort);
         }
 
         /// <summary>
@@ -1031,7 +1031,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithContentTypeToCompress(string contentTypeToCompress)
         {
-            return this.WithContentTypeToCompress(contentTypeToCompress) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithContentTypeToCompress(contentTypeToCompress);
         }
 
         /// <summary>
@@ -1041,7 +1041,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithCustomDomain(string hostName)
         {
-            return this.WithCustomDomain(hostName) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithCustomDomain(hostName);
         }
 
         /// <summary>
@@ -1051,7 +1051,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithContentTypesToCompress(ISet<string> contentTypesToCompress)
         {
-            return this.WithContentTypesToCompress(contentTypesToCompress) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithContentTypesToCompress(contentTypesToCompress);
         }
 
         /// <summary>
@@ -1061,7 +1061,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithHostHeader(string hostHeader)
         {
-            return this.WithHostHeader(hostHeader) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithHostHeader(hostHeader);
         }
 
         /// <summary>
@@ -1071,7 +1071,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithHttpsAllowed(bool httpsAllowed)
         {
-            return this.WithHttpsAllowed(httpsAllowed) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithHttpsAllowed(httpsAllowed);
         }
 
         /// <summary>
@@ -1081,7 +1081,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithOriginPath(string originPath)
         {
-            return this.WithOriginPath(originPath) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithOriginPath(originPath);
         }
 
         /// <summary>
@@ -1091,7 +1091,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithHttpAllowed(bool httpAllowed)
         {
-            return this.WithHttpAllowed(httpAllowed) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithHttpAllowed(httpAllowed);
         }
 
         /// <summary>
@@ -1101,7 +1101,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithCompressionEnabled(bool compressionEnabled)
         {
-            return this.WithCompressionEnabled(compressionEnabled) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithCompressionEnabled(compressionEnabled);
         }
 
         /// <summary>
@@ -1113,7 +1113,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithGeoFilter(string relativePath, GeoFilterActions action, CountryISOCode countryCode)
         {
-            return this.WithGeoFilter(relativePath, action, countryCode) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithGeoFilter(relativePath, action, countryCode);
         }
 
         /// <summary>
@@ -1125,7 +1125,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The next stage of the definition.</return>
         CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate> CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>.WithGeoFilter(string relativePath, GeoFilterActions action, IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.CountryISOCode> countryCodes)
         {
-            return this.WithGeoFilter(relativePath, action, countryCodes) as CdnEndpoint.Definition.IWithStandardAttach<CdnProfile.Definition.IWithStandardCreate>;
+            return this.WithGeoFilter(relativePath, action, countryCodes);
         }
     }
 }

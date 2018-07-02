@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A network interface IP configuration.</return>
         Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendServerHealth.GetNetworkInterfaceIPConfiguration()
         {
-            return this.GetNetworkInterfaceIPConfiguration() as Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration;
+            return this.GetNetworkInterfaceIPConfiguration();
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Status() as Models.ApplicationGatewayBackendHealthStatus;
+                return this.Status();
             }
         }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfigurationHealth;
+                return this.Parent();
             }
         }
     }

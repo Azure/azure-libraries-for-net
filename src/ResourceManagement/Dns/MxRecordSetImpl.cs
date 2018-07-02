@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         }
 
         ///GENMHASH:4FC81B687476F8722014B0A4F98E1756:27B32B5AC9D0BA9549BAC568D5725266
-        public IList<MxRecord> Records()
+        public IReadOnlyList<MxRecord> Records()
         {
             List<MxRecord> records = new List<MxRecord>();
             if (Inner.MxRecords != null)

@@ -15,28 +15,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>Next definition stage.</return>
         ConnectivityCheck.Definition.IFromSourceVirtualMachine ConnectivityCheck.Definition.IToDestinationPort.ToDestinationPort(int port)
         {
-            return this.ToDestinationPort(port) as ConnectivityCheck.Definition.IFromSourceVirtualMachine;
+            return this.ToDestinationPort(port);
         }
 
         /// <param name="port">Source port.</param>
         /// <return>Next definition stage.</return>
         ConnectivityCheck.Definition.IWithExecute ConnectivityCheck.Definition.IFromSourcePort.FromSourcePort(int port)
         {
-            return this.FromSourcePort(port) as ConnectivityCheck.Definition.IWithExecute;
+            return this.FromSourcePort(port);
         }
 
         /// <param name="resourceId">The ID of the resource to which a connection attempt will be made.</param>
         /// <return>Next definition stage.</return>
         ConnectivityCheck.Definition.IToDestinationPort ConnectivityCheck.Definition.IToDestination.ToDestinationResourceId(string resourceId)
         {
-            return this.ToDestinationResourceId(resourceId) as ConnectivityCheck.Definition.IToDestinationPort;
+            return this.ToDestinationResourceId(resourceId);
         }
 
         /// <param name="address">The IP address or URI the resource to which a connection attempt will be made.</param>
         /// <return>Next definition stage.</return>
         ConnectivityCheck.Definition.IToDestinationPort ConnectivityCheck.Definition.IToDestination.ToDestinationAddress(string address)
         {
-            return this.ToDestinationAddress(address) as ConnectivityCheck.Definition.IToDestinationPort;
+            return this.ToDestinationAddress(address);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.INetworkWatcher;
+                return this.Parent();
             }
         }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Hops() as System.Collections.Generic.IReadOnlyList<Models.ConnectivityHop>;
+                return this.Hops();
             }
         }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.ConnectionStatus() as Models.ConnectionStatus;
+                return this.ConnectionStatus();
             }
         }
 
@@ -131,14 +131,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>Next definition stage.</return>
         ConnectivityCheck.Definition.IWithExecute ConnectivityCheck.Definition.IFromSourceVirtualMachine.FromSourceVirtualMachine(string resourceId)
         {
-            return this.FromSourceVirtualMachine(resourceId) as ConnectivityCheck.Definition.IWithExecute;
+            return this.FromSourceVirtualMachine(resourceId);
         }
 
         /// <param name="vm">Virtual machine from which a connectivity check will be initiated.</param>
         /// <return>Next definition stage.</return>
         ConnectivityCheck.Definition.IWithExecute ConnectivityCheck.Definition.IFromSourceVirtualMachine.FromSourceVirtualMachine(IHasNetworkInterfaces vm)
         {
-            return this.FromSourceVirtualMachine(vm) as ConnectivityCheck.Definition.IWithExecute;
+            return this.FromSourceVirtualMachine(vm);
         }
 
         /// <summary>

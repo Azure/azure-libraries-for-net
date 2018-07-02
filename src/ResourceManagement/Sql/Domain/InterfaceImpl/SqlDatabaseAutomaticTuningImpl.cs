@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The handle to the REST call.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseAutomaticTuning> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseAutomaticTuning>.ApplyAsync(CancellationToken cancellationToken, bool multiThreaded = true)
         {
-            return await this.ApplyAsync(cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseAutomaticTuning;
+            return await this.ApplyAsync(cancellationToken);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The updated resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseAutomaticTuning Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseAutomaticTuning>.Apply()
         {
-            return this.Apply() as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseAutomaticTuning;
+            return this.Apply();
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The stage of new resource update.</return>
         SqlDatabaseAutomaticTuning.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlDatabaseAutomaticTuning.Update.IUpdate>.Update()
         {
-            return this.Update() as SqlDatabaseAutomaticTuning.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the update.</return>
         SqlDatabaseAutomaticTuning.Update.IUpdate SqlDatabaseAutomaticTuning.Update.IWithAutomaticTuningMode.WithAutomaticTuningMode(AutomaticTuningMode desiredState)
         {
-            return this.WithAutomaticTuningMode(desiredState) as SqlDatabaseAutomaticTuning.Update.IUpdate;
+            return this.WithAutomaticTuningMode(desiredState);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.TuningOptions() as System.Collections.Generic.IReadOnlyDictionary<string,Models.AutomaticTuningOptions>;
+                return this.TuningOptions();
             }
         }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the update.</return>
         SqlDatabaseAutomaticTuning.Update.IUpdate SqlDatabaseAutomaticTuning.Update.IWithAutomaticTuningOptions.WithAutomaticTuningOption(string tuningOptionName, AutomaticTuningOptionModeDesired desiredState)
         {
-            return this.WithAutomaticTuningOption(tuningOptionName, desiredState) as SqlDatabaseAutomaticTuning.Update.IUpdate;
+            return this.WithAutomaticTuningOption(tuningOptionName, desiredState);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the update.</return>
         SqlDatabaseAutomaticTuning.Update.IUpdate SqlDatabaseAutomaticTuning.Update.IWithAutomaticTuningOptions.WithAutomaticTuningOptions(IDictionary<string,Models.AutomaticTuningOptionModeDesired> tuningOptions)
         {
-            return this.WithAutomaticTuningOptions(tuningOptions) as SqlDatabaseAutomaticTuning.Update.IUpdate;
+            return this.WithAutomaticTuningOptions(tuningOptions);
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.EnvironmentVariables() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.EnvironmentVariable>;
+                return this.EnvironmentVariables();
             }
         }
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.Constraints() as Microsoft.Azure.Management.BatchAI.Fluent.Models.JobPropertiesConstraints;
+                return this.Constraints();
             }
         }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.ContainerSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.ContainerSettings;
+                return this.ContainerSettings();
             }
         }
 
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.ExecutionInfo() as Microsoft.Azure.Management.BatchAI.Fluent.Models.JobPropertiesExecutionInfo;
+                return this.ExecutionInfo();
             }
         }
         /// <summary>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.OutputDirectories() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.OutputDirectory>;
+                return this.OutputDirectories();
             }
         }
 
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.TensorFlowSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.TensorFlowSettings;
+                return this.TensorFlowSettings();
             }
         }
 
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.CntkSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.CNTKsettings;
+                return this.CntkSettings();
             }
         }
 
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.PYTorchSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.PyTorchSettings;
+                return this.PYTorchSettings();
             }
         }
 
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.InputDirectories() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.InputDirectory>;
+                return this.InputDirectories();
             }
         }
 
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.Secrets() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.EnvironmentVariableWithSecretValue>;
+                return this.Secrets();
             }
         }
 
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.Cluster() as Microsoft.Azure.Management.BatchAI.Fluent.Models.ResourceId;
+                return this.Cluster();
             }
         }
 
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.CustomToolkitSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.CustomToolkitSettings;
+                return this.CustomToolkitSettings();
             }
         }
 
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The nest stage of the definition for output directory settings.</return>
         Models.OutputDirectorySettings.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithOutputDirectoryBeta.DefineOutputDirectory(string id)
         {
-            return this.DefineOutputDirectory(id) as Models.OutputDirectorySettings.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
+            return this.DefineOutputDirectory(id);
         }
 
         /// <summary>
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>List of files inside the given output directory.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.ListFiles(string outputDirectoryId)
         {
-            return this.ListFiles(outputDirectoryId) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile>;
+            return this.ListFiles(outputDirectoryId);
         }
 
         /// <summary>
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>An observable that emits output file information.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile>> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.ListFilesAsync(string outputDirectoryId, CancellationToken cancellationToken)
         {
-            return await this.ListFilesAsync(outputDirectoryId, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile>;
+            return await this.ListFilesAsync(outputDirectoryId, cancellationToken);
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.CaffeSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.CaffeSettings;
+                return this.CaffeSettings();
             }
         }
 
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.JobPreparation() as Microsoft.Azure.Management.BatchAI.Fluent.Models.JobPreparation;
+                return this.JobPreparation();
             }
         }
 
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.ToolType() as Microsoft.Azure.Management.BatchAI.Fluent.Models.ToolType;
+                return this.ToolType();
             }
         }
 
@@ -380,52 +380,52 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.ChainerSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.ChainerSettings;
+                return this.ChainerSettings();
             }
         }
 
         ToolTypeSettings.Caffe.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCaffe()
         {
-            return this.DefineCaffe() as ToolTypeSettings.Caffe.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
+            return this.DefineCaffe();
         }
 
         BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithToolType.WithCustomCommandLine(string commandLine)
         {
-            return this.WithCustomCommandLine(commandLine) as BatchAIJob.Definition.IWithCreate;
+            return this.WithCustomCommandLine(commandLine);
         }
 
         ToolTypeSettings.Chainer.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineChainer()
         {
-            return this.DefineChainer() as ToolTypeSettings.Chainer.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
+            return this.DefineChainer();
         }
 
         ToolTypeSettings.Caffe2.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCaffe2()
         {
-            return this.DefineCaffe2() as ToolTypeSettings.Caffe2.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
+            return this.DefineCaffe2();
         }
 
         ToolTypeSettings.CognitiveToolkit.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCognitiveToolkit()
         {
-            return this.DefineCognitiveToolkit() as ToolTypeSettings.CognitiveToolkit.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
+            return this.DefineCognitiveToolkit();
         }
 
         ToolTypeSettings.TensorFlow.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineTensorflow()
         {
-            return this.DefineTensorflow() as ToolTypeSettings.TensorFlow.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
+            return this.DefineTensorflow();
         }
 
         /// <param name="image">The name of the image in image repository.</param>
         /// <return>The next stage of the definition.</return>
         BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithContainerSettings.WithContainerImage(string image)
         {
-            return this.WithContainerImage(image) as BatchAIJob.Definition.IWithCreate;
+            return this.WithContainerImage(image);
         }
 
         /// <param name="stdOutErrPathPrefix">The path where the Batch AI service will upload the stdout and stderror of the job.</param>
         /// <return>The next stage of the definition.</return>
         BatchAIJob.Definition.IWithToolType BatchAIJob.Definition.IWithStdOutErrPathPrefix.WithStdOutErrPathPrefix(string stdOutErrPathPrefix)
         {
-            return this.WithStdOutErrPathPrefix(stdOutErrPathPrefix) as BatchAIJob.Definition.IWithToolType;
+            return this.WithStdOutErrPathPrefix(stdOutErrPathPrefix);
         }
 
         /// <summary>
@@ -452,31 +452,31 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithJobPreparation.WithCommandLine(string commandLine)
         {
-            return this.WithCommandLine(commandLine) as BatchAIJob.Definition.IWithCreate;
+            return this.WithCommandLine(commandLine);
         }
 
         /// <param name="experimentName">Describes the experiment information of the job.</param>
         /// <return>The next stage of the definition.</return>
         BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithExperimentName.WithExperimentName(string experimentName)
         {
-            return this.WithExperimentName(experimentName) as BatchAIJob.Definition.IWithCreate;
+            return this.WithExperimentName(experimentName);
         }
 
         BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithInputDirectory.WithInputDirectory(string id, string path)
         {
-            return this.WithInputDirectory(id, path) as BatchAIJob.Definition.IWithCreate;
+            return this.WithInputDirectory(id, path);
         }
 
         BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithOutputDirectory.WithOutputDirectory(string id, string pathPrefix)
         {
-            return this.WithOutputDirectory(id, pathPrefix) as BatchAIJob.Definition.IWithCreate;
+            return this.WithOutputDirectory(id, pathPrefix);
         }
 
         /// <param name="nodeCount">Number of nodes.</param>
         /// <return>The next staeg of the definition.</return>
         BatchAIJob.Definition.IWithStdOutErrPathPrefix BatchAIJob.Definition.IWithNodeCount.WithNodeCount(int nodeCount)
         {
-            return this.WithNodeCount(nodeCount) as BatchAIJob.Definition.IWithStdOutErrPathPrefix;
+            return this.WithNodeCount(nodeCount);
         }
     }
 }

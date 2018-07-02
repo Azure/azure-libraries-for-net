@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The next stage of the definition.</return>
         ManagementLock.Update.IUpdate ManagementLock.Update.IWithLevel.WithLevel(LockLevel level)
         {
-            return this.WithLevel(level) as ManagementLock.Update.IUpdate;
+            return this.WithLevel(level);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The next stage of the definition.</return>
         ManagementLock.Definition.IWithCreate ManagementLock.Definition.IWithLevel.WithLevel(LockLevel level)
         {
-            return this.WithLevel(level) as ManagementLock.Definition.IWithCreate;
+            return this.WithLevel(level);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The next stage of the definition.</return>
         ManagementLock.Definition.IWithCreate ManagementLock.Definition.IWithNotes.WithNotes(string notes)
         {
-            return this.WithNotes(notes) as ManagementLock.Definition.IWithCreate;
+            return this.WithNotes(notes);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         {
             get
             {
-                return this.Manager() as Microsoft.Azure.Management.Locks.Fluent.IAuthorizationManager;
+                return this.Manager();
             }
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         {
             get
             {
-                return this.Level() as Models.LockLevel;
+                return this.Level();
             }
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The next stage of the update.</return>
         ManagementLock.Update.IUpdate ManagementLock.Update.IWithLockedResource.WithLockedResource(string resourceId)
         {
-            return this.WithLockedResource(resourceId) as ManagementLock.Update.IUpdate;
+            return this.WithLockedResource(resourceId);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The next stage of the update.</return>
         ManagementLock.Update.IUpdate ManagementLock.Update.IWithLockedResource.WithLockedResource(IResource resource)
         {
-            return this.WithLockedResource(resource) as ManagementLock.Update.IUpdate;
+            return this.WithLockedResource(resource);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The next stage of the update.</return>
         ManagementLock.Update.IUpdate ManagementLock.Update.IWithLockedResource.WithLockedResourceGroup(string resourceGroupName)
         {
-            return this.WithLockedResourceGroup(resourceGroupName) as ManagementLock.Update.IUpdate;
+            return this.WithLockedResourceGroup(resourceGroupName);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>Then next stage of the update.</return>
         ManagementLock.Update.IUpdate ManagementLock.Update.IWithLockedResource.WithLockedResourceGroup(IResourceGroup resourceGroup)
         {
-            return this.WithLockedResourceGroup(resourceGroup) as ManagementLock.Update.IUpdate;
+            return this.WithLockedResourceGroup(resourceGroup);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The next stage of the definition.</return>
         ManagementLock.Definition.IWithLevel ManagementLock.Definition.IWithLockedResource.WithLockedResource(string resourceId)
         {
-            return this.WithLockedResource(resourceId) as ManagementLock.Definition.IWithLevel;
+            return this.WithLockedResource(resourceId);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The next stage of the definition.</return>
         ManagementLock.Definition.IWithLevel ManagementLock.Definition.IWithLockedResource.WithLockedResource(IResource resource)
         {
-            return this.WithLockedResource(resource) as ManagementLock.Definition.IWithLevel;
+            return this.WithLockedResource(resource);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The next stage of the definition.</return>
         ManagementLock.Definition.IWithLevel ManagementLock.Definition.IWithLockedResource.WithLockedResourceGroup(string resourceGroupName)
         {
-            return this.WithLockedResourceGroup(resourceGroupName) as ManagementLock.Definition.IWithLevel;
+            return this.WithLockedResourceGroup(resourceGroupName);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>Then next stage of the definition.</return>
         ManagementLock.Definition.IWithLevel ManagementLock.Definition.IWithLockedResource.WithLockedResourceGroup(IResourceGroup resourceGroup)
         {
-            return this.WithLockedResourceGroup(resourceGroup) as ManagementLock.Definition.IWithLevel;
+            return this.WithLockedResourceGroup(resourceGroup);
         }
     }
 }

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in credential definition.</return>
         PasswordCredential.UpdateDefinition.IWithAttach<T> PasswordCredential.UpdateDefinition.IWithAuthFile<T>.WithAuthFileToExport(StreamWriter outputStream)
         {
-            return this.WithAuthFileToExport(outputStream) as PasswordCredential.UpdateDefinition.IWithAttach<T>;
+            return this.WithAuthFileToExport(outputStream);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in credential definition.</return>
         PasswordCredential.Definition.IWithAttach<T> PasswordCredential.Definition.IWithAuthFile<T>.WithAuthFileToExport(StreamWriter outputStream)
         {
-            return this.WithAuthFileToExport(outputStream) as PasswordCredential.Definition.IWithAttach<T>;
+            return this.WithAuthFileToExport(outputStream);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in credential definition.</return>
         PasswordCredential.UpdateDefinition.IWithAttach<T> PasswordCredential.UpdateDefinition.IWithDuration<T>.WithDuration(TimeSpan duration)
         {
-            return this.WithDuration(duration) as PasswordCredential.UpdateDefinition.IWithAttach<T>;
+            return this.WithDuration(duration);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in credential definition.</return>
         PasswordCredential.Definition.IWithAttach<T> PasswordCredential.Definition.IWithDuration<T>.WithDuration(TimeSpan duration)
         {
-            return this.WithDuration(duration) as PasswordCredential.Definition.IWithAttach<T>;
+            return this.WithDuration(duration);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the parent definition.</return>
         T Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<T>.Attach()
         {
-            return this.Attach() as T;
+            return this.Attach();
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the parent definition.</return>
         T Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<T>.Attach()
         {
-            return this.Attach() as T;
+            return this.Attach();
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in credential definition.</return>
         PasswordCredential.UpdateDefinition.IWithAttach<T> PasswordCredential.UpdateDefinition.IWithKey<T>.WithPasswordValue(string password)
         {
-            return this.WithPasswordValue(password) as PasswordCredential.UpdateDefinition.IWithAttach<T>;
+            return this.WithPasswordValue(password);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in credential definition.</return>
         PasswordCredential.Definition.IWithAttach<T> PasswordCredential.Definition.IWithKey<T>.WithPasswordValue(string password)
         {
-            return this.WithPasswordValue(password) as PasswordCredential.Definition.IWithAttach<T>;
+            return this.WithPasswordValue(password);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in credential definition.</return>
         PasswordCredential.UpdateDefinition.IWithAttach<T> PasswordCredential.UpdateDefinition.IWithStartDate<T>.WithStartDate(DateTime startDate)
         {
-            return this.WithStartDate(startDate) as PasswordCredential.UpdateDefinition.IWithAttach<T>;
+            return this.WithStartDate(startDate);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in credential definition.</return>
         PasswordCredential.Definition.IWithAttach<T> PasswordCredential.Definition.IWithStartDate<T>.WithStartDate(DateTime startDate)
         {
-            return this.WithStartDate(startDate) as PasswordCredential.Definition.IWithAttach<T>;
+            return this.WithStartDate(startDate);
         }
     }
 }

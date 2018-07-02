@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithConnectionDrainingBeta.WithConnectionDrainingTimeoutInSeconds(int seconds)
         {
-            return this.WithConnectionDrainingTimeoutInSeconds(seconds) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithConnectionDrainingTimeoutInSeconds(seconds);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithConnectionDrainingBeta.WithoutConnectionDraining()
         {
-            return this.WithoutConnectionDraining() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithoutConnectionDraining();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasPort.UpdateDefinition.IWithPort<ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithPort(int portNumber)
         {
-            return this.WithPort(portNumber) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithPort(portNumber);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate HasPort.Update.IWithPort<ApplicationGatewayBackendHttpConfiguration.Update.IUpdate>.WithPort(int portNumber)
         {
-            return this.WithPort(portNumber) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithPort(portNumber);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> HasPort.Definition.IWithPort<ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>.WithPort(int portNumber)
         {
-            return this.WithPort(portNumber) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithPort(portNumber);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAffinity<ApplicationGateway.Update.IUpdate>.WithoutCookieBasedAffinity()
         {
-            return this.WithoutCookieBasedAffinity() as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithoutCookieBasedAffinity();
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAffinity<ApplicationGateway.Update.IUpdate>.WithCookieBasedAffinity()
         {
-            return this.WithCookieBasedAffinity() as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithCookieBasedAffinity();
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithAffinity<ApplicationGateway.Definition.IWithCreate>.WithCookieBasedAffinity()
         {
-            return this.WithCookieBasedAffinity() as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithCookieBasedAffinity();
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithHostHeaderBeta<ApplicationGateway.Update.IUpdate>.WithHostHeader(string hostHeader)
         {
-            return this.WithHostHeader(hostHeader) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithHostHeader(hostHeader);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithHostHeaderBeta<ApplicationGateway.Update.IUpdate>.WithHostHeaderFromBackend()
         {
-            return this.WithHostHeaderFromBackend() as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithHostHeaderFromBackend();
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithHostHeaderBeta<ApplicationGateway.Definition.IWithCreate>.WithHostHeader(string hostHeader)
         {
-            return this.WithHostHeader(hostHeader) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHostHeader(hostHeader);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithHostHeaderBeta<ApplicationGateway.Definition.IWithCreate>.WithHostHeaderFromBackend()
         {
-            return this.WithHostHeaderFromBackend() as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHostHeaderFromBackend();
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithRequestTimeout<ApplicationGateway.Update.IUpdate>.WithRequestTimeout(int seconds)
         {
-            return this.WithRequestTimeout(seconds) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithRequestTimeout(seconds);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithRequestTimeout<ApplicationGateway.Definition.IWithCreate>.WithRequestTimeout(int seconds)
         {
-            return this.WithRequestTimeout(seconds) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithRequestTimeout(seconds);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithPathBeta<ApplicationGateway.Update.IUpdate>.WithPath(string path)
         {
-            return this.WithPath(path) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithPath(path);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithPathBeta<ApplicationGateway.Definition.IWithCreate>.WithPath(string path)
         {
-            return this.WithPath(path) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithPath(path);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithProbe<ApplicationGateway.Definition.IWithCreate>.WithProbe(string name)
         {
-            return this.WithProbe(name) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithProbe(name);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ApplicationGateway.Update.IUpdate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithHostHeaderBeta.WithoutHostHeader()
         {
-            return this.WithoutHostHeader() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithoutHostHeader();
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithHostHeaderBeta.WithHostHeader(string hostHeader)
         {
-            return this.WithHostHeader(hostHeader) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithHostHeader(hostHeader);
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithHostHeaderBeta.WithHostHeaderFromBackend()
         {
-            return this.WithHostHeaderFromBackend() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithHostHeaderFromBackend();
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ApplicationGateway.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithPathBeta.WithPath(string path)
         {
-            return this.WithPath(path) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithPath(path);
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAuthenticationCertificateBeta<ApplicationGateway.Update.IUpdate>.WithAuthenticationCertificateFromBytes(params byte[] derData)
         {
-            return this.WithAuthenticationCertificateFromBytes(derData) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate>;
+            return this.WithAuthenticationCertificateFromBytes(derData);
         }
 
         /// <summary>
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAuthenticationCertificateBeta<ApplicationGateway.Update.IUpdate>.WithAuthenticationCertificate(string name)
         {
-            return this.WithAuthenticationCertificate(name) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate>;
+            return this.WithAuthenticationCertificate(name);
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <throws>IOException when there are issues reading from the specified file.</throws>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAuthenticationCertificateBeta<ApplicationGateway.Update.IUpdate>.WithAuthenticationCertificateFromFile(FileInfo certificateFile)
         {
-            return this.WithAuthenticationCertificateFromFile(certificateFile) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate>;
+            return this.WithAuthenticationCertificateFromFile(certificateFile);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAuthenticationCertificateBeta<ApplicationGateway.Update.IUpdate>.WithAuthenticationCertificateFromBase64(string base64Data)
         {
-            return this.WithAuthenticationCertificateFromBase64(base64Data) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate>;
+            return this.WithAuthenticationCertificateFromBase64(base64Data);
         }
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithAuthenticationCertificateBeta<ApplicationGateway.Definition.IWithCreate>.WithAuthenticationCertificateFromBytes(params byte[] derData)
         {
-            return this.WithAuthenticationCertificateFromBytes(derData) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithAuthenticationCertificateFromBytes(derData);
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithAuthenticationCertificateBeta<ApplicationGateway.Definition.IWithCreate>.WithAuthenticationCertificate(string name)
         {
-            return this.WithAuthenticationCertificate(name) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithAuthenticationCertificate(name);
         }
 
         /// <summary>
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <throws>IOException when there are issues reading from the specified file.</throws>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithAuthenticationCertificateBeta<ApplicationGateway.Definition.IWithCreate>.WithAuthenticationCertificateFromFile(FileInfo certificateFile)
         {
-            return this.WithAuthenticationCertificateFromFile(certificateFile) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithAuthenticationCertificateFromFile(certificateFile);
         }
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithAuthenticationCertificateBeta<ApplicationGateway.Definition.IWithCreate>.WithAuthenticationCertificateFromBase64(string base64Data)
         {
-            return this.WithAuthenticationCertificateFromBase64(base64Data) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithAuthenticationCertificateFromBase64(base64Data);
         }
 
         /// <summary>
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.AuthenticationCertificates() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate>;
+                return this.AuthenticationCertificates();
             }
         }
 
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Probe() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe;
+                return this.Probe();
             }
         }
 
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithCookieNameBeta.WithAffinityCookieName(string name)
         {
-            return this.WithAffinityCookieName(name) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithAffinityCookieName(name);
         }
 
         /// <summary>
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAffinity.WithoutCookieBasedAffinity()
         {
-            return this.WithoutCookieBasedAffinity() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithoutCookieBasedAffinity();
         }
 
         /// <summary>
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAffinity.WithCookieBasedAffinity()
         {
-            return this.WithCookieBasedAffinity() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithCookieBasedAffinity();
         }
 
         /// <summary>
@@ -488,7 +488,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithAuthenticationCertificateFromBytes(params byte[] derData)
         {
-            return this.WithAuthenticationCertificateFromBytes(derData) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithAuthenticationCertificateFromBytes(derData);
         }
 
         /// <summary>
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithoutAuthenticationCertificate(string name)
         {
-            return this.WithoutAuthenticationCertificate(name) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithoutAuthenticationCertificate(name);
         }
 
         /// <summary>
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithAuthenticationCertificate(string name)
         {
-            return this.WithAuthenticationCertificate(name) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithAuthenticationCertificate(name);
         }
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithoutAuthenticationCertificates()
         {
-            return this.WithoutAuthenticationCertificates() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithoutAuthenticationCertificates();
         }
 
         /// <summary>
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <throws>IOException when there are issues reading the specified file.</throws>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithAuthenticationCertificateFromFile(FileInfo certificateFile)
         {
-            return this.WithAuthenticationCertificateFromFile(certificateFile) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithAuthenticationCertificateFromFile(certificateFile);
         }
 
         /// <summary>
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithAuthenticationCertificateBeta.WithAuthenticationCertificateFromBase64(string base64Data)
         {
-            return this.WithAuthenticationCertificateFromBase64(base64Data) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithAuthenticationCertificateFromBase64(base64Data);
         }
 
         /// <summary>
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProtocolBeta.WithHttp()
         {
-            return this.WithHttp() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithHttp();
         }
 
         /// <summary>
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <deprecated>Use  .withHttp() or  .withHttps() instead.</deprecated>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProtocol.WithProtocol(ApplicationGatewayProtocol protocol)
         {
-            return this.WithProtocol(protocol) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithProtocol(protocol);
         }
 
         /// <summary>
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProtocolBeta.WithHttps()
         {
-            return this.WithHttps() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithHttps();
         }
 
         /// <summary>
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithRequestTimeout.WithRequestTimeout(int seconds)
         {
-            return this.WithRequestTimeout(seconds) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithRequestTimeout(seconds);
         }
 
         /// <summary>
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithConnectionDrainingBeta<ApplicationGateway.Update.IUpdate>.WithConnectionDrainingTimeoutInSeconds(int seconds)
         {
-            return this.WithConnectionDrainingTimeoutInSeconds(seconds) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithConnectionDrainingTimeoutInSeconds(seconds);
         }
 
         /// <summary>
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithConnectionDrainingBeta<ApplicationGateway.Definition.IWithCreate>.WithConnectionDrainingTimeoutInSeconds(int seconds)
         {
-            return this.WithConnectionDrainingTimeoutInSeconds(seconds) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithConnectionDrainingTimeoutInSeconds(seconds);
         }
 
         /// <summary>
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <deprecated>Use  .withHttps() instead (HTTP is the default).</deprecated>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithProtocol<ApplicationGateway.Update.IUpdate>.WithProtocol(ApplicationGatewayProtocol protocol)
         {
-            return this.WithProtocol(protocol) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithProtocol(protocol);
         }
 
         /// <summary>
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithProtocolBeta<ApplicationGateway.Update.IUpdate>.WithHttps()
         {
-            return this.WithHttps() as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttachAndAuthCert<ApplicationGateway.Update.IUpdate>;
+            return this.WithHttps();
         }
 
         /// <summary>
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <deprecated>Use  .withHttps() instead (HTTP is the default).</deprecated>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithProtocol<ApplicationGateway.Definition.IWithCreate>.WithProtocol(ApplicationGatewayProtocol protocol)
         {
-            return this.WithProtocol(protocol) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithProtocol(protocol);
         }
 
         /// <summary>
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithProtocolBeta<ApplicationGateway.Definition.IWithCreate>.WithHttps()
         {
-            return this.WithHttps() as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttachAndAuthCert<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHttps();
         }
 
         /// <summary>
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProbe.WithoutProbe()
         {
-            return this.WithoutProbe() as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithoutProbe();
         }
 
         /// <summary>
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGatewayBackendHttpConfiguration.Update.IWithProbe.WithProbe(string name)
         {
-            return this.WithProbe(name) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.WithProbe(name);
         }
 
         /// <summary>
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithCookieNameBeta<ApplicationGateway.Update.IUpdate>.WithAffinityCookieName(string name)
         {
-            return this.WithAffinityCookieName(name) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithAffinityCookieName(name);
         }
 
         /// <summary>
@@ -692,7 +692,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayBackendHttpConfiguration.Definition.IWithCookieNameBeta<ApplicationGateway.Definition.IWithCreate>.WithAffinityCookieName(string name)
         {
-            return this.WithAffinityCookieName(name) as ApplicationGatewayBackendHttpConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithAffinityCookieName(name);
         }
 
         /// <summary>
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Protocol() as Models.ApplicationGatewayProtocol;
+                return this.Protocol();
             }
         }
     }

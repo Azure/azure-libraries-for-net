@@ -14,13 +14,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.Build() as Models.Contact;
+                return this.Build();
             }
         }
 
         DomainContact.Definition.IWithAttach<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithJobTitle<AppServiceDomain.Definition.IWithCreate>.WithJobTitle(string jobTitle)
         {
-            return this.WithJobTitle(jobTitle) as DomainContact.Definition.IWithAttach<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithJobTitle(jobTitle);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithStateOrProvince<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithCity<AppServiceDomain.Definition.IWithCreate>.WithCity(string city)
         {
-            return this.WithCity(city) as DomainContact.Definition.IWithStateOrProvince<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithCity(city);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.AddressMailing() as Models.Address;
+                return this.AddressMailing();
             }
         }
 
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithPhoneCountryCode<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithPostalCode<AppServiceDomain.Definition.IWithCreate>.WithPostalCode(string postalCode)
         {
-            return this.WithPostalCode(postalCode) as DomainContact.Definition.IWithPhoneCountryCode<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithPostalCode(postalCode);
         }
 
         /// <summary>
@@ -149,12 +149,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithAddressLine2<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithAddressLine1<AppServiceDomain.Definition.IWithCreate>.WithAddressLine1(string addressLine1)
         {
-            return this.WithAddressLine1(addressLine1) as DomainContact.Definition.IWithAddressLine2<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithAddressLine1(addressLine1);
         }
 
         DomainContact.Definition.IWithAttach<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithFaxNumber<AppServiceDomain.Definition.IWithCreate>.WithFaxNumber(string faxNumber)
         {
-            return this.WithFaxNumber(faxNumber) as DomainContact.Definition.IWithAttach<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithFaxNumber(faxNumber);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the parent definition.</return>
         AppServiceDomain.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<AppServiceDomain.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as AppServiceDomain.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithCity<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithAddressLine2<AppServiceDomain.Definition.IWithCreate>.WithAddressLine2(string addressLine2)
         {
-            return this.WithAddressLine2(addressLine2) as DomainContact.Definition.IWithCity<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithAddressLine2(addressLine2);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithPostalCode<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithCountry<AppServiceDomain.Definition.IWithCreate>.WithCountry(CountryISOCode country)
         {
-            return this.WithCountry(country) as DomainContact.Definition.IWithPostalCode<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithCountry(country);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithAddressLine1<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithEmail<AppServiceDomain.Definition.IWithCreate>.WithEmail(string email)
         {
-            return this.WithEmail(email) as DomainContact.Definition.IWithAddressLine1<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithEmail(email);
         }
 
         /// <summary>
@@ -203,12 +203,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithEmail<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithLastName<AppServiceDomain.Definition.IWithCreate>.WithLastName(string lastName)
         {
-            return this.WithLastName(lastName) as DomainContact.Definition.IWithEmail<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithLastName(lastName);
         }
 
         DomainContact.Definition.IWithAttach<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithOrganization<AppServiceDomain.Definition.IWithCreate>.WithOrganization(string organziation)
         {
-            return this.WithOrganization(organziation) as DomainContact.Definition.IWithAttach<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithOrganization(organziation);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithMiddleName<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithFirstName<AppServiceDomain.Definition.IWithCreate>.WithFirstName(string firstName)
         {
-            return this.WithFirstName(firstName) as DomainContact.Definition.IWithMiddleName<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithFirstName(firstName);
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithPhoneNumber<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithPhoneCountryCode<AppServiceDomain.Definition.IWithCreate>.WithPhoneCountryCode(CountryPhoneCode code)
         {
-            return this.WithPhoneCountryCode(code) as DomainContact.Definition.IWithPhoneNumber<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithPhoneCountryCode(code);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithLastName<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithMiddleName<AppServiceDomain.Definition.IWithCreate>.WithMiddleName(string middleName)
         {
-            return this.WithMiddleName(middleName) as DomainContact.Definition.IWithLastName<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithMiddleName(middleName);
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithAttach<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithPhoneNumber<AppServiceDomain.Definition.IWithCreate>.WithPhoneNumber(string phoneNumber)
         {
-            return this.WithPhoneNumber(phoneNumber) as DomainContact.Definition.IWithAttach<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithPhoneNumber(phoneNumber);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         DomainContact.Definition.IWithCountry<AppServiceDomain.Definition.IWithCreate> DomainContact.Definition.IWithStateOrProvince<AppServiceDomain.Definition.IWithCreate>.WithStateOrProvince(string stateOrProvince)
         {
-            return this.WithStateOrProvince(stateOrProvince) as DomainContact.Definition.IWithCountry<AppServiceDomain.Definition.IWithCreate>;
+            return this.WithStateOrProvince(stateOrProvince);
         }
     }
 }
