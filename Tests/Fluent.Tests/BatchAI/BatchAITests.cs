@@ -26,7 +26,7 @@ namespace Fluent.Tests
     {
         private static Region REGION = Region.USWest2;
       
-        [Fact]
+        [Fact(Skip = "Temporary skipping as BatchAI migrating to new 2018-05 swagger spec")]
         public void CreateUpdate()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
