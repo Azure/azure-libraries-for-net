@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of user definition.</return>
         ActiveDirectoryUser.Definition.IWithCreate ActiveDirectoryUser.Definition.IWithAccontEnabledBeta.WithAccountEnabled(bool accountEnabled)
         {
-            return this.WithAccountEnabled(accountEnabled) as ActiveDirectoryUser.Definition.IWithCreate;
+            return this.WithAccountEnabled(accountEnabled);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of user update.</return>
         ActiveDirectoryUser.Update.IUpdate ActiveDirectoryUser.Update.IWithAccontEnabledBeta.WithAccountEnabled(bool accountEnabled)
         {
-            return this.WithAccountEnabled(accountEnabled) as ActiveDirectoryUser.Update.IUpdate;
+            return this.WithAccountEnabled(accountEnabled);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of user definition.</return>
         ActiveDirectoryUser.Definition.IWithPassword ActiveDirectoryUser.Definition.IWithUserPrincipalNameBeta.WithEmailAlias(string emailAlias)
         {
-            return this.WithEmailAlias(emailAlias) as ActiveDirectoryUser.Definition.IWithPassword;
+            return this.WithEmailAlias(emailAlias);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of user definition.</return>
         ActiveDirectoryUser.Definition.IWithPassword ActiveDirectoryUser.Definition.IWithUserPrincipalNameBeta.WithUserPrincipalName(string userPrincipalName)
         {
-            return this.WithUserPrincipalName(userPrincipalName) as ActiveDirectoryUser.Definition.IWithPassword;
+            return this.WithUserPrincipalName(userPrincipalName);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of user definition.</return>
         ActiveDirectoryUser.Definition.IWithCreate ActiveDirectoryUser.Definition.IWithPasswordBeta.WithPassword(string password)
         {
-            return this.WithPassword(password) as ActiveDirectoryUser.Definition.IWithCreate;
+            return this.WithPassword(password);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of user update.</return>
         ActiveDirectoryUser.Update.IUpdate ActiveDirectoryUser.Update.IWithPasswordBeta.WithPassword(string password)
         {
-            return this.WithPassword(password) as ActiveDirectoryUser.Update.IUpdate;
+            return this.WithPassword(password);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.UsageLocation() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.CountryISOCode;
+                return this.UsageLocation();
             }
         }
 
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of user definition.</return>
         ActiveDirectoryUser.Definition.IWithCreate ActiveDirectoryUser.Definition.IWithPromptToChangePasswordOnLoginBeta.WithPromptToChangePasswordOnLogin(bool promptToChangePasswordOnLogin)
         {
-            return this.WithPromptToChangePasswordOnLogin(promptToChangePasswordOnLogin) as ActiveDirectoryUser.Definition.IWithCreate;
+            return this.WithPromptToChangePasswordOnLogin(promptToChangePasswordOnLogin);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of user update.</return>
         ActiveDirectoryUser.Update.IUpdate ActiveDirectoryUser.Update.IWithPromptToChangePasswordOnLoginBeta.WithPromptToChangePasswordOnLogin(bool promptToChangePasswordOnLogin)
         {
-            return this.WithPromptToChangePasswordOnLogin(promptToChangePasswordOnLogin) as ActiveDirectoryUser.Update.IUpdate;
+            return this.WithPromptToChangePasswordOnLogin(promptToChangePasswordOnLogin);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of user definition.</return>
         ActiveDirectoryUser.Definition.IWithCreate ActiveDirectoryUser.Definition.IWithUsageLocationBeta.WithUsageLocation(CountryISOCode usageLocation)
         {
-            return this.WithUsageLocation(usageLocation) as ActiveDirectoryUser.Definition.IWithCreate;
+            return this.WithUsageLocation(usageLocation);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of user update.</return>
         ActiveDirectoryUser.Update.IUpdate ActiveDirectoryUser.Update.IWithUsageLocationBeta.WithUsageLocation(CountryISOCode usageLocation)
         {
-            return this.WithUsageLocation(usageLocation) as ActiveDirectoryUser.Update.IUpdate;
+            return this.WithUsageLocation(usageLocation);
         }
     }
 }

@@ -16,7 +16,9 @@ echo "[" > $rootdir/ci/app/test_index
 while read line; do
     testcase="$( echo "$line" | cut -d '=' -f 1 )"
     if [[ $testcase == Samples* ]] ; then
-        sed -e "s;%testcase%;${testcase};g" -e "s|%testpath%|${sampleTestPath}|g" $rootdir/ci/task_template > $rootdir/ci/file.out
+        testname="$(echo "$testcase" | rev | cut -d'.' -f1 | rev)"
+        recordpath="$(echo "$testcase" | rev | cut -d'.' -f2-7 | rev)"
+        sed -e "s;%testcase%;${testcase};g" -e "s|%testpath%|${sampleTestPath}|g" -e "s|%recordpath%|${recordpath}|g" -e "s|%testname%|${testname}|g" $rootdir/ci/task_template > $rootdir/ci/file.out
         task=$(cat $rootdir/ci/file.out)
         echo $task, >> $rootdir/ci/app/test_index
     fi
@@ -29,7 +31,9 @@ dotnet test -t --no-build > $rootdir/ci/tasklist
 while read line; do
     testcase="$( echo "$line" | cut -d '=' -f 1 )"
     if [[ $testcase == Fluent* ]] ; then
-        sed -e "s/%testcase%/${testcase}/g" -e "s|%testpath%|${fluentTestPath}|g" $rootdir/ci/task_template > $rootdir/ci/file.out
+        testname="$(echo "$testcase" | rev | cut -d'.' -f1 | rev)"
+        recordpath="$(echo "$testcase" | rev | cut -d'.' -f2-7 | rev)"
+        sed -e "s/%testcase%/${testcase}/g" -e "s|%testpath%|${fluentTestPath}|g" -e "s|%recordpath%|${recordpath}|g" -e "s|%testname%|${testname}|g" $rootdir/ci/task_template > $rootdir/ci/file.out
         task=$(cat $rootdir/ci/file.out)
         echo $task, >> $rootdir/ci/app/test_index
     fi

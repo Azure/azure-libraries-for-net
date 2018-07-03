@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of definition.</return>
         Troubleshooting.Definition.IWithStoragePath Troubleshooting.Definition.IWithStorageAccount.WithStorageAccount(string storageAccountId)
         {
-            return this.WithStorageAccount(storageAccountId) as Troubleshooting.Definition.IWithStoragePath;
+            return this.WithStorageAccount(storageAccountId);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Results() as System.Collections.Generic.IReadOnlyList<Models.TroubleshootingDetails>;
+                return this.Results();
             }
         }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         Troubleshooting.Definition.IWithExecute Troubleshooting.Definition.IWithStoragePath.WithStoragePath(string storagePath)
         {
-            return this.WithStoragePath(storagePath) as Troubleshooting.Definition.IWithExecute;
+            return this.WithStoragePath(storagePath);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.INetworkWatcher;
+                return this.Parent();
             }
         }
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of definition.</return>
         Troubleshooting.Definition.IWithStorageAccount Troubleshooting.Definition.IWithTargetResource.WithTargetResourceId(string targetResourceId)
         {
-            return this.WithTargetResourceId(targetResourceId) as Troubleshooting.Definition.IWithStorageAccount;
+            return this.WithTargetResourceId(targetResourceId);
         }
     }
 }

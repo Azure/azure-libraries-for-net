@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Dns.Fluent.IDnsZone;
+                return this.Parent();
             }
         }
 
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>List of record sets.</return>
         System.Collections.Generic.IEnumerable<RecordSetT> Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<RecordSetT>.List(string recordSetNameSuffix)
         {
-            return this.List(recordSetNameSuffix) as System.Collections.Generic.IEnumerable<RecordSetT>;
+            return this.List(recordSetNameSuffix);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>List of record sets.</return>
         System.Collections.Generic.IEnumerable<RecordSetT> Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<RecordSetT>.List(int pageSize)
         {
-            return this.List(pageSize) as System.Collections.Generic.IEnumerable<RecordSetT>;
+            return this.List(pageSize);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The record sets.</return>
         System.Collections.Generic.IEnumerable<RecordSetT> Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<RecordSetT>.List(string recordSetNameSuffix, int pageSize)
         {
-            return this.List(recordSetNameSuffix, pageSize) as System.Collections.Generic.IEnumerable<RecordSetT>;
+            return this.List(recordSetNameSuffix, pageSize);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<RecordSetT> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<RecordSetT>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<RecordSetT>;
+            return this.List();
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>An observable that emits record sets.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>> Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<RecordSetT>.ListAsync(string recordSetNameSuffix, bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(recordSetNameSuffix, loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>;
+            return await this.ListAsync(recordSetNameSuffix, loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>An observable that emits record sets.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>> Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<RecordSetT>.ListAsync(int pageSize, bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(pageSize, loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>;
+            return await this.ListAsync(pageSize, loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>An observable that emits record sets.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>> Microsoft.Azure.Management.Dns.Fluent.IDnsRecordSets<RecordSetT>.ListAsync(string recordSetNameSuffix, int pageSize, bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(recordSetNameSuffix, pageSize, loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>;
+            return await this.ListAsync(recordSetNameSuffix, pageSize, loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<RecordSetT>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<RecordSetT>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
     }
 }

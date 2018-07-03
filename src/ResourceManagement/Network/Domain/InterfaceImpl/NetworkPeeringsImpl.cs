@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new resource definition.</return>
         NetworkPeering.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<NetworkPeering.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as NetworkPeering.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A representation of the future computation of this call, evaluating to null if no such peering is found.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.INetworkPeering> Microsoft.Azure.Management.Network.Fluent.INetworkPeerings.GetByRemoteNetworkAsync(INetwork network, CancellationToken cancellationToken)
         {
-            return await this.GetByRemoteNetworkAsync(network, cancellationToken) as Microsoft.Azure.Management.Network.Fluent.INetworkPeering;
+            return await this.GetByRemoteNetworkAsync(network, cancellationToken);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A representation of the future computation of this call, evaluating to null if no such peering is found.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.INetworkPeering> Microsoft.Azure.Management.Network.Fluent.INetworkPeerings.GetByRemoteNetworkAsync(string remoteNetworkResourceId, CancellationToken cancellationToken)
         {
-            return await this.GetByRemoteNetworkAsync(remoteNetworkResourceId, cancellationToken) as Microsoft.Azure.Management.Network.Fluent.INetworkPeering;
+            return await this.GetByRemoteNetworkAsync(remoteNetworkResourceId, cancellationToken);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A network peering, or null if none exists.</return>
         Microsoft.Azure.Management.Network.Fluent.INetworkPeering Microsoft.Azure.Management.Network.Fluent.INetworkPeerings.GetByRemoteNetwork(INetwork network)
         {
-            return this.GetByRemoteNetwork(network) as Microsoft.Azure.Management.Network.Fluent.INetworkPeering;
+            return this.GetByRemoteNetwork(network);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A network peering, or null if none exists.</return>
         Microsoft.Azure.Management.Network.Fluent.INetworkPeering Microsoft.Azure.Management.Network.Fluent.INetworkPeerings.GetByRemoteNetwork(string remoteNetworkResourceId)
         {
-            return this.GetByRemoteNetwork(remoteNetworkResourceId) as Microsoft.Azure.Management.Network.Fluent.INetworkPeering;
+            return this.GetByRemoteNetwork(remoteNetworkResourceId);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.INetworkPeering> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Network.Fluent.INetworkPeering>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.INetworkPeering>;
+            return this.List();
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<INetworkPeering>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Network.Fluent.INetworkPeering>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<INetworkPeering>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
     }
 }

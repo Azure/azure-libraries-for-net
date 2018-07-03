@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.Records() as System.Collections.Generic.IReadOnlyList<Models.CaaRecord>;
+                return this.Records();
             }
         }
     }

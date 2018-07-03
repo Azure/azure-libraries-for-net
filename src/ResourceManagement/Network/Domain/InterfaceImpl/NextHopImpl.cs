@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.NextHopType() as Models.NextHopType;
+                return this.NextHopType();
             }
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.INetworkWatcher;
+                return this.Parent();
             }
         }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The VerificationIPFlow object itself.</return>
         NextHop.Definition.IWithSourceIP NextHop.Definition.IWithTargetResource.WithTargetResourceId(string vmId)
         {
-            return this.WithTargetResourceId(vmId) as NextHop.Definition.IWithSourceIP;
+            return this.WithTargetResourceId(vmId);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The VerificationIPFlow object itself.</return>
         NextHop.Definition.IWithExecute NextHop.Definition.IWithNetworkInterface.WithTargetNetworkInterfaceId(string targetNetworkInterfaceId)
         {
-            return this.WithTargetNetworkInterfaceId(targetNetworkInterfaceId) as NextHop.Definition.IWithExecute;
+            return this.WithTargetNetworkInterfaceId(targetNetworkInterfaceId);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The VerificationIPFlow object itself.</return>
         NextHop.Definition.IWithDestinationIP NextHop.Definition.IWithSourceIP.WithSourceIPAddress(string sourceIPAddress)
         {
-            return this.WithSourceIPAddress(sourceIPAddress) as NextHop.Definition.IWithDestinationIP;
+            return this.WithSourceIPAddress(sourceIPAddress);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The VerificationIPFlow object itself.</return>
         NextHop.Definition.IWithExecute NextHop.Definition.IWithDestinationIP.WithDestinationIPAddress(string destinationIPAddress)
         {
-            return this.WithDestinationIPAddress(destinationIPAddress) as NextHop.Definition.IWithExecute;
+            return this.WithDestinationIPAddress(destinationIPAddress);
         }
     }
 }

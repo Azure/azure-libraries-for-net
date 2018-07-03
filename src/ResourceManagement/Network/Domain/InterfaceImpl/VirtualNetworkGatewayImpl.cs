@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithGatewayType VirtualNetworkGateway.Definition.IWithNetwork.WithNewNetwork(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetwork> creatable)
         {
-            return this.WithNewNetwork(creatable) as VirtualNetworkGateway.Definition.IWithGatewayType;
+            return this.WithNewNetwork(creatable);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithGatewayType VirtualNetworkGateway.Definition.IWithNetwork.WithNewNetwork(string name, string addressSpace, string subnetAddressSpaceCidr)
         {
-            return this.WithNewNetwork(name, addressSpace, subnetAddressSpaceCidr) as VirtualNetworkGateway.Definition.IWithGatewayType;
+            return this.WithNewNetwork(name, addressSpace, subnetAddressSpaceCidr);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithGatewayType VirtualNetworkGateway.Definition.IWithNetwork.WithNewNetwork(string addressSpaceCidr, string subnetAddressSpaceCidr)
         {
-            return this.WithNewNetwork(addressSpaceCidr, subnetAddressSpaceCidr) as VirtualNetworkGateway.Definition.IWithGatewayType;
+            return this.WithNewNetwork(addressSpaceCidr, subnetAddressSpaceCidr);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithGatewayType VirtualNetworkGateway.Definition.IWithNetwork.WithExistingNetwork(INetwork network)
         {
-            return this.WithExistingNetwork(network) as VirtualNetworkGateway.Definition.IWithGatewayType;
+            return this.WithExistingNetwork(network);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithSku VirtualNetworkGateway.Definition.IWithGatewayType.WithRouteBasedVpn()
         {
-            return this.WithRouteBasedVpn() as VirtualNetworkGateway.Definition.IWithSku;
+            return this.WithRouteBasedVpn();
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithSku VirtualNetworkGateway.Definition.IWithGatewayType.WithExpressRoute()
         {
-            return this.WithExpressRoute() as VirtualNetworkGateway.Definition.IWithSku;
+            return this.WithExpressRoute();
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithCreate VirtualNetworkGateway.Definition.IWithGatewayType.WithPolicyBasedVpn()
         {
-            return this.WithPolicyBasedVpn() as VirtualNetworkGateway.Definition.IWithCreate;
+            return this.WithPolicyBasedVpn();
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithCreate HasPublicIPAddress.Definition.IWithExistingPublicIPAddress<VirtualNetworkGateway.Definition.IWithCreate>.WithExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.WithExistingPublicIPAddress(publicIPAddress) as VirtualNetworkGateway.Definition.IWithCreate;
+            return this.WithExistingPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithCreate HasPublicIPAddress.Definition.IWithExistingPublicIPAddress<VirtualNetworkGateway.Definition.IWithCreate>.WithExistingPublicIPAddress(string resourceId)
         {
-            return this.WithExistingPublicIPAddress(resourceId) as VirtualNetworkGateway.Definition.IWithCreate;
+            return this.WithExistingPublicIPAddress(resourceId);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithCreate HasPublicIPAddress.Definition.IWithNewPublicIPAddressNoDnsLabel<VirtualNetworkGateway.Definition.IWithCreate>.WithNewPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> creatable)
         {
-            return this.WithNewPublicIPAddress(creatable) as VirtualNetworkGateway.Definition.IWithCreate;
+            return this.WithNewPublicIPAddress(creatable);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithCreate HasPublicIPAddress.Definition.IWithNewPublicIPAddressNoDnsLabel<VirtualNetworkGateway.Definition.IWithCreate>.WithNewPublicIPAddress()
         {
-            return this.WithNewPublicIPAddress() as VirtualNetworkGateway.Definition.IWithCreate;
+            return this.WithNewPublicIPAddress();
         }
 
         /// <summary>
@@ -168,14 +168,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.VpnClientConfiguration() as Models.VpnClientConfiguration;
+                return this.VpnClientConfiguration();
             }
         }
 
         /// <return>All the connections associated with this virtual network gateway.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection> Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway.ListConnections()
         {
-            return this.ListConnections() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnection>;
+            return this.ListConnections();
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>All the connections associated with this virtual network gateway.</return>
         async Task<IPagedCollection<IVirtualNetworkGatewayConnection>> Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGateway.ListConnectionsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListConnectionsAsync(cancellationToken) as IPagedCollection<IVirtualNetworkGatewayConnection>;
+            return await this.ListConnectionsAsync(cancellationToken);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.BgpSettings() as Models.BgpSettings;
+                return this.BgpSettings();
             }
         }
 
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.IPConfigurations() as System.Collections.Generic.IReadOnlyCollection<Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayIPConfiguration>;
+                return this.IPConfigurations();
             }
         }
 
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Connections() as Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayConnections;
+                return this.Connections();
             }
         }
 
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Sku() as Models.VirtualNetworkGatewaySku;
+                return this.Sku();
             }
         }
 
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.GatewayType() as Models.VirtualNetworkGatewayType;
+                return this.GatewayType();
             }
         }
 
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.VpnType() as Models.VpnType;
+                return this.VpnType();
             }
         }
 
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGateway.Definition.IWithCreate VirtualNetworkGateway.Definition.IWithBgp.WithBgp(long asn, string bgpPeeringAddress)
         {
-            return this.WithBgp(asn, bgpPeeringAddress) as VirtualNetworkGateway.Definition.IWithCreate;
+            return this.WithBgp(asn, bgpPeeringAddress);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         VirtualNetworkGateway.Update.IUpdate VirtualNetworkGateway.Update.IWithBgp.WithoutBgp()
         {
-            return this.WithoutBgp() as VirtualNetworkGateway.Update.IUpdate;
+            return this.WithoutBgp();
         }
 
         /// <summary>
@@ -308,26 +308,26 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         VirtualNetworkGateway.Update.IUpdate VirtualNetworkGateway.Update.IWithBgp.WithBgp(long asn, string bgpPeeringAddress)
         {
-            return this.WithBgp(asn, bgpPeeringAddress) as VirtualNetworkGateway.Update.IUpdate;
+            return this.WithBgp(asn, bgpPeeringAddress);
         }
 
         VirtualNetworkGateway.Definition.IWithCreate VirtualNetworkGateway.Definition.IWithSku.WithSku(VirtualNetworkGatewaySkuName skuName)
         {
-            return this.WithSku(skuName) as VirtualNetworkGateway.Definition.IWithCreate;
+            return this.WithSku(skuName);
         }
 
         VirtualNetworkGateway.Update.IUpdate VirtualNetworkGateway.Update.IWithSku.WithSku(VirtualNetworkGatewaySkuName skuName)
         {
-            return this.WithSku(skuName) as VirtualNetworkGateway.Update.IUpdate;
+            return this.WithSku(skuName);
         }
         PointToSiteConfiguration.Update.IUpdate IWithPointToSiteConfiguration.UpdatePointToSiteConfiguration()
         {
-            return this.UpdatePointToSiteConfiguration() as PointToSiteConfiguration.Update.IUpdate;
+            return this.UpdatePointToSiteConfiguration();
         }
 
         PointToSiteConfiguration.Definition.IBlank<VirtualNetworkGateway.Update.IUpdate> IWithPointToSiteConfiguration.DefinePointToSiteConfiguration()
         {
-            return this.DefinePointToSiteConfiguration() as PointToSiteConfiguration.Definition.IBlank<VirtualNetworkGateway.Update.IUpdate>;
+            return this.DefinePointToSiteConfiguration();
         }
     }
 }

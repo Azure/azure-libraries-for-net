@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         }
 
         ///GENMHASH:39034E92B8596ED5F36CD108B4CEBBC8:A785C9F7D890C95E8D7E8BE08BA1DB7D
-        public ISqlDatabaseThreatDetectionPolicy DefineThreatDetectionPolicy(string policyName)
+        public SqlDatabaseThreatDetectionPolicyImpl DefineThreatDetectionPolicy(string policyName)
         {
             return new SqlDatabaseThreatDetectionPolicyImpl(policyName, this, new DatabaseSecurityAlertPolicyInner(), this.sqlServerManager);
         }

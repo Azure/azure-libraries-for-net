@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The first stage of the new resource definition.</return>
         EventHub.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<EventHub.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as EventHub.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHub;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.IEventHub Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHub;
+            return this.GetById(id);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             get
             {
-                return this.ConsumerGroups() as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroups;
+                return this.ConsumerGroups();
             }
         }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             get
             {
-                return this.AuthorizationRules() as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRules;
+                return this.AuthorizationRules();
             }
         }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The event hubs.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.IEventHub Microsoft.Azure.Management.Eventhub.Fluent.IEventHubs.GetByName(string resourceGroupName, string namespaceName, string name)
         {
-            return this.GetByName(resourceGroupName, namespaceName, name) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHub;
+            return this.GetByName(resourceGroupName, namespaceName, name);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits the event hubs.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubs.ListByNamespaceAsync(string resourceGroupName, string namespaceName, CancellationToken cancellationToken)
         {
-            return await this.ListByNamespaceAsync(resourceGroupName, namespaceName, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>;
+            return await this.ListByNamespaceAsync(resourceGroupName, namespaceName, cancellationToken);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits the event hubs.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubs.GetByNameAsync(string resourceGroupName, string namespaceName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetByNameAsync(resourceGroupName, namespaceName, name, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHub;
+            return await this.GetByNameAsync(resourceGroupName, namespaceName, name, cancellationToken);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>List of event hubs.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubs.ListByNamespace(string resourceGroupName, string namespaceName)
         {
-            return this.ListByNamespace(resourceGroupName, namespaceName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>;
+            return this.ListByNamespace(resourceGroupName, namespaceName);
         }
 
         /// <summary>

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Versions() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersions;
+                return this.Versions();
             }
         }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Publisher() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher;
+                return this.Publisher();
             }
         }
 

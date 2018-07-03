@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The refreshed resource.</return>
         Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor>.Refresh()
         {
-            return this.Refresh() as Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor;
+            return this.Refresh();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.OSDiskStatus() as Microsoft.Azure.Management.Compute.Fluent.EncryptionStatus;
+                return this.OSDiskStatus();
             }
         }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.DataDiskStatus() as Microsoft.Azure.Management.Compute.Fluent.EncryptionStatus;
+                return this.DataDiskStatus();
             }
         }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call returning the encryption status once the refresh is done.</return>
         async Task<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor> Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor;
+            return await this.RefreshAsync(cancellationToken);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <param name="thumbprint">Certificate thumbprint.</param>
         PointToSiteConfiguration.Update.IUpdate PointToSiteConfiguration.Update.IWithRevokedCertificate.WithRevokedCertificate(string name, string thumbprint)
         {
-            return this.WithRevokedCertificate(name, thumbprint) as PointToSiteConfiguration.Update.IUpdate;
+            return this.WithRevokedCertificate(name, thumbprint);
         }
 
         /// <summary>
@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         PointToSiteConfiguration.Update.IUpdate PointToSiteConfiguration.Update.IWithAuthenticationType.WithRadiusAuthentication(string serverIPAddress, string serverSecret)
         {
-            return this.WithRadiusAuthentication(serverIPAddress, serverSecret) as PointToSiteConfiguration.Update.IUpdate;
+            return this.WithRadiusAuthentication(serverIPAddress, serverSecret);
         }
 
         PointToSiteConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Update.IUpdate> PointToSiteConfiguration.Definition.IWithRevokedCertificate<VirtualNetworkGateway.Update.IUpdate>.WithRevokedCertificate(string name, string thumbprint)
         {
-            return this.WithRevokedCertificate(name, thumbprint) as PointToSiteConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Update.IUpdate>;
+            return this.WithRevokedCertificate(name, thumbprint);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PointToSiteConfiguration.Update.IUpdate PointToSiteConfiguration.Update.IWithTunnelType.WithSstpOnly()
         {
-            return this.WithSstpOnly() as PointToSiteConfiguration.Update.IUpdate;
+            return this.WithSstpOnly();
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PointToSiteConfiguration.Update.IUpdate PointToSiteConfiguration.Update.IWithTunnelType.WithIkeV2Only()
         {
-            return this.WithIkeV2Only() as PointToSiteConfiguration.Update.IUpdate;
+            return this.WithIkeV2Only();
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PointToSiteConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Update.IUpdate> PointToSiteConfiguration.Definition.IWithTunnelType<VirtualNetworkGateway.Update.IUpdate>.WithSstpOnly()
         {
-            return this.WithSstpOnly() as PointToSiteConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Update.IUpdate>;
+            return this.WithSstpOnly();
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PointToSiteConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Update.IUpdate> PointToSiteConfiguration.Definition.IWithTunnelType<VirtualNetworkGateway.Update.IUpdate>.WithIkeV2Only()
         {
-            return this.WithIkeV2Only() as PointToSiteConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Update.IUpdate>;
+            return this.WithIkeV2Only();
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         PointToSiteConfiguration.Update.IUpdate PointToSiteConfiguration.Update.IWithAzureCertificate.WithAzureCertificate(string name, string certificateData)
         {
-            return this.WithAzureCertificate(name, certificateData) as PointToSiteConfiguration.Update.IUpdate;
+            return this.WithAzureCertificate(name, certificateData);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         PointToSiteConfiguration.Update.IUpdate PointToSiteConfiguration.Update.IWithAzureCertificate.WithoutAzureCertificate(string name)
         {
-            return this.WithoutAzureCertificate(name) as PointToSiteConfiguration.Update.IUpdate;
+            return this.WithoutAzureCertificate(name);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         PointToSiteConfiguration.Update.IUpdate PointToSiteConfiguration.Update.IWithAzureCertificate.WithAzureCertificateFromFile(string name, FileInfo certificateFile)
         {
-            return this.WithAzureCertificateFromFile(name, certificateFile) as PointToSiteConfiguration.Update.IUpdate;
+            return this.WithAzureCertificateFromFile(name, certificateFile);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PointToSiteConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Update.IUpdate> PointToSiteConfiguration.Definition.IWithAuthenticationType<VirtualNetworkGateway.Update.IUpdate>.WithRadiusAuthentication(string serverIPAddress, string serverSecret)
         {
-            return this.WithRadiusAuthentication(serverIPAddress, serverSecret) as PointToSiteConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Update.IUpdate>;
+            return this.WithRadiusAuthentication(serverIPAddress, serverSecret);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PointToSiteConfiguration.Definition.IWithAttachAndAzureCertificate<VirtualNetworkGateway.Update.IUpdate> PointToSiteConfiguration.Definition.IWithAzureCertificate<VirtualNetworkGateway.Update.IUpdate>.WithAzureCertificate(string name, string certificateData)
         {
-            return this.WithAzureCertificate(name, certificateData) as PointToSiteConfiguration.Definition.IWithAttachAndAzureCertificate<VirtualNetworkGateway.Update.IUpdate>;
+            return this.WithAzureCertificate(name, certificateData);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PointToSiteConfiguration.Definition.IWithAttachAndAzureCertificate<VirtualNetworkGateway.Update.IUpdate> PointToSiteConfiguration.Definition.IWithAzureCertificate<VirtualNetworkGateway.Update.IUpdate>.WithAzureCertificateFromFile(string name, FileInfo certificateFile)
         {
-            return this.WithAzureCertificateFromFile(name, certificateFile) as PointToSiteConfiguration.Definition.IWithAttachAndAzureCertificate<VirtualNetworkGateway.Update.IUpdate>;
+            return this.WithAzureCertificateFromFile(name, certificateFile);
         }
 
         /// <summary>
@@ -146,17 +146,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         PointToSiteConfiguration.Update.IUpdate PointToSiteConfiguration.Update.IWithAddressPool.WithAddressPool(string addressPool)
         {
-            return this.WithAddressPool(addressPool) as PointToSiteConfiguration.Update.IUpdate;
+            return this.WithAddressPool(addressPool);
         }
 
         PointToSiteConfiguration.Definition.IWithAuthenticationType<VirtualNetworkGateway.Update.IUpdate> PointToSiteConfiguration.Definition.IWithAddressPool<VirtualNetworkGateway.Update.IUpdate>.WithAddressPool(string addressPool)
         {
-            return this.WithAddressPool(addressPool) as PointToSiteConfiguration.Definition.IWithAuthenticationType<VirtualNetworkGateway.Update.IUpdate>;
+            return this.WithAddressPool(addressPool);
         }
 
         VirtualNetworkGateway.Update.IUpdate ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<VirtualNetworkGateway.Update.IUpdate>.Attach()
         {
-            return this.Attach() as VirtualNetworkGateway.Update.IUpdate;
+            return this.Attach();
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Sku() as Models.DiskSkuTypes;
+                return this.Sku();
             }
         }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.AvailabilityZones() as System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>;
+                return this.AvailabilityZones();
             }
         }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Source() as Models.CreationSource;
+                return this.Source();
             }
         }
 
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         Disk.Update.IUpdate Disk.Update.IWithOSSettings.WithOSType(OperatingSystemTypes osType)
         {
-            return this.WithOSType(osType) as Disk.Update.IUpdate;
+            return this.WithOSType(osType);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithDataDiskFromSnapshot.FromSnapshot(string snapshotId)
         {
-            return this.FromSnapshot(snapshotId) as Disk.Definition.IWithCreateAndSize;
+            return this.FromSnapshot(snapshotId);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithDataDiskFromSnapshot.FromSnapshot(ISnapshot snapshot)
         {
-            return this.FromSnapshot(snapshot) as Disk.Definition.IWithCreateAndSize;
+            return this.FromSnapshot(snapshot);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithWindowsDiskSource.WithWindowsFromVhd(string vhdUrl)
         {
-            return this.WithWindowsFromVhd(vhdUrl) as Disk.Definition.IWithCreateAndSize;
+            return this.WithWindowsFromVhd(vhdUrl);
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithWindowsDiskSource.WithWindowsFromSnapshot(string sourceSnapshotId)
         {
-            return this.WithWindowsFromSnapshot(sourceSnapshotId) as Disk.Definition.IWithCreateAndSize;
+            return this.WithWindowsFromSnapshot(sourceSnapshotId);
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithWindowsDiskSource.WithWindowsFromSnapshot(ISnapshot sourceSnapshot)
         {
-            return this.WithWindowsFromSnapshot(sourceSnapshot) as Disk.Definition.IWithCreateAndSize;
+            return this.WithWindowsFromSnapshot(sourceSnapshot);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithWindowsDiskSource.WithWindowsFromDisk(string sourceDiskId)
         {
-            return this.WithWindowsFromDisk(sourceDiskId) as Disk.Definition.IWithCreateAndSize;
+            return this.WithWindowsFromDisk(sourceDiskId);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithWindowsDiskSource.WithWindowsFromDisk(IDisk sourceDisk)
         {
-            return this.WithWindowsFromDisk(sourceDisk) as Disk.Definition.IWithCreateAndSize;
+            return this.WithWindowsFromDisk(sourceDisk);
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithDataDiskFromVhd.FromVhd(string vhdUrl)
         {
-            return this.FromVhd(vhdUrl) as Disk.Definition.IWithCreateAndSize;
+            return this.FromVhd(vhdUrl);
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithDataDiskSource Disk.Definition.IWithData.WithData()
         {
-            return this.WithData() as Disk.Definition.IWithDataDiskSource;
+            return this.WithData();
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithCreateAndSize.WithSizeInGB(int sizeInGB)
         {
-            return this.WithSizeInGB(sizeInGB) as Disk.Definition.IWithCreateAndSize;
+            return this.WithSizeInGB(sizeInGB);
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithLinuxDiskSource.WithLinuxFromSnapshot(string sourceSnapshotId)
         {
-            return this.WithLinuxFromSnapshot(sourceSnapshotId) as Disk.Definition.IWithCreateAndSize;
+            return this.WithLinuxFromSnapshot(sourceSnapshotId);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithLinuxDiskSource.WithLinuxFromSnapshot(ISnapshot sourceSnapshot)
         {
-            return this.WithLinuxFromSnapshot(sourceSnapshot) as Disk.Definition.IWithCreateAndSize;
+            return this.WithLinuxFromSnapshot(sourceSnapshot);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithLinuxDiskSource.WithLinuxFromVhd(string vhdUrl)
         {
-            return this.WithLinuxFromVhd(vhdUrl) as Disk.Definition.IWithCreateAndSize;
+            return this.WithLinuxFromVhd(vhdUrl);
         }
 
         /// <summary>
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithLinuxDiskSource.WithLinuxFromDisk(string sourceDiskId)
         {
-            return this.WithLinuxFromDisk(sourceDiskId) as Disk.Definition.IWithCreateAndSize;
+            return this.WithLinuxFromDisk(sourceDiskId);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithLinuxDiskSource.WithLinuxFromDisk(IDisk sourceDisk)
         {
-            return this.WithLinuxFromDisk(sourceDisk) as Disk.Definition.IWithCreateAndSize;
+            return this.WithLinuxFromDisk(sourceDisk);
         }
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithDataDiskFromDisk.FromDisk(string managedDiskId)
         {
-            return this.FromDisk(managedDiskId) as Disk.Definition.IWithCreateAndSize;
+            return this.FromDisk(managedDiskId);
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreateAndSize Disk.Definition.IWithDataDiskFromDisk.FromDisk(IDisk managedDisk)
         {
-            return this.FromDisk(managedDisk) as Disk.Definition.IWithCreateAndSize;
+            return this.FromDisk(managedDisk);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreate Disk.Definition.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
         {
-            return this.WithAvailabilityZone(zoneId) as Disk.Definition.IWithCreate;
+            return this.WithAvailabilityZone(zoneId);
         }
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         Disk.Update.IUpdate Disk.Update.IWithSku.WithSku(DiskSkuTypes sku)
         {
-            return this.WithSku(sku) as Disk.Update.IUpdate;
+            return this.WithSku(sku);
         }
 
         /// <summary>
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreate Disk.Definition.IWithSku.WithSku(DiskSkuTypes sku)
         {
-            return this.WithSku(sku) as Disk.Definition.IWithCreate;
+            return this.WithSku(sku);
         }
 
         /// <summary>
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         Disk.Update.IUpdate Disk.Update.IWithSize.WithSizeInGB(int sizeInGB)
         {
-            return this.WithSizeInGB(sizeInGB) as Disk.Update.IUpdate;
+            return this.WithSizeInGB(sizeInGB);
         }
 
         /// <summary>
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Disk.Definition.IWithCreate Disk.Definition.IWithDataDiskSource.WithSizeInGB(int sizeInGB)
         {
-            return this.WithSizeInGB(sizeInGB) as Disk.Definition.IWithCreate;
+            return this.WithSizeInGB(sizeInGB);
         }
     }
 }

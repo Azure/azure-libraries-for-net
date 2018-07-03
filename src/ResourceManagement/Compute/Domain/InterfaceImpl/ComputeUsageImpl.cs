@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Name() as Models.UsageName;
+                return this.Name();
             }
         }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Unit() as Models.ComputeUsageUnit;
+                return this.Unit();
             }
         }
     }

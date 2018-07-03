@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the update.</return>
         SqlFirewallRule.Update.IUpdate SqlFirewallRule.Update.IWithEndIPAddress.WithEndIPAddress(string endIPAddress)
         {
-            return this.WithEndIPAddress(endIPAddress) as SqlFirewallRule.Update.IUpdate;
+            return this.WithEndIPAddress(endIPAddress);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the update.</return>
         SqlFirewallRule.Update.IUpdate SqlFirewallRule.Update.IWithStartIPAddress.WithStartIPAddress(string startIPAddress)
         {
-            return this.WithStartIPAddress(startIPAddress) as SqlFirewallRule.Update.IUpdate;
+            return this.WithStartIPAddress(startIPAddress);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFirewallRuleOperations.Definition.IWithIPAddressRange SqlFirewallRuleOperations.Definition.IWithSqlServer.WithExistingSqlServerId(string sqlServerId)
         {
-            return this.WithExistingSqlServerId(sqlServerId) as SqlFirewallRuleOperations.Definition.IWithIPAddressRange;
+            return this.WithExistingSqlServerId(sqlServerId);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFirewallRuleOperations.Definition.IWithIPAddressRange SqlFirewallRuleOperations.Definition.IWithSqlServer.WithExistingSqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.WithExistingSqlServer(resourceGroupName, sqlServerName) as SqlFirewallRuleOperations.Definition.IWithIPAddressRange;
+            return this.WithExistingSqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFirewallRuleOperations.Definition.IWithIPAddressRange SqlFirewallRuleOperations.Definition.IWithSqlServer.WithExistingSqlServer(ISqlServer sqlServer)
         {
-            return this.WithExistingSqlServer(sqlServer) as SqlFirewallRuleOperations.Definition.IWithIPAddressRange;
+            return this.WithExistingSqlServer(sqlServer);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFirewallRuleOperations.Definition.IWithCreate SqlFirewallRuleOperations.Definition.IWithIPAddressRange.WithIPAddress(string ipAddress)
         {
-            return this.WithIPAddress(ipAddress) as SqlFirewallRuleOperations.Definition.IWithCreate;
+            return this.WithIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFirewallRuleOperations.Definition.IWithCreate SqlFirewallRuleOperations.Definition.IWithIPAddressRange.WithIPAddressRange(string startIPAddress, string endIPAddress)
         {
-            return this.WithIPAddressRange(startIPAddress, endIPAddress) as SqlFirewallRuleOperations.Definition.IWithCreate;
+            return this.WithIPAddressRange(startIPAddress, endIPAddress);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFirewallRule.Definition.IWithAttach<SqlServer.Definition.IWithCreate> SqlFirewallRule.Definition.IWithIPAddress<SqlServer.Definition.IWithCreate>.WithIPAddress(string ipAddress)
         {
-            return this.WithIPAddress(ipAddress) as SqlFirewallRule.Definition.IWithAttach<SqlServer.Definition.IWithCreate>;
+            return this.WithIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the parent definition.</return>
         SqlServer.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<SqlServer.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as SqlServer.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The stage of new resource update.</return>
         SqlFirewallRule.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlFirewallRule.Update.IUpdate>.Update()
         {
-            return this.Update() as SqlFirewallRule.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlFirewallRule.Definition.IWithAttach<SqlServer.Definition.IWithCreate> SqlFirewallRule.Definition.IWithIPAddressRange<SqlServer.Definition.IWithCreate>.WithIPAddressRange(string startIPAddress, string endIPAddress)
         {
-            return this.WithIPAddressRange(startIPAddress, endIPAddress) as SqlFirewallRule.Definition.IWithAttach<SqlServer.Definition.IWithCreate>;
+            return this.WithIPAddressRange(startIPAddress, endIPAddress);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Region() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region();
             }
         }
 

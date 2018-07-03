@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The refreshed resource.</return>
         Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM>.Refresh()
         {
-            return this.Refresh() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM;
+            return this.Refresh();
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
+                return this.Tags();
             }
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Region() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region();
             }
         }
 
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.InstanceView() as Models.VirtualMachineInstanceView;
+                return this.InstanceView();
             }
         }
 
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Size() as Models.VirtualMachineSizeTypes;
+                return this.Size();
             }
         }
 
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </return>
         Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.GetOSPlatformImage()
         {
-            return this.GetOSPlatformImage() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage;
+            return this.GetOSPlatformImage();
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.NetworkInterfaceIds() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.NetworkInterfaceIds();
             }
         }
 
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.OSProfile() as Models.OSProfile;
+                return this.OSProfile();
             }
         }
 
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The instance view.</return>
         Models.VirtualMachineInstanceView Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.RefreshInstanceView()
         {
-            return this.RefreshInstanceView() as Models.VirtualMachineInstanceView;
+            return this.RefreshInstanceView();
         }
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.DiagnosticsProfile() as Models.DiagnosticsProfile;
+                return this.DiagnosticsProfile();
             }
         }
 
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </return>
         Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineCustomImage Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.GetOSCustomImage()
         {
-            return this.GetOSCustomImage() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineCustomImage;
+            return this.GetOSCustomImage();
         }
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.PlatformImageReference() as Models.ImageReference;
+                return this.PlatformImageReference();
             }
         }
 
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Sku() as Models.Sku;
+                return this.Sku();
             }
         }
 
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.DataDisks() as System.Collections.Generic.IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk>;
+                return this.DataDisks();
             }
         }
 
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.UnmanagedDataDisks() as System.Collections.Generic.IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk>;
+                return this.UnmanagedDataDisks();
             }
         }
 
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The network interfaces associated with this virtual machine instance.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.ListNetworkInterfaces()
         {
-            return this.ListNetworkInterfaces() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface>;
+            return this.ListNetworkInterfaces();
         }
 
         /// <summary>
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.PowerState() as Microsoft.Azure.Management.Compute.Fluent.PowerState;
+                return this.PowerState();
             }
         }
 
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.StorageProfile() as Models.StorageProfile;
+                return this.StorageProfile();
             }
         }
 
@@ -578,7 +578,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Extensions() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMInstanceExtension>;
+                return this.Extensions();
             }
         }
 
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The network interface.</return>
         Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVM.GetNetworkInterface(string name)
         {
-            return this.GetNetworkInterface(name) as Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface;
+            return this.GetNetworkInterface(name);
         }
 
         /// <summary>

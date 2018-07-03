@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The first stage of the new resource definition.</return>
         EventHubNamespace.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<EventHubNamespace.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as EventHubNamespace.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             get
             {
-                return this.AuthorizationRules() as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRules;
+                return this.AuthorizationRules();
             }
         }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             get
             {
-                return this.EventHubs() as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubs;
+                return this.EventHubs();
             }
         }
     }

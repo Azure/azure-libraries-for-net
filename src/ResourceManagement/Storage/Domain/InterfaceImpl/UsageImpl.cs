@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         {
             get
             {
-                return this.Name() as Models.UsageName;
+                return this.Name();
             }
         }
 

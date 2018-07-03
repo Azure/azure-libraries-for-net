@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// Lists the quota usages for the specified container registry.
         /// </summary>
         /// <return>A representation of the future computation of this call.</return>
-        Task<Models.RegistryUsage> ListQuotaUsagesAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<IReadOnlyCollection<Models.RegistryUsage>> ListQuotaUsagesAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets returns entry point to manage container registry webhooks.

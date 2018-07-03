@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.ServicesWithAccess() as System.Collections.Generic.IReadOnlyDictionary<Models.ServiceEndpointType, System.Collections.Generic.List<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region>>;
+                return this.ServicesWithAccess();
             }
         }
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet> Subnet.Definition.IWithServiceEndpoint<Network.Definition.IWithCreateAndSubnet>.WithAccessFromService(ServiceEndpointType service)
         {
-            return this.WithAccessFromService(service) as Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet>;
+            return this.WithAccessFromService(service);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate> Subnet.UpdateDefinition.IWithServiceEndpoint<Network.Update.IUpdate>.WithAccessFromService(ServiceEndpointType service)
         {
-            return this.WithAccessFromService(service) as Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate>;
+            return this.WithAccessFromService(service);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.Update.IUpdate Subnet.Update.IWithServiceEndpoint.WithAccessFromService(ServiceEndpointType service)
         {
-            return this.WithAccessFromService(service) as Subnet.Update.IUpdate;
+            return this.WithAccessFromService(service);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.Update.IUpdate Subnet.Update.IWithServiceEndpoint.WithoutAccessFromService(ServiceEndpointType service)
         {
-            return this.WithoutAccessFromService(service) as Subnet.Update.IUpdate;
+            return this.WithoutAccessFromService(service);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         Subnet.Update.IUpdate Subnet.Update.IWithRouteTable.WithExistingRouteTable(string resourceId)
         {
-            return this.WithExistingRouteTable(resourceId) as Subnet.Update.IUpdate;
+            return this.WithExistingRouteTable(resourceId);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         Subnet.Update.IUpdate Subnet.Update.IWithRouteTable.WithExistingRouteTable(IRouteTable routeTable)
         {
-            return this.WithExistingRouteTable(routeTable) as Subnet.Update.IUpdate;
+            return this.WithExistingRouteTable(routeTable);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         Subnet.Update.IUpdate Subnet.Update.IWithRouteTable.WithoutRouteTable()
         {
-            return this.WithoutRouteTable() as Subnet.Update.IUpdate;
+            return this.WithoutRouteTable();
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         Subnet.Update.IUpdate Subnet.Update.IWithNetworkSecurityGroup.WithExistingNetworkSecurityGroup(INetworkSecurityGroup nsg)
         {
-            return this.WithExistingNetworkSecurityGroup(nsg) as Subnet.Update.IUpdate;
+            return this.WithExistingNetworkSecurityGroup(nsg);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         Subnet.Update.IUpdate Subnet.Update.IWithNetworkSecurityGroup.WithExistingNetworkSecurityGroup(string resourceId)
         {
-            return this.WithExistingNetworkSecurityGroup(resourceId) as Subnet.Update.IUpdate;
+            return this.WithExistingNetworkSecurityGroup(resourceId);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         Subnet.Update.IUpdate Subnet.Update.IWithNetworkSecurityGroup.WithoutNetworkSecurityGroup()
         {
-            return this.WithoutNetworkSecurityGroup() as Subnet.Update.IUpdate;
+            return this.WithoutNetworkSecurityGroup();
         }
 
         /// <return>
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </return>
         Microsoft.Azure.Management.Network.Fluent.IRouteTable Microsoft.Azure.Management.Network.Fluent.ISubnet.GetRouteTable()
         {
-            return this.GetRouteTable() as Microsoft.Azure.Management.Network.Fluent.IRouteTable;
+            return this.GetRouteTable();
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <deprecated>Use  Subnet.listNetworkInterfaceIPConfigurations() instead.</deprecated>
         System.Collections.Generic.ISet<Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration> Microsoft.Azure.Management.Network.Fluent.ISubnet.GetNetworkInterfaceIPConfigurations()
         {
-            return this.GetNetworkInterfaceIPConfigurations() as System.Collections.Generic.ISet<Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration>;
+            return this.GetNetworkInterfaceIPConfigurations();
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </return>
         System.Collections.Generic.IReadOnlyCollection<Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration> Microsoft.Azure.Management.Network.Fluent.ISubnet.ListNetworkInterfaceIPConfigurations()
         {
-            return this.ListNetworkInterfaceIPConfigurations() as System.Collections.Generic.IReadOnlyCollection<Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration>;
+            return this.ListNetworkInterfaceIPConfigurations();
         }
 
         /// <summary>
@@ -202,13 +202,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </return>
         Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup Microsoft.Azure.Management.Network.Fluent.ISubnet.GetNetworkSecurityGroup()
         {
-            return this.GetNetworkSecurityGroup() as Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup;
+            return this.GetNetworkSecurityGroup();
         }
 
         /// <return>Available private IP addresses within this network.</return>
         System.Collections.Generic.ISet<string> Microsoft.Azure.Management.Network.Fluent.ISubnetBeta.ListAvailablePrivateIPAddresses()
         {
-            return this.ListAvailablePrivateIPAddresses() as System.Collections.Generic.ISet<string>;
+            return this.ListAvailablePrivateIPAddresses();
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet> Subnet.Definition.IWithAddressPrefix<Network.Definition.IWithCreateAndSubnet>.WithAddressPrefix(string cidr)
         {
-            return this.WithAddressPrefix(cidr) as Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet>;
+            return this.WithAddressPrefix(cidr);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate> Subnet.UpdateDefinition.IWithAddressPrefix<Network.Update.IUpdate>.WithAddressPrefix(string cidr)
         {
-            return this.WithAddressPrefix(cidr) as Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate>;
+            return this.WithAddressPrefix(cidr);
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         Network.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<Network.Update.IUpdate>.Attach()
         {
-            return this.Attach() as Network.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         Network.Definition.IWithCreateAndSubnet Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<Network.Definition.IWithCreateAndSubnet>.Attach()
         {
-            return this.Attach() as Network.Definition.IWithCreateAndSubnet;
+            return this.Attach();
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet> Subnet.Definition.IWithRouteTable<Network.Definition.IWithCreateAndSubnet>.WithExistingRouteTable(string resourceId)
         {
-            return this.WithExistingRouteTable(resourceId) as Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet>;
+            return this.WithExistingRouteTable(resourceId);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet> Subnet.Definition.IWithRouteTable<Network.Definition.IWithCreateAndSubnet>.WithExistingRouteTable(IRouteTable routeTable)
         {
-            return this.WithExistingRouteTable(routeTable) as Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet>;
+            return this.WithExistingRouteTable(routeTable);
         }
 
         /// <summary>
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate> Subnet.UpdateDefinition.IWithRouteTable<Network.Update.IUpdate>.WithExistingRouteTable(string resourceId)
         {
-            return this.WithExistingRouteTable(resourceId) as Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate>;
+            return this.WithExistingRouteTable(resourceId);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate> Subnet.UpdateDefinition.IWithRouteTable<Network.Update.IUpdate>.WithExistingRouteTable(IRouteTable routeTable)
         {
-            return this.WithExistingRouteTable(routeTable) as Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate>;
+            return this.WithExistingRouteTable(routeTable);
         }
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         Subnet.Update.IUpdate Subnet.Update.IWithAddressPrefix.WithAddressPrefix(string cidr)
         {
-            return this.WithAddressPrefix(cidr) as Subnet.Update.IUpdate;
+            return this.WithAddressPrefix(cidr);
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet> Subnet.Definition.IWithNetworkSecurityGroup<Network.Definition.IWithCreateAndSubnet>.WithExistingNetworkSecurityGroup(INetworkSecurityGroup nsg)
         {
-            return this.WithExistingNetworkSecurityGroup(nsg) as Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet>;
+            return this.WithExistingNetworkSecurityGroup(nsg);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet> Subnet.Definition.IWithNetworkSecurityGroup<Network.Definition.IWithCreateAndSubnet>.WithExistingNetworkSecurityGroup(string resourceId)
         {
-            return this.WithExistingNetworkSecurityGroup(resourceId) as Subnet.Definition.IWithAttach<Network.Definition.IWithCreateAndSubnet>;
+            return this.WithExistingNetworkSecurityGroup(resourceId);
         }
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate> Subnet.UpdateDefinition.IWithNetworkSecurityGroup<Network.Update.IUpdate>.WithExistingNetworkSecurityGroup(INetworkSecurityGroup nsg)
         {
-            return this.WithExistingNetworkSecurityGroup(nsg) as Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate>;
+            return this.WithExistingNetworkSecurityGroup(nsg);
         }
 
         /// <summary>
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate> Subnet.UpdateDefinition.IWithNetworkSecurityGroup<Network.Update.IUpdate>.WithExistingNetworkSecurityGroup(string resourceId)
         {
-            return this.WithExistingNetworkSecurityGroup(resourceId) as Subnet.UpdateDefinition.IWithAttach<Network.Update.IUpdate>;
+            return this.WithExistingNetworkSecurityGroup(resourceId);
         }
     }
 }

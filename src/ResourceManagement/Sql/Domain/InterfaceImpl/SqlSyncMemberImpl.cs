@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMember.Update.IUpdate SqlSyncMember.Update.IWithMemberUserName.WithMemberUserName(string userName)
         {
-            return this.WithMemberUserName(userName) as SqlSyncMember.Update.IUpdate;
+            return this.WithMemberUserName(userName);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMemberOperations.Definition.IWithMemberPassword SqlSyncMemberOperations.Definition.IWithMemberUserName.WithMemberUserName(string userName)
         {
-            return this.WithMemberUserName(userName) as SqlSyncMemberOperations.Definition.IWithMemberPassword;
+            return this.WithMemberUserName(userName);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The paged list object if successful.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncFullSchemaProperty> Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember.ListMemberSchemas()
         {
-            return this.ListMemberSchemas() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncFullSchemaProperty>;
+            return this.ListMemberSchemas();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.DatabaseType() as Models.SyncMemberDbType;
+                return this.DatabaseType();
             }
         }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.SyncState() as Models.SyncMemberState;
+                return this.SyncState();
             }
         }
 
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncFullSchemaProperty>> Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember.ListMemberSchemasAsync(CancellationToken cancellationToken)
         {
-            return await this.ListMemberSchemasAsync(cancellationToken) as IEnumerable<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncFullSchemaProperty>;
+            return await this.ListMemberSchemasAsync(cancellationToken);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.SyncDirection() as Models.SyncDirection;
+                return this.SyncDirection();
             }
         }
 
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMember.Update.IUpdate SqlSyncMember.Update.IWithMemberPassword.WithMemberPassword(string password)
         {
-            return this.WithMemberPassword(password) as SqlSyncMember.Update.IUpdate;
+            return this.WithMemberPassword(password);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMemberOperations.Definition.IWithMemberDatabaseType SqlSyncMemberOperations.Definition.IWithMemberPassword.WithMemberPassword(string password)
         {
-            return this.WithMemberPassword(password) as SqlSyncMemberOperations.Definition.IWithMemberDatabaseType;
+            return this.WithMemberPassword(password);
         }
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMemberOperations.Definition.IWithSyncMemberDatabase SqlSyncMemberOperations.Definition.IWithSqlServer.WithExistingSqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.WithExistingSqlServer(resourceGroupName, sqlServerName) as SqlSyncMemberOperations.Definition.IWithSyncMemberDatabase;
+            return this.WithExistingSqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMemberOperations.Definition.IWithMemberSqlServer SqlSyncMemberOperations.Definition.IWithSqlServer.WithExistingSyncGroup(ISqlSyncGroup sqlSyncGroup)
         {
-            return this.WithExistingSyncGroup(sqlSyncGroup) as SqlSyncMemberOperations.Definition.IWithMemberSqlServer;
+            return this.WithExistingSyncGroup(sqlSyncGroup);
         }
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMemberOperations.Definition.IWithMemberUserName SqlSyncMemberOperations.Definition.IWithMemberSqlServer.WithMemberSqlDatabase(ISqlDatabase sqlDatabase)
         {
-            return this.WithMemberSqlDatabase(sqlDatabase) as SqlSyncMemberOperations.Definition.IWithMemberUserName;
+            return this.WithMemberSqlDatabase(sqlDatabase);
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMemberOperations.Definition.IWithMemberSqlDatabase SqlSyncMemberOperations.Definition.IWithMemberSqlServer.WithMemberSqlServerName(string sqlServerName)
         {
-            return this.WithMemberSqlServerName(sqlServerName) as SqlSyncMemberOperations.Definition.IWithMemberSqlDatabase;
+            return this.WithMemberSqlServerName(sqlServerName);
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMemberOperations.Definition.IWithMemberUserName SqlSyncMemberOperations.Definition.IWithMemberSqlDatabase.WithMemberSqlDatabaseName(string sqlDatabaseName)
         {
-            return this.WithMemberSqlDatabaseName(sqlDatabaseName) as SqlSyncMemberOperations.Definition.IWithMemberUserName;
+            return this.WithMemberSqlDatabaseName(sqlDatabaseName);
         }
 
         /// <summary>
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMember.Update.IUpdate SqlSyncMember.Update.IWithMemberDatabaseType.WithMemberDatabaseType(SyncMemberDbType databaseType)
         {
-            return this.WithMemberDatabaseType(databaseType) as SqlSyncMember.Update.IUpdate;
+            return this.WithMemberDatabaseType(databaseType);
         }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMemberOperations.Definition.IWithSyncDirection SqlSyncMemberOperations.Definition.IWithMemberDatabaseType.WithMemberDatabaseType(SyncMemberDbType databaseType)
         {
-            return this.WithMemberDatabaseType(databaseType) as SqlSyncMemberOperations.Definition.IWithSyncDirection;
+            return this.WithMemberDatabaseType(databaseType);
         }
 
         /// <summary>
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMemberOperations.Definition.IWithMemberSqlServer SqlSyncMemberOperations.Definition.IWithSyncGroupName.WithExistingSyncGroupName(string syncGroupName)
         {
-            return this.WithExistingSyncGroupName(syncGroupName) as SqlSyncMemberOperations.Definition.IWithMemberSqlServer;
+            return this.WithExistingSyncGroupName(syncGroupName);
         }
 
         /// <summary>
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMember.Update.IUpdate SqlSyncMember.Update.IWithSyncDirection.WithDatabaseType(SyncDirection syncDirection)
         {
-            return this.WithDatabaseType(syncDirection) as SqlSyncMember.Update.IUpdate;
+            return this.WithDatabaseType(syncDirection);
         }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMemberOperations.Definition.IWithCreate SqlSyncMemberOperations.Definition.IWithSyncDirection.WithDatabaseType(SyncDirection syncDirection)
         {
-            return this.WithDatabaseType(syncDirection) as SqlSyncMemberOperations.Definition.IWithCreate;
+            return this.WithDatabaseType(syncDirection);
         }
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The stage of new resource update.</return>
         SqlSyncMember.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlSyncMember.Update.IUpdate>.Update()
         {
-            return this.Update() as SqlSyncMember.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlSyncMemberOperations.Definition.IWithSyncGroupName SqlSyncMemberOperations.Definition.IWithSyncMemberDatabase.WithExistingDatabaseName(string databaseName)
         {
-            return this.WithExistingDatabaseName(databaseName) as SqlSyncMemberOperations.Definition.IWithSyncGroupName;
+            return this.WithExistingDatabaseName(databaseName);
         }
     }
 }

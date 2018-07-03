@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of an update of the backend.</return>
         ApplicationGatewayBackend.Update.IUpdate ApplicationGateway.Update.IWithBackend.UpdateBackend(string name)
         {
-            return this.UpdateBackend(name) as ApplicationGatewayBackend.Update.IUpdate;
+            return this.UpdateBackend(name);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithBackend.WithoutBackendIPAddress(string ipAddress)
         {
-            return this.WithoutBackendIPAddress(ipAddress) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutBackendIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithBackend.WithoutBackendFqdn(string fqdn)
         {
-            return this.WithoutBackendFqdn(fqdn) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutBackendFqdn(fqdn);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithBackend.WithoutBackend(string backendName)
         {
-            return this.WithoutBackend(backendName) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutBackend(backendName);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the backend definition.</return>
         ApplicationGatewayBackend.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithBackend.DefineBackend(string name)
         {
-            return this.DefineBackend(name) as ApplicationGatewayBackend.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+            return this.DefineBackend(name);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the backend definition.</return>
         ApplicationGatewayBackend.Definition.IBlank<ApplicationGateway.Definition.IWithCreate> ApplicationGateway.Definition.IWithBackend.DefineBackend(string name)
         {
-            return this.DefineBackend(name) as ApplicationGatewayBackend.Definition.IBlank<ApplicationGateway.Definition.IWithCreate>;
+            return this.DefineBackend(name);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.IApplicationGateway>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.IApplicationGateway;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithExistingSubnet.WithExistingSubnet(ISubnet subnet)
         {
-            return this.WithExistingSubnet(subnet) as ApplicationGateway.Update.IUpdate;
+            return this.WithExistingSubnet(subnet);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithExistingSubnet.WithExistingSubnet(INetwork network, string subnetName)
         {
-            return this.WithExistingSubnet(network, subnetName) as ApplicationGateway.Update.IUpdate;
+            return this.WithExistingSubnet(network, subnetName);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithExistingSubnet.WithExistingSubnet(ISubnet subnet)
         {
-            return this.WithExistingSubnet(subnet) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithExistingSubnet(subnet);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithExistingSubnet.WithExistingSubnet(INetwork network, string subnetName)
         {
-            return this.WithExistingSubnet(network, subnetName) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithExistingSubnet(network, subnetName);
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithInstanceCount.WithInstanceCount(int instanceCount)
         {
-            return this.WithInstanceCount(instanceCount) as ApplicationGateway.Update.IUpdate;
+            return this.WithInstanceCount(instanceCount);
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithInstanceCount.WithInstanceCount(int instanceCount)
         {
-            return this.WithInstanceCount(instanceCount) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithInstanceCount(instanceCount);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition or null if the requested redirect configuration does not exist.</return>
         ApplicationGatewayRedirectConfiguration.Update.IUpdate ApplicationGateway.Update.IWithRedirectConfigurationBeta.UpdateRedirectConfiguration(string name)
         {
-            return this.UpdateRedirectConfiguration(name) as ApplicationGatewayRedirectConfiguration.Update.IUpdate;
+            return this.UpdateRedirectConfiguration(name);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the redirect configuration definition.</return>
         ApplicationGatewayRedirectConfiguration.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithRedirectConfigurationBeta.DefineRedirectConfiguration(string name)
         {
-            return this.DefineRedirectConfiguration(name) as ApplicationGatewayRedirectConfiguration.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+            return this.DefineRedirectConfiguration(name);
         }
 
         /// <summary>
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithRedirectConfigurationBeta.WithoutRedirectConfiguration(string name)
         {
-            return this.WithoutRedirectConfiguration(name) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutRedirectConfiguration(name);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the redirect configuration definition.</return>
         ApplicationGatewayRedirectConfiguration.Definition.IBlank<ApplicationGateway.Definition.IWithCreate> ApplicationGateway.Definition.IWithRedirectConfigurationBeta.DefineRedirectConfiguration(string name)
         {
-            return this.DefineRedirectConfiguration(name) as ApplicationGatewayRedirectConfiguration.Definition.IBlank<ApplicationGateway.Definition.IWithCreate>;
+            return this.DefineRedirectConfiguration(name);
         }
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PrivateIPAllocationMethod() as Models.IPAllocationMethod;
+                return this.PrivateIPAllocationMethod();
             }
         }
 
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PrivateFrontends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend>;
+                return this.PrivateFrontends();
             }
         }
 
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.DisabledSslProtocols() as System.Collections.Generic.IReadOnlyCollection<Models.ApplicationGatewaySslProtocol>;
+                return this.DisabledSslProtocols();
             }
         }
 
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.DefaultPrivateFrontend() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend;
+                return this.DefaultPrivateFrontend();
             }
         }
 
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Backends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackend>;
+                return this.Backends();
             }
         }
 
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.DefaultIPConfiguration() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayIPConfiguration;
+                return this.DefaultIPConfiguration();
             }
         }
 
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.RedirectConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration>;
+                return this.RedirectConfigurations();
             }
         }
 
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A front end listener, or null if none found.</return>
         Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayListener Microsoft.Azure.Management.Network.Fluent.IApplicationGateway.ListenerByPortNumber(int portNumber)
         {
-            return this.ListenerByPortNumber(portNumber) as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayListener;
+            return this.ListenerByPortNumber(portNumber);
         }
 
         /// <summary>
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Size() as Models.ApplicationGatewaySkuName;
+                return this.Size();
             }
         }
 
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Sku() as Models.ApplicationGatewaySku;
+                return this.Sku();
             }
         }
 
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.RequestRoutingRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule>;
+                return this.RequestRoutingRules();
             }
         }
 
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.OperationalState() as Models.ApplicationGatewayOperationalState;
+                return this.OperationalState();
             }
         }
 
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.BackendHttpConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfiguration>;
+                return this.BackendHttpConfigurations();
             }
         }
 
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.IPConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayIPConfiguration>;
+                return this.IPConfigurations();
             }
         }
 
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PublicFrontends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend>;
+                return this.PublicFrontends();
             }
         }
 
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.AuthenticationCertificates() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayAuthenticationCertificate>;
+                return this.AuthenticationCertificates();
             }
         }
 
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.DefaultPublicFrontend() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend;
+                return this.DefaultPublicFrontend();
             }
         }
 
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.FrontendPorts() as System.Collections.Generic.IReadOnlyDictionary<string, int>;
+                return this.FrontendPorts();
             }
         }
 
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>Backend healths indexed by backend name.</return>
         System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.CheckBackendHealth()
         {
-            return this.CheckBackendHealth() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>;
+            return this.CheckBackendHealth();
         }
 
         /// <summary>
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task<System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>> Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBeta.CheckBackendHealthAsync(CancellationToken cancellationToken)
         {
-            return await this.CheckBackendHealthAsync(cancellationToken) as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHealth>;
+            return await this.CheckBackendHealthAsync(cancellationToken);
         }
 
         /// <summary>
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Listeners() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayListener>;
+                return this.Listeners();
             }
         }
 
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Tier() as Models.ApplicationGatewayTier;
+                return this.Tier();
             }
         }
 
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Frontends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend>;
+                return this.Frontends();
             }
         }
 
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Probes() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayProbe>;
+                return this.Probes();
             }
         }
 
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.SslCertificates() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewaySslCertificate>;
+                return this.SslCertificates();
             }
         }
 
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithDisabledSslProtocolBeta.WithoutDisabledSslProtocols(params ApplicationGatewaySslProtocol[] protocols)
         {
-            return this.WithoutDisabledSslProtocols(protocols) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutDisabledSslProtocols(protocols);
         }
 
         /// <summary>
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithDisabledSslProtocolBeta.WithoutAnyDisabledSslProtocols()
         {
-            return this.WithoutAnyDisabledSslProtocols() as ApplicationGateway.Update.IUpdate;
+            return this.WithoutAnyDisabledSslProtocols();
         }
 
         /// <summary>
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithDisabledSslProtocolBeta.WithDisabledSslProtocol(ApplicationGatewaySslProtocol protocol)
         {
-            return this.WithDisabledSslProtocol(protocol) as ApplicationGateway.Update.IUpdate;
+            return this.WithDisabledSslProtocol(protocol);
         }
 
         /// <summary>
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithDisabledSslProtocolBeta.WithDisabledSslProtocols(params ApplicationGatewaySslProtocol[] protocols)
         {
-            return this.WithDisabledSslProtocols(protocols) as ApplicationGateway.Update.IUpdate;
+            return this.WithDisabledSslProtocols(protocols);
         }
 
         /// <summary>
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithDisabledSslProtocolBeta.WithoutDisabledSslProtocol(ApplicationGatewaySslProtocol protocol)
         {
-            return this.WithoutDisabledSslProtocol(protocol) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutDisabledSslProtocol(protocol);
         }
 
         /// <summary>
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithDisabledSslProtocolBeta.WithDisabledSslProtocol(ApplicationGatewaySslProtocol protocol)
         {
-            return this.WithDisabledSslProtocol(protocol) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithDisabledSslProtocol(protocol);
         }
 
         /// <summary>
@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithDisabledSslProtocolBeta.WithDisabledSslProtocols(params ApplicationGatewaySslProtocol[] protocols)
         {
-            return this.WithDisabledSslProtocols(protocols) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithDisabledSslProtocols(protocols);
         }
 
         /// <summary>
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithSslCert.WithoutSslCertificate(string name)
         {
-            return this.WithoutSslCertificate(name) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutSslCertificate(name);
         }
 
         /// <summary>
@@ -700,7 +700,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <deprecated>Use  .withoutSslCertificate instead.</deprecated>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithSslCert.WithoutCertificate(string name)
         {
-            return this.WithoutCertificate(name) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutCertificate(name);
         }
 
         /// <summary>
@@ -710,7 +710,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the certificate definition.</return>
         ApplicationGatewaySslCertificate.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithSslCert.DefineSslCertificate(string name)
         {
-            return this.DefineSslCertificate(name) as ApplicationGatewaySslCertificate.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+            return this.DefineSslCertificate(name);
         }
 
         /// <summary>
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the certificate definition.</return>
         ApplicationGatewaySslCertificate.Definition.IBlank<ApplicationGateway.Definition.IWithCreate> ApplicationGateway.Definition.IWithSslCert.DefineSslCertificate(string name)
         {
-            return this.DefineSslCertificate(name) as ApplicationGatewaySslCertificate.Definition.IBlank<ApplicationGateway.Definition.IWithCreate>;
+            return this.DefineSslCertificate(name);
         }
 
         /// <summary>
@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithListener.WithoutListener(string name)
         {
-            return this.WithoutListener(name) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutListener(name);
         }
 
         /// <summary>
@@ -741,7 +741,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the listener definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithListener.DefineListener(string name)
         {
-            return this.DefineListener(name) as ApplicationGatewayListener.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+            return this.DefineListener(name);
         }
 
         /// <summary>
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition or null if the requested listener does not exist.</return>
         ApplicationGatewayListener.Update.IUpdate ApplicationGateway.Update.IWithListener.UpdateListener(string name)
         {
-            return this.UpdateListener(name) as ApplicationGatewayListener.Update.IUpdate;
+            return this.UpdateListener(name);
         }
 
         /// <summary>
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the listener definition.</return>
         ApplicationGatewayListener.Definition.IBlank<ApplicationGateway.Definition.IWithCreate> ApplicationGateway.Definition.IWithListener.DefineListener(string name)
         {
-            return this.DefineListener(name) as ApplicationGatewayListener.Definition.IBlank<ApplicationGateway.Definition.IWithCreate>;
+            return this.DefineListener(name);
         }
 
         /// <summary>
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate HasPublicIPAddress.Update.IWithExistingPublicIPAddress<ApplicationGateway.Update.IUpdate>.WithoutPublicIPAddress()
         {
-            return this.WithoutPublicIPAddress() as ApplicationGateway.Update.IUpdate;
+            return this.WithoutPublicIPAddress();
         }
 
         /// <summary>
@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate HasPublicIPAddress.Update.IWithExistingPublicIPAddress<ApplicationGateway.Update.IUpdate>.WithExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.WithExistingPublicIPAddress(publicIPAddress) as ApplicationGateway.Update.IUpdate;
+            return this.WithExistingPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Update.IUpdate HasPublicIPAddress.Update.IWithExistingPublicIPAddress<ApplicationGateway.Update.IUpdate>.WithExistingPublicIPAddress(string resourceId)
         {
-            return this.WithExistingPublicIPAddress(resourceId) as ApplicationGateway.Update.IUpdate;
+            return this.WithExistingPublicIPAddress(resourceId);
         }
 
         /// <summary>
@@ -800,7 +800,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate HasPublicIPAddress.Definition.IWithExistingPublicIPAddress<ApplicationGateway.Definition.IWithCreate>.WithExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.WithExistingPublicIPAddress(publicIPAddress) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithExistingPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -810,7 +810,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate HasPublicIPAddress.Definition.IWithExistingPublicIPAddress<ApplicationGateway.Definition.IWithCreate>.WithExistingPublicIPAddress(string resourceId)
         {
-            return this.WithExistingPublicIPAddress(resourceId) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithExistingPublicIPAddress(resourceId);
         }
 
         /// <summary>
@@ -820,7 +820,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithSize.WithSize(ApplicationGatewaySkuName size)
         {
-            return this.WithSize(size) as ApplicationGateway.Update.IUpdate;
+            return this.WithSize(size);
         }
 
         /// <summary>
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithSize.WithSize(ApplicationGatewaySkuName size)
         {
-            return this.WithSize(size) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithSize(size);
         }
 
         /// <summary>
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithPublicFrontend.WithoutPublicFrontend()
         {
-            return this.WithoutPublicFrontend() as ApplicationGateway.Definition.IWithCreate;
+            return this.WithoutPublicFrontend();
         }
 
         /// <summary>
@@ -850,7 +850,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Update.IUpdate HasPublicIPAddress.Update.IWithNewPublicIPAddressNoDnsLabel<ApplicationGateway.Update.IUpdate>.WithNewPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> creatable)
         {
-            return this.WithNewPublicIPAddress(creatable) as ApplicationGateway.Update.IUpdate;
+            return this.WithNewPublicIPAddress(creatable);
         }
 
         /// <summary>
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Update.IUpdate HasPublicIPAddress.Update.IWithNewPublicIPAddressNoDnsLabel<ApplicationGateway.Update.IUpdate>.WithNewPublicIPAddress()
         {
-            return this.WithNewPublicIPAddress() as ApplicationGateway.Update.IUpdate;
+            return this.WithNewPublicIPAddress();
         }
 
         /// <summary>
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate HasPublicIPAddress.Definition.IWithNewPublicIPAddressNoDnsLabel<ApplicationGateway.Definition.IWithCreate>.WithNewPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> creatable)
         {
-            return this.WithNewPublicIPAddress(creatable) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithNewPublicIPAddress(creatable);
         }
 
         /// <summary>
@@ -880,7 +880,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate HasPublicIPAddress.Definition.IWithNewPublicIPAddressNoDnsLabel<ApplicationGateway.Definition.IWithCreate>.WithNewPublicIPAddress()
         {
-            return this.WithNewPublicIPAddress() as ApplicationGateway.Definition.IWithCreate;
+            return this.WithNewPublicIPAddress();
         }
 
         /// <summary>
@@ -890,7 +890,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of a request routing rule update or null if the requested rule does not exist.</return>
         ApplicationGatewayRequestRoutingRule.Update.IUpdate ApplicationGateway.Update.IWithRequestRoutingRule.UpdateRequestRoutingRule(string name)
         {
-            return this.UpdateRequestRoutingRule(name) as ApplicationGatewayRequestRoutingRule.Update.IUpdate;
+            return this.UpdateRequestRoutingRule(name);
         }
 
         /// <summary>
@@ -900,7 +900,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the request routing rule.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithRequestRoutingRule.DefineRequestRoutingRule(string name)
         {
-            return this.DefineRequestRoutingRule(name) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+            return this.DefineRequestRoutingRule(name);
         }
 
         /// <summary>
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithRequestRoutingRule.WithoutRequestRoutingRule(string name)
         {
-            return this.WithoutRequestRoutingRule(name) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutRequestRoutingRule(name);
         }
 
         /// <summary>
@@ -920,7 +920,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the request routing rule.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IBlank<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGateway.Definition.IWithRequestRoutingRule.DefineRequestRoutingRule(string name)
         {
-            return this.DefineRequestRoutingRule(name) as ApplicationGatewayRequestRoutingRule.Definition.IBlank<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.DefineRequestRoutingRule(name);
         }
 
         /// <summary>
@@ -930,7 +930,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithFrontendPort.WithFrontendPort(int portNumber)
         {
-            return this.WithFrontendPort(portNumber) as ApplicationGateway.Update.IUpdate;
+            return this.WithFrontendPort(portNumber);
         }
 
         /// <summary>
@@ -941,7 +941,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition, or null if a port matching either the name or the number, but not both, already exists.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithFrontendPort.WithFrontendPort(int portNumber, string name)
         {
-            return this.WithFrontendPort(portNumber, name) as ApplicationGateway.Update.IUpdate;
+            return this.WithFrontendPort(portNumber, name);
         }
 
         /// <summary>
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithFrontendPort.WithoutFrontendPort(string name)
         {
-            return this.WithoutFrontendPort(name) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutFrontendPort(name);
         }
 
         /// <summary>
@@ -963,7 +963,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithFrontendPort.WithoutFrontendPort(int portNumber)
         {
-            return this.WithoutFrontendPort(portNumber) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutFrontendPort(portNumber);
         }
 
         /// <summary>
@@ -973,7 +973,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithFrontendPort.WithFrontendPort(int portNumber)
         {
-            return this.WithFrontendPort(portNumber) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithFrontendPort(portNumber);
         }
 
         /// <summary>
@@ -984,7 +984,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition, or null if a port matching either the name or the number, but not both, already exists.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithFrontendPort.WithFrontendPort(int portNumber, string name)
         {
-            return this.WithFrontendPort(portNumber, name) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithFrontendPort(portNumber, name);
         }
 
         /// <summary>
@@ -994,7 +994,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate HasPrivateIPAddress.Definition.IWithPrivateIPAddress<ApplicationGateway.Definition.IWithCreate>.WithPrivateIPAddressStatic(string ipAddress)
         {
-            return this.WithPrivateIPAddressStatic(ipAddress) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithPrivateIPAddressStatic(ipAddress);
         }
 
         /// <summary>
@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate HasPrivateIPAddress.Definition.IWithPrivateIPAddress<ApplicationGateway.Definition.IWithCreate>.WithPrivateIPAddressDynamic()
         {
-            return this.WithPrivateIPAddressDynamic() as ApplicationGateway.Definition.IWithCreate;
+            return this.WithPrivateIPAddressDynamic();
         }
 
         /// <summary>
@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of a front end definition.</return>
         ApplicationGatewayFrontend.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithFrontend.DefinePublicFrontend()
         {
-            return this.DefinePublicFrontend() as ApplicationGatewayFrontend.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+            return this.DefinePublicFrontend();
         }
 
         /// <summary>
@@ -1022,7 +1022,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithFrontend.WithoutPublicFrontend()
         {
-            return this.WithoutPublicFrontend() as ApplicationGateway.Update.IUpdate;
+            return this.WithoutPublicFrontend();
         }
 
         /// <summary>
@@ -1031,7 +1031,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of a front end update or null if no public front end exists.</return>
         ApplicationGatewayFrontend.Update.IUpdate ApplicationGateway.Update.IWithFrontend.UpdatePublicFrontend()
         {
-            return this.UpdatePublicFrontend() as ApplicationGatewayFrontend.Update.IUpdate;
+            return this.UpdatePublicFrontend();
         }
 
         /// <summary>
@@ -1040,7 +1040,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of a front end definition.</return>
         ApplicationGatewayFrontend.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithFrontend.DefinePrivateFrontend()
         {
-            return this.DefinePrivateFrontend() as ApplicationGatewayFrontend.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+            return this.DefinePrivateFrontend();
         }
 
         /// <summary>
@@ -1051,7 +1051,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithFrontend.WithoutPrivateFrontend()
         {
-            return this.WithoutPrivateFrontend() as ApplicationGateway.Update.IUpdate;
+            return this.WithoutPrivateFrontend();
         }
 
         /// <summary>
@@ -1062,7 +1062,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithFrontend.WithoutFrontend(string frontendName)
         {
-            return this.WithoutFrontend(frontendName) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutFrontend(frontendName);
         }
 
         /// <summary>
@@ -1072,7 +1072,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the front end IP configuration update.</return>
         ApplicationGatewayFrontend.Update.IUpdate ApplicationGateway.Update.IWithFrontend.UpdateFrontend(string frontendName)
         {
-            return this.UpdateFrontend(frontendName) as ApplicationGatewayFrontend.Update.IUpdate;
+            return this.UpdateFrontend(frontendName);
         }
 
         /// <summary>
@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the certificate definition.</return>
         ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithAuthenticationCertificateBeta.DefineAuthenticationCertificate(string name)
         {
-            return this.DefineAuthenticationCertificate(name) as ApplicationGatewayAuthenticationCertificate.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+            return this.DefineAuthenticationCertificate(name);
         }
 
         /// <summary>
@@ -1092,7 +1092,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithAuthenticationCertificateBeta.WithoutAuthenticationCertificate(string name)
         {
-            return this.WithoutAuthenticationCertificate(name) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutAuthenticationCertificate(name);
         }
 
         /// <summary>
@@ -1102,7 +1102,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the certificate definition.</return>
         ApplicationGatewayAuthenticationCertificate.Definition.IBlank<ApplicationGateway.Definition.IWithCreate> ApplicationGateway.Definition.IWithAuthenticationCertificateBeta.DefineAuthenticationCertificate(string name)
         {
-            return this.DefineAuthenticationCertificate(name) as ApplicationGatewayAuthenticationCertificate.Definition.IBlank<ApplicationGateway.Definition.IWithCreate>;
+            return this.DefineAuthenticationCertificate(name);
         }
 
         /// <summary>
@@ -1112,7 +1112,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of an IP configuration update.</return>
         ApplicationGatewayIPConfiguration.Update.IUpdate ApplicationGateway.Update.IWithIPConfig.UpdateIPConfiguration(string ipConfigurationName)
         {
-            return this.UpdateIPConfiguration(ipConfigurationName) as ApplicationGatewayIPConfiguration.Update.IUpdate;
+            return this.UpdateIPConfiguration(ipConfigurationName);
         }
 
         /// <summary>
@@ -1122,7 +1122,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of an IP configuration update.</return>
         ApplicationGatewayIPConfiguration.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithIPConfig.DefineDefaultIPConfiguration()
         {
-            return this.DefineDefaultIPConfiguration() as ApplicationGatewayIPConfiguration.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+            return this.DefineDefaultIPConfiguration();
         }
 
         /// <summary>
@@ -1134,7 +1134,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithIPConfig.WithoutIPConfiguration(string ipConfigurationName)
         {
-            return this.WithoutIPConfiguration(ipConfigurationName) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutIPConfiguration(ipConfigurationName);
         }
 
         /// <summary>
@@ -1143,7 +1143,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of an IP configuration update.</return>
         ApplicationGatewayIPConfiguration.Update.IUpdate ApplicationGateway.Update.IWithIPConfig.UpdateDefaultIPConfiguration()
         {
-            return this.UpdateDefaultIPConfiguration() as ApplicationGatewayIPConfiguration.Update.IUpdate;
+            return this.UpdateDefaultIPConfiguration();
         }
 
         /// <summary>
@@ -1153,7 +1153,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of a probe update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGateway.Update.IWithProbe.UpdateProbe(string name)
         {
-            return this.UpdateProbe(name) as ApplicationGatewayProbe.Update.IUpdate;
+            return this.UpdateProbe(name);
         }
 
         /// <summary>
@@ -1163,7 +1163,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of a probe definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithProbe.DefineProbe(string name)
         {
-            return this.DefineProbe(name) as ApplicationGatewayProbe.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+            return this.DefineProbe(name);
         }
 
         /// <summary>
@@ -1174,7 +1174,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithProbe.WithoutProbe(string name)
         {
-            return this.WithoutProbe(name) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutProbe(name);
         }
 
         /// <summary>
@@ -1184,7 +1184,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of a probe definition.</return>
         ApplicationGatewayProbe.Definition.IBlank<ApplicationGateway.Definition.IWithCreate> ApplicationGateway.Definition.IWithProbe.DefineProbe(string name)
         {
-            return this.DefineProbe(name) as ApplicationGatewayProbe.Definition.IBlank<ApplicationGateway.Definition.IWithCreate>;
+            return this.DefineProbe(name);
         }
 
         /// <summary>
@@ -1193,7 +1193,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithPrivateFrontend.WithoutPrivateFrontend()
         {
-            return this.WithoutPrivateFrontend() as ApplicationGateway.Definition.IWithCreate;
+            return this.WithoutPrivateFrontend();
         }
 
         /// <summary>
@@ -1203,7 +1203,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithPrivateFrontend.WithPrivateFrontend()
         {
-            return this.WithPrivateFrontend() as ApplicationGateway.Definition.IWithCreate;
+            return this.WithPrivateFrontend();
         }
 
         /// <summary>
@@ -1214,7 +1214,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IWithBackendHttpConfig.WithoutBackendHttpConfiguration(string name)
         {
-            return this.WithoutBackendHttpConfiguration(name) as ApplicationGateway.Update.IUpdate;
+            return this.WithoutBackendHttpConfiguration(name);
         }
 
         /// <summary>
@@ -1224,7 +1224,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayBackendHttpConfiguration.Update.IUpdate ApplicationGateway.Update.IWithBackendHttpConfig.UpdateBackendHttpConfiguration(string name)
         {
-            return this.UpdateBackendHttpConfiguration(name) as ApplicationGatewayBackendHttpConfiguration.Update.IUpdate;
+            return this.UpdateBackendHttpConfiguration(name);
         }
 
         /// <summary>
@@ -1234,7 +1234,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the backend HTTP configuration definition.</return>
         ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate> ApplicationGateway.Update.IWithBackendHttpConfig.DefineBackendHttpConfiguration(string name)
         {
-            return this.DefineBackendHttpConfiguration(name) as ApplicationGatewayBackendHttpConfiguration.UpdateDefinition.IBlank<ApplicationGateway.Update.IUpdate>;
+            return this.DefineBackendHttpConfiguration(name);
         }
 
         /// <summary>
@@ -1244,7 +1244,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the backend HTTP configuration definition.</return>
         ApplicationGatewayBackendHttpConfiguration.Definition.IBlank<ApplicationGateway.Definition.IWithCreate> ApplicationGateway.Definition.IWithBackendHttpConfig.DefineBackendHttpConfiguration(string name)
         {
-            return this.DefineBackendHttpConfiguration(name) as ApplicationGatewayBackendHttpConfiguration.Definition.IBlank<ApplicationGateway.Definition.IWithCreate>;
+            return this.DefineBackendHttpConfiguration(name);
         }
 
         /// <summary>
@@ -1255,7 +1255,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Update.IWithSubnet<ApplicationGateway.Update.IUpdate>.WithExistingSubnet(string parentNetworkResourceId, string subnetName)
         {
-            return this.WithExistingSubnet(parentNetworkResourceId, subnetName) as ApplicationGateway.Update.IUpdate;
+            return this.WithExistingSubnet(parentNetworkResourceId, subnetName);
         }
 
         /// <summary>
@@ -1266,7 +1266,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Definition.IWithSubnet<ApplicationGateway.Definition.IWithCreate>.WithExistingSubnet(string parentNetworkResourceId, string subnetName)
         {
-            return this.WithExistingSubnet(parentNetworkResourceId, subnetName) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithExistingSubnet(parentNetworkResourceId, subnetName);
         }
 
         /// <summary>
@@ -1278,7 +1278,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
         {
-            return this.WithAvailabilityZone(zoneId) as ApplicationGateway.Definition.IWithCreate;
+            return this.WithAvailabilityZone(zoneId);
         }
 
         /// <summary>
@@ -1293,7 +1293,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.AvailabilityZones() as System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>;
+                return this.AvailabilityZones();
             }
         }
     }

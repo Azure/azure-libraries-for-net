@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 foreach (var cred in keyCredentials)
                 {
                     ICertificateCredential cert = new CertificateCredentialImpl<IServicePrincipal>(cred);
-                    this.cachedCertificateCredentials.Add(cert.Name, cert);
+                    this.cachedCertificateCredentials.Add(cert.Id, cert);
                 }
             }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
                 foreach (var cred in passwordCredentials)
                 {
                     IPasswordCredential cert = new PasswordCredentialImpl<IServicePrincipal>(cred);
-                    this.cachedPasswordCredentials.Add(cert.Name, cert);
+                    this.cachedPasswordCredentials.Add(cert.Id, cert);
                 }
             }
 
@@ -114,13 +114,21 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
 
         public ServicePrincipalImpl WithoutCredential(string name)
         {
-            if (cachedPasswordCredentials.ContainsKey(name))
+            foreach (var credential in cachedPasswordCredentials.Values)
             {
-                passwordCredentialsToDelete.Add(name);
+                if (name.Equals(credential.Name))
+                {
+                    passwordCredentialsToDelete.Add(credential.Id);
+                    return this;
+                }
             }
-            else if (cachedCertificateCredentials.ContainsKey(name))
+            foreach (var credential in cachedCertificateCredentials.Values)
             {
-                certificateCredentialsToDelete.Add(name);
+                if (name.Equals(credential.Name))
+                {
+                    certificateCredentialsToDelete.Add(credential.Id);
+                    return this;
+                }
             }
             return this;
         }

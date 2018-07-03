@@ -82,9 +82,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         ///GENMHASH:935E8A144BD263041B17092AD69A49F8:5448176B508890855BDBD9190EE138FD
-        public IList<string> HostNames()
+        public IReadOnlyList<string> HostNames()
         {
-            return Inner.HostNames;
+            return (IReadOnlyList<string>) Inner.HostNames;
         }
 
         ///GENMHASH:E92DD2C5C752DBA63D9A9B417D2C0DF2:AFA4B6916582F02ADC9FC929B3B78C12

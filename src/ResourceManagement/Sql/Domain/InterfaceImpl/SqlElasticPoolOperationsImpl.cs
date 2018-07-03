@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new resource definition.</return>
         SqlElasticPoolOperations.Definition.IWithSqlServer Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<SqlElasticPoolOperations.Definition.IWithSqlServer>.Define(string name)
         {
-            return this.Define(name) as SqlElasticPoolOperations.Definition.IWithSqlServer;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<IReadOnlyList<ISqlElasticPool>> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.ListAsync(CancellationToken cancellationToken)
         {
-            return await this.ListAsync(cancellationToken) as IReadOnlyList<ISqlElasticPool>;
+            return await this.ListAsync(cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.GetAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.GetAsync(name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return await this.GetAsync(name, cancellationToken);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return this.GetById(id);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.List()
         {
-            return this.List() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>;
+            return this.List();
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.Get(string name)
         {
-            return this.Get(name) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return this.Get(name);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new SQL Elastic Pool definition.</return>
         SqlElasticPoolOperations.Definition.IWithEdition SqlElasticPoolOperations.SqlElasticPoolActionsDefinition.ISqlElasticPoolActionsDefinition.Define(string elasticPoolName)
         {
-            return this.Define(elasticPoolName) as SqlElasticPoolOperations.Definition.IWithEdition;
+            return this.Define(elasticPoolName);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.GetBySqlServer(string resourceGroupName, string sqlServerName, string name)
         {
-            return this.GetBySqlServer(resourceGroupName, sqlServerName, name) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return this.GetBySqlServer(resourceGroupName, sqlServerName, name);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.GetBySqlServer(ISqlServer sqlServer, string name)
         {
-            return this.GetBySqlServer(sqlServer, name) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return this.GetBySqlServer(sqlServer, name);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.ListBySqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.ListBySqlServer(resourceGroupName, sqlServerName) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>;
+            return this.ListBySqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.ListBySqlServer(ISqlServer sqlServer)
         {
-            return this.ListBySqlServer(sqlServer) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>;
+            return this.ListBySqlServer(sqlServer);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.GetBySqlServerAsync(string resourceGroupName, string sqlServerName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, name, cancellationToken);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.GetBySqlServerAsync(ISqlServer sqlServer, string name, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(sqlServer, name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return await this.GetBySqlServerAsync(sqlServer, name, cancellationToken);
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool;
+            return this.GetById(id);
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.ListBySqlServerAsync(string resourceGroupName, string sqlServerName, CancellationToken cancellationToken)
         {
-            return await this.ListBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken) as IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>;
+            return await this.ListBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>.ListBySqlServerAsync(ISqlServer sqlServer, CancellationToken cancellationToken)
         {
-            return await this.ListBySqlServerAsync(sqlServer, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPool>;
+            return await this.ListBySqlServerAsync(sqlServer, cancellationToken);
         }
 
         /// <summary>

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume ContainerGroup.Definition.IWithPrivateImageRegistry.WithPrivateImageRegistry(string server, string username, string password)
         {
-            return this.WithPrivateImageRegistry(server, username, password) as ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume;
+            return this.WithPrivateImageRegistry(server, username, password);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithCreate ContainerGroup.Definition.IWithRestartPolicyBeta.WithRestartPolicy(ContainerGroupRestartPolicy restartPolicy)
         {
-            return this.WithRestartPolicy(restartPolicy) as ContainerGroup.Definition.IWithCreate;
+            return this.WithRestartPolicy(restartPolicy);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithFirstContainerInstance ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume.WithoutVolume()
         {
-            return this.WithoutVolume() as ContainerGroup.Definition.IWithFirstContainerInstance;
+            return this.WithoutVolume();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithFirstContainerInstance ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume.WithNewAzureFileShareVolume(string volumeName, string shareName)
         {
-            return this.WithNewAzureFileShareVolume(volumeName, shareName) as ContainerGroup.Definition.IWithFirstContainerInstance;
+            return this.WithNewAzureFileShareVolume(volumeName, shareName);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithFirstContainerInstance ContainerGroup.Definition.IWithPrivateImageRegistryOrVolumeBeta.WithEmptyDirectoryVolume(string name)
         {
-            return this.WithEmptyDirectoryVolume(name) as ContainerGroup.Definition.IWithFirstContainerInstance;
+            return this.WithEmptyDirectoryVolume(name);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IVolumeDefinitionBlank<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume.DefineVolume(string name)
         {
-            return this.DefineVolume(name) as ContainerGroup.Definition.IVolumeDefinitionBlank<ContainerGroup.Definition.IWithVolume>;
+            return this.DefineVolume(name);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IVolumeDefinitionBlank<ContainerGroup.Definition.IWithVolume> ContainerGroup.Definition.IWithVolume.DefineVolume(string name)
         {
-            return this.DefineVolume(name) as ContainerGroup.Definition.IVolumeDefinitionBlank<ContainerGroup.Definition.IWithVolume>;
+            return this.DefineVolume(name);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithCreate ContainerGroup.Definition.IWithFirstContainerInstance.WithContainerInstance(string imageName)
         {
-            return this.WithContainerInstance(imageName) as ContainerGroup.Definition.IWithCreate;
+            return this.WithContainerInstance(imageName);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithCreate ContainerGroup.Definition.IWithFirstContainerInstance.WithContainerInstance(string imageName, int port)
         {
-            return this.WithContainerInstance(imageName, port) as ContainerGroup.Definition.IWithCreate;
+            return this.WithContainerInstance(imageName, port);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IContainerInstanceDefinitionBlank<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithFirstContainerInstance.DefineContainerInstance(string name)
         {
-            return this.DefineContainerInstance(name) as ContainerGroup.Definition.IContainerInstanceDefinitionBlank<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.DefineContainerInstance(name);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithCreate ContainerGroup.Definition.IWithDnsPrefix.WithDnsPrefix(string dnsPrefix)
         {
-            return this.WithDnsPrefix(dnsPrefix) as ContainerGroup.Definition.IWithCreate;
+            return this.WithDnsPrefix(dnsPrefix);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume ContainerGroup.Definition.IWithPublicImageRegistryOnly.WithPublicImageRegistryOnly()
         {
-            return this.WithPublicImageRegistryOnly() as ContainerGroup.Definition.IWithPrivateImageRegistryOrVolume;
+            return this.WithPublicImageRegistryOnly();
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             get
             {
-                return this.Containers() as System.Collections.Generic.IReadOnlyDictionary<string,Models.Container>;
+                return this.Containers();
             }
         }
 
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             get
             {
-                return this.Volumes() as System.Collections.Generic.IReadOnlyDictionary<string,Models.Volume>;
+                return this.Volumes();
             }
         }
 
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             get
             {
-                return this.ImageRegistryServers() as System.Collections.Generic.IReadOnlyCollection<string>;
+                return this.ImageRegistryServers();
             }
         }
 
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             get
             {
-                return this.Events() as System.Collections.Generic.IReadOnlyCollection<Models.EventModel>;
+                return this.Events();
             }
         }
 
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             get
             {
-                return this.ExternalPorts() as System.Collections.Generic.IReadOnlyCollection<Models.Port>;
+                return this.ExternalPorts();
             }
         }
 
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             get
             {
-                return this.OSType() as OSTypeName;
+                return this.OSType();
             }
         }
 
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         {
             get
             {
-                return this.RestartPolicy() as Models.ContainerGroupRestartPolicy;
+                return this.RestartPolicy();
             }
         }
 
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IContainerInstanceDefinitionBlank<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithNextContainerInstance.DefineContainerInstance(string name)
         {
-            return this.DefineContainerInstance(name) as ContainerGroup.Definition.IContainerInstanceDefinitionBlank<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.DefineContainerInstance(name);
         }
 
         /// <summary>
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPublicOrPrivateImageRegistry ContainerGroup.Definition.IWithOsType.WithLinux()
         {
-            return this.WithLinux() as ContainerGroup.Definition.IWithPublicOrPrivateImageRegistry;
+            return this.WithLinux();
         }
 
         /// <summary>
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPublicOrPrivateImageRegistry ContainerGroup.Definition.IWithOsType.WithWindows()
         {
-            return this.WithWindows() as ContainerGroup.Definition.IWithPublicOrPrivateImageRegistry;
+            return this.WithWindows();
         }
 
         /// <summary>
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup;
+            return await this.RefreshAsync(cancellationToken);
         }
     }
 }

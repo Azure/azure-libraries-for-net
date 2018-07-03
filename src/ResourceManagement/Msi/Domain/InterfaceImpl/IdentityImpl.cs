@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the update.</return>
         Identity.Update.IUpdate Identity.Update.IWithAccess.WithAccessTo(IResource resource, BuiltInRole role)
         {
-            return this.WithAccessTo(resource, role) as Identity.Update.IUpdate;
+            return this.WithAccessTo(resource, role);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the update.</return>
         Identity.Update.IUpdate Identity.Update.IWithAccess.WithAccessTo(string resourceId, BuiltInRole role)
         {
-            return this.WithAccessTo(resourceId, role) as Identity.Update.IUpdate;
+            return this.WithAccessTo(resourceId, role);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the update.</return>
         Identity.Update.IUpdate Identity.Update.IWithAccess.WithAccessTo(IResource resource, string roleDefinitionId)
         {
-            return this.WithAccessTo(resource, roleDefinitionId) as Identity.Update.IUpdate;
+            return this.WithAccessTo(resource, roleDefinitionId);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the update.</return>
         Identity.Update.IUpdate Identity.Update.IWithAccess.WithAccessTo(string resourceId, string roleDefinitionId)
         {
-            return this.WithAccessTo(resourceId, roleDefinitionId) as Identity.Update.IUpdate;
+            return this.WithAccessTo(resourceId, roleDefinitionId);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the update.</return>
         Identity.Update.IUpdate Identity.Update.IWithAccess.WithoutAccess(IRoleAssignment roleAssignment)
         {
-            return this.WithoutAccess(roleAssignment) as Identity.Update.IUpdate;
+            return this.WithoutAccess(roleAssignment);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the update.</return>
         Identity.Update.IUpdate Identity.Update.IWithAccess.WithAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            return this.WithAccessToCurrentResourceGroup(role) as Identity.Update.IUpdate;
+            return this.WithAccessToCurrentResourceGroup(role);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the update.</return>
         Identity.Update.IUpdate Identity.Update.IWithAccess.WithAccessToCurrentResourceGroup(string roleDefinitionId)
         {
-            return this.WithAccessToCurrentResourceGroup(roleDefinitionId) as Identity.Update.IUpdate;
+            return this.WithAccessToCurrentResourceGroup(roleDefinitionId);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the update.</return>
         Identity.Update.IUpdate Identity.Update.IWithAccess.WithoutAccessTo(string resourceId, BuiltInRole role)
         {
-            return this.WithoutAccessTo(resourceId, role) as Identity.Update.IUpdate;
+            return this.WithoutAccessTo(resourceId, role);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the definition.</return>
         Identity.Definition.IWithCreate Identity.Definition.IWithAccess.WithAccessTo(IResource resource, BuiltInRole role)
         {
-            return this.WithAccessTo(resource, role) as Identity.Definition.IWithCreate;
+            return this.WithAccessTo(resource, role);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the definition.</return>
         Identity.Definition.IWithCreate Identity.Definition.IWithAccess.WithAccessTo(string resourceId, BuiltInRole role)
         {
-            return this.WithAccessTo(resourceId, role) as Identity.Definition.IWithCreate;
+            return this.WithAccessTo(resourceId, role);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the definition.</return>
         Identity.Definition.IWithCreate Identity.Definition.IWithAccess.WithAccessTo(IResource resource, string roleDefinitionId)
         {
-            return this.WithAccessTo(resource, roleDefinitionId) as Identity.Definition.IWithCreate;
+            return this.WithAccessTo(resource, roleDefinitionId);
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the definition.</return>
         Identity.Definition.IWithCreate Identity.Definition.IWithAccess.WithAccessTo(string resourceId, string roleDefinitionId)
         {
-            return this.WithAccessTo(resourceId, roleDefinitionId) as Identity.Definition.IWithCreate;
+            return this.WithAccessTo(resourceId, roleDefinitionId);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the definition.</return>
         Identity.Definition.IWithCreate Identity.Definition.IWithAccess.WithAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            return this.WithAccessToCurrentResourceGroup(role) as Identity.Definition.IWithCreate;
+            return this.WithAccessToCurrentResourceGroup(role);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.Msi.Fluent
         /// <return>The next stage of the definition.</return>
         Identity.Definition.IWithCreate Identity.Definition.IWithAccess.WithAccessToCurrentResourceGroup(string roleDefinitionId)
         {
-            return this.WithAccessToCurrentResourceGroup(roleDefinitionId) as Identity.Definition.IWithCreate;
+            return this.WithAccessToCurrentResourceGroup(roleDefinitionId);
         }
 
         /// <summary>

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The first stage of the new resource definition.</return>
         BatchAccount.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<BatchAccount.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as BatchAccount.Definition.IBlank;
+            return this.Define(name);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureProviderOrCreate EventHub.Definition.IWithNamespace.WithNewNamespace(ICreatable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespace> namespaceCreatable)
         {
-            return this.WithNewNamespace(namespaceCreatable) as EventHub.Definition.IWithCaptureProviderOrCreate;
+            return this.WithNewNamespace(namespaceCreatable);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureProviderOrCreate EventHub.Definition.IWithNamespace.WithExistingNamespace(IEventHubNamespace ehNamespace)
         {
-            return this.WithExistingNamespace(ehNamespace) as EventHub.Definition.IWithCaptureProviderOrCreate;
+            return this.WithExistingNamespace(ehNamespace);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureProviderOrCreate EventHub.Definition.IWithNamespace.WithExistingNamespace(string resourceGroupName, string namespaceName)
         {
-            return this.WithExistingNamespace(resourceGroupName, namespaceName) as EventHub.Definition.IWithCaptureProviderOrCreate;
+            return this.WithExistingNamespace(resourceGroupName, namespaceName);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureProviderOrCreate EventHub.Definition.IWithNamespace.WithExistingNamespaceId(string namespaceId)
         {
-            return this.WithExistingNamespaceId(namespaceId) as EventHub.Definition.IWithCaptureProviderOrCreate;
+            return this.WithExistingNamespaceId(namespaceId);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureOptionalSettingsOrCreate EventHub.Definition.IWithCaptureEnabledDisabled.WithDataCaptureDisabled()
         {
-            return this.WithDataCaptureDisabled() as EventHub.Definition.IWithCaptureOptionalSettingsOrCreate;
+            return this.WithDataCaptureDisabled();
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureOptionalSettingsOrCreate EventHub.Definition.IWithCaptureEnabledDisabled.WithDataCaptureEnabled()
         {
-            return this.WithDataCaptureEnabled() as EventHub.Definition.IWithCaptureOptionalSettingsOrCreate;
+            return this.WithDataCaptureEnabled();
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithAuthorizationRule.WithNewManageRule(string name)
         {
-            return this.WithNewManageRule(name) as EventHub.Update.IUpdate;
+            return this.WithNewManageRule(name);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithAuthorizationRule.WithNewListenRule(string name)
         {
-            return this.WithNewListenRule(name) as EventHub.Update.IUpdate;
+            return this.WithNewListenRule(name);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithAuthorizationRule.WithNewSendRule(string name)
         {
-            return this.WithNewSendRule(name) as EventHub.Update.IUpdate;
+            return this.WithNewSendRule(name);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithAuthorizationRule.WithoutAuthorizationRule(string ruleName)
         {
-            return this.WithoutAuthorizationRule(ruleName) as EventHub.Update.IUpdate;
+            return this.WithoutAuthorizationRule(ruleName);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCreate EventHub.Definition.IWithAuthorizationRule.WithNewManageRule(string ruleName)
         {
-            return this.WithNewManageRule(ruleName) as EventHub.Definition.IWithCreate;
+            return this.WithNewManageRule(ruleName);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCreate EventHub.Definition.IWithAuthorizationRule.WithNewListenRule(string ruleName)
         {
-            return this.WithNewListenRule(ruleName) as EventHub.Definition.IWithCreate;
+            return this.WithNewListenRule(ruleName);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCreate EventHub.Definition.IWithAuthorizationRule.WithNewSendRule(string ruleName)
         {
-            return this.WithNewSendRule(ruleName) as EventHub.Definition.IWithCreate;
+            return this.WithNewSendRule(ruleName);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithPartitionCount.WithPartitionCount(long count)
         {
-            return this.WithPartitionCount(count) as EventHub.Update.IUpdate;
+            return this.WithPartitionCount(count);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCreate EventHub.Definition.IWithPartitionCount.WithPartitionCount(long count)
         {
-            return this.WithPartitionCount(count) as EventHub.Definition.IWithCreate;
+            return this.WithPartitionCount(count);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The stage of new resource update.</return>
         EventHub.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<EventHub.Update.IUpdate>.Update()
         {
-            return this.Update() as EventHub.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithConsumerGroup.WithoutConsumerGroup(string name)
         {
-            return this.WithoutConsumerGroup(name) as EventHub.Update.IUpdate;
+            return this.WithoutConsumerGroup(name);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithConsumerGroup.WithNewConsumerGroup(string name)
         {
-            return this.WithNewConsumerGroup(name) as EventHub.Update.IUpdate;
+            return this.WithNewConsumerGroup(name);
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithConsumerGroup.WithNewConsumerGroup(string name, string metadata)
         {
-            return this.WithNewConsumerGroup(name, metadata) as EventHub.Update.IUpdate;
+            return this.WithNewConsumerGroup(name, metadata);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCreate EventHub.Definition.IWithConsumerGroup.WithNewConsumerGroup(string name)
         {
-            return this.WithNewConsumerGroup(name) as EventHub.Definition.IWithCreate;
+            return this.WithNewConsumerGroup(name);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCreate EventHub.Definition.IWithConsumerGroup.WithNewConsumerGroup(string name, string metadata)
         {
-            return this.WithNewConsumerGroup(name, metadata) as EventHub.Definition.IWithCreate;
+            return this.WithNewConsumerGroup(name, metadata);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithRetentionPeriod.WithRetentionPeriodInDays(long period)
         {
-            return this.WithRetentionPeriodInDays(period) as EventHub.Update.IUpdate;
+            return this.WithRetentionPeriodInDays(period);
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCreate EventHub.Definition.IWithRetentionPeriod.WithRetentionPeriodInDays(long period)
         {
-            return this.WithRetentionPeriodInDays(period) as EventHub.Definition.IWithCreate;
+            return this.WithRetentionPeriodInDays(period);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureOptionalSettingsOrCreate EventHub.Definition.IWithCaptureOptionalSettingsOrCreate.WithDataCaptureWindowSizeInMB(int sizeInMB)
         {
-            return this.WithDataCaptureWindowSizeInMB(sizeInMB) as EventHub.Definition.IWithCaptureOptionalSettingsOrCreate;
+            return this.WithDataCaptureWindowSizeInMB(sizeInMB);
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureOptionalSettingsOrCreate EventHub.Definition.IWithCaptureOptionalSettingsOrCreate.WithDataCaptureFileNameFormat(string format)
         {
-            return this.WithDataCaptureFileNameFormat(format) as EventHub.Definition.IWithCaptureOptionalSettingsOrCreate;
+            return this.WithDataCaptureFileNameFormat(format);
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureOptionalSettingsOrCreate EventHub.Definition.IWithCaptureOptionalSettingsOrCreate.WithDataCaptureWindowSizeInSeconds(int sizeInSeconds)
         {
-            return this.WithDataCaptureWindowSizeInSeconds(sizeInSeconds) as EventHub.Definition.IWithCaptureOptionalSettingsOrCreate;
+            return this.WithDataCaptureWindowSizeInSeconds(sizeInSeconds);
         }
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureEnabledDisabled EventHub.Definition.IWithCaptureProviderOrCreate.WithExistingStorageAccountForCapturedData(IStorageAccount storageAccount, string containerName)
         {
-            return this.WithExistingStorageAccountForCapturedData(storageAccount, containerName) as EventHub.Definition.IWithCaptureEnabledDisabled;
+            return this.WithExistingStorageAccountForCapturedData(storageAccount, containerName);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureEnabledDisabled EventHub.Definition.IWithCaptureProviderOrCreate.WithExistingStorageAccountForCapturedData(string storageAccountId, string containerName)
         {
-            return this.WithExistingStorageAccountForCapturedData(storageAccountId, containerName) as EventHub.Definition.IWithCaptureEnabledDisabled;
+            return this.WithExistingStorageAccountForCapturedData(storageAccountId, containerName);
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub definition.</return>
         EventHub.Definition.IWithCaptureEnabledDisabled EventHub.Definition.IWithCaptureProviderOrCreate.WithNewStorageAccountForCapturedData(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> storageAccountCreatable, string containerName)
         {
-            return this.WithNewStorageAccountForCapturedData(storageAccountCreatable, containerName) as EventHub.Definition.IWithCaptureEnabledDisabled;
+            return this.WithNewStorageAccountForCapturedData(storageAccountCreatable, containerName);
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithCapture.WithDataCaptureDisabled()
         {
-            return this.WithDataCaptureDisabled() as EventHub.Update.IUpdate;
+            return this.WithDataCaptureDisabled();
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithCapture.WithDataCaptureWindowSizeInMB(int sizeInMB)
         {
-            return this.WithDataCaptureWindowSizeInMB(sizeInMB) as EventHub.Update.IUpdate;
+            return this.WithDataCaptureWindowSizeInMB(sizeInMB);
         }
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithCapture.WithDataCaptureFileNameFormat(string format)
         {
-            return this.WithDataCaptureFileNameFormat(format) as EventHub.Update.IUpdate;
+            return this.WithDataCaptureFileNameFormat(format);
         }
 
         /// <summary>
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithCapture.WithExistingStorageAccountForCapturedData(IStorageAccount storageAccount, string containerName)
         {
-            return this.WithExistingStorageAccountForCapturedData(storageAccount, containerName) as EventHub.Update.IUpdate;
+            return this.WithExistingStorageAccountForCapturedData(storageAccount, containerName);
         }
 
         /// <summary>
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithCapture.WithExistingStorageAccountForCapturedData(string storageAccountId, string containerName)
         {
-            return this.WithExistingStorageAccountForCapturedData(storageAccountId, containerName) as EventHub.Update.IUpdate;
+            return this.WithExistingStorageAccountForCapturedData(storageAccountId, containerName);
         }
 
         /// <summary>
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithCapture.WithDataCaptureEnabled()
         {
-            return this.WithDataCaptureEnabled() as EventHub.Update.IUpdate;
+            return this.WithDataCaptureEnabled();
         }
 
         /// <summary>
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithCapture.WithDataCaptureWindowSizeInSeconds(int sizeInSeconds)
         {
-            return this.WithDataCaptureWindowSizeInSeconds(sizeInSeconds) as EventHub.Update.IUpdate;
+            return this.WithDataCaptureWindowSizeInSeconds(sizeInSeconds);
         }
 
         /// <summary>
@@ -389,19 +389,19 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub update.</return>
         EventHub.Update.IUpdate EventHub.Update.IWithCapture.WithNewStorageAccountForCapturedData(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> storageAccountCreatable, string containerName)
         {
-            return this.WithNewStorageAccountForCapturedData(storageAccountCreatable, containerName) as EventHub.Update.IUpdate;
+            return this.WithNewStorageAccountForCapturedData(storageAccountCreatable, containerName);
         }
 
         /// <return>Consumer group in the event hub.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup>> Microsoft.Azure.Management.Eventhub.Fluent.IEventHub.ListConsumerGroupsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListConsumerGroupsAsync(cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup>;
+            return await this.ListConsumerGroupsAsync(cancellationToken);
         }
 
         /// <return>Authorization rules enabled for the event hub.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule> Microsoft.Azure.Management.Eventhub.Fluent.IEventHub.ListAuthorizationRules()
         {
-            return this.ListAuthorizationRules() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule>;
+            return this.ListAuthorizationRules();
         }
 
         /// <summary>
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Consumer group in the event hub.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup> Microsoft.Azure.Management.Eventhub.Fluent.IEventHub.ListConsumerGroups()
         {
-            return this.ListConsumerGroups() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubConsumerGroup>;
+            return this.ListConsumerGroups();
         }
 
         /// <summary>
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             get
             {
-                return this.CaptureDestination() as Destination;
+                return this.CaptureDestination();
             }
         }
 
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Authorization rules enabled for the event hub.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule>> Microsoft.Azure.Management.Eventhub.Fluent.IEventHub.ListAuthorizationRulesAsync(CancellationToken cancellationToken)
         {
-            return await this.ListAuthorizationRulesAsync(cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule>;
+            return await this.ListAuthorizationRulesAsync(cancellationToken);
         }
 
         /// <summary>
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             get
             {
-                return this.PartitionIds() as IReadOnlyCollection<string>;
+                return this.PartitionIds();
             }
         }
     }

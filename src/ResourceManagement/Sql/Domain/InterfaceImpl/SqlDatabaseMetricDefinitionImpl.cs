@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.PrimaryAggregationType() as Models.PrimaryAggregationType;
+                return this.PrimaryAggregationType();
             }
         }
 
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.MetricAvailabilities() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricAvailability>;
+                return this.MetricAvailabilities();
             }
         }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Unit() as Models.UnitDefinitionType;
+                return this.Unit();
             }
         }
 

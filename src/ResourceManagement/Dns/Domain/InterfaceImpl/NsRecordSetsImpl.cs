@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Dns.Fluent.INSRecordSet Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.Dns.Fluent.INSRecordSet>.GetByName(string name)
         {
-            return this.GetByName(name) as Microsoft.Azure.Management.Dns.Fluent.INSRecordSet;
+            return this.GetByName(name);
         }
     }
 }

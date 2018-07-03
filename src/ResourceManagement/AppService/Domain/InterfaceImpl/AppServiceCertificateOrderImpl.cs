@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificateOrder.Definition.IWithCreate AppServiceCertificateOrder.Definition.IWithValidYears.WithValidYears(int years)
         {
-            return this.WithValidYears(years) as AppServiceCertificateOrder.Definition.IWithCreate;
+            return this.WithValidYears(years);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificateOrder.Definition.IWithDomainVerificationFromWebApp AppServiceCertificateOrder.Definition.IWithCertificateSku.WithStandardSku()
         {
-            return this.WithStandardSku() as AppServiceCertificateOrder.Definition.IWithDomainVerificationFromWebApp;
+            return this.WithStandardSku();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificateOrder.Definition.IWithDomainVerification AppServiceCertificateOrder.Definition.IWithCertificateSku.WithWildcardSku()
         {
-            return this.WithWildcardSku() as AppServiceCertificateOrder.Definition.IWithDomainVerification;
+            return this.WithWildcardSku();
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificateOrder.Definition.IWithKeyVault AppServiceCertificateOrder.Definition.IWithDomainVerification.WithDomainVerification(IAppServiceDomain domain)
         {
-            return this.WithDomainVerification(domain) as AppServiceCertificateOrder.Definition.IWithKeyVault;
+            return this.WithDomainVerification(domain);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificateOrder.Definition.IWithCertificateSku AppServiceCertificateOrder.Definition.IWithHostName.WithHostName(string hostName)
         {
-            return this.WithHostName(hostName) as AppServiceCertificateOrder.Definition.IWithCertificateSku;
+            return this.WithHostName(hostName);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificateOrder.Definition.IWithKeyVault AppServiceCertificateOrder.Definition.IWithDomainVerificationFromWebApp.WithWebAppVerification(IWebAppBase webApp)
         {
-            return this.WithWebAppVerification(webApp) as AppServiceCertificateOrder.Definition.IWithKeyVault;
+            return this.WithWebAppVerification(webApp);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificateOrder.Definition.IWithCreate AppServiceCertificateOrder.Definition.IWithKeyVault.WithNewKeyVault(string vaultName, Region region)
         {
-            return this.WithNewKeyVault(vaultName, region) as AppServiceCertificateOrder.Definition.IWithCreate;
+            return this.WithNewKeyVault(vaultName, region);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificateOrder.Definition.IWithCreate AppServiceCertificateOrder.Definition.IWithKeyVault.WithExistingKeyVault(IVault vault)
         {
-            return this.WithExistingKeyVault(vault) as AppServiceCertificateOrder.Definition.IWithCreate;
+            return this.WithExistingKeyVault(vault);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the update.</return>
         AppServiceCertificateOrder.Update.IUpdate AppServiceCertificateOrder.Update.IWithAutoRenew.WithAutoRenew(bool enabled)
         {
-            return this.WithAutoRenew(enabled) as AppServiceCertificateOrder.Update.IUpdate;
+            return this.WithAutoRenew(enabled);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificateOrder.Definition.IWithCreate AppServiceCertificateOrder.Definition.IWithAutoRenew.WithAutoRenew(bool enabled)
         {
-            return this.WithAutoRenew(enabled) as AppServiceCertificateOrder.Definition.IWithCreate;
+            return this.WithAutoRenew(enabled);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.Root() as Models.CertificateDetails;
+                return this.Root();
             }
         }
 
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.Intermediate() as Models.CertificateDetails;
+                return this.Intermediate();
             }
         }
 
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>A binding containing the key vault information.</return>
         Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateKeyVaultBinding Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateOrder.CreateKeyVaultBinding(string certificateName, IVault vault)
         {
-            return this.CreateKeyVaultBinding(certificateName, vault) as Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateKeyVaultBinding;
+            return this.CreateKeyVaultBinding(certificateName, vault);
         }
 
         /// <summary>
@@ -265,13 +265,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The state of the Key Vault secret.</return>
         async Task<Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateKeyVaultBinding> Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateOrder.GetKeyVaultBindingAsync(CancellationToken cancellationToken)
         {
-            return await this.GetKeyVaultBindingAsync(cancellationToken) as Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateKeyVaultBinding;
+            return await this.GetKeyVaultBindingAsync(cancellationToken);
         }
 
         /// <return>The state of the Key Vault secret.</return>
         Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateKeyVaultBinding Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateOrder.GetKeyVaultBinding()
         {
-            return this.GetKeyVaultBinding() as Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateKeyVaultBinding;
+            return this.GetKeyVaultBinding();
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>A binding containing the key vault information.</return>
         async Task<Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateKeyVaultBinding> Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateOrder.CreateKeyVaultBindingAsync(string certificateName, IVault vault, CancellationToken cancellationToken)
         {
-            return await this.CreateKeyVaultBindingAsync(certificateName, vault, cancellationToken) as Microsoft.Azure.Management.AppService.Fluent.IAppServiceCertificateKeyVaultBinding;
+            return await this.CreateKeyVaultBindingAsync(certificateName, vault, cancellationToken);
         }
 
         /// <summary>
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.SignedCertificate() as Models.CertificateDetails;
+                return this.SignedCertificate();
             }
         }
     }

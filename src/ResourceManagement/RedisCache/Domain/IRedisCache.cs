@@ -1,9 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Redis.Fluent
 {
-    using Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update;
     using Microsoft.Azure.Management.Redis.Fluent.Models;
+    using Microsoft.Azure.Management.Redis.Fluent.RedisCache.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System.Collections.Generic;
@@ -11,15 +12,12 @@ namespace Microsoft.Azure.Management.Redis.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Redis Cache.
     /// </summary>
-    public interface IRedisCache :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Redis.Fluent.IRedisManager, Models.RedisResourceInner>,
+    public interface IRedisCache  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<Microsoft.Azure.Management.Redis.Fluent.IRedisManager,Models.RedisResourceInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Redis.Fluent.IRedisCache>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<RedisCache.Update.IUpdate>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<RedisCache.Update.IUpdate>,
+        Microsoft.Azure.Management.Redis.Fluent.IRedisCacheBeta
     {
-        /// <summary>
-        /// Gets the subnetId value.
-        /// </summary>
-        string SubnetId { get; }
 
         /// <summary>
         /// Gets the hostName value.
@@ -27,15 +25,9 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         string HostName { get; }
 
         /// <summary>
-        /// Fetch the up-to-date access keys from Azure for this Redis Cache.
+        /// Gets returns true if current Redis Cache instance has Premium Sku.
         /// </summary>
-        /// <return>The access keys for this Redis Cache.</return>
-        Microsoft.Azure.Management.Redis.Fluent.IRedisAccessKeys RefreshKeys();
-
-        /// <summary>
-        /// Gets the staticIP value.
-        /// </summary>
-        string StaticIP { get; }
+        bool IsPremium { get; }
 
         /// <summary>
         /// Gets a Redis Cache's access keys. This operation requires write permission to the Cache resource.
@@ -43,27 +35,9 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         Microsoft.Azure.Management.Redis.Fluent.IRedisAccessKeys Keys { get; }
 
         /// <summary>
-        /// Gets the provisioningState value.
+        /// Gets true if non SSL port is enabled, false otherwise.
         /// </summary>
-        string ProvisioningState { get; }
-
-        /// <return>A Redis Cache's access keys. This operation requires write permission to the Cache resource.</return>
-        Microsoft.Azure.Management.Redis.Fluent.IRedisAccessKeys GetKeys();
-
-        /// <summary>
-        /// Gets the sslPort value.
-        /// </summary>
-        int SslPort { get; }
-
-        /// <summary>
-        /// Gets the Redis version value.
-        /// </summary>
-        string RedisVersion { get; }
-
-        /// <summary>
-        /// Gets the Redis configuration value.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string, string> RedisConfiguration { get; }
+        bool NonSslPort { get; }
 
         /// <summary>
         /// Gets the port value.
@@ -71,17 +45,24 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         int Port { get; }
 
         /// <summary>
-        /// Gets true if non SSL port is enabled, false otherwise.
+        /// Gets the provisioningState value.
         /// </summary>
-        bool NonSslPort { get; }
-
-        /// <return>Exposes features available only to Premium Sku Redis Cache instances.</return>
-        Microsoft.Azure.Management.Redis.Fluent.IRedisCachePremium AsPremium();
+        string ProvisioningState { get; }
 
         /// <summary>
-        /// Gets returns true if current Redis Cache instance has Premium Sku.
+        /// Gets the Redis configuration value.
         /// </summary>
-        bool IsPremium { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string,string> RedisConfiguration { get; }
+
+        /// <summary>
+        /// Gets the Redis version value.
+        /// </summary>
+        string RedisVersion { get; }
+
+        /// <summary>
+        /// Gets the shardCount value.
+        /// </summary>
+        int ShardCount { get; }
 
         /// <summary>
         /// Gets the sku value.
@@ -89,9 +70,31 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         Models.Sku Sku { get; }
 
         /// <summary>
-        /// Gets the shardCount value.
+        /// Gets the sslPort value.
         /// </summary>
-        int ShardCount { get; }
+        int SslPort { get; }
+
+        /// <summary>
+        /// Gets the staticIP value.
+        /// </summary>
+        string StaticIP { get; }
+
+        /// <summary>
+        /// Gets the subnetId value.
+        /// </summary>
+        string SubnetId { get; }
+
+        /// <return>Exposes features available only to Premium Sku Redis Cache instances.</return>
+        Microsoft.Azure.Management.Redis.Fluent.IRedisCachePremium AsPremium();
+
+        /// <return>A Redis Cache's access keys. This operation requires write permission to the Cache resource.</return>
+        Microsoft.Azure.Management.Redis.Fluent.IRedisAccessKeys GetKeys();
+
+        /// <summary>
+        /// Fetch the up-to-date access keys from Azure for this Redis Cache.
+        /// </summary>
+        /// <return>The access keys for this Redis Cache.</return>
+        Microsoft.Azure.Management.Redis.Fluent.IRedisAccessKeys RefreshKeys();
 
         /// <summary>
         /// Regenerates the access keys for this Redis Cache.

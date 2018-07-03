@@ -30,5 +30,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public static readonly VirtualNetworkGatewaySkuTier VpnGw1 = Parse("VpnGw1");
         public static readonly VirtualNetworkGatewaySkuTier VpnGw2 = Parse("VpnGw2");
         public static readonly VirtualNetworkGatewaySkuTier VpnGw3 = Parse("VpnGw3");
+        public static readonly VirtualNetworkGatewaySkuTier VpnGw1AZ = Parse("VpnGw1AZ");
+        public static readonly VirtualNetworkGatewaySkuTier VpnGw2AZ = Parse("VpnGw2AZ");
+        public static readonly VirtualNetworkGatewaySkuTier VpnGw3AZ = Parse("VpnGw3AZ");
+        public static readonly VirtualNetworkGatewaySkuTier ErGw1AZ = Parse("ErGw1AZ");
+        public static readonly VirtualNetworkGatewaySkuTier ErGw2AZ = Parse("ErGw2AZ");
+        public static readonly VirtualNetworkGatewaySkuTier ErGw3AZ = Parse("ErGw3AZ");
     }
 }

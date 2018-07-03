@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>A representation of the future computation of this call, returning the Webhook object.</return>
         async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook> Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhookOperations.GetAsync(string webhookName, CancellationToken cancellationToken)
         {
-            return await this.GetAsync(webhookName, cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook;
+            return await this.GetAsync(webhookName, cancellationToken);
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>The Webhook object if successful.</return>
         Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhookOperations.Get(string webhookName)
         {
-            return this.Get(webhookName) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook;
+            return this.Get(webhookName);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>The list of all the webhooks for the specified container registry.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook> Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhookOperations.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhook>;
+            return this.List();
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>A representation of the future computation of this call, returning the list of all the webhooks for the specified container registry.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IWebhook>> Microsoft.Azure.Management.ContainerRegistry.Fluent.IWebhookOperations.ListAsync(CancellationToken cancellationToken)
         {
-            return await this.ListAsync(cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IWebhook>;
+            return await this.ListAsync(cancellationToken);
         }
     }
 }

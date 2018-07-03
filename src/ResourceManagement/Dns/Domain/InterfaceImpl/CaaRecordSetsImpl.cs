@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Dns.Fluent.ICaaRecordSet Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.Dns.Fluent.ICaaRecordSet>.GetByName(string name)
         {
-            return this.GetByName(name) as Microsoft.Azure.Management.Dns.Fluent.ICaaRecordSet;
+            return this.GetByName(name);
         }
     }
 }

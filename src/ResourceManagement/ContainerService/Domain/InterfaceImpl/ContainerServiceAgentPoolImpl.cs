@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithStorageProfile<ContainerService.Definition.IWithCreate>.WithStorageProfile(StorageProfileTypes storageProfile)
         {
-            return this.WithStorageProfile(storageProfile) as ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate>;
+            return this.WithStorageProfile(storageProfile);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithPorts<ContainerService.Definition.IWithCreate>.WithPorts(params int[] ports)
         {
-            return this.WithPorts(ports) as ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate>;
+            return this.WithPorts(ports);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithOSDiskSize<ContainerService.Definition.IWithCreate>.WithOSDiskSizeInGB(int osDiskSizeInGB)
         {
-            return this.WithOSDiskSizeInGB(osDiskSizeInGB) as ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate>;
+            return this.WithOSDiskSizeInGB(osDiskSizeInGB);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerServiceAgentPool.Definition.IWithLeafDomainLabel<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithVMSize<ContainerService.Definition.IWithCreate>.WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize)
         {
-            return this.WithVirtualMachineSize(vmSize) as ContainerServiceAgentPool.Definition.IWithLeafDomainLabel<ContainerService.Definition.IWithCreate>;
+            return this.WithVirtualMachineSize(vmSize);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithOSType<ContainerService.Definition.IWithCreate>.WithOSType(ContainerServiceOSTypes osType)
         {
-            return this.WithOSType(osType) as ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate>;
+            return this.WithOSType(osType);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the parent definition.</return>
         ContainerService.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ContainerService.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as ContainerService.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerServiceAgentPool.Definition.IWithVMSize<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IBlank<ContainerService.Definition.IWithCreate>.WithVirtualMachineCount(int count)
         {
-            return this.WithVirtualMachineCount(count) as ContainerServiceAgentPool.Definition.IWithVMSize<ContainerService.Definition.IWithCreate>;
+            return this.WithVirtualMachineCount(count);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithLeafDomainLabel<ContainerService.Definition.IWithCreate>.WithDnsPrefix(string dnsPrefix)
         {
-            return this.WithDnsPrefix(dnsPrefix) as ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate>;
+            return this.WithDnsPrefix(dnsPrefix);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             get
             {
-                return this.StorageProfile() as StorageProfileTypes;
+                return this.StorageProfile();
             }
         }
 
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             get
             {
-                return this.VMSize() as ContainerServiceVirtualMachineSizeTypes;
+                return this.VMSize();
             }
         }
 
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             get
             {
-                return this.OSType() as ContainerServiceOSTypes;
+                return this.OSType();
             }
         }
 
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate> ContainerServiceAgentPool.Definition.IWithSubnet<ContainerService.Definition.IWithCreate>.WithSubnetName(string subnetName)
         {
-            return this.WithSubnetName(subnetName) as ContainerServiceAgentPool.Definition.IWithAttach<ContainerService.Definition.IWithCreate>;
+            return this.WithSubnetName(subnetName);
         }
     }
 }

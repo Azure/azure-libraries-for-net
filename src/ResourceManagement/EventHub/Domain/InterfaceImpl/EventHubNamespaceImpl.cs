@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithThroughputConfiguration.WithCurrentThroughputUnits(int units)
         {
-            return this.WithCurrentThroughputUnits(units) as EventHubNamespace.Update.IUpdate;
+            return this.WithCurrentThroughputUnits(units);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithThroughputConfiguration.WithThroughputUnitsUpperLimit(int units)
         {
-            return this.WithThroughputUnitsUpperLimit(units) as EventHubNamespace.Update.IUpdate;
+            return this.WithThroughputUnitsUpperLimit(units);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithThroughputConfiguration.WithAutoScaling()
         {
-            return this.WithAutoScaling() as EventHubNamespace.Update.IUpdate;
+            return this.WithAutoScaling();
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace definition.</return>
         EventHubNamespace.Definition.IWithCreate EventHubNamespace.Definition.IWithThroughputConfiguration.WithCurrentThroughputUnits(int units)
         {
-            return this.WithCurrentThroughputUnits(units) as EventHubNamespace.Definition.IWithCreate;
+            return this.WithCurrentThroughputUnits(units);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace definition.</return>
         EventHubNamespace.Definition.IWithCreate EventHubNamespace.Definition.IWithThroughputConfiguration.WithThroughputUnitsUpperLimit(int units)
         {
-            return this.WithThroughputUnitsUpperLimit(units) as EventHubNamespace.Definition.IWithCreate;
+            return this.WithThroughputUnitsUpperLimit(units);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace definition.</return>
         EventHubNamespace.Definition.IWithCreate EventHubNamespace.Definition.IWithThroughputConfiguration.WithAutoScaling()
         {
-            return this.WithAutoScaling() as EventHubNamespace.Definition.IWithCreate;
+            return this.WithAutoScaling();
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithEventHub.WithNewEventHub(string eventHubName)
         {
-            return this.WithNewEventHub(eventHubName) as EventHubNamespace.Update.IUpdate;
+            return this.WithNewEventHub(eventHubName);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithEventHub.WithNewEventHub(string eventHubName, int partitionCount)
         {
-            return this.WithNewEventHub(eventHubName, partitionCount) as EventHubNamespace.Update.IUpdate;
+            return this.WithNewEventHub(eventHubName, partitionCount);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithEventHub.WithNewEventHub(string eventHubName, int partitionCount, int retentionPeriodInDays)
         {
-            return this.WithNewEventHub(eventHubName, partitionCount, retentionPeriodInDays) as EventHubNamespace.Update.IUpdate;
+            return this.WithNewEventHub(eventHubName, partitionCount, retentionPeriodInDays);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithEventHub.WithoutEventHub(string eventHubName)
         {
-            return this.WithoutEventHub(eventHubName) as EventHubNamespace.Update.IUpdate;
+            return this.WithoutEventHub(eventHubName);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace definition.</return>
         EventHubNamespace.Definition.IWithCreate EventHubNamespace.Definition.IWithEventHub.WithNewEventHub(string eventHubName)
         {
-            return this.WithNewEventHub(eventHubName) as EventHubNamespace.Definition.IWithCreate;
+            return this.WithNewEventHub(eventHubName);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace definition.</return>
         EventHubNamespace.Definition.IWithCreate EventHubNamespace.Definition.IWithEventHub.WithNewEventHub(string eventHubName, int partitionCount)
         {
-            return this.WithNewEventHub(eventHubName, partitionCount) as EventHubNamespace.Definition.IWithCreate;
+            return this.WithNewEventHub(eventHubName, partitionCount);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace definition.</return>
         EventHubNamespace.Definition.IWithCreate EventHubNamespace.Definition.IWithEventHub.WithNewEventHub(string eventHubName, int partitionCount, int retentionPeriodInDays)
         {
-            return this.WithNewEventHub(eventHubName, partitionCount, retentionPeriodInDays) as EventHubNamespace.Definition.IWithCreate;
+            return this.WithNewEventHub(eventHubName, partitionCount, retentionPeriodInDays);
         }
 
         /// <summary>
@@ -161,13 +161,13 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The event hubs in the namespace.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespace.ListEventHubsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListEventHubsAsync(cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>;
+            return await this.ListEventHubsAsync(cancellationToken);
         }
 
         /// <return>List of event hubs in the namespace.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespace.ListEventHubs()
         {
-            return this.ListEventHubs() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHub>;
+            return this.ListEventHubs();
         }
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             get
             {
-                return this.Sku() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubNamespaceSkuType;
+                return this.Sku();
             }
         }
 
@@ -261,13 +261,13 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>List of authorization rules for the event hub namespace.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespace.ListAuthorizationRules()
         {
-            return this.ListAuthorizationRules() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule>;
+            return this.ListAuthorizationRules();
         }
 
         /// <return>The authorization rules for the event hub namespace.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule>> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespace.ListAuthorizationRulesAsync(CancellationToken cancellationToken)
         {
-            return await this.ListAuthorizationRulesAsync(cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubNamespaceAuthorizationRule>;
+            return await this.ListAuthorizationRulesAsync(cancellationToken);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithAuthorizationRule.WithNewManageRule(string ruleName)
         {
-            return this.WithNewManageRule(ruleName) as EventHubNamespace.Update.IUpdate;
+            return this.WithNewManageRule(ruleName);
         }
 
         /// <summary>
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithAuthorizationRule.WithNewSendRule(string ruleName)
         {
-            return this.WithNewSendRule(ruleName) as EventHubNamespace.Update.IUpdate;
+            return this.WithNewSendRule(ruleName);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithAuthorizationRule.WithoutAuthorizationRule(string ruleName)
         {
-            return this.WithoutAuthorizationRule(ruleName) as EventHubNamespace.Update.IUpdate;
+            return this.WithoutAuthorizationRule(ruleName);
         }
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithAuthorizationRule.WithNewListenRule(string ruleName)
         {
-            return this.WithNewListenRule(ruleName) as EventHubNamespace.Update.IUpdate;
+            return this.WithNewListenRule(ruleName);
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace definition.</return>
         EventHubNamespace.Definition.IWithCreate EventHubNamespace.Definition.IWithAuthorizationRule.WithNewManageRule(string ruleName)
         {
-            return this.WithNewManageRule(ruleName) as EventHubNamespace.Definition.IWithCreate;
+            return this.WithNewManageRule(ruleName);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace definition.</return>
         EventHubNamespace.Definition.IWithCreate EventHubNamespace.Definition.IWithAuthorizationRule.WithNewSendRule(string ruleName)
         {
-            return this.WithNewSendRule(ruleName) as EventHubNamespace.Definition.IWithCreate;
+            return this.WithNewSendRule(ruleName);
         }
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace definition.</return>
         EventHubNamespace.Definition.IWithCreate EventHubNamespace.Definition.IWithAuthorizationRule.WithNewListenRule(string ruleName)
         {
-            return this.WithNewListenRule(ruleName) as EventHubNamespace.Definition.IWithCreate;
+            return this.WithNewListenRule(ruleName);
         }
 
         /// <summary>
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace update.</return>
         EventHubNamespace.Update.IUpdate EventHubNamespace.Update.IWithSku.WithSku(EventHubNamespaceSkuType namespaceSku)
         {
-            return this.WithSku(namespaceSku) as EventHubNamespace.Update.IUpdate;
+            return this.WithSku(namespaceSku);
         }
 
         /// <summary>
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Next stage of the event hub namespace definition.</return>
         EventHubNamespace.Definition.IWithCreate EventHubNamespace.Definition.IWithSku.WithSku(EventHubNamespaceSkuType namespaceSku)
         {
-            return this.WithSku(namespaceSku) as EventHubNamespace.Definition.IWithCreate;
+            return this.WithSku(namespaceSku);
         }
     }
 }

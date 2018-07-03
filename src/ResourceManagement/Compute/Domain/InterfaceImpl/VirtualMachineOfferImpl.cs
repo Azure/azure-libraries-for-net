@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Skus() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSkus;
+                return this.Skus();
             }
         }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Publisher() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher;
+                return this.Publisher();
             }
         }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Region() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region();
             }
         }
     }

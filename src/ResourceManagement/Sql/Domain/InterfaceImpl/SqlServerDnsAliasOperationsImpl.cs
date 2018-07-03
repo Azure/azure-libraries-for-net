@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new resource definition.</return>
         SqlServerDnsAliasOperations.Definition.IWithSqlServer Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<SqlServerDnsAliasOperations.Definition.IWithSqlServer>.Define(string name)
         {
-            return this.Define(name) as SqlServerDnsAliasOperations.Definition.IWithSqlServer;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>.GetBySqlServerAsync(string resourceGroupName, string sqlServerName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias;
+            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, name, cancellationToken);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>.GetBySqlServerAsync(ISqlServer sqlServer, string name, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(sqlServer, name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias;
+            return await this.GetBySqlServerAsync(sqlServer, name, cancellationToken);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>.ListBySqlServerAsync(string resourceGroupName, string sqlServerName, CancellationToken cancellationToken)
         {
-            return await this.ListBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>;
+            return await this.ListBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>.ListBySqlServerAsync(ISqlServer sqlServer, CancellationToken cancellationToken)
         {
-            return await this.ListBySqlServerAsync(sqlServer, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>;
+            return await this.ListBySqlServerAsync(sqlServer, cancellationToken);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>.GetBySqlServer(string resourceGroupName, string sqlServerName, string name)
         {
-            return this.GetBySqlServer(resourceGroupName, sqlServerName, name) as Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias;
+            return this.GetBySqlServer(resourceGroupName, sqlServerName, name);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>.GetBySqlServer(ISqlServer sqlServer, string name)
         {
-            return this.GetBySqlServer(sqlServer, name) as Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias;
+            return this.GetBySqlServer(sqlServer, name);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>.ListBySqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.ListBySqlServer(resourceGroupName, sqlServerName) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>;
+            return this.ListBySqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>.ListBySqlServer(ISqlServer sqlServer)
         {
-            return this.ListBySqlServer(sqlServer) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAlias>;
+            return this.ListBySqlServer(sqlServer);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new SQL Server DNS alias definition.</return>
         SqlServerDnsAliasOperations.Definition.IWithCreate SqlServerDnsAliasOperations.SqlServerDnsAliasActionsDefinition.ISqlServerDnsAliasActionsDefinition.Define(string serverDnsAliasName)
         {
-            return this.Define(serverDnsAliasName) as SqlServerDnsAliasOperations.Definition.IWithCreate;
+            return this.Define(serverDnsAliasName);
         }
 
         /// <summary>

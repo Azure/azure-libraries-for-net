@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         LoadBalancer.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<LoadBalancer.Update.IUpdate>.Attach()
         {
-            return this.Attach() as LoadBalancer.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.BackendNicIPConfigurationNames() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
+                return this.BackendNicIPConfigurationNames();
             }
         }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancerBackend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate> LoadBalancerBackend.Definition.IWithVirtualMachine<LoadBalancer.Definition.IWithCreate>.WithExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
         {
-            return this.WithExistingVirtualMachines(vms) as LoadBalancerBackend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate>;
+            return this.WithExistingVirtualMachines(vms);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancerBackend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate> LoadBalancerBackend.Definition.IWithVirtualMachine<LoadBalancer.Definition.IWithCreate>.WithExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
         {
-            return this.WithExistingVirtualMachines(vms) as LoadBalancerBackend.Definition.IWithAttach<LoadBalancer.Definition.IWithCreate>;
+            return this.WithExistingVirtualMachines(vms);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancerBackend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> LoadBalancerBackend.UpdateDefinition.IWithVirtualMachine<LoadBalancer.Update.IUpdate>.WithExistingVirtualMachines(params IHasNetworkInterfaces[] vms)
         {
-            return this.WithExistingVirtualMachines(vms) as LoadBalancerBackend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
+            return this.WithExistingVirtualMachines(vms);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancerBackend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate> LoadBalancerBackend.UpdateDefinition.IWithVirtualMachine<LoadBalancer.Update.IUpdate>.WithExistingVirtualMachines(ICollection<Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces> vms)
         {
-            return this.WithExistingVirtualMachines(vms) as LoadBalancerBackend.UpdateDefinition.IWithAttach<LoadBalancer.Update.IUpdate>;
+            return this.WithExistingVirtualMachines(vms);
         }
 
         /// <summary>
@@ -118,14 +118,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.LoadBalancingRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancingRule>;
+                return this.LoadBalancingRules();
             }
         }
 
         /// <return>A list of the resource IDs of the virtual machines associated with this backend.</return>
         System.Collections.Generic.ISet<string> Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend.GetVirtualMachineIds()
         {
-            return this.GetVirtualMachineIds() as System.Collections.Generic.ISet<string>;
+            return this.GetVirtualMachineIds();
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         LoadBalancer.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<LoadBalancer.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as LoadBalancer.Definition.IWithCreate;
+            return this.Attach();
         }
     }
 }
