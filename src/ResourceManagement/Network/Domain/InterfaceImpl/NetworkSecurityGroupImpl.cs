@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.DefaultSecurityRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule>;
+                return this.DefaultSecurityRules();
             }
         }
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.SecurityRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.INetworkSecurityRule>;
+                return this.SecurityRules();
             }
         }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.NetworkInterfaceIds() as System.Collections.Generic.ISet<string>;
+                return this.NetworkInterfaceIds();
             }
         }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the security rule definition.</return>
         NetworkSecurityRule.Definition.IBlank<NetworkSecurityGroup.Definition.IWithCreate> NetworkSecurityGroup.Definition.IWithRule.DefineRule(string name)
         {
-            return this.DefineRule(name) as NetworkSecurityRule.Definition.IBlank<NetworkSecurityGroup.Definition.IWithCreate>;
+            return this.DefineRule(name);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new security rule definition.</return>
         NetworkSecurityRule.UpdateDefinition.IBlank<NetworkSecurityGroup.Update.IUpdate> NetworkSecurityGroup.Update.IWithRule.DefineRule(string name)
         {
-            return this.DefineRule(name) as NetworkSecurityRule.UpdateDefinition.IBlank<NetworkSecurityGroup.Update.IUpdate>;
+            return this.DefineRule(name);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network security group description.</return>
         NetworkSecurityGroup.Update.IUpdate NetworkSecurityGroup.Update.IWithRule.WithoutRule(string name)
         {
-            return this.WithoutRule(name) as NetworkSecurityGroup.Update.IUpdate;
+            return this.WithoutRule(name);
         }
 
         /// <summary>
@@ -95,13 +95,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the security rule update description.</return>
         NetworkSecurityRule.Update.IUpdate NetworkSecurityGroup.Update.IWithRule.UpdateRule(string name)
         {
-            return this.UpdateRule(name) as NetworkSecurityRule.Update.IUpdate;
+            return this.UpdateRule(name);
         }
 
         /// <return>List of subnets associated with this resource.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Network.Fluent.ISubnet> Microsoft.Azure.Management.Network.Fluent.IHasAssociatedSubnets.ListAssociatedSubnets()
         {
-            return this.ListAssociatedSubnets() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Network.Fluent.ISubnet>;
+            return this.ListAssociatedSubnets();
         }
     }
 }

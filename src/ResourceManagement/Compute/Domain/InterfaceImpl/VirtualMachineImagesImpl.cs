@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>.ListByRegion(Region region)
         {
-            return this.ListByRegion(region) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>;
+            return this.ListByRegion(region);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>.ListByRegion(string regionName)
         {
-            return this.ListByRegion(regionName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>;
+            return this.ListByRegion(regionName);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call, returning the requested resources.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>.ListByRegionAsync(Region region, CancellationToken cancellationToken)
         {
-            return await this.ListByRegionAsync(region, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>;
+            return await this.ListByRegionAsync(region, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call, returning the requested resources.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>.ListByRegionAsync(string regionName, CancellationToken cancellationToken)
         {
-            return await this.ListByRegionAsync(regionName, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>;
+            return await this.ListByRegionAsync(regionName, cancellationToken);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The virtual machine image.</return>
         Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImages.GetImage(Region region, string publisherName, string offerName, string skuName, string version)
         {
-            return this.GetImage(region, publisherName, offerName, skuName, version) as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage;
+            return this.GetImage(region, publisherName, offerName, skuName, version);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The virtual machine image.</return>
         Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImages.GetImage(string region, string publisherName, string offerName, string skuName, string version)
         {
-            return this.GetImage(region, publisherName, offerName, skuName, version) as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage;
+            return this.GetImage(region, publisherName, offerName, skuName, version);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Publishers() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublishers;
+                return this.Publishers();
             }
         }
     }

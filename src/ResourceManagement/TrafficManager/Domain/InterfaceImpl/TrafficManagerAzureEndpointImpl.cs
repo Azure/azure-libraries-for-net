@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
             get
             {
-                return this.TargetResourceType() as Microsoft.Azure.Management.TrafficManager.Fluent.TargetAzureResourceType;
+                return this.TargetResourceType();
             }
         }
 
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
             get
             {
-                return this.MonitorStatus() as Microsoft.Azure.Management.TrafficManager.Fluent.EndpointMonitorStatus;
+                return this.MonitorStatus();
             }
         }
 

@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.Redis.Fluent
             /// The operations group for this extension method.
             /// </param>
             /// <param name='parameters'>
-            /// Parameters supplied to the CheckNameAvailability Redis operation.
+            /// Parameters supplied to the CheckNameAvailability Redis operation. The only
+            /// supported resource type is 'Microsoft.Cache/redis'
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of the new resource definition.</return>
         Disk.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Disk.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as Disk.Definition.IBlank;
+            return this.Define(name);
         }
     }
 }

@@ -745,13 +745,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         ///GENMHASH:23406BAAD05E75776B2C2D57DAD6EC31:1EF21756C66ADE5D95AB8272104B3924
-        public IList<string> DefaultDocuments()
+        public IReadOnlyList<string> DefaultDocuments()
         {
             if (this.SiteConfig == null)
             {
                 return null;
             }
-            return this.SiteConfig.DefaultDocuments;
+            return (IReadOnlyList<string>) this.SiteConfig.DefaultDocuments;
         }
 
         ///GENMHASH:8B6374B8DE9FB105A8A4FE1AC98E0A32:59ABE89788E5ADCDFB7771D2A4549653

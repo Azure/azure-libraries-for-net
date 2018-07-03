@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
+    using System.Linq;
     internal partial class AppServiceCertificateImpl 
     {
         /// <summary>
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.HostNames() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.HostNames();
             }
         }
 
@@ -121,7 +122,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.HostingEnvironmentProfile() as Models.HostingEnvironmentProfile;
+                return this.HostingEnvironmentProfile();
             }
         }
 
@@ -176,7 +177,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificate.Definition.IWithCreate AppServiceCertificate.Definition.IWithPfxFilePassword.WithPfxPassword(string password)
         {
-            return this.WithPfxPassword(password) as AppServiceCertificate.Definition.IWithCreate;
+            return this.WithPfxPassword(password);
         }
 
         /// <summary>
@@ -186,7 +187,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificate.Definition.IWithCreate AppServiceCertificate.Definition.IWithCertificate.WithExistingCertificateOrder(IAppServiceCertificateOrder certificateOrder)
         {
-            return this.WithExistingCertificateOrder(certificateOrder) as AppServiceCertificate.Definition.IWithCreate;
+            return this.WithExistingCertificateOrder(certificateOrder);
         }
 
         /// <summary>
@@ -196,7 +197,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificate.Definition.IWithPfxFilePassword AppServiceCertificate.Definition.IWithCertificate.WithPfxFileFromUrl(string url)
         {
-            return this.WithPfxFileFromUrl(url) as AppServiceCertificate.Definition.IWithPfxFilePassword;
+            return this.WithPfxFileFromUrl(url);
         }
 
         /// <summary>
@@ -206,7 +207,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificate.Definition.IWithPfxFilePassword AppServiceCertificate.Definition.IWithCertificate.WithPfxFile(string file)
         {
-            return this.WithPfxFile(file) as AppServiceCertificate.Definition.IWithPfxFilePassword;
+            return this.WithPfxFile(file);
         }
 
         /// <summary>
@@ -216,7 +217,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         AppServiceCertificate.Definition.IWithPfxFilePassword AppServiceCertificate.Definition.IWithCertificate.WithPfxByteArray(params byte[] pfxByteArray)
         {
-            return this.WithPfxByteArray(pfxByteArray) as AppServiceCertificate.Definition.IWithPfxFilePassword;
+            return this.WithPfxByteArray(pfxByteArray);
         }
     }
 }

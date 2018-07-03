@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.SkuType() as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetSkuTypes;
+                return this.SkuType();
             }
         }
 
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Capacity() as Models.VirtualMachineScaleSetSkuCapacity;
+                return this.Capacity();
             }
         }
 

@@ -180,6 +180,6 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         SqlFirewallRuleOperations.SqlFirewallRuleActionsDefinition.ISqlFirewallRuleActionsDefinition FirewallRules { get; }
 
         /// <return>The list of all restorable dropped databases.</return>
-        Task<Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase> ListRestorableDroppedDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase>> ListRestorableDroppedDatabasesAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

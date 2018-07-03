@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The first stage of the new resource definition.</return>
         EventHubAuthorizationRule.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<EventHubAuthorizationRule.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as EventHubAuthorizationRule.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The authorization rule.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRules.GetByName(string resourceGroupName, string namespaceName, string eventHubName, string name)
         {
-            return this.GetByName(resourceGroupName, namespaceName, eventHubName, name) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule;
+            return this.GetByName(resourceGroupName, namespaceName, eventHubName, name);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits the authorization rule.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRules.GetByNameAsync(string resourceGroupName, string namespaceName, string eventHubName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetByNameAsync(resourceGroupName, namespaceName, eventHubName, name, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule;
+            return await this.GetByNameAsync(resourceGroupName, namespaceName, eventHubName, name, cancellationToken);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>List of authorization rules.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRules.ListByEventHub(string resourceGroupName, string namespaceName, string eventHubName)
         {
-            return this.ListByEventHub(resourceGroupName, namespaceName, eventHubName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule>;
+            return this.ListByEventHub(resourceGroupName, namespaceName, eventHubName);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits the authorization rules.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule>> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRules.ListByEventHubAsync(string resourceGroupName, string namespaceName, string eventHubName, CancellationToken cancellationToken)
         {
-            return await this.ListByEventHubAsync(resourceGroupName, namespaceName, eventHubName, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubAuthorizationRule>;
+            return await this.ListByEventHubAsync(resourceGroupName, namespaceName, eventHubName, cancellationToken);
         }
 
         /// <summary>

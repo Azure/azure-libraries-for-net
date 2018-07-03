@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppAuthentication.Definition.IWithExternalRedirectUrls<WebAppBase.Definition.IWithCreate<FluentT>>.WithAllowedExternalRedirectUrl(string url)
         {
-            return this.WithAllowedExternalRedirectUrl(url) as WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithAllowedExternalRedirectUrl(url);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppAuthentication.UpdateDefinition.IWithExternalRedirectUrls<WebAppBase.Update.IUpdate<FluentT>>.WithAllowedExternalRedirectUrl(string url)
         {
-            return this.WithAllowedExternalRedirectUrl(url) as WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithAllowedExternalRedirectUrl(url);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppAuthentication.Definition.IWithDefaultAuthenticationProvider<WebAppBase.Definition.IWithCreate<FluentT>>.WithAnonymousAuthentication()
         {
-            return this.WithAnonymousAuthentication() as WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithAnonymousAuthentication();
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppAuthentication.Definition.IWithDefaultAuthenticationProvider<WebAppBase.Definition.IWithCreate<FluentT>>.WithDefaultAuthenticationProvider(BuiltInAuthenticationProvider provider)
         {
-            return this.WithDefaultAuthenticationProvider(provider) as WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithDefaultAuthenticationProvider(provider);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppAuthentication.UpdateDefinition.IWithDefaultAuthenticationProvider<WebAppBase.Update.IUpdate<FluentT>>.WithAnonymousAuthentication()
         {
-            return this.WithAnonymousAuthentication() as WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithAnonymousAuthentication();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppAuthentication.UpdateDefinition.IWithDefaultAuthenticationProvider<WebAppBase.Update.IUpdate<FluentT>>.WithDefaultAuthenticationProvider(BuiltInAuthenticationProvider provider)
         {
-            return this.WithDefaultAuthenticationProvider(provider) as WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithDefaultAuthenticationProvider(provider);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppAuthentication.Definition.IWithAuthenticationProvider<WebAppBase.Definition.IWithCreate<FluentT>>.WithActiveDirectory(string clientId, string issuerUrl)
         {
-            return this.WithActiveDirectory(clientId, issuerUrl) as WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithActiveDirectory(clientId, issuerUrl);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppAuthentication.Definition.IWithAuthenticationProvider<WebAppBase.Definition.IWithCreate<FluentT>>.WithMicrosoft(string clientId, string clientSecret)
         {
-            return this.WithMicrosoft(clientId, clientSecret) as WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithMicrosoft(clientId, clientSecret);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppAuthentication.Definition.IWithAuthenticationProvider<WebAppBase.Definition.IWithCreate<FluentT>>.WithTwitter(string apiKey, string apiSecret)
         {
-            return this.WithTwitter(apiKey, apiSecret) as WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithTwitter(apiKey, apiSecret);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppAuthentication.Definition.IWithAuthenticationProvider<WebAppBase.Definition.IWithCreate<FluentT>>.WithGoogle(string clientId, string clientSecret)
         {
-            return this.WithGoogle(clientId, clientSecret) as WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithGoogle(clientId, clientSecret);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppAuthentication.Definition.IWithAuthenticationProvider<WebAppBase.Definition.IWithCreate<FluentT>>.WithFacebook(string appId, string appSecret)
         {
-            return this.WithFacebook(appId, appSecret) as WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithFacebook(appId, appSecret);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppAuthentication.UpdateDefinition.IWithAuthenticationProvider<WebAppBase.Update.IUpdate<FluentT>>.WithActiveDirectory(string clientId, string issuerUrl)
         {
-            return this.WithActiveDirectory(clientId, issuerUrl) as WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithActiveDirectory(clientId, issuerUrl);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppAuthentication.UpdateDefinition.IWithAuthenticationProvider<WebAppBase.Update.IUpdate<FluentT>>.WithMicrosoft(string clientId, string clientSecret)
         {
-            return this.WithMicrosoft(clientId, clientSecret) as WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithMicrosoft(clientId, clientSecret);
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppAuthentication.UpdateDefinition.IWithAuthenticationProvider<WebAppBase.Update.IUpdate<FluentT>>.WithTwitter(string apiKey, string apiSecret)
         {
-            return this.WithTwitter(apiKey, apiSecret) as WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithTwitter(apiKey, apiSecret);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppAuthentication.UpdateDefinition.IWithAuthenticationProvider<WebAppBase.Update.IUpdate<FluentT>>.WithGoogle(string clientId, string clientSecret)
         {
-            return this.WithGoogle(clientId, clientSecret) as WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithGoogle(clientId, clientSecret);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppAuthentication.UpdateDefinition.IWithAuthenticationProvider<WebAppBase.Update.IUpdate<FluentT>>.WithFacebook(string appId, string appSecret)
         {
-            return this.WithFacebook(appId, appSecret) as WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithFacebook(appId, appSecret);
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppAuthentication.Definition.IWithTokenStore<WebAppBase.Definition.IWithCreate<FluentT>>.WithTokenStore(bool enabled)
         {
-            return this.WithTokenStore(enabled) as WebAppAuthentication.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithTokenStore(enabled);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppAuthentication.UpdateDefinition.IWithTokenStore<WebAppBase.Update.IUpdate<FluentT>>.WithTokenStore(bool enabled)
         {
-            return this.WithTokenStore(enabled) as WebAppAuthentication.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithTokenStore(enabled);
         }
     }
 }

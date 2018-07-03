@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>The first stage of the new resource definition.</return>
         StorageAccount.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<StorageAccount.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as StorageAccount.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>A representation of the deferred computation of this call, returning whether the name is available and other info if not.</return>
         async Task<Microsoft.Azure.Management.Storage.Fluent.CheckNameAvailabilityResult> Microsoft.Azure.Management.Storage.Fluent.IStorageAccounts.CheckNameAvailabilityAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.CheckNameAvailabilityAsync(name, cancellationToken) as Microsoft.Azure.Management.Storage.Fluent.CheckNameAvailabilityResult;
+            return await this.CheckNameAvailabilityAsync(name, cancellationToken);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Storage.Fluent
         /// <return>Whether the name is available and other info if not.</return>
         Microsoft.Azure.Management.Storage.Fluent.CheckNameAvailabilityResult Microsoft.Azure.Management.Storage.Fluent.IStorageAccounts.CheckNameAvailability(string name)
         {
-            return this.CheckNameAvailability(name) as Microsoft.Azure.Management.Storage.Fluent.CheckNameAvailabilityResult;
+            return this.CheckNameAvailability(name);
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
             get
             {
-                return this.ChildLocations() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation>;
+                return this.ChildLocations();
             }
         }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
             get
             {
-                return this.DescendantLocations() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation>;
+                return this.DescendantLocations();
             }
         }
     }

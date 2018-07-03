@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         {
             get
             {
-                return this.Metadata() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
+                return this.Metadata();
             }
         }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the parent definition.</return>
         DnsZone.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<DnsZone.Update.IUpdate>.Attach()
         {
-            return this.Attach() as DnsZone.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the parent definition.</return>
         DnsZone.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<DnsZone.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as DnsZone.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithCNameRecordSetAttachable<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithCNameRecordAlias<DnsZone.Update.IUpdate>.WithAlias(string alias)
         {
-            return this.WithAlias(alias) as DnsRecordSet.UpdateDefinition.IWithCNameRecordSetAttachable<DnsZone.Update.IUpdate>;
+            return this.WithAlias(alias);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithCNameRecordSetAttachable<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithCNameRecordAlias<DnsZone.Definition.IWithCreate>.WithAlias(string alias)
         {
-            return this.WithAlias(alias) as DnsRecordSet.Definition.IWithCNameRecordSetAttachable<DnsZone.Definition.IWithCreate>;
+            return this.WithAlias(alias);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateCNameRecordSet.IUpdateCNameRecordSet DnsRecordSet.Update.IWithCNameRecordAlias.WithAlias(string alias)
         {
-            return this.WithAlias(alias) as DnsRecordSet.UpdateCNameRecordSet.IUpdateCNameRecordSet;
+            return this.WithAlias(alias);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord DnsRecordSet.Update.IWithSoaRecordAttributes.WithEmailServer(string emailServerHostName)
         {
-            return this.WithEmailServer(emailServerHostName) as DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord;
+            return this.WithEmailServer(emailServerHostName);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithAttach<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithETagCheck<DnsZone.Update.IUpdate>.WithETagCheck()
         {
-            return this.WithETagCheck() as DnsRecordSet.UpdateDefinition.IWithAttach<DnsZone.Update.IUpdate>;
+            return this.WithETagCheck();
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithAttach<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithETagCheck<DnsZone.Definition.IWithCreate>.WithETagCheck()
         {
-            return this.WithETagCheck() as DnsRecordSet.Definition.IWithAttach<DnsZone.Definition.IWithCreate>;
+            return this.WithETagCheck();
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the update.</return>
         DnsRecordSet.Update.IUpdate DnsRecordSet.Update.IWithETagCheck.WithETagCheck()
         {
-            return this.WithETagCheck() as DnsRecordSet.Update.IUpdate;
+            return this.WithETagCheck();
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the update.</return>
         DnsRecordSet.Update.IUpdate DnsRecordSet.Update.IWithETagCheck.WithETagCheck(string eTagValue)
         {
-            return this.WithETagCheck(eTagValue) as DnsRecordSet.Update.IUpdate;
+            return this.WithETagCheck(eTagValue);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord DnsRecordSet.Update.IWithSoaRecordAttributes.WithExpireTimeInSeconds(long expireTimeInSeconds)
         {
-            return this.WithExpireTimeInSeconds(expireTimeInSeconds) as DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord;
+            return this.WithExpireTimeInSeconds(expireTimeInSeconds);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithARecordIPv4AddressOrAttachable<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithARecordIPv4Address<DnsZone.Update.IUpdate>.WithIPv4Address(string ipv4Address)
         {
-            return this.WithIPv4Address(ipv4Address) as DnsRecordSet.UpdateDefinition.IWithARecordIPv4AddressOrAttachable<DnsZone.Update.IUpdate>;
+            return this.WithIPv4Address(ipv4Address);
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithARecordIPv4AddressOrAttachable<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithARecordIPv4Address<DnsZone.Definition.IWithCreate>.WithIPv4Address(string ipv4Address)
         {
-            return this.WithIPv4Address(ipv4Address) as DnsRecordSet.Definition.IWithARecordIPv4AddressOrAttachable<DnsZone.Definition.IWithCreate>;
+            return this.WithIPv4Address(ipv4Address);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateARecordSet.IUpdateARecordSet DnsRecordSet.Update.IWithARecordIPv4Address.WithIPv4Address(string ipv4Address)
         {
-            return this.WithIPv4Address(ipv4Address) as DnsRecordSet.UpdateARecordSet.IUpdateARecordSet;
+            return this.WithIPv4Address(ipv4Address);
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithAaaaRecordIPv6AddressOrAttachable<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithAaaaRecordIPv6Address<DnsZone.Update.IUpdate>.WithIPv6Address(string ipv6Address)
         {
-            return this.WithIPv6Address(ipv6Address) as DnsRecordSet.UpdateDefinition.IWithAaaaRecordIPv6AddressOrAttachable<DnsZone.Update.IUpdate>;
+            return this.WithIPv6Address(ipv6Address);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithAaaaRecordIPv6AddressOrAttachable<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithAaaaRecordIPv6Address<DnsZone.Definition.IWithCreate>.WithIPv6Address(string ipv6Address)
         {
-            return this.WithIPv6Address(ipv6Address) as DnsRecordSet.Definition.IWithAaaaRecordIPv6AddressOrAttachable<DnsZone.Definition.IWithCreate>;
+            return this.WithIPv6Address(ipv6Address);
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateAaaaRecordSet.IUpdateAaaaRecordSet DnsRecordSet.Update.IWithAaaaRecordIPv6Address.WithIPv6Address(string ipv6Address)
         {
-            return this.WithIPv6Address(ipv6Address) as DnsRecordSet.UpdateAaaaRecordSet.IUpdateAaaaRecordSet;
+            return this.WithIPv6Address(ipv6Address);
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateMXRecordSet.IUpdateMXRecordSet DnsRecordSet.Update.IWithMXRecordMailExchange.WithMailExchange(string mailExchangeHostName, int priority)
         {
-            return this.WithMailExchange(mailExchangeHostName, priority) as DnsRecordSet.UpdateMXRecordSet.IUpdateMXRecordSet;
+            return this.WithMailExchange(mailExchangeHostName, priority);
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithMXRecordMailExchangeOrAttachable<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithMXRecordMailExchange<DnsZone.Update.IUpdate>.WithMailExchange(string mailExchangeHostName, int priority)
         {
-            return this.WithMailExchange(mailExchangeHostName, priority) as DnsRecordSet.UpdateDefinition.IWithMXRecordMailExchangeOrAttachable<DnsZone.Update.IUpdate>;
+            return this.WithMailExchange(mailExchangeHostName, priority);
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithMXRecordMailExchangeOrAttachable<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithMXRecordMailExchange<DnsZone.Definition.IWithCreate>.WithMailExchange(string mailExchangeHostName, int priority)
         {
-            return this.WithMailExchange(mailExchangeHostName, priority) as DnsRecordSet.Definition.IWithMXRecordMailExchangeOrAttachable<DnsZone.Definition.IWithCreate>;
+            return this.WithMailExchange(mailExchangeHostName, priority);
         }
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.Update.IUpdate DnsRecordSet.Update.IWithMetadata.WithMetadata(string key, string value)
         {
-            return this.WithMetadata(key, value) as DnsRecordSet.Update.IUpdate;
+            return this.WithMetadata(key, value);
         }
 
         /// <summary>
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithAttach<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithMetadata<DnsZone.Update.IUpdate>.WithMetadata(string key, string value)
         {
-            return this.WithMetadata(key, value) as DnsRecordSet.UpdateDefinition.IWithAttach<DnsZone.Update.IUpdate>;
+            return this.WithMetadata(key, value);
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithAttach<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithMetadata<DnsZone.Definition.IWithCreate>.WithMetadata(string key, string value)
         {
-            return this.WithMetadata(key, value) as DnsRecordSet.Definition.IWithAttach<DnsZone.Definition.IWithCreate>;
+            return this.WithMetadata(key, value);
         }
 
         /// <summary>
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithNSRecordNameServerOrAttachable<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithNSRecordNameServer<DnsZone.Update.IUpdate>.WithNameServer(string nameServerHostName)
         {
-            return this.WithNameServer(nameServerHostName) as DnsRecordSet.UpdateDefinition.IWithNSRecordNameServerOrAttachable<DnsZone.Update.IUpdate>;
+            return this.WithNameServer(nameServerHostName);
         }
 
         /// <summary>
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithNSRecordNameServerOrAttachable<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithNSRecordNameServer<DnsZone.Definition.IWithCreate>.WithNameServer(string nameServerHostName)
         {
-            return this.WithNameServer(nameServerHostName) as DnsRecordSet.Definition.IWithNSRecordNameServerOrAttachable<DnsZone.Definition.IWithCreate>;
+            return this.WithNameServer(nameServerHostName);
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateNSRecordSet.IUpdateNSRecordSet DnsRecordSet.Update.IWithNSRecordNameServer.WithNameServer(string nameServerHostName)
         {
-            return this.WithNameServer(nameServerHostName) as DnsRecordSet.UpdateNSRecordSet.IUpdateNSRecordSet;
+            return this.WithNameServer(nameServerHostName);
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord DnsRecordSet.Update.IWithSoaRecordAttributes.WithNegativeResponseCachingTimeToLiveInSeconds(long negativeCachingTimeToLive)
         {
-            return this.WithNegativeResponseCachingTimeToLiveInSeconds(negativeCachingTimeToLive) as DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord;
+            return this.WithNegativeResponseCachingTimeToLiveInSeconds(negativeCachingTimeToLive);
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateARecordSet.IUpdateARecordSet DnsRecordSet.Update.IWithARecordIPv4Address.WithoutIPv4Address(string ipv4Address)
         {
-            return this.WithoutIPv4Address(ipv4Address) as DnsRecordSet.UpdateARecordSet.IUpdateARecordSet;
+            return this.WithoutIPv4Address(ipv4Address);
         }
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateAaaaRecordSet.IUpdateAaaaRecordSet DnsRecordSet.Update.IWithAaaaRecordIPv6Address.WithoutIPv6Address(string ipv6Address)
         {
-            return this.WithoutIPv6Address(ipv6Address) as DnsRecordSet.UpdateAaaaRecordSet.IUpdateAaaaRecordSet;
+            return this.WithoutIPv6Address(ipv6Address);
         }
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateMXRecordSet.IUpdateMXRecordSet DnsRecordSet.Update.IWithMXRecordMailExchange.WithoutMailExchange(string mailExchangeHostName, int priority)
         {
-            return this.WithoutMailExchange(mailExchangeHostName, priority) as DnsRecordSet.UpdateMXRecordSet.IUpdateMXRecordSet;
+            return this.WithoutMailExchange(mailExchangeHostName, priority);
         }
 
         /// <summary>
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.Update.IUpdate DnsRecordSet.Update.IWithMetadata.WithoutMetadata(string key)
         {
-            return this.WithoutMetadata(key) as DnsRecordSet.Update.IUpdate;
+            return this.WithoutMetadata(key);
         }
 
         /// <summary>
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateNSRecordSet.IUpdateNSRecordSet DnsRecordSet.Update.IWithNSRecordNameServer.WithoutNameServer(string nameServerHostName)
         {
-            return this.WithoutNameServer(nameServerHostName) as DnsRecordSet.UpdateNSRecordSet.IUpdateNSRecordSet;
+            return this.WithoutNameServer(nameServerHostName);
         }
 
         /// <summary>
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateSrvRecordSet.IUpdateSrvRecordSet DnsRecordSet.Update.IWithSrvRecordEntry.WithoutRecord(string target, int port, int priority, int weight)
         {
-            return this.WithoutRecord(target, port, priority, weight) as DnsRecordSet.UpdateSrvRecordSet.IUpdateSrvRecordSet;
+            return this.WithoutRecord(target, port, priority, weight);
         }
 
         /// <summary>
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateCaaRecordSet.IUpdateCaaRecordSet DnsRecordSet.Update.IWithCaaRecordEntry.WithoutRecord(int flags, string tag, string value)
         {
-            return this.WithoutRecord(flags, tag, value) as DnsRecordSet.UpdateCaaRecordSet.IUpdateCaaRecordSet;
+            return this.WithoutRecord(flags, tag, value);
         }
 
         /// <summary>
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdatePtrRecordSet.IUpdatePtrRecordSet DnsRecordSet.Update.IWithPtrRecordTargetDomainName.WithoutTargetDomainName(string targetDomainName)
         {
-            return this.WithoutTargetDomainName(targetDomainName) as DnsRecordSet.UpdatePtrRecordSet.IUpdatePtrRecordSet;
+            return this.WithoutTargetDomainName(targetDomainName);
         }
 
         /// <summary>
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateTxtRecordSet.IUpdateTxtRecordSet DnsRecordSet.Update.IWithTxtRecordTextValue.WithoutText(string text)
         {
-            return this.WithoutText(text) as DnsRecordSet.UpdateTxtRecordSet.IUpdateTxtRecordSet;
+            return this.WithoutText(text);
         }
 
         /// <summary>
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateTxtRecordSet.IUpdateTxtRecordSet DnsRecordSet.Update.IWithTxtRecordTextValue.WithoutText(IList<string> textChunks)
         {
-            return this.WithoutText(textChunks) as DnsRecordSet.UpdateTxtRecordSet.IUpdateTxtRecordSet;
+            return this.WithoutText(textChunks);
         }
 
         /// <summary>
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateSrvRecordSet.IUpdateSrvRecordSet DnsRecordSet.Update.IWithSrvRecordEntry.WithRecord(string target, int port, int priority, int weight)
         {
-            return this.WithRecord(target, port, priority, weight) as DnsRecordSet.UpdateSrvRecordSet.IUpdateSrvRecordSet;
+            return this.WithRecord(target, port, priority, weight);
         }
 
         /// <summary>
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithSrvRecordEntryOrAttachable<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithSrvRecordEntry<DnsZone.Update.IUpdate>.WithRecord(string target, int port, int priority, int weight)
         {
-            return this.WithRecord(target, port, priority, weight) as DnsRecordSet.UpdateDefinition.IWithSrvRecordEntryOrAttachable<DnsZone.Update.IUpdate>;
+            return this.WithRecord(target, port, priority, weight);
         }
 
         /// <summary>
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithSrvRecordEntryOrAttachable<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithSrvRecordEntry<DnsZone.Definition.IWithCreate>.WithRecord(string target, int port, int priority, int weight)
         {
-            return this.WithRecord(target, port, priority, weight) as DnsRecordSet.Definition.IWithSrvRecordEntryOrAttachable<DnsZone.Definition.IWithCreate>;
+            return this.WithRecord(target, port, priority, weight);
         }
 
         /// <summary>
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithCaaRecordEntryOrAttachable<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithCaaRecordEntry<DnsZone.Update.IUpdate>.WithRecord(int flags, string tag, string value)
         {
-            return this.WithRecord(flags, tag, value) as DnsRecordSet.UpdateDefinition.IWithCaaRecordEntryOrAttachable<DnsZone.Update.IUpdate>;
+            return this.WithRecord(flags, tag, value);
         }
 
         /// <summary>
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithCaaRecordEntryOrAttachable<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithCaaRecordEntry<DnsZone.Definition.IWithCreate>.WithRecord(int flags, string tag, string value)
         {
-            return this.WithRecord(flags, tag, value) as DnsRecordSet.Definition.IWithCaaRecordEntryOrAttachable<DnsZone.Definition.IWithCreate>;
+            return this.WithRecord(flags, tag, value);
         }
 
         /// <summary>
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateCaaRecordSet.IUpdateCaaRecordSet DnsRecordSet.Update.IWithCaaRecordEntry.WithRecord(int flags, string tag, string value)
         {
-            return this.WithRecord(flags, tag, value) as DnsRecordSet.UpdateCaaRecordSet.IUpdateCaaRecordSet;
+            return this.WithRecord(flags, tag, value);
         }
 
         /// <summary>
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord DnsRecordSet.Update.IWithSoaRecordAttributes.WithRefreshTimeInSeconds(long refreshTimeInSeconds)
         {
-            return this.WithRefreshTimeInSeconds(refreshTimeInSeconds) as DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord;
+            return this.WithRefreshTimeInSeconds(refreshTimeInSeconds);
         }
 
         /// <summary>
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord DnsRecordSet.Update.IWithSoaRecordAttributes.WithRetryTimeInSeconds(long refreshTimeInSeconds)
         {
-            return this.WithRetryTimeInSeconds(refreshTimeInSeconds) as DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord;
+            return this.WithRetryTimeInSeconds(refreshTimeInSeconds);
         }
 
         /// <summary>
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord DnsRecordSet.Update.IWithSoaRecordAttributes.WithSerialNumber(long serialNumber)
         {
-            return this.WithSerialNumber(serialNumber) as DnsRecordSet.UpdateSoaRecord.IUpdateSoaRecord;
+            return this.WithSerialNumber(serialNumber);
         }
 
         /// <summary>
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithPtrRecordTargetDomainNameOrAttachable<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithPtrRecordTargetDomainName<DnsZone.Update.IUpdate>.WithTargetDomainName(string targetDomainName)
         {
-            return this.WithTargetDomainName(targetDomainName) as DnsRecordSet.UpdateDefinition.IWithPtrRecordTargetDomainNameOrAttachable<DnsZone.Update.IUpdate>;
+            return this.WithTargetDomainName(targetDomainName);
         }
 
         /// <summary>
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithPtrRecordTargetDomainNameOrAttachable<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithPtrRecordTargetDomainName<DnsZone.Definition.IWithCreate>.WithTargetDomainName(string targetDomainName)
         {
-            return this.WithTargetDomainName(targetDomainName) as DnsRecordSet.Definition.IWithPtrRecordTargetDomainNameOrAttachable<DnsZone.Definition.IWithCreate>;
+            return this.WithTargetDomainName(targetDomainName);
         }
 
         /// <summary>
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdatePtrRecordSet.IUpdatePtrRecordSet DnsRecordSet.Update.IWithPtrRecordTargetDomainName.WithTargetDomainName(string targetDomainName)
         {
-            return this.WithTargetDomainName(targetDomainName) as DnsRecordSet.UpdatePtrRecordSet.IUpdatePtrRecordSet;
+            return this.WithTargetDomainName(targetDomainName);
         }
 
         /// <summary>
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.UpdateTxtRecordSet.IUpdateTxtRecordSet DnsRecordSet.Update.IWithTxtRecordTextValue.WithText(string text)
         {
-            return this.WithText(text) as DnsRecordSet.UpdateTxtRecordSet.IUpdateTxtRecordSet;
+            return this.WithText(text);
         }
 
         /// <summary>
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithTxtRecordTextValueOrAttachable<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithTxtRecordTextValue<DnsZone.Update.IUpdate>.WithText(string text)
         {
-            return this.WithText(text) as DnsRecordSet.UpdateDefinition.IWithTxtRecordTextValueOrAttachable<DnsZone.Update.IUpdate>;
+            return this.WithText(text);
         }
 
         /// <summary>
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithTxtRecordTextValueOrAttachable<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithTxtRecordTextValue<DnsZone.Definition.IWithCreate>.WithText(string text)
         {
-            return this.WithText(text) as DnsRecordSet.Definition.IWithTxtRecordTextValueOrAttachable<DnsZone.Definition.IWithCreate>;
+            return this.WithText(text);
         }
 
         /// <summary>
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.UpdateDefinition.IWithAttach<DnsZone.Update.IUpdate> DnsRecordSet.UpdateDefinition.IWithTtl<DnsZone.Update.IUpdate>.WithTimeToLive(long ttlInSeconds)
         {
-            return this.WithTimeToLive(ttlInSeconds) as DnsRecordSet.UpdateDefinition.IWithAttach<DnsZone.Update.IUpdate>;
+            return this.WithTimeToLive(ttlInSeconds);
         }
 
         /// <summary>
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the definition.</return>
         DnsRecordSet.Definition.IWithAttach<DnsZone.Definition.IWithCreate> DnsRecordSet.Definition.IWithTtl<DnsZone.Definition.IWithCreate>.WithTimeToLive(long ttlInSeconds)
         {
-            return this.WithTimeToLive(ttlInSeconds) as DnsRecordSet.Definition.IWithAttach<DnsZone.Definition.IWithCreate>;
+            return this.WithTimeToLive(ttlInSeconds);
         }
 
         /// <summary>
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The next stage of the record set update.</return>
         DnsRecordSet.Update.IUpdate DnsRecordSet.Update.IWithTtl.WithTimeToLive(long ttlInSeconds)
         {
-            return this.WithTimeToLive(ttlInSeconds) as DnsRecordSet.Update.IUpdate;
+            return this.WithTimeToLive(ttlInSeconds);
         }
     }
 

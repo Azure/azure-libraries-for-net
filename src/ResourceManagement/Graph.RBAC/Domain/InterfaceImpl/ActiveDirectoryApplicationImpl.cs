@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in application update.</return>
         ActiveDirectoryApplication.Update.IUpdate ActiveDirectoryApplication.Update.IWithReplyUrl.WithoutReplyUrl(string replyUrl)
         {
-            return this.WithoutReplyUrl(replyUrl) as ActiveDirectoryApplication.Update.IUpdate;
+            return this.WithoutReplyUrl(replyUrl);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in application update.</return>
         ActiveDirectoryApplication.Update.IUpdate ActiveDirectoryApplication.Update.IWithReplyUrl.WithReplyUrl(string replyUrl)
         {
-            return this.WithReplyUrl(replyUrl) as ActiveDirectoryApplication.Update.IUpdate;
+            return this.WithReplyUrl(replyUrl);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in application definition.</return>
         ActiveDirectoryApplication.Definition.IWithCreate ActiveDirectoryApplication.Definition.IWithReplyUrl.WithReplyUrl(string replyUrl)
         {
-            return this.WithReplyUrl(replyUrl) as ActiveDirectoryApplication.Definition.IWithCreate;
+            return this.WithReplyUrl(replyUrl);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in application update.</return>
         ActiveDirectoryApplication.Update.IUpdate ActiveDirectoryApplication.Update.IWithMultiTenant.WithAvailableToOtherTenants(bool availableToOtherTenants)
         {
-            return this.WithAvailableToOtherTenants(availableToOtherTenants) as ActiveDirectoryApplication.Update.IUpdate;
+            return this.WithAvailableToOtherTenants(availableToOtherTenants);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in application definition.</return>
         ActiveDirectoryApplication.Definition.IWithCreate ActiveDirectoryApplication.Definition.IWithMultiTenant.WithAvailableToOtherTenants(bool availableToOtherTenants)
         {
-            return this.WithAvailableToOtherTenants(availableToOtherTenants) as ActiveDirectoryApplication.Definition.IWithCreate;
+            return this.WithAvailableToOtherTenants(availableToOtherTenants);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in application update.</return>
         ActiveDirectoryApplication.Update.IUpdate ActiveDirectoryApplication.Update.IWithSignOnUrl.WithSignOnUrl(string signOnUrl)
         {
-            return this.WithSignOnUrl(signOnUrl) as ActiveDirectoryApplication.Update.IUpdate;
+            return this.WithSignOnUrl(signOnUrl);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in application definition.</return>
         ActiveDirectoryApplication.Definition.IWithCreate ActiveDirectoryApplication.Definition.IWithSignOnUrl.WithSignOnUrl(string signOnUrl)
         {
-            return this.WithSignOnUrl(signOnUrl) as ActiveDirectoryApplication.Definition.IWithCreate;
+            return this.WithSignOnUrl(signOnUrl);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The interface itself.</return>
         IWithCreate Microsoft.Azure.Management.Graph.RBAC.Fluent.IHasCredential<IWithCreate>.WithCertificateCredential(CertificateCredentialImpl<IWithCreate> credential)
         {
-            return this.WithCertificateCredential(credential) as Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicationImpl;
+            return this.WithCertificateCredential(credential);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The interface itself.</return>
         IUpdate Microsoft.Azure.Management.Graph.RBAC.Fluent.IHasCredential<IUpdate>.WithCertificateCredential(CertificateCredentialImpl<IUpdate> credential)
         {
-            return this.WithCertificateCredential(credential) as Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicationImpl;
+            return this.WithCertificateCredential(credential);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The interface itself.</return>
         IWithCreate Microsoft.Azure.Management.Graph.RBAC.Fluent.IHasCredential<IWithCreate>.WithPasswordCredential(PasswordCredentialImpl<IWithCreate> credential)
         {
-            return this.WithPasswordCredential(credential) as Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicationImpl;
+            return this.WithPasswordCredential(credential);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The interface itself.</return>
         IUpdate Microsoft.Azure.Management.Graph.RBAC.Fluent.IHasCredential<IUpdate>.WithPasswordCredential(PasswordCredentialImpl<IUpdate> credential)
         {
-            return this.WithPasswordCredential(credential) as Microsoft.Azure.Management.Graph.RBAC.Fluent.ActiveDirectoryApplicationImpl;
+            return this.WithPasswordCredential(credential);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The first stage in certificate credential definition.</return>
         CertificateCredential.UpdateDefinition.IBlank<ActiveDirectoryApplication.Update.IUpdate> ActiveDirectoryApplication.Update.IWithCredential.DefineCertificateCredential(string name)
         {
-            return this.DefineCertificateCredential<IUpdate>(name) as CertificateCredential.UpdateDefinition.IBlank<ActiveDirectoryApplication.Update.IUpdate>;
+            return this.DefineCertificateCredential<IUpdate>(name);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the application update.</return>
         ActiveDirectoryApplication.Update.IUpdate ActiveDirectoryApplication.Update.IWithCredential.WithoutCredential(string name)
         {
-            return this.WithoutCredential(name) as ActiveDirectoryApplication.Update.IUpdate;
+            return this.WithoutCredential(name);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The first stage in password credential definition.</return>
         PasswordCredential.UpdateDefinition.IBlank<ActiveDirectoryApplication.Update.IUpdate> ActiveDirectoryApplication.Update.IWithCredential.DefinePasswordCredential(string name)
         {
-            return this.DefinePasswordCredential<IUpdate>(name) as PasswordCredential.UpdateDefinition.IBlank<ActiveDirectoryApplication.Update.IUpdate>;
+            return this.DefinePasswordCredential<IUpdate>(name);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The first stage in certificate credential definition.</return>
         CertificateCredential.Definition.IBlank<ActiveDirectoryApplication.Definition.IWithCreate> ActiveDirectoryApplication.Definition.IWithCredential.DefineCertificateCredential(string name)
         {
-            return this.DefineCertificateCredential<IWithCreate>(name) as CertificateCredential.Definition.IBlank<ActiveDirectoryApplication.Definition.IWithCreate>;
+            return this.DefineCertificateCredential<IWithCreate>(name);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The first stage in password credential definition.</return>
         PasswordCredential.Definition.IBlank<ActiveDirectoryApplication.Definition.IWithCreate> ActiveDirectoryApplication.Definition.IWithCredential.DefinePasswordCredential(string name)
         {
-            return this.DefinePasswordCredential<IWithCreate>(name) as PasswordCredential.Definition.IBlank<ActiveDirectoryApplication.Definition.IWithCreate>;
+            return this.DefinePasswordCredential<IWithCreate>(name);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in application update.</return>
         ActiveDirectoryApplication.Update.IUpdate ActiveDirectoryApplication.Update.IWithIdentifierUrl.WithIdentifierUrl(string identifierUrl)
         {
-            return this.WithIdentifierUrl(identifierUrl) as ActiveDirectoryApplication.Update.IUpdate;
+            return this.WithIdentifierUrl(identifierUrl);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in application update.</return>
         ActiveDirectoryApplication.Update.IUpdate ActiveDirectoryApplication.Update.IWithIdentifierUrl.WithoutIdentifierUrl(string identifierUrl)
         {
-            return this.WithoutIdentifierUrl(identifierUrl) as ActiveDirectoryApplication.Update.IUpdate;
+            return this.WithoutIdentifierUrl(identifierUrl);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in application definition.</return>
         ActiveDirectoryApplication.Definition.IWithCreate ActiveDirectoryApplication.Definition.IWithIdentifierUrl.WithIdentifierUrl(string identifierUrl)
         {
-            return this.WithIdentifierUrl(identifierUrl) as ActiveDirectoryApplication.Definition.IWithCreate;
+            return this.WithIdentifierUrl(identifierUrl);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.ApplicationPermissions() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.ApplicationPermissions();
             }
         }
 
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.IdentifierUris() as System.Collections.Generic.ISet<string>;
+                return this.IdentifierUris();
             }
         }
 
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.CertificateCredentials() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential>;
+                return this.CertificateCredentials();
             }
         }
 
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.ReplyUrls() as System.Collections.Generic.ISet<string>;
+                return this.ReplyUrls();
             }
         }
 
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.SignOnUrl() as System.Uri;
+                return this.SignOnUrl();
             }
         }
 
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.PasswordCredentials() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential>;
+                return this.PasswordCredentials();
             }
         }
     }

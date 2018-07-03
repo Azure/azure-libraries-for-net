@@ -311,7 +311,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Configures flow log on a specified resource.
+            /// Configures flow log  and traffic analytics (optional) on a specified
+            /// resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -337,7 +338,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Queries status of flow log on a specified resource.
+            /// Queries status of flow log and traffic analytics (optional) on a specified
+            /// resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -349,7 +351,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// The name of the network watcher resource.
             /// </param>
             /// <param name='targetResourceId'>
-            /// The target resource where getting the flow logging status.
+            /// The target resource where getting the flow log and traffic analytics
+            /// (optional) status.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -596,7 +599,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Configures flow log on a specified resource.
+            /// Configures flow log  and traffic analytics (optional) on a specified
+            /// resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -622,7 +626,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             }
 
             /// <summary>
-            /// Queries status of flow log on a specified resource.
+            /// Queries status of flow log and traffic analytics (optional) on a specified
+            /// resource.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -634,7 +639,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
             /// The name of the network watcher resource.
             /// </param>
             /// <param name='targetResourceId'>
-            /// The target resource where getting the flow logging status.
+            /// The target resource where getting the flow log and traffic analytics
+            /// (optional) status.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

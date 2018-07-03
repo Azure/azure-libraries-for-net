@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.INetworkWatcher;
+                return this.Parent();
             }
         }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Resources() as System.Collections.Generic.IReadOnlyDictionary<string, Models.TopologyResource>;
+                return this.Resources();
             }
         }
 
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.TopologyParameters() as Models.TopologyParameters;
+                return this.TopologyParameters();
             }
         }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Topology object itself.</return>
         Topology.Definition.IWithExecuteAndSubnet Topology.Definition.IWithTargetNetwork.WithTargetNetwork(string networkId)
         {
-            return this.WithTargetNetwork(networkId) as Topology.Definition.IWithExecuteAndSubnet;
+            return this.WithTargetNetwork(networkId);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Topology object itself.</return>
         Topology.Definition.IWithExecute Topology.Definition.IWithTargetResourceGroup.WithTargetResourceGroup(string resourceGroupName)
         {
-            return this.WithTargetResourceGroup(resourceGroupName) as Topology.Definition.IWithExecute;
+            return this.WithTargetResourceGroup(resourceGroupName);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Topology object itself.</return>
         Topology.Definition.IWithExecute Topology.Definition.IWithTargetSubnet.WithTargetSubnet(string subnetName)
         {
-            return this.WithTargetSubnet(subnetName) as Topology.Definition.IWithExecute;
+            return this.WithTargetSubnet(subnetName);
         }
     }
 }

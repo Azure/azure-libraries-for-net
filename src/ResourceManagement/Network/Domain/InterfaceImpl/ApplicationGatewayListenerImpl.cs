@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayListener.Definition.IWithProtocol<ApplicationGateway.Definition.IWithCreate>.WithHttp()
         {
-            return this.WithHttp() as ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHttp();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Definition.IWithSslCertificate<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayListener.Definition.IWithProtocol<ApplicationGateway.Definition.IWithCreate>.WithHttps()
         {
-            return this.WithHttps() as ApplicationGatewayListener.Definition.IWithSslCertificate<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHttps();
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayListener.UpdateDefinition.IWithProtocol<ApplicationGateway.Update.IUpdate>.WithHttp()
         {
-            return this.WithHttp() as ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithHttp();
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IWithSslCertificate<ApplicationGateway.Update.IUpdate> ApplicationGatewayListener.UpdateDefinition.IWithProtocol<ApplicationGateway.Update.IUpdate>.WithHttps()
         {
-            return this.WithHttps() as ApplicationGatewayListener.UpdateDefinition.IWithSslCertificate<ApplicationGateway.Update.IUpdate>;
+            return this.WithHttps();
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayListener.Definition.IWithFrontend<ApplicationGateway.Definition.IWithCreate>.WithPrivateFrontend()
         {
-            return this.WithPrivateFrontend() as ApplicationGatewayListener.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithPrivateFrontend();
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayListener.Definition.IWithFrontend<ApplicationGateway.Definition.IWithCreate>.WithPublicFrontend()
         {
-            return this.WithPublicFrontend() as ApplicationGatewayListener.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithPublicFrontend();
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate> ApplicationGatewayListener.UpdateDefinition.IWithFrontend<ApplicationGateway.Update.IUpdate>.WithPrivateFrontend()
         {
-            return this.WithPrivateFrontend() as ApplicationGatewayListener.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate>;
+            return this.WithPrivateFrontend();
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate> ApplicationGatewayListener.UpdateDefinition.IWithFrontend<ApplicationGateway.Update.IUpdate>.WithPublicFrontend()
         {
-            return this.WithPublicFrontend() as ApplicationGatewayListener.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate>;
+            return this.WithPublicFrontend();
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayListener.Update.IUpdate HasHostName.Update.IWithHostName<ApplicationGatewayListener.Update.IUpdate>.WithHostName(string hostName)
         {
-            return this.WithHostName(hostName) as ApplicationGatewayListener.Update.IUpdate;
+            return this.WithHostName(hostName);
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> HasHostName.Definition.IWithHostName<ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>.WithHostName(string hostName)
         {
-            return this.WithHostName(hostName) as ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHostName(hostName);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasHostName.UpdateDefinition.IWithHostName<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithHostName(string hostName)
         {
-            return this.WithHostName(hostName) as ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithHostName(hostName);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ApplicationGateway.Update.IUpdate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ApplicationGateway.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Update.IUpdate ApplicationGatewayListener.Update.IWithFrontendPort.WithFrontendPort(string name)
         {
-            return this.WithFrontendPort(name) as ApplicationGatewayListener.Update.IUpdate;
+            return this.WithFrontendPort(name);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Update.IUpdate ApplicationGatewayListener.Update.IWithFrontendPort.WithFrontendPort(int portNumber)
         {
-            return this.WithFrontendPort(portNumber) as ApplicationGatewayListener.Update.IUpdate;
+            return this.WithFrontendPort(portNumber);
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayListener.Update.IUpdate HasServerNameIndication.Update.IWithServerNameIndication<ApplicationGatewayListener.Update.IUpdate>.WithoutServerNameIndication()
         {
-            return this.WithoutServerNameIndication() as ApplicationGatewayListener.Update.IUpdate;
+            return this.WithoutServerNameIndication();
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayListener.Update.IUpdate HasServerNameIndication.Update.IWithServerNameIndication<ApplicationGatewayListener.Update.IUpdate>.WithServerNameIndication()
         {
-            return this.WithServerNameIndication() as ApplicationGatewayListener.Update.IUpdate;
+            return this.WithServerNameIndication();
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> HasServerNameIndication.Definition.IWithServerNameIndication<ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>.WithoutServerNameIndication()
         {
-            return this.WithoutServerNameIndication() as ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithoutServerNameIndication();
         }
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> HasServerNameIndication.Definition.IWithServerNameIndication<ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>.WithServerNameIndication()
         {
-            return this.WithServerNameIndication() as ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithServerNameIndication();
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasServerNameIndication.UpdateDefinition.IWithServerNameIndication<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithoutServerNameIndication()
         {
-            return this.WithoutServerNameIndication() as ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithoutServerNameIndication();
         }
 
         /// <summary>
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasServerNameIndication.UpdateDefinition.IWithServerNameIndication<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithServerNameIndication()
         {
-            return this.WithServerNameIndication() as ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithServerNameIndication();
         }
 
         /// <summary>
@@ -278,14 +278,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.SslCertificate() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewaySslCertificate;
+                return this.SslCertificate();
             }
         }
 
         /// <return>The associated public IP address.</return>
         Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress Microsoft.Azure.Management.Network.Fluent.IHasPublicIPAddress.GetPublicIPAddress()
         {
-            return this.GetPublicIPAddress() as Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress;
+            return this.GetPublicIPAddress();
         }
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayListener.Update.IUpdate ApplicationGatewayListener.Update.IWithFrontend.WithPrivateFrontend()
         {
-            return this.WithPrivateFrontend() as ApplicationGatewayListener.Update.IUpdate;
+            return this.WithPrivateFrontend();
         }
 
         /// <summary>
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayListener.Update.IUpdate ApplicationGatewayListener.Update.IWithFrontend.WithPublicFrontend()
         {
-            return this.WithPublicFrontend() as ApplicationGatewayListener.Update.IUpdate;
+            return this.WithPublicFrontend();
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayListener.Update.IUpdate ApplicationGatewayListener.Update.IWithProtocol.WithHttp()
         {
-            return this.WithHttp() as ApplicationGatewayListener.Update.IUpdate;
+            return this.WithHttp();
         }
 
         /// <summary>
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayListener.Update.IWithSslCertificate ApplicationGatewayListener.Update.IWithProtocol.WithHttps()
         {
-            return this.WithHttps() as ApplicationGatewayListener.Update.IWithSslCertificate;
+            return this.WithHttps();
         }
 
         /// <summary>
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Frontend() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayFrontend;
+                return this.Frontend();
             }
         }
 
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         HasSslCertificate.Update.IWithSslPassword<ApplicationGatewayListener.Update.IUpdate> HasSslCertificate.Update.IWithSslCertificate<ApplicationGatewayListener.Update.IUpdate>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
         {
-            return this.WithSslCertificateFromPfxFile(pfxFile) as HasSslCertificate.Update.IWithSslPassword<ApplicationGatewayListener.Update.IUpdate>;
+            return this.WithSslCertificateFromPfxFile(pfxFile);
         }
 
         /// <summary>
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayListener.Update.IUpdate HasSslCertificate.Update.IWithSslCertificate<ApplicationGatewayListener.Update.IUpdate>.WithSslCertificate(string name)
         {
-            return this.WithSslCertificate(name) as ApplicationGatewayListener.Update.IUpdate;
+            return this.WithSslCertificate(name);
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
         {
-            return this.WithSslCertificateFromPfxFile(pfxFile) as HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>;
+            return this.WithSslCertificateFromPfxFile(pfxFile);
         }
 
         /// <summary>
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>.WithSslCertificate(string name)
         {
-            return this.WithSslCertificate(name) as ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithSslCertificate(name);
         }
 
         /// <summary>
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
         {
-            return this.WithSslCertificateFromPfxFile(pfxFile) as HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>;
+            return this.WithSslCertificateFromPfxFile(pfxFile);
         }
 
         /// <summary>
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithSslCertificate(string name)
         {
-            return this.WithSslCertificate(name) as ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithSslCertificate(name);
         }
 
         /// <summary>
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Update.IUpdate HasSslCertificate.Update.IWithSslPassword<ApplicationGatewayListener.Update.IUpdate>.WithSslCertificatePassword(string password)
         {
-            return this.WithSslCertificatePassword(password) as ApplicationGatewayListener.Update.IUpdate;
+            return this.WithSslCertificatePassword(password);
         }
 
         /// <summary>
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>.WithSslCertificatePassword(string password)
         {
-            return this.WithSslCertificatePassword(password) as ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithSslCertificatePassword(password);
         }
 
         /// <summary>
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithSslCertificatePassword(string password)
         {
-            return this.WithSslCertificatePassword(password) as ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithSslCertificatePassword(password);
         }
 
         /// <summary>
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Protocol() as Models.ApplicationGatewayProtocol;
+                return this.Protocol();
             }
         }
 
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayListener.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithCreate>.WithFrontendPort(string name)
         {
-            return this.WithFrontendPort(name) as ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithFrontendPort(name);
         }
 
         /// <summary>
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayListener.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithCreate>.WithFrontendPort(int portNumber)
         {
-            return this.WithFrontendPort(portNumber) as ApplicationGatewayListener.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithFrontendPort(portNumber);
         }
 
         /// <summary>
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayListener.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate>.WithFrontendPort(string name)
         {
-            return this.WithFrontendPort(name) as ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithFrontendPort(name);
         }
 
         /// <summary>
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayListener.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate>.WithFrontendPort(int portNumber)
         {
-            return this.WithFrontendPort(portNumber) as ApplicationGatewayListener.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithFrontendPort(portNumber);
         }
     }
 }

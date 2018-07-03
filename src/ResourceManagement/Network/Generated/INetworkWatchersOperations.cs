@@ -338,7 +338,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<TroubleshootingResultInner>> GetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Configures flow log on a specified resource.
+        /// Configures flow log  and traffic analytics (optional) on a
+        /// specified resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -366,7 +367,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<FlowLogInformationInner>> SetFlowLogConfigurationWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, FlowLogInformationInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Queries status of flow log on a specified resource.
+        /// Queries status of flow log and traffic analytics (optional) on a
+        /// specified resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -375,7 +377,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// The name of the network watcher resource.
         /// </param>
         /// <param name='targetResourceId'>
-        /// The target resource where getting the flow logging status.
+        /// The target resource where getting the flow log and traffic
+        /// analytics (optional) status.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -648,7 +651,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<TroubleshootingResultInner>> BeginGetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Configures flow log on a specified resource.
+        /// Configures flow log  and traffic analytics (optional) on a
+        /// specified resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -676,7 +680,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </exception>
         Task<AzureOperationResponse<FlowLogInformationInner>> BeginSetFlowLogConfigurationWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, FlowLogInformationInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Queries status of flow log on a specified resource.
+        /// Queries status of flow log and traffic analytics (optional) on a
+        /// specified resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -685,7 +690,8 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// The name of the network watcher resource.
         /// </param>
         /// <param name='targetResourceId'>
-        /// The target resource where getting the flow logging status.
+        /// The target resource where getting the flow log and traffic
+        /// analytics (optional) status.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

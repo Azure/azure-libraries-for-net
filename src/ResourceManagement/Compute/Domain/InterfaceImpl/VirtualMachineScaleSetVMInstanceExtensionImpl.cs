@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.InstanceView() as Models.VirtualMachineExtensionInstanceView;
+                return this.InstanceView();
             }
         }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.PublicSettings() as System.Collections.Generic.IReadOnlyDictionary<string, object>;
+                return this.PublicSettings();
             }
         }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Tags() as System.Collections.Generic.IReadOnlyDictionary<string, string>;
+                return this.Tags();
             }
         }
     }

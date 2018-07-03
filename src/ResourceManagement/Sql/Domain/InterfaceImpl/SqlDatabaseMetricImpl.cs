@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Unit() as Models.UnitType;
+                return this.Unit();
             }
         }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.MetricValues() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseMetricValue>;
+                return this.MetricValues();
             }
         }
     }

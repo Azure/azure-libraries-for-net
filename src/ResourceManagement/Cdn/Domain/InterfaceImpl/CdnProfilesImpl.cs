@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The first stage of the new resource definition.</return>
         CdnProfile.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<CdnProfile.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as CdnProfile.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -39,13 +39,13 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>The CheckNameAvailabilityResult object if successful.</return>
         Microsoft.Azure.Management.Cdn.Fluent.CheckNameAvailabilityResult Microsoft.Azure.Management.Cdn.Fluent.ICdnProfiles.CheckEndpointNameAvailability(string name)
         {
-            return this.CheckEndpointNameAvailability(name) as Microsoft.Azure.Management.Cdn.Fluent.CheckNameAvailabilityResult;
+            return this.CheckEndpointNameAvailability(name);
         }
 
         /// <summary>
         /// Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
         /// Supplemental portal is used to configure advanced feature capabilities that are not
-        /// yet available in the Azure portal, such as core reports in a standard profile;
+        /// yet available in the Azure portal, such;
         /// rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile.
         /// The SSO URI changes approximately every 10 minutes.
         /// </summary>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>List of available CDN REST operations.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Cdn.Fluent.Operation> Microsoft.Azure.Management.Cdn.Fluent.ICdnProfiles.ListOperations()
         {
-            return this.ListOperations() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Cdn.Fluent.Operation>;
+            return this.ListOperations();
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>Quotas and actual usages of the CDN profiles under the current subscription.</return>
         System.Collections.Generic.IEnumerable<Models.ResourceUsage> Microsoft.Azure.Management.Cdn.Fluent.ICdnProfiles.ListResourceUsage()
         {
-            return this.ListResourceUsage() as System.Collections.Generic.IEnumerable<Models.ResourceUsage>;
+            return this.ListResourceUsage();
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<Microsoft.Azure.Management.Cdn.Fluent.CheckNameAvailabilityResult> Microsoft.Azure.Management.Cdn.Fluent.ICdnProfiles.CheckEndpointNameAvailabilityAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.CheckEndpointNameAvailabilityAsync(name, cancellationToken) as Microsoft.Azure.Management.Cdn.Fluent.CheckNameAvailabilityResult;
+            return await this.CheckEndpointNameAvailabilityAsync(name, cancellationToken);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
         /// <return>List of all the edge nodes of a CDN service.</return>
         System.Collections.Generic.IEnumerable<Models.EdgeNode> Microsoft.Azure.Management.Cdn.Fluent.ICdnProfiles.ListEdgeNodes()
         {
-            return this.ListEdgeNodes() as System.Collections.Generic.IEnumerable<Models.EdgeNode>;
+            return this.ListEdgeNodes();
         }
 
         /// <summary>

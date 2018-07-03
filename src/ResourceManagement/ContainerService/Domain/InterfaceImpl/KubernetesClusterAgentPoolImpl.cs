@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithOSType<KubernetesCluster.Definition.IWithCreate>.WithOSType(ContainerServiceOSTypes osType)
         {
-            return this.WithOSType(osType) as KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate>;
+            return this.WithOSType(osType);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithOSDiskSize<KubernetesCluster.Definition.IWithCreate>.WithOSDiskSizeInGB(int osDiskSizeInGB)
         {
-            return this.WithOSDiskSizeInGB(osDiskSizeInGB) as KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate>;
+            return this.WithOSDiskSizeInGB(osDiskSizeInGB);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithVMSize<KubernetesCluster.Definition.IWithCreate>.WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize)
         {
-            return this.WithVirtualMachineSize(vmSize) as KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate>;
+            return this.WithVirtualMachineSize(vmSize);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             get
             {
-                return this.VMSize() as ContainerServiceVirtualMachineSizeTypes;
+                return this.VMSize();
             }
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             get
             {
-                return this.OSType() as ContainerServiceOSTypes;
+                return this.OSType();
             }
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             get
             {
-                return this.StorageProfile() as StorageProfileTypes;
+                return this.StorageProfile();
             }
         }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         KubernetesClusterAgentPool.Definition.IWithVMSize<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IBlank<KubernetesCluster.Definition.IWithCreate>.WithVirtualMachineCount(int count)
         {
-            return this.WithVirtualMachineCount(count) as KubernetesClusterAgentPool.Definition.IWithVMSize<KubernetesCluster.Definition.IWithCreate>;
+            return this.WithVirtualMachineCount(count);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the parent definition.</return>
         KubernetesCluster.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<KubernetesCluster.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as KubernetesCluster.Definition.IWithCreate;
+            return this.Attach();
         }
     }
 }

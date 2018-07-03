@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>The first stage of the new resource definition.</return>
         Registry.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<Registry.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as Registry.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>The list of resources.</return>
         async Task<IPagedCollection<IRegistry>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry>.ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken) as IPagedCollection<IRegistry>;
+            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry>.ListByResourceGroup(string resourceGroupName)
         {
-            return this.ListByResourceGroup(resourceGroupName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry>;
+            return this.ListByResourceGroup(resourceGroupName);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IRegistry>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IRegistry>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistry>;
+            return this.List();
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>A representation of the future computation of this call, returning the list of container registry's quota usages.</return>
         async Task<IReadOnlyCollection<Models.RegistryUsage>> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.ListQuotaUsagesAsync(string resourceGroupName, string registryName, CancellationToken cancellationToken)
         {
-            return await this.ListQuotaUsagesAsync(resourceGroupName, registryName, cancellationToken) as IReadOnlyCollection<Models.RegistryUsage>;
+            return await this.ListQuotaUsagesAsync(resourceGroupName, registryName, cancellationToken);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>A representation of the future computation of this call, returning whether the name is available or other info if not.</return>
         async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.ICheckNameAvailabilityResult> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.CheckNameAvailabilityAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.CheckNameAvailabilityAsync(name, cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.ICheckNameAvailabilityResult;
+            return await this.CheckNameAvailabilityAsync(name, cancellationToken);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>The list of container registry's quota usages.</return>
         System.Collections.Generic.IReadOnlyCollection<Models.RegistryUsage> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.ListQuotaUsages(string resourceGroupName, string registryName)
         {
-            return this.ListQuotaUsages(resourceGroupName, registryName) as System.Collections.Generic.IReadOnlyCollection<Models.RegistryUsage>;
+            return this.ListQuotaUsages(resourceGroupName, registryName);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>Whether the name is available and other info if not.</return>
         Microsoft.Azure.Management.ContainerRegistry.Fluent.ICheckNameAvailabilityResult Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.CheckNameAvailability(string name)
         {
-            return this.CheckNameAvailability(name) as Microsoft.Azure.Management.ContainerRegistry.Fluent.ICheckNameAvailabilityResult;
+            return this.CheckNameAvailability(name);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         {
             get
             {
-                return this.Webhooks() as Registries.WebhooksClient.IWebhooksClient;
+                return this.Webhooks();
             }
         }
 
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>The container registry's login credentials.</return>
         Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.GetCredentials(string resourceGroupName, string registryName)
         {
-            return this.GetCredentials(resourceGroupName, registryName) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
+            return this.GetCredentials(resourceGroupName, registryName);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>A representation of the future computation of this call, returning the container registry's login credentials.</return>
         async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.RegenerateCredentialAsync(string resourceGroupName, string registryName, AccessKeyType accessKeyType, CancellationToken cancellationToken)
         {
-            return await this.RegenerateCredentialAsync(resourceGroupName, registryName, accessKeyType, cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
+            return await this.RegenerateCredentialAsync(resourceGroupName, registryName, accessKeyType, cancellationToken);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>A representation of the future computation of this call, returning the container registry's login credentials.</return>
         async Task<Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials> Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.GetCredentialsAsync(string resourceGroupName, string registryName, CancellationToken cancellationToken)
         {
-            return await this.GetCredentialsAsync(resourceGroupName, registryName, cancellationToken) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
+            return await this.GetCredentialsAsync(resourceGroupName, registryName, cancellationToken);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
         /// <return>The container registry's login credentials.</return>
         Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistries.RegenerateCredential(string resourceGroupName, string registryName, AccessKeyType accessKeyType)
         {
-            return this.RegenerateCredential(resourceGroupName, registryName, accessKeyType) as Microsoft.Azure.Management.ContainerRegistry.Fluent.IRegistryCredentials;
+            return this.RegenerateCredential(resourceGroupName, registryName, accessKeyType);
         }
     }
 }

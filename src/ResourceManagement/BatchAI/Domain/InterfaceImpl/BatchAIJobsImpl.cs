@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The first stage of the new resource definition.</return>
         BatchAIJob.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<BatchAIJob.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as BatchAIJob.Definition.IBlank;
+            return this.Define(name);
         }
     }
 }

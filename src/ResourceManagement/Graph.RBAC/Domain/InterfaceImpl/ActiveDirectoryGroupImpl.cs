@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>An unmodifiable set of the members.</return>
         async Task<IPagedCollection<IActiveDirectoryObject>> Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryGroup.ListMembersAsync(CancellationToken cancellationToken)
         {
-            return await this.ListMembersAsync(cancellationToken) as IPagedCollection<IActiveDirectoryObject>;
+            return await this.ListMembersAsync(cancellationToken);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>An unmodifiable set of the members.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryObject> Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryGroup.ListMembers()
         {
-            return this.ListMembers() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryObject>;
+            return this.ListMembers();
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD Group definition stage.</return>
         ActiveDirectoryGroup.Definition.IWithCreate ActiveDirectoryGroup.Definition.IWithMemberBeta.WithMember(string objectId)
         {
-            return this.WithMember(objectId) as ActiveDirectoryGroup.Definition.IWithCreate;
+            return this.WithMember(objectId);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD group definition stage.</return>
         ActiveDirectoryGroup.Definition.IWithCreate ActiveDirectoryGroup.Definition.IWithMemberBeta.WithMember(IActiveDirectoryUser user)
         {
-            return this.WithMember(user) as ActiveDirectoryGroup.Definition.IWithCreate;
+            return this.WithMember(user);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD group definition stage.</return>
         ActiveDirectoryGroup.Definition.IWithCreate ActiveDirectoryGroup.Definition.IWithMemberBeta.WithMember(IActiveDirectoryGroup group)
         {
-            return this.WithMember(group) as ActiveDirectoryGroup.Definition.IWithCreate;
+            return this.WithMember(group);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD group definition stage.</return>
         ActiveDirectoryGroup.Definition.IWithCreate ActiveDirectoryGroup.Definition.IWithMemberBeta.WithMember(IServicePrincipal servicePrincipal)
         {
-            return this.WithMember(servicePrincipal) as ActiveDirectoryGroup.Definition.IWithCreate;
+            return this.WithMember(servicePrincipal);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD Group update stage.</return>
         ActiveDirectoryGroup.Update.IUpdate ActiveDirectoryGroup.Update.IWithMemberBeta.WithMember(string objectId)
         {
-            return this.WithMember(objectId) as ActiveDirectoryGroup.Update.IUpdate;
+            return this.WithMember(objectId);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD group update stage.</return>
         ActiveDirectoryGroup.Update.IUpdate ActiveDirectoryGroup.Update.IWithMemberBeta.WithMember(IActiveDirectoryUser user)
         {
-            return this.WithMember(user) as ActiveDirectoryGroup.Update.IUpdate;
+            return this.WithMember(user);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD group update stage.</return>
         ActiveDirectoryGroup.Update.IUpdate ActiveDirectoryGroup.Update.IWithMemberBeta.WithMember(IActiveDirectoryGroup group)
         {
-            return this.WithMember(group) as ActiveDirectoryGroup.Update.IUpdate;
+            return this.WithMember(group);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD group update stage.</return>
         ActiveDirectoryGroup.Update.IUpdate ActiveDirectoryGroup.Update.IWithMemberBeta.WithMember(IServicePrincipal servicePrincipal)
         {
-            return this.WithMember(servicePrincipal) as ActiveDirectoryGroup.Update.IUpdate;
+            return this.WithMember(servicePrincipal);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD Group update stage.</return>
         ActiveDirectoryGroup.Update.IUpdate ActiveDirectoryGroup.Update.IWithMemberBeta.WithoutMember(string objectId)
         {
-            return this.WithoutMember(objectId) as ActiveDirectoryGroup.Update.IUpdate;
+            return this.WithoutMember(objectId);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD group update stage.</return>
         ActiveDirectoryGroup.Update.IUpdate ActiveDirectoryGroup.Update.IWithMemberBeta.WithoutMember(IActiveDirectoryUser user)
         {
-            return this.WithoutMember(user) as ActiveDirectoryGroup.Update.IUpdate;
+            return this.WithoutMember(user);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD group update stage.</return>
         ActiveDirectoryGroup.Update.IUpdate ActiveDirectoryGroup.Update.IWithMemberBeta.WithoutMember(IActiveDirectoryGroup group)
         {
-            return this.WithoutMember(group) as ActiveDirectoryGroup.Update.IUpdate;
+            return this.WithoutMember(group);
         }
 
         /// <summary>
@@ -169,12 +169,12 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next AD group update stage.</return>
         ActiveDirectoryGroup.Update.IUpdate ActiveDirectoryGroup.Update.IWithMemberBeta.WithoutMember(IServicePrincipal servicePrincipal)
         {
-            return this.WithoutMember(servicePrincipal) as ActiveDirectoryGroup.Update.IUpdate;
+            return this.WithoutMember(servicePrincipal);
         }
 
         ActiveDirectoryGroup.Definition.IWithCreate ActiveDirectoryGroup.Definition.IWithEmailAliasBeta.WithEmailAlias(string mailNickname)
         {
-            return this.WithEmailAlias(mailNickname) as ActiveDirectoryGroup.Definition.IWithCreate;
+            return this.WithEmailAlias(mailNickname);
         }
     }
 }

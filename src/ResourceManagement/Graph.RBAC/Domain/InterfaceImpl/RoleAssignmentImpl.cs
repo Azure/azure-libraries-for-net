@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithRole RoleAssignment.Definition.IWithAssignee.ForServicePrincipal(IServicePrincipal servicePrincipal)
         {
-            return this.ForServicePrincipal(servicePrincipal) as RoleAssignment.Definition.IWithRole;
+            return this.ForServicePrincipal(servicePrincipal);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithRole RoleAssignment.Definition.IWithAssignee.ForServicePrincipal(string servicePrincipalName)
         {
-            return this.ForServicePrincipal(servicePrincipalName) as RoleAssignment.Definition.IWithRole;
+            return this.ForServicePrincipal(servicePrincipalName);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithRole RoleAssignment.Definition.IWithAssignee.ForUser(IActiveDirectoryUser user)
         {
-            return this.ForUser(user) as RoleAssignment.Definition.IWithRole;
+            return this.ForUser(user);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithRole RoleAssignment.Definition.IWithAssignee.ForUser(string name)
         {
-            return this.ForUser(name) as RoleAssignment.Definition.IWithRole;
+            return this.ForUser(name);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithRole RoleAssignment.Definition.IWithAssignee.ForGroup(IActiveDirectoryGroup activeDirectoryGroup)
         {
-            return this.ForGroup(activeDirectoryGroup) as RoleAssignment.Definition.IWithRole;
+            return this.ForGroup(activeDirectoryGroup);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithRole RoleAssignment.Definition.IWithAssignee.ForObjectId(string objectId)
         {
-            return this.ForObjectId(objectId) as RoleAssignment.Definition.IWithRole;
+            return this.ForObjectId(objectId);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithScope RoleAssignment.Definition.IWithRole.WithBuiltInRole(BuiltInRole role)
         {
-            return this.WithBuiltInRole(role) as RoleAssignment.Definition.IWithScope;
+            return this.WithBuiltInRole(role);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithScope RoleAssignment.Definition.IWithRole.WithRoleDefinition(string roleDefinitionId)
         {
-            return this.WithRoleDefinition(roleDefinitionId) as RoleAssignment.Definition.IWithScope;
+            return this.WithRoleDefinition(roleDefinitionId);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithCreate RoleAssignment.Definition.IWithScope.WithResourceGroupScope(IResourceGroup resourceGroup)
         {
-            return this.WithResourceGroupScope(resourceGroup) as RoleAssignment.Definition.IWithCreate;
+            return this.WithResourceGroupScope(resourceGroup);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithCreate RoleAssignment.Definition.IWithScope.WithResourceScope(IResource resource)
         {
-            return this.WithResourceScope(resource) as RoleAssignment.Definition.IWithCreate;
+            return this.WithResourceScope(resource);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithCreate RoleAssignment.Definition.IWithScope.WithSubscriptionScope(string subscriptionId)
         {
-            return this.WithSubscriptionScope(subscriptionId) as RoleAssignment.Definition.IWithCreate;
+            return this.WithSubscriptionScope(subscriptionId);
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage in role assignment definition.</return>
         RoleAssignment.Definition.IWithCreate RoleAssignment.Definition.IWithScope.WithScope(string scope)
         {
-            return this.WithScope(scope) as RoleAssignment.Definition.IWithCreate;
+            return this.WithScope(scope);
         }
     }
 }

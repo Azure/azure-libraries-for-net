@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings> VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithDiskSettings<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>.WithDiskSizeInGB(int diskSizeGB)
         {
-            return this.WithDiskSizeInGB(diskSizeGB) as VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>;
+            return this.WithDiskSizeInGB(diskSizeGB);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings> VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithDiskSettings<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>.WithDiskCaching(CachingTypes cachingType)
         {
-            return this.WithDiskCaching(cachingType) as VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>;
+            return this.WithDiskCaching(cachingType);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings> VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithImageSource<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>.FromSnapshot(string sourceSnapshotId)
         {
-            return this.FromSnapshot(sourceSnapshotId) as VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>;
+            return this.FromSnapshot(sourceSnapshotId);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings> VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithImageSource<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>.FromVhd(string sourceVhdUrl)
         {
-            return this.FromVhd(sourceVhdUrl) as VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>;
+            return this.FromVhd(sourceVhdUrl);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings> VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithImageSource<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>.FromManagedDisk(string sourceManagedDiskId)
         {
-            return this.FromManagedDisk(sourceManagedDiskId) as VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>;
+            return this.FromManagedDisk(sourceManagedDiskId);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings> VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithImageSource<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>.FromManagedDisk(IDisk sourceManagedDisk)
         {
-            return this.FromManagedDisk(sourceManagedDisk) as VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithAttach<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>;
+            return this.FromManagedDisk(sourceManagedDisk);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the parent definition.</return>
         VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>.Attach()
         {
-            return this.Attach() as VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings;
+            return this.Attach();
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithImageSource<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings> VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithDiskLun<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>.WithLun(int lun)
         {
-            return this.WithLun(lun) as VirtualMachineCustomImage.CustomImageDataDisk.Definition.IWithImageSource<VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings>;
+            return this.WithLun(lun);
         }
     }
 }

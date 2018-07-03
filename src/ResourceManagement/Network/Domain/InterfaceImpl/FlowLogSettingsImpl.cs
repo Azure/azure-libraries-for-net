@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the flow log information update.</return>
         FlowLogSettings.Update.IUpdate FlowLogSettings.Update.IWithStorageAccount.WithStorageAccount(string storageId)
         {
-            return this.WithStorageAccount(storageId) as FlowLogSettings.Update.IUpdate;
+            return this.WithStorageAccount(storageId);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The stage of new resource update.</return>
         FlowLogSettings.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<FlowLogSettings.Update.IUpdate>.Update()
         {
-            return this.Update() as FlowLogSettings.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The handle to the REST call.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.IFlowLogSettings> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IFlowLogSettings>.ApplyAsync(CancellationToken cancellationToken, bool multiThreaded = true)
         {
-            return await this.ApplyAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.IFlowLogSettings;
+            return await this.ApplyAsync(cancellationToken);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The updated resource.</return>
         Microsoft.Azure.Management.Network.Fluent.IFlowLogSettings Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Network.Fluent.IFlowLogSettings>.Apply()
         {
-            return this.Apply() as Microsoft.Azure.Management.Network.Fluent.IFlowLogSettings;
+            return this.Apply();
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.INetworkWatcher;
+                return this.Parent();
             }
         }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the flow log information update.</return>
         FlowLogSettings.Update.IUpdate FlowLogSettings.Update.IWithEnabled.WithoutLogging()
         {
-            return this.WithoutLogging() as FlowLogSettings.Update.IUpdate;
+            return this.WithoutLogging();
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the flow log information update.</return>
         FlowLogSettings.Update.IUpdate FlowLogSettings.Update.IWithEnabled.WithLogging()
         {
-            return this.WithLogging() as FlowLogSettings.Update.IUpdate;
+            return this.WithLogging();
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the flow log information update.</return>
         FlowLogSettings.Update.IUpdate FlowLogSettings.Update.IWithRetentionPolicy.WithRetentionPolicyDays(int days)
         {
-            return this.WithRetentionPolicyDays(days) as FlowLogSettings.Update.IUpdate;
+            return this.WithRetentionPolicyDays(days);
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the flow log information update.</return>
         FlowLogSettings.Update.IUpdate FlowLogSettings.Update.IWithRetentionPolicy.WithRetentionPolicyDisabled()
         {
-            return this.WithRetentionPolicyDisabled() as FlowLogSettings.Update.IUpdate;
+            return this.WithRetentionPolicyDisabled();
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the flow log information update.</return>
         FlowLogSettings.Update.IUpdate FlowLogSettings.Update.IWithRetentionPolicy.WithRetentionPolicyEnabled()
         {
-            return this.WithRetentionPolicyEnabled() as FlowLogSettings.Update.IUpdate;
+            return this.WithRetentionPolicyEnabled();
         }
     }
 }

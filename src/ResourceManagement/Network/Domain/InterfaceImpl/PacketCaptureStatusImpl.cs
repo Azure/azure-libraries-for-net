@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PacketCaptureStatus() as Models.PcStatus;
+                return this.PacketCaptureStatus();
             }
         }
 
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PacketCaptureErrors() as System.Collections.Generic.IReadOnlyList<Models.PcError>;
+                return this.PacketCaptureErrors();
             }
         }
     }

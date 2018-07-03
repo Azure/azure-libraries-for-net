@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>The first stage of the new resource definition.</return>
         DnsZone.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<DnsZone.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as DnsZone.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>

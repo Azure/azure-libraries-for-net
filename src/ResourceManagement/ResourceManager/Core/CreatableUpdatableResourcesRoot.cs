@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             foreach (ICreatable<IFluentResourceT> item in creatables)
             {
                 this.keys.Add(item.Key);
-                this.AddCreatableDependency(item as IResourceCreator<IHasId>);
+                this.AddCreatableDependency((IResourceCreator<IHasId>) item);
             }
         }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public override Task<ICreatableUpdatableResourcesRoot<IFluentResourceT>> CreateResourceAsync(CancellationToken cancellationToken)
         {
             TaskCompletionSource<ICreatableUpdatableResourcesRoot<IFluentResourceT>> tcs = new TaskCompletionSource<ICreatableUpdatableResourcesRoot<IFluentResourceT>>();
-            tcs.SetResult(this as ICreatableUpdatableResourcesRoot<IFluentResourceT>);
+            tcs.SetResult((ICreatableUpdatableResourcesRoot<IFluentResourceT>)this);
             return tcs.Task;
         }
 

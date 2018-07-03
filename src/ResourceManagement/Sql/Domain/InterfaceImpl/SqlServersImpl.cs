@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new resource definition.</return>
         SqlServer.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<SqlServer.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as SqlServer.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The server capabilities object.</return>
         Microsoft.Azure.Management.Sql.Fluent.IRegionCapabilities Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.GetCapabilitiesByRegion(Region region)
         {
-            return this.GetCapabilitiesByRegion(region) as Microsoft.Azure.Management.Sql.Fluent.IRegionCapabilities;
+            return this.GetCapabilitiesByRegion(region);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.FirewallRules() as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRuleOperations;
+                return this.FirewallRules();
             }
         }
 
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Databases() as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabaseOperations;
+                return this.Databases();
             }
         }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the future computation of this call, returning the server capabilities object.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.IRegionCapabilities> Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.GetCapabilitiesByRegionAsync(Region region, CancellationToken cancellationToken)
         {
-            return await this.GetCapabilitiesByRegionAsync(region, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.IRegionCapabilities;
+            return await this.GetCapabilitiesByRegionAsync(region, cancellationToken);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The SQL usage object.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSubscriptionUsageMetric> Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.ListUsageByRegion(Region region)
         {
-            return this.ListUsageByRegion(region) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSubscriptionUsageMetric>;
+            return this.ListUsageByRegion(region);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.DnsAliases() as Microsoft.Azure.Management.Sql.Fluent.ISqlServerDnsAliasOperations;
+                return this.DnsAliases();
             }
         }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ElasticPools() as Microsoft.Azure.Management.Sql.Fluent.ISqlElasticPoolOperations;
+                return this.ElasticPools();
             }
         }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.VirtualNetworkRules() as Microsoft.Azure.Management.Sql.Fluent.ISqlVirtualNetworkRuleOperations;
+                return this.VirtualNetworkRules();
             }
         }
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.SyncMembers() as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMemberOperations;
+                return this.SyncMembers();
             }
         }
 
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the future computation of this call, returning whether the name is available or other info if not.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ICheckNameAvailabilityResult> Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.CheckNameAvailabilityAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.CheckNameAvailabilityAsync(name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ICheckNameAvailabilityResult;
+            return await this.CheckNameAvailabilityAsync(name, cancellationToken);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Whether the name is available and other info if not.</return>
         Microsoft.Azure.Management.Sql.Fluent.ICheckNameAvailabilityResult Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.CheckNameAvailability(string name)
         {
-            return this.CheckNameAvailability(name) as Microsoft.Azure.Management.Sql.Fluent.ICheckNameAvailabilityResult;
+            return this.CheckNameAvailability(name);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the future computation of this call, returning the server usages object.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSubscriptionUsageMetric>> Microsoft.Azure.Management.Sql.Fluent.ISqlServersBeta.ListUsageByRegionAsync(Region region, CancellationToken cancellationToken)
         {
-            return await this.ListUsageByRegionAsync(region, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSubscriptionUsageMetric>;
+            return await this.ListUsageByRegionAsync(region, cancellationToken);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.SyncGroups() as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupOperations;
+                return this.SyncGroups();
             }
         }
 
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.EncryptionProtectors() as Microsoft.Azure.Management.Sql.Fluent.ISqlEncryptionProtectorOperations;
+                return this.EncryptionProtectors();
             }
         }
 
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ServerKeys() as Microsoft.Azure.Management.Sql.Fluent.ISqlServerKeyOperations;
+                return this.ServerKeys();
             }
         }
 
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.FailoverGroups() as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroupOperations;
+                return this.FailoverGroups();
             }
         }
     }

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
             get
             {
-                return this.MonitorStatus() as Microsoft.Azure.Management.TrafficManager.Fluent.EndpointMonitorStatus;
+                return this.MonitorStatus();
             }
         }
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         {
             get
             {
-                return this.SourceTrafficLocation() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.SourceTrafficLocation();
             }
         }
     }

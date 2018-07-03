@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of domain definition.</return>
         AppServiceDomain.Definition.IWithCreate AppServiceDomain.Definition.IWithDomainPrivacy.WithDomainPrivacyEnabled(bool domainPrivacy)
         {
-            return this.WithDomainPrivacyEnabled(domainPrivacy) as AppServiceDomain.Definition.IWithCreate;
+            return this.WithDomainPrivacyEnabled(domainPrivacy);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of domain definition.</return>
         AppServiceDomain.Update.IUpdate AppServiceDomain.Update.IWithDomainPrivacy.WithDomainPrivacyEnabled(bool domainPrivacy)
         {
-            return this.WithDomainPrivacyEnabled(domainPrivacy) as AppServiceDomain.Update.IUpdate;
+            return this.WithDomainPrivacyEnabled(domainPrivacy);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of domain definition.</return>
         AppServiceDomain.Definition.IWithCreate AppServiceDomain.Definition.IWithAdminContact.WithAdminContact(Contact contact)
         {
-            return this.WithAdminContact(contact) as AppServiceDomain.Definition.IWithCreate;
+            return this.WithAdminContact(contact);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of domain definition.</return>
         AppServiceDomain.Update.IUpdate AppServiceDomain.Update.IWithAdminContact.WithAdminContact(Contact contact)
         {
-            return this.WithAdminContact(contact) as AppServiceDomain.Update.IUpdate;
+            return this.WithAdminContact(contact);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of domain definition.</return>
         AppServiceDomain.Definition.IWithCreate AppServiceDomain.Definition.IWithTechContact.WithTechContact(Contact contact)
         {
-            return this.WithTechContact(contact) as AppServiceDomain.Definition.IWithCreate;
+            return this.WithTechContact(contact);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of domain definition.</return>
         AppServiceDomain.Update.IUpdate AppServiceDomain.Update.IWithTechContact.WithTechContact(Contact contact)
         {
-            return this.WithTechContact(contact) as AppServiceDomain.Update.IUpdate;
+            return this.WithTechContact(contact);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of domain definition.</return>
         AppServiceDomain.Definition.IWithCreate AppServiceDomain.Definition.IWithBillingContact.WithBillingContact(Contact contact)
         {
-            return this.WithBillingContact(contact) as AppServiceDomain.Definition.IWithCreate;
+            return this.WithBillingContact(contact);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of domain definition.</return>
         AppServiceDomain.Update.IUpdate AppServiceDomain.Update.IWithBillingContact.WithBillingContact(Contact contact)
         {
-            return this.WithBillingContact(contact) as AppServiceDomain.Update.IUpdate;
+            return this.WithBillingContact(contact);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.NameServers() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.NameServers();
             }
         }
 
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.AdminContact() as Models.Contact;
+                return this.AdminContact();
             }
         }
 
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.TechContact() as Models.Contact;
+                return this.TechContact();
             }
         }
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.BillingContact() as Models.Contact;
+                return this.BillingContact();
             }
         }
 
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.RegistrantContact() as Models.Contact;
+                return this.RegistrantContact();
             }
         }
 
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.Consent() as Models.DomainPurchaseConsent;
+                return this.Consent();
             }
         }
 
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.ManagedHostNames() as System.Collections.Generic.IReadOnlyDictionary<string,Models.HostName>;
+                return this.ManagedHostNames();
             }
         }
 
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of domain definition.</return>
         AppServiceDomain.Definition.IWithCreate AppServiceDomain.Definition.IWithAutoRenew.WithAutoRenewEnabled(bool autoRenew)
         {
-            return this.WithAutoRenewEnabled(autoRenew) as AppServiceDomain.Definition.IWithCreate;
+            return this.WithAutoRenewEnabled(autoRenew);
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of domain definition.</return>
         AppServiceDomain.Update.IUpdate AppServiceDomain.Update.IWithAutoRenew.WithAutoRenewEnabled(bool autoRenew)
         {
-            return this.WithAutoRenewEnabled(autoRenew) as AppServiceDomain.Update.IUpdate;
+            return this.WithAutoRenewEnabled(autoRenew);
         }
 
         /// <summary>
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of domain definition.</return>
         AppServiceDomain.Definition.IWithCreate AppServiceDomain.Definition.IWithRegistrantContact.WithRegistrantContact(Contact contact)
         {
-            return this.WithRegistrantContact(contact) as AppServiceDomain.Definition.IWithCreate;
+            return this.WithRegistrantContact(contact);
         }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The first stage of the domain contact definition.</return>
         DomainContact.Definition.IBlank<AppServiceDomain.Definition.IWithCreate> AppServiceDomain.Definition.IWithRegistrantContact.DefineRegistrantContact()
         {
-            return this.DefineRegistrantContact() as DomainContact.Definition.IBlank<AppServiceDomain.Definition.IWithCreate>;
+            return this.DefineRegistrantContact();
         }
     }
 }

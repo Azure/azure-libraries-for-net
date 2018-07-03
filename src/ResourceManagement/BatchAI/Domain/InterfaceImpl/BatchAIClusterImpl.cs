@@ -28,49 +28,49 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// </summary>
         NodeSetupTask.Definition.IBlank<BatchAICluster.Definition.IWithCreate> BatchAICluster.Definition.IWithSetupTask.DefineSetupTask()
         {
-            return this.DefineSetupTask() as NodeSetupTask.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
+            return this.DefineSetupTask();
         }
 
         /// <param name="password">Admin user password (linux only).</param>
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithScaleSettings BatchAICluster.Definition.IWithUserCredentials.WithPassword(string password)
         {
-            return this.WithPassword(password) as BatchAICluster.Definition.IWithScaleSettings;
+            return this.WithPassword(password);
         }
 
         /// <param name="sshPublicKey">SSH public keys used to authenticate with linux based VMs.</param>
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithScaleSettings BatchAICluster.Definition.IWithUserCredentials.WithSshPublicKey(string sshPublicKey)
         {
-            return this.WithSshPublicKey(sshPublicKey) as BatchAICluster.Definition.IWithScaleSettings;
+            return this.WithSshPublicKey(sshPublicKey);
         }
 
         /// <param name="userName">The name of the administrator account.</param>
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithUserCredentials BatchAICluster.Definition.IWithUserName.WithUserName(string userName)
         {
-            return this.WithUserName(userName) as BatchAICluster.Definition.IWithUserCredentials;
+            return this.WithUserName(userName);
         }
 
         /// <param name="vmSize">Virtual machine size.</param>
         /// <return>Next stage of the definition.</return>
         BatchAICluster.Definition.IWithUserName BatchAICluster.Definition.IWithVMSize.WithVMSize(string vmSize)
         {
-            return this.WithVMSize(vmSize) as BatchAICluster.Definition.IWithUserName;
+            return this.WithVMSize(vmSize);
         }
 
         /// <param name="resoureId">Azure Application Insights component resource id.</param>
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithAppInsightsKey BatchAICluster.Definition.IWithAppInsightsResourceId.WithAppInsightsComponentId(string resoureId)
         {
-            return this.WithAppInsightsComponentId(resoureId) as BatchAICluster.Definition.IWithAppInsightsKey;
+            return this.WithAppInsightsComponentId(resoureId);
         }
 
         /// <param name="instrumentationKey">Value of the Azure Application Insights instrumentation key.</param>
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithCreate BatchAICluster.Definition.IWithAppInsightsKey.WithInstrumentationKey(string instrumentationKey)
         {
-            return this.WithInstrumentationKey(instrumentationKey) as BatchAICluster.Definition.IWithCreate;
+            return this.WithInstrumentationKey(instrumentationKey);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithCreate BatchAICluster.Definition.IWithAppInsightsKey.WithInstrumentationKeySecretReference(string keyVaultId, string secretUrl)
         {
-            return this.WithInstrumentationKeySecretReference(keyVaultId, secretUrl) as BatchAICluster.Definition.IWithCreate;
+            return this.WithInstrumentationKeySecretReference(keyVaultId, secretUrl);
         }
 
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the update.</return>
         BatchAICluster.Update.IUpdate BatchAICluster.Update.IWithScaleSettings.WithAutoScale(int minimumNodeCount, int maximumNodeCount)
         {
-            return this.WithAutoScale(minimumNodeCount, maximumNodeCount) as BatchAICluster.Update.IUpdate;
+            return this.WithAutoScale(minimumNodeCount, maximumNodeCount);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the update.</return>
         BatchAICluster.Update.IUpdate BatchAICluster.Update.IWithScaleSettings.WithAutoScale(int minimumNodeCount, int maximumNodeCount, int initialNodeCount)
         {
-            return this.WithAutoScale(minimumNodeCount, maximumNodeCount, initialNodeCount) as BatchAICluster.Update.IUpdate;
+            return this.WithAutoScale(minimumNodeCount, maximumNodeCount, initialNodeCount);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the update.</return>
         BatchAICluster.Update.IUpdate BatchAICluster.Update.IWithScaleSettings.WithManualScale(int targetNodeCount)
         {
-            return this.WithManualScale(targetNodeCount) as BatchAICluster.Update.IUpdate;
+            return this.WithManualScale(targetNodeCount);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the update.</return>
         BatchAICluster.Update.IUpdate BatchAICluster.Update.IWithScaleSettings.WithManualScale(int targetNodeCount, DeallocationOption deallocationOption)
         {
-            return this.WithManualScale(targetNodeCount, deallocationOption) as BatchAICluster.Update.IUpdate;
+            return this.WithManualScale(targetNodeCount, deallocationOption);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithCreate BatchAICluster.Definition.IWithScaleSettings.WithAutoScale(int minimumNodeCount, int maximumNodeCount)
         {
-            return this.WithAutoScale(minimumNodeCount, maximumNodeCount) as BatchAICluster.Definition.IWithCreate;
+            return this.WithAutoScale(minimumNodeCount, maximumNodeCount);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithCreate BatchAICluster.Definition.IWithScaleSettings.WithAutoScale(int minimumNodeCount, int maximumNodeCount, int initialNodeCount)
         {
-            return this.WithAutoScale(minimumNodeCount, maximumNodeCount, initialNodeCount) as BatchAICluster.Definition.IWithCreate;
+            return this.WithAutoScale(minimumNodeCount, maximumNodeCount, initialNodeCount);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithCreate BatchAICluster.Definition.IWithScaleSettings.WithManualScale(int targetNodeCount)
         {
-            return this.WithManualScale(targetNodeCount) as BatchAICluster.Definition.IWithCreate;
+            return this.WithManualScale(targetNodeCount);
         }
 
         /// <summary>
@@ -181,12 +181,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithCreate BatchAICluster.Definition.IWithScaleSettings.WithManualScale(int targetNodeCount, DeallocationOption deallocationOption)
         {
-            return this.WithManualScale(targetNodeCount, deallocationOption) as BatchAICluster.Definition.IWithCreate;
+            return this.WithManualScale(targetNodeCount, deallocationOption);
         }
 
         BatchAICluster.Definition.IWithCreate BatchAICluster.Definition.IWithVMPriority.WithLowPriority()
         {
-            return this.WithLowPriority() as BatchAICluster.Definition.IWithCreate;
+            return this.WithLowPriority();
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// </summary>
         AzureBlobFileSystem.Definition.IBlank<BatchAICluster.Definition.IWithCreate> IWithMountVolumes<IWithCreate>.DefineAzureBlobFileSystem()
         {
-            return this.DefineAzureBlobFileSystem() as AzureBlobFileSystem.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
+            return this.DefineAzureBlobFileSystem();
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of Batch AI cluster definition.</return>
         BatchAICluster.Definition.IWithCreate IWithMountVolumes<IWithCreate>.WithUnmanagedFileSystem(string mountCommand, string relativeMountPath)
         {
-            return this.WithUnmanagedFileSystem(mountCommand, relativeMountPath) as BatchAICluster.Definition.IWithCreate;
+            return this.WithUnmanagedFileSystem(mountCommand, relativeMountPath);
         }
 
         /// <summary>
@@ -219,14 +219,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// </summary>
         FileServer.Definition.IBlank<BatchAICluster.Definition.IWithCreate> IWithMountVolumes<IWithCreate>.DefineFileServer()
         {
-            return this.DefineFileServer() as FileServer.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
+            return this.DefineFileServer();
         }
 
         /// <param name="subnetId">Identifier of the subnet.</param>
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithCreate BatchAICluster.Definition.IWithSubnet.WithSubnet(string subnetId)
         {
-            return this.WithSubnet(subnetId) as BatchAICluster.Definition.IWithCreate;
+            return this.WithSubnet(subnetId);
         }
 
         /// <param name="networkId">Identifier of the network.</param>
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithCreate BatchAICluster.Definition.IWithSubnet.WithSubnet(string networkId, string subnetName)
         {
-            return this.WithSubnet(networkId, subnetName) as BatchAICluster.Definition.IWithCreate;
+            return this.WithSubnet(networkId, subnetName);
         }
 
 
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// </summary>
         AzureFileShare.Definition.IBlank<BatchAICluster.Definition.IWithCreate> IWithMountVolumes<BatchAICluster.Definition.IWithCreate>.DefineAzureFileShare()
         {
-            return this.DefineAzureFileShare() as AzureFileShare.Definition.IBlank<BatchAICluster.Definition.IWithCreate>;
+            return this.DefineAzureFileShare();
         }
         
         /// <summary>
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             WithVirtualMachineImage(string publisher, string offer, string sku, string version)
         {
             return this.WithVirtualMachineImage(publisher, offer, sku,
-                version) as BatchAICluster.Definition.IWithCreate;
+                version);
         }
 
         /// <summary>
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         BatchAICluster.Definition.IWithCreate BatchAICluster.Definition.IWithVirtualMachineImage.
             WithVirtualMachineImage(string publisher, string offer, string sku)
         {
-            return this.WithVirtualMachineImage(publisher, offer, sku) as BatchAICluster.Definition.IWithCreate;
+            return this.WithVirtualMachineImage(publisher, offer, sku);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAICluster.Definition.IWithCreate BatchAICluster.Definition.IWithVirtualMachineImage.WithVirtualMachineImageId(string virtualMachineImageId, string publisher, string offer, string sku)
         {
-            return this.WithVirtualMachineImageId(virtualMachineImageId, publisher, offer, sku) as BatchAICluster.Definition.IWithCreate;
+            return this.WithVirtualMachineImageId(virtualMachineImageId, publisher, offer, sku);
         }
 
         /// <summary>
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.VirtualMachineConfiguration() as Microsoft.Azure.Management.BatchAI.Fluent.Models.VirtualMachineConfiguration;
+                return this.VirtualMachineConfiguration();
             }
         }
 
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.NodeStateCounts() as Microsoft.Azure.Management.BatchAI.Fluent.Models.NodeStateCounts;
+                return this.NodeStateCounts();
             }
         }
 
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.ScaleSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.ScaleSettings;
+                return this.ScaleSettings();
             }
         }
 
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.Errors() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.BatchAIError>;
+                return this.Errors();
             }
         }
 
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.Subnet() as Microsoft.Azure.Management.BatchAI.Fluent.Models.ResourceId;
+                return this.Subnet();
             }
         }
 
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.NodeSetup() as Microsoft.Azure.Management.BatchAI.Fluent.Models.NodeSetup;
+                return this.NodeSetup();
             }
         }
     }

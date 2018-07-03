@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The first stage of the new resource definition.</return>
         BatchAIFileServer.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<BatchAIFileServer.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as BatchAIFileServer.Definition.IBlank;
+            return this.Define(name);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithInterval.WithTimeBetweenProbesInSeconds(int seconds)
         {
-            return this.WithTimeBetweenProbesInSeconds(seconds) as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithTimeBetweenProbesInSeconds(seconds);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate>.WithTimeoutInSeconds(int seconds)
         {
-            return this.WithTimeoutInSeconds(seconds) as ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithTimeoutInSeconds(seconds);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate>.WithTimeoutInSeconds(int seconds)
         {
-            return this.WithTimeoutInSeconds(seconds) as ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithTimeoutInSeconds(seconds);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate HasProtocol.Update.IWithProtocol<ApplicationGatewayProbe.Update.IUpdate, Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
         {
-            return this.WithProtocol(protocol) as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithProtocol(protocol);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate> HasProtocol.UpdateDefinition.IWithProtocol<ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate>, Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
         {
-            return this.WithProtocol(protocol) as ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate>;
+            return this.WithProtocol(protocol);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate> HasProtocol.Definition.IWithProtocol<ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate>, Models.ApplicationGatewayProtocol>.WithProtocol(ApplicationGatewayProtocol protocol)
         {
-            return this.WithProtocol(protocol) as ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithProtocol(protocol);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.HealthyHttpResponseStatusCodeRanges() as System.Collections.Generic.ISet<string>;
+                return this.HealthyHttpResponseStatusCodeRanges();
             }
         }
 
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithProtocol<ApplicationGateway.Update.IUpdate>.WithHttp()
         {
-            return this.WithHttp() as ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate>;
+            return this.WithHttp();
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithProtocol<ApplicationGateway.Update.IUpdate>.WithHttps()
         {
-            return this.WithHttps() as ApplicationGatewayProbe.UpdateDefinition.IWithTimeout<ApplicationGateway.Update.IUpdate>;
+            return this.WithHttps();
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithProtocol<ApplicationGateway.Definition.IWithCreate>.WithHttp()
         {
-            return this.WithHttp() as ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHttp();
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithProtocol<ApplicationGateway.Definition.IWithCreate>.WithHttps()
         {
-            return this.WithHttps() as ApplicationGatewayProbe.Definition.IWithTimeout<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHttps();
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithRetries<ApplicationGateway.Update.IUpdate>.WithRetriesBeforeUnhealthy(int retryCount)
         {
-            return this.WithRetriesBeforeUnhealthy(retryCount) as ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithRetriesBeforeUnhealthy(retryCount);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithRetries<ApplicationGateway.Definition.IWithCreate>.WithRetriesBeforeUnhealthy(int retryCount)
         {
-            return this.WithRetriesBeforeUnhealthy(retryCount) as ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithRetriesBeforeUnhealthy(retryCount);
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithTimeout.WithTimeoutInSeconds(int seconds)
         {
-            return this.WithTimeoutInSeconds(seconds) as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithTimeoutInSeconds(seconds);
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithPath<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithHost<ApplicationGateway.Update.IUpdate>.WithHost(string host)
         {
-            return this.WithHost(host) as ApplicationGatewayProbe.UpdateDefinition.IWithPath<ApplicationGateway.Update.IUpdate>;
+            return this.WithHost(host);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithPath<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithHost<ApplicationGateway.Definition.IWithCreate>.WithHost(string host)
         {
-            return this.WithHost(host) as ApplicationGatewayProbe.Definition.IWithPath<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHost(host);
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithRetries.WithRetriesBeforeUnhealthy(int retryCount)
         {
-            return this.WithRetriesBeforeUnhealthy(retryCount) as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithRetriesBeforeUnhealthy(retryCount);
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithHost.WithHost(string host)
         {
-            return this.WithHost(host) as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithHost(host);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Update.IUpdate>.WithHealthyHttpResponseStatusCodeRange(string range)
         {
-            return this.WithHealthyHttpResponseStatusCodeRange(range) as ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithHealthyHttpResponseStatusCodeRange(range);
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Update.IUpdate>.WithHealthyHttpResponseStatusCodeRange(int from, int to)
         {
-            return this.WithHealthyHttpResponseStatusCodeRange(from, to) as ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithHealthyHttpResponseStatusCodeRange(from, to);
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Update.IUpdate>.WithHealthyHttpResponseStatusCodeRanges(ISet<string> ranges)
         {
-            return this.WithHealthyHttpResponseStatusCodeRanges(ranges) as ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithHealthyHttpResponseStatusCodeRanges(ranges);
         }
 
         /// <summary>
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Definition.IWithCreate>.WithHealthyHttpResponseStatusCodeRange(string range)
         {
-            return this.WithHealthyHttpResponseStatusCodeRange(range) as ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHealthyHttpResponseStatusCodeRange(range);
         }
 
         /// <summary>
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Definition.IWithCreate>.WithHealthyHttpResponseStatusCodeRange(int from, int to)
         {
-            return this.WithHealthyHttpResponseStatusCodeRange(from, to) as ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHealthyHttpResponseStatusCodeRange(from, to);
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseStatusCodeRangesBeta<ApplicationGateway.Definition.IWithCreate>.WithHealthyHttpResponseStatusCodeRanges(ISet<string> ranges)
         {
-            return this.WithHealthyHttpResponseStatusCodeRanges(ranges) as ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHealthyHttpResponseStatusCodeRanges(ranges);
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithPath.WithPath(string path)
         {
-            return this.WithPath(path) as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithPath(path);
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithHealthyHttpResponseBodyContentsBeta<ApplicationGateway.Update.IUpdate>.WithHealthyHttpResponseBodyContents(string text)
         {
-            return this.WithHealthyHttpResponseBodyContents(text) as ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithHealthyHttpResponseBodyContents(text);
         }
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithHealthyHttpResponseBodyContentsBeta<ApplicationGateway.Definition.IWithCreate>.WithHealthyHttpResponseBodyContents(string text)
         {
-            return this.WithHealthyHttpResponseBodyContents(text) as ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithHealthyHttpResponseBodyContents(text);
         }
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithProtocol<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithPath<ApplicationGateway.Update.IUpdate>.WithPath(string path)
         {
-            return this.WithPath(path) as ApplicationGatewayProbe.UpdateDefinition.IWithProtocol<ApplicationGateway.Update.IUpdate>;
+            return this.WithPath(path);
         }
 
         /// <summary>
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithProtocol<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithPath<ApplicationGateway.Definition.IWithCreate>.WithPath(string path)
         {
-            return this.WithPath(path) as ApplicationGatewayProbe.Definition.IWithProtocol<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithPath(path);
         }
 
         /// <summary>
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithProtocol.WithHttp()
         {
-            return this.WithHttp() as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithHttp();
         }
 
         /// <summary>
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithProtocol.WithHttps()
         {
-            return this.WithHttps() as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithHttps();
         }
 
         /// <summary>
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithHealthyHttpResponseBodyContentsBeta.WithHealthyHttpResponseBodyContents(string text)
         {
-            return this.WithHealthyHttpResponseBodyContents(text) as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithHealthyHttpResponseBodyContents(text);
         }
 
         /// <summary>
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.IInDefinitionAlt<ApplicationGateway.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithHealthyHttpResponseStatusCodeRangesBeta.WithoutHealthyHttpResponseStatusCodeRanges()
         {
-            return this.WithoutHealthyHttpResponseStatusCodeRanges() as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithoutHealthyHttpResponseStatusCodeRanges();
         }
 
         /// <summary>
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithHealthyHttpResponseStatusCodeRangesBeta.WithHealthyHttpResponseStatusCodeRange(string range)
         {
-            return this.WithHealthyHttpResponseStatusCodeRange(range) as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithHealthyHttpResponseStatusCodeRange(range);
         }
 
         /// <summary>
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithHealthyHttpResponseStatusCodeRangesBeta.WithHealthyHttpResponseStatusCodeRange(int from, int to)
         {
-            return this.WithHealthyHttpResponseStatusCodeRange(from, to) as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithHealthyHttpResponseStatusCodeRange(from, to);
         }
 
         /// <summary>
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayProbe.Update.IUpdate ApplicationGatewayProbe.Update.IWithHealthyHttpResponseStatusCodeRangesBeta.WithHealthyHttpResponseStatusCodeRanges(ISet<string> ranges)
         {
-            return this.WithHealthyHttpResponseStatusCodeRanges(ranges) as ApplicationGatewayProbe.Update.IUpdate;
+            return this.WithHealthyHttpResponseStatusCodeRanges(ranges);
         }
 
         /// <summary>
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayProbe.UpdateDefinition.IWithInterval<ApplicationGateway.Update.IUpdate>.WithTimeBetweenProbesInSeconds(int seconds)
         {
-            return this.WithTimeBetweenProbesInSeconds(seconds) as ApplicationGatewayProbe.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithTimeBetweenProbesInSeconds(seconds);
         }
 
         /// <summary>
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayProbe.Definition.IWithInterval<ApplicationGateway.Definition.IWithCreate>.WithTimeBetweenProbesInSeconds(int seconds)
         {
-            return this.WithTimeBetweenProbesInSeconds(seconds) as ApplicationGatewayProbe.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithTimeBetweenProbesInSeconds(seconds);
         }
 
         /// <summary>
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Protocol() as Models.ApplicationGatewayProtocol;
+                return this.Protocol();
             }
         }
 
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions.IInUpdateAlt<ApplicationGateway.Update.IUpdate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Update.IUpdate;
+            return this.Attach();
         }
     }
 }

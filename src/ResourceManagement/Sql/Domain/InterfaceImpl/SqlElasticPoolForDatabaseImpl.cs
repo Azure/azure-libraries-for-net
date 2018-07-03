@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithDatabaseDtuMin<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithDatabaseDtuMin(int databaseDtuMin)
         {
-            return this.WithDatabaseDtuMin(databaseDtuMin) as SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithDatabaseDtuMin(databaseDtuMin);
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithStorageCapacity<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithStorageCapacity(int storageMB)
         {
-            return this.WithStorageCapacity(storageMB) as SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithStorageCapacity(storageMB);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithBasicEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithBasicEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithDatabaseDtuMin(SqlElasticPoolBasicMinEDTUs eDTU)
         {
-            return this.WithDatabaseDtuMin(eDTU) as SqlElasticPool.Definition.IWithBasicEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithDatabaseDtuMin(eDTU);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithBasicEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithBasicEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithDatabaseDtuMax(SqlElasticPoolBasicMaxEDTUs eDTU)
         {
-            return this.WithDatabaseDtuMax(eDTU) as SqlElasticPool.Definition.IWithBasicEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithDatabaseDtuMax(eDTU);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithBasicEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithBasicEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithReservedDtu(SqlElasticPoolBasicEDTUs eDTU)
         {
-            return this.WithReservedDtu(eDTU) as SqlElasticPool.Definition.IWithBasicEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithReservedDtu(eDTU);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithPremiumEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithPremiumEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithDatabaseDtuMin(SqlElasticPoolPremiumMinEDTUs eDTU)
         {
-            return this.WithDatabaseDtuMin(eDTU) as SqlElasticPool.Definition.IWithPremiumEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithDatabaseDtuMin(eDTU);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithPremiumEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithPremiumEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithDatabaseDtuMax(SqlElasticPoolPremiumMaxEDTUs eDTU)
         {
-            return this.WithDatabaseDtuMax(eDTU) as SqlElasticPool.Definition.IWithPremiumEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithDatabaseDtuMax(eDTU);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithPremiumEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithPremiumEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithStorageCapacity(SqlElasticPoolPremiumSorage storageCapacity)
         {
-            return this.WithStorageCapacity(storageCapacity) as SqlElasticPool.Definition.IWithPremiumEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithStorageCapacity(storageCapacity);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithPremiumEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithPremiumEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithReservedDtu(SqlElasticPoolPremiumEDTUs eDTU)
         {
-            return this.WithReservedDtu(eDTU) as SqlElasticPool.Definition.IWithPremiumEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithReservedDtu(eDTU);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithStandardEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithStandardEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithDatabaseDtuMin(SqlElasticPoolStandardMinEDTUs eDTU)
         {
-            return this.WithDatabaseDtuMin(eDTU) as SqlElasticPool.Definition.IWithStandardEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithDatabaseDtuMin(eDTU);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithStandardEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithStandardEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithDatabaseDtuMax(SqlElasticPoolStandardMaxEDTUs eDTU)
         {
-            return this.WithDatabaseDtuMax(eDTU) as SqlElasticPool.Definition.IWithStandardEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithDatabaseDtuMax(eDTU);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithStandardEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithStandardEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithStorageCapacity(SqlElasticPoolStandardStorage storageCapacity)
         {
-            return this.WithStorageCapacity(storageCapacity) as SqlElasticPool.Definition.IWithStandardEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithStorageCapacity(storageCapacity);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithStandardEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithStandardEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithReservedDtu(SqlElasticPoolStandardEDTUs eDTU)
         {
-            return this.WithReservedDtu(eDTU) as SqlElasticPool.Definition.IWithStandardEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithReservedDtu(eDTU);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithDatabaseDtuMax<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithDatabaseDtuMax(int databaseDtuMax)
         {
-            return this.WithDatabaseDtuMax(databaseDtuMax) as SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithDatabaseDtuMax(databaseDtuMax);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the parent definition.</return>
         SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.Attach()
         {
-            return this.Attach() as SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool;
+            return this.Attach();
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithBasicEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithBasicPool()
         {
-            return this.WithBasicPool() as SqlElasticPool.Definition.IWithBasicEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithBasicPool();
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithPremiumEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithPremiumPool()
         {
-            return this.WithPremiumPool() as SqlElasticPool.Definition.IWithPremiumEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithPremiumPool();
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithEdition(string edition)
         {
-            return this.WithEdition(edition) as SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithEdition(edition);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithStandardEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithEditionBeta<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithStandardPool()
         {
-            return this.WithStandardPool() as SqlElasticPool.Definition.IWithStandardEdition<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithStandardPool();
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool> SqlElasticPool.Definition.IWithDtu<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>.WithDtu(int dtu)
         {
-            return this.WithDtu(dtu) as SqlElasticPool.Definition.IWithAttach<SqlDatabaseOperations.Definition.IWithExistingDatabaseAfterElasticPool>;
+            return this.WithDtu(dtu);
         }
     }
 }

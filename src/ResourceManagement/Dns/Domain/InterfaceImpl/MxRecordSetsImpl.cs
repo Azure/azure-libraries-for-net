@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Dns.Fluent.IMXRecordSet Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.Dns.Fluent.IMXRecordSet>.GetByName(string name)
         {
-            return this.GetByName(name) as Microsoft.Azure.Management.Dns.Fluent.IMXRecordSet;
+            return this.GetByName(name);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Dns.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Dns.Fluent.IMXRecordSet> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Dns.Fluent.IMXRecordSet>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Dns.Fluent.IMXRecordSet>;
+            return this.List();
         }
     }
 }

@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
 
         ///GENMHASH:D2EDA89FB1BC2F4F8DD193121D87D8FA:62FA8A6519E365FE75F168478738E2DF
-        internal IDictionary<string, ILoadBalancerTcpProbe> TcpProbes()
+        internal IReadOnlyDictionary<string, ILoadBalancerTcpProbe> TcpProbes()
         {
             return tcpProbes;
         }

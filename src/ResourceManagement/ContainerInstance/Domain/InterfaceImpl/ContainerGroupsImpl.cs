@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The first stage of the new resource definition.</return>
         ContainerGroup.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<ContainerGroup.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as ContainerGroup.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>.ListByResourceGroup(string resourceGroupName)
         {
-            return this.ListByResourceGroup(resourceGroupName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>;
+            return this.ListByResourceGroup(resourceGroupName);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task<System.Collections.Generic.IReadOnlyCollection<Models.Operation>> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.ListOperationsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListOperationsAsync(cancellationToken) as System.Collections.Generic.IReadOnlyCollection<Models.Operation>;
+            return await this.ListOperationsAsync(cancellationToken);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>All operations for Azure Container Instance service.</return>
         System.Collections.Generic.IReadOnlyCollection<Models.Operation> Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroups.ListOperations()
         {
-            return this.ListOperations() as System.Collections.Generic.IReadOnlyCollection<Models.Operation>;
+            return this.ListOperations();
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>;
+            return this.List();
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IContainerGroup>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IContainerGroup>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new resource definition.</return>
         PublicIPAddress.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<PublicIPAddress.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as PublicIPAddress.Definition.IBlank;
+            return this.Define(name);
         }
     }
 }
