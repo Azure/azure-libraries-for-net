@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
         public ICreatedResources<IFluentResourceT> Create(params ICreatable<IFluentResourceT>[] creatables)
         {
-            return Create(creatables as IEnumerable<ICreatable<IFluentResourceT>>);
+            return Create((IEnumerable<ICreatable<IFluentResourceT>>) creatables);
         }
 
         public ICreatedResources<IFluentResourceT> Create(IEnumerable<ICreatable<IFluentResourceT>> creatables)

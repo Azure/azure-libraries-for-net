@@ -16,7 +16,7 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
   * [Others...](#other-code-samples)
 * [Download](#download)
 * [Prerequisites](#prerequisites)
-* [Updgrading from older versions](#upgrading-from-older-versions)
+* [Upgrading from older versions](#upgrading-from-older-versions)
 * [Help and issues](#help-and-issues)
 * [Contribute code](#contribute-code)
 * [More information](#more-information)

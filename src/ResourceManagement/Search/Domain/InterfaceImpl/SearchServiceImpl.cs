@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Search.Fluent.ISearchService> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Search.Fluent.ISearchService>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Search.Fluent.ISearchService;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The next stage of the definition.</return>
         SearchService.Update.IUpdate SearchService.Update.IWithPartitionCount.WithPartitionCount(int count)
         {
-            return this.WithPartitionCount(count) as SearchService.Update.IUpdate;
+            return this.WithPartitionCount(count);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The next stage of the definition.</return>
         SearchService.Update.IUpdate SearchService.Update.IWithReplicaCount.WithReplicaCount(int count)
         {
-            return this.WithReplicaCount(count) as SearchService.Update.IUpdate;
+            return this.WithReplicaCount(count);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The observable to the List&lt;QueryKey&gt; object.</return>
         async Task<IEnumerable<Microsoft.Azure.Management.Search.Fluent.IQueryKey>> Microsoft.Azure.Management.Search.Fluent.ISearchService.ListQueryKeysAsync(CancellationToken cancellationToken)
         {
-            return await this.ListQueryKeysAsync(cancellationToken) as IEnumerable<Microsoft.Azure.Management.Search.Fluent.IQueryKey>;
+            return await this.ListQueryKeysAsync(cancellationToken);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The AdminKeys object if successful.</return>
         Microsoft.Azure.Management.Search.Fluent.IAdminKeys Microsoft.Azure.Management.Search.Fluent.ISearchService.GetAdminKeys()
         {
-            return this.GetAdminKeys() as Microsoft.Azure.Management.Search.Fluent.IAdminKeys;
+            return this.GetAdminKeys();
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The List&lt;QueryKey&gt; object if successful.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Search.Fluent.IQueryKey> Microsoft.Azure.Management.Search.Fluent.ISearchService.ListQueryKeys()
         {
-            return this.ListQueryKeys() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Search.Fluent.IQueryKey>;
+            return this.ListQueryKeys();
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task<Microsoft.Azure.Management.Search.Fluent.IQueryKey> Microsoft.Azure.Management.Search.Fluent.ISearchService.CreateQueryKeyAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.CreateQueryKeyAsync(name, cancellationToken) as Microsoft.Azure.Management.Search.Fluent.IQueryKey;
+            return await this.CreateQueryKeyAsync(name, cancellationToken);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         {
             get
             {
-                return this.Sku() as Models.Sku;
+                return this.Sku();
             }
         }
 
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task<Microsoft.Azure.Management.Search.Fluent.IAdminKeys> Microsoft.Azure.Management.Search.Fluent.ISearchService.GetAdminKeysAsync(CancellationToken cancellationToken)
         {
-            return await this.GetAdminKeysAsync(cancellationToken) as Microsoft.Azure.Management.Search.Fluent.IAdminKeys;
+            return await this.GetAdminKeysAsync(cancellationToken);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>A representation of the future computation of this call.</return>
         async Task<Microsoft.Azure.Management.Search.Fluent.IAdminKeys> Microsoft.Azure.Management.Search.Fluent.ISearchService.RegenerateAdminKeysAsync(AdminKeyKind keyKind, CancellationToken cancellationToken)
         {
-            return await this.RegenerateAdminKeysAsync(keyKind, cancellationToken) as Microsoft.Azure.Management.Search.Fluent.IAdminKeys;
+            return await this.RegenerateAdminKeysAsync(keyKind, cancellationToken);
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The &lt;QueryKey&gt; object if successful.</return>
         Microsoft.Azure.Management.Search.Fluent.IQueryKey Microsoft.Azure.Management.Search.Fluent.ISearchService.CreateQueryKey(string name)
         {
-            return this.CreateQueryKey(name) as Microsoft.Azure.Management.Search.Fluent.IQueryKey;
+            return this.CreateQueryKey(name);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The AdminKeys object if successful.</return>
         Microsoft.Azure.Management.Search.Fluent.IAdminKeys Microsoft.Azure.Management.Search.Fluent.ISearchService.RegenerateAdminKeys(AdminKeyKind keyKind)
         {
-            return this.RegenerateAdminKeys(keyKind) as Microsoft.Azure.Management.Search.Fluent.IAdminKeys;
+            return this.RegenerateAdminKeys(keyKind);
         }
 
         /// <summary>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The next stage of the definition.</return>
         SearchService.Definition.IWithCreate SearchService.Definition.IWithReplicasAndCreate.WithReplicaCount(int count)
         {
-            return this.WithReplicaCount(count) as SearchService.Definition.IWithCreate;
+            return this.WithReplicaCount(count);
         }
 
         /// <summary>
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The next stage of the definition.</return>
         SearchService.Definition.IWithReplicasAndCreate SearchService.Definition.IWithPartitionsAndCreate.WithPartitionCount(int count)
         {
-            return this.WithPartitionCount(count) as SearchService.Definition.IWithReplicasAndCreate;
+            return this.WithPartitionCount(count);
         }
 
         /// <summary>
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The next stage of the definition.</return>
         SearchService.Definition.IWithCreate SearchService.Definition.IWithSku.WithFreeSku()
         {
-            return this.WithFreeSku() as SearchService.Definition.IWithCreate;
+            return this.WithFreeSku();
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The next stage of the definition.</return>
         SearchService.Definition.IWithCreate SearchService.Definition.IWithSku.WithSku(SkuName skuName)
         {
-            return this.WithSku(skuName) as SearchService.Definition.IWithCreate;
+            return this.WithSku(skuName);
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The next stage of the definition.</return>
         SearchService.Definition.IWithReplicasAndCreate SearchService.Definition.IWithSku.WithBasicSku()
         {
-            return this.WithBasicSku() as SearchService.Definition.IWithReplicasAndCreate;
+            return this.WithBasicSku();
         }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.Search.Fluent
         /// <return>The next stage of the definition.</return>
         SearchService.Definition.IWithPartitionsAndCreate SearchService.Definition.IWithSku.WithStandardSku()
         {
-            return this.WithStandardSku() as SearchService.Definition.IWithPartitionsAndCreate;
+            return this.WithStandardSku();
         }
 
     }

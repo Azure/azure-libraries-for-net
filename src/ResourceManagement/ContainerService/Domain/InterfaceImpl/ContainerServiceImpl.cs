@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithLinux ContainerService.Definition.IWithOrchestrator.WithDcosOrchestration()
         {
-            return this.WithDcosOrchestration() as ContainerService.Definition.IWithLinux;
+            return this.WithDcosOrchestration();
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithServicePrincipalProfile ContainerService.Definition.IWithOrchestrator.WithKubernetesOrchestration()
         {
-            return this.WithKubernetesOrchestration() as ContainerService.Definition.IWithServicePrincipalProfile;
+            return this.WithKubernetesOrchestration();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithLinux ContainerService.Definition.IWithOrchestrator.WithSwarmOrchestration()
         {
-            return this.WithSwarmOrchestration() as ContainerService.Definition.IWithLinux;
+            return this.WithSwarmOrchestration();
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterOSDiskSize.WithMasterOSDiskSizeInGB(int osDiskSizeInGB)
         {
-            return this.WithMasterOSDiskSizeInGB(osDiskSizeInGB) as ContainerService.Definition.IWithCreate;
+            return this.WithMasterOSDiskSizeInGB(osDiskSizeInGB);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithMasterNodeCount ContainerService.Definition.IWithLinuxSshKey.WithSshKey(string sshKeyData)
         {
-            return this.WithSshKey(sshKeyData) as ContainerService.Definition.IWithMasterNodeCount;
+            return this.WithSshKey(sshKeyData);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The stage representing configuration for the agent pool profile.</return>
         ContainerServiceAgentPool.Definition.IBlank<ContainerService.Definition.IWithCreate> ContainerService.Definition.IWithAgentPool.DefineAgentPool(string name)
         {
-            return this.DefineAgentPool(name) as ContainerServiceAgentPool.Definition.IBlank<ContainerService.Definition.IWithCreate>;
+            return this.DefineAgentPool(name);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithLinuxSshKey ContainerService.Definition.IWithLinuxRootUsername.WithRootUsername(string rootUserName)
         {
-            return this.WithRootUsername(rootUserName) as ContainerService.Definition.IWithLinuxSshKey;
+            return this.WithRootUsername(rootUserName);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterStorageProfile.WithMasterStorageProfile(StorageProfileTypes storageProfile)
         {
-            return this.WithMasterStorageProfile(storageProfile) as ContainerService.Definition.IWithCreate;
+            return this.WithMasterStorageProfile(storageProfile);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The stage representing configuration of Linux specific settings.</return>
         ContainerService.Definition.IWithLinuxRootUsername ContainerService.Definition.IWithLinux.WithLinux()
         {
-            return this.WithLinux() as ContainerService.Definition.IWithLinuxRootUsername;
+            return this.WithLinux();
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the update.</return>
         ContainerService.Update.IUpdate ContainerService.Update.IWithUpdateAgentPoolCount.WithAgentVirtualMachineCount(int agentCount)
         {
-            return this.WithAgentVirtualMachineCount(agentCount) as ContainerService.Update.IUpdate;
+            return this.WithAgentVirtualMachineCount(agentCount);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage.</return>
         ContainerService.Definition.IWithLinux ContainerService.Definition.IWithServicePrincipalProfile.WithServicePrincipal(string clientId, string secret)
         {
-            return this.WithServicePrincipal(clientId, secret) as ContainerService.Definition.IWithLinux;
+            return this.WithServicePrincipal(clientId, secret);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithCreate ContainerService.Definition.IWithDiagnostics.WithDiagnostics()
         {
-            return this.WithDiagnostics() as ContainerService.Definition.IWithCreate;
+            return this.WithDiagnostics();
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Update.IUpdate ContainerService.Update.IWithDiagnostics.WithoutDiagnostics()
         {
-            return this.WithoutDiagnostics() as ContainerService.Update.IUpdate;
+            return this.WithoutDiagnostics();
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Update.IUpdate ContainerService.Update.IWithDiagnostics.WithDiagnostics()
         {
-            return this.WithDiagnostics() as ContainerService.Update.IUpdate;
+            return this.WithDiagnostics();
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithAgentPool ContainerService.Definition.IWithMasterNodeCount.WithMasterNodeCount(ContainerServiceMasterProfileCount count)
         {
-            return this.WithMasterNodeCount(count) as ContainerService.Definition.IWithAgentPool;
+            return this.WithMasterNodeCount(count);
         }
 
         /// <summary>
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             get
             {
-                return this.AgentPools() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool>;
+                return this.AgentPools();
             }
         }
 
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             get
             {
-                return this.MasterStorageProfile() as StorageProfileTypes;
+                return this.MasterStorageProfile();
             }
         }
 
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithCreate ContainerService.Definition.IWithSubnet.WithSubnet(string networkId, string subnetName)
         {
-            return this.WithSubnet(networkId, subnetName) as ContainerService.Definition.IWithCreate;
+            return this.WithSubnet(networkId, subnetName);
         }
 
         /// <summary>
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterDnsPrefix.WithMasterDnsPrefix(string dnsPrefix)
         {
-            return this.WithMasterDnsPrefix(dnsPrefix) as ContainerService.Definition.IWithCreate;
+            return this.WithMasterDnsPrefix(dnsPrefix);
         }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterVMSize.WithMasterVMSize(ContainerServiceVirtualMachineSizeTypes vmSize)
         {
-            return this.WithMasterVMSize(vmSize) as ContainerService.Definition.IWithCreate;
+            return this.WithMasterVMSize(vmSize);
         }
     }
 }

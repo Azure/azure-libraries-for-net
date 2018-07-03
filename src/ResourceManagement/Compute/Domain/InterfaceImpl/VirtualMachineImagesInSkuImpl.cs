@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>;
+            return this.List();
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IVirtualMachineImage>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IVirtualMachineImage>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
     }
 }

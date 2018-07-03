@@ -1,13 +1,14 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Redis.Fluent
 {
-    using Microsoft.Azure.Management.Redis.Fluent.RedisCache.Definition;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Management.Redis.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
+    using Microsoft.Rest.Azure;
 
-    internal partial class RedisCachesImpl
+    internal partial class RedisCachesImpl 
     {
         /// <summary>
         /// Begins a definition for a new resource.
@@ -25,7 +26,25 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         /// <return>The first stage of the new resource definition.</return>
         RedisCache.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<RedisCache.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as RedisCache.Definition.IBlank;
+            return this.Define(name);
+        }
+
+        /// <summary>
+        /// Lists all of the available Redis REST API operations.
+        /// </summary>
+        /// <return>List of available Redis REST operations.</return>
+        System.Collections.Generic.IEnumerable<Models.Operation> Microsoft.Azure.Management.Redis.Fluent.IRedisCachesBeta.ListOperations()
+        {
+            return this.ListOperations();
+        }
+
+        /// <summary>
+        /// Lists all of the available Redis REST API operations.
+        /// </summary>
+        /// <return>A representation of the future computation of this call.</return>
+        async Task<System.Collections.Generic.IEnumerable<Models.Operation>> Microsoft.Azure.Management.Redis.Fluent.IRedisCachesBeta.ListOperationsAsync(CancellationToken cancellationToken)
+        {
+            return await this.ListOperationsAsync(cancellationToken);
         }
     }
 }

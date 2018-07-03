@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseExportRequest.Definition.IWithStorageTypeAndKey SqlDatabaseExportRequest.Definition.IExportTo.ExportTo(string storageUri)
         {
-            return this.ExportTo(storageUri) as SqlDatabaseExportRequest.Definition.IWithStorageTypeAndKey;
+            return this.ExportTo(storageUri);
         }
 
         /// <param name="storageAccount">An existing storage account to be used.</param>
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <param name="fileName">The exported database file name.</param>
         SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword SqlDatabaseExportRequest.Definition.IExportTo.ExportTo(IStorageAccount storageAccount, string containerName, string fileName)
         {
-            return this.ExportTo(storageAccount, containerName, fileName) as SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword;
+            return this.ExportTo(storageAccount, containerName, fileName);
         }
 
         /// <param name="storageAccountCreatable">A storage account to be created as part of this execution flow.</param>
@@ -34,21 +34,21 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword SqlDatabaseExportRequest.Definition.IExportTo.ExportTo(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> storageAccountCreatable, string containerName, string fileName)
         {
-            return this.ExportTo(storageAccountCreatable, containerName, fileName) as SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword;
+            return this.ExportTo(storageAccountCreatable, containerName, fileName);
         }
 
         /// <param name="sharedAccessKey">The shared access key to use; it must be preceded with a "?.".</param>
         /// <return>Next definition stage.</return>
         SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword SqlDatabaseExportRequest.Definition.IWithStorageTypeAndKey.WithSharedAccessKey(string sharedAccessKey)
         {
-            return this.WithSharedAccessKey(sharedAccessKey) as SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword;
+            return this.WithSharedAccessKey(sharedAccessKey);
         }
 
         /// <param name="storageAccessKey">The storage access key to use.</param>
         /// <return>Next definition stage.</return>
         SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword SqlDatabaseExportRequest.Definition.IWithStorageTypeAndKey.WithStorageAccessKey(string storageAccessKey)
         {
-            return this.WithStorageAccessKey(storageAccessKey) as SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword;
+            return this.WithStorageAccessKey(storageAccessKey);
         }
 
         /// <param name="administratorLogin">The Active Directory administrator login.</param>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseExportRequest.Definition.IWithExecute SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword.WithActiveDirectoryLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabaseExportRequest.Definition.IWithExecute;
+            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <param name="administratorLogin">The SQL administrator login.</param>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabaseExportRequest.Definition.IWithExecute SqlDatabaseExportRequest.Definition.IWithAuthenticationTypeAndLoginPassword.WithSqlAdministratorLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabaseExportRequest.Definition.IWithExecute;
+            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+                return this.Parent();
             }
         }
     }

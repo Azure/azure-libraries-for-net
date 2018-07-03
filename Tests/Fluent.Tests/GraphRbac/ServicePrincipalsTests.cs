@@ -37,13 +37,18 @@ namespace Fluent.Tests.Graph.RBAC
                             .DefinePasswordCredential("sppass")
                                 .WithPasswordValue("StrongPass!12")
                                 .Attach()
+                            .DefineCertificateCredential("spcert")
+                                .WithAsymmetricX509Certificate()
+                                .WithPublicKey(File.ReadAllBytes("Assets/myTest.cer"))
+                                .WithDuration(TimeSpan.FromDays(1))
+                                .Attach()
                             .Create();
                     Console.WriteLine(servicePrincipal.Id + " - " + string.Join(", ", servicePrincipal.ServicePrincipalNames));
                     Assert.NotNull(servicePrincipal.Id);
                     Assert.NotNull(servicePrincipal.ApplicationId);
                     Assert.Equal(2, servicePrincipal.ServicePrincipalNames.Count);
                     Assert.Equal(1, servicePrincipal.PasswordCredentials.Count);
-                    Assert.Equal(0, servicePrincipal.CertificateCredentials.Count);
+                    Assert.Equal(1, servicePrincipal.CertificateCredentials.Count);
 
                     // Get
                     servicePrincipal = manager.ServicePrincipals.GetByName(servicePrincipal.ApplicationId);
@@ -51,22 +56,22 @@ namespace Fluent.Tests.Graph.RBAC
                     Assert.NotNull(servicePrincipal.ApplicationId);
                     Assert.Equal(2, servicePrincipal.ServicePrincipalNames.Count);
                     Assert.Equal(1, servicePrincipal.PasswordCredentials.Count);
-                    Assert.Equal(0, servicePrincipal.CertificateCredentials.Count);
+                    Assert.Equal(1, servicePrincipal.CertificateCredentials.Count);
 
                     // Update
                     servicePrincipal.Update()
                             .WithoutCredential("sppass")
                             .DefineCertificateCredential("spcert")
                                 .WithAsymmetricX509Certificate()
-                                .WithPublicKey(File.ReadAllBytes("Assets/myTest.cer"))
-                                .WithDuration(TimeSpan.FromDays(1))
+                                .WithPublicKey(File.ReadAllBytes("Assets/myTest2.cer"))
+                                .WithDuration(TimeSpan.FromDays(2))
                                 .Attach()
                             .Apply();
                     Assert.NotNull(servicePrincipal);
                     Assert.NotNull(servicePrincipal.ApplicationId);
                     Assert.Equal(2, servicePrincipal.ServicePrincipalNames.Count);
                     Assert.Equal(0, servicePrincipal.PasswordCredentials.Count);
-                    Assert.Equal(1, servicePrincipal.CertificateCredentials.Count);
+                    Assert.Equal(2, servicePrincipal.CertificateCredentials.Count);
                 }
                 finally
                 {

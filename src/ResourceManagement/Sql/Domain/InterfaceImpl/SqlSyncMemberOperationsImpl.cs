@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember> Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMemberOperations.GetBySqlServerAsync(string resourceGroupName, string sqlServerName, string databaseName, string syncGroupName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, databaseName, syncGroupName, name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember;
+            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, databaseName, syncGroupName, name, cancellationToken);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMemberOperations.GetBySqlServer(string resourceGroupName, string sqlServerName, string databaseName, string syncGroupName, string name)
         {
-            return this.GetBySqlServer(resourceGroupName, sqlServerName, databaseName, syncGroupName, name) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember;
+            return this.GetBySqlServer(resourceGroupName, sqlServerName, databaseName, syncGroupName, name);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new resource definition.</return>
         SqlSyncMemberOperations.Definition.IWithSqlServer Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<SqlSyncMemberOperations.Definition.IWithSqlServer>.Define(string name)
         {
-            return this.Define(name) as SqlSyncMemberOperations.Definition.IWithSqlServer;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember>.Get(string name)
         {
-            return this.Get(name) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember;
+            return this.Get(name);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember>.List()
         {
-            return this.List() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember>;
+            return this.List();
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember>.GetAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.GetAsync(name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember;
+            return await this.GetAsync(name, cancellationToken);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<IReadOnlyList<ISqlSyncMember>> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember>.ListAsync(CancellationToken cancellationToken)
         {
-            return await this.ListAsync(cancellationToken) as IReadOnlyList<ISqlSyncMember>;
+            return await this.ListAsync(cancellationToken);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncMember;
+            return this.GetById(id);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new SQL Virtual Network Rule definition.</return>
         SqlSyncMemberOperations.Definition.IWithMemberSqlServer SqlSyncMemberOperations.SqlSyncMemberActionsDefinition.ISqlSyncMemberActionsDefinition.Define(string syncMemberName)
         {
-            return this.Define(syncMemberName) as SqlSyncMemberOperations.Definition.IWithMemberSqlServer;
+            return this.Define(syncMemberName);
         }
     }
 }

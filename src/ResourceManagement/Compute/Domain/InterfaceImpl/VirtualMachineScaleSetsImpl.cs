@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of the new resource definition.</return>
         VirtualMachineScaleSet.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<VirtualMachineScaleSet.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as VirtualMachineScaleSet.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>

@@ -29,10 +29,12 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// </summary>
         /// <param name="name">Gateway SKU name. Possible values include:
         /// 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance',
-        /// 'VpnGw1', 'VpnGw2', 'VpnGw3'</param>
+        /// 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ',
+        /// 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'</param>
         /// <param name="tier">Gateway SKU tier. Possible values include:
         /// 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance',
-        /// 'VpnGw1', 'VpnGw2', 'VpnGw3'</param>
+        /// 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ',
+        /// 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'</param>
         /// <param name="capacity">The capacity.</param>
         public VirtualNetworkGatewaySku(VirtualNetworkGatewaySkuName name = default(VirtualNetworkGatewaySkuName), VirtualNetworkGatewaySkuTier tier = default(VirtualNetworkGatewaySkuTier), int? capacity = default(int?))
         {
@@ -50,7 +52,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Gets or sets gateway SKU name. Possible values include: 'Basic',
         /// 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1',
-        /// 'VpnGw2', 'VpnGw3'
+        /// 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ',
+        /// 'ErGw2AZ', 'ErGw3AZ'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public VirtualNetworkGatewaySkuName Name { get; set; }
@@ -58,7 +61,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <summary>
         /// Gets or sets gateway SKU tier. Possible values include: 'Basic',
         /// 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1',
-        /// 'VpnGw2', 'VpnGw3'
+        /// 'VpnGw2', 'VpnGw3', 'VpnGw1AZ', 'VpnGw2AZ', 'VpnGw3AZ', 'ErGw1AZ',
+        /// 'ErGw2AZ', 'ErGw3AZ'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public VirtualNetworkGatewaySkuTier Tier { get; set; }

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate SqlDatabaseThreatDetectionPolicy.Update.IWithStorageAccountAccessKey.WithStorageAccountAccessKey(string storageAccountAccessKey)
         {
-            return this.WithStorageAccountAccessKey(storageAccountAccessKey) as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.WithStorageAccountAccessKey(storageAccountAccessKey);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate SqlDatabaseThreatDetectionPolicy.Definition.IWithStorageAccountAccessKey.WithStorageAccountAccessKey(string storageAccountAccessKey)
         {
-            return this.WithStorageAccountAccessKey(storageAccountAccessKey) as SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate;
+            return this.WithStorageAccountAccessKey(storageAccountAccessKey);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate SqlDatabaseThreatDetectionPolicy.Update.IWithSecurityAlertPolicyState.WithPolicyEnabled()
         {
-            return this.WithPolicyEnabled() as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.WithPolicyEnabled();
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate SqlDatabaseThreatDetectionPolicy.Update.IWithSecurityAlertPolicyState.WithPolicyNew()
         {
-            return this.WithPolicyNew() as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.WithPolicyNew();
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate SqlDatabaseThreatDetectionPolicy.Update.IWithSecurityAlertPolicyState.WithPolicyDisabled()
         {
-            return this.WithPolicyDisabled() as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.WithPolicyDisabled();
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate SqlDatabaseThreatDetectionPolicy.Update.IWithSecurityAlertPolicyState.WithDefaultSecurityAlertPolicy()
         {
-            return this.WithDefaultSecurityAlertPolicy() as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.WithDefaultSecurityAlertPolicy();
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IWithStorageEndpoint SqlDatabaseThreatDetectionPolicy.Definition.IWithSecurityAlertPolicyState.WithPolicyEnabled()
         {
-            return this.WithPolicyEnabled() as SqlDatabaseThreatDetectionPolicy.Definition.IWithStorageEndpoint;
+            return this.WithPolicyEnabled();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IWithStorageEndpoint SqlDatabaseThreatDetectionPolicy.Definition.IWithSecurityAlertPolicyState.WithPolicyNew()
         {
-            return this.WithPolicyNew() as SqlDatabaseThreatDetectionPolicy.Definition.IWithStorageEndpoint;
+            return this.WithPolicyNew();
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate SqlDatabaseThreatDetectionPolicy.Definition.IWithSecurityAlertPolicyState.WithPolicyDisabled()
         {
-            return this.WithPolicyDisabled() as SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate;
+            return this.WithPolicyDisabled();
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate SqlDatabaseThreatDetectionPolicy.Definition.IWithSecurityAlertPolicyState.WithDefaultSecurityAlertPolicy()
         {
-            return this.WithDefaultSecurityAlertPolicy() as SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate;
+            return this.WithDefaultSecurityAlertPolicy();
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate SqlDatabaseThreatDetectionPolicy.Update.IWithEmailToAccountAdmins.WithoutEmailToAccountAdmins()
         {
-            return this.WithoutEmailToAccountAdmins() as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.WithoutEmailToAccountAdmins();
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate SqlDatabaseThreatDetectionPolicy.Update.IWithEmailToAccountAdmins.WithEmailToAccountAdmins()
         {
-            return this.WithEmailToAccountAdmins() as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.WithEmailToAccountAdmins();
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate SqlDatabaseThreatDetectionPolicy.Definition.IWithEmailToAccountAdmins.WithoutEmailToAccountAdmins()
         {
-            return this.WithoutEmailToAccountAdmins() as SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate;
+            return this.WithoutEmailToAccountAdmins();
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate SqlDatabaseThreatDetectionPolicy.Definition.IWithEmailToAccountAdmins.WithEmailToAccountAdmins()
         {
-            return this.WithEmailToAccountAdmins() as SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate;
+            return this.WithEmailToAccountAdmins();
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The stage of new resource update.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<SqlDatabaseThreatDetectionPolicy.Update.IUpdate>.Update()
         {
-            return this.Update() as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.Update();
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Region() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region();
             }
         }
 
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate SqlDatabaseThreatDetectionPolicy.Update.IWithStorageEndpoint.WithStorageEndpoint(string storageEndpoint)
         {
-            return this.WithStorageEndpoint(storageEndpoint) as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.WithStorageEndpoint(storageEndpoint);
         }
 
         /// <summary>
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IWithStorageAccountAccessKey SqlDatabaseThreatDetectionPolicy.Definition.IWithStorageEndpoint.WithStorageEndpoint(string storageEndpoint)
         {
-            return this.WithStorageEndpoint(storageEndpoint) as SqlDatabaseThreatDetectionPolicy.Definition.IWithStorageAccountAccessKey;
+            return this.WithStorageEndpoint(storageEndpoint);
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate SqlDatabaseThreatDetectionPolicy.Update.IWithEmailAddresses.WithEmailAddresses(string addresses)
         {
-            return this.WithEmailAddresses(addresses) as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.WithEmailAddresses(addresses);
         }
 
         /// <summary>
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate SqlDatabaseThreatDetectionPolicy.Definition.IWithEmailAddresses.WithEmailAddresses(string addresses)
         {
-            return this.WithEmailAddresses(addresses) as SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate;
+            return this.WithEmailAddresses(addresses);
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate SqlDatabaseThreatDetectionPolicy.Update.IWithAlertsFilter.WithAlertsFilter(string alertsFilter)
         {
-            return this.WithAlertsFilter(alertsFilter) as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.WithAlertsFilter(alertsFilter);
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate SqlDatabaseThreatDetectionPolicy.Definition.IWithAlertsFilter.WithAlertsFilter(string alertsFilter)
         {
-            return this.WithAlertsFilter(alertsFilter) as SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate;
+            return this.WithAlertsFilter(alertsFilter);
         }
 
         /// <summary>
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Update.IUpdate SqlDatabaseThreatDetectionPolicy.Update.IWithRetentionDays.WithRetentionDays(int retentionDays)
         {
-            return this.WithRetentionDays(retentionDays) as SqlDatabaseThreatDetectionPolicy.Update.IUpdate;
+            return this.WithRetentionDays(retentionDays);
         }
 
         /// <summary>
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate SqlDatabaseThreatDetectionPolicy.Definition.IWithRetentionDays.WithRetentionDays(int retentionDays)
         {
-            return this.WithRetentionDays(retentionDays) as SqlDatabaseThreatDetectionPolicy.Definition.IWithCreate;
+            return this.WithRetentionDays(retentionDays);
         }
     }
 }

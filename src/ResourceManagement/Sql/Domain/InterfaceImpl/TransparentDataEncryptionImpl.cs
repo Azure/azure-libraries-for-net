@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of the new encryption settings after the update operation.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption> Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption.UpdateStatusAsync(TransparentDataEncryptionStates transparentDataEncryptionState, CancellationToken cancellationToken)
         {
-            return await this.UpdateStatusAsync(transparentDataEncryptionState, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption;
+            return await this.UpdateStatusAsync(transparentDataEncryptionState, cancellationToken);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An Azure SQL Database Transparent Data Encryption Activities.</return>
         async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryptionActivity>> Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption.ListActivitiesAsync(CancellationToken cancellationToken)
         {
-            return await this.ListActivitiesAsync(cancellationToken) as IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryptionActivity>;
+            return await this.ListActivitiesAsync(cancellationToken);
         }
 
         /// <summary>
@@ -77,13 +77,13 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The new encryption settings after the update operation.</return>
         Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption.UpdateStatus(TransparentDataEncryptionStates transparentDataEncryptionState)
         {
-            return this.UpdateStatus(transparentDataEncryptionState) as Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption;
+            return this.UpdateStatus(transparentDataEncryptionState);
         }
 
         /// <return>An Azure SQL Database Transparent Data Encryption Activities.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryptionActivity> Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryption.ListActivities()
         {
-            return this.ListActivities() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ITransparentDataEncryptionActivity>;
+            return this.ListActivities();
         }
 
         /// <summary>

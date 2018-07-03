@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the parent definition.</return>
         BatchAIJob.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<BatchAIJob.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as BatchAIJob.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <param name="createNew">
@@ -29,21 +29,21 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> Models.OutputDirectorySettings.Definition.IWithCreateNew<BatchAIJob.Definition.IWithCreate>.WithCreateNew(bool createNew)
         {
-            return this.WithCreateNew(createNew) as Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithCreateNew(createNew);
         }
 
         /// <param name="pathPrefix">Path prefix.</param>
         /// <return>The next stage of the definition.</return>
         Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> Models.OutputDirectorySettings.Definition.IWithPathPrefix<BatchAIJob.Definition.IWithCreate>.WithPathPrefix(string pathPrefix)
         {
-            return this.WithPathPrefix(pathPrefix) as Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPathPrefix(pathPrefix);
         }
 
         /// <param name="pathSuffix">Path prefix.</param>
         /// <return>The next stage of the definition.</return>
         Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> Models.OutputDirectorySettings.Definition.IWithPathSuffix<BatchAIJob.Definition.IWithCreate>.WithPathSuffix(string pathSuffix)
         {
-            return this.WithPathSuffix(pathSuffix) as Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPathSuffix(pathSuffix);
         }
     }
 }

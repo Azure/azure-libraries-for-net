@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob;
+                return this.Parent();
             }
         }
 
@@ -31,17 +31,17 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the parent definition.</return>
         BatchAIJob.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<BatchAIJob.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as BatchAIJob.Definition.IWithCreate;
+            return this.Attach();
         }
 
         IWithAttach<IWithCreate> ToolTypeSettings.HasCommandLineArgs.Definition.IWithCommandLineArgs<IWithAttach<IWithCreate>>.WithCommandLineArgs(string commandLineArgs)
         {
-            return this.WithCommandLineArgs(commandLineArgs) as ToolTypeSettings.PyTorch.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithCommandLineArgs(commandLineArgs);
         }
 
         IWithAttach<IWithCreate> ToolTypeSettings.HasProcessCount.Definition.IWithProcessCount<IWithAttach<IWithCreate>>.WithProcessCount(int processCount)
         {
-            return this.WithProcessCount(processCount) as ToolTypeSettings.PyTorch.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithProcessCount(processCount);
         }
 
         /// <param name="communicationBackend">
@@ -52,17 +52,17 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         ToolTypeSettings.PyTorch.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.PyTorch.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>.WithCommunicationBackend(string communicationBackend)
         {
-            return this.WithCommunicationBackend(communicationBackend) as ToolTypeSettings.PyTorch.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithCommunicationBackend(communicationBackend);
         }
 
         ToolTypeSettings.PyTorch.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.HasPythonInterpreter.Definition.IWithPythonInterpreter<IWithAttach<IWithCreate>>.WithPythonInterpreterPath(string path)
         {
-            return this.WithPythonInterpreterPath(path) as ToolTypeSettings.PyTorch.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPythonInterpreterPath(path);
         }
 
         ToolTypeSettings.PyTorch.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.PyTorch.Definition.IWithPython<BatchAIJob.Definition.IWithCreate>.WithPythonScriptFile(string pythonScriptFilePath)
         {
-            return this.WithPythonScriptFile(pythonScriptFilePath) as ToolTypeSettings.PyTorch.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPythonScriptFile(pythonScriptFilePath);
         }
     }
 }

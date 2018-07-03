@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.OSDiskImage() as Models.OSDiskImage;
+                return this.OSDiskImage();
             }
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Plan() as Models.PurchasePlan;
+                return this.Plan();
             }
         }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Location() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Location();
             }
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.DataDiskImages() as System.Collections.Generic.IReadOnlyDictionary<int, Models.DataDiskImage>;
+                return this.DataDiskImages();
             }
         }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.ImageReference() as Models.ImageReference;
+                return this.ImageReference();
             }
         }
     }

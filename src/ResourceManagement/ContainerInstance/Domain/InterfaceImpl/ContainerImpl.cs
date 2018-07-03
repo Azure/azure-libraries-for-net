@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithInternalTcpPort(int port)
         {
-            return this.WithInternalTcpPort(port) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithInternalTcpPort(port);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithInternalUdpPort(int port)
         {
-            return this.WithInternalUdpPort(port) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithInternalUdpPort(port);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithInternalTcpPorts(params int[] ports)
         {
-            return this.WithInternalTcpPorts(ports) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithInternalTcpPorts(ports);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithInternalUdpPorts(params int[] ports)
         {
-            return this.WithInternalUdpPorts(ports) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithInternalUdpPorts(ports);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithExternalTcpPort(int port)
         {
-            return this.WithExternalTcpPort(port) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithExternalTcpPort(port);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithExternalUdpPorts(params int[] ports)
         {
-            return this.WithExternalUdpPorts(ports) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithExternalUdpPorts(ports);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithExternalUdpPort(int port)
         {
-            return this.WithExternalUdpPort(port) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithExternalUdpPort(port);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithExternalTcpPorts(params int[] ports)
         {
-            return this.WithExternalTcpPorts(ports) as ContainerGroup.Definition.IWithPortsOrContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithExternalTcpPorts(ports);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithoutPorts<ContainerGroup.Definition.IWithNextContainerInstance>.WithoutPorts()
         {
-            return this.WithoutPorts() as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithoutPorts();
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithStartingCommandLineBeta<ContainerGroup.Definition.IWithNextContainerInstance>.WithStartingCommandLine(string executable, params string[] parameters)
         {
-            return this.WithStartingCommandLine(executable, parameters) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithStartingCommandLine(executable, parameters);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithStartingCommandLine<ContainerGroup.Definition.IWithNextContainerInstance>.WithStartingCommandLine(string executable)
         {
-            return this.WithStartingCommandLine(executable) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithStartingCommandLine(executable);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <throws>IllegalArgumentException thrown if volumeName was not defined in the respective container group definition stage.</throws>
         ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithVolumeMountSetting<ContainerGroup.Definition.IWithNextContainerInstance>.WithVolumeMountSetting(string volumeName, string mountPath)
         {
-            return this.WithVolumeMountSetting(volumeName, mountPath) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithVolumeMountSetting(volumeName, mountPath);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <throws>IllegalArgumentException thrown if volumeName was not defined in the respective container group definition stage.</throws>
         ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithVolumeMountSetting<ContainerGroup.Definition.IWithNextContainerInstance>.WithVolumeMountSetting(IDictionary<string,string> volumeMountSetting)
         {
-            return this.WithVolumeMountSetting(volumeMountSetting) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithVolumeMountSetting(volumeMountSetting);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <throws>IllegalArgumentException thrown if volumeName was not defined in the respective container group definition stage.</throws>
         ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithVolumeMountSetting<ContainerGroup.Definition.IWithNextContainerInstance>.WithReadOnlyVolumeMountSetting(string volumeName, string mountPath)
         {
-            return this.WithReadOnlyVolumeMountSetting(volumeName, mountPath) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithReadOnlyVolumeMountSetting(volumeName, mountPath);
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <throws>IllegalArgumentException thrown if volumeName was not defined in the respective container group definition stage.</throws>
         ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithVolumeMountSetting<ContainerGroup.Definition.IWithNextContainerInstance>.WithReadOnlyVolumeMountSetting(IDictionary<string,string> volumeMountSetting)
         {
-            return this.WithReadOnlyVolumeMountSetting(volumeMountSetting) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithReadOnlyVolumeMountSetting(volumeMountSetting);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithCpuCoreCount<ContainerGroup.Definition.IWithNextContainerInstance>.WithCpuCoreCount(double cpuCoreCount)
         {
-            return this.WithCpuCoreCount(cpuCoreCount) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithCpuCoreCount(cpuCoreCount);
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the parent definition.</return>
         ContainerGroup.Definition.IWithNextContainerInstance Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ContainerGroup.Definition.IWithNextContainerInstance>.Attach()
         {
-            return this.Attach() as ContainerGroup.Definition.IWithNextContainerInstance;
+            return this.Attach();
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithMemorySize<ContainerGroup.Definition.IWithNextContainerInstance>.WithMemorySizeInGB(double memorySize)
         {
-            return this.WithMemorySizeInGB(memorySize) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithMemorySizeInGB(memorySize);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithEnvironmentVariables<ContainerGroup.Definition.IWithNextContainerInstance>.WithEnvironmentVariable(string envName, string envValue)
         {
-            return this.WithEnvironmentVariable(envName, envValue) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithEnvironmentVariable(envName, envValue);
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithEnvironmentVariables<ContainerGroup.Definition.IWithNextContainerInstance>.WithEnvironmentVariables(IDictionary<string,string> environmentVariables)
         {
-            return this.WithEnvironmentVariables(environmentVariables) as ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithEnvironmentVariables(environmentVariables);
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerGroup.Definition.IWithOrWithoutPorts<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithImage<ContainerGroup.Definition.IWithNextContainerInstance>.WithImage(string imageName)
         {
-            return this.WithImage(imageName) as ContainerGroup.Definition.IWithOrWithoutPorts<ContainerGroup.Definition.IWithNextContainerInstance>;
+            return this.WithImage(imageName);
         }
     }
 }

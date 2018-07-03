@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new resource definition.</return>
         SqlSyncGroupOperations.Definition.IWithSqlServer Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<SqlSyncGroupOperations.Definition.IWithSqlServer>.Define(string name)
         {
-            return this.Define(name) as SqlSyncGroupOperations.Definition.IWithSqlServer;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new SQL Virtual Network Rule definition.</return>
         SqlSyncGroupOperations.Definition.IWithSyncDatabaseId SqlSyncGroupOperations.SqlSyncGroupActionsDefinition.ISqlSyncGroupActionsDefinition.Define(string syncGroupName)
         {
-            return this.Define(syncGroupName) as SqlSyncGroupOperations.Definition.IWithSyncDatabaseId;
+            return this.Define(syncGroupName);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup>.Get(string name)
         {
-            return this.Get(name) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup;
+            return this.Get(name);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup>.List()
         {
-            return this.List() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup>;
+            return this.List();
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup>.GetAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.GetAsync(name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup;
+            return await this.GetAsync(name, cancellationToken);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<IReadOnlyList<ISqlSyncGroup>> SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup>.ListAsync(CancellationToken cancellationToken)
         {
-            return await this.ListAsync(cancellationToken) as IReadOnlyList<ISqlSyncGroup>;
+            return await this.ListAsync(cancellationToken);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup SqlChildrenOperations.SqlChildrenActionsDefinition.ISqlChildrenActionsDefinition<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup;
+            return this.GetById(id);
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup> Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupOperations.GetBySqlServerAsync(string resourceGroupName, string sqlServerName, string databaseName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, databaseName, name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup;
+            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, databaseName, name, cancellationToken);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupOperations.GetBySqlServer(string resourceGroupName, string sqlServerName, string databaseName, string name)
         {
-            return this.GetBySqlServer(resourceGroupName, sqlServerName, databaseName, name) as Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroup;
+            return this.GetBySqlServer(resourceGroupName, sqlServerName, databaseName, name);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A paged list of database IDs if successful.</return>
         System.Collections.Generic.IEnumerable<string> Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupOperations.ListSyncDatabaseIds(string locationName)
         {
-            return this.ListSyncDatabaseIds(locationName) as System.Collections.Generic.IEnumerable<string>;
+            return this.ListSyncDatabaseIds(locationName);
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A paged list of database IDs if successful.</return>
         System.Collections.Generic.IEnumerable<string> Microsoft.Azure.Management.Sql.Fluent.ISqlSyncGroupOperations.ListSyncDatabaseIds(Region region)
         {
-            return this.ListSyncDatabaseIds(region) as System.Collections.Generic.IEnumerable<string>;
+            return this.ListSyncDatabaseIds(region);
         }
     }
 }

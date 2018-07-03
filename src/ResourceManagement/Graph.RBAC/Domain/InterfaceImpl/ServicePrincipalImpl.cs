@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.RoleAssignments() as System.Collections.Generic.ISet<Microsoft.Azure.Management.Graph.RBAC.Fluent.IRoleAssignment>;
+                return this.RoleAssignments();
             }
         }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.CertificateCredentials() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential>;
+                return this.CertificateCredentials();
             }
         }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.ServicePrincipalNames() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.ServicePrincipalNames();
             }
         }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.PasswordCredentials() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential>;
+                return this.PasswordCredentials();
             }
         }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The interface itself.</return>
         IWithCreate Microsoft.Azure.Management.Graph.RBAC.Fluent.IHasCredential<IWithCreate>.WithCertificateCredential(CertificateCredentialImpl<IWithCreate> credential)
         {
-            return this.WithCertificateCredential(credential) as Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipalImpl;
+            return this.WithCertificateCredential(credential);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The interface itself.</return>
         IUpdate Microsoft.Azure.Management.Graph.RBAC.Fluent.IHasCredential<IUpdate>.WithCertificateCredential(CertificateCredentialImpl<IUpdate> credential)
         {
-            return this.WithCertificateCredential(credential) as Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipalImpl;
+            return this.WithCertificateCredential(credential);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The interface itself.</return>
         IWithCreate Microsoft.Azure.Management.Graph.RBAC.Fluent.IHasCredential<IWithCreate>.WithPasswordCredential(PasswordCredentialImpl<IWithCreate> credential)
         {
-            return this.WithPasswordCredential(credential) as Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipalImpl;
+            return this.WithPasswordCredential(credential);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The interface itself.</return>
         IUpdate Microsoft.Azure.Management.Graph.RBAC.Fluent.IHasCredential<IUpdate>.WithPasswordCredential(PasswordCredentialImpl<IUpdate> credential)
         {
-            return this.WithPasswordCredential(credential) as Microsoft.Azure.Management.Graph.RBAC.Fluent.ServicePrincipalImpl;
+            return this.WithPasswordCredential(credential);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The first stage in certificate credential definition.</return>
         CertificateCredential.UpdateDefinition.IBlank<ServicePrincipal.Update.IUpdate> ServicePrincipal.Update.IWithCredentialBeta.DefineCertificateCredential(string name)
         {
-            return this.DefineCertificateCredential<IUpdate>(name) as CertificateCredential.UpdateDefinition.IBlank<ServicePrincipal.Update.IUpdate>;
+            return this.DefineCertificateCredential<IUpdate>(name);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the application update.</return>
         ServicePrincipal.Update.IUpdate ServicePrincipal.Update.IWithCredentialBeta.WithoutCredential(string name)
         {
-            return this.WithoutCredential(name) as ServicePrincipal.Update.IUpdate;
+            return this.WithoutCredential(name);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The first stage in password credential definition.</return>
         PasswordCredential.UpdateDefinition.IBlank<ServicePrincipal.Update.IUpdate> ServicePrincipal.Update.IWithCredentialBeta.DefinePasswordCredential(string name)
         {
-            return this.DefinePasswordCredential<IUpdate>(name) as PasswordCredential.UpdateDefinition.IBlank<ServicePrincipal.Update.IUpdate>;
+            return this.DefinePasswordCredential<IUpdate>(name);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The first stage in certificate credential definition.</return>
         CertificateCredential.Definition.IBlank<ServicePrincipal.Definition.IWithCreate> ServicePrincipal.Definition.IWithCredentialBeta.DefineCertificateCredential(string name)
         {
-            return this.DefineCertificateCredential<IWithCreate>(name) as CertificateCredential.Definition.IBlank<ServicePrincipal.Definition.IWithCreate>;
+            return this.DefineCertificateCredential<IWithCreate>(name);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The first stage in password credential definition.</return>
         PasswordCredential.Definition.IBlank<ServicePrincipal.Definition.IWithCreate> ServicePrincipal.Definition.IWithCredentialBeta.DefinePasswordCredential(string name)
         {
-            return this.DefinePasswordCredential<IWithCreate>(name) as PasswordCredential.Definition.IBlank<ServicePrincipal.Definition.IWithCreate>;
+            return this.DefinePasswordCredential<IWithCreate>(name);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the service principal update.</return>
         ServicePrincipal.Update.IUpdate ServicePrincipal.Update.IWithRoleAssignmentBeta.WithNewRoleInResourceGroup(BuiltInRole role, IResourceGroup resourceGroup)
         {
-            return this.WithNewRoleInResourceGroup(role, resourceGroup) as ServicePrincipal.Update.IUpdate;
+            return this.WithNewRoleInResourceGroup(role, resourceGroup);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the service principal update.</return>
         ServicePrincipal.Update.IUpdate ServicePrincipal.Update.IWithRoleAssignmentBeta.WithNewRoleInSubscription(BuiltInRole role, string subscriptionId)
         {
-            return this.WithNewRoleInSubscription(role, subscriptionId) as ServicePrincipal.Update.IUpdate;
+            return this.WithNewRoleInSubscription(role, subscriptionId);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the service principal update.</return>
         ServicePrincipal.Update.IUpdate ServicePrincipal.Update.IWithRoleAssignmentBeta.WithNewRole(BuiltInRole role, string scope)
         {
-            return this.WithNewRole(role, scope) as ServicePrincipal.Update.IUpdate;
+            return this.WithNewRole(role, scope);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the service principal update.</return>
         ServicePrincipal.Update.IUpdate ServicePrincipal.Update.IWithRoleAssignmentBeta.WithoutRole(IRoleAssignment roleAssignment)
         {
-            return this.WithoutRole(roleAssignment) as ServicePrincipal.Update.IUpdate;
+            return this.WithoutRole(roleAssignment);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the service principal definition.</return>
         ServicePrincipal.Definition.IWithCreate ServicePrincipal.Definition.IWithRoleAssignmentBeta.WithNewRoleInResourceGroup(BuiltInRole role, IResourceGroup resourceGroup)
         {
-            return this.WithNewRoleInResourceGroup(role, resourceGroup) as ServicePrincipal.Definition.IWithCreate;
+            return this.WithNewRoleInResourceGroup(role, resourceGroup);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the service principal definition.</return>
         ServicePrincipal.Definition.IWithCreate ServicePrincipal.Definition.IWithRoleAssignmentBeta.WithNewRoleInSubscription(BuiltInRole role, string subscriptionId)
         {
-            return this.WithNewRoleInSubscription(role, subscriptionId) as ServicePrincipal.Definition.IWithCreate;
+            return this.WithNewRoleInSubscription(role, subscriptionId);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the service principal definition.</return>
         ServicePrincipal.Definition.IWithCreate ServicePrincipal.Definition.IWithRoleAssignmentBeta.WithNewRole(BuiltInRole role, string scope)
         {
-            return this.WithNewRole(role, scope) as ServicePrincipal.Definition.IWithCreate;
+            return this.WithNewRole(role, scope);
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the service principal definition.</return>
         ServicePrincipal.Definition.IWithCreate ServicePrincipal.Definition.IWithApplicationBeta.WithExistingApplication(string id)
         {
-            return this.WithExistingApplication(id) as ServicePrincipal.Definition.IWithCreate;
+            return this.WithExistingApplication(id);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the service principal definition.</return>
         ServicePrincipal.Definition.IWithCreate ServicePrincipal.Definition.IWithApplicationBeta.WithExistingApplication(IActiveDirectoryApplication application)
         {
-            return this.WithExistingApplication(application) as ServicePrincipal.Definition.IWithCreate;
+            return this.WithExistingApplication(application);
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the service principal definition.</return>
         ServicePrincipal.Definition.IWithCreate ServicePrincipal.Definition.IWithApplicationBeta.WithNewApplication(ICreatable<Microsoft.Azure.Management.Graph.RBAC.Fluent.IActiveDirectoryApplication> applicationCreatable)
         {
-            return this.WithNewApplication(applicationCreatable) as ServicePrincipal.Definition.IWithCreate;
+            return this.WithNewApplication(applicationCreatable);
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         /// <return>The next stage of the service principal definition.</return>
         ServicePrincipal.Definition.IWithCreate ServicePrincipal.Definition.IWithApplicationBeta.WithNewApplication(string signOnUrl)
         {
-            return this.WithNewApplication(signOnUrl) as ServicePrincipal.Definition.IWithCreate;
+            return this.WithNewApplication(signOnUrl);
         }
     }
 }

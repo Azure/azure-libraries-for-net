@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.Tags as System.Collections.Generic.IReadOnlyDictionary<string,string>;
+                return this.Tags;
             }
         }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.Region as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region;
             }
         }
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.Manager as Microsoft.Azure.Management.AppService.Fluent.IAppServiceManager;
+                return this.Manager;
             }
         }
     }

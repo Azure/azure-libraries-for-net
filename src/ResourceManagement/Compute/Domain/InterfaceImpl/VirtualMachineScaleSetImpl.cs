@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyUnmanaged VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameUnmanaged.WithRootUsername(string rootUserName)
         {
-            return this.WithRootUsername(rootUserName) as VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyUnmanaged;
+            return this.WithRootUsername(rootUserName);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithInternalInternalLoadBalancerNatPool VirtualMachineScaleSet.Definition.IWithInternalLoadBalancerBackendOrNatPool.WithPrimaryInternalLoadBalancerBackends(params string[] backendNames)
         {
-            return this.WithPrimaryInternalLoadBalancerBackends(backendNames) as VirtualMachineScaleSet.Definition.IWithInternalInternalLoadBalancerNatPool;
+            return this.WithPrimaryInternalLoadBalancerBackends(backendNames);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithOverProvision.WithoutOverProvisioning()
         {
-            return this.WithoutOverProvisioning() as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithoutOverProvisioning();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithOverProvision.WithOverProvision(bool enabled)
         {
-            return this.WithOverProvision(enabled) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithOverProvision(enabled);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithOverProvision.WithOverProvisioning()
         {
-            return this.WithOverProvisioning() as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithOverProvisioning();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
         {
-            return this.WithAvailabilityZone(zoneId) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithAvailabilityZone(zoneId);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
         {
-            return this.WithAvailabilityZone(zoneId) as VirtualMachineScaleSet.Definition.IWithManagedCreate;
+            return this.WithAvailabilityZone(zoneId);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxCreateUnmanaged VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyUnmanaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachineScaleSet.Definition.IWithLinuxCreateUnmanaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxCreateUnmanaged VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyUnmanaged.WithRootPassword(string rootPassword)
         {
-            return this.WithRootPassword(rootPassword) as VirtualMachineScaleSet.Definition.IWithLinuxCreateUnmanaged;
+            return this.WithRootPassword(rootPassword);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithOS VirtualMachineScaleSet.Definition.IWithInternalInternalLoadBalancerNatPool.WithPrimaryInternalLoadBalancerInboundNatPools(params string[] natPoolNames)
         {
-            return this.WithPrimaryInternalLoadBalancerInboundNatPools(natPoolNames) as VirtualMachineScaleSet.Definition.IWithOS;
+            return this.WithPrimaryInternalLoadBalancerInboundNatPools(natPoolNames);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManagedOrUnmanaged.WithRootUsername(string rootUserName)
         {
-            return this.WithRootUsername(rootUserName) as VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged;
+            return this.WithRootUsername(rootUserName);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of virtual machine scale set update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB)
         {
-            return this.WithNewDataDisk(sizeInGB) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithNewDataDisk(sizeInGB);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of virtual machine scale set update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType)
         {
-            return this.WithNewDataDisk(sizeInGB, lun, cachingType) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithNewDataDisk(sizeInGB, lun, cachingType);
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of virtual machine scale set update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
-            return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of virtual machine scale set update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithManagedDataDisk.WithoutDataDisk(int lun)
         {
-            return this.WithoutDataDisk(lun) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithoutDataDisk(lun);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of virtual machine definition.</return>
         VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDataDisk.WithNewDataDiskFromImage(int imageLun)
         {
-            return this.WithNewDataDiskFromImage(imageLun) as VirtualMachineScaleSet.Definition.IWithManagedCreate;
+            return this.WithNewDataDiskFromImage(imageLun);
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of virtual machine definition.</return>
         VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDataDisk.WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType)
         {
-            return this.WithNewDataDiskFromImage(imageLun, newSizeInGB, cachingType) as VirtualMachineScaleSet.Definition.IWithManagedCreate;
+            return this.WithNewDataDiskFromImage(imageLun, newSizeInGB, cachingType);
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of virtual machine definition.</return>
         VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDataDisk.WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
-            return this.WithNewDataDiskFromImage(imageLun, newSizeInGB, cachingType, storageAccountType) as VirtualMachineScaleSet.Definition.IWithManagedCreate;
+            return this.WithNewDataDiskFromImage(imageLun, newSizeInGB, cachingType, storageAccountType);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of virtual machine definition.</return>
         VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB)
         {
-            return this.WithNewDataDisk(sizeInGB) as VirtualMachineScaleSet.Definition.IWithManagedCreate;
+            return this.WithNewDataDisk(sizeInGB);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of virtual machine definition.</return>
         VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType)
         {
-            return this.WithNewDataDisk(sizeInGB, lun, cachingType) as VirtualMachineScaleSet.Definition.IWithManagedCreate;
+            return this.WithNewDataDisk(sizeInGB, lun, cachingType);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of virtual machine definition.</return>
         VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
-            return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType) as VirtualMachineScaleSet.Definition.IWithManagedCreate;
+            return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType);
         }
 
         /// <summary>
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithOSDiskSettings.WithOSDiskCaching(CachingTypes cachingType)
         {
-            return this.WithOSDiskCaching(cachingType) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithOSDiskCaching(cachingType);
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithOSDiskSettings.WithOSDiskName(string name)
         {
-            return this.WithOSDiskName(name) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithOSDiskName(name);
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithOS.WithLatestLinuxImage(string publisher, string offer, string sku)
         {
-            return this.WithLatestLinuxImage(publisher, offer, sku) as VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManagedOrUnmanaged;
+            return this.WithLatestLinuxImage(publisher, offer, sku);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameUnmanaged VirtualMachineScaleSet.Definition.IWithOS.WithStoredLinuxImage(string imageUrl)
         {
-            return this.WithStoredLinuxImage(imageUrl) as VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameUnmanaged;
+            return this.WithStoredLinuxImage(imageUrl);
         }
 
         /// <summary>
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithOS.WithSpecificLinuxImageVersion(ImageReference imageReference)
         {
-            return this.WithSpecificLinuxImageVersion(imageReference) as VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManagedOrUnmanaged;
+            return this.WithSpecificLinuxImageVersion(imageReference);
         }
 
         /// <summary>
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManaged VirtualMachineScaleSet.Definition.IWithOS.WithLinuxCustomImage(string customImageId)
         {
-            return this.WithLinuxCustomImage(customImageId) as VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManaged;
+            return this.WithLinuxCustomImage(customImageId);
         }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithOS.WithLatestWindowsImage(string publisher, string offer, string sku)
         {
-            return this.WithLatestWindowsImage(publisher, offer, sku) as VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged;
+            return this.WithLatestWindowsImage(publisher, offer, sku);
         }
 
         /// <summary>
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManaged VirtualMachineScaleSet.Definition.IWithOS.WithWindowsCustomImage(string customImageId)
         {
-            return this.WithWindowsCustomImage(customImageId) as VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManaged;
+            return this.WithWindowsCustomImage(customImageId);
         }
 
         /// <summary>
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithOS.WithPopularWindowsImage(KnownWindowsVirtualMachineImage knownImage)
         {
-            return this.WithPopularWindowsImage(knownImage) as VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged;
+            return this.WithPopularWindowsImage(knownImage);
         }
 
         /// <summary>
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithOS.WithPopularLinuxImage(KnownLinuxVirtualMachineImage knownImage)
         {
-            return this.WithPopularLinuxImage(knownImage) as VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManagedOrUnmanaged;
+            return this.WithPopularLinuxImage(knownImage);
         }
 
         /// <summary>
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithOS.WithSpecificWindowsImageVersion(ImageReference imageReference)
         {
-            return this.WithSpecificWindowsImageVersion(imageReference) as VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged;
+            return this.WithSpecificWindowsImageVersion(imageReference);
         }
 
         /// <summary>
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameUnmanaged VirtualMachineScaleSet.Definition.IWithOS.WithStoredWindowsImage(string imageUrl)
         {
-            return this.WithStoredWindowsImage(imageUrl) as VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameUnmanaged;
+            return this.WithStoredWindowsImage(imageUrl);
         }
 
         /// <summary>
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithSku.WithSku(VirtualMachineScaleSetSkuTypes skuType)
         {
-            return this.WithSku(skuType) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithSku(skuType);
         }
 
         /// <summary>
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithSku.WithSku(IVirtualMachineScaleSetSku sku)
         {
-            return this.WithSku(sku) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithSku(sku);
         }
 
         /// <summary>
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithNetworkSubnet VirtualMachineScaleSet.Definition.IWithSku.WithSku(VirtualMachineScaleSetSkuTypes skuType)
         {
-            return this.WithSku(skuType) as VirtualMachineScaleSet.Definition.IWithNetworkSubnet;
+            return this.WithSku(skuType);
         }
 
         /// <summary>
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithNetworkSubnet VirtualMachineScaleSet.Definition.IWithSku.WithSku(IVirtualMachineScaleSetSku sku)
         {
-            return this.WithSku(sku) as VirtualMachineScaleSet.Definition.IWithNetworkSubnet;
+            return this.WithSku(sku);
         }
 
         /// <summary>
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithPrimaryInternetFacingLoadBalancer VirtualMachineScaleSet.Definition.IWithNetworkSubnet.WithExistingPrimaryNetworkSubnet(INetwork network, string subnetName)
         {
-            return this.WithExistingPrimaryNetworkSubnet(network, subnetName) as VirtualMachineScaleSet.Definition.IWithPrimaryInternetFacingLoadBalancer;
+            return this.WithExistingPrimaryNetworkSubnet(network, subnetName);
         }
 
         /// <summary>
@@ -439,13 +439,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable Linux VM definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsAdminPasswordManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged.WithAdminUsername(string adminUserName)
         {
-            return this.WithAdminUsername(adminUserName) as VirtualMachineScaleSet.Definition.IWithWindowsAdminPasswordManagedOrUnmanaged;
+            return this.WithAdminUsername(adminUserName);
         }
 
         /// <return>The next stage of a unmanaged disk based virtual machine scale set definition.</return>
         VirtualMachineScaleSet.Definition.IWithUnmanagedCreate VirtualMachineScaleSet.Definition.IWithLinuxCreateManagedOrUnmanaged.WithUnmanagedDisks()
         {
-            return this.WithUnmanagedDisks() as VirtualMachineScaleSet.Definition.IWithUnmanagedCreate;
+            return this.WithUnmanagedDisks();
         }
 
         /// <summary>
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxCreateManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithLinuxCreateManagedOrUnmanaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachineScaleSet.Definition.IWithLinuxCreateManagedOrUnmanaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged.WithAutoUpdate()
         {
-            return this.WithAutoUpdate() as VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithAutoUpdate();
         }
 
         /// <summary>
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged.WithoutVMAgent()
         {
-            return this.WithoutVMAgent() as VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithoutVMAgent();
         }
 
         /// <summary>
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged.WithoutAutoUpdate()
         {
-            return this.WithoutAutoUpdate() as VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithoutAutoUpdate();
         }
 
         /// <summary>
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged.WithWinRM(WinRMListener listener)
         {
-            return this.WithWinRM(listener) as VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithWinRM(listener);
         }
 
         /// <summary>
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged.WithVMAgent()
         {
-            return this.WithVMAgent() as VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithVMAgent();
         }
 
         /// <summary>
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged.WithTimeZone(string timeZone)
         {
-            return this.WithTimeZone(timeZone) as VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithTimeZone(timeZone);
         }
 
         /// <summary>
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithCapacity.WithCapacity(int capacity)
         {
-            return this.WithCapacity(capacity) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithCapacity(capacity);
         }
 
         /// <summary>
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithCapacity.WithCapacity(int capacity)
         {
-            return this.WithCapacity(capacity) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithCapacity(capacity);
         }
 
         /// <summary>
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged.WithAutoUpdate()
         {
-            return this.WithAutoUpdate() as VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged;
+            return this.WithAutoUpdate();
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged.WithoutVMAgent()
         {
-            return this.WithoutVMAgent() as VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged;
+            return this.WithoutVMAgent();
         }
 
         /// <summary>
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged.WithoutAutoUpdate()
         {
-            return this.WithoutAutoUpdate() as VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged;
+            return this.WithoutAutoUpdate();
         }
 
         /// <summary>
@@ -571,7 +571,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged.WithWinRM(WinRMListener listener)
         {
-            return this.WithWinRM(listener) as VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged;
+            return this.WithWinRM(listener);
         }
 
         /// <summary>
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged.WithVMAgent()
         {
-            return this.WithVMAgent() as VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged;
+            return this.WithVMAgent();
         }
 
         /// <summary>
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged.WithTimeZone(string timeZone)
         {
-            return this.WithTimeZone(timeZone) as VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged;
+            return this.WithTimeZone(timeZone);
         }
 
         /// <summary>
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxCreateManaged VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyManaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachineScaleSet.Definition.IWithLinuxCreateManaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxCreateManaged VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyManaged.WithRootPassword(string rootPassword)
         {
-            return this.WithRootPassword(rootPassword) as VirtualMachineScaleSet.Definition.IWithLinuxCreateManaged;
+            return this.WithRootPassword(rootPassword);
         }
 
         /// <summary>
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancerBackendOrNatPool VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancer.WithExistingPrimaryInternalLoadBalancer(ILoadBalancer loadBalancer)
         {
-            return this.WithExistingPrimaryInternalLoadBalancer(loadBalancer) as VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancerBackendOrNatPool;
+            return this.WithExistingPrimaryInternalLoadBalancer(loadBalancer);
         }
 
         /// <summary>
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithInternalLoadBalancerBackendOrNatPool VirtualMachineScaleSet.Definition.IWithPrimaryInternalLoadBalancer.WithExistingPrimaryInternalLoadBalancer(ILoadBalancer loadBalancer)
         {
-            return this.WithExistingPrimaryInternalLoadBalancer(loadBalancer) as VirtualMachineScaleSet.Definition.IWithInternalLoadBalancerBackendOrNatPool;
+            return this.WithExistingPrimaryInternalLoadBalancer(loadBalancer);
         }
 
         /// <summary>
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithOS VirtualMachineScaleSet.Definition.IWithPrimaryInternalLoadBalancer.WithoutPrimaryInternalLoadBalancer()
         {
-            return this.WithoutPrimaryInternalLoadBalancer() as VirtualMachineScaleSet.Definition.IWithOS;
+            return this.WithoutPrimaryInternalLoadBalancer();
         }
 
         /// <summary>
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable Windows VM definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged VirtualMachineScaleSet.Definition.IWithWindowsAdminPasswordUnmanaged.WithAdminPassword(string adminPassword)
         {
-            return this.WithAdminPassword(adminPassword) as VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithAdminPassword(adminPassword);
         }
 
         /// <summary>
@@ -671,7 +671,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithStorageAccount.WithNewStorageAccount(string name)
         {
-            return this.WithNewStorageAccount(name) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithNewStorageAccount(name);
         }
 
         /// <summary>
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage in the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithStorageAccount.WithNewStorageAccount(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> creatable)
         {
-            return this.WithNewStorageAccount(creatable) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithNewStorageAccount(creatable);
         }
 
         /// <summary>
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage in the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithStorageAccount.WithExistingStorageAccount(IStorageAccount storageAccount)
         {
-            return this.WithExistingStorageAccount(storageAccount) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithExistingStorageAccount(storageAccount);
         }
 
         /// <summary>
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithPrimaryInternetFacingLoadBalancerBackendOrNatPool VirtualMachineScaleSet.Update.IWithPrimaryLoadBalancer.WithExistingPrimaryInternetFacingLoadBalancer(ILoadBalancer loadBalancer)
         {
-            return this.WithExistingPrimaryInternetFacingLoadBalancer(loadBalancer) as VirtualMachineScaleSet.Update.IWithPrimaryInternetFacingLoadBalancerBackendOrNatPool;
+            return this.WithExistingPrimaryInternetFacingLoadBalancer(loadBalancer);
         }
 
         /// <summary>
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithComputerNamePrefix.WithComputerNamePrefix(string namePrefix)
         {
-            return this.WithComputerNamePrefix(namePrefix) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithComputerNamePrefix(namePrefix);
         }
 
         /// <summary>
@@ -738,7 +738,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Extensions() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetExtension>;
+                return this.Extensions();
             }
         }
 
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <throws>IOException the IO exception.</throws>
         Microsoft.Azure.Management.Network.Fluent.ILoadBalancer Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.GetPrimaryInternetFacingLoadBalancer()
         {
-            return this.GetPrimaryInternetFacingLoadBalancer() as Microsoft.Azure.Management.Network.Fluent.ILoadBalancer;
+            return this.GetPrimaryInternetFacingLoadBalancer();
         }
 
         /// <summary>
@@ -766,7 +766,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The network interfaces associated with all virtual machine instances in a scale set.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListNetworkInterfaces()
         {
-            return this.ListNetworkInterfaces() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface>;
+            return this.ListNetworkInterfaces();
         }
 
         /// <return>
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <throws>IOException the IO exception.</throws>
         Microsoft.Azure.Management.Network.Fluent.INetwork Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.GetPrimaryNetwork()
         {
-            return this.GetPrimaryNetwork() as Microsoft.Azure.Management.Network.Fluent.INetwork;
+            return this.GetPrimaryNetwork();
         }
 
         /// <summary>
@@ -789,7 +789,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The network interfaces.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListNetworkInterfacesByInstanceId(string virtualMachineInstanceId)
         {
-            return this.ListNetworkInterfacesByInstanceId(virtualMachineInstanceId) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface>;
+            return this.ListNetworkInterfacesByInstanceId(virtualMachineInstanceId);
         }
 
         /// <summary>
@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.VhdContainers() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.VhdContainers();
             }
         }
 
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.PrimaryPublicIPAddressIds() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.PrimaryPublicIPAddressIds();
             }
         }
 
@@ -853,7 +853,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetSku> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListAvailableSkus()
         {
-            return this.ListAvailableSkus() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetSku>;
+            return this.ListAvailableSkus();
         }
 
         /// <summary>
@@ -941,7 +941,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.UserAssignedManagedServiceIdentityIds() as System.Collections.Generic.ISet<string>;
+                return this.UserAssignedManagedServiceIdentityIds();
             }
         }
 
@@ -997,7 +997,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <throws>IOException the IO exception.</throws>
         System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends()
         {
-            return this.ListPrimaryInternetFacingLoadBalancerBackends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend>;
+            return this.ListPrimaryInternetFacingLoadBalancerBackends();
         }
 
         /// <return>
@@ -1007,7 +1007,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <throws>IOException the IO exception.</throws>
         Microsoft.Azure.Management.Network.Fluent.ILoadBalancer Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.GetPrimaryInternalLoadBalancer()
         {
-            return this.GetPrimaryInternalLoadBalancer() as Microsoft.Azure.Management.Network.Fluent.ILoadBalancer;
+            return this.GetPrimaryInternalLoadBalancer();
         }
 
         /// <summary>
@@ -1037,7 +1037,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <throws>IOException the IO exception.</throws>
         System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends()
         {
-            return this.ListPrimaryInternalLoadBalancerBackends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend>;
+            return this.ListPrimaryInternalLoadBalancerBackends();
         }
 
         /// <summary>
@@ -1047,7 +1047,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Sku() as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetSkuTypes;
+                return this.Sku();
             }
         }
 
@@ -1058,7 +1058,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.VirtualMachines() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSetVMs;
+                return this.VirtualMachines();
             }
         }
 
@@ -1122,7 +1122,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The network interface.</return>
         Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.GetNetworkInterfaceByInstanceId(string instanceId, string name)
         {
-            return this.GetNetworkInterfaceByInstanceId(instanceId, name) as Microsoft.Azure.Management.Network.Fluent.IVirtualMachineScaleSetNetworkInterface;
+            return this.GetNetworkInterfaceByInstanceId(instanceId, name);
         }
 
         /// <summary>
@@ -1132,7 +1132,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.StorageProfile() as Models.VirtualMachineScaleSetStorageProfile;
+                return this.StorageProfile();
             }
         }
 
@@ -1163,7 +1163,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <throws>IOException the IO exception.</throws>
         System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools()
         {
-            return this.ListPrimaryInternalLoadBalancerInboundNatPools() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool>;
+            return this.ListPrimaryInternalLoadBalancerInboundNatPools();
         }
 
         /// <summary>
@@ -1183,7 +1183,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.NetworkProfile() as Models.VirtualMachineScaleSetNetworkProfile;
+                return this.NetworkProfile();
             }
         }
 
@@ -1205,7 +1205,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <throws>IOException the IO exception.</throws>
         System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools()
         {
-            return this.ListPrimaryInternetFacingLoadBalancerInboundNatPools() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool>;
+            return this.ListPrimaryInternetFacingLoadBalancerInboundNatPools();
         }
 
         /// <summary>
@@ -1216,7 +1216,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancerNatPool.WithoutPrimaryInternetFacingLoadBalancerNatPools(params string[] natPoolNames)
         {
-            return this.WithoutPrimaryInternetFacingLoadBalancerNatPools(natPoolNames) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithoutPrimaryInternetFacingLoadBalancerNatPools(natPoolNames);
         }
 
         /// <summary>
@@ -1227,12 +1227,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancerNatPool.WithoutPrimaryInternalLoadBalancerNatPools(params string[] natPoolNames)
         {
-            return this.WithoutPrimaryInternalLoadBalancerNatPools(natPoolNames) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithoutPrimaryInternalLoadBalancerNatPools(natPoolNames);
         }
 
         VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged VirtualMachineScaleSet.Definition.IWithWindowsCreateManagedOrUnmanaged.WithUnmanagedDisks()
         {
-            return this.WithUnmanagedDisks() as VirtualMachineScaleSet.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithUnmanagedDisks();
         }
 
         /// <summary>
@@ -1243,7 +1243,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxCreateManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachineScaleSet.Definition.IWithLinuxCreateManagedOrUnmanaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -1253,7 +1253,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxCreateManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged.WithRootPassword(string rootPassword)
         {
-            return this.WithRootPassword(rootPassword) as VirtualMachineScaleSet.Definition.IWithLinuxCreateManagedOrUnmanaged;
+            return this.WithRootPassword(rootPassword);
         }
 
         /// <summary>
@@ -1263,7 +1263,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable VM definition.</return>
         VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDiskOptionals.WithOSDiskStorageAccountType(StorageAccountTypes accountType)
         {
-            return this.WithOSDiskStorageAccountType(accountType) as VirtualMachineScaleSet.Definition.IWithManagedCreate;
+            return this.WithOSDiskStorageAccountType(accountType);
         }
 
         /// <summary>
@@ -1273,7 +1273,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable VM definition.</return>
         VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDiskOptionals.WithDataDiskDefaultStorageAccountType(StorageAccountTypes storageAccountType)
         {
-            return this.WithDataDiskDefaultStorageAccountType(storageAccountType) as VirtualMachineScaleSet.Definition.IWithManagedCreate;
+            return this.WithDataDiskDefaultStorageAccountType(storageAccountType);
         }
 
         /// <summary>
@@ -1283,7 +1283,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable VM definition.</return>
         VirtualMachineScaleSet.Definition.IWithManagedCreate VirtualMachineScaleSet.Definition.IWithManagedDiskOptionals.WithDataDiskDefaultCachingType(CachingTypes cachingType)
         {
-            return this.WithDataDiskDefaultCachingType(cachingType) as VirtualMachineScaleSet.Definition.IWithManagedCreate;
+            return this.WithDataDiskDefaultCachingType(cachingType);
         }
 
         /// <summary>
@@ -1294,7 +1294,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancerNatPool VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancerBackendOrNatPool.WithPrimaryInternalLoadBalancerBackends(params string[] backendNames)
         {
-            return this.WithPrimaryInternalLoadBalancerBackends(backendNames) as VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancerNatPool;
+            return this.WithPrimaryInternalLoadBalancerBackends(backendNames);
         }
 
         /// <summary>
@@ -1305,7 +1305,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithPrimaryInternetFacingLoadBalancerNatPool VirtualMachineScaleSet.Update.IWithPrimaryInternetFacingLoadBalancerBackendOrNatPool.WithPrimaryInternetFacingLoadBalancerBackends(params string[] backendNames)
         {
-            return this.WithPrimaryInternetFacingLoadBalancerBackends(backendNames) as VirtualMachineScaleSet.Update.IWithPrimaryInternetFacingLoadBalancerNatPool;
+            return this.WithPrimaryInternetFacingLoadBalancerBackends(backendNames);
         }
 
         /// <summary>
@@ -1316,7 +1316,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithPrimaryInternetFacingLoadBalancerNatPool VirtualMachineScaleSet.Definition.IWithPrimaryInternetFacingLoadBalancerBackendOrNatPool.WithPrimaryInternetFacingLoadBalancerBackends(params string[] backendNames)
         {
-            return this.WithPrimaryInternetFacingLoadBalancerBackends(backendNames) as VirtualMachineScaleSet.Definition.IWithPrimaryInternetFacingLoadBalancerNatPool;
+            return this.WithPrimaryInternetFacingLoadBalancerBackends(backendNames);
         }
 
         /// <summary>
@@ -1326,7 +1326,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable Linux VM definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsAdminPasswordUnmanaged VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameUnmanaged.WithAdminUsername(string adminUserName)
         {
-            return this.WithAdminUsername(adminUserName) as VirtualMachineScaleSet.Definition.IWithWindowsAdminPasswordUnmanaged;
+            return this.WithAdminUsername(adminUserName);
         }
 
         /// <summary>
@@ -1337,7 +1337,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancer.WithoutPrimaryInternetFacingLoadBalancer()
         {
-            return this.WithoutPrimaryInternetFacingLoadBalancer() as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithoutPrimaryInternetFacingLoadBalancer();
         }
 
         /// <summary>
@@ -1348,7 +1348,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancer.WithoutPrimaryInternalLoadBalancer()
         {
-            return this.WithoutPrimaryInternalLoadBalancer() as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithoutPrimaryInternalLoadBalancer();
         }
 
         /// <summary>
@@ -1358,7 +1358,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithUpgradePolicy.WithUpgradeMode(UpgradeMode upgradeMode)
         {
-            return this.WithUpgradeMode(upgradeMode) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithUpgradeMode(upgradeMode);
         }
 
         /// <summary>
@@ -1368,7 +1368,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable Windows VM definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateManagedOrUnmanaged VirtualMachineScaleSet.Definition.IWithWindowsAdminPasswordManagedOrUnmanaged.WithAdminPassword(string adminPassword)
         {
-            return this.WithAdminPassword(adminPassword) as VirtualMachineScaleSet.Definition.IWithWindowsCreateManagedOrUnmanaged;
+            return this.WithAdminPassword(adminPassword);
         }
 
         /// <summary>
@@ -1378,7 +1378,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable Linux VM definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsAdminPasswordManaged VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManaged.WithAdminUsername(string adminUserName)
         {
-            return this.WithAdminUsername(adminUserName) as VirtualMachineScaleSet.Definition.IWithWindowsAdminPasswordManaged;
+            return this.WithAdminUsername(adminUserName);
         }
 
         /// <summary>
@@ -1387,7 +1387,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -1398,7 +1398,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxCreateUnmanaged VirtualMachineScaleSet.Definition.IWithLinuxCreateUnmanaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachineScaleSet.Definition.IWithLinuxCreateUnmanaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -1407,7 +1407,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithPrimaryInternalLoadBalancer VirtualMachineScaleSet.Definition.IWithPrimaryInternetFacingLoadBalancer.WithoutPrimaryInternetFacingLoadBalancer()
         {
-            return this.WithoutPrimaryInternetFacingLoadBalancer() as VirtualMachineScaleSet.Definition.IWithPrimaryInternalLoadBalancer;
+            return this.WithoutPrimaryInternetFacingLoadBalancer();
         }
 
         /// <summary>
@@ -1420,7 +1420,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithPrimaryInternetFacingLoadBalancerBackendOrNatPool VirtualMachineScaleSet.Definition.IWithPrimaryInternetFacingLoadBalancer.WithExistingPrimaryInternetFacingLoadBalancer(ILoadBalancer loadBalancer)
         {
-            return this.WithExistingPrimaryInternetFacingLoadBalancer(loadBalancer) as VirtualMachineScaleSet.Definition.IWithPrimaryInternetFacingLoadBalancerBackendOrNatPool;
+            return this.WithExistingPrimaryInternetFacingLoadBalancer(loadBalancer);
         }
 
         /// <summary>
@@ -1430,7 +1430,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithExtension.WithoutExtension(string name)
         {
-            return this.WithoutExtension(name) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithoutExtension(name);
         }
 
         /// <summary>
@@ -1440,7 +1440,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of the extension reference update.</return>
         VirtualMachineScaleSetExtension.Update.IUpdate VirtualMachineScaleSet.Update.IWithExtension.UpdateExtension(string name)
         {
-            return this.UpdateExtension(name) as VirtualMachineScaleSetExtension.Update.IUpdate;
+            return this.UpdateExtension(name);
         }
 
         /// <summary>
@@ -1450,7 +1450,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of the extension reference definition.</return>
         VirtualMachineScaleSetExtension.UpdateDefinition.IBlank<VirtualMachineScaleSet.Update.IWithApply> VirtualMachineScaleSet.Update.IWithExtension.DefineNewExtension(string name)
         {
-            return this.DefineNewExtension(name) as VirtualMachineScaleSetExtension.UpdateDefinition.IBlank<VirtualMachineScaleSet.Update.IWithApply>;
+            return this.DefineNewExtension(name);
         }
 
         /// <summary>
@@ -1460,7 +1460,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of the extension reference definition.</return>
         VirtualMachineScaleSetExtension.Definition.IBlank<VirtualMachineScaleSet.Definition.IWithCreate> VirtualMachineScaleSet.Definition.IWithExtension.DefineNewExtension(string name)
         {
-            return this.DefineNewExtension(name) as VirtualMachineScaleSetExtension.Definition.IBlank<VirtualMachineScaleSet.Definition.IWithCreate>;
+            return this.DefineNewExtension(name);
         }
 
         /// <summary>
@@ -1471,7 +1471,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancerNatPool.WithPrimaryInternalLoadBalancerInboundNatPools(params string[] natPoolNames)
         {
-            return this.WithPrimaryInternalLoadBalancerInboundNatPools(natPoolNames) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithPrimaryInternalLoadBalancerInboundNatPools(natPoolNames);
         }
 
         /// <summary>
@@ -1481,7 +1481,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable Windows VM definition.</return>
         VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged VirtualMachineScaleSet.Definition.IWithWindowsAdminPasswordManaged.WithAdminPassword(string adminPassword)
         {
-            return this.WithAdminPassword(adminPassword) as VirtualMachineScaleSet.Definition.IWithWindowsCreateManaged;
+            return this.WithAdminPassword(adminPassword);
         }
 
         /// <summary>
@@ -1492,7 +1492,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancerBackend.WithoutPrimaryInternetFacingLoadBalancerBackends(params string[] backendNames)
         {
-            return this.WithoutPrimaryInternetFacingLoadBalancerBackends(backendNames) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithoutPrimaryInternetFacingLoadBalancerBackends(backendNames);
         }
 
         /// <summary>
@@ -1503,7 +1503,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithoutPrimaryLoadBalancerBackend.WithoutPrimaryInternalLoadBalancerBackends(params string[] backendNames)
         {
-            return this.WithoutPrimaryInternalLoadBalancerBackends(backendNames) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithoutPrimaryInternalLoadBalancerBackends(backendNames);
         }
 
         /// <summary>
@@ -1514,7 +1514,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancer VirtualMachineScaleSet.Update.IWithPrimaryInternetFacingLoadBalancerNatPool.WithPrimaryInternetFacingLoadBalancerInboundNatPools(params string[] natPoolNames)
         {
-            return this.WithPrimaryInternetFacingLoadBalancerInboundNatPools(natPoolNames) as VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancer;
+            return this.WithPrimaryInternetFacingLoadBalancerInboundNatPools(natPoolNames);
         }
 
         /// <summary>
@@ -1525,7 +1525,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithPrimaryInternalLoadBalancer VirtualMachineScaleSet.Definition.IWithPrimaryInternetFacingLoadBalancerNatPool.WithPrimaryInternetFacingLoadBalancerInboundNatPools(params string[] natPoolNames)
         {
-            return this.WithPrimaryInternetFacingLoadBalancerInboundNatPools(natPoolNames) as VirtualMachineScaleSet.Definition.IWithPrimaryInternalLoadBalancer;
+            return this.WithPrimaryInternetFacingLoadBalancerInboundNatPools(natPoolNames);
         }
 
         /// <summary>
@@ -1535,7 +1535,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage in the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithCustomData.WithCustomData(string base64EncodedCustomData)
         {
-            return this.WithCustomData(base64EncodedCustomData) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithCustomData(base64EncodedCustomData);
         }
 
         /// <summary>
@@ -1546,7 +1546,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxCreateManaged VirtualMachineScaleSet.Definition.IWithLinuxCreateManaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachineScaleSet.Definition.IWithLinuxCreateManaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -1556,7 +1556,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyManaged VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManaged.WithRootUsername(string rootUserName)
         {
-            return this.WithRootUsername(rootUserName) as VirtualMachineScaleSet.Definition.IWithLinuxRootPasswordOrPublicKeyManaged;
+            return this.WithRootUsername(rootUserName);
         }
 
         /// <summary>
@@ -1566,7 +1566,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.AvailabilityZones() as System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>;
+                return this.AvailabilityZones();
             }
         }
 
@@ -1577,7 +1577,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the virtual machine scale set definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithUserAssignedManagedServiceIdentity.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
         {
-            return this.WithExistingUserAssignedManagedServiceIdentity(identity) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity);
         }
 
         /// <summary>
@@ -1587,7 +1587,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the virtual machine scale set definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithUserAssignedManagedServiceIdentity.WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity)
         {
-            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity);
         }
 
         /// <summary>
@@ -1597,7 +1597,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the defintion.</return>
         VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachineScaleSet.Definition.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithSystemAssignedManagedServiceIdentity() as VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedManagedServiceIdentity();
         }
 
         /// <summary>
@@ -1608,7 +1608,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachineScaleSet.Definition.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity(int tokenPort)
         {
-            return this.WithSystemAssignedManagedServiceIdentity(tokenPort) as VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedManagedServiceIdentity(tokenPort);
         }
 
         /// <summary>
@@ -1618,7 +1618,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the virtual machine scale setupdate.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithUserAssignedManagedServiceIdentity.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
         {
-            return this.WithExistingUserAssignedManagedServiceIdentity(identity) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity);
         }
 
         /// <summary>
@@ -1628,7 +1628,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the virtual machine scale setupdate.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithUserAssignedManagedServiceIdentity.WithoutUserAssignedManagedServiceIdentity(string identityId)
         {
-            return this.WithoutUserAssignedManagedServiceIdentity(identityId) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithoutUserAssignedManagedServiceIdentity(identityId);
         }
 
         /// <summary>
@@ -1638,7 +1638,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the virtual machine scale setupdate.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply VirtualMachineScaleSet.Update.IWithUserAssignedManagedServiceIdentity.WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity)
         {
-            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity) as VirtualMachineScaleSet.Update.IWithApply;
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity);
         }
 
         /// <summary>
@@ -1648,7 +1648,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply VirtualMachineScaleSet.Update.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithSystemAssignedManagedServiceIdentity() as VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply;
+            return this.WithSystemAssignedManagedServiceIdentity();
         }
 
         /// <summary>
@@ -1659,7 +1659,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply VirtualMachineScaleSet.Update.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity(int tokenPort)
         {
-            return this.WithSystemAssignedManagedServiceIdentity(tokenPort) as VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply;
+            return this.WithSystemAssignedManagedServiceIdentity(tokenPort);
         }
 
         /// <summary>
@@ -1672,7 +1672,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <returns>the next stage of the definition</returns>
         VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId) as VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId);
         }
 
         /// <summary>
@@ -1684,7 +1684,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definiton.</return>
         VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role) as VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role);
         }
 
         /// <summary>
@@ -1698,7 +1698,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definiton.</return>
         VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role) as VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role);
         }
 
         /// <summary>
@@ -1710,7 +1710,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definiton.</return>
         VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId) as VirtualMachineScaleSet.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId);
         }
 
         /// <summary>
@@ -1723,7 +1723,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId) as VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId);
         }
 
         /// <summary>
@@ -1735,7 +1735,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role) as VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role);
         }
 
         /// <summary>
@@ -1749,7 +1749,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply.WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role) as VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role);
         }
 
         /// <summary>
@@ -1761,7 +1761,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId) as VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId);
         }
 
         /// <summary>
@@ -1770,7 +1770,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithBootDiagnostics.WithBootDiagnostics()
         {
-            return this.WithBootDiagnostics() as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithBootDiagnostics();
         }
 
         /// <summary>
@@ -1780,7 +1780,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithBootDiagnostics.WithBootDiagnostics(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> creatable)
         {
-            return this.WithBootDiagnostics(creatable) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithBootDiagnostics(creatable);
         }
 
         /// <summary>
@@ -1790,7 +1790,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>urn>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithVirtualMachinePriority(VirtualMachinePriorityTypes priority)
         {
-            return this.WithVirtualMachinePriority(priority) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithVirtualMachinePriority(priority);
         }
 
         /// <summary>
@@ -1799,7 +1799,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithLowPriorityVirtualMachine()
         {
-            return this.WithLowPriorityVirtualMachine() as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithLowPriorityVirtualMachine();
         }
 
         /// <summary>
@@ -1810,7 +1810,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithVMPriority.WithLowPriorityVirtualMachine(VirtualMachineEvictionPolicyTypes policy)
         {
-            return this.WithLowPriorityVirtualMachine(policy) as VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithLowPriorityVirtualMachine(policy);
         }
 
         /// <summary>
@@ -1820,7 +1820,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithBootDiagnostics.WithBootDiagnostics(IStorageAccount storageAccount)
         {
-            return this.WithBootDiagnostics(storageAccount) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithBootDiagnostics(storageAccount);
         }
 
 
@@ -1831,7 +1831,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachineScaleSet.Definition.IWithCreate VirtualMachineScaleSet.Definition.IWithBootDiagnostics.WithBootDiagnostics(string storageAccountBlobEndpointUri)
         {
-            return this.WithBootDiagnostics(storageAccountBlobEndpointUri) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithCreate;
+            return this.WithBootDiagnostics(storageAccountBlobEndpointUri);
         }
 
         /// <summary>
@@ -1840,7 +1840,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IUpdate VirtualMachineScaleSet.Update.IWithBootDiagnostics.WithoutBootDiagnostics()
         {
-            return this.WithoutBootDiagnostics() as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate;
+            return this.WithoutBootDiagnostics();
         }
 
         /// <summary>
@@ -1849,7 +1849,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IUpdate VirtualMachineScaleSet.Update.IWithBootDiagnostics.WithBootDiagnostics()
         {
-            return this.WithBootDiagnostics() as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate;
+            return this.WithBootDiagnostics();
         }
 
         /// <summary>
@@ -1859,7 +1859,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IUpdate VirtualMachineScaleSet.Update.IWithBootDiagnostics.WithBootDiagnostics(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> creatable)
         {
-            return this.WithBootDiagnostics(creatable) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate;
+            return this.WithBootDiagnostics(creatable);
         }
 
         /// <summary>
@@ -1869,7 +1869,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IUpdate VirtualMachineScaleSet.Update.IWithBootDiagnostics.WithBootDiagnostics(IStorageAccount storageAccount)
         {
-            return this.WithBootDiagnostics(storageAccount) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate;
+            return this.WithBootDiagnostics(storageAccount);
         }
 
         /// <summary>
@@ -1879,7 +1879,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachineScaleSet.Update.IUpdate VirtualMachineScaleSet.Update.IWithBootDiagnostics.WithBootDiagnostics(string storageAccountBlobEndpointUri)
         {
-            return this.WithBootDiagnostics(storageAccountBlobEndpointUri) as Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate;
+            return this.WithBootDiagnostics(storageAccountBlobEndpointUri);
         }
     }
 

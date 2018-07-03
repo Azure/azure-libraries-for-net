@@ -47,9 +47,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <param name="provisioningState">Provisioning state of the backend
         /// http settings resource. Possible values are: 'Updating',
         /// 'Deleting', and 'Failed'.</param>
-        /// <param name="name">Name of the resource that is unique within a
-        /// resource group. This name can be used to access the
-        /// resource.</param>
+        /// <param name="name">Name of the URL path map that is unique within
+        /// an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
@@ -107,8 +106,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
+        /// Gets or sets name of the URL path map that is unique within an
+        /// Application Gateway.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

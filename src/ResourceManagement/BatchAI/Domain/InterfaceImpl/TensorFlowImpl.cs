@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>.WithWorkerCommandLineArgs(string commandLineArgs)
         {
-            return this.WithWorkerCommandLineArgs(commandLineArgs) as ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithWorkerCommandLineArgs(commandLineArgs);
         }
 
         /// <param name="commandLineArgs">
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>.WithParameterServerCommandLineArgs(string commandLineArgs)
         {
-            return this.WithParameterServerCommandLineArgs(commandLineArgs) as ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithParameterServerCommandLineArgs(commandLineArgs);
         }
 
         /// <param name="workerCount">
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>.WithWorkerCount(int workerCount)
         {
-            return this.WithWorkerCount(workerCount) as ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithWorkerCount(workerCount);
         }
 
         /// <param name="parameterServerCount">
@@ -55,24 +55,24 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>.WithParameterServerCount(int parameterServerCount)
         {
-            return this.WithParameterServerCount(parameterServerCount) as ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithParameterServerCount(parameterServerCount);
         }
 
         ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.TensorFlow.Definition.IWithMasterCommandLineArgs<BatchAIJob.Definition.IWithCreate>.WithMasterCommandLineArgs(string commandLineArgs)
         {
-            return this.WithMasterCommandLineArgs(commandLineArgs) as ToolTypeSettings.TensorFlow.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithMasterCommandLineArgs(commandLineArgs);
         }
 
         /// <param name="pythonScriptFilePath">The path and file name of the python script to execute the job.</param>
         /// <return>The next stage of the definition.</return>
         ToolTypeSettings.TensorFlow.Definition.IWithMasterCommandLineArgs<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.TensorFlow.Definition.IWithPython<BatchAIJob.Definition.IWithCreate>.WithPythonScriptFile(string pythonScriptFilePath)
         {
-            return this.WithPythonScriptFile(pythonScriptFilePath) as ToolTypeSettings.TensorFlow.Definition.IWithMasterCommandLineArgs<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPythonScriptFile(pythonScriptFilePath);
         }
 
         IWithAttach<IWithCreate> IWithPythonInterpreter<IWithAttach<IWithCreate>>.WithPythonInterpreterPath(string path)
         {
-            return this.WithPythonInterpreterPath(path) as IWithAttach<IWithCreate>;
+            return this.WithPythonInterpreterPath(path);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ServiceLevelObjectiveUsageMetric() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceLevelObjectiveUsageMetric>;
+                return this.ServiceLevelObjectiveUsageMetric();
             }
         }
 
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ServiceLevelObjectiveUsageMetrics() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISloUsageMetricInterface>;
+                return this.ServiceLevelObjectiveUsageMetrics();
             }
         }
 

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         Snapshot.Update.IUpdate Snapshot.Update.IWithOSSettings.WithOSType(OperatingSystemTypes osType)
         {
-            return this.WithOSType(osType) as Snapshot.Update.IUpdate;
+            return this.WithOSType(osType);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithDataSnapshotFromSnapshot.WithDataFromSnapshot(string snapshotId)
         {
-            return this.WithDataFromSnapshot(snapshotId) as Snapshot.Definition.IWithCreate;
+            return this.WithDataFromSnapshot(snapshotId);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithDataSnapshotFromSnapshot.WithDataFromSnapshot(ISnapshot snapshot)
         {
-            return this.WithDataFromSnapshot(snapshot) as Snapshot.Definition.IWithCreate;
+            return this.WithDataFromSnapshot(snapshot);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithDataSnapshotFromVhd.WithDataFromVhd(string vhdUrl)
         {
-            return this.WithDataFromVhd(vhdUrl) as Snapshot.Definition.IWithCreate;
+            return this.WithDataFromVhd(vhdUrl);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Sku() as Models.DiskSkuTypes;
+                return this.Sku();
             }
         }
 
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Source() as Models.CreationSource;
+                return this.Source();
             }
         }
 
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithDataSnapshotFromDisk.WithDataFromDisk(string managedDiskId)
         {
-            return this.WithDataFromDisk(managedDiskId) as Snapshot.Definition.IWithCreate;
+            return this.WithDataFromDisk(managedDiskId);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithDataSnapshotFromDisk.WithDataFromDisk(IDisk managedDisk)
         {
-            return this.WithDataFromDisk(managedDisk) as Snapshot.Definition.IWithCreate;
+            return this.WithDataFromDisk(managedDisk);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         [System.Obsolete("Update.IWithSku.WithSku(DiskSkuTypes) is deprecated use Update.IWithSku.WithSku(SnapshotSkuType) instead.")]
         Snapshot.Update.IUpdate Snapshot.Update.IWithSku.WithSku(DiskSkuTypes sku)
         {
-            return this.WithSku(sku) as Snapshot.Update.IUpdate;
+            return this.WithSku(sku);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         Snapshot.Update.IUpdate Snapshot.Update.IWithSku.WithSku(SnapshotSkuType sku)
         {
-            return this.WithSku(sku) as Snapshot.Update.IUpdate;
+            return this.WithSku(sku);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         [System.Obsolete("Definition.IWithSku.WithSku(DiskSkuTypes) is deprecated use Definition.IWithSku.WithSku(SnapshotSkuType) instead.")]
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithSku.WithSku(DiskSkuTypes sku)
         {
-            return this.WithSku(sku) as Snapshot.Definition.IWithCreate;
+            return this.WithSku(sku);
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithSku.WithSku(SnapshotSkuType sku)
         {
-            return this.WithSku(sku) as Snapshot.Definition.IWithCreate;
+            return this.WithSku(sku);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.SkuType() as Microsoft.Azure.Management.Compute.Fluent.SnapshotSkuType;
+                return this.SkuType();
             }
         }
 
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithSize.WithSizeInGB(int sizeInGB)
         {
-            return this.WithSizeInGB(sizeInGB) as Snapshot.Definition.IWithCreate;
+            return this.WithSizeInGB(sizeInGB);
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithLinuxSnapshotSource.WithLinuxFromSnapshot(string sourceSnapshotId)
         {
-            return this.WithLinuxFromSnapshot(sourceSnapshotId) as Snapshot.Definition.IWithCreate;
+            return this.WithLinuxFromSnapshot(sourceSnapshotId);
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithLinuxSnapshotSource.WithLinuxFromSnapshot(ISnapshot sourceSnapshot)
         {
-            return this.WithLinuxFromSnapshot(sourceSnapshot) as Snapshot.Definition.IWithCreate;
+            return this.WithLinuxFromSnapshot(sourceSnapshot);
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithLinuxSnapshotSource.WithLinuxFromVhd(string vhdUrl)
         {
-            return this.WithLinuxFromVhd(vhdUrl) as Snapshot.Definition.IWithCreate;
+            return this.WithLinuxFromVhd(vhdUrl);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithLinuxSnapshotSource.WithLinuxFromDisk(string sourceDiskId)
         {
-            return this.WithLinuxFromDisk(sourceDiskId) as Snapshot.Definition.IWithCreate;
+            return this.WithLinuxFromDisk(sourceDiskId);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithLinuxSnapshotSource.WithLinuxFromDisk(IDisk sourceDisk)
         {
-            return this.WithLinuxFromDisk(sourceDisk) as Snapshot.Definition.IWithCreate;
+            return this.WithLinuxFromDisk(sourceDisk);
         }
 
         /// <summary>
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithWindowsSnapshotSource.WithWindowsFromVhd(string vhdUrl)
         {
-            return this.WithWindowsFromVhd(vhdUrl) as Snapshot.Definition.IWithCreate;
+            return this.WithWindowsFromVhd(vhdUrl);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithWindowsSnapshotSource.WithWindowsFromSnapshot(string sourceSnapshotId)
         {
-            return this.WithWindowsFromSnapshot(sourceSnapshotId) as Snapshot.Definition.IWithCreate;
+            return this.WithWindowsFromSnapshot(sourceSnapshotId);
         }
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithWindowsSnapshotSource.WithWindowsFromSnapshot(ISnapshot sourceSnapshot)
         {
-            return this.WithWindowsFromSnapshot(sourceSnapshot) as Snapshot.Definition.IWithCreate;
+            return this.WithWindowsFromSnapshot(sourceSnapshot);
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithWindowsSnapshotSource.WithWindowsFromDisk(string sourceDiskId)
         {
-            return this.WithWindowsFromDisk(sourceDiskId) as Snapshot.Definition.IWithCreate;
+            return this.WithWindowsFromDisk(sourceDiskId);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         Snapshot.Definition.IWithCreate Snapshot.Definition.IWithWindowsSnapshotSource.WithWindowsFromDisk(IDisk sourceDisk)
         {
-            return this.WithWindowsFromDisk(sourceDisk) as Snapshot.Definition.IWithCreate;
+            return this.WithWindowsFromDisk(sourceDisk);
         }
     }
 }

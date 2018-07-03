@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.ExtensionTypes() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageTypes;
+                return this.ExtensionTypes();
             }
         }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Offers() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineOffers;
+                return this.Offers();
             }
         }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Region() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region();
             }
         }
     }

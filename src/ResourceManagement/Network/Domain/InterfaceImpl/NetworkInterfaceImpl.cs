@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithAcceleratedNetworking.WithoutAcceleratedNetworking()
         {
-            return this.WithoutAcceleratedNetworking() as NetworkInterface.Update.IUpdate;
+            return this.WithoutAcceleratedNetworking();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithAcceleratedNetworking.WithAcceleratedNetworking()
         {
-            return this.WithAcceleratedNetworking() as NetworkInterface.Definition.IWithCreate;
+            return this.WithAcceleratedNetworking();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithDnsServer.WithoutDnsServer(string ipAddress)
         {
-            return this.WithoutDnsServer(ipAddress) as NetworkInterface.Update.IUpdate;
+            return this.WithoutDnsServer(ipAddress);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithDnsServer.WithDnsServer(string ipAddress)
         {
-            return this.WithDnsServer(ipAddress) as NetworkInterface.Update.IUpdate;
+            return this.WithDnsServer(ipAddress);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithDnsServer.WithAzureDnsServer()
         {
-            return this.WithAzureDnsServer() as NetworkInterface.Update.IUpdate;
+            return this.WithAzureDnsServer();
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithNetworkSecurityGroup.WithExistingNetworkSecurityGroup(INetworkSecurityGroup networkSecurityGroup)
         {
-            return this.WithExistingNetworkSecurityGroup(networkSecurityGroup) as NetworkInterface.Update.IUpdate;
+            return this.WithExistingNetworkSecurityGroup(networkSecurityGroup);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithNetworkSecurityGroup.WithoutNetworkSecurityGroup()
         {
-            return this.WithoutNetworkSecurityGroup() as NetworkInterface.Update.IUpdate;
+            return this.WithoutNetworkSecurityGroup();
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithNetworkSecurityGroup.WithNewNetworkSecurityGroup(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup> creatable)
         {
-            return this.WithNewNetworkSecurityGroup(creatable) as NetworkInterface.Update.IUpdate;
+            return this.WithNewNetworkSecurityGroup(creatable);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithNetworkSecurityGroup.WithExistingNetworkSecurityGroup(INetworkSecurityGroup networkSecurityGroup)
         {
-            return this.WithExistingNetworkSecurityGroup(networkSecurityGroup) as NetworkInterface.Definition.IWithCreate;
+            return this.WithExistingNetworkSecurityGroup(networkSecurityGroup);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithNetworkSecurityGroup.WithNewNetworkSecurityGroup(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup> creatable)
         {
-            return this.WithNewNetworkSecurityGroup(creatable) as NetworkInterface.Definition.IWithCreate;
+            return this.WithNewNetworkSecurityGroup(creatable);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithCreate.WithIPForwarding()
         {
-            return this.WithIPForwarding() as NetworkInterface.Definition.IWithCreate;
+            return this.WithIPForwarding();
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithCreate.WithDnsServer(string ipAddress)
         {
-            return this.WithDnsServer(ipAddress) as NetworkInterface.Definition.IWithCreate;
+            return this.WithDnsServer(ipAddress);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithCreate.WithInternalDnsNameLabel(string dnsNameLabel)
         {
-            return this.WithInternalDnsNameLabel(dnsNameLabel) as NetworkInterface.Definition.IWithCreate;
+            return this.WithInternalDnsNameLabel(dnsNameLabel);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PrimaryIPConfiguration() as Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration;
+                return this.PrimaryIPConfiguration();
             }
         }
 
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.IPConfigurations() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.INicIPConfiguration>;
+                return this.IPConfigurations();
             }
         }
 
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithIPForwarding.WithIPForwarding()
         {
-            return this.WithIPForwarding() as NetworkInterface.Update.IUpdate;
+            return this.WithIPForwarding();
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithIPForwarding.WithoutIPForwarding()
         {
-            return this.WithoutIPForwarding() as NetworkInterface.Update.IUpdate;
+            return this.WithoutIPForwarding();
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of a secondary IP configuration definition.</return>
         NicIPConfiguration.Definition.IBlank<NetworkInterface.Definition.IWithCreate> NetworkInterface.Definition.IWithSecondaryIPConfiguration.DefineSecondaryIPConfiguration(string name)
         {
-            return this.DefineSecondaryIPConfiguration(name) as NicIPConfiguration.Definition.IBlank<NetworkInterface.Definition.IWithCreate>;
+            return this.DefineSecondaryIPConfiguration(name);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithPrimaryPrivateIP.WithPrimaryPrivateIPAddressStatic(string staticPrivateIPAddress)
         {
-            return this.WithPrimaryPrivateIPAddressStatic(staticPrivateIPAddress) as NetworkInterface.Update.IUpdate;
+            return this.WithPrimaryPrivateIPAddressStatic(staticPrivateIPAddress);
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithPrimaryPrivateIP.WithPrimaryPrivateIPAddressDynamic()
         {
-            return this.WithPrimaryPrivateIPAddressDynamic() as NetworkInterface.Update.IUpdate;
+            return this.WithPrimaryPrivateIPAddressDynamic();
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of network interface definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithPrimaryPrivateIP.WithPrimaryPrivateIPAddressStatic(string staticPrivateIPAddress)
         {
-            return this.WithPrimaryPrivateIPAddressStatic(staticPrivateIPAddress) as NetworkInterface.Definition.IWithCreate;
+            return this.WithPrimaryPrivateIPAddressStatic(staticPrivateIPAddress);
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of network interface definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithPrimaryPrivateIP.WithPrimaryPrivateIPAddressDynamic()
         {
-            return this.WithPrimaryPrivateIPAddressDynamic() as NetworkInterface.Definition.IWithCreate;
+            return this.WithPrimaryPrivateIPAddressDynamic();
         }
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithLoadBalancer.WithExistingLoadBalancerInboundNatRule(ILoadBalancer loadBalancer, string inboundNatRuleName)
         {
-            return this.WithExistingLoadBalancerInboundNatRule(loadBalancer, inboundNatRuleName) as NetworkInterface.Update.IUpdate;
+            return this.WithExistingLoadBalancerInboundNatRule(loadBalancer, inboundNatRuleName);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithLoadBalancer.WithExistingLoadBalancerBackend(ILoadBalancer loadBalancer, string backendName)
         {
-            return this.WithExistingLoadBalancerBackend(loadBalancer, backendName) as NetworkInterface.Update.IUpdate;
+            return this.WithExistingLoadBalancerBackend(loadBalancer, backendName);
         }
 
         /// <summary>
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithLoadBalancer.WithoutLoadBalancerBackends()
         {
-            return this.WithoutLoadBalancerBackends() as NetworkInterface.Update.IUpdate;
+            return this.WithoutLoadBalancerBackends();
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithLoadBalancer.WithoutLoadBalancerInboundNatRules()
         {
-            return this.WithoutLoadBalancerInboundNatRules() as NetworkInterface.Update.IUpdate;
+            return this.WithoutLoadBalancerInboundNatRules();
         }
 
         /// <summary>
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithLoadBalancer.WithExistingLoadBalancerInboundNatRule(ILoadBalancer loadBalancer, string inboundNatRuleName)
         {
-            return this.WithExistingLoadBalancerInboundNatRule(loadBalancer, inboundNatRuleName) as NetworkInterface.Definition.IWithCreate;
+            return this.WithExistingLoadBalancerInboundNatRule(loadBalancer, inboundNatRuleName);
         }
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithLoadBalancer.WithExistingLoadBalancerBackend(ILoadBalancer loadBalancer, string backendName)
         {
-            return this.WithExistingLoadBalancerBackend(loadBalancer, backendName) as NetworkInterface.Definition.IWithCreate;
+            return this.WithExistingLoadBalancerBackend(loadBalancer, backendName);
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithPrimaryNetworkSubnet NetworkInterface.Definition.IWithPrimaryNetwork.WithExistingPrimaryNetwork(INetwork network)
         {
-            return this.WithExistingPrimaryNetwork(network) as NetworkInterface.Definition.IWithPrimaryNetworkSubnet;
+            return this.WithExistingPrimaryNetwork(network);
         }
 
         /// <summary>
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithPrimaryPrivateIP NetworkInterface.Definition.IWithPrimaryNetwork.WithNewPrimaryNetwork(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetwork> creatable)
         {
-            return this.WithNewPrimaryNetwork(creatable) as NetworkInterface.Definition.IWithPrimaryPrivateIP;
+            return this.WithNewPrimaryNetwork(creatable);
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithPrimaryPrivateIP NetworkInterface.Definition.IWithPrimaryNetwork.WithNewPrimaryNetwork(string name, string addressSpace)
         {
-            return this.WithNewPrimaryNetwork(name, addressSpace) as NetworkInterface.Definition.IWithPrimaryPrivateIP;
+            return this.WithNewPrimaryNetwork(name, addressSpace);
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithPrimaryPrivateIP NetworkInterface.Definition.IWithPrimaryNetwork.WithNewPrimaryNetwork(string addressSpace)
         {
-            return this.WithNewPrimaryNetwork(addressSpace) as NetworkInterface.Definition.IWithPrimaryPrivateIP;
+            return this.WithNewPrimaryNetwork(addressSpace);
         }
 
         /// <summary>
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.DnsServers() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.DnsServers();
             }
         }
 
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.AppliedDnsServers() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.AppliedDnsServers();
             }
         }
 
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PrimaryPrivateIPAllocationMethod() as Models.IPAllocationMethod;
+                return this.PrimaryPrivateIPAllocationMethod();
             }
         }
 
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The network security group associated with this network interface.</return>
         Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup Microsoft.Azure.Management.Network.Fluent.INetworkInterfaceBase.GetNetworkSecurityGroup()
         {
-            return this.GetNetworkSecurityGroup() as Microsoft.Azure.Management.Network.Fluent.INetworkSecurityGroup;
+            return this.GetNetworkSecurityGroup();
         }
 
         /// <summary>
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithPrimaryNetworkSubnet.WithSubnet(string name)
         {
-            return this.WithSubnet(name) as NetworkInterface.Update.IUpdate;
+            return this.WithSubnet(name);
         }
 
         /// <summary>
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithPrimaryPrivateIP NetworkInterface.Definition.IWithPrimaryNetworkSubnet.WithSubnet(string name)
         {
-            return this.WithSubnet(name) as NetworkInterface.Definition.IWithPrimaryPrivateIP;
+            return this.WithSubnet(name);
         }
 
         /// <summary>
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the update.</return>
         NicIPConfiguration.Update.IUpdate NetworkInterface.Update.IWithIPConfiguration.UpdateIPConfiguration(string name)
         {
-            return this.UpdateIPConfiguration(name) as NicIPConfiguration.Update.IUpdate;
+            return this.UpdateIPConfiguration(name);
         }
 
         /// <summary>
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the update.</return>
         NicIPConfiguration.UpdateDefinition.IBlank<NetworkInterface.Update.IUpdate> NetworkInterface.Update.IWithIPConfiguration.DefineSecondaryIPConfiguration(string name)
         {
-            return this.DefineSecondaryIPConfiguration(name) as NicIPConfiguration.UpdateDefinition.IBlank<NetworkInterface.Update.IUpdate>;
+            return this.DefineSecondaryIPConfiguration(name);
         }
 
         /// <summary>
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithIPConfiguration.WithoutIPConfiguration(string name)
         {
-            return this.WithoutIPConfiguration(name) as NetworkInterface.Update.IUpdate;
+            return this.WithoutIPConfiguration(name);
         }
 
         /// <summary>
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithPrimaryPublicIPAddress.WithoutPrimaryPublicIPAddress()
         {
-            return this.WithoutPrimaryPublicIPAddress() as NetworkInterface.Update.IUpdate;
+            return this.WithoutPrimaryPublicIPAddress();
         }
 
         /// <summary>
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithPrimaryPublicIPAddress.WithExistingPrimaryPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.WithExistingPrimaryPublicIPAddress(publicIPAddress) as NetworkInterface.Update.IUpdate;
+            return this.WithExistingPrimaryPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithPrimaryPublicIPAddress.WithNewPrimaryPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> creatable)
         {
-            return this.WithNewPrimaryPublicIPAddress(creatable) as NetworkInterface.Update.IUpdate;
+            return this.WithNewPrimaryPublicIPAddress(creatable);
         }
 
         /// <summary>
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithPrimaryPublicIPAddress.WithNewPrimaryPublicIPAddress()
         {
-            return this.WithNewPrimaryPublicIPAddress() as NetworkInterface.Update.IUpdate;
+            return this.WithNewPrimaryPublicIPAddress();
         }
 
         /// <summary>
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the network interface update.</return>
         NetworkInterface.Update.IUpdate NetworkInterface.Update.IWithPrimaryPublicIPAddress.WithNewPrimaryPublicIPAddress(string leafDnsLabel)
         {
-            return this.WithNewPrimaryPublicIPAddress(leafDnsLabel) as NetworkInterface.Update.IUpdate;
+            return this.WithNewPrimaryPublicIPAddress(leafDnsLabel);
         }
 
         /// <summary>
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithPrimaryPublicIPAddress.WithExistingPrimaryPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.WithExistingPrimaryPublicIPAddress(publicIPAddress) as NetworkInterface.Definition.IWithCreate;
+            return this.WithExistingPrimaryPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithPrimaryPublicIPAddress.WithNewPrimaryPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> creatable)
         {
-            return this.WithNewPrimaryPublicIPAddress(creatable) as NetworkInterface.Definition.IWithCreate;
+            return this.WithNewPrimaryPublicIPAddress(creatable);
         }
 
         /// <summary>
@@ -646,7 +646,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithPrimaryPublicIPAddress.WithNewPrimaryPublicIPAddress()
         {
-            return this.WithNewPrimaryPublicIPAddress() as NetworkInterface.Definition.IWithCreate;
+            return this.WithNewPrimaryPublicIPAddress();
         }
 
         /// <summary>
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         NetworkInterface.Definition.IWithCreate NetworkInterface.Definition.IWithPrimaryPublicIPAddress.WithNewPrimaryPublicIPAddress(string leafDnsLabel)
         {
-            return this.WithNewPrimaryPublicIPAddress(leafDnsLabel) as NetworkInterface.Definition.IWithCreate;
+            return this.WithNewPrimaryPublicIPAddress(leafDnsLabel);
         }
 
         /// <summary>
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.INetworkInterface> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.INetworkInterface;
+            return await this.RefreshAsync(cancellationToken);
         }
     }
 }

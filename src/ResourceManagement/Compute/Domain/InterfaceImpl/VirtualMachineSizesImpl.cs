@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>.ListByRegion(Region region)
         {
-            return this.ListByRegion(region) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>;
+            return this.ListByRegion(region);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>.ListByRegion(string regionName)
         {
-            return this.ListByRegion(regionName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>;
+            return this.ListByRegion(regionName);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call, returning the requested resources.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>.ListByRegionAsync(Region region, CancellationToken cancellationToken)
         {
-            return await this.ListByRegionAsync(region, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>;
+            return await this.ListByRegionAsync(region, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call, returning the requested resources.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>.ListByRegionAsync(string regionName, CancellationToken cancellationToken)
         {
-            return await this.ListByRegionAsync(regionName, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>;
+            return await this.ListByRegionAsync(regionName, cancellationToken);
         }
     }
 }

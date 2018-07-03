@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VerificationIPFlow.Definition.IWithExecute VerificationIPFlow.Definition.IWithRemotePort.WithRemotePort(string remotePort)
         {
-            return this.WithRemotePort(remotePort) as VerificationIPFlow.Definition.IWithExecute;
+            return this.WithRemotePort(remotePort);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VerificationIPFlow.Definition.IWithLocalIP VerificationIPFlow.Definition.IWithProtocol.WithUDP()
         {
-            return this.WithUDP() as VerificationIPFlow.Definition.IWithLocalIP;
+            return this.WithUDP();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VerificationIPFlow.Definition.IWithLocalIP VerificationIPFlow.Definition.IWithProtocol.WithTCP()
         {
-            return this.WithTCP() as VerificationIPFlow.Definition.IWithLocalIP;
+            return this.WithTCP();
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VerificationIPFlow.Definition.IWithRemotePort VerificationIPFlow.Definition.IWithLocalPort.WithLocalPort(string localPort)
         {
-            return this.WithLocalPort(localPort) as VerificationIPFlow.Definition.IWithRemotePort;
+            return this.WithLocalPort(localPort);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VerificationIPFlow.Definition.IWithLocalPort VerificationIPFlow.Definition.IWithRemoteIP.WithRemoteIPAddress(string remoteIPAddress)
         {
-            return this.WithRemoteIPAddress(remoteIPAddress) as VerificationIPFlow.Definition.IWithLocalPort;
+            return this.WithRemoteIPAddress(remoteIPAddress);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.INetworkWatcher;
+                return this.Parent();
             }
         }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VerificationIPFlow.Definition.IWithRemoteIP VerificationIPFlow.Definition.IWithLocalIP.WithLocalIPAddress(string localIPAddress)
         {
-            return this.WithLocalIPAddress(localIPAddress) as VerificationIPFlow.Definition.IWithRemoteIP;
+            return this.WithLocalIPAddress(localIPAddress);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Access() as Models.Access;
+                return this.Access();
             }
         }
 
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Outbound() as VerificationIPFlow.Definition.IWithProtocol;
+                return this.Outbound();
             }
         }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VerificationIPFlow.Definition.IWithProtocol VerificationIPFlow.Definition.IWithDirection.WithDirection(Direction direction)
         {
-            return this.WithDirection(direction) as VerificationIPFlow.Definition.IWithProtocol;
+            return this.WithDirection(direction);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Inbound() as VerificationIPFlow.Definition.IWithProtocol;
+                return this.Inbound();
             }
         }
 
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VerificationIPFlow.Definition.IWithLocalIP HasProtocol.Definition.IWithProtocol<VerificationIPFlow.Definition.IWithLocalIP, Models.IpFlowProtocol>.WithProtocol(IpFlowProtocol protocol)
         {
-            return this.WithProtocol(protocol) as VerificationIPFlow.Definition.IWithLocalIP;
+            return this.WithProtocol(protocol);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.IVerificationIPFlow VerificationIPFlow.Definition.IWithNetworkInterface.WithTargetNetworkInterfaceId(string targetNetworkInterfaceId)
         {
-            return this.WithTargetNetworkInterfaceId(targetNetworkInterfaceId) as Microsoft.Azure.Management.Network.Fluent.IVerificationIPFlow;
+            return this.WithTargetNetworkInterfaceId(targetNetworkInterfaceId);
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VerificationIPFlow.Definition.IWithDirection VerificationIPFlow.Definition.IWithTargetResource.WithTargetResourceId(string vmId)
         {
-            return this.WithTargetResourceId(vmId) as VerificationIPFlow.Definition.IWithDirection;
+            return this.WithTargetResourceId(vmId);
         }
     }
 }

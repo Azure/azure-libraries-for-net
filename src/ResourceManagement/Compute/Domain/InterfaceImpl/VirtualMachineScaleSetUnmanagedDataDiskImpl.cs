@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk update.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskCaching.WithCaching(CachingTypes cachingType)
         {
-            return this.WithCaching(cachingType) as VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate;
+            return this.WithCaching(cachingType);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the parent definition.</return>
         VirtualMachineScaleSet.Update.IWithApply Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<VirtualMachineScaleSet.Update.IWithApply>.Attach()
         {
-            return this.Attach() as VirtualMachineScaleSet.Update.IWithApply;
+            return this.Attach();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk definition.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithLun(int lun)
         {
-            return this.WithLun(lun) as VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>;
+            return this.WithLun(lun);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk definition.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithCaching(CachingTypes cachingType)
         {
-            return this.WithCaching(cachingType) as VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>;
+            return this.WithCaching(cachingType);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk definition.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply> VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply>.WithLun(int lun)
         {
-            return this.WithLun(lun) as VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply>;
+            return this.WithLun(lun);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk definition.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply> VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply>.WithCaching(CachingTypes cachingType)
         {
-            return this.WithCaching(cachingType) as VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply>;
+            return this.WithCaching(cachingType);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the parent definition.</return>
         VirtualMachineScaleSet.Definition.IWithUnmanagedCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.Attach()
         {
-            return this.Attach() as VirtualMachineScaleSet.Definition.IWithUnmanagedCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk update.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskSize.WithSizeInGB(int sizeInGB)
         {
-            return this.WithSizeInGB(sizeInGB) as VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate;
+            return this.WithSizeInGB(sizeInGB);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk update.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskLun.WithLun(int lun)
         {
-            return this.WithLun(lun) as VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate;
+            return this.WithLun(lun);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk definition.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithSizeInGB(int sizeInGB)
         {
-            return this.WithSizeInGB(sizeInGB) as VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>;
+            return this.WithSizeInGB(sizeInGB);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk definition.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithCaching(CachingTypes cachingType)
         {
-            return this.WithCaching(cachingType) as VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>;
+            return this.WithCaching(cachingType);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk definition.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithDiskSource<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithNewVhd(int sizeInGB)
         {
-            return this.WithNewVhd(sizeInGB) as VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>;
+            return this.WithNewVhd(sizeInGB);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk definition.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithDiskSource<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.FromImage(int imageLun)
         {
-            return this.FromImage(imageLun) as VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>;
+            return this.FromImage(imageLun);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of unmanaged data disk definition.</return>
         VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply> VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithDiskSource<VirtualMachineScaleSet.Update.IWithApply>.WithNewVhd(int sizeInGB)
         {
-            return this.WithNewVhd(sizeInGB) as VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply>;
+            return this.WithNewVhd(sizeInGB);
         }
     }
 }

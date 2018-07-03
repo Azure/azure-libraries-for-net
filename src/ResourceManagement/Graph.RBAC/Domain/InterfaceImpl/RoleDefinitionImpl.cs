@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.AssignableScopes() as System.Collections.Generic.ISet<string>;
+                return this.AssignableScopes();
             }
         }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         {
             get
             {
-                return this.Permissions() as System.Collections.Generic.ISet<IPermission>;
+                return this.Permissions();
             }
         }
 

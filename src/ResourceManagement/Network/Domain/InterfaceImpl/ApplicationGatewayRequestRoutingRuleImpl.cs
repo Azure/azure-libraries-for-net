@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRequestRoutingRule.Update.IUpdate ApplicationGatewayRequestRoutingRule.Update.IWithBackend.ToBackend(string name)
         {
-            return this.ToBackend(name) as ApplicationGatewayRequestRoutingRule.Update.IUpdate;
+            return this.ToBackend(name);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRequestRoutingRule.Update.IUpdate ApplicationGatewayRequestRoutingRule.Update.IWithBackendHttpConfiguration.ToBackendHttpConfiguration(string name)
         {
-            return this.ToBackendHttpConfiguration(name) as ApplicationGatewayRequestRoutingRule.Update.IUpdate;
+            return this.ToBackendHttpConfiguration(name);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithFrontend<ApplicationGateway.Update.IUpdate>.FromPublicFrontend()
         {
-            return this.FromPublicFrontend() as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate>;
+            return this.FromPublicFrontend();
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithFrontend<ApplicationGateway.Update.IUpdate>.FromPrivateFrontend()
         {
-            return this.FromPrivateFrontend() as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate>;
+            return this.FromPrivateFrontend();
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithFrontend<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.FromPublicFrontend()
         {
-            return this.FromPublicFrontend() as ApplicationGatewayRequestRoutingRule.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.FromPublicFrontend();
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithFrontend<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.FromPrivateFrontend()
         {
-            return this.FromPrivateFrontend() as ApplicationGatewayRequestRoutingRule.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.FromPrivateFrontend();
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasHostName.UpdateDefinition.IWithHostName<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithHostName(string hostName)
         {
-            return this.WithHostName(hostName) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithHostName(hostName);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasHostName.Definition.IWithHostName<ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithHostName(string hostName)
         {
-            return this.WithHostName(hostName) as ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.WithHostName(hostName);
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasCookieBasedAffinity.UpdateDefinition.IWithCookieBasedAffinity<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithoutCookieBasedAffinity()
         {
-            return this.WithoutCookieBasedAffinity() as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithoutCookieBasedAffinity();
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> HasCookieBasedAffinity.UpdateDefinition.IWithCookieBasedAffinity<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithCookieBasedAffinity()
         {
-            return this.WithCookieBasedAffinity() as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithCookieBasedAffinity();
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasCookieBasedAffinity.Definition.IWithCookieBasedAffinity<ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithoutCookieBasedAffinity()
         {
-            return this.WithoutCookieBasedAffinity() as ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.WithoutCookieBasedAffinity();
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasCookieBasedAffinity.Definition.IWithCookieBasedAffinity<ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithCookieBasedAffinity()
         {
-            return this.WithCookieBasedAffinity() as ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.WithCookieBasedAffinity();
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRequestRoutingRule.Update.IUpdate ApplicationGatewayRequestRoutingRule.Update.IWithRedirectConfigBeta.WithoutRedirectConfiguration()
         {
-            return this.WithoutRedirectConfiguration() as ApplicationGatewayRequestRoutingRule.Update.IUpdate;
+            return this.WithoutRedirectConfiguration();
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRequestRoutingRule.Update.IUpdate ApplicationGatewayRequestRoutingRule.Update.IWithRedirectConfigBeta.WithRedirectConfiguration(string name)
         {
-            return this.WithRedirectConfiguration(name) as ApplicationGatewayRequestRoutingRule.Update.IUpdate;
+            return this.WithRedirectConfiguration(name);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRequestRoutingRule.Update.IUpdate ApplicationGatewayRequestRoutingRule.Update.IWithListener.FromListener(string name)
         {
-            return this.FromListener(name) as ApplicationGatewayRequestRoutingRule.Update.IUpdate;
+            return this.FromListener(name);
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressOrAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddress<ApplicationGateway.Update.IUpdate>.ToBackendFqdn(string fqdn)
         {
-            return this.ToBackendFqdn(fqdn) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressOrAttach<ApplicationGateway.Update.IUpdate>;
+            return this.ToBackendFqdn(fqdn);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressOrAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddress<ApplicationGateway.Update.IUpdate>.ToBackendIPAddress(string ipAddress)
         {
-            return this.ToBackendIPAddress(ipAddress) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressOrAttach<ApplicationGateway.Update.IUpdate>;
+            return this.ToBackendIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressOrAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressBeta<ApplicationGateway.Update.IUpdate>.ToBackendIPAddresses(params string[] ipAddresses)
         {
-            return this.ToBackendIPAddresses(ipAddresses) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendAddressOrAttach<ApplicationGateway.Update.IUpdate>;
+            return this.ToBackendIPAddresses(ipAddresses);
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressOrAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddress<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.ToBackendFqdn(string fqdn)
         {
-            return this.ToBackendFqdn(fqdn) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressOrAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.ToBackendFqdn(fqdn);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressOrAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddress<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.ToBackendIPAddress(string ipAddress)
         {
-            return this.ToBackendIPAddress(ipAddress) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressOrAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.ToBackendIPAddress(ipAddress);
         }
 
         /// <summary>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressOrAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressBeta<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.ToBackendIPAddresses(params string[] ipAddresses)
         {
-            return this.ToBackendIPAddresses(ipAddresses) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendAddressOrAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.ToBackendIPAddresses(ipAddresses);
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ApplicationGateway.Update.IUpdate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackend<ApplicationGateway.Update.IUpdate>.ToBackend(string name)
         {
-            return this.ToBackend(name) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.ToBackend(name);
         }
 
         /// <summary>
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithBackend<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.ToBackend(string name)
         {
-            return this.ToBackend(name) as ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.ToBackend(name);
         }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.BackendHttpConfiguration() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackendHttpConfiguration;
+                return this.BackendHttpConfiguration();
             }
         }
 
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.RuleType() as Models.ApplicationGatewayRequestRoutingRuleType;
+                return this.RuleType();
             }
         }
 
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Backend() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayBackend;
+                return this.Backend();
             }
         }
 
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.BackendAddresses() as System.Collections.Generic.IReadOnlyCollection<Models.ApplicationGatewayBackendAddress>;
+                return this.BackendAddresses();
             }
         }
 
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.FrontendProtocol() as Models.ApplicationGatewayProtocol;
+                return this.FrontendProtocol();
             }
         }
 
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.RedirectConfiguration() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRedirectConfiguration;
+                return this.RedirectConfiguration();
             }
         }
 
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Listener() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayListener;
+                return this.Listener();
             }
         }
 
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate> HasServerNameIndication.UpdateDefinition.IWithServerNameIndication<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate>>.WithoutServerNameIndication()
         {
-            return this.WithoutServerNameIndication() as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate>;
+            return this.WithoutServerNameIndication();
         }
 
         /// <summary>
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate> HasServerNameIndication.UpdateDefinition.IWithServerNameIndication<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate>>.WithServerNameIndication()
         {
-            return this.WithServerNameIndication() as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate>;
+            return this.WithServerNameIndication();
         }
 
         /// <summary>
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasServerNameIndication.Definition.IWithServerNameIndication<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithoutServerNameIndication()
         {
-            return this.WithoutServerNameIndication() as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.WithoutServerNameIndication();
         }
 
         /// <summary>
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasServerNameIndication.Definition.IWithServerNameIndication<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithServerNameIndication()
         {
-            return this.WithServerNameIndication() as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.WithServerNameIndication();
         }
 
         /// <summary>
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The associated public IP address.</return>
         Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress Microsoft.Azure.Management.Network.Fluent.IHasPublicIPAddress.GetPublicIPAddress()
         {
-            return this.GetPublicIPAddress() as Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress;
+            return this.GetPublicIPAddress();
         }
 
         /// <summary>
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.SslCertificate() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewaySslCertificate;
+                return this.SslCertificate();
             }
         }
 
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithListener<ApplicationGateway.Update.IUpdate>.FromListener(string name)
         {
-            return this.FromListener(name) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Update.IUpdate>;
+            return this.FromListener(name);
         }
 
         /// <summary>
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithListener<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.FromListener(string name)
         {
-            return this.FromListener(name) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.FromListener(name);
         }
 
         /// <summary>
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithRedirectConfigBeta<ApplicationGateway.Update.IUpdate>.WithRedirectConfiguration(string name)
         {
-            return this.WithRedirectConfiguration(name) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithRedirectConfiguration(name);
         }
 
         /// <summary>
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithRedirectConfigBeta<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.WithRedirectConfiguration(string name)
         {
-            return this.WithRedirectConfiguration(name) as ApplicationGatewayRequestRoutingRule.Definition.IWithAttach<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.WithRedirectConfiguration(name);
         }
 
         /// <summary>
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
         {
-            return this.WithSslCertificateFromPfxFile(pfxFile) as HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>;
+            return this.WithSslCertificateFromPfxFile(pfxFile);
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificate(string name)
         {
-            return this.WithSslCertificate(name) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>;
+            return this.WithSslCertificate(name);
         }
 
         /// <summary>
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificateFromPfxFile(FileInfo pfxFile)
         {
-            return this.WithSslCertificateFromPfxFile(pfxFile) as HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>;
+            return this.WithSslCertificateFromPfxFile(pfxFile);
         }
 
         /// <summary>
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasSslCertificate.Definition.IWithSslCertificate<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificate(string name)
         {
-            return this.WithSslCertificate(name) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.WithSslCertificate(name);
         }
 
         /// <summary>
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendOrAddress<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate>.ToBackendHttpConfiguration(string name)
         {
-            return this.ToBackendHttpConfiguration(name) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendOrAddress<ApplicationGateway.Update.IUpdate>;
+            return this.ToBackendHttpConfiguration(name);
         }
 
         /// <summary>
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendOrAddress<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfiguration<ApplicationGateway.Update.IUpdate>.ToBackendHttpPort(int portNumber)
         {
-            return this.ToBackendHttpPort(portNumber) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendOrAddress<ApplicationGateway.Update.IUpdate>;
+            return this.ToBackendHttpPort(portNumber);
         }
 
         /// <summary>
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendOrAddress<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.ToBackendHttpConfiguration(string name)
         {
-            return this.ToBackendHttpConfiguration(name) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendOrAddress<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.ToBackendHttpConfiguration(name);
         }
 
         /// <summary>
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendOrAddress<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfiguration<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.ToBackendHttpPort(int portNumber)
         {
-            return this.ToBackendHttpPort(portNumber) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendOrAddress<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.ToBackendHttpPort(portNumber);
         }
 
         /// <summary>
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate> HasSslCertificate.UpdateDefinition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>>.WithSslCertificatePassword(string password)
         {
-            return this.WithSslCertificatePassword(password) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Update.IUpdate>;
+            return this.WithSslCertificatePassword(password);
         }
 
         /// <summary>
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> HasSslCertificate.Definition.IWithSslPassword<ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>>.WithSslCertificatePassword(string password)
         {
-            return this.WithSslCertificatePassword(password) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrSniOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.WithSslCertificatePassword(password);
         }
 
         /// <summary>
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition, or null if the specified port number is already used for a different protocol.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithSslCertificate<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate>.FromFrontendHttpsPort(int portNumber)
         {
-            return this.FromFrontendHttpsPort(portNumber) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithSslCertificate<ApplicationGateway.Update.IUpdate>;
+            return this.FromFrontendHttpsPort(portNumber);
         }
 
         /// <summary>
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition, or null if the specified port number is already used for a different protocol.</return>
         ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Update.IUpdate> ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithFrontendPort<ApplicationGateway.Update.IUpdate>.FromFrontendHttpPort(int portNumber)
         {
-            return this.FromFrontendHttpPort(portNumber) as ApplicationGatewayRequestRoutingRule.UpdateDefinition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Update.IUpdate>;
+            return this.FromFrontendHttpPort(portNumber);
         }
 
         /// <summary>
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition, or null if the specified port number is already used for a different protocol.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithSslCertificate<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.FromFrontendHttpsPort(int portNumber)
         {
-            return this.FromFrontendHttpsPort(portNumber) as ApplicationGatewayRequestRoutingRule.Definition.IWithSslCertificate<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.FromFrontendHttpsPort(portNumber);
         }
 
         /// <summary>
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition, or null if the specified port number is already used for a different protocol.</return>
         ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate> ApplicationGatewayRequestRoutingRule.Definition.IWithFrontendPort<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>.FromFrontendHttpPort(int portNumber)
         {
-            return this.FromFrontendHttpPort(portNumber) as ApplicationGatewayRequestRoutingRule.Definition.IWithBackendHttpConfigOrRedirect<ApplicationGateway.Definition.IWithRequestRoutingRuleOrCreate>;
+            return this.FromFrontendHttpPort(portNumber);
         }
     }
 }

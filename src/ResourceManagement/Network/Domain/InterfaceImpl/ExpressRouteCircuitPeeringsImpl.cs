@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>Next peering definition stage.</return>
         ExpressRouteCircuitPeering.Definition.IBlank Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings.DefineAzurePrivatePeering()
         {
-            return this.DefineAzurePrivatePeering() as ExpressRouteCircuitPeering.Definition.IBlank;
+            return this.DefineAzurePrivatePeering();
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>Next peering definition stage.</return>
         ExpressRouteCircuitPeering.Definition.IBlank Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings.DefineAzurePublicPeering()
         {
-            return this.DefineAzurePublicPeering() as ExpressRouteCircuitPeering.Definition.IBlank;
+            return this.DefineAzurePublicPeering();
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>Next peering definition stage.</return>
         ExpressRouteCircuitPeering.Definition.IWithAdvertisedPublicPrefixes Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeerings.DefineMicrosoftPeering()
         {
-            return this.DefineMicrosoftPeering() as ExpressRouteCircuitPeering.Definition.IWithAdvertisedPublicPrefixes;
+            return this.DefineMicrosoftPeering();
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuit;
+                return this.Parent();
             }
         }
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering>;
+            return this.List();
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IExpressRouteCircuitPeering>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IExpressRouteCircuitPeering>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByName<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering>.GetByName(string name)
         {
-            return this.GetByName(name) as Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering;
+            return this.GetByName(name);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByNameAsync<Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering>.GetByNameAsync(string name, CancellationToken cancellationToken)
         {
-            return await this.GetByNameAsync(name, cancellationToken) as Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitPeering;
+            return await this.GetByNameAsync(name, cancellationToken);
         }
     }
 }

@@ -16,22 +16,22 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     {
         ToolTypeSettings.Chainer.Definition.IWithAttachAndPythonInterpreter<BatchAIJob.Definition.IWithCreate> ToolTypeSettings.Chainer.Definition.IWithPython<BatchAIJob.Definition.IWithCreate>.WithPythonScriptFile(string pythonScriptFilePath)
         {
-            return this.WithPythonScriptFile(pythonScriptFilePath) as ToolTypeSettings.Chainer.Definition.IWithAttachAndPythonInterpreter<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPythonScriptFile(pythonScriptFilePath);
         }
 
         IWithAttach<IWithCreate> IWithCommandLineArgs<IWithAttach<IWithCreate>>.WithCommandLineArgs(string commandLineArgs)
         {
-            return this.WithCommandLineArgs(commandLineArgs) as ToolTypeSettings.Chainer.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithCommandLineArgs(commandLineArgs);
         }
 
         IWithAttach<IWithCreate> IWithProcessCount<IWithAttach<IWithCreate>>.WithProcessCount(int processCount)
         {
-            return this.WithProcessCount(processCount) as ToolTypeSettings.Chainer.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithProcessCount(processCount);
         }
 
         IWithAttach<IWithCreate> IWithPythonInterpreter<IWithAttach<IWithCreate>>.WithPythonInterpreterPath(string path)
         {
-            return this.WithPythonInterpreterPath(path) as ToolTypeSettings.Chainer.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPythonInterpreterPath(path);
         }
     }
 }

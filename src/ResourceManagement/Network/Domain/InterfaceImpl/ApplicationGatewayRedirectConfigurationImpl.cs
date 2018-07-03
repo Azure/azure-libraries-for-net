@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRedirectConfiguration.Definition.IWithTarget<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayRedirectConfiguration.Definition.IWithType<ApplicationGateway.Definition.IWithCreate>.WithType(ApplicationGatewayRedirectType redirectType)
         {
-            return this.WithType(redirectType) as ApplicationGatewayRedirectConfiguration.Definition.IWithTarget<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithType(redirectType);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithTarget<ApplicationGateway.Update.IUpdate> ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithType<ApplicationGateway.Update.IUpdate>.WithType(ApplicationGatewayRedirectType redirectType)
         {
-            return this.WithType(redirectType) as ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithTarget<ApplicationGateway.Update.IUpdate>;
+            return this.WithType(redirectType);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRedirectConfiguration.Update.IUpdate ApplicationGatewayRedirectConfiguration.Update.IWithQueryStringIncluded.WithQueryStringIncluded()
         {
-            return this.WithQueryStringIncluded() as ApplicationGatewayRedirectConfiguration.Update.IUpdate;
+            return this.WithQueryStringIncluded();
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRedirectConfiguration.Update.IUpdate ApplicationGatewayRedirectConfiguration.Update.IWithQueryStringIncluded.WithoutQueryStringIncluded()
         {
-            return this.WithoutQueryStringIncluded() as ApplicationGatewayRedirectConfiguration.Update.IUpdate;
+            return this.WithoutQueryStringIncluded();
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRedirectConfiguration.Update.IUpdate ApplicationGatewayRedirectConfiguration.Update.IWithTarget.WithoutTargetUrl()
         {
-            return this.WithoutTargetUrl() as ApplicationGatewayRedirectConfiguration.Update.IUpdate;
+            return this.WithoutTargetUrl();
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRedirectConfiguration.Update.IUpdate ApplicationGatewayRedirectConfiguration.Update.IWithTarget.WithoutTargetListener()
         {
-            return this.WithoutTargetListener() as ApplicationGatewayRedirectConfiguration.Update.IUpdate;
+            return this.WithoutTargetListener();
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRedirectConfiguration.Update.IUpdate ApplicationGatewayRedirectConfiguration.Update.IWithTarget.WithTargetUrl(string url)
         {
-            return this.WithTargetUrl(url) as ApplicationGatewayRedirectConfiguration.Update.IUpdate;
+            return this.WithTargetUrl(url);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRedirectConfiguration.Update.IUpdate ApplicationGatewayRedirectConfiguration.Update.IWithTarget.WithTargetListener(string name)
         {
-            return this.WithTargetListener(name) as ApplicationGatewayRedirectConfiguration.Update.IUpdate;
+            return this.WithTargetListener(name);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRedirectConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayRedirectConfiguration.Definition.IWithTarget<ApplicationGateway.Definition.IWithCreate>.WithTargetUrl(string url)
         {
-            return this.WithTargetUrl(url) as ApplicationGatewayRedirectConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithTargetUrl(url);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRedirectConfiguration.Definition.IWithAttachAndPath<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayRedirectConfiguration.Definition.IWithTarget<ApplicationGateway.Definition.IWithCreate>.WithTargetListener(string name)
         {
-            return this.WithTargetListener(name) as ApplicationGatewayRedirectConfiguration.Definition.IWithAttachAndPath<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithTargetListener(name);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithTarget<ApplicationGateway.Update.IUpdate>.WithTargetUrl(string url)
         {
-            return this.WithTargetUrl(url) as ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithTargetUrl(url);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithAttachAndPath<ApplicationGateway.Update.IUpdate> ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithTarget<ApplicationGateway.Update.IUpdate>.WithTargetListener(string name)
         {
-            return this.WithTargetListener(name) as ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithAttachAndPath<ApplicationGateway.Update.IUpdate>;
+            return this.WithTargetListener(name);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRedirectConfiguration.Update.IUpdate ApplicationGatewayRedirectConfiguration.Update.IWithPathIncluded.WithoutPathIncluded()
         {
-            return this.WithoutPathIncluded() as ApplicationGatewayRedirectConfiguration.Update.IUpdate;
+            return this.WithoutPathIncluded();
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRedirectConfiguration.Update.IUpdate ApplicationGatewayRedirectConfiguration.Update.IWithPathIncluded.WithPathIncluded()
         {
-            return this.WithPathIncluded() as ApplicationGatewayRedirectConfiguration.Update.IUpdate;
+            return this.WithPathIncluded();
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ApplicationGateway.Update.IUpdate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ApplicationGateway.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayRedirectConfiguration.Update.IUpdate ApplicationGatewayRedirectConfiguration.Update.IWithType.WithType(ApplicationGatewayRedirectType redirectType)
         {
-            return this.WithType(redirectType) as ApplicationGatewayRedirectConfiguration.Update.IUpdate;
+            return this.WithType(redirectType);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Type() as Models.ApplicationGatewayRedirectType;
+                return this.Type();
             }
         }
 
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.TargetListener() as Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayListener;
+                return this.TargetListener();
             }
         }
 
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.RequestRoutingRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayRequestRoutingRule>;
+                return this.RequestRoutingRules();
             }
         }
 
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRedirectConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayRedirectConfiguration.Definition.IWithPathIncluded<ApplicationGateway.Definition.IWithCreate>.WithPathIncluded()
         {
-            return this.WithPathIncluded() as ApplicationGatewayRedirectConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithPathIncluded();
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithPathIncluded<ApplicationGateway.Update.IUpdate>.WithPathIncluded()
         {
-            return this.WithPathIncluded() as ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithPathIncluded();
         }
 
         /// <summary>
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRedirectConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayRedirectConfiguration.Definition.IWithQueryStringIncluded<ApplicationGateway.Definition.IWithCreate>.WithQueryStringIncluded()
         {
-            return this.WithQueryStringIncluded() as ApplicationGatewayRedirectConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithQueryStringIncluded();
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithQueryStringIncluded<ApplicationGateway.Update.IUpdate>.WithQueryStringIncluded()
         {
-            return this.WithQueryStringIncluded() as ApplicationGatewayRedirectConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithQueryStringIncluded();
         }
     }
 }

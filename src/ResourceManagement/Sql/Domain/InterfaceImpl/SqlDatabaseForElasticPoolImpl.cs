@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachFinal<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithCreateMode<SqlElasticPoolOperations.Definition.IWithCreate>.WithMode(string createMode)
         {
-            return this.WithMode(createMode) as SqlDatabase.Definition.IWithAttachFinal<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.WithMode(createMode);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithCollationAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate>.WithCollation(string collation)
         {
-            return this.WithCollation(collation) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.WithCollation(collation);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithCreateMode<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithSourceDatabaseId<SqlElasticPoolOperations.Definition.IWithCreate>.WithSourceDatabase(string sourceDatabaseId)
         {
-            return this.WithSourceDatabase(sourceDatabaseId) as SqlDatabase.Definition.IWithCreateMode<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.WithSourceDatabase(sourceDatabaseId);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithCreateMode<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithSourceDatabaseId<SqlElasticPoolOperations.Definition.IWithCreate>.WithSourceDatabase(ISqlDatabase sourceDatabase)
         {
-            return this.WithSourceDatabase(sourceDatabase) as SqlDatabase.Definition.IWithCreateMode<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.WithSourceDatabase(sourceDatabase);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithStorageKeyAfterElasticPool<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithImportFromAfterElasticPoolBeta<SqlElasticPoolOperations.Definition.IWithCreate>.ImportFrom(string storageUri)
         {
-            return this.ImportFrom(storageUri) as SqlDatabase.Definition.IWithStorageKeyAfterElasticPool<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.ImportFrom(storageUri);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithImportFromAfterElasticPoolBeta<SqlElasticPoolOperations.Definition.IWithCreate>.ImportFrom(IStorageAccount storageAccount, string containerName, string fileName)
         {
-            return this.ImportFrom(storageAccount, containerName, fileName) as SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.ImportFrom(storageAccount, containerName, fileName);
         }
 
         /// <param name="administratorLogin">The Active Directory administrator login.</param>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAttachFinal<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithAuthenticationAfterElasticPoolBeta<SqlElasticPoolOperations.Definition.IWithCreate>.WithActiveDirectoryLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabase.Definition.IWithAttachFinal<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.WithActiveDirectoryLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <param name="administratorLogin">The SQL administrator login.</param>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAttachFinal<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithAuthenticationAfterElasticPoolBeta<SqlElasticPoolOperations.Definition.IWithCreate>.WithSqlAdministratorLoginAndPassword(string administratorLogin, string administratorPassword)
         {
-            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword) as SqlDatabase.Definition.IWithAttachFinal<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.WithSqlAdministratorLoginAndPassword(administratorLogin, administratorPassword);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithMaxSizeBytesAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate>.WithMaxSizeBytes(long maxSizeBytes)
         {
-            return this.WithMaxSizeBytes(maxSizeBytes) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.WithMaxSizeBytes(maxSizeBytes);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the parent definition.</return>
         SqlElasticPoolOperations.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<SqlElasticPoolOperations.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as SqlElasticPoolOperations.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithSampleDatabaseAfterElasticPoolBeta<SqlElasticPoolOperations.Definition.IWithCreate>.FromSample(SampleName sampleName)
         {
-            return this.FromSample(sampleName) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.FromSample(sampleName);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithRestorePointDatabaseAfterElasticPoolBeta<SqlElasticPoolOperations.Definition.IWithCreate>.FromRestorePoint(IRestorePoint restorePoint)
         {
-            return this.FromRestorePoint(restorePoint) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.FromRestorePoint(restorePoint);
         }
 
         /// <summary>
@@ -145,21 +145,21 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The next stage of the definition.</return>
         SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithRestorePointDatabaseAfterElasticPoolBeta<SqlElasticPoolOperations.Definition.IWithCreate>.FromRestorePoint(IRestorePoint restorePoint, DateTime restorePointDateTime)
         {
-            return this.FromRestorePoint(restorePoint, restorePointDateTime) as SqlDatabase.Definition.IWithAttachAfterElasticPoolOptions<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.FromRestorePoint(restorePoint, restorePointDateTime);
         }
 
         /// <param name="sharedAccessKey">The shared access key to use; it must be preceded with a "?.".</param>
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithStorageKeyAfterElasticPoolBeta<SqlElasticPoolOperations.Definition.IWithCreate>.WithSharedAccessKey(string sharedAccessKey)
         {
-            return this.WithSharedAccessKey(sharedAccessKey) as SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.WithSharedAccessKey(sharedAccessKey);
         }
 
         /// <param name="storageAccessKey">The storage access key to use.</param>
         /// <return>Next definition stage.</return>
         SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlElasticPoolOperations.Definition.IWithCreate> SqlDatabase.Definition.IWithStorageKeyAfterElasticPoolBeta<SqlElasticPoolOperations.Definition.IWithCreate>.WithStorageAccessKey(string storageAccessKey)
         {
-            return this.WithStorageAccessKey(storageAccessKey) as SqlDatabase.Definition.IWithAuthenticationAfterElasticPool<SqlElasticPoolOperations.Definition.IWithCreate>;
+            return this.WithStorageAccessKey(storageAccessKey);
         }
     }
 }

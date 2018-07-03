@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if (value == null)
+            if (value == null || !(value is T))
             {
                 writer.WriteNull();
             }
-            writer.WriteValue((value as T).Value);
+            writer.WriteValue(((T) value).Value);
         }
     }
 }

@@ -14,7 +14,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
     using System.Linq;
 
     /// <summary>
-    /// Information on the configuration of flow log.
+    /// Information on the configuration of flow log and traffic analytics
+    /// (optional) .
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class FlowLogInformationInner
@@ -31,16 +32,17 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// Initializes a new instance of the FlowLogInformationInner class.
         /// </summary>
         /// <param name="targetResourceId">The ID of the resource to configure
-        /// for flow logging.</param>
+        /// for flow log and traffic analytics (optional) .</param>
         /// <param name="storageId">ID of the storage account which is used to
         /// store the flow log.</param>
         /// <param name="enabled">Flag to enable/disable flow logging.</param>
-        public FlowLogInformationInner(string targetResourceId, string storageId, bool enabled, RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters))
+        public FlowLogInformationInner(string targetResourceId, string storageId, bool enabled, RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), TrafficAnalyticsProperties flowAnalyticsConfiguration = default(TrafficAnalyticsProperties))
         {
             TargetResourceId = targetResourceId;
             StorageId = storageId;
             Enabled = enabled;
             RetentionPolicy = retentionPolicy;
+            FlowAnalyticsConfiguration = flowAnalyticsConfiguration;
             CustomInit();
         }
 
@@ -50,7 +52,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the ID of the resource to configure for flow logging.
+        /// Gets or sets the ID of the resource to configure for flow log and
+        /// traffic analytics (optional) .
         /// </summary>
         [JsonProperty(PropertyName = "targetResourceId")]
         public string TargetResourceId { get; set; }
@@ -74,6 +77,11 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public RetentionPolicyParameters RetentionPolicy { get; set; }
 
         /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "flowAnalyticsConfiguration")]
+        public TrafficAnalyticsProperties FlowAnalyticsConfiguration { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -88,6 +96,10 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
             if (StorageId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "StorageId");
+            }
+            if (FlowAnalyticsConfiguration != null)
+            {
+                FlowAnalyticsConfiguration.Validate();
             }
         }
     }

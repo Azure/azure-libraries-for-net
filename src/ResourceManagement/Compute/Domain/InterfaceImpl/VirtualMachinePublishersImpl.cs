@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher>.ListByRegion(Region region)
         {
-            return this.ListByRegion(region) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher>;
+            return this.ListByRegion(region);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher>.ListByRegion(string regionName)
         {
-            return this.ListByRegion(regionName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher>;
+            return this.ListByRegion(regionName);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call, returning the requested resources.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher>.ListByRegionAsync(Region region, CancellationToken cancellationToken)
         {
-            return await this.ListByRegionAsync(region, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IVirtualMachinePublisher>;
+            return await this.ListByRegionAsync(region, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>A representation of the deferred computation of this call, returning the requested resources.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher>.ListByRegionAsync(string regionName, CancellationToken cancellationToken)
         {
-            return await this.ListByRegionAsync(regionName, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IVirtualMachinePublisher>;
+            return await this.ListByRegionAsync(regionName, cancellationToken);
         }
     }
 }

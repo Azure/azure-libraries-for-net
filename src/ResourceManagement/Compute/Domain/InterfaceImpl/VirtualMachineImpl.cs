@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyUnmanaged VirtualMachine.Definition.IWithLinuxRootUsernameUnmanaged.WithRootUsername(string rootUserName)
         {
-            return this.WithRootUsername(rootUserName) as VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyUnmanaged;
+            return this.WithRootUsername(rootUserName);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxCreateUnmanaged VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyUnmanaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachine.Definition.IWithLinuxCreateUnmanaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxCreateUnmanaged VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyUnmanaged.WithRootPassword(string rootPassword)
         {
-            return this.WithRootPassword(rootPassword) as VirtualMachine.Definition.IWithLinuxCreateUnmanaged;
+            return this.WithRootPassword(rootPassword);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithAvailabilityZone.WithAvailabilityZone(AvailabilityZoneId zoneId)
         {
-            return this.WithAvailabilityZone(zoneId) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithAvailabilityZone(zoneId);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithFromImageCreateOptionsUnmanaged VirtualMachine.Definition.IWithFromImageCreateOptionsManagedOrUnmanaged.WithUnmanagedDisks()
         {
-            return this.WithUnmanagedDisks() as VirtualMachine.Definition.IWithFromImageCreateOptionsUnmanaged;
+            return this.WithUnmanagedDisks();
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithPlan.WithPromotionalPlan(PurchasePlan plan, string promotionCode)
         {
-            return this.WithPromotionalPlan(plan, promotionCode) as VirtualMachine.Definition.IWithCreate;
+            return this.WithPromotionalPlan(plan, promotionCode);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithPlan.WithPlan(PurchasePlan plan)
         {
-            return this.WithPlan(plan) as VirtualMachine.Definition.IWithCreate;
+            return this.WithPlan(plan);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithPrivateIP VirtualMachine.Definition.IWithSubnet.WithSubnet(string name)
         {
-            return this.WithSubnet(name) as VirtualMachine.Definition.IWithPrivateIP;
+            return this.WithSubnet(name);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPublicIPAddress.WithNewPrimaryPublicIPAddress(ICreatable<Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress> creatable)
         {
-            return this.WithNewPrimaryPublicIPAddress(creatable) as VirtualMachine.Definition.IWithOS;
+            return this.WithNewPrimaryPublicIPAddress(creatable);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPublicIPAddress.WithNewPrimaryPublicIPAddress(string leafDnsLabel)
         {
-            return this.WithNewPrimaryPublicIPAddress(leafDnsLabel) as VirtualMachine.Definition.IWithOS;
+            return this.WithNewPrimaryPublicIPAddress(leafDnsLabel);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPublicIPAddress.WithoutPrimaryPublicIPAddress()
         {
-            return this.WithoutPrimaryPublicIPAddress() as VirtualMachine.Definition.IWithOS;
+            return this.WithoutPrimaryPublicIPAddress();
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPublicIPAddress.WithExistingPrimaryPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.WithExistingPrimaryPublicIPAddress(publicIPAddress) as VirtualMachine.Definition.IWithOS;
+            return this.WithExistingPrimaryPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged VirtualMachine.Definition.IWithLinuxRootUsernameManagedOrUnmanaged.WithRootUsername(string rootUserName)
         {
-            return this.WithRootUsername(rootUserName) as VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged;
+            return this.WithRootUsername(rootUserName);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDisk(ICreatable<Microsoft.Azure.Management.Compute.Fluent.IDisk> creatable)
         {
-            return this.WithNewDataDisk(creatable) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithNewDataDisk(creatable);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDisk(ICreatable<Microsoft.Azure.Management.Compute.Fluent.IDisk> creatable, int lun, CachingTypes cachingType)
         {
-            return this.WithNewDataDisk(creatable, lun, cachingType) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithNewDataDisk(creatable, lun, cachingType);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB)
         {
-            return this.WithNewDataDisk(sizeInGB) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithNewDataDisk(sizeInGB);
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType)
         {
-            return this.WithNewDataDisk(sizeInGB, lun, cachingType) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithNewDataDisk(sizeInGB, lun, cachingType);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
-            return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType);
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithExistingDataDisk(IDisk disk)
         {
-            return this.WithExistingDataDisk(disk) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithExistingDataDisk(disk);
         }
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithExistingDataDisk(IDisk disk, int lun, CachingTypes cachingType)
         {
-            return this.WithExistingDataDisk(disk, lun, cachingType) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithExistingDataDisk(disk, lun, cachingType);
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithExistingDataDisk(IDisk disk, int newSizeInGB, int lun, CachingTypes cachingType)
         {
-            return this.WithExistingDataDisk(disk, newSizeInGB, lun, cachingType) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithExistingDataDisk(disk, newSizeInGB, lun, cachingType);
         }
 
         /// <summary>
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDiskFromImage(int imageLun)
         {
-            return this.WithNewDataDiskFromImage(imageLun) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithNewDataDiskFromImage(imageLun);
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType)
         {
-            return this.WithNewDataDiskFromImage(imageLun, newSizeInGB, cachingType) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithNewDataDiskFromImage(imageLun, newSizeInGB, cachingType);
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedDataDisk.WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
-            return this.WithNewDataDiskFromImage(imageLun, newSizeInGB, cachingType, storageAccountType) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithNewDataDiskFromImage(imageLun, newSizeInGB, cachingType, storageAccountType);
         }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithManagedDataDisk.WithNewDataDisk(ICreatable<Microsoft.Azure.Management.Compute.Fluent.IDisk> creatable)
         {
-            return this.WithNewDataDisk(creatable) as VirtualMachine.Update.IUpdate;
+            return this.WithNewDataDisk(creatable);
         }
 
         /// <summary>
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithManagedDataDisk.WithNewDataDisk(ICreatable<Microsoft.Azure.Management.Compute.Fluent.IDisk> creatable, int lun, CachingTypes cachingType)
         {
-            return this.WithNewDataDisk(creatable, lun, cachingType) as VirtualMachine.Update.IUpdate;
+            return this.WithNewDataDisk(creatable, lun, cachingType);
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB)
         {
-            return this.WithNewDataDisk(sizeInGB) as VirtualMachine.Update.IUpdate;
+            return this.WithNewDataDisk(sizeInGB);
         }
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType)
         {
-            return this.WithNewDataDisk(sizeInGB, lun, cachingType) as VirtualMachine.Update.IUpdate;
+            return this.WithNewDataDisk(sizeInGB, lun, cachingType);
         }
 
         /// <summary>
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithManagedDataDisk.WithNewDataDisk(int sizeInGB, int lun, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
-            return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType) as VirtualMachine.Update.IUpdate;
+            return this.WithNewDataDisk(sizeInGB, lun, cachingType, storageAccountType);
         }
 
         /// <summary>
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithManagedDataDisk.WithoutDataDisk(int lun)
         {
-            return this.WithoutDataDisk(lun) as VirtualMachine.Update.IUpdate;
+            return this.WithoutDataDisk(lun);
         }
 
         /// <summary>
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithManagedDataDisk.WithExistingDataDisk(IDisk disk)
         {
-            return this.WithExistingDataDisk(disk) as VirtualMachine.Update.IUpdate;
+            return this.WithExistingDataDisk(disk);
         }
 
         /// <summary>
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithManagedDataDisk.WithExistingDataDisk(IDisk disk, int lun, CachingTypes cachingType)
         {
-            return this.WithExistingDataDisk(disk, lun, cachingType) as VirtualMachine.Update.IUpdate;
+            return this.WithExistingDataDisk(disk, lun, cachingType);
         }
 
         /// <summary>
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithManagedDataDisk.WithExistingDataDisk(IDisk disk, int newSizeInGB, int lun, CachingTypes cachingType)
         {
-            return this.WithExistingDataDisk(disk, newSizeInGB, lun, cachingType) as VirtualMachine.Update.IUpdate;
+            return this.WithExistingDataDisk(disk, newSizeInGB, lun, cachingType);
         }
 
         /// <summary>
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.NetworkInterfaceIds() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.NetworkInterfaceIds();
             }
         }
 
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The primary network interface associated with this resource.</return>
         Microsoft.Azure.Management.Network.Fluent.INetworkInterface Microsoft.Azure.Management.Network.Fluent.IHasNetworkInterfaces.GetPrimaryNetworkInterface()
         {
-            return this.GetPrimaryNetworkInterface() as Microsoft.Azure.Management.Network.Fluent.INetworkInterface;
+            return this.GetPrimaryNetworkInterface();
         }
 
         /// <summary>
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithUnmanagedCreate VirtualMachine.Definition.IWithUnmanagedCreate.WithOSDiskVhdLocation(string containerName, string vhdName)
         {
-            return this.WithOSDiskVhdLocation(containerName, vhdName) as VirtualMachine.Definition.IWithUnmanagedCreate;
+            return this.WithOSDiskVhdLocation(containerName, vhdName);
         }
 
         /// <summary>
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithOSDiskSettings.WithOSDiskName(string name)
         {
-            return this.WithOSDiskName(name) as VirtualMachine.Definition.IWithCreate;
+            return this.WithOSDiskName(name);
         }
 
         /// <summary>
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithOSDiskSettings.WithOSDiskSizeInGB(int size)
         {
-            return this.WithOSDiskSizeInGB(size) as VirtualMachine.Definition.IWithCreate;
+            return this.WithOSDiskSizeInGB(size);
         }
 
         /// <summary>
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithOSDiskSettings.WithOSDiskCaching(CachingTypes cachingType)
         {
-            return this.WithOSDiskCaching(cachingType) as VirtualMachine.Definition.IWithCreate;
+            return this.WithOSDiskCaching(cachingType);
         }
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithOSDiskSettings.WithOSDiskEncryptionSettings(DiskEncryptionSettings settings)
         {
-            return this.WithOSDiskEncryptionSettings(settings) as VirtualMachine.Definition.IWithCreate;
+            return this.WithOSDiskEncryptionSettings(settings);
         }
 
         /// <summary>
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxRootUsernameManagedOrUnmanaged VirtualMachine.Definition.IWithOS.WithLatestLinuxImage(string publisher, string offer, string sku)
         {
-            return this.WithLatestLinuxImage(publisher, offer, sku) as VirtualMachine.Definition.IWithLinuxRootUsernameManagedOrUnmanaged;
+            return this.WithLatestLinuxImage(publisher, offer, sku);
         }
 
         /// <summary>
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged VirtualMachine.Definition.IWithOS.WithLatestWindowsImage(string publisher, string offer, string sku)
         {
-            return this.WithLatestWindowsImage(publisher, offer, sku) as VirtualMachine.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged;
+            return this.WithLatestWindowsImage(publisher, offer, sku);
         }
 
         /// <summary>
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsAdminUsernameUnmanaged VirtualMachine.Definition.IWithOS.WithStoredWindowsImage(string imageUrl)
         {
-            return this.WithStoredWindowsImage(imageUrl) as VirtualMachine.Definition.IWithWindowsAdminUsernameUnmanaged;
+            return this.WithStoredWindowsImage(imageUrl);
         }
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged VirtualMachine.Definition.IWithOS.WithSpecificWindowsImageVersion(ImageReference imageReference)
         {
-            return this.WithSpecificWindowsImageVersion(imageReference) as VirtualMachine.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged;
+            return this.WithSpecificWindowsImageVersion(imageReference);
         }
 
         /// <summary>
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxRootUsernameUnmanaged VirtualMachine.Definition.IWithOS.WithStoredLinuxImage(string imageUrl)
         {
-            return this.WithStoredLinuxImage(imageUrl) as VirtualMachine.Definition.IWithLinuxRootUsernameUnmanaged;
+            return this.WithStoredLinuxImage(imageUrl);
         }
 
         /// <summary>
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithUnmanagedCreate VirtualMachine.Definition.IWithOS.WithSpecializedOSUnmanagedDisk(string osDiskUrl, OperatingSystemTypes osType)
         {
-            return this.WithSpecializedOSUnmanagedDisk(osDiskUrl, osType) as VirtualMachine.Definition.IWithUnmanagedCreate;
+            return this.WithSpecializedOSUnmanagedDisk(osDiskUrl, osType);
         }
 
         /// <summary>
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged VirtualMachine.Definition.IWithOS.WithPopularWindowsImage(KnownWindowsVirtualMachineImage knownImage)
         {
-            return this.WithPopularWindowsImage(knownImage) as VirtualMachine.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged;
+            return this.WithPopularWindowsImage(knownImage);
         }
 
         /// <summary>
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxRootUsernameManagedOrUnmanaged VirtualMachine.Definition.IWithOS.WithPopularLinuxImage(KnownLinuxVirtualMachineImage knownImage)
         {
-            return this.WithPopularLinuxImage(knownImage) as VirtualMachine.Definition.IWithLinuxRootUsernameManagedOrUnmanaged;
+            return this.WithPopularLinuxImage(knownImage);
         }
 
         /// <summary>
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxRootUsernameManagedOrUnmanaged VirtualMachine.Definition.IWithOS.WithSpecificLinuxImageVersion(ImageReference imageReference)
         {
-            return this.WithSpecificLinuxImageVersion(imageReference) as VirtualMachine.Definition.IWithLinuxRootUsernameManagedOrUnmanaged;
+            return this.WithSpecificLinuxImageVersion(imageReference);
         }
 
         /// <summary>
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsAdminUsernameManaged VirtualMachine.Definition.IWithOS.WithWindowsCustomImage(string customImageId)
         {
-            return this.WithWindowsCustomImage(customImageId) as VirtualMachine.Definition.IWithWindowsAdminUsernameManaged;
+            return this.WithWindowsCustomImage(customImageId);
         }
 
         /// <summary>
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxRootUsernameManaged VirtualMachine.Definition.IWithOS.WithLinuxCustomImage(string customImageId)
         {
-            return this.WithLinuxCustomImage(customImageId) as VirtualMachine.Definition.IWithLinuxRootUsernameManaged;
+            return this.WithLinuxCustomImage(customImageId);
         }
 
         /// <summary>
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithOS.WithSpecializedOSDisk(IDisk disk, OperatingSystemTypes osType)
         {
-            return this.WithSpecializedOSDisk(disk, osType) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithSpecializedOSDisk(disk, osType);
         }
 
         /// <summary>
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithOSDiskSizeInGB(int size)
         {
-            return this.WithOSDiskSizeInGB(size) as VirtualMachine.Update.IUpdate;
+            return this.WithOSDiskSizeInGB(size);
         }
 
         /// <summary>
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithDataDiskDefaultCachingType(CachingTypes cachingType)
         {
-            return this.WithDataDiskDefaultCachingType(cachingType) as VirtualMachine.Update.IUpdate;
+            return this.WithDataDiskDefaultCachingType(cachingType);
         }
 
         /// <summary>
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithSize(string sizeName)
         {
-            return this.WithSize(sizeName) as VirtualMachine.Update.IUpdate;
+            return this.WithSize(sizeName);
         }
 
         /// <summary>
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithSize(VirtualMachineSizeTypes size)
         {
-            return this.WithSize(size) as VirtualMachine.Update.IUpdate;
+            return this.WithSize(size);
         }
 
         /// <summary>
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithOSDiskCaching(CachingTypes cachingType)
         {
-            return this.WithOSDiskCaching(cachingType) as VirtualMachine.Update.IUpdate;
+            return this.WithOSDiskCaching(cachingType);
         }
 
         /// <summary>
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithDataDiskDefaultStorageAccountType(StorageAccountTypes storageAccountType)
         {
-            return this.WithDataDiskDefaultStorageAccountType(storageAccountType) as VirtualMachine.Update.IUpdate;
+            return this.WithDataDiskDefaultStorageAccountType(storageAccountType);
         }
 
         /// <summary>
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable VM update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithOSDiskEncryptionSettings(DiskEncryptionSettings settings)
         {
-            return this.WithOSDiskEncryptionSettings(settings) as VirtualMachine.Update.IUpdate;
+            return this.WithOSDiskEncryptionSettings(settings);
         }
 
         /// <summary>
@@ -692,7 +692,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithVMSize.WithSize(string sizeName)
         {
-            return this.WithSize(sizeName) as VirtualMachine.Definition.IWithCreate;
+            return this.WithSize(sizeName);
         }
 
         /// <summary>
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithVMSize.WithSize(VirtualMachineSizeTypes size)
         {
-            return this.WithSize(size) as VirtualMachine.Definition.IWithCreate;
+            return this.WithSize(size);
         }
 
         /// <summary>
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsAdminPasswordManagedOrUnmanaged VirtualMachine.Definition.IWithWindowsAdminUsernameManagedOrUnmanaged.WithAdminUsername(string adminUserName)
         {
-            return this.WithAdminUsername(adminUserName) as VirtualMachine.Definition.IWithWindowsAdminPasswordManagedOrUnmanaged;
+            return this.WithAdminUsername(adminUserName);
         }
 
         /// <summary>
@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxCreateManagedOrUnmanaged VirtualMachine.Definition.IWithLinuxCreateManagedOrUnmanaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachine.Definition.IWithLinuxCreateManagedOrUnmanaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable Windows VM definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateUnmanaged VirtualMachine.Definition.IWithWindowsCreateUnmanaged.WithTimeZone(string timeZone)
         {
-            return this.WithTimeZone(timeZone) as VirtualMachine.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithTimeZone(timeZone);
         }
 
         /// <summary>
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable Windows VM definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateUnmanaged VirtualMachine.Definition.IWithWindowsCreateUnmanaged.WithoutVMAgent()
         {
-            return this.WithoutVMAgent() as VirtualMachine.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithoutVMAgent();
         }
 
         /// <summary>
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable Windows VM definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateUnmanaged VirtualMachine.Definition.IWithWindowsCreateUnmanaged.WithWinRM(WinRMListener listener)
         {
-            return this.WithWinRM(listener) as VirtualMachine.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithWinRM(listener);
         }
 
         /// <summary>
@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable Windows VM definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateUnmanaged VirtualMachine.Definition.IWithWindowsCreateUnmanaged.WithoutAutoUpdate()
         {
-            return this.WithoutAutoUpdate() as VirtualMachine.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithoutAutoUpdate();
         }
 
         /// <summary>
@@ -781,7 +781,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of teh definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedCreate.WithDataDiskDefaultCachingType(CachingTypes cachingType)
         {
-            return this.WithDataDiskDefaultCachingType(cachingType) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithDataDiskDefaultCachingType(cachingType);
         }
 
         /// <summary>
@@ -791,7 +791,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedCreate.WithDataDiskDefaultStorageAccountType(StorageAccountTypes storageAccountType)
         {
-            return this.WithDataDiskDefaultStorageAccountType(storageAccountType) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithDataDiskDefaultStorageAccountType(storageAccountType);
         }
 
         /// <summary>
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithManagedCreate VirtualMachine.Definition.IWithManagedCreate.WithOSDiskStorageAccountType(StorageAccountTypes accountType)
         {
-            return this.WithOSDiskStorageAccountType(accountType) as VirtualMachine.Definition.IWithManagedCreate;
+            return this.WithOSDiskStorageAccountType(accountType);
         }
 
         /// <summary>
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithSecondaryNetworkInterface.WithExistingSecondaryNetworkInterface(INetworkInterface networkInterface)
         {
-            return this.WithExistingSecondaryNetworkInterface(networkInterface) as VirtualMachine.Definition.IWithCreate;
+            return this.WithExistingSecondaryNetworkInterface(networkInterface);
         }
 
         /// <summary>
@@ -826,7 +826,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithSecondaryNetworkInterface.WithNewSecondaryNetworkInterface(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface> creatable)
         {
-            return this.WithNewSecondaryNetworkInterface(creatable) as VirtualMachine.Definition.IWithCreate;
+            return this.WithNewSecondaryNetworkInterface(creatable);
         }
 
         /// <summary>
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithSecondaryNetworkInterface.WithExistingSecondaryNetworkInterface(INetworkInterface networkInterface)
         {
-            return this.WithExistingSecondaryNetworkInterface(networkInterface) as VirtualMachine.Update.IUpdate;
+            return this.WithExistingSecondaryNetworkInterface(networkInterface);
         }
 
         /// <summary>
@@ -850,7 +850,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithSecondaryNetworkInterface.WithNewSecondaryNetworkInterface(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface> creatable)
         {
-            return this.WithNewSecondaryNetworkInterface(creatable) as VirtualMachine.Update.IUpdate;
+            return this.WithNewSecondaryNetworkInterface(creatable);
         }
 
         /// <summary>
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithSecondaryNetworkInterface.WithoutSecondaryNetworkInterface(string name)
         {
-            return this.WithoutSecondaryNetworkInterface(name) as VirtualMachine.Update.IUpdate;
+            return this.WithoutSecondaryNetworkInterface(name);
         }
 
         /// <summary>
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxCreateManaged VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyManaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachine.Definition.IWithLinuxCreateManaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -880,7 +880,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxCreateManaged VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyManaged.WithRootPassword(string rootPassword)
         {
-            return this.WithRootPassword(rootPassword) as VirtualMachine.Definition.IWithLinuxCreateManaged;
+            return this.WithRootPassword(rootPassword);
         }
 
         /// <summary>
@@ -890,7 +890,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateManaged VirtualMachine.Definition.IWithWindowsCreateManaged.WithTimeZone(string timeZone)
         {
-            return this.WithTimeZone(timeZone) as VirtualMachine.Definition.IWithWindowsCreateManaged;
+            return this.WithTimeZone(timeZone);
         }
 
         /// <summary>
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateManaged VirtualMachine.Definition.IWithWindowsCreateManaged.WithoutVMAgent()
         {
-            return this.WithoutVMAgent() as VirtualMachine.Definition.IWithWindowsCreateManaged;
+            return this.WithoutVMAgent();
         }
 
         /// <summary>
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateManaged VirtualMachine.Definition.IWithWindowsCreateManaged.WithWinRM(WinRMListener listener)
         {
-            return this.WithWinRM(listener) as VirtualMachine.Definition.IWithWindowsCreateManaged;
+            return this.WithWinRM(listener);
         }
 
         /// <summary>
@@ -919,7 +919,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateManaged VirtualMachine.Definition.IWithWindowsCreateManaged.WithoutAutoUpdate()
         {
-            return this.WithoutAutoUpdate() as VirtualMachine.Definition.IWithWindowsCreateManaged;
+            return this.WithoutAutoUpdate();
         }
 
         /// <summary>
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of an unmanaged data disk definition.</return>
         VirtualMachineUnmanagedDataDisk.Definition.IBlank<VirtualMachine.Definition.IWithUnmanagedCreate> VirtualMachine.Definition.IWithUnmanagedDataDisk.DefineUnmanagedDataDisk(string name)
         {
-            return this.DefineUnmanagedDataDisk(name) as VirtualMachineUnmanagedDataDisk.Definition.IBlank<VirtualMachine.Definition.IWithUnmanagedCreate>;
+            return this.DefineUnmanagedDataDisk(name);
         }
 
         /// <summary>
@@ -939,7 +939,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithUnmanagedCreate VirtualMachine.Definition.IWithUnmanagedDataDisk.WithNewUnmanagedDataDisk(int sizeInGB)
         {
-            return this.WithNewUnmanagedDataDisk(sizeInGB) as VirtualMachine.Definition.IWithUnmanagedCreate;
+            return this.WithNewUnmanagedDataDisk(sizeInGB);
         }
 
         /// <summary>
@@ -951,7 +951,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithUnmanagedCreate VirtualMachine.Definition.IWithUnmanagedDataDisk.WithExistingUnmanagedDataDisk(string storageAccountName, string containerName, string vhdName)
         {
-            return this.WithExistingUnmanagedDataDisk(storageAccountName, containerName, vhdName) as VirtualMachine.Definition.IWithUnmanagedCreate;
+            return this.WithExistingUnmanagedDataDisk(storageAccountName, containerName, vhdName);
         }
 
         /// <summary>
@@ -961,7 +961,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of the data disk definition.</return>
         VirtualMachineUnmanagedDataDisk.UpdateDefinition.IBlank<VirtualMachine.Update.IUpdate> VirtualMachine.Update.IWithUnmanagedDataDisk.DefineUnmanagedDataDisk(string name)
         {
-            return this.DefineUnmanagedDataDisk(name) as VirtualMachineUnmanagedDataDisk.UpdateDefinition.IBlank<VirtualMachine.Update.IUpdate>;
+            return this.DefineUnmanagedDataDisk(name);
         }
 
         /// <summary>
@@ -971,7 +971,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of the data disk update.</return>
         VirtualMachineUnmanagedDataDisk.Update.IUpdate VirtualMachine.Update.IWithUnmanagedDataDisk.UpdateUnmanagedDataDisk(string name)
         {
-            return this.UpdateUnmanagedDataDisk(name) as VirtualMachineUnmanagedDataDisk.Update.IUpdate;
+            return this.UpdateUnmanagedDataDisk(name);
         }
 
         /// <summary>
@@ -981,7 +981,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUnmanagedDataDisk.WithoutUnmanagedDataDisk(string name)
         {
-            return this.WithoutUnmanagedDataDisk(name) as VirtualMachine.Update.IUpdate;
+            return this.WithoutUnmanagedDataDisk(name);
         }
 
         /// <summary>
@@ -991,7 +991,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUnmanagedDataDisk.WithoutUnmanagedDataDisk(int lun)
         {
-            return this.WithoutUnmanagedDataDisk(lun) as VirtualMachine.Update.IUpdate;
+            return this.WithoutUnmanagedDataDisk(lun);
         }
 
         /// <summary>
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable VM definition.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUnmanagedDataDisk.WithNewUnmanagedDataDisk(int sizeInGB)
         {
-            return this.WithNewUnmanagedDataDisk(sizeInGB) as VirtualMachine.Update.IUpdate;
+            return this.WithNewUnmanagedDataDisk(sizeInGB);
         }
 
         /// <summary>
@@ -1013,7 +1013,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable VM definition.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUnmanagedDataDisk.WithExistingUnmanagedDataDisk(string storageAccountName, string containerName, string vhdName)
         {
-            return this.WithExistingUnmanagedDataDisk(storageAccountName, containerName, vhdName) as VirtualMachine.Update.IUpdate;
+            return this.WithExistingUnmanagedDataDisk(storageAccountName, containerName, vhdName);
         }
 
         /// <summary>
@@ -1023,7 +1023,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateUnmanaged VirtualMachine.Definition.IWithWindowsAdminPasswordUnmanaged.WithAdminPassword(string adminPassword)
         {
-            return this.WithAdminPassword(adminPassword) as VirtualMachine.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithAdminPassword(adminPassword);
         }
 
         /// <summary>
@@ -1036,7 +1036,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithStorageAccount.WithNewStorageAccount(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> creatable)
         {
-            return this.WithNewStorageAccount(creatable) as VirtualMachine.Definition.IWithCreate;
+            return this.WithNewStorageAccount(creatable);
         }
 
         /// <summary>
@@ -1048,7 +1048,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithStorageAccount.WithNewStorageAccount(string name)
         {
-            return this.WithNewStorageAccount(name) as VirtualMachine.Definition.IWithCreate;
+            return this.WithNewStorageAccount(name);
         }
 
         /// <summary>
@@ -1060,7 +1060,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithStorageAccount.WithExistingStorageAccount(IStorageAccount storageAccount)
         {
-            return this.WithExistingStorageAccount(storageAccount) as VirtualMachine.Definition.IWithCreate;
+            return this.WithExistingStorageAccount(storageAccount);
         }
 
         /// <summary>
@@ -1071,7 +1071,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPrimaryNetworkInterface.WithNewPrimaryNetworkInterface(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetworkInterface> creatable)
         {
-            return this.WithNewPrimaryNetworkInterface(creatable) as VirtualMachine.Definition.IWithOS;
+            return this.WithNewPrimaryNetworkInterface(creatable);
         }
 
         /// <summary>
@@ -1081,7 +1081,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithOS VirtualMachine.Definition.IWithPrimaryNetworkInterface.WithExistingPrimaryNetworkInterface(INetworkInterface networkInterface)
         {
-            return this.WithExistingPrimaryNetworkInterface(networkInterface) as VirtualMachine.Definition.IWithOS;
+            return this.WithExistingPrimaryNetworkInterface(networkInterface);
         }
 
         /// <summary>
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateUnmanaged VirtualMachine.Definition.IWithWindowsCreateManagedOrUnmanaged.WithUnmanagedDisks()
         {
-            return this.WithUnmanagedDisks() as VirtualMachine.Definition.IWithWindowsCreateUnmanaged;
+            return this.WithUnmanagedDisks();
         }
 
         /// <summary>
@@ -1100,7 +1100,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxCreateManagedOrUnmanaged VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachine.Definition.IWithLinuxCreateManagedOrUnmanaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -1110,7 +1110,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxCreateManagedOrUnmanaged VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyManagedOrUnmanaged.WithRootPassword(string rootPassword)
         {
-            return this.WithRootPassword(rootPassword) as VirtualMachine.Definition.IWithLinuxCreateManagedOrUnmanaged;
+            return this.WithRootPassword(rootPassword);
         }
 
         /// <summary>
@@ -1120,7 +1120,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsAdminPasswordUnmanaged VirtualMachine.Definition.IWithWindowsAdminUsernameUnmanaged.WithAdminUsername(string adminUserName)
         {
-            return this.WithAdminUsername(adminUserName) as VirtualMachine.Definition.IWithWindowsAdminPasswordUnmanaged;
+            return this.WithAdminUsername(adminUserName);
         }
 
         /// <summary>
@@ -1130,7 +1130,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithFromImageCreateOptionsUnmanaged VirtualMachine.Definition.IWithFromImageCreateOptionsUnmanaged.WithComputerName(string computerName)
         {
-            return this.WithComputerName(computerName) as VirtualMachine.Definition.IWithFromImageCreateOptionsUnmanaged;
+            return this.WithComputerName(computerName);
         }
 
         /// <summary>
@@ -1140,7 +1140,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithFromImageCreateOptionsUnmanaged VirtualMachine.Definition.IWithFromImageCreateOptionsUnmanaged.WithCustomData(string base64EncodedCustomData)
         {
-            return this.WithCustomData(base64EncodedCustomData) as VirtualMachine.Definition.IWithFromImageCreateOptionsUnmanaged;
+            return this.WithCustomData(base64EncodedCustomData);
         }
 
         /// <summary>
@@ -1151,7 +1151,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithAvailabilitySet.WithNewAvailabilitySet(ICreatable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet> creatable)
         {
-            return this.WithNewAvailabilitySet(creatable) as VirtualMachine.Definition.IWithCreate;
+            return this.WithNewAvailabilitySet(creatable);
         }
 
         /// <summary>
@@ -1161,7 +1161,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithAvailabilitySet.WithNewAvailabilitySet(string name)
         {
-            return this.WithNewAvailabilitySet(name) as VirtualMachine.Definition.IWithCreate;
+            return this.WithNewAvailabilitySet(name);
         }
 
         /// <summary>
@@ -1171,7 +1171,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithAvailabilitySet.WithExistingAvailabilitySet(IAvailabilitySet availabilitySet)
         {
-            return this.WithExistingAvailabilitySet(availabilitySet) as VirtualMachine.Definition.IWithCreate;
+            return this.WithExistingAvailabilitySet(availabilitySet);
         }
 
         /// <summary>
@@ -1181,7 +1181,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateManagedOrUnmanaged VirtualMachine.Definition.IWithWindowsAdminPasswordManagedOrUnmanaged.WithAdminPassword(string adminPassword)
         {
-            return this.WithAdminPassword(adminPassword) as VirtualMachine.Definition.IWithWindowsCreateManagedOrUnmanaged;
+            return this.WithAdminPassword(adminPassword);
         }
 
         /// <summary>
@@ -1191,7 +1191,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsAdminPasswordManaged VirtualMachine.Definition.IWithWindowsAdminUsernameManaged.WithAdminUsername(string adminUserName)
         {
-            return this.WithAdminUsername(adminUserName) as VirtualMachine.Definition.IWithWindowsAdminPasswordManaged;
+            return this.WithAdminUsername(adminUserName);
         }
 
         /// <summary>
@@ -1200,7 +1200,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -1210,7 +1210,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxCreateUnmanaged VirtualMachine.Definition.IWithLinuxCreateUnmanaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachine.Definition.IWithLinuxCreateUnmanaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -1220,7 +1220,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage stage of the definition.</return>
         VirtualMachine.Definition.IWithFromImageCreateOptionsManaged VirtualMachine.Definition.IWithFromImageCreateOptionsManaged.WithComputerName(string computerName)
         {
-            return this.WithComputerName(computerName) as VirtualMachine.Definition.IWithFromImageCreateOptionsManaged;
+            return this.WithComputerName(computerName);
         }
 
         /// <summary>
@@ -1230,7 +1230,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithFromImageCreateOptionsManaged VirtualMachine.Definition.IWithFromImageCreateOptionsManaged.WithCustomData(string base64EncodedCustomData)
         {
-            return this.WithCustomData(base64EncodedCustomData) as VirtualMachine.Definition.IWithFromImageCreateOptionsManaged;
+            return this.WithCustomData(base64EncodedCustomData);
         }
 
         /// <summary>
@@ -1240,7 +1240,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage stage of an extension definition.</return>
         VirtualMachineExtension.Definition.IBlank<VirtualMachine.Definition.IWithCreate> VirtualMachine.Definition.IWithExtension.DefineNewExtension(string name)
         {
-            return this.DefineNewExtension(name) as VirtualMachineExtension.Definition.IBlank<VirtualMachine.Definition.IWithCreate>;
+            return this.DefineNewExtension(name);
         }
 
         /// <summary>
@@ -1250,7 +1250,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of an extension definition.</return>
         VirtualMachineExtension.UpdateDefinition.IBlank<VirtualMachine.Update.IUpdate> VirtualMachine.Update.IWithExtension.DefineNewExtension(string name)
         {
-            return this.DefineNewExtension(name) as VirtualMachineExtension.UpdateDefinition.IBlank<VirtualMachine.Update.IUpdate>;
+            return this.DefineNewExtension(name);
         }
 
         /// <summary>
@@ -1260,7 +1260,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithExtension.WithoutExtension(string name)
         {
-            return this.WithoutExtension(name) as VirtualMachine.Update.IUpdate;
+            return this.WithoutExtension(name);
         }
 
         /// <summary>
@@ -1270,7 +1270,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of an extension update.</return>
         VirtualMachineExtension.Update.IUpdate VirtualMachine.Update.IWithExtension.UpdateExtension(string name)
         {
-            return this.UpdateExtension(name) as VirtualMachineExtension.Update.IUpdate;
+            return this.UpdateExtension(name);
         }
 
         /// <summary>
@@ -1337,7 +1337,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.StorageProfile() as Models.StorageProfile;
+                return this.StorageProfile();
             }
         }
 
@@ -1348,7 +1348,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Plan() as Models.Plan;
+                return this.Plan();
             }
         }
 
@@ -1371,7 +1371,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.UnmanagedDataDisks() as System.Collections.Generic.IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineUnmanagedDataDisk>;
+                return this.UnmanagedDataDisks();
             }
         }
 
@@ -1382,7 +1382,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.UserAssignedManagedServiceIdentityIds() as System.Collections.Generic.ISet<string>;
+                return this.UserAssignedManagedServiceIdentityIds();
             }
         }
 
@@ -1415,7 +1415,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.DataDisks() as System.Collections.Generic.IReadOnlyDictionary<int, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk>;
+                return this.DataDisks();
             }
         }
 
@@ -1486,7 +1486,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Size() as Models.VirtualMachineSizeTypes;
+                return this.Size();
             }
         }
 
@@ -1508,7 +1508,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The refreshed instance view.</return>
         Models.VirtualMachineInstanceView Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.RefreshInstanceView()
         {
-            return this.RefreshInstanceView() as Models.VirtualMachineInstanceView;
+            return this.RefreshInstanceView();
         }
 
         /// <summary>
@@ -1517,7 +1517,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The virtual machine sizes.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.AvailableSizes()
         {
-            return this.AvailableSizes() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize>;
+            return this.AvailableSizes();
         }
 
         /// <summary>
@@ -1573,7 +1573,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>Extensions attached to the virtual machine.</return>
         System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtension> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.ListExtensions()
         {
-            return this.ListExtensions() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtension>;
+            return this.ListExtensions();
         }
 
         /// <summary>
@@ -1618,7 +1618,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.AvailabilityZones() as System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>;
+                return this.AvailabilityZones();
             }
         }
 
@@ -1667,7 +1667,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.DiagnosticsProfile() as Models.DiagnosticsProfile;
+                return this.DiagnosticsProfile();
             }
         }
 
@@ -1699,7 +1699,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.OSProfile() as Models.OSProfile;
+                return this.OSProfile();
             }
         }
 
@@ -1728,7 +1728,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.DiskEncryption() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineEncryption;
+                return this.DiskEncryption();
             }
         }
 
@@ -1743,7 +1743,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.InstanceView() as Models.VirtualMachineInstanceView;
+                return this.InstanceView();
             }
         }
 
@@ -1754,7 +1754,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.PowerState() as Microsoft.Azure.Management.Compute.Fluent.PowerState;
+                return this.PowerState();
             }
         }
 
@@ -1786,7 +1786,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>An observable that emits the instance view of the virtual machine.</return>
         async Task<Models.VirtualMachineInstanceView> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.RefreshInstanceViewAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshInstanceViewAsync(cancellationToken) as Models.VirtualMachineInstanceView;
+            return await this.RefreshInstanceViewAsync(cancellationToken);
         }
 
         /// <summary>
@@ -1796,13 +1796,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The public IP of the primary network interface.</return>
         Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.GetPrimaryPublicIPAddress()
         {
-            return this.GetPrimaryPublicIPAddress() as Microsoft.Azure.Management.Network.Fluent.IPublicIPAddress;
+            return this.GetPrimaryPublicIPAddress();
         }
 
         /// <return>A representation of the deferred computation of this call, returning extensions attached to the virtual machine.</return>
         async Task<IReadOnlyList<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtension>> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine.ListExtensionsAsync(CancellationToken cancellationToken)
         {
-            return await this.ListExtensionsAsync(cancellationToken) as IReadOnlyList<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtension>;
+            return await this.ListExtensionsAsync(cancellationToken);
         }
 
         /// <summary>
@@ -1831,7 +1831,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithWindowsCreateManaged VirtualMachine.Definition.IWithWindowsAdminPasswordManaged.WithAdminPassword(string adminPassword)
         {
-            return this.WithAdminPassword(adminPassword) as VirtualMachine.Definition.IWithWindowsCreateManaged;
+            return this.WithAdminPassword(adminPassword);
         }
 
         /// <summary>
@@ -1842,7 +1842,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithPublicIPAddress VirtualMachine.Definition.IWithPrivateIP.WithPrimaryPrivateIPAddressStatic(string staticPrivateIPAddress)
         {
-            return this.WithPrimaryPrivateIPAddressStatic(staticPrivateIPAddress) as VirtualMachine.Definition.IWithPublicIPAddress;
+            return this.WithPrimaryPrivateIPAddressStatic(staticPrivateIPAddress);
         }
 
         /// <summary>
@@ -1852,7 +1852,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithPublicIPAddress VirtualMachine.Definition.IWithPrivateIP.WithPrimaryPrivateIPAddressDynamic()
         {
-            return this.WithPrimaryPrivateIPAddressDynamic() as VirtualMachine.Definition.IWithPublicIPAddress;
+            return this.WithPrimaryPrivateIPAddressDynamic();
         }
 
         /// <summary>
@@ -1863,7 +1863,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithPrivateIP VirtualMachine.Definition.IWithNetwork.WithNewPrimaryNetwork(ICreatable<Microsoft.Azure.Management.Network.Fluent.INetwork> creatable)
         {
-            return this.WithNewPrimaryNetwork(creatable) as VirtualMachine.Definition.IWithPrivateIP;
+            return this.WithNewPrimaryNetwork(creatable);
         }
 
         /// <summary>
@@ -1875,7 +1875,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithPrivateIP VirtualMachine.Definition.IWithNetwork.WithNewPrimaryNetwork(string addressSpace)
         {
-            return this.WithNewPrimaryNetwork(addressSpace) as VirtualMachine.Definition.IWithPrivateIP;
+            return this.WithNewPrimaryNetwork(addressSpace);
         }
 
         /// <summary>
@@ -1885,7 +1885,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithSubnet VirtualMachine.Definition.IWithNetwork.WithExistingPrimaryNetwork(INetwork network)
         {
-            return this.WithExistingPrimaryNetwork(network) as VirtualMachine.Definition.IWithSubnet;
+            return this.WithExistingPrimaryNetwork(network);
         }
 
         /// <summary>
@@ -1896,7 +1896,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The stage representing creatable Linux VM definition.</return>
         VirtualMachine.Definition.IWithLinuxCreateManaged VirtualMachine.Definition.IWithLinuxCreateManaged.WithSsh(string publicKey)
         {
-            return this.WithSsh(publicKey) as VirtualMachine.Definition.IWithLinuxCreateManaged;
+            return this.WithSsh(publicKey);
         }
 
         /// <summary>
@@ -1906,7 +1906,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyManaged VirtualMachine.Definition.IWithLinuxRootUsernameManaged.WithRootUsername(string rootUserName)
         {
-            return this.WithRootUsername(rootUserName) as VirtualMachine.Definition.IWithLinuxRootPasswordOrPublicKeyManaged;
+            return this.WithRootUsername(rootUserName);
         }
 
         /// <summary>
@@ -1915,7 +1915,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithBootDiagnostics.WithBootDiagnostics()
         {
-            return this.WithBootDiagnostics() as VirtualMachine.Definition.IWithCreate;
+            return this.WithBootDiagnostics();
         }
 
         /// <summary>
@@ -1925,7 +1925,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithBootDiagnostics.WithBootDiagnostics(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> creatable)
         {
-            return this.WithBootDiagnostics(creatable) as VirtualMachine.Definition.IWithCreate;
+            return this.WithBootDiagnostics(creatable);
         }
 
         /// <summary>
@@ -1935,7 +1935,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithBootDiagnostics.WithBootDiagnostics(string storageAccountBlobEndpointUri)
         {
-            return this.WithBootDiagnostics(storageAccountBlobEndpointUri) as VirtualMachine.Definition.IWithCreate;
+            return this.WithBootDiagnostics(storageAccountBlobEndpointUri);
         }
 
         /// <summary>
@@ -1945,7 +1945,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithBootDiagnostics.WithBootDiagnostics(IStorageAccount storageAccount)
         {
-            return this.WithBootDiagnostics(storageAccount) as VirtualMachine.Definition.IWithCreate;
+            return this.WithBootDiagnostics(storageAccount);
         }
 
         /// <summary>
@@ -1954,7 +1954,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithSystemAssignedManagedServiceIdentity() as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedManagedServiceIdentity();
         }
 
         /// <summary>
@@ -1964,7 +1964,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity(int tokenPort)
         {
-            return this.WithSystemAssignedManagedServiceIdentity(tokenPort) as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedManagedServiceIdentity(tokenPort);
         }
 
         /// <summary>
@@ -1978,7 +1978,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId) as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId);
         }
 
         /// <summary>
@@ -1990,7 +1990,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role) as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role);
         }
 
         /// <summary>
@@ -2003,7 +2003,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role) as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, role);
         }
 
         /// <summary>
@@ -2015,7 +2015,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId) as VirtualMachine.Definition.IWithSystemAssignedIdentityBasedAccessOrCreate;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId);
         }
 
         /// <summary>
@@ -2025,7 +2025,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the virtual machine definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithUserAssignedManagedServiceIdentity.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
         {
-            return this.WithExistingUserAssignedManagedServiceIdentity(identity) as VirtualMachine.Definition.IWithCreate;
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity);
         }
 
         /// <summary>
@@ -2035,7 +2035,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the virtual machine definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithUserAssignedManagedServiceIdentity.WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity)
         {
-            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity) as VirtualMachine.Definition.IWithCreate;
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity);
         }
 
         /// <summary>
@@ -2044,7 +2044,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithSystemAssignedManagedServiceIdentity() as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
+            return this.WithSystemAssignedManagedServiceIdentity();
         }
 
         /// <summary>
@@ -2054,7 +2054,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity(int tokenPort)
         {
-            return this.WithSystemAssignedManagedServiceIdentity(tokenPort) as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
+            return this.WithSystemAssignedManagedServiceIdentity(tokenPort);
         }
 
         /// <summary>
@@ -2068,7 +2068,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId) as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
+            return this.WithSystemAssignedIdentityBasedAccessTo(resourceId, roleDefinitionId);
         }
 
         /// <summary>
@@ -2080,7 +2080,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role) as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(role);
         }
 
         /// <summary>
@@ -2094,7 +2094,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessTo(string scope, BuiltInRole asRole)
         {
-            return this.WithSystemAssignedIdentityBasedAccessTo(scope, asRole) as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
+            return this.WithSystemAssignedIdentityBasedAccessTo(scope, asRole);
         }
 
         /// <summary>
@@ -2106,7 +2106,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId)
         {
-            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId) as VirtualMachine.Update.IWithSystemAssignedIdentityBasedAccessOrUpdate;
+            return this.WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(roleDefinitionId);
         }
         /// <summary>
         /// Specifies that boot diagnostics needs to be disabled in the virtual machine.
@@ -2114,7 +2114,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithBootDiagnostics.WithoutBootDiagnostics()
         {
-            return this.WithoutBootDiagnostics() as VirtualMachine.Update.IUpdate;
+            return this.WithoutBootDiagnostics();
         }
 
         /// <summary>
@@ -2123,7 +2123,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithBootDiagnostics.WithBootDiagnostics()
         {
-            return this.WithBootDiagnostics() as VirtualMachine.Update.IUpdate;
+            return this.WithBootDiagnostics();
         }
 
         /// <summary>
@@ -2133,7 +2133,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithBootDiagnostics.WithBootDiagnostics(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> creatable)
         {
-            return this.WithBootDiagnostics(creatable) as VirtualMachine.Update.IUpdate;
+            return this.WithBootDiagnostics(creatable);
         }
 
         /// <summary>
@@ -2143,7 +2143,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithBootDiagnostics.WithBootDiagnostics(string storageAccountBlobEndpointUri)
         {
-            return this.WithBootDiagnostics(storageAccountBlobEndpointUri) as VirtualMachine.Update.IUpdate;
+            return this.WithBootDiagnostics(storageAccountBlobEndpointUri);
         }
 
         /// <summary>
@@ -2153,7 +2153,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithBootDiagnostics.WithBootDiagnostics(IStorageAccount storageAccount)
         {
-            return this.WithBootDiagnostics(storageAccount) as VirtualMachine.Update.IUpdate;
+            return this.WithBootDiagnostics(storageAccount);
         }
 
         /// <summary>
@@ -2163,7 +2163,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the virtual machine update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity.WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
         {
-            return this.WithExistingUserAssignedManagedServiceIdentity(identity) as VirtualMachine.Update.IUpdate;
+            return this.WithExistingUserAssignedManagedServiceIdentity(identity);
         }
 
         /// <summary>
@@ -2173,7 +2173,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the virtual machine update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity.WithoutUserAssignedManagedServiceIdentity(string identityId)
         {
-            return this.WithoutUserAssignedManagedServiceIdentity(identityId) as VirtualMachine.Update.IUpdate;
+            return this.WithoutUserAssignedManagedServiceIdentity(identityId);
         }
 
         /// <summary>
@@ -2183,7 +2183,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the virtual machine update.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithUserAssignedManagedServiceIdentity.WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity)
         {
-            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity) as VirtualMachine.Update.IUpdate;
+            return this.WithNewUserAssignedManagedServiceIdentity(creatableIdentity);
         }
     }
 }

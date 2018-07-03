@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The first stage of the new resource definition.</return>
         AvailabilitySet.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<AvailabilitySet.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as AvailabilitySet.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>.ListByResourceGroup(string resourceGroupName)
         {
-            return this.ListByResourceGroup(resourceGroupName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>;
+            return this.ListByResourceGroup(resourceGroupName);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The list of resources.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>.ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IAvailabilitySet>;
+            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>;
+            return this.List();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IAvailabilitySet>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IAvailabilitySet>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
     }
 }
