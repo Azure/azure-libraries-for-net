@@ -21,21 +21,21 @@
   <Target Name="PublishSymbols">
 
     <ItemGroup>
-      <DllFiles Include=".\src\ResourceManagement\**\*.dll">
+      <DllFiles Include=".\src\ResourceManagement\**\*.pdb">
       </DllFiles>
     </ItemGroup>
 
-    <Message Text="Found dll files: &quot;%(DllFiles.Identity)&quot;" />  
+    <Message Text="Found pdb files: &quot;%(DllFiles.Identity)&quot;" />  
     
     <MakeDir Directories=".\Symbols\%(DllFiles.RecursiveDir)" />
 
-    <Exec Command="$(Pdb2PdbCommand) %(DllFiles.Identity) /out .\Symbols\%(DllFiles.RecursiveDir)%(DllFiles.Filename).pdb" IgnoreExitCode="true" />
+    <Exec Command="$(Pdb2PdbCommand) %(DllFiles.RecursiveDir)%(DllFiles.Filename).dll /out .\Symbols\%(DllFiles.RecursiveDir)%(DllFiles.Filename).pdb" IgnoreExitCode="true" />
 
     <ItemGroup>  
         <ConvertedSymbols Include=".\Symbols\**\*.pdb"/>  
     </ItemGroup> 
 
-    <Copy SourceFiles="@(ConvertedSymbols)" DestinationFolder="\\aaptfile01\ADXSDK\Fluent\1.13" />
+    <Copy SourceFiles="@(ConvertedSymbols)" DestinationFolder="\\aaptfile01\ADXSDK\Fluent\1.13\%(RecursiveDir)" />
 
     <!--
     <Exec Command="\\symbols\tools\createrequest.cmd -i tools\symbolPublish.txt -d .\requests -c -s" IgnoreExitCode="true" />      
