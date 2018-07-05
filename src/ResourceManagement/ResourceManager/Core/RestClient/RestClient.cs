@@ -127,9 +127,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                 }
                 return "[Unavailable]";
             }
-
-            #region Fluent builder interfaces
-
+            
             public interface IBlank : IWithBaseUri, IWithEnvironment
             {
             }
@@ -160,9 +158,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
 
                 RestClient Build();
             }
-
-            #endregion Fluent builder interfaces
-
+            
             public IBuildable WithBaseUri(string baseUri)
             {
                 this.baseUri = baseUri;
