@@ -21,11 +21,11 @@
   <Target Name="PublishSymbols">
 
     <ItemGroup>
-      <DllFiles Include=".\src\ResourceManagement\**\*.pdb">
+      <DllFiles Include=".\src\ResourceManagement\**\*.dll">
       </DllFiles>
     </ItemGroup>
 
-    <Message Text="Found symbol files: &quot;%(DllFiles.Identity)&quot;" />  
+    <Message Text="Found dll files: &quot;%(DllFiles.Identity)&quot;" />  
     
     <MakeDir Directories=".\Symbols\%(DllFiles.RecursiveDir)" />
 
