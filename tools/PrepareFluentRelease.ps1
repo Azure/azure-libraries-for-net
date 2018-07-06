@@ -8,19 +8,6 @@ Param(
 [String]$Folder
 )
 
-function IncrementSymbolsVersion()
-{ 
-    $symbolPublishConfig = "symbolPublish.txt"
-    $content = Get-Content $symbolPublishConfig
-    $content = $content -replace "BuildID=([\d\.]+)", "BuildID=$newVersion"
-    $content = $content -replace "Fluent\\([\d\.]+)", "Fluent\\([\d\.]+)$newVersion"
-    Write-Output "Updating $symbolPublishConfig"
-    Set-Content -Path $symbolPublishConfig -Value $content -Encoding UTF8
-
-    Write-Output "Creating path \\aaptfile01\ADXSDK\Fluent\$newVersion"
-    New-Item -Path \\aaptfile01\ADXSDK\Fluent\$newVersion -type directory -Force 
-}
-
 function IncrementAssemblyInfoVersion([string]$infoFolder)
 { 
     $assemblyInfos = Get-ChildItem -Path $infoFolder -Filter AssemblyInfo.cs -Recurse
@@ -110,5 +97,3 @@ ForEach ($module in $modules)
 }
 
 IncrementAssemblyInfoVersion($Folder)
-
-IncrementSymbolsVersion
