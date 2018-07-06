@@ -21,7 +21,7 @@
   <Target Name="PublishSymbols">
 
     <ItemGroup>
-      <DllFiles Include=".\src\ResourceManagement\**\*.pdb">
+      <DllFiles Include=".\src\ResourceManagement\*\bin\Release\**\*.pdb">
       </DllFiles>
     </ItemGroup>
 
