@@ -35,10 +35,6 @@
         <ConvertedSymbols Include=".\Symbols\**\*.pdb"/>  
     </ItemGroup> 
 
-    <Copy SourceFiles="@(ConvertedSymbols)" DestinationFolder="\\aaptfile01\ADXSDK\Fluent\1.13\%(RecursiveDir)" />
-
-    <!--
-    <Exec Command="\\symbols\tools\createrequest.cmd -i tools\symbolPublish.txt -d .\requests -c -s" IgnoreExitCode="true" />      
-    -->
+    <Copy SourceFiles="@(ConvertedSymbols)" DestinationFolder="$(SymbolShareLocation)\$(ReleaseVersion)\%(RecursiveDir)" />
   </Target>
 </Project>
