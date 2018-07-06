@@ -13,4 +13,28 @@
 	<Target Name="RunTests" DependsOnTargets="$(RunTestProjectsDependsOn)" />
 	<Target Name="SignNuget" DependsOnTargets="$(SignNugetDependsOn)" />
 	<Target Name="Help" DependsOnTargets="$(HelpDependsOn)" />  
+
+  <PropertyGroup>
+    <Pdb2PdbCommand>&quot;$(LibraryToolsFolder)\Pdb2Pdb\Pdb2Pdb.exe&quot;</Pdb2PdbCommand>
+  </PropertyGroup>
+  
+  <Target Name="PublishSymbols">
+
+    <ItemGroup>
+      <DllFiles Include=".\src\ResourceManagement\*\bin\Release\**\*.pdb">
+      </DllFiles>
+    </ItemGroup>
+
+    <Message Text="Found pdb files: &quot;%(DllFiles.Identity)&quot;" />  
+    
+    <MakeDir Directories=".\Symbols\%(DllFiles.RecursiveDir)" />
+
+    <Exec Command="$(Pdb2PdbCommand) .\src\ResourceManagement\%(DllFiles.RecursiveDir)%(DllFiles.Filename).dll /out .\Symbols\%(DllFiles.RecursiveDir)%(DllFiles.Filename).pdb" IgnoreExitCode="true" />
+
+    <ItemGroup>  
+        <ConvertedSymbols Include=".\Symbols\**\*.pdb"/>  
+    </ItemGroup> 
+
+    <Copy SourceFiles="@(ConvertedSymbols)" DestinationFolder="\$(SymbolShareLocation)\$(ReleaseVersion)\%(RecursiveDir)" />
+  </Target>
 </Project>
