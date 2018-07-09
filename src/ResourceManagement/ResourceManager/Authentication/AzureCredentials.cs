@@ -120,6 +120,10 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             {
                 if (servicePrincipalLoginInformation != null)
                 {
+                    if(servicePrincipalLoginInformation.ClientId == null)
+                    {
+                        throw new RestException($"Cannot communicate with server. ServicePrincipalLoginInformation should contain a valid ClientId information.");
+                    }
                     if (servicePrincipalLoginInformation.ClientSecret != null)
                     {
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
@@ -132,10 +136,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                             TenantId, new ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate), adSettings, TokenCache.DefaultShared);
                     }
 #endif
-                    else
+                    else if(servicePrincipalLoginInformation.Certificate != null)
                     {
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
                             TenantId, servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.Certificate, servicePrincipalLoginInformation.CertificatePassword, adSettings, TokenCache.DefaultShared);
+                    }
+                    else
+                    {
+                        throw new RestException($"Cannot communicate with server. ServicePrincipalLoginInformation should contain either a valid ClientSecret or Certificate information.");
                     }
                 }
 #if !NETSTANDARD
