@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
             AzureUSGovernment = new AzureEnvironment()
             {
                 Name = nameof(AzureUSGovernment),
-                AuthenticationEndpoint = "https://login-us.microsoftonline.com/",
+                AuthenticationEndpoint = "https://login.microsoftonline.us/",
                 ResourceManagerEndpoint = "https://management.usgovcloudapi.net/",
                 ManagementEndpoint = "https://management.core.usgovcloudapi.net",
                 GraphEndpoint = "https://graph.windows.net/",
