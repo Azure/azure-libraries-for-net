@@ -608,7 +608,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 - [.NET Core](https://www.microsoft.com/net/core) 
 - Azure Service Principal - see [how to create authentication info](./AUTH.md).
-- Configure and build locally - see [**to build** section here](https://github.com/Azure/azure-sdk-for-net/#prerequisites).
+- Configure and build locally - see ["**to build**" section here](https://github.com/Azure/azure-sdk-for-net/#to-build).
 
 ## Upgrading from older versions
 
