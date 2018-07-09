@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 {
                     if(servicePrincipalLoginInformation.ClientId == null)
                     {
-                        throw new RestException($"Cannot communicate with server. No valid Client Id provided for Service Principal in ServicePrincipalLoginInformation.");
+                        throw new RestException($"Cannot communicate with server. ServicePrincipalLoginInformation should contain a valid ClientId information.");
                     }
                     if (servicePrincipalLoginInformation.ClientSecret != null)
                     {
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                     }
                     else
                     {
-                        throw new RestException($"Cannot communicate with server. ServicePrincipalLoginInformation should contain either a valid client secret in ClientSecret property or a valid Certificate information.");
+                        throw new RestException($"Cannot communicate with server. ServicePrincipalLoginInformation should contain either a valid ClientSecret or Certificate information.");
                     }
                 }
 #if !NETSTANDARD
