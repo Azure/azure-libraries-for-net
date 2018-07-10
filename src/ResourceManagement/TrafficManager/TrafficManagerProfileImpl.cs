@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     using TrafficManagerProfile.Definition;
     using System.Collections.Generic;
     using System.Threading;
+    using System.Linq;
     using System.Threading.Tasks;
     using ResourceManager.Fluent;
     using Models;
@@ -108,7 +109,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             // call one can create endpoints without properties those are not applicable for the profile's current routing
             // method. We cannot update the routing method of the profile until existing endpoints contains the properties
             // required for the new routing method.
-            await endpoints.CommitAndGetAllAsync(cancellationToken);
+            var updatedEndpoints = await endpoints.CommitAndGetAllAsync(cancellationToken);
+            Inner.Endpoints = updatedEndpoints.Select(e => e.Inner).ToList();
             ProfileInner profileInner = await Manager.Inner.Profiles.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
             SetInner(profileInner);
             return this;
