@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                                 // user => accessPolicy.ForObjectId(Guid.Parse(user.Result.Id)),
                                 user => accessPolicy.ForObjectId(user.Result.Id),
                                 cancellationToken,
-                                TaskContinuationOptions.ExecuteSynchronously,
+                                TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                                 TaskScheduler.Default));
                     }
                     else if (accessPolicy.ServicePrincipalName != null)
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                                 // servicePrincipal => accessPolicy.ForObjectId(Guid.Parse(servicePrincipal.Result.Id)),
                                 servicePrincipal => accessPolicy.ForObjectId(servicePrincipal.Result.Id),
                                 cancellationToken,
-                                TaskContinuationOptions.ExecuteSynchronously,
+                                TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                                 TaskScheduler.Default));
                     }
                     else

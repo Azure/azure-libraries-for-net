@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
                     Task t = Inner().DeleteByScopeAsync(scopeName, lockName, cancellationToken).ContinueWith(
                         (Task parent) => { ids1.Add(id); },
                         cancellationToken, 
-                        TaskContinuationOptions.ExecuteSynchronously,
+                        TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                         TaskScheduler.Default);
                     tts.Add(t);
                 }

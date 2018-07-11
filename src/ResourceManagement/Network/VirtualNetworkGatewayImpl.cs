@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                             defaultIPConfig.WithExistingPublicIPAddress(publicIP);
                         },
                         cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
+                        TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                         TaskScheduler.Default);
                 tasks.Add(pipTask);
             }
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                             defaultIPConfig.WithExistingSubnet(network, GATEWAY_SUBNET);
                         },
                         cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
+                        TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                         TaskScheduler.Default);
                 tasks.Add(networkTask);
             }
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                         return Manager.Inner.VirtualNetworkGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
                     },
                     cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously,
+                    TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                     TaskScheduler.Default);
 
             return await virtualNetworkGatewayInnerTask.Result;

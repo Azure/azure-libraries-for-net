@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                         }
                     },
                     cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously,
+                    TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                     TaskScheduler.Default);
                 allTasks.Add(task);
             }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                         }
                     },
                     cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously,
+                    TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                     TaskScheduler.Default);
                 allTasks.Add(task);
             }
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                         }
                     },
                     cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously,
+                    TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                     TaskScheduler.Default);
                 allTasks.Add(task);
             }
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                     }
                 },
                 cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
+                TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                 TaskScheduler.Default);
             return completionSource.Task;
         }

@@ -1632,7 +1632,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                             defaultPublicFrontend.WithExistingPublicIPAddress(publicIP);
                         },
                         cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
+                        TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                         TaskScheduler.Default);
                 tasks.Add(pipTask);
             }
@@ -1674,7 +1674,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                     }
                 },
                     cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously,
+                    TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                     TaskScheduler.Default);
                 tasks.Add(networkTask);
             }
@@ -1685,7 +1685,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
                     return Manager.Inner.ApplicationGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
                 },
                 cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
+                TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                 TaskScheduler.Default);
 
             return await appGatewayInnerTask.Result;

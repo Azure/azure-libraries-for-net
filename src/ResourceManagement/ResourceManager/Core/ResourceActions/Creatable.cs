@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
                                 }
                             },
                     cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously,
+                    TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                     TaskScheduler.Default);
             }
             else

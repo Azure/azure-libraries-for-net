@@ -391,8 +391,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return (FluentImplT)this;
         }
 
-        ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:A25AA6BA478E9A0DD581F3FB75601E70
-        public async override Task<FluentT> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        internal async Task<FluentT> CreateResourceInternalAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostNameSslStateMap.Count > 0)
             {
@@ -401,72 +400,38 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
             // Web app creation
             Inner.SiteConfig = new Models.SiteConfig();
-            var site = await CreateOrUpdateInnerAsync(Inner, cancellationToken)
-            .ContinueWith<SiteInner>(t =>
-                {
-                    var innerSite = t.Result;
-                    Inner.SiteConfig = null;
-                    return innerSite;
-                },
-                cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default)
-            .ContinueWith(t =>
-                {
-                    // Submit hostname bindings
-                    var bindingTasks = new List<Task>();
-                    foreach (var binding in hostNameBindingsToCreate.Values)
-                    {
-                        bindingTasks.Add(binding.CreateAsync(cancellationToken));
-                    }
-                    foreach (string binding in hostNameBindingsToDelete)
-                    {
-                        bindingTasks.Add(DeleteHostNameBindingAsync(binding, cancellationToken));
-                    }
-                    return Task.WhenAll(bindingTasks)
-                    .ContinueWith(bindingt =>
-                        {
-                            // Refresh after hostname bindings
-                            return GetSiteAsync(cancellationToken);
-                        },
-                        cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
-                        TaskScheduler.Default).Unwrap();
-                },
-                cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default).Unwrap()
-            .ContinueWith(t =>
-                {
-                    var innerSite = t.Result;
-                    // Submit SSL bindings
-                    var certTasks = new List<Task<IAppServiceCertificate>>();
-                    foreach (var binding in sslBindingsToCreate.Values)
-                    {
-                        binding.Inner.ToUpdate = true;
-                        certTasks.Add(binding.NewCertificateAsync(cancellationToken)());
-                        hostNameSslStateMap[binding.Inner.Name] = binding.Inner;
-                    }
-                    innerSite.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
-                    if (certTasks.Any())
-                    {
-                        return Task.WhenAll(certTasks)
-                        .ContinueWith(cert =>
-                            {
-                                return CreateOrUpdateInnerAsync(innerSite, cancellationToken);
-                            },
-                            cancellationToken,
-                            TaskContinuationOptions.ExecuteSynchronously,
-                            TaskScheduler.Default).Unwrap();
-                    }
-                    else
-                    {
-                        return Task.FromResult(innerSite);
-                    }
-                },
-                cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default).Unwrap();
+            var site = await CreateOrUpdateInnerAsync(Inner, cancellationToken);
+            Inner.SiteConfig = null;
+            // Submit hostname bindings
+            var bindingTasks = new List<Task>();
+            foreach (var binding in hostNameBindingsToCreate.Values)
+            {
+                bindingTasks.Add(binding.CreateAsync(cancellationToken));
+            }
+            foreach (string binding in hostNameBindingsToDelete)
+            {
+                bindingTasks.Add(DeleteHostNameBindingAsync(binding, cancellationToken));
+            }
+            await Task.WhenAll(bindingTasks);
+
+            // Refresh after hostname bindings
+            site = await GetSiteAsync(cancellationToken);
+
+            // Submit SSL bindings
+            var certTasks = new List<Task<IAppServiceCertificate>>();
+            foreach (var binding in sslBindingsToCreate.Values)
+            {
+                binding.Inner.ToUpdate = true;
+                certTasks.Add(binding.NewCertificateAsync(cancellationToken)());
+                hostNameSslStateMap[binding.Inner.Name] = binding.Inner;
+            }
+            site.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
+            if (certTasks.Any())
+            {
+                await Task.WhenAll(certTasks);
+
+                site = await CreateOrUpdateInnerAsync(site, cancellationToken);
+            }
 
             // Submit site config
             if (this.SiteConfig != null)
@@ -573,6 +538,26 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             NormalizeProperties();
 
             return this as FluentT;
+        }
+
+        ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:A25AA6BA478E9A0DD581F3FB75601E70
+        public async override Task<FluentT> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            int retryCount = 1;
+            while (retryCount >= 0)
+            {
+                try
+                {
+                    return await CreateResourceInternalAsync(cancellationToken);
+                }
+                catch (CloudException ex) when (retryCount > 0 && ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                {
+                    // First call sometimes fails with 400 and we want to do a single retry
+                }
+                retryCount--;
+            }
+
+            throw new InvalidOperationException();
         }
 
         internal virtual async Task<SiteInner> SubmitAppSettingsAsync(SiteInner site, CancellationToken cancellationToken)

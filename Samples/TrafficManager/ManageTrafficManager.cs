@@ -9,6 +9,7 @@ using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 using Microsoft.Azure.Management.Samples.Common;
 using Microsoft.Azure.Management.TrafficManager.Fluent;
 using Microsoft.Azure.Management.TrafficManager.Fluent.TrafficManagerProfile.Definition;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -40,7 +41,7 @@ namespace ManageTrafficManager
             string rgName = SdkContext.RandomResourceName("rgNEMV_", 24);
             string domainName = SdkContext.RandomResourceName("jsdkdemo-", 20) + ".com";
             string appServicePlanNamePrefix = SdkContext.RandomResourceName("jplan1_", 15);
-            string webAppNamePrefix = SdkContext.RandomResourceName("webapp1-", 20);
+            string webAppNamePrefix = SdkContext.RandomResourceName("webapp1-", 20) + "-";
             string tmName = SdkContext.RandomResourceName("jsdktm-", 20);
             
             // The regions in which web app needs to be created
@@ -124,10 +125,10 @@ namespace ManageTrafficManager
                             .WithExistingResourceGroup(rgName)
                             .WithManagedHostnameBindings(domain, webAppName)
                             .DefineSslBinding()
-                            .ForHostname(webAppName + "." + domain.Name)
-                            .WithPfxCertificateToUpload(Path.Combine(Utilities.ProjectPath, "Asset", pfxPath), certPassword)
-                            .WithSniBasedSsl()
-                            .Attach()
+                                .ForHostname(webAppName + "." + domain.Name)
+                                .WithPfxCertificateToUpload(Path.Combine(Utilities.ProjectPath, "Asset", pfxPath), certPassword)
+                                .WithSniBasedSsl()
+                                .Attach()
                             .DefineSourceControl()
                                 .WithPublicGitRepository("https://github.com/jianghaolu/azure-site-test")
                                 .WithBranch("master")
@@ -225,7 +226,7 @@ namespace ManageTrafficManager
                 try
                 {
                     Utilities.Log("Deleting Resource Group: " + rgName);
-                    azure.ResourceGroups.DeleteByName(rgName);
+                    azure.ResourceGroups.BeginDeleteByName(rgName);
                     Utilities.Log("Deleted Resource Group: " + rgName);
                 }
                 catch

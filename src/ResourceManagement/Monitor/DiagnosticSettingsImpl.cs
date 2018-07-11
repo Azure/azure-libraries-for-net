@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 Task t = this.DeleteByIdAsync(id, cancellationToken)
                     .ContinueWith((Task parent) => { ids1.Add(id); },
                         cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
+                        TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
                         TaskScheduler.Default);
                 tasks.Add(t);
             }
