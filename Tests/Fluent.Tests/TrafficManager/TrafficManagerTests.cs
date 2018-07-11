@@ -85,6 +85,28 @@ namespace Fluent.Tests
                     // Creates a TM profile
                     //
 
+                    // bugfix
+                    var updatedProfile = nestedProfile.Update()
+                            .DefineAzureTargetEndpoint(azureEndpointName)
+                                .ToResourceId(publicIpAddress.Id)
+                                .WithTrafficDisabled()
+                                .WithRoutingPriority(11)
+                                .Attach()
+                            .Apply();
+
+                    Assert.Equal(1, updatedProfile.AzureEndpoints.Count);
+                    Assert.True(updatedProfile.AzureEndpoints.ContainsKey(azureEndpointName));
+
+                    var updatedProfileFromGet = azure.TrafficManagerProfiles.GetById(updatedProfile.Id);
+                    Assert.Equal(1, updatedProfileFromGet.AzureEndpoints.Count);
+                    Assert.True(updatedProfileFromGet.AzureEndpoints.ContainsKey(azureEndpointName));
+
+                    nestedProfile.Update()
+                        .WithoutEndpoint(azureEndpointName)
+                        .Apply();
+
+                    // end of bugfix
+
                     var profile = azure.TrafficManagerProfiles.Define(tmProfileName)
                             .WithNewResourceGroup(rgCreatable)
                             .WithLeafDomainLabel(tmProfileDnsLabel)
