@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 this.SiteConfig = new SiteConfigResourceInner();
             }
-            this.SiteConfig.ScmType = "LocalGit";
+            this.SiteConfig.ScmType = ScmType.LocalGit;
             return (FluentImplT)this;
         }
 
@@ -1347,7 +1347,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public abstract Task<IWebAppSourceControl> GetSourceControlAsync(CancellationToken cancellationToken = default(CancellationToken));
 
 
-        internal abstract Task<MSDeployStatusInner> CreateMSDeploy(MSDeployInner msDeployInner, CancellationToken cancellationToken);
+        internal abstract Task<MSDeployStatusInner> CreateMSDeploy(MSDeploy msDeployInner, CancellationToken cancellationToken);
 
         public WebDeploymentImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> Deploy()
         {
@@ -1413,7 +1413,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             Inner.Identity = new ManagedServiceIdentity
             {
-                Type = "SystemAssigned"
+                Type = ManagedServiceIdentityType.SystemAssigned
             };
             return (FluentImplT)this;
         }

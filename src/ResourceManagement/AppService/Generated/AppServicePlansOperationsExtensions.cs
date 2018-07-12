@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AppServicePlanInner> UpdateAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, AppServicePlanPatchResourceInner appServicePlan, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AppServicePlanInner> UpdateAsync(this IAppServicePlansOperations operations, string resourceGroupName, string name, AppServicePlanPatchResource appServicePlan, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, name, appServicePlan, null, cancellationToken).ConfigureAwait(false))
                 {

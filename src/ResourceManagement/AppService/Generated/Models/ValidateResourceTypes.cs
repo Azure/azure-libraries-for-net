@@ -8,13 +8,22 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ValidateResourceTypes.
     /// </summary>
-    public static class ValidateResourceTypes
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ValidateResourceTypes>))]
+    public class ValidateResourceTypes : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ValidateResourceTypes>
     {
-        public const string ServerFarm = "ServerFarm";
-        public const string Site = "Site";
+        public static readonly ValidateResourceTypes ServerFarm = Parse("ServerFarm");
+        public static readonly ValidateResourceTypes Site = Parse("Site");
     }
 }

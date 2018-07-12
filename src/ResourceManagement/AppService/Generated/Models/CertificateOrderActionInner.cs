@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Certificate order action.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class CertificateOrderActionInner : ProxyOnlyResource
+    public partial class CertificateOrderActionInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the CertificateOrderActionInner
@@ -32,12 +32,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the CertificateOrderActionInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="certificateOrderActionType">Action type. Possible
-        /// values include: 'CertificateIssued', 'CertificateOrderCanceled',
+        /// <param name="actionType">Action type. Possible values include:
+        /// 'CertificateIssued', 'CertificateOrderCanceled',
         /// 'CertificateOrderCreated', 'CertificateRevoked',
         /// 'DomainValidationComplete', 'FraudDetected', 'OrgNameChange',
         /// 'OrgValidationComplete', 'SanDrop', 'FraudCleared',
@@ -45,10 +42,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// 'FraudDocumentationRequired', 'Unknown'</param>
         /// <param name="createdAt">Time at which the certificate action was
         /// performed.</param>
-        public CertificateOrderActionInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), CertificateOrderActionType? certificateOrderActionType = default(CertificateOrderActionType?), System.DateTime? createdAt = default(System.DateTime?))
-            : base(id, name, kind, type)
+        public CertificateOrderActionInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), CertificateOrderActionType? actionType = default(CertificateOrderActionType?), System.DateTime? createdAt = default(System.DateTime?))
+            : base(id, name, type, kind)
         {
-            CertificateOrderActionType = certificateOrderActionType;
+            ActionType = actionType;
             CreatedAt = createdAt;
             CustomInit();
         }
@@ -59,22 +56,22 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets action type. Possible values include:
-        /// 'CertificateIssued', 'CertificateOrderCanceled',
-        /// 'CertificateOrderCreated', 'CertificateRevoked',
-        /// 'DomainValidationComplete', 'FraudDetected', 'OrgNameChange',
-        /// 'OrgValidationComplete', 'SanDrop', 'FraudCleared',
-        /// 'CertificateExpired', 'CertificateExpirationWarning',
-        /// 'FraudDocumentationRequired', 'Unknown'
+        /// Gets action type. Possible values include: 'CertificateIssued',
+        /// 'CertificateOrderCanceled', 'CertificateOrderCreated',
+        /// 'CertificateRevoked', 'DomainValidationComplete', 'FraudDetected',
+        /// 'OrgNameChange', 'OrgValidationComplete', 'SanDrop',
+        /// 'FraudCleared', 'CertificateExpired',
+        /// 'CertificateExpirationWarning', 'FraudDocumentationRequired',
+        /// 'Unknown'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.type")]
-        public CertificateOrderActionType? CertificateOrderActionType { get; set; }
+        [JsonProperty(PropertyName = "properties.actionType")]
+        public CertificateOrderActionType? ActionType { get; private set; }
 
         /// <summary>
-        /// Gets or sets time at which the certificate action was performed.
+        /// Gets time at which the certificate action was performed.
         /// </summary>
         [JsonProperty(PropertyName = "properties.createdAt")]
-        public System.DateTime? CreatedAt { get; set; }
+        public System.DateTime? CreatedAt { get; private set; }
 
     }
 }

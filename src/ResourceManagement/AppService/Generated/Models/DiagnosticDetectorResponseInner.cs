@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Class representing Reponse from Diagnostic Detectors
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DiagnosticDetectorResponseInner : ProxyOnlyResource
+    public partial class DiagnosticDetectorResponseInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the DiagnosticDetectorResponseInner
@@ -34,10 +34,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the DiagnosticDetectorResponseInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="startTime">Start time of the period</param>
         /// <param name="endTime">End time of the period</param>
         /// <param name="issueDetected">Flag representing Issue was
@@ -49,8 +46,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="data">Additional Data that detector wants to
         /// send.</param>
         /// <param name="responseMetaData">Meta Data</param>
-        public DiagnosticDetectorResponseInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? issueDetected = default(bool?), DetectorDefinition detectorDefinition = default(DetectorDefinition), IList<DiagnosticMetricSet> metrics = default(IList<DiagnosticMetricSet>), IList<DetectorAbnormalTimePeriod> abnormalTimePeriods = default(IList<DetectorAbnormalTimePeriod>), IList<IList<NameValuePair>> data = default(IList<IList<NameValuePair>>), ResponseMetaData responseMetaData = default(ResponseMetaData))
-            : base(id, name, kind, type)
+        public DiagnosticDetectorResponseInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), bool? issueDetected = default(bool?), DetectorDefinition detectorDefinition = default(DetectorDefinition), IList<DiagnosticMetricSet> metrics = default(IList<DiagnosticMetricSet>), IList<DetectorAbnormalTimePeriod> abnormalTimePeriods = default(IList<DetectorAbnormalTimePeriod>), IList<IList<NameValuePair>> data = default(IList<IList<NameValuePair>>), ResponseMetaData responseMetaData = default(ResponseMetaData))
+            : base(id, name, type, kind)
         {
             StartTime = startTime;
             EndTime = endTime;

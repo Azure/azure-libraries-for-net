@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Triggered Web Job Run Information.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class TriggeredJobRun : ProxyOnlyResource
+    public partial class TriggeredJobRun : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the TriggeredJobRun class.
@@ -30,12 +30,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the TriggeredJobRun class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="triggeredJobRunId">Job ID.</param>
-        /// <param name="triggeredJobRunName">Job name.</param>
+        /// <param name="webJobId">Job ID.</param>
+        /// <param name="webJobName">Job name.</param>
         /// <param name="status">Job status. Possible values include:
         /// 'Success', 'Failed', 'Error'</param>
         /// <param name="startTime">Start time.</param>
@@ -46,11 +43,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="url">Job URL.</param>
         /// <param name="jobName">Job name.</param>
         /// <param name="trigger">Job trigger.</param>
-        public TriggeredJobRun(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string triggeredJobRunId = default(string), string triggeredJobRunName = default(string), TriggeredWebJobStatus? status = default(TriggeredWebJobStatus?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string duration = default(string), string outputUrl = default(string), string errorUrl = default(string), string url = default(string), string jobName = default(string), string trigger = default(string))
-            : base(id, name, kind, type)
+        public TriggeredJobRun(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string webJobId = default(string), string webJobName = default(string), TriggeredWebJobStatus? status = default(TriggeredWebJobStatus?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string duration = default(string), string outputUrl = default(string), string errorUrl = default(string), string url = default(string), string jobName = default(string), string trigger = default(string))
+            : base(id, name, type, kind)
         {
-            TriggeredJobRunId = triggeredJobRunId;
-            TriggeredJobRunName = triggeredJobRunName;
+            WebJobId = webJobId;
+            WebJobName = webJobName;
             Status = status;
             StartTime = startTime;
             EndTime = endTime;
@@ -71,14 +68,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets or sets job ID.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.id")]
-        public string TriggeredJobRunId { get; set; }
+        [JsonProperty(PropertyName = "properties.web_job_id")]
+        public string WebJobId { get; set; }
 
         /// <summary>
-        /// Gets job name.
+        /// Gets or sets job name.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string TriggeredJobRunName { get; private set; }
+        [JsonProperty(PropertyName = "properties.web_job_name")]
+        public string WebJobName { get; set; }
 
         /// <summary>
         /// Gets or sets job status. Possible values include: 'Success',
@@ -90,13 +87,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets or sets start time.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.startTime")]
+        [JsonProperty(PropertyName = "properties.start_time")]
         public System.DateTime? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets end time.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.endTime")]
+        [JsonProperty(PropertyName = "properties.end_time")]
         public System.DateTime? EndTime { get; set; }
 
         /// <summary>
@@ -108,13 +105,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets or sets output URL.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.outputUrl")]
+        [JsonProperty(PropertyName = "properties.output_url")]
         public string OutputUrl { get; set; }
 
         /// <summary>
         /// Gets or sets error URL.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.errorUrl")]
+        [JsonProperty(PropertyName = "properties.error_url")]
         public string ErrorUrl { get; set; }
 
         /// <summary>
@@ -126,7 +123,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets or sets job name.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.jobName")]
+        [JsonProperty(PropertyName = "properties.job_name")]
         public string JobName { get; set; }
 
         /// <summary>

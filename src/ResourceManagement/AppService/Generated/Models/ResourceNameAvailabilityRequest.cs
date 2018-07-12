@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// 'Microsoft.Web/sites/slots', 'Microsoft.Web/hostingEnvironments',
         /// 'Microsoft.Web/publishingUsers'</param>
         /// <param name="isFqdn">Is fully qualified domain name.</param>
-        public ResourceNameAvailabilityRequest(string name, string type, bool? isFqdn = default(bool?))
+        public ResourceNameAvailabilityRequest(string name, CheckNameResourceTypes type, bool? isFqdn = default(bool?))
         {
             Name = name;
             Type = type;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// 'Microsoft.Web/publishingUsers'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
+        public CheckNameResourceTypes Type { get; set; }
 
         /// <summary>
         /// Gets or sets is fully qualified domain name.

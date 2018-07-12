@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Premier add-on.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class PremierAddOnInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class PremierAddOnInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the PremierAddOnInner class.
@@ -36,24 +37,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="sku">Premier add on SKU.</param>
         /// <param name="product">Premier add on Product.</param>
         /// <param name="vendor">Premier add on Vendor.</param>
-        /// <param name="premierAddOnName">Premier add on Name.</param>
-        /// <param name="premierAddOnLocation">Premier add on Location.</param>
-        /// <param name="premierAddOnTags">Premier add on Tags.</param>
         /// <param name="marketplacePublisher">Premier add on Marketplace
         /// publisher.</param>
         /// <param name="marketplaceOffer">Premier add on Marketplace
         /// offer.</param>
-        public PremierAddOnInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string sku = default(string), string product = default(string), string vendor = default(string), string premierAddOnName = default(string), string premierAddOnLocation = default(string), IDictionary<string, string> premierAddOnTags = default(IDictionary<string, string>), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
+        /// <param name="kind">Kind of resource.</param>
+        public PremierAddOnInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string sku = default(string), string product = default(string), string vendor = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string), string kind = default(string))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
             Product = product;
             Vendor = vendor;
-            PremierAddOnName = premierAddOnName;
-            PremierAddOnLocation = premierAddOnLocation;
-            PremierAddOnTags = premierAddOnTags;
             MarketplacePublisher = marketplacePublisher;
             MarketplaceOffer = marketplaceOffer;
+            Kind = kind;
             CustomInit();
         }
 
@@ -81,24 +78,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public string Vendor { get; set; }
 
         /// <summary>
-        /// Gets or sets premier add on Name.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string PremierAddOnName { get; set; }
-
-        /// <summary>
-        /// Gets or sets premier add on Location.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.location")]
-        public string PremierAddOnLocation { get; set; }
-
-        /// <summary>
-        /// Gets or sets premier add on Tags.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.tags")]
-        public IDictionary<string, string> PremierAddOnTags { get; set; }
-
-        /// <summary>
         /// Gets or sets premier add on Marketplace publisher.
         /// </summary>
         [JsonProperty(PropertyName = "properties.marketplacePublisher")]
@@ -110,5 +89,21 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         [JsonProperty(PropertyName = "properties.marketplaceOffer")]
         public string MarketplaceOffer { get; set; }
 
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "kind")]
+        public string Kind { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

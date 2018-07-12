@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// through Azure.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AppServiceCertificateResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class AppServiceCertificateResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the
@@ -45,12 +46,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
         /// 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
         /// 'Unknown'</param>
-        public AppServiceCertificateResourceInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? provisioningState = default(KeyVaultSecretStatus?))
+        /// <param name="kind">Kind of resource.</param>
+        public AppServiceCertificateResourceInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? provisioningState = default(KeyVaultSecretStatus?), string kind = default(string))
             : base(location, id, name, type, tags)
         {
             KeyVaultId = keyVaultId;
             KeyVaultSecretName = keyVaultSecretName;
             ProvisioningState = provisioningState;
+            Kind = kind;
             CustomInit();
         }
 
@@ -82,5 +85,21 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public KeyVaultSecretStatus? ProvisioningState { get; private set; }
 
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "kind")]
+        public string Kind { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

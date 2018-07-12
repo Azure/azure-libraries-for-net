@@ -8,15 +8,24 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for DatabaseType.
     /// </summary>
-    public static class DatabaseType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<DatabaseType>))]
+    public class DatabaseType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<DatabaseType>
     {
-        public const string SqlAzure = "SqlAzure";
-        public const string MySql = "MySql";
-        public const string LocalMySql = "LocalMySql";
-        public const string PostgreSql = "PostgreSql";
+        public static readonly DatabaseType SqlAzure = Parse("SqlAzure");
+        public static readonly DatabaseType MySql = Parse("MySql");
+        public static readonly DatabaseType LocalMySql = Parse("LocalMySql");
+        public static readonly DatabaseType PostgreSql = Parse("PostgreSql");
     }
 }

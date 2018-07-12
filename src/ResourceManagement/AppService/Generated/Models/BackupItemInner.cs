@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Backup description.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class BackupItemInner : ProxyOnlyResource
+    public partial class BackupItemInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the BackupItemInner class.
@@ -32,10 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the BackupItemInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="backupId">Id of the backup.</param>
         /// <param name="storageAccountUrl">SAS URL for the storage account
         /// container which contains this backup.</param>
@@ -63,8 +60,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// support.</param>
         /// <param name="websiteSizeInBytes">Size of the original web app which
         /// has been backed up.</param>
-        public BackupItemInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? backupId = default(int?), string storageAccountUrl = default(string), string blobName = default(string), string backupItemName = default(string), BackupItemStatus? status = default(BackupItemStatus?), long? sizeInBytes = default(long?), System.DateTime? created = default(System.DateTime?), string log = default(string), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>), bool? scheduled = default(bool?), System.DateTime? lastRestoreTimeStamp = default(System.DateTime?), System.DateTime? finishedTimeStamp = default(System.DateTime?), string correlationId = default(string), long? websiteSizeInBytes = default(long?))
-            : base(id, name, kind, type)
+        public BackupItemInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), int? backupId = default(int?), string storageAccountUrl = default(string), string blobName = default(string), string backupItemName = default(string), BackupItemStatus? status = default(BackupItemStatus?), long? sizeInBytes = default(long?), System.DateTime? created = default(System.DateTime?), string log = default(string), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>), bool? scheduled = default(bool?), System.DateTime? lastRestoreTimeStamp = default(System.DateTime?), System.DateTime? finishedTimeStamp = default(System.DateTime?), string correlationId = default(string), long? websiteSizeInBytes = default(long?))
+            : base(id, name, type, kind)
         {
             BackupId = backupId;
             StorageAccountUrl = storageAccountUrl;

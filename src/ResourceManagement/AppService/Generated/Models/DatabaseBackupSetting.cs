@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// database which is being backed up or restored. If the restore
         /// should happen to a new database, the database name inside is the
         /// new one.</param>
-        public DatabaseBackupSetting(string databaseType, string name = default(string), string connectionStringName = default(string), string connectionString = default(string))
+        public DatabaseBackupSetting(DatabaseType databaseType, string name = default(string), string connectionStringName = default(string), string connectionString = default(string))
         {
             DatabaseType = databaseType;
             Name = name;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// include: 'SqlAzure', 'MySql', 'LocalMySql', 'PostgreSql'
         /// </summary>
         [JsonProperty(PropertyName = "databaseType")]
-        public string DatabaseType { get; set; }
+        public DatabaseType DatabaseType { get; set; }
 
         /// <summary>
         /// </summary>

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Class representing detector definition
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DiagnosticCategoryInner : ProxyOnlyResource
+    public partial class DiagnosticCategoryInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the DiagnosticCategoryInner class.
@@ -30,14 +30,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the DiagnosticCategoryInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="description">Description of the diagnostic
         /// category</param>
-        public DiagnosticCategoryInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string description = default(string))
-            : base(id, name, kind, type)
+        public DiagnosticCategoryInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string description = default(string))
+            : base(id, name, type, kind)
         {
             Description = description;
             CustomInit();

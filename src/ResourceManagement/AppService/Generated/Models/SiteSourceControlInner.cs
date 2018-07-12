@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Source control configuration for an app.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SiteSourceControlInner : ProxyOnlyResource
+    public partial class SiteSourceControlInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the SiteSourceControlInner class.
@@ -30,10 +30,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SiteSourceControlInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="repoUrl">Repository or source control URL.</param>
         /// <param name="branch">Name of branch to use for deployment.</param>
         /// <param name="isManualIntegration">&lt;code&gt;true&lt;/code&gt; to
@@ -47,8 +44,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="isMercurial">&lt;code&gt;true&lt;/code&gt; for a
         /// Mercurial repository; &lt;code&gt;false&lt;/code&gt; for a Git
         /// repository.</param>
-        public SiteSourceControlInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string repoUrl = default(string), string branch = default(string), bool? isManualIntegration = default(bool?), bool? deploymentRollbackEnabled = default(bool?), bool? isMercurial = default(bool?))
-            : base(id, name, kind, type)
+        public SiteSourceControlInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string repoUrl = default(string), string branch = default(string), bool? isManualIntegration = default(bool?), bool? deploymentRollbackEnabled = default(bool?), bool? isMercurial = default(bool?))
+            : base(id, name, type, kind)
         {
             RepoUrl = repoUrl;
             Branch = branch;

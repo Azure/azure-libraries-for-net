@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ResourceScopeType.
     /// </summary>
-    public static class ResourceScopeType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ResourceScopeType>))]
+    public class ResourceScopeType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ResourceScopeType>
     {
-        public const string ServerFarm = "ServerFarm";
-        public const string Subscription = "Subscription";
-        public const string WebSite = "WebSite";
+        public static readonly ResourceScopeType ServerFarm = Parse("ServerFarm");
+        public static readonly ResourceScopeType Subscription = Parse("Subscription");
+        public static readonly ResourceScopeType WebSite = Parse("WebSite");
     }
 }

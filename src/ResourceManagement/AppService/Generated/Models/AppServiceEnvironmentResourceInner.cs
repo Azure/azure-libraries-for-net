@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// App Service Environment ARM resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AppServiceEnvironmentResourceInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class AppServiceEnvironmentResourceInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the
@@ -115,7 +116,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// behavior of the App Service Environment.</param>
         /// <param name="userWhitelistedIpRanges">User added ip ranges to
         /// whitelist on ASE db</param>
-        public AppServiceEnvironmentResourceInner(string appServiceEnvironmentResourceName, string appServiceEnvironmentResourceLocation, VirtualNetworkProfile virtualNetwork, IList<WorkerPool> workerPools, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProvisioningState? provisioningState = default(ProvisioningState?), HostingEnvironmentStatus? status = default(HostingEnvironmentStatus?), string vnetName = default(string), string vnetResourceGroupName = default(string), string vnetSubnetName = default(string), InternalLoadBalancingMode? internalLoadBalancingMode = default(InternalLoadBalancingMode?), string multiSize = default(string), int? multiRoleCount = default(int?), int? ipsslAddressCount = default(int?), string databaseEdition = default(string), string databaseServiceObjective = default(string), int? upgradeDomains = default(int?), string subscriptionId = default(string), string dnsSuffix = default(string), string lastAction = default(string), string lastActionResult = default(string), string allowedMultiSizes = default(string), string allowedWorkerSizes = default(string), int? maximumNumberOfMachines = default(int?), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>), IList<StampCapacity> environmentCapacities = default(IList<StampCapacity>), IList<NetworkAccessControlEntry> networkAccessControlList = default(IList<NetworkAccessControlEntry>), bool? environmentIsHealthy = default(bool?), string environmentStatus = default(string), string resourceGroup = default(string), int? frontEndScaleFactor = default(int?), int? defaultFrontEndScaleFactor = default(int?), string apiManagementAccountId = default(string), bool? suspended = default(bool?), bool? dynamicCacheEnabled = default(bool?), IList<NameValuePair> clusterSettings = default(IList<NameValuePair>), IList<string> userWhitelistedIpRanges = default(IList<string>))
+        /// <param name="hasLinuxWorkers">Flag that displays whether an ASE has
+        /// linux workers or not</param>
+        /// <param name="kind">Kind of resource.</param>
+        public AppServiceEnvironmentResourceInner(string location, string appServiceEnvironmentResourceName, string appServiceEnvironmentResourceLocation, VirtualNetworkProfile virtualNetwork, IList<WorkerPool> workerPools, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ProvisioningState? provisioningState = default(ProvisioningState?), HostingEnvironmentStatus? status = default(HostingEnvironmentStatus?), string vnetName = default(string), string vnetResourceGroupName = default(string), string vnetSubnetName = default(string), InternalLoadBalancingMode? internalLoadBalancingMode = default(InternalLoadBalancingMode?), string multiSize = default(string), int? multiRoleCount = default(int?), int? ipsslAddressCount = default(int?), string databaseEdition = default(string), string databaseServiceObjective = default(string), int? upgradeDomains = default(int?), string subscriptionId = default(string), string dnsSuffix = default(string), string lastAction = default(string), string lastActionResult = default(string), string allowedMultiSizes = default(string), string allowedWorkerSizes = default(string), int? maximumNumberOfMachines = default(int?), IList<VirtualIPMapping> vipMappings = default(IList<VirtualIPMapping>), IList<StampCapacity> environmentCapacities = default(IList<StampCapacity>), IList<NetworkAccessControlEntry> networkAccessControlList = default(IList<NetworkAccessControlEntry>), bool? environmentIsHealthy = default(bool?), string environmentStatus = default(string), string resourceGroup = default(string), int? frontEndScaleFactor = default(int?), int? defaultFrontEndScaleFactor = default(int?), string apiManagementAccountId = default(string), bool? suspended = default(bool?), bool? dynamicCacheEnabled = default(bool?), IList<NameValuePair> clusterSettings = default(IList<NameValuePair>), IList<string> userWhitelistedIpRanges = default(IList<string>), bool? hasLinuxWorkers = default(bool?), string kind = default(string))
             : base(location, id, name, type, tags)
         {
             AppServiceEnvironmentResourceName = appServiceEnvironmentResourceName;
@@ -154,6 +158,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             DynamicCacheEnabled = dynamicCacheEnabled;
             ClusterSettings = clusterSettings;
             UserWhitelistedIpRanges = userWhitelistedIpRanges;
+            HasLinuxWorkers = hasLinuxWorkers;
+            Kind = kind;
             CustomInit();
         }
 
@@ -406,13 +412,27 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public IList<string> UserWhitelistedIpRanges { get; set; }
 
         /// <summary>
+        /// Gets or sets flag that displays whether an ASE has linux workers or
+        /// not
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hasLinuxWorkers")]
+        public bool? HasLinuxWorkers { get; set; }
+
+        /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "kind")]
+        public string Kind { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (AppServiceEnvironmentResourceName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "AppServiceEnvironmentResourceName");

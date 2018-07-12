@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// limits of Hybrid Connections.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class HybridConnectionLimitsInner : ProxyOnlyResource
+    public partial class HybridConnectionLimitsInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the HybridConnectionLimitsInner
@@ -33,16 +33,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the HybridConnectionLimitsInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="current">The current number of Hybrid
         /// Connections.</param>
         /// <param name="maximum">The maximum number of Hybrid Connections
         /// allowed.</param>
-        public HybridConnectionLimitsInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? current = default(int?), int? maximum = default(int?))
-            : base(id, name, kind, type)
+        public HybridConnectionLimitsInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), int? current = default(int?), int? maximum = default(int?))
+            : base(id, name, type, kind)
         {
             Current = current;
             Maximum = maximum;

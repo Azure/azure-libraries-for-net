@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// SSL certificate for an app.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class CertificateInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class CertificateInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the CertificateInner class.
@@ -60,11 +61,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
         /// 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
         /// 'Unknown'</param>
-        /// <param name="geoRegion">Region of the certificate.</param>
         /// <param name="serverFarmId">Resource ID of the associated App
         /// Service plan, formatted as:
         /// "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".</param>
-        public CertificateInner(string password, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string friendlyName = default(string), string subjectName = default(string), IList<string> hostNames = default(IList<string>), byte[] pfxBlob = default(byte[]), string siteName = default(string), string selfLink = default(string), string issuer = default(string), System.DateTime? issueDate = default(System.DateTime?), System.DateTime? expirationDate = default(System.DateTime?), string thumbprint = default(string), bool? valid = default(bool?), byte[] cerBlob = default(byte[]), string publicKeyHash = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? keyVaultSecretStatus = default(KeyVaultSecretStatus?), string geoRegion = default(string), string serverFarmId = default(string))
+        /// <param name="kind">Kind of resource.</param>
+        public CertificateInner(string location, string password, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string friendlyName = default(string), string subjectName = default(string), IList<string> hostNames = default(IList<string>), byte[] pfxBlob = default(byte[]), string siteName = default(string), string selfLink = default(string), string issuer = default(string), System.DateTime? issueDate = default(System.DateTime?), System.DateTime? expirationDate = default(System.DateTime?), string thumbprint = default(string), bool? valid = default(bool?), byte[] cerBlob = default(byte[]), string publicKeyHash = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), string keyVaultId = default(string), string keyVaultSecretName = default(string), KeyVaultSecretStatus? keyVaultSecretStatus = default(KeyVaultSecretStatus?), string serverFarmId = default(string), string kind = default(string))
             : base(location, id, name, type, tags)
         {
             FriendlyName = friendlyName;
@@ -85,8 +86,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             KeyVaultId = keyVaultId;
             KeyVaultSecretName = keyVaultSecretName;
             KeyVaultSecretStatus = keyVaultSecretStatus;
-            GeoRegion = geoRegion;
             ServerFarmId = serverFarmId;
+            Kind = kind;
             CustomInit();
         }
 
@@ -210,12 +211,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public KeyVaultSecretStatus? KeyVaultSecretStatus { get; private set; }
 
         /// <summary>
-        /// Gets region of the certificate.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.geoRegion")]
-        public string GeoRegion { get; private set; }
-
-        /// <summary>
         /// Gets or sets resource ID of the associated App Service plan,
         /// formatted as:
         /// "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
@@ -224,13 +219,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public string ServerFarmId { get; set; }
 
         /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "kind")]
+        public string Kind { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (Password == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Password");

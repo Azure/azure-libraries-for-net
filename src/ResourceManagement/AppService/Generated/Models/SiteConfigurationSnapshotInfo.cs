@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// A snapshot of a web app configuration.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SiteConfigurationSnapshotInfo : ProxyOnlyResource
+    public partial class SiteConfigurationSnapshotInfo : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the SiteConfigurationSnapshotInfo
@@ -32,18 +32,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the SiteConfigurationSnapshotInfo
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="time">The time the snapshot was taken.</param>
-        /// <param name="siteConfigurationSnapshotInfoId">The id of the
-        /// snapshot</param>
-        public SiteConfigurationSnapshotInfo(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.DateTime? time = default(System.DateTime?), int? siteConfigurationSnapshotInfoId = default(int?))
-            : base(id, name, kind, type)
+        /// <param name="snapshotId">The id of the snapshot</param>
+        public SiteConfigurationSnapshotInfo(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), System.DateTime? time = default(System.DateTime?), int? snapshotId = default(int?))
+            : base(id, name, type, kind)
         {
             Time = time;
-            SiteConfigurationSnapshotInfoId = siteConfigurationSnapshotInfoId;
+            SnapshotId = snapshotId;
             CustomInit();
         }
 
@@ -61,8 +57,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets the id of the snapshot
         /// </summary>
-        [JsonProperty(PropertyName = "properties.id")]
-        public int? SiteConfigurationSnapshotInfoId { get; private set; }
+        [JsonProperty(PropertyName = "properties.snapshotId")]
+        public int? SnapshotId { get; private set; }
 
     }
 }

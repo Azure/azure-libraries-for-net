@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Public certificate object
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class PublicCertificateInner : ProxyOnlyResource
+    public partial class PublicCertificateInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the PublicCertificateInner class.
@@ -30,17 +30,14 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the PublicCertificateInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="blob">Public Certificate byte array</param>
         /// <param name="publicCertificateLocation">Public Certificate
         /// Location. Possible values include: 'CurrentUserMy',
         /// 'LocalMachineMy', 'Unknown'</param>
         /// <param name="thumbprint">Certificate Thumbprint</param>
-        public PublicCertificateInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), byte[] blob = default(byte[]), PublicCertificateLocation? publicCertificateLocation = default(PublicCertificateLocation?), string thumbprint = default(string))
-            : base(id, name, kind, type)
+        public PublicCertificateInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), byte[] blob = default(byte[]), PublicCertificateLocation? publicCertificateLocation = default(PublicCertificateLocation?), string thumbprint = default(string))
+            : base(id, name, type, kind)
         {
             Blob = blob;
             PublicCertificateLocation = publicCertificateLocation;
