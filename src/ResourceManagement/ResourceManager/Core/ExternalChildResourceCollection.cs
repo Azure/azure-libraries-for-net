@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                         }
                     },
                     cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
+                    TaskContinuationOptions.ExecuteSynchronously,
                     TaskScheduler.Default);
                 allTasks.Add(task);
             }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                         }
                     },
                     cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
+                    TaskContinuationOptions.ExecuteSynchronously,
                     TaskScheduler.Default);
                 allTasks.Add(task);
             }
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                         }
                     },
                     cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
+                    TaskContinuationOptions.ExecuteSynchronously,
                     TaskScheduler.Default);
                 allTasks.Add(task);
             }
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
                     }
                 },
                 cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously | TaskContinuationOptions.OnlyOnRanToCompletion,
+                TaskContinuationOptions.ExecuteSynchronously,
                 TaskScheduler.Default);
             return completionSource.Task;
         }
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         /// <summary>
         ///  Finds a child resource with the given name.
         /// </summary>
-        /// <param name="name">the key of child resource</param>
+        /// <param name="key">the key of child resource</param>
         /// <returns>the child resource if exists in the collection else null</returns>
         protected FluentModelTImpl Find(string key)
         {
