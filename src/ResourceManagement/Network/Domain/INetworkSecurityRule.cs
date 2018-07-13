@@ -18,6 +18,13 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         string DestinationAddressPrefix { get; }
 
+
+        /// <summary>
+        /// Gets the list of destination address prefixes the rule applies to, expressed using the CIDR notation in the format: "###.###.###.###/##",
+        /// and "" means "any", or IP addresses.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<string> DestinationAddressPrefixes { get; }
+
         /// <summary>
         /// Gets the network protocol the rule applies to.
         /// </summary>
@@ -29,20 +36,26 @@ namespace Microsoft.Azure.Management.Network.Fluent
         string Access { get; }
 
         /// <summary>
-        /// Gets the source port range that the rule applies to, in the format "##-##", where "" means "any".
-        /// </summary>
-        string SourcePortRange { get; }
-
-        /// <summary>
         /// Gets the source address prefix the rule applies to, expressed using the CIDR notation in the format: "###.###.###.###/##",
         /// and "" means "any".
         /// </summary>
         string SourceAddressPrefix { get; }
 
         /// <summary>
+        /// Gets the list of source address prefixes the rule applies to, expressed using the CIDR notation in the format: "###.###.###.###/##",
+        /// and "" means "any", or IP addresses.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<string> SourceAddressPrefixes { get; }
+
+        /// <summary>
         /// Gets the destination port range that the rule applies to, in the format "##-##", where "" means any.
         /// </summary>
         string DestinationPortRange { get; }
+
+        /// <summary>
+        /// Gets the destination port ranges that the rule applies to, in the format "##-##", where "" means any.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<string> DestinationPortRanges { get; }
         /// <summary>
         /// Gets list of application security group ids specified as destination.
         /// </summary>
@@ -69,5 +82,14 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </summary>
         System.Collections.Generic.ISet<string> SourceApplicationSecurityGroupIds { get; }
 
+        /// <summary>
+        /// Gets the source port range that the rule applies to, in the format "##-##", where "" means "any".
+        /// </summary>
+        string SourcePortRange { get; }
+
+        /// <summary>
+        /// Gets the source port ranges that the rule applies to, in the format "##-##", where "" means "any".
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<string> SourcePortRanges { get; }
     }
 }

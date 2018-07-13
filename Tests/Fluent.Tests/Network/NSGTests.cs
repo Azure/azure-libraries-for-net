@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System.Linq;
 using Microsoft.Azure.Management.Network.Fluent.Models;
 using Microsoft.Azure.Management.Network.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
@@ -89,13 +90,21 @@ namespace Fluent.Tests.Network
                         .WithoutRule("rule1")
                         .UpdateRule("rule2")
                             .DenyInbound()
-                            .FromAddress("100.0.0.0/29")
-                            .FromPort(88)
+                            .FromAddresses("100.0.0.0/29", "100.1.0.0/29")
+                            .FromPortRanges("88-90")
                             .WithPriority(300)
                             .WithDescription("bar!!!")
                             .Parent()
                         .Apply();
                     Assert.True(resource.Tags.ContainsKey("tag1"));
+                    INetworkSecurityRule rule2;
+                    Assert.True(resource.SecurityRules.TryGetValue("rule2", out rule2));
+                    Assert.Equal(0, rule2.SourceApplicationSecurityGroupIds.Count);
+                    Assert.Null(rule2.SourceAddressPrefix);
+                    Assert.Equal(2, rule2.SourceAddressPrefixes.Count);
+                    Assert.True(rule2.SourceAddressPrefixes.Contains("100.1.0.0/29"));
+                    Assert.Equal(1, rule2.SourcePortRanges.Count);
+                    Assert.Equal("88-90", rule2.SourcePortRanges.ElementAt(0));
 
                     manager.NetworkSecurityGroups.DeleteById(resource.Id);
                     manager.ResourceManager.ResourceGroups.DeleteByName(resource.ResourceGroupName);
