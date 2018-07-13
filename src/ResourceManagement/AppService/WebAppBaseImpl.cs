@@ -79,6 +79,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
         }
 
+        public bool HttpsOnly => (bool) Inner.HttpsOnly;
+
+        public FtpsState FtpsState => SiteConfig?.FtpsState;
+
+        public IList<VirtualApplication> VirtualApplications => SiteConfig?.VirtualApplications;
+
+        public bool Http20Enabled => (bool)SiteConfig?.Http20Enabled;
+
+        public bool LocalMySqlEnabled => (bool)SiteConfig?.LocalMySqlEnabled;
+
+        public ScmType ScmType => SiteConfig?.ScmType;
+
+        public string DocumentRoot => SiteConfig?.DocumentRoot;
+
         ///GENMHASH:6779D3D3C7AB7AAAE805BA0ABEE95C51:27E486AB74A10242FF421C0798DDC450
         internal abstract Task<StringDictionaryInner> UpdateAppSettingsAsync(StringDictionaryInner inner, CancellationToken cancellationToken = default(CancellationToken));
 
@@ -388,6 +402,42 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 this.SiteConfig = new SiteConfigResourceInner();
             }
             this.SiteConfig.RemoteDebuggingEnabled = false;
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithHttpsOnly(bool httpsOnly)
+        {
+            Inner.HttpsOnly = httpsOnly;
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithHttp20Enabled(bool http20Enabled)
+        {
+            if (this.SiteConfig == null)
+            {
+                this.SiteConfig = new SiteConfigResourceInner();
+            }
+            this.SiteConfig.Http20Enabled = http20Enabled;
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithFtpsState(FtpsState ftpsState)
+        {
+            if (this.SiteConfig == null)
+            {
+                this.SiteConfig = new SiteConfigResourceInner();
+            }
+            this.SiteConfig.FtpsState = ftpsState;
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithVirtualApplications(IList<VirtualApplication> virtualApplications)
+        {
+            if (this.SiteConfig == null)
+            {
+                this.SiteConfig = new SiteConfigResourceInner();
+            }
+            this.SiteConfig.VirtualApplications = virtualApplications;
             return (FluentImplT)this;
         }
 

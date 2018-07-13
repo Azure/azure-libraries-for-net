@@ -139,6 +139,25 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return this;
         }
 
+        public HostNameSslBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> WithExistingCertificate(string certificateNameOrThumbprint)
+        {
+            newCertificate = async () =>
+            {
+                var certs = await parent.Manager.AppServiceCertificates.ListByResourceGroupAsync(parent.ResourceGroupName);
+                foreach (IAppServiceCertificate certificate in certs)
+                {
+                    if (certificate.Name == certificateNameOrThumbprint ||
+                            certificate.Thumbprint.Equals(certificateNameOrThumbprint, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return certificate;
+                    }
+                }
+                return null;
+            };
+            
+            return this;
+        }
+
         ///GENMHASH:D8FD0D5A66A07D0FFBFEE9F7927105AB:284A8B86661672D728E63DE7FD5744B2
         public HostNameSslBindingImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> ForHostname(string hostname)
         {
