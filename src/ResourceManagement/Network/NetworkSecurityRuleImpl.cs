@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:CA0F48388132710245BD9C972F7457A4:3C1AFE09D6F3461448B58077F1A3D334
         public ISet<string> DestinationApplicationSecurityGroupIds()
         {
-            return Inner.DestinationApplicationSecurityGroups == null ? new HashSet<string>() : new HashSet<string>(Inner.DestinationApplicationSecurityGroups.Select(asg => asg.Id))) : ;
+            return Inner.DestinationApplicationSecurityGroups == null ? new HashSet<string>() : new HashSet<string>(Inner.DestinationApplicationSecurityGroups.Select(asg => asg.Id));
         }
 
         internal NetworkSecurityRuleImpl WithProtocol(SecurityRuleProtocol protocol)
