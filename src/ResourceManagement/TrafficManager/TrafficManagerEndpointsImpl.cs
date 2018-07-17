@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
     using System.Collections.Generic;
     using ResourceManager.Fluent.Core;
     using System;
+    using System.Linq;
     using Models;
 
     /// <summary>
@@ -15,19 +16,18 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         ExternalChildResourcesCached<TrafficManagerEndpointImpl, ITrafficManagerEndpoint, EndpointInner, ITrafficManagerProfile, TrafficManagerProfileImpl>
     {
         /// <summary>
-        /// Adds the endpoint to the collection.
-        /// </summary>
-        /// <param name="endpoint">The endpoint.</param>
-
-        /// <summary>
         /// Creates new EndpointsImpl.
         /// </summary>
-        /// <param name="client">The client to perform REST calls on endpoints.</param>
         /// <param name="parent">The parent traffic manager profile of the endpoints.</param>
         ///GENMHASH:4D0E5B9E7FAF82899EC6E6B3762A42CE:86647EE6A7C92249B46A6C7B4A2F9A64
         internal TrafficManagerEndpointsImpl(TrafficManagerProfileImpl parent) : base(parent, "Endpoint")
         {
             CacheCollection();
+        }
+
+        internal IList<EndpointInner> AllEndpointsInners()
+        {
+            return this.Collection.Values.Select(e => e.Inner).ToList();
         }
 
         ///GENMHASH:8CB67A1B3CF8E6894B88F02B1AE365EC:31C08CE442572994D91AB64D5DB46CB3
