@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             CacheCollection();
         }
 
-        internal IList<EndpointInner> AllEndpointInners()
+        internal IList<EndpointInner> AllEndpointsInners()
         {
             return this.Collection.Values.Select(e => e.Inner).ToList();
         }
