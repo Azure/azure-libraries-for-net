@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:4D03AEE57198D17CD3696CC56B467F2B:C53E1C1BD65826C0F9A2EF5BCBD283F4
         public VirtualMachineScaleSetUnmanagedDataDiskImpl FromImage(int imageLun)
         {
-            Inner.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
+            Inner.CreateOption = DiskCreateOptionTypes.FromImage;
             Inner.Lun = imageLun;
             return this;
         }
