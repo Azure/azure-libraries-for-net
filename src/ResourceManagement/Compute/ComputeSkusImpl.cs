@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uQ29tcHV0ZVNrdXNJbXBs
     internal sealed partial class ComputeSkusImpl :
-        ReadableWrappers<Microsoft.Azure.Management.Compute.Fluent.IComputeSku, Microsoft.Azure.Management.Compute.Fluent.ComputeSkuImpl, Models.ResourceSku>,
+        ReadableWrappers<Microsoft.Azure.Management.Compute.Fluent.IComputeSku, Microsoft.Azure.Management.Compute.Fluent.ComputeSkuImpl, Models.ResourceSkuInner>,
         IComputeSkus
     {
         private IComputeManager manager;
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:4318BDBAE10D86DA6726695F6F266DD0:B4E67A1F603F32204572EE549690656C
-        protected override IComputeSku WrapModel(ResourceSku inner)
+        protected override IComputeSku WrapModel(ResourceSkuInner inner)
         {
             return new ComputeSkuImpl(inner);
         }
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:7F5BEBF638B801886F5E13E6CCFF6A4E:11D194372CF16B8AF88A146421D05EAF
         public async Task<IPagedCollection<IComputeSku>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<IComputeSku, ResourceSku>.LoadPage(this.Inner().ListAsync, this.Inner().ListNextAsync, this.WrapModel, loadAllPages, cancellationToken);
+            return await PagedCollection<IComputeSku, ResourceSkuInner>.LoadPage(this.Inner().ListAsync, this.Inner().ListNextAsync, this.WrapModel, loadAllPages, cancellationToken);
         }
 
         ///GENMHASH:2ED29FF482F2137640A1CA66925828A8:E51B3B0303249AFE9CE203C2598B0127
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     skus.Add(computeSku);
                 }
             }
-            return PagedCollection<IComputeSku, ResourceSku>.CreateFromEnumerable(skus);
+            return PagedCollection<IComputeSku, ResourceSkuInner>.CreateFromEnumerable(skus);
         }
 
 
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     skus.Add(computeSku);
                 }
             }
-            return PagedCollection<IComputeSku, ResourceSku>.CreateFromEnumerable(skus);
+            return PagedCollection<IComputeSku, ResourceSkuInner>.CreateFromEnumerable(skus);
         }
 
 
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     skus.Add(computeSku);
                 }
             }
-            return PagedCollection<IComputeSku, ResourceSku>.CreateFromEnumerable(skus);
+            return PagedCollection<IComputeSku, ResourceSkuInner>.CreateFromEnumerable(skus);
         }
 
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:EFF74B68F06CBC4611C3EEE115E1A032

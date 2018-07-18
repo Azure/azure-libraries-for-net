@@ -1240,7 +1240,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             imageReferenceInner.Id = customImageId;
             Inner
                 .VirtualMachineProfile
-                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
+                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
             Inner
                 .VirtualMachineProfile
                 .StorageProfile.ImageReference = imageReferenceInner;

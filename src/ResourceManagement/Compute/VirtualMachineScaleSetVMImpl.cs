@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (Inner.HardwareProfile != null && Inner.HardwareProfile.VmSize != null)
             {
-                return VirtualMachineSizeTypes.Parse(Inner.HardwareProfile.VmSize);
+                return Inner.HardwareProfile.VmSize;
             }
             if (Sku() != null && Sku().Name != null)
             {

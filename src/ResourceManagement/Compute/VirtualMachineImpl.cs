@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:C345130B595C0FF585A57651EFDC3A0F:E97CAC99D13041F7FEAACC7E4508DC7B
         public async Task<string> CaptureAsync(string containerName, string vhdPrefix, bool overwriteVhd, CancellationToken cancellationToken = default(CancellationToken))
         {
-            VirtualMachineCaptureParametersInner parameters = new VirtualMachineCaptureParametersInner();
+            VirtualMachineCaptureParameters parameters = new VirtualMachineCaptureParameters();
             parameters.DestinationContainerName = containerName;
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             ImageReferenceInner imageReferenceInner = new ImageReferenceInner();
             imageReferenceInner.Id = customImageId;
-            Inner.StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
+            Inner.StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
             Inner.StorageProfile.ImageReference = imageReferenceInner;
             Inner.OsProfile.LinuxConfiguration = new LinuxConfiguration();
             this.isMarketplaceLinuxImage = true;
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             VirtualHardDisk osVhd = new VirtualHardDisk();
             osVhd.Uri = osDiskUrl;
-            Inner.StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.Attach.ToString();
+            Inner.StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.Attach;
             Inner.StorageProfile.OsDisk.Vhd = osVhd;
             Inner.StorageProfile.OsDisk.OsType = osType;
             Inner.StorageProfile.OsDisk.ManagedDisk = null;
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             ManagedDiskParametersInner diskParametersInner = new ManagedDiskParametersInner();
             diskParametersInner.Id = disk.Id;
-            Inner.StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.Attach.ToString();
+            Inner.StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.Attach;
             Inner.StorageProfile.OsDisk.ManagedDisk = diskParametersInner;
             Inner.StorageProfile.OsDisk.OsType = osType;
             Inner.StorageProfile.OsDisk.Vhd = null;
@@ -659,14 +659,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:3EDA6D9B767CDD07D76DD15C0E0B7128:7E4761B66D0FB9A09715DA978222FC55
         public VirtualMachineImpl WithSize(string sizeName)
         {
-            Inner.HardwareProfile.VmSize = sizeName;
+            Inner.HardwareProfile.VmSize = VirtualMachineSizeTypes.Parse(sizeName);
             return this;
         }
 
         ///GENMHASH:619ABAAD3F8A01F52AFF9E0735BDAE77:EC0CEDDCD615AA4EFB41DF60CEE2588B
         public VirtualMachineImpl WithSize(VirtualMachineSizeTypes size)
         {
-            Inner.HardwareProfile.VmSize = size.ToString();
+            Inner.HardwareProfile.VmSize = size;
             return this;
         }
 
@@ -2163,7 +2163,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:854EABA33961F7FA017100E1888B2F8F:4738C912BD9ED6489A96318D934E8BC9
         private bool IsOSDiskAttachedManaged(OSDisk osDisk)
         {
-            return osDisk.CreateOption == DiskCreateOptionTypes.Attach.ToString()
+            return osDisk.CreateOption == DiskCreateOptionTypes.Attach
                 && osDisk.ManagedDisk != null
                 && osDisk.ManagedDisk.Id != null;
         }
@@ -2176,7 +2176,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:2BC5DC58EDF7989592189AD8B4E29C17:4CD85EE98AD4F7CBC33994D722986AE5
         private bool IsOSDiskFromImage(OSDisk osDisk)
         {
-            return osDisk.CreateOption == DiskCreateOptionTypes.FromImage.ToString();
+            return osDisk.CreateOption == DiskCreateOptionTypes.FromImage;
         }
 
         /// <summary>

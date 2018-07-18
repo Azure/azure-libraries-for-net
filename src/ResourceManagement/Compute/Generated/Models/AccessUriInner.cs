@@ -8,15 +8,12 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// A disk access SAS uri.
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
     public partial class AccessUriInner
     {
         /// <summary>
@@ -45,7 +42,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Gets a SAS uri for accessing a disk.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.output.accessSAS")]
+        [JsonProperty(PropertyName = "accessSAS")]
         public string AccessSAS { get; private set; }
 
     }

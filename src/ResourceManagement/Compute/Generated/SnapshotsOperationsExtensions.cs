@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SnapshotInner> UpdateAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotUpdateInner snapshot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SnapshotInner> UpdateAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotUpdate snapshot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, snapshotName, snapshot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -117,12 +117,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationStatusResponseInner> DeleteAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -183,7 +180,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AccessUriInner> GrantAccessAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, GrantAccessDataInner grantAccessData, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AccessUriInner> GrantAccessAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, GrantAccessData grantAccessData, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GrantAccessWithHttpMessagesAsync(resourceGroupName, snapshotName, grantAccessData, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -208,12 +205,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationStatusResponseInner> RevokeAccessAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task RevokeAccessAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.RevokeAccessWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.RevokeAccessWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -264,7 +258,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SnapshotInner> BeginUpdateAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotUpdateInner snapshot, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SnapshotInner> BeginUpdateAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, SnapshotUpdate snapshot, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, snapshotName, snapshot, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -289,12 +283,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationStatusResponseInner> BeginDeleteAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -318,7 +309,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AccessUriInner> BeginGrantAccessAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, GrantAccessDataInner grantAccessData, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AccessUriInner> BeginGrantAccessAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, GrantAccessData grantAccessData, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginGrantAccessWithHttpMessagesAsync(resourceGroupName, snapshotName, grantAccessData, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -343,12 +334,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationStatusResponseInner> BeginRevokeAccessAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginRevokeAccessAsync(this ISnapshotsOperations operations, string resourceGroupName, string snapshotName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginRevokeAccessWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.BeginRevokeAccessWithHttpMessagesAsync(resourceGroupName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

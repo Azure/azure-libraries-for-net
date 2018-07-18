@@ -8,6 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <param name="imageReference">The image reference.</param>
         /// <param name="osDisk">The OS disk.</param>
         /// <param name="dataDisks">The data disks.</param>
-        public VirtualMachineScaleSetUpdateStorageProfile(ImageReferenceInner imageReference = default(ImageReferenceInner), VirtualMachineScaleSetUpdateOSDisk osDisk = default(VirtualMachineScaleSetUpdateOSDisk), IList<VirtualMachineScaleSetDataDisk> dataDisks = default(IList<VirtualMachineScaleSetDataDisk>))
+        public VirtualMachineScaleSetUpdateStorageProfile(Management.ResourceManager.Fluent.SubResource imageReference = default(Management.ResourceManager.Fluent.SubResource), VirtualMachineScaleSetUpdateOSDisk osDisk = default(VirtualMachineScaleSetUpdateOSDisk), IList<VirtualMachineScaleSetDataDisk> dataDisks = default(IList<VirtualMachineScaleSetDataDisk>))
         {
             ImageReference = imageReference;
             OsDisk = osDisk;
@@ -51,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets the image reference.
         /// </summary>
         [JsonProperty(PropertyName = "imageReference")]
-        public ImageReferenceInner ImageReference { get; set; }
+        public Management.ResourceManager.Fluent.SubResource ImageReference { get; set; }
 
         /// <summary>
         /// Gets or sets the OS disk.

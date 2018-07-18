@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner.OsType = OperatingSystemTypes.Linux;
             Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Import.ToString();
+            Inner.CreationData.CreateOption = DiskCreateOption.Import;
             Inner.CreationData.SourceUri = vhdUrl;
             return this;
         }
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner.OsType = OperatingSystemTypes.Windows;
             Inner.CreationData = new CreationData();
-            Inner.CreationData.CreateOption = DiskCreateOption.Copy.ToString();
+            Inner.CreationData.CreateOption = DiskCreateOption.Copy;
             Inner.CreationData.SourceResourceId = sourceDiskId;
             return this;
         }

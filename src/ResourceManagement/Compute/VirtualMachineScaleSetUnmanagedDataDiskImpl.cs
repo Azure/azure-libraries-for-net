@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:6D0A07B7BA2CC9D76E93E7DDD3FCD168:F0DBEF25393BFAD18455A742CA0EFE14
         public VirtualMachineScaleSetUnmanagedDataDiskImpl WithNewVhd(int sizeInGB)
         {
-            Inner.CreateOption = DiskCreateOptionTypes.Empty.ToString();
+            Inner.CreateOption = DiskCreateOptionTypes.Empty;
             Inner.DiskSizeGB = sizeInGB;
             return this;
         }
