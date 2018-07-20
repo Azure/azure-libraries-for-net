@@ -56,7 +56,8 @@ getBuildTools() {
 
 
 getBuildTools
-
+echo Restoring... $ubuntu1404
+dotnet restore Fluent.Tests.sln -r $ubuntu1404
 echo Building... $netcore20
 
 dotnet build src/ResourceManagement/ResourceManager/Microsoft.Azure.Management.ResourceManager.Fluent.csproj -f $netstd14
@@ -87,9 +88,6 @@ dotnet build Tests/Samples.Tests/Samples.Tests.csproj -f $netcore20
 
 echo Running Fluent Tests
 cd $rootdir/Tests/Fluent.Tests
-
-echo Restoring... $ubuntu1404
-dotnet restore Fluent.Tests.sln -r $ubuntu1404
 dotnet test Fluent.Tests.csproj -f $netcore20
 
 echo Running Samples Tests
