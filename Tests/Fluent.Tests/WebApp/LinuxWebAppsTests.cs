@@ -47,8 +47,8 @@ namespace Fluent.Tests.WebApp
                     Assert.NotNull(plan1);
                     Assert.Equal(Region.USWest, plan1.Region);
                     Assert.Equal(PricingTier.BasicB1, plan1.PricingTier);
-                    Assert.Equal(OperatingSystem.Linux, plan1.OperatingSystem);
-                    Assert.Equal(OperatingSystem.Linux, webApp1.OperatingSystem);
+                    Assert.Equal(Microsoft.Azure.Management.AppService.Fluent.OperatingSystem.Linux, plan1.OperatingSystem);
+                    Assert.Equal(Microsoft.Azure.Management.AppService.Fluent.OperatingSystem.Linux, webApp1.OperatingSystem);
 
                     // Create in a new group with existing app service plan
                     var webApp2 = appServiceManager.WebApps.Define(WebAppName2)
@@ -57,15 +57,15 @@ namespace Fluent.Tests.WebApp
                         .Create();
                     Assert.NotNull(webApp2);
                     Assert.Equal(Region.USWest, webApp2.Region);
-                    Assert.Equal(OperatingSystem.Linux, webApp2.OperatingSystem);
+                    Assert.Equal(Microsoft.Azure.Management.AppService.Fluent.OperatingSystem.Linux, webApp2.OperatingSystem);
 
                     // Get
                     var webApp = appServiceManager.WebApps.GetByResourceGroup(GroupName1, webApp1.Name);
                     Assert.Equal(webApp1.Id, webApp.Id);
-                    Assert.Equal(OperatingSystem.Linux, webApp.OperatingSystem);
+                    Assert.Equal(Microsoft.Azure.Management.AppService.Fluent.OperatingSystem.Linux, webApp.OperatingSystem);
                     webApp = appServiceManager.WebApps.GetById(webApp2.Id);
                     Assert.Equal(webApp2.Name, webApp.Name);
-                    Assert.Equal(OperatingSystem.Linux, webApp.OperatingSystem);
+                    Assert.Equal(Microsoft.Azure.Management.AppService.Fluent.OperatingSystem.Linux, webApp.OperatingSystem);
 
                     // List
                     var webApps = appServiceManager.WebApps.ListByResourceGroup(GroupName1);
@@ -105,7 +105,7 @@ namespace Fluent.Tests.WebApp
                     Assert.NotEqual(plan1.Id, plan2.Id);
                     Assert.Equal(Region.USWest, plan2.Region);
                     Assert.Equal(PricingTier.StandardS2, plan2.PricingTier);
-                    Assert.Equal(OperatingSystem.Linux, plan2.OperatingSystem);
+                    Assert.Equal(Microsoft.Azure.Management.AppService.Fluent.OperatingSystem.Linux, plan2.OperatingSystem);
 
                     // Update 2
                     webApp1.Update()
