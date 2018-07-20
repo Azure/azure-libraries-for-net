@@ -5,14 +5,15 @@ base=`dirname {BASH_SOURCE[0]}`
 rootdir="$( cd "$base" && pwd )"
 netstd14="netstandard1.4"
 netstd16="netstandard1.6"
-netcore11='netcoreapp1.1'
+#netcore11='netcoreapp1.1'
+netcore20='netcoreapp2.0'
 ubuntu1404="ubuntu.14.04-x64"
 nugetOrgSource="https://api.nuget.org/v3/index.json"
 
 dotnet --info
 
 getBuildTools() {
-    copyFromRootDir="https://raw.githubusercontent.com/Azure/azure-sdk-for-net/NetSdkBuild"
+    copyFromRootDir="https://raw.githubusercontent.com/shahabhijeet/azure-sdk-for-net/addTfm"
     printf "Updating Build tools .....\n"
     
     if [ ! -d ./tools/SdkBuildTools ]; then
@@ -58,7 +59,7 @@ getBuildTools
 
 echo Restoring... $ubuntu1404
 dotnet restore Fluent.Tests.sln -r $ubuntu1404
-echo Building... $netcore11
+echo Building... $netcore20
 
 dotnet build src/ResourceManagement/ResourceManager/Microsoft.Azure.Management.ResourceManager.Fluent.csproj -f $netstd14
 dotnet build src/ResourceManagement/Storage/Microsoft.Azure.Management.Storage.Fluent.csproj -f $netstd14 
@@ -83,13 +84,13 @@ dotnet build src/ResourceManagement/ContainerInstance/Microsoft.Azure.Management
 dotnet build src/ResourceManagement/Locks/Microsoft.Azure.Management.Locks.Fluent.csproj -f $netstd14
 dotnet build src/ResourceManagement/Azure.Fluent/Microsoft.Azure.Management.Fluent.csproj -f $netstd14
 dotnet build Samples/Samples.csproj  -f $netstd16
-dotnet build Tests/Fluent.Tests/Fluent.Tests.csproj -f $netcore11
-dotnet build Tests/Samples.Tests/Samples.Tests.csproj -f $netcore11
+dotnet build Tests/Fluent.Tests/Fluent.Tests.csproj -f $netcore20
+dotnet build Tests/Samples.Tests/Samples.Tests.csproj -f $netcore20
 
 echo Running Samples Tests
 cd $rootdir/Tests/Samples.Tests
-dotnet test Samples.Tests.csproj -f $netcore11
+dotnet test Samples.Tests.csproj -f $netcore20
 
 echo Running Fluent Tests
 cd $rootdir/Tests/Fluent.Tests
-dotnet test Fluent.Tests.csproj -f $netcore11
+dotnet test Fluent.Tests.csproj -f $netcore20
