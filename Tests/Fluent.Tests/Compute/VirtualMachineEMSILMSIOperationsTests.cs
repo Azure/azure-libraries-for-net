@@ -163,7 +163,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Till MSI changes implemented.")]
         public void CanCreateWithLMSIAndEMSI()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
