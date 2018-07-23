@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
             // method. We cannot update the routing method of the profile until existing endpoints contains the properties
             // required for the new routing method.
             var updatedEndpoints = await endpoints.CommitAndGetAllAsync(cancellationToken);
-            Inner.Endpoints = updatedEndpoints.Select(e => e.Inner).ToList();
+            Inner.Endpoints = endpoints.AllEndpointsInners();
             ProfileInner profileInner = await Manager.Inner.Profiles.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
             SetInner(profileInner);
             return this;
