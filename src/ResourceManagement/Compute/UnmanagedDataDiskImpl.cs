@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private string BlobUrl(string storageAccountName, string containerName, string blobName)
         {
             AzureEnvironment azureEnvironment = this.Parent.Environment();
-            return "https://" + storageAccountName + ".blob" + azureEnvironment.StorageEndpointSuffix + "/" + containerName + "/" + blobName;
+            return "https://" + storageAccountName + ".blob." + azureEnvironment.StorageEndpointSuffix + "/" + containerName + "/" + blobName;
         }
 
         ///GENMHASH:638DE13F1D4D90A0515B35BE7FE1BE5C:8FABD54B6B9CC34ECD0DAE095274C8FB
