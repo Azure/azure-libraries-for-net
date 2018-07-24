@@ -50,7 +50,7 @@ tenant=########-####-####-####-############
 key=XXXXXXXXXXXXXXXX
 managementURI=https\://management.core.windows.net/
 baseURL=https\://management.azure.com/
-authURL=https\://login.windows.net/
+authURL=https\://login.microsoftonline.com/
 graphURL=https\://graph.windows.net/
 ```
 
@@ -64,7 +64,7 @@ certificate=<path to certificate file>
 certificatePassword=XXXXXXXXXXXXXXXX
 managementURI=https\://management.core.windows.net/
 baseURL=https\://management.azure.com/
-authURL=https\://login.windows.net/
+authURL=https\://login.microsoftonline.com/
 graphURL=https\://graph.windows.net/
 ```
 
