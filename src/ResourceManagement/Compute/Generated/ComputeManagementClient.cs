@@ -175,11 +175,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public virtual IGalleryImageVersionsOperations GalleryImageVersions { get; private set; }
 
         /// <summary>
-        /// Gets the IContainerServicesOperations.
-        /// </summary>
-        public virtual IContainerServicesOperations ContainerServices { get; private set; }
-
-        /// <summary>
         /// Initializes a new instance of the ComputeManagementClient class.
         /// </summary>
         /// <param name='handlers'>
@@ -401,7 +396,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             Galleries = new GalleriesOperations(this);
             GalleryImages = new GalleryImagesOperations(this);
             GalleryImageVersions = new GalleryImageVersionsOperations(this);
-            ContainerServices = new ContainerServicesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

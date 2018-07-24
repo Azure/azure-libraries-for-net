@@ -154,28 +154,29 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         this.userAssignedIdentityIdsToAssociate.Add(identity.Id);
                     }
                 }
-                if (virtualMachineInner.Identity.IdentityIds == null)
-                {
-                    virtualMachineInner.Identity.IdentityIds = new List<string>();
-                }
-                foreach (var identityId in this.userAssignedIdentityIdsToAssociate)
-                {
-                    if (!virtualMachineInner.Identity.IdentityIds.Contains(identityId))
-                    {
-                        virtualMachineInner.Identity.IdentityIds.Add(identityId);
-                    }
-                }
-                foreach (var identityId in this.userAssignedIdentityIdsToRemove)
-                {
-                    if (virtualMachineInner.Identity.IdentityIds.Contains(identityId))
-                    {
-                        virtualMachineInner.Identity.IdentityIds.Remove(identityId);
-                    }
-                }
-                if (virtualMachineInner.Identity.IdentityIds.Any())
-                {
-                    this.installExtensionIfNotInstalled = true;
-                }
+                // to be fixed
+//                if (virtualMachineInner.Identity.IdentityIds == null)
+//                {
+//                    virtualMachineInner.Identity.IdentityIds = new List<string>();
+//                }
+//                foreach (var identityId in this.userAssignedIdentityIdsToAssociate)
+//                {
+//                    if (!virtualMachineInner.Identity.IdentityIds.Contains(identityId))
+//                    {
+//                        virtualMachineInner.Identity.IdentityIds.Add(identityId);
+//                    }
+//                }
+//                foreach (var identityId in this.userAssignedIdentityIdsToRemove)
+//                {
+//                    if (virtualMachineInner.Identity.IdentityIds.Contains(identityId))
+//                    {
+//                        virtualMachineInner.Identity.IdentityIds.Remove(identityId);
+//                    }
+//                }
+//                if (virtualMachineInner.Identity.IdentityIds.Any())
+//                {
+//                    this.installExtensionIfNotInstalled = true;
+//                }
             }
             finally
             {
@@ -358,14 +359,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 vmInner.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
             }
-            if (vmInner.Identity.IdentityIds == null)
-            {
-                if (identityType.Equals(ResourceIdentityType.UserAssigned)
-                        || identityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned))
-                {
-                    vmInner.Identity.IdentityIds = new List<string>();
-                }
-            }
+            // to be fixed
+//            if (vmInner.Identity.IdentityIds == null)
+//            {
+//                if (identityType.Equals(ResourceIdentityType.UserAssigned)
+//                        || identityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned))
+//                {
+//                    vmInner.Identity.IdentityIds = new List<string>();
+//                }
+//            }
         }
     }
 }

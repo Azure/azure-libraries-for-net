@@ -412,10 +412,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Task<AzureOperationResponse> RedeployWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, IList<string> instanceIds = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Perform maintenance on one or more virtual machines in a VM scale
-        /// set. Operation on instances which are not eligible for perform
-        /// maintenance will be failed. Please refer to best practices for more
-        /// details:
-        /// https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications
+        /// set.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -800,10 +797,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Task<AzureOperationResponse> BeginRedeployWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, IList<string> instanceIds = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Perform maintenance on one or more virtual machines in a VM scale
-        /// set. Operation on instances which are not eligible for perform
-        /// maintenance will be failed. Please refer to best practices for more
-        /// details:
-        /// https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications
+        /// set.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

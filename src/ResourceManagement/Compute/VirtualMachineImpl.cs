@@ -1511,14 +1511,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:54F48C4A15522D8E87E76E69BFD089CA:67C5008B7D86A1EA0300776CDD220599
         public ISet<string> UserAssignedManagedServiceIdentityIds()
         {
-            if (this.Inner.Identity != null && this.Inner.Identity.IdentityIds != null)
-            {
-                return new HashSet<string>(this.Inner.Identity.IdentityIds);
-            }
-            else
-            {
+            // to be fixed
+//            if (this.Inner.Identity != null && this.Inner.Identity.IdentityIds != null)
+//            {
+//                return new HashSet<string>(this.Inner.Identity.IdentityIds);
+//            }
+//            else
+//            {
                 return new HashSet<string>();
-            }
+//            }
         }
 
         ///GENMHASH:BC4103A90A606609FAB346997701A4DE:F96317098E1E2EA0D5CD8D759145745A

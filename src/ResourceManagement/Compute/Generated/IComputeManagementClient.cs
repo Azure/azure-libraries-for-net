@@ -169,10 +169,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         IGalleryImageVersionsOperations GalleryImageVersions { get; }
 
-        /// <summary>
-        /// Gets the IContainerServicesOperations.
-        /// </summary>
-        IContainerServicesOperations ContainerServices { get; }
-
     }
 }

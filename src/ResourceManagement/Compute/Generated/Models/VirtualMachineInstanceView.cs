@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     public partial class VirtualMachineInstanceView
     {
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineInstanceViewInner
-        /// class.
+        /// Initializes a new instance of the VirtualMachineInstanceView class.
         /// </summary>
         public VirtualMachineInstanceView()
         {
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         }
 
         /// <summary>
-        /// Initializes a new instance of the VirtualMachineInstanceViewInner
-        /// class.
+        /// Initializes a new instance of the VirtualMachineInstanceView class.
         /// </summary>
         /// <param name="platformUpdateDomain">Specifies the update domain of
         /// the virtual machine.</param>

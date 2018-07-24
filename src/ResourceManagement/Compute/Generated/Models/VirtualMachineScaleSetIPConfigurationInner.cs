@@ -54,6 +54,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// gateways. A scale set can reference backend address pools of
         /// multiple application gateways. Multiple scale sets cannot use the
         /// same application gateway.</param>
+        /// <param name="applicationSecurityGroups">Specifies an array of
+        /// references to application security group.</param>
         /// <param name="loadBalancerBackendAddressPools">Specifies an array of
         /// references to backend address pools of load balancers. A scale set
         /// can reference backend address pools of one public and one internal
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// can reference inbound nat pools of one public and one internal load
         /// balancer. Multiple scale sets cannot use the same load
         /// balancer</param>
-        public VirtualMachineScaleSetIPConfigurationInner(string name, string id = default(string), ApiEntityReference subnet = default(ApiEntityReference), bool? primary = default(bool?), VirtualMachineScaleSetPublicIPAddressConfiguration publicIPAddressConfiguration = default(VirtualMachineScaleSetPublicIPAddressConfiguration), IPVersion privateIPAddressVersion = default(IPVersion), IList<Management.ResourceManager.Fluent.SubResource> applicationGatewayBackendAddressPools = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> loadBalancerBackendAddressPools = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> loadBalancerInboundNatPools = default(IList<Management.ResourceManager.Fluent.SubResource>))
+        public VirtualMachineScaleSetIPConfigurationInner(string name, string id = default(string), ApiEntityReference subnet = default(ApiEntityReference), bool? primary = default(bool?), VirtualMachineScaleSetPublicIPAddressConfiguration publicIPAddressConfiguration = default(VirtualMachineScaleSetPublicIPAddressConfiguration), IPVersion privateIPAddressVersion = default(IPVersion), IList<Management.ResourceManager.Fluent.SubResource> applicationGatewayBackendAddressPools = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> applicationSecurityGroups = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> loadBalancerBackendAddressPools = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<Management.ResourceManager.Fluent.SubResource> loadBalancerInboundNatPools = default(IList<Management.ResourceManager.Fluent.SubResource>))
             : base(id)
         {
             Name = name;
@@ -73,6 +75,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             PublicIPAddressConfiguration = publicIPAddressConfiguration;
             PrivateIPAddressVersion = privateIPAddressVersion;
             ApplicationGatewayBackendAddressPools = applicationGatewayBackendAddressPools;
+            ApplicationSecurityGroups = applicationSecurityGroups;
             LoadBalancerBackendAddressPools = loadBalancerBackendAddressPools;
             LoadBalancerInboundNatPools = loadBalancerInboundNatPools;
             CustomInit();
@@ -125,6 +128,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.applicationGatewayBackendAddressPools")]
         public IList<Management.ResourceManager.Fluent.SubResource> ApplicationGatewayBackendAddressPools { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies an array of references to application
+        /// security group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.applicationSecurityGroups")]
+        public IList<Management.ResourceManager.Fluent.SubResource> ApplicationSecurityGroups { get; set; }
 
         /// <summary>
         /// Gets or sets specifies an array of references to backend address
