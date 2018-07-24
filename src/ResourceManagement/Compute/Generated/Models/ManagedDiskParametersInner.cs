@@ -8,15 +8,15 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// The parameters of a managed disk.
     /// </summary>
-    public partial class ManagedDiskParametersInner : ResourceManager.Fluent.SubResource
+    public partial class ManagedDiskParametersInner : Management.ResourceManager.Fluent.SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ManagedDiskParametersInner class.
@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the ManagedDiskParametersInner class.
         /// </summary>
         /// <param name="storageAccountType">Specifies the storage account type
-        /// for the managed disk. Possible values are: Standard_LRS or
-        /// Premium_LRS. Possible values include: 'Standard_LRS',
-        /// 'Premium_LRS'</param>
-        public ManagedDiskParametersInner(string id = default(string), string storageAccountType = default(string))
+        /// for the managed disk. Possible values are: Standard_LRS,
+        /// Premium_LRS, and StandardSSD_LRS. Possible values include:
+        /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
+        public ManagedDiskParametersInner(string id = default(string), StorageAccountTypes storageAccountType = default(StorageAccountTypes))
             : base(id)
         {
             StorageAccountType = storageAccountType;
@@ -47,11 +47,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         /// <summary>
         /// Gets or sets specifies the storage account type for the managed
-        /// disk. Possible values are: Standard_LRS or Premium_LRS. Possible
-        /// values include: 'Standard_LRS', 'Premium_LRS'
+        /// disk. Possible values are: Standard_LRS, Premium_LRS, and
+        /// StandardSSD_LRS. Possible values include: 'Standard_LRS',
+        /// 'Premium_LRS', 'StandardSSD_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
-        public string StorageAccountType { get; set; }
+        public StorageAccountTypes StorageAccountType { get; set; }
 
     }
 }

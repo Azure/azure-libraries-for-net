@@ -31,7 +31,7 @@ namespace Fluent.Tests.Network
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 var testId = TestUtilities.GenerateName("");
-                Region region = Region.USEast;
+                Region region = Region.USSouthCentral;
                 string name = "ag" + testId;
                 var networkManager = TestHelper.CreateNetworkManager();
                 var computeManager = TestHelper.CreateComputeManager();

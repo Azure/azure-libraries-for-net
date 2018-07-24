@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 return null;
             }
-            return StorageAccountTypes.Parse(Inner.ManagedDisk.StorageAccountType);
+            return Inner.ManagedDisk.StorageAccountType;
         }
 
         ///GENMHASH:ACA2D5620579D8158A29586CA1FF4BC6:FBF1D26DE5D0CBA789F0BA74B22FDAAC
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 return null;
             }
-            return DiskCreateOptionTypes.Parse(Inner.CreateOption);
+            return Inner.CreateOption;
         }
     }
 }

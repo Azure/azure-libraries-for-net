@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// Type representing sku for an Azure compute resource.
     /// </summary>
     public interface IComputeSku :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<ResourceSku>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<ResourceSkuInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
         /// <summary>

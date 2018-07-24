@@ -8,9 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// The status of the latest virtual machine scale set rolling upgrade.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class RollingUpgradeStatusInfoInner : Resource
+    public partial class RollingUpgradeStatusInfoInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the RollingUpgradeStatusInfoInner
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// machine instances in each upgrade state.</param>
         /// <param name="error">Error details for this upgrade, if there are
         /// any.</param>
-        public RollingUpgradeStatusInfoInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), RollingUpgradePolicy policy = default(RollingUpgradePolicy), RollingUpgradeRunningStatus runningStatus = default(RollingUpgradeRunningStatus), RollingUpgradeProgressInfo progress = default(RollingUpgradeProgressInfo), ApiError error = default(ApiError))
+        public RollingUpgradeStatusInfoInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), RollingUpgradePolicy policy = default(RollingUpgradePolicy), RollingUpgradeRunningStatus runningStatus = default(RollingUpgradeRunningStatus), RollingUpgradeProgressInfo progress = default(RollingUpgradeProgressInfo), ApiError error = default(ApiError))
             : base(location, id, name, type, tags)
         {
             Policy = policy;
@@ -91,8 +91,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (Policy != null)
             {
                 Policy.Validate();
