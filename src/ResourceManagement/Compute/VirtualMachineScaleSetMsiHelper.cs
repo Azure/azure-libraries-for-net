@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (inner.Identity != null)
             {
-                return ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(inner.Identity.Type);
+                return inner.Identity.Type;
             }
             return null;
         }
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return;
                 }
-                ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(vmssInner.Identity.Type);
+                ResourceIdentityType? parsedIdentityType = vmssInner.Identity.Type;
                 if (parsedIdentityType.Equals(ResourceIdentityType.None)
                     || parsedIdentityType.Equals(ResourceIdentityType.SystemAssigned))
                 {
@@ -151,24 +151,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         this.userAssignedIdentityIdsToAssociate.Add(identity.Id);
                     }
                 }
-                if (vmssInner.Identity.IdentityIds == null)
-                {
-                    vmssInner.Identity.IdentityIds = new List<string>();
-                }
-                foreach (var identityId in this.userAssignedIdentityIdsToAssociate)
-                {
-                    if (!vmssInner.Identity.IdentityIds.Contains(identityId))
-                    {
-                        vmssInner.Identity.IdentityIds.Add(identityId);
-                    }
-                }
-                foreach (var identityId in this.userAssignedIdentityIdsToRemove)
-                {
-                    if (vmssInner.Identity.IdentityIds.Contains(identityId))
-                    {
-                        vmssInner.Identity.IdentityIds.Remove(identityId);
-                    }
-                }
+                // to be fixed
+//                if (vmssInner.Identity.IdentityIds == null)
+//                {
+//                    vmssInner.Identity.IdentityIds = new List<string>();
+//                }
+//                foreach (var identityId in this.userAssignedIdentityIdsToAssociate)
+//                {
+//                    if (!vmssInner.Identity.IdentityIds.Contains(identityId))
+//                    {
+//                        vmssInner.Identity.IdentityIds.Add(identityId);
+//                    }
+//                }
+//                foreach (var identityId in this.userAssignedIdentityIdsToRemove)
+//                {
+//                    if (vmssInner.Identity.IdentityIds.Contains(identityId))
+//                    {
+//                        vmssInner.Identity.IdentityIds.Remove(identityId);
+//                    }
+//                }
             }
             finally
             {
@@ -284,25 +285,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 vmssInner.Identity = new VirtualMachineScaleSetIdentity();
             }
 
-            ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(vmssInner.Identity.Type);
+            ResourceIdentityType? parsedIdentityType = vmssInner.Identity.Type;
             if (parsedIdentityType == null
                     || parsedIdentityType.Equals(ResourceIdentityType.None)
                     || parsedIdentityType.Equals(identityType))
             {
-                vmssInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(identityType);
+                vmssInner.Identity.Type = identityType;
             }
             else
             {
-                vmssInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssignedUserAssigned);
+                vmssInner.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
             }
-            if (vmssInner.Identity.IdentityIds == null)
-            {
-                if (identityType.Equals(ResourceIdentityType.UserAssigned)
-                        || identityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned))
-                {
-                    vmssInner.Identity.IdentityIds = new List<string>();
-                }
-            }
+            // to be fixed
+//            if (vmssInner.Identity.IdentityIds == null)
+//            {
+//                if (identityType.Equals(ResourceIdentityType.UserAssigned)
+//                        || identityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned))
+//                {
+//                    vmssInner.Identity.IdentityIds = new List<string>();
+//                }
+//            }
         }
     }
 }

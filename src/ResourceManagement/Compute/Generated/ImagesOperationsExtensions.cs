@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ImageInner> UpdateAsync(this IImagesOperations operations, string resourceGroupName, string imageName, ImageUpdateInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ImageInner> UpdateAsync(this IImagesOperations operations, string resourceGroupName, string imageName, ImageUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, imageName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -86,12 +86,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationStatusResponseInner> DeleteAsync(this IImagesOperations operations, string resourceGroupName, string imageName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IImagesOperations operations, string resourceGroupName, string imageName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, imageName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, imageName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -203,7 +200,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ImageInner> BeginUpdateAsync(this IImagesOperations operations, string resourceGroupName, string imageName, ImageUpdateInner parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ImageInner> BeginUpdateAsync(this IImagesOperations operations, string resourceGroupName, string imageName, ImageUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, imageName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -226,12 +223,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationStatusResponseInner> BeginDeleteAsync(this IImagesOperations operations, string resourceGroupName, string imageName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this IImagesOperations operations, string resourceGroupName, string imageName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, imageName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, imageName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

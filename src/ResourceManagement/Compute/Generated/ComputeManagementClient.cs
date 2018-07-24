@@ -52,19 +52,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -157,6 +158,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the ISnapshotsOperations.
         /// </summary>
         public virtual ISnapshotsOperations Snapshots { get; private set; }
+
+        /// <summary>
+        /// Gets the IGalleriesOperations.
+        /// </summary>
+        public virtual IGalleriesOperations Galleries { get; private set; }
+
+        /// <summary>
+        /// Gets the IGalleryImagesOperations.
+        /// </summary>
+        public virtual IGalleryImagesOperations GalleryImages { get; private set; }
+
+        /// <summary>
+        /// Gets the IGalleryImageVersionsOperations.
+        /// </summary>
+        public virtual IGalleryImageVersionsOperations GalleryImageVersions { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ComputeManagementClient class.
@@ -377,6 +393,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             ResourceSkus = new ResourceSkusOperations(this);
             Disks = new DisksOperations(this);
             Snapshots = new SnapshotsOperations(this);
+            Galleries = new GalleriesOperations(this);
+            GalleryImages = new GalleryImagesOperations(this);
+            GalleryImageVersions = new GalleryImageVersionsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

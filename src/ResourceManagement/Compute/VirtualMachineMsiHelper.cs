@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (inner.Identity != null)
             {
-                return ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(inner.Identity.Type);
+                return inner.Identity.Type;
             }
             return null;
         }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     return;
                 }
-                ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(virtualMachineInner.Identity.Type);
+                ResourceIdentityType? parsedIdentityType = virtualMachineInner.Identity.Type;
                 if (parsedIdentityType.Equals(ResourceIdentityType.None)
                     || parsedIdentityType.Equals(ResourceIdentityType.SystemAssigned))
                 {
@@ -154,28 +154,29 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                         this.userAssignedIdentityIdsToAssociate.Add(identity.Id);
                     }
                 }
-                if (virtualMachineInner.Identity.IdentityIds == null)
-                {
-                    virtualMachineInner.Identity.IdentityIds = new List<string>();
-                }
-                foreach (var identityId in this.userAssignedIdentityIdsToAssociate)
-                {
-                    if (!virtualMachineInner.Identity.IdentityIds.Contains(identityId))
-                    {
-                        virtualMachineInner.Identity.IdentityIds.Add(identityId);
-                    }
-                }
-                foreach (var identityId in this.userAssignedIdentityIdsToRemove)
-                {
-                    if (virtualMachineInner.Identity.IdentityIds.Contains(identityId))
-                    {
-                        virtualMachineInner.Identity.IdentityIds.Remove(identityId);
-                    }
-                }
-                if (virtualMachineInner.Identity.IdentityIds.Any())
-                {
-                    this.installExtensionIfNotInstalled = true;
-                }
+                // to be fixed
+//                if (virtualMachineInner.Identity.IdentityIds == null)
+//                {
+//                    virtualMachineInner.Identity.IdentityIds = new List<string>();
+//                }
+//                foreach (var identityId in this.userAssignedIdentityIdsToAssociate)
+//                {
+//                    if (!virtualMachineInner.Identity.IdentityIds.Contains(identityId))
+//                    {
+//                        virtualMachineInner.Identity.IdentityIds.Add(identityId);
+//                    }
+//                }
+//                foreach (var identityId in this.userAssignedIdentityIdsToRemove)
+//                {
+//                    if (virtualMachineInner.Identity.IdentityIds.Contains(identityId))
+//                    {
+//                        virtualMachineInner.Identity.IdentityIds.Remove(identityId);
+//                    }
+//                }
+//                if (virtualMachineInner.Identity.IdentityIds.Any())
+//                {
+//                    this.installExtensionIfNotInstalled = true;
+//                }
             }
             finally
             {
@@ -247,7 +248,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 return false;
             }
-            ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(VMInner.Identity.Type);
+            ResourceIdentityType? parsedIdentityType = VMInner.Identity.Type;
             if (parsedIdentityType == null || parsedIdentityType.Equals(ResourceIdentityType.None))
             {
                 return false;
@@ -347,25 +348,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 vmInner.Identity = new VirtualMachineIdentity();
             }
 
-            ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(vmInner.Identity.Type);
+            ResourceIdentityType? parsedIdentityType = vmInner.Identity.Type;
             if (parsedIdentityType == null
                     || parsedIdentityType.Equals(ResourceIdentityType.None)
                     || parsedIdentityType.Equals(identityType))
             {
-                vmInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(identityType);
+                vmInner.Identity.Type = identityType;
             }
             else
             {
-                vmInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssignedUserAssigned);
+                vmInner.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
             }
-            if (vmInner.Identity.IdentityIds == null)
-            {
-                if (identityType.Equals(ResourceIdentityType.UserAssigned)
-                        || identityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned))
-                {
-                    vmInner.Identity.IdentityIds = new List<string>();
-                }
-            }
+            // to be fixed
+//            if (vmInner.Identity.IdentityIds == null)
+//            {
+//                if (identityType.Equals(ResourceIdentityType.UserAssigned)
+//                        || identityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned))
+//                {
+//                    vmInner.Identity.IdentityIds = new List<string>();
+//                }
+//            }
         }
     }
 }

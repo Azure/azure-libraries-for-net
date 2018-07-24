@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a Virtual Machine Extension.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineExtensionInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class VirtualMachineExtensionInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineExtensionInner
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// appears in the response.</param>
         /// <param name="instanceView">The virtual machine extension instance
         /// view.</param>
-        public VirtualMachineExtensionInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineExtensionType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), VirtualMachineExtensionInstanceView instanceView = default(VirtualMachineExtensionInstanceView))
+        public VirtualMachineExtensionInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string forceUpdateTag = default(string), string publisher = default(string), string virtualMachineExtensionType = default(string), string typeHandlerVersion = default(string), bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object), string provisioningState = default(string), VirtualMachineExtensionInstanceView instanceView = default(VirtualMachineExtensionInstanceView))
             : base(location, id, name, type, tags)
         {
             ForceUpdateTag = forceUpdateTag;
@@ -138,5 +139,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         [JsonProperty(PropertyName = "properties.instanceView")]
         public VirtualMachineExtensionInstanceView InstanceView { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

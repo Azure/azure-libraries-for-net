@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using Newtonsoft.Json;
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
@@ -172,12 +174,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             bool overwriteVhd,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            VirtualMachineCaptureParametersInner parameters = new VirtualMachineCaptureParametersInner();
+            VirtualMachineCaptureParameters parameters = new VirtualMachineCaptureParameters();
             parameters.DestinationContainerName = containerName;
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;
             VirtualMachineCaptureResultInner captureResult = await Inner.CaptureAsync(groupName, name, parameters, cancellationToken);
-            return captureResult.Output.ToString();
+            return JsonConvert.SerializeObject(captureResult);
         }
 
         ///GENMHASH:E5D7B16A7B6C705114CC71E8BB2B20E1:3352FEB5932DA51CF51CFE2F1E02A3C7
