@@ -1,41 +1,37 @@
-FROM buildpack-deps:jessie-scm
+FROM microsoft/dotnet:2.1-runtime-deps-alpine3.7
 
-# Install .NET CLI dependencies
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        libc6 \
-        libcurl3 \
-        libgcc1 \
-        libgssapi-krb5-2 \
-        libicu52 \
-        liblttng-ust0 \
-        libssl1.0.0 \
-        libstdc++6 \
-        libunwind8 \
-        libuuid1 \
-        zlib1g \
-    && rm -rf /var/lib/apt/lists/*
+# Disable the invariant mode (set in base image)
+RUN apk add --no-cache icu-libs
+
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
+    LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8
 
 RUN apt-get update && apt-get install -y jq
 
 # Install .NET Core SDK
-ENV DOTNET_SDK_VERSION 1.0.4
-ENV DOTNET_SDK_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-dev-debian-x64.$DOTNET_SDK_VERSION.tar.gz
+ENV DOTNET_SDK_VERSION 2.1.302
 
-RUN curl -SL $DOTNET_SDK_DOWNLOAD_URL --output dotnet.tar.gz \
+RUN apk add --no-cache --virtual .build-deps \
+        openssl \
+    && wget -O dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-musl-x64.tar.gz \
+    && dotnet_sha512='0f9a6fcbad609ef1ff5b398de9a1f1bf59eebc59b28a4c8cfead28f0209bf77601d05d49f5ea1223c860a803fb82cd7e2401b6df290da34e54b36bdd8788ed48' \
+    && echo "$dotnet_sha512  dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /usr/share/dotnet \
-    && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
+    && tar -C /usr/share/dotnet -xzf dotnet.tar.gz \
+    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet \
     && rm dotnet.tar.gz \
-    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+    && apk del .build-deps
 
-# Trigger the population of the local package cache
-ENV NUGET_XMLDOC_MODE skip
-RUN mkdir warmup \
-    && cd warmup \
-    && dotnet new \
-    && cd .. \
-    && rm -rf warmup \
-    && rm -rf /tmp/NuGetScratch
+RUN apk add jq
+
+
+# Enable correct mode for dotnet watch (only mode supported in a container)
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true \
+# Skip extraction of XML docs - generally not useful within an image/container - helps perfomance
+NUGET_XMLDOC_MODE=skip
+
+RUN dotnet help
 
 COPY . /azure-libraries-for-net
 COPY ./ci/app /app
