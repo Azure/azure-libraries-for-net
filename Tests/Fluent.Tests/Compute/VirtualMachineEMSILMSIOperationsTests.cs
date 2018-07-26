@@ -18,7 +18,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
 {
     public class EMSILMSIOperations
     {
-        [Fact]
+        [Fact(Skip = "Till MSI changes implemented.")]
         public void CanCreateWithEMSI()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
@@ -286,7 +286,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Till MSI changes implemented.")]
         public void CanUpdateEMSIAndLMSI()
         {
             using (var context = FluentMockContext.Start(GetType().FullName))
