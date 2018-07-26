@@ -249,7 +249,7 @@ namespace Samples.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Till MSI changes implemented.")]
         [Trait("Samples", "Compute")]
         public void ManageStorageFromMSIEnabledVirtualMachineTest()
         {
