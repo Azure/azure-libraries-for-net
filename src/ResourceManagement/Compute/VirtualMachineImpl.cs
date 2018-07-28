@@ -11,7 +11,10 @@ using Microsoft.Azure.Management.Storage.Fluent;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -243,12 +246,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             parameters.DestinationContainerName = containerName;
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;
-            VirtualMachineCaptureResultInner captureResult = await Manager.Inner.VirtualMachines.CaptureAsync(
-                this.ResourceGroupName,
-                this.Name,
-                parameters,
-                cancellationToken);
-            return JsonConvert.SerializeObject(captureResult);
+            using (var _result = await ((VirtualMachinesOperations)Manager.Inner.VirtualMachines).CaptureWithHttpMessagesAsync(ResourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                var content = await _result.Response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var startIndex = content.IndexOf("\"output\": ") + 10;
+                var endIndex = content.LastIndexOf("}]}");
+                return content.Substring(startIndex, endIndex + 4 - startIndex);
+            }
         }
 
         ///GENMHASH:3FAB18211D6DAAAEF5CA426426D16F0C:AD7170076BCB5437E69B77AC63B3373E
