@@ -18,6 +18,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using Extensions = Microsoft.Azure.Management.ResourceManager.Fluent.Core.Extensions;
 
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
@@ -249,9 +251,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             using (var _result = await ((VirtualMachinesOperations)Manager.Inner.VirtualMachines).CaptureWithHttpMessagesAsync(ResourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 var content = await _result.Response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var startIndex = content.IndexOf("\"output\": ") + 10;
-                var endIndex = content.LastIndexOf("}]}");
-                return content.Substring(startIndex, endIndex + 4 - startIndex);
+                JObject o = JObject.Parse(content);
+                return o.SelectToken("$")["properties"]["output"].ToString();
             }
         }
 
