@@ -3,10 +3,22 @@
 
 using Microsoft.Azure.Management.AppService.Fluent;
 using Microsoft.Azure.Management.Batch.Fluent;
+using Microsoft.Azure.Management.Batchai.Fluent;
+using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.Cdn.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent;
+using Microsoft.Azure.Management.ContainerInstance.Fluent;
+using Microsoft.Azure.Management.ContainerRegistry.Fluent;
+using Microsoft.Azure.Management.ContainerService.Fluent;
+using Microsoft.Azure.Management.CosmosDB.Fluent;
 using Microsoft.Azure.Management.Dns.Fluent;
+using Microsoft.Azure.Management.Eventhub.Fluent;
+using Microsoft.Azure.Management.EventHub.Fluent;
+using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.KeyVault.Fluent;
+using Microsoft.Azure.Management.Locks.Fluent;
+using Microsoft.Azure.Management.Monitor.Fluent;
+using Microsoft.Azure.Management.Msi.Fluent;
 using Microsoft.Azure.Management.Network.Fluent;
 using Microsoft.Azure.Management.Redis.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
@@ -17,31 +29,20 @@ using Microsoft.Azure.Management.ServiceBus.Fluent;
 using Microsoft.Azure.Management.Sql.Fluent;
 using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Azure.Management.TrafficManager.Fluent;
+using Microsoft.Rest.Azure;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Management.Batchai.Fluent;
-using ISubscriptions = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscriptions;
+using System.Reflection;
 using ISubscription = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscription;
-using Microsoft.Azure.Management.ContainerInstance.Fluent;
-using Microsoft.Azure.Management.ContainerRegistry.Fluent;
-using Microsoft.Azure.Management.ContainerService.Fluent;
-using Microsoft.Azure.Management.CosmosDB.Fluent;
-using Microsoft.Azure.Management.Graph.RBAC.Fluent;
-using Microsoft.Azure.Management.Locks.Fluent;
-using Microsoft.Azure.Management.Msi.Fluent;
-using Microsoft.Azure.Management.BatchAI.Fluent;
-using Microsoft.Azure.Management.Monitor.Fluent;
-using Microsoft.Azure.Management.Eventhub.Fluent;
-using Microsoft.Azure.Management.EventHub.Fluent;
+using ISubscriptions = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscriptions;
 
 namespace Microsoft.Azure.Management.Fluent
 {
     public class Azure : IAzure
     {
         private IAuthenticated authenticated;
-
-        #region Service Managers
-
+        
         private IResourceManager resourceManager;
         private IStorageManager storageManager;
         private IComputeManager computeManager;
@@ -65,11 +66,7 @@ namespace Microsoft.Azure.Management.Fluent
         private IBatchAIManager batchAIManager;
         private IMonitorManager monitorManager;
         private IEventHubManager eventHubManager;
-
-        #endregion Service Managers
-
-        #region Getters
-
+        
         /// <returns>the currently selected subscription ID this client is authenticated to work with</returns>
         public string SubscriptionId
         {
@@ -561,11 +558,7 @@ namespace Microsoft.Azure.Management.Fluent
                 return eventHubManager.EventHubDisasterRecoveryPairings;
             }
         }
-
-        #endregion Getters
-
-        #region ctrs
-
+        
         private Azure(RestClient restClient, string subscriptionId, string tenantId, IAuthenticated authenticated)
         {
             resourceManager = ResourceManager.Fluent.ResourceManager.Authenticate(restClient).WithSubscription(subscriptionId);
@@ -596,9 +589,51 @@ namespace Microsoft.Azure.Management.Fluent
             this.authenticated = authenticated;
         }
 
-        #endregion ctrs
+        public IEnumerable<IAzureClient> ManagementClients
+        {
+            get
+            {
+                var managersList = new List<object>();
+                var managerTraversalStack = new Stack<object>();
 
-        #region Azure builder
+                managerTraversalStack.Push(this);
+
+                while (managerTraversalStack.Count > 0)
+                {
+                    var stackedObject = managerTraversalStack.Pop();
+                    // if not a rollup package
+                    if (!(stackedObject is IAzure))
+                    {
+                        managersList.Add(stackedObject);
+                        var resourceManager = stackedObject.GetType().GetProperty("ResourceManager");
+                        if (resourceManager != null)
+                        {
+                            managersList.Add(resourceManager.GetValue(stackedObject));
+                        }
+                    }
+
+                    foreach (var obj in stackedObject
+                        .GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
+                        .Where(f => f.FieldType.GetInterfaces().Contains(typeof(IManagerBase)))
+                        .Select(f => (IManagerBase)f.GetValue(stackedObject)))
+                    {
+                        managerTraversalStack.Push(obj);
+                    }
+                }
+
+                var result = new List<IAzureClient>();
+                foreach (var m in managersList)
+                {
+                    result.AddRange(m.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
+                            .Where(f => f.FieldType.GetInterfaces().Contains(typeof(IAzureClient)))
+                            .Select(f => (IAzureClient)f.GetValue(m)));
+
+                    result.AddRange(m.GetType().GetProperties().Where(n => n.Name.Equals("Inner"))
+                        .Select(f => (IAzureClient)f.GetValue(m)));
+                }
+                return result;
+            }
+        }
 
         private static Authenticated CreateAuthenticated(RestClient restClient, string tenantId)
         {
@@ -630,11 +665,7 @@ namespace Microsoft.Azure.Management.Fluent
         {
             return new Configurable();
         }
-
-        #endregion Azure builder
-
-        #region IAuthenticated and it's implementation
-
+        
         public interface IAuthenticated : IAccessManagement
         {
             string TenantId { get; }
@@ -767,11 +798,7 @@ namespace Microsoft.Azure.Management.Fluent
                 }
             }
         }
-
-        #endregion IAuthenticated and it's implementation
-
-        #region IConfigurable and it's implementation
-
+                
         public interface IConfigurable : IAzureConfigurable<IConfigurable>
         {
             IAuthenticated Authenticate(AzureCredentials azureCredentials);
@@ -788,8 +815,6 @@ namespace Microsoft.Azure.Management.Fluent
                 return authenticated;
             }
         }
-
-        #endregion IConfigurable and it's implementation
     }
 
     /// <summary>
@@ -925,6 +950,11 @@ namespace Microsoft.Azure.Management.Fluent
 
     public interface IAzure : IAzureBeta
     {
+        /// <summary>
+        /// Gets all underlying management clients 
+        /// </summary>
+        IEnumerable<IAzureClient> ManagementClients { get; }
+
         string SubscriptionId { get; }
 
         /// <summary>

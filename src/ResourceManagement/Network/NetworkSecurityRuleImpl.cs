@@ -71,18 +71,29 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return Inner.SourceAddressPrefix;
         }
 
+         ///GENMHASH:78FFDC26C610C7804F31139A148E0721:D4EB7D5B1CC54DD22EE9FD11784E6375
+         public IReadOnlyList<string> SourceAddressPrefixes()
+         {
+             return Inner.SourceAddressPrefixes == null ? null : new List<string>(Inner.SourceAddressPrefixes);
+         }
 
-        ///GENMHASH:798F2820BD4219E7B4DD446712FDB17D:622E50000B17B9E3E8B3B81163D29120
-        internal string SourcePortRange()
+        ///GENMHASH:63D8162123B94F4441D0C4B84B18BF64:B885A5EE1CD8F29EBA7F67CFD87D0F02
+        public IReadOnlyList<string> SourcePortRanges()
         {
-            return Inner.SourcePortRange;
+            return Inner.SourcePortRanges == null ? null : new List<string>(Inner.SourcePortRanges);
+            
         }
-
 
         ///GENMHASH:DA055B08DA468C4A0FDC8D28BC654F0A:701D096BEC8442ACBC8DB508FAEDEC08
         internal string DestinationAddressPrefix()
         {
             return Inner.DestinationAddressPrefix;
+        }
+
+        ///GENMHASH:A23A5AD98E49E9D4A4BAC8CDF90348B5:CF7E6FD75374C6C3BB067E6689120AFF
+        public IReadOnlyList<string> DestinationAddressPrefixes()
+        {
+            return Inner.DestinationAddressPrefixes == null ? null : new List<string>(Inner.SourceAddressPrefixes);
         }
 
 
@@ -92,6 +103,11 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return Inner.DestinationPortRange;
         }
 
+        ///GENMHASH:8B13130BC582115B5A3638A50374B2F6:04F7999F44F34522864984BFE7314128
+        public IReadOnlyList<string> DestinationPortRanges()
+        {
+            return Inner.DestinationPortRanges == null ? null : new List<string>(Inner.DestinationPortRanges);
+        }
 
         ///GENMHASH:F09FEF9E35FF77948775761A5E6A40AB:3361B063A896EE37DD13B78E2584BC5B
         internal int Priority()
@@ -153,7 +169,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:CA0F48388132710245BD9C972F7457A4:3C1AFE09D6F3461448B58077F1A3D334
         public ISet<string> DestinationApplicationSecurityGroupIds()
         {
-            return new HashSet<string>(Inner.DestinationApplicationSecurityGroups.Select(asg => asg.Id));
+            return Inner.DestinationApplicationSecurityGroups == null ? new HashSet<string>() : new HashSet<string>(Inner.DestinationApplicationSecurityGroups.Select(asg => asg.Id));
         }
 
         internal NetworkSecurityRuleImpl WithProtocol(SecurityRuleProtocol protocol)
@@ -176,14 +192,27 @@ namespace Microsoft.Azure.Management.Network.Fluent
         internal NetworkSecurityRuleImpl FromAddress(string cidr)
         {
             Inner.SourceAddressPrefix = cidr;
+            Inner.SourceAddressPrefixes = null;
+            Inner.SourceApplicationSecurityGroups = null;
             return this;
         }
 
+///GENMHASH:1AAF503886851809A527B114BA33CE0D:481ECA80341A163E20A98A5A34EA17F0
+        public NetworkSecurityRuleImpl FromAddresses(params string[] addresses)
+        {
+            Inner.SourceAddressPrefixes = new List<string>(addresses);
+            Inner.SourceAddressPrefix = null;
+            Inner.SourceApplicationSecurityGroups = null;
+
+            return this;
+        }
 
         ///GENMHASH:9A930168883C8C79EC2DDFD0F5F081B9:FB41A055FFDB5493EA532C7E17409EAD
         internal NetworkSecurityRuleImpl FromAnyAddress()
         {
             Inner.SourceAddressPrefix = "*";
+            Inner.SourceAddressPrefixes = null;
+            Inner.SourceApplicationSecurityGroups = null;
             return this;
         }
         #endregion
@@ -195,6 +224,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         internal NetworkSecurityRuleImpl FromPort(int port)
         {
             Inner.SourcePortRange = port.ToString();
+            Inner.SourcePortRanges = null;
             return this;
         }
 
@@ -203,15 +233,30 @@ namespace Microsoft.Azure.Management.Network.Fluent
         internal NetworkSecurityRuleImpl FromAnyPort()
         {
             Inner.SourcePortRange = "*";
+            Inner.SourcePortRanges = null;
+            return this;
+        }
+
+        ///GENMHASH:570B14405544B44C6518324289C4ECA5:BDD16CDDC1E5AB86542031EC6508C6EE
+        public NetworkSecurityRuleImpl FromPortRanges(params string[] ranges)
+        {
+            this.Inner.SourcePortRanges = new List<string>(ranges);
+            this.Inner.SourcePortRange = null;
+
             return this;
         }
 
         ///GENMHASH:093EC9C7D2F8A52ACF0F5E3F19A16A57:612C8F975A318A0CC7F3BEB8E0DE5308
         public ISet<string> SourceApplicationSecurityGroupIds()
         {
-            return new HashSet<string>(Inner.SourceApplicationSecurityGroups.Select(asg => asg.Id));
+            return Inner.SourceApplicationSecurityGroups == null ? new HashSet<string>() : new HashSet<string>(Inner.SourceApplicationSecurityGroups.Select(asg => asg.Id));
         }
 
+        ///GENMHASH:798F2820BD4219E7B4DD446712FDB17D:622E50000B17B9E3E8B3B81163D29120
+        public string SourcePortRange()
+        {
+            return this.Inner.SourcePortRange;
+        }
         ///GENMHASH:CFD60AE93A914AF9C3AFC89544B4E5F9:A6EF93A5D8C69AD2AEA75D286605280F
         internal NetworkSecurityRuleImpl FromPortRange(int from, int to)
         {
@@ -227,14 +272,28 @@ namespace Microsoft.Azure.Management.Network.Fluent
         internal NetworkSecurityRuleImpl ToAddress(string cidr)
         {
             Inner.DestinationAddressPrefix = cidr;
+            Inner.DestinationAddressPrefixes = null;
+            Inner.SourceApplicationSecurityGroups = null;
             return this;
         }
 
+        ///GENMHASH:63A4AB18975DBE0897F095657672E3E1:6FFAE56D7545E08F22486CC7AEF21C9B
+        public NetworkSecurityRuleImpl ToAddresses(params string[] addresses)
+        {
+            Inner.DestinationAddressPrefixes = new List<string>(addresses);
+            Inner.DestinationAddressPrefix = null;
+            Inner.DestinationApplicationSecurityGroups = null;
+
+            return this;
+        }
 
         ///GENMHASH:F10D880FF926A72A5ABC01A67260E7CB:D1FEA4C1C399C058B3C1D218A2E35EF8
         internal NetworkSecurityRuleImpl ToAnyAddress()
         {
             Inner.DestinationAddressPrefix = "*";
+            Inner.DestinationAddressPrefixes = null;
+            Inner.DestinationApplicationSecurityGroups = null;
+
             return this;
         }
         #endregion
@@ -246,6 +305,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         internal NetworkSecurityRuleImpl ToPort(int port)
         {
             Inner.DestinationPortRange = port.ToString();
+            Inner.DestinationPortRanges = null;
             return this;
         }
 
@@ -254,6 +314,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
         internal NetworkSecurityRuleImpl ToAnyPort()
         {
             Inner.DestinationPortRange = "*";
+            Inner.DestinationPortRanges = null;
+
+            return this;
+        }
+
+        ///GENMHASH:C92C814B5F16660F51EC15CB0B37354D:9FA15158BDE2DB0D61D5FCEEC24D398B
+        public NetworkSecurityRuleImpl ToPortRanges(params string[] ranges)
+        {
+            Inner.DestinationPortRanges = new List<string>(ranges);
+            Inner.DestinationPortRange = null;
+
             return this;
         }
 

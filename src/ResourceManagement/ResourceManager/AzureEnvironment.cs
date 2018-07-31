@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 ResourceManagerEndpoint = "https://management.azure.com/",
                 ManagementEndpoint = "https://management.core.windows.net/",
                 GraphEndpoint = "https://graph.windows.net/",
-                StorageEndpointSuffix = ".core.windows.net"
+                StorageEndpointSuffix = "core.windows.net"
             };
             AzureChinaCloud = new AzureEnvironment()
             {
@@ -27,16 +27,16 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 ResourceManagerEndpoint = "https://management.chinacloudapi.cn/",
                 ManagementEndpoint = "https://management.core.chinacloudapi.cn/",
                 GraphEndpoint = "https://graph.chinacloudapi.cn/",
-                StorageEndpointSuffix = ".core.chinacloudapi.cn"
+                StorageEndpointSuffix = "core.chinacloudapi.cn"
             };
             AzureUSGovernment = new AzureEnvironment()
             {
                 Name = nameof(AzureUSGovernment),
-                AuthenticationEndpoint = "https://login-us.microsoftonline.com/",
+                AuthenticationEndpoint = "https://login.microsoftonline.us/",
                 ResourceManagerEndpoint = "https://management.usgovcloudapi.net/",
                 ManagementEndpoint = "https://management.core.usgovcloudapi.net",
                 GraphEndpoint = "https://graph.windows.net/",
-                StorageEndpointSuffix = ".core.usgovcloudapi.net"
+                StorageEndpointSuffix = "core.usgovcloudapi.net"
             };
             AzureGermanCloud = new AzureEnvironment()
             {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
                 ResourceManagerEndpoint = "https://management.microsoftazure.de/",
                 ManagementEndpoint = "https://management.core.cloudapi.de",
                 GraphEndpoint = "https://graph.cloudapi.de/",
-                StorageEndpointSuffix = ".core.cloudapi.de"
+                StorageEndpointSuffix = "core.cloudapi.de"
             };
         }
 
