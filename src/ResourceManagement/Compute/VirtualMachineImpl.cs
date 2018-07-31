@@ -110,11 +110,66 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             InitializeExtensions();
             this.managedDataDisks = new ManagedDataDiskCollection(this);
             InitializeDataDisks();
-            this.virtualMachineMsiHelper = new VirtualMachineMsiHelper(rbacManager, new IdProvider(this));
+            this.virtualMachineMsiHelper = new VirtualMachineMsiHelper(rbacManager, this);
+        }
+
+        public VirtualMachineImpl WithLicenseType(string licenseType)
+        {
+            this.Inner.LicenseType = licenseType;
+            return this;
+        }
+
+        public VirtualMachineImpl WithoutSystemAssignedManagedServiceIdentity()
+        {
+            this.virtualMachineMsiHelper.WithoutLocalManagedServiceIdentity();
+            return this;
+        }
+        
+        public RunCommandResultInner RunCommand(RunCommandInput inputCommand)
+        {
+            return Extensions.Synchronize(() => this.RunCommandAsync(inputCommand));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunCommandAsync(RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.VirtualMachines.RunCommandAsync(this.ResourceGroupName, this.Name, inputCommand, cancellationToken);
+        }
+
+        public RunCommandResultInner RunPowerShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        {
+            return Extensions.Synchronize(() => RunPowerShellScriptAsync(scriptLines, scriptParameters));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunPowerShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.VirtualMachines.RunPowerShellScriptAsync(this.ResourceGroupName,
+                this.Name,
+                scriptLines,
+                scriptParameters,
+                cancellationToken);
+        }
+
+        public RunCommandResultInner RunShellScript(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        {
+            return Extensions.Synchronize(() => RunShellScriptAsync(scriptLines, scriptParameters));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunShellScriptAsync(IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.VirtualMachines.RunShellScriptAsync(this.ResourceGroupName,
+                this.Name,
+                scriptLines,
+                scriptParameters,
+                cancellationToken);
+        }
+
+        ///GENMHASH:BC4103A90A606609FAB346997701A4DE:F96317098E1E2EA0D5CD8D759145745A
+        public ResourceIdentityType? ManagedServiceIdentityType()
+        {
+            return VirtualMachineMsiHelper.ManagedServiceIdentityType(this.Inner);
         }
 
         ///GENMHASH:4002186478A1CB0B59732EBFB18DEB3A:4C74CDEFBB89F8ADB720DB2B740C1AB3
-
         public override async Task<IVirtualMachine> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var response = await GetInnerAsync(cancellationToken);
@@ -133,7 +188,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public void Deallocate()
         {
             Extensions.Synchronize(() => Manager.Inner.VirtualMachines.DeallocateAsync(this.ResourceGroupName, this.Name));
-            Refresh();
         }
 
         public async Task DeallocateAsync(CancellationToken cancellationToken = default(CancellationToken))
@@ -218,7 +272,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:BF8CE5C594210A476EF389DC52B15805:2795B67DFA718D9C0FFC69E152857591
         public void ConvertToManaged()
         {
-            this.ConvertToManagedAsync().Wait();
+            Extensions.Synchronize(() => this.ConvertToManagedAsync());
         }
 
         ///GENMHASH:BE99BB2DEA25942BB991922E902344B7:BB9B58DA6D2DB651B79BA46AE181759B
@@ -1330,7 +1384,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:E5CADE85564466522E512C04EB3F57B6:086F150AD4D805B10FE2EDCCE4784829
         public StorageAccountTypes OSDiskStorageAccountType()
         {
-            if (!IsManagedDiskEnabled() 
+            if (!IsManagedDiskEnabled()
                 || this.StorageProfile().OsDisk.ManagedDisk == null
                 || this.StorageProfile().OsDisk.ManagedDisk.StorageAccountType == null)
             {
@@ -1516,21 +1570,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:54F48C4A15522D8E87E76E69BFD089CA:67C5008B7D86A1EA0300776CDD220599
         public ISet<string> UserAssignedManagedServiceIdentityIds()
         {
-            // to be fixed
-//            if (this.Inner.Identity != null && this.Inner.Identity.IdentityIds != null)
-//            {
-//                return new HashSet<string>(this.Inner.Identity.IdentityIds);
-//            }
-//            else
-//            {
-                return new HashSet<string>();
-//            }
+            if (this.Inner.Identity != null && this.Inner.Identity.UserAssignedIdentities != null)
+            {
+                return new HashSet<string>(this.Inner.Identity.UserAssignedIdentities.Keys);
         }
 
-        ///GENMHASH:BC4103A90A606609FAB346997701A4DE:F96317098E1E2EA0D5CD8D759145745A
-        public ResourceIdentityType? ManagedServiceIdentityType()
-        {
-            return VirtualMachineMsiHelper.ManagedServiceIdentityType(this.Inner);
+            return new HashSet<string>();
         }
 
         ///GENMHASH:D8D324B42ED7B0976032110E0D5D3320:32345B0AB329E6E420804CD852C47627
@@ -1609,17 +1654,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:E059E91FE0CBE4B6875986D1B46994D2:AF3425B1B2ADC5865D8191FBE2FE4BBC
         public VirtualMachineImpl WithSystemAssignedManagedServiceIdentity()
         {
-            this.virtualMachineMsiHelper.WithSystemAssignedManagedServiceIdentity(this.Inner);
+            this.virtualMachineMsiHelper.WithLocalManagedServiceIdentity();
             return this;
         }
-
-        ///GENMHASH:D9244CA3B3398B7594B546247D593343:FE0DBB208E366B7AD2F00C67E391FED1
-        public VirtualMachineImpl WithSystemAssignedManagedServiceIdentity(int tokenPort)
-        {
-            this.virtualMachineMsiHelper.WithSystemAssignedManagedServiceIdentity(tokenPort, this.Inner);
-            return this;
-        }
-
+        
         ///GENMHASH:DEF511724D2CC8CA91F24E084BC9AA22:72F0234D4EBEB820BB2E8EB0ED1665A6
         public VirtualMachineImpl WithSystemAssignedIdentityBasedAccessTo(string scope, string roleDefinitionId)
         {
@@ -1651,21 +1689,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:8239AEDA70F925E7A1DCD8BDB2803956:6A2804975F58F97B4F610E2DE8E8AACA
         public VirtualMachineImpl WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
         {
-            this.virtualMachineMsiHelper.WithNewUserAssignedManagedServiceIdentity(this.Inner, this.CreatorTaskGroup, creatableIdentity);
+            this.virtualMachineMsiHelper.WithNewExternalManagedServiceIdentity(creatableIdentity);
             return this;
         }
 
         ///GENMHASH:77198B23BCB8BA2F0DDF3A8A0E85805C:F68FE87A8E9ADCA783F40FB45364544F
         public VirtualMachineImpl WithoutUserAssignedManagedServiceIdentity(string identityId)
         {
-            this.virtualMachineMsiHelper.WithoutUserAssignedManagedServiceIdentity(identityId);
+            this.virtualMachineMsiHelper.WithoutExternalManagedServiceIdentity(identityId);
             return this;
         }
 
         ///GENMHASH:6836D267A7B5AB07D80A2EFAF13B9F3E:8504B108F30E0AC9DC210A1D9CFA85F3
         public VirtualMachineImpl WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
         {
-            this.virtualMachineMsiHelper.WithExistingUserAssignedManagedServiceIdentity(this.Inner, identity);
+            this.virtualMachineMsiHelper.WithExistingExternalManagedServiceIdentity(identity);
             return this;
         }
 
@@ -1673,11 +1711,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public async override Task<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachine> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             if (IsInCreateMode)
-            {
+            {        
+                //
+                // -- set creation-time only properties
                 SetOSDiskDefaults();
                 SetOSProfileDefaults();
                 SetHardwareProfileDefaults();
-            }
+
             if (IsManagedDiskEnabled())
             {
                 managedDataDisks.SetDataDisksDefaults();
@@ -1690,7 +1730,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             await HandleBootDiagnosticsStorageSettingsAsync(diskStorageAccount, cancellationToken);
             HandleNetworkSettings();
             HandleAvailabilitySettings();
-            this.virtualMachineMsiHelper.HandleUserAssignedIdentities(this.Inner, this.CreatorTaskGroup);
+                this.virtualMachineMsiHelper.ProcessCreatedExternalIdentities();
+                this.virtualMachineMsiHelper.HandleExternalIdentities();
+                
             var response = await Manager.Inner.VirtualMachines.CreateOrUpdateAsync(ResourceGroupName, vmName, Inner, cancellationToken);
             var extensionsCommited = await this.virtualMachineExtensions.CommitAndGetAllAsync(cancellationToken);
             if (extensionsCommited.Any())
@@ -1700,13 +1742,50 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 response = await Manager.Inner.VirtualMachines.GetAsync(ResourceGroupName, vmName, null, cancellationToken);
             }
             this.Reset(response);
-            var isMsiExtensionInstalledOrUpdated = await virtualMachineMsiHelper.SetMSIExtensionIfRequiredAndHandleSystemAssignedMSIRoleAssignmentsAsync(this, cancellationToken);
-            if (isMsiExtensionInstalledOrUpdated)
+                await virtualMachineMsiHelper.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
+            }
+            else
             {
-                // Another get to fetch vm inner with extensions list reflecting MSI extension changes.
+                if (IsManagedDiskEnabled())
+                {
+                    managedDataDisks.SetDataDisksDefaults();
+                }
+                else
+                {
+                    UnmanagedDataDiskImpl.SetDataDisksDefaults(this.unmanagedDataDisks, this.vmName);
+                }
+                var diskStorageAccount = await HandleStorageSettingsAsync(cancellationToken);
+                await HandleBootDiagnosticsStorageSettingsAsync(diskStorageAccount, cancellationToken);
+                HandleNetworkSettings();
+                HandleAvailabilitySettings();
+                this.virtualMachineMsiHelper.ProcessCreatedExternalIdentities();
+
                 //
+                VirtualMachineUpdate updateParameter = new VirtualMachineUpdate
+                    {
+                        Plan = this.Inner.Plan,
+                        HardwareProfile = this.Inner.HardwareProfile,
+                        StorageProfile = this.Inner.StorageProfile,
+                        OsProfile = this.Inner.OsProfile,
+                        NetworkProfile = this.Inner.NetworkProfile,
+                        DiagnosticsProfile = this.Inner.DiagnosticsProfile,
+                        AvailabilitySet = this.Inner.AvailabilitySet,
+                        LicenseType = this.Inner.LicenseType,
+                        Zones = this.Inner.Zones
+                    };
+                //
+                this.virtualMachineMsiHelper.HandleExternalIdentities(updateParameter);
+                //
+                var response = await Manager.Inner.VirtualMachines.UpdateAsync(ResourceGroupName, vmName, updateParameter, cancellationToken);
+                var extensionsCommited = await this.virtualMachineExtensions.CommitAndGetAllAsync(cancellationToken);
+                if (extensionsCommited.Any())
+                {
+                    // Another get to fetch vm inner with extensions list reflecting the commited changes to extensions
+                    //
                 response = await Manager.Inner.VirtualMachines.GetAsync(ResourceGroupName, vmName, null, cancellationToken);
+                }
                 this.Reset(response);
+                await virtualMachineMsiHelper.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
             }
             return this;
         }
@@ -1718,6 +1797,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             ClearCachedRelatedResources();
             InitializeDataDisks();
             InitializeExtensions();
+            this.virtualMachineMsiHelper.Clear();
         }
 
         ///GENMHASH:F0BA5F3F27F923CBF88531E8051E2766:3A9860E56B386DEBF12E9494C009C2A3
@@ -2605,45 +2685,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 this.DiskLunsToRemove = new List<int>();
             }
         }
-
-        internal class IdProvider : IIdProvider
-        {
-            private readonly VirtualMachineImpl vm;
-
-            internal IdProvider(VirtualMachineImpl vm)
-            {
-                this.vm = vm;
             }
-
-            public string PrincipalId
-            {
-                get
-                {
-                    if (this.vm.Inner != null && this.vm.Inner.Identity != null)
-                    {
-                        return this.vm.Inner.Identity.PrincipalId;
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-            }
-
-            public string ResourceId
-            {
-                get
-                {
-                    if (this.vm.Inner != null)
-                    {
-                        return this.vm.Inner.Id;
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-            }
-        }
-    }
 }

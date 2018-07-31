@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
@@ -29,16 +30,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Specifies the new caching type for the unmanaged data disk.
-        /// </summary>
-        /// <param name="cachingType">The disk caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'.</param>
-        /// <return>The next stage of unmanaged data disk update.</return>
-        VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskCaching.WithCaching(CachingTypes cachingType)
-        {
-            return this.WithCaching(cachingType);
-        }
-
-        /// <summary>
         /// Attaches the child definition to the parent resource update.
         /// </summary>
         /// <return>The next stage of the parent definition.</return>
@@ -48,102 +39,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Specifies the logical unit number for the unmanaged data disk.
-        /// </summary>
-        /// <param name="lun">The logical unit number.</param>
-        /// <return>The next stage of unmanaged data disk definition.</return>
-        VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithLun(int lun)
-        {
-            return this.WithLun(lun);
-        }
-
-        /// <summary>
-        /// Specifies the caching type for the unmanaged data disk.
-        /// </summary>
-        /// <param name="cachingType">The disk caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'.</param>
-        /// <return>The next stage of unmanaged data disk definition.</return>
-        VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithCaching(CachingTypes cachingType)
-        {
-            return this.WithCaching(cachingType);
-        }
-
-        /// <summary>
-        /// Specifies the logical unit number for the unmanaged data disk.
-        /// </summary>
-        /// <param name="lun">The logical unit number.</param>
-        /// <return>The next stage of unmanaged data disk definition.</return>
-        VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply> VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply>.WithLun(int lun)
-        {
-            return this.WithLun(lun);
-        }
-
-        /// <summary>
-        /// Specifies the caching type for the unmanaged data disk.
-        /// </summary>
-        /// <param name="cachingType">The disk caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'.</param>
-        /// <return>The next stage of unmanaged data disk definition.</return>
-        VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply> VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply>.WithCaching(CachingTypes cachingType)
-        {
-            return this.WithCaching(cachingType);
-        }
-
-        /// <summary>
         /// Attaches the child definition to the parent resource definiton.
         /// </summary>
         /// <return>The next stage of the parent definition.</return>
         VirtualMachineScaleSet.Definition.IWithUnmanagedCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.Attach()
         {
             return this.Attach();
-        }
-
-        /// <summary>
-        /// Specifies the new size in GB for data disk.
-        /// </summary>
-        /// <param name="sizeInGB">The disk size in GB.</param>
-        /// <return>The next stage of unmanaged data disk update.</return>
-        VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskSize.WithSizeInGB(int sizeInGB)
-        {
-            return this.WithSizeInGB(sizeInGB);
-        }
-
-        /// <summary>
-        /// Specifies the new logical unit number for the unmanaged data disk.
-        /// </summary>
-        /// <param name="lun">The logical unit number.</param>
-        /// <return>The next stage of unmanaged data disk update.</return>
-        VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskLun.WithLun(int lun)
-        {
-            return this.WithLun(lun);
-        }
-
-        /// <summary>
-        /// Specifies the size in GB the unmanaged disk needs to be resized.
-        /// </summary>
-        /// <param name="sizeInGB">The disk size in GB.</param>
-        /// <return>The next stage of unmanaged data disk definition.</return>
-        VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithSizeInGB(int sizeInGB)
-        {
-            return this.WithSizeInGB(sizeInGB);
-        }
-
-        /// <summary>
-        /// Specifies the caching type for the unmanaged data disk.
-        /// </summary>
-        /// <param name="cachingType">The disk caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'.</param>
-        /// <return>The next stage of unmanaged data disk definition.</return>
-        VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithCaching(CachingTypes cachingType)
-        {
-            return this.WithCaching(cachingType);
-        }
-
-        /// <summary>
-        /// Specifies that unmanaged disk needs to be created with a new VHD of given size.
-        /// </summary>
-        /// <param name="sizeInGB">The initial disk size in GB.</param>
-        /// <return>The next stage of unmanaged data disk definition.</return>
-        VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithDiskSource<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithNewVhd(int sizeInGB)
-        {
-            return this.WithNewVhd(sizeInGB);
         }
 
         /// <summary>
@@ -157,6 +58,86 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Specifies the new caching type for the unmanaged data disk.
+        /// </summary>
+        /// <param name="cachingType">The disk caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'.</param>
+        /// <return>The next stage of unmanaged data disk update.</return>
+        VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskCaching.WithCaching(CachingTypes cachingType)
+        {
+            return this.WithCaching(cachingType);
+        }
+
+        /// <summary>
+        /// Specifies the caching type for the unmanaged data disk.
+        /// </summary>
+        /// <param name="cachingType">The disk caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'.</param>
+        /// <return>The next stage of unmanaged data disk definition.</return>
+        VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithCaching(CachingTypes cachingType)
+        {
+            return this.WithCaching(cachingType);
+        }
+
+        /// <summary>
+        /// Specifies the caching type for the unmanaged data disk.
+        /// </summary>
+        /// <param name="cachingType">The disk caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'.</param>
+        /// <return>The next stage of unmanaged data disk definition.</return>
+        VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply> VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply>.WithCaching(CachingTypes cachingType)
+        {
+            return this.WithCaching(cachingType);
+        }
+
+        /// <summary>
+        /// Specifies the caching type for the unmanaged data disk.
+        /// </summary>
+        /// <param name="cachingType">The disk caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'.</param>
+        /// <return>The next stage of unmanaged data disk definition.</return>
+        VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithCaching(CachingTypes cachingType)
+        {
+            return this.WithCaching(cachingType);
+        }
+
+        /// <summary>
+        /// Specifies the logical unit number for the unmanaged data disk.
+        /// </summary>
+        /// <param name="lun">The logical unit number.</param>
+        /// <return>The next stage of unmanaged data disk definition.</return>
+        VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithLun(int lun)
+        {
+            return this.WithLun(lun);
+        }
+
+        /// <summary>
+        /// Specifies the logical unit number for the unmanaged data disk.
+        /// </summary>
+        /// <param name="lun">The logical unit number.</param>
+        /// <return>The next stage of unmanaged data disk definition.</return>
+        VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply> VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply>.WithLun(int lun)
+        {
+            return this.WithLun(lun);
+        }
+
+        /// <summary>
+        /// Specifies the new logical unit number for the unmanaged data disk.
+        /// </summary>
+        /// <param name="lun">The logical unit number.</param>
+        /// <return>The next stage of unmanaged data disk update.</return>
+        VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskLun.WithLun(int lun)
+        {
+            return this.WithLun(lun);
+        }
+
+        /// <summary>
+        /// Specifies that unmanaged disk needs to be created with a new VHD of given size.
+        /// </summary>
+        /// <param name="sizeInGB">The initial disk size in GB.</param>
+        /// <return>The next stage of unmanaged data disk definition.</return>
+        VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithDiskSource<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithNewVhd(int sizeInGB)
+        {
+            return this.WithNewVhd(sizeInGB);
+        }
+
+        /// <summary>
         /// Specifies that unmanaged disk needs to be created with a new VHD of given size.
         /// </summary>
         /// <param name="sizeInGB">The initial disk size in GB.</param>
@@ -164,6 +145,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<VirtualMachineScaleSet.Update.IWithApply> VirtualMachineScaleSetUnmanagedDataDisk.UpdateDefinition.IWithDiskSource<VirtualMachineScaleSet.Update.IWithApply>.WithNewVhd(int sizeInGB)
         {
             return this.WithNewVhd(sizeInGB);
+        }
+
+        /// <summary>
+        /// Specifies the new size in GB for data disk.
+        /// </summary>
+        /// <param name="sizeInGB">The disk size in GB.</param>
+        /// <return>The next stage of unmanaged data disk update.</return>
+        VirtualMachineScaleSetUnmanagedDataDisk.Update.IUpdate VirtualMachineScaleSetUnmanagedDataDisk.Update.IWithDiskSize.WithSizeInGB(int sizeInGB)
+        {
+            return this.WithSizeInGB(sizeInGB);
+        }
+
+        /// <summary>
+        /// Specifies the size in GB the unmanaged disk needs to be resized.
+        /// </summary>
+        /// <param name="sizeInGB">The disk size in GB.</param>
+        /// <return>The next stage of unmanaged data disk definition.</return>
+        VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate> VirtualMachineScaleSetUnmanagedDataDisk.Definition.IWithFromImageDiskSettings<VirtualMachineScaleSet.Definition.IWithUnmanagedCreate>.WithSizeInGB(int sizeInGB)
+        {
+            return this.WithSizeInGB(sizeInGB);
         }
     }
 }

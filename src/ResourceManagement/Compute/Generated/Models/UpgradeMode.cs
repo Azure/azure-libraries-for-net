@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this UpgradeMode value)
         {
-            switch( value )
+            switch (value)
             {
                 case UpgradeMode.Automatic:
                     return "Automatic";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static UpgradeMode? ParseUpgradeMode(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Automatic":
                     return UpgradeMode.Automatic;

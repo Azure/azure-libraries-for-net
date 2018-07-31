@@ -1,12 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
 {
     using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
@@ -14,12 +12,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// </summary>
     public interface IWithLinuxDiskSource
     {
-        /// <summary>
-        /// Specifies the source specialized or generalized Linux OS VHD.
-        /// </summary>
-        /// <param name="vhdUrl">The source VHD URL.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithLinuxFromVhd(string vhdUrl);
 
         /// <summary>
         /// Specifies the source Linux OS managed disk.
@@ -48,6 +40,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         /// <param name="sourceSnapshot">Source snapshot.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithLinuxFromSnapshot(ISnapshot sourceSnapshot);
+
+        /// <summary>
+        /// Specifies the source specialized or generalized Linux OS VHD.
+        /// </summary>
+        /// <param name="vhdUrl">The source VHD URL.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithLinuxFromVhd(string vhdUrl);
     }
 
     /// <summary>
@@ -56,6 +55,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithGroup>
     {
+
     }
 
     /// <summary>
@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// </summary>
     public interface IWithDataDiskFromVhd
     {
+
         /// <summary>
         /// Specifies the source data VHD.
         /// </summary>
@@ -76,12 +77,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// </summary>
     public interface IWithWindowsDiskSource
     {
+
         /// <summary>
-        /// Specifies a source specialized or generalized Windows OS VHD.
+        /// Specifies a source Windows OS managed disk.
         /// </summary>
-        /// <param name="vhdUrl">The source VHD URL.</param>
+        /// <param name="sourceDiskId">Source managed disk resource ID.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithWindowsFromVhd(string vhdUrl);
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithWindowsFromDisk(string sourceDiskId);
+
+        /// <summary>
+        /// Specifies a source Windows OS managed disk.
+        /// </summary>
+        /// <param name="sourceDisk">Source managed disk.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithWindowsFromDisk(IDisk sourceDisk);
 
         /// <summary>
         /// Specifies a source Windows OS managed snapshot.
@@ -98,18 +107,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithWindowsFromSnapshot(ISnapshot sourceSnapshot);
 
         /// <summary>
-        /// Specifies a source Windows OS managed disk.
+        /// Specifies a source specialized or generalized Windows OS VHD.
         /// </summary>
-        /// <param name="sourceDiskId">Source managed disk resource ID.</param>
+        /// <param name="vhdUrl">The source VHD URL.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithWindowsFromDisk(string sourceDiskId);
-
-        /// <summary>
-        /// Specifies a source Windows OS managed disk.
-        /// </summary>
-        /// <param name="sourceDisk">Source managed disk.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithWindowsFromDisk(IDisk sourceDisk);
+        Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize WithWindowsFromVhd(string vhdUrl);
     }
 
     /// <summary>
@@ -117,6 +119,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// </summary>
     public interface IWithDataDiskFromImage
     {
+
         /// <summary>
         /// Specifies the ID of an image containing source data disk image.
         /// </summary>
@@ -147,6 +150,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// </summary>
     public interface IWithDataDiskFromDisk
     {
+
         /// <summary>
         /// Specifies the ID of source data managed disk.
         /// </summary>
@@ -167,6 +171,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// </summary>
     public interface IWithData
     {
+
         /// <summary>
         /// Begins definition of managed disk containing data.
         /// </summary>
@@ -182,6 +187,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithLinuxDiskSource,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithData
     {
+
     }
 
     /// <summary>
@@ -190,6 +196,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     public interface IWithCreateAndSize :
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreate
     {
+
         /// <summary>
         /// Specifies the disk size.
         /// </summary>
@@ -203,6 +210,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// </summary>
     public interface IWithSku
     {
+
         /// <summary>
         /// Specifies the SKU.
         /// </summary>
@@ -219,6 +227,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromDisk,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDataDiskFromSnapshot
     {
+
         /// <summary>
         /// Specifies the disk size for an empty disk.
         /// </summary>
@@ -233,6 +242,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     public interface IWithAvailabilityZone :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
+
         /// <summary>
         /// Specifies the availability zone for the managed disk.
         /// </summary>
@@ -247,6 +257,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithDiskSource>
     {
+
     }
 
     /// <summary>
@@ -254,6 +265,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// </summary>
     public interface IWithOSDiskFromImage
     {
+
         /// <summary>
         /// Specifies the ID of an image containing the operating system.
         /// </summary>
@@ -294,6 +306,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreateAndSize,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithCreate
     {
+
     }
 
     /// <summary>
@@ -301,6 +314,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
     /// </summary>
     public interface IWithDataDiskFromSnapshot
     {
+
         /// <summary>
         /// Specifies the source data managed snapshot.
         /// </summary>
@@ -327,5 +341,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Disk.Definition
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithSku,
         Microsoft.Azure.Management.Compute.Fluent.Disk.Definition.IWithAvailabilityZone
     {
+
     }
 }

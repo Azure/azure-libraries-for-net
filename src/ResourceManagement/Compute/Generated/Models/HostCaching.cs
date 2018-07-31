@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this HostCaching value)
         {
-            switch( value )
+            switch (value)
             {
                 case HostCaching.None:
                     return "None";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static HostCaching? ParseHostCaching(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "None":
                     return HostCaching.None;

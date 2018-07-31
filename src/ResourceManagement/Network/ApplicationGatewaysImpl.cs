@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (applicationGatewayResourceIds != null)
             {
-                StartAsync(applicationGatewayResourceIds).Wait();
+                Extensions.Synchronize(() => StartAsync(applicationGatewayResourceIds));
             }
         }
 
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (applicationGatewayResourceIds != null)
             {
-                StartAsync(applicationGatewayResourceIds).Wait();
+                Extensions.Synchronize(() => StartAsync(applicationGatewayResourceIds));
             }
         }
 
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (applicationGatewayResourceIds != null)
             {
-                StopAsync(applicationGatewayResourceIds).Wait();
+                Extensions.Synchronize(() => StopAsync(applicationGatewayResourceIds));
             }
         }
 
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             if (applicationGatewayResourceIds != null)
             {
-                StopAsync(applicationGatewayResourceIds).Wait();
+                Extensions.Synchronize(() => StopAsync(applicationGatewayResourceIds));
             }
         }
     }

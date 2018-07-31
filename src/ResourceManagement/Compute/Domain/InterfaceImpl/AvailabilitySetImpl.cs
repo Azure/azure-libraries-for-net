@@ -1,15 +1,11 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition;
-    using Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Update;
-    using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     internal partial class AvailabilitySetImpl
     {
@@ -25,17 +21,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets the statuses of the existing virtual machines in the availability set.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyList<Models.InstanceViewStatus> Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet.Statuses
-        {
-            get
-            {
-                return this.Statuses();
-            }
-        }
-
-        /// <summary>
         /// Gets the availability set SKU.
         /// </summary>
         Models.AvailabilitySetSkuTypes Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet.Sku
@@ -47,13 +32,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets the resource IDs of the virtual machines in the availability set.
+        /// Gets the statuses of the existing virtual machines in the availability set.
         /// </summary>
-        System.Collections.Generic.ISet<string> Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet.VirtualMachineIds
+        System.Collections.Generic.IReadOnlyList<Models.InstanceViewStatus> Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet.Statuses
         {
             get
             {
-                return this.VirtualMachineIds();
+                return this.Statuses();
             }
         }
 
@@ -65,6 +50,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             get
             {
                 return this.UpdateDomainCount();
+            }
+        }
+
+        /// <summary>
+        /// Gets the resource IDs of the virtual machines in the availability set.
+        /// </summary>
+        System.Collections.Generic.ISet<string> Microsoft.Azure.Management.Compute.Fluent.IAvailabilitySet.VirtualMachineIds
+        {
+            get
+            {
+                return this.VirtualMachineIds();
             }
         }
 
@@ -94,16 +90,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Specifies the update domain count for the availability set.
-        /// </summary>
-        /// <param name="updateDomainCount">Update domain count.</param>
-        /// <return>The next stage of the definition.</return>
-        AvailabilitySet.Definition.IWithCreate AvailabilitySet.Definition.IWithUpdateDomainCount.WithUpdateDomainCount(int updateDomainCount)
-        {
-            return this.WithUpdateDomainCount(updateDomainCount);
-        }
-
-        /// <summary>
         /// Specifies the SKU type for the availability set.
         /// </summary>
         /// <param name="skuType">The SKU type.</param>
@@ -121,6 +107,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         AvailabilitySet.Definition.IWithCreate AvailabilitySet.Definition.IWithSku.WithSku(AvailabilitySetSkuTypes skuType)
         {
             return this.WithSku(skuType);
+        }
+
+        /// <summary>
+        /// Specifies the update domain count for the availability set.
+        /// </summary>
+        /// <param name="updateDomainCount">Update domain count.</param>
+        /// <return>The next stage of the definition.</return>
+        AvailabilitySet.Definition.IWithCreate AvailabilitySet.Definition.IWithUpdateDomainCount.WithUpdateDomainCount(int updateDomainCount)
+        {
+            return this.WithUpdateDomainCount(updateDomainCount);
         }
     }
 }

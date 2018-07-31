@@ -1,11 +1,19 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update
 {
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
     /// The template for an update operation, containing all the settings that
@@ -17,6 +25,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update.IWithSku,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update.IWithOSSettings
     {
+
     }
 
     /// <summary>
@@ -24,6 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update
     /// </summary>
     public interface IWithOSSettings
     {
+
         /// <summary>
         /// Specifies the operating system type.
         /// </summary>
@@ -37,12 +47,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update
     /// </summary>
     public interface IWithSku
     {
+
         /// <summary>
-        /// Specifies the account type.
+        /// Specifies the SKU type.
         /// </summary>
+        /// <deprecated>Use  WithSku.withSku(SnapshotSkuType) instead.</deprecated>
         /// <param name="sku">SKU type.</param>
         /// <return>The next stage of the update.</return>
-        [System.Obsolete("Update.IWithSku.WithSku(DiskSkuTypes) is deprecated use Update.IWithSku.WithSku(SnapshotSkuType) instead.")]
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update.IUpdate WithSku(DiskSkuTypes sku);
 
         /// <summary>

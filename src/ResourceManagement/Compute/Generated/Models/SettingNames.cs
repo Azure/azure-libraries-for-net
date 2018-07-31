@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this SettingNames value)
         {
-            switch( value )
+            switch (value)
             {
                 case SettingNames.AutoLogon:
                     return "AutoLogon";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static SettingNames? ParseSettingNames(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "AutoLogon":
                     return SettingNames.AutoLogon;

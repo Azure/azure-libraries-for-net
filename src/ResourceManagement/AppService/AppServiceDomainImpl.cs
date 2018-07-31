@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
     /// <summary>
     /// The implementation for AppServiceDomain.
@@ -208,7 +209,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:EB8C33DACE377CBB07C354F38C5BEA32:40B9A5AF5E2BAAC912A2E077A8B03C22
         public void VerifyDomainOwnership(string certificateOrderName, string domainVerificationToken)
         {
-            VerifyDomainOwnershipAsync(certificateOrderName, domainVerificationToken).Wait();
+            Extensions.Synchronize(() => VerifyDomainOwnershipAsync(certificateOrderName, domainVerificationToken));
         }
 
         ///GENMHASH:5CD8F39F706EAB04A535707B7DF3A013:718ADC376CD7CA3987522D4C1A280D4D

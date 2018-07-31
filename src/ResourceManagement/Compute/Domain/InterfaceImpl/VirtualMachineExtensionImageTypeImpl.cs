@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
@@ -8,6 +9,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     internal partial class VirtualMachineExtensionImageTypeImpl
     {
         /// <summary>
+        /// Gets the resource ID of the virtual machine extension image type.
+        /// </summary>
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageType.Id
+        {
+            get
+            {
+                return this.Id();
+            }
+        }
+
+        /// <summary>
         /// Gets the name of the resource.
         /// </summary>
         string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName.Name
@@ -15,17 +27,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             get
             {
                 return this.Name();
-            }
-        }
-
-        /// <summary>
-        /// Gets Virtual machine image extension versions available in this type.
-        /// </summary>
-        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersions Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageType.Versions
-        {
-            get
-            {
-                return this.Versions();
             }
         }
 
@@ -52,13 +53,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets the resource ID of the virtual machine extension image type.
+        /// Gets Virtual machine image extension versions available in this type.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageType.Id
+        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersions Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageType.Versions
         {
             get
             {
-                return this.Id();
+                return this.Versions();
             }
         }
     }

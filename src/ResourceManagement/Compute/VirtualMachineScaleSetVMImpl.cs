@@ -20,6 +20,33 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     {
         private VirtualMachineInstanceView virtualMachineInstanceView;
 
+        public async Task<Models.VirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            //$ return this.client.GetInstanceViewAsync(this.Parent().ResourceGroupName(),
+            //$ this.Parent().Name(),
+            //$ this.InstanceId())
+            //$ .Map(new Func1<VirtualMachineScaleSetVMInstanceViewInner, VirtualMachineInstanceView>() {
+            //$ @Override
+            //$ public VirtualMachineInstanceView call(VirtualMachineScaleSetVMInstanceViewInner instanceViewInner) {
+            //$ if (instanceViewInner != null) {
+            //$ virtualMachineInstanceView = new VirtualMachineInstanceView()
+            //$ .WithBootDiagnostics(instanceViewInner.BootDiagnostics())
+            //$ .WithDisks(instanceViewInner.Disks())
+            //$ .WithExtensions(instanceViewInner.Extensions())
+            //$ .WithPlatformFaultDomain(instanceViewInner.PlatformFaultDomain())
+            //$ .WithPlatformUpdateDomain(instanceViewInner.PlatformUpdateDomain())
+            //$ .WithRdpThumbPrint(instanceViewInner.RdpThumbPrint())
+            //$ .WithStatuses(instanceViewInner.Statuses())
+            //$ .WithVmAgent(instanceViewInner.VmAgent());
+            //$ }
+            //$ return virtualMachineInstanceView;
+            //$ }
+            //$ });
+            //$ }
+
+            return null;
+        }
+
         ///GENMHASH:7A41C20BB6F19CCDAC03072604BF281B:10AB7511A9B5C284B8E2E1F35126DD60
         public string WindowsTimeZone()
         {

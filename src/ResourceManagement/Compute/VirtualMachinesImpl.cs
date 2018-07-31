@@ -47,6 +47,49 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.vmSizes = new VirtualMachineSizesImpl(computeManager.Inner.VirtualMachineSizes);
         }
 
+
+        public RunCommandResultInner RunCommand(string groupName, string name, RunCommandInput inputCommand)
+        {
+            return Extensions.Synchronize(() => RunCommandAsync(groupName, name, inputCommand));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunCommandAsync(string groupName, string name, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Inner.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
+        }
+
+        public RunCommandResultInner RunPowerShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        {
+            return Extensions.Synchronize(() => this.RunPowerShellScriptAsync(groupName, name, scriptLines, scriptParameters));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunPowerShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inputCommand = new RunCommandInput
+                {
+                    CommandId = "RunPowerShellScript",
+                    Script = scriptLines,
+                    Parameters = scriptParameters
+                };
+            return await this.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
+        }
+
+        public RunCommandResultInner RunShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        {
+            return Extensions.Synchronize(() => this.RunShellScriptAsync(groupName, name, scriptLines, scriptParameters));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inputCommand = new RunCommandInput
+                {
+                    CommandId = "RunShellScript",
+                    Script = scriptLines,
+                    Parameters = scriptParameters
+                };
+            return await this.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
+        }
+
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:36E25639805611CF89054C004B22BB15
         protected async override Task<IPage<VirtualMachineInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
@@ -179,7 +222,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;
             VirtualMachineCaptureResultInner captureResult = await Inner.CaptureAsync(groupName, name, parameters, cancellationToken);
-            return JsonConvert.SerializeObject(captureResult);
+            return JsonConvert.SerializeObject(captureResult, ((VirtualMachinesOperations) this.Manager.Inner.VirtualMachines).Client.SerializationSettings);
         }
 
         ///GENMHASH:E5D7B16A7B6C705114CC71E8BB2B20E1:3352FEB5932DA51CF51CFE2F1E02A3C7

@@ -106,12 +106,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
 
         public void DeleteByIds(IList<string> ids)
         {
-            DeleteByIdsAsync(ids).Wait();
+            Extensions.Synchronize(() => DeleteByIdsAsync(ids));
         }
 
         public void DeleteByIds(params string[] ids)
         {
-            DeleteByIdsAsync(ids).Wait();
+            Extensions.Synchronize(() => DeleteByIdsAsync(ids));
         }
     }
 }
