@@ -552,12 +552,12 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     // Check LB after update 
                     //
                     Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternetFacingLoadBalancer());
-                    Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends().Count() == 2);
-                    Assert.True(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools().Count() == 1);
+                    Assert.Equal(2, virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends().Count());
+                    Assert.Equal(1, virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools().Count());
 
                     Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternalLoadBalancer());
-                    Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends().Count() == 2);
-                    Assert.True(virtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools().Count() == 2);
+                    Assert.Equal(2, virtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends().Count());
+                    Assert.Equal(2, virtualMachineScaleSet.ListPrimaryInternalLoadBalancerInboundNatPools().Count());
 
                     // Check NIC + IPConfig after update
                     //
@@ -733,7 +733,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
             }
         }
-
 
         [Fact]
         public void CanEnableMSIWithMultipleRoleAssignment()
@@ -1089,6 +1088,140 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 }
             }
         }
+
+        [Fact]
+        public void CanCreateVirtualMachineScaleSetWithOptionalNetworkSettings()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                string vmss_name = TestUtilities.GenerateName("vmss");
+                string groupName = TestUtilities.GenerateName("javacsmrg");
+                string asgName = TestUtilities.GenerateName("asg");
+                string nsgName = TestUtilities.GenerateName("nsg");
+                string vmssVmDnsLabel = TestUtilities.GenerateName("pip");
+                Region region = Region.USEast2;
+                IAzure azure = null;
+
+                try
+                {
+                    azure = TestHelper.CreateRollupClient();
+
+                    var resourceGroup = azure.ResourceGroups.Define(groupName)
+                        .WithRegion(region)
+                        .Create();
+
+                    var network = azure.Networks.Define("vmssvnet")
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithAddressSpace("10.0.0.0/28")
+                            .WithSubnet("subnet1", "10.0.0.0/28")
+                            .Create();
+
+                    var asg = azure.ApplicationSecurityGroups
+                            .Define(asgName)
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .Create();
+
+                    // Create VMSS with instance public ip
+                    var virtualMachineScaleSet = azure.VirtualMachineScaleSets.Define(vmss_name)
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .WithSku(VirtualMachineScaleSetSkuTypes.StandardDS3v2)
+                            .WithExistingPrimaryNetworkSubnet(network, "subnet1")
+                            .WithoutPrimaryInternetFacingLoadBalancer()
+                            .WithoutPrimaryInternalLoadBalancer()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                            .WithRootUsername("jvuser")
+                            .WithRootPassword("123OData!@#123")
+                            .WithVirtualMachinePublicIp(vmssVmDnsLabel)
+                            .WithExistingApplicationSecurityGroup(asg)
+                            .Create();
+
+                    var currentIpConfig = virtualMachineScaleSet.VirtualMachinePublicIpConfig;
+
+                    Assert.NotNull(currentIpConfig);
+                    Assert.NotNull(currentIpConfig.DnsSettings);
+                    Assert.NotNull(currentIpConfig.DnsSettings.DomainNameLabel);
+
+                    currentIpConfig.IdleTimeoutInMinutes = 20;
+
+                    virtualMachineScaleSet.Update()
+                            .WithVirtualMachinePublicIp(currentIpConfig)
+                            .Apply();
+
+                    currentIpConfig = virtualMachineScaleSet.VirtualMachinePublicIpConfig;
+                    Assert.NotNull(currentIpConfig);
+                    Assert.NotNull(currentIpConfig.IdleTimeoutInMinutes);
+                    Assert.Equal((long)20, (long)currentIpConfig.IdleTimeoutInMinutes);
+
+                    virtualMachineScaleSet.Refresh();
+                    currentIpConfig = virtualMachineScaleSet.VirtualMachinePublicIpConfig;
+                    Assert.NotNull(currentIpConfig);
+                    Assert.NotNull(currentIpConfig.IdleTimeoutInMinutes);
+                    Assert.Equal((long)20, (long)currentIpConfig.IdleTimeoutInMinutes);
+
+                    var asgIds = virtualMachineScaleSet.ApplicationSecurityGroupIds;
+                    Assert.NotNull(asgIds);
+                    Assert.Equal(1, asgIds.Count);
+
+                    var nsg = azure.NetworkSecurityGroups.Define(nsgName)
+                            .WithRegion(region)
+                            .WithExistingResourceGroup(resourceGroup)
+                            .DefineRule("rule1")
+                                .AllowOutbound()
+                                .FromAnyAddress()
+                                .FromPort(80)
+                                .ToAnyAddress()
+                                .ToPort(80)
+                                .WithProtocol(SecurityRuleProtocol.Tcp)
+                                .Attach()
+                            .Create();
+
+                    virtualMachineScaleSet.Update()
+                            .WithIpForwarding()
+                            .WithAcceleratedNetworking()
+                            .WithExistingNetworkSecurityGroup(nsg)
+                            .Apply();
+
+                    Assert.True(virtualMachineScaleSet.IsIpForwardingEnabled);
+                    Assert.True(virtualMachineScaleSet.IsAcceleratedNetworkingEnabled);
+                    Assert.NotNull(virtualMachineScaleSet.NetworkSecurityGroupId);
+                    //
+                    virtualMachineScaleSet.Refresh();
+                    //
+                    Assert.True(virtualMachineScaleSet.IsIpForwardingEnabled);
+                    Assert.True(virtualMachineScaleSet.IsAcceleratedNetworkingEnabled);
+                    Assert.NotNull(virtualMachineScaleSet.NetworkSecurityGroupId);
+
+                    virtualMachineScaleSet.Update()
+                            .WithoutIpForwarding()
+                            .WithoutAcceleratedNetworking()
+                            .WithoutNetworkSecurityGroup()
+                            .Apply();
+
+                    Assert.False(virtualMachineScaleSet.IsIpForwardingEnabled);
+                    Assert.False(virtualMachineScaleSet.IsAcceleratedNetworkingEnabled);
+                    Assert.Null(virtualMachineScaleSet.NetworkSecurityGroupId);
+                }
+                finally
+                {
+                    try
+                    {
+                        if (azure != null)
+                        {
+                            azure.ResourceGroups.BeginDeleteByName(groupName);
+                        }
+                    }
+                    catch { }
+                }
+
+            }
+        }
+
+
+
+
 
         private void CheckVMInstances(IVirtualMachineScaleSet vmScaleSet)
         {

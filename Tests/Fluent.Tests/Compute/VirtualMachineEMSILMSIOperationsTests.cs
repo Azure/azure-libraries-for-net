@@ -4,6 +4,7 @@
 using Azure.Tests;
 using Fluent.Tests.Common;
 using Microsoft.Azure.Management.Compute.Fluent;
+using Microsoft.Azure.Management.Compute.Fluent.Models;
 using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.Msi.Fluent;
@@ -88,16 +89,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.True(virtualMachine.IsManagedServiceIdentityEnabled);
                     Assert.Null(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId); // No Local MSI enabled
                     Assert.Null(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);    // No Local MSI enabled
-
-                    // Ensure the MSI extension is set
-                    //
-                    var extensions = virtualMachine.ListExtensions();
-                    IVirtualMachineExtension msiExtension = extensions
-                        .Select(e => e.Value)
-                        .FirstOrDefault(l => l.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && l.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase));
-                    Assert.NotNull(msiExtension);
-
+                    
                     // Ensure the "User Assigned (External) MSI" id can be retrieved from the virtual machine
                     //
                     var emsiIds = virtualMachine.UserAssignedManagedServiceIdentityIds;
@@ -148,6 +140,78 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                     assignment = LookupRoleAssignmentUsingScopeAndRole(resourceGroup.Id, BuiltInRole.Contributor, implicitlyCreatedIdentity.PrincipalId, azure);
                     Assert.False(assignment == null, "Expected role assignment with ROLE not found for the resource group for identity");
+
+
+                    emsiIds = virtualMachine.UserAssignedManagedServiceIdentityIds;
+                    // Remove both (all) identities
+                    virtualMachine.Update()
+                            .WithoutUserAssignedManagedServiceIdentity(emsiIds.ElementAt(0))
+                            .WithoutUserAssignedManagedServiceIdentity(emsiIds.ElementAt(1))
+                            .Apply();
+                    //
+                    Assert.Equal(0, virtualMachine.UserAssignedManagedServiceIdentityIds.Count);
+
+                    if (virtualMachine.ManagedServiceIdentityType != null)
+                    {
+                        Assert.True(virtualMachine.ManagedServiceIdentityType.Equals(ResourceIdentityType.None));
+                    }
+                    // fetch vm again and validate
+                    virtualMachine.Refresh();
+                    //
+                    Assert.Equal(0, virtualMachine.UserAssignedManagedServiceIdentityIds.Count);
+                    if (virtualMachine.ManagedServiceIdentityType != null)
+                    {
+                        Assert.True(virtualMachine.ManagedServiceIdentityType.Equals(ResourceIdentityType.None));
+                    }
+                    //
+                    var identity1 = azure.Identities.GetById(emsiIds.ElementAt(0));
+                    var identity2 = azure.Identities.GetById(emsiIds.ElementAt(1));
+                    //
+                    // Update VM by enabling System-MSI and add two identities
+                    virtualMachine.Update()
+                            .WithSystemAssignedManagedServiceIdentity()
+                            .WithExistingUserAssignedManagedServiceIdentity(identity1)
+                            .WithExistingUserAssignedManagedServiceIdentity(identity2)
+                            .Apply();
+
+                    Assert.NotNull(virtualMachine.UserAssignedManagedServiceIdentityIds);
+                    Assert.Equal(2, virtualMachine.UserAssignedManagedServiceIdentityIds.Count);
+                    Assert.NotNull(virtualMachine.ManagedServiceIdentityType);
+                    Assert.True(virtualMachine.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned));
+                    //
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
+                    //
+                    virtualMachine.Refresh();
+                    Assert.NotNull(virtualMachine.UserAssignedManagedServiceIdentityIds);
+                    Assert.Equal(2, virtualMachine.UserAssignedManagedServiceIdentityIds.Count);
+                    Assert.NotNull(virtualMachine.ManagedServiceIdentityType);
+                    Assert.True(virtualMachine.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned));
+                    //
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
+                    //
+
+                    // Remove identities one by one (first one)
+                    virtualMachine.Update()
+                            .WithoutUserAssignedManagedServiceIdentity(emsiIds.ElementAt(0))
+                            .Apply();
+                    //
+                    Assert.NotNull(virtualMachine.UserAssignedManagedServiceIdentityIds);
+                    Assert.Equal(1, virtualMachine.UserAssignedManagedServiceIdentityIds.Count);
+                    Assert.NotNull(virtualMachine.ManagedServiceIdentityType);
+                    Assert.True(virtualMachine.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned));
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
+                    // Remove identities one by one (second one)
+                    virtualMachine.Update()
+                            .WithoutUserAssignedManagedServiceIdentity(emsiIds.ElementAt(1))
+                            .Apply();
+                    //
+                    Assert.Equal(0, virtualMachine.UserAssignedManagedServiceIdentityIds.Count);
+                    Assert.NotNull(virtualMachine.ManagedServiceIdentityType);
+                    Assert.True(virtualMachine.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssigned));
+                    //
                 }
                 finally
                 {
@@ -226,15 +290,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
                     Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
 
-                    // Ensure the MSI extension is set
-                    //
-                    var extensions = virtualMachine.ListExtensions();
-                    IVirtualMachineExtension msiExtension = extensions
-                        .Select(e => e.Value)
-                        .FirstOrDefault(l => l.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && l.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase));
-                    Assert.NotNull(msiExtension);
-
                     // Ensure the "User Assigned (External) MSI" id can be retrieved from the virtual machine
                     //
                     ISet<string> emsiIds = virtualMachine.UserAssignedManagedServiceIdentityIds;
@@ -251,6 +306,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .AccessManagement
                             .RoleAssignments
                             .ListByScope(network.Id);
+
                     bool found = roleAssignmentsForNetwork.Any(r => r.PrincipalId != null && r.PrincipalId.Equals(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase));
                     Assert.True(found, $"Expected role assignment not found for the virtual network for local identity {virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId}");
 
@@ -331,15 +387,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .WithNewUserAssignedManagedServiceIdentity(creatableIdentity)
                             .Apply();
 
-                    // Ensure the MSI extension is set
-                    //
-                    var extensions = virtualMachine.ListExtensions();
-                    IVirtualMachineExtension msiExtension = extensions
-                        .Select(e => e.Value)
-                        .FirstOrDefault(l => l.PublisherName.Equals("Microsoft.ManagedIdentity", StringComparison.OrdinalIgnoreCase)
-                                && l.TypeName.Equals("ManagedIdentityExtensionForLinux", StringComparison.OrdinalIgnoreCase));
-                    Assert.NotNull(msiExtension);
-
                     // Ensure the "User Assigned (External) MSI" id can be retrieved from the virtual machine
                     //
                     ISet<string> emsiIds = virtualMachine.UserAssignedManagedServiceIdentityIds;
@@ -383,9 +430,39 @@ namespace Fluent.Tests.Compute.VirtualMachine
 
                     Assert.NotNull(virtualMachine);
                     Assert.NotNull(virtualMachine.Inner);
+                    Assert.NotNull(virtualMachine.ManagedServiceIdentityType);
+                    Assert.True(virtualMachine.ManagedServiceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned));
                     Assert.True(virtualMachine.IsManagedServiceIdentityEnabled);
                     Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
                     Assert.NotNull(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
+
+                    //
+                    virtualMachine
+                            .Update()
+                            .WithoutSystemAssignedManagedServiceIdentity()
+                            .Apply();
+
+                    Assert.True(virtualMachine.IsManagedServiceIdentityEnabled);
+                    Assert.NotNull(virtualMachine.ManagedServiceIdentityType);
+                    Assert.True(virtualMachine.ManagedServiceIdentityType.Equals(ResourceIdentityType.UserAssigned));
+                    Assert.Null(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.Null(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
+                    Assert.Equal(1, virtualMachine.UserAssignedManagedServiceIdentityIds.Count);
+                    //
+                    virtualMachine
+                            .Update()
+                            .WithoutUserAssignedManagedServiceIdentity(identity.Id)
+                            .Apply();
+
+                    Assert.False(virtualMachine.IsManagedServiceIdentityEnabled);
+
+                    if (virtualMachine.ManagedServiceIdentityType != null)
+                    {
+                        Assert.True(virtualMachine.ManagedServiceIdentityType.Equals(ResourceIdentityType.None));
+                    }
+                    Assert.Null(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId);
+                    Assert.Null(virtualMachine.SystemAssignedManagedServiceIdentityTenantId);
+                    Assert.Equal(0, virtualMachine.UserAssignedManagedServiceIdentityIds.Count);
                 }
                 finally
                 {

@@ -1,7 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition
 {
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
 
@@ -12,12 +18,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
     public interface IWithVhdAttachedDiskSettings<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithAttach<ParentT>
     {
+
         /// <summary>
-        /// Specifies the size in GB the disk needs to be resized.
+        /// Specifies the caching type for the data disk.
         /// </summary>
-        /// <param name="sizeInGB">The disk size in GB.</param>
+        /// <param name="cachingType">The disk caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'.</param>
         /// <return>The next stage of data disk definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithVhdAttachedDiskSettings<ParentT> WithSizeInGB(int sizeInGB);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithVhdAttachedDiskSettings<ParentT> WithCaching(CachingTypes cachingType);
 
         /// <summary>
         /// Specifies the logical unit number for the data disk.
@@ -27,11 +34,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithVhdAttachedDiskSettings<ParentT> WithLun(int lun);
 
         /// <summary>
-        /// Specifies the caching type for the data disk.
+        /// Specifies the size in GB the disk needs to be resized.
         /// </summary>
-        /// <param name="cachingType">The disk caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'.</param>
+        /// <param name="sizeInGB">The disk size in GB.</param>
         /// <return>The next stage of data disk definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithVhdAttachedDiskSettings<ParentT> WithCaching(CachingTypes cachingType);
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithVhdAttachedDiskSettings<ParentT> WithSizeInGB(int sizeInGB);
     }
 
     /// <summary>
@@ -40,6 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
     /// <typeparam name="ParentT">The stage of the parent update to return to after attaching this definition.</typeparam>
     public interface IWithDiskSource<ParentT>
     {
+
         /// <summary>
         /// Specifies the existing source VHD of the disk.
         /// </summary>
@@ -64,6 +72,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
     public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithDiskSource<ParentT>
     {
+
     }
 
     /// <summary>
@@ -73,6 +82,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
     public interface IWithAttach<ParentT> :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ParentT>
     {
+
     }
 
     /// <summary>
@@ -82,6 +92,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
     public interface IWithNewVhdDiskSettings<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithAttach<ParentT>
     {
+
         /// <summary>
         /// Specifies where the VHD associated with the new blank data disk needs to be stored.
         /// </summary>
@@ -92,17 +103,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataD
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<ParentT> StoreAt(string storageAccountName, string containerName, string vhdName);
 
         /// <summary>
-        /// Specifies the logical unit number for the data disk.
-        /// </summary>
-        /// <param name="lun">The logical unit number.</param>
-        /// <return>The next stage of data disk definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<ParentT> WithLun(int lun);
-
-        /// <summary>
         /// Specifies the caching type for the data disk.
         /// </summary>
         /// <param name="cachingType">The disk caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'.</param>
         /// <return>The next stage of data disk definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<ParentT> WithCaching(CachingTypes cachingType);
+
+        /// <summary>
+        /// Specifies the logical unit number for the data disk.
+        /// </summary>
+        /// <param name="lun">The logical unit number.</param>
+        /// <return>The next stage of data disk definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.UpdateDefinition.IWithNewVhdDiskSettings<ParentT> WithLun(int lun);
     }
 }

@@ -1,12 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
     /// Container interface for all the definitions related to an availability set.
@@ -16,6 +13,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
         Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithGroup,
         Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithCreate
     {
+
     }
 
     /// <summary>
@@ -24,6 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithCreate>
     {
+
     }
 
     /// <summary>
@@ -31,6 +30,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     /// </summary>
     public interface IWithFaultDomainCount
     {
+
         /// <summary>
         /// Specifies the fault domain count for the availability set.
         /// </summary>
@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithGroup>
     {
+
     }
 
     /// <summary>
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     /// </summary>
     public interface IWithSku
     {
+
         /// <summary>
         /// Specifies the SKU type for the availability set.
         /// </summary>
@@ -65,6 +67,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
     /// </summary>
     public interface IWithUpdateDomainCount
     {
+
         /// <summary>
         /// Specifies the update domain count for the availability set.
         /// </summary>
@@ -85,5 +88,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition
         Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithFaultDomainCount,
         Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Definition.IWithSku
     {
+
     }
 }

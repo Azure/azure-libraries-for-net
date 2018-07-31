@@ -6,7 +6,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Microsoft.Azure.Management.Msi.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.DAG;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System;
     using System.Collections.Generic;
@@ -17,29 +16,284 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// <summary>
     /// Utility class to set Managed Service Identity (MSI) and MSI related resources for a virtual machine.
     /// </summary>
-    public partial class VirtualMachineMsiHelper : RoleAssignmentHelper
+    internal partial class VirtualMachineMsiHelper : RoleAssignmentHelper
     {
-        private readonly int DEFAULT_TOKEN_PORT = 50342;
-        private readonly string MSI_EXTENSION_PUBLISHER_NAME = "Microsoft.ManagedIdentity";
-
-        private readonly IGraphRbacManager rbacManager;
-        private int? tokenPort;
-        private bool installExtensionIfNotInstalled;
-        private ISet<string> userAssignedIdentityCreatableKeys;
-        private ISet<string> userAssignedIdentityIdsToAssociate;
-        private ISet<string> userAssignedIdentityIdsToRemove;
+        private ISet<string> creatableIdentityKeys;
+        private IDictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue> userAssignedIdentities;
+        private VirtualMachineImpl virtualMachine;
 
         /// <summary>
         /// Creates VirtualMachineMsiHelper.
         /// </summary>
         /// <param name="rbacManager">The graph rbac manager.</param>
-        /// <param name="idProvider">Provider that exposes MSI service principal id and resource id.</param>
-        internal VirtualMachineMsiHelper(IGraphRbacManager rbacManager, IIdProvider idProvider) : base(rbacManager, idProvider)
+        internal VirtualMachineMsiHelper(IGraphRbacManager rbacManager, VirtualMachineImpl virtualMachine) 
+            : base(rbacManager, new VmIdProvider(virtualMachine))
         {
-            this.rbacManager = rbacManager;
-            this.userAssignedIdentityCreatableKeys = new HashSet<string>();
-            this.userAssignedIdentityIdsToAssociate = new HashSet<string>();
-            this.userAssignedIdentityIdsToRemove = new HashSet<string>();
+            this.virtualMachine = virtualMachine;
+            this.creatableIdentityKeys = new HashSet<string>();
+            this.userAssignedIdentities = new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>();
+        }
+
+        internal void Clear()
+        {
+            this.userAssignedIdentities.Clear();
+        }
+
+        internal void HandleExternalIdentities()
+        {
+            if (this.userAssignedIdentities.Any())
+            {
+                this.virtualMachine.Inner.Identity.UserAssignedIdentities = this.userAssignedIdentities;
+            }
+        }
+
+        internal void HandleExternalIdentities(VirtualMachineUpdate vmUpdate)
+        {
+            if (this.HandleRemoveAllExternalIdentitiesCase(vmUpdate))
+            {
+                return;
+            }
+            else
+            {
+                // At this point one of the following condition is met:
+                //
+                // 1. User don't want touch the 'VM.Identity.UserAssignedIdentities' property
+                //      [this.userAssignedIdentities.Empty() == true]
+                // 2. User want to add some identities to 'VM.Identity.UserAssignedIdentities'
+                //      [this.userAssignedIdentities.Empty() == false and this.virtualMachine.Inner().Identity() != null]
+                // 3. User want to remove some (not all) identities in 'VM.Identity.UserAssignedIdentities'
+                //      [this.userAssignedIdentities.Empty() == false and this.virtualMachine.Inner().Identity() != null]
+                //      Note: The scenario where this.virtualMachine.Inner().Identity() is null in #3 is already handled in
+                //      handleRemoveAllExternalIdentitiesCase method
+                // 4. User want to add and remove (all or subset) some identities in 'VM.Identity.UserAssignedIdentities'
+                //      [this.userAssignedIdentities.Empty() == false and this.virtualMachine.Inner().Identity() != null]
+                //
+                var currentIdentity = this.virtualMachine.Inner.Identity;
+                vmUpdate.Identity = currentIdentity;
+
+                if (this.userAssignedIdentities.Any())
+                {
+                    // At this point its guaranteed that 'currentIdentity' is not null so vmUpdate.Identity() is.
+                    vmUpdate.Identity.UserAssignedIdentities = this.userAssignedIdentities;
+                }
+                else
+                {
+                    // User don't want to touch 'VM.Identity.UserAssignedIdentities' property
+                    if (currentIdentity != null)
+                    {
+                        // and currently there is identity exists or user want to manipulate some other properties of
+                        // identity, set identities to null so that it won't send over wire.
+                        currentIdentity.UserAssignedIdentities = null;
+                    }
+                }
+            }
+        }
+        
+        internal void ProcessCreatedExternalIdentities()
+        {
+            foreach (var key in this.creatableIdentityKeys)
+            {
+                var identity = (IIdentity)this.virtualMachine.CreatorTaskGroup.CreatedResource(key);
+                this.userAssignedIdentities[identity.Id] = new VirtualMachineIdentityUserAssignedIdentitiesValue();
+            }
+            this.creatableIdentityKeys.Clear();
+        }
+
+        /// <summary>
+        /// Specifies that given identity should be set as one of the External Managed Service Identity
+        /// of the virtual machine.
+        /// </summary>
+        /// <param name="identity">An identity to associate.</param>
+        /// <return>VirtualMachineMsiHandler.</return>
+        internal VirtualMachineMsiHelper WithExistingExternalManagedServiceIdentity(IIdentity identity)
+        {
+            this.InitVMIdentity(Fluent.Models.ResourceIdentityType.UserAssigned);
+            this.userAssignedIdentities[identity.Id] = new VirtualMachineIdentityUserAssignedIdentitiesValue();
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies that Local Managed Service Identity needs to be enabled in the virtual machine.
+        /// If MSI extension is not already installed then it will be installed with access token
+        /// port as 50342.
+        /// </summary>
+        /// <return>VirtualMachineMsiHandler.</return>
+        internal VirtualMachineMsiHelper WithLocalManagedServiceIdentity()
+        {
+            this.InitVMIdentity(Fluent.Models.ResourceIdentityType.SystemAssigned);
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies that given identity should be set as one of the External Managed Service Identity
+        /// of the virtual machine.
+        /// </summary>
+        /// <param name="creatableIdentity">Yet-to-be-created identity to be associated with the virtual machine.</param>
+        /// <return>VirtualMachineMsiHandler.</return>
+        internal VirtualMachineMsiHelper WithNewExternalManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
+        {
+            if (!this.creatableIdentityKeys.Contains(creatableIdentity.Key))
+            {
+                this.InitVMIdentity(Fluent.Models.ResourceIdentityType.UserAssigned);
+                this.creatableIdentityKeys.Add(creatableIdentity.Key);
+                ((creatableIdentity as IResourceCreator<IHasId>).CreatorTaskGroup).Merge(this.virtualMachine.CreatorTaskGroup);
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies that given identity should be removed from the list of External Managed Service Identity
+        /// associated with the virtual machine machine.
+        /// </summary>
+        /// <param name="identityId">Resource id of the identity.</param>
+        /// <return>VirtualMachineMsiHandler.</return>
+        internal VirtualMachineMsiHelper WithoutExternalManagedServiceIdentity(string identityId)
+        {
+            this.userAssignedIdentities[identityId] = null;
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies that Local Managed Service Identity needs to be disabled in the virtual machine.
+        /// </summary>
+        /// <return>VirtualMachineMsiHandler.</return>
+        internal VirtualMachineMsiHelper WithoutLocalManagedServiceIdentity()
+        {
+            if (this.virtualMachine.Inner.Identity == null || 
+                this.virtualMachine.Inner.Identity.Type == null || 
+                this.virtualMachine.Inner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.None), StringComparison.OrdinalIgnoreCase) || 
+                this.virtualMachine.Inner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.UserAssigned), StringComparison.OrdinalIgnoreCase))
+            {
+                return this;
+            }
+            else if (this.virtualMachine.Inner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.SystemAssigned), StringComparison.OrdinalIgnoreCase))
+            {
+                this.virtualMachine.Inner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.None);
+            }
+            else if (this.virtualMachine.Inner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.SystemAssignedUserAssigned), StringComparison.OrdinalIgnoreCase))
+            {
+                this.virtualMachine.Inner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.UserAssigned);
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Method that handle the case where user request indicates all it want to do is remove all identities associated
+        /// with the virtual machine.
+        /// </summary>
+        /// <param name="vmUpdate">The vm update payload model.</param>
+        /// <return>True if user indented to remove all the identities.</return>
+        private bool HandleRemoveAllExternalIdentitiesCase(VirtualMachineUpdate vmUpdate)
+        {
+            if (this.userAssignedIdentities.Any())
+            {
+                int rmCount = 0;
+                foreach(var v in this.userAssignedIdentities.Values)
+                {
+                    if (v == null)
+                    {
+                        rmCount++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                var containsRemoveOnly = rmCount > 0 && rmCount == this.userAssignedIdentities.Count;
+                // Check if user request contains only request for removal of identities.
+                if (containsRemoveOnly)
+                {
+                    var currentIds = new HashSet<string>();
+                    var currentIdentity = this.virtualMachine.Inner.Identity;
+                    if (currentIdentity != null && currentIdentity.UserAssignedIdentities != null)
+                    {
+                        foreach(var id in currentIdentity.UserAssignedIdentities.Keys)
+                        {
+                            currentIds.Add(id.ToLower());
+                        }
+                    }
+
+                    var removeIds = new HashSet<string>();
+
+                    foreach (var entrySet in this.userAssignedIdentities)
+                    {
+                        if (entrySet.Value == null)
+                        {
+                            removeIds.Add(entrySet.Key.ToLower());
+                        }
+                    }
+                    // If so check user want to remove all the identities
+                    var removeAllCurrentIds = currentIds.Count == removeIds.Count && !removeIds.Any(id => !currentIds.Contains(id)); // Java part looks like this -> && currentIds.ContainsAll(removeIds);
+                    if (removeAllCurrentIds)
+                    {
+                        // If so adjust  the identity type [Setting type to SYSTEM_ASSIGNED orNONE will remove all the identities]
+                        if (currentIdentity == null || currentIdentity.Type == null)
+                        {
+                            vmUpdate.Identity = new VirtualMachineIdentity { Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.None) };
+                        }
+                        else if (currentIdentity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.SystemAssignedUserAssigned), StringComparison.OrdinalIgnoreCase))
+                        {
+                            vmUpdate.Identity = currentIdentity;
+                            vmUpdate.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.SystemAssigned);
+                        }
+                        else if (currentIdentity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.UserAssigned), StringComparison.OrdinalIgnoreCase))
+                        {
+                            vmUpdate.Identity = currentIdentity;
+                            vmUpdate.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.None);
+                        }
+                        // and set identities property in the payload model to null so that it won't be sent
+                        vmUpdate.Identity.UserAssignedIdentities = null;
+                        return true;
+                    }
+                    else
+                    {
+                        // Check user is asking to remove identities though there is no identities currently associated
+                        if (currentIds.Count == 0 && 
+                            removeIds.Count != 0 && 
+                            currentIdentity == null)
+                        {
+                            // If so we are in a invalid state but we want to send user input to service and let service
+                            // handle it (ignore or error).
+                            vmUpdate.Identity = new VirtualMachineIdentity { Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.None) };
+                            vmUpdate.Identity.UserAssignedIdentities = null;
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Initialize VM's identity property.
+        /// </summary>
+        /// <param name="identityType">The identity type to set.</param>
+        private void InitVMIdentity(Fluent.Models.ResourceIdentityType identityType)
+        {
+            if (!identityType.Equals(Models.ResourceIdentityType.UserAssigned) && 
+                !identityType.Equals(Models.ResourceIdentityType.SystemAssigned))
+            {
+                throw new ArgumentException("Invalid argument: " + identityType);
+            }
+
+            var virtualMachineInner = this.virtualMachine.Inner;
+            if (virtualMachineInner.Identity == null)
+            {
+                virtualMachineInner.Identity = new VirtualMachineIdentity();
+            }
+
+            if (virtualMachineInner.Identity.Type == null || 
+                virtualMachineInner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.None), StringComparison.OrdinalIgnoreCase) || 
+                virtualMachineInner.Identity.Type.Equals(ResourceIdentityTypeEnumExtension.ToSerializedValue(identityType), StringComparison.OrdinalIgnoreCase))
+            {
+                virtualMachineInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(identityType);
+            }
+            else
+            {
+                virtualMachineInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(Models.ResourceIdentityType.SystemAssignedUserAssigned);
+            }
         }
 
         /// <summary>
@@ -47,7 +301,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="inner">the virtual machine inner</param>
         /// <returns>the MSI identity type</returns>
-        internal static ResourceIdentityType? ManagedServiceIdentityType(VirtualMachineInner inner)
+        internal static Models.ResourceIdentityType? ManagedServiceIdentityType(VirtualMachineInner inner)
         {
             if (inner.Identity != null)
             {
@@ -55,315 +309,44 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
             return null;
         }
+    }
 
-        /// <summary>
-        /// Specifies that System Assigned Managed Service Identity needs to be enabled in the virtual machine.
-        /// </summary>
-        /// <param name="virtualMachineInner">The virtual machine to set the identity.</param>
-        /// <return>VirtualMachineMsiHelper.</return>
-        internal VirtualMachineMsiHelper WithSystemAssignedManagedServiceIdentity(VirtualMachineInner virtualMachineInner)
+
+    internal class VmIdProvider : IIdProvider
+    {
+        private readonly VirtualMachineImpl vm;
+
+        internal VmIdProvider(VirtualMachineImpl vm)
         {
-            return WithSystemAssignedManagedServiceIdentity(null, virtualMachineInner);
+            this.vm = vm;
         }
 
-        /// <summary>
-        /// Specifies that System Assigned Managed Service Identity needs to be enabled in the virtual machine.
-        /// </summary>
-        /// <param name="port">The port in the virtual machine to get the access token from.</param>
-        /// <param name="virtualMachineInner">The virtual machine to set the identity.</param>
-        /// <return>VirtualMachineMsiHelper.</return>
-        internal VirtualMachineMsiHelper WithSystemAssignedManagedServiceIdentity(int? port, VirtualMachineInner virtualMachineInner)
+        public string PrincipalId
         {
-            this.installExtensionIfNotInstalled = true;
-            this.tokenPort = port;
-            InitVMIdentity(virtualMachineInner, ResourceIdentityType.SystemAssigned);
-            return this;
-        }
-
-        /// <summary>
-        /// Specifies the definition of a not-yet-created user assigned identity to be associated with the virtual machine.
-        /// </summary>
-        /// <param name="virtualMachineInner">The virtual machine to set the identity.</param>
-        /// <param name="vmTaskGroup">the task group of the virtual machine</param>
-        /// <param name="creatableIdentity">the creatable user assigned identity</param>
-        /// <returns>VirtualMachineMsiHelper.</returns>
-        internal VirtualMachineMsiHelper WithNewUserAssignedManagedServiceIdentity(VirtualMachineInner virtualMachineInner, CreatorTaskGroup<IHasId> vmTaskGroup, ICreatable<IIdentity> creatableIdentity)
-        {
-            if (!this.userAssignedIdentityCreatableKeys.Contains(creatableIdentity.Key))
+            get
             {
-                InitVMIdentity(virtualMachineInner, ResourceIdentityType.UserAssigned);
-                this.userAssignedIdentityCreatableKeys.Add(creatableIdentity.Key);
-                ((creatableIdentity as IResourceCreator<IHasId>).CreatorTaskGroup).Merge(vmTaskGroup);
-            }
-            return this;
-        }
-
-        /// <summary>
-        /// Specifies an existing user assigned identity to be associated with the virtual machine.
-        /// </summary>
-        /// <param name="identity">an existing user assigned identity</param>
-        /// <returns>VirtualMachineMsiHelper.</returns>
-        internal VirtualMachineMsiHelper WithExistingUserAssignedManagedServiceIdentity(VirtualMachineInner virtualMachineInner, IIdentity identity)
-        {
-            if (!this.userAssignedIdentityIdsToAssociate.Contains(identity.Id))
-            {
-                InitVMIdentity(virtualMachineInner, ResourceIdentityType.UserAssigned);
-                this.userAssignedIdentityIdsToAssociate.Add(identity.Id);
-            }
-            return this;
-        }
-
-        /// <summary>
-        /// Specifies that an user assigned identity associated with the virtual machine should be removed.
-        /// </summary>
-        /// <param name="identityId">ARM resource id of the identity.</param>
-        /// <return>VirtualMachineMsiHelper.</return>
-        internal VirtualMachineMsiHelper WithoutUserAssignedManagedServiceIdentity(string identityId)
-        {
-            if (!this.userAssignedIdentityIdsToRemove.Contains(identityId))
-            {
-                this.userAssignedIdentityIdsToRemove.Add(identityId);
-            }
-            return this;
-        }
-
-        /// <summary>
-        /// Set user assigned identity ids to the given virtual machine inner model
-        /// </summary>
-        /// <param name="virtualMachineInner">the virtual machine inner model</param>
-        /// <param name="vmTaskGroup">the virtual machine task group</param>
-        internal void HandleUserAssignedIdentities(VirtualMachineInner virtualMachineInner, CreatorTaskGroup<IHasId> vmTaskGroup)
-        {
-            try
-            {
-                if (virtualMachineInner.Identity == null || virtualMachineInner.Identity.Type == null)
+                if (this.vm.Inner != null && this.vm.Inner.Identity != null)
                 {
-                    return;
+                    return this.vm.Inner.Identity.PrincipalId;
                 }
-                ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(virtualMachineInner.Identity.Type);
-                if (parsedIdentityType.Equals(ResourceIdentityType.None)
-                    || parsedIdentityType.Equals(ResourceIdentityType.SystemAssigned))
+                else
                 {
-                    return;
-                }
-                foreach (var key in this.userAssignedIdentityCreatableKeys)
-                {
-                    var identity = (IIdentity)vmTaskGroup.CreatedResource(key);
-                    if (!this.userAssignedIdentityIdsToAssociate.Contains(identity.Id))
-                    {
-                        this.userAssignedIdentityIdsToAssociate.Add(identity.Id);
-                    }
-                }
-                if (virtualMachineInner.Identity.IdentityIds == null)
-                {
-                    virtualMachineInner.Identity.IdentityIds = new List<string>();
-                }
-                foreach (var identityId in this.userAssignedIdentityIdsToAssociate)
-                {
-                    if (!virtualMachineInner.Identity.IdentityIds.Contains(identityId))
-                    {
-                        virtualMachineInner.Identity.IdentityIds.Add(identityId);
-                    }
-                }
-                foreach (var identityId in this.userAssignedIdentityIdsToRemove)
-                {
-                    if (virtualMachineInner.Identity.IdentityIds.Contains(identityId))
-                    {
-                        virtualMachineInner.Identity.IdentityIds.Remove(identityId);
-                    }
-                }
-                if (virtualMachineInner.Identity.IdentityIds.Any())
-                {
-                    this.installExtensionIfNotInstalled = true;
+                    return null;
                 }
             }
-            finally
-            {
-                this.userAssignedIdentityCreatableKeys.Clear();
-                this.userAssignedIdentityIdsToAssociate.Clear();
-                this.userAssignedIdentityIdsToRemove.Clear();
-            }
-
         }
 
-
-        /// <summary>
-        /// Install or update the MSI extension in the virtual machine and creates a RBAC role assignment for the System Assigned Service Principal.
-        /// </summary>
-        /// <param name="virtualMachine">The virtual machine for which the MSI needs to be enabled.</param>
-        /// <return>True if the extension is installed</return>
-        internal async Task<Boolean> SetMSIExtensionIfRequiredAndHandleSystemAssignedMSIRoleAssignmentsAsync(IVirtualMachine virtualMachine, CancellationToken cancellationToken = default(CancellationToken))
+        public string ResourceId
         {
-            if (virtualMachine.Inner == null)
+            get
             {
-                throw new ArgumentException("Method requires fluent model to be fully populated");
-            }
-
-            try
-            {
-                bool isExtensionInstalledOrUpdated = false;
-                // Install or Update the MSI extension
-                //
-                if (this.installExtensionIfNotInstalled)
+                if (this.vm.Inner != null)
                 {
-                    OperatingSystemTypes osType = virtualMachine.OSType;
-                    string extensionTypeName = osType == OperatingSystemTypes.Linux ? "ManagedIdentityExtensionForLinux" : "ManagedIdentityExtensionForWindows";
-                    var extension = await GetMSIExtensionAsync(virtualMachine, extensionTypeName);
-                    if (extension != null)
-                    {
-                        isExtensionInstalledOrUpdated = await UpdateMSIExtensionAsync(virtualMachine, extension, extensionTypeName, cancellationToken);
-                    }
-                    else
-                    {
-                        isExtensionInstalledOrUpdated = await InstallMSIExtensionAsync(virtualMachine, extensionTypeName);
-                    }
+                    return this.vm.Inner.Id;
                 }
-
-                // Create, Delete System Assigned MSI Role assignments
-                //
-                if (IsSystemAssignedMSIEnabled(virtualMachine))
+                else
                 {
-                    await CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
-                }
-
-                return isExtensionInstalledOrUpdated;
-            }
-            finally
-            {
-                this.installExtensionIfNotInstalled = false;
-                this.tokenPort = null;
-            }
-        }
-
-        /// <summary>
-        /// Checks system assigned identity is enabled for the virtual machine.
-        /// </summary>
-        /// <param name="virtualMachine">the virtual machine</param>
-        /// <returns>true if system assigned MSI is enabled, false otherwise</returns>
-        private static bool IsSystemAssignedMSIEnabled(IVirtualMachine virtualMachine)
-        {
-            VirtualMachineInner VMInner = virtualMachine.Inner;
-            if (VMInner.Identity == null)
-            {
-                return false;
-            }
-            ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(VMInner.Identity.Type);
-            if (parsedIdentityType == null || parsedIdentityType.Equals(ResourceIdentityType.None))
-            {
-                return false;
-            }
-            else
-            {
-                return parsedIdentityType.Equals(ResourceIdentityType.SystemAssigned) || parsedIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned);
-            }
-        }
-
-        /// <summary>
-        /// Checks the virtual machine already has the Managed Service Identity extension installed if so return it.
-        /// </summary>
-        /// <param name="virtualMachine">The virtual machine.</param>
-        /// <param name="typeName">The Managed Service Identity extension type name.</param>
-        /// <return>An observable that emits MSI extension if exists.</return>
-        private async Task<IVirtualMachineExtension> GetMSIExtensionAsync(IVirtualMachine virtualMachine, string typeName, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var installedExtensions = await virtualMachine.ListExtensionsAsync(cancellationToken);
-            return installedExtensions.FirstOrDefault(extension => extension.PublisherName.Equals(MSI_EXTENSION_PUBLISHER_NAME, System.StringComparison.OrdinalIgnoreCase)
-                    && extension.TypeName.Equals(typeName, System.StringComparison.OrdinalIgnoreCase));
-        }
-
-        /// <summary>
-        /// Install Managed Service Identity extension in the virtual machine.
-        /// </summary>
-        /// <param name="virtualMachine">The virtual machine.</param>
-        /// <param name="typeName">The Managed Service Identity extension type name.</param>
-        /// <return>An observable that emits true indicating MSI extension installed.</return>
-        private async Task<bool> InstallMSIExtensionAsync(IVirtualMachine virtualMachine, string typeName, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            int tokenPortToUse = tokenPort != null ? tokenPort.Value : DEFAULT_TOKEN_PORT;
-            var publicSettings = new Dictionary<string, object>
-            {
-                { "port", tokenPortToUse }
-            };
-            VirtualMachineExtensionInner extensionParameter = new VirtualMachineExtensionInner()
-            {
-                Publisher = MSI_EXTENSION_PUBLISHER_NAME,
-                VirtualMachineExtensionType = typeName,
-                TypeHandlerVersion = "1.0",
-                AutoUpgradeMinorVersion = true,
-                Location = virtualMachine.RegionName,
-                Settings = publicSettings,
-                ProtectedSettings = null
-            };
-            await virtualMachine.Manager.Inner.VirtualMachineExtensions.CreateOrUpdateAsync(virtualMachine.ResourceGroupName, virtualMachine.Name, typeName, extensionParameter, cancellationToken);
-            return true;
-        }
-
-        /// <summary>
-        /// Update the Managed Service Identity extension installed in the virtual machine.
-        /// </summary>
-        /// <param name="virtualMachine">The virtual machine.</param>
-        /// <param name="extension">The Managed Service Identity extension.</param>
-        /// <param name="typeName">The Managed Service Identity extension type name.</param>
-        /// <return>Task that produces true if extension is updated, false otherwise</return>
-        private async Task<bool> UpdateMSIExtensionAsync(IVirtualMachine virtualMachine, IVirtualMachineExtension extension, string typeName, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            int? currentTokenPort = ComputeUtils.ObjectToInteger(extension.PublicSettings["port"]);
-            int? tokenPortToUse;
-            if (this.tokenPort != null)
-            {
-                // User specified a port
-                tokenPortToUse = this.tokenPort;
-            }
-            else if (currentTokenPort == null)
-            {
-                // User didn't specify a port and port is not already set
-                tokenPortToUse = this.DEFAULT_TOKEN_PORT;
-            }
-            else
-            {
-                // User didn't specify a port and port is already set in the extension
-                // No need to do a PUT on extension
-                //
-                return false;
-            }
-            var publicSettings = new Dictionary<string, object>
-            {
-                { "port", tokenPortToUse }
-            };
-            extension.Inner.Settings = publicSettings;
-            await virtualMachine.Manager.Inner.VirtualMachineExtensions.CreateOrUpdateAsync(virtualMachine.ResourceGroupName, virtualMachine.Name, typeName, extension.Inner, cancellationToken);
-            return true;
-        }
-
-        private static void InitVMIdentity(VirtualMachineInner vmInner, ResourceIdentityType identityType)
-        {
-            if (!identityType.Equals(ResourceIdentityType.UserAssigned)
-                    && !identityType.Equals(ResourceIdentityType.SystemAssigned))
-            {
-                throw new ArgumentException("Invalid argument: " + identityType);
-            }
-            if (vmInner.Identity == null)
-            {
-                vmInner.Identity = new VirtualMachineIdentity();
-            }
-
-            ResourceIdentityType? parsedIdentityType = ResourceIdentityTypeEnumExtension.ParseResourceIdentityType(vmInner.Identity.Type);
-            if (parsedIdentityType == null
-                    || parsedIdentityType.Equals(ResourceIdentityType.None)
-                    || parsedIdentityType.Equals(identityType))
-            {
-                vmInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(identityType);
-            }
-            else
-            {
-                vmInner.Identity.Type = ResourceIdentityTypeEnumExtension.ToSerializedValue(ResourceIdentityType.SystemAssignedUserAssigned);
-            }
-            if (vmInner.Identity.IdentityIds == null)
-            {
-                if (identityType.Equals(ResourceIdentityType.UserAssigned)
-                        || identityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned))
-                {
-                    vmInner.Identity.IdentityIds = new List<string>();
+                    return null;
                 }
             }
         }

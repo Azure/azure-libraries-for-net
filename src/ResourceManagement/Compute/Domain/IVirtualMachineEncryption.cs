@@ -1,25 +1,31 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Management.Compute.Fluent.Models;
 
     /// <summary>
     /// Virtual machine encryption related operations.
     /// </summary>
     public interface IVirtualMachineEncryption
     {
+
+        /// <summary>
+        /// Disable encryption for virtual machine disks.
+        /// </summary>
+        /// <param name="volumeType">Volume type to disable encryption.</param>
+        /// <return>Current volume encryption status.</return>
+        Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor Disable(DiskVolumeType volumeType);
+
         /// <summary>
         /// Disable encryption for virtual machine disks.
         /// </summary>
         /// <param name="volumeType">Volume type to disable encryption.</param>
         /// <return>A representation of the deferred computation of this call, returning the current volume decryption status.</return>
         Task<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor> DisableAsync(DiskVolumeType volumeType, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <return>Observable that emits current volume encryption/decryption status.</return>
-        Task<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor> GetMonitorAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Enable encryption for virtual machine disks.
@@ -43,13 +49,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="encryptionSettings">Encryption settings for windows virtual machine.</param>
         /// <return>Current volume encryption status.</return>
         Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor Enable(LinuxVMDiskEncryptionConfiguration encryptionSettings);
-
-        /// <summary>
-        /// Disable encryption for virtual machine disks.
-        /// </summary>
-        /// <param name="volumeType">Volume type to disable encryption.</param>
-        /// <return>Current volume encryption status.</return>
-        Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor Disable(DiskVolumeType volumeType);
 
         /// <summary>
         /// Enable encryption for virtual machine disks.
@@ -76,5 +75,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
         /// <return>Current volume decryption status.</return>
         Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor GetMonitor();
+
+        /// <return>Observable that emits current volume encryption/decryption status.</return>
+        Task<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor> GetMonitorAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

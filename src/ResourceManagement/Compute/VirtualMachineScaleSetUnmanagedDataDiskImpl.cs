@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:4D03AEE57198D17CD3696CC56B467F2B:C53E1C1BD65826C0F9A2EF5BCBD283F4
         public VirtualMachineScaleSetUnmanagedDataDiskImpl FromImage(int imageLun)
         {
-            Inner.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
+            Inner.CreateOption = DiskCreateOptionTypes.FromImage;
             Inner.Lun = imageLun;
             return this;
         }
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:6D0A07B7BA2CC9D76E93E7DDD3FCD168:F0DBEF25393BFAD18455A742CA0EFE14
         public VirtualMachineScaleSetUnmanagedDataDiskImpl WithNewVhd(int sizeInGB)
         {
-            Inner.CreateOption = DiskCreateOptionTypes.Empty.ToString();
+            Inner.CreateOption = DiskCreateOptionTypes.Empty;
             Inner.DiskSizeGB = sizeInGB;
             return this;
         }

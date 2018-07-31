@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
@@ -9,13 +10,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     internal partial class VirtualMachineScaleSetVMInstanceExtensionImpl
     {
         /// <summary>
-        /// Gets the name of the resource.
+        /// Gets true if this extension is configured to upgrade automatically when a new minor version of the
+        /// extension image that this extension based on is published.
         /// </summary>
-        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName.Name
+        bool Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.AutoUpgradeMinorVersionEnabled
         {
             get
             {
-                return this.Name();
+                return this.AutoUpgradeMinorVersionEnabled();
             }
         }
 
@@ -31,13 +33,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets the version name of the virtual machine extension image this extension is created from.
+        /// Gets the name of the resource.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.VersionName
+        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName.Name
         {
             get
             {
-                return this.VersionName();
+                return this.Name();
             }
         }
 
@@ -53,14 +55,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets true if this extension is configured to upgrade automatically when a new minor version of the
-        /// extension image that this extension based on is published.
+        /// Gets the public settings of the virtual machine extension as key value pairs.
         /// </summary>
-        bool Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.AutoUpgradeMinorVersionEnabled
+        System.Collections.Generic.IReadOnlyDictionary<string, object> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.PublicSettings
         {
             get
             {
-                return this.AutoUpgradeMinorVersionEnabled();
+                return this.PublicSettings();
             }
         }
 
@@ -87,6 +88,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Gets the tags for this virtual machine extension.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.Tags
+        {
+            get
+            {
+                return this.Tags();
+            }
+        }
+
+        /// <summary>
         /// Gets the type name of the virtual machine extension image this extension is created from.
         /// </summary>
         string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.TypeName
@@ -98,24 +110,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets the public settings of the virtual machine extension as key value pairs.
+        /// Gets the version name of the virtual machine extension image this extension is created from.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string, object> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.PublicSettings
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.VersionName
         {
             get
             {
-                return this.PublicSettings();
-            }
-        }
-
-        /// <summary>
-        /// Gets the tags for this virtual machine extension.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionBase.Tags
-        {
-            get
-            {
-                return this.Tags();
+                return this.VersionName();
             }
         }
     }

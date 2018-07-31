@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
@@ -11,6 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     public interface IVirtualMachineImages :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage>
     {
+
         /// <summary>
         /// Gets entry point to virtual machine image publishers.
         /// </summary>
@@ -37,6 +39,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <param name="version">Version name.</param>
         /// <return>The virtual machine image.</return>
         Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage GetImage(string region, string publisherName, string offerName, string skuName, string version);
-
     }
 }

@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
@@ -9,13 +10,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     internal partial class VirtualMachineImageImpl
     {
         /// <summary>
-        /// Gets OS disk image in the virtual machine image.
+        /// Gets data disk images in the virtual machine image, indexed by the disk LUN.
         /// </summary>
-        Models.OSDiskImage Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.OSDiskImage
+        System.Collections.Generic.IReadOnlyDictionary<int, Models.DataDiskImage> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.DataDiskImages
         {
             get
             {
-                return this.OSDiskImage();
+                return this.DataDiskImages();
             }
         }
 
@@ -31,46 +32,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets the version of the virtual machine image.
+        /// Gets the image reference representing the publisher, offer, SKU and version of the virtual machine image.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.Version
+        Models.ImageReference Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.ImageReference
         {
             get
             {
-                return this.Version();
-            }
-        }
-
-        /// <summary>
-        /// Gets the publisher name of the virtual machine image.
-        /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.PublisherName
-        {
-            get
-            {
-                return this.PublisherName();
-            }
-        }
-
-        /// <summary>
-        /// Gets the commercial name of the virtual machine image (SKU).
-        /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.Sku
-        {
-            get
-            {
-                return this.Sku();
-            }
-        }
-
-        /// <summary>
-        /// Gets the purchase plan for the virtual machine image.
-        /// </summary>
-        Models.PurchasePlan Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.Plan
-        {
-            get
-            {
-                return this.Plan();
+                return this.ImageReference();
             }
         }
 
@@ -97,24 +65,57 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets data disk images in the virtual machine image, indexed by the disk LUN.
+        /// Gets OS disk image in the virtual machine image.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<int, Models.DataDiskImage> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.DataDiskImages
+        Models.OSDiskImage Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.OSDiskImage
         {
             get
             {
-                return this.DataDiskImages();
+                return this.OSDiskImage();
             }
         }
 
         /// <summary>
-        /// Gets the image reference representing the publisher, offer, SKU and version of the virtual machine image.
+        /// Gets the purchase plan for the virtual machine image.
         /// </summary>
-        Models.ImageReference Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.ImageReference
+        Models.PurchasePlan Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.Plan
         {
             get
             {
-                return this.ImageReference();
+                return this.Plan();
+            }
+        }
+
+        /// <summary>
+        /// Gets the publisher name of the virtual machine image.
+        /// </summary>
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.PublisherName
+        {
+            get
+            {
+                return this.PublisherName();
+            }
+        }
+
+        /// <summary>
+        /// Gets the commercial name of the virtual machine image (SKU).
+        /// </summary>
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.Sku
+        {
+            get
+            {
+                return this.Sku();
+            }
+        }
+
+        /// <summary>
+        /// Gets the version of the virtual machine image.
+        /// </summary>
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImage.Version
+        {
+            get
+            {
+                return this.Version();
             }
         }
     }

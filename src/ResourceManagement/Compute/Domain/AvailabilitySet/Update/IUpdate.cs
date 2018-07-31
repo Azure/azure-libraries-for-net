@@ -1,10 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Update
 {
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
 
     /// <summary>
@@ -16,6 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Update
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Update.IUpdate>,
         Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Update.IWithSku
     {
+
     }
 
     /// <summary>
@@ -23,6 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.AvailabilitySet.Update
     /// </summary>
     public interface IWithSku
     {
+
         /// <summary>
         /// Specifies the SKU type for the availability set.
         /// </summary>

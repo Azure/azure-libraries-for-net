@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
@@ -14,15 +15,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualMachineExtensionImageInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName
     {
-        /// <summary>
-        /// Gets the region in which virtual machine extension image version is available.
-        /// </summary>
-        string RegionName { get; }
 
         /// <summary>
         /// Gets the resource ID of the extension image version.
         /// </summary>
         string Id { get; }
+
+        /// <summary>
+        /// Gets the region in which virtual machine extension image version is available.
+        /// </summary>
+        string RegionName { get; }
 
         /// <summary>
         /// Gets the virtual machine extension image type this version belongs to.

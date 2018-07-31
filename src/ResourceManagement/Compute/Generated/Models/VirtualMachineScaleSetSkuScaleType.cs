@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this VirtualMachineScaleSetSkuScaleType value)
         {
-            switch( value )
+            switch (value)
             {
                 case VirtualMachineScaleSetSkuScaleType.Automatic:
                     return "Automatic";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static VirtualMachineScaleSetSkuScaleType? ParseVirtualMachineScaleSetSkuScaleType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Automatic":
                     return VirtualMachineScaleSetSkuScaleType.Automatic;

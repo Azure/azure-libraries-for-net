@@ -1,14 +1,15 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
+    using Microsoft.Azure.Management.Compute.Fluent.Disk.Definition;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
+    using Microsoft.Rest;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.Compute.Fluent.Disk.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Rest;
 
     /// <summary>
     /// Entry point to managed disk management API in Azure.
@@ -27,5 +28,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Compute.Fluent.IDisksOperations>,
         Microsoft.Azure.Management.Compute.Fluent.IDisksBeta
     {
+
+        /// <summary>
+        /// Grants access to a disk.
+        /// </summary>
+        /// <param name="resourceGroupName">A resource group name.</param>
+        /// <param name="diskName">A disk name.</param>
+        /// <param name="accessLevel">Access level.</param>
+        /// <param name="accessDuration">Access duration.</param>
+        /// <return>The read-only SAS URI to the disk.</return>
+        string GrantAccess(string resourceGroupName, string diskName, AccessLevel accessLevel, int accessDuration);
+
+        /// <summary>
+        /// Revoke access granted to a disk.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name.</param>
+        /// <param name="diskName">The disk name.</param>
+        void RevokeAccess(string resourceGroupName, string diskName);
     }
 }

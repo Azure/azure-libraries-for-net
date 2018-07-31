@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this ResourceSkuRestrictionsType value)
         {
-            switch( value )
+            switch (value)
             {
                 case ResourceSkuRestrictionsType.Location:
                     return "Location";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static ResourceSkuRestrictionsType? ParseResourceSkuRestrictionsType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Location":
                     return ResourceSkuRestrictionsType.Location;

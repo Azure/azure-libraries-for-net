@@ -21,31 +21,31 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     [JsonObject]
     public class Page1<T> : IPage<T>
     {
-         /// <summary>
-         /// Gets the link to the next page.
-         /// </summary>
-         [JsonProperty("nextLink")]
-         public string NextPageLink { get; private set; }
+        /// <summary>
+        /// Gets the link to the next page.
+        /// </summary>
+        [JsonProperty("nextLink")]
+        public string NextPageLink { get; private set; }
 
-         [JsonProperty("value")]
-         private IList<T> Items{ get; set; }
+        [JsonProperty("value")]
+        private IList<T> Items { get; set; }
 
-         /// <summary>
-         /// Returns an enumerator that iterates through the collection.
-         /// </summary>
-         /// <returns>A an enumerator that can be used to iterate through the collection.</returns>
-         public IEnumerator<T> GetEnumerator()
-         {
-              return Items == null ? System.Linq.Enumerable.Empty<T>().GetEnumerator() : Items.GetEnumerator();
-         }
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        public IEnumerator<T> GetEnumerator()
+        {
+            return Items == null ? System.Linq.Enumerable.Empty<T>().GetEnumerator() : Items.GetEnumerator();
+        }
 
-         /// <summary>
-         /// Returns an enumerator that iterates through the collection.
-         /// </summary>
-         /// <returns>A an enumerator that can be used to iterate through the collection.</returns>
-         IEnumerator IEnumerable.GetEnumerator()
-         {
-             return GetEnumerator();
-         }
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

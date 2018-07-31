@@ -19,101 +19,101 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// </summary>
     public static partial class LogAnalyticsOperationsExtensions
     {
-            /// <summary>
-            /// Export logs that show Api requests made by this subscription in the given
-            /// time window to show throttling activities.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the LogAnalytics getRequestRateByInterval Api.
-            /// </param>
-            /// <param name='location'>
-            /// The location upon which virtual-machine-sizes is queried.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<LogAnalyticsOperationResultInner> ExportRequestRateByIntervalAsync(this ILogAnalyticsOperations operations, RequestRateByIntervalInputInner parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Export logs that show Api requests made by this subscription in the given
+        /// time window to show throttling activities.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the LogAnalytics getRequestRateByInterval Api.
+        /// </param>
+        /// <param name='location'>
+        /// The location upon which virtual-machine-sizes is queried.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<LogAnalyticsOperationResultInner> ExportRequestRateByIntervalAsync(this ILogAnalyticsOperations operations, RequestRateByIntervalInput parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ExportRequestRateByIntervalWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ExportRequestRateByIntervalWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Export logs that show total throttled Api requests for this subscription in
-            /// the given time window.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the LogAnalytics getThrottledRequests Api.
-            /// </param>
-            /// <param name='location'>
-            /// The location upon which virtual-machine-sizes is queried.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<LogAnalyticsOperationResultInner> ExportThrottledRequestsAsync(this ILogAnalyticsOperations operations, ThrottledRequestsInputInner parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Export logs that show total throttled Api requests for this subscription in
+        /// the given time window.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the LogAnalytics getThrottledRequests Api.
+        /// </param>
+        /// <param name='location'>
+        /// The location upon which virtual-machine-sizes is queried.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<LogAnalyticsOperationResultInner> ExportThrottledRequestsAsync(this ILogAnalyticsOperations operations, ThrottledRequestsInput parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ExportThrottledRequestsWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ExportThrottledRequestsWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Export logs that show Api requests made by this subscription in the given
-            /// time window to show throttling activities.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the LogAnalytics getRequestRateByInterval Api.
-            /// </param>
-            /// <param name='location'>
-            /// The location upon which virtual-machine-sizes is queried.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<LogAnalyticsOperationResultInner> BeginExportRequestRateByIntervalAsync(this ILogAnalyticsOperations operations, RequestRateByIntervalInputInner parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Export logs that show Api requests made by this subscription in the given
+        /// time window to show throttling activities.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the LogAnalytics getRequestRateByInterval Api.
+        /// </param>
+        /// <param name='location'>
+        /// The location upon which virtual-machine-sizes is queried.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<LogAnalyticsOperationResultInner> BeginExportRequestRateByIntervalAsync(this ILogAnalyticsOperations operations, RequestRateByIntervalInput parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginExportRequestRateByIntervalWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.BeginExportRequestRateByIntervalWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Export logs that show total throttled Api requests for this subscription in
-            /// the given time window.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='parameters'>
-            /// Parameters supplied to the LogAnalytics getThrottledRequests Api.
-            /// </param>
-            /// <param name='location'>
-            /// The location upon which virtual-machine-sizes is queried.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<LogAnalyticsOperationResultInner> BeginExportThrottledRequestsAsync(this ILogAnalyticsOperations operations, ThrottledRequestsInputInner parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Export logs that show total throttled Api requests for this subscription in
+        /// the given time window.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the LogAnalytics getThrottledRequests Api.
+        /// </param>
+        /// <param name='location'>
+        /// The location upon which virtual-machine-sizes is queried.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<LogAnalyticsOperationResultInner> BeginExportThrottledRequestsAsync(this ILogAnalyticsOperations operations, ThrottledRequestsInput parameters, string location, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginExportThrottledRequestsWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.BeginExportThrottledRequestsWithHttpMessagesAsync(parameters, location, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

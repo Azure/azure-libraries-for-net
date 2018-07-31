@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
@@ -8,13 +9,24 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     internal partial class VirtualMachineDataDiskImpl
     {
         /// <summary>
-        /// Gets the name of the resource.
+        /// Gets the disk caching type.
         /// </summary>
-        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName.Name
+        Models.CachingTypes? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.CachingType
         {
             get
             {
-                return this.Name();
+                return this.CachingType();
+            }
+        }
+
+        /// <summary>
+        /// Gets the creation method used while creating this disk.
+        /// </summary>
+        Models.DiskCreateOptionTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.CreationMethod
+        {
+            get
+            {
+                return this.CreationMethod();
             }
         }
 
@@ -30,24 +42,24 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets the disk caching type.
+        /// Gets the logical unit number assigned to this data disk.
         /// </summary>
-        Models.CachingTypes? Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.CachingType
+        int Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.Lun
         {
             get
             {
-                return this.CachingType();
+                return this.Lun();
             }
         }
 
         /// <summary>
-        /// Gets the storage account type of the disk.
+        /// Gets the name of the resource.
         /// </summary>
-        Models.StorageAccountTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.StorageAccountType
+        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName.Name
         {
             get
             {
-                return this.StorageAccountType();
+                return this.Name();
             }
         }
 
@@ -63,24 +75,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets the logical unit number assigned to this data disk.
+        /// Gets the storage account type of the disk.
         /// </summary>
-        int Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.Lun
+        Models.StorageAccountTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.StorageAccountType
         {
             get
             {
-                return this.Lun();
-            }
-        }
-
-        /// <summary>
-        /// Gets the creation method used while creating this disk.
-        /// </summary>
-        Models.DiskCreateOptionTypes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineDataDisk.CreationMethod
-        {
-            get
-            {
-                return this.CreationMethod();
+                return this.StorageAccountType();
             }
         }
     }

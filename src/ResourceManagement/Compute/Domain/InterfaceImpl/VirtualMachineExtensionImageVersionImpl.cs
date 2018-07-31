@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
@@ -10,6 +11,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     internal partial class VirtualMachineExtensionImageVersionImpl
     {
         /// <summary>
+        /// Gets the resource ID of the extension image version.
+        /// </summary>
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion.Id
+        {
+            get
+            {
+                return this.Id();
+            }
+        }
+
+        /// <summary>
         /// Gets the name of the resource.
         /// </summary>
         string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName.Name
@@ -17,29 +29,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             get
             {
                 return this.Name();
-            }
-        }
-
-        /// <return>Virtual machine extension image this version represents.</return>
-        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion.GetImage()
-        {
-            return this.GetImage();
-        }
-
-        /// <return>Virtual machine extension image this version represents.</return>
-        Task<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion.GetImageAsync(CancellationToken cancellationToken)
-        {
-            return this.GetImageAsync(cancellationToken);
-        }
-
-        /// <summary>
-        /// Gets the virtual machine extension image type this version belongs to.
-        /// </summary>
-        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageType Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion.Type
-        {
-            get
-            {
-                return this.Type();
             }
         }
 
@@ -55,14 +44,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets the resource ID of the extension image version.
+        /// Gets the virtual machine extension image type this version belongs to.
         /// </summary>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion.Id
+        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageType Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion.Type
         {
             get
             {
-                return this.Id();
+                return this.Type();
             }
+        }
+
+        /// <return>Virtual machine extension image this version represents.</return>
+        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion.GetImage()
+        {
+            return this.GetImage();
+        }
+
+        /// <return>An observable upon subscription emits the image.</return>
+        async Task<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImageVersion.GetImageAsync(CancellationToken cancellationToken)
+        {
+            return await this.GetImageAsync(cancellationToken);
         }
     }
 }

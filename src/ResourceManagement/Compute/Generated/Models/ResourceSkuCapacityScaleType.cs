@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this ResourceSkuCapacityScaleType value)
         {
-            switch( value )
+            switch (value)
             {
                 case ResourceSkuCapacityScaleType.Automatic:
                     return "Automatic";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static ResourceSkuCapacityScaleType? ParseResourceSkuCapacityScaleType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Automatic":
                     return ResourceSkuCapacityScaleType.Automatic;

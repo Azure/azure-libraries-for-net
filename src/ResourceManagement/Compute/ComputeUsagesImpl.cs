@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uQ29tcHV0ZVVzYWdlc0ltcGw=
     internal partial class ComputeUsagesImpl :
-        ReadableWrappers<IComputeUsage, ComputeUsageImpl, Usage>,
+        ReadableWrappers<IComputeUsage, ComputeUsageImpl, UsageInner>,
         IComputeUsages
     {
         private IComputeManagementClient client;
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:2ED29FF482F2137640A1CA66925828A8:DBED7C5E8F3D15AA49FB5B3D4C6C961C
         public async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IComputeUsage>> ListByRegionAsync(string regionName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await PagedCollection<IComputeUsage, Usage>.LoadPage(
+            return await PagedCollection<IComputeUsage, UsageInner>.LoadPage(
                  async (cancellation) => await client.Usage.ListAsync(regionName, cancellation),
                  client.Usage.ListNextAsync,
                  WrapModel,
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:438AA0AEE9E5AB3F7FB0CB3404AB0062:347158454CE9D4F224065BB056903D09
-        protected override IComputeUsage WrapModel(Usage usageInner)
+        protected override IComputeUsage WrapModel(UsageInner usageInner)
         {
             if (usageInner == null)
             {

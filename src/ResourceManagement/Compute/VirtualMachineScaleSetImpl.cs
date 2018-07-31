@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using VirtualMachineScaleSet.Update;
     using System.Threading;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.Msi.Fluent;
 
     /// <summary>
@@ -110,8 +110,483 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.rbacManager = rbacManager;
             this.namer = SdkContext.CreateResourceNamer(this.Name);
             this.managedDataDisks = new ManagedDataDiskCollection(this);
-            this.virtualMachineScaleSetMsiHelper = new VirtualMachineScaleSetMsiHelper(rbacManager, new IdProvider(this));
+            this.virtualMachineScaleSetMsiHelper = new VirtualMachineScaleSetMsiHelper(rbacManager, this);
             this.bootDiagnosticsHandler = new BootDiagnosticsHandler(this);
+        }
+
+        private  VirtualMachineScaleSetUpdate PreparePatchPayload()
+        {
+            var updateParameter = new VirtualMachineScaleSetUpdate
+                {
+                    Identity = this.Inner.Identity,
+                    Overprovision = this.Inner.Overprovision,
+                    Plan = this.Inner.Plan,
+                    SinglePlacementGroup = this.Inner.SinglePlacementGroup,
+                    Sku = this.Inner.Sku,
+                    Tags = this.Inner.Tags,
+                    UpgradePolicy = this.Inner.UpgradePolicy
+                };
+
+            if (this.Inner.VirtualMachineProfile != null)
+            {
+                // --
+                var updateVMProfile = new VirtualMachineScaleSetUpdateVMProfile
+                    {
+                        DiagnosticsProfile = this.Inner.VirtualMachineProfile.DiagnosticsProfile,
+                        ExtensionProfile = this.Inner.VirtualMachineProfile.ExtensionProfile,
+                        LicenseType = this.Inner.VirtualMachineProfile.LicenseType
+                    };
+                //
+                if (this.Inner.VirtualMachineProfile.StorageProfile != null)
+                {
+                    // -- --
+                    var storageProfile = new VirtualMachineScaleSetUpdateStorageProfile
+                        {
+                            DataDisks = this.Inner.VirtualMachineProfile.StorageProfile.DataDisks,
+                            ImageReference = this.Inner.VirtualMachineProfile.StorageProfile.ImageReference
+                        };
+
+                    if (this.Inner.VirtualMachineProfile.StorageProfile.OsDisk != null)
+                    {
+                        var osDisk = new VirtualMachineScaleSetUpdateOSDisk
+                            {
+                                Caching = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.Caching,
+                                Image = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.Image,
+                                ManagedDisk = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk,
+                                VhdContainers = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers,
+                                WriteAcceleratorEnabled = this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled
+                            };
+                        storageProfile.OsDisk = osDisk;
+                    }
+                    updateVMProfile.StorageProfile = storageProfile;
+                    // -- --
+                }
+                if (this.Inner.VirtualMachineProfile.OsProfile != null)
+                {
+                    // -- --
+                    var osProfile = new VirtualMachineScaleSetUpdateOSProfile
+                        {
+                            CustomData = this.Inner.VirtualMachineProfile.OsProfile.CustomData,
+                            LinuxConfiguration = this.Inner.VirtualMachineProfile.OsProfile.LinuxConfiguration,
+                            Secrets = this.Inner.VirtualMachineProfile.OsProfile.Secrets,
+                            WindowsConfiguration = this.Inner.VirtualMachineProfile.OsProfile.WindowsConfiguration
+                        };
+                    updateVMProfile.OsProfile = osProfile;
+                    // -- --
+                }
+                if (this.Inner.VirtualMachineProfile.NetworkProfile != null)
+                {
+                    // -- --
+                    var networkProfile = new VirtualMachineScaleSetUpdateNetworkProfile();
+
+                    if (this.Inner.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations != null)
+                    {
+                        networkProfile.NetworkInterfaceConfigurations = new List<VirtualMachineScaleSetUpdateNetworkConfigurationInner>();
+                        foreach (var nicConfig in this.Inner.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations)
+                        {
+                            var nicPatchConfig = new VirtualMachineScaleSetUpdateNetworkConfigurationInner
+                                {
+                                    DnsSettings = nicConfig.DnsSettings,
+                                    EnableAcceleratedNetworking = nicConfig.EnableAcceleratedNetworking,
+                                    EnableIPForwarding = nicConfig.EnableIPForwarding,
+                                    Name = nicConfig.Name,
+                                    NetworkSecurityGroup = nicConfig.NetworkSecurityGroup,
+                                    Primary = nicConfig.Primary,
+                                    Id = nicConfig.Id
+                                };
+
+                            if (nicConfig.IpConfigurations != null)
+                            {
+                                nicPatchConfig.IpConfigurations = new List<VirtualMachineScaleSetUpdateIPConfigurationInner>();
+                                foreach (var ipConfig in nicConfig.IpConfigurations)
+                                {
+                                    var patchIpConfig = new VirtualMachineScaleSetUpdateIPConfigurationInner
+                                        {
+                                            ApplicationGatewayBackendAddressPools = ipConfig.ApplicationGatewayBackendAddressPools,
+                                            LoadBalancerBackendAddressPools = ipConfig.LoadBalancerBackendAddressPools,
+                                            LoadBalancerInboundNatPools = ipConfig.LoadBalancerInboundNatPools,
+                                            Name = ipConfig.Name,
+                                            Primary = ipConfig.Primary,
+                                            PrivateIPAddressVersion = ipConfig.PrivateIPAddressVersion,
+                                            Subnet = ipConfig.Subnet,
+                                            Id = ipConfig.Id
+                                        };
+
+                                    if (ipConfig.PublicIPAddressConfiguration != null)
+                                    {
+                                        patchIpConfig.PublicIPAddressConfiguration = new VirtualMachineScaleSetUpdatePublicIPAddressConfiguration()
+                                        {
+                                            DnsSettings = ipConfig.PublicIPAddressConfiguration.DnsSettings,
+                                            IdleTimeoutInMinutes = ipConfig.PublicIPAddressConfiguration.IdleTimeoutInMinutes,
+                                            Name = ipConfig.PublicIPAddressConfiguration.Name
+                                        };
+                                    }
+                                    if (ipConfig.ApplicationSecurityGroups != null)
+                                    {
+                                        patchIpConfig.ApplicationSecurityGroups = new List<SubResource>();
+                                        foreach (var asg in ipConfig.ApplicationSecurityGroups)
+                                        {
+                                            patchIpConfig.ApplicationSecurityGroups.Add(new SubResource { Id = asg.Id });
+                                        }
+                                    }
+                                    nicPatchConfig.IpConfigurations.Add(patchIpConfig);
+                                }
+                            }
+                            networkProfile.NetworkInterfaceConfigurations.Add(nicPatchConfig);
+                        }
+                    }
+                    updateVMProfile.NetworkProfile = networkProfile;
+                    // -- --
+                }
+                updateParameter.VirtualMachineProfile = updateVMProfile;
+                // --
+            }
+            //
+            return updateParameter;
+        }
+
+        public IReadOnlyList<string> ApplicationGatewayBackendAddressPoolsIds()
+        {
+            var nicIpConfig = this.PrimaryNicDefaultIPConfiguration();
+            var backendPools = nicIpConfig.ApplicationGatewayBackendAddressPools;
+            if (backendPools != null)
+            {
+                return backendPools.Select(bp => bp.Id).ToList();
+            }
+            return new List<string>();
+        }
+
+        public IReadOnlyList<string> ApplicationSecurityGroupIds()
+        {
+            var nicIpConfig = this.PrimaryNicDefaultIPConfiguration();
+            if (nicIpConfig.ApplicationSecurityGroups != null)
+            {
+                return nicIpConfig.ApplicationSecurityGroups.Select(asg => asg.Id).ToList();
+            }
+            return new List<string>();
+        }
+
+        public bool IsAcceleratedNetworkingEnabled()
+        {
+            var nicConfig = PrimaryNicConfiguration();
+            if (nicConfig.EnableAcceleratedNetworking != null)
+            {
+                return nicConfig.EnableAcceleratedNetworking.Value;
+            }
+
+            return false;
+        }
+
+        public bool IsIpForwardingEnabled()
+        {
+            var nicConfig = PrimaryNicConfiguration();
+            if (nicConfig.EnableIPForwarding != null)
+            {
+                return nicConfig.EnableIPForwarding.Value;
+            }
+            return false;
+        }
+
+        private VirtualMachineScaleSetNetworkConfigurationInner PrimaryNicConfiguration()
+        {
+            var nicConfigurations = this.Inner?.VirtualMachineProfile?.NetworkProfile?.NetworkInterfaceConfigurations;
+
+            if (nicConfigurations != null)
+            {
+                foreach (var nicConfiguration in nicConfigurations)
+                {
+                    if (nicConfiguration.Primary != null && nicConfiguration.Primary.Value)
+                    {
+                        return nicConfiguration;
+                    }
+                }
+            }
+            throw new InvalidOperationException("Could not find the primary nic configuration");
+        }
+
+        public bool IsSinglePlacementGroupEnabled()
+        {
+            if (this.Inner.SinglePlacementGroup != null)
+            {
+                return this.Inner.SinglePlacementGroup.Value;
+            }
+
+            return false;
+        }
+
+        public string NetworkSecurityGroupId()
+        {
+            var nicConfig = PrimaryNicConfiguration();
+            if (nicConfig.NetworkSecurityGroup != null)
+            {
+                return nicConfig.NetworkSecurityGroup.Id;
+            } 
+            return null;
+        }
+
+        public VirtualMachineScaleSetPublicIPAddressConfiguration VirtualMachinePublicIpConfig()
+        {
+            var nicConfig = this.PrimaryNicDefaultIPConfiguration();
+            if (nicConfig != null)
+            {
+                return nicConfig.PublicIPAddressConfiguration;
+            }
+            return null;
+        }
+
+        public RunCommandResultInner RunCommandInVMInstance(string vmId, RunCommandInput inputCommand)
+        {
+            return Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => RunCommandVMInstanceAsync(vmId, inputCommand));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunCommandVMInstanceAsync(string vmId, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.VirtualMachineScaleSets.RunCommandVMInstanceAsync(this.ResourceGroupName, this.Name, vmId, inputCommand, cancellationToken);
+        }
+
+        public RunCommandResultInner RunPowerShellScriptInVMInstance(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        {
+            return Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => RunPowerShellScriptInVMInstanceAsync(vmId, scriptLines, scriptParameters));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunPowerShellScriptInVMInstanceAsync(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.VirtualMachineScaleSets.RunPowerShellScriptInVMInstanceAsync(this.ResourceGroupName, this.Name, vmId, scriptLines, scriptParameters, cancellationToken);
+        }
+
+        public RunCommandResultInner RunShellScriptInVMInstance(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        {
+            return Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => RunShellScriptInVMInstanceAsync(vmId, scriptLines, scriptParameters));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunShellScriptInVMInstanceAsync(string vmId, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Manager.VirtualMachineScaleSets.RunShellScriptInVMInstanceAsync(this.ResourceGroupName, this.Name, vmId, scriptLines, scriptParameters, cancellationToken);
+        }
+
+        public VirtualMachineScaleSetImpl WithAcceleratedNetworking()
+        {
+            var nicConfig = this.PrimaryNicConfiguration();
+            nicConfig.EnableAcceleratedNetworking = true;
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithExistingApplicationGatewayBackendPool(string backendPoolId)
+        {
+            var nicIpConfig = this.PrimaryNicDefaultIPConfiguration();
+            if (nicIpConfig.ApplicationGatewayBackendAddressPools == null)
+            {
+                nicIpConfig.ApplicationGatewayBackendAddressPools = new List<SubResource>();
+            }
+            bool found = false;
+            foreach (var backendPool in nicIpConfig.ApplicationGatewayBackendAddressPools)
+            {
+                if (backendPool.Id.Equals(backendPoolId, StringComparison.OrdinalIgnoreCase))
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                nicIpConfig.ApplicationGatewayBackendAddressPools.Add(new SubResource { Id = backendPoolId });
+            }
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithExistingApplicationSecurityGroup(IApplicationSecurityGroup applicationSecurityGroup)
+        {
+            return WithExistingApplicationSecurityGroupId(applicationSecurityGroup.Id);
+        }
+
+        public VirtualMachineScaleSetImpl WithExistingApplicationSecurityGroupId(string applicationSecurityGroupId)
+        {
+            var nicIpConfig = this.PrimaryNicDefaultIPConfiguration();
+            if (nicIpConfig.ApplicationSecurityGroups == null)
+            {
+                nicIpConfig.ApplicationSecurityGroups = new List<SubResource>();
+            }
+            bool found = false;
+            foreach (var asg in nicIpConfig.ApplicationSecurityGroups)
+            {
+                if (asg.Id.Equals(applicationSecurityGroupId, StringComparison.OrdinalIgnoreCase))
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                nicIpConfig.ApplicationSecurityGroups.Add(new SubResource { Id = applicationSecurityGroupId });
+            }
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithExistingNetworkSecurityGroup(INetworkSecurityGroup networkSecurityGroup)
+        {
+            var nicConfig = this.PrimaryNicConfiguration();
+            nicConfig.NetworkSecurityGroup = new SubResource { Id = networkSecurityGroup.Id };
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithExistingNetworkSecurityGroupId(string networkSecurityGroupId)
+        {
+            var nicConfig = this.PrimaryNicConfiguration();
+            nicConfig.NetworkSecurityGroup = new SubResource { Id = networkSecurityGroupId };
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithIpForwarding()
+        {
+            var nicConfig = this.PrimaryNicConfiguration();
+            nicConfig.EnableIPForwarding = true;
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithoutAcceleratedNetworking()
+        {
+            var nicConfig = this.PrimaryNicConfiguration();
+            nicConfig.EnableAcceleratedNetworking = false;
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithoutApplicationGatewayBackendPool(string backendPoolId)
+        {
+            var nicIpConfig = this.PrimaryNicDefaultIPConfiguration();
+            if (nicIpConfig.ApplicationGatewayBackendAddressPools == null)
+            {
+                return this;
+            }
+
+            int foundIndex = -1;
+            int index = -1;
+            foreach (var backendPool in nicIpConfig.ApplicationGatewayBackendAddressPools)
+            {
+                index = index + 1;
+                if (backendPool.Id.Equals(backendPoolId, StringComparison.OrdinalIgnoreCase))
+                {
+                    foundIndex = index;
+                    break;
+                }
+            }
+            if (foundIndex != -1)
+            {
+                nicIpConfig.ApplicationGatewayBackendAddressPools.RemoveAt(foundIndex);
+            }
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithoutApplicationSecurityGroup(string applicationSecurityGroupId)
+        {
+            var nicIpConfig = this.PrimaryNicDefaultIPConfiguration();
+            if (nicIpConfig.ApplicationSecurityGroups == null)
+            {
+                return this;
+            }
+
+            int foundIndex = -1;
+            int index = -1;
+            foreach (var asg in nicIpConfig.ApplicationSecurityGroups)
+            {
+                index = index + 1;
+                if (asg.Id.Equals(applicationSecurityGroupId, StringComparison.OrdinalIgnoreCase))
+                {
+                    foundIndex = index;
+                    break;
+                }
+            }
+            if (foundIndex != -1)
+            {
+                nicIpConfig.ApplicationSecurityGroups.RemoveAt(foundIndex);
+            }
+
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithoutIpForwarding()
+        {
+            var nicConfig = this.PrimaryNicConfiguration();
+            nicConfig.EnableIPForwarding = false;
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithoutNetworkSecurityGroup()
+        {
+            var nicConfig = this.PrimaryNicConfiguration();
+            nicConfig.NetworkSecurityGroup = null;
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithoutSinglePlacementGroup()
+        {
+            this.Inner.SinglePlacementGroup = false;
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithSinglePlacementGroup()
+        {
+            this.Inner.SinglePlacementGroup = true;
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithVirtualMachinePublicIp()
+        {
+            var nicIpConfig = this.PrimaryNicDefaultIPConfiguration();
+            if (nicIpConfig.PublicIPAddressConfiguration != null)
+            {
+                return this;
+            }
+
+            var pipConfig = new VirtualMachineScaleSetPublicIPAddressConfiguration();
+            pipConfig.Name = "pip1";
+            pipConfig.IdleTimeoutInMinutes = 15;
+            //
+            nicIpConfig.PublicIPAddressConfiguration = pipConfig;
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithVirtualMachinePublicIp(string leafDomainLabel)
+        {
+            var nicIpConfig = this.PrimaryNicDefaultIPConfiguration();
+            if (nicIpConfig.PublicIPAddressConfiguration != null)
+            {
+                if (nicIpConfig.PublicIPAddressConfiguration.DnsSettings != null)
+                {
+                    nicIpConfig.PublicIPAddressConfiguration.DnsSettings.DomainNameLabel = leafDomainLabel;
+                }
+                else
+                {
+                    nicIpConfig.PublicIPAddressConfiguration.DnsSettings = new VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings();
+                    nicIpConfig.PublicIPAddressConfiguration.DnsSettings.DomainNameLabel = leafDomainLabel;
+                }
+            }
+            else
+            {
+                var pipConfig = new VirtualMachineScaleSetPublicIPAddressConfiguration
+                {
+                    Name = "pip1",
+                    IdleTimeoutInMinutes = 15,
+                    DnsSettings = new VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings
+                    {
+                        DomainNameLabel = leafDomainLabel
+                    }
+                };
+                nicIpConfig.PublicIPAddressConfiguration = pipConfig;
+            }
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithVirtualMachinePublicIp(VirtualMachineScaleSetPublicIPAddressConfiguration pipConfig)
+        {
+            var nicIpConfig = this.PrimaryNicDefaultIPConfiguration();
+            nicIpConfig.PublicIPAddressConfiguration = pipConfig;
+            return this;
+        }
+
+        public VirtualMachineScaleSetImpl WithoutSystemAssignedManagedServiceIdentity()
+        {
+            this.virtualMachineScaleSetMsiHelper.WithoutLocalManagedServiceIdentity();
+            return this;
         }
 
         ///GENMHASH:AAC1F72971316317A21BEC14F977DEDE:ABC059395726B5D6BEB36206C2DDA144
@@ -173,7 +648,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             userImageVhd.Uri = imageUrl;
             Inner
                     .VirtualMachineProfile
-                    .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
+                    .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
             Inner
                     .VirtualMachineProfile
                     .StorageProfile.OsDisk.Image = userImageVhd;
@@ -289,7 +764,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner
                 .VirtualMachineProfile
-                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
+                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
             Inner
                 .VirtualMachineProfile
                 .StorageProfile.ImageReference = imageReference.Inner;
@@ -441,7 +916,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:B97D8C3B1AC557A077AC173B1DB0B348:4CD85EE98AD4F7CBC33994D722986AE5
         private bool IsOSDiskFromImage(VirtualMachineScaleSetOSDisk osDisk)
         {
-            return osDisk.CreateOption == DiskCreateOptionTypes.FromImage.ToString();
+            return osDisk.CreateOption == DiskCreateOptionTypes.FromImage;
         }
 
         ///GENMHASH:062EA8E95730159A684C56D3DFCB4846:2E75CE480B794ADCA106E649FAD94DB6
@@ -617,14 +1092,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:54F48C4A15522D8E87E76E69BFD089CA:67C5008B7D86A1EA0300776CDD220599
         public ISet<string> UserAssignedManagedServiceIdentityIds()
         {
-            if (this.Inner.Identity != null && this.Inner.Identity.IdentityIds != null)
+            if (this.Inner.Identity != null && this.Inner.Identity.UserAssignedIdentities != null)
             {
-                return new HashSet<string>(this.Inner.Identity.IdentityIds);
+                return new HashSet<string>(this.Inner.Identity.UserAssignedIdentities.Keys);
             }
-            else
-            {
-                return new HashSet<string>();
-            }
+
+            return new HashSet<string>();
         }
 
         ///GENMHASH:BC4103A90A606609FAB346997701A4DE:F96317098E1E2EA0D5CD8D759145745A
@@ -648,26 +1121,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:C5E4011AAE57A5F6132092A4B8B874FF:36531E34809D3A8C9FAE365A128266D5
         public VirtualMachinePriorityTypes VirtualMachinePriority()
         {
-            if (this.Inner.VirtualMachineProfile != null && this.Inner.VirtualMachineProfile.Priority != null)
-            {
-                return VirtualMachinePriorityTypes.Parse(this.Inner.VirtualMachineProfile.Priority);
-            }
-            else
-            {
-                return null;
-            }
+            return this.Inner.VirtualMachineProfile?.Priority;
         }
 
         public VirtualMachineEvictionPolicyTypes VirtualMachineEvictionPolicy()
         {
-            if (this.Inner.VirtualMachineProfile != null && this.Inner.VirtualMachineProfile.EvictionPolicy != null)
-            {
-                return VirtualMachineEvictionPolicyTypes.Parse(this.Inner.VirtualMachineProfile.EvictionPolicy);
-            }
-            else
-            {
-                return null;
-            }
+            return this.Inner.VirtualMachineProfile?.EvictionPolicy;
         }
 
         ///GENMHASH:02A68214692E8DA4CC34E5FE55E3C918:150375C199EA874367AE081B87D5F2FD
@@ -678,15 +1137,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 && this.Inner.VirtualMachineProfile.StorageProfile.OsDisk != null
                 && this.Inner.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk != null)
             {
-               var accountType = this.Inner
-                .VirtualMachineProfile
-                .StorageProfile
-                .OsDisk
-                .ManagedDisk
-                .StorageAccountType;
+                var accountType = this.Inner
+                 .VirtualMachineProfile
+                 .StorageProfile
+                 .OsDisk
+                 .ManagedDisk
+                 .StorageAccountType;
                 if (accountType != null)
                 {
-                    return StorageAccountTypes.Parse(accountType);
+                    return accountType;
                 }
             }
             return null;
@@ -743,17 +1202,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:E059E91FE0CBE4B6875986D1B46994D2:DAA85BBA01C168FF877DF34933F404C0
         public VirtualMachineScaleSetImpl WithSystemAssignedManagedServiceIdentity()
         {
-            this.virtualMachineScaleSetMsiHelper.WithSystemAssignedManagedServiceIdentity(this.Inner);
+            this.virtualMachineScaleSetMsiHelper.WithLocalManagedServiceIdentity();
             return this;
         }
-
-        ///GENMHASH:D9244CA3B3398B7594B546247D593343:67897BA2A9EA709C2A4B86073D4D0171
-        public VirtualMachineScaleSetImpl WithSystemAssignedManagedServiceIdentity(int tokenPort)
-        {
-            this.virtualMachineScaleSetMsiHelper.WithSystemAssignedManagedServiceIdentity(tokenPort, this.Inner);
-            return this;
-        }
-
+        
         ///GENMHASH:DEF511724D2CC8CA91F24E084BC9AA22:B156E25B8F4ADB8DA7E762E9B3B26AA3
         public VirtualMachineScaleSetImpl WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId)
         {
@@ -785,51 +1237,24 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:8239AEDA70F925E7A1DCD8BDB2803956:6A2804975F58F97B4F610E2DE8E8AACA
         public VirtualMachineScaleSetImpl WithNewUserAssignedManagedServiceIdentity(ICreatable<IIdentity> creatableIdentity)
         {
-            this.virtualMachineScaleSetMsiHelper.WithNewUserAssignedManagedServiceIdentity(this.Inner, this.CreatorTaskGroup, creatableIdentity);
+            this.virtualMachineScaleSetMsiHelper.WithNewExternalManagedServiceIdentity(creatableIdentity);
             return this;
         }
 
         ///GENMHASH:77198B23BCB8BA2F0DDF3A8A0E85805C:F68FE87A8E9ADCA783F40FB45364544F
         public VirtualMachineScaleSetImpl WithoutUserAssignedManagedServiceIdentity(string identityId)
         {
-            this.virtualMachineScaleSetMsiHelper.WithoutUserAssignedManagedServiceIdentity(identityId);
+            this.virtualMachineScaleSetMsiHelper.WithoutExternalManagedServiceIdentity(identityId);
             return this;
         }
 
         ///GENMHASH:6836D267A7B5AB07D80A2EFAF13B9F3E:8504B108F30E0AC9DC210A1D9CFA85F3
         public VirtualMachineScaleSetImpl WithExistingUserAssignedManagedServiceIdentity(IIdentity identity)
         {
-            this.virtualMachineScaleSetMsiHelper.WithExistingUserAssignedManagedServiceIdentity(this.Inner, identity);
+            this.virtualMachineScaleSetMsiHelper.WithExistingExternalManagedServiceIdentity(identity);
             return this;
         }
-
-        internal OperatingSystemTypes OSTypeIntern()
-        {
-            VirtualMachineScaleSetVMProfile vmProfile = this.Inner.VirtualMachineProfile;
-            if (vmProfile != null
-                    && vmProfile.StorageProfile != null
-                    && vmProfile.StorageProfile.OsDisk != null
-                    && vmProfile.StorageProfile.OsDisk.OsType != null)
-            {
-                return vmProfile.StorageProfile.OsDisk.OsType.Value;
-            }
-            if (vmProfile != null
-                    && vmProfile.OsProfile != null)
-            {
-                if (vmProfile.OsProfile.LinuxConfiguration != null)
-                {
-                    return OperatingSystemTypes.Linux;
-                }
-                if (vmProfile.OsProfile.WindowsConfiguration != null)
-                {
-                    return OperatingSystemTypes.Windows;
-                }
-            }
-            // This should never hit
-            //
-            throw new ArgumentException("Unable to resolve the operating system type");
-        }
-
+        
         ///GENMHASH:801A53D3DABA33CC92425D2203FD9242:023B6E0293C3EE52841DA58E9038A4E6
         private static IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool> GetInboundNatPoolsAssociatedWithIPConfiguration(ILoadBalancer loadBalancer, VirtualMachineScaleSetIPConfigurationInner ipConfig)
         {
@@ -972,6 +1397,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             this.ClearCachedProperties();
             this.InitializeChildrenFromInner();
+            this.virtualMachineScaleSetMsiHelper.Clear();
         }
 
         ///GENMHASH:4002186478A1CB0B59732EBFB18DEB3A:9A047B4B22E09AEB6344D4F23EC361E5
@@ -1091,7 +1517,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineScaleSetImpl WithNewDataDiskFromImage(int imageLun, int newSizeInGB, CachingTypes cachingType, StorageAccountTypes storageAccountType)
         {
             VirtualMachineScaleSetManagedDiskParameters managedDiskParameters = new VirtualMachineScaleSetManagedDiskParameters();
-            managedDiskParameters.StorageAccountType = storageAccountType.ToString();
+            managedDiskParameters.StorageAccountType = storageAccountType;
             this.managedDataDisks.newDisksFromImage.Add(new VirtualMachineScaleSetDataDisk()
             {
                 Lun = imageLun,
@@ -1165,7 +1591,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             imageReferenceInner.Id = customImageId;
             Inner
                 .VirtualMachineProfile
-                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
+                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
             Inner
                 .VirtualMachineProfile
                 .StorageProfile.ImageReference = imageReferenceInner;
@@ -1192,7 +1618,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     .OsDisk
                     .ManagedDisk = new VirtualMachineScaleSetManagedDiskParameters
                     {
-                        StorageAccountType = accountType.ToString()
+                        StorageAccountType = accountType
                     };
             return this;
         }
@@ -1240,7 +1666,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             imageReferenceInner.Id = customImageId;
             Inner
                 .VirtualMachineProfile
-                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
+                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
             Inner
                 .VirtualMachineProfile
                 .StorageProfile.ImageReference = imageReferenceInner;
@@ -1423,7 +1849,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     if (osDisk.ManagedDisk.StorageAccountType == null)
                     {
                         osDisk.ManagedDisk
-                            .StorageAccountType = StorageAccountTypes.StandardLRS.ToString();
+                            .StorageAccountType = StorageAccountTypes.StandardLRS;
                     }
                     osDisk.VhdContainers = null;
                     // We won't set osDisk.Name() explicitly for managed disk, if it is null CRP generates unique
@@ -1568,7 +1994,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             userImageVhd.Uri = imageUrl;
             Inner
                 .VirtualMachineProfile
-                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
+                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
             Inner
                 .VirtualMachineProfile
                 .StorageProfile.OsDisk.Image = userImageVhd;
@@ -1651,7 +2077,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             Inner
                 .VirtualMachineProfile
-                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
+                .StorageProfile.OsDisk.CreateOption = DiskCreateOptionTypes.FromImage;
             Inner
                 .VirtualMachineProfile
                 .StorageProfile.ImageReference = imageReference.Inner;
@@ -1754,7 +2180,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:AC21A10EE2E745A89E94E447800452C1:B5D7FA290CD4B78F425E5D837D1426C5
         protected override void BeforeCreating()
         {
-            this.virtualMachineScaleSetMsiHelper.AddOrUpdateMSIExtension(this);
             if (this.extensions.Count > 0)
             {
                 Inner.VirtualMachineProfile
@@ -2116,32 +2541,76 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 this.SetOSProfileDefaults();
                 this.SetOSDiskDefault();
-            }
-            this.SetPrimaryIPConfigurationSubnet();
-            this.SetPrimaryIPConfigurationBackendsAndInboundNatPools();
-            if (IsManagedDiskEnabled())
-            {
-                this.managedDataDisks.SetDataDisksDefaults();
+                this.SetPrimaryIPConfigurationSubnet();
+                this.SetPrimaryIPConfigurationBackendsAndInboundNatPools();
+                if (IsManagedDiskEnabled())
+                {
+                    this.managedDataDisks.SetDataDisksDefaults();
+                }
+                else
+                {
+                    IList<VirtualMachineScaleSetDataDisk> dataDisks = Inner
+                    .VirtualMachineProfile
+                    .StorageProfile
+                    .DataDisks;
+                    VirtualMachineScaleSetUnmanagedDataDiskImpl.SetDataDisksDefaults(dataDisks, Name);
+                }
+                await HandleOSDiskContainersAsync(cancellationToken);
+                await this.bootDiagnosticsHandler.HandleDiagnosticsSettingsAsync(cancellationToken);
+
+                virtualMachineScaleSetMsiHelper.ProcessCreatedExternalIdentities();
+                virtualMachineScaleSetMsiHelper.HandleExternalIdentities();
+
+                var scalesetInner = await Manager.Inner.VirtualMachineScaleSets.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
+                this.SetInner(scalesetInner);
+
+                await virtualMachineScaleSetMsiHelper.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
+                return scalesetInner;
             }
             else
             {
-                IList<VirtualMachineScaleSetDataDisk> dataDisks = Inner
-                .VirtualMachineProfile
-                .StorageProfile
-                .DataDisks;
-                VirtualMachineScaleSetUnmanagedDataDiskImpl.SetDataDisksDefaults(dataDisks, Name);
+                if (this.Extensions().Count > 0)
+                {
+                    this.Inner
+                            .VirtualMachineProfile
+                            .ExtensionProfile = new VirtualMachineScaleSetExtensionProfile
+                            { Extensions = InnersFromWrappers<VirtualMachineScaleSetExtensionInner, IVirtualMachineScaleSetExtension>(this.Extensions().Values.ToArray()) };
+                }
+
+                this.SetPrimaryIPConfigurationSubnet();
+                this.SetPrimaryIPConfigurationBackendsAndInboundNatPools();
+                if (IsManagedDiskEnabled())
+                {
+                    this.managedDataDisks.SetDataDisksDefaults();
+                }
+                else
+                {
+                    IList<VirtualMachineScaleSetDataDisk> dataDisks = Inner
+                    .VirtualMachineProfile
+                    .StorageProfile
+                    .DataDisks;
+                    VirtualMachineScaleSetUnmanagedDataDiskImpl.SetDataDisksDefaults(dataDisks, Name);
+                }
+                await HandleOSDiskContainersAsync(cancellationToken);
+                await this.bootDiagnosticsHandler.HandleDiagnosticsSettingsAsync(cancellationToken);
+
+                virtualMachineScaleSetMsiHelper.ProcessCreatedExternalIdentities();
+
+                VirtualMachineScaleSetUpdate updateParameter = this.PreparePatchPayload();
+                virtualMachineScaleSetMsiHelper.HandleExternalIdentities(updateParameter);
+
+
+                var scalesetInner = await Manager.Inner.VirtualMachineScaleSets.UpdateAsync(ResourceGroupName, Name, updateParameter, cancellationToken);
+                this.SetInner(scalesetInner);
+
+                await virtualMachineScaleSetMsiHelper.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
+
+                this.ClearCachedProperties();
+                this.InitializeChildrenFromInner();
+                this.virtualMachineScaleSetMsiHelper.Clear();
+
+                return scalesetInner;
             }
-            await HandleOSDiskContainersAsync(cancellationToken);
-            await this.bootDiagnosticsHandler.HandleDiagnosticsSettingsAsync(cancellationToken);
-
-            virtualMachineScaleSetMsiHelper.HandleUserAssignedIdentities(this.Inner, this.CreatorTaskGroup);
-
-            var scalesetInner = await Manager.Inner.VirtualMachineScaleSets.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
-            // Inner has to be updated so that virtualMachineScaleSetMsiHelper can fetch MSI identity using IIdentityProvider
-            //
-            this.SetInner(scalesetInner);
-            await virtualMachineScaleSetMsiHelper.CommitsRoleAssignmentsPendingActionAsync(cancellationToken);
-            return scalesetInner;
         }
 
         ///GENMHASH:621A22301B3EB5233E9DB4ED5BEC5735:E8427EEC4ACC25554660EF889ECD07A2
@@ -2238,7 +2707,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             ThrowIfManagedDiskDisabled(ManagedUnmanagedDiskErrors.VMSS_Both_Unmanaged_And_Managed_Disk_Not_Aallowed);
             VirtualMachineScaleSetManagedDiskParameters managedDiskParameters = new VirtualMachineScaleSetManagedDiskParameters();
-            managedDiskParameters.StorageAccountType = storageAccountType.ToString();
+            managedDiskParameters.StorageAccountType = storageAccountType;
             this.managedDataDisks.implicitDisksToAssociate.Add(new VirtualMachineScaleSetDataDisk()
             {
                 Lun = lun,
@@ -2338,7 +2807,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:6519A067F8EC19017417E77E98CBFAB4:29848F9AE1C8DDE847A8C3F172BFE8CE
         public VirtualMachineScaleSetImpl WithVirtualMachinePriority(VirtualMachinePriorityTypes priority)
         {
-            this.Inner.VirtualMachineProfile.Priority = priority.ToString();
+            this.Inner.VirtualMachineProfile.Priority = priority;
             return this;
         }
 
@@ -2351,7 +2820,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public VirtualMachineScaleSetImpl WithLowPriorityVirtualMachine(VirtualMachineEvictionPolicyTypes policy)
         {
             this.WithLowPriorityVirtualMachine();
-            this.Inner.VirtualMachineProfile.EvictionPolicy = policy.ToString();
+            this.Inner.VirtualMachineProfile.EvictionPolicy = policy;
             return this;
         }
 
@@ -2517,7 +2986,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 var dataDisks = storageProfile.DataDisks;
                 foreach (var dataDisk in this.newDisksFromImage)
                 {
-                    dataDisk.CreateOption = DiskCreateOptionTypes.FromImage.ToString();
+                    dataDisk.CreateOption = DiskCreateOptionTypes.FromImage;
                     // Don't set default caching type for the disk, either user has to specify it explicitly or let CRP pick
                     // it from the image
                     dataDisk.Name = null;
@@ -2582,7 +3051,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 var dataDisks = storageProfile.DataDisks;
                 foreach (var dataDisk in this.implicitDisksToAssociate)
                 {
-                    dataDisk.CreateOption = DiskCreateOptionTypes.Empty.ToString();
+                    dataDisk.CreateOption = DiskCreateOptionTypes.Empty;
                     if (dataDisk.Lun == -1)
                     {
                         dataDisk.Lun = nextLun();
@@ -2597,7 +3066,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                     }
                     if (dataDisk.ManagedDisk.StorageAccountType == null)
                     {
-                        dataDisk.ManagedDisk.StorageAccountType = GetDefaultStorageAccountType().ToString();
+                        dataDisk.ManagedDisk.StorageAccountType = GetDefaultStorageAccountType();
                     }
                     dataDisk.Name = null;
                     dataDisks.Add(dataDisk);

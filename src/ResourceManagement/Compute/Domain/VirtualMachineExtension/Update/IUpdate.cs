@@ -1,10 +1,15 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update
 {
     using System.Collections.Generic;
     using Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The stage of the virtual machine extension update allowing to enable or disable auto upgrade of the
@@ -12,6 +17,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// </summary>
     public interface IWithAutoUpgradeMinorVersion
     {
+
         /// <summary>
         /// Enables auto upgrade of the extension.
         /// </summary>
@@ -30,6 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// </summary>
     public interface IWithSettings
     {
+
         /// <summary>
         /// Specifies a private settings entry.
         /// </summary>
@@ -37,6 +44,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
         /// <param name="value">The value of the private settings entry.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithProtectedSetting(string key, object value);
+
+        /// <summary>
+        /// Specifies private settings.
+        /// </summary>
+        /// <param name="settings">The private settings.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithProtectedSettings(IDictionary<string, object> settings);
 
         /// <summary>
         /// Specifies a public settings entry.
@@ -52,13 +66,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
         /// <param name="settings">The public settings.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithPublicSettings(IDictionary<string, object> settings);
-
-        /// <summary>
-        /// Specifies private settings.
-        /// </summary>
-        /// <param name="settings">The private settings.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithProtectedSettings(IDictionary<string, object> settings);
     }
 
     /// <summary>
@@ -70,6 +77,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IWithSettings,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IWithTags
     {
+
     }
 
     /// <summary>
@@ -77,6 +85,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
     /// </summary>
     public interface IWithTags
     {
+
+        /// <summary>
+        /// Removes a tag from the virtual machine extension.
+        /// </summary>
+        /// <param name="key">The key of the tag to remove.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithoutTag(string key);
+
         /// <summary>
         /// Adds a tag to the virtual machine extension.
         /// </summary>
@@ -91,12 +107,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Upda
         /// <param name="tags">Tags indexed by name.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithTags(IDictionary<string, string> tags);
-
-        /// <summary>
-        /// Removes a tag from the virtual machine extension.
-        /// </summary>
-        /// <param name="key">The key of the tag to remove.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update.IUpdate WithoutTag(string key);
     }
 }

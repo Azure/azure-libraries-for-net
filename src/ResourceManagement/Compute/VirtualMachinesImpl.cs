@@ -1,17 +1,21 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using Newtonsoft.Json;
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Models;
     using Network.Fluent;
+    using Newtonsoft.Json.Linq;
     using ResourceManager.Fluent.Core;
     using Rest.Azure;
     using Storage.Fluent;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions = Microsoft.Azure.Management.ResourceManager.Fluent.Core.Extensions;
 
     /// <summary>
     /// The implementation for VirtualMachines.
@@ -43,6 +47,48 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.networkManager = networkManager;
             this.rbacManager = rbacManager;
             this.vmSizes = new VirtualMachineSizesImpl(computeManager.Inner.VirtualMachineSizes);
+        }
+
+        public RunCommandResultInner RunCommand(string groupName, string name, RunCommandInput inputCommand)
+        {
+            return Extensions.Synchronize(() => RunCommandAsync(groupName, name, inputCommand));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunCommandAsync(string groupName, string name, RunCommandInput inputCommand, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return await this.Inner.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
+        }
+
+        public RunCommandResultInner RunPowerShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        {
+            return Extensions.Synchronize(() => this.RunPowerShellScriptAsync(groupName, name, scriptLines, scriptParameters));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunPowerShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inputCommand = new RunCommandInput
+                {
+                    CommandId = "RunPowerShellScript",
+                    Script = scriptLines,
+                    Parameters = scriptParameters
+                };
+            return await this.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
+        }
+
+        public RunCommandResultInner RunShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        {
+            return Extensions.Synchronize(() => this.RunShellScriptAsync(groupName, name, scriptLines, scriptParameters));
+        }
+
+        public async Task<Models.RunCommandResultInner> RunShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var inputCommand = new RunCommandInput
+                {
+                    CommandId = "RunShellScript",
+                    Script = scriptLines,
+                    Parameters = scriptParameters
+                };
+            return await this.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
         }
 
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:36E25639805611CF89054C004B22BB15
@@ -172,12 +218,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             bool overwriteVhd,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            VirtualMachineCaptureParametersInner parameters = new VirtualMachineCaptureParametersInner();
+            VirtualMachineCaptureParameters parameters = new VirtualMachineCaptureParameters();
             parameters.DestinationContainerName = containerName;
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;
-            VirtualMachineCaptureResultInner captureResult = await Inner.CaptureAsync(groupName, name, parameters, cancellationToken);
-            return captureResult.Output.ToString();
+            using (var _result = await ((VirtualMachinesOperations)Manager.Inner.VirtualMachines).CaptureWithHttpMessagesAsync(groupName, name, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                var content = await _result.Response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                JObject o = JObject.Parse(content);
+                return o.SelectToken("$")?["properties"]?["output"]?.ToString();
+            }
         }
 
         ///GENMHASH:E5D7B16A7B6C705114CC71E8BB2B20E1:3352FEB5932DA51CF51CFE2F1E02A3C7

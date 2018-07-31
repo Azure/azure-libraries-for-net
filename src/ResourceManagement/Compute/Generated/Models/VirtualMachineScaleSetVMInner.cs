@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// Describes a virtual machine scale set virtual machine.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualMachineScaleSetVMInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class VirtualMachineScaleSetVMInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualMachineScaleSetVMInner
@@ -88,7 +89,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Enter any required information and then click **Save**.</param>
         /// <param name="resources">The virtual machine child extension
         /// resources.</param>
-        public VirtualMachineScaleSetVMInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Microsoft.Azure.Management.ResourceManager.Fluent.SubResource availabilitySet = default(Microsoft.Azure.Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string licenseType = default(string), Plan plan = default(Plan), IList<VirtualMachineExtensionInner> resources = default(IList<VirtualMachineExtensionInner>))
+        /// <param name="zones">The virtual machine zones.</param>
+        public VirtualMachineScaleSetVMInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), Management.ResourceManager.Fluent.SubResource availabilitySet = default(Management.ResourceManager.Fluent.SubResource), string provisioningState = default(string), string licenseType = default(string), Plan plan = default(Plan), IList<VirtualMachineExtensionInner> resources = default(IList<VirtualMachineExtensionInner>), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             InstanceId = instanceId;
@@ -106,6 +108,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
             LicenseType = licenseType;
             Plan = plan;
             Resources = resources;
+            Zones = zones;
             CustomInit();
         }
 
@@ -197,7 +200,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// be added to an availability set.
         /// </summary>
         [JsonProperty(PropertyName = "properties.availabilitySet")]
-        public Microsoft.Azure.Management.ResourceManager.Fluent.SubResource AvailabilitySet { get; set; }
+        public Management.ResourceManager.Fluent.SubResource AvailabilitySet { get; set; }
 
         /// <summary>
         /// Gets the provisioning state, which only appears in the response.
@@ -242,16 +245,33 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         public IList<VirtualMachineExtensionInner> Resources { get; private set; }
 
         /// <summary>
+        /// Gets the virtual machine zones.
+        /// </summary>
+        [JsonProperty(PropertyName = "zones")]
+        public IList<string> Zones { get; private set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (StorageProfile != null)
             {
                 StorageProfile.Validate();
+            }
+            if (Resources != null)
+            {
+                foreach (var element in Resources)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
         }
     }

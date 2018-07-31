@@ -1,18 +1,83 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
 {
+    using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
     /// The stage of the managed disk definition allowing to choose a source operating system image.
     /// </summary>
     public interface IWithOSSnapshotFromImage
     {
+
         /// <summary>
         /// Specifies an image containing an operating system.
         /// </summary>
@@ -47,6 +112,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithSize,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithSku
     {
+
     }
 
     /// <summary>
@@ -54,6 +120,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// </summary>
     public interface IWithDataSnapshotFromDisk
     {
+
         /// <summary>
         /// Specifies the ID of source data managed disk.
         /// </summary>
@@ -70,16 +137,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     }
 
     /// <summary>
-    /// The stage of the managed disk definition allowing to choose account type.
+    /// The stage of the snapshot definition allowing to choose account type.
     /// </summary>
     public interface IWithSku
     {
+
         /// <summary>
         /// Specifies the SKU type.
         /// </summary>
+        /// <deprecated>Use  WithSku.withSku(SnapshotSkuType) instead.</deprecated>
         /// <param name="sku">SKU type.</param>
         /// <return>The next stage of the definition.</return>
-        [System.Obsolete("Definition.IWithSku.WithSku(DiskSkuTypes) is deprecated use Definition.IWithSku.WithSku(SnapshotSkuType) instead.")]
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithSku(DiskSkuTypes sku);
 
         /// <summary>
@@ -95,6 +163,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// </summary>
     public interface IWithDataSnapshotFromSnapshot
     {
+
         /// <summary>
         /// Specifies the source data managed snapshot.
         /// </summary>
@@ -116,6 +185,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithSnapshotSource>
     {
+
     }
 
     /// <summary>
@@ -124,6 +194,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithGroup>
     {
+
     }
 
     /// <summary>
@@ -134,6 +205,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithDataSnapshotFromDisk,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithDataSnapshotFromSnapshot
     {
+
     }
 
     /// <summary>
@@ -144,6 +216,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithLinuxSnapshotSource,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithDataSnapshotSource
     {
+
     }
 
     /// <summary>
@@ -151,6 +224,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// </summary>
     public interface IWithSize
     {
+
         /// <summary>
         /// Specifies the disk size.
         /// </summary>
@@ -164,12 +238,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// </summary>
     public interface IWithLinuxSnapshotSource
     {
-        /// <summary>
-        /// Specifies the source specialized or generalized Linux OS VHD.
-        /// </summary>
-        /// <param name="vhdUrl">The source VHD URL.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithLinuxFromVhd(string vhdUrl);
 
         /// <summary>
         /// Specifies the source Linux OS managed disk.
@@ -198,6 +266,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
         /// <param name="sourceSnapshot">A source snapshot.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithLinuxFromSnapshot(ISnapshot sourceSnapshot);
+
+        /// <summary>
+        /// Specifies the source specialized or generalized Linux OS VHD.
+        /// </summary>
+        /// <param name="vhdUrl">The source VHD URL.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithLinuxFromVhd(string vhdUrl);
     }
 
     /// <summary>
@@ -215,6 +290,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithDataSnapshotFromSnapshot,
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate
     {
+
     }
 
     /// <summary>
@@ -222,12 +298,20 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// </summary>
     public interface IWithWindowsSnapshotSource
     {
+
         /// <summary>
-        /// Specifies the source specialized or generalized Windows OS VHD.
+        /// Specifies the source Windows OS managed disk.
         /// </summary>
-        /// <param name="vhdUrl">The source VHD URL.</param>
+        /// <param name="sourceDiskId">A source managed disk resource ID.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithWindowsFromVhd(string vhdUrl);
+        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithWindowsFromDisk(string sourceDiskId);
+
+        /// <summary>
+        /// Specifies the source Windows OS managed disk.
+        /// </summary>
+        /// <param name="sourceDisk">A source managed disk.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithWindowsFromDisk(IDisk sourceDisk);
 
         /// <summary>
         /// Specifies the source Windows OS managed snapshot.
@@ -244,18 +328,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
         Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithWindowsFromSnapshot(ISnapshot sourceSnapshot);
 
         /// <summary>
-        /// Specifies the source Windows OS managed disk.
+        /// Specifies the source specialized or generalized Windows OS VHD.
         /// </summary>
-        /// <param name="sourceDiskId">A source managed disk resource ID.</param>
+        /// <param name="vhdUrl">The source VHD URL.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithWindowsFromDisk(string sourceDiskId);
-
-        /// <summary>
-        /// Specifies the source Windows OS managed disk.
-        /// </summary>
-        /// <param name="sourceDisk">A source managed disk.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithWindowsFromDisk(IDisk sourceDisk);
+        Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition.IWithCreate WithWindowsFromVhd(string vhdUrl);
     }
 
     /// <summary>
@@ -263,6 +340,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// </summary>
     public interface IWithDataSnapshotFromImage
     {
+
         /// <summary>
         /// Specifies an image containing source data disk image.
         /// </summary>
@@ -293,6 +371,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Definition
     /// </summary>
     public interface IWithDataSnapshotFromVhd
     {
+
         /// <summary>
         /// Specifies the source data VHD.
         /// </summary>

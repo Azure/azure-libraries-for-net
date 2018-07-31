@@ -1,32 +1,21 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System.Collections.Generic;
 
     internal partial class LinuxDiskVolumeEncryptionMonitorImpl
     {
         /// <summary>
-        /// Refreshes the resource to sync with Azure.
+        /// Gets data disks encryption status.
         /// </summary>
-        /// <return>The refreshed resource.</return>
-        Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor>.Refresh()
-        {
-            return this.Refresh();
-        }
-
-        /// <summary>
-        /// Gets operating system type of the virtual machine.
-        /// </summary>
-        Models.OperatingSystemTypes Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor.OSType
+        Microsoft.Azure.Management.Compute.Fluent.EncryptionStatus Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor.DataDiskStatus
         {
             get
             {
-                return this.OSType();
+                return this.DataDiskStatus();
             }
         }
 
@@ -42,13 +31,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets data disks encryption status.
+        /// Gets operating system type of the virtual machine.
         /// </summary>
-        Microsoft.Azure.Management.Compute.Fluent.EncryptionStatus Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor.DataDiskStatus
+        Models.OperatingSystemTypes Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor.OSType
         {
             get
             {
-                return this.DataDiskStatus();
+                return this.OSType();
             }
         }
 
@@ -61,6 +50,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 return this.ProgressMessage();
             }
+        }
+
+        /// <summary>
+        /// Refreshes the resource to sync with Azure.
+        /// </summary>
+        /// <return>The refreshed resource.</return>
+        Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor>.Refresh()
+        {
+            return this.Refresh();
         }
 
         /// <return>A representation of the deferred computation of this call returning the encryption status once the refresh is done.</return>

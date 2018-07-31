@@ -1,10 +1,34 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Definition
 {
     using System.Collections.Generic;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using System.Collections.Generic;
     using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Management.Compute.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The stage of the virtual machine extension definition allowing to specify the tags.
@@ -12,6 +36,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithTags<ParentT>
     {
+
         /// <summary>
         /// Adds a tag to the virtual machine extension.
         /// </summary>
@@ -38,6 +63,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Definition.IWithSettings<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Definition.IWithTags<ParentT>
     {
+
     }
 
     /// <summary>
@@ -47,6 +73,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithType<ParentT>
     {
+
         /// <summary>
         /// Specifies the type of the virtual machine extension image.
         /// </summary>
@@ -63,6 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
     public interface IWithImageOrPublisher<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Definition.IWithPublisher<ParentT>
     {
+
         /// <summary>
         /// Specifies the virtual machine extension image to use.
         /// </summary>
@@ -78,6 +106,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithAutoUpgradeMinorVersion<ParentT>
     {
+
         /// <summary>
         /// Enables auto upgrade of the extension.
         /// </summary>
@@ -98,6 +127,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
     public interface IBlank<ParentT> :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Definition.IWithImageOrPublisher<ParentT>
     {
+
     }
 
     /// <summary>
@@ -107,6 +137,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithVersion<ParentT>
     {
+
         /// <summary>
         /// Specifies the version of the virtual machine image extension.
         /// </summary>
@@ -122,6 +153,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithPublisher<ParentT>
     {
+
         /// <summary>
         /// Specifies the name of the virtual machine extension image publisher.
         /// </summary>
@@ -142,6 +174,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Definition.IWithVersion<ParentT>,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Definition.IWithAttach<ParentT>
     {
+
     }
 
     /// <summary>
@@ -150,6 +183,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithSettings<ParentT>
     {
+
         /// <summary>
         /// Specifies a private settings entry.
         /// </summary>
@@ -157,6 +191,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
         /// <param name="value">The value of the private settings entry.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Definition.IWithAttach<ParentT> WithProtectedSetting(string key, object value);
+
+        /// <summary>
+        /// Specifies private settings.
+        /// </summary>
+        /// <param name="settings">The private settings.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Definition.IWithAttach<ParentT> WithProtectedSettings(IDictionary<string, object> settings);
 
         /// <summary>
         /// Specifies a public settings entry.
@@ -172,12 +213,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Defi
         /// <param name="settings">The public settings.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Definition.IWithAttach<ParentT> WithPublicSettings(IDictionary<string, object> settings);
-
-        /// <summary>
-        /// Specifies private settings.
-        /// </summary>
-        /// <param name="settings">The private settings.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Definition.IWithAttach<ParentT> WithProtectedSettings(IDictionary<string, object> settings);
     }
 }

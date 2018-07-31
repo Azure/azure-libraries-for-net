@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// set.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AvailabilitySetInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class AvailabilitySetInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the AvailabilitySetInner class.
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// machines in the availability set.</param>
         /// <param name="statuses">The resource status information.</param>
         /// <param name="sku">Sku of the availability set</param>
-        public AvailabilitySetInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource> virtualMachines = default(IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource>), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
+        public AvailabilitySetInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), int? platformUpdateDomainCount = default(int?), int? platformFaultDomainCount = default(int?), IList<Management.ResourceManager.Fluent.SubResource> virtualMachines = default(IList<Management.ResourceManager.Fluent.SubResource>), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), Sku sku = default(Sku))
             : base(location, id, name, type, tags)
         {
             PlatformUpdateDomainCount = platformUpdateDomainCount;
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// availability set.
         /// </summary>
         [JsonProperty(PropertyName = "properties.virtualMachines")]
-        public IList<Microsoft.Azure.Management.ResourceManager.Fluent.SubResource> VirtualMachines { get; set; }
+        public IList<Management.ResourceManager.Fluent.SubResource> VirtualMachines { get; set; }
 
         /// <summary>
         /// Gets the resource status information.
@@ -98,5 +99,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         [JsonProperty(PropertyName = "sku")]
         public Sku Sku { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+        }
     }
 }

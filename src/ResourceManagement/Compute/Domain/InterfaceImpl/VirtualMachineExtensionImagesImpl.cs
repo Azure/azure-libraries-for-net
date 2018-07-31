@@ -1,12 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.Collections.Generic;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     internal partial class VirtualMachineExtensionImagesImpl
     {
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="region">The selected Azure region.</param>
         /// <return>A representation of the deferred computation of this call, returning the requested resources.</return>
-        async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage>.ListByRegionAsync(Region region, CancellationToken cancellationToken)
+        async Task<IPagedCollection<IVirtualMachineExtensionImage>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage>.ListByRegionAsync(Region region, CancellationToken cancellationToken)
         {
             return await this.ListByRegionAsync(region, cancellationToken);
         }
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="regionName">The name of an Azure region.</param>
         /// <return>A representation of the deferred computation of this call, returning the requested resources.</return>
-        async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage>.ListByRegionAsync(string regionName, CancellationToken cancellationToken)
+        async Task<IPagedCollection<IVirtualMachineExtensionImage>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineExtensionImage>.ListByRegionAsync(string regionName, CancellationToken cancellationToken)
         {
             return await this.ListByRegionAsync(regionName, cancellationToken);
         }
