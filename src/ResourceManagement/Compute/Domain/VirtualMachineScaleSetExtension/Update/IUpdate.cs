@@ -3,12 +3,6 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Update
 {
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
     using System.Collections.Generic;
 
     /// <summary>

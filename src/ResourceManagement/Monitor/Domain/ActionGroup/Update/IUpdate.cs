@@ -3,17 +3,6 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
 {
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.ActionDefinition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-
     /// <summary>
     /// The template for an update operation, containing all the settings that can be modified.
     /// </summary>
