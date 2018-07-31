@@ -1008,6 +1008,20 @@ namespace Microsoft.Azure.Management.Network.Fluent
             return this;
         }
 
+        public ApplicationGatewayImpl WithEnableHttp2()
+        {
+            Inner.EnableHttp2 = true;
+            return this;
+        }
+
+        #endregion
+
+        #region Withouters
+        public ApplicationGatewayImpl WithoutEnableHttp2()
+        {
+            Inner.EnableHttp2 = false;
+            return this;
+        }
         #endregion
 
         #region Accessors

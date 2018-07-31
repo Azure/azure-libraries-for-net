@@ -174,6 +174,17 @@ namespace Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithAuthenticationCertificate,
         Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IWithRedirectConfiguration
     {
+        /// <summary>
+        /// Enables HTTP2 traffic on the Application Gateway.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithEnableHttp2();
+
+        /// <summary>
+        /// Disables HTTP2 traffic on the Application Gateway.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        Microsoft.Azure.Management.Network.Fluent.ApplicationGateway.Update.IUpdate WithoutEnableHttp2();
     }
 
     /// <summary>
