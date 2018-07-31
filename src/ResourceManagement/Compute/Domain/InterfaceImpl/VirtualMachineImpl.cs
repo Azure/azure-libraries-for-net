@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithLicenseType(string licenseType)
         {
-            return this.WithLicenseType(licenseType) as VirtualMachine.Update.IUpdate;
+            return this.WithLicenseType(licenseType);
         }
 
         /// <summary>
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithCreate.WithLicenseType(String licenseType)
         {
-            return this.WithLicenseType(licenseType) as VirtualMachine.Definition.IWithCreate;
+            return this.WithLicenseType(licenseType);
         }
 
         /// <summary>
