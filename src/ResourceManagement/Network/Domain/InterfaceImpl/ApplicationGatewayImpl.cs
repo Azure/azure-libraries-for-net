@@ -1296,5 +1296,42 @@ namespace Microsoft.Azure.Management.Network.Fluent
                 return this.AvailabilityZones();
             }
         }
+
+        /// <summary>
+        /// Enables HTTP2 traffic on the Application Gateway.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IUpdate.WithEnableHttp2()
+        {
+            return this.WithEnableHttp2();
+        }
+
+        /// <summary>
+        /// Disables HTTP2 traffic on the Application Gateway.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IUpdate.WithoutEnableHttp2()
+        {
+            return this.WithoutEnableHttp2() ;
+        }
+
+        /// <summary>
+        /// Enables HTTP2 traffic on the Application Gateway.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+        ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithCreate.WithEnableHttp2()
+        {
+            return this.WithEnableHttp2();
+        }
+
+        /// <summary>
+        /// Disables HTTP2 traffic on the Application Gateway.
+        /// </summary>
+        /// <returns>The next stage of the definition.</returns>
+       ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithCreate.WithoutEnableHttp2()
+        {
+            return this.WithoutEnableHttp2();
+        }
+
     }
 }
