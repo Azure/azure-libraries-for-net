@@ -663,6 +663,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        public VirtualMachineImpl WithLicenseType(String licenseType)
+        {
+            Inner.LicenseType = licenseType;
+            return this;
+        }
+
         ///GENMHASH:619ABAAD3F8A01F52AFF9E0735BDAE77:EC0CEDDCD615AA4EFB41DF60CEE2588B
         public VirtualMachineImpl WithSize(VirtualMachineSizeTypes size)
         {

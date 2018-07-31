@@ -646,6 +646,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Specifies the license-type for the virtual machine.
+        /// </summary>
+        /// <param name="licenseType">The license-type that should be used for the virtual machine.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IUpdate.WithLicenseType(string licenseType)
+        {
+            return this.WithLicenseType(licenseType);
+        }
+
+        /// <summary>
         /// Specifies the caching type for the OS disk.
         /// </summary>
         /// <param name="cachingType">A caching type.</param>
@@ -683,6 +693,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithVMSize.WithSize(string sizeName)
         {
             return this.WithSize(sizeName);
+        }
+
+        /// <summary>
+        /// Specifies the license-type for the virtual machine.
+        /// </summary>
+        /// <param name="licenseType">The license-type that should be used for the virtual machine.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithCreate VirtualMachine.Definition.IWithCreate.WithLicenseType(String licenseType)
+        {
+            return this.WithLicenseType(licenseType);
         }
 
         /// <summary>
