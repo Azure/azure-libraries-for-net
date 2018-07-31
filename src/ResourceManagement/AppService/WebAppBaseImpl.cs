@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 this.SiteConfig = new SiteConfigResourceInner();
             }
-            this.SiteConfig.PythonVersion = version.ToString();
+            this.SiteConfig.PythonVersion = (version == Fluent.PythonVersion.Off) ? "" : version.ToString();
             return (FluentImplT)this;
         }
 
@@ -1130,7 +1130,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 this.SiteConfig = new SiteConfigResourceInner();
             }
-            this.SiteConfig.PhpVersion = version.ToString();
+            this.SiteConfig.PhpVersion = (version == Fluent.PhpVersion.Off) ? "" : version.ToString();
             return (FluentImplT)this;
         }
 

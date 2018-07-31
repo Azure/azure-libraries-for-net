@@ -1,19 +1,78 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition;
-    using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
-    using Microsoft.Azure.Management.Storage.Fluent;
-    using Microsoft.Rest;
 
     internal partial class VirtualMachinesImpl
     {
+        /// <summary>
+        /// Gets available virtual machine sizes.
+        /// </summary>
+        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSizes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Sizes
+        {
+            get
+            {
+                return this.Sizes();
+            }
+        }
+
+        /// <summary>
+        /// Captures the virtual machine by copying virtual hard disks of the VM and returns template as a JSON
+        /// string that can be used to create similar VMs.
+        /// </summary>
+        /// <param name="groupName">The resource group name.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <param name="containerName">Destination container name to store the captured VHD.</param>
+        /// <param name="vhdPrefix">The prefix for the VHD holding captured image.</param>
+        /// <param name="overwriteVhd">Whether to overwrites destination VHD if it exists.</param>
+        /// <return>The template as JSON string.</return>
+        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Capture(string groupName, string name, string containerName, string vhdPrefix, bool overwriteVhd)
+        {
+            return this.Capture(groupName, name, containerName, vhdPrefix, overwriteVhd);
+        }
+
+        /// <summary>
+        /// Captures the virtual machine by copying virtual hard disks of the VM asynchronously.
+        /// </summary>
+        /// <param name="groupName">The resource group name.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <param name="containerName">Destination container name to store the captured VHD.</param>
+        /// <param name="vhdPrefix">The prefix for the VHD holding captured image.</param>
+        /// <param name="overwriteVhd">Whether to overwrites destination VHD if it exists.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task<string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.CaptureAsync(string groupName, string name, string containerName, string vhdPrefix, bool overwriteVhd, CancellationToken cancellationToken)
+        {
+            return await this.CaptureAsync(groupName, name, containerName, vhdPrefix, overwriteVhd, cancellationToken);
+        }
+
+        /// <summary>
+        /// Shuts down the virtual machine and releases the compute resources.
+        /// </summary>
+        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
+        /// <param name="name">The virtual machine name.</param>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Deallocate(string groupName, string name)
+        {
+
+            this.Deallocate(groupName, name);
+        }
+
+        /// <summary>
+        /// Shuts down the virtual machine and releases the compute resources asynchronously.
+        /// </summary>
+        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.DeallocateAsync(string groupName, string name, CancellationToken cancellationToken)
+        {
+
+            await this.DeallocateAsync(groupName, name, cancellationToken);
+        }
+
         /// <summary>
         /// Begins a definition for a new resource.
         /// This is the beginning of the builder pattern used to create top level resources
@@ -34,36 +93,83 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets available virtual machine sizes.
+        /// Generalizes the virtual machine.
         /// </summary>
-        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSizes Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Sizes
+        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
+        /// <param name="name">The virtual machine name.</param>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Generalize(string groupName, string name)
         {
-            get
-            {
-                return this.Sizes();
-            }
+
+            this.Generalize(groupName, name);
         }
 
         /// <summary>
-        /// Starts the virtual machine asynchronously.
+        /// Generalizes the virtual machine asynchronously.
         /// </summary>
         /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
         /// <param name="name">The virtual machine name.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.StartAsync(string groupName, string name, CancellationToken cancellationToken)
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.GeneralizeAsync(string groupName, string name, CancellationToken cancellationToken)
         {
 
-            await this.StartAsync(groupName, name, cancellationToken);
+            await this.GeneralizeAsync(groupName, name, cancellationToken);
         }
 
         /// <summary>
-        /// Restarts the virtual machine asynchronously.
+        /// Migrates the virtual machine with unmanaged disks to use managed disks.
         /// </summary>
-        /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.RestartAsync(string groupName, string name, CancellationToken cancellationToken)
+        /// <param name="groupName">The resource group name.</param>
+        /// <param name="name">The virtual machine name.</param>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.MigrateToManaged(string groupName, string name)
         {
 
-            await this.RestartAsync(groupName, name, cancellationToken);
+            this.MigrateToManaged(groupName, name);
+        }
+
+        /// <summary>
+        /// Converts (migrates) the virtual machine with un-managed disks to use managed disk asynchronously.
+        /// </summary>
+        /// <param name="groupName">The resource group name.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.MigrateToManagedAsync(string groupName, string name, CancellationToken cancellationToken)
+        {
+
+            await this.MigrateToManagedAsync(groupName, name, cancellationToken);
+        }
+
+        /// <summary>
+        /// Powers off (stops) a virtual machine.
+        /// </summary>
+        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
+        /// <param name="name">The virtual machine name.</param>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.PowerOff(string groupName, string name)
+        {
+
+            this.PowerOff(groupName, name);
+        }
+
+        /// <summary>
+        /// Powers off (stops) the virtual machine asynchronously.
+        /// </summary>
+        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.PowerOffAsync(string groupName, string name, CancellationToken cancellationToken)
+        {
+
+            await this.PowerOffAsync(groupName, name, cancellationToken);
+        }
+
+        /// <summary>
+        /// Redeploys a virtual machine.
+        /// </summary>
+        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
+        /// <param name="name">The virtual machine name.</param>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Redeploy(string groupName, string name)
+        {
+
+            this.Redeploy(groupName, name);
         }
 
         /// <summary>
@@ -79,6 +185,105 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Restarts a virtual machine.
+        /// </summary>
+        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
+        /// <param name="name">The virtual machine name.</param>
+        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Restart(string groupName, string name)
+        {
+
+            this.Restart(groupName, name);
+        }
+
+        /// <summary>
+        /// Restarts the virtual machine asynchronously.
+        /// </summary>
+        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.RestartAsync(string groupName, string name, CancellationToken cancellationToken)
+        {
+
+            await this.RestartAsync(groupName, name, cancellationToken);
+        }
+
+        /// <summary>
+        /// Run commands in a virtual machine.
+        /// </summary>
+        /// <param name="groupName">The resource group name.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <param name="inputCommand">Command input.</param>
+        /// <return>Result of execution.</return>
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunCommand(string groupName, string name, RunCommandInput inputCommand)
+        {
+            return this.RunCommand(groupName, name, inputCommand);
+        }
+
+        /// <summary>
+        /// Run commands in a virtual machine asynchronously.
+        /// </summary>
+        /// <param name="groupName">The resource group name.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <param name="inputCommand">Command input.</param>
+        /// <return>Handle to the asynchronous execution.</return>
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunCommandAsync(string groupName, string name, RunCommandInput inputCommand, CancellationToken cancellationToken)
+        {
+            return await this.RunCommandAsync(groupName, name, inputCommand, cancellationToken);
+        }
+
+        /// <summary>
+        /// Run shell script in a virtual machine.
+        /// </summary>
+        /// <param name="groupName">The resource group name.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <param name="scriptLines">PowerShell script lines.</param>
+        /// <param name="scriptParameters">Script parameters.</param>
+        /// <return>Result of PowerShell script execution.</return>
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunPowerShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        {
+            return this.RunPowerShellScript(groupName, name, scriptLines, scriptParameters);
+        }
+
+        /// <summary>
+        /// Run shell script in a virtual machine asynchronously.
+        /// </summary>
+        /// <param name="groupName">The resource group name.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <param name="scriptLines">PowerShell script lines.</param>
+        /// <param name="scriptParameters">Script parameters.</param>
+        /// <return>Handle to the asynchronous execution.</return>
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunPowerShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
+        {
+            return await this.RunPowerShellScriptAsync(groupName, name, scriptLines, scriptParameters, cancellationToken);
+        }
+
+        /// <summary>
+        /// Run shell script in a virtual machine.
+        /// </summary>
+        /// <param name="groupName">The resource group name.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <param name="scriptLines">Shell script lines.</param>
+        /// <param name="scriptParameters">Script parameters.</param>
+        /// <return>Result of shell script execution.</return>
+        Models.RunCommandResultInner Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunShellScript(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters)
+        {
+            return this.RunShellScript(groupName, name, scriptLines, scriptParameters);
+        }
+
+        /// <summary>
+        /// Run shell script in a virtual machine asynchronously.
+        /// </summary>
+        /// <param name="groupName">The resource group name.</param>
+        /// <param name="name">The virtual machine name.</param>
+        /// <param name="scriptLines">Shell script lines.</param>
+        /// <param name="scriptParameters">Script parameters.</param>
+        /// <return>Handle to the asynchronous execution.</return>
+        async Task<Models.RunCommandResultInner> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinesBeta.RunShellScriptAsync(string groupName, string name, IList<string> scriptLines, IList<Models.RunCommandInputParameter> scriptParameters, CancellationToken cancellationToken)
+        {
+            return await this.RunShellScriptAsync(groupName, name, scriptLines, scriptParameters, cancellationToken);
+        }
+
+        /// <summary>
         /// Starts a virtual machine.
         /// </summary>
         /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
@@ -90,137 +295,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Captures the virtual machine by copying virtual hard disks of the VM asynchronously.
-        /// </summary>
-        /// <param name="groupName">The resource group name.</param>
-        /// <param name="name">The virtual machine name.</param>
-        /// <param name="containerName">Destination container name to store the captured VHD.</param>
-        /// <param name="vhdPrefix">The prefix for the VHD holding captured image.</param>
-        /// <param name="overwriteVhd">Whether to overwrites destination VHD if it exists.</param>
-        /// <return>A representation of the deferred computation of this call.</return>
-        async Task<string> Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.CaptureAsync(string groupName, string name, string containerName, string vhdPrefix, bool overwriteVhd, CancellationToken cancellationToken)
-        {
-            return await this.CaptureAsync(groupName, name, containerName, vhdPrefix, overwriteVhd, cancellationToken);
-        }
-
-        /// <summary>
-        /// Migrates the virtual machine with unmanaged disks to use managed disks.
-        /// </summary>
-        /// <param name="groupName">The resource group name.</param>
-        /// <param name="name">The virtual machine name.</param>
-        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.MigrateToManaged(string groupName, string name)
-        {
-            this.MigrateToManaged(groupName, name);
-        }
-
-        /// <summary>
-        /// Converts (migrates) the virtual machine with un-managed disks to use managed disk asynchronously.
-        /// </summary>
-        /// <param name="groupName">The resource group name.</param>
-        /// <param name="name">The virtual machine name.</param>
-        /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.MigrateToManagedAsync(string groupName, string name, CancellationToken cancellationToken)
-        {
-            await this.MigrateToManagedAsync(groupName, name, cancellationToken);
-        }
-
-        /// <summary>
-        /// Shuts down the virtual machine and releases the compute resources asynchronously.
+        /// Starts the virtual machine asynchronously.
         /// </summary>
         /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
         /// <param name="name">The virtual machine name.</param>
         /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.DeallocateAsync(string groupName, string name, CancellationToken cancellationToken)
+        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.StartAsync(string groupName, string name, CancellationToken cancellationToken)
         {
-            await this.DeallocateAsync(groupName, name, cancellationToken);
-        }
 
-        /// <summary>
-        /// Powers off (stops) a virtual machine.
-        /// </summary>
-        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
-        /// <param name="name">The virtual machine name.</param>
-        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.PowerOff(string groupName, string name)
-        {
-            this.PowerOff(groupName, name);
+            await this.StartAsync(groupName, name, cancellationToken);
         }
-
-        /// <summary>
-        /// Generalizes the virtual machine.
-        /// </summary>
-        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
-        /// <param name="name">The virtual machine name.</param>
-        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Generalize(string groupName, string name)
-        {
-            this.Generalize(groupName, name);
-        }
-
-        /// <summary>
-        /// Redeploys a virtual machine.
-        /// </summary>
-        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
-        /// <param name="name">The virtual machine name.</param>
-        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Redeploy(string groupName, string name)
-        {
-            this.Redeploy(groupName, name);
-        }
-
-        /// <summary>
-        /// Powers off (stops) the virtual machine asynchronously.
-        /// </summary>
-        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
-        /// <param name="name">The virtual machine name.</param>
-        /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.PowerOffAsync(string groupName, string name, CancellationToken cancellationToken)
-        {
-            await this.PowerOffAsync(groupName, name, cancellationToken);
-        }
-
-        /// <summary>
-        /// Captures the virtual machine by copying virtual hard disks of the VM and returns template as a JSON
-        /// string that can be used to create similar VMs.
-        /// </summary>
-        /// <param name="groupName">The resource group name.</param>
-        /// <param name="name">The virtual machine name.</param>
-        /// <param name="containerName">Destination container name to store the captured VHD.</param>
-        /// <param name="vhdPrefix">The prefix for the VHD holding captured image.</param>
-        /// <param name="overwriteVhd">Whether to overwrites destination VHD if it exists.</param>
-        /// <return>The template as JSON string.</return>
-        string Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Capture(string groupName, string name, string containerName, string vhdPrefix, bool overwriteVhd)
-        {
-            return this.Capture(groupName, name, containerName, vhdPrefix, overwriteVhd);
-        }
-
-        /// <summary>
-        /// Restarts a virtual machine.
-        /// </summary>
-        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
-        /// <param name="name">The virtual machine name.</param>
-        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Restart(string groupName, string name)
-        {
-            this.Restart(groupName, name);
-        }
-
-        /// <summary>
-        /// Shuts down the virtual machine and releases the compute resources.
-        /// </summary>
-        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
-        /// <param name="name">The virtual machine name.</param>
-        void Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.Deallocate(string groupName, string name)
-        {
-            this.Deallocate(groupName, name);
-        }
-
-        /// <summary>
-        /// Generalizes the virtual machine asynchronously.
-        /// </summary>
-        /// <param name="groupName">The name of the resource group the virtual machine is in.</param>
-        /// <param name="name">The virtual machine name.</param>
-        /// <return>A representation of the deferred computation of this call.</return>
-        async Task Microsoft.Azure.Management.Compute.Fluent.IVirtualMachines.GeneralizeAsync(string groupName, string name, CancellationToken cancellationToken)
-        {
-            await this.GeneralizeAsync(groupName, name, cancellationToken);
-        }
-
     }
 }

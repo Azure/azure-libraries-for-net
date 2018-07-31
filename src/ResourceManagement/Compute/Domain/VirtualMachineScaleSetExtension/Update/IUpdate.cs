@@ -1,7 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Update
 {
+    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
+    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
     using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
     using System.Collections.Generic;
@@ -14,6 +19,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Update.IWithAutoUpgradeMinorVersion,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Update.IWithSettings
     {
+
     }
 
     /// <summary>
@@ -22,6 +28,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
     /// </summary>
     public interface IWithAutoUpgradeMinorVersion
     {
+
         /// <summary>
         /// Enables auto-upgrading of the extension with minor versions.
         /// </summary>
@@ -40,6 +47,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
     /// </summary>
     public interface IWithSettings
     {
+
         /// <summary>
         /// Specifies a private settings entry.
         /// </summary>
@@ -47,6 +55,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
         /// <param name="value">The value of the private settings entry.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Update.IUpdate WithProtectedSetting(string key, object value);
+
+        /// <summary>
+        /// Specifies private settings.
+        /// </summary>
+        /// <param name="settings">The private settings.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Update.IUpdate WithProtectedSettings(IDictionary<string, object> settings);
 
         /// <summary>
         /// Specifies a public settings entry.
@@ -62,12 +77,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtens
         /// <param name="settings">The public settings.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Update.IUpdate WithPublicSettings(IDictionary<string, object> settings);
-
-        /// <summary>
-        /// Specifies private settings.
-        /// </summary>
-        /// <param name="settings">The private settings.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Update.IUpdate WithProtectedSettings(IDictionary<string, object> settings);
     }
 }

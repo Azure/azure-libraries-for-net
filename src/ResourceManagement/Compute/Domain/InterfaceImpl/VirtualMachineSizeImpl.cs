@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
@@ -8,17 +9,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     internal partial class VirtualMachineSizeImpl
     {
         /// <summary>
-        /// Gets the name of the resource.
-        /// </summary>
-        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName.Name
-        {
-            get
-            {
-                return this.Name();
-            }
-        }
-
-        /// <summary>
         /// Gets the maximum number of data disks allowed by a VM size.
         /// </summary>
         int Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize.MaxDataDiskCount
@@ -26,6 +16,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             get
             {
                 return this.MaxDataDiskCount();
+            }
+        }
+
+        /// <summary>
+        /// Gets the memory size supported by the VM size.
+        /// </summary>
+        int Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize.MemoryInMB
+        {
+            get
+            {
+                return this.MemoryInMB();
+            }
+        }
+
+        /// <summary>
+        /// Gets the name of the resource.
+        /// </summary>
+        string Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName.Name
+        {
+            get
+            {
+                return this.Name();
             }
         }
 
@@ -59,17 +71,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             get
             {
                 return this.ResourceDiskSizeInMB();
-            }
-        }
-
-        /// <summary>
-        /// Gets the memory size supported by the VM size.
-        /// </summary>
-        int Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSize.MemoryInMB
-        {
-            get
-            {
-                return this.MemoryInMB();
             }
         }
     }

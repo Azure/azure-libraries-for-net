@@ -571,5 +571,54 @@ namespace Fluent.Tests.Compute.VirtualMachine
                 }
             }
         }
+
+        [Fact]
+        public void CanRunScriptOnVM()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var rgName = TestUtilities.GenerateName("rg");
+                var vnetName = TestUtilities.GenerateName("vnet");
+                var vmName = TestUtilities.GenerateName("vm");
+                var pipName = TestUtilities.GenerateName("pip");
+                var publicIPDnsLabel = TestUtilities.GenerateName("abc");
+                var region = Region.USEast;
+
+                var azure = TestHelper.CreateRollupClient();
+                try
+                {
+                    // Create
+                    var virtualMachine = azure.VirtualMachines.Define(vmName)
+                            .WithRegion(region)
+                            .WithNewResourceGroup(rgName)
+                            .WithNewPrimaryNetwork("10.0.0.0/28")
+                            .WithPrimaryPrivateIPAddressDynamic()
+                            .WithoutPrimaryPublicIPAddress()
+                            .WithPopularLinuxImage(KnownLinuxVirtualMachineImage.UbuntuServer16_04_Lts)
+                            .WithRootUsername("firstuser")
+                            .WithRootPassword("afh123RVS!")
+                            .Create();
+
+                    var installGit = new List<string>();
+                    installGit.Add("sudo apt-get update");
+                    installGit.Add("sudo apt-get install -y git");
+
+                    var runResult = virtualMachine.RunShellScript(installGit, new List<RunCommandInputParameter>());
+                    Assert.NotNull(runResult);
+                    Assert.NotNull(runResult.Value);
+                    Assert.True(runResult.Value.Count > 0);
+                }
+                finally
+                {
+                    try
+                    {
+                        azure.ResourceGroups.BeginDeleteByName(rgName);
+                    }
+                    catch
+                    { }
+                }
+            }
+        }
+
     }
 }

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this IntervalInMins value)
         {
-            switch( value )
+            switch (value)
             {
                 case IntervalInMins.ThreeMins:
                     return "ThreeMins";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static IntervalInMins? ParseIntervalInMins(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "ThreeMins":
                     return IntervalInMins.ThreeMins;

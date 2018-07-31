@@ -20,6 +20,30 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     {
         private VirtualMachineInstanceView virtualMachineInstanceView;
 
+        public async Task<Models.VirtualMachineInstanceView> RefreshInstanceViewAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var instanceViewInner = await Parent.Manager.Inner.VirtualMachineScaleSetVMs.GetInstanceViewAsync(
+                this.Parent.ResourceGroupName,
+                this.Parent.Name,
+                this.InstanceId());
+
+            if (instanceViewInner != null)
+            {
+                this.virtualMachineInstanceView = new VirtualMachineInstanceView()
+                {
+                    BootDiagnostics = instanceViewInner.BootDiagnostics,
+                    Disks = instanceViewInner.Disks,
+                    Extensions = instanceViewInner.Extensions,
+                    PlatformFaultDomain = instanceViewInner.PlatformFaultDomain,
+                    PlatformUpdateDomain = instanceViewInner.PlatformUpdateDomain,
+                    RdpThumbPrint = instanceViewInner.RdpThumbPrint,
+                    Statuses = instanceViewInner.Statuses,
+                    VmAgent = instanceViewInner.VmAgent
+                };
+            }
+            return this.virtualMachineInstanceView;
+        }
+
         ///GENMHASH:7A41C20BB6F19CCDAC03072604BF281B:10AB7511A9B5C284B8E2E1F35126DD60
         public string WindowsTimeZone()
         {
@@ -56,26 +80,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:F5949CB4AFA8DD0B8DED0F369B12A8F6:E8FB723EB69B1FF154465213A3298460
         public VirtualMachineInstanceView RefreshInstanceView()
         {
-            VirtualMachineScaleSetVMInstanceViewInner instanceViewInner = Management.ResourceManager.Fluent.Core.Extensions.Synchronize(() => Parent.Manager.Inner.VirtualMachineScaleSetVMs.GetInstanceViewAsync(
-                Parent.ResourceGroupName,
-                Parent.Name,
-                InstanceId()));
-
-            if (instanceViewInner != null)
-            {
-                this.virtualMachineInstanceView = new VirtualMachineInstanceView()
-                {
-                    BootDiagnostics = instanceViewInner.BootDiagnostics,
-                    Disks = instanceViewInner.Disks,
-                    Extensions = instanceViewInner.Extensions,
-                    PlatformFaultDomain = instanceViewInner.PlatformFaultDomain,
-                    PlatformUpdateDomain = instanceViewInner.PlatformUpdateDomain,
-                    RdpThumbPrint = instanceViewInner.RdpThumbPrint,
-                    Statuses = instanceViewInner.Statuses,
-                    VmAgent = instanceViewInner.VmAgent
-                };
-            }
-            return this.virtualMachineInstanceView;
+            return ResourceManager.Fluent.Core.Extensions.Synchronize(() => RefreshInstanceViewAsync());
         }
 
         ///GENMHASH:667E734583F577A898C6389A3D9F4C09:E31C3E6AAB81275E957AEE7FFC644CBF
@@ -225,7 +230,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             if (Inner.HardwareProfile != null && Inner.HardwareProfile.VmSize != null)
             {
-                return VirtualMachineSizeTypes.Parse(Inner.HardwareProfile.VmSize);
+                return Inner.HardwareProfile.VmSize;
             }
             if (Sku() != null && Sku().Name != null)
             {

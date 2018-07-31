@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this ResourceSkuRestrictionsReasonCode value)
         {
-            switch( value )
+            switch (value)
             {
                 case ResourceSkuRestrictionsReasonCode.QuotaId:
                     return "QuotaId";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static ResourceSkuRestrictionsReasonCode? ParseResourceSkuRestrictionsReasonCode(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "QuotaId":
                     return ResourceSkuRestrictionsReasonCode.QuotaId;

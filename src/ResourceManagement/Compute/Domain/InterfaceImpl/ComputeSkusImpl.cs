@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
@@ -8,6 +9,35 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
     internal sealed partial class ComputeSkusImpl
     {
+        /// <summary>
+        /// Gets the manager client of this resource type.
+        /// </summary>
+        Microsoft.Azure.Management.Compute.Fluent.IComputeManager Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.Compute.Fluent.IComputeManager>.Manager
+        {
+            get
+            {
+                return this.Manager();
+            }
+        }
+
+        /// <summary>
+        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// </summary>
+        /// <return>List of resources.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>.List()
+        {
+            return this.List();
+        }
+
+        /// <summary>
+        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// </summary>
+        /// <return>List of resources.</return>
+        async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IComputeSku>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
+        {
+            return await this.ListAsync(loadAllPages, cancellationToken);
+        }
+
         /// <summary>
         /// List all the resources of the specified type in the specified region.
         /// </summary>
@@ -26,6 +56,28 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByRegion<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>.ListByRegion(Region region)
         {
             return this.ListByRegion(region);
+        }
+
+        /// <summary>
+        /// Lists all the skus with the specified resource type in the given region.
+        /// </summary>
+        /// <param name="region">The region.</param>
+        /// <param name="resourceType">The resource type.</param>
+        /// <return>The skus list.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku> Microsoft.Azure.Management.Compute.Fluent.IComputeSkus.ListbyRegionAndResourceType(Region region, ComputeResourceType resourceType)
+        {
+            return this.ListbyRegionAndResourceType(region, resourceType);
+        }
+
+        /// <summary>
+        /// Lists all the skus with the specified resource type in the given region.
+        /// </summary>
+        /// <param name="region">The region.</param>
+        /// <param name="resourceType">The resource type.</param>
+        /// <return>An observable that emits skus.</return>
+        async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>> Microsoft.Azure.Management.Compute.Fluent.IComputeSkus.ListbyRegionAndResourceTypeAsync(Region region, ComputeResourceType resourceType, CancellationToken cancellationToken)
+        {
+            return await this.ListbyRegionAndResourceTypeAsync(region, resourceType, cancellationToken);
         }
 
         /// <summary>
@@ -52,38 +104,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Lists all the skus with the specified resource type.
         /// </summary>
         /// <param name="resourceType">The compute resource type.</param>
-        /// <return>An observable that emits skus.</return>
-        async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>> Microsoft.Azure.Management.Compute.Fluent.IComputeSkus.ListByResourceTypeAsync(ComputeResourceType resourceType, CancellationToken cancellationToken)
-        {
-            return await this.ListByResourceTypeAsync(resourceType, cancellationToken);
-        }
-
-        /// <summary>
-        /// Lists all the skus with the specified resource type in the given region.
-        /// </summary>
-        /// <param name="region">The region.</param>
-        /// <param name="resourceType">The resource type.</param>
-        /// <return>The skus list.</return>
-        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku> Microsoft.Azure.Management.Compute.Fluent.IComputeSkus.ListbyRegionAndResourceType(Region region, ComputeResourceType resourceType)
-        {
-            return this.ListbyRegionAndResourceType(region, resourceType);
-        }
-
-        /// <summary>
-        /// Lists all the skus with the specified resource type in the given region.
-        /// </summary>
-        /// <param name="region">The region.</param>
-        /// <param name="resourceType">The resource type.</param>
-        /// <return>An observable that emits skus.</return>
-        async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>> Microsoft.Azure.Management.Compute.Fluent.IComputeSkus.ListbyRegionAndResourceTypeAsync(Region region, ComputeResourceType resourceType, CancellationToken cancellationToken)
-        {
-            return await this.ListbyRegionAndResourceTypeAsync(region, resourceType, cancellationToken);
-        }
-
-        /// <summary>
-        /// Lists all the skus with the specified resource type.
-        /// </summary>
-        /// <param name="resourceType">The compute resource type.</param>
         /// <return>The skus list.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku> Microsoft.Azure.Management.Compute.Fluent.IComputeSkus.ListByResourceType(ComputeResourceType resourceType)
         {
@@ -91,32 +111,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Lists all the resources of the specified type in the currently selected subscription.
+        /// Lists all the skus with the specified resource type.
         /// </summary>
-        /// <return>List of resources.</return>
-        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Compute.Fluent.IComputeSku> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>.List()
+        /// <param name="resourceType">The compute resource type.</param>
+        /// <return>An observable that emits skus.</return>
+        async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>> Microsoft.Azure.Management.Compute.Fluent.IComputeSkus.ListByResourceTypeAsync(ComputeResourceType resourceType, CancellationToken cancellationToken)
         {
-            return this.List();
-        }
-
-        /// <summary>
-        /// Lists all the resources of the specified type in the currently selected subscription.
-        /// </summary>
-        /// <return>List of resources.</return>
-        async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IComputeSku>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Compute.Fluent.IComputeSku>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
-        {
-            return await this.ListAsync(loadAllPages, cancellationToken);
-        }
-
-        /// <summary>
-        /// Gets the manager client of this resource type.
-        /// </summary>
-        Microsoft.Azure.Management.Compute.Fluent.IComputeManager Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.Compute.Fluent.IComputeManager>.Manager
-        {
-            get
-            {
-                return this.Manager();
-            }
+            return await this.ListByResourceTypeAsync(resourceType, cancellationToken);
         }
     }
 }

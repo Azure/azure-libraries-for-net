@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbXB1dGUuaW1wbGVtZW50YXRpb24uQ29tcHV0ZVNrdUltcGw=
     internal sealed partial class ComputeSkuImpl : IComputeSku
     {
-        private readonly ResourceSku inner;
+        private readonly ResourceSkuInner inner;
 
-        ResourceSku IHasInner<ResourceSku>.Inner => this.Inner();
+        ResourceSkuInner IHasInner<ResourceSkuInner>.Inner => this.Inner();
 
         ///GENMHASH:8D9D2C9D2BDF48FE8D9C24EBA1CF6ACD:BC4B1282CA708DC220050F834F17A184
-        internal ComputeSkuImpl(ResourceSku inner)
+        internal ComputeSkuImpl(ResourceSkuInner inner)
         {
             this.inner = inner;
         }
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:C852FF1A7022E39B3C33C4B996B5E6D6:7F78D90F6498B472DCB9BE14FD336BC9
-        public ResourceSku Inner()
+        public ResourceSkuInner Inner()
         {
             return this.inner;
         }

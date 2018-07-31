@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     /// <summary>
     /// LogAnalytics operation status response
     /// </summary>
-    public partial class LogAnalyticsOperationResultInner : OperationStatusResponseInner
+    public partial class LogAnalyticsOperationResultInner
     {
         /// <summary>
         /// Initializes a new instance of the LogAnalyticsOperationResultInner
@@ -29,14 +29,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Initializes a new instance of the LogAnalyticsOperationResultInner
         /// class.
         /// </summary>
-        /// <param name="name">Operation ID</param>
-        /// <param name="status">Operation status</param>
-        /// <param name="startTime">Start time of the operation</param>
-        /// <param name="endTime">End time of the operation</param>
-        /// <param name="error">Api error</param>
         /// <param name="properties">LogAnalyticsOutput</param>
-        public LogAnalyticsOperationResultInner(string name = default(string), string status = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), ApiError error = default(ApiError), LogAnalyticsOutput properties = default(LogAnalyticsOutput))
-            : base(name, status, startTime, endTime, error)
+        public LogAnalyticsOperationResultInner(LogAnalyticsOutput properties = default(LogAnalyticsOutput))
         {
             Properties = properties;
             CustomInit();

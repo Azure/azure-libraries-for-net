@@ -55,7 +55,7 @@ namespace Fluent.Tests
                             .WithNewResourceGroup(rgCreatable)
                             .WithLeafDomainLabel(nestedTmProfileDnsLabel)
                             .WithPriorityBasedRouting()
-                            .DefineExternalTargetEndpoint("external-ep-1")
+                            .DefineExternalTargetEndpoint(externalEndpointName21)
                                 .ToFqdn("www.gitbook.com")
                                 .FromRegion(Region.IndiaCentral)
                                 .Attach()
@@ -96,15 +96,27 @@ namespace Fluent.Tests
 
                     Assert.Equal(1, updatedProfile.AzureEndpoints.Count);
                     Assert.True(updatedProfile.AzureEndpoints.ContainsKey(azureEndpointName));
+                    Assert.Single(updatedProfile.ExternalEndpoints);
+                    Assert.True(updatedProfile.ExternalEndpoints.ContainsKey(externalEndpointName21));
 
                     var updatedProfileFromGet = azure.TrafficManagerProfiles.GetById(updatedProfile.Id);
                     Assert.Equal(1, updatedProfileFromGet.AzureEndpoints.Count);
                     Assert.True(updatedProfileFromGet.AzureEndpoints.ContainsKey(azureEndpointName));
+                    Assert.Single(updatedProfileFromGet.ExternalEndpoints);
+                    Assert.True(updatedProfileFromGet.ExternalEndpoints.ContainsKey(externalEndpointName21));
 
                     nestedProfile.Update()
                         .WithoutEndpoint(azureEndpointName)
                         .Apply();
 
+                    Assert.Equal(0, nestedProfile.AzureEndpoints.Count);
+                    Assert.Single(nestedProfile.ExternalEndpoints);
+                    Assert.True(nestedProfile.ExternalEndpoints.ContainsKey(externalEndpointName21));
+                    updatedProfileFromGet = azure.TrafficManagerProfiles.GetById(updatedProfile.Id);
+                    Assert.Equal(0, updatedProfileFromGet.AzureEndpoints.Count);
+                    Assert.Equal(nestedProfile.AzureEndpoints.Count, updatedProfileFromGet.AzureEndpoints.Count);
+                    Assert.Single(updatedProfileFromGet.ExternalEndpoints);
+                    Assert.True(updatedProfileFromGet.ExternalEndpoints.ContainsKey(externalEndpointName21));
                     // end of bugfix
 
                     var profile = azure.TrafficManagerProfiles.Define(tmProfileName)
