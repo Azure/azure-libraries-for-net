@@ -4,9 +4,11 @@
 using Azure.Tests;
 using Fluent.Tests.Common;
 using Microsoft.Azure.Management.AppService.Fluent;
+using Microsoft.Azure.Management.AppService.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -86,6 +88,56 @@ namespace Fluent.Tests.WebApp
                     try
                     {
                         TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName2);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        // Bugfix from github
+        [Fact]
+        public void WebAppWithoutPhp()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                string GroupName1 = TestUtilities.GenerateName("javacsmrg");
+                string WebAppName1 = TestUtilities.GenerateName("java-webapp-");
+                string AppServicePlanName1 = TestUtilities.GenerateName("java-asp-");
+
+                var appServiceManager = TestHelper.CreateAppServiceManager();
+
+                try
+                {
+                    var appServicePlan = appServiceManager.AppServicePlans
+                        .Define(AppServicePlanName1)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName1)
+                        .WithPricingTier(PricingTier.PremiumP1)
+                        .WithOperatingSystem(OperatingSystem.Windows)
+                        .WithPerSiteScaling(false)
+                        .WithCapacity(2)
+                        .Create();
+
+                    var webappSettings = new Dictionary<string, string>();
+                    webappSettings.Add("settingKey", "settingValue");
+
+                    var webApp = appServiceManager.WebApps.Define(WebAppName1)
+                        .WithExistingWindowsPlan(appServicePlan)
+                        .WithExistingResourceGroup(GroupName1)
+                        .WithPythonVersion(PythonVersion.Off)
+                        .WithAppSettings(webappSettings)
+                        .WithConnectionString("connectionName", "connectionValue", ConnectionStringType.Custom)
+                        .WithTag("PR", GroupName1.Split('-').Last())
+                        .WithPhpVersion(PhpVersion.Off)
+                        .WithWebSocketsEnabled(true)
+                        .CreateAsync()
+                        .Result;
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.BeginDeleteByName(GroupName1);
                     }
                     catch { }
                 }
