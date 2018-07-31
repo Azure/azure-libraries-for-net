@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         /// <param name="clientId">the client ID of the application</param>
         /// <param name="tenantId">the tenant ID or domain</param>
         /// <param name="environment">the environment to authenticate to</param>
-        /// <param name="deviceCodeHandler">a user defined function to handle device flow</param>
+        /// <param name="deviceCodeFlowHandler">a user defined function to handle device flow</param>
         /// <returns>an authenticated credentials object</returns>
         public AzureCredentials FromDevice(string clientId, string tenantId, AzureEnvironment environment, Func<DeviceCodeResult, bool> deviceCodeFlowHandler = null)
         {
