@@ -306,7 +306,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                             .AccessManagement
                             .RoleAssignments
                             .ListByScope(network.Id);
-                    var theList = roleAssignmentsForNetwork.ToList();
+
                     bool found = roleAssignmentsForNetwork.Any(r => r.PrincipalId != null && r.PrincipalId.Equals(virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId, StringComparison.OrdinalIgnoreCase));
                     Assert.True(found, $"Expected role assignment not found for the virtual network for local identity {virtualMachine.SystemAssignedManagedServiceIdentityPrincipalId}");
 

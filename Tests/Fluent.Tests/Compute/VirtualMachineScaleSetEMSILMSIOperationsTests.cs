@@ -160,8 +160,6 @@ namespace Fluent.Tests.Compute.VirtualMachineScaleSet
 
                     assignment = LookupRoleAssignmentUsingScopeAndRole(resourceGroup.Id, BuiltInRole.Contributor, implicitlyCreatedIdentity.PrincipalId, azure);
                     Assert.False(assignment == null, "Expected role assignment with ROLE not found for the resource group for identity");
-///
-
 
                     emsiIds = virtualMachineScaleSet.UserAssignedManagedServiceIdentityIds;
 

@@ -572,7 +572,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
             }
         }
 
-
         [Fact]
         public void CanRunScriptOnVM()
         {
