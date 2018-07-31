@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             {
                 var content = await _result.Response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 JObject o = JObject.Parse(content);
-                return o.SelectToken("$")["properties"]["output"].ToString();
+                return o.SelectToken("$")?["properties"]?["output"]?.ToString();
             }
         }
 

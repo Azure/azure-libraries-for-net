@@ -8,12 +8,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using Models;
     using Network.Fluent;
+    using Newtonsoft.Json.Linq;
     using ResourceManager.Fluent.Core;
     using Rest.Azure;
     using Storage.Fluent;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions = Microsoft.Azure.Management.ResourceManager.Fluent.Core.Extensions;
 
     /// <summary>
     /// The implementation for VirtualMachines.
@@ -46,7 +48,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.rbacManager = rbacManager;
             this.vmSizes = new VirtualMachineSizesImpl(computeManager.Inner.VirtualMachineSizes);
         }
-
 
         public RunCommandResultInner RunCommand(string groupName, string name, RunCommandInput inputCommand)
         {
@@ -221,8 +222,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             parameters.DestinationContainerName = containerName;
             parameters.OverwriteVhds = overwriteVhd;
             parameters.VhdPrefix = vhdPrefix;
-            VirtualMachineCaptureResultInner captureResult = await Inner.CaptureAsync(groupName, name, parameters, cancellationToken);
-            return JsonConvert.SerializeObject(captureResult, ((VirtualMachinesOperations) this.Manager.Inner.VirtualMachines).Client.SerializationSettings);
+            using (var _result = await ((VirtualMachinesOperations)Manager.Inner.VirtualMachines).CaptureWithHttpMessagesAsync(groupName, name, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                var content = await _result.Response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                JObject o = JObject.Parse(content);
+                return o.SelectToken("$")?["properties"]?["output"]?.ToString();
+            }
         }
 
         ///GENMHASH:E5D7B16A7B6C705114CC71E8BB2B20E1:3352FEB5932DA51CF51CFE2F1E02A3C7

@@ -42,8 +42,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             this.rbacManager = rbacManager;
         }
 
-
-
         public RunCommandResultInner RunCommandInVMInstance(string groupName, string scaleSetName, string vmId, RunCommandInput inputCommand)
         {
             return Extensions.Synchronize(() => RunCommandVMInstanceAsync(groupName, scaleSetName, vmId, inputCommand));

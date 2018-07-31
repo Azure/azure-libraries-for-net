@@ -545,11 +545,6 @@ namespace Fluent.Tests.Compute.VirtualMachine
                         .WithoutPrimaryInternetFacingLoadBalancerNatPools(inboundNatPoolToRemove) // Remove one NatPool
                         .Apply();
 
-                    // if this works then the problem is in commit and blah blah
-                    Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternetFacingLoadBalancer());
-                    Assert.Equal(2, virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends().Count());
-                    Assert.Equal(1, virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools().Count());
-
                     virtualMachineScaleSet = azure
                         .VirtualMachineScaleSets
                         .GetByResourceGroup(rgName, vmss_name);
