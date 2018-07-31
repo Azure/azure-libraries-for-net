@@ -1303,7 +1303,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <returns>The next stage of the definition.</returns>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IUpdate.WithEnableHttp2()
         {
-            return this.WithEnableHttp2() as ApplicationGateway.Update.IUpdate;
+            return this.WithEnableHttp2();
         }
 
         /// <summary>
@@ -1312,7 +1312,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <returns>The next stage of the definition.</returns>
         ApplicationGateway.Update.IUpdate ApplicationGateway.Update.IUpdate.WithoutEnableHttp2()
         {
-            return this.WithoutEnableHttp2() as ApplicationGateway.Update.IUpdate;
+            return this.WithoutEnableHttp2() ;
         }
 
         /// <summary>
@@ -1321,7 +1321,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <returns>The next stage of the definition.</returns>
         ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithCreate.WithEnableHttp2()
         {
-            return this.WithEnableHttp2() as ApplicationGateway.Definition.IWithCreate;
+            return this.WithEnableHttp2();
         }
 
         /// <summary>
@@ -1330,7 +1330,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <returns>The next stage of the definition.</returns>
        ApplicationGateway.Definition.IWithCreate ApplicationGateway.Definition.IWithCreate.WithoutEnableHttp2()
         {
-            return this.WithoutEnableHttp2() as ApplicationGateway.Definition.IWithCreate;
+            return this.WithoutEnableHttp2();
         }
 
     }
