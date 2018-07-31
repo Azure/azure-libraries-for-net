@@ -177,6 +177,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
+        /// Use an existing certificate in the resource group.
+        /// </summary>
+        /// <param name="certificateNameOrThumbprint">The name or the thumbprint of the certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        HostNameSslBinding.Definition.IWithSslType<WebAppBase.Definition.IWithCreate<FluentT>> HostNameSslBinding.Definition.IWithCertificate<WebAppBase.Definition.IWithCreate<FluentT>>.WithExistingCertificate(string certificateNameOrThumbprint)
+        {
+            return this.WithExistingCertificate(certificateNameOrThumbprint);
+        }
+
+        /// <summary>
         /// Specifies a ready-to-use certificate order to use. This is usually useful for reusing wildcard certificates.
         /// </summary>
         /// <param name="certificateOrder">The ready-to-use certificate order.</param>
@@ -205,6 +215,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         HostNameSslBinding.UpdateDefinition.IWithKeyVault<WebAppBase.Update.IUpdate<FluentT>> HostNameSslBinding.UpdateDefinition.IWithCertificate<WebAppBase.Update.IUpdate<FluentT>>.WithNewStandardSslCertificateOrder(string certificateOrderName)
         {
             return this.WithNewStandardSslCertificateOrder(certificateOrderName);
+        }
+
+        /// <summary>
+        /// Use an existing certificate in the resource group.
+        /// </summary>
+        /// <param name="certificateNameOrThumbprint">The name or the thumbprint of the certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        HostNameSslBinding.UpdateDefinition.IWithSslType<WebAppBase.Update.IUpdate<FluentT>> HostNameSslBinding.UpdateDefinition.IWithCertificate<WebAppBase.Update.IUpdate<FluentT>>.WithExistingCertificate(string certificateNameOrThumbprint)
+        {
+            return this.WithExistingCertificate(certificateNameOrThumbprint);
         }
 
         /// <summary>

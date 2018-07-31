@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// naming requirements so that the user can select a valid name. If
         /// reason == AlreadyExists, explain that resource name is already in
         /// use, and direct them to select a different name.</param>
-        public ResourceNameAvailabilityInner(bool? nameAvailable = default(bool?), string reason = default(string), string message = default(string))
+        public ResourceNameAvailabilityInner(bool? nameAvailable = default(bool?), InAvailabilityReasonType reason = default(InAvailabilityReasonType), string message = default(string))
         {
             NameAvailable = nameAvailable;
             Reason = reason;
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Possible values include: 'Invalid', 'AlreadyExists'
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
-        public string Reason { get; set; }
+        public InAvailabilityReasonType Reason { get; set; }
 
         /// <summary>
         /// Gets or sets if reason == invalid, provide the user with the reason

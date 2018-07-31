@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Instance of an app.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SiteInstance : ProxyOnlyResource
+    public partial class SiteInstance : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the SiteInstance class.
@@ -30,13 +30,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SiteInstance class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="siteInstanceName">Name of instance.</param>
-        public SiteInstance(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string siteInstanceName = default(string))
-            : base(id, name, kind, type)
+        public SiteInstance(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string siteInstanceName = default(string))
+            : base(id, name, type, kind)
         {
             SiteInstanceName = siteInstanceName;
             CustomInit();
@@ -50,7 +47,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets name of instance.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
+        [JsonProperty(PropertyName = "properties.siteInstanceName")]
         public string SiteInstanceName { get; private set; }
 
     }

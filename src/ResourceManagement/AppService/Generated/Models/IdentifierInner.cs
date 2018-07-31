@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// A domain specific resource identifier.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class IdentifierInner : ProxyOnlyResource
+    public partial class IdentifierInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the IdentifierInner class.
@@ -30,14 +30,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the IdentifierInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="identifierId">String representation of the
         /// identity.</param>
-        public IdentifierInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string identifierId = default(string))
-            : base(id, name, kind, type)
+        public IdentifierInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string identifierId = default(string))
+            : base(id, name, type, kind)
         {
             IdentifierId = identifierId;
             CustomInit();

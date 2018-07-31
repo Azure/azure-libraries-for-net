@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// elements.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class TriggeredJobHistoryInner : ProxyOnlyResource
+    public partial class TriggeredJobHistoryInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the TriggeredJobHistoryInner class.
@@ -33,16 +33,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the TriggeredJobHistoryInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="triggeredJobRuns">List of triggered web job
-        /// runs.</param>
-        public TriggeredJobHistoryInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<TriggeredJobRun> triggeredJobRuns = default(IList<TriggeredJobRun>))
-            : base(id, name, kind, type)
+        /// <param name="runs">List of triggered web job runs.</param>
+        public TriggeredJobHistoryInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), IList<TriggeredJobRun> runs = default(IList<TriggeredJobRun>))
+            : base(id, name, type, kind)
         {
-            TriggeredJobRuns = triggeredJobRuns;
+            Runs = runs;
             CustomInit();
         }
 
@@ -54,8 +50,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets or sets list of triggered web job runs.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.triggeredJobRuns")]
-        public IList<TriggeredJobRun> TriggeredJobRuns { get; set; }
+        [JsonProperty(PropertyName = "properties.runs")]
+        public IList<TriggeredJobRun> Runs { get; set; }
 
     }
 }

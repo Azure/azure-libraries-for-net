@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<TldLegalAgreement>> ListAgreementsAsync(this ITopLevelDomainsOperations operations, string name, TopLevelDomainAgreementOptionInner agreementOption, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<TldLegalAgreement>> ListAgreementsAsync(this ITopLevelDomainsOperations operations, string name, TopLevelDomainAgreementOption agreementOption, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListAgreementsWithHttpMessagesAsync(name, agreementOption, null, cancellationToken).ConfigureAwait(false))
                 {

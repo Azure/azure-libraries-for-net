@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// and Hybrid Connections).
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class NetworkFeaturesInner : ProxyOnlyResource
+    public partial class NetworkFeaturesInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the NetworkFeaturesInner class.
@@ -33,10 +33,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the NetworkFeaturesInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="virtualNetworkName">The Virtual Network name.</param>
         /// <param name="virtualNetworkConnection">The Virtual Network summary
         /// view.</param>
@@ -44,8 +41,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// view.</param>
         /// <param name="hybridConnectionsV2">The Hybrid Connection V2 (Service
         /// Bus) view.</param>
-        public NetworkFeaturesInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string virtualNetworkName = default(string), VnetInfoInner virtualNetworkConnection = default(VnetInfoInner), IList<RelayServiceConnectionEntityInner> hybridConnections = default(IList<RelayServiceConnectionEntityInner>), IList<HybridConnectionInner> hybridConnectionsV2 = default(IList<HybridConnectionInner>))
-            : base(id, name, kind, type)
+        public NetworkFeaturesInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string virtualNetworkName = default(string), VnetInfoInner virtualNetworkConnection = default(VnetInfoInner), IList<RelayServiceConnectionEntityInner> hybridConnections = default(IList<RelayServiceConnectionEntityInner>), IList<HybridConnectionInner> hybridConnectionsV2 = default(IList<HybridConnectionInner>))
+            : base(id, name, type, kind)
         {
             VirtualNetworkName = virtualNetworkName;
             VirtualNetworkConnection = virtualNetworkConnection;

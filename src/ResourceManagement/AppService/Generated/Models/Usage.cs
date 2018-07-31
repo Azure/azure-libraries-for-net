@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Usage of the quota resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Usage : ProxyOnlyResource
+    public partial class Usage : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the Usage class.
@@ -30,12 +30,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the Usage class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="displayName">Friendly name shown in the UI.</param>
-        /// <param name="usageName">Name of the quota.</param>
         /// <param name="resourceName">Name of the quota resource.</param>
         /// <param name="unit">Units of measurement for the quota
         /// resource.</param>
@@ -47,11 +43,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="computeMode">Compute mode used for this usage.
         /// Possible values include: 'Shared', 'Dedicated', 'Dynamic'</param>
         /// <param name="siteMode">Site mode used for this usage.</param>
-        public Usage(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string displayName = default(string), string usageName = default(string), string resourceName = default(string), string unit = default(string), long? currentValue = default(long?), long? limit = default(long?), System.DateTime? nextResetTime = default(System.DateTime?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string siteMode = default(string))
-            : base(id, name, kind, type)
+        public Usage(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string displayName = default(string), string resourceName = default(string), string unit = default(string), long? currentValue = default(long?), long? limit = default(long?), System.DateTime? nextResetTime = default(System.DateTime?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string siteMode = default(string))
+            : base(id, name, type, kind)
         {
             DisplayName = displayName;
-            UsageName = usageName;
             ResourceName = resourceName;
             Unit = unit;
             CurrentValue = currentValue;
@@ -72,12 +67,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.displayName")]
         public string DisplayName { get; private set; }
-
-        /// <summary>
-        /// Gets name of the quota.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string UsageName { get; private set; }
 
         /// <summary>
         /// Gets name of the quota resource.

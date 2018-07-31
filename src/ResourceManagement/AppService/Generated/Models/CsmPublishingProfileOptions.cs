@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// WebDeploy -- default
         /// Ftp. Possible values include: 'FileZilla3', 'WebDeploy',
         /// 'Ftp'</param>
-        public CsmPublishingProfileOptions(string format = default(string))
+        public CsmPublishingProfileOptions(PublishingProfileFormat format = default(PublishingProfileFormat))
         {
             Format = format;
             CustomInit();
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
         /// </summary>
         [JsonProperty(PropertyName = "format")]
-        public string Format { get; set; }
+        public PublishingProfileFormat Format { get; set; }
 
     }
 }

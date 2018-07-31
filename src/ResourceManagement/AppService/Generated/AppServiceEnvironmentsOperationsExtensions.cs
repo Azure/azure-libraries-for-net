@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AppServiceEnvironmentResourceInner> UpdateAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, AppServiceEnvironmentPatchResourceInner hostingEnvironmentEnvelope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AppServiceEnvironmentResourceInner> UpdateAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, AppServiceEnvironmentPatchResource hostingEnvironmentEnvelope, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, name, hostingEnvironmentEnvelope, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -225,6 +225,35 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task<AddressResponseInner> ListVipsAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListVipsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Move an App Service Environment to a different VNET.
+            /// </summary>
+            /// <remarks>
+            /// Move an App Service Environment to a different VNET.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='vnetInfo'>
+            /// Details for the new virtual network.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<SiteInner>> ChangeVnetAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, VirtualNetworkProfile vnetInfo, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ChangeVnetWithHttpMessagesAsync(resourceGroupName, name, vnetInfo, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -803,6 +832,29 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
+            /// Resume an App Service Environment.
+            /// </summary>
+            /// <remarks>
+            /// Resume an App Service Environment.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task SyncVirtualNetworkInfoAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.SyncVirtualNetworkInfoWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Get global usage metrics of an App Service Environment.
             /// </summary>
             /// <remarks>
@@ -1217,6 +1269,35 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             }
 
             /// <summary>
+            /// Move an App Service Environment to a different VNET.
+            /// </summary>
+            /// <remarks>
+            /// Move an App Service Environment to a different VNET.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group to which the resource belongs.
+            /// </param>
+            /// <param name='name'>
+            /// Name of the App Service Environment.
+            /// </param>
+            /// <param name='vnetInfo'>
+            /// Details for the new virtual network.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<SiteInner>> BeginChangeVnetAsync(this IAppServiceEnvironmentsOperations operations, string resourceGroupName, string name, VirtualNetworkProfile vnetInfo, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginChangeVnetWithHttpMessagesAsync(resourceGroupName, name, vnetInfo, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Create or update a multi-role pool.
             /// </summary>
             /// <remarks>
@@ -1395,6 +1476,29 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task<IPage<StampCapacity>> ListCapacitiesNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListCapacitiesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Move an App Service Environment to a different VNET.
+            /// </summary>
+            /// <remarks>
+            /// Move an App Service Environment to a different VNET.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<SiteInner>> ChangeVnetNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ChangeVnetNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1865,6 +1969,29 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task<IPage<Usage>> ListWebWorkerUsagesNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWebWorkerUsagesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Move an App Service Environment to a different VNET.
+            /// </summary>
+            /// <remarks>
+            /// Move an App Service Environment to a different VNET.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<SiteInner>> BeginChangeVnetNextAsync(this IAppServiceEnvironmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginChangeVnetNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -378,5 +378,40 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// Gets which slot this app will swap into.
         /// </summary>
         string TargetSwapSlot { get; }
+
+        /// <summary>
+        /// True if the web app is configured to accept only HTTPS requests. HTTP requests will be redirected.
+        /// </summary>
+        bool HttpsOnly { get; }
+
+        /// <summary>
+        /// Gets the state of FTP / FTPS service.
+        /// </summary>
+        FtpsState FtpsState { get; }
+
+        /// <summary>
+        /// Gets the virtual applications and their virtual directories in this web app.
+        /// </summary>
+        IList<VirtualApplication> VirtualApplications { get; }
+
+        /// <summary>
+        /// Gets whether to allow clients to connect over http2.0.
+        /// </summary>
+        bool Http20Enabled { get; }
+
+        /// <summary>
+        /// Gets whether local MySQL is enabled.
+        /// </summary>
+        bool LocalMySqlEnabled { get; }
+
+        /// <summary>
+        /// Gets the SCM configuration for the web app.
+        /// </summary>
+        ScmType ScmType { get; }
+
+        /// <summary>
+        /// Gets the root directory for the web app.
+        /// </summary>
+        string DocumentRoot { get; }
     }
 }

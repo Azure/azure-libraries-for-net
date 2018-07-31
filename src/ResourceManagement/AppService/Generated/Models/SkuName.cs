@@ -8,19 +8,28 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for SkuName.
     /// </summary>
-    public static class SkuName
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<SkuName>))]
+    public class SkuName : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<SkuName>
     {
-        public const string Free = "Free";
-        public const string Shared = "Shared";
-        public const string Basic = "Basic";
-        public const string Standard = "Standard";
-        public const string Premium = "Premium";
-        public const string PremiumV2 = "PremiumV2";
-        public const string Dynamic = "Dynamic";
-        public const string Isolated = "Isolated";
+        public static readonly SkuName Free = Parse("Free");
+        public static readonly SkuName Shared = Parse("Shared");
+        public static readonly SkuName Basic = Parse("Basic");
+        public static readonly SkuName Standard = Parse("Standard");
+        public static readonly SkuName Premium = Parse("Premium");
+        public static readonly SkuName Dynamic = Parse("Dynamic");
+        public static readonly SkuName Isolated = Parse("Isolated");
+        public static readonly SkuName PremiumV2 = Parse("PremiumV2");
     }
 }

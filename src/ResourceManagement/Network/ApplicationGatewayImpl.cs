@@ -1623,17 +1623,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 // If default public frontend requested but no PIP specified, create one
                 ///GENMHASH:D232B3BB0D86D13CC0B242F4000DBF07:28278DE68BEBBF206C58F1B8AC9DEA79
-                Task pipTask = EnsureDefaultPipDefinition().CreateAsync(cancellationToken)
-                    .ContinueWith(
-                        antecedent =>
-                        {
-                            var publicIP = antecedent.Result;
-                            // Attach the created PIP when available
-                            defaultPublicFrontend.WithExistingPublicIPAddress(publicIP);
-                        },
-                        cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
-                        TaskScheduler.Default);
+                Task pipTask = Task.Run( async ()=>
+                {
+                    var publicIP = await EnsureDefaultPipDefinition().CreateAsync(cancellationToken);
+                    // Attach the created PIP when available
+                    defaultPublicFrontend.WithExistingPublicIPAddress(publicIP);
+                });
                 tasks.Add(pipTask);
             }
 
@@ -1655,11 +1650,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
             {
                 // But if default IP config does not have a subnet specified, then create a default VNet
                 ///GENMHASH:378C5280A44231F5593B789FF6A1BF16:91307BB6F8D393A842145FECCE969E10
-                Task networkTask = EnsureDefaultNetworkDefinition().CreateAsync(cancellationToken)
-                .ContinueWith(antecedent =>
+                Task networkTask = Task.Run( async ()=>
                 {
+                    var network = await EnsureDefaultNetworkDefinition().CreateAsync(cancellationToken);
                     //... and assign the created VNet to the default IP config
-                    var network = antecedent.Result;
                     defaultIPConfig.WithExistingSubnet(network, DEFAULT);
                     if (defaultPrivateFrontend != null)
                     {
@@ -1672,23 +1666,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
                          */
                         UseSubnetFromIPConfigForFrontend(defaultIPConfig, defaultPrivateFrontend);
                     }
-                },
-                    cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously,
-                    TaskScheduler.Default);
+                });
                 tasks.Add(networkTask);
             }
 
-            var appGatewayInnerTask = Task.WhenAll(tasks.ToArray()).ContinueWith(
-                antecedent =>
-                {
-                    return Manager.Inner.ApplicationGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
-                },
-                cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default);
-
-            return await appGatewayInnerTask.Result;
+            await Task.WhenAll(tasks.ToArray());
+            return await Manager.Inner.ApplicationGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
         }
 
         ///GENMHASH:644A3298215000D78F5173C9BC6F440E:9BEBC7254CB4CA864A9951088E837542

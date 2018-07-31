@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Premier add-on offer.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class PremierAddOnOffer : ProxyOnlyResource
+    public partial class PremierAddOnOffer : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the PremierAddOnOffer class.
@@ -30,15 +30,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the PremierAddOnOffer class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="sku">Premier add on SKU.</param>
         /// <param name="product">Premier add on offer Product.</param>
         /// <param name="vendor">Premier add on offer Vendor.</param>
-        /// <param name="premierAddOnOfferName">Premier add on offer
-        /// Name.</param>
         /// <param name="promoCodeRequired">&lt;code&gt;true&lt;/code&gt; if
         /// promotion code is required; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.</param>
@@ -50,13 +45,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="legalTermsUrl">Legal terms URL.</param>
         /// <param name="marketplacePublisher">Marketplace publisher.</param>
         /// <param name="marketplaceOffer">Marketplace offer.</param>
-        public PremierAddOnOffer(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string sku = default(string), string product = default(string), string vendor = default(string), string premierAddOnOfferName = default(string), bool? promoCodeRequired = default(bool?), int? quota = default(int?), AppServicePlanRestrictions? webHostingPlanRestrictions = default(AppServicePlanRestrictions?), string privacyPolicyUrl = default(string), string legalTermsUrl = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
-            : base(id, name, kind, type)
+        public PremierAddOnOffer(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string sku = default(string), string product = default(string), string vendor = default(string), bool? promoCodeRequired = default(bool?), int? quota = default(int?), AppServicePlanRestrictions? webHostingPlanRestrictions = default(AppServicePlanRestrictions?), string privacyPolicyUrl = default(string), string legalTermsUrl = default(string), string marketplacePublisher = default(string), string marketplaceOffer = default(string))
+            : base(id, name, type, kind)
         {
             Sku = sku;
             Product = product;
             Vendor = vendor;
-            PremierAddOnOfferName = premierAddOnOfferName;
             PromoCodeRequired = promoCodeRequired;
             Quota = quota;
             WebHostingPlanRestrictions = webHostingPlanRestrictions;
@@ -89,12 +83,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.vendor")]
         public string Vendor { get; set; }
-
-        /// <summary>
-        /// Gets or sets premier add on offer Name.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string PremierAddOnOfferName { get; set; }
 
         /// <summary>
         /// Gets or sets &amp;lt;code&amp;gt;true&amp;lt;/code&amp;gt; if

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Hybrid Connection for an App Service app.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class RelayServiceConnectionEntityInner : ProxyOnlyResource
+    public partial class RelayServiceConnectionEntityInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the RelayServiceConnectionEntityInner
@@ -32,12 +32,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the RelayServiceConnectionEntityInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        public RelayServiceConnectionEntityInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string entityName = default(string), string entityConnectionString = default(string), string resourceType = default(string), string resourceConnectionString = default(string), string hostname = default(string), int? port = default(int?), string biztalkUri = default(string))
-            : base(id, name, kind, type)
+        public RelayServiceConnectionEntityInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string entityName = default(string), string entityConnectionString = default(string), string resourceType = default(string), string resourceConnectionString = default(string), string hostname = default(string), int? port = default(int?), string biztalkUri = default(string))
+            : base(id, name, type, kind)
         {
             EntityName = entityName;
             EntityConnectionString = entityConnectionString;

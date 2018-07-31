@@ -28,12 +28,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='osTypeSelected'>
+            /// Possible values include: 'Windows', 'Linux'
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> GetAvailableStacksAsync(this IProviderOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ApplicationStack>> GetAvailableStacksAsync(this IProviderOperations operations, OsTypeSelected osTypeSelected = default(OsTypeSelected), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAvailableStacksWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAvailableStacksWithHttpMessagesAsync(osTypeSelected, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -70,12 +73,38 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='osTypeSelected'>
+            /// Possible values include: 'Windows', 'Linux'
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<object> GetAvailableStacksOnPremAsync(this IProviderOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ApplicationStack>> GetAvailableStacksOnPremAsync(this IProviderOperations operations, OsTypeSelected1 osTypeSelected = default(OsTypeSelected1), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetAvailableStacksOnPremWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetAvailableStacksOnPremWithHttpMessagesAsync(osTypeSelected, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get available application frameworks and their versions
+            /// </summary>
+            /// <remarks>
+            /// Get available application frameworks and their versions
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ApplicationStack>> GetAvailableStacksNextAsync(this IProviderOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAvailableStacksNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -101,6 +130,29 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             public static async Task<IPage<CsmOperationDescription>> ListOperationsNextAsync(this IProviderOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListOperationsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Get available application frameworks and their versions
+            /// </summary>
+            /// <remarks>
+            /// Get available application frameworks and their versions
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ApplicationStack>> GetAvailableStacksOnPremNextAsync(this IProviderOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetAvailableStacksOnPremNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
