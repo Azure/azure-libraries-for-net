@@ -3,6 +3,7 @@
 
 using Microsoft.Azure.Management.AppService.Fluent;
 using Microsoft.Azure.Management.Fluent;
+using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Samples.Common;
@@ -73,6 +74,11 @@ namespace ManageFunctionAppBasic
                         .WithExistingAppServicePlan(plan)
                         .WithNewResourceGroup(rg2Name)
                         .Create();
+
+                app3.Update()
+                    .WithSystemAssignedManagedServiceIdentity()
+                    .WithSystemAssignedIdentityBasedAccessTo(string.Format("subscriptions/{0}", azure.SubscriptionId), BuiltInRole.Contributor)
+                    .Apply();
 
                 Utilities.Log("Created function app " + app3.Name);
                 Utilities.Print(app3);

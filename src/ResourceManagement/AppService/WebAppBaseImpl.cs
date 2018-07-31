@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using System.IO;
     using Microsoft.Rest.Azure;
+    using Microsoft.Rest;
 
     /// <summary>
     /// The implementation for WebAppBase.
@@ -600,9 +601,22 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 {
                     return await CreateResourceInternalAsync(cancellationToken);
                 }
-                catch (CloudException ex) when (retryCount > 0 && ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                catch (Microsoft.Rest.RestException ex) when (retryCount > 0)
                 {
-                    // First call sometimes fails with 400 and we want to do a single retry
+                    if (ex is DefaultErrorResponseException derx)
+                    {
+                        if (derx.Response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                        {
+                            continue;
+                        }
+                    }
+                    else if (ex is CloudException cex)
+                    {
+                        if (cex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                        {
+                            continue;
+                        }
+                    }
                 }
                 retryCount--;
             }

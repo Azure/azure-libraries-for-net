@@ -116,7 +116,7 @@ namespace Fluent.Tests.WebApp
             using (var context = FluentMockContext.Start(this.GetType().FullName))
             {
                 string GroupName1 = TestUtilities.GenerateName("javacsmrg");
-                string WebAppName1 = "IAmAFuncitonNameThatIsLonger";
+                string WebAppName1 = TestUtilities.GenerateName("IAmAFuncitonNameThatIsLonger");
                 string StorageName1 = TestUtilities.GenerateName("javast");
                 if (StorageName1.Length >= 23)
                 {

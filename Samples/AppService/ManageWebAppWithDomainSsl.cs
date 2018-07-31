@@ -7,7 +7,6 @@ using Microsoft.Azure.Management.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 using Microsoft.Azure.Management.Samples.Common;
-using Microsoft.Azure.Management.TrafficManager.Fluent;
 using System;
 using System.IO;
 using System.Net.Http;
@@ -32,11 +31,8 @@ namespace ManageWebAppWithDomainSsl
         {
             string app1Name = SdkContext.RandomResourceName("webapp1-", 20);
             string app2Name = SdkContext.RandomResourceName("webapp2-", 20);
-            string app3Name = SdkContext.RandomResourceName("webapp3-", 20);
-            string trafficManagerName = SdkContext.RandomResourceName("tm-", 20);
             string rgName = SdkContext.RandomResourceName("rgNEMV_", 24);
-            string domainName = "jianghaolu.com";
-            string trafficManagerSubdomain = "tm";
+            string domainName = SdkContext.RandomResourceName("jsdkdemo-", 20) + ".com";
 
             try
             {
@@ -55,10 +51,11 @@ namespace ManageWebAppWithDomainSsl
                 Utilities.Log("Created web app " + app1.Name);
                 Utilities.Print(app1);
 
+                //============================================================
+                // Create a second web app with the same app service plan
+
+                Utilities.Log("Creating another web app " + app2Name + "...");
                 var plan = azure.AppServices.AppServicePlans.GetById(app1.AppServicePlanId);
-
-                Utilities.Log("Creating web app " + app2Name + "...");
-
                 var app2 = azure.WebApps
                         .Define(app2Name)
                         .WithExistingWindowsPlan(plan)
@@ -68,57 +65,46 @@ namespace ManageWebAppWithDomainSsl
                 Utilities.Log("Created web app " + app2.Name);
                 Utilities.Print(app2);
 
-                Utilities.Log("Creating web app " + app3Name + "...");
+                //============================================================
+                // Purchase a domain (will be canceled for a full refund)
 
-                var app3 = azure.WebApps
-                        .Define(app3Name)
-                        .WithExistingWindowsPlan(plan)
+                Utilities.Log("Purchasing a domain " + domainName + "...");
+
+                var domain = azure.AppServices.AppServiceDomains.Define(domainName)
                         .WithExistingResourceGroup(rgName)
+                        .DefineRegistrantContact()
+                            .WithFirstName("Jon")
+                            .WithLastName("Doe")
+                            .WithEmail("jondoe@contoso.com")
+                            .WithAddressLine1("123 4th Ave")
+                            .WithCity("Redmond")
+                            .WithStateOrProvince("WA")
+                            .WithCountry(CountryISOCode.UnitedStates)
+                            .WithPostalCode("98052")
+                            .WithPhoneCountryCode(CountryPhoneCode.UnitedStates)
+                            .WithPhoneNumber("4258828080")
+                            .Attach()
+                        .WithDomainPrivacyEnabled(true)
+                        .WithAutoRenewEnabled(false)
                         .Create();
-
-                Utilities.Log("Created web app " + app3.Name);
-                Utilities.Print(app3);
+                Utilities.Log("Purchased domain " + domain.Name);
+                Utilities.Print(domain);
 
                 //============================================================
-                // Create a traffic manager
+                // Bind domain to web app 1
 
-                Utilities.Log("Creating a traffic manager " + trafficManagerName + " for the web apps...");
-
-                var trafficManager = azure.TrafficManagerProfiles
-                        .Define(trafficManagerName)
-                        .WithExistingResourceGroup(rgName)
-                        .WithLeafDomainLabel(trafficManagerName)
-                        .WithTrafficRoutingMethod(TrafficRoutingMethod.Weighted)
-                        .DefineAzureTargetEndpoint("endpoint1")
-                            .ToResourceId(app1.Id)
-                            .Attach()
-                        .Create();
-
-                Utilities.Log("Created traffic manager " + trafficManager.Name);
+                Utilities.Log("Binding http://" + app1Name + "." + domainName + " to web app " + app1Name + "...");
 
                 app1 = app1.Update()
-                    .DefineHostnameBinding()
-                        .WithThirdPartyDomain(domainName)
-                        .WithSubDomain(trafficManagerSubdomain)
-                        .WithDnsRecordType(CustomHostNameDnsRecordType.CName)
-                        .Attach()
-                    .Apply();
+                        .DefineHostnameBinding()
+                            .WithAzureManagedDomain(domain)
+                            .WithSubDomain(app1Name)
+                            .WithDnsRecordType(CustomHostNameDnsRecordType.CName)
+                            .Attach()
+                        .Apply();
 
-                app2 = app2.Update()
-                    .DefineHostnameBinding()
-                        .WithThirdPartyDomain(domainName)
-                        .WithSubDomain(trafficManagerSubdomain)
-                        .WithDnsRecordType(CustomHostNameDnsRecordType.CName)
-                        .Attach()
-                    .Apply();
-
-                app3 = app3.Update()
-                    .DefineHostnameBinding()
-                        .WithThirdPartyDomain(domainName)
-                        .WithSubDomain(trafficManagerSubdomain)
-                        .WithDnsRecordType(CustomHostNameDnsRecordType.CName)
-                        .Attach()
-                    .Apply();
+                Utilities.Log("Finished binding http://" + app1Name + "." + domainName + " to web app " + app1Name);
+                Utilities.Print(app1);
 
                 //============================================================
                 // Create a self-singed SSL certificate
@@ -137,24 +123,9 @@ namespace ManageWebAppWithDomainSsl
                 Utilities.Log("Binding https://" + app1Name + "." + domainName + " to web app " + app1Name + "...");
 
                 app1 = app1.Update()
+                                .WithManagedHostnameBindings(domain, app1Name)
                                 .DefineSslBinding()
-                                    .ForHostname(trafficManagerSubdomain + "." + domainName)
-                                    .WithPfxCertificateToUpload(Path.Combine(Utilities.ProjectPath, "Asset", pfxPath), CertificatePassword)
-                                    .WithSniBasedSsl()
-                                    .Attach()
-                                .Apply();
-
-                app2 = app2.Update()
-                                .DefineSslBinding()
-                                    .ForHostname(trafficManagerSubdomain + "." + domainName)
-                                    .WithPfxCertificateToUpload(Path.Combine(Utilities.ProjectPath, "Asset", pfxPath), CertificatePassword)
-                                    .WithSniBasedSsl()
-                                    .Attach()
-                                .Apply();
-
-                app3 = app3.Update()
-                                .DefineSslBinding()
-                                    .ForHostname(trafficManagerSubdomain + "." + domainName)
+                                    .ForHostname(app1Name + "." + domainName)
                                     .WithPfxCertificateToUpload(Path.Combine(Utilities.ProjectPath, "Asset", pfxPath), CertificatePassword)
                                     .WithSniBasedSsl()
                                     .Attach()
@@ -163,20 +134,19 @@ namespace ManageWebAppWithDomainSsl
                 Utilities.Log("Finished binding https://" + app1Name + "." + domainName + " to web app " + app1Name);
                 Utilities.Print(app1);
 
+                Utilities.Log("Binding https://" + app2Name + "." + domainName + " to web app " + app2Name + "...");
 
-                //Utilities.Log("Binding https://" + app2Name + "." + domainName + " to web app " + app2Name + "...");
+                app2 = app2.Update()
+                                .WithManagedHostnameBindings(domain, app2Name)
+                                .DefineSslBinding()
+                                    .ForHostname(app2Name + "." + domainName)
+                                    .WithPfxCertificateToUpload(Path.Combine(Utilities.ProjectPath, "Asset", pfxPath), CertificatePassword)
+                                    .WithSniBasedSsl()
+                                    .Attach()
+                                .Apply();
 
-                //app2 = app2.Update()
-                //                .WithManagedHostnameBindings(domain, app2Name)
-                //                .DefineSslBinding()
-                //                    .ForHostname(app2Name + "." + domainName)
-                //                    .WithPfxCertificateToUpload(Path.Combine(Utilities.ProjectPath, "Asset", pfxPath), CertificatePassword)
-                //                    .WithSniBasedSsl()
-                //                    .Attach()
-                //                .Apply();
-
-                //Utilities.Log("Finished binding https://" + app2Name + "." + domainName + " to web app " + app2Name);
-                //Utilities.Print(app2);
+                Utilities.Log("Finished binding https://" + app2Name + "." + domainName + " to web app " + app2Name);
+                Utilities.Print(app2);
             }
             finally
             {
