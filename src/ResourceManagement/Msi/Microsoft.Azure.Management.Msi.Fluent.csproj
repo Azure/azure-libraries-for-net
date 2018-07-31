@@ -24,4 +24,9 @@
     <ProjectReference Include="..\Graph.RBAC\Microsoft.Azure.Management.Graph.RBAC.Fluent.csproj" />
     <ProjectReference Include="..\ResourceManager\Microsoft.Azure.Management.ResourceManager.Fluent.csproj" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.14" />
+  </ItemGroup>
 </Project>

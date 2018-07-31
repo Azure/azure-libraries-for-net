@@ -31,4 +31,9 @@
     <ProjectReference Include="..\Network\Microsoft.Azure.Management.Network.Fluent.csproj" />
     <ProjectReference Include="..\Storage\Microsoft.Azure.Management.Storage.Fluent.csproj" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.14" />
+  </ItemGroup>
 </Project>
