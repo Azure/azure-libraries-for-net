@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Function secrets.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class FunctionSecretsInner : ProxyOnlyResource
+    public partial class FunctionSecretsInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the FunctionSecretsInner class.
@@ -30,14 +30,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the FunctionSecretsInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="key">Secret key.</param>
         /// <param name="triggerUrl">Trigger URL.</param>
-        public FunctionSecretsInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string key = default(string), string triggerUrl = default(string))
-            : base(id, name, kind, type)
+        public FunctionSecretsInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string key = default(string), string triggerUrl = default(string))
+            : base(id, name, type, kind)
         {
             Key = key;
             TriggerUrl = triggerUrl;
@@ -58,7 +55,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets or sets trigger URL.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.triggerUrl")]
+        [JsonProperty(PropertyName = "properties.trigger_url")]
         public string TriggerUrl { get; set; }
 
     }

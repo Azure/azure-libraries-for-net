@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Information about a domain.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DomainInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class DomainInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the DomainInner class.
@@ -76,7 +77,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="targetDnsType">Target DNS type (would be used for
         /// migration). Possible values include: 'AzureDns',
         /// 'DefaultDomainRegistrarDns'</param>
-        public DomainInner(Contact contactAdmin, Contact contactBilling, Contact contactRegistrant, Contact contactTech, DomainPurchaseConsent consent, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DomainStatus? registrationStatus = default(DomainStatus?), ProvisioningState? provisioningState = default(ProvisioningState?), IList<string> nameServers = default(IList<string>), bool? privacy = default(bool?), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? expirationTime = default(System.DateTime?), System.DateTime? lastRenewedTime = default(System.DateTime?), bool? autoRenew = default(bool?), bool? readyForDnsRecordManagement = default(bool?), IList<HostName> managedHostNames = default(IList<HostName>), IList<string> domainNotRenewableReasons = default(IList<string>), DnsType? dnsType = default(DnsType?), string dnsZoneId = default(string), DnsType? targetDnsType = default(DnsType?), string authCode = default(string))
+        /// <param name="kind">Kind of resource.</param>
+        public DomainInner(string location, Contact contactAdmin, Contact contactBilling, Contact contactRegistrant, Contact contactTech, DomainPurchaseConsent consent, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), DomainStatus? registrationStatus = default(DomainStatus?), ProvisioningState? provisioningState = default(ProvisioningState?), IList<string> nameServers = default(IList<string>), bool? privacy = default(bool?), System.DateTime? createdTime = default(System.DateTime?), System.DateTime? expirationTime = default(System.DateTime?), System.DateTime? lastRenewedTime = default(System.DateTime?), bool? autoRenew = default(bool?), bool? readyForDnsRecordManagement = default(bool?), IList<HostName> managedHostNames = default(IList<HostName>), IList<DomainNotRenewableReasons> domainNotRenewableReasons = default(IList<DomainNotRenewableReasons>), DnsType? dnsType = default(DnsType?), string dnsZoneId = default(string), DnsType? targetDnsType = default(DnsType?), string authCode = default(string), string kind = default(string))
             : base(location, id, name, type, tags)
         {
             ContactAdmin = contactAdmin;
@@ -99,6 +101,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             DnsZoneId = dnsZoneId;
             TargetDnsType = targetDnsType;
             AuthCode = authCode;
+            Kind = kind;
             CustomInit();
         }
 
@@ -216,7 +219,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Gets reasons why domain is not renewable.
         /// </summary>
         [JsonProperty(PropertyName = "properties.domainNotRenewableReasons")]
-        public IList<string> DomainNotRenewableReasons { get; private set; }
+        public IList<DomainNotRenewableReasons> DomainNotRenewableReasons { get; private set; }
 
         /// <summary>
         /// Gets or sets current DNS type. Possible values include: 'AzureDns',
@@ -244,13 +247,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public string AuthCode { get; set; }
 
         /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "kind")]
+        public string Kind { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (ContactAdmin == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ContactAdmin");

@@ -247,23 +247,19 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
                 {
                     if (accessPolicy.UserPrincipalName != null)
                     {
-                        tasks.Add(graphRbacManager.Users.GetByNameAsync(accessPolicy.UserPrincipalName, cancellationToken)
-                            .ContinueWith(
-                                // user => accessPolicy.ForObjectId(Guid.Parse(user.Result.Id)),
-                                user => accessPolicy.ForObjectId(user.Result.Id),
-                                cancellationToken,
-                                TaskContinuationOptions.ExecuteSynchronously,
-                                TaskScheduler.Default));
+                        tasks.Add(Task.Run(async () =>
+                        {
+                            var user = await graphRbacManager.Users.GetByNameAsync(accessPolicy.UserPrincipalName, cancellationToken);
+                            accessPolicy.ForObjectId(user.Id);
+                        }));
                     }
                     else if (accessPolicy.ServicePrincipalName != null)
                     {
-                        tasks.Add(graphRbacManager.ServicePrincipals.GetByNameAsync(accessPolicy.ServicePrincipalName, cancellationToken)
-                            .ContinueWith(
-                                // servicePrincipal => accessPolicy.ForObjectId(Guid.Parse(servicePrincipal.Result.Id)),
-                                servicePrincipal => accessPolicy.ForObjectId(servicePrincipal.Result.Id),
-                                cancellationToken,
-                                TaskContinuationOptions.ExecuteSynchronously,
-                                TaskScheduler.Default));
+                        tasks.Add(Task.Run(async () =>
+                        {
+                            var servicePrincipal = await graphRbacManager.ServicePrincipals.GetByNameAsync(accessPolicy.ServicePrincipalName, cancellationToken);
+                            accessPolicy.ForObjectId(servicePrincipal.Id);
+                        }));
                     }
                     else
                     {

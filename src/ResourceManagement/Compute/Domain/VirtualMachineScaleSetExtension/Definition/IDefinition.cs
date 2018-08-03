@@ -3,19 +3,7 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Definition
 {
-    using System.Collections.Generic;
-    using System.Collections.Generic;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using System.Collections.Generic;
     using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
     using System.Collections.Generic;
 
     /// <summary>

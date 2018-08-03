@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
     using System.Text;
     using System;
     using System.Linq;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Implementation for ManagementLocks.
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
     {
         private IAuthorizationManager manager;
 
-                ///GENMHASH:836797384EAD11F4F592C5C904884C2A:D544D70B59C64F2C67EC02DE16CBAEF6
+        ///GENMHASH:836797384EAD11F4F592C5C904884C2A:D544D70B59C64F2C67EC02DE16CBAEF6
         internal ManagementLocksImpl(IAuthorizationManager manager)
         {
             this.manager = manager;
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
 
             IEnumerable<Task<string>> tasks = new List<Task<string>>();
             List<string> ids1 = new List<string>();
-            List<Task> tts = new List<Task>();
+            var tts = new List<Task>();
 
             foreach (var id in ids)
             {
@@ -112,12 +113,18 @@ namespace Microsoft.Azure.Management.Locks.Fluent
                 string scopeName = ResourceIdFromLockId(id);
                 if (lockName != null && scopeName != null)
                 {
-                    Task t = Inner().DeleteByScopeAsync(scopeName, lockName, cancellationToken).ContinueWith(
-                        (Task parent) => { ids1.Add(id); },
-                        cancellationToken, 
-                        TaskContinuationOptions.ExecuteSynchronously,
-                        TaskScheduler.Default);
-                    tts.Add(t);
+                    tts.Add(Task.Run(async () =>
+                    {
+                        try
+                        {
+                            await Inner().DeleteByScopeAsync(scopeName, lockName, cancellationToken);
+                        }
+                        catch(CloudException)
+                        {
+
+                        }
+                        ids1.Add(id);
+                    }));
                 }
             }
 

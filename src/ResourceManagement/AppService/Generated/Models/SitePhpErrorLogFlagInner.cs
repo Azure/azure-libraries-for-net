@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Used for getting PHP error logging flag.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SitePhpErrorLogFlagInner : ProxyOnlyResource
+    public partial class SitePhpErrorLogFlagInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the SitePhpErrorLogFlagInner class.
@@ -30,18 +30,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SitePhpErrorLogFlagInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="localLogErrors">Local log_errors setting.</param>
         /// <param name="masterLogErrors">Master log_errors setting.</param>
         /// <param name="localLogErrorsMaxLength">Local log_errors_max_len
         /// setting.</param>
         /// <param name="masterLogErrorsMaxLength">Master log_errors_max_len
         /// setting.</param>
-        public SitePhpErrorLogFlagInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string localLogErrors = default(string), string masterLogErrors = default(string), string localLogErrorsMaxLength = default(string), string masterLogErrorsMaxLength = default(string))
-            : base(id, name, kind, type)
+        public SitePhpErrorLogFlagInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string localLogErrors = default(string), string masterLogErrors = default(string), string localLogErrorsMaxLength = default(string), string masterLogErrorsMaxLength = default(string))
+            : base(id, name, type, kind)
         {
             LocalLogErrors = localLogErrors;
             MasterLogErrors = masterLogErrors;

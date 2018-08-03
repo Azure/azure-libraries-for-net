@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Connection.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class HybridConnectionInner : ProxyOnlyResource
+    public partial class HybridConnectionInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the HybridConnectionInner class.
@@ -31,10 +31,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the HybridConnectionInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="serviceBusNamespace">The name of the Service Bus
         /// namespace.</param>
         /// <param name="relayName">The name of the Service Bus relay.</param>
@@ -51,8 +48,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// normally, use the POST /listKeys API instead.</param>
         /// <param name="serviceBusSuffix">The suffix for the service bus
         /// endpoint. By default this is .servicebus.windows.net</param>
-        public HybridConnectionInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string serviceBusNamespace = default(string), string relayName = default(string), string relayArmUri = default(string), string hostname = default(string), int? port = default(int?), string sendKeyName = default(string), string sendKeyValue = default(string), string serviceBusSuffix = default(string))
-            : base(id, name, kind, type)
+        public HybridConnectionInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string serviceBusNamespace = default(string), string relayName = default(string), string relayArmUri = default(string), string hostname = default(string), int? port = default(int?), string sendKeyName = default(string), string sendKeyValue = default(string), string serviceBusSuffix = default(string))
+            : base(id, name, type, kind)
         {
             ServiceBusNamespace = serviceBusNamespace;
             RelayName = relayName;

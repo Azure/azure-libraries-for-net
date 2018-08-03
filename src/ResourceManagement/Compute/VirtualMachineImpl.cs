@@ -305,8 +305,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             using (var _result = await ((VirtualMachinesOperations)Manager.Inner.VirtualMachines).CaptureWithHttpMessagesAsync(ResourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 var content = await _result.Response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                JObject o = JObject.Parse(content);
-                return o.SelectToken("$")?["properties"]?["output"]?.ToString();
+                return content;
             }
         }
 

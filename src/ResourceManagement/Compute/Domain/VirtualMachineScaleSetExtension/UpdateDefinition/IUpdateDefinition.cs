@@ -4,24 +4,6 @@
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition
 {
     using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
     using System.Collections.Generic;
 
     /// <summary>

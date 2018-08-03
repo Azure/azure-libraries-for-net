@@ -4,13 +4,6 @@
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineUnmanagedDataDisk.Update
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
-    using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
 
     /// <summary>
     /// The stage of the virtual machine data disk update allowing to set the disk caching type.

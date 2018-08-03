@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Geographical region.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class GeoRegion : ProxyOnlyResource
+    public partial class GeoRegion : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the GeoRegion class.
@@ -30,17 +30,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the GeoRegion class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="geoRegionName">Region name.</param>
         /// <param name="description">Region description.</param>
         /// <param name="displayName">Display name for region.</param>
-        public GeoRegion(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string geoRegionName = default(string), string description = default(string), string displayName = default(string))
-            : base(id, name, kind, type)
+        public GeoRegion(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string description = default(string), string displayName = default(string))
+            : base(id, name, type, kind)
         {
-            GeoRegionName = geoRegionName;
             Description = description;
             DisplayName = displayName;
             CustomInit();
@@ -50,12 +45,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets region name.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string GeoRegionName { get; private set; }
 
         /// <summary>
         /// Gets region description.

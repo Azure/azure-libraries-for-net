@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
     using System.IO;
     using Microsoft.Rest.Azure;
+    using Microsoft.Rest;
 
     /// <summary>
     /// The implementation for WebAppBase.
@@ -78,6 +79,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent
                 _siteConfig = value;
             }
         }
+
+        public bool HttpsOnly => (bool) Inner.HttpsOnly;
+
+        public FtpsState FtpsState => SiteConfig?.FtpsState;
+
+        public IList<VirtualApplication> VirtualApplications => SiteConfig?.VirtualApplications;
+
+        public bool Http20Enabled => (bool)SiteConfig?.Http20Enabled;
+
+        public bool LocalMySqlEnabled => (bool)SiteConfig?.LocalMySqlEnabled;
+
+        public ScmType ScmType => SiteConfig?.ScmType;
+
+        public string DocumentRoot => SiteConfig?.DocumentRoot;
 
         ///GENMHASH:6779D3D3C7AB7AAAE805BA0ABEE95C51:27E486AB74A10242FF421C0798DDC450
         internal abstract Task<StringDictionaryInner> UpdateAppSettingsAsync(StringDictionaryInner inner, CancellationToken cancellationToken = default(CancellationToken));
@@ -369,7 +384,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 this.SiteConfig = new SiteConfigResourceInner();
             }
-            this.SiteConfig.ScmType = "LocalGit";
+            this.SiteConfig.ScmType = ScmType.LocalGit;
             return (FluentImplT)this;
         }
 
@@ -391,8 +406,43 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return (FluentImplT)this;
         }
 
-        ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:A25AA6BA478E9A0DD581F3FB75601E70
-        public async override Task<FluentT> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public FluentImplT WithHttpsOnly(bool httpsOnly)
+        {
+            Inner.HttpsOnly = httpsOnly;
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithHttp20Enabled(bool http20Enabled)
+        {
+            if (this.SiteConfig == null)
+            {
+                this.SiteConfig = new SiteConfigResourceInner();
+            }
+            this.SiteConfig.Http20Enabled = http20Enabled;
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithFtpsState(FtpsState ftpsState)
+        {
+            if (this.SiteConfig == null)
+            {
+                this.SiteConfig = new SiteConfigResourceInner();
+            }
+            this.SiteConfig.FtpsState = ftpsState;
+            return (FluentImplT)this;
+        }
+
+        public FluentImplT WithVirtualApplications(IList<VirtualApplication> virtualApplications)
+        {
+            if (this.SiteConfig == null)
+            {
+                this.SiteConfig = new SiteConfigResourceInner();
+            }
+            this.SiteConfig.VirtualApplications = virtualApplications;
+            return (FluentImplT)this;
+        }
+
+        internal async Task<FluentT> CreateResourceInternalAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostNameSslStateMap.Count > 0)
             {
@@ -401,72 +451,38 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
             // Web app creation
             Inner.SiteConfig = new Models.SiteConfig();
-            var site = await CreateOrUpdateInnerAsync(Inner, cancellationToken)
-            .ContinueWith<SiteInner>(t =>
-                {
-                    var innerSite = t.Result;
-                    Inner.SiteConfig = null;
-                    return innerSite;
-                },
-                cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default)
-            .ContinueWith(t =>
-                {
-                    // Submit hostname bindings
-                    var bindingTasks = new List<Task>();
-                    foreach (var binding in hostNameBindingsToCreate.Values)
-                    {
-                        bindingTasks.Add(binding.CreateAsync(cancellationToken));
-                    }
-                    foreach (string binding in hostNameBindingsToDelete)
-                    {
-                        bindingTasks.Add(DeleteHostNameBindingAsync(binding, cancellationToken));
-                    }
-                    return Task.WhenAll(bindingTasks)
-                    .ContinueWith(bindingt =>
-                        {
-                            // Refresh after hostname bindings
-                            return GetSiteAsync(cancellationToken);
-                        },
-                        cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
-                        TaskScheduler.Default).Unwrap();
-                },
-                cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default).Unwrap()
-            .ContinueWith(t =>
-                {
-                    var innerSite = t.Result;
-                    // Submit SSL bindings
-                    var certTasks = new List<Task<IAppServiceCertificate>>();
-                    foreach (var binding in sslBindingsToCreate.Values)
-                    {
-                        binding.Inner.ToUpdate = true;
-                        certTasks.Add(binding.NewCertificateAsync(cancellationToken)());
-                        hostNameSslStateMap[binding.Inner.Name] = binding.Inner;
-                    }
-                    innerSite.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
-                    if (certTasks.Any())
-                    {
-                        return Task.WhenAll(certTasks)
-                        .ContinueWith(cert =>
-                            {
-                                return CreateOrUpdateInnerAsync(innerSite, cancellationToken);
-                            },
-                            cancellationToken,
-                            TaskContinuationOptions.ExecuteSynchronously,
-                            TaskScheduler.Default).Unwrap();
-                    }
-                    else
-                    {
-                        return Task.FromResult(innerSite);
-                    }
-                },
-                cancellationToken,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default).Unwrap();
+            var site = await CreateOrUpdateInnerAsync(Inner, cancellationToken);
+            Inner.SiteConfig = null;
+            // Submit hostname bindings
+            var bindingTasks = new List<Task>();
+            foreach (var binding in hostNameBindingsToCreate.Values)
+            {
+                bindingTasks.Add(binding.CreateAsync(cancellationToken));
+            }
+            foreach (string binding in hostNameBindingsToDelete)
+            {
+                bindingTasks.Add(DeleteHostNameBindingAsync(binding, cancellationToken));
+            }
+            await Task.WhenAll(bindingTasks);
+
+            // Refresh after hostname bindings
+            site = await GetSiteAsync(cancellationToken);
+
+            // Submit SSL bindings
+            var certTasks = new List<Task<IAppServiceCertificate>>();
+            foreach (var binding in sslBindingsToCreate.Values)
+            {
+                binding.Inner.ToUpdate = true;
+                certTasks.Add(binding.NewCertificateAsync(cancellationToken)());
+                hostNameSslStateMap[binding.Inner.Name] = binding.Inner;
+            }
+            site.HostNameSslStates = new List<HostNameSslState>(hostNameSslStateMap.Values);
+            if (certTasks.Any())
+            {
+                await Task.WhenAll(certTasks);
+
+                site = await CreateOrUpdateInnerAsync(site, cancellationToken);
+            }
 
             // Submit site config
             if (this.SiteConfig != null)
@@ -573,6 +589,39 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             NormalizeProperties();
 
             return this as FluentT;
+        }
+
+        ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:A25AA6BA478E9A0DD581F3FB75601E70
+        public async override Task<FluentT> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            int retryCount = 1;
+            while (retryCount >= 0)
+            {
+                try
+                {
+                    return await CreateResourceInternalAsync(cancellationToken);
+                }
+                catch (Microsoft.Rest.RestException ex) when (retryCount > 0)
+                {
+                    if (ex is DefaultErrorResponseException derx)
+                    {
+                        if (derx.Response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                        {
+                            continue;
+                        }
+                    }
+                    else if (ex is CloudException cex)
+                    {
+                        if (cex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                        {
+                            continue;
+                        }
+                    }
+                }
+                retryCount--;
+            }
+
+            throw new InvalidOperationException();
         }
 
         internal virtual async Task<SiteInner> SubmitAppSettingsAsync(SiteInner site, CancellationToken cancellationToken)
@@ -751,7 +800,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             {
                 return null;
             }
-            return (IReadOnlyList<string>) this.SiteConfig.DefaultDocuments;
+            return (IReadOnlyList<string>)this.SiteConfig.DefaultDocuments;
         }
 
         ///GENMHASH:8B6374B8DE9FB105A8A4FE1AC98E0A32:59ABE89788E5ADCDFB7771D2A4549653
@@ -1347,7 +1396,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         public abstract Task<IWebAppSourceControl> GetSourceControlAsync(CancellationToken cancellationToken = default(CancellationToken));
 
 
-        internal abstract Task<MSDeployStatusInner> CreateMSDeploy(MSDeployInner msDeployInner, CancellationToken cancellationToken);
+        internal abstract Task<MSDeployStatusInner> CreateMSDeploy(MSDeploy msDeployInner, CancellationToken cancellationToken);
 
         public WebDeploymentImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> Deploy()
         {
@@ -1413,7 +1462,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             Inner.Identity = new ManagedServiceIdentity
             {
-                Type = "SystemAssigned"
+                Type = ManagedServiceIdentityType.SystemAssigned
             };
             return (FluentImplT)this;
         }

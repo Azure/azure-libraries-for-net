@@ -249,16 +249,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
             if (defaultIPConfig != null && defaultIPConfig.PublicIPAddressId() == null)
             {
                 // If public ip not specified, then create a default PIP
-                Task pipTask = EnsureDefaultPipDefinition().CreateAsync(cancellationToken)
-                    .ContinueWith(
-                        antecedent =>
-                        {
-                            var publicIP = antecedent.Result;
-                            defaultIPConfig.WithExistingPublicIPAddress(publicIP);
-                        },
-                        cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
-                        TaskScheduler.Default);
+                Task pipTask = Task.Run( async ()=>
+                {
+                    var publicIP = await EnsureDefaultPipDefinition().CreateAsync(cancellationToken);
+
+                    defaultIPConfig.WithExistingPublicIPAddress(publicIP);
+                });
                 tasks.Add(pipTask);
             }
 
@@ -266,28 +262,17 @@ namespace Microsoft.Azure.Management.Network.Fluent
             if (defaultIPConfig.SubnetName() == null)
             {
                 // But if default IP config does not have a subnet specified, then create a VNet
-                Task networkTask = creatableNetwork.CreateAsync(cancellationToken)
-                    .ContinueWith(antecedent =>
-                        {
-                            //... and assign the created VNet to the default IP config
-                            var network = antecedent.Result;
-                            defaultIPConfig.WithExistingSubnet(network, GATEWAY_SUBNET);
-                        },
-                        cancellationToken,
-                        TaskContinuationOptions.ExecuteSynchronously,
-                        TaskScheduler.Default);
+                Task networkTask = Task.Run(async ()=>
+                {
+                    var network = await creatableNetwork.CreateAsync(cancellationToken);
+                    //... and assign the created VNet to the default IP config
+                    defaultIPConfig.WithExistingSubnet(network, GATEWAY_SUBNET);
+                });
                 tasks.Add(networkTask);
             }
-            var virtualNetworkGatewayInnerTask = Task.WhenAll(tasks.ToArray()).ContinueWith(
-                    antecedent =>
-                    {
-                        return Manager.Inner.VirtualNetworkGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
-                    },
-                    cancellationToken,
-                    TaskContinuationOptions.ExecuteSynchronously,
-                    TaskScheduler.Default);
+            await Task.WhenAll(tasks.ToArray());
 
-            return await virtualNetworkGatewayInnerTask.Result;
+            return await Manager.Inner.VirtualNetworkGateways.CreateOrUpdateAsync(ResourceGroupName, Name, Inner, cancellationToken);
         }
 
         ///GENMHASH:6D9F740D6D73C56877B02D9F1C96F6E7:AAE687D87772A524C1EDF3A8BE3E97C4

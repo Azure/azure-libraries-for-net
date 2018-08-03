@@ -49,19 +49,25 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// API Version
+        /// </summary>
+        string ApiVersion { get; }
+
+        /// <summary>
+        /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running
-        /// Operations. Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default
+        /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated
-        /// and included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// set to true a unique x-ms-client-request-id value is generated and
+        /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set; }
 
@@ -214,6 +220,23 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         Task<AzureOperationResponse<SourceControlInner>> UpdateSourceControlWithHttpMessagesAsync(string sourceControlType, SourceControlInner requestMessage, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// Gets a list of meters for a given location.
+        /// </summary>
+        /// <remarks>
+        /// Gets a list of meters for a given location.
+        /// </remarks>
+        /// <param name='billingLocation'>
+        /// Azure Location of billable resource
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<IPage<BillingMeter>>> ListBillingMetersWithHttpMessagesAsync(string billingLocation = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// Check if a resource name is available.
         /// </summary>
         /// <remarks>
@@ -238,7 +261,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<ResourceNameAvailabilityInner>> CheckNameAvailabilityWithHttpMessagesAsync(string name, string type, bool? isFqdn = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ResourceNameAvailabilityInner>> CheckNameAvailabilityWithHttpMessagesAsync(string name, CheckNameResourceTypes type, bool? isFqdn = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets list of available geo regions plus ministamps
@@ -262,8 +285,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// </remarks>
         /// <param name='sku'>
         /// Name of SKU used to filter the regions. Possible values include:
-        /// 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'PremiumV2',
-        /// 'Dynamic', 'Isolated'
+        /// 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
+        /// 'Isolated', 'PremiumV2'
         /// </param>
         /// <param name='linuxWorkersEnabled'>
         /// Specify &lt;code&gt;true&lt;/code&gt; if you want to filter to only
@@ -275,7 +298,24 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<IPage<GeoRegion>>> ListGeoRegionsWithHttpMessagesAsync(string sku = default(string), bool? linuxWorkersEnabled = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<GeoRegion>>> ListGeoRegionsWithHttpMessagesAsync(SkuName sku = default(SkuName), bool? linuxWorkersEnabled = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// List all apps that are assigned to a hostname.
+        /// </summary>
+        /// <remarks>
+        /// List all apps that are assigned to a hostname.
+        /// </remarks>
+        /// <param name='name'>
+        /// Name of the object.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<IPage<IdentifierInner>>> ListSiteIdentifiersAssignedToHostNameWithHttpMessagesAsync(string name = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// List all premier add-on offers.
@@ -322,7 +362,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<VnetValidationFailureDetailsInner>> VerifyHostingEnvironmentVnetWithHttpMessagesAsync(VnetParametersInner parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VnetValidationFailureDetailsInner>> VerifyHostingEnvironmentVnetWithHttpMessagesAsync(VnetParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Move resources between resource groups.
@@ -342,7 +382,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse> MoveWithHttpMessagesAsync(string resourceGroupName, CsmMoveResourceEnvelopeInner moveResourceEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> MoveWithHttpMessagesAsync(string resourceGroupName, CsmMoveResourceEnvelope moveResourceEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Validate if a resource can be created.
@@ -362,7 +402,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<ValidateResponseInner>> ValidateWithHttpMessagesAsync(string resourceGroupName, ValidateRequestInner validateRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ValidateResponseInner>> ValidateWithHttpMessagesAsync(string resourceGroupName, ValidateRequest validateRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Validate whether a resource can be moved.
@@ -382,7 +422,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse> ValidateMoveWithHttpMessagesAsync(string resourceGroupName, CsmMoveResourceEnvelopeInner moveResourceEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> ValidateMoveWithHttpMessagesAsync(string resourceGroupName, CsmMoveResourceEnvelope moveResourceEnvelope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets the source controls available for Azure websites.
@@ -402,6 +442,23 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         Task<AzureOperationResponse<IPage<SourceControlInner>>> ListSourceControlsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
+        /// Gets a list of meters for a given location.
+        /// </summary>
+        /// <remarks>
+        /// Gets a list of meters for a given location.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<IPage<BillingMeter>>> ListBillingMetersNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
         /// Get a list of available geographical regions.
         /// </summary>
         /// <remarks>
@@ -417,6 +474,23 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// The cancellation token.
         /// </param>
         Task<AzureOperationResponse<IPage<GeoRegion>>> ListGeoRegionsNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// List all apps that are assigned to a hostname.
+        /// </summary>
+        /// <remarks>
+        /// List all apps that are assigned to a hostname.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<IPage<IdentifierInner>>> ListSiteIdentifiersAssignedToHostNameNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// List all premier add-on offers.

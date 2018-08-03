@@ -4,16 +4,7 @@
 namespace Microsoft.Azure.Management.Compute.Fluent.Snapshot.Update
 {
     using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
     /// <summary>
     /// The template for an update operation, containing all the settings that

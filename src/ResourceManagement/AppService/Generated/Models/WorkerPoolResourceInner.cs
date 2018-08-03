@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Worker pool of an App Service Environment ARM resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class WorkerPoolResourceInner : ProxyOnlyResource
+    public partial class WorkerPoolResourceInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the WorkerPoolResourceInner class.
@@ -32,10 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the WorkerPoolResourceInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="workerSizeId">Worker size ID for referencing this
         /// worker pool.</param>
         /// <param name="computeMode">Shared or dedicated app hosting. Possible
@@ -46,8 +43,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// pool.</param>
         /// <param name="instanceNames">Names of all instances in the worker
         /// pool (read only).</param>
-        public WorkerPoolResourceInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), int? workerSizeId = default(int?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string workerSize = default(string), int? workerCount = default(int?), IList<string> instanceNames = default(IList<string>), SkuDescription sku = default(SkuDescription))
-            : base(id, name, kind, type)
+        public WorkerPoolResourceInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), int? workerSizeId = default(int?), ComputeModeOptions? computeMode = default(ComputeModeOptions?), string workerSize = default(string), int? workerCount = default(int?), IList<string> instanceNames = default(IList<string>), SkuDescription sku = default(SkuDescription))
+            : base(id, name, type, kind)
         {
             WorkerSizeId = workerSizeId;
             ComputeMode = computeMode;

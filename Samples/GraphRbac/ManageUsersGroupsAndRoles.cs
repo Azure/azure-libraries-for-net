@@ -135,6 +135,9 @@ namespace ManageUsersGroupsAndRoles
 
             Utilities.Log("Group members added to group " + groupName2);
             Utilities.Print(group2);
+
+            var members = group2.ListMembers();
+            var count = members.Count();
         }
 
         public static void Main(string[] args)

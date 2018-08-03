@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Web Job Information.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class FunctionEnvelopeInner : ProxyOnlyResource
+    public partial class FunctionEnvelopeInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the FunctionEnvelopeInner class.
@@ -32,11 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the FunctionEnvelopeInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
-        /// <param name="functionEnvelopeName">Function name.</param>
         /// <param name="functionAppId">Function App ID.</param>
         /// <param name="scriptRootPathHref">Script root path URI.</param>
         /// <param name="scriptHref">Script URI.</param>
@@ -47,10 +43,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="files">File list.</param>
         /// <param name="testData">Test data used when testing via the Azure
         /// Portal.</param>
-        public FunctionEnvelopeInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string functionEnvelopeName = default(string), string functionAppId = default(string), string scriptRootPathHref = default(string), string scriptHref = default(string), string configHref = default(string), string secretsFileHref = default(string), string href = default(string), object config = default(object), IDictionary<string, string> files = default(IDictionary<string, string>), string testData = default(string))
-            : base(id, name, kind, type)
+        public FunctionEnvelopeInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string functionAppId = default(string), string scriptRootPathHref = default(string), string scriptHref = default(string), string configHref = default(string), string secretsFileHref = default(string), string href = default(string), object config = default(object), IDictionary<string, string> files = default(IDictionary<string, string>), string testData = default(string))
+            : base(id, name, type, kind)
         {
-            FunctionEnvelopeName = functionEnvelopeName;
             FunctionAppId = functionAppId;
             ScriptRootPathHref = scriptRootPathHref;
             ScriptHref = scriptHref;
@@ -69,39 +64,33 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets function name.
+        /// Gets or sets function App ID.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string FunctionEnvelopeName { get; private set; }
-
-        /// <summary>
-        /// Gets function App ID.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.functionAppId")]
-        public string FunctionAppId { get; private set; }
+        [JsonProperty(PropertyName = "properties.function_app_id")]
+        public string FunctionAppId { get; set; }
 
         /// <summary>
         /// Gets or sets script root path URI.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.scriptRootPathHref")]
+        [JsonProperty(PropertyName = "properties.script_root_path_href")]
         public string ScriptRootPathHref { get; set; }
 
         /// <summary>
         /// Gets or sets script URI.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.scriptHref")]
+        [JsonProperty(PropertyName = "properties.script_href")]
         public string ScriptHref { get; set; }
 
         /// <summary>
         /// Gets or sets config URI.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.configHref")]
+        [JsonProperty(PropertyName = "properties.config_href")]
         public string ConfigHref { get; set; }
 
         /// <summary>
         /// Gets or sets secrets file URI.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.secretsFileHref")]
+        [JsonProperty(PropertyName = "properties.secrets_file_href")]
         public string SecretsFileHref { get; set; }
 
         /// <summary>
@@ -125,7 +114,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets or sets test data used when testing via the Azure Portal.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.testData")]
+        [JsonProperty(PropertyName = "properties.test_data")]
         public string TestData { get; set; }
 
     }

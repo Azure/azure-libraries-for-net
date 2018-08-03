@@ -8,24 +8,33 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ScmType.
     /// </summary>
-    public static class ScmType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ScmType>))]
+    public class ScmType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ScmType>
     {
-        public const string None = "None";
-        public const string Dropbox = "Dropbox";
-        public const string Tfs = "Tfs";
-        public const string LocalGit = "LocalGit";
-        public const string GitHub = "GitHub";
-        public const string CodePlexGit = "CodePlexGit";
-        public const string CodePlexHg = "CodePlexHg";
-        public const string BitbucketGit = "BitbucketGit";
-        public const string BitbucketHg = "BitbucketHg";
-        public const string ExternalGit = "ExternalGit";
-        public const string ExternalHg = "ExternalHg";
-        public const string OneDrive = "OneDrive";
-        public const string VSO = "VSO";
+        public static readonly ScmType None = Parse("None");
+        public static readonly ScmType Dropbox = Parse("Dropbox");
+        public static readonly ScmType Tfs = Parse("Tfs");
+        public static readonly ScmType LocalGit = Parse("LocalGit");
+        public static readonly ScmType GitHub = Parse("GitHub");
+        public static readonly ScmType CodePlexGit = Parse("CodePlexGit");
+        public static readonly ScmType CodePlexHg = Parse("CodePlexHg");
+        public static readonly ScmType BitbucketGit = Parse("BitbucketGit");
+        public static readonly ScmType BitbucketHg = Parse("BitbucketHg");
+        public static readonly ScmType ExternalGit = Parse("ExternalGit");
+        public static readonly ScmType ExternalHg = Parse("ExternalHg");
+        public static readonly ScmType OneDrive = Parse("OneDrive");
+        public static readonly ScmType VSO = Parse("VSO");
     }
 }
