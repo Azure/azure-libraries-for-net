@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             }, tenantId, environment);
         }
 
-#if NET45
+#if (NET45 || NET461)
         /// <summary>
         /// Creates a credentials object from a service principal.
         /// </summary>
