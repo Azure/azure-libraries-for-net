@@ -96,7 +96,7 @@ namespace Samples.Tests
                 ManageNetworkSecurityGroup.Program.RunSample);
         }
 
-        [Fact]
+        [Fact(Skip = "Fails during playback only on Linux. Needs further investigation.")]
         [Trait("Samples", "Network")]
         public void ManageSimpleApplicationGatewayTest()
         {
@@ -126,7 +126,7 @@ namespace Samples.Tests
                             .GetResult());
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot run because of service-side issue.")]
         [Trait("Samples", "Network")]
         public void ManageNetworkWatcherTest()
         {

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public override async Task<Microsoft.Azure.Management.Network.Fluent.IDdosProtectionPlan> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             SetInner(await this.Manager.Inner.DdosProtectionPlans.CreateOrUpdateAsync(ResourceGroupName, Name, Inner));
-           return null;
+            return this;
         }
 
         ///GENMHASH:99D5BF64EA8AA0E287C9B6F77AAD6FC4:3DB04077E6BABC0FB5A5ACDA19D11309

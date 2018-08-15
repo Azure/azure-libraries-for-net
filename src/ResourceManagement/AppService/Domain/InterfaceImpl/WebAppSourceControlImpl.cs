@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.UpdateDefinition.IGitHubWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppSourceControl.UpdateDefinition.IWithGitHubAccessToken<WebAppBase.Update.IUpdate<FluentT>>.WithGitHubAccessToken(string personalAccessToken)
         {
-            return this.WithGitHubAccessToken(personalAccessToken) as WebAppSourceControl.UpdateDefinition.IGitHubWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithGitHubAccessToken(personalAccessToken);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.Definition.IGitHubWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppSourceControl.Definition.IWithGitHubAccessToken<WebAppBase.Definition.IWithCreate<FluentT>>.WithGitHubAccessToken(string personalAccessToken)
         {
-            return this.WithGitHubAccessToken(personalAccessToken) as WebAppSourceControl.Definition.IGitHubWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithGitHubAccessToken(personalAccessToken);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.Parent() as Microsoft.Azure.Management.AppService.Fluent.IWebAppBase;
+                return this.Parent();
             }
         }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the parent definition.</return>
         WebAppBase.Update.IUpdate<FluentT> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<WebAppBase.Update.IUpdate<FluentT>>.Attach()
         {
-            return this.Attach() as WebAppBase.Update.IUpdate<FluentT>;
+            return this.Attach();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the parent definition.</return>
         WebAppBase.Definition.IWithCreate<FluentT> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<WebAppBase.Definition.IWithCreate<FluentT>>.Attach()
         {
-            return this.Attach() as WebAppBase.Definition.IWithCreate<FluentT>;
+            return this.Attach();
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.UpdateDefinition.IGitHubWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppSourceControl.UpdateDefinition.IWithGitHubBranch<WebAppBase.Update.IUpdate<FluentT>>.WithBranch(string branch)
         {
-            return this.WithBranch(branch) as WebAppSourceControl.UpdateDefinition.IGitHubWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithBranch(branch);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.Definition.IGitHubWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppSourceControl.Definition.IWithGitHubBranch<WebAppBase.Definition.IWithCreate<FluentT>>.WithBranch(string branch)
         {
-            return this.WithBranch(branch) as WebAppSourceControl.Definition.IGitHubWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithBranch(branch);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>> WebAppSourceControl.UpdateDefinition.IWithBranch<WebAppBase.Update.IUpdate<FluentT>>.WithBranch(string branch)
         {
-            return this.WithBranch(branch) as WebAppSourceControl.UpdateDefinition.IWithAttach<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithBranch(branch);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>> WebAppSourceControl.Definition.IWithBranch<WebAppBase.Definition.IWithCreate<FluentT>>.WithBranch(string branch)
         {
-            return this.WithBranch(branch) as WebAppSourceControl.Definition.IWithAttach<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithBranch(branch);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.UpdateDefinition.IWithBranch<WebAppBase.Update.IUpdate<FluentT>> WebAppSourceControl.UpdateDefinition.IWithRepositoryType<WebAppBase.Update.IUpdate<FluentT>>.WithPublicMercurialRepository(string url)
         {
-            return this.WithPublicMercurialRepository(url) as WebAppSourceControl.UpdateDefinition.IWithBranch<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithPublicMercurialRepository(url);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.UpdateDefinition.IWithGitHubBranch<WebAppBase.Update.IUpdate<FluentT>> WebAppSourceControl.UpdateDefinition.IWithRepositoryType<WebAppBase.Update.IUpdate<FluentT>>.WithContinuouslyIntegratedGitHubRepository(string organization, string repository)
         {
-            return this.WithContinuouslyIntegratedGitHubRepository(organization, repository) as WebAppSourceControl.UpdateDefinition.IWithGitHubBranch<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithContinuouslyIntegratedGitHubRepository(organization, repository);
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.UpdateDefinition.IWithGitHubBranch<WebAppBase.Update.IUpdate<FluentT>> WebAppSourceControl.UpdateDefinition.IWithRepositoryType<WebAppBase.Update.IUpdate<FluentT>>.WithContinuouslyIntegratedGitHubRepository(string url)
         {
-            return this.WithContinuouslyIntegratedGitHubRepository(url) as WebAppSourceControl.UpdateDefinition.IWithGitHubBranch<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithContinuouslyIntegratedGitHubRepository(url);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.UpdateDefinition.IWithBranch<WebAppBase.Update.IUpdate<FluentT>> WebAppSourceControl.UpdateDefinition.IWithRepositoryType<WebAppBase.Update.IUpdate<FluentT>>.WithPublicGitRepository(string url)
         {
-            return this.WithPublicGitRepository(url) as WebAppSourceControl.UpdateDefinition.IWithBranch<WebAppBase.Update.IUpdate<FluentT>>;
+            return this.WithPublicGitRepository(url);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.Definition.IWithBranch<WebAppBase.Definition.IWithCreate<FluentT>> WebAppSourceControl.Definition.IWithRepositoryType<WebAppBase.Definition.IWithCreate<FluentT>>.WithPublicMercurialRepository(string url)
         {
-            return this.WithPublicMercurialRepository(url) as WebAppSourceControl.Definition.IWithBranch<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithPublicMercurialRepository(url);
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.Definition.IWithGitHubBranch<WebAppBase.Definition.IWithCreate<FluentT>> WebAppSourceControl.Definition.IWithRepositoryType<WebAppBase.Definition.IWithCreate<FluentT>>.WithContinuouslyIntegratedGitHubRepository(string organization, string repository)
         {
-            return this.WithContinuouslyIntegratedGitHubRepository(organization, repository) as WebAppSourceControl.Definition.IWithGitHubBranch<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithContinuouslyIntegratedGitHubRepository(organization, repository);
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.Definition.IWithGitHubBranch<WebAppBase.Definition.IWithCreate<FluentT>> WebAppSourceControl.Definition.IWithRepositoryType<WebAppBase.Definition.IWithCreate<FluentT>>.WithContinuouslyIntegratedGitHubRepository(string url)
         {
-            return this.WithContinuouslyIntegratedGitHubRepository(url) as WebAppSourceControl.Definition.IWithGitHubBranch<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithContinuouslyIntegratedGitHubRepository(url);
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebAppSourceControl.Definition.IWithBranch<WebAppBase.Definition.IWithCreate<FluentT>> WebAppSourceControl.Definition.IWithRepositoryType<WebAppBase.Definition.IWithCreate<FluentT>>.WithPublicGitRepository(string url)
         {
-            return this.WithPublicGitRepository(url) as WebAppSourceControl.Definition.IWithBranch<WebAppBase.Definition.IWithCreate<FluentT>>;
+            return this.WithPublicGitRepository(url);
         }
     }
 }

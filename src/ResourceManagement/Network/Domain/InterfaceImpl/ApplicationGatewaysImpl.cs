@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new resource definition.</return>
         ApplicationGateway.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<ApplicationGateway.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as ApplicationGateway.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>An emitter of the resource ID for each successfully started application gateway.</return>
         async Task<System.Collections.Generic.IEnumerable<string>> Microsoft.Azure.Management.Network.Fluent.IApplicationGateways.StartAsync(string[] ids, CancellationToken cancellationToken)
         {
-            return await this.StartAsync(ids, cancellationToken) as System.Collections.Generic.IEnumerable<string>;
+            return await this.StartAsync(ids, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>An emitter of the resource ID for each successfully started application gateway.</return>
         async Task<System.Collections.Generic.IEnumerable<string>> Microsoft.Azure.Management.Network.Fluent.IApplicationGateways.StartAsync(ICollection<string> ids, CancellationToken cancellationToken)
         {
-            return await this.StartAsync(ids, cancellationToken) as System.Collections.Generic.IEnumerable<string>;
+            return await this.StartAsync(ids, cancellationToken);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>An emitter of the resource ID for each successfully stopped application gateway.</return>
         async Task<System.Collections.Generic.IEnumerable<string>> Microsoft.Azure.Management.Network.Fluent.IApplicationGateways.StopAsync(string[] ids, CancellationToken cancellationToken)
         {
-            return await this.StopAsync(ids, cancellationToken) as System.Collections.Generic.IEnumerable<string>;
+            return await this.StopAsync(ids, cancellationToken);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>An emitter of the resource ID for each successfully stopped application gateway.</return>
         async Task<System.Collections.Generic.IEnumerable<string>> Microsoft.Azure.Management.Network.Fluent.IApplicationGateways.StopAsync(ICollection<string> ids, CancellationToken cancellationToken)
         {
-            return await this.StopAsync(ids, cancellationToken) as System.Collections.Generic.IEnumerable<string>;
+            return await this.StopAsync(ids, cancellationToken);
         }
 
         /// <summary>

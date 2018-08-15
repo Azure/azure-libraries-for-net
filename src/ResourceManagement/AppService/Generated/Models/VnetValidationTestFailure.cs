@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// validation.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VnetValidationTestFailure : ProxyOnlyResource
+    public partial class VnetValidationTestFailure : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the VnetValidationTestFailure class.
@@ -31,15 +31,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the VnetValidationTestFailure class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="testName">The name of the test that failed.</param>
         /// <param name="details">The details of what caused the failure, e.g.
         /// the blocking rule name, etc.</param>
-        public VnetValidationTestFailure(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string testName = default(string), string details = default(string))
-            : base(id, name, kind, type)
+        public VnetValidationTestFailure(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string testName = default(string), string details = default(string))
+            : base(id, name, type, kind)
         {
             TestName = testName;
             Details = details;

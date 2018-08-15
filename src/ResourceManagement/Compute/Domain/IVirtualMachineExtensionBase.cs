@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
@@ -12,25 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     public interface IVirtualMachineExtensionBase :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.VirtualMachineExtensionInner>
     {
-        /// <summary>
-        /// Gets the publisher name of the virtual machine extension image this extension is created from.
-        /// </summary>
-        string PublisherName { get; }
-
-        /// <summary>
-        /// Gets the public settings of the virtual machine extension as key value pairs.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string, object> PublicSettings { get; }
-
-        /// <summary>
-        /// Gets the type name of the virtual machine extension image this extension is created from.
-        /// </summary>
-        string TypeName { get; }
-
-        /// <summary>
-        /// Gets the public settings of the virtual machine extension as a JSON string.
-        /// </summary>
-        string PublicSettingsAsJsonString { get; }
 
         /// <summary>
         /// Gets true if this extension is configured to upgrade automatically when a new minor version of the
@@ -44,13 +26,33 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         string ProvisioningState { get; }
 
         /// <summary>
-        /// Gets the version name of the virtual machine extension image this extension is created from.
+        /// Gets the public settings of the virtual machine extension as key value pairs.
         /// </summary>
-        string VersionName { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, object> PublicSettings { get; }
+
+        /// <summary>
+        /// Gets the public settings of the virtual machine extension as a JSON string.
+        /// </summary>
+        string PublicSettingsAsJsonString { get; }
+
+        /// <summary>
+        /// Gets the publisher name of the virtual machine extension image this extension is created from.
+        /// </summary>
+        string PublisherName { get; }
 
         /// <summary>
         /// Gets the tags for this virtual machine extension.
         /// </summary>
         System.Collections.Generic.IReadOnlyDictionary<string, string> Tags { get; }
+
+        /// <summary>
+        /// Gets the type name of the virtual machine extension image this extension is created from.
+        /// </summary>
+        string TypeName { get; }
+
+        /// <summary>
+        /// Gets the version name of the virtual machine extension image this extension is created from.
+        /// </summary>
+        string VersionName { get; }
     }
 }

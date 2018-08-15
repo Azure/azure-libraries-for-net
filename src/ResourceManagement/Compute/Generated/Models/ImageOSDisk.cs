@@ -8,8 +8,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value
         /// cannot be larger than 1023 GB</param>
         /// <param name="storageAccountType">Specifies the storage account type
-        /// for the managed disk. Possible values are: Standard_LRS or
-        /// Premium_LRS. Possible values include: 'Standard_LRS',
-        /// 'Premium_LRS'</param>
-        public ImageOSDisk(OperatingSystemTypes osType, OperatingSystemStateTypes osState, ResourceManager.Fluent.SubResource snapshot = default(ResourceManager.Fluent.SubResource), ResourceManager.Fluent.SubResource managedDisk = default(ResourceManager.Fluent.SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), string storageAccountType = default(string))
+        /// for the managed disk. Possible values are: Standard_LRS,
+        /// Premium_LRS, and StandardSSD_LRS. Possible values include:
+        /// 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'</param>
+        public ImageOSDisk(OperatingSystemTypes osType, OperatingSystemStateTypes osState, Management.ResourceManager.Fluent.SubResource snapshot = default(Management.ResourceManager.Fluent.SubResource), Management.ResourceManager.Fluent.SubResource managedDisk = default(Management.ResourceManager.Fluent.SubResource), string blobUri = default(string), CachingTypes? caching = default(CachingTypes?), int? diskSizeGB = default(int?), StorageAccountTypes storageAccountType = default(StorageAccountTypes))
         {
             OsType = osType;
             OsState = osState;
@@ -93,13 +93,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// Gets or sets the snapshot.
         /// </summary>
         [JsonProperty(PropertyName = "snapshot")]
-        public ResourceManager.Fluent.SubResource Snapshot { get; set; }
+        public Management.ResourceManager.Fluent.SubResource Snapshot { get; set; }
 
         /// <summary>
         /// Gets or sets the managedDisk.
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
-        public ResourceManager.Fluent.SubResource ManagedDisk { get; set; }
+        public Management.ResourceManager.Fluent.SubResource ManagedDisk { get; set; }
 
         /// <summary>
         /// Gets or sets the Virtual Hard Disk.
@@ -131,16 +131,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         /// <summary>
         /// Gets or sets specifies the storage account type for the managed
-        /// disk. Possible values are: Standard_LRS or Premium_LRS. Possible
-        /// values include: 'Standard_LRS', 'Premium_LRS'
+        /// disk. Possible values are: Standard_LRS, Premium_LRS, and
+        /// StandardSSD_LRS. Possible values include: 'Standard_LRS',
+        /// 'Premium_LRS', 'StandardSSD_LRS'
         /// </summary>
         [JsonProperty(PropertyName = "storageAccountType")]
-        public string StorageAccountType { get; set; }
+        public StorageAccountTypes StorageAccountType { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()

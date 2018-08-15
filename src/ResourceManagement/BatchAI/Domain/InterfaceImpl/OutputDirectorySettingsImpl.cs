@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> Models.OutputDirectorySettings.Definition.IWithPathPrefix<BatchAIJob.Definition.IWithCreate>.WithPathPrefix(string pathPrefix)
         {
-            return this.WithPathPrefix(pathPrefix) as Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPathPrefix(pathPrefix);
         }
 
         /// <param name="pathSuffix">Path prefix.</param>
         /// <return>The next stage of the definition.</return>
         Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> Models.OutputDirectorySettings.Definition.IWithPathSuffix<BatchAIJob.Definition.IWithCreate>.WithPathSuffix(string pathSuffix)
         {
-            return this.WithPathSuffix(pathSuffix) as Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithPathSuffix(pathSuffix);
         }
     }
 }

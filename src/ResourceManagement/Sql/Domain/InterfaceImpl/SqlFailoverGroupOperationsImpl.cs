@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new resource definition.</return>
         SqlFailoverGroupOperations.Definition.IWithSqlServer Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<SqlFailoverGroupOperations.Definition.IWithSqlServer>.Define(string name)
         {
-            return this.Define(name) as SqlFailoverGroupOperations.Definition.IWithSqlServer;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The SqlFailoverGroup object.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition.ForceFailoverAllowDataLoss(string failoverGroupName)
         {
-            return this.ForceFailoverAllowDataLoss(failoverGroupName) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return this.ForceFailoverAllowDataLoss(failoverGroupName);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new SQL Failover Group definition.</return>
         SqlFailoverGroupOperations.Definition.IWithReadWriteEndpointPolicy SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition.Define(string failoverGroupName)
         {
-            return this.Define(failoverGroupName) as SqlFailoverGroupOperations.Definition.IWithReadWriteEndpointPolicy;
+            return this.Define(failoverGroupName);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the SqlFailoverGroup object.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup> SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition.FailoverAsync(string failoverGroupName, CancellationToken cancellationToken)
         {
-            return await this.FailoverAsync(failoverGroupName, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return await this.FailoverAsync(failoverGroupName, cancellationToken);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the SqlFailoverGroup object.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup> SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition.ForceFailoverAllowDataLossAsync(string failoverGroupName, CancellationToken cancellationToken)
         {
-            return await this.ForceFailoverAllowDataLossAsync(failoverGroupName, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return await this.ForceFailoverAllowDataLossAsync(failoverGroupName, cancellationToken);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The SqlFailoverGroup object.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition.Failover(string failoverGroupName)
         {
-            return this.Failover(failoverGroupName) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return this.Failover(failoverGroupName);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>.GetBySqlServerAsync(string resourceGroupName, string sqlServerName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return await this.GetBySqlServerAsync(resourceGroupName, sqlServerName, name, cancellationToken);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the found resource.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>.GetBySqlServerAsync(ISqlServer sqlServer, string name, CancellationToken cancellationToken)
         {
-            return await this.GetBySqlServerAsync(sqlServer, name, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return await this.GetBySqlServerAsync(sqlServer, name, cancellationToken);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>.GetBySqlServer(string resourceGroupName, string sqlServerName, string name)
         {
-            return this.GetBySqlServer(resourceGroupName, sqlServerName, name) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return this.GetBySqlServer(resourceGroupName, sqlServerName, name);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>.GetBySqlServer(ISqlServer sqlServer, string name)
         {
-            return this.GetBySqlServer(sqlServer, name) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return this.GetBySqlServer(sqlServer, name);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>.ListBySqlServerAsync(string resourceGroupName, string sqlServerName, CancellationToken cancellationToken)
         {
-            return await this.ListBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>;
+            return await this.ListBySqlServerAsync(resourceGroupName, sqlServerName, cancellationToken);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call.</return>
         async Task<System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>.ListBySqlServerAsync(ISqlServer sqlServer, CancellationToken cancellationToken)
         {
-            return await this.ListBySqlServerAsync(sqlServer, cancellationToken) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>;
+            return await this.ListBySqlServerAsync(sqlServer, cancellationToken);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>.ListBySqlServer(string resourceGroupName, string sqlServerName)
         {
-            return this.ListBySqlServer(resourceGroupName, sqlServerName) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>;
+            return this.ListBySqlServer(resourceGroupName, sqlServerName);
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup> Microsoft.Azure.Management.Sql.Fluent.ISqlChildrenOperations<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>.ListBySqlServer(ISqlServer sqlServer)
         {
-            return this.ListBySqlServer(sqlServer) as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup>;
+            return this.ListBySqlServer(sqlServer);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The SqlFailoverGroup object.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroupOperations.ForceFailoverAllowDataLoss(string resourceGroupName, string serverName, string failoverGroupName)
         {
-            return this.ForceFailoverAllowDataLoss(resourceGroupName, serverName, failoverGroupName) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return this.ForceFailoverAllowDataLoss(resourceGroupName, serverName, failoverGroupName);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the SqlFailoverGroup object.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup> Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroupOperations.FailoverAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken)
         {
-            return await this.FailoverAsync(resourceGroupName, serverName, failoverGroupName, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return await this.FailoverAsync(resourceGroupName, serverName, failoverGroupName, cancellationToken);
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of this call returning the SqlFailoverGroup object.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup> Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroupOperations.ForceFailoverAllowDataLossAsync(string resourceGroupName, string serverName, string failoverGroupName, CancellationToken cancellationToken)
         {
-            return await this.ForceFailoverAllowDataLossAsync(resourceGroupName, serverName, failoverGroupName, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return await this.ForceFailoverAllowDataLossAsync(resourceGroupName, serverName, failoverGroupName, cancellationToken);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The SqlFailoverGroup object.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroupOperations.Failover(string resourceGroupName, string serverName, string failoverGroupName)
         {
-            return this.Failover(resourceGroupName, serverName, failoverGroupName) as Microsoft.Azure.Management.Sql.Fluent.ISqlFailoverGroup;
+            return this.Failover(resourceGroupName, serverName, failoverGroupName);
         }
     }
 }

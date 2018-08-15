@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             string endpointName,
             IList<string> contentPaths)
         {
-            LoadEndpointContentAsync(resourceGroupName, profileName, endpointName, contentPaths).Wait();
+            Extensions.Synchronize(() => LoadEndpointContentAsync(resourceGroupName, profileName, endpointName, contentPaths));
         }
 
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:6FB4EA69673E1D8A74E1418EB52BB9FE
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             string endpointName
             )
         {
-            StartEndpointAsync(resourceGroupName, profileName, endpointName).Wait();
+            Extensions.Synchronize(() => StartEndpointAsync(resourceGroupName, profileName, endpointName));
         }
 
         ///GENMHASH:EB7BCC87B72405260E2C64D3F60E7D12:27C4EEED8156C99311E5C3646A2873AB
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             string profileName,
             string endpointName)
         {
-            StopEndpointAsync(resourceGroupName, profileName, endpointName).Wait();
+            Extensions.Synchronize(() => StopEndpointAsync(resourceGroupName, profileName, endpointName));
         }
 
         ///GENMHASH:64DEF1711FC41C47500E107416B7F805:506E827968295A02B09C6EA38E8B9C1E
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.Cdn.Fluent
             string endpointName,
             IList<string> contentPaths)
         {
-            PurgeEndpointContentAsync(resourceGroupName, profileName, endpointName, contentPaths).Wait();
+            Extensions.Synchronize(() => PurgeEndpointContentAsync(resourceGroupName, profileName, endpointName, contentPaths));
         }
     }
 

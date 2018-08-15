@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Manager as Microsoft.Azure.Management.ServiceBus.Fluent.IServiceBusManager;
+                return this.Manager;
             }
         }
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithDeleteOnIdle.WithDeleteOnIdleDurationInMinutes(int durationInMinutes)
         {
-            return this.WithDeleteOnIdleDurationInMinutes(durationInMinutes) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithDeleteOnIdleDurationInMinutes(durationInMinutes);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithDeleteOnIdle.WithDeleteOnIdleDurationInMinutes(int durationInMinutes)
         {
-            return this.WithDeleteOnIdleDurationInMinutes(durationInMinutes) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithDeleteOnIdleDurationInMinutes(durationInMinutes);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithMessageBatching.WithoutMessageBatching()
         {
-            return this.WithoutMessageBatching() as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithoutMessageBatching();
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithMessageBatching.WithoutMessageBatching()
         {
-            return this.WithoutMessageBatching() as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithoutMessageBatching();
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithMessageBatching.WithMessageBatching()
         {
-            return this.WithMessageBatching() as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithMessageBatching();
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithDuplicateMessageDetection.WithDuplicateMessageDetection(TimeSpan duplicateDetectionHistoryDuration)
         {
-            return this.WithDuplicateMessageDetection(duplicateDetectionHistoryDuration) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithDuplicateMessageDetection(duplicateDetectionHistoryDuration);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithDuplicateMessageDetection.WithoutDuplicateMessageDetection()
         {
-            return this.WithoutDuplicateMessageDetection() as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithoutDuplicateMessageDetection();
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithDuplicateMessageDetection.WithDuplicateMessageDetectionHistoryDuration(TimeSpan duration)
         {
-            return this.WithDuplicateMessageDetectionHistoryDuration(duration) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithDuplicateMessageDetectionHistoryDuration(duration);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithPartitioning.WithPartitioning()
         {
-            return this.WithPartitioning() as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithPartitioning();
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithPartitioning.WithoutPartitioning()
         {
-            return this.WithoutPartitioning() as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithoutPartitioning();
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithAuthorizationRule.WithNewSendRule(string name)
         {
-            return this.WithNewSendRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithNewSendRule(name);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithAuthorizationRule.WithNewManageRule(string name)
         {
-            return this.WithNewManageRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithNewManageRule(name);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithAuthorizationRule.WithNewListenRule(string name)
         {
-            return this.WithNewListenRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithNewListenRule(name);
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithAuthorizationRule.WithNewSendRule(string name)
         {
-            return this.WithNewSendRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithNewSendRule(name);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithAuthorizationRule.WithNewManageRule(string name)
         {
-            return this.WithNewManageRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithNewManageRule(name);
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithAuthorizationRule.WithNewListenRule(string name)
         {
-            return this.WithNewListenRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithNewListenRule(name);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithAuthorizationRule.WithoutAuthorizationRule(string name)
         {
-            return this.WithoutAuthorizationRule(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithoutAuthorizationRule(name);
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithSubscription.WithNewSubscription(string name)
         {
-            return this.WithNewSubscription(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithNewSubscription(name);
         }
 
         /// <summary>
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithSubscription.WithNewSubscription(string name)
         {
-            return this.WithNewSubscription(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithNewSubscription(name);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>Next stage of the Service Bus topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithSubscription.WithoutSubscription(string name)
         {
-            return this.WithoutSubscription(name) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithoutSubscription(name);
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithDefaultMessageTTL.WithDefaultMessageTTL(TimeSpan ttl)
         {
-            return this.WithDefaultMessageTTL(ttl) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithDefaultMessageTTL(ttl);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithDefaultMessageTTL.WithDefaultMessageTTL(TimeSpan ttl)
         {
-            return this.WithDefaultMessageTTL(ttl) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithDefaultMessageTTL(ttl);
         }
 
         /// <summary>
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Subscriptions() as Microsoft.Azure.Management.ServiceBus.Fluent.ISubscriptions;
+                return this.Subscriptions();
             }
         }
 
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.AuthorizationRules() as Microsoft.Azure.Management.ServiceBus.Fluent.ITopicAuthorizationRules;
+                return this.AuthorizationRules();
             }
         }
 
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Region as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region;
             }
         }
 
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         {
             get
             {
-                return this.Tags as System.Collections.Generic.IReadOnlyDictionary<string, string>;
+                return this.Tags;
             }
         }
 
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithSize.WithSizeInMB(long sizeInMB)
         {
-            return this.WithSizeInMB(sizeInMB) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithSizeInMB(sizeInMB);
         }
 
         /// <summary>
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithSize.WithSizeInMB(long sizeInMB)
         {
-            return this.WithSizeInMB(sizeInMB) as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithSizeInMB(sizeInMB);
         }
 
         /// <summary>
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic definition.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithExpressMessage.WithExpressMessage()
         {
-            return this.WithExpressMessage() as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Definition.IWithCreate;
+            return this.WithExpressMessage();
         }
 
         /// <summary>
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithExpressMessage.WithoutExpressMessage()
         {
-            return this.WithoutExpressMessage() as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithoutExpressMessage();
         }
 
         /// <summary>
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Fluent
         /// <return>The next stage of topic update.</return>
         Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IWithExpressMessage.WithExpressMessage()
         {
-            return this.WithExpressMessage() as Microsoft.Azure.Management.ServiceBus.Fluent.Topic.Update.IUpdate;
+            return this.WithExpressMessage();
         }
 
         /// <summary>

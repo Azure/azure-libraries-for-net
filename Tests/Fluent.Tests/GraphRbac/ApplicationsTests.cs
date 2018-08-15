@@ -43,12 +43,17 @@ namespace Fluent.Tests.Graph.RBAC
                                 .WithPublicKey(File.ReadAllBytes("Assets/myTest.cer"))
                                 .WithDuration(TimeSpan.FromDays(100))
                                 .Attach()
+                            .DefineCertificateCredential("cert")
+                                .WithAsymmetricX509Certificate()
+                                .WithPublicKey(File.ReadAllBytes("Assets/myTest2.cer"))
+                                .WithDuration(TimeSpan.FromDays(80))
+                                .Attach()
                             .Create();
                     Console.WriteLine(application.Id + " - " + application.ApplicationId);
                     Assert.NotNull(application.Id);
                     Assert.NotNull(application.ApplicationId);
                     Assert.Equal(name, application.Name);
-                    Assert.Equal(1, application.CertificateCredentials.Count);
+                    Assert.Equal(2, application.CertificateCredentials.Count);
                     Assert.Equal(1, application.PasswordCredentials.Count);
                     Assert.Equal(1, application.ReplyUrls.Count);
                     Assert.Equal(1, application.IdentifierUris.Count);

@@ -1,30 +1,71 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update
 {
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Update;
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition;
-    using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Graph.RBAC.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.Storage.Fluent;
     using Microsoft.Azure.Management.Msi.Fluent;
+    using Microsoft.Azure.Management.Network.Fluent;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
+    using Microsoft.Azure.Management.Storage.Fluent;
+
+    /// <summary>
+    /// The stage of the System Assigned (Local) Managed Service Identity enabled virtual machine scale set
+    /// allowing to set access for the identity.
+    /// </summary>
+    public interface IWithSystemAssignedIdentityBasedAccessOrApply :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply
+    {
+
+        /// <summary>
+        /// Specifies that virtual machine's system assigned (local) identity should have the given
+        /// access (described by the role) on an ARM resource identified by the resource ID.
+        /// Applications running on the scale set VM instance will have the same permission (role)
+        /// on the ARM resource.
+        /// </summary>
+        /// <param name="resourceId">The ARM identifier of the resource.</param>
+        /// <param name="role">Access role to assigned to the scale set local identity.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole role);
+
+        /// <summary>
+        /// Specifies that virtual machine scale set 's system assigned (local) identity should have the access
+        /// (described by the role definition) on an ARM resource identified by the resource ID.  Applications
+        /// running on the scale set VM instance will have the same permission (role) on the ARM resource.
+        /// </summary>
+        /// <param name="resourceId">Scope of the access represented in ARM resource ID format.</param>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the scale set local identity.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId);
+
+        /// <summary>
+        /// Specifies that virtual machine scale set's system assigned (local) identity should have the given
+        /// access (described by the role) on the resource group that virtual machine resides. Applications
+        /// running on the scale set VM instance will have the same permission (role) on the resource group.
+        /// </summary>
+        /// <param name="role">Access role to assigned to the scale set local identity.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role);
+
+        /// <summary>
+        /// Specifies that virtual machine scale set's system assigned (local) identity should have the access
+        /// (described by the role definition) on the resource group that virtual machine resides. Applications
+        /// running on the scale set VM instance will have the same permission (role) on the resource group.
+        /// </summary>
+        /// <param name="roleDefinitionId">Access role definition to assigned to the scale set local identity.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId);
+    }
 
     /// <summary>
     /// The stage of the virtual machine definition allowing to specify extensions.
     /// </summary>
     public interface IWithExtension
     {
-        /// <summary>
-        /// Begins the description of an update of an existing extension assigned to the virtual machines in the scale set.
-        /// </summary>
-        /// <param name="name">The reference name for the extension.</param>
-        /// <return>The first stage of the extension reference update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Update.IUpdate UpdateExtension(string name);
 
         /// <summary>
         /// Begins the definition of an extension reference to be attached to the virtual machines in the scale set.
@@ -32,6 +73,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         /// <param name="name">The reference name for an extension.</param>
         /// <return>The first stage of the extension reference definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.UpdateDefinition.IBlank<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply> DefineNewExtension(string name);
+
+        /// <summary>
+        /// Begins the description of an update of an existing extension assigned to the virtual machines in the scale set.
+        /// </summary>
+        /// <param name="name">The reference name for the extension.</param>
+        /// <return>The first stage of the extension reference update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSetExtension.Update.IUpdate UpdateExtension(string name);
 
         /// <summary>
         /// Removes the extension with the specified name from the virtual machines in the scale set.
@@ -47,13 +95,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     /// </summary>
     public interface IWithoutPrimaryLoadBalancerNatPool
     {
-        /// <summary>
-        /// Removes the associations between the primary network interface configuration and the specified inbound NAT pools
-        /// of an Internet-facing load balancer.
-        /// </summary>
-        /// <param name="natPoolNames">The names of existing inbound NAT pools.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutPrimaryInternetFacingLoadBalancerNatPools(params string[] natPoolNames);
 
         /// <summary>
         /// Removes the associations between the primary network interface configuration and the specified inbound NAT pools
@@ -62,6 +103,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         /// <param name="natPoolNames">The names of existing inbound NAT pools.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutPrimaryInternalLoadBalancerNatPools(params string[] natPoolNames);
+
+        /// <summary>
+        /// Removes the associations between the primary network interface configuration and the specified inbound NAT pools
+        /// of an Internet-facing load balancer.
+        /// </summary>
+        /// <param name="natPoolNames">The names of existing inbound NAT pools.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutPrimaryInternetFacingLoadBalancerNatPools(params string[] natPoolNames);
     }
 
     /// <summary>
@@ -71,6 +120,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     public interface IWithPrimaryInternalLoadBalancer :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply
     {
+
         /// <summary>
         /// Specifies the load balancer to be used as the internal load balancer for the virtual machines in the
         /// scale set.
@@ -86,11 +136,41 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     }
 
     /// <summary>
+    /// The stage of the virtual machine scale set update allowing to enable public ip
+    /// for vm instances.
+    /// </summary>
+    public interface IWithVirtualMachinePublicIp :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specify that virtual machines in the scale set should have public ip address.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithVirtualMachinePublicIp();
+
+        /// <summary>
+        /// Specify that virtual machines in the scale set should have public ip address.
+        /// </summary>
+        /// <param name="leafDomainLabel">The domain name label.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithVirtualMachinePublicIp(string leafDomainLabel);
+
+        /// <summary>
+        /// Specify that virtual machines in the scale set should have public ip address.
+        /// </summary>
+        /// <param name="ipConfig">The public ip address configuration.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithVirtualMachinePublicIp(VirtualMachineScaleSetPublicIPAddressConfiguration ipConfig);
+    }
+
+    /// <summary>
     /// The stage of a virtual machine scale set update allowing to remove the association between the primary network
     /// interface configuration and a backend of a load balancer.
     /// </summary>
     public interface IWithoutPrimaryLoadBalancerBackend
     {
+
         /// <summary>
         /// Removes the associations between the primary network interface configuration and the specified backends
         /// of the internal load balancer.
@@ -109,11 +189,32 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     }
 
     /// <summary>
+    /// The stage of the virtual machine scale set update allowing to configure ip forwarding.
+    /// </summary>
+    public interface IWithIpForwarding :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specify that ip forwarding should be enabled for the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithIpForwarding();
+
+        /// <summary>
+        /// Specify that ip forwarding should be disabled for the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutIpForwarding();
+    }
+
+    /// <summary>
     /// The stage of a virtual machine scale set update allowing to change the SKU for the virtual machines
     /// in the scale set.
     /// </summary>
     public interface IWithSku
     {
+
         /// <summary>
         /// Specifies the SKU for the virtual machines in the scale set.
         /// </summary>
@@ -130,18 +231,40 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     }
 
     /// <summary>
+    /// The stage of the virtual machine scale set update allowing to configure application security group.
+    /// </summary>
+    public interface IWithApplicationSecurityGroup :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies that provided application security group should be associated with the virtual machine scale set.
+        /// </summary>
+        /// <param name="applicationSecurityGroup">The application security group.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithExistingApplicationSecurityGroup(IApplicationSecurityGroup applicationSecurityGroup);
+
+        /// <summary>
+        /// Specifies that provided application security group should be associated with the virtual machine scale set.
+        /// </summary>
+        /// <param name="applicationSecurityGroupId">The application security group id.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithExistingApplicationSecurityGroupId(string applicationSecurityGroupId);
+
+        /// <summary>
+        /// Specifies that provided application security group should be removed from the virtual machine scale set.
+        /// </summary>
+        /// <param name="applicationSecurityGroupId">The application security group id.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutApplicationSecurityGroup(string applicationSecurityGroupId);
+    }
+
+    /// <summary>
     /// The stage of a virtual machine scale set update allowing to remove the public and internal load balancer
     /// from the primary network interface configuration.
     /// </summary>
     public interface IWithoutPrimaryLoadBalancer
     {
-        /// <summary>
-        /// Removes the association between the Internet-facing load balancer and the primary network interface configuration.
-        /// This removes the association between primary network interface configuration and all the backends and
-        /// inbound NAT pools in the load balancer.
-        /// </summary>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutPrimaryInternetFacingLoadBalancer();
 
         /// <summary>
         /// Removes the association between the internal load balancer and the primary network interface configuration.
@@ -150,6 +273,34 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         /// </summary>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutPrimaryInternalLoadBalancer();
+
+        /// <summary>
+        /// Removes the association between the Internet-facing load balancer and the primary network interface configuration.
+        /// This removes the association between primary network interface configuration and all the backends and
+        /// inbound NAT pools in the load balancer.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutPrimaryInternetFacingLoadBalancer();
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine scale set update allowing to configure accelerated networking.
+    /// </summary>
+    public interface IWithAcceleratedNetworking :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specify that accelerated networking should be enabled for the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithAcceleratedNetworking();
+
+        /// <summary>
+        /// Specify that accelerated networking should be disabled for the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutAcceleratedNetworking();
     }
 
     /// <summary>
@@ -158,6 +309,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     /// </summary>
     public interface IWithCapacity
     {
+
         /// <summary>
         /// Specifies the new number of virtual machines in the scale set.
         /// </summary>
@@ -173,6 +325,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     public interface IWithPrimaryLoadBalancer :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancer
     {
+
         /// <summary>
         /// Specifies the load balancer to be used as the Internet-facing load balancer for the virtual machines in the
         /// scale set.
@@ -184,6 +337,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         /// <param name="loadBalancer">The primary Internet-facing load balancer.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithPrimaryInternetFacingLoadBalancerBackendOrNatPool WithExistingPrimaryInternetFacingLoadBalancer(ILoadBalancer loadBalancer);
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine scale set update allowing to configure single placement group.
+    /// </summary>
+    public interface IWithSinglePlacementGroup :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specify that single placement group should be disabled for the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutSinglePlacementGroup();
+
+        /// <summary>
+        /// Specify that single placement group should be enabled for the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithSinglePlacementGroup();
     }
 
     /// <summary>
@@ -203,8 +376,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithUserAssignedManagedServiceIdentity,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithBootDiagnostics,
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithAvailabilityZone
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithAvailabilityZone,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithVirtualMachinePublicIp,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithAcceleratedNetworking,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithIpForwarding,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithNetworkSecurityGroup,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSinglePlacementGroup,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApplicationGateway,
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApplicationSecurityGroup
     {
+
     }
 
     /// <summary>
@@ -214,6 +395,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     public interface IWithPrimaryInternalLoadBalancerBackendOrNatPool :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancerNatPool
     {
+
         /// <summary>
         /// Associates the specified internal load balancer backends with the primary network interface of the
         /// virtual machines in the scale set.
@@ -230,6 +412,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     public interface IWithPrimaryInternalLoadBalancerNatPool :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply
     {
+
         /// <summary>
         /// Associates the specified internal load balancer inbound NAT pools with the the primary network interface of
         /// the virtual machines in the scale set.
@@ -240,6 +423,37 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     }
 
     /// <summary>
+    /// The stage of the virtual machine update allowing to add or remove User Assigned (External)
+    /// Managed Service Identities.
+    /// </summary>
+    public interface IWithUserAssignedManagedServiceIdentity :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies an existing user assigned identity to be associated with the virtual machine.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <return>The next stage of the virtual machine scale set update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithExistingUserAssignedManagedServiceIdentity(IIdentity identity);
+
+        /// <summary>
+        /// Specifies the definition of a not-yet-created user assigned identity to be associated
+        /// with the virtual machine.
+        /// </summary>
+        /// <param name="creatableIdentity">A creatable identity definition.</param>
+        /// <return>The next stage of the virtual machine scale set update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity);
+
+        /// <summary>
+        /// Specifies that an user assigned identity associated with the virtual machine should be removed.
+        /// </summary>
+        /// <param name="identityId">ARM resource id of the identity.</param>
+        /// <return>The next stage of the virtual machine scale set update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutUserAssignedManagedServiceIdentity(string identityId);
+    }
+
+    /// <summary>
     /// The stage of a virtual machine scale set update allowing to associate a backend pool and/or inbound NAT pool
     /// of the selected Internet-facing load balancer with the primary network interface of the virtual machines in
     /// the scale set.
@@ -247,6 +461,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     public interface IWithPrimaryInternetFacingLoadBalancerBackendOrNatPool :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithPrimaryInternetFacingLoadBalancerNatPool
     {
+
         /// <summary>
         /// Associates the specified Internet-facing load balancer backends with the primary network interface of the
         /// virtual machines in the scale set.
@@ -264,6 +479,29 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithPrimaryInternetFacingLoadBalancerBackendOrNatPool,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancerBackendOrNatPool
     {
+
+    }
+
+    /// <summary>
+    /// The stage of the virtual machine scale set update allowing to configure application gateway.
+    /// </summary>
+    public interface IWithApplicationGateway :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specify that an application gateway backend pool should be associated with virtual machine scale set.
+        /// </summary>
+        /// <param name="backendPoolId">An existing backend pool id of the gateway.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithExistingApplicationGatewayBackendPool(string backendPoolId);
+
+        /// <summary>
+        /// Specify an existing application gateway associated should be removed from the virtual machine scale set.
+        /// </summary>
+        /// <param name="backendPoolId">An existing backend pool id of the gateway.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutApplicationGatewayBackendPool(string backendPoolId);
     }
 
     /// <summary>
@@ -271,6 +509,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     /// </summary>
     public interface IWithManagedDataDisk
     {
+
         /// <summary>
         /// Specifies that a managed disk needs to be created implicitly with the given size.
         /// </summary>
@@ -306,10 +545,26 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     }
 
     /// <summary>
+    /// The stage of the virtual machine scale set update allowing to specify availability zone.
+    /// </summary>
+    public interface IWithAvailabilityZone :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies the availability zone for the virtual machine scale set.
+        /// </summary>
+        /// <param name="zoneId">The zone identifier.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithAvailabilityZone(AvailabilityZoneId zoneId);
+    }
+
+    /// <summary>
     /// The stage of the virtual machine scale set definition allowing to specify unmanaged data disk.
     /// </summary>
     public interface IWithUnmanagedDataDisk
     {
+
     }
 
     /// <summary>
@@ -318,11 +573,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     public interface IWithBootDiagnostics :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
-        /// <summary>
-        /// Specifies that boot diagnostics needs to be disabled in the virtual machine scale set.
-        /// </summary>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate WithoutBootDiagnostics();
 
         /// <summary>
         /// Specifies that boot diagnostics needs to be enabled in the virtual machine scale set.
@@ -350,6 +600,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
         /// <param name="storageAccountBlobEndpointUri">A storage account blob endpoint to store the boot diagnostics.</param>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate WithBootDiagnostics(string storageAccountBlobEndpointUri);
+
+        /// <summary>
+        /// Specifies that boot diagnostics needs to be disabled in the virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IUpdate WithoutBootDiagnostics();
     }
 
     /// <summary>
@@ -359,6 +615,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     public interface IWithPrimaryInternetFacingLoadBalancerNatPool :
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithPrimaryInternalLoadBalancer
     {
+
         /// <summary>
         /// Associates inbound NAT pools of the selected Internet-facing load balancer with the primary network interface
         /// of the virtual machines in the scale set.
@@ -369,116 +626,52 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Updat
     }
 
     /// <summary>
+    /// The stage of the virtual machine scale set update allowing to configure network security group.
+    /// </summary>
+    public interface IWithNetworkSecurityGroup :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies the network security group for the virtual machine scale set.
+        /// </summary>
+        /// <param name="networkSecurityGroup">The network security group to associate.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithExistingNetworkSecurityGroup(INetworkSecurityGroup networkSecurityGroup);
+
+        /// <summary>
+        /// Specifies the network security group for the virtual machine scale set.
+        /// </summary>
+        /// <param name="networkSecurityGroupId">The network security group to associate.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithExistingNetworkSecurityGroupId(string networkSecurityGroupId);
+
+        /// <summary>
+        /// Specifies that network security group association should be removed if exists.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutNetworkSecurityGroup();
+    }
+
+    /// <summary>
     /// The stage of the virtual machine scale set update allowing to enable System Assigned (Local) Managed Service Identity.
     /// </summary>
     public interface IWithSystemAssignedManagedServiceIdentity :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
+
+        /// <summary>
+        /// Specifies that System assigned (Local) Managed Service Identity needs to be disabled in the
+        /// virtual machine scale set.
+        /// </summary>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithoutSystemAssignedManagedServiceIdentity();
+
         /// <summary>
         /// Specifies that System assigned (Local) Managed Service Identity needs to be enabled in the
         /// virtual machine scale set.
         /// </summary>
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithSystemAssignedManagedServiceIdentity();
-
-        /// <summary>
-        /// Specifies that System assigned (Local) Managed Service Identity needs to be enabled in the
-        /// virtual machine scale set.
-        /// </summary>
-        /// <param name="tokenPort">The port on the virtual machine scale set instance where access token is available.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithSystemAssignedManagedServiceIdentity(int tokenPort);
-    }
-
-    /// <summary>
-    /// The stage of the virtual machine update allowing to add or remove User Assigned (External)
-    /// Managed Service Identities.
-    /// </summary>
-    public interface IWithUserAssignedManagedServiceIdentity :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-        /// <summary>
-        /// Specifies the definition of a not-yet-created user assigned identity to be associated
-        /// with the virtual machine.
-        /// </summary>
-        /// <param name="creatableIdentity">A creatable identity definition.</param>
-        /// <return>The next stage of the virtual machine scale set update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithNewUserAssignedManagedServiceIdentity(ICreatable<Microsoft.Azure.Management.Msi.Fluent.IIdentity> creatableIdentity);
-
-        /// <summary>
-        /// Specifies that an user assigned identity associated with the virtual machine should be removed.
-        /// </summary>
-        /// <param name="identityId">ARM resource id of the identity.</param>
-        /// <return>The next stage of the virtual machine scale set update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithoutUserAssignedManagedServiceIdentity(string identityId);
-
-        /// <summary>
-        /// Specifies an existing user assigned identity to be associated with the virtual machine.
-        /// </summary>
-        /// <param name="identity">The identity.</param>
-        /// <return>The next stage of the virtual machine scale set update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithExistingUserAssignedManagedServiceIdentity(IIdentity identity);
-    }
-
-    /// <summary>
-    /// The stage of the System Assigned (Local) Managed Service Identity enabled virtual machine scale set
-    /// allowing to set access for the identity.
-    /// </summary>
-    public interface IWithSystemAssignedIdentityBasedAccessOrApply :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply
-    {
-        /// <summary>
-        /// Specifies that virtual machine scale set 's system assigned (local) identity should have the access
-        /// (described by the role definition) on an ARM resource identified by the resource ID.  Applications
-        /// running on the scale set VM instance will have the same permission (role) on the ARM resource.
-        /// </summary>
-        /// <param name="resourceId">Scope of the access represented in ARM resource ID format.</param>
-        /// <param name="roleDefinitionId">Access role definition to assigned to the scale set local identity.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithSystemAssignedIdentityBasedAccessTo(string resourceId, string roleDefinitionId);
-
-        /// <summary>
-        /// Specifies that virtual machine scale set's system assigned (local) identity should have the given
-        /// access (described by the role) on the resource group that virtual machine resides. Applications
-        /// running on the scale set VM instance will have the same permission (role) on the resource group.
-        /// </summary>
-        /// <param name="role">Access role to assigned to the scale set local identity.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(BuiltInRole role);
-
-        /// <summary>
-        /// Specifies that virtual machine's system assigned (local) identity should have the given
-        /// access (described by the role) on an ARM resource identified by the resource ID.
-        /// Applications running on the scale set VM instance will have the same permission (role)
-        /// on the ARM resource.
-        /// </summary>
-        /// <param name="resourceId">The ARM identifier of the resource.</param>
-        /// <param name="role">Access role to assigned to the scale set local identity.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithSystemAssignedIdentityBasedAccessTo(string resourceId, BuiltInRole asRole);
-
-        /// <summary>
-        /// Specifies that virtual machine scale set's system assigned (local) identity should have the access
-        /// (described by the role definition) on the resource group that virtual machine resides. Applications
-        /// running on the scale set VM instance will have the same permission (role) on the resource group.
-        /// </summary>
-        /// <param name="roleDefinitionId">Access role definition to assigned to the scale set local identity.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithSystemAssignedIdentityBasedAccessOrApply WithSystemAssignedIdentityBasedAccessToCurrentResourceGroup(string roleDefinitionId);
-    }
-
-    /// <summary>
-    /// The stage of the virtual machine scale set update allowing to specify availability zone.
-    /// </summary>
-    public interface IWithAvailabilityZone :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-        /// <summary>
-        /// Specifies the availability zone for the virtual machine scale set.
-        /// </summary>
-        /// <param name="zoneId">The zone identifier.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Update.IWithApply WithAvailabilityZone(AvailabilityZoneId zoneId);
     }
 }

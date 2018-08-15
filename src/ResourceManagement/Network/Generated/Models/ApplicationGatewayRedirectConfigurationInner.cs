@@ -52,9 +52,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// configuration.</param>
         /// <param name="pathRules">Path rules specifying redirect
         /// configuration.</param>
-        /// <param name="name">Name of the resource that is unique within a
-        /// resource group. This name can be used to access the
-        /// resource.</param>
+        /// <param name="name">Name of the redirect configuration that is
+        /// unique within an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
@@ -132,8 +131,8 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         public IList<Management.ResourceManager.Fluent.SubResource> PathRules { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
+        /// Gets or sets name of the redirect configuration that is unique
+        /// within an Application Gateway.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }

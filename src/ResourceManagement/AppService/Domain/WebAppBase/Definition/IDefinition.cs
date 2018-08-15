@@ -247,6 +247,34 @@ namespace Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition
         /// <param name="document">Default document.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithDefaultDocument(string document);
+
+        /// <summary>
+        /// Sets whether the web app only accepts HTTPS traffic.
+        /// </summary>
+        /// <param name="httpsOnly">true if the web app only accepts HTTPS traffic.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithHttpsOnly(bool httpsOnly);
+
+        /// <summary>
+        /// Sets whether the web app only accepts HTTP 2.0 traffic.
+        /// </summary>
+        /// <param name="http20Enabled">true if the web app accepts HTTP 2.0 traffic.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithHttp20Enabled(bool http20Enabled);
+
+        /// <summary>
+        /// Sets whether the web app supports certain type of FTP(S).
+        /// </summary>
+        /// <param name="ftpsState">the FTP(S) configuration.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithFtpsState(FtpsState ftpsState);
+
+        /// <summary>
+        /// Sets the virtual applications in the web app.
+        /// </summary>
+        /// <param name="virtualApplications">the list of virtual applications in the web app</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition.IWithCreate<FluentT> WithVirtualApplications(IList<VirtualApplication> virtualApplications);
     }
 
     /// <summary>

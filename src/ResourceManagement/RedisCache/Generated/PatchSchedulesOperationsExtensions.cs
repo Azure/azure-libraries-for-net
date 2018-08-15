@@ -22,6 +22,29 @@ namespace Microsoft.Azure.Management.Redis.Fluent
     public static partial class PatchSchedulesOperationsExtensions
     {
             /// <summary>
+            /// Gets all patch schedules in the specified redis cache (there is only one).
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='cacheName'>
+            /// The name of the Redis cache.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<RedisPatchScheduleInner>> ListByRedisResourceAsync(this IPatchSchedulesOperations operations, string resourceGroupName, string cacheName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByRedisResourceWithHttpMessagesAsync(resourceGroupName, cacheName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Create or replace the patching schedule for Redis cache (requires Premium
             /// SKU).
             /// </summary>
@@ -86,6 +109,26 @@ namespace Microsoft.Azure.Management.Redis.Fluent
             public static async Task<RedisPatchScheduleInner> GetAsync(this IPatchSchedulesOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets all patch schedules in the specified redis cache (there is only one).
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<RedisPatchScheduleInner>> ListByRedisResourceNextAsync(this IPatchSchedulesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByRedisResourceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

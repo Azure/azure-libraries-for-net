@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PacketCapture.Definition.IWithCreate PacketCapture.Definition.IWithStorageLocation.WithFilePath(string filePath)
         {
-            return this.WithFilePath(filePath) as PacketCapture.Definition.IWithCreate;
+            return this.WithFilePath(filePath);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         PacketCapture.Definition.IWithCreateAndStoragePath PacketCapture.Definition.IWithStorageLocation.WithStorageAccountId(string storageId)
         {
-            return this.WithStorageAccountId(storageId) as PacketCapture.Definition.IWithCreateAndStoragePath;
+            return this.WithStorageAccountId(storageId);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PacketCapture.Definition.IWithStorageLocation PacketCapture.Definition.IWithTarget.WithTarget(string target)
         {
-            return this.WithTarget(target) as PacketCapture.Definition.IWithStorageLocation;
+            return this.WithTarget(target);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>Packet capture status.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.IPacketCaptureStatus> Microsoft.Azure.Management.Network.Fluent.IPacketCapture.GetStatusAsync(CancellationToken cancellationToken)
         {
-            return await this.GetStatusAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.IPacketCaptureStatus;
+            return await this.GetStatusAsync(cancellationToken);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Filters() as System.Collections.Generic.IReadOnlyList<Models.PacketCaptureFilter>;
+                return this.Filters();
             }
         }
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.ProvisioningState() as Models.ProvisioningState;
+                return this.ProvisioningState();
             }
         }
 
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>Packet capture status.</return>
         Microsoft.Azure.Management.Network.Fluent.IPacketCaptureStatus Microsoft.Azure.Management.Network.Fluent.IPacketCapture.GetStatus()
         {
-            return this.GetStatus() as Microsoft.Azure.Management.Network.Fluent.IPacketCaptureStatus;
+            return this.GetStatus();
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.StorageLocation() as Models.PacketCaptureStorageLocation;
+                return this.StorageLocation();
             }
         }
 
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PacketCapture.Definition.IWithCreate PacketCapture.Definition.IWithCreateAndStoragePath.WithStoragePath(string storagePath)
         {
-            return this.WithStoragePath(storagePath) as PacketCapture.Definition.IWithCreate;
+            return this.WithStoragePath(storagePath);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PacketCapture.Definition.IWithCreate PacketCapture.Definition.IWithCreate.WithTotalBytesPerSession(int totalBytesPerSession)
         {
-            return this.WithTotalBytesPerSession(totalBytesPerSession) as PacketCapture.Definition.IWithCreate;
+            return this.WithTotalBytesPerSession(totalBytesPerSession);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PacketCapture.Definition.IWithCreate PacketCapture.Definition.IWithCreate.WithBytesToCapturePerPacket(int bytesToCapturePerPacket)
         {
-            return this.WithBytesToCapturePerPacket(bytesToCapturePerPacket) as PacketCapture.Definition.IWithCreate;
+            return this.WithBytesToCapturePerPacket(bytesToCapturePerPacket);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PacketCapture.Definition.IWithCreate PacketCapture.Definition.IWithCreate.WithTimeLimitInSeconds(int timeLimitInSeconds)
         {
-            return this.WithTimeLimitInSeconds(timeLimitInSeconds) as PacketCapture.Definition.IWithCreate;
+            return this.WithTimeLimitInSeconds(timeLimitInSeconds);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage.</return>
         PCFilter.Definition.IBlank<PacketCapture.Definition.IWithCreate> PacketCapture.Definition.IWithCreate.DefinePacketCaptureFilter()
         {
-            return this.DefinePacketCaptureFilter() as PCFilter.Definition.IBlank<PacketCapture.Definition.IWithCreate>;
+            return this.DefinePacketCaptureFilter();
         }
     }
 }

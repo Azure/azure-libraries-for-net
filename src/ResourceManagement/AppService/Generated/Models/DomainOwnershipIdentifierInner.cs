@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Domain ownership Identifier.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DomainOwnershipIdentifierInner : ProxyOnlyResource
+    public partial class DomainOwnershipIdentifierInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the DomainOwnershipIdentifierInner
@@ -32,13 +32,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the DomainOwnershipIdentifierInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="ownershipId">Ownership Id.</param>
-        public DomainOwnershipIdentifierInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string ownershipId = default(string))
-            : base(id, name, kind, type)
+        public DomainOwnershipIdentifierInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string ownershipId = default(string))
+            : base(id, name, type, kind)
         {
             OwnershipId = ownershipId;
             CustomInit();

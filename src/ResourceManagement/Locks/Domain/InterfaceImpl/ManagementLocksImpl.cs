@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The list of resources.</return>
         async Task<IPagedCollection<IManagementLock>> ISupportsListingByResourceGroup<IManagementLock>.ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken) as IPagedCollection<IManagementLock>;
+            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The list of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Locks.Fluent.IManagementLock> ISupportsListingByResourceGroup<IManagementLock>.ListByResourceGroup(string resourceGroupName)
         {
-            return this.ListByResourceGroup(resourceGroupName) as IEnumerable<IManagementLock>;
+            return this.ListByResourceGroup(resourceGroupName);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         {
             get
             {
-                return this.Manager() as Microsoft.Azure.Management.Locks.Fluent.IAuthorizationManager;
+                return this.Manager();
             }
         }
 
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>The first stage of the new resource definition.</return>
         ManagementLock.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<ManagementLock.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as ManagementLock.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>List of resources.</return>
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IManagementLock>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Locks.Fluent.IManagementLock>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
-            return await this.ListAsync(loadAllPages, cancellationToken) as Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IManagementLock>;
+            return await this.ListAsync(loadAllPages, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>List of resources.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Locks.Fluent.IManagementLock> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Locks.Fluent.IManagementLock>.List()
         {
-            return this.List() as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Locks.Fluent.IManagementLock>;
+            return this.List();
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>Management locks.</return>
         async Task<IPagedCollection<IManagementLock>> IManagementLocks.ListForResourceAsync(string resourceId, CancellationToken cancellationToken)
         {
-            return await this.ListForResourceAsync(resourceId, cancellationToken) as IPagedCollection<IManagementLock>;
+            return await this.ListForResourceAsync(resourceId, cancellationToken);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>Management locks.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Locks.Fluent.IManagementLock> Microsoft.Azure.Management.Locks.Fluent.IManagementLocks.ListForResource(string resourceId)
         {
-            return this.ListForResource(resourceId) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Locks.Fluent.IManagementLock>;
+            return this.ListForResource(resourceId);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>A representation of the deferred computation of this call returning the resource ID of each successfully deleted resource.</return>
         async Task<IEnumerable<string>> ISupportsBatchDeletion.DeleteByIdsAsync(IList<string> ids, CancellationToken cancellationToken)
         {
-            return await this.DeleteByIdsAsync(ids, cancellationToken) as System.Collections.Generic.IEnumerable<string>;
+            return await this.DeleteByIdsAsync(ids, cancellationToken);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>A representation of the deferred computation of this call returning the resource ID of each successfully deleted resource.</return>
         async Task<System.Collections.Generic.IEnumerable<string>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsBatchDeletion.DeleteByIdsAsync(string[] ids, CancellationToken cancellationToken)
         {
-            return await this.DeleteByIdsAsync(ids, cancellationToken) as System.Collections.Generic.IEnumerable<string>;
+            return await this.DeleteByIdsAsync(ids, cancellationToken);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>Observable to an immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Locks.Fluent.IManagementLock> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByResourceGroup<Microsoft.Azure.Management.Locks.Fluent.IManagementLock>.GetByResourceGroupAsync(string resourceGroupName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetByResourceGroupAsync(resourceGroupName, name, cancellationToken) as Microsoft.Azure.Management.Locks.Fluent.IManagementLock;
+            return await this.GetByResourceGroupAsync(resourceGroupName, name, cancellationToken);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Locks.Fluent.IManagementLock Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByResourceGroup<Microsoft.Azure.Management.Locks.Fluent.IManagementLock>.GetByResourceGroup(string resourceGroupName, string name)
         {
-            return this.GetByResourceGroup(resourceGroupName, name) as Microsoft.Azure.Management.Locks.Fluent.IManagementLock;
+            return this.GetByResourceGroup(resourceGroupName, name);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Locks.Fluent.IManagementLock> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Locks.Fluent.IManagementLock>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Locks.Fluent.IManagementLock;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Management.Locks.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Locks.Fluent.IManagementLock Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Locks.Fluent.IManagementLock>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Locks.Fluent.IManagementLock;
+            return this.GetById(id);
         }
     }
 }

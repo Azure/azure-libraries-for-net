@@ -1,39 +1,38 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
+    using Microsoft.Azure.Management.Compute.Fluent.Models;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using System.Collections.Generic;
+
     internal sealed partial class ComputeSkuImpl
     {
         /// <summary>
-        /// Gets the scaling information of the sku.
+        /// Gets the api versions that this sku supports.
         /// </summary>
-        Models.ResourceSkuCapacity Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Capacity
+        System.Collections.Generic.IReadOnlyList<string> Microsoft.Azure.Management.Compute.Fluent.IComputeSku.ApiVersions
         {
             get
             {
-                return this.Capacity() as Models.ResourceSkuCapacity;
+                return this.ApiVersions();
             }
         }
 
         /// <summary>
-        /// Gets the metadata for querying the sku pricing information.
+        /// Gets The availability set sku type if the sku describes sku for availability set resource type.
+        /// The sku type can be used for  AvailabilitySet.DefinitionStages.WithSku.withSku(AvailabilitySetSkuTypes)
+        /// and  AvailabilitySet.UpdateStages.WithSku.withSku(AvailabilitySetSkuTypes).
         /// </summary>
-        System.Collections.Generic.IReadOnlyList<Models.ResourceSkuCosts> Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Costs
-        {
-            get
-            {
-                return this.Costs() as System.Collections.Generic.IReadOnlyList<Models.ResourceSkuCosts>;
-            }
-        }
-
         /// <summary>
-        /// Gets the sku name.
+        /// Gets the availability set sku type.
         /// </summary>
-        Microsoft.Azure.Management.Compute.Fluent.ComputeSkuName Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Name
+        Models.AvailabilitySetSkuTypes Microsoft.Azure.Management.Compute.Fluent.IComputeSku.AvailabilitySetSkuType
         {
             get
             {
-                return this.Name() as Microsoft.Azure.Management.Compute.Fluent.ComputeSkuName;
+                return this.AvailabilitySetSkuType();
             }
         }
 
@@ -44,40 +43,29 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Capabilities() as System.Collections.Generic.IReadOnlyList<Models.ResourceSkuCapabilities>;
+                return this.Capabilities();
             }
         }
 
         /// <summary>
-        /// Gets the compute resource type that the sku describes.
+        /// Gets the scaling information of the sku.
         /// </summary>
-        Microsoft.Azure.Management.Compute.Fluent.ComputeResourceType Microsoft.Azure.Management.Compute.Fluent.IComputeSku.ResourceType
+        Models.ResourceSkuCapacity Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Capacity
         {
             get
             {
-                return this.ResourceType() as Microsoft.Azure.Management.Compute.Fluent.ComputeResourceType;
+                return this.Capacity();
             }
         }
 
         /// <summary>
-        /// Gets the restrictions because of which SKU cannot be used.
+        /// Gets the metadata for querying the sku pricing information.
         /// </summary>
-        System.Collections.Generic.IReadOnlyList<Models.ResourceSkuRestrictions> Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Restrictions
+        System.Collections.Generic.IReadOnlyList<Models.ResourceSkuCosts> Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Costs
         {
             get
             {
-                return this.Restrictions() as System.Collections.Generic.IReadOnlyList<Models.ResourceSkuRestrictions>;
-            }
-        }
-
-        /// <summary>
-        /// Gets the availability zones supported for this sku, index by region.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region, System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>> Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Zones
-        {
-            get
-            {
-                return this.Zones() as System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region, System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>>;
+                return this.Costs();
             }
         }
 
@@ -95,23 +83,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.DiskSkuType() as Models.DiskSkuTypes;
+                return this.DiskSkuType();
             }
         }
 
         /// <summary>
-        /// Gets The availability set sku type if the sku describes sku for availability set resource type.
-        /// The sku type can be used for  AvailabilitySet.DefinitionStages.WithSku.withSku(AvailabilitySetSkuTypes)
-        /// and  AvailabilitySet.UpdateStages.WithSku.withSku(AvailabilitySetSkuTypes).
+        /// Gets the sku name.
         /// </summary>
-        /// <summary>
-        /// Gets the availability set sku type.
-        /// </summary>
-        Models.AvailabilitySetSkuTypes Microsoft.Azure.Management.Compute.Fluent.IComputeSku.AvailabilitySetSkuType
+        Microsoft.Azure.Management.Compute.Fluent.ComputeSkuName Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Name
         {
             get
             {
-                return this.AvailabilitySetSkuType() as Models.AvailabilitySetSkuTypes;
+                return this.Name();
             }
         }
 
@@ -122,7 +105,40 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Regions() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region>;
+                return this.Regions();
+            }
+        }
+
+        /// <summary>
+        /// Gets the compute resource type that the sku describes.
+        /// </summary>
+        Microsoft.Azure.Management.Compute.Fluent.ComputeResourceType Microsoft.Azure.Management.Compute.Fluent.IComputeSku.ResourceType
+        {
+            get
+            {
+                return this.ResourceType();
+            }
+        }
+
+        /// <summary>
+        /// Gets the restrictions because of which SKU cannot be used.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<Models.ResourceSkuRestrictions> Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Restrictions
+        {
+            get
+            {
+                return this.Restrictions();
+            }
+        }
+
+        /// <summary>
+        /// Gets the sku tier.
+        /// </summary>
+        Microsoft.Azure.Management.Compute.Fluent.ComputeSkuTier Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Tier
+        {
+            get
+            {
+                return this.Tier();
             }
         }
 
@@ -138,29 +154,18 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.VirtualMachineSizeType() as Models.VirtualMachineSizeTypes;
+                return this.VirtualMachineSizeType();
             }
         }
 
         /// <summary>
-        /// Gets the sku tier.
+        /// Gets the availability zones supported for this sku, index by region.
         /// </summary>
-        Microsoft.Azure.Management.Compute.Fluent.ComputeSkuTier Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Tier
+        System.Collections.Generic.IReadOnlyDictionary<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region, System.Collections.Generic.ISet<Microsoft.Azure.Management.ResourceManager.Fluent.Core.AvailabilityZoneId>> Microsoft.Azure.Management.Compute.Fluent.IComputeSku.Zones
         {
             get
             {
-                return this.Tier() as Microsoft.Azure.Management.Compute.Fluent.ComputeSkuTier;
-            }
-        }
-
-        /// <summary>
-        /// Gets the api versions that this sku supports.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyList<string> Microsoft.Azure.Management.Compute.Fluent.IComputeSku.ApiVersions
-        {
-            get
-            {
-                return this.ApiVersions() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.Zones();
             }
         }
     }

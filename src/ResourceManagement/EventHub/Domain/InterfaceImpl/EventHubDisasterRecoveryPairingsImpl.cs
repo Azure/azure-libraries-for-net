@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The first stage of the new resource definition.</return>
         EventHubDisasterRecoveryPairing.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<EventHubDisasterRecoveryPairing.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as EventHubDisasterRecoveryPairing.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             get
             {
-                return this.AuthorizationRules() as Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRules;
+                return this.AuthorizationRules();
             }
         }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The disaster recovery pairing.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairings.GetByName(string resourceGroupName, string namespaceName, string name)
         {
-            return this.GetByName(resourceGroupName, namespaceName, name) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing;
+            return this.GetByName(resourceGroupName, namespaceName, name);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits disaster recovery pairings.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing>> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairings.ListByNamespaceAsync(string resourceGroupName, string namespaceName, CancellationToken cancellationToken)
         {
-            return await this.ListByNamespaceAsync(resourceGroupName, namespaceName, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing>;
+            return await this.ListByNamespaceAsync(resourceGroupName, namespaceName, cancellationToken);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits disaster recovery pairings.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairings.GetByNameAsync(string resourceGroupName, string namespaceName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetByNameAsync(resourceGroupName, namespaceName, name, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing;
+            return await this.GetByNameAsync(resourceGroupName, namespaceName, name, cancellationToken);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>List of disaster recovery pairings.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing> Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairings.ListByNamespace(string resourceGroupName, string namespaceName)
         {
-            return this.ListByNamespace(resourceGroupName, namespaceName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing>;
+            return this.ListByNamespace(resourceGroupName, namespaceName);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Eventhub.Fluent.IEventHubDisasterRecoveryPairing;
+            return this.GetById(id);
         }
 
         /// <summary>

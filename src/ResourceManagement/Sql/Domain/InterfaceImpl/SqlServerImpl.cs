@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new SQL Database definition.</return>
         SqlDatabase.Definition.IBlank<SqlServer.Definition.IWithCreate> SqlServer.Definition.IWithDatabaseBeta.DefineDatabase(string databaseName)
         {
-            return this.DefineDatabase(databaseName) as SqlDatabase.Definition.IBlank<SqlServer.Definition.IWithCreate>;
+            return this.DefineDatabase(databaseName);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Definition.IWithCreate SqlServer.Definition.IWithDatabase.WithNewDatabase(string databaseName)
         {
-            return this.WithNewDatabase(databaseName) as SqlServer.Definition.IWithCreate;
+            return this.WithNewDatabase(databaseName);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server update.</return>
         SqlServer.Update.IUpdate SqlServer.Update.IWithDatabase.WithoutDatabase(string databaseName)
         {
-            return this.WithoutDatabase(databaseName) as SqlServer.Update.IUpdate;
+            return this.WithoutDatabase(databaseName);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server update.</return>
         SqlServer.Update.IUpdate SqlServer.Update.IWithDatabase.WithNewDatabase(string databaseName)
         {
-            return this.WithNewDatabase(databaseName) as SqlServer.Update.IUpdate;
+            return this.WithNewDatabase(databaseName);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Definition.IWithCreate SqlServer.Definition.IWithAdministratorPassword.WithAdministratorPassword(string administratorLoginPassword)
         {
-            return this.WithAdministratorPassword(administratorLoginPassword) as SqlServer.Definition.IWithCreate;
+            return this.WithAdministratorPassword(administratorLoginPassword);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the update.</return>
         SqlServer.Update.IUpdate SqlServer.Update.IWithAdministratorPassword.WithAdministratorPassword(string administratorLoginPassword)
         {
-            return this.WithAdministratorPassword(administratorLoginPassword) as SqlServer.Update.IUpdate;
+            return this.WithAdministratorPassword(administratorLoginPassword);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new SQL Elastic Pool definition.</return>
         SqlElasticPool.Definition.IBlank<SqlServer.Definition.IWithCreate> SqlServer.Definition.IWithElasticPoolBeta.DefineElasticPool(string elasticPoolName)
         {
-            return this.DefineElasticPool(elasticPoolName) as SqlElasticPool.Definition.IBlank<SqlServer.Definition.IWithCreate>;
+            return this.DefineElasticPool(elasticPoolName);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Definition.IWithCreate SqlServer.Definition.IWithElasticPool.WithNewElasticPool(string elasticPoolName, string elasticPoolEdition)
         {
-            return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition) as SqlServer.Definition.IWithCreate;
+            return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Definition.IWithCreate SqlServer.Definition.IWithElasticPool.WithNewElasticPool(string elasticPoolName, string elasticPoolEdition, params string[] databaseNames)
         {
-            return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition, databaseNames) as SqlServer.Definition.IWithCreate;
+            return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition, databaseNames);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server update.</return>
         SqlServer.Update.IUpdate SqlServer.Update.IWithElasticPool.WithoutElasticPool(string elasticPoolName)
         {
-            return this.WithoutElasticPool(elasticPoolName) as SqlServer.Update.IUpdate;
+            return this.WithoutElasticPool(elasticPoolName);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server update.</return>
         SqlServer.Update.IUpdate SqlServer.Update.IWithElasticPoolBeta.WithNewElasticPool(string elasticPoolName, string elasticPoolEdition)
         {
-            return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition) as SqlServer.Update.IUpdate;
+            return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server update.</return>
         SqlServer.Update.IUpdate SqlServer.Update.IWithElasticPoolBeta.WithNewElasticPool(string elasticPoolName, string elasticPoolEdition, params string[] databaseNames)
         {
-            return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition, databaseNames) as SqlServer.Update.IUpdate;
+            return this.WithNewElasticPool(elasticPoolName, elasticPoolEdition, databaseNames);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.FirewallRules() as SqlFirewallRuleOperations.SqlFirewallRuleActionsDefinition.ISqlFirewallRuleActionsDefinition;
+                return this.FirewallRules();
             }
         }
 
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Databases() as SqlDatabaseOperations.SqlDatabaseActionsDefinition.ISqlDatabaseActionsDefinition;
+                return this.Databases();
             }
         }
 
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.DnsAliases() as SqlServerDnsAliasOperations.SqlServerDnsAliasActionsDefinition.ISqlServerDnsAliasActionsDefinition;
+                return this.DnsAliases();
             }
         }
 
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>List of recommended elastic pools for the server.</return>
         System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool> Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ListRecommendedElasticPools()
         {
-            return this.ListRecommendedElasticPools() as System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool>;
+            return this.ListRecommendedElasticPools();
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of a SQL Server Active Directory administrator object (null if one is not set).</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlActiveDirectoryAdministrator Microsoft.Azure.Management.Sql.Fluent.ISqlServer.GetActiveDirectoryAdministrator()
         {
-            return this.GetActiveDirectoryAdministrator() as Microsoft.Azure.Management.Sql.Fluent.ISqlActiveDirectoryAdministrator;
+            return this.GetActiveDirectoryAdministrator();
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.FailoverGroups() as SqlFailoverGroupOperations.SqlFailoverGroupActionsDefinition.ISqlFailoverGroupActionsDefinition;
+                return this.FailoverGroups();
             }
         }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of a SQL Server Active Directory administrator object.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlActiveDirectoryAdministrator Microsoft.Azure.Management.Sql.Fluent.ISqlServer.SetActiveDirectoryAdministrator(string userLogin, string id)
         {
-            return this.SetActiveDirectoryAdministrator(userLogin, id) as Microsoft.Azure.Management.Sql.Fluent.ISqlActiveDirectoryAdministrator;
+            return this.SetActiveDirectoryAdministrator(userLogin, id);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The SQL server automatic tuning state and options.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlServerAutomaticTuning Microsoft.Azure.Management.Sql.Fluent.ISqlServer.GetServerAutomaticTuning()
         {
-            return this.GetServerAutomaticTuning() as Microsoft.Azure.Management.Sql.Fluent.ISqlServerAutomaticTuning;
+            return this.GetServerAutomaticTuning();
         }
 
         /// <summary>
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.VirtualNetworkRules() as SqlVirtualNetworkRuleOperations.SqlVirtualNetworkRuleActionsDefinition.ISqlVirtualNetworkRuleActionsDefinition;
+                return this.VirtualNetworkRules();
             }
         }
 
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ServerKeys() as SqlServerKeyOperations.SqlServerKeyActionsDefinition.ISqlServerKeyActionsDefinition;
+                return this.ServerKeys();
             }
         }
 
@@ -306,32 +306,32 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ElasticPools() as SqlElasticPoolOperations.SqlElasticPoolActionsDefinition.ISqlElasticPoolActionsDefinition;
+                return this.ElasticPools();
             }
         }
 
         /// <return>Returns the list of usages (ServerMetric) of Azure SQL Server.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServerMetric> Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ListUsages()
         {
-            return this.ListUsages() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServerMetric>;
+            return this.ListUsages();
         }
 
         /// <return>The list of information on all service objectives.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceObjective> Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ListServiceObjectives()
         {
-            return this.ListServiceObjectives() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServiceObjective>;
+            return this.ListServiceObjectives();
         }
 
         /// <return>The list of all restorable dropped databases.</return>
-        async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase> Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ListRestorableDroppedDatabasesAsync(CancellationToken cancellationToken)
+        async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase>> Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ListRestorableDroppedDatabasesAsync(CancellationToken cancellationToken)
         {
-            return await this.ListRestorableDroppedDatabasesAsync(cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase;
+            return await this.ListRestorableDroppedDatabasesAsync(cancellationToken);
         }
 
         /// <return>The list of all restorable dropped databases.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase> Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ListRestorableDroppedDatabases()
         {
-            return this.ListRestorableDroppedDatabases() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlRestorableDroppedDatabase>;
+            return this.ListRestorableDroppedDatabases();
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The SQL Firewall rule.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule Microsoft.Azure.Management.Sql.Fluent.ISqlServer.EnableAccessFromAzureServices()
         {
-            return this.EnableAccessFromAzureServices() as Microsoft.Azure.Management.Sql.Fluent.ISqlFirewallRule;
+            return this.EnableAccessFromAzureServices();
         }
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Information of the service objective.</return>
         Microsoft.Azure.Management.Sql.Fluent.IServiceObjective Microsoft.Azure.Management.Sql.Fluent.ISqlServer.GetServiceObjective(string serviceObjectiveName)
         {
-            return this.GetServiceObjective(serviceObjectiveName) as Microsoft.Azure.Management.Sql.Fluent.IServiceObjective;
+            return this.GetServiceObjective(serviceObjectiveName);
         }
 
         /// <summary>
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Returns the list of usage metrics for an Azure SQL Server.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServerMetric> Microsoft.Azure.Management.Sql.Fluent.ISqlServer.ListUsageMetrics()
         {
-            return this.ListUsageMetrics() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IServerMetric>;
+            return this.ListUsageMetrics();
         }
 
         /// <summary>
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.EncryptionProtectors() as SqlEncryptionProtectorOperations.SqlEncryptionProtectorActionsDefinition.ISqlEncryptionProtectorActionsDefinition;
+                return this.EncryptionProtectors();
             }
         }
 
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.ManagedServiceIdentityType() as string;
+                return this.ManagedServiceIdentityType();
             }
         }
 
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Definition.IWithCreate SqlServer.Definition.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithSystemAssignedManagedServiceIdentity() as SqlServer.Definition.IWithCreate;
+            return this.WithSystemAssignedManagedServiceIdentity();
         }
 
         /// <summary>
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Update.IUpdate SqlServer.Update.IWithSystemAssignedManagedServiceIdentity.WithSystemAssignedManagedServiceIdentity()
         {
-            return this.WithSystemAssignedManagedServiceIdentity() as SqlServer.Update.IUpdate;
+            return this.WithSystemAssignedManagedServiceIdentity();
         }
 
         /// <summary>
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new SQL Virtual Network Rule definition.</return>
         SqlVirtualNetworkRule.Definition.IBlank<SqlServer.Definition.IWithCreate> SqlServer.Definition.IWithVirtualNetworkRule.DefineVirtualNetworkRule(string virtualNetworkRuleName)
         {
-            return this.DefineVirtualNetworkRule(virtualNetworkRuleName) as SqlVirtualNetworkRule.Definition.IBlank<SqlServer.Definition.IWithCreate>;
+            return this.DefineVirtualNetworkRule(virtualNetworkRuleName);
         }
 
         /// <summary>
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Definition.IWithCreate SqlServer.Definition.IWithActiveDirectoryAdministrator.WithActiveDirectoryAdministrator(string userLogin, string id)
         {
-            return this.WithActiveDirectoryAdministrator(userLogin, id) as SqlServer.Definition.IWithCreate;
+            return this.WithActiveDirectoryAdministrator(userLogin, id);
         }
 
         /// <summary>
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>The first stage of the new SQL Firewall rule definition.</return>
         SqlFirewallRule.Definition.IBlank<SqlServer.Definition.IWithCreate> SqlServer.Definition.IWithFirewallRuleBeta.DefineFirewallRule(string firewallRuleName)
         {
-            return this.DefineFirewallRule(firewallRuleName) as SqlFirewallRule.Definition.IBlank<SqlServer.Definition.IWithCreate>;
+            return this.DefineFirewallRule(firewallRuleName);
         }
 
         /// <summary>
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Definition.IWithCreate SqlServer.Definition.IWithFirewallRule.WithNewFirewallRule(string ipAddress)
         {
-            return this.WithNewFirewallRule(ipAddress) as SqlServer.Definition.IWithCreate;
+            return this.WithNewFirewallRule(ipAddress);
         }
 
         /// <summary>
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Definition.IWithCreate SqlServer.Definition.IWithFirewallRule.WithNewFirewallRule(string startIPAddress, string endIPAddress)
         {
-            return this.WithNewFirewallRule(startIPAddress, endIPAddress) as SqlServer.Definition.IWithCreate;
+            return this.WithNewFirewallRule(startIPAddress, endIPAddress);
         }
 
         /// <summary>
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Definition.IWithCreate SqlServer.Definition.IWithFirewallRule.WithNewFirewallRule(string startIPAddress, string endIPAddress, string firewallRuleName)
         {
-            return this.WithNewFirewallRule(startIPAddress, endIPAddress, firewallRuleName) as SqlServer.Definition.IWithCreate;
+            return this.WithNewFirewallRule(startIPAddress, endIPAddress, firewallRuleName);
         }
 
         /// <summary>
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Definition.IWithCreate SqlServer.Definition.IWithFirewallRuleBeta.WithoutAccessFromAzureServices()
         {
-            return this.WithoutAccessFromAzureServices() as SqlServer.Definition.IWithCreate;
+            return this.WithoutAccessFromAzureServices();
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server update.</return>
         SqlServer.Update.IUpdate SqlServer.Update.IWithFirewallRule.WithoutFirewallRule(string firewallRuleName)
         {
-            return this.WithoutFirewallRule(firewallRuleName) as SqlServer.Update.IUpdate;
+            return this.WithoutFirewallRule(firewallRuleName);
         }
 
         /// <summary>
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server update.</return>
         SqlServer.Update.IUpdate SqlServer.Update.IWithFirewallRule.WithNewFirewallRule(string ipAddress)
         {
-            return this.WithNewFirewallRule(ipAddress) as SqlServer.Update.IUpdate;
+            return this.WithNewFirewallRule(ipAddress);
         }
 
         /// <summary>
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server update.</return>
         SqlServer.Update.IUpdate SqlServer.Update.IWithFirewallRule.WithNewFirewallRule(string startIPAddress, string endIPAddress)
         {
-            return this.WithNewFirewallRule(startIPAddress, endIPAddress) as SqlServer.Update.IUpdate;
+            return this.WithNewFirewallRule(startIPAddress, endIPAddress);
         }
 
         /// <summary>
@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server update.</return>
         SqlServer.Update.IUpdate SqlServer.Update.IWithFirewallRule.WithNewFirewallRule(string startIPAddress, string endIPAddress, string firewallRuleName)
         {
-            return this.WithNewFirewallRule(startIPAddress, endIPAddress, firewallRuleName) as SqlServer.Update.IUpdate;
+            return this.WithNewFirewallRule(startIPAddress, endIPAddress, firewallRuleName);
         }
 
         /// <summary>
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Next stage of the SQL Server definition.</return>
         SqlServer.Definition.IWithAdministratorPassword SqlServer.Definition.IWithAdministratorLogin.WithAdministratorLogin(string administratorLogin)
         {
-            return this.WithAdministratorLogin(administratorLogin) as SqlServer.Definition.IWithAdministratorPassword;
+            return this.WithAdministratorLogin(administratorLogin);
         }
     }
 }

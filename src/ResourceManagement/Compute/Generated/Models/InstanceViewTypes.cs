@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this InstanceViewTypes value)
         {
-            switch( value )
+            switch (value)
             {
                 case InstanceViewTypes.InstanceView:
                     return "instanceView";
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static InstanceViewTypes? ParseInstanceViewTypes(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "instanceView":
                     return InstanceViewTypes.InstanceView;

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         FunctionDeploymentSlot.Definition.IWithCreate FunctionDeploymentSlot.Definition.IWithConfiguration.WithConfigurationFromParent()
         {
-            return this.WithConfigurationFromParent() as FunctionDeploymentSlot.Definition.IWithCreate;
+            return this.WithConfigurationFromParent();
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         FunctionDeploymentSlot.Definition.IWithCreate FunctionDeploymentSlot.Definition.IWithConfiguration.WithConfigurationFromFunctionApp(IFunctionApp app)
         {
-            return this.WithConfigurationFromFunctionApp(app) as FunctionDeploymentSlot.Definition.IWithCreate;
+            return this.WithConfigurationFromFunctionApp(app);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.Definition.IWithCreate FunctionDeploymentSlot.Definition.IWithConfiguration.WithConfigurationFromDeploymentSlot(IFunctionDeploymentSlot deploymentSlot)
         {
-            return this.WithConfigurationFromDeploymentSlot(deploymentSlot) as FunctionDeploymentSlot.Definition.IWithCreate;
+            return this.WithConfigurationFromDeploymentSlot(deploymentSlot);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.FunctionDeploymentSlot.Definition.IWithCreate FunctionDeploymentSlot.Definition.IWithConfiguration.WithBrandNewConfiguration()
         {
-            return this.WithBrandNewConfiguration() as FunctionDeploymentSlot.Definition.IWithCreate;
+            return this.WithBrandNewConfiguration();
         }
     }
 }

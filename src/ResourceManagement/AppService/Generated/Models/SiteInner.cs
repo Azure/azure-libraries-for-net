@@ -8,8 +8,9 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Collections;
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// A web app, a mobile app backend, or an API app.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SiteInner : Microsoft.Azure.Management.ResourceManager.Fluent.Resource
+    public partial class SiteInner : Management.ResourceManager.Fluent.Resource
     {
         /// <summary>
         /// Initializes a new instance of the SiteInner class.
@@ -33,7 +34,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SiteInner class.
         /// </summary>
-        /// <param name="kind">The kind of the site</param>
         /// <param name="state">Current state of the app.</param>
         /// <param name="hostNames">Hostnames associated with the app.</param>
         /// <param name="repositorySiteName">Name of the repository
@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".</param>
         /// <param name="reserved">&lt;code&gt;true&lt;/code&gt; if reserved;
         /// otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
+        /// <param name="isXenon">Hyper-V sandbox.</param>
         /// <param name="lastModifiedTimeUtc">Last time the app was modified,
         /// in UTC. Read-only.</param>
         /// <param name="siteConfig">Configuration of the app.</param>
@@ -115,10 +116,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="httpsOnly">HttpsOnly: configures a web site to accept
         /// only https requests. Issues redirect for
         /// http requests</param>
-        public SiteInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string kind = default(string), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), bool? hostNamesDisabled = default(bool?), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), SnapshotRecoveryRequestInner snapshotInfo = default(SnapshotRecoveryRequestInner), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
+        /// <param name="kind">Kind of resource.</param>
+        public SiteInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string state = default(string), IList<string> hostNames = default(IList<string>), string repositorySiteName = default(string), UsageState? usageState = default(UsageState?), bool? enabled = default(bool?), IList<string> enabledHostNames = default(IList<string>), SiteAvailabilityState? availabilityState = default(SiteAvailabilityState?), IList<HostNameSslState> hostNameSslStates = default(IList<HostNameSslState>), string serverFarmId = default(string), bool? reserved = default(bool?), bool? isXenon = default(bool?), System.DateTime? lastModifiedTimeUtc = default(System.DateTime?), SiteConfig siteConfig = default(SiteConfig), IList<string> trafficManagerHostNames = default(IList<string>), bool? scmSiteAlsoStopped = default(bool?), string targetSwapSlot = default(string), HostingEnvironmentProfile hostingEnvironmentProfile = default(HostingEnvironmentProfile), bool? clientAffinityEnabled = default(bool?), bool? clientCertEnabled = default(bool?), bool? hostNamesDisabled = default(bool?), string outboundIpAddresses = default(string), string possibleOutboundIpAddresses = default(string), int? containerSize = default(int?), int? dailyMemoryTimeQuota = default(int?), System.DateTime? suspendedTill = default(System.DateTime?), int? maxNumberOfWorkers = default(int?), CloningInfo cloningInfo = default(CloningInfo), SnapshotRecoveryRequest snapshotInfo = default(SnapshotRecoveryRequest), string resourceGroup = default(string), bool? isDefaultContainer = default(bool?), string defaultHostName = default(string), SlotSwapStatus slotSwapStatus = default(SlotSwapStatus), bool? httpsOnly = default(bool?), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string kind = default(string))
             : base(location, id, name, type, tags)
         {
-            Kind = kind;
             State = state;
             HostNames = hostNames;
             RepositorySiteName = repositorySiteName;
@@ -129,6 +130,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             HostNameSslStates = hostNameSslStates;
             ServerFarmId = serverFarmId;
             Reserved = reserved;
+            IsXenon = isXenon;
             LastModifiedTimeUtc = lastModifiedTimeUtc;
             SiteConfig = siteConfig;
             TrafficManagerHostNames = trafficManagerHostNames;
@@ -152,6 +154,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             SlotSwapStatus = slotSwapStatus;
             HttpsOnly = httpsOnly;
             Identity = identity;
+            Kind = kind;
             CustomInit();
         }
 
@@ -159,12 +162,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets the kind of the app.
-        /// </summary>
-        [JsonProperty(PropertyName = "kind")]
-        public string Kind { get; set; }
 
         /// <summary>
         /// Gets current state of the app.
@@ -238,6 +235,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.reserved")]
         public bool? Reserved { get; set; }
+
+        /// <summary>
+        /// Gets or sets hyper-V sandbox.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isXenon")]
+        public bool? IsXenon { get; set; }
 
         /// <summary>
         /// Gets last time the app was modified, in UTC. Read-only.
@@ -365,7 +368,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// from a previous snapshot.
         /// </summary>
         [JsonProperty(PropertyName = "properties.snapshotInfo")]
-        public SnapshotRecoveryRequestInner SnapshotInfo { get; set; }
+        public SnapshotRecoveryRequest SnapshotInfo { get; set; }
 
         /// <summary>
         /// Gets name of the resource group the app belongs to. Read-only.
@@ -407,13 +410,20 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public ManagedServiceIdentity Identity { get; set; }
 
         /// <summary>
+        /// Gets or sets kind of resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "kind")]
+        public string Kind { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
+            base.Validate();
             if (SiteConfig != null)
             {
                 SiteConfig.Validate();

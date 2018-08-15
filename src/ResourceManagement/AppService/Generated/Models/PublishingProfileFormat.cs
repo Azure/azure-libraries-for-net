@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for PublishingProfileFormat.
     /// </summary>
-    public static class PublishingProfileFormat
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<PublishingProfileFormat>))]
+    public class PublishingProfileFormat : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<PublishingProfileFormat>
     {
-        public const string FileZilla3 = "FileZilla3";
-        public const string WebDeploy = "WebDeploy";
-        public const string Ftp = "Ftp";
+        public static readonly PublishingProfileFormat FileZilla3 = Parse("FileZilla3");
+        public static readonly PublishingProfileFormat WebDeploy = Parse("WebDeploy");
+        public static readonly PublishingProfileFormat Ftp = Parse("Ftp");
     }
 }

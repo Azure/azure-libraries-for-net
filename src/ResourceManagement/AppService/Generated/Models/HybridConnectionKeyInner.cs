@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// for a Hybrid Connection.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class HybridConnectionKeyInner : ProxyOnlyResource
+    public partial class HybridConnectionKeyInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the HybridConnectionKeyInner class.
@@ -31,14 +31,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the HybridConnectionKeyInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="sendKeyName">The name of the send key.</param>
         /// <param name="sendKeyValue">The value of the send key.</param>
-        public HybridConnectionKeyInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string sendKeyName = default(string), string sendKeyValue = default(string))
-            : base(id, name, kind, type)
+        public HybridConnectionKeyInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string sendKeyName = default(string), string sendKeyValue = default(string))
+            : base(id, name, type, kind)
         {
             SendKeyName = sendKeyName;
             SendKeyValue = sendKeyValue;

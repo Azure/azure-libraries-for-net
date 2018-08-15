@@ -28,13 +28,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <return>The first stage of the new resource definition.</return>
         TrafficManagerProfile.Definition.IBlank Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<TrafficManagerProfile.Definition.IBlank>.Define(string name)
         {
-            return this.Define(name) as TrafficManagerProfile.Definition.IBlank;
+            return this.Define(name);
         }
 
         /// <return>The default geographic hierarchy used by the Geographic traffic routing method.</return>
         Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfiles.GetGeographicHierarchyRoot()
         {
-            return this.GetGeographicHierarchyRoot() as Microsoft.Azure.Management.TrafficManager.Fluent.IGeographicLocation;
+            return this.GetGeographicHierarchyRoot();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <return>Whether the DNS is available to be used for a traffic manager profile and other info if not.</return>
         Microsoft.Azure.Management.TrafficManager.Fluent.CheckProfileDnsNameAvailabilityResult Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfiles.CheckDnsNameAvailability(string dnsNameLabel)
         {
-            return this.CheckDnsNameAvailability(dnsNameLabel) as Microsoft.Azure.Management.TrafficManager.Fluent.CheckProfileDnsNameAvailabilityResult;
+            return this.CheckDnsNameAvailability(dnsNameLabel);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Fluent
         /// <return>A representation of the deferred computation of this call, returning whether the DNS is available to be used for a traffic manager profile and other info if not.</return>
         async Task<Microsoft.Azure.Management.TrafficManager.Fluent.CheckProfileDnsNameAvailabilityResult> Microsoft.Azure.Management.TrafficManager.Fluent.ITrafficManagerProfiles.CheckDnsNameAvailabilityAsync(string dnsNameLabel, CancellationToken cancellationToken)
         {
-            return await this.CheckDnsNameAvailabilityAsync(dnsNameLabel, cancellationToken) as Microsoft.Azure.Management.TrafficManager.Fluent.CheckProfileDnsNameAvailabilityResult;
+            return await this.CheckDnsNameAvailabilityAsync(dnsNameLabel, cancellationToken);
         }
 
     }

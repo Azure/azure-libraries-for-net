@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Class representing a diagnostic analysis done on an application
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DiagnosticAnalysisInner : ProxyOnlyResource
+    public partial class DiagnosticAnalysisInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the DiagnosticAnalysisInner class.
@@ -32,18 +32,15 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the DiagnosticAnalysisInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="startTime">Start time of the period</param>
         /// <param name="endTime">End time of the period</param>
         /// <param name="abnormalTimePeriods">List of time periods.</param>
         /// <param name="payload">Data by each detector</param>
         /// <param name="nonCorrelatedDetectors">Data by each detector for
         /// detectors that did not corelate</param>
-        public DiagnosticAnalysisInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), IList<AbnormalTimePeriod> abnormalTimePeriods = default(IList<AbnormalTimePeriod>), IList<AnalysisData> payload = default(IList<AnalysisData>), IList<DetectorDefinition> nonCorrelatedDetectors = default(IList<DetectorDefinition>))
-            : base(id, name, kind, type)
+        public DiagnosticAnalysisInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), IList<AbnormalTimePeriod> abnormalTimePeriods = default(IList<AbnormalTimePeriod>), IList<AnalysisData> payload = default(IList<AnalysisData>), IList<DetectorDefinition> nonCorrelatedDetectors = default(IList<DetectorDefinition>))
+            : base(id, name, type, kind)
         {
             StartTime = startTime;
             EndTime = endTime;

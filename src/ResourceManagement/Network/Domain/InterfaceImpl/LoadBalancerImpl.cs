@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new inbound NAT pool definition.</return>
         LoadBalancerInboundNatPool.Definition.IBlank<LoadBalancer.Definition.IWithCreateAndInboundNatPool> LoadBalancer.Definition.IWithInboundNatPool.DefineInboundNatPool(string name)
         {
-            return this.DefineInboundNatPool(name) as LoadBalancerInboundNatPool.Definition.IBlank<LoadBalancer.Definition.IWithCreateAndInboundNatPool>;
+            return this.DefineInboundNatPool(name);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new inbound NAT pool definition.</return>
         LoadBalancerInboundNatPool.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate> LoadBalancer.Update.IWithInboundNatPool.DefineInboundNatPool(string name)
         {
-            return this.DefineInboundNatPool(name) as LoadBalancerInboundNatPool.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate>;
+            return this.DefineInboundNatPool(name);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the inbound NAT pool update.</return>
         LoadBalancerInboundNatPool.Update.IUpdate LoadBalancer.Update.IWithInboundNatPool.UpdateInboundNatPool(string name)
         {
-            return this.UpdateInboundNatPool(name) as LoadBalancerInboundNatPool.Update.IUpdate;
+            return this.UpdateInboundNatPool(name);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancer.Update.IUpdate LoadBalancer.Update.IWithInboundNatPool.WithoutInboundNatPool(string name)
         {
-            return this.WithoutInboundNatPool(name) as LoadBalancer.Update.IUpdate;
+            return this.WithoutInboundNatPool(name);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new inbound NAT rule definition.</return>
         LoadBalancerInboundNatRule.Definition.IBlank<LoadBalancer.Definition.IWithCreateAndInboundNatRule> LoadBalancer.Definition.IWithInboundNatRule.DefineInboundNatRule(string name)
         {
-            return this.DefineInboundNatRule(name) as LoadBalancerInboundNatRule.Definition.IBlank<LoadBalancer.Definition.IWithCreateAndInboundNatRule>;
+            return this.DefineInboundNatRule(name);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new inbound NAT rule definition.</return>
         LoadBalancerInboundNatRule.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate> LoadBalancer.Update.IWithInboundNatRule.DefineInboundNatRule(string name)
         {
-            return this.DefineInboundNatRule(name) as LoadBalancerInboundNatRule.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate>;
+            return this.DefineInboundNatRule(name);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the inbound NAT rule update.</return>
         LoadBalancerInboundNatRule.Update.IUpdate LoadBalancer.Update.IWithInboundNatRule.UpdateInboundNatRule(string name)
         {
-            return this.UpdateInboundNatRule(name) as LoadBalancerInboundNatRule.Update.IUpdate;
+            return this.UpdateInboundNatRule(name);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancer.Update.IUpdate LoadBalancer.Update.IWithInboundNatRule.WithoutInboundNatRule(string name)
         {
-            return this.WithoutInboundNatRule(name) as LoadBalancer.Update.IUpdate;
+            return this.WithoutInboundNatRule(name);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of a new frontend definition.</return>
         LoadBalancerPublicFrontend.Definition.IBlank<LoadBalancer.Definition.IWithCreate> LoadBalancer.Definition.IWithPublicFrontend.DefinePublicFrontend(string name)
         {
-            return this.DefinePublicFrontend(name) as LoadBalancerPublicFrontend.Definition.IBlank<LoadBalancer.Definition.IWithCreate>;
+            return this.DefinePublicFrontend(name);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new frontend definition.</return>
         LoadBalancerPublicFrontend.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate> LoadBalancer.Update.IWithPublicFrontend.DefinePublicFrontend(string name)
         {
-            return this.DefinePublicFrontend(name) as LoadBalancerPublicFrontend.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate>;
+            return this.DefinePublicFrontend(name);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the frontend update.</return>
         LoadBalancerPublicFrontend.Update.IUpdate LoadBalancer.Update.IWithPublicFrontend.UpdatePublicFrontend(string name)
         {
-            return this.UpdatePublicFrontend(name) as LoadBalancerPublicFrontend.Update.IUpdate;
+            return this.UpdatePublicFrontend(name);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancer.Update.IUpdate LoadBalancer.Update.IWithPublicFrontend.WithoutFrontend(string name)
         {
-            return this.WithoutFrontend(name) as LoadBalancer.Update.IUpdate;
+            return this.WithoutFrontend(name);
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of a new frontend definition.</return>
         LoadBalancerPrivateFrontend.Definition.IBlank<LoadBalancer.Definition.IWithCreate> LoadBalancer.Definition.IWithPrivateFrontend.DefinePrivateFrontend(string name)
         {
-            return this.DefinePrivateFrontend(name) as LoadBalancerPrivateFrontend.Definition.IBlank<LoadBalancer.Definition.IWithCreate>;
+            return this.DefinePrivateFrontend(name);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new frontend definition.</return>
         LoadBalancerPrivateFrontend.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate> LoadBalancer.Update.IWithPrivateFrontend.DefinePrivateFrontend(string name)
         {
-            return this.DefinePrivateFrontend(name) as LoadBalancerPrivateFrontend.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate>;
+            return this.DefinePrivateFrontend(name);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the frontend update.</return>
         LoadBalancerPrivateFrontend.Update.IUpdate LoadBalancer.Update.IWithPrivateFrontend.UpdatePrivateFrontend(string name)
         {
-            return this.UpdatePrivateFrontend(name) as LoadBalancerPrivateFrontend.Update.IUpdate;
+            return this.UpdatePrivateFrontend(name);
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new probe definition.</return>
         LoadBalancerTcpProbe.Definition.IBlank<LoadBalancer.Definition.IWithCreate> LoadBalancer.Definition.IWithProbe.DefineTcpProbe(string name)
         {
-            return this.DefineTcpProbe(name) as LoadBalancerTcpProbe.Definition.IBlank<LoadBalancer.Definition.IWithCreate>;
+            return this.DefineTcpProbe(name);
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new probe definition.</return>
         LoadBalancerHttpProbe.Definition.IBlank<LoadBalancer.Definition.IWithCreate> LoadBalancer.Definition.IWithProbe.DefineHttpProbe(string name)
         {
-            return this.DefineHttpProbe(name) as LoadBalancerHttpProbe.Definition.IBlank<LoadBalancer.Definition.IWithCreate>;
+            return this.DefineHttpProbe(name);
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancerTcpProbe.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate> LoadBalancer.Update.IWithProbe.DefineTcpProbe(string name)
         {
-            return this.DefineTcpProbe(name) as LoadBalancerTcpProbe.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate>;
+            return this.DefineTcpProbe(name);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the probe update.</return>
         LoadBalancerHttpProbe.Update.IUpdate LoadBalancer.Update.IWithProbe.UpdateHttpProbe(string name)
         {
-            return this.UpdateHttpProbe(name) as LoadBalancerHttpProbe.Update.IUpdate;
+            return this.UpdateHttpProbe(name);
         }
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancer.Update.IUpdate LoadBalancer.Update.IWithProbe.WithoutProbe(string name)
         {
-            return this.WithoutProbe(name) as LoadBalancer.Update.IUpdate;
+            return this.WithoutProbe(name);
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancerHttpProbe.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate> LoadBalancer.Update.IWithProbe.DefineHttpProbe(string name)
         {
-            return this.DefineHttpProbe(name) as LoadBalancerHttpProbe.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate>;
+            return this.DefineHttpProbe(name);
         }
 
         /// <summary>
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the probe update.</return>
         LoadBalancerTcpProbe.Update.IUpdate LoadBalancer.Update.IWithProbe.UpdateTcpProbe(string name)
         {
-            return this.UpdateTcpProbe(name) as LoadBalancerTcpProbe.Update.IUpdate;
+            return this.UpdateTcpProbe(name);
         }
 
         /// <summary>
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new load balancing rule definition.</return>
         LoadBalancingRule.Definition.IBlank<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate> LoadBalancer.Definition.IWithLoadBalancingRule.DefineLoadBalancingRule(string name)
         {
-            return this.DefineLoadBalancingRule(name) as LoadBalancingRule.Definition.IBlank<LoadBalancer.Definition.IWithLBRuleOrNatOrCreate>;
+            return this.DefineLoadBalancingRule(name);
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancer.Update.IUpdate LoadBalancer.Update.IWithLoadBalancingRule.WithoutLoadBalancingRule(string name)
         {
-            return this.WithoutLoadBalancingRule(name) as LoadBalancer.Update.IUpdate;
+            return this.WithoutLoadBalancingRule(name);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the new load balancing rule definition.</return>
         LoadBalancingRule.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate> LoadBalancer.Update.IWithLoadBalancingRule.DefineLoadBalancingRule(string name)
         {
-            return this.DefineLoadBalancingRule(name) as LoadBalancingRule.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate>;
+            return this.DefineLoadBalancingRule(name);
         }
 
         /// <summary>
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the load balancing rule update.</return>
         LoadBalancingRule.Update.IUpdate LoadBalancer.Update.IWithLoadBalancingRule.UpdateLoadBalancingRule(string name)
         {
-            return this.UpdateLoadBalancingRule(name) as LoadBalancingRule.Update.IUpdate;
+            return this.UpdateLoadBalancingRule(name);
         }
 
         /// <summary>
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A public frontend associated with the provided public IP address.</return>
         Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPublicFrontend Microsoft.Azure.Management.Network.Fluent.ILoadBalancer.FindFrontendByPublicIPAddress(string publicIPAddressId)
         {
-            return this.FindFrontendByPublicIPAddress(publicIPAddressId) as Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPublicFrontend;
+            return this.FindFrontendByPublicIPAddress(publicIPAddressId);
         }
 
         /// <summary>
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>A public frontend associated with the provided public IP address.</return>
         Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPublicFrontend Microsoft.Azure.Management.Network.Fluent.ILoadBalancer.FindFrontendByPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.FindFrontendByPublicIPAddress(publicIPAddress) as Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPublicFrontend;
+            return this.FindFrontendByPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.InboundNatPools() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatPool>;
+                return this.InboundNatPools();
             }
         }
 
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PublicFrontends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPublicFrontend>;
+                return this.PublicFrontends();
             }
         }
 
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PrivateFrontends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerPrivateFrontend>;
+                return this.PrivateFrontends();
             }
         }
 
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.HttpProbes() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerHttpProbe>;
+                return this.HttpProbes();
             }
         }
 
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Sku() as Microsoft.Azure.Management.Network.Fluent.Models.LoadBalancerSkuType;
+                return this.Sku();
             }
         }
 
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PublicIPAddressIds() as System.Collections.Generic.IReadOnlyList<string>;
+                return this.PublicIPAddressIds();
             }
         }
 
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Frontends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerFrontend>;
+                return this.Frontends();
             }
         }
 
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Backends() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerBackend>;
+                return this.Backends();
             }
         }
 
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.TcpProbes() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerTcpProbe>;
+                return this.TcpProbes();
             }
         }
 
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.InboundNatRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancerInboundNatRule>;
+                return this.InboundNatRules();
             }
         }
 
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         LoadBalancer.Definition.IWithCreate LoadBalancer.Definition.IWithSku.WithSku(LoadBalancerSkuType skuType)
         {
-            return this.WithSku(skuType) as LoadBalancer.Definition.IWithCreate;
+            return this.WithSku(skuType);
         }
 
         /// <summary>
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.LoadBalancingRules() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Network.Fluent.ILoadBalancingRule>;
+                return this.LoadBalancingRules();
             }
         }
 
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancerBackend.Definition.IBlank<LoadBalancer.Definition.IWithCreate> LoadBalancer.Definition.IWithBackend.DefineBackend(string name)
         {
-            return this.DefineBackend(name) as LoadBalancerBackend.Definition.IBlank<LoadBalancer.Definition.IWithCreate>;
+            return this.DefineBackend(name);
         }
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the backend definition.</return>
         LoadBalancerBackend.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate> LoadBalancer.Update.IWithBackend.DefineBackend(string name)
         {
-            return this.DefineBackend(name) as LoadBalancerBackend.UpdateDefinition.IBlank<LoadBalancer.Update.IUpdate>;
+            return this.DefineBackend(name);
         }
 
         /// <summary>
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         LoadBalancer.Update.IUpdate LoadBalancer.Update.IWithBackend.WithoutBackend(string name)
         {
-            return this.WithoutBackend(name) as LoadBalancer.Update.IUpdate;
+            return this.WithoutBackend(name);
         }
 
         /// <summary>
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The first stage of the update.</return>
         LoadBalancerBackend.Update.IUpdate LoadBalancer.Update.IWithBackend.UpdateBackend(string name)
         {
-            return this.UpdateBackend(name) as LoadBalancerBackend.Update.IUpdate;
+            return this.UpdateBackend(name);
         }
 
         /// <summary>
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Network.Fluent.ILoadBalancer> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Network.Fluent.ILoadBalancer>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Network.Fluent.ILoadBalancer;
+            return await this.RefreshAsync(cancellationToken);
         }
     }
 }

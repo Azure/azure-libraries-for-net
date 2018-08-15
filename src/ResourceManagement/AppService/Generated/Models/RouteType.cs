@@ -8,14 +8,23 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for RouteType.
     /// </summary>
-    public static class RouteType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<RouteType>))]
+    public class RouteType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<RouteType>
     {
-        public const string DEFAULT = "DEFAULT";
-        public const string INHERITED = "INHERITED";
-        public const string STATIC = "STATIC";
+        public static readonly RouteType DEFAULT = Parse("DEFAULT");
+        public static readonly RouteType INHERITED = Parse("INHERITED");
+        public static readonly RouteType STATIC = Parse("STATIC");
     }
 }

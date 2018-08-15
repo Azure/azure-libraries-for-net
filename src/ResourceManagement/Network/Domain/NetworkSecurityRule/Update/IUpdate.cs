@@ -23,6 +23,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
         /// <return>The next stage of the update.</return>
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IUpdate ToAddress(string cidr);
 
+        /// <summary>
+        /// Specifies the traffic destination address prefixes to which this rule applies.
+        /// </summary>
+        /// <param name="addresses">IP address prefixes in CIDR notation or IP addresses.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IUpdate ToAddresses(params string[] addresses);
+
     /// <summary>
         /// Makes the rule apply to any traffic destination address.
     /// </summary>
@@ -63,6 +70,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
         /// <param name="to">The ending port number.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IUpdate ToPortRange(int from, int to);
+
+        /// <summary>
+        /// Specifies the destination port ranges to which this rule applies.
+        /// </summary>
+        /// <param name="ranges">The destination port ranges.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IUpdate ToPortRanges(params string[] ranges);
     }
 
         /// <summary>
@@ -140,6 +154,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
         /// <param name="to">The ending port number.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IUpdate FromPortRange(int from, int to);
+
+        /// <summary>
+        /// Specifies the source port ranges to which this rule applies.
+        /// </summary>
+        /// <param name="ranges">The starting port ranges.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IUpdate FromPortRanges(params string[] ranges);
     }
 
     /// <summary>
@@ -155,6 +176,13 @@ namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update
         /// <param name="cidr">An IP address prefix expressed in the CIDR notation.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IUpdate FromAddress(string cidr);
+
+        /// <summary>
+        /// Specifies the traffic source address prefixes to which this rule applies.
+        /// </summary>
+        /// <param name="addresses">IP address prefixes in CIDR notation or IP addresses.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Update.IUpdate FromAddresses(params string[] addresses);
 
         /// <summary>
         /// Specifies that the rule applies to any traffic source address.

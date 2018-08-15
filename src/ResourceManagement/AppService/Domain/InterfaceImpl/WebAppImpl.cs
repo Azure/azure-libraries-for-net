@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IExistingWindowsPlanWithGroup WebApp.Definition.IBlank.WithExistingWindowsPlan(IAppServicePlan appServicePlan)
         {
-            return this.WithExistingWindowsPlan(appServicePlan) as WebApp.Definition.IExistingWindowsPlanWithGroup;
+            return this.WithExistingWindowsPlan(appServicePlan);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IExistingLinuxPlanWithGroup WebApp.Definition.IBlank.WithExistingLinuxPlan(IAppServicePlan appServicePlan)
         {
-            return this.WithExistingLinuxPlan(appServicePlan) as WebApp.Definition.IExistingLinuxPlanWithGroup;
+            return this.WithExistingLinuxPlan(appServicePlan);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Update.IUpdate WebApp.Update.IWithStartUpCommand.WithStartUpCommand(string startUpCommand)
         {
-            return this.WithStartUpCommand(startUpCommand) as WebApp.Update.IUpdate;
+            return this.WithStartUpCommand(startUpCommand);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IWithCreate WebApp.Definition.IWithStartUpCommand.WithStartUpCommand(string startUpCommand)
         {
-            return this.WithStartUpCommand(startUpCommand) as WebApp.Definition.IWithCreate;
+            return this.WithStartUpCommand(startUpCommand);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IWithCreate WebApp.Definition.IWithNewAppServicePlan.WithNewWindowsPlan(PricingTier pricingTier)
         {
-            return this.WithNewWindowsPlan(pricingTier) as WebApp.Definition.IWithCreate;
+            return this.WithNewWindowsPlan(pricingTier);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IWithCreate WebApp.Definition.IWithNewAppServicePlan.WithNewWindowsPlan(ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan> appServicePlanCreatable)
         {
-            return this.WithNewWindowsPlan(appServicePlanCreatable) as WebApp.Definition.IWithCreate;
+            return this.WithNewWindowsPlan(appServicePlanCreatable);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IWithDockerContainerImage WebApp.Definition.IWithNewAppServicePlan.WithNewLinuxPlan(PricingTier pricingTier)
         {
-            return this.WithNewLinuxPlan(pricingTier) as WebApp.Definition.IWithDockerContainerImage;
+            return this.WithNewLinuxPlan(pricingTier);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IWithDockerContainerImage WebApp.Definition.IWithNewAppServicePlan.WithNewLinuxPlan(ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan> appServicePlanCreatable)
         {
-            return this.WithNewLinuxPlan(appServicePlanCreatable) as WebApp.Definition.IWithDockerContainerImage;
+            return this.WithNewLinuxPlan(appServicePlanCreatable);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WebApp.Definition.IWithNewAppServicePlan.WithNewFreeAppServicePlan()
         {
-            return this.WithNewFreeAppServicePlan() as WebApp.Definition.IWithCreate;
+            return this.WithNewFreeAppServicePlan();
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Definition.IWithCreate WebApp.Definition.IWithNewAppServicePlan.WithNewSharedAppServicePlan()
         {
-            return this.WithNewSharedAppServicePlan() as WebApp.Definition.IWithCreate;
+            return this.WithNewSharedAppServicePlan();
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebApp.Update.IWithCredentials WebApp.Update.IWithDockerContainerImage.WithPrivateDockerHubImage(string imageAndTag)
         {
-            return this.WithPrivateDockerHubImage(imageAndTag) as WebApp.Update.IWithCredentials;
+            return this.WithPrivateDockerHubImage(imageAndTag);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebApp.Update.IWithStartUpCommand WebApp.Update.IWithDockerContainerImage.WithPublicDockerHubImage(string imageAndTag)
         {
-            return this.WithPublicDockerHubImage(imageAndTag) as WebApp.Update.IWithStartUpCommand;
+            return this.WithPublicDockerHubImage(imageAndTag);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebApp.Update.IUpdate WebApp.Update.IWithDockerContainerImage.WithBuiltInImage(RuntimeStack runtimeStack)
         {
-            return this.WithBuiltInImage(runtimeStack) as WebApp.Update.IUpdate;
+            return this.WithBuiltInImage(runtimeStack);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Update.IUpdate WebApp.Update.IWithAppServicePlan.WithNewAppServicePlan(PricingTier pricingTier)
         {
-            return this.WithNewAppServicePlan(pricingTier) as WebApp.Update.IUpdate;
+            return this.WithNewAppServicePlan(pricingTier);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Update.IUpdate WebApp.Update.IWithAppServicePlan.WithNewAppServicePlan(ICreatable<Microsoft.Azure.Management.AppService.Fluent.IAppServicePlan> appServicePlanCreatable)
         {
-            return this.WithNewAppServicePlan(appServicePlanCreatable) as WebApp.Update.IUpdate;
+            return this.WithNewAppServicePlan(appServicePlanCreatable);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Update.IUpdate WebApp.Update.IWithAppServicePlan.WithNewFreeAppServicePlan()
         {
-            return this.WithNewFreeAppServicePlan() as WebApp.Update.IUpdate;
+            return this.WithNewFreeAppServicePlan();
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Update.IUpdate WebApp.Update.IWithAppServicePlan.WithExistingAppServicePlan(IAppServicePlan appServicePlan)
         {
-            return this.WithExistingAppServicePlan(appServicePlan) as WebApp.Update.IUpdate;
+            return this.WithExistingAppServicePlan(appServicePlan);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         Microsoft.Azure.Management.AppService.Fluent.WebApp.Update.IUpdate WebApp.Update.IWithAppServicePlan.WithNewSharedAppServicePlan()
         {
-            return this.WithNewSharedAppServicePlan() as WebApp.Update.IUpdate;
+            return this.WithNewSharedAppServicePlan();
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebApp.Update.IWithCredentials WebApp.Update.IWithDockerContainerImage.WithPrivateRegistryImage(string imageAndTag, string serverUrl)
         {
-            return this.WithPrivateRegistryImage(imageAndTag, serverUrl) as WebApp.Update.IWithCredentials;
+            return this.WithPrivateRegistryImage(imageAndTag, serverUrl);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IWithCredentials WebApp.Definition.IWithDockerContainerImage.WithPrivateDockerHubImage(string imageAndTag)
         {
-            return this.WithPrivateDockerHubImage(imageAndTag) as WebApp.Definition.IWithCredentials;
+            return this.WithPrivateDockerHubImage(imageAndTag);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IWithStartUpCommand WebApp.Definition.IWithDockerContainerImage.WithPublicDockerHubImage(string imageAndTag)
         {
-            return this.WithPublicDockerHubImage(imageAndTag) as WebApp.Definition.IWithStartUpCommand;
+            return this.WithPublicDockerHubImage(imageAndTag);
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IWithCreate WebApp.Definition.IWithDockerContainerImage.WithBuiltInImage(RuntimeStack runtimeStack)
         {
-            return this.WithBuiltInImage(runtimeStack) as WebApp.Definition.IWithCreate;
+            return this.WithBuiltInImage(runtimeStack);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IWithCredentials WebApp.Definition.IWithDockerContainerImage.WithPrivateRegistryImage(string imageAndTag, string serverUrl)
         {
-            return this.WithPrivateRegistryImage(imageAndTag, serverUrl) as WebApp.Definition.IWithCredentials;
+            return this.WithPrivateRegistryImage(imageAndTag, serverUrl);
         }
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the web app update.</return>
         WebApp.Update.IWithStartUpCommand WebApp.Update.IWithCredentials.WithCredentials(string username, string password)
         {
-            return this.WithCredentials(username, password) as WebApp.Update.IWithStartUpCommand;
+            return this.WithCredentials(username, password);
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <return>The next stage of the definition.</return>
         WebApp.Definition.IWithStartUpCommand WebApp.Definition.IWithCredentials.WithCredentials(string username, string password)
         {
-            return this.WithCredentials(username, password) as WebApp.Definition.IWithStartUpCommand;
+            return this.WithCredentials(username, password);
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         {
             get
             {
-                return this.DeploymentSlots() as Microsoft.Azure.Management.AppService.Fluent.IDeploymentSlots;
+                return this.DeploymentSlots();
             }
         }
     }

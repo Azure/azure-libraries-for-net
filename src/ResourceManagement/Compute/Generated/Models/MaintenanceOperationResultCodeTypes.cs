@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this MaintenanceOperationResultCodeTypes value)
         {
-            switch( value )
+            switch (value)
             {
                 case MaintenanceOperationResultCodeTypes.None:
                     return "None";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static MaintenanceOperationResultCodeTypes? ParseMaintenanceOperationResultCodeTypes(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "None":
                     return MaintenanceOperationResultCodeTypes.None;

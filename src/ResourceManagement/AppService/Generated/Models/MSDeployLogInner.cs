@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// MSDeploy log
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class MSDeployLogInner : ProxyOnlyResource
+    public partial class MSDeployLogInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the MSDeployLogInner class.
@@ -32,13 +32,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the MSDeployLogInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="entries">List of log entry messages</param>
-        public MSDeployLogInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), IList<MSDeployLogEntry> entries = default(IList<MSDeployLogEntry>))
-            : base(id, name, kind, type)
+        public MSDeployLogInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), IList<MSDeployLogEntry> entries = default(IList<MSDeployLogEntry>))
+            : base(id, name, type, kind)
         {
             Entries = entries;
             CustomInit();

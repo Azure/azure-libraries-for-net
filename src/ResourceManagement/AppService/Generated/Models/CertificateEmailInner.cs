@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// SSL certificate email.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class CertificateEmailInner : ProxyOnlyResource
+    public partial class CertificateEmailInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the CertificateEmailInner class.
@@ -30,14 +30,11 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the CertificateEmailInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="emailId">Email id.</param>
         /// <param name="timeStamp">Time stamp.</param>
-        public CertificateEmailInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string emailId = default(string), System.DateTime? timeStamp = default(System.DateTime?))
-            : base(id, name, kind, type)
+        public CertificateEmailInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string emailId = default(string), System.DateTime? timeStamp = default(System.DateTime?))
+            : base(id, name, type, kind)
         {
             EmailId = emailId;
             TimeStamp = timeStamp;

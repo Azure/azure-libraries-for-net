@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the update.</return>
         BatchAccount.Update.IUpdate BatchAccount.Update.IWithStorageAccount.WithExistingStorageAccount(IStorageAccount storageAccount)
         {
-            return this.WithExistingStorageAccount(storageAccount) as BatchAccount.Update.IUpdate;
+            return this.WithExistingStorageAccount(storageAccount);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the update.</return>
         BatchAccount.Update.IUpdate BatchAccount.Update.IWithStorageAccount.WithoutStorageAccount()
         {
-            return this.WithoutStorageAccount() as BatchAccount.Update.IUpdate;
+            return this.WithoutStorageAccount();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the update.</return>
         BatchAccount.Update.IUpdate BatchAccount.Update.IWithStorageAccount.WithNewStorageAccount(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> storageAccountCreatable)
         {
-            return this.WithNewStorageAccount(storageAccountCreatable) as BatchAccount.Update.IUpdate;
+            return this.WithNewStorageAccount(storageAccountCreatable);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the update.</return>
         BatchAccount.Update.IUpdate BatchAccount.Update.IWithStorageAccount.WithNewStorageAccount(string storageAccountName)
         {
-            return this.WithNewStorageAccount(storageAccountName) as BatchAccount.Update.IUpdate;
+            return this.WithNewStorageAccount(storageAccountName);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         {
             get
             {
-                return this.AutoStorage() as AutoStorageProperties;
+                return this.AutoStorage();
             }
         }
 
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         {
             get
             {
-                return this.Applications() as System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Batch.Fluent.IApplication>;
+                return this.Applications();
             }
         }
 
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The Observable to refreshed resource.</return>
         async Task<Microsoft.Azure.Management.Batch.Fluent.IBatchAccount> Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Batch.Fluent.IBatchAccount>.RefreshAsync(CancellationToken cancellationToken)
         {
-            return await this.RefreshAsync(cancellationToken) as Microsoft.Azure.Management.Batch.Fluent.IBatchAccount;
+            return await this.RefreshAsync(cancellationToken);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAccount.Definition.IWithCreate BatchAccount.Definition.IWithStorage.WithExistingStorageAccount(IStorageAccount storageAccount)
         {
-            return this.WithExistingStorageAccount(storageAccount) as BatchAccount.Definition.IWithCreate;
+            return this.WithExistingStorageAccount(storageAccount);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAccount.Definition.IWithCreate BatchAccount.Definition.IWithStorage.WithNewStorageAccount(ICreatable<Microsoft.Azure.Management.Storage.Fluent.IStorageAccount> storageAccountCreatable)
         {
-            return this.WithNewStorageAccount(storageAccountCreatable) as BatchAccount.Definition.IWithCreate;
+            return this.WithNewStorageAccount(storageAccountCreatable);
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAccount.Definition.IWithCreate BatchAccount.Definition.IWithStorage.WithNewStorageAccount(string storageAccountName)
         {
-            return this.WithNewStorageAccount(storageAccountName) as BatchAccount.Definition.IWithCreate;
+            return this.WithNewStorageAccount(storageAccountName);
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The first stage of a Batch application update.</return>
         Application.Update.IUpdate BatchAccount.Update.IWithApplication.UpdateApplication(string applicationId)
         {
-            return this.UpdateApplication(applicationId) as Application.Update.IUpdate;
+            return this.UpdateApplication(applicationId);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the update.</return>
         BatchAccount.Update.IUpdate BatchAccount.Update.IWithApplication.WithoutApplication(string applicationId)
         {
-            return this.WithoutApplication(applicationId) as BatchAccount.Update.IUpdate;
+            return this.WithoutApplication(applicationId);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The first stage of a Batch application definition.</return>
         Application.UpdateDefinition.IBlank<BatchAccount.Update.IUpdate> BatchAccount.Update.IWithApplication.DefineNewApplication(string applicationId)
         {
-            return this.DefineNewApplication(applicationId) as Application.UpdateDefinition.IBlank<BatchAccount.Update.IUpdate>;
+            return this.DefineNewApplication(applicationId);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Management.Batch.Fluent
         /// <return>The next stage of the definition.</return>
         Application.Definition.IBlank<BatchAccount.Definition.IWithApplicationAndStorage> BatchAccount.Definition.IWithApplication.DefineNewApplication(string applicationId)
         {
-            return this.DefineNewApplication(applicationId) as Application.Definition.IBlank<BatchAccount.Definition.IWithApplicationAndStorage>;
+            return this.DefineNewApplication(applicationId);
         }
     }
 }

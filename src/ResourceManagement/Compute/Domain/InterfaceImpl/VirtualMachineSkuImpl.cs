@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
     using Microsoft.Azure.Management.Compute.Fluent.Models;
@@ -7,6 +8,17 @@ namespace Microsoft.Azure.Management.Compute.Fluent
 
     internal partial class VirtualMachineSkuImpl
     {
+        /// <summary>
+        /// Gets virtual machine images in the SKU.
+        /// </summary>
+        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImagesInSku Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSku.Images
+        {
+            get
+            {
+                return this.Images();
+            }
+        }
+
         /// <summary>
         /// Gets the name of the resource.
         /// </summary>
@@ -19,24 +31,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
-        /// Gets virtual machine images in the SKU.
-        /// </summary>
-        Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImagesInSku Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSku.Images
-        {
-            get
-            {
-                return this.Images() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineImagesInSku;
-            }
-        }
-
-        /// <summary>
         /// Gets the virtual machine offer name that this SKU belongs to.
         /// </summary>
         Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineOffer Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineSku.Offer
         {
             get
             {
-                return this.Offer() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineOffer;
+                return this.Offer();
             }
         }
 
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Publisher() as Microsoft.Azure.Management.Compute.Fluent.IVirtualMachinePublisher;
+                return this.Publisher();
             }
         }
 
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         {
             get
             {
-                return this.Region() as Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region;
+                return this.Region();
             }
         }
     }

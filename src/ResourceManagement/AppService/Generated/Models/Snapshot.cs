@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// A snapshot of an app.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class Snapshot : ProxyOnlyResource
+    public partial class Snapshot : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the Snapshot class.
@@ -30,13 +30,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the Snapshot class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="time">The time the snapshot was taken.</param>
-        public Snapshot(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string time = default(string))
-            : base(id, name, kind, type)
+        public Snapshot(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string time = default(string))
+            : base(id, name, type, kind)
         {
             Time = time;
             CustomInit();

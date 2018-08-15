@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Custom domain analysis.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class CustomHostnameAnalysisResultInner : ProxyOnlyResource
+    public partial class CustomHostnameAnalysisResultInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the CustomHostnameAnalysisResultInner
@@ -34,10 +34,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the CustomHostnameAnalysisResultInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param
         /// name="isHostnameAlreadyVerified">&lt;code&gt;true&lt;/code&gt; if
         /// hostname is already verified; otherwise,
@@ -66,8 +63,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// controller can see for this hostname.</param>
         /// <param name="alternateTxtRecords">Alternate TXT records controller
         /// can see for this hostname.</param>
-        public CustomHostnameAnalysisResultInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? isHostnameAlreadyVerified = default(bool?), DnsVerificationTestResult? customDomainVerificationTest = default(DnsVerificationTestResult?), ErrorEntity customDomainVerificationFailureInfo = default(ErrorEntity), bool? hasConflictOnScaleUnit = default(bool?), bool? hasConflictAcrossSubscription = default(bool?), string conflictingAppResourceId = default(string), IList<string> cNameRecords = default(IList<string>), IList<string> txtRecords = default(IList<string>), IList<string> aRecords = default(IList<string>), IList<string> alternateCNameRecords = default(IList<string>), IList<string> alternateTxtRecords = default(IList<string>))
-            : base(id, name, kind, type)
+        public CustomHostnameAnalysisResultInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), bool? isHostnameAlreadyVerified = default(bool?), DnsVerificationTestResult? customDomainVerificationTest = default(DnsVerificationTestResult?), ErrorEntity customDomainVerificationFailureInfo = default(ErrorEntity), bool? hasConflictOnScaleUnit = default(bool?), bool? hasConflictAcrossSubscription = default(bool?), string conflictingAppResourceId = default(string), IList<string> cNameRecords = default(IList<string>), IList<string> txtRecords = default(IList<string>), IList<string> aRecords = default(IList<string>), IList<string> alternateCNameRecords = default(IList<string>), IList<string> alternateTxtRecords = default(IList<string>))
+            : base(id, name, type, kind)
         {
             IsHostnameAlreadyVerified = isHostnameAlreadyVerified;
             CustomDomainVerificationTest = customDomainVerificationTest;

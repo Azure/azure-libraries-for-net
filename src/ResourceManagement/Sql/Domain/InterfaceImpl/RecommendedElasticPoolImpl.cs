@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>List of the databases in recommended elastic pool.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool.ListDatabases()
         {
-            return this.ListDatabases() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>;
+            return this.ListDatabases();
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>List of the databases in recommended elastic pool.</return>
         System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolMetric> Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool.ListMetrics()
         {
-            return this.ListMetrics() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolMetric>;
+            return this.ListMetrics();
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>Information on the database recommended in recommended elastic pool.</return>
         Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPool.GetDatabase(string databaseName)
         {
-            return this.GetDatabase(databaseName) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+            return this.GetDatabase(databaseName);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation to get the database in the recommended elastic pool.</return>
         async Task<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase> Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolBeta.GetDatabaseAsync(string databaseName, CancellationToken cancellationToken)
         {
-            return await this.GetDatabaseAsync(databaseName, cancellationToken) as Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase;
+            return await this.GetDatabaseAsync(databaseName, cancellationToken);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Databases() as System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>;
+                return this.Databases();
             }
         }
 
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         /// <return>A representation of the deferred computation of the databases in this recommended elastic pool.</return>
         async Task<IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>> Microsoft.Azure.Management.Sql.Fluent.IRecommendedElasticPoolBeta.ListDatabasesAsync(CancellationToken cancellationToken)
         {
-            return await this.ListDatabasesAsync(cancellationToken) as IReadOnlyList<Microsoft.Azure.Management.Sql.Fluent.ISqlDatabase>;
+            return await this.ListDatabasesAsync(cancellationToken);
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.Sql.Fluent
         {
             get
             {
-                return this.Manager() as Microsoft.Azure.Management.Sql.Fluent.ISqlManager;
+                return this.Manager();
             }
         }
     }

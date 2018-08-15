@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static string ToSerializedValue(this RollingUpgradeActionType value)
         {
-            switch( value )
+            switch (value)
             {
                 case RollingUpgradeActionType.Start:
                     return "Start";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
 
         internal static RollingUpgradeActionType? ParseRollingUpgradeActionType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Start":
                     return RollingUpgradeActionType.Start;

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// A class that describes the reason for a validation failure.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VnetValidationFailureDetailsInner : ProxyOnlyResource
+    public partial class VnetValidationFailureDetailsInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the VnetValidationFailureDetailsInner
@@ -34,16 +34,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the VnetValidationFailureDetailsInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="failed">A flag describing whether or not validation
         /// failed.</param>
         /// <param name="failedTests">A list of tests that failed in the
         /// validation.</param>
-        public VnetValidationFailureDetailsInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? failed = default(bool?), IList<VnetValidationTestFailure> failedTests = default(IList<VnetValidationTestFailure>))
-            : base(id, name, kind, type)
+        public VnetValidationFailureDetailsInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), bool? failed = default(bool?), IList<VnetValidationTestFailure> failedTests = default(IList<VnetValidationTestFailure>))
+            : base(id, name, type, kind)
         {
             Failed = failed;
             FailedTests = failedTests;

@@ -2,7 +2,7 @@
 
 # Azure Management Libraries for .NET
 
-This README is based on the released stable version (1.11). If you are looking for other releases, see [More Information](#more-information)
+This README is based on the released stable version (1.14). If you are looking for other releases, see [More Information](#more-information)
 
 The Azure Management Libraries for .NET is a higher-level, object-oriented API for managing Azure resources. Libraries are built on the lower-level, request-response style [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest) and can run side-by-side with [auto generated clients](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest).
 
@@ -16,13 +16,13 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
   * [Others...](#other-code-samples)
 * [Download](#download)
 * [Prerequisites](#prerequisites)
-* [Updgrading from older versions](#upgrading-from-older-versions)
+* [Upgrading from older versions](#upgrading-from-older-versions)
 * [Help and issues](#help-and-issues)
 * [Contribute code](#contribute-code)
 * [More information](#more-information)
 
 ## Feature Availability and Road Map
-:triangular_flag_on_post: *as of Version 1.11*
+:triangular_flag_on_post: *as of Version 1.14*
 
 <table>
   <tr>
@@ -52,8 +52,8 @@ The Azure Management Libraries for .NET is a higher-level, object-oriented API f
   <tr>
     <td>Networking</td>
     <td>Virtual networks<br>Network interfaces<br>IP addresses<br>Routing table<br>Network security groups<br>Load balancers<br>Application gateways<br>DNS<br>Traffic managers</td>
-    <td valign="top">Network peering<br>Virtual Network Gateway<br>Network watchers<br>Express Route</td>
-    <td valign="top">VPN<br>More application gateway features</td>
+    <td valign="top">Network peering<br>Virtual Network Gateway<br>Network watchers<br>Express Route<br>Application Security Groups</td>
+    <td valign="top">More application gateway features</td>
   </tr>
   <tr>
     <td>More services</td>
@@ -572,7 +572,7 @@ var database = sqlServer.Databases.Define(databaseName)
 
 ### Latest stable release
 
-**1.11** release builds are available on NuGet:
+**1.14** release builds are available on NuGet:
 
 |Azure Management Library                     | Package name                                        | Stable                 |
 |---------------------------------------------|-----------------------------------------------------|------------------------|
@@ -608,10 +608,11 @@ var database = sqlServer.Databases.Define(databaseName)
 
 - [.NET Core](https://www.microsoft.com/net/core) 
 - Azure Service Principal - see [how to create authentication info](./AUTH.md).
+- Configure and build locally - see ["**to build**" section here](https://github.com/Azure/azure-sdk-for-net/#to-build).
 
 ## Upgrading from older versions
 
-If you are migrating your code from 1.10.x to 1.11.x, you can use these release notes for [preparing your code for 1.11 from 1.10](./notes/prepare-for-1.11.md).
+If you are migrating your code from 1.11.x to 1.14.x, you can use these release notes for [preparing your code for 1.14 from 1.13](./notes/prepare-for-1.14.md).
 
 In general, Azure Libraries for .Net follow [semantic versioning](http://semver.org/), so user code should continue working in a compatible fashion between minor versions of the same major version release train, with the following caveats:
 
@@ -646,6 +647,8 @@ If you would like to become an active contributor to this project please follow 
 
 | Version           | SHA1                                                                                      | Remarks                                               |
 |-------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| 1.14              | [1.14](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.14)        | Tagged release for 1.14 version of Azure management libraries |
+| 1.13              | [1.13](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.13)        | Tagged release for 1.13 version of Azure management libraries |
 | 1.11              | [1.11](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.11)        | Tagged release for 1.11 version of Azure management libraries |
 | 1.10              | [1.10](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.10)        | Tagged release for 1.10 version of Azure management libraries |
 | 1.9               | [1.9](https://github.com/Azure/azure-libraries-for-net/releases/tag/Fluent-v1.9)          | Tagged release for 1.9 version of Azure management libraries |

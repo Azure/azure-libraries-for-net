@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>An immutable representation of the resource.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule>.GetByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await this.GetByIdAsync(id, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule;
+            return await this.GetByIdAsync(id, cancellationToken);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>An immutable representation of the resource.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule>.GetById(string id)
         {
-            return this.GetById(id) as Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule;
+            return this.GetById(id);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The authorization rule.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRules.GetByName(string resourceGroupName, string namespaceName, string pairingName, string name)
         {
-            return this.GetByName(resourceGroupName, namespaceName, pairingName, name) as Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule;
+            return this.GetByName(resourceGroupName, namespaceName, pairingName, name);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits the authorization rule.</return>
         async Task<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule> Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRules.GetByNameAsync(string resourceGroupName, string namespaceName, string pairingName, string name, CancellationToken cancellationToken)
         {
-            return await this.GetByNameAsync(resourceGroupName, namespaceName, pairingName, name, cancellationToken) as Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule;
+            return await this.GetByNameAsync(resourceGroupName, namespaceName, pairingName, name, cancellationToken);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>Observable that emits the authorization rules.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule>> Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRules.ListByDisasterRecoveryPairingAsync(string resourceGroupName, string namespaceName, string pairingName, CancellationToken cancellationToken)
         {
-            return await this.ListByDisasterRecoveryPairingAsync(resourceGroupName, namespaceName, pairingName, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule>;
+            return await this.ListByDisasterRecoveryPairingAsync(resourceGroupName, namespaceName, pairingName, cancellationToken);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>List of authorization rules.</return>
         System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule> Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRules.ListByDisasterRecoveryPairing(string resourceGroupName, string namespaceName, string pairingName)
         {
-            return this.ListByDisasterRecoveryPairing(resourceGroupName, namespaceName, pairingName) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.Eventhub.Fluent.IDisasterRecoveryPairingAuthorizationRule>;
+            return this.ListByDisasterRecoveryPairing(resourceGroupName, namespaceName, pairingName);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         {
             get
             {
-                return this.Manager() as Management.EventHub.Fluent.EventHubManager;
+                return this.Manager();
             }
         }
     }

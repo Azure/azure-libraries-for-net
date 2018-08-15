@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayIPConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Definition.IWithSubnet<ApplicationGatewayIPConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>>.WithExistingSubnet(string parentNetworkResourceId, string subnetName)
         {
-            return this.WithExistingSubnet(parentNetworkResourceId, subnetName) as ApplicationGatewayIPConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithExistingSubnet(parentNetworkResourceId, subnetName);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayIPConfiguration.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Update.IWithSubnet<ApplicationGatewayIPConfiguration.Update.IUpdate>.WithExistingSubnet(string parentNetworkResourceId, string subnetName)
         {
-            return this.WithExistingSubnet(parentNetworkResourceId, subnetName) as ApplicationGatewayIPConfiguration.Update.IUpdate;
+            return this.WithExistingSubnet(parentNetworkResourceId, subnetName);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayIPConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.UpdateDefinition.IWithSubnet<ApplicationGatewayIPConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>>.WithExistingSubnet(string parentNetworkResourceId, string subnetName)
         {
-            return this.WithExistingSubnet(parentNetworkResourceId, subnetName) as ApplicationGatewayIPConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithExistingSubnet(parentNetworkResourceId, subnetName);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<ApplicationGateway.Update.IUpdate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayIPConfiguration.Update.IUpdate ApplicationGatewayIPConfiguration.Update.IWithSubnet.WithExistingSubnet(ISubnet subnet)
         {
-            return this.WithExistingSubnet(subnet) as ApplicationGatewayIPConfiguration.Update.IUpdate;
+            return this.WithExistingSubnet(subnet);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the update.</return>
         ApplicationGatewayIPConfiguration.Update.IUpdate ApplicationGatewayIPConfiguration.Update.IWithSubnet.WithExistingSubnet(INetwork network, string subnetName)
         {
-            return this.WithExistingSubnet(network, subnetName) as ApplicationGatewayIPConfiguration.Update.IUpdate;
+            return this.WithExistingSubnet(network, subnetName);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayIPConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayIPConfiguration.Definition.IWithSubnet<ApplicationGateway.Definition.IWithCreate>.WithExistingSubnet(ISubnet subnet)
         {
-            return this.WithExistingSubnet(subnet) as ApplicationGatewayIPConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithExistingSubnet(subnet);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayIPConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate> ApplicationGatewayIPConfiguration.Definition.IWithSubnet<ApplicationGateway.Definition.IWithCreate>.WithExistingSubnet(INetwork network, string subnetName)
         {
-            return this.WithExistingSubnet(network, subnetName) as ApplicationGatewayIPConfiguration.Definition.IWithAttach<ApplicationGateway.Definition.IWithCreate>;
+            return this.WithExistingSubnet(network, subnetName);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayIPConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayIPConfiguration.UpdateDefinition.IWithSubnet<ApplicationGateway.Update.IUpdate>.WithExistingSubnet(ISubnet subnet)
         {
-            return this.WithExistingSubnet(subnet) as ApplicationGatewayIPConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithExistingSubnet(subnet);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         ApplicationGatewayIPConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate> ApplicationGatewayIPConfiguration.UpdateDefinition.IWithSubnet<ApplicationGateway.Update.IUpdate>.WithExistingSubnet(INetwork network, string subnetName)
         {
-            return this.WithExistingSubnet(network, subnetName) as ApplicationGatewayIPConfiguration.UpdateDefinition.IWithAttach<ApplicationGateway.Update.IUpdate>;
+            return this.WithExistingSubnet(network, subnetName);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         ApplicationGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ApplicationGateway.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as ApplicationGateway.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <return>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </return>
         Microsoft.Azure.Management.Network.Fluent.ISubnet Microsoft.Azure.Management.Network.Fluent.IApplicationGatewayIPConfiguration.GetSubnet()
         {
-            return this.GetSubnet() as Microsoft.Azure.Management.Network.Fluent.ISubnet;
+            return this.GetSubnet();
         }
 
         /// <summary>

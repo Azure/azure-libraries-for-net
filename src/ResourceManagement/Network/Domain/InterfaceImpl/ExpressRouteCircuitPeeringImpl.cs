@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>Next stage of definition.</return>
         ExpressRouteCircuitPeering.Definition.IWithPrimaryPeerAddressPrefix ExpressRouteCircuitPeering.Definition.IWithAdvertisedPublicPrefixes.WithAdvertisedPublicPrefixes(string publicPrefixes)
         {
-            return this.WithAdvertisedPublicPrefixes(publicPrefixes) as ExpressRouteCircuitPeering.Definition.IWithPrimaryPeerAddressPrefix;
+            return this.WithAdvertisedPublicPrefixes(publicPrefixes);
         }
 
         ExpressRouteCircuitPeering.Update.IUpdate ExpressRouteCircuitPeering.Update.IWithAdvertisedPublicPrefixes.WithAdvertisedPublicPrefixes(string publicPrefixes)
         {
-            return this.WithAdvertisedPublicPrefixes(publicPrefixes) as ExpressRouteCircuitPeering.Update.IUpdate;
+            return this.WithAdvertisedPublicPrefixes(publicPrefixes);
         }
 
         /// <summary>
@@ -46,52 +46,52 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Manager as Microsoft.Azure.Management.Network.Fluent.INetworkManager;
+                return this.Manager;
             }
         }
 
         ExpressRouteCircuitPeering.Definition.IWithVlanId ExpressRouteCircuitPeering.Definition.IWithSecondaryPeerAddressPrefix.WithSecondaryPeerAddressPrefix(string addressPrefix)
         {
-            return this.WithSecondaryPeerAddressPrefix(addressPrefix) as ExpressRouteCircuitPeering.Definition.IWithVlanId;
+            return this.WithSecondaryPeerAddressPrefix(addressPrefix);
         }
 
         ExpressRouteCircuitPeering.Update.IUpdate ExpressRouteCircuitPeering.Update.IWithSecondaryPeerAddressPrefix.WithSecondaryPeerAddressPrefix(string addressPrefix)
         {
-            return this.WithSecondaryPeerAddressPrefix(addressPrefix) as ExpressRouteCircuitPeering.Update.IUpdate;
+            return this.WithSecondaryPeerAddressPrefix(addressPrefix);
         }
 
         /// <param name="vlanId">A valid VLAN ID to establish this peering on. No other peering in the circuit can use the same VLAN ID.</param>
         /// <return>Next stage of definition.</return>
         ExpressRouteCircuitPeering.Definition.IWithPeerAsn ExpressRouteCircuitPeering.Definition.IWithVlanId.WithVlanId(int vlanId)
         {
-            return this.WithVlanId(vlanId) as ExpressRouteCircuitPeering.Definition.IWithPeerAsn;
+            return this.WithVlanId(vlanId);
         }
 
         ExpressRouteCircuitPeering.Update.IUpdate ExpressRouteCircuitPeering.Update.IWithVlanId.WithVlanId(int vlanId)
         {
-            return this.WithVlanId(vlanId) as ExpressRouteCircuitPeering.Update.IUpdate;
+            return this.WithVlanId(vlanId);
         }
 
         ExpressRouteCircuitPeering.Definition.IWithSecondaryPeerAddressPrefix ExpressRouteCircuitPeering.Definition.IWithPrimaryPeerAddressPrefix.WithPrimaryPeerAddressPrefix(string addressPrefix)
         {
-            return this.WithPrimaryPeerAddressPrefix(addressPrefix) as ExpressRouteCircuitPeering.Definition.IWithSecondaryPeerAddressPrefix;
+            return this.WithPrimaryPeerAddressPrefix(addressPrefix);
         }
 
         ExpressRouteCircuitPeering.Update.IUpdate ExpressRouteCircuitPeering.Update.IWithPrimaryPeerAddressPrefix.WithPrimaryPeerAddressPrefix(string addressPrefix)
         {
-            return this.WithPrimaryPeerAddressPrefix(addressPrefix) as ExpressRouteCircuitPeering.Update.IUpdate;
+            return this.WithPrimaryPeerAddressPrefix(addressPrefix);
         }
 
         /// <param name="peerAsn">AS number for peering. Both 2-byte and 4-byte AS numbers can be used.</param>
         /// <return>Next stage of definition.</return>
         ExpressRouteCircuitPeering.Definition.IWithCreate ExpressRouteCircuitPeering.Definition.IWithPeerAsn.WithPeerAsn(int peerAsn)
         {
-            return this.WithPeerAsn(peerAsn) as ExpressRouteCircuitPeering.Definition.IWithCreate;
+            return this.WithPeerAsn(peerAsn);
         }
 
         ExpressRouteCircuitPeering.Update.IUpdate ExpressRouteCircuitPeering.Update.IWithPeerAsn.WithPeerAsn(int peerAsn)
         {
-            return this.WithPeerAsn(peerAsn) as ExpressRouteCircuitPeering.Update.IUpdate;
+            return this.WithPeerAsn(peerAsn);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.State() as Models.ExpressRoutePeeringState;
+                return this.State();
             }
         }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PeeringType() as Models.ExpressRoutePeeringType;
+                return this.PeeringType();
             }
         }
 
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.IPv6PeeringConfig() as Models.Ipv6ExpressRouteCircuitPeeringConfig;
+                return this.IPv6PeeringConfig();
             }
         }
 
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.Stats() as Microsoft.Azure.Management.Network.Fluent.IExpressRouteCircuitStats;
+                return this.Stats();
             }
         }
 
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.MicrosoftPeeringConfig() as Models.ExpressRouteCircuitPeeringConfig;
+                return this.MicrosoftPeeringConfig();
             }
         }
 

@@ -13,12 +13,6 @@ namespace Microsoft.Azure.Management.Redis.Fluent
     {
         private RedisAccessKeysInner inner;
 
-        ///GENMHASH:052932D87146B729CFA163215691D8ED:B906418BFAF9A0252DDBFB702ABE2774
-        internal string SecondaryKey()
-        {
-            return inner.SecondaryKey;
-        }
-
         /// <summary>
         /// Creates an instance of the Redis Access keys result object.
         /// </summary>
@@ -28,11 +22,20 @@ namespace Microsoft.Azure.Management.Redis.Fluent
         {
             this.inner = inner;
         }
-
-        ///GENMHASH:0B1F8FBCA0C4DFB5EA228CACB374C6C2:EF4A3D6252BFD28784D9F9BED7CEA1C0
+        
+		///GENMHASH:0B1F8FBCA0C4DFB5EA228CACB374C6C2:EF4A3D6252BFD28784D9F9BED7CEA1C0
         internal string PrimaryKey()
         {
             return inner.PrimaryKey;
         }
+				
+        ///GENMHASH:052932D87146B729CFA163215691D8ED:B906418BFAF9A0252DDBFB702ABE2774
+        internal string SecondaryKey()
+        {
+            return inner.SecondaryKey;
+        }
+
+
+
     }
 }

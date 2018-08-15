@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithAccessPolicy EventHubAuthorizationRule.Definition.IWithEventHub.WithExistingEventHubId(string eventHubResourceId)
         {
-            return this.WithExistingEventHubId(eventHubResourceId) as Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithAccessPolicy;
+            return this.WithExistingEventHubId(eventHubResourceId);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithAccessPolicy EventHubAuthorizationRule.Definition.IWithEventHub.WithExistingEventHub(string resourceGroupName, string namespaceName, string eventHubName)
         {
-            return this.WithExistingEventHub(resourceGroupName, namespaceName, eventHubName) as Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithAccessPolicy;
+            return this.WithExistingEventHub(resourceGroupName, namespaceName, eventHubName);
         }
 
         /// <summary>
@@ -38,37 +38,37 @@ namespace Microsoft.Azure.Management.Eventhub.Fluent
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithAccessPolicy EventHubAuthorizationRule.Definition.IWithEventHub.WithExistingEventHub(IEventHub eventHub)
         {
-            return this.WithExistingEventHub(eventHub) as Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithAccessPolicy;
+            return this.WithExistingEventHub(eventHub);
         }
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithCreate Microsoft.Azure.Management.Eventhub.Fluent.AuthorizationRule.Definition.IWithListen<IWithCreate>.WithListenAccess()
         {
-            return this.WithListeningEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithCreate;
+            return this.WithListeningEnabled();
         }
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithCreate Microsoft.Azure.Management.Eventhub.Fluent.AuthorizationRule.Definition.IWithSend<IWithCreate>.WithSendAccess()
         {
-            return this.WithSendingEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithCreate;
+            return this.WithSendingEnabled();
         }
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithCreate Microsoft.Azure.Management.Eventhub.Fluent.AuthorizationRule.Definition.IWithManage<IWithCreate>.WithManageAccess()
         {
-            return this.WithManagementEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Definition.IWithCreate;
+            return this.WithManagementEnabled();
         }
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Update.IUpdate Microsoft.Azure.Management.Eventhub.Fluent.AuthorizationRule.Update.IWithListen<IUpdate>.WithListenAccess()
         {
-            return this.WithListeningEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Update.IUpdate;
+            return this.WithListeningEnabled();
         }
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Update.IUpdate Microsoft.Azure.Management.Eventhub.Fluent.AuthorizationRule.Update.IWithSend<IUpdate>.WithSendAccess()
         {
-            return this.WithSendingEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Update.IUpdate;
+            return this.WithSendingEnabled();
         }
 
         Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Update.IUpdate Microsoft.Azure.Management.Eventhub.Fluent.AuthorizationRule.Update.IWithManage<IUpdate>.WithManageAccess()
         {
-            return this.WithManagementEnabled() as Microsoft.Azure.Management.Eventhub.Fluent.EventHubAuthorizationRule.Update.IUpdate;
+            return this.WithManagementEnabled();
         }
 
         /// <summary>

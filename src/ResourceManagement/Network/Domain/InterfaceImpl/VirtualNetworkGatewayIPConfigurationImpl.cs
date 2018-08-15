@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// </return>
         Microsoft.Azure.Management.Network.Fluent.ISubnet Microsoft.Azure.Management.Network.Fluent.IVirtualNetworkGatewayIPConfiguration.GetSubnet()
         {
-            return this.GetSubnet() as Microsoft.Azure.Management.Network.Fluent.ISubnet;
+            return this.GetSubnet();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         {
             get
             {
-                return this.PrivateIPAllocationMethod() as Models.IPAllocationMethod;
+                return this.PrivateIPAllocationMethod();
             }
         }
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate> Microsoft.Azure.Management.ResourceManager.Fluent.Core.HasSubnet.Definition.IWithSubnet<VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate>>.WithExistingSubnet(string parentNetworkResourceId, string subnetName)
         {
-            return this.WithExistingSubnet(parentNetworkResourceId, subnetName) as VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate>;
+            return this.WithExistingSubnet(parentNetworkResourceId, subnetName);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         VirtualNetworkGateway.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<VirtualNetworkGateway.Update.IUpdate>.Attach()
         {
-            return this.Attach() as VirtualNetworkGateway.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate> HasPublicIPAddress.Definition.IWithExistingPublicIPAddress<VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate>>.WithExistingPublicIPAddress(IPublicIPAddress publicIPAddress)
         {
-            return this.WithExistingPublicIPAddress(publicIPAddress) as VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate>;
+            return this.WithExistingPublicIPAddress(publicIPAddress);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate> HasPublicIPAddress.Definition.IWithExistingPublicIPAddress<VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate>>.WithExistingPublicIPAddress(string resourceId)
         {
-            return this.WithExistingPublicIPAddress(resourceId) as VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate>;
+            return this.WithExistingPublicIPAddress(resourceId);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate> VirtualNetworkGatewayIPConfiguration.Definition.IWithSubnet<VirtualNetworkGateway.Definition.IWithCreate>.WithExistingSubnet(ISubnet subnet)
         {
-            return this.WithExistingSubnet(subnet) as VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate>;
+            return this.WithExistingSubnet(subnet);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the definition.</return>
         VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate> VirtualNetworkGatewayIPConfiguration.Definition.IWithSubnet<VirtualNetworkGateway.Definition.IWithCreate>.WithExistingSubnet(INetwork network, string subnetName)
         {
-            return this.WithExistingSubnet(network, subnetName) as VirtualNetworkGatewayIPConfiguration.Definition.IWithAttach<VirtualNetworkGateway.Definition.IWithCreate>;
+            return this.WithExistingSubnet(network, subnetName);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         /// <return>The next stage of the parent definition.</return>
         VirtualNetworkGateway.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<VirtualNetworkGateway.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as VirtualNetworkGateway.Definition.IWithCreate;
+            return this.Attach();
         }
     }
 }

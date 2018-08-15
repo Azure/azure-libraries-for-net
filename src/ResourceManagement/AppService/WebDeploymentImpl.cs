@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         where UpdateT : class, Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update.IUpdate<FluentT>
     {
         private WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> parent;
-        private MSDeployInner request;
+        private MSDeploy request;
         private MSDeployStatusInner result;
 
         IWebAppBase IHasParent<IWebAppBase>.Parent => throw new NotImplementedException();
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         internal  WebDeploymentImpl(WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> parent)
         {
             this.parent = parent;
-            this.request = new MSDeployInner();
+            this.request = new MSDeploy();
         }
 
         ///GENMHASH:62FD3F1E0B9C473874BFF937B2C71CB1:AA7D7DD93FF83392246A2094116D5AC2

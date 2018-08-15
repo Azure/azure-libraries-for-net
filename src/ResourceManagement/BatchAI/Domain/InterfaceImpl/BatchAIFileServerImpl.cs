@@ -14,24 +14,24 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     {
         BatchAIFileServer.Definition.IWithUserCredentials BatchAIFileServer.Definition.IWithUserName.WithUserName(string userName)
         {
-            return this.WithUserName(userName) as BatchAIFileServer.Definition.IWithUserCredentials;
+            return this.WithUserName(userName);
         }
 
         BatchAIFileServer.Definition.IWithCreate BatchAIFileServer.Definition.IWithUserCredentials.WithPassword(string password)
         {
-            return this.WithPassword(password) as BatchAIFileServer.Definition.IWithCreate;
+            return this.WithPassword(password);
         }
 
         BatchAIFileServer.Definition.IWithCreate BatchAIFileServer.Definition.IWithUserCredentials.WithSshPublicKey(string sshPublicKey)
         {
-            return this.WithSshPublicKey(sshPublicKey) as BatchAIFileServer.Definition.IWithCreate;
+            return this.WithSshPublicKey(sshPublicKey);
         }
 
         /// <param name="vmSize">Virtual machine size.</param>
         /// <return>Next stage of the definition.</return>
         BatchAIFileServer.Definition.IWithUserName BatchAIFileServer.Definition.IWithVMSize.WithVMSize(string vmSize)
         {
-            return this.WithVMSize(vmSize) as BatchAIFileServer.Definition.IWithUserName;
+            return this.WithVMSize(vmSize);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.MountSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.MountSettings;
+                return this.MountSettings();
             }
         }
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.DataDisks() as Microsoft.Azure.Management.BatchAI.Fluent.Models.DataDisks;
+                return this.DataDisks();
             }
         }
 
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.Subnet() as Microsoft.Azure.Management.BatchAI.Fluent.Models.ResourceId;
+                return this.Subnet();
             }
         }
 
@@ -128,13 +128,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.SshConfiguration() as Microsoft.Azure.Management.BatchAI.Fluent.Models.SshConfiguration;
+                return this.SshConfiguration();
             }
         }
 
         BatchAIFileServer.Definition.IWithVMSize BatchAIFileServer.Definition.IWithDataDisks.WithDataDisks(int diskSizeInGB, int diskCount, StorageAccountType storageAccountType)
         {
-            return this.WithDataDisks(diskSizeInGB, diskCount, storageAccountType) as BatchAIFileServer.Definition.IWithVMSize;
+            return this.WithDataDisks(diskSizeInGB, diskCount, storageAccountType);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         BatchAIFileServer.Definition.IWithVMSize BatchAIFileServer.Definition.IWithDataDisks.WithDataDisks(int diskSizeInGB, int diskCount, StorageAccountType storageAccountType, CachingType cachingType)
         {
-            return this.WithDataDisks(diskSizeInGB, diskCount, storageAccountType, cachingType) as BatchAIFileServer.Definition.IWithVMSize;
+            return this.WithDataDisks(diskSizeInGB, diskCount, storageAccountType, cachingType);
         }
     }
 }

@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
         string ApplicationId { get; }
 
         /// <summary>
-        /// Gets the mapping of certificate credentials from their names.
+        /// Gets the mapping of certificate credentials from their ids.
         /// </summary>
         System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.ICertificateCredential> CertificateCredentials { get; }
 
         /// <summary>
-        /// Gets the mapping of password credentials from their names.
+        /// Gets the mapping of password credentials from their ids.
         /// </summary>
         System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Graph.RBAC.Fluent.IPasswordCredential> PasswordCredentials { get; }
     }

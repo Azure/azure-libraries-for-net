@@ -21,22 +21,22 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     /// </summary>
     public static partial class OperationsExtensions
     {
-            /// <summary>
-            /// Gets a list of compute operations.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IEnumerable<ComputeOperationValue>> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Gets a list of compute operations.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IEnumerable<ComputeOperationValue>> ListAsync(this IOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

@@ -87,25 +87,25 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:BF0243215BA9143B56ED25983393E69B:E85071D55AA027B278E4E85CA4BC6B0D
         public void DeleteInstances(IList<string> instanceIds)
         {
-            this.DeleteInstancesAsync(instanceIds).Wait();
+            Extensions.Synchronize(() => this.DeleteInstancesAsync(instanceIds));
         }
 
         ///GENMHASH:BF0243215BA9143B56ED25983393E69B:E85071D55AA027B278E4E85CA4BC6B0D
         public void DeleteInstances(params string[] instanceIds)
         {
-            this.DeleteInstancesAsync(instanceIds).Wait();
+            Extensions.Synchronize(() => this.DeleteInstancesAsync(instanceIds));
         }
 
         ///GENMHASH:192081DA3B0538D0043A32038FB0F341:EAFA9C00FF9BD97500B291BEA8F839D5
         public void UpdateInstances(params string[] instanceIds)
         {
-            this.UpdateInstancesAsync(instanceIds).Wait();
+            Extensions.Synchronize(() => this.UpdateInstancesAsync(instanceIds));
         }
 
         ///GENMHASH:192081DA3B0538D0043A32038FB0F341:EAFA9C00FF9BD97500B291BEA8F839D5
         public void UpdateInstances(IList<string> instanceIds)
         {
-            this.UpdateInstancesAsync(instanceIds).Wait();
+            Extensions.Synchronize(() => this.UpdateInstancesAsync(instanceIds));
         }
     }
 }

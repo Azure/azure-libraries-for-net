@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.DefinitionShared
 {
     using Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition;
@@ -19,5 +20,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.DefinitionSha
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithOS,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithCreate
     {
+
     }
 }

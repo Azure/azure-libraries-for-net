@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
             : base(name, innerObject)
         {
             Name = name;
-            IResourceCreator<IResourceT> creator = this as IResourceCreator<IResourceT>;
+            IResourceCreator<IResourceT> creator = this;
             CreatorTaskGroup = new CreatorTaskGroup<IResourceT>(this.Key, creator);
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions
 
         IResourceT IResourceCreator<IResourceT>.CreateResource()
         {
-            return this.Create() as IResourceT;
+            return this.Create();
         }
     }
 

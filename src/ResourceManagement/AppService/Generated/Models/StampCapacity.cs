@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="computeMode">Shared/dedicated workers. Possible values
         /// include: 'Shared', 'Dedicated', 'Dynamic'</param>
         /// <param name="workerSize">Size of the machines. Possible values
-        /// include: 'Default', 'Small', 'Medium', 'Large', 'D1', 'D2',
-        /// 'D3'</param>
+        /// include: 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3',
+        /// 'Default'</param>
         /// <param name="workerSizeId">Size ID of machines:
         /// 0 - Small
         /// 1 - Medium
@@ -50,7 +50,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// if capacity is applicable for all apps; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;.</param>
         /// <param name="siteMode">Shared or Dedicated.</param>
-        public StampCapacity(string name = default(string), long? availableCapacity = default(long?), long? totalCapacity = default(long?), string unit = default(string), ComputeModeOptions? computeMode = default(ComputeModeOptions?), WorkerSizeOptions? workerSize = default(WorkerSizeOptions?), int? workerSizeId = default(int?), bool? excludeFromCapacityAllocation = default(bool?), bool? isApplicableForAllComputeModes = default(bool?), string siteMode = default(string))
+        /// <param name="isLinux">Is this a linux stamp capacity</param>
+        public StampCapacity(string name = default(string), long? availableCapacity = default(long?), long? totalCapacity = default(long?), string unit = default(string), ComputeModeOptions? computeMode = default(ComputeModeOptions?), WorkerSizeOptions? workerSize = default(WorkerSizeOptions?), int? workerSizeId = default(int?), bool? excludeFromCapacityAllocation = default(bool?), bool? isApplicableForAllComputeModes = default(bool?), string siteMode = default(string), bool? isLinux = default(bool?))
         {
             Name = name;
             AvailableCapacity = availableCapacity;
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
             ExcludeFromCapacityAllocation = excludeFromCapacityAllocation;
             IsApplicableForAllComputeModes = isApplicableForAllComputeModes;
             SiteMode = siteMode;
+            IsLinux = isLinux;
             CustomInit();
         }
 
@@ -105,7 +107,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         /// <summary>
         /// Gets or sets size of the machines. Possible values include:
-        /// 'Default', 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3'
+        /// 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3', 'Default'
         /// </summary>
         [JsonProperty(PropertyName = "workerSize")]
         public WorkerSizeOptions? WorkerSize { get; set; }
@@ -140,6 +142,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         [JsonProperty(PropertyName = "siteMode")]
         public string SiteMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets is this a linux stamp capacity
+        /// </summary>
+        [JsonProperty(PropertyName = "isLinux")]
+        public bool? IsLinux { get; set; }
 
     }
 }

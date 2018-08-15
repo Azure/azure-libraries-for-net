@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             get
             {
-                return this.Name() as string;
+                return this.Name();
             }
         }
 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of the parent definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update.IInUpdate<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.AllowSecretPermissions(params SecretPermissions[] permissions)
         {
-            return this.AllowSecretPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.AllowSecretPermissions(permissions);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.AllowSecretPermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.SecretPermissions> permissions)
         {
-            return this.AllowSecretPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.AllowSecretPermissions(permissions);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.AllowKeyAllPermissions()
         {
-            return this.AllowKeyAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.AllowKeyAllPermissions();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.AllowSecretAllPermissions()
         {
-            return this.AllowSecretAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.AllowSecretAllPermissions();
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.AllowKeyPermissions(params KeyPermissions[] permissions)
         {
-            return this.AllowKeyPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.AllowKeyPermissions(permissions);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.AllowKeyPermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.KeyPermissions> permissions)
         {
-            return this.AllowKeyPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.AllowKeyPermissions(permissions);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.AllowCertificatePermissions(params Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions[] permissions)
         {
-            return this.AllowCertificatePermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.AllowCertificatePermissions(permissions);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.AllowCertificatePermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions> permissions)
         {
-            return this.AllowCertificatePermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.AllowCertificatePermissions(permissions);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.AllowCertificateAllPermissions()
         {
-            return this.AllowCertificateAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.AllowCertificateAllPermissions();
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.AllowCertificatePermissions(params Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions[] permissions)
         {
-            return this.AllowCertificatePermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.AllowCertificatePermissions(permissions);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.AllowCertificatePermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions> permissions)
         {
-            return this.AllowCertificatePermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.AllowCertificatePermissions(permissions);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.AllowSecretPermissions(params SecretPermissions[] permissions)
         {
-            return this.AllowSecretPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.AllowSecretPermissions(permissions);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.AllowSecretPermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.SecretPermissions> permissions)
         {
-            return this.AllowSecretPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.AllowSecretPermissions(permissions);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.AllowKeyAllPermissions()
         {
-            return this.AllowKeyAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.AllowKeyAllPermissions();
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.AllowSecretAllPermissions()
         {
-            return this.AllowSecretAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.AllowSecretAllPermissions();
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.AllowKeyPermissions(params KeyPermissions[] permissions)
         {
-            return this.AllowKeyPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.AllowKeyPermissions(permissions);
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.AllowKeyPermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.KeyPermissions> permissions)
         {
-            return this.AllowKeyPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.AllowKeyPermissions(permissions);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithPermissions<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.AllowCertificateAllPermissions()
         {
-            return this.AllowCertificateAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.AllowCertificateAllPermissions();
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             get
             {
-                return this.ObjectId as string;
+                return this.ObjectId;
             }
         }
 
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             get
             {
-                return this.TenantId as string;
+                return this.TenantId;
             }
         }
 
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             get
             {
-                return this.Permissions as Microsoft.Azure.Management.KeyVault.Fluent.Models.Permissions;
+                return this.Permissions;
             }
         }
 
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         {
             get
             {
-                return this.ApplicationId as string;
+                return this.ApplicationId;
             }
         }
 
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.ForServicePrincipal(IServicePrincipal servicePrincipal)
         {
-            return this.ForServicePrincipal(servicePrincipal) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.ForServicePrincipal(servicePrincipal);
         }
 
         /// <summary>
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.ForServicePrincipal(string servicePrincipalName)
         {
-            return this.ForServicePrincipal(servicePrincipalName) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.ForServicePrincipal(servicePrincipalName);
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.ForUser(IActiveDirectoryUser user)
         {
-            return this.ForUser(user) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.ForUser(user);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.ForUser(string userPrincipalName)
         {
-            return this.ForUser(userPrincipalName) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.ForUser(userPrincipalName);
         }
 
         /// <summary>
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.ForGroup(IActiveDirectoryGroup activeDirectoryGroup)
         {
-            return this.ForGroup(activeDirectoryGroup) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.ForGroup(activeDirectoryGroup);
         }
 
         /// <summary>
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.ForObjectId(string objectId)
         {
-            return this.ForObjectId(objectId) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.UpdateDefinition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>;
+            return this.ForObjectId(objectId);
         }
 
         /// <summary>
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.ForServicePrincipal(IServicePrincipal servicePrincipal)
         {
-            return this.ForServicePrincipal(servicePrincipal) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.ForServicePrincipal(servicePrincipal);
         }
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.ForServicePrincipal(string servicePrincipalName)
         {
-            return this.ForServicePrincipal(servicePrincipalName) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.ForServicePrincipal(servicePrincipalName);
         }
 
         /// <summary>
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.ForUser(IActiveDirectoryUser user)
         {
-            return this.ForUser(user) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.ForUser(user);
         }
 
         /// <summary>
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.ForUser(string userPrincipalName)
         {
-            return this.ForUser(userPrincipalName) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.ForUser(userPrincipalName);
         }
 
         /// <summary>
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.ForGroup(IActiveDirectoryGroup activeDirectoryGroup)
         {
-            return this.ForGroup(activeDirectoryGroup) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.ForGroup(activeDirectoryGroup);
         }
 
         /// <summary>
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate> Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithIdentity<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>.ForObjectId(string objectId)
         {
-            return this.ForObjectId(objectId) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Definition.IWithAttach<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Definition.IWithCreate>;
+            return this.ForObjectId(objectId);
         }
 
         /// <summary>
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of the parent definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate>.Attach()
         {
-            return this.Attach() as Microsoft.Azure.Management.KeyVault.Fluent.Vault.Update.IUpdate;
+            return this.Attach();
         }
 
         /// <summary>
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.DisallowCertificateAllPermissions()
         {
-            return this.DisallowCertificateAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.DisallowCertificateAllPermissions();
         }
 
         /// <summary>
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.DisallowCertificatePermissions(params Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions[] permissions)
         {
-            return this.DisallowCertificatePermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.DisallowCertificatePermissions(permissions);
         }
 
         /// <summary>
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.DisallowCertificatePermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions> permissions)
         {
-            return this.DisallowCertificatePermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.DisallowCertificatePermissions(permissions);
         }
 
         /// <summary>
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.AllowCertificatePermissions(params Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions[] permissions)
         {
-            return this.AllowCertificatePermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.AllowCertificatePermissions(permissions);
         }
 
         /// <summary>
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.AllowCertificatePermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.CertificatePermissions> permissions)
         {
-            return this.AllowCertificatePermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.AllowCertificatePermissions(permissions);
         }
 
         /// <summary>
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.DisallowSecretPermissions(params SecretPermissions[] permissions)
         {
-            return this.DisallowSecretPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.DisallowSecretPermissions(permissions);
         }
 
         /// <summary>
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.DisallowSecretPermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.SecretPermissions> permissions)
         {
-            return this.DisallowSecretPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.DisallowSecretPermissions(permissions);
         }
 
         /// <summary>
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.DisallowKeyPermissions(params KeyPermissions[] permissions)
         {
-            return this.DisallowKeyPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.DisallowKeyPermissions(permissions);
         }
 
         /// <summary>
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.DisallowKeyPermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.KeyPermissions> permissions)
         {
-            return this.DisallowKeyPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.DisallowKeyPermissions(permissions);
         }
 
         /// <summary>
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.AllowSecretPermissions(params SecretPermissions[] permissions)
         {
-            return this.AllowSecretPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.AllowSecretPermissions(permissions);
         }
 
         /// <summary>
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.AllowSecretPermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.SecretPermissions> permissions)
         {
-            return this.AllowSecretPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.AllowSecretPermissions(permissions);
         }
 
         /// <summary>
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.AllowKeyAllPermissions()
         {
-            return this.AllowKeyAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.AllowKeyAllPermissions();
         }
 
         /// <summary>
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.DisallowSecretAllPermissions()
         {
-            return this.DisallowSecretAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.DisallowSecretAllPermissions();
         }
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy definition.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.AllowSecretAllPermissions()
         {
-            return this.AllowSecretAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.AllowSecretAllPermissions();
         }
 
         /// <summary>
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.DisallowKeyAllPermissions()
         {
-            return this.DisallowKeyAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.DisallowKeyAllPermissions();
         }
 
         /// <summary>
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.AllowKeyPermissions(params KeyPermissions[] permissions)
         {
-            return this.AllowKeyPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.AllowKeyPermissions(permissions);
         }
 
         /// <summary>
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.AllowKeyPermissions(IList<Microsoft.Azure.Management.KeyVault.Fluent.Models.KeyPermissions> permissions)
         {
-            return this.AllowKeyPermissions(permissions) as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.AllowKeyPermissions(permissions);
         }
 
         /// <summary>
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Management.KeyVault.Fluent
         /// <return>The next stage of access policy update.</return>
         Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IWithPermissions.AllowCertificateAllPermissions()
         {
-            return this.AllowCertificateAllPermissions() as Microsoft.Azure.Management.KeyVault.Fluent.AccessPolicy.Update.IUpdate;
+            return this.AllowCertificateAllPermissions();
         }
     }
 }

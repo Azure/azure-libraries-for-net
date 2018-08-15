@@ -1,13 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
     using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.CustomImageDataDisk.Definition;
 
     /// <summary>
     /// The first stage of a image definition.
@@ -15,6 +12,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithGroup>
     {
+
     }
 
     /// <summary>
@@ -28,6 +26,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithSourceVirtualMachine,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings
     {
+
     }
 
     /// <summary>
@@ -36,6 +35,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     public interface IWithGroup :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroup<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskImageSourceAltVirtualMachineSource>
     {
+
     }
 
     /// <summary>
@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskImageSource,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithSourceVirtualMachine
     {
+
     }
 
     /// <summary>
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// </summary>
     public interface IWithSourceVirtualMachine
     {
+
         /// <summary>
         /// Uses the virtual machine's OS disk and data disks as the source for OS disk image and
         /// data disk images of this image.
@@ -71,19 +73,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     }
 
     /// <summary>
-    /// The stage of an image definition allowing to enable zone resiliency.
-    /// </summary>
-    public interface IWithZoneResilient :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-        /// <summary>
-        /// Specifies that zone resiliency should be enabled for the image.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreate WithZoneResilient();
-    }
-
-    /// <summary>
     /// The stage of an image definition containing all the required inputs for
     /// the resource to be created, but also allowing
     /// for any other optional settings to be specified.
@@ -93,6 +82,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineCustomImage>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreate>
     {
+
     }
 
     /// <summary>
@@ -100,53 +90,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// </summary>
     public interface IWithOSDiskImageSource
     {
-        /// <summary>
-        /// Specifies the Windows source native VHD for the OS disk image.
-        /// </summary>
-        /// <param name="sourceVhdUrl">Source Windows virtual hard disk URL.</param>
-        /// <param name="osState">Operating system state.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithWindowsFromVhd(string sourceVhdUrl, OperatingSystemStateTypes osState);
-
-        /// <summary>
-        /// Specifies the Linux source native VHD for the OS disk image.
-        /// </summary>
-        /// <param name="sourceVhdUrl">Source Linux virtual hard disk URL.</param>
-        /// <param name="osState">Operating system state.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithLinuxFromVhd(string sourceVhdUrl, OperatingSystemStateTypes osState);
-
-        /// <summary>
-        /// Specifies the Windows source snapshot for the OS disk image.
-        /// </summary>
-        /// <param name="sourceSnapshot">Source snapshot resource.</param>
-        /// <param name="osState">Operating system state.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithWindowsFromSnapshot(ISnapshot sourceSnapshot, OperatingSystemStateTypes osState);
-
-        /// <summary>
-        /// Specifies the Windows source snapshot for the OS disk image.
-        /// </summary>
-        /// <param name="sourceSnapshotId">Source snapshot resource ID.</param>
-        /// <param name="osState">Operating system state.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithWindowsFromSnapshot(string sourceSnapshotId, OperatingSystemStateTypes osState);
-
-        /// <summary>
-        /// Specifies the Windows source managed disk for the OS disk image.
-        /// </summary>
-        /// <param name="sourceManagedDiskId">Source managed disk resource ID.</param>
-        /// <param name="osState">Operating system state.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithWindowsFromDisk(string sourceManagedDiskId, OperatingSystemStateTypes osState);
-
-        /// <summary>
-        /// Specifies the Windows source managed disk for the OS disk image.
-        /// </summary>
-        /// <param name="sourceManagedDisk">Source managed disk.</param>
-        /// <param name="osState">Operating system state.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithWindowsFromDisk(IDisk sourceManagedDisk, OperatingSystemStateTypes osState);
 
         /// <summary>
         /// Specifies the Linux source managed disk for the OS disk image.
@@ -179,6 +122,54 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
         /// <param name="osState">Operating system state.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithLinuxFromSnapshot(string sourceSnapshotId, OperatingSystemStateTypes osState);
+
+        /// <summary>
+        /// Specifies the Linux source native VHD for the OS disk image.
+        /// </summary>
+        /// <param name="sourceVhdUrl">Source Linux virtual hard disk URL.</param>
+        /// <param name="osState">Operating system state.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithLinuxFromVhd(string sourceVhdUrl, OperatingSystemStateTypes osState);
+
+        /// <summary>
+        /// Specifies the Windows source managed disk for the OS disk image.
+        /// </summary>
+        /// <param name="sourceManagedDiskId">Source managed disk resource ID.</param>
+        /// <param name="osState">Operating system state.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithWindowsFromDisk(string sourceManagedDiskId, OperatingSystemStateTypes osState);
+
+        /// <summary>
+        /// Specifies the Windows source managed disk for the OS disk image.
+        /// </summary>
+        /// <param name="sourceManagedDisk">Source managed disk.</param>
+        /// <param name="osState">Operating system state.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithWindowsFromDisk(IDisk sourceManagedDisk, OperatingSystemStateTypes osState);
+
+        /// <summary>
+        /// Specifies the Windows source snapshot for the OS disk image.
+        /// </summary>
+        /// <param name="sourceSnapshot">Source snapshot resource.</param>
+        /// <param name="osState">Operating system state.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithWindowsFromSnapshot(ISnapshot sourceSnapshot, OperatingSystemStateTypes osState);
+
+        /// <summary>
+        /// Specifies the Windows source snapshot for the OS disk image.
+        /// </summary>
+        /// <param name="sourceSnapshotId">Source snapshot resource ID.</param>
+        /// <param name="osState">Operating system state.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithWindowsFromSnapshot(string sourceSnapshotId, OperatingSystemStateTypes osState);
+
+        /// <summary>
+        /// Specifies the Windows source native VHD for the OS disk image.
+        /// </summary>
+        /// <param name="sourceVhdUrl">Source Windows virtual hard disk URL.</param>
+        /// <param name="osState">Operating system state.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithWindowsFromVhd(string sourceVhdUrl, OperatingSystemStateTypes osState);
     }
 
     /// <summary>
@@ -186,12 +177,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// </summary>
     public interface IWithDataDiskImage
     {
-        /// <summary>
-        /// Adds a data disk image with a virtual hard disk as the source.
-        /// </summary>
-        /// <param name="sourceVhdUrl">Source virtual hard disk URL.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithDataDiskImageFromVhd(string sourceVhdUrl);
 
         /// <summary>
         /// Begins the definition of a new data disk image to add to the image.
@@ -212,6 +197,27 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
         /// <param name="sourceSnapshotId">Source snapshot resource ID.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithDataDiskImageFromSnapshot(string sourceSnapshotId);
+
+        /// <summary>
+        /// Adds a data disk image with a virtual hard disk as the source.
+        /// </summary>
+        /// <param name="sourceVhdUrl">Source virtual hard disk URL.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithDataDiskImageFromVhd(string sourceVhdUrl);
+    }
+
+    /// <summary>
+    /// The stage of an image definition allowing to enable zone resiliency.
+    /// </summary>
+    public interface IWithZoneResilient :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies that zone resiliency should be enabled for the image.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreate WithZoneResilient();
     }
 
     /// <summary>
@@ -220,12 +226,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
     /// </summary>
     public interface IWithOSDiskSettings
     {
-        /// <summary>
-        /// Specifies the size in GB for OS disk.
-        /// </summary>
-        /// <param name="diskSizeGB">The disk size in GB.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithOSDiskSizeInGB(int diskSizeGB);
 
         /// <summary>
         /// Specifies the caching type for OS disk.
@@ -233,6 +233,13 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
         /// <param name="cachingType">The disk caching type.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithOSDiskCaching(CachingTypes cachingType);
+
+        /// <summary>
+        /// Specifies the size in GB for OS disk.
+        /// </summary>
+        /// <param name="diskSizeGB">The disk size in GB.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithCreateAndDataDiskImageOSDiskSettings WithOSDiskSizeInGB(int diskSizeGB);
     }
 
     /// <summary>
@@ -244,5 +251,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.De
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithOSDiskSettings,
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineCustomImage.Definition.IWithDataDiskImage
     {
+
     }
 }
