@@ -1,8 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
@@ -16,17 +18,16 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// Implementation for BatchAIFileServers.
     /// </summary>
     public partial class BatchAIFileServersImpl :
-        TopLevelModifiableResources<
-            IBatchAIFileServer,
-            BatchAIFileServerImpl,
-            FileServerInner,
-            IFileServersOperations,
-            IBatchAIManager>,
+        CreatableResources<IBatchAIFileServer,
+        BatchAIFileServerImpl,
+        FileServerInner>,
         IBatchAIFileServers
     {
-        internal BatchAIFileServersImpl(IBatchAIManager batchAIManager)
-            : base(batchAIManager.Inner.FileServers, batchAIManager)
+        private BatchAIWorkspaceImpl workspace;
+        internal BatchAIFileServersImpl(BatchAIWorkspaceImpl workspace)
+            : base()
         {
+            this.workspace = workspace;
         }
 
         public BatchAIFileServerImpl Define(string name)
@@ -34,10 +35,20 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return WrapModel(name);
         }
 
+        public override void DeleteById(string id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override Task DeleteByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
+        {
+            throw new System.NotImplementedException();
+        }
+
         protected override BatchAIFileServerImpl WrapModel(string name)
         {
             FileServerInner inner = new FileServerInner();
-            return new BatchAIFileServerImpl(name, inner, Manager);
+            return new BatchAIFileServerImpl(name, this.workspace, inner);
         }
 
         protected override IBatchAIFileServer WrapModel(FileServerInner inner)
@@ -46,37 +57,55 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             {
                 return null;
             }
-            return new BatchAIFileServerImpl(inner.Name, inner, this.Manager);
+            return new BatchAIFileServerImpl(inner.Name, this.workspace, inner);
+        }
+        
+        public IEnumerable<IBatchAIFileServer> List()
+        {
+            throw new System.NotImplementedException();
         }
 
-        protected override async Task<IPage<FileServerInner>> ListInnerAsync(CancellationToken cancellationToken)
+        public Task<IPagedCollection<IBatchAIFileServer>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = new CancellationToken())
         {
-            return await Inner.ListAsync(cancellationToken: cancellationToken);
+            throw new System.NotImplementedException();
         }
 
-        protected override async Task<IPage<FileServerInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
+        public IBatchAIFileServer GetById(string id)
         {
-            return await Inner.ListNextAsync(nextLink, cancellationToken);
+            throw new System.NotImplementedException();
         }
 
-        protected async override Task<IPage<FileServerInner>> ListInnerByGroupAsync(string groupName, CancellationToken cancellationToken)
+        public Task<IBatchAIFileServer> GetByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
         {
-            return await Inner.ListByResourceGroupAsync(groupName, cancellationToken: cancellationToken);
+            throw new System.NotImplementedException();
         }
 
-        protected override async Task<IPage<FileServerInner>> ListInnerByGroupNextAsync(string nextLink, CancellationToken cancellationToken)
+        public IBatchAIFileServer GetByName(string name)
         {
-            return await Inner.ListByResourceGroupNextAsync(nextLink, cancellationToken);
+            throw new System.NotImplementedException();
         }
 
-        protected override async Task<FileServerInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
+        Task<IBatchAIFileServer> ISupportsGettingByNameAsync<IBatchAIFileServer>.GetByNameAsync(string name, CancellationToken cancellationToken)
         {
-            return await Inner.GetAsync(groupName, name, cancellationToken);
+            throw new System.NotImplementedException();
         }
 
-        protected override async Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
+        Task<IBatchAIFileServer> ISupportsGettingByName<IBatchAIFileServer>.GetByNameAsync(string name, CancellationToken cancellationToken)
         {
-            await Inner.DeleteAsync(groupName, name, cancellationToken);
+            throw new System.NotImplementedException();
         }
+
+        public void DeleteByName(string name)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task DeleteByNameAsync(string name, CancellationToken cancellationToken = new CancellationToken())
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IBatchAIManager Manager => workspace.Manager;
+        public IFileServersOperations Inner => workspace.Manager.Inner.FileServers;
     }
 }

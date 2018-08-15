@@ -83,11 +83,5 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             this.parent = parent;
         }
-
-        public NodeSetupTaskImpl WithRunElevated()
-        {
-            Inner.RunElevated = true;
-            return this;
-        }
     }
 }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition
     /// The first stage of a Batch AI file server definition.
     /// </summary>
     public interface IBlank  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithRegion<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithGroup>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithDataDisks
     {
     }
 
@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition
     /// </summary>
     public interface IWithCreate  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithCreate>,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithUserCredentials,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithSubnet
     {
@@ -41,8 +40,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition
     /// </summary>
     public interface IDefinition  :
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IBlank,
-        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithGroup,
-        Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithDataDisks,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithVMSize,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithUserName,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition.IWithUserCredentials,

@@ -96,12 +96,8 @@ namespace Fluent.Tests
 
                 cluster.Update()
                     .WithAutoScale(1, 2, 2)
-                    .WithTag("tag1", "value2")
                     .Apply();
                 Assert.Equal(2, cluster.ScaleSettings.AutoScale.MaximumNodeCount);
-                string tag1;
-                Assert.True(cluster.Tags.TryGetValue("tag1", out tag1));
-                Assert.Equal("value2", tag1);
 
                 manager.ResourceManager.ResourceGroups.DeleteByName(groupName);
             }
@@ -145,7 +141,6 @@ namespace Fluent.Tests
                         .Attach()
                     .WithContainerImage("microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0")
                     .Create();
-                Assert.Equal(groupName, job.ResourceGroupName);
                 Assert.Equal(2, job.OutputDirectories.Count);
                 OutputDirectory outputDirectory = null;
                 foreach (OutputDirectory directory in job.OutputDirectories)
@@ -160,7 +155,6 @@ namespace Fluent.Tests
                 Assert.Equal("suffix", outputDirectory.PathSuffix.ToLower());
 
                 job.Refresh();
-                Assert.Equal(groupName, job.ResourceGroupName);
 
                 manager.ResourceManager.ResourceGroups.BeginDeleteByName(groupName);
             }

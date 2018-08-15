@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>.WithRegistryUrl(string serverUrl)
         {
-            return this.WithRegistryUrl(serverUrl) as ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.WithRegistryUrl(serverUrl);
         }
 
         /// <summary>
@@ -57,7 +57,17 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the definition.</return>
         ContainerImageSettings.Definition.IWithRegistryCredentials<BatchAIJob.Definition.IWithCreate> ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>.WithRegistryUsername(string username)
         {
-            return this.WithRegistryUsername(username) as ContainerImageSettings.Definition.IWithRegistryCredentials<BatchAIJob.Definition.IWithCreate>;
+            return this.WithRegistryUsername(username);
+        }
+
+        /// <summary>
+        /// Specifies size of /dev/shm.
+        /// </summary>
+        /// <param name="shmSize">Size of /dev/shm.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ContainerImageSettings.Definition.IWithShmSize<BatchAIJob.Definition.IWithCreate>.WithShmSize(string shmSize)
+        {
+            return this.WithShmSize(shmSize);
         }
     }
 }

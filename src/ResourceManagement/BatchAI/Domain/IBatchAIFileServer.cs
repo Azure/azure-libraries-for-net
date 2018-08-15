@@ -12,9 +12,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// Entry point for Batch AI file server management API in Azure.
     /// </summary>
     public interface IBatchAIFileServer  :
-        IBeta,
-        IGroupableResource<IBatchAIManager,FileServerInner>,
-        IRefreshable<IBatchAIFileServer>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.BatchAI.Fluent.Models.FileServerInner>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IIndexable,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasId,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasName,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIManager>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer>
     {
         /// <summary>
         /// Gets Specifies the identifier of the subnet.

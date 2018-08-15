@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Storage.Fluent;
 using Microsoft.Azure.Management.TrafficManager.Fluent;
 using System;
 using System.Linq;
-using Microsoft.Azure.Management.Batchai.Fluent;
+using Microsoft.Azure.Management.BatchAI.Fluent;
 using ISubscriptions = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscriptions;
 using ISubscription = Microsoft.Azure.Management.ResourceManager.Fluent.ISubscription;
 using Microsoft.Azure.Management.ContainerInstance.Fluent;
@@ -474,19 +474,11 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        public IBatchAIClusters BatchAIClusters
+        public IBatchAIWorkspaces BatchAIWorkspaces
         {
             get
             {
-                return batchAIManager.BatchAIClusters;
-            }
-        }
-
-        public IBatchAIJobs BatchAIJobs
-        {
-            get
-            {
-                return batchAIManager.BatchAIJobs;
+                return batchAIManager.BatchAIWorkspaces;
             }
         }
 
@@ -495,14 +487,6 @@ namespace Microsoft.Azure.Management.Fluent
             get
             {
                 return batchAIManager.BatchAIUsages;
-            }
-        }
-
-        public IBatchAIFileServers BatchAIFileServers
-        {
-            get
-            {
-                return batchAIManager.BatchAIFileServers;
             }
         }
 
@@ -885,17 +869,7 @@ namespace Microsoft.Azure.Management.Fluent
         /// <summary>
         /// Entry point to Batch AI clusters management.
         /// </summary>
-        IBatchAIClusters BatchAIClusters { get; }
-
-        /// <summary>
-        /// Entry point to Batch AI file servers management.
-        /// </summary>
-        IBatchAIFileServers BatchAIFileServers { get; }
-
-        /// <summary>
-        /// Entry point to Batch AI jobs management.
-        /// </summary>
-        IBatchAIJobs BatchAIJobs { get; }
+        IBatchAIWorkspaces BatchAIWorkspaces { get; }
 
         /// <summary>
         /// Entry point to Batch AI usages management.

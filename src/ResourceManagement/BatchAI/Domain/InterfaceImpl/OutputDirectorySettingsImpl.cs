@@ -18,18 +18,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next stage of the parent definition.</return>
         BatchAIJob.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<BatchAIJob.Definition.IWithCreate>.Attach()
         {
-            return this.Attach() as BatchAIJob.Definition.IWithCreate;
-        }
-
-        /// <param name="createNew">
-        /// Flag whether to create new directory.
-        /// Default is true. If false, then the directory is not created and can be
-        /// any directory path that the user specifies.
-        /// </param>
-        /// <return>The next stage of the definition.</return>
-        Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> Models.OutputDirectorySettings.Definition.IWithCreateNew<BatchAIJob.Definition.IWithCreate>.WithCreateNew(bool createNew)
-        {
-            return this.WithCreateNew(createNew) as Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate>;
+            return this.Attach();
         }
 
         /// <param name="pathPrefix">Path prefix.</param>

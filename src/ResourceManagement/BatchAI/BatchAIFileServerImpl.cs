@@ -2,35 +2,37 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
+using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.BatchAI.Fluent.BatchAIFileServer.Definition;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
 
     /// <summary>
     /// Implementation for BatchAIFileServer and its create and update interfaces.
     /// </summary>
     public partial class BatchAIFileServerImpl :
-        ResourceManager.Fluent.GroupableResource<
-            IBatchAIFileServer,
+        Creatable<IBatchAIFileServer,
             FileServerInner,
             BatchAIFileServerImpl,
-            IBatchAIManager,
-            IWithGroup,
-            IWithDataDisks,
-            IWithCreate,
-            IWithCreate>,
+            IHasId>,
         IBatchAIFileServer,
         IDefinition
     {
-        private FileServerCreateParametersInner createParameters = new FileServerCreateParametersInner();
-        internal BatchAIFileServerImpl(string name, FileServerInner innerObject, IBatchAIManager manager)
-            : base(name, innerObject, manager)
+        private FileServerCreateParameters createParameters = new FileServerCreateParameters();
+        private BatchAIWorkspaceImpl workspace;
+
+        string IHasId.Id => Inner.Id;
+
+        internal  BatchAIFileServerImpl(string name, BatchAIWorkspaceImpl workspace, FileServerInner innerObject) : base(name, innerObject)
         {
+            this.workspace = workspace;
         }
 
         public BatchAIFileServerImpl WithVMSize(string vmSize)
@@ -50,7 +52,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             DataDisks dataDisks = EnsureDataDisks();
             dataDisks.DiskSizeInGB = diskSizeInGB;
             dataDisks.DiskCount = diskCount;
-            dataDisks.StorageAccountType = storageAccountType == null ? null : storageAccountType.Value;
+            dataDisks.StorageAccountType = storageAccountType;
             return this;
         }
 
@@ -60,7 +62,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             DataDisks dataDisks = EnsureDataDisks();
             dataDisks.DiskSizeInGB = diskSizeInGB;
             dataDisks.DiskCount = diskCount;
-            dataDisks.StorageAccountType = storageAccountType == null ? null : storageAccountType.Value;
+            dataDisks.StorageAccountType = storageAccountType;
             dataDisks.CachingType = cachingType;
             return this;
         }
@@ -69,14 +71,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         ///GENMHASH:0FBBECB150CBC82F165D8BA614AB135A:8E1100FECC94D8D02A007E94A2829ADE
         public IWithCreate WithSubnet(string subnetId)
         {
-            createParameters.Subnet = new ResourceId(subnetId);
+            createParameters.Subnet = new BatchAI.Fluent.Models.ResourceId(subnetId);
             return this;
         }
 
         ///GENMHASH:9047F7688B1B60794F60BC930616198C:611CA1FC53B66F8126B3A71A8F7A964F
         public IWithCreate WithSubnet(string networkId, string subnetName)
         {
-            createParameters.Subnet = new ResourceId(networkId + "/subnets/" + subnetName);
+            createParameters.Subnet = new BatchAI.Fluent.Models.ResourceId(networkId + "/subnets/" + subnetName);
             return this;
         }
 
@@ -103,7 +105,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected override async Task<FileServerInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.Inner.FileServers.GetAsync(ResourceGroupName, Name, cancellationToken);
+            return await workspace.Manager.Inner.FileServers.GetAsync(workspace.ResourceGroupName, workspace.Name, Name, cancellationToken);
         }
 
         private SshConfiguration EnsureSshConfiguration()
@@ -126,9 +128,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            createParameters.Location = this.RegionName;
-            createParameters.Tags = this.Inner.Tags;
-            SetInner(await Manager.Inner.FileServers.CreateAsync(ResourceGroupName, Name, createParameters));
+            SetInner(await workspace.Manager.Inner.FileServers.CreateAsync(workspace.ResourceGroupName, workspace.Name, Name, createParameters, cancellationToken));
             return this;
         }
 
@@ -167,9 +167,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.VmSize;
         }
 
-        public ResourceId Subnet()
+        public new BatchAI.Fluent.Models.ResourceId Subnet()
         {
             return Inner.Subnet;
         }
+
+        public IBatchAIManager Manager => workspace.Manager;
     }
 }

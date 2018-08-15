@@ -3,6 +3,22 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent.ContainerImageSettings.Definition
 {
+/// <summary>
+    /// Specifies size of /dev/shm. Please refer to docker documentation for supported argument formats.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
+    public interface IWithShmSize<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies size of /dev/shm.
+        /// </summary>
+        /// <param name="shmSize">Size of /dev/shm.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.ContainerImageSettings.Definition.IWithAttach<ParentT> WithShmSize(string shmSize);
+    }
+
     /// <summary>
     /// The final stage of the output directory settings definition.
     /// At this stage, any remaining optional settings can be specified, or the output directory settings definition
@@ -10,7 +26,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.ContainerImageSettings.Defin
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithAttach<ParentT>  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
+        Microsoft.Azure.Management.BatchAI.Fluent.ContainerImageSettings.Definition.IWithShmSize<ParentT>
     {
 
         /// <summary>

@@ -44,5 +44,15 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 return this.DownloadUrl();
             }
         }
+        /// <summary>
+        /// Gets information about file type.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.Models.FileType Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile.FileType
+        {
+            get
+            {
+                return this.FileType();
+            }
+        }
     }
 }

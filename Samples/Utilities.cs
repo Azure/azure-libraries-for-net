@@ -2361,7 +2361,7 @@ namespace Microsoft.Azure.Management.Samples.Common
                 sb.Append("\n\tManual scale settings: ")
                     .Append("\n\t\tTarget node count: ").Append(resource.ScaleSettings.Manual.TargetNodeCount)
                     .Append("\n\t\tDeallocation option: ")
-                    .Append(resource.ScaleSettings.Manual.NodeDeallocationOption.GetValueOrDefault());
+                    .Append(resource.ScaleSettings.Manual.NodeDeallocationOption);
             }
             if (resource.NodeStateCounts != null)
             {
@@ -2395,16 +2395,14 @@ namespace Microsoft.Azure.Management.Samples.Common
             StringBuilder sb = new StringBuilder("Batch AI job: ")
                 .Append("\n\tId: ").Append(resource.Id)
                 .Append("\n\tName: ").Append(resource.Name)
-                .Append("\n\tResource group: ").Append(resource.ResourceGroupName)
-                .Append("\n\tRegion: ").Append(resource.RegionName)
                 .Append("\n\tCluster Id: ").Append(resource.Cluster)
                 .Append("\n\tCreation time: ").Append(resource.CreationTime)
                 .Append("\n\tNode count: ").Append(resource.NodeCount)
-                .Append("\n\tPriority: ").Append(resource.Priority)
+                .Append("\n\tPriority: ").Append(resource.SchedulingPriority)
                 .Append("\n\tExecution state: ").Append(resource.ExecutionState)
                 .Append("\n\tExecution state transition time: ").Append(resource.ExecutionStateTransitionTime)
                 .Append("\n\tTool type: ").Append(resource.ToolType)
-                .Append("\n\tExperiment name: ").Append(resource.ExperimentName);
+                .Append("\n\tExperiment name: ").Append(resource.Experiment.Name);
             Utilities.Log(sb.ToString());
         }
 

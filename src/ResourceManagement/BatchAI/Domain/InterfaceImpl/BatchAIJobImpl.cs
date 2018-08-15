@@ -1,5 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
+
+using Microsoft.Azure.Management.BatchAI.Fluent.Models.HasMountVolumes.Definition;
+
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
     using System.Threading;
@@ -123,6 +126,19 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 return this.ExecutionInfo() as Microsoft.Azure.Management.BatchAI.Fluent.Models.JobPropertiesExecutionInfo;
             }
         }
+
+        /// <summary>
+        /// Gets the experiment information of the job.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.Experiment
+        {
+            get
+            {
+                return this.Experiment();
+            }
+        }
+        
+                
         /// <summary>
         /// Gets a segment of job's output directories path created by BatchAI.
         /// Batch AI creates job's output directories under an unique path to avoid
@@ -157,19 +173,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             get
             {
                 return this.TensorFlowSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.TensorFlowSettings;
-            }
-        }
-
-        /// <summary>
-        /// Gets priority associated with the job. Priority values can range from -1000
-        /// to 1000, with -1000 being the lowest priority and 1000 being the highest
-        /// priority. The default value is 0.
-        /// </summary>
-        int Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.Priority
-        {
-            get
-            {
-                return this.Priority();
             }
         }
 
@@ -213,9 +216,23 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.PYTorchSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.PyTorchSettings;
+                return this.PYTorchSettings();
             }
         }
+
+        /// <summary>
+        /// Gets priority associated with the job. Priority values can range from -1000
+        /// to 1000, with -1000 being the lowest priority and 1000 being the highest
+        /// priority. The default value is 0.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.Models.JobPriority Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.SchedulingPriority
+        {
+            get
+            {
+                return this.SchedulingPriority();
+            }
+        }
+
 
         /// <summary>
         /// Gets the list of input directories for the Job.
@@ -250,16 +267,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             await this.TerminateAsync(cancellationToken);
         }
 
-        /// <summary>
-        /// Gets the experiment information of the job.
-        /// </summary>
-        string Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.ExperimentName
-        {
-            get
-            {
-                return this.ExperimentName();
-            }
-        }
+
 
         /// <summary>
         /// Gets the Id of the cluster on which this job will run.
@@ -294,24 +302,48 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             }
         }
 
+         /// <summary>
+         /// Begins the definition of Azure blob file system reference to be mounted on each cluster node.
+         /// </summary>
+         /// <return>The first stage of Azure blob file system reference definition.</return>
+         AzureBlobFileSystem.Definition.IBlank<BatchAIJob.Definition.IWithCreate> IWithMountVolumes<BatchAIJob.Definition.IWithCreate>.DefineAzureBlobFileSystem()
+         {
+            return (AzureBlobFileSystem.Definition.IBlank<BatchAIJob.Definition.IWithCreate>)this.DefineAzureBlobFileSystem();
+         }
+
+         /// <summary>
+         /// Begins the definition of Azure file share reference to be mounted on each cluster node.
+         /// </summary>
+         /// <return>The first stage of file share reference definition.</return>
+         AzureFileShare.Definition.IBlank<BatchAIJob.Definition.IWithCreate> IWithMountVolumes<BatchAIJob.Definition.IWithCreate>.DefineAzureFileShare()
+         {
+            return (AzureFileShare.Definition.IBlank<BatchAIJob.Definition.IWithCreate>)this.DefineAzureFileShare();
+         }
+
+        /// <summary>
+        /// Begins the definition of Azure file server reference.
+        /// </summary>
+        /// <return>The first stage of file server reference definition.</return>
+        FileServer.Definition.IBlank<BatchAIJob.Definition.IWithCreate> IWithMountVolumes<BatchAIJob.Definition.IWithCreate>.DefineFileServer()
+        {
+            return (FileServer.Definition.IBlank < BatchAIJob.Definition.IWithCreate > ) this.DefineFileServer();
+        }
+
+        ToolTypeSettings.CustomMpi.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCustomMpi()
+        {
+            return this.DefineCustomMpi();
+        }
+
+        ToolTypeSettings.CustomToolkit.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCustomToolkit()
+        {
+            return this.DefineCustomToolkit();
+        }
+
         /// <param name="id">The name for the output directory.</param>
         /// <return>The nest stage of the definition for output directory settings.</return>
         Models.OutputDirectorySettings.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithOutputDirectoryBeta.DefineOutputDirectory(string id)
         {
             return this.DefineOutputDirectory(id) as Models.OutputDirectorySettings.Definition.IBlank<BatchAIJob.Definition.IWithCreate>;
-        }
-
-        /// <summary>
-        /// List all files inside the given output directory (Only if the output directory is on Azure File Share or Azure Storage container).
-        /// </summary>
-        /// <param name="outputDirectoryId">
-        /// Id of the job output directory. This is the OutputDirectory--&gt;id
-        /// parameter that is given by the user during Create Job.
-        /// </param>
-        /// <return>List of files inside the given output directory.</return>
-        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.ListFiles(string outputDirectoryId)
-        {
-            return this.ListFiles(outputDirectoryId) as System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile>;
         }
 
         /// <summary>
@@ -325,6 +357,32 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             }
         }
 
+ /// <summary>
+        /// List all files inside the given output directory (Only if the output directory is on Azure File Share or Azure Storage container).
+        /// </summary>
+        /// <param name="outputDirectoryId">
+        /// Id of the job output directory. This is the OutputDirectory--&gt;id
+        /// parameter that is given by the user during Create Job.
+        /// </param>
+        /// <return>List of files inside the given output directory.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.ListFiles(string outputDirectoryId)
+        {
+            return this.ListFiles(outputDirectoryId);
+        }
+
+        /// <summary>
+        /// List all files inside the given output directory (Only if the output directory is on Azure File Share or Azure Storage container).
+        /// </summary>
+        /// <param name="outputDirectoryId">Id of the job output directory. This is the OutputDirectory--&gt;id parameter that is given by the user during Create Job.</param>
+        /// <param name="directory">The path to the directory.</param>
+        /// <param name="linkExpiryMinutes">The number of minutes after which the download link will expire.</param>
+        /// <param name="maxResults">The maximum number of items to return in the response. A maximum of 1000 files can be returned.</param>
+        /// <return>List of files inside the given output directory.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.ListFiles(string outputDirectoryId, string directory, int linkExpiryMinutes, int maxResults)
+        {
+            return this.ListFiles(outputDirectoryId, directory, linkExpiryMinutes, maxResults);
+        }
+
         /// <summary>
         /// List all files inside the given output directory (Only if the output directory is on Azure File Share or Azure Storage container).
         /// </summary>
@@ -335,7 +393,20 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>An observable that emits output file information.</return>
         async Task<IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile>> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.ListFilesAsync(string outputDirectoryId, CancellationToken cancellationToken)
         {
-            return await this.ListFilesAsync(outputDirectoryId, cancellationToken) as IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile>;
+            return await this.ListFilesAsync(outputDirectoryId, cancellationToken);
+        }
+
+        /// <summary>
+        /// List all files inside the given output directory (Only if the output directory is on Azure File Share or Azure Storage container).
+        /// </summary>
+        /// <param name="outputDirectoryId">Id of the job output directory. This is the OutputDirectory--&gt;id parameter that is given by the user during Create Job.</param>
+        /// <param name="directory">The path to the directory.</param>
+        /// <param name="linkExpiryMinutes">The number of minutes after which the download link will expire.</param>
+        /// <param name="maxResults">The maximum number of items to return in the response. A maximum of 1000 files can be returned.</param>
+        /// <return>An observable that emits output file information.</return>
+        async Task<IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile>> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.ListFilesAsync(string outputDirectoryId, string directory, int linkExpiryMinutes, int maxResults, CancellationToken cancellationToken)
+        {
+            return await this.ListFilesAsync(outputDirectoryId, directory, linkExpiryMinutes, maxResults, cancellationToken);
         }
 
         /// <summary>
@@ -345,7 +416,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.CaffeSettings() as Microsoft.Azure.Management.BatchAI.Fluent.Models.CaffeSettings;
+                return this.CaffeSettings();
             }
         }
 
@@ -358,7 +429,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.JobPreparation() as Microsoft.Azure.Management.BatchAI.Fluent.Models.JobPreparation;
+                return this.JobPreparation();
             }
         }
 
@@ -369,7 +440,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             get
             {
-                return this.ToolType() as Microsoft.Azure.Management.BatchAI.Fluent.Models.ToolType;
+                return this.ToolType();
             }
         }
 
@@ -421,6 +492,39 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this.WithContainerImage(image) as BatchAIJob.Definition.IWithCreate;
         }
 
+     /// <param name="name">Name of the variable to set.</param>
+        /// <param name="value">Value of the variable to set.</param>
+        /// <return>The next stage of the definition.</return>
+        BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithEnvironmentVariable.WithEnvironmentVariable(string name, string value)
+        {
+            return this.WithEnvironmentVariable(name, value);
+        }
+
+        /// <summary>
+        /// Sets the value of the environment variable. This value will never be reported
+        /// back by Batch AI.
+        /// </summary>
+        /// <param name="name">Name of the variable to set.</param>
+        /// <param name="value">Value of the variable to set.</param>
+        /// <return>The next stage of the definition.</return>
+        BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithEnvironmentVariableSecretValue.WithEnvironmentVariableSecretValue(string name, string value)
+        {
+            return this.WithEnvironmentVariableSecretValue(name, value);
+        }
+
+        /// <summary>
+        /// Specifies KeyVault Store and Secret which contains the value for the
+        /// environment variable.
+        /// </summary>
+        /// <param name="name">Name of the variable to set.</param>
+        /// <param name="keyVaultId">Fully qualified resource Id for the Key Vault.</param>
+        /// <param name="secretUrl">The URL referencing a secret in a Key Vault.</param>
+        /// <return>The next stage of the definition.</return>
+        BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithEnvironmentVariableSecretValue.WithEnvironmentVariableSecretValue(string name, string keyVaultId, string secretUrl)
+        {
+            return this.WithEnvironmentVariableSecretValue(name, keyVaultId, secretUrl);
+        }
+
         /// <param name="stdOutErrPathPrefix">The path where the Batch AI service will upload the stdout and stderror of the job.</param>
         /// <return>The next stage of the definition.</return>
         BatchAIJob.Definition.IWithToolType BatchAIJob.Definition.IWithStdOutErrPathPrefix.WithStdOutErrPathPrefix(string stdOutErrPathPrefix)
@@ -455,13 +559,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this.WithCommandLine(commandLine) as BatchAIJob.Definition.IWithCreate;
         }
 
-        /// <param name="experimentName">Describes the experiment information of the job.</param>
-        /// <return>The next stage of the definition.</return>
-        BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithExperimentName.WithExperimentName(string experimentName)
-        {
-            return this.WithExperimentName(experimentName) as BatchAIJob.Definition.IWithCreate;
-        }
-
         BatchAIJob.Definition.IWithCreate BatchAIJob.Definition.IWithInputDirectory.WithInputDirectory(string id, string path)
         {
             return this.WithInputDirectory(id, path) as BatchAIJob.Definition.IWithCreate;
@@ -476,7 +573,18 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The next staeg of the definition.</return>
         BatchAIJob.Definition.IWithStdOutErrPathPrefix BatchAIJob.Definition.IWithNodeCount.WithNodeCount(int nodeCount)
         {
-            return this.WithNodeCount(nodeCount) as BatchAIJob.Definition.IWithStdOutErrPathPrefix;
+            return this.WithNodeCount(nodeCount);
+        }
+
+        /// <summary>
+        /// Specifies the details of the file system to mount on the compute cluster nodes.
+        /// </summary>
+        /// <param name="mountCommand">Command used to mount the unmanaged file system.</param>
+        /// <param name="relativeMountPath">The relative path on the compute cluster node where the file system will be mounted.</param>
+        /// <return>The next stage of Batch AI cluster definition.</return>
+        BatchAIJob.Definition.IWithCreate IWithMountVolumes<BatchAIJob.Definition.IWithCreate>.WithUnmanagedFileSystem(string mountCommand, string relativeMountPath)
+        {
+            return this.WithUnmanagedFileSystem(mountCommand, relativeMountPath);
         }
     }
 }
