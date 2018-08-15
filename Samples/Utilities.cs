@@ -2338,8 +2338,6 @@ namespace Microsoft.Azure.Management.Samples.Common
             StringBuilder sb = new StringBuilder("Batch AI cluster: ")
                 .Append("\n\tId: ").Append(resource.Id)
                 .Append("\n\tName: ").Append(resource.Name)
-                .Append("\n\tResource group: ").Append(resource.ResourceGroupName)
-                .Append("\n\tRegion: ").Append(resource.RegionName)
                 .Append("\n\tVM Size: ").Append(resource.VMSize)
                 .Append("\n\tVM Priority: ").Append(resource.VMPriority)
                 .Append("\n\tSubnet: ").Append(resource.Subnet)
