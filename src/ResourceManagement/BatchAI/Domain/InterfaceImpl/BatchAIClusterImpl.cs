@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// </summary>
         AzureBlobFileSystem.Definition.IBlank<BatchAICluster.Definition.IWithCreate> IWithMountVolumes<IWithCreate>.DefineAzureBlobFileSystem()
         {
-            return this.DefineAzureBlobFileSystem();
+            return (AzureBlobFileSystem.Definition.IBlank<BatchAICluster.Definition.IWithCreate>)this.DefineAzureBlobFileSystem();
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// </summary>
         FileServer.Definition.IBlank<BatchAICluster.Definition.IWithCreate> IWithMountVolumes<IWithCreate>.DefineFileServer()
         {
-            return this.DefineFileServer();
+            return (FileServer.Definition.IBlank<BatchAICluster.Definition.IWithCreate>) this.DefineFileServer();
         }
 
         /// <param name="subnetId">Identifier of the subnet.</param>
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// </summary>
         AzureFileShare.Definition.IBlank<BatchAICluster.Definition.IWithCreate> IWithMountVolumes<BatchAICluster.Definition.IWithCreate>.DefineAzureFileShare()
         {
-            return this.DefineAzureFileShare();
+            return (AzureFileShare.Definition.IBlank<BatchAICluster.Definition.IWithCreate>) this.DefineAzureFileShare();
         }
         
         /// <summary>
