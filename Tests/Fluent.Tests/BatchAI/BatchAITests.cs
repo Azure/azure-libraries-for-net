@@ -32,6 +32,7 @@ namespace Fluent.Tests
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 string groupName = SdkContext.RandomResourceName("rg", 10);
+                string workspaceName = SdkContext.RandomResourceName("ws", 10);
                 string clusterName = SdkContext.RandomResourceName("cluster", 15);
                 string vnetName = SdkContext.RandomResourceName("vnet", 10);
                 string saName = SdkContext.RandomResourceName("sa", 15);
@@ -46,16 +47,19 @@ namespace Fluent.Tests
                 var manager = TestHelper.CreateBatchAIManager();
                 var networkManager = TestHelper.CreateNetworkManager();
 
-                INetwork network = networkManager.Networks.Define(vnetName)
+                IBatchAIWorkspace workspace = manager.BatchAIWorkspaces.Define(workspaceName)
                     .WithRegion(REGION)
                     .WithNewResourceGroup(groupName)
+                    .Create();
+
+                INetwork network = networkManager.Networks.Define(vnetName)
+                    .WithRegion(REGION)
+                    .WithExistingResourceGroup(groupName)
                     .WithAddressSpace("192.168.0.0/16")
                     .WithSubnet(subnetName, "192.168.200.0/24")
                     .Create();
 
-                IBatchAICluster cluster = manager.BatchAIClusters.Define(clusterName)
-                    .WithRegion(REGION)
-                    .WithNewResourceGroup(groupName)
+                IBatchAICluster cluster = workspace.Clusters().Define(clusterName)
                     .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
                     .WithUserName(userName)
                     .WithPassword("MyPassword")
@@ -81,7 +85,6 @@ namespace Fluent.Tests
                     .WithSubnet(network.Id, subnetName)
                     .WithAppInsightsComponentId("appinsightsId")
                     .WithInstrumentationKey("appInsightsKey")
-                    .WithTag("tag1", "value1")
                     .Create();
                 Assert.Equal(AllocationState.Steady, cluster.AllocationState);
                 Assert.Equal(userName, cluster.AdminUserName);
@@ -109,14 +112,19 @@ namespace Fluent.Tests
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 string groupName = SdkContext.RandomResourceName("rg", 10);
+                string workspaceName = SdkContext.RandomResourceName("ws", 10);
+                string experimentName = SdkContext.RandomResourceName("exp", 10);
                 string clusterName = SdkContext.RandomResourceName("cluster", 15);
                 string userName = "tirekicker";
 
                 var manager = TestHelper.CreateBatchAIManager();
-
-                IBatchAICluster cluster = manager.BatchAIClusters.Define(clusterName)
+                IBatchAIWorkspace workspace = manager.BatchAIWorkspaces.Define(workspaceName)
                     .WithRegion(REGION)
                     .WithNewResourceGroup(groupName)
+                    .Create();
+                IBatchAIExperiment experiment = workspace.Experiments().Define(experimentName).Create();
+
+                IBatchAICluster cluster = workspace.Clusters().Define(clusterName)
                     .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
                     .WithUserName(userName)
                     .WithPassword("MyPassword")
@@ -124,7 +132,7 @@ namespace Fluent.Tests
                     .Create();
                 Assert.Equal(AllocationState.Steady, cluster.AllocationState);
                 Assert.Equal(userName, cluster.AdminUserName);
-                IBatchAIJob job = manager.BatchAIJobs.Define("myJob")
+                IBatchAIJob job = experiment.Jobs.Define("myJob")
                     .WithExistingClusterId(cluster.Id)
                     .WithNodeCount(1)
                     .WithStdOutErrPathPrefix("$AZ_BATCHAI_MOUNT_ROOT/azurefileshare")
@@ -136,7 +144,6 @@ namespace Fluent.Tests
                     .WithOutputDirectory("MODEL", "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/model")
                     .DefineOutputDirectory("OUTPUT")
                         .WithPathPrefix("$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/output")
-                        .WithCreateNew(true)
                         .WithPathSuffix("suffix")
                         .Attach()
                     .WithContainerImage("microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0")
@@ -166,6 +173,7 @@ namespace Fluent.Tests
             using (var context = FluentMockContext.Start(GetType().FullName))
             {
                 string groupName = SdkContext.RandomResourceName("rg", 10);
+                string wsName = SdkContext.RandomResourceName("ws", 10);
                 string vnetName = SdkContext.RandomResourceName("vnet", 10);
                 string fsName = SdkContext.RandomResourceName("fs", 15);
                 string userName = "tirekicker";
@@ -173,17 +181,18 @@ namespace Fluent.Tests
 
                 var manager = TestHelper.CreateBatchAIManager();
                 var networkManager = TestHelper.CreateNetworkManager();
-
-                INetwork network = networkManager.Networks.Define(vnetName)
+                IBatchAIWorkspace workspace = manager.BatchAIWorkspaces.Define(wsName)
                     .WithRegion(REGION)
                     .WithNewResourceGroup(groupName)
+                    .Create();
+                INetwork network = networkManager.Networks.Define(vnetName)
+                    .WithRegion(REGION)
+                    .WithExistingResourceGroup(groupName)
                     .WithAddressSpace("192.168.0.0/16")
                     .WithSubnet(subnetName, "192.168.200.0/24")
                     .Create();
 
-                IBatchAIFileServer fileServer = manager.BatchAIFileServers.Define(fsName)
-                    .WithRegion(REGION)
-                    .WithNewResourceGroup(groupName)
+                IBatchAIFileServer fileServer = workspace.FileServers().Define(fsName)
                     .WithDataDisks(10, 2, StorageAccountType.StandardLRS, CachingType.Readwrite)
                     .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
                     .WithUserName(userName)

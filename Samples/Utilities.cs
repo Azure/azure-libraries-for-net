@@ -2384,7 +2384,6 @@ namespace Microsoft.Azure.Management.Samples.Common
             {
                 sb.Append("\n\tSetup task: ")
                     .Append("\n\t\tCommand line: ").Append(resource.NodeSetup.SetupTask.CommandLine)
-                    .Append("\n\t\tRun elevated: ").Append(resource.NodeSetup.SetupTask.RunElevated)
                     .Append("\n\t\tStdout/err Path Prefix: ").Append(resource.NodeSetup.SetupTask.StdOutErrPathPrefix);
             }
             Utilities.Log(sb.ToString());
