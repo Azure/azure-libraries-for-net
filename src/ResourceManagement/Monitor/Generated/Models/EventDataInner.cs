@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the EventDataInner class.
         /// </summary>
+        /// <param name="authorization">The sender authorization
+        /// information.</param>
         /// <param name="claims">key value pairs to identify ARM
         /// permissions.</param>
         /// <param name="caller">the email address of the user who has
@@ -124,6 +126,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets the sender authorization information.
         /// </summary>
         [JsonProperty(PropertyName = "authorization")]
         public SenderAuthorization Authorization { get; private set; }

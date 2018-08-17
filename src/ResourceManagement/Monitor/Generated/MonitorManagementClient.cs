@@ -50,19 +50,20 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -150,6 +151,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Gets the IMetricAlertsStatusOperations.
         /// </summary>
         public virtual IMetricAlertsStatusOperations MetricAlertsStatus { get; private set; }
+
+        /// <summary>
+        /// Gets the IScheduledQueryRulesOperations.
+        /// </summary>
+        public virtual IScheduledQueryRulesOperations ScheduledQueryRules { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the MonitorManagementClient class.
@@ -369,6 +375,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             MetricBaseline = new MetricBaselineOperations(this);
             MetricAlerts = new MetricAlertsOperations(this);
             MetricAlertsStatus = new MetricAlertsStatusOperations(this);
+            ScheduledQueryRules = new ScheduledQueryRulesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -407,6 +414,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<RuleAction>("odata.type"));
             SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<MetricAlertCriteria>("odata.type"));
             DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<MetricAlertCriteria>("odata.type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Action>("odata.type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Action>("odata.type"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());

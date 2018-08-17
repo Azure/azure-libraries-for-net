@@ -14,6 +14,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Criterion to filter metrics.
+    /// </summary>
     public partial class MetricCriteria
     {
         /// <summary>
@@ -29,14 +32,17 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// </summary>
         /// <param name="name">Name of the criteria.</param>
         /// <param name="metricName">Name of the metric.</param>
-        /// <param name="operatorProperty">the criteria operator.</param>
-        /// <param name="timeAggregation">the criteria time aggregation
-        /// types.</param>
+        /// <param name="operatorProperty">the criteria operator. Possible
+        /// values include: 'Equals', 'NotEquals', 'GreaterThan',
+        /// 'GreaterThanOrEqual', 'LessThan', 'LessThanOrEqual'</param>
+        /// <param name="timeAggregation">the criteria time aggregation types.
+        /// Possible values include: 'Average', 'Minimum', 'Maximum',
+        /// 'Total'</param>
         /// <param name="threshold">the criteria threshold value that activates
         /// the alert.</param>
         /// <param name="metricNamespace">Namespace of the metric.</param>
         /// <param name="dimensions">List of dimension conditions.</param>
-        public MetricCriteria(string name, string metricName, object operatorProperty, object timeAggregation, double threshold, string metricNamespace = default(string), IList<MetricDimension> dimensions = default(IList<MetricDimension>))
+        public MetricCriteria(string name, string metricName, string operatorProperty, string timeAggregation, double threshold, string metricNamespace = default(string), IList<MetricDimension> dimensions = default(IList<MetricDimension>))
         {
             Name = name;
             MetricName = metricName;
@@ -72,16 +78,19 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         public string MetricNamespace { get; set; }
 
         /// <summary>
-        /// Gets or sets the criteria operator.
+        /// Gets or sets the criteria operator. Possible values include:
+        /// 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual',
+        /// 'LessThan', 'LessThanOrEqual'
         /// </summary>
         [JsonProperty(PropertyName = "operator")]
-        public object OperatorProperty { get; set; }
+        public string OperatorProperty { get; set; }
 
         /// <summary>
-        /// Gets or sets the criteria time aggregation types.
+        /// Gets or sets the criteria time aggregation types. Possible values
+        /// include: 'Average', 'Minimum', 'Maximum', 'Total'
         /// </summary>
         [JsonProperty(PropertyName = "timeAggregation")]
-        public object TimeAggregation { get; set; }
+        public string TimeAggregation { get; set; }
 
         /// <summary>
         /// Gets or sets the criteria threshold value that activates the alert.
