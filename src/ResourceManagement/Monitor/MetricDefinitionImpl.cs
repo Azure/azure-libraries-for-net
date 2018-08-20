@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             this.resultType = null;
             this.top = null;
             this.orderBy = null;
-			this.namespaceFilter = null;
+            this.namespaceFilter = null;
             return this;
         }
 
@@ -102,12 +102,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 metricnamespace: this.namespaceFilter,
                 cancellationToken: cancellationToken));
         }
-				
+
         ///GENMHASH:30DFB33704A983BFEBC6F8D37F219647:18AE7F3EA61B4C339E19BC91FFA86A38
         public IWithMetricsQueryExecute FilterByNamespace(string namespaceName)
         {
-			this.namespaceFilter = namespaceName;
-			return this;
+            this.namespaceFilter = namespaceName;
+            return this;
         }
 
         ///GENMHASH:ACA2D5620579D8158A29586CA1FF4BC6:9FCCB4B796E8FFF1419FB39498ED40F5

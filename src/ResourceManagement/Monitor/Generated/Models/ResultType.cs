@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this ResultType value)
         {
-            switch( value )
+            switch (value)
             {
                 case ResultType.Data:
                     return "Data";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static ResultType? ParseResultType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Data":
                     return ResultType.Data;

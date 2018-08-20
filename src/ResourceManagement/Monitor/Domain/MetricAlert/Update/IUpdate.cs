@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update
     /// <summary>
     /// The stage of a metric alerts update allowing to modify settings.
     /// </summary>
-    public interface IWithMetricUpdate 
+    public interface IWithMetricUpdate
     {
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update
     /// <summary>
     /// The template for an update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert>,
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update.IWithMetricUpdate,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update.IUpdate>

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActivityLogAlert.Update
     /// <summary>
     /// The stage of a activity log alerts update allowing to modify settings.
     /// </summary>
-    public interface IWithActivityLogUpdate 
+    public interface IWithActivityLogUpdate
     {
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActivityLogAlert.Update
         /// </summary>
         /// <param name="fieldEqualsMap">Set the names of the field that this condition will examine and their values to be compared to.</param>
         /// <return>The next stage of the activity log alert update.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.ActivityLogAlert.Update.IUpdate WithEqualsConditions(IDictionary<string,string> fieldEqualsMap);
+        Microsoft.Azure.Management.Monitor.Fluent.ActivityLogAlert.Update.IUpdate WithEqualsConditions(IDictionary<string, string> fieldEqualsMap);
 
         /// <summary>
         /// Removes the specified action group from the actions list.
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActivityLogAlert.Update
     /// <summary>
     /// The template for an update operation, containing all the settings that can be modified.
     /// </summary>
-    public interface IUpdate  :
+    public interface IUpdate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Monitor.Fluent.IActivityLogAlert>,
         Microsoft.Azure.Management.Monitor.Fluent.ActivityLogAlert.Update.IWithActivityLogUpdate,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update.IUpdateWithTags<Microsoft.Azure.Management.Monitor.Fluent.ActivityLogAlert.Update.IUpdate>

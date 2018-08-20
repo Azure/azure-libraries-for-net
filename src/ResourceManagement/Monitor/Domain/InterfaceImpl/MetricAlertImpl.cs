@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System;
 
-    internal partial class MetricAlertImpl 
+    internal partial class MetricAlertImpl
     {
         /// <summary>
         /// Gets the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets metric alert criterias, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition> Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert.AlertCriterias
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition> Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert.AlertCriterias
         {
             get
             {

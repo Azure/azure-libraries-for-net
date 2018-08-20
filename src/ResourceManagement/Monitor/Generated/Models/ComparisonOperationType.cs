@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this ComparisonOperationType value)
         {
-            switch( value )
+            switch (value)
             {
                 case ComparisonOperationType.Equals:
                     return "Equals";
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static ComparisonOperationType? ParseComparisonOperationType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Equals":
                     return ComparisonOperationType.Equals;

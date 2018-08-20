@@ -13,13 +13,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// Implementation for  MetricAlerts.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uTWV0cmljQWxlcnRzSW1wbA==
-    internal partial class MetricAlertsImpl : 
+    internal partial class MetricAlertsImpl :
         TopLevelModifiableResources<IMetricAlert, MetricAlertImpl, MetricAlertResourceInner, IMetricAlertsOperations, MonitorManager>,
         IMetricAlerts
     {
 
         ///GENMHASH:CA4E0F7776F86D474617A98C0820B853:F85A80CDC97F925E518A32D7F21AC49E
-        internal  MetricAlertsImpl(MonitorManager monitorManager)
+        internal MetricAlertsImpl(MonitorManager monitorManager)
             : base(monitorManager.Inner.MetricAlerts, monitorManager)
         {
         }
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:59B19F19ABCCDD3C1BABE0FF100AE147:5FA12F364CD1704EED3894CEB79E2AD2
         protected override IMetricAlert WrapModel(MetricAlertResourceInner inner)
         {
-            if (inner ==  null)
+            if (inner == null)
             {
                 return null;
             }

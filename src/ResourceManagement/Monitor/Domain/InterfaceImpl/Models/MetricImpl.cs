@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class MetricImpl 
+    internal partial class MetricImpl
     {
         /// <summary>
         /// Gets the metric Id.

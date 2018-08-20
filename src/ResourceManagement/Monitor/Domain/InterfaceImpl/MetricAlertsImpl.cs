@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
-    internal partial class MetricAlertsImpl 
+    internal partial class MetricAlertsImpl
     {
         /// <summary>
         /// Begins a definition for a new resource.

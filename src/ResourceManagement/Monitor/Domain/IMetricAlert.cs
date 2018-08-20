@@ -6,8 +6,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// An immutable client-side representation of a Metric Alert.
     /// </summary>
-    public interface IMetricAlert  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<MonitorManager,Models.MetricAlertResourceInner>,
+    public interface IMetricAlert :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<MonitorManager, Models.MetricAlertResourceInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<MetricAlert.Update.IUpdate>
     {
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets metric alert criterias, indexed by name.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition> AlertCriterias { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition> AlertCriterias { get; }
 
         /// <summary>
         /// Gets the flag that indicates whether the alert should be auto resolved or not.

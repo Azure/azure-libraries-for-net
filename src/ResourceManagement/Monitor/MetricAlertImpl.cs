@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// Implementation for MetricAlert.
     /// </summary>
-///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uTWV0cmljQWxlcnRJbXBs
-    internal partial class MetricAlertImpl  :
+    ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uTWV0cmljQWxlcnRJbXBs
+    internal partial class MetricAlertImpl :
         GroupableResource<
             IMetricAlert,
             MetricAlertResourceInner,
@@ -33,14 +33,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         IUpdate,
         IWithMetricUpdate
     {
-        private Dictionary<string,Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition> conditions;
+        private Dictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition> conditions;
 
         ///GENMHASH:93FFF181B400DDE81DA77A82752C1C48:F98AC2175A8CD73451AD6F369CD5E05F
-        internal  MetricAlertImpl(string name, MetricAlertResourceInner innerModel, MonitorManager monitorManager)
+        internal MetricAlertImpl(string name, MetricAlertResourceInner innerModel, MonitorManager monitorManager)
             : base(name, innerModel, monitorManager)
         {
-            this.conditions = new Dictionary<string,Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition>();
-            var crits = (MetricAlertSingleResourceMultipleMetricCriteria) innerModel.Criteria;
+            this.conditions = new Dictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition>();
+            var crits = (MetricAlertSingleResourceMultipleMetricCriteria)innerModel.Criteria;
             if (crits != null)
             {
                 foreach (var crit in crits.AllOf)
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         ///GENMHASH:757305684CB38CD78E303A75B6BB60FF:C847040A726E35E60A000ACD7F24E314
-        public IReadOnlyDictionary<string,Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition> AlertCriterias()
+        public IReadOnlyDictionary<string, Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition> AlertCriterias()
         {
             return this.conditions;
         }
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:A61C25AD4B6930EB03CA48C25CDEF795:79090E4718A09FDF5299FE081DD6B337
         public MetricAlertConditionImpl UpdateAlertCriteria(string name)
         {
-            return (MetricAlertConditionImpl) this.conditions[name];
+            return (MetricAlertConditionImpl)this.conditions[name];
         }
 
         ///GENMHASH:AE926B5FF5A4B01D584D38C07E21A243:15DB234CEC0D38C1E33EB2ECEB2CC038

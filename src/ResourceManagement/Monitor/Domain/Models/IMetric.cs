@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// The Azure metric entries are of type Metric.
     /// </summary>
-    public interface IMetric  :
+    public interface IMetric :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.Monitor.Fluent.Models.Metric>
     {
 

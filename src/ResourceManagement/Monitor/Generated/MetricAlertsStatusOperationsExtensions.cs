@@ -19,54 +19,54 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public static partial class MetricAlertsStatusOperationsExtensions
     {
-            /// <summary>
-            /// Retrieve an alert rule status.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the rule.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<MetricAlertStatusCollectionInner> ListAsync(this IMetricAlertsStatusOperations operations, string resourceGroupName, string ruleName, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Retrieve an alert rule status.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='ruleName'>
+        /// The name of the rule.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<MetricAlertStatusCollectionInner> ListAsync(this IMetricAlertsStatusOperations operations, string resourceGroupName, string ruleName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, ruleName, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, ruleName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Retrieve an alert rule status.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='ruleName'>
-            /// The name of the rule.
-            /// </param>
-            /// <param name='statusName'>
-            /// The name of the status.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<MetricAlertStatusCollectionInner> ListByNameAsync(this IMetricAlertsStatusOperations operations, string resourceGroupName, string ruleName, string statusName, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Retrieve an alert rule status.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='ruleName'>
+        /// The name of the rule.
+        /// </param>
+        /// <param name='statusName'>
+        /// The name of the status.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<MetricAlertStatusCollectionInner> ListByNameAsync(this IMetricAlertsStatusOperations operations, string resourceGroupName, string ruleName, string statusName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListByNameWithHttpMessagesAsync(resourceGroupName, ruleName, statusName, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListByNameWithHttpMessagesAsync(resourceGroupName, ruleName, statusName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

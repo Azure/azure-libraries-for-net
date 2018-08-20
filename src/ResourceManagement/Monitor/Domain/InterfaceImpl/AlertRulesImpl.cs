@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     using Microsoft.Azure.Management.Monitor.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
 
-    internal partial class AlertRulesImpl 
+    internal partial class AlertRulesImpl
     {
         /// <summary>
         /// Gets the Azure Activity Log Alerts API entry point.

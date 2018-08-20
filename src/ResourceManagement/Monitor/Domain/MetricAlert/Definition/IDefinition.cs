@@ -3,75 +3,14 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
 {
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Monitor.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definition.Blank.MetricName;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definition.Blank.MetricName;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definition.Blank.MetricName;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definition.Blank.MetricName;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definition.Blank.MetricName;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definition.Blank.MetricName;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definition.Blank.MetricName;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definition.Blank.MetricName;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definition.Blank.MetricName;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System;
 
     /// <summary>
     /// The stage of the definition which contains all the minimum required inputs for the resource to be created
     /// but also allows for any other optional settings to be specified.
     /// </summary>
-    public interface IWithCreate  :
+    public interface IWithCreate :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithCreate>,
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithCriteriaDefinition
@@ -87,7 +26,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     /// <summary>
     /// The stage of the definition which specifies target resource for metric alert.
     /// </summary>
-    public interface IWithScopes 
+    public interface IWithScopes
     {
 
         /// <summary>
@@ -108,7 +47,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     /// <summary>
     /// The stage of the definition which specifies condition that will cause this alert to activate.
     /// </summary>
-    public interface IWithCriteriaDefinition 
+    public interface IWithCriteriaDefinition
     {
 
         /// <summary>
@@ -122,7 +61,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     /// <summary>
     /// The stage of the definition which specifies severity for metric alert.
     /// </summary>
-    public interface IWithSeverity 
+    public interface IWithSeverity
     {
 
         /// <summary>
@@ -136,7 +75,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     /// <summary>
     /// The stage of the definition which specifies if the metric alert should be enabled upon creation.
     /// </summary>
-    public interface IWithAlertEnabled 
+    public interface IWithAlertEnabled
     {
 
         /// <summary>
@@ -155,7 +94,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     /// <summary>
     /// The stage of the definition which specifies monitoring window for metric alert.
     /// </summary>
-    public interface IWithWindowSize 
+    public interface IWithWindowSize
     {
 
         /// <summary>
@@ -169,7 +108,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     /// <summary>
     /// The first stage of a Metric Alert definition.
     /// </summary>
-    public interface IBlank  :
+    public interface IBlank :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.GroupableResource.Definition.IWithGroupAndRegion<Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithScopes>
     {
 
@@ -178,7 +117,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     /// <summary>
     /// The stage of the definition which specifies evaluation frequency for metric alert.
     /// </summary>
-    public interface IWithEvaluationFrequency 
+    public interface IWithEvaluationFrequency
     {
 
         /// <summary>
@@ -192,7 +131,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     /// <summary>
     /// The stage of the definition which specifies actions that will be activated when the conditions are met in the metric alert rules.
     /// </summary>
-    public interface IWithActionGroup 
+    public interface IWithActionGroup
     {
 
         /// <summary>
@@ -206,7 +145,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     /// <summary>
     /// The stage of the definition which specifies description text for metric alert.
     /// </summary>
-    public interface IWithDescription 
+    public interface IWithDescription
     {
 
         /// <summary>
@@ -220,7 +159,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     /// <summary>
     /// The entirety of a Metric Alert definition.
     /// </summary>
-    public interface IDefinition  :
+    public interface IDefinition :
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IBlank,
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithCreate,
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithScopes,

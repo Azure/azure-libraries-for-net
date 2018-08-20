@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// Entry point for Activity Log Alert management API.
     /// </summary>
-    public interface IActivityLogAlerts  :
+    public interface IActivityLogAlerts :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<ActivityLogAlert.Definition.IBlank>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.Monitor.Fluent.IActivityLogAlert>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.Monitor.Fluent.IActivityLogAlert>,

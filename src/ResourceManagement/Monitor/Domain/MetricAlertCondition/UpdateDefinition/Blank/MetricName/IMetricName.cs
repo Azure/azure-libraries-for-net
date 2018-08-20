@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.UpdateD
     /// The stage of the definition which specifies metric signal name.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent Metric Alert definition to return to after attaching this definition.</typeparam>
-    public interface IMetricName<ParentT> 
+    public interface IMetricName<ParentT>
     {
 
         /// <summary>

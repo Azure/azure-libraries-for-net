@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 {
     using Microsoft.Azure.Management.Monitor.Fluent.Models;
 
-    internal partial class MetricAlertConditionImpl 
+    internal partial class MetricAlertConditionImpl
     {
         /// <summary>
         /// Gets the criteria operator. Possible values include: 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual', 'LessThan', 'LessThanOrEqual'.

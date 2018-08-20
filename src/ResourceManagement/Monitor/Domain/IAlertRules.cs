@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// Entry point to Alert Rules management API.
     /// </summary>
-    public interface IAlertRules  :
+    public interface IAlertRules :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<MonitorManager>
     {
 

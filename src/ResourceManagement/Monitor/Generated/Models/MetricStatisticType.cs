@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static string ToSerializedValue(this MetricStatisticType value)
         {
-            switch( value )
+            switch (value)
             {
                 case MetricStatisticType.Average:
                     return "Average";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
 
         internal static MetricStatisticType? ParseMetricStatisticType(this string value)
         {
-            switch( value )
+            switch (value)
             {
                 case "Average":
                     return MetricStatisticType.Average;

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// Implementation for ActivityLogAlert.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uQWN0aXZpdHlMb2dBbGVydEltcGw=
-    internal partial class ActivityLogAlertImpl  :
+    internal partial class ActivityLogAlertImpl :
         GroupableResource<
             IActivityLogAlert,
             ActivityLogAlertResourceInner,
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         IUpdate,
         IWithActivityLogUpdate
     {
-        private Dictionary<string,string> conditions;
+        private Dictionary<string, string> conditions;
 
         ///GENMHASH:BB950CA14FF4F1F69C522AF91F90FC34:408D5FE696EAF2806ED2D70B7393F055
         internal ActivityLogAlertImpl(string name, ActivityLogAlertResourceInner innerModel, MonitorManager monitorManager)
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             this.Inner.Location = "global";
             var condition = new ActivityLogAlertAllOfCondition();
             condition.AllOf = new List<ActivityLogAlertLeafCondition>();
-            foreach(var cds in conditions) 
+            foreach (var cds in conditions)
             {
                 var alalc = new ActivityLogAlertLeafCondition();
                 alalc.Field = cds.Key;
@@ -96,11 +96,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:1703877FCECC33D73EA04EEEF89045EF:EB71563FB99F270D0827FDCDA083A584
         public bool Enabled()
         {
-            return (this.Inner.Enabled.HasValue == false) ? false: this.Inner.Enabled.Value;
+            return (this.Inner.Enabled.HasValue == false) ? false : this.Inner.Enabled.Value;
         }
 
         ///GENMHASH:98F3CB7FC44C6127EC66A44A86617755:C847040A726E35E60A000ACD7F24E314
-        public IReadOnlyDictionary<string,string> EqualsConditions()
+        public IReadOnlyDictionary<string, string> EqualsConditions()
         {
             return this.conditions;
         }
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         ///GENMHASH:012586BEA031ABB7E8D7DA7C5407D11D:5CD188D9DC123B8EF062D3406B1366C7
-        public ActivityLogAlertImpl WithEqualsConditions(IDictionary<string,string> fieldEqualsMap)
+        public ActivityLogAlertImpl WithEqualsConditions(IDictionary<string, string> fieldEqualsMap)
         {
             this.conditions.Clear();
             foreach (var kvPair in fieldEqualsMap)
@@ -192,8 +192,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:19D591A5811CC295B77719A40CEB3F64:9A4882A827B87B926799484B506DA9A3
         public ActivityLogAlertImpl WithRuleDisabled()
         {
-            //$ this.Inner.WithEnabled(false);
-            //$ return this;
+            this.Inner.Enabled = false;
 
             return this;
         }
@@ -210,7 +209,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             this.Inner.Scopes = new List<string>();
             this.Inner.Scopes.Add(resourceId);
-            return null;
+            return this;
         }
 
         ///GENMHASH:FF34A220CBD022BF5822C4584DEEE94E:A6098866C47E7A7E582B09209AD5C53E

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure metric alert criteria.
     /// </summary>
-    public interface IMetricAlertCondition  :
+    public interface IMetricAlertCondition :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.MetricCriteria>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert>
     {

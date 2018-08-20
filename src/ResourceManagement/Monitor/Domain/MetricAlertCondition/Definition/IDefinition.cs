@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definit
     /// The stage of the definition which specifies metric alert condition.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent Metric Alert definition to return to after attaching this definition.</typeparam>
-    public interface IWithCriteriaOperator<ParentT> 
+    public interface IWithCriteriaOperator<ParentT>
     {
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definit
     /// <summary>
     /// The first stage of a Metric Alert condition definition.
     /// </summary>
-    public interface IBlank 
+    public interface IBlank
     {
 
     }
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Definit
     /// The stage of the definition which specifies metric alert additional filtering options.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the parent Metric Alert definition to return to after attaching this definition.</typeparam>
-    public interface IWithConditionAttach<ParentT> 
+    public interface IWithConditionAttach<ParentT>
     {
 
         /// <summary>

@@ -20,54 +20,54 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// </summary>
     public static partial class ActivityLogsOperationsExtensions
     {
-            /// <summary>
-            /// Provides the list of records from the activity logs.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            /// <param name='select'>
-            /// Used to fetch events with only the given properties.&lt;br&gt;The
-            /// **$select** argument is a comma separated list of property names to be
-            /// returned. Possible values are: *authorization*, *claims*, *correlationId*,
-            /// *description*, *eventDataId*, *eventName*, *eventTimestamp*, *httpRequest*,
-            /// *level*, *operationId*, *operationName*, *properties*, *resourceGroupName*,
-            /// *resourceProviderName*, *resourceId*, *status*, *submissionTimestamp*,
-            /// *subStatus*, *subscriptionId*
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<EventDataInner>> ListAsync(this IActivityLogsOperations operations, ODataQuery<EventDataInner> odataQuery = default(ODataQuery<EventDataInner>), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Provides the list of records from the activity logs.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='odataQuery'>
+        /// OData parameters to apply to the operation.
+        /// </param>
+        /// <param name='select'>
+        /// Used to fetch events with only the given properties.&lt;br&gt;The
+        /// **$select** argument is a comma separated list of property names to be
+        /// returned. Possible values are: *authorization*, *claims*, *correlationId*,
+        /// *description*, *eventDataId*, *eventName*, *eventTimestamp*, *httpRequest*,
+        /// *level*, *operationId*, *operationName*, *properties*, *resourceGroupName*,
+        /// *resourceProviderName*, *resourceId*, *status*, *submissionTimestamp*,
+        /// *subStatus*, *subscriptionId*
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<EventDataInner>> ListAsync(this IActivityLogsOperations operations, ODataQuery<EventDataInner> odataQuery = default(ODataQuery<EventDataInner>), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, select, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, select, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
-            /// <summary>
-            /// Provides the list of records from the activity logs.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<EventDataInner>> ListNextAsync(this IActivityLogsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        /// <summary>
+        /// Provides the list of records from the activity logs.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<EventDataInner>> ListNextAsync(this IActivityLogsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
-                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                return _result.Body;
             }
+        }
 
     }
 }

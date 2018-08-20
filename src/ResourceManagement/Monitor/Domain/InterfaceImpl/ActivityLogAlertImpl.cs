@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System.Collections.Generic;
 
-    internal partial class ActivityLogAlertImpl 
+    internal partial class ActivityLogAlertImpl
     {
         /// <summary>
         /// Gets the actions that will activate when the condition is met.
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the condition value.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> Microsoft.Azure.Management.Monitor.Fluent.IActivityLogAlert.EqualsConditions
+        System.Collections.Generic.IReadOnlyDictionary<string, string> Microsoft.Azure.Management.Monitor.Fluent.IActivityLogAlert.EqualsConditions
         {
             get
             {
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="fieldEqualsMap">Set the names of the field that this condition will examine and their values to be compared to.</param>
         /// <return>The next stage of the activity log alert update.</return>
-        ActivityLogAlert.Update.IUpdate ActivityLogAlert.Update.IWithActivityLogUpdate.WithEqualsConditions(IDictionary<string,string> fieldEqualsMap)
+        ActivityLogAlert.Update.IUpdate ActivityLogAlert.Update.IWithActivityLogUpdate.WithEqualsConditions(IDictionary<string, string> fieldEqualsMap)
         {
             return this.WithEqualsConditions(fieldEqualsMap);
         }
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="fieldEqualsMap">Set the names of the field that this condition will examine and their values to be compared to.</param>
         /// <return>The next stage of activity log alert definition.</return>
-        ActivityLogAlert.Definition.IWithCreate ActivityLogAlert.Definition.IWithCriteriaDefinition.WithEqualsConditions(IDictionary<string,string> fieldEqualsMap)
+        ActivityLogAlert.Definition.IWithCreate ActivityLogAlert.Definition.IWithCriteriaDefinition.WithEqualsConditions(IDictionary<string, string> fieldEqualsMap)
         {
             return this.WithEqualsConditions(fieldEqualsMap);
         }

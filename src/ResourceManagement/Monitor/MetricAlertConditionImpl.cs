@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// Implementation for MetricAlertCondition.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uTWV0cmljQWxlcnRDb25kaXRpb25JbXBs
-    internal partial class MetricAlertConditionImpl  :
+    internal partial class MetricAlertConditionImpl :
         Wrapper<Models.MetricCriteria>,
         IMetricAlertCondition,
         MetricAlertCondition.Definition.Blank.MetricName.IMetricName<MetricAlert.Definition.IWithCreate>,
@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         MetricAlertCondition.UpdateDefinition.IWithConditionAttach<MetricAlert.Update.IUpdate>,
         MetricAlertCondition.Update.IUpdateStages
     {
-        private IDictionary<string,Models.MetricDimension> dimensions;
+        private IDictionary<string, Models.MetricDimension> dimensions;
         private MetricAlertImpl parent;
 
         ///GENMHASH:E381A45ED049153522E82595CE5F86B2:72BCD000BF4EABB33CA6F6D35F7D248F
-        internal  MetricAlertConditionImpl(string name, MetricCriteria innerObject, MetricAlertImpl parent)
+        internal MetricAlertConditionImpl(string name, MetricCriteria innerObject, MetricAlertImpl parent)
             : base(innerObject)
         {
             this.Inner.Name = name;
@@ -115,11 +115,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
                 dimensions.Remove(dimensionName);
             }
             var md = new MetricDimension
-                        {
-                            Name = dimensionName,
-                            OperatorProperty = "Include",
-                            Values = values
-                        };
+            {
+                Name = dimensionName,
+                OperatorProperty = "Include",
+                Values = values
+            };
             dimensions.Add(dimensionName, md);
 
             return this;

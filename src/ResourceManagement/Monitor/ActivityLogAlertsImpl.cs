@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// Implementation for  ActivityLogAlerts.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uQWN0aXZpdHlMb2dBbGVydHNJbXBs
-    internal partial class ActivityLogAlertsImpl : 
+    internal partial class ActivityLogAlertsImpl :
         TopLevelModifiableResources<IActivityLogAlert, ActivityLogAlertImpl, ActivityLogAlertResourceInner, IActivityLogAlertsOperations, MonitorManager>,
         IActivityLogAlerts
     {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:9F8B6BDE6F07CCC4CC4A20EA49624620:880FB60A0EB367E0C3B1159A89BC7B21
         protected override IActivityLogAlert WrapModel(ActivityLogAlertResourceInner inner)
         {
-            if (inner ==  null)
+            if (inner == null)
             {
                 return null;
             }

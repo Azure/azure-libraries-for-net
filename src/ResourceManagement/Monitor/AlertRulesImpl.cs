@@ -10,14 +10,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// Implementation for  MetricAlerts.
     /// </summary>
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50Lm1vbml0b3IuaW1wbGVtZW50YXRpb24uQWxlcnRSdWxlc0ltcGw=
-    internal partial class AlertRulesImpl  :
+    internal partial class AlertRulesImpl :
         IAlertRules
     {
         private IActivityLogAlerts activityLogAlerts;
         private IMetricAlerts metricAlerts;
 
         ///GENMHASH:663ED2772152A9775CBC5082E9A08E46:DF54C9CD850E0683A875A7EC0984252D
-        internal  AlertRulesImpl(MonitorManager monitorManager)
+        internal AlertRulesImpl(MonitorManager monitorManager)
         {
             metricAlerts = new MetricAlertsImpl(monitorManager);
             activityLogAlerts = new ActivityLogAlertsImpl(monitorManager);

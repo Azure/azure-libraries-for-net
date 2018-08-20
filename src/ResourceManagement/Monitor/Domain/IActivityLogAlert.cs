@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     /// <summary>
     /// An immutable client-side representation of an Azure Activity Log Alert.
     /// </summary>
-    public interface IActivityLogAlert  :
+    public interface IActivityLogAlert :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IGroupableResource<MonitorManager, Models.ActivityLogAlertResourceInner>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IRefreshable<Microsoft.Azure.Management.Monitor.Fluent.IActivityLogAlert>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IUpdatable<ActivityLogAlert.Update.IUpdate>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the condition value.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,string> EqualsConditions { get; }
+        System.Collections.Generic.IReadOnlyDictionary<string, string> EqualsConditions { get; }
 
         /// <summary>
         /// Gets a list of resourceIds that will be used as prefixes. The alert will only apply to activityLogs with resourceIds that fall under one of these prefixes. This list must include at least one item.
