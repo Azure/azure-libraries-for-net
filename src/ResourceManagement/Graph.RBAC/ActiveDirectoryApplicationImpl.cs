@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Management.Graph.RBAC.Fluent
             {
                 if (updateParameters.PasswordCredentials == null)
                 {
-                    updateParameters.PasswordCredentials = new List<Models.PasswordCredential>();
+                    updateParameters.PasswordCredentials = cachedPasswordCredentials.Values.Select(pc => pc.Inner).ToList();
                 }
                 updateParameters.PasswordCredentials.Add(credential.Inner);
             }

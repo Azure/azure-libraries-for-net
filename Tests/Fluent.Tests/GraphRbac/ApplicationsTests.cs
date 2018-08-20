@@ -60,10 +60,20 @@ namespace Fluent.Tests.Graph.RBAC
                     Assert.Equal("http://easycreate.azure.com/" + name, application.SignOnUrl.ToString());
 
                     application.Update()
+                            .DefinePasswordCredential("passwd2")
+                                .WithPasswordValue("StrongPass!12")
+                                .WithDuration(TimeSpan.FromDays(20))
+                                .Attach()
+                            .Apply();
+                    Console.WriteLine(application.Id + " - " + application.ApplicationId);
+                    Assert.Equal(2, application.PasswordCredentials.Count);
+
+                    application.Update()
                             .WithoutCredential("passwd")
                             .Apply();
                     Console.WriteLine(application.Id + " - " + application.ApplicationId);
-                    Assert.Equal(0, application.PasswordCredentials.Count);
+                    Assert.Equal(1, application.PasswordCredentials.Count);
+                    Assert.Equal("passwd2", application.PasswordCredentials.First().Value.Name);
                 }
                 finally
                 {
