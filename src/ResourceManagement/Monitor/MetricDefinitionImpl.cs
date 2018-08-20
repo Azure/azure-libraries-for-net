@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             return Extensions.Synchronize(() => this.ExecuteAsync());
         }
 
-        ///GENMHASH:28267C95BE469468FC3C62D4CF4CCA7C:23CFA3CBA04339FB396E7300629893EC
+        ///GENMHASH:28267C95BE469468FC3C62D4CF4CCA7C:045C4FC5EA3255F75C64B330997E5F44
         public async Task<IMetricCollection> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return new MetricCollectionImpl(await this.Manager().Inner.Metrics.ListAsync(

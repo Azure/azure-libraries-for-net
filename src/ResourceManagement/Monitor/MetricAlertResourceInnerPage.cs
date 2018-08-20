@@ -9,11 +9,11 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Monitor.Fluent
 {
-    internal class ActionGroupInnerPage :
-        Wrapper<IEnumerable<ActionGroupResourceInner>>,
-        IPage<ActionGroupResourceInner>
+    internal class MetricAlertResourceInnerPage :
+        Wrapper<IEnumerable<MetricAlertResourceInner>>,
+        IPage<MetricAlertResourceInner>
     {
-        internal ActionGroupInnerPage(IEnumerable<ActionGroupResourceInner> innerObject)
+        internal MetricAlertResourceInnerPage(IEnumerable<MetricAlertResourceInner> innerObject)
             : base(innerObject)
         {
         }
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         // ther response from the server is supposed to be always singe paged.
         public string NextPageLink => null;
 
-        public IEnumerator<ActionGroupResourceInner> GetEnumerator()
+        public IEnumerator<MetricAlertResourceInner> GetEnumerator()
         {
             return this.Inner.GetEnumerator();
         }

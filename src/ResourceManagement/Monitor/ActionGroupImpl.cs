@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         private static readonly string voiceSuffix = "_-VoiceAction-";
         private Dictionary<string, Models.WebhookReceiver> webhookReceivers;
         private static readonly string webhookSuffix = " (WH)";
-        private MonitorManager myManager;
 
         ///GENMHASH:41BEC53C7D3065426CE12D60045E5A76:62D1D1E233FE3541B287099A447FD5C1
         internal ActionGroupImpl(string name, ActionGroupResourceInner innerModel, IMonitorManager monitorManager)
