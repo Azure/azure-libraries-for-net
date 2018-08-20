@@ -421,6 +421,24 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         }
 
         /// <summary>
+        /// Gets a list of currently existing nodes which were used for the Job execution. The returned information contains the node ID, its public IP and SSH port.
+        /// </summary>
+        /// <return>List of remote login details.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.ListRemoteLoginInformation()
+        {
+            return this.ListRemoteLoginInformation();
+        }
+
+        /// <summary>
+        /// Gets a list of currently existing nodes which were used for the Job execution. The returned information contains the node ID, its public IP and SSH port.
+        /// </summary>
+        /// <return>An observable that emits remote login information.</return>
+        async Task<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob.ListRemoteLoginInformationAsync(CancellationToken cancellationToken)
+        {
+            return await this.ListRemoteLoginInformationAsync(cancellationToken);
+        }
+
+        /// <summary>
         /// Gets the actions to be performed before tool kit is launched.
         /// The specified actions will run on all the nodes that are part of the
         /// job.

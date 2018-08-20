@@ -227,5 +227,19 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <param name="maxResults">The maximum number of items to return in the response. A maximum of 1000 files can be returned.</param>
         /// <return>An observable that emits output file information.</return>
         Task<IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile>> ListFilesAsync(string outputDirectoryId, string directory, int linkExpiryMinutes, int maxResults, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Gets a list of currently existing nodes which were used for the Job execution. The returned information contains the node ID, its public IP and SSH port.
+        /// </summary>
+        /// <return>List of remote login details.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation> ListRemoteLoginInformation();
+
+        /// <summary>
+        /// Gets a list of currently existing nodes which were used for the Job execution. The returned information contains the node ID, its public IP and SSH port.
+        /// </summary>
+        /// <return>An observable that emits remote login information.</return>
+        Task<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation> ListRemoteLoginInformationAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+
     }
 }

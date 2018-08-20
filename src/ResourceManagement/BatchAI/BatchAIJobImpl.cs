@@ -269,6 +269,20 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return PagedCollection<IOutputFile, File>.CreateFromEnumerable(result);
         }
 
+        public IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation> ListRemoteLoginInformation()
+        {
+            return Extensions
+                .Synchronize(() => workspace.Manager.Inner.Jobs.ListRemoteLoginInformationAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, this.Name))
+                .Select(inner => new RemoteLoginInformationImpl(inner));
+        }
+
+        public async Task<IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation>> ListRemoteLoginInformationAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var files = await workspace.Manager.Inner.Jobs.ListRemoteLoginInformationAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, this.Name, cancellationToken);
+            var result = files.Select((inner) => new RemoteLoginInformationImpl(inner));
+            return PagedCollection<IRemoteLoginInformation, BatchAI.Fluent.Models.RemoteLoginInformation>.CreateFromEnumerable(result);
+        }
+
         ///GENMHASH:1A830FCD0FD7E62DA41C4EC6DB518469:AC8FF8973958BDCA4BF309100541E49E
         public MountVolumes MountVolumes()
         {
