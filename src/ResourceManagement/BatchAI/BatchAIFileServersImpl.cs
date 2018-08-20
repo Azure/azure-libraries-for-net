@@ -37,12 +37,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public override void DeleteById(string id)
         {
-            throw new System.NotImplementedException();
+            ResourceId resourceId = ResourceId.FromString(id);
+            Extensions.Synchronize(() => Inner.DeleteAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name));
         }
 
-        public override Task DeleteByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
+        public override async Task DeleteByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            ResourceId resourceId = ResourceId.FromString(id);
+            await Inner.DeleteAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name, cancellationToken);
         }
 
         protected override BatchAIFileServerImpl WrapModel(string name)
@@ -76,37 +78,34 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public IBatchAIFileServer GetById(string id)
         {
-            throw new System.NotImplementedException();
+            ResourceId resourceId = ResourceId.FromString(id);
+            return WrapModel(Extensions.Synchronize(() => workspace.Manager.Inner.FileServers.GetAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name)));
         }
 
-        public Task<IBatchAIFileServer> GetByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
+        public async Task<IBatchAIFileServer> GetByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            var resourceId = ResourceId.FromString(id);
+            return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, resourceId.Name, cancellationToken));
         }
 
         public IBatchAIFileServer GetByName(string name)
         {
-            throw new System.NotImplementedException();
+            return Extensions.Synchronize(() => GetByNameAsync(name));
         }
 
-        Task<IBatchAIFileServer> ISupportsGettingByNameAsync<IBatchAIFileServer>.GetByNameAsync(string name, CancellationToken cancellationToken)
+        public async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServer> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new System.NotImplementedException();
-        }
-
-        Task<IBatchAIFileServer> ISupportsGettingByName<IBatchAIFileServer>.GetByNameAsync(string name, CancellationToken cancellationToken)
-        {
-            throw new System.NotImplementedException();
+            return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, name));
         }
 
         public void DeleteByName(string name)
         {
-            throw new System.NotImplementedException();
+            Extensions.Synchronize(() => DeleteByNameAsync(name));
         }
 
-        public Task DeleteByNameAsync(string name, CancellationToken cancellationToken = new CancellationToken())
+        public async Task DeleteByNameAsync(string name, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            await Inner.DeleteAsync(workspace.ResourceGroupName, workspace.Name, name, cancellationToken);
         }
 
         public IBatchAIManager Manager => workspace.Manager;

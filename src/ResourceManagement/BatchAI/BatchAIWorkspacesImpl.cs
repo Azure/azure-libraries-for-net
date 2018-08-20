@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected override async Task<IPage<WorkspaceInner>> ListInnerAsync(CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            return ConvertToPage(await Inner.ListAsync(cancellationToken : cancellationToken));
         }
 
         protected override async Task<IPage<WorkspaceInner>> ListInnerNextAsync(string link, CancellationToken cancellationToken)
@@ -63,13 +63,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         protected override async Task<IPage<WorkspaceInner>> ListInnerByGroupNextAsync(string link, CancellationToken cancellationToken)
         {
             return await Task.FromResult<IPage<WorkspaceInner>>(null);
-        }
-
-        public override IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace> ListByResourceGroup(string groupName)
-        {
-            //$ return wrapList(this.Inner().ListByResourceGroup(groupName));
-
-            return null;
         }
 
        protected override async Task<WorkspaceInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)

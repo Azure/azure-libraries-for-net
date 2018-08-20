@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public override void DeleteById(string id)
         {
-            throw new System.NotImplementedException();
+            ResourceId resourceId = ResourceId.FromString(id);
+            Extensions.Synchronize(() => Inner.DeleteAsync(resourceId.ResourceGroupName, workspace.Name, experiment.Name, resourceId.Name));
         }
 
         public override async Task DeleteByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
@@ -84,37 +85,34 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public IBatchAIJob GetByName(string name)
         {
-            throw new System.NotImplementedException();
+            return Extensions.Synchronize(() => GetByNameAsync(name));
         }
 
-        Task<IBatchAIJob> ISupportsGettingByNameAsync<IBatchAIJob>.GetByNameAsync(string name, CancellationToken cancellationToken)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public async Task<IBatchAIJob> GetByNameAsync(string name, CancellationToken cancellationToken)
+        public async Task<IBatchAIJob> GetByNameAsync(string name, CancellationToken cancellationToken = new CancellationToken())
         {
             return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, name, cancellationToken));
         }
 
         public IBatchAIJob GetById(string id)
         {
-            throw new System.NotImplementedException();
+            ResourceId resourceId = ResourceId.FromString(id);
+            return WrapModel(Extensions.Synchronize(() => workspace.Manager.Inner.Jobs.GetAsync(resourceId.ResourceGroupName, workspace.Name, experiment.Name, resourceId.Name)));
         }
 
-        public Task<IBatchAIJob> GetByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
+        public async Task<IBatchAIJob> GetByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            var resourceId = ResourceId.FromString(id);
+            return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, resourceId.Name, cancellationToken));
         }
 
         public void DeleteByName(string name)
         {
-            throw new System.NotImplementedException();
+            Extensions.Synchronize(() => DeleteByNameAsync(name));
         }
 
-        public Task DeleteByNameAsync(string name, CancellationToken cancellationToken = new CancellationToken())
+        public async Task DeleteByNameAsync(string name, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            await Inner.DeleteAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, name, cancellationToken);
         }
 
         public IJobsOperations Inner { get; }

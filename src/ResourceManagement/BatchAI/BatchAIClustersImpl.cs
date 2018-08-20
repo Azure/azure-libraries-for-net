@@ -84,9 +84,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return WrapModel(Extensions.Synchronize(() => workspace.Manager.Inner.Clusters.GetAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name)));
         }
 
-        public Task<IBatchAICluster> GetByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
+        public async Task<IBatchAICluster> GetByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            var resourceId = ResourceId.FromString(id);
+            return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, resourceId.Name, cancellationToken));
         }
 
         public IBatchAICluster GetByName(string name)
@@ -101,12 +102,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public void DeleteByName(string name)
         {
-            throw new System.NotImplementedException();
+            Extensions.Synchronize(() => DeleteByNameAsync(name));
         }
 
-        public Task DeleteByNameAsync(string name, CancellationToken cancellationToken = new CancellationToken())
+        public async Task DeleteByNameAsync(string name, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            await Inner.DeleteAsync(workspace.ResourceGroupName, workspace.Name, name, cancellationToken);
         }
 
         public BatchAIManager Manager { get; }
