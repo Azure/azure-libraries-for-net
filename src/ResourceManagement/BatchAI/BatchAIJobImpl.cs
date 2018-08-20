@@ -136,16 +136,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.ContainerSettings;
         }
 
-        public AzureBlobFileSystemImpl<BatchAIJobImpl> DefineAzureBlobFileSystem()
+        public AzureBlobFileSystemImpl<BatchAIJob.Definition.IWithCreate> DefineAzureBlobFileSystem()
         {
-            return new AzureBlobFileSystemImpl<BatchAIJobImpl>(new AzureBlobFileSystemReference(), this);
+            return new AzureBlobFileSystemImpl<BatchAIJob.Definition.IWithCreate>(new AzureBlobFileSystemReference(), this);
         }
 
-        public AzureFileShareImpl<BatchAIJobImpl> DefineAzureFileShare()
+        public AzureFileShareImpl<BatchAIJob.Definition.IWithCreate> DefineAzureFileShare()
         {
-            //$ return new AzureFileShareImpl<BatchAIJob.DefinitionStages.WithCreate>(new AzureFileShareReference(), this);
-
-            return null;
+            return new AzureFileShareImpl<BatchAIJob.Definition.IWithCreate>(new AzureFileShareReference(), this);
         }
 
         ///GENMHASH:CFB683D3617B006FFB78656F84281F44:103EED3DBBE3F4A4AF306B467C5B1187
@@ -175,9 +173,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public ToolTypeSettings.CustomToolkit.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefineCustomToolkit()
         {
-            //$ return new CustomToolkitImpl(new CustomToolkitSettings(), this);
-
-            return null;
+            return new CustomToolkitImpl(new CustomToolkitSettings(), this);
         }
 
         public FileServerImpl<BatchAIJob.Definition.IWithCreate> DefineFileServer()

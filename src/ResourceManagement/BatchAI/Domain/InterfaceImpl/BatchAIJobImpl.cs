@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
          /// <return>The first stage of Azure blob file system reference definition.</return>
          AzureBlobFileSystem.Definition.IBlank<BatchAIJob.Definition.IWithCreate> IWithMountVolumes<BatchAIJob.Definition.IWithCreate>.DefineAzureBlobFileSystem()
          {
-            return (AzureBlobFileSystem.Definition.IBlank<BatchAIJob.Definition.IWithCreate>)this.DefineAzureBlobFileSystem();
+            return this.DefineAzureBlobFileSystem();
          }
 
          /// <summary>
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
          /// <return>The first stage of file share reference definition.</return>
          AzureFileShare.Definition.IBlank<BatchAIJob.Definition.IWithCreate> IWithMountVolumes<BatchAIJob.Definition.IWithCreate>.DefineAzureFileShare()
          {
-            return (AzureFileShare.Definition.IBlank<BatchAIJob.Definition.IWithCreate>)this.DefineAzureFileShare();
+            return this.DefineAzureFileShare();
          }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// <return>The first stage of file server reference definition.</return>
         FileServer.Definition.IBlank<BatchAIJob.Definition.IWithCreate> IWithMountVolumes<BatchAIJob.Definition.IWithCreate>.DefineFileServer()
         {
-            return (FileServer.Definition.IBlank < BatchAIJob.Definition.IWithCreate > ) this.DefineFileServer();
+            return this.DefineFileServer();
         }
 
         ToolTypeSettings.CustomMpi.Definition.IBlank<BatchAIJob.Definition.IWithCreate> BatchAIJob.Definition.IWithToolType.DefineCustomMpi()
