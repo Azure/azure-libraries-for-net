@@ -22,28 +22,23 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         internal  MetricAlertsImpl(MonitorManager monitorManager)
             : base(monitorManager.Inner.MetricAlerts, monitorManager)
         {
-            //$ super(monitorManager.Inner.MetricAlerts(), monitorManager);
-            //$ }
-
         }
 
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:6ECEC1CA19F10C577330E79EEA0BCF56
         protected override MetricAlertImpl WrapModel(string name)
         {
-            //$ return new MetricAlertImpl(name, new MetricAlertResourceInner(), this.Manager());
-
-            return null;
+            return new MetricAlertImpl(name, new MetricAlertResourceInner(), this.Manager);
         }
 
         ///GENMHASH:59B19F19ABCCDD3C1BABE0FF100AE147:5FA12F364CD1704EED3894CEB79E2AD2
         protected override IMetricAlert WrapModel(MetricAlertResourceInner inner)
         {
-            //$ if (inner ==  null) {
-            //$ return null;
-            //$ }
-            //$ return new MetricAlertImpl(inner.Name(), inner, this.Manager());
+            if (inner ==  null)
+            {
+                return null;
+            }
 
-            return null;
+            return new MetricAlertImpl(inner.Name, inner, this.Manager);
         }
 
         ///GENMHASH:8ACFB0E23F5F24AD384313679B65F404:AD7C28D26EC1F237B93E54AD31899691

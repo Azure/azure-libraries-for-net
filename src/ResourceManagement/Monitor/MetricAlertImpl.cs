@@ -9,6 +9,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -38,106 +39,89 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         internal  MetricAlertImpl(string name, MetricAlertResourceInner innerModel, MonitorManager monitorManager)
             : base(name, innerModel, monitorManager)
         {
-            //$ this.conditions = new TreeMap<>();
-            //$ MetricAlertSingleResourceMultipleMetricCriteria crits = (MetricAlertSingleResourceMultipleMetricCriteria) innerModel.Criteria();
-            //$ if (crits != null) {
-            //$ foreach(var crit in crits.AllOf()) {
-            //$ this.conditions.Put(crit.Name(), new MetricAlertConditionImpl(crit.Name(), crit, this));
-            //$ }
-            //$ }
-            //$ }
-
+            this.conditions = new Dictionary<string,Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition>();
+            var crits = (MetricAlertSingleResourceMultipleMetricCriteria) innerModel.Criteria;
+            if (crits != null)
+            {
+                foreach (var crit in crits.AllOf)
+                {
+                    this.conditions[crit.Name] = new MetricAlertConditionImpl(crit.Name, crit, this);
+                }
+            }
         }
 
         ///GENMHASH:04C3DADE8E037DF05A82835AF96AF265:D45B28490B7AE6B4CA8461670CCAE4DC
         internal MetricAlertImpl WithAlertCriteria(MetricAlertConditionImpl criteria)
         {
-            //$ this.WithoutAlertCriteria(criteria.Name());
-            //$ this.conditions.Put(criteria.Name(), criteria);
-            //$ return this;
-            //$ }
-
+            this.WithoutAlertCriteria(criteria.Name());
+            this.conditions[criteria.Name()] = criteria;
             return this;
         }
 
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:5B960FE4701B7B30A98A4F211FA06D5D
         protected override async Task<Models.MetricAlertResourceInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return this.Manager().Inner.MetricAlerts().GetByResourceGroupAsync(this.ResourceGroupName(), this.Name());
-
-            return null;
+            return await this.Manager.Inner.MetricAlerts.GetAsync(this.ResourceGroupName, this.Name, cancellationToken);
         }
 
         ///GENMHASH:66DC6CE2AC9BE61B5E666402EB693221:2D08CF98D3B6811D1A7A4C18C0CE3C12
         public IReadOnlyCollection<string> ActionGroupIds()
         {
-            //$ if (this.Inner.Actions() != null
-            //$ && this.Inner.Actions() != null) {
-            //$ List<String> ids = new ArrayList<>();
-            //$ foreach(var maag in this.Inner.Actions()) {
-            //$ ids.Add(maag.ActionGroupId());
-            //$ }
-            //$ return Collections.UnmodifiableCollection(ids);
-            //$ }
-            //$ return Collections.EmptyList();
+            var ids = new List<string>();
+            if (this.Inner.Actions != null && this.Inner.Actions != null)
+            {
+                foreach (var maag in this.Inner.Actions)
+                {
+                    ids.Add(maag.ActionGroupId);
+                }
+            }
 
-            return null;
+            return ids;
         }
 
         ///GENMHASH:757305684CB38CD78E303A75B6BB60FF:C847040A726E35E60A000ACD7F24E314
         public IReadOnlyDictionary<string,Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition> AlertCriterias()
         {
-            //$ return this.conditions;
-
-            return null;
+            return this.conditions;
         }
 
         ///GENMHASH:BD4E8EEC1F995C84FF18BAE3CCFD22A6:F72671A23D283F9DD9B5C804037ECE33
         public bool AutoMitigate()
         {
-            //$ return this.Inner.AutoMitigate();
-
-            return false;
+            return (this.Inner.AutoMitigate.HasValue == false) ? false : this.Inner.AutoMitigate.Value;
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:3D3357BF7A9E06A99BB65E3E9DAF00FD
         public override async Task<Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ this.Inner.WithLocation("global");
-            //$ MetricAlertSingleResourceMultipleMetricCriteria crit = new MetricAlertSingleResourceMultipleMetricCriteria();
-            //$ crit.WithAllOf(new ArrayList<MetricCriteria>());
-            //$ foreach(var mc in conditions.Values()) {
-            //$ crit.AllOf().Add(mc.Inner);
-            //$ }
-            //$ this.Inner.WithCriteria(crit);
-            //$ return this.Manager().Inner.MetricAlerts().CreateOrUpdateAsync(this.ResourceGroupName(), this.Name(), this.Inner)
-            //$ .Map(innerToFluentMap(this));
-
-            return null;
+            this.Inner.Location = "global";
+            var crit = new MetricAlertSingleResourceMultipleMetricCriteria();
+            crit.AllOf = new List<MetricCriteria>();
+            foreach (var mc in conditions.Values)
+            {
+                crit.AllOf.Add(mc.Inner);
+            }
+            this.Inner.Criteria = crit;
+            SetInner(await this.Manager.Inner.MetricAlerts.CreateOrUpdateAsync(this.ResourceGroupName, this.Name, this.Inner, cancellationToken));
+            return this;
         }
 
         ///GENMHASH:8CCE644095FFB50F9DEE14F363C80774:D71D22182A27EAB88444CD16A8974390
         public MetricAlertConditionImpl DefineAlertCriteria(string name)
         {
-            //$ return new MetricAlertConditionImpl(name, new MetricCriteria(), this);
-
-            return null;
+            return new MetricAlertConditionImpl(name, new MetricCriteria(), this);
         }
 
         ///GENMHASH:7B3CA3D467253D93C6FF7587C3C0D0B7:F5293CC540B22E551BB92F6FCE17DE2C
         public string Description()
         {
-            //$ return this.Inner.Description();
-
-            return null;
+            return this.Inner.Description;
         }
 
         ///GENMHASH:1703877FCECC33D73EA04EEEF89045EF:EB71563FB99F270D0827FDCDA083A584
         public bool Enabled()
         {
-            //$ return this.Inner.Enabled();
-
-            return false;
+            return this.Inner.Enabled;
         }
 
         ///GENMHASH:6B9F8E34E59C56A0ADE05FF4B71FFF16:3A883853EF6DBDD2909F1D82D52F6295
@@ -147,35 +131,27 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         ///GENMHASH:DF5C039E76E3291E606FA7B30E6A35B8:63328FCE78D88A10DDBE141D8DF86DAB
-        public DateTime LastUpdatedTime()
+        public DateTime? LastUpdatedTime()
         {
-            //$ return this.Inner.LastUpdatedTime();
-
-            return DateTime.Now;
+            return this.Inner.LastUpdatedTime;
         }
 
         ///GENMHASH:C457EEA978B7A6C6C56D90DDF5271FFB:82059B9BE2545D9387D9EA1B5A801869
         public IReadOnlyCollection<string> Scopes()
         {
-            //$ return Collections.UnmodifiableCollection(this.Inner.Scopes());
-
-            return null;
+            return this.Inner.Scopes.ToList();
         }
 
         ///GENMHASH:ADCA390FA193949D8BA48D8804FB138B:D820AD5904970E73EAE6FDD91C9395A4
         public int Severity()
         {
-            //$ return this.Inner.Severity();
-
-            return 0;
+            return this.Inner.Severity;
         }
 
         ///GENMHASH:A61C25AD4B6930EB03CA48C25CDEF795:79090E4718A09FDF5299FE081DD6B337
         public MetricAlertConditionImpl UpdateAlertCriteria(string name)
         {
-            //$ return (MetricAlertConditionImpl) this.conditions.Get(name);
-
-            return null;
+            return (MetricAlertConditionImpl) this.conditions[name];
         }
 
         ///GENMHASH:AE926B5FF5A4B01D584D38C07E21A243:15DB234CEC0D38C1E33EB2ECEB2CC038
@@ -187,25 +163,24 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:8251517CD3DB23FD0217AD932D86E975:89FE971323C03077A05F6DBB399CC7F8
         public MetricAlertImpl WithActionGroups(params string[] actionGroupId)
         {
-            //$ if (this.Inner.Actions() == null) {
-            //$ this.Inner.WithActions(new ArrayList<MetricAlertAction>());
-            //$ }
-            //$ this.Inner.Actions().Clear();
-            //$ foreach(var agid in actionGroupId) {
-            //$ MetricAlertAction maa = new MetricAlertAction();
-            //$ maa.WithActionGroupId(agid);
-            //$ this.Inner.Actions().Add(maa);
-            //$ }
-            //$ return this;
-
+            if (this.Inner.Actions == null)
+            {
+                this.Inner.Actions = new List<MetricAlertAction>();
+            }
+            this.Inner.Actions.Clear();
+            foreach (var agid in actionGroupId)
+            {
+                var maa = new MetricAlertAction();
+                maa.ActionGroupId = agid;
+                this.Inner.Actions.Add(maa);
+            }
             return this;
         }
 
         ///GENMHASH:B1FAD9ED00B5928448AB0AA933758335:5640B4C7C912ABC98D9779381D53E6DC
         public MetricAlertImpl WithAutoMitigation()
         {
-            //$ this.Inner.WithAutoMitigate(true);
-            //$ return this;
+            this.Inner.AutoMitigate = true;
 
             return this;
         }
@@ -213,46 +188,45 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:016764F09D1966D691B5DE3A7FD47AC9:5D67BF1D9DA1008F878F13C112FF5F35
         public MetricAlertImpl WithDescription(string description)
         {
-            //$ this.Inner.WithDescription(description);
-            //$ return this;
-
+            this.Inner.Description = description;
             return this;
         }
 
         ///GENMHASH:B24AAC07D71C24A8F742385EAD401B72:CFB14B1FCC87FA2BAE66C1739882B0E0
         public MetricAlertImpl WithEvaluationFrequency(TimeSpan frequency)
         {
-            //$ this.Inner.WithEvaluationFrequency(frequency);
-            //$ return this;
-
+            this.Inner.EvaluationFrequency = frequency;
             return this;
         }
 
         ///GENMHASH:ED05B641BBACDA0FE20CB8084C06E215:7AEA88F41785879622403706A8BF6B9A
         public MetricAlertImpl WithoutActionGroup(string actionGroupId)
         {
-            //$ if (this.Inner.Actions() != null) {
-            //$ List<MetricAlertAction> toDelete = new ArrayList<>();
-            //$ foreach(var maa in this.Inner.Actions()) {
-            //$ if (maa.ActionGroupId().EqualsIgnoreCase(actionGroupId)) {
-            //$ toDelete.Add(maa);
-            //$ }
-            //$ }
-            //$ this.Inner.Actions().RemoveAll(toDelete);
-            //$ }
-            //$ return this;
-
+            if (this.Inner.Actions != null)
+            {
+                var toDelete = new List<MetricAlertAction>();
+                foreach (var maa in this.Inner.Actions)
+                {
+                    if (maa.ActionGroupId.Equals(actionGroupId, StringComparison.OrdinalIgnoreCase))
+                    {
+                        toDelete.Add(maa);
+                    }
+                }
+                foreach (var maa in toDelete)
+                {
+                    this.Inner.Actions.Remove(maa);
+                }
+            }
             return this;
         }
 
         ///GENMHASH:E4FEC8C316C1129E5FA8F1D228445F51:4B6FC8F18AB8BEA63867486135BF38C3
         public MetricAlertImpl WithoutAlertCriteria(string name)
         {
-            //$ if (this.conditions.ContainsKey(name)) {
-            //$ this.conditions.Remove(name);
-            //$ }
-            //$ return this;
-
+            if (this.conditions.ContainsKey(name))
+            {
+                this.conditions.Remove(name);
+            }
             return this;
         }
 
@@ -268,54 +242,42 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:19D591A5811CC295B77719A40CEB3F64:9A4882A827B87B926799484B506DA9A3
         public MetricAlertImpl WithRuleDisabled()
         {
-            //$ this.Inner.WithEnabled(false);
-            //$ return this;
-
+            this.Inner.Enabled = false;
             return this;
         }
 
         ///GENMHASH:1952D7AE67830F92010B1423D9533A88:B605F0C6D20484DEA14055C58519B8C8
         public MetricAlertImpl WithRuleEnabled()
         {
-            //$ this.Inner.WithEnabled(true);
-            //$ return this;
-
+            this.Inner.Enabled = true;
             return this;
         }
 
         ///GENMHASH:7ED8FFB8E1E8A478D0B971D4B84FAE92:3182F67E8B2D04AAB4A46329B8E3F9E8
         public MetricAlertImpl WithSeverity(int severity)
         {
-            //$ this.Inner.WithSeverity(severity);
-            //$ return this;
-
+            this.Inner.Severity = severity;
             return this;
         }
 
         ///GENMHASH:21C5E913CC99F20E7CFF02057B43ED9D:252983E9D051F9EAAC0EB5276C560315
         public MetricAlertImpl WithTargetResource(string resourceId)
         {
-            //$ this.Inner.WithScopes(new ArrayList<String>());
-            //$ this.Inner.Scopes().Add(resourceId);
-            //$ return this;
-
+            this.Inner.Scopes = new List<string>();
+            this.Inner.Scopes.Add(resourceId);
             return this;
         }
 
         ///GENMHASH:FF34A220CBD022BF5822C4584DEEE94E:A6098866C47E7A7E582B09209AD5C53E
         public MetricAlertImpl WithTargetResource(IHasId resource)
         {
-            //$ return this.WithTargetResource(resource.Id());
-
-            return this;
+            return this.WithTargetResource(resource.Id);
         }
 
         ///GENMHASH:96D45FFAD2DCBCEA5AA18A7CE27B4157:3E52FB242763B2F8A4587CF4CE43F118
         public MetricAlertImpl WithWindowSize(TimeSpan size)
         {
-            //$ this.Inner.WithWindowSize(size);
-            //$ return this;
-
+            this.Inner.WindowSize = size;
             return this;
         }
     }

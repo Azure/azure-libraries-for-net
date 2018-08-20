@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the lastUpdatedTime value.
         /// </summary>
-        System.DateTime Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert.LastUpdatedTime
+        System.DateTime? Microsoft.Azure.Management.Monitor.Fluent.IMetricAlert.LastUpdatedTime
         {
             get
             {

@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the lastUpdatedTime value.
         /// </summary>
-        System.DateTime LastUpdatedTime { get; }
+        System.DateTime? LastUpdatedTime { get; }
 
         /// <summary>
         /// Gets the list of resource id's that this metric alert is scoped to.
