@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.UserAccountSettings.AdminUserName;
         }
 
-        public AzureFileShareImpl<BatchAIClusterImpl> DefineAzureFileShare()
+        public AzureFileShareImpl<BatchAICluster.Definition.IWithCreate> DefineAzureFileShare()
         {
-            return new AzureFileShareImpl<BatchAIClusterImpl>(new AzureFileShareReference(), this);
+            return new AzureFileShareImpl<BatchAICluster.Definition.IWithCreate>(new AzureFileShareReference(), this);
         }
 
         public DateTime CreationTime()
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             if (IsInCreateMode())
             {
-                SetInner(await Manager.Inner.Clusters.CreateAsync(workspace.ResourceGroupName, workspace.ResourceGroupName, Name, createParameters, cancellationToken));
+                SetInner(await Manager.Inner.Clusters.CreateAsync(workspace.ResourceGroupName, workspace.Name, Name, createParameters, cancellationToken));
             }
             else
             {
@@ -269,14 +269,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        public AzureBlobFileSystemImpl<BatchAIClusterImpl> DefineAzureBlobFileSystem()
+        public AzureBlobFileSystemImpl<BatchAICluster.Definition.IWithCreate> DefineAzureBlobFileSystem()
         {
-            return new AzureBlobFileSystemImpl<BatchAIClusterImpl>(new AzureBlobFileSystemReference(), this);
+            return new AzureBlobFileSystemImpl<BatchAICluster.Definition.IWithCreate>(new AzureBlobFileSystemReference(), this);
         }
 
-        public FileServerImpl<BatchAIClusterImpl> DefineFileServer()
+        public FileServerImpl<BatchAICluster.Definition.IWithCreate> DefineFileServer()
         {
-            return new FileServerImpl<BatchAIClusterImpl>(new FileServerReference(), this);
+            return new FileServerImpl<BatchAICluster.Definition.IWithCreate>(new FileServerReference(), this);
         }
 
         public AllocationState AllocationState()

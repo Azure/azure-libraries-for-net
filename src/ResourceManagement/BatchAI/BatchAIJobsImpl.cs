@@ -120,14 +120,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public IJobsOperations Inner { get; }
         public BatchAIManager Manager { get; }
 
-        IBatchAIExperiment IHasParent<IBatchAIExperiment>.Parent
-        {
-            get { throw new System.NotImplementedException(); }
-        }
+        IBatchAIExperiment IHasParent<IBatchAIExperiment>.Parent => experiment;
 
         public IEnumerable<IBatchAIJob> List(int maxResults)
         {
-            throw new System.NotImplementedException();
+            return WrapList(Extensions.Synchronize(() => Inner.ListByExperimentAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name))
+                .AsContinuousCollection(link => Extensions.Synchronize(() => Inner.ListByExperimentNextAsync(link))));
         }
     }
 }

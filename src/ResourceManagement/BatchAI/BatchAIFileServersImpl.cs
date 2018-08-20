@@ -62,12 +62,16 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         
         public IEnumerable<IBatchAIFileServer> List()
         {
-            throw new System.NotImplementedException();
+            return WrapList(Extensions.Synchronize(() => Inner.ListByWorkspaceAsync(workspace.ResourceGroupName, workspace.Name))
+                .AsContinuousCollection(link => Extensions.Synchronize(() => Inner.ListByWorkspaceNextAsync(link))));
         }
 
-        public Task<IPagedCollection<IBatchAIFileServer>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = new CancellationToken())
+        public async Task<IPagedCollection<IBatchAIFileServer>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            return await PagedCollection<IBatchAIFileServer, FileServerInner>.LoadPage(
+                async (cancellation) => await Inner.ListByWorkspaceAsync(workspace.ResourceGroupName, workspace.Name, cancellationToken: cancellation),
+                Inner.ListByWorkspaceNextAsync,
+                WrapModel, loadAllPages, cancellationToken);
         }
 
         public IBatchAIFileServer GetById(string id)

@@ -91,7 +91,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return new BatchAIWorkspaceImpl(inner.Name, inner, this.Manager);
         }
 
-        public BatchAIManager Manager { get; }
         public IWorkspacesOperations Inner { get; }
     }
 }

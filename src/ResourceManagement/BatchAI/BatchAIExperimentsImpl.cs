@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public override void DeleteById(string id)
         {
-            throw new System.NotImplementedException();
+            ResourceId resourceId = ResourceId.FromString(id);
+            Extensions.Synchronize(() => workspace.Manager.Inner.Experiments.DeleteAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name));
         }
 
         public override async Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
@@ -100,16 +101,16 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment> List()
         {
-            //$ return wrapList(inner().ListByWorkspace(workspace.ResourceGroupName(), workspace.Name()));
-
-            return null;
+            return WrapList(Extensions.Synchronize(() => Inner.ListByWorkspaceAsync(workspace.ResourceGroupName, workspace.Name))
+                .AsContinuousCollection(link => Extensions.Synchronize(() => Inner.ListByWorkspaceNextAsync(link))));
         }
 
         public async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IBatchAIExperiment>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
-            //$ return wrapPageAsync(inner().ListByWorkspaceAsync(workspace.ResourceGroupName(), workspace.Name()));
-
-            return null;
+            return await PagedCollection<IBatchAIExperiment, ExperimentInner>.LoadPage(
+                async (cancellation) => await Inner.ListByWorkspaceAsync(workspace.ResourceGroupName, workspace.Name, cancellationToken: cancellation),
+                Inner.ListByWorkspaceNextAsync,
+                WrapModel, loadAllPages, cancellationToken);
         }
 
         public IBatchAIWorkspace Parent()

@@ -18,8 +18,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         GroupableResource<IBatchAIWorkspace,
             WorkspaceInner,
             BatchAIWorkspaceImpl,
-            BatchAIManager,
-            BatchAIWorkspace.Definition.IBlank,
+            IBatchAIManager,
+            BatchAIWorkspace.Definition.IWithGroup,
             BatchAIWorkspace.Definition.IWithCreate,
             BatchAIWorkspace.Definition.IWithCreate,
             BatchAIWorkspace.Update.IUpdate>,
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         private IBatchAIExperiments experiments;
         private IBatchAIFileServers fileServers;
 
-        internal BatchAIWorkspaceImpl(string name, WorkspaceInner innerObject, BatchAIManager manager) : base(name, innerObject, manager)
+        internal BatchAIWorkspaceImpl(string name, WorkspaceInner innerObject, IBatchAIManager manager) : base(name, innerObject, manager)
         {
         }
 
@@ -94,17 +94,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             SetInner(await this.Manager.Inner.Workspaces.UpdateAsync(ResourceGroupName, Name, this.Inner.Tags, cancellationToken));
 
             return this;
-        }
-
-        public IBatchAIManager Manager { get; }
-        public IWithGroup WithRegion(string regionName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IWithGroup WithRegion(Region region)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -66,17 +66,22 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public IEnumerable<IBatchAICluster> List()
         {
-            throw new System.NotImplementedException();
+            return WrapList(Extensions.Synchronize(() => Inner.ListByWorkspaceAsync(workspace.ResourceGroupName, workspace.Name))
+                .AsContinuousCollection(link => Extensions.Synchronize(() => Inner.ListByWorkspaceNextAsync(link))));
         }
 
-        public Task<IPagedCollection<IBatchAICluster>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = new CancellationToken())
+        public async Task<IPagedCollection<IBatchAICluster>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = new CancellationToken())
         {
-            throw new System.NotImplementedException();
+            return await PagedCollection<IBatchAICluster, ClusterInner>.LoadPage(
+                async (cancellation) => await Inner.ListByWorkspaceAsync(workspace.ResourceGroupName, workspace.Name, cancellationToken: cancellation),
+                Inner.ListByWorkspaceNextAsync,
+                WrapModel, loadAllPages, cancellationToken);
         }
 
         public IBatchAICluster GetById(string id)
         {
-            throw new System.NotImplementedException();
+            ResourceId resourceId = ResourceId.FromString(id);
+            return WrapModel(Extensions.Synchronize(() => workspace.Manager.Inner.Clusters.GetAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name)));
         }
 
         public Task<IBatchAICluster> GetByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
@@ -86,17 +91,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public IBatchAICluster GetByName(string name)
         {
-            throw new System.NotImplementedException();
+            return Extensions.Synchronize(() => GetByNameAsync(name));
         }
 
-        Task<IBatchAICluster> ISupportsGettingByNameAsync<IBatchAICluster>.GetByNameAsync(string name, CancellationToken cancellationToken)
+        public async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new System.NotImplementedException();
-        }
-
-        Task<IBatchAICluster> ISupportsGettingByName<IBatchAICluster>.GetByNameAsync(string name, CancellationToken cancellationToken)
-        {
-            throw new System.NotImplementedException();
+            return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, name));
         }
 
         public void DeleteByName(string name)
