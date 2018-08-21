@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             return this.Inner.Interval;
         }
 
-        ///GENMHASH:5E46449A7B51B1BC98D66C6A37EC1F02:5D75252F5F257CF62CF274ECAF7D0506
-        public IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.Metric> Metrics()
+        ///GENMHASH:5E46449A7B51B1BC98D66C6A37EC1F02:E1410075F9D9439C3765FA62DD0E7F08
+        public IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.IMetric> Metrics()
         {
-            return this.Inner.Value.ToList();
+            return this.Inner.Value.Select(inner => new MetricImpl(inner)).ToList();
         }
 
         ///GENMHASH:E65A2E847594C17DA590ED0613F7AD5B:13D0AB0DC28C19EFC1EE9A3E7181739F

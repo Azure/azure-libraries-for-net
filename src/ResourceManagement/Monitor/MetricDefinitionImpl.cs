@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             this.resultType = null;
             this.top = null;
             this.orderBy = null;
-			this.namespaceFilter = null;
+            this.namespaceFilter = null;
             return this;
         }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             return Extensions.Synchronize(() => this.ExecuteAsync());
         }
 
-        ///GENMHASH:28267C95BE469468FC3C62D4CF4CCA7C:23CFA3CBA04339FB396E7300629893EC
+        ///GENMHASH:28267C95BE469468FC3C62D4CF4CCA7C:045C4FC5EA3255F75C64B330997E5F44
         public async Task<IMetricCollection> ExecuteAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return new MetricCollectionImpl(await this.Manager().Inner.Metrics.ListAsync(
@@ -102,12 +102,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
                 metricnamespace: this.namespaceFilter,
                 cancellationToken: cancellationToken));
         }
-				
+
         ///GENMHASH:30DFB33704A983BFEBC6F8D37F219647:18AE7F3EA61B4C339E19BC91FFA86A38
         public IWithMetricsQueryExecute FilterByNamespace(string namespaceName)
         {
-			this.namespaceFilter = namespaceName;
-			return this;
+            this.namespaceFilter = namespaceName;
+            return this;
         }
 
         ///GENMHASH:ACA2D5620579D8158A29586CA1FF4BC6:9FCCB4B796E8FFF1419FB39498ED40F5

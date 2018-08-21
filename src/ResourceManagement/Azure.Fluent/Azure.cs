@@ -535,6 +535,14 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IAlertRules AlertRules
+        {
+            get
+            {
+                return this.monitorManager.AlertRules;
+            }
+        }
+
         public IEventHubNamespaces EventHubNamespaces
         {
             get
@@ -1114,5 +1122,10 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Event Hub disaster recovery pairing.
         /// </summary>
         IEventHubDisasterRecoveryPairings EventHubDisasterRecoveryPairings { get; }
+
+        /// <summary>
+        /// Entry point to Azure Monitor Alert Rules management.
+        /// </summary>
+        IAlertRules AlertRules { get; }
     }
 }

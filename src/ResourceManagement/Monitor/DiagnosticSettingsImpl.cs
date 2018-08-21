@@ -119,13 +119,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             foreach (var id in ids)
             {
-                tasks.Add(Task.Run(async ()=>
+                tasks.Add(Task.Run(async () =>
                                 {
                                     try
                                     {
                                         await this.DeleteByIdAsync(id, cancellationToken);
                                     }
-                                    catch(CloudException)
+                                    catch (CloudException)
                                     { }
                                     ids1.Add(id);
                                 }));

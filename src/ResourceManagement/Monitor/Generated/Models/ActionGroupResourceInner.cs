@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             if (GroupShortName == null)
             {
@@ -171,9 +171,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             }
             if (GroupShortName != null)
             {
-                if (GroupShortName.Length > 15)
+                if (GroupShortName.Length > 12)
                 {
-                    throw new ValidationException(ValidationRules.MaxLength, "GroupShortName", 15);
+                    throw new ValidationException(ValidationRules.MaxLength, "GroupShortName", 12);
                 }
             }
             if (EmailReceivers != null)
