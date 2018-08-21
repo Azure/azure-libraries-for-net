@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// Gets a list of currently existing nodes which were used for the Job execution. The returned information contains the node ID, its public IP and SSH port.
         /// </summary>
         /// <return>An observable that emits remote login information.</return>
-        Task<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation> ListRemoteLoginInformationAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation>> ListRemoteLoginInformationAsync(CancellationToken cancellationToken = default(CancellationToken));
 
 
     }
