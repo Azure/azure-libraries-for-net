@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using Microsoft.Azure.Management.BatchAI.Fluent.BatchAIExperiment.Definition;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
@@ -40,11 +39,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 return null;
             }
             return new BatchAIExperimentImpl(inner.Name, workspace, inner);
-        }
-
-        public BatchAIExperimentImpl Define(string name)
-        {
-            return WrapModel(name);
         }
 
         public override void DeleteById(string id)
@@ -116,11 +110,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public IBatchAIWorkspace Parent()
         {
             return workspace;
-        }
-
-        IWithCreate ISupportsCreating<IWithCreate>.Define(string name)
-        {
-            return Define(name);
         }
 
         public IBatchAIManager Manager => workspace.Manager;

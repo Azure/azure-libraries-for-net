@@ -3,7 +3,6 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
-    using Microsoft.Azure.Management.BatchAI.Fluent.BatchAIExperiment.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using System;
     using System.Threading;

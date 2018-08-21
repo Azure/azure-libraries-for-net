@@ -5,7 +5,6 @@ using Microsoft.Azure.Management.BatchAI.Fluent;
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
-    using Microsoft.Azure.Management.BatchAI.Fluent.BatchAIExperiment.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 
@@ -14,7 +13,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// </summary>
     public interface IBatchAIExperiments  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<BatchAIExperiment.Definition.IWithCreate>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByNameAsync<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment>,

@@ -49,6 +49,17 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return clusters;
         }
 
+
+        public IBatchAIExperiment CreateExperiment(string experimentName)
+        {
+            return Extensions.Synchronize(() => CreateExperimentAsync(experimentName));
+        }
+
+        public async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment> CreateExperimentAsync(string experimentName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return new BatchAIExperimentImpl(experimentName, this, await Manager.Inner.Experiments.CreateAsync(ResourceGroupName, Name, experimentName, cancellationToken));
+        }
+
         public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace> CreateResourceAsync(CancellationToken cancellationToken)
         {
             WorkspaceCreateParameters createParameters = new WorkspaceCreateParameters();

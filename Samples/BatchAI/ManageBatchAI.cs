@@ -88,7 +88,7 @@ namespace ManageBatchAI
                     .WithRegion(region)
                     .WithNewResourceGroup(rgName)
                     .Create();
-                IBatchAIExperiment experiment = workspace.Experiments.Define(experimentName).Create();
+                IBatchAIExperiment experiment = workspace.CreateExperiment(experimentName);
 
 
                 //=============================================================

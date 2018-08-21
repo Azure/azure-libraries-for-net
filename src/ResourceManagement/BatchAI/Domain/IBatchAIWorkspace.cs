@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
 
@@ -34,6 +36,20 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// Gets the provisioningStateTransitionTime value.
         /// </summary>
         System.DateTime ProvisioningStateTransitionTime { get; }
+
+        /// <summary>
+        /// Create new experiment under this workspace.
+        /// </summary>
+        /// <param name="name">Experiment name.</param>
+        /// <return>Created experiment.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment CreateExperiment(string name);
+
+        /// <summary>
+        /// Create new experiment under this workspace.
+        /// </summary>
+        /// <param name="name">Experiment name.</param>
+        /// <return>Created experiment.</return>
+        Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment> CreateExperimentAsync(string name, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gets the entry point to Batch AI clusters management API for this workspace.

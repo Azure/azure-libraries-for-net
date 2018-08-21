@@ -12,31 +12,23 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     using System.Threading.Tasks;
 
     public partial class BatchAIExperimentImpl  :
-        Creatable<IBatchAIExperiment,
-            ExperimentInner,
-            BatchAIExperimentImpl,
-            IHasId>,
-        IBatchAIExperiment,
-        BatchAIExperiment.Definition.IDefinition
+        IndexableRefreshableWrapper<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment,Microsoft.Azure.Management.BatchAI.Fluent.Models.ExperimentInner>,
+        IBatchAIExperiment
     {
         private IBatchAIJobs jobs;
+        private string name;
         private BatchAIWorkspaceImpl workspace;
 
         internal  BatchAIExperimentImpl(string name, BatchAIWorkspaceImpl workspace, ExperimentInner innerObject) : base(name, innerObject)
         {
             this.workspace = workspace;
+            this.name = name;
             jobs = new BatchAIJobsImpl(this);
         }
 
         protected override async Task<Microsoft.Azure.Management.BatchAI.Fluent.Models.ExperimentInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             return await workspace.Manager.Inner.Experiments.GetAsync(workspace.ResourceGroupName, workspace.Name, this.Name, cancellationToken);
-        }
-
-        public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
-        {
-            SetInner(await workspace.Manager.Inner.Experiments.CreateAsync(workspace.ResourceGroupName, workspace.Name, Name, cancellationToken));
-            return this;
         }
 
         public DateTime CreationTime()
@@ -76,5 +68,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         string IHasId.Id => Inner.Id;
         IBatchAIManager IHasManager<IBatchAIManager>.Manager => workspace.Manager;
+        public string Name => name;
     }
 }

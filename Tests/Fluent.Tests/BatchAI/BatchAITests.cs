@@ -138,7 +138,7 @@ namespace Fluent.Tests
                         .WithRegion(REGION)
                         .WithNewResourceGroup(groupName)
                         .Create();
-                    IBatchAIExperiment experiment = workspace.Experiments.Define(experimentName).Create();
+                    IBatchAIExperiment experiment = workspace.CreateExperiment(experimentName);
 
                     IBatchAICluster cluster = workspace.Clusters.Define(clusterName)
                         .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)

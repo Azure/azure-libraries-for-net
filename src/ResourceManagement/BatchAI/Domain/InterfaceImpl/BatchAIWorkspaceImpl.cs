@@ -75,5 +75,25 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 return this.FileServers();
             }
         }
+
+        /// <summary>
+        /// Create new experiment under this workspace.
+        /// </summary>
+        /// <param name="name">Experiment name.</param>
+        /// <return>Created experiment.</return>
+        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace.CreateExperiment(string name)
+        {
+            return this.CreateExperiment(name);
+        }
+
+        /// <summary>
+        /// Create new experiment under this workspace.
+        /// </summary>
+        /// <param name="name">Experiment name.</param>
+        /// <return>Created experiment.</return>
+        async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment> Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace.CreateExperimentAsync(string name, CancellationToken cancellationToken)
+        {
+            return await this.CreateExperimentAsync(name, cancellationToken);
+        }
     }
 }
