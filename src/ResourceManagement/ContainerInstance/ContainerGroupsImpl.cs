@@ -93,25 +93,25 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:1087847AA7770A992044FCAD7C2E6E25:25ECC310DA204D7AE9DF59ABB6BE48D0
         public string GetLogContent(string resourceGroupName, string containerGroupName, string containerName)
         {
-            return Extensions.Synchronize(() => this.Manager.Inner.ContainerLogs.ListAsync(resourceGroupName, containerGroupName, containerName)).Content;
+            return Extensions.Synchronize(() => this.Manager.Inner.Container.ListLogsAsync(resourceGroupName, containerGroupName, containerName)).Content;
         }
 
         ///GENMHASH:930B716992CF464D85E2800B8D7A3CAC:CCC7635873270CED63B2619818684889
         public string GetLogContent(string resourceGroupName, string containerGroupName, string containerName, int tailLineCount)
         {
-            return Extensions.Synchronize(() => this.Manager.Inner.ContainerLogs.ListAsync(resourceGroupName, containerGroupName, containerName, tailLineCount)).Content;
+            return Extensions.Synchronize(() => this.Manager.Inner.Container.ListLogsAsync(resourceGroupName, containerGroupName, containerName, tailLineCount)).Content;
         }
 
         ///GENMHASH:E5F0C5A3C906C759F86B2236BA4C8F2D:082860BCBD9604C97D9A7CDF1A2753E0
         public async Task<string> GetLogContentAsync(string resourceGroupName, string containerGroupName, string containerName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return (await this.Manager.Inner.ContainerLogs.ListAsync(resourceGroupName, containerGroupName, containerName, cancellationToken: cancellationToken)).Content;
+            return (await this.Manager.Inner.Container.ListLogsAsync(resourceGroupName, containerGroupName, containerName, cancellationToken: cancellationToken)).Content;
         }
 
         ///GENMHASH:EE41FB01DE3059005BFFAFA1F8F0593D:9E719F49B3FD58CCC203BAE5EDDB5218
         public async Task<string> GetLogContentAsync(string resourceGroupName, string containerGroupName, string containerName, int tailLineCount, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return (await this.Manager.Inner.ContainerLogs.ListAsync(resourceGroupName, containerGroupName, containerName, tailLineCount, cancellationToken: cancellationToken)).Content;
+            return (await this.Manager.Inner.Container.ListLogsAsync(resourceGroupName, containerGroupName, containerName, tailLineCount, cancellationToken: cancellationToken)).Content;
         }
 
         ///GENMHASH:2CEB6E35574F5C7F1D19ADAC97C93D65:D6B0D66B56D133541C412BA68B7CE4EA

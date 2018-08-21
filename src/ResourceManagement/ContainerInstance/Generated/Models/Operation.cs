@@ -8,6 +8,7 @@
 
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// operation.</param>
         /// <param name="origin">The intended executor of the operation.
         /// Possible values include: 'User', 'System'</param>
-        public Operation(string name = default(string), OperationDisplay display = default(OperationDisplay), string origin = default(string))
+        public Operation(string name, OperationDisplay display, string origin = default(string))
         {
             Name = name;
             Display = display;
@@ -46,10 +47,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the name of the operation.
+        /// Gets or sets the name of the operation.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the display information of the operation.
@@ -58,11 +59,28 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         public OperationDisplay Display { get; set; }
 
         /// <summary>
-        /// Gets the intended executor of the operation. Possible values
-        /// include: 'User', 'System'
+        /// Gets or sets the intended executor of the operation. Possible
+        /// values include: 'User', 'System'
         /// </summary>
         [JsonProperty(PropertyName = "origin")]
-        public string Origin { get; private set; }
+        public string Origin { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Name == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Name");
+            }
+            if (Display == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Display");
+            }
+        }
     }
 }

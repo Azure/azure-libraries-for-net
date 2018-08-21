@@ -48,7 +48,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// instance. Only valid in response.</param>
         /// <param name="volumeMounts">The volume mounts available to the
         /// container instance.</param>
-        public Container(string name, string image, ResourceRequirements resources, IList<string> command = default(IList<string>), IList<ContainerPort> ports = default(IList<ContainerPort>), IList<EnvironmentVariable> environmentVariables = default(IList<EnvironmentVariable>), ContainerPropertiesInstanceView instanceView = default(ContainerPropertiesInstanceView), IList<VolumeMount> volumeMounts = default(IList<VolumeMount>))
+        /// <param name="livenessProbe">The liveness probe.</param>
+        /// <param name="readinessProbe">The readiness probe.</param>
+        public Container(string name, string image, ResourceRequirements resources, IList<string> command = default(IList<string>), IList<ContainerPort> ports = default(IList<ContainerPort>), IList<EnvironmentVariable> environmentVariables = default(IList<EnvironmentVariable>), ContainerPropertiesInstanceView instanceView = default(ContainerPropertiesInstanceView), IList<VolumeMount> volumeMounts = default(IList<VolumeMount>), ContainerProbe livenessProbe = default(ContainerProbe), ContainerProbe readinessProbe = default(ContainerProbe))
         {
             Name = name;
             Image = image;
@@ -58,6 +60,8 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
             InstanceView = instanceView;
             Resources = resources;
             VolumeMounts = volumeMounts;
+            LivenessProbe = livenessProbe;
+            ReadinessProbe = readinessProbe;
             CustomInit();
         }
 
@@ -119,6 +123,18 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         public IList<VolumeMount> VolumeMounts { get; set; }
 
         /// <summary>
+        /// Gets or sets the liveness probe.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.livenessProbe")]
+        public ContainerProbe LivenessProbe { get; set; }
+
+        /// <summary>
+        /// Gets or sets the readiness probe.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.readinessProbe")]
+        public ContainerProbe ReadinessProbe { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -171,6 +187,14 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
                         element2.Validate();
                     }
                 }
+            }
+            if (LivenessProbe != null)
+            {
+                LivenessProbe.Validate();
+            }
+            if (ReadinessProbe != null)
+            {
+                ReadinessProbe.Validate();
             }
         }
     }

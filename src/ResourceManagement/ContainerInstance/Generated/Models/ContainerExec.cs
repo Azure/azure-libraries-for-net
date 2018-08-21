@@ -9,28 +9,31 @@
 namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The logs.
+    /// The container execution command, for liveness or readiness probe
     /// </summary>
-    public partial class LogsInner
+    public partial class ContainerExec
     {
         /// <summary>
-        /// Initializes a new instance of the LogsInner class.
+        /// Initializes a new instance of the ContainerExec class.
         /// </summary>
-        public LogsInner()
+        public ContainerExec()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the LogsInner class.
+        /// Initializes a new instance of the ContainerExec class.
         /// </summary>
-        /// <param name="content">The content of the log.</param>
-        public LogsInner(string content = default(string))
+        /// <param name="command">The commands to execute within the
+        /// container.</param>
+        public ContainerExec(IList<string> command = default(IList<string>))
         {
-            Content = content;
+            Command = command;
             CustomInit();
         }
 
@@ -40,10 +43,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the content of the log.
+        /// Gets or sets the commands to execute within the container.
         /// </summary>
-        [JsonProperty(PropertyName = "content")]
-        public string Content { get; set; }
+        [JsonProperty(PropertyName = "command")]
+        public IList<string> Command { get; set; }
 
     }
 }

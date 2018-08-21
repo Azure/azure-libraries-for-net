@@ -54,19 +54,20 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -86,14 +87,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         public virtual IContainerGroupUsageOperations ContainerGroupUsage { get; private set; }
 
         /// <summary>
-        /// Gets the IContainerLogsOperations.
+        /// Gets the IContainerOperations.
         /// </summary>
-        public virtual IContainerLogsOperations ContainerLogs { get; private set; }
-
-        /// <summary>
-        /// Gets the IStartContainerOperations.
-        /// </summary>
-        public virtual IStartContainerOperations StartContainer { get; private set; }
+        public virtual IContainerOperations Container { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ContainerInstanceManagementClient class.
@@ -299,10 +295,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             ContainerGroups = new ContainerGroupsOperations(this);
             Operations = new Operations(this);
             ContainerGroupUsage = new ContainerGroupUsageOperations(this);
-            ContainerLogs = new ContainerLogsOperations(this);
-            StartContainer = new StartContainerOperations(this);
+            Container = new ContainerOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2018-04-01";
+            ApiVersion = "2018-06-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
