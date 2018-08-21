@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             }, tenantId, environment);
         }
 
-#if NETSTANDARD
+#if !NET45
         /// <summary>
         /// Creates a credentials object through device flow.
         /// </summary>
@@ -101,7 +101,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             }, tenantId, environment);
         }
 
-#if (NET45 || NET461)
         /// <summary>
         /// Creates a credentials object from a service principal.
         /// </summary>
@@ -118,7 +117,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 X509Certificate = certificate
             }, tenantId, environment);
         }
-#endif
 
         /// <summary>
         /// Creates a credentials object from a file in the following format:

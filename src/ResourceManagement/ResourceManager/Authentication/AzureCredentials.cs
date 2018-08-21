@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         private MSITokenProviderFactory msiTokenProviderFactory;
 
         private IDictionary<Uri, ServiceClientCredentials> credentialsCache;
-#if NETSTANDARD
+#if !NET45
         private DeviceCredentialInformation deviceCredentialInformation;
 #endif
 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         {
             get
             {
-#if NETSTANDARD
+#if !NET45
                 if (deviceCredentialInformation != null)
                 {
                     return deviceCredentialInformation.ClientId;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             credentialsCache = new Dictionary<Uri, ServiceClientCredentials>();
         }
 
-#if NETSTANDARD
+#if !NET45
         public AzureCredentials(DeviceCredentialInformation deviceCredentialInformation, string tenantId, AzureEnvironment environment)
             : this(tenantId, environment)
         {
@@ -135,8 +135,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
                             TenantId, new ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate), adSettings, TokenCache.DefaultShared);
                     }
-#endif
-#if NET461
+#else
                     else if (servicePrincipalLoginInformation.X509Certificate != null)
                     {
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
@@ -153,15 +152,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                         throw new RestException($"Cannot communicate with server. ServicePrincipalLoginInformation should contain either a valid ClientSecret or Certificate information.");
                     }
                 }
-#if (!NETSTANDARD && !NET461)
+#if NET45
                 else if (userLoginInformation != null)
                 {
                     credentialsCache[adSettings.TokenAudience] = await UserTokenProvider.LoginSilentAsync(
                         userLoginInformation.ClientId, TenantId, userLoginInformation.UserName,
                         userLoginInformation.Password, adSettings, TokenCache.DefaultShared);
                 }
-#endif
-#if NETSTANDARD
+#else
                 else if (deviceCredentialInformation != null)
                 {
                     credentialsCache[adSettings.TokenAudience] = await UserTokenProvider.LoginByDeviceCodeAsync(
