@@ -2408,6 +2408,239 @@ namespace Microsoft.Azure.Management.Samples.Common
             Utilities.Log(sb.ToString());
         }
 
+        /**
+         * Print Action group settings.
+         *
+         * @param actionGroup action group instance
+         */
+        public static void Print(IActionGroup actionGroup)
+        {
+            StringBuilder info = new StringBuilder("Action Group: ")
+                    .Append("\n\tId: ").Append(actionGroup.Id)
+                    .Append("\n\tName: ").Append(actionGroup.Name)
+                    .Append("\n\tShort Name: ").Append(actionGroup.ShortName);
+
+            if (actionGroup.EmailReceivers != null && actionGroup.EmailReceivers.Any())
+            {
+                info.Append("\n\tEmail receivers: ");
+                foreach (var er in actionGroup.EmailReceivers)
+                {
+                    info.Append("\n\t\tName: ").Append(er.Name);
+                    info.Append("\n\t\tEMail: ").Append(er.EmailAddress);
+                    info.Append("\n\t\tStatus: ").Append(er.Status);
+                    info.Append("\n\t\t===");
+                }
+            }
+
+            if (actionGroup.SmsReceivers != null && actionGroup.SmsReceivers.Any())
+            {
+                info.Append("\n\tSMS text message receivers: ");
+                foreach (var er in actionGroup.SmsReceivers)
+                {
+                    info.Append("\n\t\tName: ").Append(er.Name);
+                    info.Append("\n\t\tPhone: ").Append(er.CountryCode + er.PhoneNumber);
+                    info.Append("\n\t\tStatus: ").Append(er.Status);
+                    info.Append("\n\t\t===");
+                }
+            }
+
+            if (actionGroup.WebhookReceivers != null && actionGroup.WebhookReceivers.Any())
+            {
+                info.Append("\n\tWebhook receivers: ");
+                foreach (var er in actionGroup.WebhookReceivers)
+                {
+                    info.Append("\n\t\tName: ").Append(er.Name);
+                    info.Append("\n\t\tURI: ").Append(er.ServiceUri);
+                    info.Append("\n\t\t===");
+                }
+            }
+
+            if (actionGroup.AzureAppPushReceivers != null && actionGroup.AzureAppPushReceivers.Any())
+            {
+                info.Append("\n\tApp Push Notification receivers: ");
+                foreach (var er in actionGroup.AzureAppPushReceivers)
+                {
+                    info.Append("\n\t\tName: ").Append(er.Name);
+                    info.Append("\n\t\tEmail: ").Append(er.EmailAddress);
+                    info.Append("\n\t\t===");
+                }
+            }
+
+            if (actionGroup.VoiceReceivers != null && actionGroup.VoiceReceivers.Any())
+            {
+                info.Append("\n\tVoice Message receivers: ");
+                foreach (var er in actionGroup.VoiceReceivers)
+                {
+                    info.Append("\n\t\tName: ").Append(er.Name);
+                    info.Append("\n\t\tPhone: ").Append(er.CountryCode + er.PhoneNumber);
+                    info.Append("\n\t\t===");
+                }
+            }
+
+            if (actionGroup.AutomationRunbookReceivers != null && actionGroup.AutomationRunbookReceivers.Any())
+            {
+                info.Append("\n\tAutomation Runbook receivers: ");
+                foreach (var er in actionGroup.AutomationRunbookReceivers)
+                {
+                    info.Append("\n\t\tName: ").Append(er.Name);
+                    info.Append("\n\t\tRunbook Name: ").Append(er.RunbookName);
+                    info.Append("\n\t\tAccount Id: ").Append(er.AutomationAccountId);
+                    info.Append("\n\t\tIs Global: ").Append(er.IsGlobalRunbook);
+                    info.Append("\n\t\tService URI: ").Append(er.ServiceUri);
+                    info.Append("\n\t\tWebhook resource Id: ").Append(er.WebhookResourceId);
+                    info.Append("\n\t\t===");
+                }
+            }
+
+            if (actionGroup.AzureFunctionReceivers != null && actionGroup.AzureFunctionReceivers.Any())
+            {
+                info.Append("\n\tAzure Functions receivers: ");
+                foreach(var er in actionGroup.AzureFunctionReceivers)
+                {
+                    info.Append("\n\t\tName: ").Append(er.Name);
+                    info.Append("\n\t\tFunction Name: ").Append(er.FunctionName);
+                    info.Append("\n\t\tFunction App Resource Id: ").Append(er.FunctionAppResourceId);
+                    info.Append("\n\t\tFunction Trigger URI: ").Append(er.HttpTriggerUrl);
+                    info.Append("\n\t\t===");
+                }
+            }
+
+            if (actionGroup.LogicAppReceivers != null && actionGroup.LogicAppReceivers.Any())
+            {
+                info.Append("\n\tLogic App receivers: ");
+                foreach (var er in actionGroup.LogicAppReceivers)
+                {
+                    info.Append("\n\t\tName: ").Append(er.Name);
+                    info.Append("\n\t\tResource Id: ").Append(er.ResourceId);
+                    info.Append("\n\t\tCallback URL: ").Append(er.CallbackUrl);
+                    info.Append("\n\t\t===");
+                }
+            }
+
+            if (actionGroup.ItsmReceivers != null && actionGroup.ItsmReceivers.Any())
+            {
+                info.Append("\n\tITSM receivers: ");
+                foreach(var er in actionGroup.ItsmReceivers)
+                {
+                    info.Append("\n\t\tName: ").Append(er.Name);
+                    info.Append("\n\t\tWorkspace Id: ").Append(er.WorkspaceId);
+                    info.Append("\n\t\tConnection Id: ").Append(er.ConnectionId);
+                    info.Append("\n\t\tRegion: ").Append(er.Region);
+                    info.Append("\n\t\tTicket Configuration: ").Append(er.TicketConfiguration);
+                    info.Append("\n\t\t===");
+                }
+            }
+            Utilities.Log(info.ToString());
+        }
+
+        /**
+         * Print activity log alert settings.
+         *
+         * @param activityLogAlert activity log instance
+         */
+        public static void Print(IActivityLogAlert activityLogAlert)
+        {
+
+            StringBuilder info = new StringBuilder("Activity Log Alert: ")
+                    .Append("\n\tId: ").Append(activityLogAlert.Id)
+                    .Append("\n\tName: ").Append(activityLogAlert.Name)
+                    .Append("\n\tDescription: ").Append(activityLogAlert.Description)
+                    .Append("\n\tIs Enabled: ").Append(activityLogAlert.Enabled);
+
+            if (activityLogAlert.Scopes != null && activityLogAlert.Scopes.Any())
+            {
+                info.Append("\n\tScopes: ");
+                foreach (var er in activityLogAlert.Scopes)
+                {
+                    info.Append("\n\t\tId: ").Append(er);
+                }
+            }
+
+            if (activityLogAlert.ActionGroupIds != null && activityLogAlert.ActionGroupIds.Any())
+            {
+                info.Append("\n\tAction Groups: ");
+                foreach(var er in activityLogAlert.ActionGroupIds)
+                {
+                    info.Append("\n\t\tAction Group Id: ").Append(er);
+                }
+            }
+
+            if (activityLogAlert.EqualsConditions != null && activityLogAlert.EqualsConditions.Any())
+            {
+                info.Append("\n\tAlert conditions (when all of is true): ");
+                foreach (var er in activityLogAlert.EqualsConditions)
+                {
+                    info.Append("\n\t\t'").Append(er.Key).Append("' equals '").Append(er.Value).Append("'");
+                }
+            }
+            Utilities.Log(info.ToString());
+        }
+
+        /**
+         * Print metric alert settings.
+         *
+         * @param metricAlert metric alert instance
+         */
+        public static void Print(IMetricAlert metricAlert)
+        {
+
+            StringBuilder info = new StringBuilder("Metric Alert: ")
+                    .Append("\n\tId: ").Append(metricAlert.Id)
+                    .Append("\n\tName: ").Append(metricAlert.Name)
+                    .Append("\n\tDescription: ").Append(metricAlert.Description)
+                    .Append("\n\tIs Enabled: ").Append(metricAlert.Enabled)
+                    .Append("\n\tIs Auto Mitigated: ").Append(metricAlert.AutoMitigate)
+                    .Append("\n\tSeverity: ").Append(metricAlert.Severity)
+                    .Append("\n\tWindow Size: ").Append(metricAlert.WindowSize)
+                    .Append("\n\tEvaluation Frequency: ").Append(metricAlert.EvaluationFrequency);
+
+            if (metricAlert.Scopes != null && metricAlert.Scopes.Any())
+            {
+                info.Append("\n\tScopes: ");
+                foreach (var er in metricAlert.Scopes)
+                {
+                    info.Append("\n\t\tId: ").Append(er);
+                }
+            }
+
+            if (metricAlert.ActionGroupIds != null && metricAlert.ActionGroupIds.Any())
+            {
+                info.Append("\n\tAction Groups: ");
+                foreach (var er in metricAlert.ActionGroupIds)
+                {
+                    info.Append("\n\t\tAction Group Id: ").Append(er);
+                }
+            }
+
+            if (metricAlert.AlertCriterias != null && metricAlert.AlertCriterias.Any())
+            {
+                info.Append("\n\tAlert conditions (when all of is true): ");
+                foreach (var er in metricAlert.AlertCriterias)
+                {
+                    var alertCondition = er.Value;
+                    info.Append("\n\t\tCondition name: ").Append(er.Key)
+                            .Append("\n\t\tSignal name: ").Append(alertCondition.SignalName)
+                            .Append("\n\t\tMetric Namespace: ").Append(alertCondition.MetricNamespace)
+                            .Append("\n\t\tOperator: ").Append(alertCondition.Condition)
+                            .Append("\n\t\tThreshold: ").Append(alertCondition.Threshold)
+                            .Append("\n\t\tTime Aggregation: ").Append(alertCondition.TimeAggregation);
+                    if (alertCondition.Dimensions != null && alertCondition.Dimensions.Any())
+                    {
+                        foreach (var dimon in alertCondition.Dimensions)
+                        {
+                            info.Append("\n\t\tDimension Filter: ").Append("Name [").Append(dimon.Name).Append("] operator [Include] values[");
+                            foreach (var vals in dimon.Values)
+                            {
+                                info.Append(vals).Append(", ");
+                            }
+                            info.Append("]");
+                        }
+                    }
+                }
+            }
+            Utilities.Log(info.ToString());
+        }
+
         public static void CreateCertificate(string domainName, string pfxPath, string password)
         {
             if (!IsRunningMocked)

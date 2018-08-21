@@ -1,0 +1,417 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourcegroups/rgmonitor88799?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlZ3JvdXBzL3JnbW9uaXRvcjg4Nzk5P2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"eastus2\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a9e1e031-e36f-483b-98ce-f25654e4adbe"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.14.0.0",
+          "MacAddressHash/27bca07c7dfb30f306938a7f6944b581657d92e9f588642d600afdd979c10a33"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Aug 2018 00:52:16 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "be274831-1bbb-40d6-b037-c0606cb8550a"
+        ],
+        "x-ms-correlation-request-id": [
+          "be274831-1bbb-40d6-b037-c0606cb8550a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20180821T005216Z:be274831-1bbb-40d6-b037-c0606cb8550a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "182"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799\",\r\n  \"name\": \"rgmonitor88799\",\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjg4Nzk5L3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NlcnZlcmZhcm1zL0hpZ2hseUF2YWlsYWJsZVdlYkFwcHM/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"P1\",\r\n    \"tier\": \"Premium\",\r\n    \"size\": \"P1\"\r\n  },\r\n  \"kind\": \"app\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a0e76bad-80c6-4323-98a1-15093d1b6c78"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "Microsoft.Azure.Management.AppService.Fluent.WebSiteManagementClient/1.14.0.0",
+          "MacAddressHash/27bca07c7dfb30f306938a7f6944b581657d92e9f588642d600afdd979c10a33"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "141"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Aug 2018 00:52:31 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "64c8293b-ce90-4715-a532-b3ca42103948"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "071e6b50-0ff5-488b-a19b-bb0611985353"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20180821T005232Z:071e6b50-0ff5-488b-a19b-bb0611985353"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "1275"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\",\r\n  \"name\": \"HighlyAvailableWebApps\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"serverFarmId\": 8492,\r\n    \"name\": \"HighlyAvailableWebApps\",\r\n    \"workerSize\": \"Default\",\r\n    \"workerSizeId\": 0,\r\n    \"workerTierName\": null,\r\n    \"numberOfWorkers\": 1,\r\n    \"currentWorkerSize\": \"Default\",\r\n    \"currentWorkerSizeId\": 0,\r\n    \"currentNumberOfWorkers\": 1,\r\n    \"status\": \"Ready\",\r\n    \"webSpace\": \"rgmonitor88799-EastUS2webspace\",\r\n    \"subscription\": \"c549f475-dee8-428c-bb19-829a55e52f77\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"maximumNumberOfWorkers\": 20,\r\n    \"planName\": \"VirtualDedicatedPlan\",\r\n    \"adminRuntimeSiteName\": null,\r\n    \"computeMode\": \"Dedicated\",\r\n    \"siteMode\": null,\r\n    \"geoRegion\": \"East US 2\",\r\n    \"perSiteScaling\": false,\r\n    \"numberOfSites\": 0,\r\n    \"hostingEnvironmentId\": null,\r\n    \"isSpot\": false,\r\n    \"spotExpirationTime\": null,\r\n    \"freeOfferExpirationTime\": null,\r\n    \"tags\": {},\r\n    \"kind\": \"app\",\r\n    \"resourceGroup\": \"rgmonitor88799\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"mdmId\": \"waws-prod-bn1-033_8492\",\r\n    \"targetWorkerCount\": 0,\r\n    \"targetWorkerSizeId\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"webSiteId\": null\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"P1\",\r\n    \"tier\": \"Premium\",\r\n    \"size\": \"P1\",\r\n    \"family\": \"P\",\r\n    \"capacity\": 1\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799/providers/microsoft.insights/actionGroups/criticalPerformanceActionGroup?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjg4Nzk5L3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvYWN0aW9uR3JvdXBzL2NyaXRpY2FsUGVyZm9ybWFuY2VBY3Rpb25Hcm91cD9hcGktdmVyc2lvbj0yMDE4LTAzLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"groupShortName\": \"criticalPerf\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"tierOne_-EmailAction-\",\r\n        \"emailAddress\": \"ops_on_duty@performancemonitoring.com\"\r\n      },\r\n      {\r\n        \"name\": \"tierTwo_-EmailAction-\",\r\n        \"emailAddress\": \"ceo@performancemonitoring.com\"\r\n      }\r\n    ],\r\n    \"smsReceivers\": [\r\n      {\r\n        \"name\": \"tierOne_-SMSAction-\",\r\n        \"countryCode\": \"1\",\r\n        \"phoneNumber\": \"4255655665\"\r\n      }\r\n    ],\r\n    \"webhookReceivers\": [\r\n      {\r\n        \"name\": \"tierOne (WH)\",\r\n        \"serviceUri\": \"https://www.weeneedmorepower.performancemonitoring.com\"\r\n      }\r\n    ],\r\n    \"azureAppPushReceivers\": [\r\n      {\r\n        \"name\": \"tierOne_-AzureAppAction-\",\r\n        \"emailAddress\": \"ops_on_duty@performancemonitoring.com\"\r\n      }\r\n    ],\r\n    \"voiceReceivers\": [\r\n      {\r\n        \"name\": \"tierOne_-VoiceAction-\",\r\n        \"countryCode\": \"1\",\r\n        \"phoneNumber\": \"2062066050\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"global\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f81442de-ab35-48c3-b41f-06d6ec341566"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.14.0.0",
+          "MacAddressHash/27bca07c7dfb30f306938a7f6944b581657d92e9f588642d600afdd979c10a33"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1052"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Aug 2018 00:52:33 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ed90e226-a33d-427d-abda-7822d2c21b46"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "0b4513ca-6a40-40bf-b240-2bb5d6400c1c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20180821T005234Z:0b4513ca-6a40-40bf-b240-2bb5d6400c1c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "1132"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799/providers/microsoft.insights/actionGroups/criticalPerformanceActionGroup\",\r\n  \"type\": \"Microsoft.Insights/ActionGroups\",\r\n  \"name\": \"criticalPerformanceActionGroup\",\r\n  \"location\": \"Global\",\r\n  \"kind\": null,\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"groupShortName\": \"criticalPerf\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"tierOne_-EmailAction-\",\r\n        \"emailAddress\": \"ops_on_duty@performancemonitoring.com\",\r\n        \"status\": \"Enabled\"\r\n      },\r\n      {\r\n        \"name\": \"tierTwo_-EmailAction-\",\r\n        \"emailAddress\": \"ceo@performancemonitoring.com\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"smsReceivers\": [\r\n      {\r\n        \"name\": \"tierOne_-SMSAction-\",\r\n        \"countryCode\": \"1\",\r\n        \"phoneNumber\": \"4255655665\",\r\n        \"status\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"webhookReceivers\": [\r\n      {\r\n        \"name\": \"tierOne (WH)\",\r\n        \"serviceUri\": \"https://www.weeneedmorepower.performancemonitoring.com\"\r\n      }\r\n    ],\r\n    \"itsmReceivers\": [],\r\n    \"azureAppPushReceivers\": [\r\n      {\r\n        \"name\": \"tierOne_-AzureAppAction-\",\r\n        \"emailAddress\": \"ops_on_duty@performancemonitoring.com\"\r\n      }\r\n    ],\r\n    \"automationRunbookReceivers\": [],\r\n    \"voiceReceivers\": [\r\n      {\r\n        \"name\": \"tierOne_-VoiceAction-\",\r\n        \"countryCode\": \"1\",\r\n        \"phoneNumber\": \"2062066050\"\r\n      }\r\n    ],\r\n    \"logicAppReceivers\": [],\r\n    \"azureFunctionReceivers\": []\r\n  },\r\n  \"identity\": null\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799/providers/Microsoft.Insights/metricAlerts/Critical%20performance%20alert?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlR3JvdXBzL3JnbW9uaXRvcjg4Nzk5L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW5zaWdodHMvbWV0cmljQWxlcnRzL0NyaXRpY2FsJTIwcGVyZm9ybWFuY2UlMjBhbGVydD9hcGktdmVyc2lvbj0yMDE4LTAzLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"This alert rule is for U5 – Single resource-multiple criteria – with dimensions – with star\",\r\n    \"severity\": 3,\r\n    \"enabled\": true,\r\n    \"scopes\": [\r\n      \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\"\r\n    ],\r\n    \"evaluationFrequency\": \"PT1M\",\r\n    \"windowSize\": \"PT5M\",\r\n    \"criteria\": {\r\n      \"odata.type\": \"Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria\",\r\n      \"allOf\": [\r\n        {\r\n          \"name\": \"Metric1\",\r\n          \"metricName\": \"CPUPercentage\",\r\n          \"metricNamespace\": \"Microsoft.Web/serverfarms\",\r\n          \"operator\": \"GreaterThan\",\r\n          \"timeAggregation\": \"Total\",\r\n          \"threshold\": 80.0,\r\n          \"dimensions\": [\r\n            {\r\n              \"name\": \"Instance\",\r\n              \"operator\": \"Include\",\r\n              \"values\": [\r\n                \"*\"\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"Metric2\",\r\n          \"metricName\": \"MemoryPercentage\",\r\n          \"metricNamespace\": \"Microsoft.Web/serverfarms\",\r\n          \"operator\": \"GreaterThan\",\r\n          \"timeAggregation\": \"Total\",\r\n          \"threshold\": 90.0,\r\n          \"dimensions\": [\r\n            {\r\n              \"name\": \"Instance\",\r\n              \"operator\": \"Include\",\r\n              \"values\": [\r\n                \"RD00155D44CA4E\",\r\n                \"RD07893F35CE3D\",\r\n                \"RD00093E32CE8F\"\r\n              ]\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    },\r\n    \"autoMitigate\": true,\r\n    \"actions\": [\r\n      {\r\n        \"actionGroupId\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799/providers/microsoft.insights/actionGroups/criticalPerformanceActionGroup\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"global\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "831e1636-c1cd-4ebb-8ff2-a239b1e15bfc"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "Microsoft.Azure.Management.Monitor.Fluent.MonitorManagementClient/1.14.0.0",
+          "MacAddressHash/27bca07c7dfb30f306938a7f6944b581657d92e9f588642d600afdd979c10a33"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1884"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Aug 2018 00:52:42 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-request-id": [
+          "4934cb8a-62ee-4408-b518-1ddffbccf125"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "4934cb8a-62ee-4408-b518-1ddffbccf125"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20180821T005243Z:4934cb8a-62ee-4408-b518-1ddffbccf125"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "2162"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"global\",\r\n  \"type\": \"Microsoft.Insights/metricAlerts\",\r\n  \"name\": \"Critical performance alert\",\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799/providers/Microsoft.Insights/metricAlerts/Critical%20performance%20alert\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"description\": \"This alert rule is for U5 – Single resource-multiple criteria – with dimensions – with star\",\r\n    \"severity\": 3,\r\n    \"enabled\": true,\r\n    \"scopes\": [\r\n      \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799/providers/Microsoft.Web/serverfarms/HighlyAvailableWebApps\"\r\n    ],\r\n    \"evaluationFrequency\": \"PT1M\",\r\n    \"windowSize\": \"PT5M\",\r\n    \"templateType\": 8,\r\n    \"criteria\": {\r\n      \"allOf\": [\r\n        {\r\n          \"name\": \"Metric1\",\r\n          \"metricNamespace\": \"Microsoft.Web/serverfarms\",\r\n          \"metricName\": \"CPUPercentage\",\r\n          \"dimensions\": [\r\n            {\r\n              \"name\": \"Instance\",\r\n              \"operator\": \"Include\",\r\n              \"values\": [\r\n                \"*\"\r\n              ]\r\n            }\r\n          ],\r\n          \"operator\": \"GreaterThan\",\r\n          \"threshold\": 80.0,\r\n          \"timeAggregation\": \"Total\"\r\n        },\r\n        {\r\n          \"name\": \"Metric2\",\r\n          \"metricNamespace\": \"Microsoft.Web/serverfarms\",\r\n          \"metricName\": \"MemoryPercentage\",\r\n          \"dimensions\": [\r\n            {\r\n              \"name\": \"Instance\",\r\n              \"operator\": \"Include\",\r\n              \"values\": [\r\n                \"RD00155D44CA4E\",\r\n                \"RD07893F35CE3D\",\r\n                \"RD00093E32CE8F\"\r\n              ]\r\n            }\r\n          ],\r\n          \"operator\": \"GreaterThan\",\r\n          \"threshold\": 90.0,\r\n          \"timeAggregation\": \"Total\"\r\n        }\r\n      ],\r\n      \"odata.type\": \"Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria\"\r\n    },\r\n    \"autoMitigate\": true,\r\n    \"actions\": [\r\n      {\r\n        \"actionGroupId\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799/providers/microsoft.insights/actionGroups/criticalPerformanceActionGroup\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourcegroups/rgmonitor88799?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlZ3JvdXBzL3JnbW9uaXRvcjg4Nzk5P2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "36deda30-9b6f-4654-8796-abc3ab52a289"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.14.0.0",
+          "MacAddressHash/27bca07c7dfb30f306938a7f6944b581657d92e9f588642d600afdd979c10a33"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Aug 2018 00:52:42 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "88ee819d-4820-40c4-9386-99424dd4e3af"
+        ],
+        "x-ms-correlation-request-id": [
+          "88ee819d-4820-40c4-9386-99424dd4e3af"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20180821T005243Z:88ee819d-4820-40c4-9386-99424dd4e3af"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "182"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourceGroups/rgmonitor88799\",\r\n  \"name\": \"rgmonitor88799\",\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/resourcegroups/rgmonitor88799?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzU0OWY0NzUtZGVlOC00MjhjLWJiMTktODI5YTU1ZTUyZjc3L3Jlc291cmNlZ3JvdXBzL3JnbW9uaXRvcjg4Nzk5P2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2c4e4fe7-b988-4c2a-b184-49e7ac00c7e9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "Microsoft.Azure.Management.ResourceManager.Fluent.ResourceManagementClient/1.14.0.0",
+          "MacAddressHash/27bca07c7dfb30f306938a7f6944b581657d92e9f588642d600afdd979c10a33"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Aug 2018 00:52:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/c549f475-dee8-428c-bb19-829a55e52f77/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR01PTklUT1I4ODc5OS1FQVNUVVMyIiwiam9iTG9jYXRpb24iOiJlYXN0dXMyIn0?api-version=2017-05-10"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "c7536150-a3cb-4702-a286-dc9372d8dea7"
+        ],
+        "x-ms-correlation-request-id": [
+          "c7536150-a3cb-4702-a286-dc9372d8dea7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20180821T005244Z:c7536150-a3cb-4702-a286-dc9372d8dea7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    }
+  ],
+  "Names": {
+    "WebAppPerformanceMonitoringAlertsTest": [
+      "samonitor57115",
+      "rgmonitor88799"
+    ]
+  },
+  "Variables": {
+    "ServicePrincipal": "f74ae42a-23b2-4924-ae42-7bd7777b84a6",
+    "AADTenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "SubscriptionId": "c549f475-dee8-428c-bb19-829a55e52f77"
+  }
+}
