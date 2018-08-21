@@ -117,6 +117,26 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return ContainerGroupRestartPolicy.Parse(this.Inner.RestartPolicy);
         }
 
+        public void Restart()
+        {
+            Extensions.Synchronize(() => this.RestartAsync());
+        }
+
+        public async Task RestartAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await this.Manager.Inner.ContainerGroups.RestartAsync(this.ResourceGroupName, this.Name, cancellationToken);
+        }
+
+        public void Stop()
+        {
+            Extensions.Synchronize(() => this.StopAsync());
+        }
+
+        public async Task StopAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await this.Manager.Inner.ContainerGroups.StopAsync(this.ResourceGroupName, this.Name, cancellationToken);
+        }
+
         ///GENMHASH:43FFE67ED1E08092A08C7E35A3244CB2:E6719DA498FFBEA871EB1D1A559ABB37
         public IReadOnlyCollection<Models.EventModel> Events()
         {
