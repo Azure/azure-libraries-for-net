@@ -21,17 +21,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this.Attach();
         }
 
-        /// <param name="createNew">
-        /// Flag whether to create new directory.
-        /// Default is true. If false, then the directory is not created and can be
-        /// any directory path that the user specifies.
-        /// </param>
-        /// <return>The next stage of the definition.</return>
-        Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> Models.OutputDirectorySettings.Definition.IWithCreateNew<BatchAIJob.Definition.IWithCreate>.WithCreateNew(bool createNew)
-        {
-            return this.WithCreateNew(createNew);
-        }
-
         /// <param name="pathPrefix">Path prefix.</param>
         /// <return>The next stage of the definition.</return>
         Models.OutputDirectorySettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> Models.OutputDirectorySettings.Definition.IWithPathPrefix<BatchAIJob.Definition.IWithCreate>.WithPathPrefix(string pathPrefix)

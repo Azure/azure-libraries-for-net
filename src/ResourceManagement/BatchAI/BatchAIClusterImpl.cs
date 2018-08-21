@@ -5,6 +5,7 @@ using System.Linq;
 using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models.HasMountVolumes.Definition;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
@@ -23,23 +24,21 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// Implementation for Cluster and its create and update interfaces.
     /// </summary>
     public partial class BatchAIClusterImpl :
-        GroupableResource<
-            IBatchAICluster,
+        CreatableUpdatable<IBatchAICluster,
             ClusterInner,
             BatchAIClusterImpl,
-            IBatchAIManager,
-            IWithGroup,
-            IWithVMSize,
-            IWithCreate,
-            IUpdate
-            >,
+            IHasId,
+            BatchAICluster.Update.IUpdate>,
         IBatchAICluster,
         IDefinition,
         IUpdate,
         IHasMountVolumes
     {
-        private ClusterCreateParametersInner createParameters = new ClusterCreateParametersInner();
-        private ClusterUpdateParametersInner updateParameters = new ClusterUpdateParametersInner();
+        private BatchAIWorkspaceImpl workspace; 
+
+        private ClusterCreateParameters createParameters = new ClusterCreateParameters();
+        private ScaleSettings scaleSettings = new ScaleSettings();
+
         public Models.ResourceId Subnet()
         {
             return Inner.Subnet;
@@ -74,9 +73,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.UserAccountSettings.AdminUserName;
         }
 
-        public AzureFileShareImpl DefineAzureFileShare()
+        public AzureFileShareImpl<BatchAICluster.Definition.IWithCreate> DefineAzureFileShare()
         {
-            return new AzureFileShareImpl(new AzureFileShareReference(), this);
+            return new AzureFileShareImpl<BatchAICluster.Definition.IWithCreate>(new AzureFileShareReference(), this);
         }
 
         public DateTime CreationTime()
@@ -95,18 +94,23 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             {
                 TargetNodeCount = targetNodeCount
             };
-            if (IsInCreateMode)
+            if (IsInCreateMode())
             {
                 EnsureScaleSettings().Manual = manualScaleSettings;
             }
             else
             {
-                updateParameters.ScaleSettings = new ScaleSettings
+                scaleSettings = new ScaleSettings
                 {
                     Manual = manualScaleSettings
                 };
             }
             return this;
+        }
+
+        private bool IsInCreateMode()
+        {
+            return Inner.Id == null;
         }
 
         ///GENMHASH:8ECD7B3C8DA59F0FC5E941AF96916A64:F82EF884290F848890E0C2FC1B043762
@@ -126,13 +130,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 TargetNodeCount = targetNodeCount,
                 NodeDeallocationOption = deallocationOption
             };
-            if (IsInCreateMode)
+            if (IsInCreateMode())
             {
                 EnsureScaleSettings().Manual = manualScaleSettings;
             }
             else
             {
-                updateParameters.ScaleSettings = new ScaleSettings
+                scaleSettings = new ScaleSettings
                 {
                     Manual = manualScaleSettings
                 };
@@ -163,9 +167,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return createParameters.NodeSetup.MountVolumes;
         }
 
-        protected override async Task<Microsoft.Azure.Management.BatchAI.Fluent.Models.ClusterInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<Microsoft.Azure.Management.BatchAI.Fluent.Models.ClusterInner> GetInnerAsync(CancellationToken cancellationToken)
         {
-            return await Manager.Inner.Clusters.GetAsync(ResourceGroupName, Name, cancellationToken);
+            return await workspace.Manager.Inner.Clusters.GetAsync(workspace.ResourceGroupName, workspace.Name, Name, cancellationToken);
         }
 
         public NodeSetup NodeSetup()
@@ -173,9 +177,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.NodeSetup;
         }
 
-        internal BatchAIClusterImpl(string name, ClusterInner innerObject, IBatchAIManager manager)
-            : base(name, innerObject, manager)
+        internal BatchAIClusterImpl(string name, BatchAIWorkspaceImpl workspace, ClusterInner innerObject)
+            : base(name, innerObject)
         {
+            this.workspace = workspace;
         }
 
         public BatchAIClusterImpl WithSshPublicKey(string sshPublicKey)
@@ -227,8 +232,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> UpdateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            updateParameters.Tags = Inner.Tags;
-            SetInner(await Manager.Inner.Clusters.UpdateAsync(ResourceGroupName, Name, updateParameters));
+            SetInner(await Manager.Inner.Clusters.UpdateAsync(workspace.ResourceGroupName, workspace.Name, Name, scaleSettings, cancellationToken));
             return this;
         }
 
@@ -252,13 +256,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
         
-        public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> CreateResourceAsync(CancellationToken cancellationToken)
         {
-            if (IsInCreateMode)
+            if (IsInCreateMode())
             {
-                createParameters.Location = RegionName;
-                createParameters.Tags = Inner.Tags;
-                SetInner(await Manager.Inner.Clusters.CreateAsync(ResourceGroupName, Name, createParameters, cancellationToken));
+                SetInner(await Manager.Inner.Clusters.CreateAsync(workspace.ResourceGroupName, workspace.Name, Name, createParameters, cancellationToken));
             }
             else
             {
@@ -267,19 +269,19 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        public AzureBlobFileSystemImpl DefineAzureBlobFileSystem()
+        public AzureBlobFileSystemImpl<BatchAICluster.Definition.IWithCreate> DefineAzureBlobFileSystem()
         {
-            return new AzureBlobFileSystemImpl(new AzureBlobFileSystemReference(), this);
+            return new AzureBlobFileSystemImpl<BatchAICluster.Definition.IWithCreate>(new AzureBlobFileSystemReference(), this);
         }
 
-        public FileServerImpl DefineFileServer()
+        public FileServerImpl<BatchAICluster.Definition.IWithCreate> DefineFileServer()
         {
-            return new FileServerImpl(new FileServerReference(), this);
+            return new FileServerImpl<BatchAICluster.Definition.IWithCreate>(new FileServerReference(), this);
         }
 
         public AllocationState AllocationState()
         {
-            return Inner.AllocationState.GetValueOrDefault();
+            return Inner.AllocationState;
         }
 
         private ScaleSettings EnsureScaleSettings()
@@ -379,13 +381,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 MinimumNodeCount = minimumNodeCount,
                 MaximumNodeCount = maximumNodeCount
             };
-            if (IsInCreateMode)
+            if (IsInCreateMode())
             {
                 EnsureScaleSettings().AutoScale = autoScaleSettings;
             }
             else
             {
-                updateParameters.ScaleSettings = new ScaleSettings()
+                scaleSettings = new ScaleSettings()
                 {
                     AutoScale = autoScaleSettings
                 };
@@ -401,13 +403,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 MaximumNodeCount = maximumNodeCount,
                 InitialNodeCount = initialNodeCount
             };
-            if (IsInCreateMode)
+            if (IsInCreateMode())
             {
                 EnsureScaleSettings().AutoScale = autoScaleSettings;
             }
             else
             {
-                updateParameters.ScaleSettings = new ScaleSettings()
+                scaleSettings = new ScaleSettings()
                 {
                     AutoScale = autoScaleSettings
                 };
@@ -438,5 +440,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             return new NodeSetupTaskImpl(new SetupTask(), this);
         }
+
+        string IHasId.Id => Inner.Id;
+
+        public IBatchAIManager Manager => workspace.Manager;
     }
 }

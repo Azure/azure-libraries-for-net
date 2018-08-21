@@ -8,51 +8,22 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using System.Runtime;
-    using System.Runtime.Serialization;
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for AllocationState.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum AllocationState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<AllocationState>))]
+    public class AllocationState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<AllocationState>
     {
-        [EnumMember(Value = "steady")]
-        Steady,
-        [EnumMember(Value = "resizing")]
-        Resizing
-    }
-    internal static class AllocationStateEnumExtension
-    {
-        internal static string ToSerializedValue(this AllocationState? value)
-        {
-            return value == null ? null : ((AllocationState)value).ToSerializedValue();
-        }
-
-        internal static string ToSerializedValue(this AllocationState value)
-        {
-            switch( value )
-            {
-                case AllocationState.Steady:
-                    return "steady";
-                case AllocationState.Resizing:
-                    return "resizing";
-            }
-            return null;
-        }
-
-        internal static AllocationState? ParseAllocationState(this string value)
-        {
-            switch( value )
-            {
-                case "steady":
-                    return AllocationState.Steady;
-                case "resizing":
-                    return AllocationState.Resizing;
-            }
-            return null;
-        }
+        public static readonly AllocationState Steady = Parse("steady");
+        public static readonly AllocationState Resizing = Parse("resizing");
     }
 }

@@ -3,7 +3,6 @@
 
 using Microsoft.Azure.Management.AppService.Fluent;
 using Microsoft.Azure.Management.Batch.Fluent;
-using Microsoft.Azure.Management.Batchai.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.Cdn.Fluent;
 using Microsoft.Azure.Management.Compute.Fluent;
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Management.Fluent
     public class Azure : IAzure
     {
         private IAuthenticated authenticated;
-        
+
         private IResourceManager resourceManager;
         private IStorageManager storageManager;
         private IComputeManager computeManager;
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Management.Fluent
         private IBatchAIManager batchAIManager;
         private IMonitorManager monitorManager;
         private IEventHubManager eventHubManager;
-        
+
         /// <returns>the currently selected subscription ID this client is authenticated to work with</returns>
         public string SubscriptionId
         {
@@ -471,19 +470,11 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
-        public IBatchAIClusters BatchAIClusters
+        public IBatchAIWorkspaces BatchAIWorkspaces
         {
             get
             {
-                return batchAIManager.BatchAIClusters;
-            }
-        }
-
-        public IBatchAIJobs BatchAIJobs
-        {
-            get
-            {
-                return batchAIManager.BatchAIJobs;
+                return batchAIManager.BatchAIWorkspaces;
             }
         }
 
@@ -492,14 +483,6 @@ namespace Microsoft.Azure.Management.Fluent
             get
             {
                 return batchAIManager.BatchAIUsages;
-            }
-        }
-
-        public IBatchAIFileServers BatchAIFileServers
-        {
-            get
-            {
-                return batchAIManager.BatchAIFileServers;
             }
         }
 
@@ -566,7 +549,7 @@ namespace Microsoft.Azure.Management.Fluent
                 return eventHubManager.EventHubDisasterRecoveryPairings;
             }
         }
-        
+
         private Azure(RestClient restClient, string subscriptionId, string tenantId, IAuthenticated authenticated)
         {
             resourceManager = ResourceManager.Fluent.ResourceManager.Authenticate(restClient).WithSubscription(subscriptionId);
@@ -673,7 +656,7 @@ namespace Microsoft.Azure.Management.Fluent
         {
             return new Configurable();
         }
-        
+
         public interface IAuthenticated : IAccessManagement
         {
             string TenantId { get; }
@@ -806,7 +789,7 @@ namespace Microsoft.Azure.Management.Fluent
                 }
             }
         }
-                
+
         public interface IConfigurable : IAzureConfigurable<IConfigurable>
         {
             IAuthenticated Authenticate(AzureCredentials azureCredentials);
@@ -918,17 +901,7 @@ namespace Microsoft.Azure.Management.Fluent
         /// <summary>
         /// Entry point to Batch AI clusters management.
         /// </summary>
-        IBatchAIClusters BatchAIClusters { get; }
-
-        /// <summary>
-        /// Entry point to Batch AI file servers management.
-        /// </summary>
-        IBatchAIFileServers BatchAIFileServers { get; }
-
-        /// <summary>
-        /// Entry point to Batch AI jobs management.
-        /// </summary>
-        IBatchAIJobs BatchAIJobs { get; }
+        IBatchAIWorkspaces BatchAIWorkspaces { get; }
 
         /// <summary>
         /// Entry point to Batch AI usages management.
@@ -959,7 +932,7 @@ namespace Microsoft.Azure.Management.Fluent
     public interface IAzure : IAzureBeta
     {
         /// <summary>
-        /// Gets all underlying management clients 
+        /// Gets all underlying management clients
         /// </summary>
         IEnumerable<IAzureClient> ManagementClients { get; }
 

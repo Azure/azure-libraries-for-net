@@ -8,56 +8,21 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     using Microsoft.Azure.Management.BatchAI.Fluent.AzureBlobFileSystem.Definition;
     using Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
+    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
 
     /// <summary>
     /// Represents Azure blob file system reference.
     /// </summary>
-    public partial class AzureBlobFileSystemImpl  :
+    public partial class AzureBlobFileSystemImpl<ParentT>  :
         IndexableWrapper<AzureBlobFileSystemReference>,
         IAzureBlobFileSystem,
-        IDefinition<BatchAICluster.Definition.IWithCreate>
+        AzureBlobFileSystem.Definition.IDefinition<ParentT>
     {
-        private BatchAIClusterImpl parent;
-        internal  AzureBlobFileSystemImpl(AzureBlobFileSystemReference inner, BatchAIClusterImpl parent)
+        private IHasMountVolumes parent;
+        internal  AzureBlobFileSystemImpl(AzureBlobFileSystemReference inner, ParentT parent)
             : base(inner)
         {
-            this.parent = parent;
-        }
-
-        public AzureBlobFileSystemImpl WithKeyVaultSecretReference(KeyVaultSecretReference keyVaultSecretReference)
-        {
-            EnsureCredentials().AccountKeySecretReference = keyVaultSecretReference;
-            return this;
-        }
-
-        public AzureBlobFileSystemImpl WithAccountKey(string accountKey)
-        {
-            EnsureCredentials().AccountKey = accountKey;
-            return this;
-        }
-
-        public AzureBlobFileSystemImpl WithMountOptions(string mountOptions)
-        {
-            Inner.MountOptions = mountOptions;
-            return this;
-        }
-
-        public IDefinition<BatchAICluster.Definition.IWithCreate> WithStorageAccountName(string storageAccountName)
-        {
-            Inner.AccountName = storageAccountName;
-            return this;
-        }
-
-        public IWithCreate Attach()
-        {
-            parent.AttachAzureBlobFileSystem(this);
-            return parent;
-        }
-
-        public IDefinition<BatchAICluster.Definition.IWithCreate> WithRelativeMountPath(string mountPath)
-        {
-            Inner.RelativeMountPath = mountPath;
-            return this;
+            this.parent = (IHasMountVolumes) parent;
         }
 
         private AzureStorageCredentialsInfo EnsureCredentials()
@@ -68,9 +33,45 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.Credentials;
         }
 
-        public AzureBlobFileSystemImpl WithContainerName(string containerName)
+        AzureBlobFileSystemImpl<ParentT> WithStorageAccountName(string storageAccountName)
+        {
+            Inner.AccountName = storageAccountName;
+            return this;
+        }
+
+        AzureBlobFileSystemImpl<ParentT> WithContainerName(string containerName)
         {
             Inner.ContainerName = containerName;
+            return this;
+        }
+
+        AzureBlobFileSystemImpl<ParentT> WithRelativeMountPath(string mountPath)
+        {
+            Inner.RelativeMountPath = mountPath;
+            return this;
+        }
+
+        AzureBlobFileSystemImpl<ParentT> WithKeyVaultSecretReference(KeyVaultSecretReference keyVaultSecretReference)
+        {
+            EnsureCredentials().AccountKeySecretReference = keyVaultSecretReference;
+            return this;
+        }
+
+        AzureBlobFileSystemImpl<ParentT> WithAccountKey(string accountKey)
+        {
+            EnsureCredentials().AccountKey = accountKey;
+            return this;
+        }
+
+        ParentT IInDefinition<ParentT>.Attach()
+        {
+            parent.AttachAzureBlobFileSystem(this);
+            return (ParentT)parent;
+        }
+
+        AzureBlobFileSystemImpl<ParentT> WithMountOptions(string mountOptions)
+        {
+            Inner.MountOptions = mountOptions;
             return this;
         }
     }

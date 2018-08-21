@@ -12,55 +12,55 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Represents Azure file share reference.
     /// </summary>
-    public partial class AzureFileShareImpl  :
+    public partial class AzureFileShareImpl<ParentT>  :
         IndexableWrapper<Microsoft.Azure.Management.BatchAI.Fluent.Models.AzureFileShareReference>,
         IAzureFileShare,
-        IDefinition<BatchAICluster.Definition.IWithCreate>
+        IDefinition<ParentT>
     {
-        private BatchAIClusterImpl parent;
-        public IWithAttach<BatchAICluster.Definition.IWithCreate> WithFileMode(string fileMode)
+        private IHasMountVolumes parent;
+        public AzureFileShareImpl<ParentT> WithFileMode(string fileMode)
         {
             Inner.FileMode = fileMode;
             return this;
         }
 
-        internal  AzureFileShareImpl(AzureFileShareReference inner, BatchAIClusterImpl parent)
+        internal  AzureFileShareImpl(AzureFileShareReference inner, ParentT parent)
             :base(inner)
         {
-            this.parent = parent;
+            this.parent = (IHasMountVolumes)parent;
         }
 
-        public IWithAttach<BatchAICluster.Definition.IWithCreate> WithKeyVaultSecretReference(KeyVaultSecretReference keyVaultSecretReference)
+        public AzureFileShareImpl<ParentT> WithKeyVaultSecretReference(KeyVaultSecretReference keyVaultSecretReference)
         {
             EnsureCredentials().AccountKeySecretReference = keyVaultSecretReference;
             return this;
         }
 
-        public IWithAttach<BatchAICluster.Definition.IWithCreate> WithAccountKey(string accountKey)
+        public AzureFileShareImpl<ParentT> WithAccountKey(string accountKey)
         {
             EnsureCredentials().AccountKey = accountKey;
             return this;
         }
 
-        public IDefinition<BatchAICluster.Definition.IWithCreate> WithStorageAccountName(string storageAccountName)
+        public AzureFileShareImpl<ParentT> WithStorageAccountName(string storageAccountName)
         {
             Inner.AccountName = storageAccountName;
             return this;
         }
 
-        public IDefinition<BatchAICluster.Definition.IWithCreate> WithAzureFileUrl(string azureFileUrl)
+        public AzureFileShareImpl<ParentT> WithAzureFileUrl(string azureFileUrl)
         {
             Inner.AzureFileUrl = azureFileUrl;
             return this;
         }
 
-        public IWithCreate Attach()
+        public ParentT Attach()
         {
             parent.AttachAzureFileShare(this);
-            return parent;
+            return (ParentT) parent;
         }
 
-        public IDefinition<BatchAICluster.Definition.IWithCreate> WithRelativeMountPath(string mountPath)
+        public AzureFileShareImpl<ParentT> WithRelativeMountPath(string mountPath)
         {
             Inner.RelativeMountPath = mountPath;
             return this;
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.Credentials;
         }
 
-        public IWithAttach<BatchAICluster.Definition.IWithCreate> WithDirectoryMode(string directoryMode)
+        public AzureFileShareImpl<ParentT> WithDirectoryMode(string directoryMode)
         {
             Inner.DirectoryMode = directoryMode;
             return this;
