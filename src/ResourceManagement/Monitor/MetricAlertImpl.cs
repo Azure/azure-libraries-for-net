@@ -233,9 +233,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:1350F1101BA21E04B29D498C2E0AA500:C7B841429CEB812AD0A4C96DFAFF636B
         public MetricAlertImpl WithoutAutoMitigation()
         {
-            //$ this.Inner.WithAutoMitigate(false);
-            //$ return this;
-
+            this.Inner.AutoMitigate = false;
             return this;
         }
 

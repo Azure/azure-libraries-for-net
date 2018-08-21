@@ -689,7 +689,6 @@ namespace Fluent.Tests
             }
         }
 
-
         private void CheckDiagnosticSettingValues(IDiagnosticSetting expected, IDiagnosticSetting actual)
         {
             Assert.Equal(expected.ResourceId, actual.ResourceId, ignoreCase: true);
