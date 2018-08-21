@@ -43,22 +43,37 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             }
         }
 
-        /// <return>The entry point to Batch AI clusters management API for this workspace.</return>
-        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIClusters Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace.Clusters()
+        /// <summary>
+        /// Gets the entry point to Batch AI clusters management API for this workspace.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIClusters Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace.Clusters
         {
-            return this.Clusters();
+            get
+            {
+                return this.Clusters();
+            }
         }
 
-        /// <return>The entry point to Batch AI experiments management API for this workspace.</return>
-        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiments Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace.Experiments()
+        /// <summary>
+        /// Gets the entry point to Batch AI experiments management API for this workspace.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiments Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace.Experiments
         {
-            return this.Experiments();
+            get
+            {
+                return this.Experiments();
+            }
         }
 
-        /// <return>The entry point to Batch AI file servers management API for this workspace.</return>
-        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServers Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace.FileServers()
+        /// <summary>
+        /// Gets the entry point to Batch AI file servers management API for this workspace.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServers Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace.FileServers
         {
-            return this.FileServers();
+            get
+            {
+                return this.FileServers();
+            }
         }
     }
 }

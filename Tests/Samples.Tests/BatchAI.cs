@@ -15,7 +15,7 @@ namespace Samples.Tests
         {
         }
 
-        [Fact(Skip = "Using Storage API calls that cannot be recorded")]
+        [Fact]
         [Trait("Samples", "BatchAI")]
         public void ManageBatchAITest()
         {

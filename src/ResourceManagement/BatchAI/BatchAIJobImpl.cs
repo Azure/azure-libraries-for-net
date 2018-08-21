@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected override async Task<JobInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await workspace.Manager.Inner.Jobs.GetAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, Name);
+            return await workspace.Manager.Inner.Jobs.GetAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, Name, cancellationToken);
         }
 
         public JobPropertiesConstraints Constraints()
@@ -572,13 +572,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public BatchAIJobImpl WithUnmanagedFileSystem(string mountCommand, string relativeMountPath)
         {
-            //$ MountVolumes mountVolumes = ensureMountVolumes();
-            //$ if (mountVolumes.UnmanagedFileSystems() == null) {
-            //$ mountVolumes.WithUnmanagedFileSystems(new ArrayList<UnmanagedFileSystemReference>());
-            //$ }
-            //$ mountVolumes.UnmanagedFileSystems().Add(new UnmanagedFileSystemReference().WithMountCommand(mountCommand).WithRelativeMountPath(relativeMountPath));
-            //$ return this;
-
+            MountVolumes mountVolumes = EnsureMountVolumes();
+            if (mountVolumes.UnmanagedFileSystems == null)
+            {
+                mountVolumes.UnmanagedFileSystems = new List<UnmanagedFileSystemReference>();
+            }
+            mountVolumes.UnmanagedFileSystems.Add(new UnmanagedFileSystemReference(mountCommand, relativeMountPath));
             return this;
         }
     }

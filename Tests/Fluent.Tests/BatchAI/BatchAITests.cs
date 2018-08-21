@@ -61,7 +61,7 @@ namespace Fluent.Tests
                         .WithSubnet(subnetName, "192.168.200.0/24")
                         .Create();
 
-                    IBatchAICluster cluster = workspace.Clusters().Define(clusterName)
+                    IBatchAICluster cluster = workspace.Clusters.Define(clusterName)
                         .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
                         .WithUserName(userName)
                         .WithPassword("MyPassword")
@@ -138,9 +138,9 @@ namespace Fluent.Tests
                         .WithRegion(REGION)
                         .WithNewResourceGroup(groupName)
                         .Create();
-                    IBatchAIExperiment experiment = workspace.Experiments().Define(experimentName).Create();
+                    IBatchAIExperiment experiment = workspace.Experiments.Define(experimentName).Create();
 
-                    IBatchAICluster cluster = workspace.Clusters().Define(clusterName)
+                    IBatchAICluster cluster = workspace.Clusters.Define(clusterName)
                         .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
                         .WithUserName(userName)
                         .WithPassword("MyPassword")
@@ -217,7 +217,7 @@ namespace Fluent.Tests
                         .WithSubnet(subnetName, "192.168.200.0/24")
                         .Create();
 
-                    IBatchAIFileServer fileServer = workspace.FileServers().Define(fsName)
+                    IBatchAIFileServer fileServer = workspace.FileServers.Define(fsName)
                         .WithDataDisks(10, 2, StorageAccountType.StandardLRS, CachingType.Readwrite)
                         .WithVMSize(VirtualMachineSizeTypes.StandardD1V2.Value)
                         .WithUserName(userName)

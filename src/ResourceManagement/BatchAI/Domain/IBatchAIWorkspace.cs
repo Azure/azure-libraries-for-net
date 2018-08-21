@@ -35,13 +35,19 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         /// </summary>
         System.DateTime ProvisioningStateTransitionTime { get; }
 
-        /// <return>The entry point to Batch AI clusters management API for this workspace.</return>
-        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIClusters Clusters();
+        /// <summary>
+        /// Gets the entry point to Batch AI clusters management API for this workspace.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIClusters Clusters { get; }
 
-        /// <return>The entry point to Batch AI experiments management API for this workspace.</return>
-        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiments Experiments();
+        /// <summary>
+        /// Gets the entry point to Batch AI experiments management API for this workspace.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiments Experiments { get; }
 
-        /// <return>The entry point to Batch AI file servers management API for this workspace.</return>
-        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServers FileServers();
+        /// <summary>
+        /// Gets the entry point to Batch AI file servers management API for this workspace.
+        /// </summary>
+        Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIFileServers FileServers { get; }
     }
 }

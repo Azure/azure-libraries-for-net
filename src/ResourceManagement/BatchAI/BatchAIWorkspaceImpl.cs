@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class BatchAIWorkspaceImpl  :
+    public partial class BatchAIWorkspaceImpl :
         GroupableResource<IBatchAIWorkspace,
             WorkspaceInner,
             BatchAIWorkspaceImpl,
@@ -35,26 +35,27 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
         }
 
-        protected override async Task<Microsoft.Azure.Management.BatchAI.Fluent.Models.WorkspaceInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<Microsoft.Azure.Management.BatchAI.Fluent.Models.WorkspaceInner> GetInnerAsync(CancellationToken cancellationToken)
         {
             return await this.Manager.Inner.Workspaces.GetAsync(this.ResourceGroupName, this.Name);
         }
 
         public IBatchAIClusters Clusters()
         {
-            if (clusters == null) {
+            if (clusters == null)
+            {
                 clusters = new BatchAIClustersImpl(this);
             }
             return clusters;
         }
 
-         public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace> CreateResourceAsync(CancellationToken cancellationToken)
         {
             WorkspaceCreateParameters createParameters = new WorkspaceCreateParameters();
             createParameters.Location = this.RegionName;
             createParameters.Tags = this.Inner.Tags;
             SetInner(await this.Manager.Inner.Workspaces.CreateAsync(ResourceGroupName, Name, createParameters));
-            
+
             return this;
         }
 
@@ -65,7 +66,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public IBatchAIExperiments Experiments()
         {
-            if (experiments == null) {
+            if (experiments == null)
+            {
                 experiments = new BatchAIExperimentsImpl(this);
             }
             return experiments;
@@ -73,7 +75,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public IBatchAIFileServers FileServers()
         {
-            if (fileServers == null) {
+            if (fileServers == null)
+            {
                 fileServers = new BatchAIFileServersImpl(this);
             }
             return fileServers;

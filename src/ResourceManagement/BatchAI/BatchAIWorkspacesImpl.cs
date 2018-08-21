@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using Microsoft.Azure.Management.BatchAI.Fluent;
-using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition;
 using Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Update;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
@@ -83,7 +82,5 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             }
             return new BatchAIWorkspaceImpl(inner.Name, inner, this.Manager);
         }
-
-        public IWorkspacesOperations Inner { get; }
     }
 }

@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected override async Task<Microsoft.Azure.Management.BatchAI.Fluent.Models.ExperimentInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await workspace.Manager.Inner.Experiments.GetAsync(workspace.ResourceGroupName, workspace.Name, this.Name);
+            return await workspace.Manager.Inner.Experiments.GetAsync(workspace.ResourceGroupName, workspace.Name, this.Name, cancellationToken);
         }
 
         public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            SetInner(await workspace.Manager.Inner.Experiments.CreateAsync(workspace.ResourceGroupName, workspace.Name, Name));
+            SetInner(await workspace.Manager.Inner.Experiments.CreateAsync(workspace.ResourceGroupName, workspace.Name, Name, cancellationToken));
             return this;
         }
 

@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        private Boolean IsInCreateMode()
+        private bool IsInCreateMode()
         {
             return Inner.Id == null;
         }
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return createParameters.NodeSetup.MountVolumes;
         }
 
-        protected override async Task<Microsoft.Azure.Management.BatchAI.Fluent.Models.ClusterInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
+        protected override async Task<Microsoft.Azure.Management.BatchAI.Fluent.Models.ClusterInner> GetInnerAsync(CancellationToken cancellationToken)
         {
             return await workspace.Manager.Inner.Clusters.GetAsync(workspace.ResourceGroupName, workspace.Name, Name, cancellationToken);
         }
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> UpdateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            SetInner(await Manager.Inner.Clusters.UpdateAsync(workspace.ResourceGroupName, workspace.Name, Name, scaleSettings));
+            SetInner(await Manager.Inner.Clusters.UpdateAsync(workspace.ResourceGroupName, workspace.Name, Name, scaleSettings, cancellationToken));
             return this;
         }
 
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
         
-        public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> CreateResourceAsync(CancellationToken cancellationToken)
         {
             if (IsInCreateMode())
             {

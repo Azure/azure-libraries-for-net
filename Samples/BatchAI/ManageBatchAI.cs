@@ -88,13 +88,13 @@ namespace ManageBatchAI
                     .WithRegion(region)
                     .WithNewResourceGroup(rgName)
                     .Create();
-                IBatchAIExperiment experiment = workspace.Experiments().Define(experimentName).Create();
+                IBatchAIExperiment experiment = workspace.Experiments.Define(experimentName).Create();
 
 
                 //=============================================================
                 // Create Batch AI cluster that uses Azure file share to host the training data and scripts for the learning job
                 Utilities.Log("Creating Batch AI cluster...");
-                IBatchAICluster cluster = workspace.Clusters().Define(clusterName)
+                IBatchAICluster cluster = workspace.Clusters.Define(clusterName)
                     .WithVMSize(VirtualMachineSizeTypes.StandardNC6.Value)
                     .WithUserName(userName)
                     .WithPassword("MyPassword")

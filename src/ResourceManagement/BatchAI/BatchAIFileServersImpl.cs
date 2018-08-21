@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public IBatchAIFileServer GetById(string id)
         {
             ResourceId resourceId = ResourceId.FromString(id);
-            return WrapModel(Extensions.Synchronize(() => workspace.Manager.Inner.FileServers.GetAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name)));
+            return WrapModel(Extensions.Synchronize(() => Inner.GetAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name)));
         }
 
         public async Task<IBatchAIFileServer> GetByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())

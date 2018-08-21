@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public override async Task DeleteByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             ResourceId resourceId = ResourceId.FromString(id);
-            await Inner.DeleteAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name);
+            await Inner.DeleteAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name, cancellationToken);
         }
 
         public void DeleteByName(string name)
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public async Task DeleteByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Inner.DeleteAsync(workspace.ResourceGroupName, workspace.Name, name);
+            await Inner.DeleteAsync(workspace.ResourceGroupName, workspace.Name, name, cancellationToken);
         }
 
         public IBatchAIExperiment GetById(string id)
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment> GetByIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             ResourceId resourceId = ResourceId.FromString(id);
-            return WrapModel(await Inner.GetAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name));
+            return WrapModel(await Inner.GetAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name, cancellationToken));
         }
 
         public IBatchAIExperiment GetByName(string name)
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIExperiment> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, name));
+            return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, name, cancellationToken));
         }
 
         public IExperimentsOperations Inner
