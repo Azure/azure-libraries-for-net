@@ -136,7 +136,14 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                             TenantId, new ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate), adSettings, TokenCache.DefaultShared);
                     }
 #endif
-                    else if(servicePrincipalLoginInformation.Certificate != null)
+#if NET461
+                    else if (servicePrincipalLoginInformation.X509Certificate != null)
+                    {
+                        credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
+                            TenantId, new Microsoft.Rest.Azure.Authentication.ClientAssertionCertificate(servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.X509Certificate), adSettings, TokenCache.DefaultShared);
+                    }
+#endif
+                    else if (servicePrincipalLoginInformation.Certificate != null)
                     {
                         credentialsCache[adSettings.TokenAudience] = await ApplicationTokenProvider.LoginSilentAsync(
                             TenantId, servicePrincipalLoginInformation.ClientId, servicePrincipalLoginInformation.Certificate, servicePrincipalLoginInformation.CertificatePassword, adSettings, TokenCache.DefaultShared);
@@ -146,7 +153,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                         throw new RestException($"Cannot communicate with server. ServicePrincipalLoginInformation should contain either a valid ClientSecret or Certificate information.");
                     }
                 }
-#if !NETSTANDARD
+#if (!NETSTANDARD && !NET461)
                 else if (userLoginInformation != null)
                 {
                     credentialsCache[adSettings.TokenAudience] = await UserTokenProvider.LoginSilentAsync(
