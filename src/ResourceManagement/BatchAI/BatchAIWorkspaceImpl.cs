@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             WorkspaceCreateParameters createParameters = new WorkspaceCreateParameters();
             createParameters.Location = this.RegionName;
             createParameters.Tags = this.Inner.Tags;
-            SetInner(await this.Manager.Inner.Workspaces.CreateAsync(ResourceGroupName, Name, createParameters));
+            SetInner(await this.Manager.Inner.Workspaces.CreateAsync(ResourceGroupName, Name, createParameters, cancellationToken));
 
             return this;
         }

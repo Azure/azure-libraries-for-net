@@ -115,8 +115,8 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             await Inner.DeleteAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, name, cancellationToken);
         }
 
-        public IJobsOperations Inner { get; }
-        public BatchAIManager Manager { get; }
+        public IJobsOperations Inner => Manager.Inner.Jobs;
+        public IBatchAIManager Manager => workspace.Manager;
 
         IBatchAIExperiment IHasParent<IBatchAIExperiment>.Parent => experiment;
 

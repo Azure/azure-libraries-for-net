@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected async Task DeleteInnerAsync(string groupName, string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await this.Inner.DeleteAsync(groupName, name);
+            await this.Inner.DeleteAsync(groupName, name, cancellationToken);
         }
 
         protected override BatchAIWorkspaceImpl WrapModel(string name)

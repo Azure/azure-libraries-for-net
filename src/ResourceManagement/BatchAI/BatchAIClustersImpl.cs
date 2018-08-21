@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, name));
+            return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, name, cancellationToken));
         }
 
         public void DeleteByName(string name)
