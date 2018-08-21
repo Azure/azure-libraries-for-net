@@ -102,7 +102,7 @@ namespace Fluent.Tests.Network
                     Assert.Equal(0, rule2.SourceApplicationSecurityGroupIds.Count);
                     Assert.Null(rule2.SourceAddressPrefix);
                     Assert.Equal(2, rule2.SourceAddressPrefixes.Count);
-                    Assert.True(rule2.SourceAddressPrefixes.Contains("100.1.0.0/29"));
+                    Assert.Contains("100.1.0.0/29", rule2.SourceAddressPrefixes);
                     Assert.Equal(1, rule2.SourcePortRanges.Count);
                     Assert.Equal("88-90", rule2.SourcePortRanges.ElementAt(0));
 
