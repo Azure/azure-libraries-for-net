@@ -120,6 +120,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:4FD71958F542A872CEE597B1CEA332F8:AB2BC7CCCA80EFA2219ABEAE56789805
         internal PublicIPAddressImpl WithLeafDomainLabel(string dnsName)
         {
+            if (Inner.DnsSettings == null)
+            {
+                Inner.DnsSettings = new PublicIPAddressDnsSettings();
+            }
             Inner.DnsSettings.DomainNameLabel = dnsName?.ToLower();
             return this;
         }
@@ -135,6 +139,10 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:0A9A497E14DD1A2758E52AC9D42D71E4:D54DE8ED5EB6D0455BCE0CD34D01FF08
         internal PublicIPAddressImpl WithReverseFqdn(string reverseFqdn)
         {
+            if (Inner.DnsSettings == null)
+            {
+                Inner.DnsSettings = new PublicIPAddressDnsSettings();
+            }
             Inner.DnsSettings.ReverseFqdn = reverseFqdn.ToLower();
             return this;
         }
