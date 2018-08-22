@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             //$ super(name, innerObject, manager);
             if (this.Inner.AgentPoolProfiles == null)
             {
-                this.Inner.AgentPoolProfiles = new List<ContainerServiceAgentPoolProfile>();
+                this.Inner.AgentPoolProfiles = new List<ManagedClusterAgentPoolProfile>();
             }
 
             this.adminKubeConfigContent = null;
@@ -171,19 +171,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this.Inner.LinuxProfile.Ssh.PublicKeys[0].KeyData;
         }
 
-        ///GENMHASH:048D31D4D88B263A0EA3CF2218458D9B:D9B188AA53AD55835CC0103D71FA4805
-        public KeyVaultSecretRef KeyVaultSecretReference()
-        {
-            if (this.Inner.ServicePrincipalProfile != null)
-            {
-                return this.Inner.ServicePrincipalProfile.KeyVaultSecretRef;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         ///GENMHASH:59348A25FD515049ECD26A6290F76B85:99DA2F06545702040B219110889AFC52
         public string DnsPrefix()
         {
@@ -285,7 +272,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         ///GENMHASH:3AD7800EEDA5002D343D541EF5BF6C59:87DD93F81EE748EBF7453FBA2AF71B16
         public KubernetesClusterImpl WithServicePrincipalClientId(string clientId)
         {
-            this.Inner.ServicePrincipalProfile = new ContainerServiceServicePrincipalProfile() { ClientId = clientId };
+            this.Inner.ServicePrincipalProfile = new ManagedClusterServicePrincipalProfile() { ClientId = clientId };
 
             return this;
         }
@@ -298,36 +285,10 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this;
         }
 
-        ///GENMHASH:F67AAA7822A5DCD4D5C72EF349C697BC:A854C60681F248A80A13DB65B15391E5
-        public KubernetesClusterImpl WithKeyVaultReference(string vaultId)
-        {
-            this.Inner.ServicePrincipalProfile.Secret = null;
-            this.Inner.ServicePrincipalProfile.KeyVaultSecretRef = new KeyVaultSecretRef() { VaultID = vaultId };
-
-            return this;
-        }
-
-        ///GENMHASH:58C54A75D06ABFFA3A6E970ADB9F88A3:4895D1DEEC5C6A3BFC09C0CF5D301EA5
-        public KubernetesClusterImpl WithKeyVaultSecret(string secretName, string secretVersion)
-        {
-            this.Inner.ServicePrincipalProfile.KeyVaultSecretRef.SecretName = secretName;
-            this.Inner.ServicePrincipalProfile.KeyVaultSecretRef.Version = secretVersion;
-
-            return this;
-        }
-
-        ///GENMHASH:8C3D6163D348B79C58B6C226EB37BA1B:719CEE0C578D3F2A28E53B9EFE90DBDE
-        public KubernetesClusterImpl WithKeyVaultSecret(string secretName)
-        {
-            this.Inner.ServicePrincipalProfile.KeyVaultSecretRef.SecretName = secretName;
-
-            return this;
-        }
-
         ///GENMHASH:6A72E02437FDFE34B555349311EFC1FF:1242B313FA0B285B3216EBAAC61FA3DD
         public KubernetesClusterAgentPoolImpl DefineAgentPool(string name)
         {
-            ContainerServiceAgentPoolProfile innerPoolProfile = new ContainerServiceAgentPoolProfile() { Name = name };
+            ManagedClusterAgentPoolProfile innerPoolProfile = new ManagedClusterAgentPoolProfile() { Name = name };
 
             return new KubernetesClusterAgentPoolImpl(innerPoolProfile, this);
         }

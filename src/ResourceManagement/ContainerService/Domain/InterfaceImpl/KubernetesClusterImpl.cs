@@ -24,27 +24,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
-        /// Specifies the KeyVault secret.
-        /// </summary>
-        /// <param name="secretName">The KeyVault reference to the secret which stores the password associated with the service principal.</param>
-        /// <return>The next stage of the definition.</return>
-        KubernetesCluster.Definition.IWithAgentPool KubernetesCluster.Definition.IWithKeyVaultSecret.WithKeyVaultSecret(string secretName)
-        {
-            return this.WithKeyVaultSecret(secretName);
-        }
-
-        /// <summary>
-        /// Specifies the KeyVault secret and the version of it.
-        /// </summary>
-        /// <param name="secretName">The KeyVault reference to the secret which stores the password associated with the service principal.</param>
-        /// <param name="secretVersion">The KeyVault secret version to be used.</param>
-        /// <return>The next stage of the definition.</return>
-        KubernetesCluster.Definition.IWithAgentPool KubernetesCluster.Definition.IWithKeyVaultSecret.WithKeyVaultSecret(string secretName, string secretVersion)
-        {
-            return this.WithKeyVaultSecret(secretName, secretVersion);
-        }
-
-        /// <summary>
         /// Begins the definition to specify Linux ssh key.
         /// </summary>
         /// <param name="sshKeyData">The SSH key data.</param>
@@ -144,16 +123,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
-        /// Properties for cluster service principals.
-        /// </summary>
-        /// <param name="vaultId">The ID for the service principal.</param>
-        /// <return>The next stage.</return>
-        KubernetesCluster.Definition.IWithKeyVaultSecret KubernetesCluster.Definition.IWithServicePrincipalProfile.WithKeyVaultReference(string vaultId)
-        {
-            return this.WithKeyVaultReference(vaultId);
-        }
-
-        /// <summary>
         /// Gets the Linux root username.
         /// </summary>
         string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.LinuxRootUsername
@@ -172,17 +141,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             get
             {
                 return this.ServicePrincipalSecret();
-            }
-        }
-
-        /// <summary>
-        /// Gets the key vault reference to the service principal secret.
-        /// </summary>
-        Models.KeyVaultSecretRef Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster.KeyVaultSecretReference
-        {
-            get
-            {
-                return this.KeyVaultSecretReference();
             }
         }
 

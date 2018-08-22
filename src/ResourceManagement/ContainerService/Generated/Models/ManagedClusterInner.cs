@@ -35,28 +35,43 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// </summary>
         /// <param name="provisioningState">The current deployment or
         /// provisioning state, which only appears in the response.</param>
+        /// <param name="kubernetesVersion">Version of Kubernetes specified
+        /// when creating the managed cluster.</param>
         /// <param name="dnsPrefix">DNS prefix specified when creating the
         /// managed cluster.</param>
         /// <param name="fqdn">FDQN for the master pool.</param>
-        /// <param name="kubernetesVersion">Version of Kubernetes specified
-        /// when creating the managed cluster.</param>
         /// <param name="agentPoolProfiles">Properties of the agent
         /// pool.</param>
         /// <param name="linuxProfile">Profile for Linux VMs in the container
         /// service cluster.</param>
         /// <param name="servicePrincipalProfile">Information about a service
         /// principal identity for the cluster to use for manipulating Azure
-        /// APIs. Either secret or keyVaultSecretRef must be specified.</param>
-        public ManagedClusterInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string dnsPrefix = default(string), string fqdn = default(string), string kubernetesVersion = default(string), IList<ContainerServiceAgentPoolProfile> agentPoolProfiles = default(IList<ContainerServiceAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ContainerServiceServicePrincipalProfile servicePrincipalProfile = default(ContainerServiceServicePrincipalProfile))
+        /// APIs.</param>
+        /// <param name="addonProfiles">Profile of managed cluster
+        /// add-on.</param>
+        /// <param name="nodeResourceGroup">Name of the resource group
+        /// containing agent pool nodes.</param>
+        /// <param name="enableRBAC">Whether to enable Kubernetes Role-Based
+        /// Access Control.</param>
+        /// <param name="networkProfile">Profile of network
+        /// configuration.</param>
+        /// <param name="aadProfile">Profile of Azure Active Directory
+        /// configuration.</param>
+        public ManagedClusterInner(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), string kubernetesVersion = default(string), string dnsPrefix = default(string), string fqdn = default(string), IList<ManagedClusterAgentPoolProfile> agentPoolProfiles = default(IList<ManagedClusterAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ManagedClusterServicePrincipalProfile servicePrincipalProfile = default(ManagedClusterServicePrincipalProfile), IDictionary<string, ManagedClusterAddonProfile> addonProfiles = default(IDictionary<string, ManagedClusterAddonProfile>), string nodeResourceGroup = default(string), bool? enableRBAC = default(bool?), ContainerServiceNetworkProfile networkProfile = default(ContainerServiceNetworkProfile), ManagedClusterAADProfile aadProfile = default(ManagedClusterAADProfile))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
+            KubernetesVersion = kubernetesVersion;
             DnsPrefix = dnsPrefix;
             Fqdn = fqdn;
-            KubernetesVersion = kubernetesVersion;
             AgentPoolProfiles = agentPoolProfiles;
             LinuxProfile = linuxProfile;
             ServicePrincipalProfile = servicePrincipalProfile;
+            AddonProfiles = addonProfiles;
+            NodeResourceGroup = nodeResourceGroup;
+            EnableRBAC = enableRBAC;
+            NetworkProfile = networkProfile;
+            AadProfile = aadProfile;
             CustomInit();
         }
 
@@ -73,6 +88,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets or sets version of Kubernetes specified when creating the
+        /// managed cluster.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.kubernetesVersion")]
+        public string KubernetesVersion { get; set; }
+
+        /// <summary>
         /// Gets or sets DNS prefix specified when creating the managed
         /// cluster.
         /// </summary>
@@ -86,17 +108,10 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         public string Fqdn { get; private set; }
 
         /// <summary>
-        /// Gets or sets version of Kubernetes specified when creating the
-        /// managed cluster.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.kubernetesVersion")]
-        public string KubernetesVersion { get; set; }
-
-        /// <summary>
         /// Gets or sets properties of the agent pool.
         /// </summary>
         [JsonProperty(PropertyName = "properties.agentPoolProfiles")]
-        public IList<ContainerServiceAgentPoolProfile> AgentPoolProfiles { get; set; }
+        public IList<ManagedClusterAgentPoolProfile> AgentPoolProfiles { get; set; }
 
         /// <summary>
         /// Gets or sets profile for Linux VMs in the container service
@@ -107,11 +122,41 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
 
         /// <summary>
         /// Gets or sets information about a service principal identity for the
-        /// cluster to use for manipulating Azure APIs. Either secret or
-        /// keyVaultSecretRef must be specified.
+        /// cluster to use for manipulating Azure APIs.
         /// </summary>
         [JsonProperty(PropertyName = "properties.servicePrincipalProfile")]
-        public ContainerServiceServicePrincipalProfile ServicePrincipalProfile { get; set; }
+        public ManagedClusterServicePrincipalProfile ServicePrincipalProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile of managed cluster add-on.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.addonProfiles")]
+        public IDictionary<string, ManagedClusterAddonProfile> AddonProfiles { get; set; }
+
+        /// <summary>
+        /// Gets name of the resource group containing agent pool nodes.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.nodeResourceGroup")]
+        public string NodeResourceGroup { get; private set; }
+
+        /// <summary>
+        /// Gets or sets whether to enable Kubernetes Role-Based Access
+        /// Control.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.enableRBAC")]
+        public bool? EnableRBAC { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile of network configuration.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.networkProfile")]
+        public ContainerServiceNetworkProfile NetworkProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile of Azure Active Directory configuration.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.aadProfile")]
+        public ManagedClusterAADProfile AadProfile { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -138,6 +183,24 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
             if (ServicePrincipalProfile != null)
             {
                 ServicePrincipalProfile.Validate();
+            }
+            if (AddonProfiles != null)
+            {
+                foreach (var valueElement in AddonProfiles.Values)
+                {
+                    if (valueElement != null)
+                    {
+                        valueElement.Validate();
+                    }
+                }
+            }
+            if (NetworkProfile != null)
+            {
+                NetworkProfile.Validate();
+            }
+            if (AadProfile != null)
+            {
+                AadProfile.Validate();
             }
         }
     }

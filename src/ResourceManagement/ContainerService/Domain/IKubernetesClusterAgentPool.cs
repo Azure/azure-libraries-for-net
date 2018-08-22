@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     public interface IKubernetesClusterAgentPool  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IChildResource<Microsoft.Azure.Management.ContainerService.Fluent.IOrchestratorServiceBase>,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ContainerServiceAgentPoolProfile>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ManagedClusterAgentPoolProfile>
     {
         /// <summary>
         /// Gets the storage kind (managed or classic) set for each virtual machine in the agent pool.

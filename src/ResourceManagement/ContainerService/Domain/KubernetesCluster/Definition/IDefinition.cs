@@ -118,13 +118,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
         /// <param name="secret">The secret password associated with the service principal.</param>
         /// <return>The next stage.</return>
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithAgentPool WithServicePrincipalSecret(string secret);
-
-        /// <summary>
-        /// Properties for cluster service principals.
-        /// </summary>
-        /// <param name="vaultId">The ID for the service principal.</param>
-        /// <return>The next stage.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithKeyVaultSecret WithKeyVaultReference(string vaultId);
     }
 
     /// <summary>
@@ -151,32 +144,10 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.D
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithLinuxSshKey,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithServicePrincipalClientId,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithServicePrincipalProfile,
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithKeyVaultSecret,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithDnsPrefix,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithAgentPool,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithCreate
     {
-    }
-
-    /// <summary>
-    /// The stage of the Kubernetes cluster definition allowing to specify the KeyVault secret name and version.
-    /// </summary>
-    public interface IWithKeyVaultSecret 
-    {
-        /// <summary>
-        /// Specifies the KeyVault secret.
-        /// </summary>
-        /// <param name="secretName">The KeyVault reference to the secret which stores the password associated with the service principal.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithAgentPool WithKeyVaultSecret(string secretName);
-
-        /// <summary>
-        /// Specifies the KeyVault secret and the version of it.
-        /// </summary>
-        /// <param name="secretName">The KeyVault reference to the secret which stores the password associated with the service principal.</param>
-        /// <param name="secretVersion">The KeyVault secret version to be used.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesCluster.Definition.IWithAgentPool WithKeyVaultSecret(string secretName, string secretVersion);
     }
 
     /// <summary>

@@ -39,11 +39,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         string SshKey { get; }
 
         /// <summary>
-        /// Gets the key vault reference to the service principal secret.
-        /// </summary>
-        Models.KeyVaultSecretRef KeyVaultSecretReference { get; }
-
-        /// <summary>
         /// Gets the DNS prefix which was specified at creation time.
         /// </summary>
         string DnsPrefix { get; }

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmNvbnRhaW5lcnNlcnZpY2UuaW1wbGVtZW50YXRpb24uS3ViZXJuZXRlc0NsdXN0ZXJBZ2VudFBvb2xJbXBs
     internal partial class KubernetesClusterAgentPoolImpl :
         ChildResource<
-            Models.ContainerServiceAgentPoolProfile,
+            Models.ManagedClusterAgentPoolProfile,
             Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterImpl,
             Microsoft.Azure.Management.ContainerService.Fluent.IOrchestratorServiceBase>,
         IKubernetesClusterAgentPool,
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     {
 
         ///GENMHASH:98DFA3F9E5796918208C02E358977FEC:C0847EA0CDA78F6D91EFD239C70F0FA7
-        internal KubernetesClusterAgentPoolImpl(ContainerServiceAgentPoolProfile inner, KubernetesClusterImpl parent) : base(inner, parent)
+        internal KubernetesClusterAgentPoolImpl(ManagedClusterAgentPoolProfile inner, KubernetesClusterImpl parent) : base(inner, parent)
         {
         }
 
