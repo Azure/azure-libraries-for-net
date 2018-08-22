@@ -3,7 +3,6 @@
 	<Import Project="test.props" />
 	<Import Project="AzSdk.props" />
 	<Import Project="Directory.Build.targets" />
-  
 	<Import Project="$(NetSdkBuildTargetsDir)\core\_build.proj" Condition=" Exists('$(NetSdkBuildTargetsDir)\core\_build.proj') "/>
 
   <PropertyGroup>
