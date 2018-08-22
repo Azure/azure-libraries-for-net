@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
 {
     public class AzureCredentialsFactory
     {
+#if NET45
         /// <summary>
         /// Creates a credentials object from a username/password combination.
         /// </summary>
@@ -33,8 +34,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                 ClientId = clientId
             }, tenantId, environment);
         }
-
-#if !NET45
+#else
         /// <summary>
         /// Creates a credentials object through device flow.
         /// </summary>

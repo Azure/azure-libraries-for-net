@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
     /// </summary>
     public class AzureCredentials : ServiceClientCredentials
     {
-        private UserLoginInformation userLoginInformation;
         private ServicePrincipalLoginInformation servicePrincipalLoginInformation;
         private MSITokenProviderFactory msiTokenProviderFactory;
-
         private IDictionary<Uri, ServiceClientCredentials> credentialsCache;
-#if !NET45
+#if NET45
+        private UserLoginInformation userLoginInformation;
+#else
         private DeviceCredentialInformation deviceCredentialInformation;
 #endif
 
@@ -34,24 +34,39 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
         {
             get
             {
-#if !NET45
-                if (deviceCredentialInformation != null)
+#if NET45
+                if (userLoginInformation != null && userLoginInformation.ClientId != null)
+                {
+                    return userLoginInformation.ClientId;
+                }
+#else
+                if (deviceCredentialInformation != null && return deviceCredentialInformation.ClientId != null)
                 {
                     return deviceCredentialInformation.ClientId;
                 }
 #endif
 
-                return userLoginInformation?.ClientId ?? servicePrincipalLoginInformation?.ClientId;
+                return servicePrincipalLoginInformation?.ClientId;
             }
         }
 
         public AzureEnvironment Environment { get; private set; }
 
+#if NET45
         public AzureCredentials(UserLoginInformation userLoginInformation, string tenantId, AzureEnvironment environment)
             : this(tenantId, environment)
         {
             this.userLoginInformation = userLoginInformation;
         }
+#else
+        public AzureCredentials(DeviceCredentialInformation deviceCredentialInformation, string tenantId, AzureEnvironment environment)
+            : this(tenantId, environment)
+        {
+            this.deviceCredentialInformation = deviceCredentialInformation;
+
+        }
+#endif
+
         public AzureCredentials(ServicePrincipalLoginInformation servicePrincipalLoginInformation, string tenantId, AzureEnvironment environment)
             : this(tenantId, environment)
         {
@@ -86,15 +101,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
             Environment = environment;
             credentialsCache = new Dictionary<Uri, ServiceClientCredentials>();
         }
-
-#if !NET45
-        public AzureCredentials(DeviceCredentialInformation deviceCredentialInformation, string tenantId, AzureEnvironment environment)
-            : this(tenantId, environment)
-        {
-            this.deviceCredentialInformation = deviceCredentialInformation;
-
-        }
-#endif
 
         public AzureCredentials WithDefaultSubscription(string subscriptionId)
         {
