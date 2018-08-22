@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Fluent
             return Extensions.Synchronize(() => this.RefreshAsync());
         }
 
-        public async Task<IWebhook> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async override Task<IWebhook> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var webhookInner = await this.containerRegistryManager.Inner.Webhooks.GetAsync(resourceGroupName, registryName, this.Name(), cancellationToken);
             this.SetInner(webhookInner);

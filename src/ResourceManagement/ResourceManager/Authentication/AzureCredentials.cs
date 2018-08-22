@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Authentication
                     return userLoginInformation.ClientId;
                 }
 #else
-                if (deviceCredentialInformation != null && return deviceCredentialInformation.ClientId != null)
+                if (deviceCredentialInformation != null && deviceCredentialInformation.ClientId != null)
                 {
                     return deviceCredentialInformation.ClientId;
                 }

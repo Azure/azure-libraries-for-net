@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             if (Containers == null)
             {
