@@ -14,191 +14,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     internal partial class ContainerServiceImpl 
     {
         /// <summary>
-        /// Specifies the DCOS orchestration type for the container service.
+        /// Gets the agent pools map.
         /// </summary>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithLinux ContainerService.Definition.IWithOrchestrator.WithDcosOrchestration()
-        {
-            return this.WithDcosOrchestration();
-        }
-
-        /// <summary>
-        /// Specifies the Kubernetes orchestration type for the container service.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithServicePrincipalProfile ContainerService.Definition.IWithOrchestrator.WithKubernetesOrchestration()
-        {
-            return this.WithKubernetesOrchestration();
-        }
-
-        /// <summary>
-        /// Specifies the Swarm orchestration type for the container service.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithLinux ContainerService.Definition.IWithOrchestrator.WithSwarmOrchestration()
-        {
-            return this.WithSwarmOrchestration();
-        }
-
-        /// <summary>
-        /// OS Disk Size in GB to be used for every machine in the master pool.
-        /// If you specify 0, the default osDisk size will be used according to the vmSize specified.
-        /// </summary>
-        /// <param name="osDiskSizeInGB">OS Disk Size in GB to be used for every machine in the master pool.</param>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterOSDiskSize.WithMasterOSDiskSizeInGB(int osDiskSizeInGB)
-        {
-            return this.WithMasterOSDiskSizeInGB(osDiskSizeInGB);
-        }
-
-        /// <summary>
-        /// Begins the definition to specify Linux ssh key.
-        /// </summary>
-        /// <param name="sshKeyData">The SSH key data.</param>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithMasterNodeCount ContainerService.Definition.IWithLinuxSshKey.WithSshKey(string sshKeyData)
-        {
-            return this.WithSshKey(sshKeyData);
-        }
-
-        /// <summary>
-        /// Begins the definition of a agent pool profile to be attached to the container service.
-        /// </summary>
-        /// <param name="name">The name for the agent pool profile.</param>
-        /// <return>The stage representing configuration for the agent pool profile.</return>
-        ContainerServiceAgentPool.Definition.IBlank<ContainerService.Definition.IWithCreate> ContainerService.Definition.IWithAgentPool.DefineAgentPool(string name)
-        {
-            return this.DefineAgentPool(name);
-        }
-
-        /// <summary>
-        /// Begins the definition to specify Linux root username.
-        /// </summary>
-        /// <param name="rootUserName">The root username.</param>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithLinuxSshKey ContainerService.Definition.IWithLinuxRootUsername.WithRootUsername(string rootUserName)
-        {
-            return this.WithRootUsername(rootUserName);
-        }
-
-        /// <summary>
-        /// Specifies the storage kind to be used for every machine in master pool.
-        /// </summary>
-        /// <param name="storageProfile">The storage kind to be used for every machine in the master pool.</param>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterStorageProfile.WithMasterStorageProfile(StorageProfileTypes storageProfile)
-        {
-            return this.WithMasterStorageProfile(storageProfile);
-        }
-
-        /// <summary>
-        /// Begins the definition to specify Linux settings.
-        /// </summary>
-        /// <return>The stage representing configuration of Linux specific settings.</return>
-        ContainerService.Definition.IWithLinuxRootUsername ContainerService.Definition.IWithLinux.WithLinux()
-        {
-            return this.WithLinux();
-        }
-
-        /// <summary>
-        /// Updates the agent pool virtual machine count.
-        /// </summary>
-        /// <param name="agentCount">The number of agents (virtual machines) to host docker containers.</param>
-        /// <return>The next stage of the update.</return>
-        ContainerService.Update.IUpdate ContainerService.Update.IWithUpdateAgentPoolCount.WithAgentVirtualMachineCount(int agentCount)
-        {
-            return this.WithAgentVirtualMachineCount(agentCount);
-        }
-
-        /// <summary>
-        /// Properties for cluster service principals.
-        /// </summary>
-        /// <param name="clientId">The ID for the service principal.</param>
-        /// <param name="secret">The secret password associated with the service principal.</param>
-        /// <return>The next stage.</return>
-        ContainerService.Definition.IWithLinux ContainerService.Definition.IWithServicePrincipalProfile.WithServicePrincipal(string clientId, string secret)
-        {
-            return this.WithServicePrincipal(clientId, secret);
-        }
-
-        /// <summary>
-        /// Enables diagnostics.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithDiagnostics.WithDiagnostics()
-        {
-            return this.WithDiagnostics();
-        }
-
-        /// <summary>
-        /// Disables diagnostics.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Update.IUpdate ContainerService.Update.IWithDiagnostics.WithoutDiagnostics()
-        {
-            return this.WithoutDiagnostics();
-        }
-
-        /// <summary>
-        /// Enables diagnostics.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Update.IUpdate ContainerService.Update.IWithDiagnostics.WithDiagnostics()
-        {
-            return this.WithDiagnostics();
-        }
-
-        /// <summary>
-        /// Specifies the master node count.
-        /// </summary>
-        /// <param name="count">Master profile count (1, 3, 5).</param>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithAgentPool ContainerService.Definition.IWithMasterNodeCount.WithMasterNodeCount(ContainerServiceMasterProfileCount count)
-        {
-            return this.WithMasterNodeCount(count);
-        }
-
-        /// <summary>
-        /// Gets the name of the subnet used by every machine in the master pool.
-        /// </summary>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterSubnetName
+        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool> Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.AgentPools
         {
             get
             {
-                return this.MasterSubnetName();
-            }
-        }
-
-        /// <summary>
-        /// Gets the master FQDN.
-        /// </summary>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterFqdn
-        {
-            get
-            {
-                return this.MasterFqdn();
-            }
-        }
-
-        /// <summary>
-        /// Gets the Linux root username.
-        /// </summary>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.LinuxRootUsername
-        {
-            get
-            {
-                return this.LinuxRootUsername();
-            }
-        }
-
-        /// <summary>
-        /// Gets the master node count.
-        /// </summary>
-        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterNodeCount
-        {
-            get
-            {
-                return this.MasterNodeCount();
+                return this.AgentPools();
             }
         }
 
@@ -214,6 +36,17 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
+        /// Gets the Linux root username.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.LinuxRootUsername
+        {
+            get
+            {
+                return this.LinuxRootUsername();
+            }
+        }
+
+        /// <summary>
         /// Gets the master DNS prefix which was specified at creation time.
         /// </summary>
         string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterDnsPrefix
@@ -225,35 +58,57 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
-        /// Gets the agent pools map.
+        /// Gets the master FQDN.
         /// </summary>
-        System.Collections.Generic.IReadOnlyDictionary<string,Microsoft.Azure.Management.ContainerService.Fluent.IContainerServiceAgentPool> Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.AgentPools
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterFqdn
         {
             get
             {
-                return this.AgentPools();
+                return this.MasterFqdn();
             }
         }
 
         /// <summary>
-        /// Gets the service principal client ID.
+        /// Gets the master node count.
         /// </summary>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.ServicePrincipalClientId
+        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterNodeCount
         {
             get
             {
-                return this.ServicePrincipalClientId();
+                return this.MasterNodeCount();
             }
         }
 
         /// <summary>
-        /// Gets the service principal secret.
+        /// Gets OS disk size in GB set for every machine in the master pool.
         /// </summary>
-        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.ServicePrincipalSecret
+        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterOSDiskSizeInGB
         {
             get
             {
-                return this.ServicePrincipalSecret();
+                return this.MasterOSDiskSizeInGB();
+            }
+        }
+
+        /// <summary>
+        /// Gets the storage kind set for every machine in the master pool.
+        /// </summary>
+        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterStorageProfile
+        {
+            get
+            {
+                return this.MasterStorageProfile();
+            }
+        }
+
+        /// <summary>
+        /// Gets the name of the subnet used by every machine in the master pool.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterSubnetName
+        {
+            get
+            {
+                return this.MasterSubnetName();
             }
         }
 
@@ -280,13 +135,24 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
-        /// Gets OS disk size in GB set for every machine in the master pool.
+        /// Gets the service principal client ID.
         /// </summary>
-        int Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterOSDiskSizeInGB
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.ServicePrincipalClientId
         {
             get
             {
-                return this.MasterOSDiskSizeInGB();
+                return this.ServicePrincipalClientId();
+            }
+        }
+
+        /// <summary>
+        /// Gets the service principal secret.
+        /// </summary>
+        string Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.ServicePrincipalSecret
+        {
+            get
+            {
+                return this.ServicePrincipalSecret();
             }
         }
 
@@ -302,14 +168,159 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
-        /// Gets the storage kind set for every machine in the master pool.
+        /// Begins the definition of a agent pool profile to be attached to the container service.
         /// </summary>
-        StorageProfileTypes Microsoft.Azure.Management.ContainerService.Fluent.IContainerService.MasterStorageProfile
+        /// <param name="name">The name for the agent pool profile.</param>
+        /// <return>The stage representing configuration for the agent pool profile.</return>
+        ContainerServiceAgentPool.Definition.IBlank<ContainerService.Definition.IWithCreate> ContainerService.Definition.IWithAgentPool.DefineAgentPool(string name)
         {
-            get
-            {
-                return this.MasterStorageProfile();
-            }
+            return this.DefineAgentPool(name);
+        }
+
+        /// <summary>
+        /// Updates the agent pool virtual machine count.
+        /// </summary>
+        /// <param name="agentCount">The number of agents (virtual machines) to host docker containers.</param>
+        /// <return>The next stage of the update.</return>
+        ContainerService.Update.IUpdate ContainerService.Update.IWithUpdateAgentPoolCount.WithAgentVirtualMachineCount(int agentCount)
+        {
+            return this.WithAgentVirtualMachineCount(agentCount);
+        }
+
+        /// <summary>
+        /// Specifies the DCOS orchestration type for the container service.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Definition.IWithLinux ContainerService.Definition.IWithOrchestrator.WithDcosOrchestration()
+        {
+            return this.WithDcosOrchestration();
+        }
+
+        /// <summary>
+        /// Enables diagnostics.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithDiagnostics.WithDiagnostics()
+        {
+            return this.WithDiagnostics();
+        }
+
+        /// <summary>
+        /// Enables diagnostics.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Update.IUpdate ContainerService.Update.IWithDiagnostics.WithDiagnostics()
+        {
+            return this.WithDiagnostics();
+        }
+
+        /// <summary>
+        /// Specifies the Kubernetes orchestration type for the container service.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Definition.IWithServicePrincipalProfile ContainerService.Definition.IWithOrchestrator.WithKubernetesOrchestration()
+        {
+            return this.WithKubernetesOrchestration();
+        }
+
+        /// <summary>
+        /// Begins the definition to specify Linux settings.
+        /// </summary>
+        /// <return>The stage representing configuration of Linux specific settings.</return>
+        ContainerService.Definition.IWithLinuxRootUsername ContainerService.Definition.IWithLinux.WithLinux()
+        {
+            return this.WithLinux();
+        }
+
+        /// <summary>
+        /// Specifies the DNS prefix to be used to create the FQDN for the master pool.
+        /// </summary>
+        /// <param name="dnsPrefix">The DNS prefix to be used to create the FQDN for the master pool.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterDnsPrefix.WithMasterDnsPrefix(string dnsPrefix)
+        {
+            return this.WithMasterDnsPrefix(dnsPrefix);
+        }
+
+        /// <summary>
+        /// Specifies the master node count.
+        /// </summary>
+        /// <param name="count">Master profile count (1, 3, 5).</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Definition.IWithAgentPool ContainerService.Definition.IWithMasterNodeCount.WithMasterNodeCount(ContainerServiceMasterProfileCount count)
+        {
+            return this.WithMasterNodeCount(count);
+        }
+
+        /// <summary>
+        /// OS Disk Size in GB to be used for every machine in the master pool.
+        /// If you specify 0, the default osDisk size will be used according to the vmSize specified.
+        /// </summary>
+        /// <param name="osDiskSizeInGB">OS Disk Size in GB to be used for every machine in the master pool.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterOSDiskSize.WithMasterOSDiskSizeInGB(int osDiskSizeInGB)
+        {
+            return this.WithMasterOSDiskSizeInGB(osDiskSizeInGB);
+        }
+
+        /// <summary>
+        /// Specifies the storage kind to be used for every machine in master pool.
+        /// </summary>
+        /// <param name="storageProfile">The storage kind to be used for every machine in the master pool.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterStorageProfile.WithMasterStorageProfile(StorageProfileTypes storageProfile)
+        {
+            return this.WithMasterStorageProfile(storageProfile);
+        }
+
+        /// <summary>
+        /// Specifies the size of the master VMs, default set to "Standard_D2_v2".
+        /// </summary>
+        /// <param name="vmSize">The size of the VM.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterVMSize.WithMasterVMSize(ContainerServiceVirtualMachineSizeTypes vmSize)
+        {
+            return this.WithMasterVMSize(vmSize);
+        }
+
+        /// <summary>
+        /// Disables diagnostics.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Update.IUpdate ContainerService.Update.IWithDiagnostics.WithoutDiagnostics()
+        {
+            return this.WithoutDiagnostics();
+        }
+
+        /// <summary>
+        /// Begins the definition to specify Linux root username.
+        /// </summary>
+        /// <param name="rootUserName">The root username.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Definition.IWithLinuxSshKey ContainerService.Definition.IWithLinuxRootUsername.WithRootUsername(string rootUserName)
+        {
+            return this.WithRootUsername(rootUserName);
+        }
+
+        /// <summary>
+        /// Properties for cluster service principals.
+        /// </summary>
+        /// <param name="clientId">The ID for the service principal.</param>
+        /// <param name="secret">The secret password associated with the service principal.</param>
+        /// <return>The next stage.</return>
+        ContainerService.Definition.IWithLinux ContainerService.Definition.IWithServicePrincipalProfile.WithServicePrincipal(string clientId, string secret)
+        {
+            return this.WithServicePrincipal(clientId, secret);
+        }
+
+        /// <summary>
+        /// Begins the definition to specify Linux ssh key.
+        /// </summary>
+        /// <param name="sshKeyData">The SSH key data.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerService.Definition.IWithMasterNodeCount ContainerService.Definition.IWithLinuxSshKey.WithSshKey(string sshKeyData)
+        {
+            return this.WithSshKey(sshKeyData);
         }
 
         /// <summary>
@@ -324,23 +335,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
-        /// Specifies the DNS prefix to be used to create the FQDN for the master pool.
+        /// Specifies the Swarm orchestration type for the container service.
         /// </summary>
-        /// <param name="dnsPrefix">The DNS prefix to be used to create the FQDN for the master pool.</param>
         /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterDnsPrefix.WithMasterDnsPrefix(string dnsPrefix)
+        ContainerService.Definition.IWithLinux ContainerService.Definition.IWithOrchestrator.WithSwarmOrchestration()
         {
-            return this.WithMasterDnsPrefix(dnsPrefix);
-        }
-
-        /// <summary>
-        /// Specifies the size of the master VMs, default set to "Standard_D2_v2".
-        /// </summary>
-        /// <param name="vmSize">The size of the VM.</param>
-        /// <return>The next stage of the definition.</return>
-        ContainerService.Definition.IWithCreate ContainerService.Definition.IWithMasterVMSize.WithMasterVMSize(ContainerServiceVirtualMachineSizeTypes vmSize)
-        {
-            return this.WithMasterVMSize(vmSize);
+            return this.WithSwarmOrchestration();
         }
     }
 }

@@ -13,14 +13,14 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Models.ManagedClusterUpgradeProfileInner>
     {
         /// <summary>
-        /// Gets the name of the Kubernetes cluster upgrade profile.
-        /// </summary>
-        string Name { get; }
-
-        /// <summary>
         /// Gets the ID of the Kubernetes cluster upgrade profile.
         /// </summary>
         string Id { get; }
+
+        /// <summary>
+        /// Gets the name of the Kubernetes cluster upgrade profile.
+        /// </summary>
+        string Name { get; }
 
         /// <summary>
         /// Gets the type of the Kubernetes cluster upgrade profile.

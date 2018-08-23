@@ -13,8 +13,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     public interface IWithAttach<ParentT>  :
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSType<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSDiskSize<ParentT>,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAgentPoolVirtualMachineCount<ParentT>,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithMaxPodsCount<ParentT>,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithVirtualNetwork<ParentT>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>
     {
+
     }
 
     /// <summary>
@@ -22,10 +26,16 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
     public interface IDefinition<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IBlank<ParentT>,
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithVMSize<ParentT>,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSType<ParentT>,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithOSDiskSize<ParentT>,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAgentPoolVirtualMachineCount<ParentT>,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithMaxPodsCount<ParentT>,
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithVirtualNetwork<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT>
     {
+
     }
 
     /// <summary>
@@ -34,6 +44,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
     public interface IWithOSType<ParentT> 
     {
+
         /// <summary>
         /// OS type to be used for each virtual machine in the agent pool.
         /// Default is Linux.
@@ -44,31 +55,76 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     }
 
     /// <summary>
-    /// The stage of a container service agent pool definition allowing to specify the agent virtual machine size.
+    /// The stage of a container service agent pool definition allowing to specify the maximum number of pods that can run on a node.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IWithVMSize<ParentT> 
+    public interface IWithMaxPodsCount<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
     {
+
         /// <summary>
-        /// Specifies the size of the agent virtual machines.
+        /// Specifies the maximum number of pods that can run on a node.
+        /// </summary>
+        /// <param name="podsCount">The maximum number of pods that can run on a node.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithMaxPodsCount(int podsCount);
+    }
+
+    /// <summary>
+    /// The stage of a container service agent pool definition allowing to specify a virtual network to be used for the agents.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
+    public interface IWithVirtualNetwork<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies the virtual network to be used for the agents.
+        /// </summary>
+        /// <param name="virtualNetworkId">The ID of a virtual network.</param>
+        /// <param name="subnetName">
+        /// The name of the subnet within the virtual network.; the subnet must have the service
+        /// endpoints enabled for 'Microsoft.ContainerService'.
+        /// </param>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithVirtualNetwork(string virtualNetworkId, string subnetName);
+    }
+
+    /// <summary>
+    /// The stage of a container service agent pool definition allowing to specify the number of agents
+    /// (Virtual Machines) to host docker containers.
+    /// Allowed values must be in the range of 1 to 100 (inclusive); the default value is 1.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
+    public interface IWithAgentPoolVirtualMachineCount<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies the number of agents (Virtual Machines) to host docker containers.
+        /// </summary>
+        /// <param name="count">
+        /// The number of agents (VMs) to host docker containers. Allowed values must be in the range
+        /// of 1 to 100 (inclusive); the default value is 1.
+        /// </param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithAgentPoolVirtualMachineCount(int count);
+    }
+
+    /// <summary>
+    /// The first stage of a container service agent pool definition allowing to specify the agent virtual machine size.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
+    public interface IBlank<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies the size of the virtual machines to be used as agents.
         /// </summary>
         /// <param name="vmSize">The size of each virtual machine in the agent pool.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithAttach<ParentT> WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize);
-    }
-
-    /// <summary>
-    /// The first stage of a container service agent pool definition.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IBlank<ParentT> 
-    {
-        /// <summary>
-        /// Specifies the number of agents (virtual machines) to host docker containers.
-        /// </summary>
-        /// <param name="count">A number between 1 and 100.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAgentPool.Definition.IWithVMSize<ParentT> WithVirtualMachineCount(int count);
     }
 
     /// <summary>
@@ -77,6 +133,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.KubernetesClusterAg
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
     public interface IWithOSDiskSize<ParentT> 
     {
+
         /// <summary>
         /// OS disk size in GB to be used for each virtual machine in the agent pool.
         /// </summary>

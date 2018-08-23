@@ -71,8 +71,8 @@ namespace ManageKubernetesCluster
                     .WithServicePrincipalClientId(servicePrincipalClientId)
                     .WithServicePrincipalSecret(servicePrincipalSecret)
                     .DefineAgentPool("ap")
-                        .WithVirtualMachineCount(1)
                         .WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes.StandardD1V2)
+                        .WithAgentPoolVirtualMachineCount(1)
                         .Attach()
                     .WithDnsPrefix("dns-" + aksName)
                     .Create();
@@ -86,7 +86,7 @@ namespace ManageKubernetesCluster
                 Utilities.Log("Updating the Kubernetes cluster agent with two virtual machines");
 
                 kubernetesCluster.Update()
-                    .WithAgentVirtualMachineCount(2)
+                    .WithAgentPoolVirtualMachineCount(2)
                     .Apply();
 
                 Utilities.Log("Updated Kubernetes cluster: " + kubernetesCluster.Id);

@@ -52,8 +52,8 @@ namespace Fluent.Tests.ContainerService
                         .WithServicePrincipalClientId(servicePrincipalClientId)
                         .WithServicePrincipalSecret(servicePrincipalSecret)
                         .DefineAgentPool(agentPoolName)
-                            .WithVirtualMachineCount(1)
                             .WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes.StandardD1V2)
+                            .WithAgentPoolVirtualMachineCount(1)
                             .Attach()
                         .WithDnsPrefix("mp1" + dnsPrefix)
                         .WithTag("tag1", "value1")
@@ -72,7 +72,7 @@ namespace Fluent.Tests.ContainerService
 
                     // Updates resource
                     kubernetesCluster = kubernetesCluster.Update()
-                        .WithAgentVirtualMachineCount(agentPoolName, 5)
+                        .WithAgentPoolVirtualMachineCount(agentPoolName, 5)
                         .WithTag("tag2", "value2")
                         .WithTag("tag3", "value3")
                         .WithoutTag("tag1")

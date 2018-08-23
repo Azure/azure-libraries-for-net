@@ -11,24 +11,14 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
     internal partial class KubernetesClusterAgentPoolImpl 
     {
         /// <summary>
-        /// OS type to be used for each virtual machine in the agent pool.
-        /// Default is Linux.
+        /// Gets the number of agents (virtual machines) to host docker containers.
         /// </summary>
-        /// <param name="osType">OS type to be used for each virtual machine in the agent pool.</param>
-        /// <return>The next stage of the definition.</return>
-        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithOSType<KubernetesCluster.Definition.IWithCreate>.WithOSType(ContainerServiceOSTypes osType)
+        int Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.Count
         {
-            return this.WithOSType(osType);
-        }
-
-        /// <summary>
-        /// OS disk size in GB to be used for each virtual machine in the agent pool.
-        /// </summary>
-        /// <param name="osDiskSizeInGB">OS Disk Size in GB to be used for every machine in the agent pool.</param>
-        /// <return>The next stage of the definition.</return>
-        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithOSDiskSize<KubernetesCluster.Definition.IWithCreate>.WithOSDiskSizeInGB(int osDiskSizeInGB)
-        {
-            return this.WithOSDiskSizeInGB(osDiskSizeInGB);
+            get
+            {
+                return this.Count();
+            }
         }
 
         /// <summary>
@@ -43,34 +33,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
-        /// Specifies the size of the agent virtual machines.
+        /// Gets the ID of the virtual network used by each virtual machine in the agent pool.
         /// </summary>
-        /// <param name="vmSize">The size of each virtual machine in the agent pool.</param>
-        /// <return>The next stage of the definition.</return>
-        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithVMSize<KubernetesCluster.Definition.IWithCreate>.WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize)
-        {
-            return this.WithVirtualMachineSize(vmSize);
-        }
-
-        /// <summary>
-        /// Gets size of each agent virtual machine in the agent pool.
-        /// </summary>
-        ContainerServiceVirtualMachineSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.VMSize
+        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.NetworkId
         {
             get
             {
-                return this.VMSize();
-            }
-        }
-
-        /// <summary>
-        /// Gets OS of each virtual machine in the agent pool.
-        /// </summary>
-        ContainerServiceOSTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.OSType
-        {
-            get
-            {
-                return this.OSType();
+                return this.NetworkId();
             }
         }
 
@@ -86,13 +55,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
-        /// Gets the number of agents (virtual machines) to host docker containers.
+        /// Gets OS of each virtual machine in the agent pool.
         /// </summary>
-        int Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.Count
+        ContainerServiceOSTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.OSType
         {
             get
             {
-                return this.Count();
+                return this.OSType();
             }
         }
 
@@ -108,13 +77,25 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
-        /// Specifies the number of agents (virtual machines) to host docker containers.
+        /// Gets the name of the subnet used by each virtual machine in the agent pool.
         /// </summary>
-        /// <param name="count">A number between 1 and 100.</param>
-        /// <return>The next stage of the definition.</return>
-        KubernetesClusterAgentPool.Definition.IWithVMSize<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IBlank<KubernetesCluster.Definition.IWithCreate>.WithVirtualMachineCount(int count)
+        string Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.SubnetName
         {
-            return this.WithVirtualMachineCount(count);
+            get
+            {
+                return this.SubnetName();
+            }
+        }
+
+        /// <summary>
+        /// Gets size of each agent virtual machine in the agent pool.
+        /// </summary>
+        ContainerServiceVirtualMachineSizeTypes Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusterAgentPool.VMSize
+        {
+            get
+            {
+                return this.VMSize();
+            }
         }
 
         /// <summary>
@@ -124,6 +105,74 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         KubernetesCluster.Definition.IWithCreate Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<KubernetesCluster.Definition.IWithCreate>.Attach()
         {
             return this.Attach();
+        }
+
+        /// <summary>
+        /// Specifies the number of agents (Virtual Machines) to host docker containers.
+        /// </summary>
+        /// <param name="count">
+        /// The number of agents (VMs) to host docker containers. Allowed values must be in the range
+        /// of 1 to 100 (inclusive); the default value is 1.
+        /// </param>
+        /// <return>The next stage of the definition.</return>
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithAgentPoolVirtualMachineCount<KubernetesCluster.Definition.IWithCreate>.WithAgentPoolVirtualMachineCount(int count)
+        {
+            return this.WithAgentPoolVirtualMachineCount(count);
+        }
+
+        /// <summary>
+        /// Specifies the maximum number of pods that can run on a node.
+        /// </summary>
+        /// <param name="podsCount">The maximum number of pods that can run on a node.</param>
+        /// <return>The next stage of the definition.</return>
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithMaxPodsCount<KubernetesCluster.Definition.IWithCreate>.WithMaxPodsCount(int podsCount)
+        {
+            return this.WithMaxPodsCount(podsCount);
+        }
+
+        /// <summary>
+        /// OS disk size in GB to be used for each virtual machine in the agent pool.
+        /// </summary>
+        /// <param name="osDiskSizeInGB">OS Disk Size in GB to be used for every machine in the agent pool.</param>
+        /// <return>The next stage of the definition.</return>
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithOSDiskSize<KubernetesCluster.Definition.IWithCreate>.WithOSDiskSizeInGB(int osDiskSizeInGB)
+        {
+            return this.WithOSDiskSizeInGB(osDiskSizeInGB);
+        }
+
+        /// <summary>
+        /// OS type to be used for each virtual machine in the agent pool.
+        /// Default is Linux.
+        /// </summary>
+        /// <param name="osType">OS type to be used for each virtual machine in the agent pool.</param>
+        /// <return>The next stage of the definition.</return>
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithOSType<KubernetesCluster.Definition.IWithCreate>.WithOSType(ContainerServiceOSTypes osType)
+        {
+            return this.WithOSType(osType);
+        }
+
+        /// <summary>
+        /// Specifies the size of the agent virtual machines.
+        /// </summary>
+        /// <param name="vmSize">The size of each virtual machine in the agent pool.</param>
+        /// <return>The next stage of the definition.</return>
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IBlank<KubernetesCluster.Definition.IWithCreate>.WithVirtualMachineSize(ContainerServiceVirtualMachineSizeTypes vmSize)
+        {
+            return this.WithVirtualMachineSize(vmSize);
+        }
+
+        /// <summary>
+        /// Specifies the virtual network to be used for the agents.
+        /// </summary>
+        /// <param name="virtualNetworkId">The ID of a virtual network.</param>
+        /// <param name="subnetName">
+        /// The name of the subnet within the virtual network.; the subnet must have the service
+        /// endpoints enabled for 'Microsoft.ContainerService'.
+        /// </param>
+        /// <return>The next stage.</return>
+        KubernetesClusterAgentPool.Definition.IWithAttach<KubernetesCluster.Definition.IWithCreate> KubernetesClusterAgentPool.Definition.IWithVirtualNetwork<KubernetesCluster.Definition.IWithCreate>.WithVirtualNetwork(string virtualNetworkId, string subnetName)
+        {
+            return this.WithVirtualNetwork(virtualNetworkId, subnetName);
         }
     }
 }

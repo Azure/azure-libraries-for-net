@@ -28,46 +28,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         /// <summary>
-        /// Lists resources of the specified type in the specified resource group.
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group to list the resources from.</param>
-        /// <return>The list of resources.</return>
-        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>.ListByResourceGroup(string resourceGroupName)
-        {
-            return this.ListByResourceGroup(resourceGroupName);
-        }
-
-        /// <summary>
-        /// Lists resources of the specified type in the specified resource group.
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group to list the resources from.</param>
-        /// <return>The list of resources.</return>
-        async Task<IPagedCollection<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>.ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages, CancellationToken cancellationToken)
-        {
-            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken);
-        }
-
-        /// <summary>
-        /// Returns the list of available Kubernetes versions available for the given Azure region.
-        /// </summary>
-        /// <param name="region">The Azure region to query into.</param>
-        /// <return>A set of Kubernetes versions which can be used when creating a service in this region.</return>
-        System.Collections.Generic.ISet<string> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.ListKubernetesVersions(Region region)
-        {
-            return this.ListKubernetesVersions(region);
-        }
-
-        /// <summary>
-        /// Returns the list of available Kubernetes versions available for the given Azure region.
-        /// </summary>
-        /// <param name="region">The Azure region to query into.</param>
-        /// <return>A future representation of a set of Kubernetes versions which can be used when creating a service in this region.</return>
-        async Task<System.Collections.Generic.ISet<string>> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.ListKubernetesVersionsAsync(Region region, CancellationToken cancellationToken)
-        {
-            return await this.ListKubernetesVersionsAsync(region, cancellationToken);
-        }
-
-        /// <summary>
         /// Returns the admin Kube.config content which can be used with a Kubernetes client.
         /// </summary>
         /// <param name="resourceGroupName">The resource group name where the cluster is.</param>
@@ -127,6 +87,46 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IKubernetesCluster>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>.ListAsync(bool loadAllPages, CancellationToken cancellationToken)
         {
             return await this.ListAsync(loadAllPages, cancellationToken);
+        }
+
+        /// <summary>
+        /// Lists resources of the specified type in the specified resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group to list the resources from.</param>
+        /// <return>The list of resources.</return>
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>.ListByResourceGroup(string resourceGroupName)
+        {
+            return this.ListByResourceGroup(resourceGroupName);
+        }
+
+        /// <summary>
+        /// Lists resources of the specified type in the specified resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group to list the resources from.</param>
+        /// <return>The list of resources.</return>
+        async Task<IPagedCollection<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>> Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListingByResourceGroup<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster>.ListByResourceGroupAsync(string resourceGroupName, bool loadAllPages, CancellationToken cancellationToken)
+        {
+            return await this.ListByResourceGroupAsync(resourceGroupName, loadAllPages, cancellationToken);
+        }
+
+        /// <summary>
+        /// Returns the list of available Kubernetes versions available for the given Azure region.
+        /// </summary>
+        /// <param name="region">The Azure region to query into.</param>
+        /// <return>A set of Kubernetes versions which can be used when creating a service in this region.</return>
+        System.Collections.Generic.ISet<string> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.ListKubernetesVersions(Region region)
+        {
+            return this.ListKubernetesVersions(region);
+        }
+
+        /// <summary>
+        /// Returns the list of available Kubernetes versions available for the given Azure region.
+        /// </summary>
+        /// <param name="region">The Azure region to query into.</param>
+        /// <return>A future representation of a set of Kubernetes versions which can be used when creating a service in this region.</return>
+        async Task<System.Collections.Generic.ISet<string>> Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesClusters.ListKubernetesVersionsAsync(Region region, CancellationToken cancellationToken)
+        {
+            return await this.ListKubernetesVersionsAsync(region, cancellationToken);
         }
     }
 }

@@ -63,6 +63,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             }
         }
 
+        ///GENMHASH:74FD01C4FC381135670EAFAC2C75EA51:6CB16D2F81CB6E4FD3ACCDBFF6EC2552
+        public IReadOnlyDictionary<string,Models.ManagedClusterAddonProfile> AddonProfiles()
+        {
+            return (Dictionary<string, Models.ManagedClusterAddonProfile>) this.Inner.AddonProfiles;
+        }
+
         ///GENMHASH:577F8437932AEC6E08E1A137969BDB4A:A1945CF277DF5AE74D653481F44D96CE
         public string Fqdn()
         {
@@ -94,6 +100,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             }
          }
 
+        ///GENMHASH:8FE1C58590920D7DDF40D8E3653C31E2:0059EE666E400AB5C8904F3E81CC0B6F
+        public IBlank<KubernetesCluster.Definition.IWithCreate> DefineNetworkProfile()
+        {
+            return new KubernetesClusterNetworkProfileImpl(this);
+        }
+
         ///GENMHASH:757F66F135F222B4469B64707708EFAB:A23AF024A782515C5EB55331C73E9EC6
         public string ServicePrincipalSecret()
         {
@@ -105,6 +117,12 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             {
                 return null;
             }
+        }
+
+        ///GENMHASH:D1678B68348A32EFEF5EA0ED397F9311:4DDED36D87691DA627F5BC0081685742
+        public bool EnableRBAC()
+        {
+            return this.Inner.EnableRBAC.GetValueOrDefault(false);
         }
 
         ///GENMHASH:6B9110585F8C0802DD175E2A4CC42085:0AFA47BFFB09777DA247B843C7A8F6D9
@@ -127,6 +145,18 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             }
 
             return this.userKubeConfigContent;
+        }
+
+        ///GENMHASH:AFF08018A4055EA21949F6479B3BCCA0:76AD48B2D2766AC242D7EBAC2D7EB48F
+        public ContainerServiceNetworkProfile NetworkProfile()
+        {
+            return this.Inner.NetworkProfile;
+        }
+
+        ///GENMHASH:2ED8A35009BAE55DD690251177EDC1E2:5913F8D5B181BBDDD6305E293FD8DAE3
+        public string NodeResourceGroup()
+        {
+            return this.Inner.NodeResourceGroup;
         }
 
         private async Task<byte[]> GetAdminKubeConfigContentAsync(CancellationToken cancellationToken = default(CancellationToken))
@@ -193,6 +223,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
 
+        ///GENMHASH:810F040E6FF88D302DA1C0A34006F058:22F3FCFE8015028492C33E22D1F4F1B8
+        public KubernetesClusterImpl WithAddOnProfiles(IDictionary<string,Models.ManagedClusterAddonProfile> addOnProfileMap)
+        {
+            this.Inner.AddonProfiles = addOnProfileMap;
+            return this;
+        }
+
         ///GENMHASH:5AD91481A0966B059A478CD4E9DD9466:E92DCB891A6508AA2417BBC73DD661CA
         protected override async Task<Models.ManagedClusterInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -240,6 +277,27 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         {
             this.Inner.KubernetesVersion = "";
 
+            return this;
+        }
+
+        ///GENMHASH:3C3CEB8BADA599708F0C92A1BD34D3E4:C55D4F95C12A7B863F7E0B7054A8B72D
+        public KubernetesClusterImpl WithNetworkProfile(ContainerServiceNetworkProfile networkProfile)
+        {
+            this.Inner.NetworkProfile = networkProfile;
+            return this;
+        }
+
+        ///GENMHASH:060B0AB6131A92D584BCBF8048DCF6C8:6E5D5CBDF23680977FA37769CA426D70
+        public KubernetesClusterImpl WithRBACDisabled()
+        {
+            this.Inner.EnableRBAC = false;
+            return this;
+        }
+
+        ///GENMHASH:95177DA2711296D4D01DED2BBB14D934:233E1F1C670534708F3B952B8D33AE25
+        public KubernetesClusterImpl WithRBACEnabled()
+        {
+            this.Inner.EnableRBAC = true;
             return this;
         }
 
@@ -302,7 +360,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:B389D978FF5A3275B275BA4DE9FA4FB3:B7E8C8BCFE6B53ABB94D49F2C205309A
-        public KubernetesClusterImpl WithAgentVirtualMachineCount(string agentPoolName, int agentCount)
+        public KubernetesClusterImpl WithAgentPoolVirtualMachineCount(string agentPoolName, int agentCount)
         {
             if (this.Inner.AgentPoolProfiles != null && this.Inner.AgentPoolProfiles.Count > 0)
             {
@@ -320,7 +378,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:B629860592BCA4958E12BD85ED1476A1:9FF3FBA51C1ABED8D77125A4AD0F78DD
-        public KubernetesClusterImpl WithAgentVirtualMachineCount(int agentCount)
+        public KubernetesClusterImpl WithAgentPoolVirtualMachineCount(int agentCount)
         {
             if (this.Inner.AgentPoolProfiles != null && this.Inner.AgentPoolProfiles.Count > 0)
             {
