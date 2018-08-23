@@ -550,6 +550,30 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+
+        public IGalleries Galleries
+        {
+            get
+            {
+                return computeManager.Galleries;
+            }
+        }
+        public IGalleryImages GalleryImages
+        {
+            get
+            {
+                return computeManager.GalleryImages;
+            }
+        }
+
+        public IGalleryImageVersions GalleryImageVersions
+        {
+            get
+            {
+                return computeManager.GalleryImageVersions;
+            }
+        }
+
         private Azure(RestClient restClient, string subscriptionId, string tenantId, IAuthenticated authenticated)
         {
             resourceManager = ResourceManager.Fluent.ResourceManager.Authenticate(restClient).WithSubscription(subscriptionId);
@@ -927,6 +951,21 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Azure Action Groups management.
         /// </summary>
         IActionGroups ActionGroups { get; }
+
+        /// <summary>
+        /// Entry point to manage compute galleries.
+        /// </summary>
+        IGalleries Galleries { get; }
+
+        /// <summary>
+        /// Entry point to manage compute gallery images.
+        /// </summary>
+        IGalleryImages GalleryImages { get; }
+
+        /// <summary>
+        /// Entry point to manage compute gallery image versions.
+        /// </summary>
+        IGalleryImageVersions GalleryImageVersions { get; }
     }
 
     public interface IAzure : IAzureBeta

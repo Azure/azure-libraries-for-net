@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         private ISnapshots snapshots;
         private IVirtualMachineCustomImages virtualMachineCustomImages;
         private IComputeSkus computeSkus;
+        private IGalleries galleries;
+        private IGalleryImages galleryImages;
+        private IGalleryImageVersions galleryImageVersions;
+
         #endregion
 
         #region ctrs
@@ -229,6 +233,42 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
         }
 
+        public IGalleries Galleries
+        {
+            get
+            {
+                if (galleries == null)
+                {
+                    galleries = new GalleriesImpl(this);
+                }
+                return galleries;
+            }
+        }
+
+        public IGalleryImages GalleryImages
+        {
+            get
+            {
+                if (galleryImages == null)
+                {
+                    galleryImages = new GalleryImagesImpl(this);
+                }
+                return galleryImages;
+            }
+        }
+
+        public IGalleryImageVersions GalleryImageVersions
+        {
+            get
+            {
+                if (galleryImageVersions == null)
+                {
+                    galleryImageVersions = new GalleryImageVersionsImpl(this);
+                }
+                return galleryImageVersions;
+            }
+        }
+
         #endregion
     }
 
@@ -253,5 +293,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         IVirtualMachineCustomImages VirtualMachineCustomImages { get; }
 
         IComputeSkus ComputeSkus { get; }
+
+        IGalleries Galleries { get; }
+
+        IGalleryImages GalleryImages { get; }
+
+        IGalleryImageVersions GalleryImageVersions { get; }
     }
 }
