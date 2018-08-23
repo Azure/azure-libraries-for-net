@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             if (Cluster != null)
             {

@@ -4,10 +4,6 @@
 namespace Microsoft.Azure.Management.Monitor.Fluent.ActivityLogAlert.Update
 {
     using System.Collections.Generic;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System.Collections.Generic;
 
     /// <summary>
     /// The stage of a activity log alerts update allowing to modify settings.

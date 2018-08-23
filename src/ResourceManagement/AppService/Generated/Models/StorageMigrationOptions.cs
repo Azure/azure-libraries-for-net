@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             if (AzurefilesConnectionString == null)
             {

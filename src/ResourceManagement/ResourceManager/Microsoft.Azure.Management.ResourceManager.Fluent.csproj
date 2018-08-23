@@ -10,13 +10,12 @@
     <PackageId>Microsoft.Azure.Management.ResourceManager.Fluent</PackageId>
     <PackageTags>Microsoft Azure Resource Manager;resource;Fluent</PackageTags>
   </PropertyGroup>
-  
   <PropertyGroup>
-    <TargetFrameworks>net452;netstandard1.4</TargetFrameworks>
+    <TargetFrameworks>net452;net461;netstandard1.4</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.2" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.4" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.4' ">

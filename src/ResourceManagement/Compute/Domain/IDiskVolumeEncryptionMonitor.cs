@@ -34,8 +34,5 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Gets the encryption progress message.
         /// </summary>
         string ProgressMessage { get; }
-
-        /// <return>A representation of the deferred computation of this call returning the encryption status once the refresh is done.</return>
-        Task<Microsoft.Azure.Management.Compute.Fluent.IDiskVolumeEncryptionMonitor> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }
