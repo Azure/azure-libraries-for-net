@@ -1,9 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent
@@ -14,17 +17,17 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// Implementation for BatchAIClusters.
     /// </summary>
     public partial class BatchAIClustersImpl :
-        TopLevelModifiableResources<
+        CreatableResources<
             IBatchAICluster,
             BatchAIClusterImpl,
-            ClusterInner,
-            IClustersOperations,
-            IBatchAIManager>,
+            ClusterInner>,
         IBatchAIClusters
     {
-        internal BatchAIClustersImpl(BatchAIManager batchAIManager)
-            : base(batchAIManager.Inner.Clusters, batchAIManager)
+        private BatchAIWorkspaceImpl workspace;
+
+        internal  BatchAIClustersImpl(BatchAIWorkspaceImpl workspace)
         {
+            this.workspace = workspace;
         }
 
         public BatchAIClusterImpl Define(string name)
@@ -32,10 +35,22 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return WrapModel(name);
         }
 
+        public override void DeleteById(string id)
+        {
+            ResourceId resourceId = ResourceId.FromString(id);
+            Extensions.Synchronize(() => Inner.DeleteAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name));
+        }
+
+        public async override Task DeleteByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
+        {
+            ResourceId resourceId = ResourceId.FromString(id);
+            await Inner.DeleteAsync(resourceId.ResourceGroupName, workspace.Name, resourceId.Name, cancellationToken);
+        }
+
         protected override BatchAIClusterImpl WrapModel(string name)
         {
             ClusterInner inner = new ClusterInner();
-            return new BatchAIClusterImpl(name, inner, Manager);
+            return new BatchAIClusterImpl(name, workspace, inner);
         }
 
         protected override IBatchAICluster WrapModel(ClusterInner inner)
@@ -44,37 +59,57 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             {
                 return null;
             }
-            return new BatchAIClusterImpl(inner.Name, inner, Manager);
+            return new BatchAIClusterImpl(inner.Name, workspace, inner);
+        }
+        
+        public IClustersOperations Inner => workspace.Manager.Inner.Clusters;
+
+        public IEnumerable<IBatchAICluster> List()
+        {
+            return WrapList(Extensions.Synchronize(() => Inner.ListByWorkspaceAsync(workspace.ResourceGroupName, workspace.Name))
+                .AsContinuousCollection(link => Extensions.Synchronize(() => Inner.ListByWorkspaceNextAsync(link))));
         }
 
-        protected override async Task<ClusterInner> GetInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
+        public async Task<IPagedCollection<IBatchAICluster>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = new CancellationToken())
         {
-            return await Inner.GetAsync(groupName, name, cancellationToken);
+            return await PagedCollection<IBatchAICluster, ClusterInner>.LoadPage(
+                async (cancellation) => await Inner.ListByWorkspaceAsync(workspace.ResourceGroupName, workspace.Name, cancellationToken: cancellation),
+                Inner.ListByWorkspaceNextAsync,
+                WrapModel, loadAllPages, cancellationToken);
         }
 
-        protected override async Task DeleteInnerByGroupAsync(string groupName, string name, CancellationToken cancellationToken)
+        public IBatchAICluster GetById(string id)
         {
-            await Inner.DeleteAsync(groupName, name, cancellationToken);
+            return Extensions.Synchronize(() => GetByIdAsync(id));
         }
 
-        protected override async Task<IPage<ClusterInner>> ListInnerAsync(CancellationToken cancellationToken)
+        public async Task<IBatchAICluster> GetByIdAsync(string id, CancellationToken cancellationToken = new CancellationToken())
         {
-            return await Inner.ListAsync(cancellationToken: cancellationToken);
+            var resourceId = ResourceId.FromString(id);
+            return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, resourceId.Name, cancellationToken));
         }
 
-        protected override async Task<IPage<ClusterInner>> ListInnerNextAsync(string nextLink, CancellationToken cancellationToken)
+        public IBatchAICluster GetByName(string name)
         {
-            return await Inner.ListNextAsync(nextLink, cancellationToken);
+            return Extensions.Synchronize(() => GetByNameAsync(name));
         }
 
-        protected override async Task<IPage<ClusterInner>> ListInnerByGroupAsync(string resourceGroupName, CancellationToken cancellationToken)
+        public async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster> GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Inner.ListByResourceGroupAsync(resourceGroupName, cancellationToken: cancellationToken);
+            return WrapModel(await Inner.GetAsync(workspace.ResourceGroupName, workspace.Name, name, cancellationToken));
         }
 
-        protected override async Task<IPage<ClusterInner>> ListInnerByGroupNextAsync(string nextLink, CancellationToken cancellationToken)
+        public void DeleteByName(string name)
         {
-            return await Inner.ListByResourceGroupNextAsync(nextLink, cancellationToken);
+            Extensions.Synchronize(() => DeleteByNameAsync(name));
         }
+
+        public async Task DeleteByNameAsync(string name, CancellationToken cancellationToken = new CancellationToken())
+        {
+            await Inner.DeleteAsync(workspace.ResourceGroupName, workspace.Name, name, cancellationToken);
+        }
+
+        public IBatchAIManager Manager => workspace.Manager;
+        public IBatchAIWorkspace Parent => workspace;
     }
 }

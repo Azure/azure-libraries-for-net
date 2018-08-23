@@ -4,12 +4,6 @@
 namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineExtension.Update
 {
     using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
-    using System.Collections.Generic;
 
     /// <summary>
     /// The stage of the virtual machine extension update allowing to enable or disable auto upgrade of the

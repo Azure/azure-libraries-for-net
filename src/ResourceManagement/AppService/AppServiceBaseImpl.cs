@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:924482EE7AA6A01820720743C2A59A72:AA2A43E94B10FDB1A9E9E89ED9CA279B
         public override void ApplySlotConfigurations(string slotName)
         {
-            Extensions.Synchronize(() => Manager.Inner.WebApps.ApplySlotConfigToProductionAsync(ResourceGroupName, Name, new CsmSlotEntityInner()
+            Extensions.Synchronize(() => Manager.Inner.WebApps.ApplySlotConfigToProductionAsync(ResourceGroupName, Name, new CsmSlotEntity()
             {
                 TargetSlot = slotName
             }));
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:DFC52755A97E7B13EB10FA2EB9538E4A:FCF3A2AD2F52743B995DDA1FE7D020CB
         public override void Swap(string slotName)
         {
-            Extensions.Synchronize(() => Manager.Inner.WebApps.SwapSlotWithProductionAsync(ResourceGroupName, Name, new CsmSlotEntityInner
+            Extensions.Synchronize(() => Manager.Inner.WebApps.SwapSlotWithProductionAsync(ResourceGroupName, Name, new CsmSlotEntity
             {
                 TargetSlot = slotName
             }));
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         ///GENMHASH:E7F5C40042323022AA5171FA979A6E79:27DA6227AE38DA9C9AC067D20F4EEEAC
         public override async Task SwapAsync(string slotName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Manager.Inner.WebApps.SwapSlotWithProductionAsync(ResourceGroupName, Name, new CsmSlotEntityInner
+            await Manager.Inner.WebApps.SwapSlotWithProductionAsync(ResourceGroupName, Name, new CsmSlotEntity
             {
                 TargetSlot = slotName
             }, cancellationToken);
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public async override Task ApplySlotConfigurationsAsync(string slotName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Manager.Inner.WebApps.ApplySlotConfigToProductionAsync(ResourceGroupName, Name, new CsmSlotEntityInner
+            await Manager.Inner.WebApps.ApplySlotConfigToProductionAsync(ResourceGroupName, Name, new CsmSlotEntity
             {
                 TargetSlot = slotName
             }, cancellationToken);
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             return await Manager.Inner.WebApps.GetAsync(ResourceGroupName, Name, cancellationToken);
         }
 
-        internal override async Task<MSDeployStatusInner> CreateMSDeploy(MSDeployInner msDeployInner, CancellationToken cancellationToken)
+        internal override async Task<MSDeployStatusInner> CreateMSDeploy(MSDeploy msDeployInner, CancellationToken cancellationToken)
         {
             return await Manager.Inner.WebApps.CreateMSDeployOperationAsync(ResourceGroupName, Name, msDeployInner, cancellationToken);
         }
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public override async Task<Stream> GetContainerLogsZipAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Manager.Inner.WebApps.GetWebSiteContainerLogsZipAsync(ResourceGroupName, Name, cancellationToken);
+            return await Manager.Inner.WebApps.GetContainerLogsZipAsync(ResourceGroupName, Name, cancellationToken);
         }
 
         public override async Task UpdateDiagnosticLogsConfigAsync(SiteLogsConfigInner siteLogConfig, CancellationToken cancellationToken = default(CancellationToken))

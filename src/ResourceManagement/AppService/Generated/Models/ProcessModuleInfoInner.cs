@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Process Module Information.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ProcessModuleInfoInner : ProxyOnlyResource
+    public partial class ProcessModuleInfoInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the ProcessModuleInfoInner class.
@@ -30,10 +30,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the ProcessModuleInfoInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="baseAddress">Base address. Used as module identifier
         /// in ARM resource URI.</param>
         /// <param name="fileName">File name.</param>
@@ -46,8 +43,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="productVersion">Product version.</param>
         /// <param name="isDebug">Is debug?</param>
         /// <param name="language">Module language (locale).</param>
-        public ProcessModuleInfoInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string baseAddress = default(string), string fileName = default(string), string href = default(string), string filePath = default(string), int? moduleMemorySize = default(int?), string fileVersion = default(string), string fileDescription = default(string), string product = default(string), string productVersion = default(string), bool? isDebug = default(bool?), string language = default(string))
-            : base(id, name, kind, type)
+        public ProcessModuleInfoInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string baseAddress = default(string), string fileName = default(string), string href = default(string), string filePath = default(string), int? moduleMemorySize = default(int?), string fileVersion = default(string), string fileDescription = default(string), string product = default(string), string productVersion = default(string), bool? isDebug = default(bool?), string language = default(string))
+            : base(id, name, type, kind)
         {
             BaseAddress = baseAddress;
             FileName = fileName;
@@ -72,13 +69,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Gets or sets base address. Used as module identifier in ARM
         /// resource URI.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.baseAddress")]
+        [JsonProperty(PropertyName = "properties.base_address")]
         public string BaseAddress { get; set; }
 
         /// <summary>
         /// Gets or sets file name.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.fileName")]
+        [JsonProperty(PropertyName = "properties.file_name")]
         public string FileName { get; set; }
 
         /// <summary>
@@ -90,25 +87,25 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets or sets file path.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.filePath")]
+        [JsonProperty(PropertyName = "properties.file_path")]
         public string FilePath { get; set; }
 
         /// <summary>
         /// Gets or sets module memory size.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.moduleMemorySize")]
+        [JsonProperty(PropertyName = "properties.module_memory_size")]
         public int? ModuleMemorySize { get; set; }
 
         /// <summary>
         /// Gets or sets file version.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.fileVersion")]
+        [JsonProperty(PropertyName = "properties.file_version")]
         public string FileVersion { get; set; }
 
         /// <summary>
         /// Gets or sets file description.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.fileDescription")]
+        [JsonProperty(PropertyName = "properties.file_description")]
         public string FileDescription { get; set; }
 
         /// <summary>
@@ -120,13 +117,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Gets or sets product version.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.productVersion")]
+        [JsonProperty(PropertyName = "properties.product_version")]
         public string ProductVersion { get; set; }
 
         /// <summary>
         /// Gets or sets is debug?
         /// </summary>
-        [JsonProperty(PropertyName = "properties.isDebug")]
+        [JsonProperty(PropertyName = "properties.is_debug")]
         public bool? IsDebug { get; set; }
 
         /// <summary>

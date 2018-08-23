@@ -679,6 +679,46 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         }
 
         /// <summary>
+        /// Sets whether the web app only accepts HTTPS traffic.
+        /// </summary>
+        /// <param name="httpsOnly">true if the web app only accepts HTTPS traffic.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithHttpsOnly(bool httpsOnly)
+        {
+            return this.WithHttpsOnly(httpsOnly);
+        }
+
+        /// <summary>
+        /// Sets whether the web app only accepts HTTP 2.0 traffic.
+        /// </summary>
+        /// <param name="http20Enabled">true if the web app accepts HTTP 2.0 traffic.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithHttp20Enabled(bool http20Enabled)
+        {
+            return this.WithHttp20Enabled(http20Enabled);
+        }
+
+        /// <summary>
+        /// Sets whether the web app supports certain type of FTP(S).
+        /// </summary>
+        /// <param name="ftpsState">the FTP(S) configuration.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithFtpsState(FtpsState ftpsState)
+        {
+            return this.WithFtpsState(ftpsState);
+        }
+
+        /// <summary>
+        /// Sets the virtual applications in the web app.
+        /// </summary>
+        /// <param name="virtualApplications">the list of virtual applications in the web app</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Update.IUpdate<FluentT> WebAppBase.Update.IWithSiteConfigs<FluentT>.WithVirtualApplications(IList<VirtualApplication> virtualApplications)
+        {
+            return this.WithVirtualApplications(virtualApplications);
+        }
+
+        /// <summary>
         /// Adds a list of default documents.
         /// </summary>
         /// <param name="documents">List of default documents.</param>
@@ -824,6 +864,46 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithPythonVersion(PythonVersion version)
         {
             return this.WithPythonVersion(version);
+        }
+
+        /// <summary>
+        /// Sets whether the web app only accepts HTTPS traffic.
+        /// </summary>
+        /// <param name="httpsOnly">true if the web app only accepts HTTPS traffic.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithHttpsOnly(bool httpsOnly)
+        {
+            return this.WithHttpsOnly(httpsOnly);
+        }
+
+        /// <summary>
+        /// Sets whether the web app only accepts HTTP 2.0 traffic.
+        /// </summary>
+        /// <param name="http20Enabled">true if the web app accepts HTTP 2.0 traffic.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithHttp20Enabled(bool http20Enabled)
+        {
+            return this.WithHttp20Enabled(http20Enabled);
+        }
+
+        /// <summary>
+        /// Sets whether the web app supports certain type of FTP(S).
+        /// </summary>
+        /// <param name="ftpsState">the FTP(S) configuration.</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithFtpsState(FtpsState ftpsState)
+        {
+            return this.WithFtpsState(ftpsState);
+        }
+
+        /// <summary>
+        /// Sets the virtual applications in the web app.
+        /// </summary>
+        /// <param name="virtualApplications">the list of virtual applications in the web app</param>
+        /// <return>The next stage of the definition.</return>
+        WebAppBase.Definition.IWithCreate<FluentT> WebAppBase.Definition.IWithSiteConfigs<FluentT>.WithVirtualApplications(IList<VirtualApplication> virtualApplications)
+        {
+            return this.WithVirtualApplications(virtualApplications);
         }
 
         /// <summary>

@@ -4,8 +4,10 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using Microsoft.Azure.Management.BatchAI.Fluent;
+using Microsoft.Azure.Management.BatchAI.Fluent;
 using Microsoft.Azure.Management.BatchAI.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
+using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
@@ -25,27 +27,30 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// Implementation for BatchAIJob and its create interface.
     /// </summary>
     public partial class BatchAIJobImpl :
-        GroupableResource<
+        Creatable<
             IBatchAIJob,
             JobInner,
             BatchAIJobImpl,
-            IBatchAIManager,
-            IWithNodeCount,
-            IWithNodeCount,
-            IWithCreate,
-            IWithCreate>,
+            IBatchAIJob>,
         IBatchAIJob,
         IDefinition,
         IHasMountVolumes
     {
-        private IBatchAICluster parent;
-        private JobCreateParametersInner createParameters = new JobCreateParametersInner();
+        private JobCreateParameters createParameters = new JobCreateParameters();
+        private IBatchAIExperiment experiment;
+        private IBatchAIWorkspace workspace;
 
+        public string Id => Inner.Id;
 
+        internal  BatchAIJobImpl(string name, BatchAIExperimentImpl parent, JobInner inner) : base(name, inner)
+        {
+            this.workspace = parent.Workspace();
+            this.experiment = parent;
+        }
         ///GENMHASH:059CF0A75A891E3B7D5534F1F5D7677D:00DF86B9F15044D36FC5E32F6EF565A0
         internal void AttachImageSourceRegistry(ContainerImageSettingsImpl containerImageSettings)
         {
-            EnsureContainerSettings().ImageSourceRegistry = containerImageSettings.Inner;
+            Inner.ContainerSettings = containerImageSettings.Inner;
         }
 
         ///GENMHASH:4FAFAB18615996B56CCEB8BFCFE23ACC:AF1BAE64EA189C8AA1969355AFE86576
@@ -63,9 +68,29 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             createParameters.PyTorchSettings = pyTorch.Inner;
         }
 
-        public IBatchAICluster Parent()
+        internal void AttachContainerSettings(ContainerImageSettingsImpl containerImageSettings)
         {
-            return parent;
+            createParameters.ContainerSettings = containerImageSettings.Inner;
+        }
+
+        internal void AttachCustomMpiSettings(CustomMpiImpl customMpi)
+        {
+            createParameters.CustomMpiSettings = customMpi.Inner;
+        }
+
+        internal void AttachCustomToolkitSettings(CustomToolkitImpl customToolkit)
+        {
+            createParameters.CustomToolkitSettings = customToolkit.Inner;
+        }
+
+        internal void AttachHorovodSettings(HorovodImpl horovod)
+        {
+            createParameters.HorovodSettings = horovod.Inner;
+        }
+
+        public IBatchAIWorkspace Parent()
+        {
+            return workspace;
         }
 
         public Models.ResourceId Cluster()
@@ -111,6 +136,16 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.ContainerSettings;
         }
 
+        public AzureBlobFileSystemImpl<BatchAIJob.Definition.IWithCreate> DefineAzureBlobFileSystem()
+        {
+            return new AzureBlobFileSystemImpl<BatchAIJob.Definition.IWithCreate>(new AzureBlobFileSystemReference(), this);
+        }
+
+        public AzureFileShareImpl<BatchAIJob.Definition.IWithCreate> DefineAzureFileShare()
+        {
+            return new AzureFileShareImpl<BatchAIJob.Definition.IWithCreate>(new AzureFileShareReference(), this);
+        }
+
         ///GENMHASH:CFB683D3617B006FFB78656F84281F44:103EED3DBBE3F4A4AF306B467C5B1187
         public Models.OutputDirectorySettings.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefineOutputDirectory(string id)
         {
@@ -124,6 +159,30 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public ToolTypeSettings.PyTorch.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefinePyTorch()
         {
             return new PyTorchImpl(new PyTorchSettings(), this);
+        }
+
+        public ContainerImageSettings.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefineContainerSettings(string image)
+        {
+            return new ContainerImageSettingsImpl(new ContainerSettings(new ImageSourceRegistry(image)), this);
+        }
+
+        public ToolTypeSettings.CustomMpi.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefineCustomMpi()
+        {
+            return new CustomMpiImpl(new CustomMpiSettings(), this);
+        }
+
+        public ToolTypeSettings.CustomToolkit.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefineCustomToolkit()
+        {
+            return new CustomToolkitImpl(new CustomToolkitSettings(), this);
+        }
+
+        public FileServerImpl<BatchAIJob.Definition.IWithCreate> DefineFileServer()
+        {
+            return new FileServerImpl<BatchAIJob.Definition.IWithCreate>(new FileServerReference(), this);
+        }
+        public ToolTypeSettings.Horovod.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefineHorovod()
+        {
+            return new HorovodImpl(new HorovodSettings(), this);
         }
 
         public BatchAIJobImpl WithOutputDirectory(string id, string pathPrefix)
@@ -142,7 +201,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         protected override async Task<JobInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Manager.Inner.Jobs.GetAsync(ResourceGroupName, Name);
+            return await workspace.Manager.Inner.Jobs.GetAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, Name, cancellationToken);
         }
 
         public JobPropertiesConstraints Constraints()
@@ -174,7 +233,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.TensorFlowSettings;
         }
 
-
+        public IBatchAIExperiment Experiment()
+        {
+            return experiment;
+        }
         ///GENMHASH:5B794EC32B2017F4DB6D296D15C807EE:8B92CC87EAA8C304326EEEA4E104ADBF
         public string JobOutputDirectoryPathSegment()
         {
@@ -185,15 +247,15 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         ///GENMHASH:9CAEB126E31891FBCBEF610FA55F0B44:918CF333AEFA0C9472983BB4D3EAF455
         public IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile> ListFiles(string outputDirectoryId, string directory, int linkExpiryMinutes, int maxResults)
         {
-            return Extensions.Synchronize(() => Manager.Inner.Jobs.ListOutputFilesAsync(this.ResourceGroupName, this.Name, new JobsListOutputFilesOptionsInner(outputDirectoryId, directory, linkExpiryMinutes, maxResults)))
+            return Extensions.Synchronize(() => workspace.Manager.Inner.Jobs.ListOutputFilesAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, this.Name, new JobsListOutputFilesOptions(outputDirectoryId, directory, linkExpiryMinutes, maxResults)))
                 .Select(inner => new OutputFileImpl(inner));
         }
 
         ///GENMHASH:939E8F1032A1B8C0AB96D412B52318E0:B1E6A38821CED79E43B50A3034484B9D
         public async Task<IPagedCollection<IOutputFile>> ListFilesAsync(string outputDirectoryId, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var files = await Manager.Inner.Jobs.ListOutputFilesAsync(this.ResourceGroupName, this.Name,
-                new JobsListOutputFilesOptionsInner(outputDirectoryId), cancellationToken);
+            var files = await workspace.Manager.Inner.Jobs.ListOutputFilesAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, this.Name,
+                new JobsListOutputFilesOptions(outputDirectoryId), cancellationToken);
             var result = files.Select((inner) => new OutputFileImpl(inner));
             return PagedCollection<IOutputFile, File>.CreateFromEnumerable(result);
         }
@@ -201,10 +263,24 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         ///GENMHASH:C49DAA33A6BEC24793DA91B538DFB8F2:67C8DB89B63C9A02758CADAF8DE68104
         public async Task<IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile>> ListFilesAsync(string outputDirectoryId, string directory, int linkExpiryMinutes, int maxResults, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var files = await Manager.Inner.Jobs.ListOutputFilesAsync(this.ResourceGroupName, this.Name,
-                new JobsListOutputFilesOptionsInner(outputDirectoryId, directory, linkExpiryMinutes, maxResults), cancellationToken);
+            var files = await workspace.Manager.Inner.Jobs.ListOutputFilesAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, this.Name,
+                new JobsListOutputFilesOptions(outputDirectoryId, directory, linkExpiryMinutes, maxResults), cancellationToken);
             var result = files.Select((inner) => new OutputFileImpl(inner));
             return PagedCollection<IOutputFile, File>.CreateFromEnumerable(result);
+        }
+
+        public IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation> ListRemoteLoginInformation()
+        {
+            return Extensions
+                .Synchronize(() => workspace.Manager.Inner.Jobs.ListRemoteLoginInformationAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, this.Name))
+                .Select(inner => new RemoteLoginInformationImpl(inner));
+        }
+
+        public async Task<IPagedCollection<Microsoft.Azure.Management.BatchAI.Fluent.IRemoteLoginInformation>> ListRemoteLoginInformationAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var files = await workspace.Manager.Inner.Jobs.ListRemoteLoginInformationAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, this.Name, cancellationToken);
+            var result = files.Select((inner) => new RemoteLoginInformationImpl(inner));
+            return PagedCollection<IRemoteLoginInformation, BatchAI.Fluent.Models.RemoteLoginInformation>.CreateFromEnumerable(result);
         }
 
         ///GENMHASH:1A830FCD0FD7E62DA41C4EC6DB518469:AC8FF8973958BDCA4BF309100541E49E
@@ -219,12 +295,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.NodeCount.GetValueOrDefault();
         }
 
-        public IWithCreate WithExperimentName(string experimentName)
-        {
-            Inner.ExperimentName = experimentName;
-            return this;
-        }
-
         public ToolTypeSettings.CognitiveToolkit.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefineCognitiveToolkit()
         {
             return new CognitiveToolkitImpl(new CNTKsettings(), this);
@@ -232,12 +302,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public override async Task<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIJob> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (parent == null)
-            {
-                parent = await Manager.BatchAIClusters.GetByIdAsync(createParameters.Cluster.Id, cancellationToken);
-            }
-            createParameters.Location = parent.RegionName;
-            var inner = await Manager.Inner.Jobs.CreateAsync(parent.ResourceGroupName, this.Name, createParameters, cancellationToken);
+            var inner = await workspace.Manager.Inner.Jobs.CreateAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, this.Name, createParameters, cancellationToken);
             SetInner(inner);
             return this;
         }
@@ -276,18 +341,9 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             createParameters.TensorFlowSettings = tensorFlow.Inner;
         }
 
-        public int Priority()
-        {
-            return Inner.Priority.GetValueOrDefault();
-        }
-
         public ToolType ToolType()
         {
-            if (Inner.ToolType == null)
-            {
-                return null;
-            }
-            return Models.ToolType.Parse(Inner.ToolType);
+            return Inner.ToolType;
         }
 
         internal void AttachCaffeSettings(CaffeImpl caffe)
@@ -346,6 +402,11 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return Inner.PyTorchSettings;
         }
 
+        public JobPriority SchedulingPriority()
+        {
+            return Inner.SchedulingPriority;
+        }
+
         ///GENMHASH:7C40B8F1CAC0870CB8598B5F3923153C:4693F9B6A45CFE5A5270DD5BA982E034
         public IReadOnlyList<Microsoft.Azure.Management.BatchAI.Fluent.Models.EnvironmentVariableWithSecretValue> Secrets()
         {
@@ -364,11 +425,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
                 createParameters.MountVolumes = new MountVolumes();
             }
             return createParameters.MountVolumes;
-        }
-
-        public string ExperimentName()
-        {
-            return Inner.ExperimentName;
         }
 
         public ToolTypeSettings.Caffe2.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefineCaffe2()
@@ -398,7 +454,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IOutputFile> ListFiles(string outputDirectoryId)
         {
-            return Extensions.Synchronize(() => Manager.Inner.Jobs.ListOutputFilesAsync(this.ResourceGroupName, this.Name, new JobsListOutputFilesOptionsInner(outputDirectoryId)))
+            return Extensions.Synchronize(() => workspace.Manager.Inner.Jobs.ListOutputFilesAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, this.Name, new JobsListOutputFilesOptions(outputDirectoryId)))
                 .Select(inner => new OutputFileImpl(inner));
         }
 
@@ -410,13 +466,13 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
 
         public async Task TerminateAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Manager.Inner.Jobs.TerminateAsync(ResourceGroupName, Name, cancellationToken);
+            await workspace.Manager.Inner.Jobs.TerminateAsync(workspace.ResourceGroupName, workspace.Name, experiment.Name, Name, cancellationToken);
             await RefreshAsync(cancellationToken);
         }
 
         public ExecutionState ExecutionState()
         {
-            return Inner.ExecutionState.GetValueOrDefault();
+            return Inner.ExecutionState;
         }
 
         public BatchAIJobImpl WithStdOutErrPathPrefix(string stdOutErrPathPrefix)
@@ -458,7 +514,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-                ///GENMHASH:AB0BF9D0BEA18CD334AAF69A466D74DB:244EAB58A02E8C0EA8858C0AA028A77B
+        ///GENMHASH:AB0BF9D0BEA18CD334AAF69A466D74DB:244EAB58A02E8C0EA8858C0AA028A77B
         public BatchAIJobImpl WithEnvironmentVariableSecretValue(string name, string keyVaultId, string secretUrl)
         {
             KeyVaultSecretReference secretReference = new KeyVaultSecretReference(new Models.ResourceId(keyVaultId), secretUrl);
@@ -469,9 +525,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         ///GENMHASH:A851295FCC0E9F4FE107D9566C40A6D0:444BB1540F15B3A5BECC3E92D812699B
         public BatchAIJobImpl WithExistingCluster(IBatchAICluster cluster)
         {
-            parent = cluster;
             createParameters.Cluster = new Models.ResourceId(cluster.Id);
-
             return this;
         }
 
@@ -501,11 +555,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return this;
         }
 
-        internal BatchAIJobImpl(string name, JobInner inner, IBatchAIManager manager)
-            : base(name, inner, manager)
-        {
-        }
-
         public ChainerSettings ChainerSettings()
         {
             return Inner.ChainerSettings;
@@ -519,6 +568,17 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         public ToolTypeSettings.TensorFlow.Definition.IBlank<BatchAIJob.Definition.IWithCreate> DefineTensorflow()
         {
             return new TensorFlowImpl(new TensorFlowSettings(), this);
+        }
+
+        public BatchAIJobImpl WithUnmanagedFileSystem(string mountCommand, string relativeMountPath)
+        {
+            MountVolumes mountVolumes = EnsureMountVolumes();
+            if (mountVolumes.UnmanagedFileSystems == null)
+            {
+                mountVolumes.UnmanagedFileSystems = new List<UnmanagedFileSystemReference>();
+            }
+            mountVolumes.UnmanagedFileSystems.Add(new UnmanagedFileSystemReference(mountCommand, relativeMountPath));
+            return this;
         }
     }
 }

@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="2.3.2" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.10" /> 
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.13" /> 
     <PackageReference Include="CoreFTP" Version="1.2.0" />
     <PackageReference Include="Microsoft.Azure.ServiceBus" Version="0.0.2-preview" />
     <PackageReference Include="SSH.NET" Version="2016.0.0" />
@@ -297,6 +297,24 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Asset\install_apache.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-235967961.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-4c7816364.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-608077000.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-7eb138944.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-b9d417872.com.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Asset\jsdkdemo-e1a326575.com.pfx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Asset\NetworkTestCertificate1.cer">

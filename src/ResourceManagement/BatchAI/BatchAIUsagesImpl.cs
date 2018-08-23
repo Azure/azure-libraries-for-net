@@ -3,7 +3,7 @@
 
 using Microsoft.Azure.Management.BatchAI.Fluent;
 
-namespace Microsoft.Azure.Management.Batchai.Fluent
+namespace Microsoft.Azure.Management.BatchAI.Fluent
 {
     using Microsoft.Azure.Management.BatchAI.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Batchai.Fluent
     /// The implementation of  BatchAIUsages.
     /// </summary>
 ///GENTHASH:Y29tLm1pY3Jvc29mdC5henVyZS5tYW5hZ2VtZW50LmJhdGNoYWkuaW1wbGVtZW50YXRpb24uQmF0Y2hBSVVzYWdlc0ltcGw=
-    internal partial class BatchAIUsagesImpl : ReadableWrappers<IBatchAIUsage, BatchAIUsageImpl, Usage>,
+    internal partial class BatchAIUsagesImpl : ReadableWrappers<IBatchAIUsage, BatchAIUsageImpl, UsageInner>,
         IBatchAIUsages
     {
         private readonly IBatchAIManager manager;
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Batchai.Fluent
         }
 
         ///GENMHASH:438AA0AEE9E5AB3F7FB0CB3404AB0062:721A1AF5B7A50286838CF749239E931B
-        protected override IBatchAIUsage WrapModel(Usage usageInner)
+        protected override IBatchAIUsage WrapModel(UsageInner usageInner)
         {
             if (usageInner == null)
             {
@@ -38,15 +38,15 @@ namespace Microsoft.Azure.Management.Batchai.Fluent
         }
 
         ///GENMHASH:BA2FEDDF9D78BF55786D81F6C85E907C:278D096DC6C27545470C89C8D1259A16
-        public IEnumerable<Microsoft.Azure.Management.Batchai.Fluent.IBatchAIUsage> ListByRegion(Region region)
+        public IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIUsage> ListByRegion(Region region)
         {
             return ListByRegion(region.Name);
         }
 
         ///GENMHASH:360BB74037893879A730ED7ED0A3938A:34BF45703D53DEAC832C7449858B69FC
-        public IEnumerable<Microsoft.Azure.Management.Batchai.Fluent.IBatchAIUsage> ListByRegion(string regionName)
+        public IEnumerable<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIUsage> ListByRegion(string regionName)
         {
-            return WrapList(Extensions.Synchronize(() => manager.Inner.Usage.ListWithHttpMessagesAsync(regionName)).Body.AsContinuousCollection(link => Extensions.Synchronize(() => manager.Inner.Usage.ListNextAsync(link))));
+            return WrapList(Extensions.Synchronize(() => manager.Inner.Usages.ListWithHttpMessagesAsync(regionName)).Body.AsContinuousCollection(link => Extensions.Synchronize(() => manager.Inner.Usages.ListNextAsync(link))));
         }
 
         ///GENMHASH:271CC39CE723B6FD3D7CCA7471D4B201:039795D842B96323D94D260F3FF83299

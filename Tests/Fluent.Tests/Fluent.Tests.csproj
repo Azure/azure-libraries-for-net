@@ -7,10 +7,11 @@
     <PackageId>Fluent.Unit.Tests</PackageId>
     <VersionPrefix>1.0.0</VersionPrefix>
   </PropertyGroup>
+<!--  
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
   </PropertyGroup>
-  
+-->  
   <ItemGroup>  
     <PackageReference Include="CoreFtp" Version="1.4.0" />
   </ItemGroup>
@@ -51,5 +52,4 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  
 </Project>

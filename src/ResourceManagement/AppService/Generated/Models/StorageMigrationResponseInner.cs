@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Response for a migration of app content request.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class StorageMigrationResponseInner : ProxyOnlyResource
+    public partial class StorageMigrationResponseInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the StorageMigrationResponseInner
@@ -32,15 +32,12 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Initializes a new instance of the StorageMigrationResponseInner
         /// class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="operationId">When server starts the migration process,
         /// it will return an operation ID identifying that particular
         /// migration operation.</param>
-        public StorageMigrationResponseInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string operationId = default(string))
-            : base(id, name, kind, type)
+        public StorageMigrationResponseInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string operationId = default(string))
+            : base(id, name, type, kind)
         {
             OperationId = operationId;
             CustomInit();

@@ -68,7 +68,7 @@ namespace ManageSqlFailoverGroups
                 // Create a Failover Group from the primary SQL server to the secondary SQL server.
                 Utilities.Log("Creating a Failover Group from the primary SQL server to the secondary SQL server");
 
-                var failoverGroup = sqlPrimaryServer.FailoverGroups.Define("my-failover-group")
+                var failoverGroup = sqlPrimaryServer.FailoverGroups.Define("my-other-failover-group")
                     .WithManualReadWriteEndpointPolicy()
                     .WithPartnerServerId(sqlSecondaryServer.Id)
                     .WithReadOnlyEndpointPolicyDisabled()

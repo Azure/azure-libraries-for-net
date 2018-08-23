@@ -30,8 +30,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
         Microsoft.Azure.Management.BatchAI.Fluent.Models.HasMountVolumes.Definition.IWithMountVolumes<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate>,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithAppInsightsResourceId,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithVirtualMachineImage,
-        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithSubnet,
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Definition.IDefinitionWithTags<Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate>
+        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithSubnet
     {
 
     }
@@ -71,15 +70,14 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
     /// <summary>
     /// The first stage of a Batch AI cluster definition.
     /// </summary>
-    public interface IBlank  :  IDefinitionWithRegion<IWithGroup>
+    public interface IBlank  :  IWithVMSize
     {
     }
 
         /// <summary>
         /// Specifies Azure Application Insights information for performance counters reporting.
         /// </summary>
-        public interface IWithAppInsightsResourceId  :
-            Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+        public interface IWithAppInsightsResourceId
         {
 
             /// <param name="resoureId">Azure Application Insights component resource id.</param>
@@ -234,8 +232,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
     /// </summary>
     public interface IDefinition  :
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IBlank,
-        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithGroup,
-        Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithVMSize,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithUserName,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithUserCredentials,
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithScaleSettings,
@@ -243,6 +239,7 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition
         Microsoft.Azure.Management.BatchAI.Fluent.BatchAICluster.Definition.IWithCreate
     {
     }
+
     /// <summary>
     /// The stage of a Batch AI cluster definition allowing the resource group to be specified.
     /// </summary>

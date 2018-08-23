@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
         }
 
-        // ther sesponse from the server is supposed to be always singe paged.
+        // ther response from the server is supposed to be always singe paged.
         public string NextPageLink => null;
 
         public IEnumerator<ActionGroupResourceInner> GetEnumerator()

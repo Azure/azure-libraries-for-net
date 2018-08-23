@@ -29,18 +29,19 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the Recurrence class.
         /// </summary>
-        /// <param name="frequency">the recurrence frequency. How often the
-        /// schedule profile should take effect. This value must be Week,
-        /// meaning each week will have the same set of profiles. Possible
-        /// values include: 'None', 'Second', 'Minute', 'Hour', 'Day', 'Week',
-        /// 'Month', 'Year'</param>
         /// <param name="schedule">the scheduling constraints for when the
         /// profile begins.</param>
-        public Recurrence(RecurrenceFrequency frequency, RecurrentSchedule schedule)
+        public Recurrence(RecurrentSchedule schedule)
         {
-            Frequency = frequency;
             Schedule = schedule;
             CustomInit();
+        }
+        /// <summary>
+        /// Static constructor for Recurrence class.
+        /// </summary>
+        static Recurrence()
+        {
+            Frequency = "Week";
         }
 
         /// <summary>
@@ -49,20 +50,21 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the recurrence frequency. How often the schedule
-        /// profile should take effect. This value must be Week, meaning each
-        /// week will have the same set of profiles. Possible values include:
-        /// 'None', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
-        /// </summary>
-        [JsonProperty(PropertyName = "frequency")]
-        public RecurrenceFrequency Frequency { get; set; }
-
-        /// <summary>
         /// Gets or sets the scheduling constraints for when the profile
         /// begins.
         /// </summary>
         [JsonProperty(PropertyName = "schedule")]
         public RecurrentSchedule Schedule { get; set; }
+
+        /// <summary>
+        /// the recurrence frequency. How often the schedule profile should
+        /// take effect. This value must be Week, meaning each week will have
+        /// the same set of profiles. For example, to set a daily schedule, set
+        /// **schedule** to every day of the week. The frequency property
+        /// specifies that the schedule is repeated weekly.
+        /// </summary>
+        [JsonProperty(PropertyName = "frequency")]
+        public static string Frequency { get; private set; }
 
         /// <summary>
         /// Validate the object.

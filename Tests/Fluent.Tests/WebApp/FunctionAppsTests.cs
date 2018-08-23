@@ -109,5 +109,58 @@ namespace Fluent.Tests.WebApp
                 }
             }
         }
+        
+        [Fact]
+        public void FunctionAppLongNameBug()
+        {
+            using (var context = FluentMockContext.Start(this.GetType().FullName))
+            {
+                string GroupName1 = TestUtilities.GenerateName("javacsmrg");
+                string WebAppName1 = TestUtilities.GenerateName("IAmAFuncitonNameThatIsLonger");
+                string StorageName1 = TestUtilities.GenerateName("javast");
+                if (StorageName1.Length >= 23)
+                {
+                    StorageName1 = StorageName1.Substring(0, 20);
+                }
+                StorageName1 = StorageName1.Replace("-", string.Empty);
+
+                var appServiceManager = TestHelper.CreateAppServiceManager();
+
+                try
+                {
+                    // Create with consumption plan
+                    var functionApp1 = appServiceManager.FunctionApps.Define(WebAppName1)
+                        .WithRegion(Region.USWest)
+                        .WithNewResourceGroup(GroupName1)
+                        .WithNewStorageAccount(StorageName1, Microsoft.Azure.Management.Storage.Fluent.Models.SkuName.StandardGRS)
+                        .WithNewAppServicePlan(PricingTier.PremiumP1)
+                        .Create();
+
+                    Assert.NotNull(functionApp1);
+                    functionApp1
+                        .Update()
+                        .WithTag("PackageUpdateDate", "07/17/2018")
+                        .Apply();
+
+                    Assert.NotNull(functionApp1.Tags);
+                    Assert.Equal(1, functionApp1.Tags.Count);
+                    Assert.Equal("07/17/2018", functionApp1.Tags["PackageUpdateDate"]);
+
+                    var functionAppFromGet = appServiceManager.FunctionApps.GetById(functionApp1.Id);
+                    Assert.NotNull(functionAppFromGet.Tags);
+                    Assert.Equal(1, functionAppFromGet.Tags.Count);
+                    Assert.Equal("07/17/2018", functionAppFromGet.Tags["PackageUpdateDate"]);
+
+                }
+                finally
+                {
+                    try
+                    {
+                        TestHelper.CreateResourceManager().ResourceGroups.DeleteByName(GroupName1);
+                    }
+                    catch { }
+                }
+            }
+        }
     }
 }

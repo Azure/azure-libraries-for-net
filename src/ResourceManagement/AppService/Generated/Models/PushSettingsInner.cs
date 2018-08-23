@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Push settings for the App.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class PushSettingsInner : ProxyOnlyResource
+    public partial class PushSettingsInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the PushSettingsInner class.
@@ -32,10 +32,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         /// <param name="isPushEnabled">Gets or sets a flag indicating whether
         /// the Push endpoint is enabled.</param>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="tagWhitelistJson">Gets or sets a JSON string
         /// containing a list of tags that are whitelisted for use by the push
         /// registration endpoint.</param>
@@ -48,8 +45,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="dynamicTagsJson">Gets or sets a JSON string containing
         /// a list of dynamic tags that will be evaluated from user claims in
         /// the push registration endpoint.</param>
-        public PushSettingsInner(bool isPushEnabled, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string tagWhitelistJson = default(string), string tagsRequiringAuth = default(string), string dynamicTagsJson = default(string))
-            : base(id, name, kind, type)
+        public PushSettingsInner(bool isPushEnabled, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string tagWhitelistJson = default(string), string tagsRequiringAuth = default(string), string dynamicTagsJson = default(string))
+            : base(id, name, type, kind)
         {
             IsPushEnabled = isPushEnabled;
             TagWhitelistJson = tagWhitelistJson;
@@ -101,7 +98,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             //Nothing to validate
         }

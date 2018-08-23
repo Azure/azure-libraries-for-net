@@ -10,18 +10,16 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// Entry point to Batch AI cluster management API in Azure.
     /// </summary>
     public interface IBatchAIClusters  :
-        IBeta,
-        ISupportsCreating<BatchAICluster.Definition.IBlank>,
-        ISupportsListing<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster>,
-        ISupportsListingByResourceGroup<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster>,
-        ISupportsGettingByResourceGroup<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster>,
-        ISupportsGettingById<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster>,
-        ISupportsDeletingById,
-        ISupportsDeletingByResourceGroup,
-        ISupportsBatchCreation<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster>,
-        ISupportsBatchDeletion,
-        IHasManager<IBatchAIManager>,
-        IHasInner<IClustersOperations>
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsCreating<BatchAICluster.Definition.IBlank>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsListing<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingById<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsGettingByNameAsync<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAICluster>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingById,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.CollectionActions.ISupportsDeletingByName,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasManager<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIManager>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasInner<Microsoft.Azure.Management.BatchAI.Fluent.IClustersOperations>,
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IHasParent<Microsoft.Azure.Management.BatchAI.Fluent.IBatchAIWorkspace>
     {
     }
 }

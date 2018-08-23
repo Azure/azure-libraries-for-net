@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Description of a restore request.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class RestoreRequestInner : ProxyOnlyResource
+    public partial class RestoreRequestInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the RestoreRequestInner class.
@@ -37,10 +37,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// restore operation can overwrite target app; otherwise,
         /// &lt;code&gt;false&lt;/code&gt;. &lt;code&gt;true&lt;/code&gt; is
         /// needed if trying to restore over an existing app.</param>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="blobName">Name of a blob which contains the
         /// backup.</param>
         /// <param name="siteName">Name of an app.</param>
@@ -58,15 +55,16 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <param name="appServicePlan">Specify app service plan that will own
         /// restored site.</param>
         /// <param name="operationType">Operation type. Possible values
-        /// include: 'Default', 'Clone', 'Relocation', 'Snapshot'</param>
+        /// include: 'Default', 'Clone', 'Relocation', 'Snapshot',
+        /// 'CloudFS'</param>
         /// <param name="adjustConnectionStrings">&lt;code&gt;true&lt;/code&gt;
         /// if SiteConfig.ConnectionStrings should be set in new app;
         /// otherwise, &lt;code&gt;false&lt;/code&gt;.</param>
         /// <param name="hostingEnvironment">App Service Environment name, if
         /// needed (only when restoring an app to an App Service
         /// Environment).</param>
-        public RestoreRequestInner(string storageAccountUrl, bool overwrite, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string blobName = default(string), string siteName = default(string), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>), bool? ignoreConflictingHostNames = default(bool?), bool? ignoreDatabases = default(bool?), string appServicePlan = default(string), BackupRestoreOperationType? operationType = default(BackupRestoreOperationType?), bool? adjustConnectionStrings = default(bool?), string hostingEnvironment = default(string))
-            : base(id, name, kind, type)
+        public RestoreRequestInner(string storageAccountUrl, bool overwrite, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string blobName = default(string), string siteName = default(string), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>), bool? ignoreConflictingHostNames = default(bool?), bool? ignoreDatabases = default(bool?), string appServicePlan = default(string), BackupRestoreOperationType? operationType = default(BackupRestoreOperationType?), bool? adjustConnectionStrings = default(bool?), string hostingEnvironment = default(string))
+            : base(id, name, type, kind)
         {
             StorageAccountUrl = storageAccountUrl;
             BlobName = blobName;
@@ -148,7 +146,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
 
         /// <summary>
         /// Gets or sets operation type. Possible values include: 'Default',
-        /// 'Clone', 'Relocation', 'Snapshot'
+        /// 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
         /// </summary>
         [JsonProperty(PropertyName = "properties.operationType")]
         public BackupRestoreOperationType? OperationType { get; set; }
@@ -174,7 +172,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             if (StorageAccountUrl == null)
             {

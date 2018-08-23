@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Description of a backup which will be performed.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class BackupRequestInner : ProxyOnlyResource
+    public partial class BackupRequestInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the BackupRequestInner class.
@@ -32,29 +32,21 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the BackupRequestInner class.
         /// </summary>
-        /// <param name="backupRequestName">Name of the backup.</param>
         /// <param name="storageAccountUrl">SAS URL to the container.</param>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="enabled">True if the backup schedule is enabled (must
         /// be included in that case), false if the backup schedule should be
         /// disabled.</param>
         /// <param name="backupSchedule">Schedule for the backup if it is
         /// executed periodically.</param>
         /// <param name="databases">Databases included in the backup.</param>
-        /// <param name="backupRequestType">Type of the backup. Possible values
-        /// include: 'Default', 'Clone', 'Relocation', 'Snapshot'</param>
-        public BackupRequestInner(string backupRequestName, string storageAccountUrl, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), bool? enabled = default(bool?), BackupSchedule backupSchedule = default(BackupSchedule), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>), BackupRestoreOperationType? backupRequestType = default(BackupRestoreOperationType?))
-            : base(id, name, kind, type)
+        public BackupRequestInner(string storageAccountUrl, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), bool? enabled = default(bool?), BackupSchedule backupSchedule = default(BackupSchedule), IList<DatabaseBackupSetting> databases = default(IList<DatabaseBackupSetting>))
+            : base(id, name, type, kind)
         {
-            BackupRequestName = backupRequestName;
             Enabled = enabled;
             StorageAccountUrl = storageAccountUrl;
             BackupSchedule = backupSchedule;
             Databases = databases;
-            BackupRequestType = backupRequestType;
             CustomInit();
         }
 
@@ -62,12 +54,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets name of the backup.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.name")]
-        public string BackupRequestName { get; set; }
 
         /// <summary>
         /// Gets or sets true if the backup schedule is enabled (must be
@@ -97,24 +83,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         public IList<DatabaseBackupSetting> Databases { get; set; }
 
         /// <summary>
-        /// Gets or sets type of the backup. Possible values include:
-        /// 'Default', 'Clone', 'Relocation', 'Snapshot'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.type")]
-        public BackupRestoreOperationType? BackupRequestType { get; set; }
-
-        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (BackupRequestName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "BackupRequestName");
-            }
             if (StorageAccountUrl == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "StorageAccountUrl");

@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             //Nothing to validate
         }

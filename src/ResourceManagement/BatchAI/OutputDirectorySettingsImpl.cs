@@ -30,13 +30,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
             return parent;            
         }
 
-        ///GENMHASH:B794BC69E0F0B1573FBEDC002628A713:E779404C2AEAE70363D0C1E8563A7E64
-        public OutputDirectorySettingsImpl WithCreateNew(bool createNew)
-        {
-            Inner.CreateNew = createNew;
-            return this;
-        }
-
         ///GENMHASH:86FC3B42A429A9BBDDE9F2A8DAD28E06:2DA6D87E0865A43302F49608CCAFB9B8
         public OutputDirectorySettingsImpl WithPathPrefix(string pathPrefix)
         {

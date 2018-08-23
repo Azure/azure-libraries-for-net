@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Network gateway access to the VPN package.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VnetGatewayInner : ProxyOnlyResource
+    public partial class VnetGatewayInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the VnetGatewayInner class.
@@ -33,13 +33,10 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// </summary>
         /// <param name="vpnPackageUri">The URI where the VPN package can be
         /// downloaded.</param>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="vnetName">The Virtual Network name.</param>
-        public VnetGatewayInner(string vpnPackageUri, string id = default(string), string name = default(string), string kind = default(string), string type = default(string), string vnetName = default(string))
-            : base(id, name, kind, type)
+        public VnetGatewayInner(string vpnPackageUri, string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string vnetName = default(string))
+            : base(id, name, type, kind)
         {
             VnetName = vnetName;
             VpnPackageUri = vpnPackageUri;
@@ -69,7 +66,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             if (VpnPackageUri == null)
             {

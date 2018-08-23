@@ -59,5 +59,15 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             return this.WithRegistryUsername(username);
         }
+
+        /// <summary>
+        /// Specifies size of /dev/shm.
+        /// </summary>
+        /// <param name="shmSize">Size of /dev/shm.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerImageSettings.Definition.IWithAttach<BatchAIJob.Definition.IWithCreate> ContainerImageSettings.Definition.IWithShmSize<BatchAIJob.Definition.IWithCreate>.WithShmSize(string shmSize)
+        {
+            return this.WithShmSize(shmSize);
+        }
     }
 }

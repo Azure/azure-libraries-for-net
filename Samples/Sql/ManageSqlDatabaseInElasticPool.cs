@@ -45,7 +45,7 @@ namespace ManageSqlDatabaseInElasticPool
                 // Create a SQL Server, with 2 firewall rules.
 
                 var sqlServer = azure.SqlServers.Define(sqlServerName)
-                        .WithRegion(Region.USEast)
+                        .WithRegion(Region.USCentral)
                         .WithNewResourceGroup(rgName)
                         .WithAdministratorLogin(administratorLogin)
                         .WithAdministratorPassword(administratorPassword)

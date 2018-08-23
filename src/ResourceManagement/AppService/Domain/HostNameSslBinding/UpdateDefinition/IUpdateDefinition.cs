@@ -88,6 +88,13 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Update
         /// <param name="certificateOrderName">The name of the certificate order.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.UpdateDefinition.IWithKeyVault<ParentT> WithNewStandardSslCertificateOrder(string certificateOrderName);
+
+        /// <summary>
+        /// Use an existing certificate in the resource group.
+        /// </summary>
+        /// <param name="certificateNameOrThumbprint">The name or the thumbprint of the certificate.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.UpdateDefinition.IWithSslType<ParentT> WithExistingCertificate(string certificateNameOrThumbprint);
     }
 
     /// <summary>

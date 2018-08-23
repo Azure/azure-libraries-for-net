@@ -142,14 +142,14 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         }
 
         ///GENMHASH:7D6013E8B95E991005ED921F493EFCE4:8F1B6ED149CF9BB9C8B7AF4CAED5C225
-        public IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster> List()
+        public override IEnumerable<Microsoft.Azure.Management.ContainerService.Fluent.IKubernetesCluster> List()
         {
             return Manager.ResourceManager.ResourceGroups.List()
                                           .SelectMany(rg => ListByResourceGroup(rg.Name));
         }
 
         ///GENMHASH:7F5BEBF638B801886F5E13E6CCFF6A4E:08226B2C955BC74F546710BB065F1D73
-        public async Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IKubernetesCluster>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
+        public async override Task<Microsoft.Azure.Management.ResourceManager.Fluent.Core.IPagedCollection<IKubernetesCluster>> ListAsync(bool loadAllPages = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             var task = await Manager.ResourceManager.ResourceGroups.ListAsync(true, cancellationToken);
 

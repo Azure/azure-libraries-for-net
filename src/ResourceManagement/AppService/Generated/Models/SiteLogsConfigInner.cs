@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
     /// Configuration of App Service site logs.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SiteLogsConfigInner : ProxyOnlyResource
+    public partial class SiteLogsConfigInner : ProxyOnlyResourceInner
     {
         /// <summary>
         /// Initializes a new instance of the SiteLogsConfigInner class.
@@ -30,10 +30,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <summary>
         /// Initializes a new instance of the SiteLogsConfigInner class.
         /// </summary>
-        /// <param name="id">Resource Id.</param>
-        /// <param name="name">Resource Name.</param>
         /// <param name="kind">Kind of resource.</param>
-        /// <param name="type">Resource type.</param>
         /// <param name="applicationLogs">Application logs
         /// configuration.</param>
         /// <param name="httpLogs">HTTP logs configuration.</param>
@@ -41,8 +38,8 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// configuration.</param>
         /// <param name="detailedErrorMessages">Detailed error messages
         /// configuration.</param>
-        public SiteLogsConfigInner(string id = default(string), string name = default(string), string kind = default(string), string type = default(string), ApplicationLogsConfig applicationLogs = default(ApplicationLogsConfig), HttpLogsConfig httpLogs = default(HttpLogsConfig), EnabledConfig failedRequestsTracing = default(EnabledConfig), EnabledConfig detailedErrorMessages = default(EnabledConfig))
-            : base(id, name, kind, type)
+        public SiteLogsConfigInner(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), ApplicationLogsConfig applicationLogs = default(ApplicationLogsConfig), HttpLogsConfig httpLogs = default(HttpLogsConfig), EnabledConfig failedRequestsTracing = default(EnabledConfig), EnabledConfig detailedErrorMessages = default(EnabledConfig))
+            : base(id, name, type, kind)
         {
             ApplicationLogs = applicationLogs;
             HttpLogs = httpLogs;
@@ -86,7 +83,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             if (ApplicationLogs != null)
             {

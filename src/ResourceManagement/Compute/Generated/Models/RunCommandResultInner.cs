@@ -13,7 +13,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
     using System.Collections.Generic;
     using System.Linq;
 
-    [Rest.Serialization.JsonTransformation]
     public partial class RunCommandResultInner
     {
         /// <summary>
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// <summary>
         /// Gets or sets run command operation response.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.output.value")]
+        [JsonProperty(PropertyName = "value")]
         public IList<InstanceViewStatus> Value { get; set; }
 
     }

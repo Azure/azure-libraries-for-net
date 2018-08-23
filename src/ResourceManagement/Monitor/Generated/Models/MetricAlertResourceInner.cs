@@ -47,12 +47,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// information.</param>
         /// <param name="scopes">the list of resource id's that this metric
         /// alert is scoped to.</param>
+        /// <param name="autoMitigate">the flag that indicates whether the
+        /// alert should be auto resolved or not.</param>
         /// <param name="actions">the array of actions that are performed when
         /// the alert rule becomes active, and when an alert condition is
         /// resolved.</param>
         /// <param name="lastUpdatedTime">Last time the rule was updated in
         /// ISO8601 format.</param>
-        public MetricAlertResourceInner(string description, int severity, bool enabled, System.TimeSpan evaluationFrequency, System.TimeSpan windowSize, MetricAlertCriteria criteria, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<string> scopes = default(IList<string>), IList<Action> actions = default(IList<Action>), System.DateTime? lastUpdatedTime = default(System.DateTime?))
+        public MetricAlertResourceInner(string description, int severity, bool enabled, System.TimeSpan evaluationFrequency, System.TimeSpan windowSize, MetricAlertCriteria criteria, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<string> scopes = default(IList<string>), bool? autoMitigate = default(bool?), IList<MetricAlertAction> actions = default(IList<MetricAlertAction>), System.DateTime? lastUpdatedTime = default(System.DateTime?))
             : base(location, id, name, type, tags)
         {
             Description = description;
@@ -62,6 +64,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
             EvaluationFrequency = evaluationFrequency;
             WindowSize = windowSize;
             Criteria = criteria;
+            AutoMitigate = autoMitigate;
             Actions = actions;
             LastUpdatedTime = lastUpdatedTime;
             CustomInit();
@@ -120,11 +123,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         public MetricAlertCriteria Criteria { get; set; }
 
         /// <summary>
+        /// Gets or sets the flag that indicates whether the alert should be
+        /// auto resolved or not.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.autoMitigate")]
+        public bool? AutoMitigate { get; set; }
+
+        /// <summary>
         /// Gets or sets the array of actions that are performed when the alert
         /// rule becomes active, and when an alert condition is resolved.
         /// </summary>
         [JsonProperty(PropertyName = "properties.actions")]
-        public IList<Action> Actions { get; set; }
+        public IList<MetricAlertAction> Actions { get; set; }
 
         /// <summary>
         /// Gets last time the rule was updated in ISO8601 format.
@@ -138,7 +148,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
             if (Description == null)
             {

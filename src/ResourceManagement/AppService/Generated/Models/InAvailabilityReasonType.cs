@@ -8,13 +8,22 @@
 
 namespace Microsoft.Azure.Management.AppService.Fluent.Models
 {
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for InAvailabilityReasonType.
     /// </summary>
-    public static class InAvailabilityReasonType
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<InAvailabilityReasonType>))]
+    public class InAvailabilityReasonType : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<InAvailabilityReasonType>
     {
-        public const string Invalid = "Invalid";
-        public const string AlreadyExists = "AlreadyExists";
+        public static readonly InAvailabilityReasonType Invalid = Parse("Invalid");
+        public static readonly InAvailabilityReasonType AlreadyExists = Parse("AlreadyExists");
     }
 }

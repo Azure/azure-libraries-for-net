@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// Environments with full descriptions of the environments.</param>
         /// <param name="hostingEnvironmentDeploymentInfos">Available App
         /// Service Environments with basic information.</param>
-        public DeploymentLocationsInner(IList<GeoRegion> locations = default(IList<GeoRegion>), IList<AppServiceEnvironment> hostingEnvironments = default(IList<AppServiceEnvironment>), IList<HostingEnvironmentDeploymentInfo> hostingEnvironmentDeploymentInfos = default(IList<HostingEnvironmentDeploymentInfo>))
+        public DeploymentLocationsInner(IList<GeoRegion> locations = default(IList<GeoRegion>), IList<AppServiceEnvironmentInner> hostingEnvironments = default(IList<AppServiceEnvironmentInner>), IList<HostingEnvironmentDeploymentInfo> hostingEnvironmentDeploymentInfos = default(IList<HostingEnvironmentDeploymentInfo>))
         {
             Locations = locations;
             HostingEnvironments = hostingEnvironments;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.Models
         /// descriptions of the environments.
         /// </summary>
         [JsonProperty(PropertyName = "hostingEnvironments")]
-        public IList<AppServiceEnvironment> HostingEnvironments { get; set; }
+        public IList<AppServiceEnvironmentInner> HostingEnvironments { get; set; }
 
         /// <summary>
         /// Gets or sets available App Service Environments with basic

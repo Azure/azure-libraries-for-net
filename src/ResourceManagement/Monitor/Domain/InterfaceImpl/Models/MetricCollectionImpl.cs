@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Gets the metric collection value.
         /// </summary>
-        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.Metric> Microsoft.Azure.Management.Monitor.Fluent.Models.IMetricCollection.Metrics
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.IMetric> Microsoft.Azure.Management.Monitor.Fluent.Models.IMetricCollection.Metrics
         {
             get
             {

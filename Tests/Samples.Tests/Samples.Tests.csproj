@@ -7,11 +7,11 @@
     <PackageId>Fluent.Sample.Tests</PackageId>
     <VersionPrefix>1.0.0</VersionPrefix>
   </PropertyGroup>
-
+<!--
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
   </PropertyGroup>
-  
+-->  
   <ItemGroup>
     <ProjectReference Include="..\Fluent.Tests\Fluent.Tests.csproj" />
     <ProjectReference Include="..\..\src\ResourceManagement\Azure.Fluent\Microsoft.Azure.Management.Fluent.csproj" />
@@ -27,5 +27,4 @@
   <ItemGroup>
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
-
 </Project>

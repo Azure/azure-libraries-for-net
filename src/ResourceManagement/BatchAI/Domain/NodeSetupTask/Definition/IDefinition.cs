@@ -60,24 +60,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IDefinition<ParentT>  :
         Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IBlank<ParentT>,
-        Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithElevatedMode<ParentT>,
         Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithStdOutErrPath<ParentT>,
         Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithEnvironmentVariable<ParentT>,
         Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithAttach<ParentT>
     {
-    }
-
-    /// <summary>
-    /// The stage of the setup task definition allowing to specify if ommand line instructions should run in elevated mode.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
-    public interface IWithElevatedMode<ParentT> 
-    {
-        /// <summary>
-        /// Specifies that the setup task should run in elevated mode.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithAttach<ParentT> WithRunElevated();
     }
 
     /// <summary>
@@ -88,7 +74,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition
     /// <typeparam name="ParentT">The stage of the parent definition to return to after attaching this definition.</typeparam>
     public interface IWithAttach<ParentT>  :
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>,
-        Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithElevatedMode<ParentT>,
         Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithEnvironmentVariable<ParentT>,
         Microsoft.Azure.Management.BatchAI.Fluent.NodeSetupTask.Definition.IWithEnvironmentVariableSecretValue<ParentT>
     {

@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
         public static readonly Region JapanWest = new Region("japanwest");
         public static readonly Region AustraliaEast = new Region("australiaeast");
         public static readonly Region AustraliaSouthEast = new Region("australiasoutheast");
+        public static readonly Region AustraliaCentral = new Region("australiacentral");
+        public static readonly Region AustraliaCentral2 = new Region("australiacentral2");
         public static readonly Region IndiaCentral = new Region("centralindia");
         public static readonly Region IndiaSouth = new Region("southindia");
         public static readonly Region IndiaWest = new Region("westindia");

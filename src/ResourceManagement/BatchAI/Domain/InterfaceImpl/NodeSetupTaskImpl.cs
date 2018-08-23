@@ -17,14 +17,6 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             return this.Attach();
         }
-        /// <summary>
-        /// Specifies that the setup task should run in elevated mode.
-        /// </summary>
-        /// <return>The next stage of the definition.</return>
-        NodeSetupTask.Definition.IWithAttach<BatchAICluster.Definition.IWithCreate> NodeSetupTask.Definition.IWithElevatedMode<BatchAICluster.Definition.IWithCreate>.WithRunElevated()
-        {
-            return this.WithRunElevated();
-        }
 
         /// <param name="commandLine">Command Line to start Setup process.</param>
         /// <return>The next stage of the definition.</return>

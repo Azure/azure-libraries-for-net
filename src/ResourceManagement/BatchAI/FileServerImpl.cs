@@ -12,43 +12,43 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
     /// <summary>
     /// Represents file server reference.
     /// </summary>
-    public partial class FileServerImpl :
+    public partial class FileServerImpl<ParentT> :
         IndexableWrapper<FileServerReference>,
         IFileServer,
-        IDefinition<BatchAICluster.Definition.IWithCreate>
+        IDefinition<ParentT>
     {
-        private BatchAIClusterImpl parent;
-        public FileServerImpl WithFileServerId(string fileServerId)
+        private IHasMountVolumes parent;
+        public FileServerImpl<ParentT> WithFileServerId(string fileServerId)
         {
             Inner.FileServer = new Models.ResourceId(fileServerId);
             return this;
         }
 
-        public IWithAttach<BatchAICluster.Definition.IWithCreate> WithSourceDirectory(string sourceDirectory)
+        public IWithAttach<ParentT> WithSourceDirectory(string sourceDirectory)
         {
             Inner.SourceDirectory = sourceDirectory;
             return this;
         }
 
-        public FileServerImpl WithMountOptions(string mountOptions)
+        public FileServerImpl<ParentT> WithMountOptions(string mountOptions)
         {
             Inner.MountOptions = mountOptions;
             return this;
         }
 
-        internal FileServerImpl(FileServerReference inner, BatchAIClusterImpl parent)
+        internal FileServerImpl(FileServerReference inner, ParentT parent)
             : base(inner)
         {
-            this.parent = parent;
+            this.parent = (IHasMountVolumes) parent;
         }
 
-        public IWithCreate Attach()
+        public ParentT Attach()
         {
             parent.AttachFileServer(this);
-            return parent;
+            return (ParentT) parent;
         }
 
-        public FileServerImpl WithRelativeMountPath(string mountPath)
+        public FileServerImpl<ParentT> WithRelativeMountPath(string mountPath)
         {
             Inner.RelativeMountPath = mountPath;
             return this;

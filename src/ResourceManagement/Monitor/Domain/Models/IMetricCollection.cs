@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <summary>
         /// Gets the metric collection value.
         /// </summary>
-        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.Metric> Metrics { get; }
+        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.Monitor.Fluent.Models.IMetric> Metrics { get; }
 
         /// <summary>
         /// Gets the namespace value.

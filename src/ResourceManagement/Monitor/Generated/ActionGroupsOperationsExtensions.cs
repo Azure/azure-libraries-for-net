@@ -156,7 +156,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
         /// <summary>
         /// Enable a receiver in an action group. This changes the receiver's status
-        /// from Disabled to Enabled.
+        /// from Disabled to Enabled. This operation is only supported for Email or SMS
+        /// receivers.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

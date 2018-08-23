@@ -136,6 +136,23 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
+        /// Lists the autoscale settings for a subscription
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<AutoscaleSettingResourceInner>> ListBySubscriptionAsync(this IAutoscaleSettingsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+        /// <summary>
         /// Lists the autoscale settings for a resource group
         /// </summary>
         /// <param name='operations'>
@@ -150,6 +167,26 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         public static async Task<IPage<AutoscaleSettingResourceInner>> ListByResourceGroupNextAsync(this IAutoscaleSettingsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
         {
             using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+        /// <summary>
+        /// Lists the autoscale settings for a subscription
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IPage<AutoscaleSettingResourceInner>> ListBySubscriptionNextAsync(this IAutoscaleSettingsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

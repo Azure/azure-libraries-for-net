@@ -8,63 +8,24 @@
 
 namespace Microsoft.Azure.Management.BatchAI.Fluent.Models
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using System.Runtime;
-    using System.Runtime.Serialization;
+    using Management.ResourceManager;
+    using Management.ResourceManager.Fluent;
+    using Management.ResourceManager.Fluent.Core;
 
+    using Newtonsoft.Json;
     /// <summary>
     /// Defines values for ProvisioningState.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum ProvisioningState
+    /// <summary>
+    /// Determine base value for a given allowed value if exists, else return
+    /// the value itself
+    /// </summary>
+    [JsonConverter(typeof(Management.ResourceManager.Fluent.Core.ExpandableStringEnumConverter<ProvisioningState>))]
+    public class ProvisioningState : Management.ResourceManager.Fluent.Core.ExpandableStringEnum<ProvisioningState>
     {
-        [EnumMember(Value = "creating")]
-        Creating,
-        [EnumMember(Value = "succeeded")]
-        Succeeded,
-        [EnumMember(Value = "failed")]
-        Failed,
-        [EnumMember(Value = "deleting")]
-        Deleting
-    }
-    internal static class ProvisioningStateEnumExtension
-    {
-        internal static string ToSerializedValue(this ProvisioningState? value)
-        {
-            return value == null ? null : ((ProvisioningState)value).ToSerializedValue();
-        }
-
-        internal static string ToSerializedValue(this ProvisioningState value)
-        {
-            switch( value )
-            {
-                case ProvisioningState.Creating:
-                    return "creating";
-                case ProvisioningState.Succeeded:
-                    return "succeeded";
-                case ProvisioningState.Failed:
-                    return "failed";
-                case ProvisioningState.Deleting:
-                    return "deleting";
-            }
-            return null;
-        }
-
-        internal static ProvisioningState? ParseProvisioningState(this string value)
-        {
-            switch( value )
-            {
-                case "creating":
-                    return ProvisioningState.Creating;
-                case "succeeded":
-                    return ProvisioningState.Succeeded;
-                case "failed":
-                    return ProvisioningState.Failed;
-                case "deleting":
-                    return ProvisioningState.Deleting;
-            }
-            return null;
-        }
+        public static readonly ProvisioningState Creating = Parse("creating");
+        public static readonly ProvisioningState Succeeded = Parse("succeeded");
+        public static readonly ProvisioningState Failed = Parse("failed");
+        public static readonly ProvisioningState Deleting = Parse("deleting");
     }
 }

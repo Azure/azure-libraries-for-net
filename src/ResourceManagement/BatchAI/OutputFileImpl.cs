@@ -27,7 +27,10 @@ namespace Microsoft.Azure.Management.BatchAI.Fluent
         {
             return Inner.ContentLength.GetValueOrDefault();
         }
-
+        public FileType FileType()
+        {
+            return Inner.FileType;
+        }
         public DateTime LastModified()
         {
             return Inner.LastModified.GetValueOrDefault();

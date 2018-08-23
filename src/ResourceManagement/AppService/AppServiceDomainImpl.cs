@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
             string[] domainParts = this.Name.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
             string topLevel = domainParts[domainParts.Length - 1];
             // Step 1: Consent to agreements
-            var agreements = await Manager.Inner.TopLevelDomains.ListAgreementsAsync(topLevel, new TopLevelDomainAgreementOptionInner());
+            var agreements = await Manager.Inner.TopLevelDomains.ListAgreementsAsync(topLevel, new TopLevelDomainAgreementOption());
             var agreementKeys = agreements.Select(x => x.AgreementKey).ToList();
             // Step 2: Create domain
             Inner.Consent = new DomainPurchaseConsent()
