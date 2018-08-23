@@ -547,6 +547,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        ///GENMHASH:C1CAA1ACCAE5C80BBC73F38DBB8A24DB:A5BEB46443374AE5FC100EE84133951F
+        public VirtualMachineImpl WithWindowsGalleryImageVersion(string galleryImageVersionId)
+        {
+            return this.WithWindowsCustomImage(galleryImageVersionId);
+        }
 
         ///GENMHASH:CE03CDBD07CA3BD7500B36B206A91A4A:5BEEBF6F7B101075BFFD1089DC6B2D0F
         public VirtualMachineImpl WithLinuxCustomImage(string customImageId)
@@ -558,6 +563,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             Inner.OsProfile.LinuxConfiguration = new LinuxConfiguration();
             this.isMarketplaceLinuxImage = true;
             return this;
+        }
+
+        ///GENMHASH:2B8B909D235B7D7AC3C105F6B606E684:7BC43BF2B183D2EF2284A56184ECD541
+        public VirtualMachineImpl WithLinuxGalleryImageVersion(string galleryImageVersionId)
+        {
+            return this.WithLinuxCustomImage(galleryImageVersionId);
         }
 
         ///GENMHASH:57A0D9F7821CCF113A2473B139EA6535:A5202C2E2CECEF8345A7B13AA2F45579

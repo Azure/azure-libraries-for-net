@@ -67,7 +67,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
     /// <summary>
     /// The stage of a virtual machine definition allowing to specify the operating system image.
     /// </summary>
-    public interface IWithOS
+    public interface IWithOS :
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithOSBeta
     {
 
         /// <summary>
@@ -1175,5 +1176,27 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition
         /// <param name="publicKey">An SSH public key in the PEM format.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithLinuxCreateUnmanaged WithSsh(string publicKey);
+    }
+
+    /// <summary>
+    /// The stage of a virtual machine definition allowing to specify the operating system image.
+    /// </summary>
+    public interface IWithOSBeta :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies the resource ID of a Linux gallery image version to be used as the virtual machines' OS.
+        /// </summary>
+        /// <param name="galleryImageVersionId">The resource ID of a gallery image version.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithLinuxRootUsernameManaged WithLinuxGalleryImageVersion(string galleryImageVersionId);
+
+        /// <summary>
+        /// Specifies the resource ID of a Windows gallery image version to be used as the virtual machine's OS.
+        /// </summary>
+        /// <param name="galleryImageVersionId">The resource ID of the gallery image version.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Definition.IWithWindowsAdminUsernameManaged WithWindowsGalleryImageVersion(string galleryImageVersionId);
     }
 }
