@@ -188,14 +188,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         protected override async Task<Models.GalleryImageInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var client = this.computeManager.Inner.GalleryImages;
-            return await client.GetAsync(this.resourceGroupName, this.galleryName, this.galleryImageName);
+            return await client.GetAsync(this.resourceGroupName, this.galleryName, this.galleryImageName, cancellationToken);
         }
 
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:3EE578C74AE5F7B41F5C490A1DC7D638
         public override async Task<Microsoft.Azure.Management.Compute.Fluent.IGalleryImage> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var client = this.computeManager.Inner.GalleryImages;
-            var inner = await client.CreateOrUpdateAsync(this.resourceGroupName, this.galleryName, this.galleryImageName, this.Inner);
+            var inner = await client.CreateOrUpdateAsync(this.resourceGroupName, this.galleryName, this.galleryImageName, this.Inner, cancellationToken);
             this.SetInner(inner);
             return this;
         }
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:7F002133997D7216F18BB8D21CF034D2:BE28E3F7E873613CF430C710146DC5B3
         public async Task<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion> GetVersionAsync(string versionName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.computeManager.GalleryImageVersions.GetByGalleryImageAsync(this.resourceGroupName, this.galleryName, this.galleryImageName, versionName);
+            return await this.computeManager.GalleryImageVersions.GetByGalleryImageAsync(this.resourceGroupName, this.galleryName, this.galleryImageName, versionName, cancellationToken);
         }
 
         ///GENMHASH:37F76E5729DFBD562C6418F2290EBC6E:86927F304FB8C992B92BE20600A9354A
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:D4A7A02E673639C444C53A8D52EFA5E3:6BDB02D858015991B4568658D3E9ADC2
         public async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion>> ListVersionsAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.computeManager.GalleryImageVersions.ListByGalleryImageAsync(this.resourceGroupName, this.galleryName, this.galleryImageName);
+            return await this.computeManager.GalleryImageVersions.ListByGalleryImageAsync(this.resourceGroupName, this.galleryName, this.galleryImageName, cancellationToken);
         }
 
         ///GENMHASH:8442F1C1132907DE46B62B277F4EE9B7:605B8FC69F180AFC7CE18C754024B46C
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:327CBF262F4C69D4F67206A8BC678FD6:6E1EBADD62B789305803912915AD8226
-        public GalleryImageImpl WithoutUnSupportedDiskType(DiskSkuTypes diskType)
+        public GalleryImageImpl WithoutUnsupportedDiskType(DiskSkuTypes diskType)
         {
             if (this.Inner.Disallowed != null && this.Inner.Disallowed.DiskTypes != null)
             {
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:BA0EA3BD50E3CD77EC22B73FFC802C41:744865003C628CE889C88FAC8E7D6E87
-        public GalleryImageImpl WithUnSupportedDiskType(DiskSkuTypes diskType)
+        public GalleryImageImpl WithUnsupportedDiskType(DiskSkuTypes diskType)
         {
             if (this.Inner.Disallowed == null)
             {
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:847C05E525547573F21D410720E5BB39:0EA8BD8DFAC2B974572CF97EE781C58C
-        public GalleryImageImpl WithUnSupportedDiskTypes(IList<Models.DiskSkuTypes> diskTypes)
+        public GalleryImageImpl WithUnsupportedDiskTypes(IList<Models.DiskSkuTypes> diskTypes)
         {
             if (this.Inner.Disallowed == null)
             {

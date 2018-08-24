@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:53C5326A96805851579A861BAA315694:20E793DA2931A94A780043403389CAE6
         public async Task<Microsoft.Azure.Management.Compute.Fluent.IGalleryImage> GetImageAsync(string imageName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.GalleryImages.GetByGalleryAsync(this.ResourceGroupName, this.Name, imageName);
+            return await this.Manager.GalleryImages.GetByGalleryAsync(this.ResourceGroupName, this.Name, imageName, cancellationToken);
         }
 
         ///GENMHASH:DAC3F56608814B99BD7BDC91F5D5DC28:98D4F325B07679EBBB42B521BFE94119
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:C9EE1B32D7F72680B29C1B8F3E2216D7:CCA078D6E68AFC9EC4349D75FFE4D7AA
         public async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IGalleryImage>> ListImagesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await this.Manager.GalleryImages.ListByGalleryAsync(this.ResourceGroupName, this.Name);
+            return await this.Manager.GalleryImages.ListByGalleryAsync(this.ResourceGroupName, this.Name, cancellationToken);
         }
     }
 }

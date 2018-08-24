@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         protected override async Task<Models.GalleryImageVersionInner> GetInnerAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var client = this.computeManager.Inner.GalleryImageVersions;
-            return await client.GetAsync(this.resourceGroupName, this.galleryName, this.galleryImageName, this.galleryImageVersionName);
+            return await client.GetAsync(this.resourceGroupName, this.galleryName, this.galleryImageName, this.galleryImageVersionName, null, cancellationToken);
         }
 
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:1441758C6DA19434093428FE9E67FD01
         public override async Task<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inner = await this.computeManager.Inner.GalleryImageVersions.CreateOrUpdateAsync(this.resourceGroupName, this.galleryName, this.galleryImageName, this.galleryImageVersionName, this.Inner);
+            var inner = await this.computeManager.Inner.GalleryImageVersions.CreateOrUpdateAsync(this.resourceGroupName, this.galleryName, this.galleryImageName, this.galleryImageVersionName, this.Inner, cancellationToken);
             this.SetInner(inner);
             return this;
         }
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:A8C57DD59CCFD6D7F740DC7D7758EDC1:E38D778F0AAB48C77F9650E19784F982
-        public GalleryImageVersionImpl WithAvailableInRegion(Region region)
+        public GalleryImageVersionImpl WithRegionAvailability(Region region)
         {
             if (this.Inner.PublishingProfile == null)
             {
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:004D55E89630E9E1C10773DB1F52DE2A:3D6CB07F9B48FC2F0B29107958928ACA
-        public GalleryImageVersionImpl WithAvailableInRegions(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions)
+        public GalleryImageVersionImpl WithRegionAvailability(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions)
         {
             if (this.Inner.PublishingProfile == null)
             {
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:03B1F797E02E1089DCD5EB13134EB163:0206C7B1F86570DBFF6507721145FD4A
-        public IUpdate WithoutAvailableInRegion(Region region)
+        public IUpdate WithoutRegionAvailability(Region region)
         {
             if (this.Inner.PublishingProfile != null && this.Inner.PublishingProfile.Regions != null)
             {

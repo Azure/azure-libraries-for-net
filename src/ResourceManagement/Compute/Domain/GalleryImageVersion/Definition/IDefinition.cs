@@ -79,14 +79,14 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
         /// </summary>
         /// <param name="region">The region.</param>
         /// <return>The next definition stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithAvailableInRegion(Region region);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithRegionAvailability(Region region);
 
         /// <summary>
         /// Specifies list of regions in which image version needs to be available.
         /// </summary>
         /// <param name="regions">The region list.</param>
         /// <return>The next definition stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithAvailableInRegions(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithRegionAvailability(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions);
     }
 
     /// <summary>

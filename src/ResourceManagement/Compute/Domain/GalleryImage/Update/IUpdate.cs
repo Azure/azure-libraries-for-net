@@ -196,21 +196,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImage.Update
         /// </summary>
         /// <param name="diskType">The disk type.</param>
         /// <return>The next update stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImage.Update.IUpdate WithoutUnSupportedDiskType(DiskSkuTypes diskType);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImage.Update.IUpdate WithoutUnsupportedDiskType(DiskSkuTypes diskType);
 
         /// <summary>
         /// Specifies the disk type not supported by the image.
         /// </summary>
         /// <param name="diskType">The disk type.</param>
         /// <return>The next update stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImage.Update.IUpdate WithUnSupportedDiskType(DiskSkuTypes diskType);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImage.Update.IUpdate WithUnsupportedDiskType(DiskSkuTypes diskType);
 
         /// <summary>
         /// Specifies the disk types not supported by the image.
         /// </summary>
         /// <param name="diskTypes">The disk types.</param>
         /// <return>The next update stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImage.Update.IUpdate WithUnSupportedDiskTypes(IList<Microsoft.Azure.Management.Compute.Fluent.Models.DiskSkuTypes> diskTypes);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImage.Update.IUpdate WithUnsupportedDiskTypes(IList<Microsoft.Azure.Management.Compute.Fluent.Models.DiskSkuTypes> diskTypes);
     }
 
     /// <summary>

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public async Task DeleteByGalleryAsync(string resourceGroupName, string galleryName, string galleryImageName, CancellationToken cancellationToken = default(CancellationToken))
         {
             var client = this.Inner;
-            await client.DeleteAsync(resourceGroupName, galleryName, galleryImageName);
+            await client.DeleteAsync(resourceGroupName, galleryName, galleryImageName, cancellationToken);
         }
 
         ///GENMHASH:ABDD9456266A8CBE8E979EDD5B2C046F:788B7A78330944C05823764DCC963776
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:A73D04375D3F249B3045C9CEDC2141F3:1648608B9C06972043D4D7D4160CE0CA
         public async Task<Microsoft.Azure.Management.Compute.Fluent.IGalleryImage> GetByGalleryAsync(string resourceGroupName, string galleryName, string galleryImageName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inner = await this.Inner.GetAsync(resourceGroupName, galleryName, galleryImageName);
+            var inner = await this.Inner.GetAsync(resourceGroupName, galleryName, galleryImageName, cancellationToken);
             return WrapModel(inner);
         }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IGalleryImage>> ListByGalleryAsync(string resourceGroupName, string galleryName, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IGalleryImage, GalleryImageInner>.LoadPage(cancel => this.Inner.ListByGalleryAsync(resourceGroupName, galleryName, cancel),
-                  (nextLink, cancel) => this.Inner.ListByGalleryNextAsync(nextLink),
+                  (nextLink, cancel) => this.Inner.ListByGalleryNextAsync(nextLink, cancellationToken),
                   WrapModel,
                   true,
                   cancellationToken);

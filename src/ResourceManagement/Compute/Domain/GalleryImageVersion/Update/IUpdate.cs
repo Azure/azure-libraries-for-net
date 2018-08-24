@@ -38,21 +38,21 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update
         /// </summary>
         /// <param name="region">The region.</param>
         /// <return>The next update stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IUpdate WithAvailableInRegion(Region region);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IUpdate WithRegionAvailability(Region region);
 
         /// <summary>
         /// Specifies list of regions in which image version needs to be available.
         /// </summary>
         /// <param name="regions">The region list.</param>
         /// <return>The next update stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IUpdate WithAvailableInRegions(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IUpdate WithRegionAvailability(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions);
 
         /// <summary>
         /// Specifies that an image version should be removed from an existing region serving it.
         /// </summary>
         /// <param name="region">The region.</param>
         /// <return>The next update stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IUpdate WithoutAvailableInRegion(Region region);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IUpdate WithoutRegionAvailability(Region region);
     }
 
     /// <summary>

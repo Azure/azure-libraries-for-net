@@ -106,8 +106,8 @@ namespace Fluent.Tests.Compute
                             .WithIdentifier("JavaSDKTeam", "JDK", "Jdk-9")
                             .WithGeneralizedWindows()
                             // Optionals - Start
-                            .WithUnSupportedDiskType(DiskSkuTypes.StandardLRS)
-                            .WithUnSupportedDiskType(DiskSkuTypes.PremiumLRS)
+                            .WithUnsupportedDiskType(DiskSkuTypes.StandardLRS)
+                            .WithUnsupportedDiskType(DiskSkuTypes.PremiumLRS)
                             .WithRecommendedMaximumCPUsCountForVirtualMachine(25)
                             .WithRecommendedMaximumMemoryForVirtualMachine(3200)
                             // Options - End
@@ -134,7 +134,7 @@ namespace Fluent.Tests.Compute
                     // Update an image in the gallery
                     //
                     galleryImage.Update()
-                            .WithoutUnSupportedDiskType(DiskSkuTypes.PremiumLRS)
+                            .WithoutUnsupportedDiskType(DiskSkuTypes.PremiumLRS)
                             .WithRecommendedMinimumCPUsCountForVirtualMachine(15)
                             .WithRecommendedMemoryForVirtualMachine(2200, 3200)
                             .Apply();
@@ -226,7 +226,7 @@ namespace Fluent.Tests.Compute
                             .WithLocation(region.ToString())
                             .WithSourceCustomImage(customImage)
                             // Options - Start
-                            .WithAvailableInRegion(Region.USEast2)
+                            .WithRegionAvailability(Region.USEast2)
                             .WithScaleTier(ScaleTier.S30)
                             // Options - End
                             .Create();
@@ -243,7 +243,7 @@ namespace Fluent.Tests.Compute
                     // Update image version
                     //
                     imageVersion.Update()
-                            .WithoutAvailableInRegion(Region.USEast2)
+                            .WithoutRegionAvailability(Region.USEast2)
                             .Apply();
 
                     Assert.NotNull(imageVersion.AvailableRegions);

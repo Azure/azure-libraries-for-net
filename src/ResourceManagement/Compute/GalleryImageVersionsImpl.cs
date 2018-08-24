@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:EB870CED68BA346711BD5EDAD2C54C45:9EFADC8CB08932BA1B0B7D3A059E8CDE
         public async Task DeleteByGalleryImageAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await this.Inner.DeleteAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName);
+            await this.Inner.DeleteAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, cancellationToken);
         }
 
         ///GENMHASH:55E8BB7828F84157131E3353B8C2F1A6:A3135C68AEB9B61CBEED408A114C6ECF
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:86DA5629FEB54C10E005F23B4AC06853:1CB6596D9B3C89EB31276EB7A45C1C1C
         public async Task<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion> GetByGalleryImageAsync(string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var inner = await this.Inner.GetAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName);
+            var inner = await this.Inner.GetAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, null, cancellationToken);
             return this.WrapModel(inner);
         }
 
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         public async Task<IPagedCollection<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion>> ListByGalleryImageAsync(string resourceGroupName, string galleryName, string galleryImageName, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await PagedCollection<IGalleryImageVersion, GalleryImageVersionInner>.LoadPage(cancel => this.Inner.ListByGalleryImageAsync(resourceGroupName, galleryName, galleryImageName, cancel),
-                  (nextLink, cancel) => this.Inner.ListByGalleryImageNextAsync(nextLink),
+                  (nextLink, cancel) => this.Inner.ListByGalleryImageNextAsync(nextLink, cancellationToken),
                   WrapModel,
                   true,
                   cancellationToken);

@@ -153,9 +153,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="region">The region.</param>
         /// <return>The next update stage.</return>
-        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithAvailableRegion.WithAvailableInRegion(Region region)
+        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithAvailableRegion.WithRegionAvailability(Region region)
         {
-            return this.WithAvailableInRegion(region);
+            return this.WithRegionAvailability(region);
         }
 
         /// <summary>
@@ -163,9 +163,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="region">The region.</param>
         /// <return>The next definition stage.</return>
-        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithAvailableRegion.WithAvailableInRegion(Region region)
+        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithAvailableRegion.WithRegionAvailability(Region region)
         {
-            return this.WithAvailableInRegion(region);
+            return this.WithRegionAvailability(region);
         }
 
         /// <summary>
@@ -173,9 +173,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="regions">The region list.</param>
         /// <return>The next update stage.</return>
-        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithAvailableRegion.WithAvailableInRegions(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions)
+        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithAvailableRegion.WithRegionAvailability(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions)
         {
-            return this.WithAvailableInRegions(regions);
+            return this.WithRegionAvailability(regions);
         }
 
         /// <summary>
@@ -183,9 +183,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="regions">The region list.</param>
         /// <return>The next definition stage.</return>
-        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithAvailableRegion.WithAvailableInRegions(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions)
+        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithAvailableRegion.WithRegionAvailability(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions)
         {
-            return this.WithAvailableInRegions(regions);
+            return this.WithRegionAvailability(regions);
         }
 
         /// <summary>
@@ -263,9 +263,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="region">The region.</param>
         /// <return>The next update stage.</return>
-        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithAvailableRegion.WithoutAvailableInRegion(Region region)
+        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithAvailableRegion.WithoutRegionAvailability(Region region)
         {
-            return this.WithoutAvailableInRegion(region);
+            return this.WithoutRegionAvailability(region);
         }
 
         /// <summary>

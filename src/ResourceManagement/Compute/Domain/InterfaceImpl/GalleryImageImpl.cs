@@ -450,9 +450,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="diskType">The disk type.</param>
         /// <return>The next update stage.</return>
-        GalleryImage.Update.IUpdate GalleryImage.Update.IWithDisallowed.WithoutUnSupportedDiskType(DiskSkuTypes diskType)
+        GalleryImage.Update.IUpdate GalleryImage.Update.IWithDisallowed.WithoutUnsupportedDiskType(DiskSkuTypes diskType)
         {
-            return this.WithoutUnSupportedDiskType(diskType);
+            return this.WithoutUnsupportedDiskType(diskType);
         }
 
         /// <summary>
@@ -686,9 +686,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="diskType">The disk type.</param>
         /// <return>The next update stage.</return>
-        GalleryImage.Update.IUpdate GalleryImage.Update.IWithDisallowed.WithUnSupportedDiskType(DiskSkuTypes diskType)
+        GalleryImage.Update.IUpdate GalleryImage.Update.IWithDisallowed.WithUnsupportedDiskType(DiskSkuTypes diskType)
         {
-            return this.WithUnSupportedDiskType(diskType);
+            return this.WithUnsupportedDiskType(diskType);
         }
 
         /// <summary>
@@ -696,9 +696,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="diskType">The disk type.</param>
         /// <return>The next definition stage.</return>
-        GalleryImage.Definition.IWithCreate GalleryImage.Definition.IWithDisallowed.WithUnSupportedDiskType(DiskSkuTypes diskType)
+        GalleryImage.Definition.IWithCreate GalleryImage.Definition.IWithDisallowed.WithUnsupportedDiskType(DiskSkuTypes diskType)
         {
-            return this.WithUnSupportedDiskType(diskType);
+            return this.WithUnsupportedDiskType(diskType);
         }
 
         /// <summary>
@@ -706,9 +706,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="diskTypes">The disk types.</param>
         /// <return>The next update stage.</return>
-        GalleryImage.Update.IUpdate GalleryImage.Update.IWithDisallowed.WithUnSupportedDiskTypes(IList<Models.DiskSkuTypes> diskTypes)
+        GalleryImage.Update.IUpdate GalleryImage.Update.IWithDisallowed.WithUnsupportedDiskTypes(IList<Models.DiskSkuTypes> diskTypes)
         {
-            return this.WithUnSupportedDiskTypes(diskTypes);
+            return this.WithUnsupportedDiskTypes(diskTypes);
         }
 
         /// <summary>
@@ -716,9 +716,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// </summary>
         /// <param name="diskTypes">The disk types.</param>
         /// <return>The next definition stage.</return>
-        GalleryImage.Definition.IWithCreate GalleryImage.Definition.IWithDisallowed.WithUnSupportedDiskTypes(IList<Models.DiskSkuTypes> diskTypes)
+        GalleryImage.Definition.IWithCreate GalleryImage.Definition.IWithDisallowed.WithUnsupportedDiskTypes(IList<Models.DiskSkuTypes> diskTypes)
         {
-            return this.WithUnSupportedDiskTypes(diskTypes);
+            return this.WithUnsupportedDiskTypes(diskTypes);
         }
 
         /// <summary>
