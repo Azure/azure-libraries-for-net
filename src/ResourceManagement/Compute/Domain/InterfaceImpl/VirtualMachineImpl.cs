@@ -1698,6 +1698,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Removes a network interface from the virtual machine.
+        /// </summary>
+        /// <param name="nicId">The id of the network interface to remove.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithSecondaryNetworkInterface.WithoutNetworkInterface(string nicId)
+        {
+            return this.WithoutNetworkInterface(nicId);
+        }
+
+        /// <summary>
         /// Specifies that System Assigned (Local) Managed Service Identity needs to be disabled.
         /// </summary>
         /// <return>The next stage of the update.</return>
