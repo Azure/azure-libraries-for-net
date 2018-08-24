@@ -2,15 +2,9 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Network.Fluent
 {
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Management.Network.Fluent.Models;
-    using Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Definition;
-    using Microsoft.Azure.Management.Network.Fluent.LocalNetworkGateway.Update;
-    using Microsoft.Azure.Management.Network.Fluent.Models;
-    using Microsoft.Azure.Management.Network.Fluent.UpdatableWithTags.UpdatableWithTags;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
-    using System.Collections.Generic;
 
     internal partial class LocalNetworkGatewayImpl
     {

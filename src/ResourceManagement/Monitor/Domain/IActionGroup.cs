@@ -21,14 +21,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         System.Collections.Generic.IReadOnlyList<Models.AutomationRunbookReceiver> AutomationRunbookReceivers { get; }
 
         /// <summary>
-        /// Gets the azureAppPushReceivers value.
-        /// </summary>
-        /// <summary>
-        /// Gets the azureAppPushReceivers value.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyList<Models.AzureAppPushReceiver> AzureAppPushReceivers { get; }
-
-        /// <summary>
         /// Gets the azureFunctionReceivers value.
         /// </summary>
         /// <summary>
@@ -59,6 +51,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Gets the logicAppReceivers value.
         /// </summary>
         System.Collections.Generic.IReadOnlyList<Models.LogicAppReceiver> LogicAppReceivers { get; }
+
+        /// <summary>
+        /// Gets the pushNotificationReceivers value.
+        /// </summary>
+        /// <summary>
+        /// Gets the pushNotificationReceivers value.
+        /// </summary>
+        System.Collections.Generic.IReadOnlyList<Models.AzureAppPushReceiver> PushNotificationReceivers { get; }
 
         /// <summary>
         /// Gets the groupShortName value.

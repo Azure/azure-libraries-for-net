@@ -46,7 +46,7 @@ namespace SecurityBreachOrRiskActivityLogAlerts
                 var ag = azure.ActionGroups.Define("securityBreachActionGroup")
                         .WithExistingResourceGroup(rgName)
                         .DefineReceiver("tierOne")
-                            .WithAzureAppPush("security_on_duty@securecorporation.com")
+                            .WithPushNotification("security_on_duty@securecorporation.com")
                             .WithEmail("security_guards@securecorporation.com")
                             .WithSms("1", "4255655665")
                             .WithVoice("1", "2062066050")

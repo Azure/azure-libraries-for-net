@@ -32,6 +32,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         System.Collections.Generic.IReadOnlyCollection<Models.MetricDimension> Dimensions { get; }
 
         /// <summary>
+        /// Gets name of the metric signal.
+        /// </summary>
+        /// <summary>
+        /// Gets the metricName value.
+        /// </summary>
+        string MetricName { get; }
+
+        /// <summary>
         /// Gets namespace of the metric.
         /// </summary>
         /// <summary>
@@ -46,14 +54,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Gets the name value.
         /// </summary>
         string Name { get; }
-
-        /// <summary>
-        /// Gets name of the metric signal.
-        /// </summary>
-        /// <summary>
-        /// Gets the metricName value.
-        /// </summary>
-        string SignalName { get; }
 
         /// <summary>
         /// Gets the criteria threshold value that activates the alert.

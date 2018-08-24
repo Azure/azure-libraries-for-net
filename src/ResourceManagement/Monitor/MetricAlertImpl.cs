@@ -176,7 +176,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
             return this;
         }
-
+		
+        ///GENMHASH:3E72FBE95EB9F0D5CB0EE25FB0D4289B:D28CEE20EE587F7BE2C58D660CBB76F2
+        public MetricAlertImpl WithAlertDetails(int severity, string description)
+        {
+			this.WithSeverity(severity);
+			return this.WithDescription(description);
+        }
+		
         ///GENMHASH:B1FAD9ED00B5928448AB0AA933758335:5640B4C7C912ABC98D9779381D53E6DC
         public MetricAlertImpl WithAutoMitigation()
         {
@@ -192,8 +199,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this;
         }
 
-        ///GENMHASH:B24AAC07D71C24A8F742385EAD401B72:CFB14B1FCC87FA2BAE66C1739882B0E0
-        public MetricAlertImpl WithEvaluationFrequency(TimeSpan frequency)
+        ///GENMHASH:CEDDCCEB2476E58338BF2FA01220048D:CFB14B1FCC87FA2BAE66C1739882B0E0
+        public MetricAlertImpl WithFrequency(TimeSpan frequency)
         {
             this.Inner.EvaluationFrequency = frequency;
             return this;
@@ -237,6 +244,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this;
         }
 
+        ///GENMHASH:252AAE75064297D555927CEDAE99C9D4:3E52FB242763B2F8A4587CF4CE43F118
+        public MetricAlertImpl WithPeriod(TimeSpan size)
+        {
+            this.Inner.WindowSize = size;
+			return this;
+        }
+
         ///GENMHASH:19D591A5811CC295B77719A40CEB3F64:9A4882A827B87B926799484B506DA9A3
         public MetricAlertImpl WithRuleDisabled()
         {
@@ -270,12 +284,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         public MetricAlertImpl WithTargetResource(IHasId resource)
         {
             return this.WithTargetResource(resource.Id);
-        }
 
-        ///GENMHASH:96D45FFAD2DCBCEA5AA18A7CE27B4157:3E52FB242763B2F8A4587CF4CE43F118
-        public MetricAlertImpl WithWindowSize(TimeSpan size)
-        {
-            this.Inner.WindowSize = size;
             return this;
         }
     }

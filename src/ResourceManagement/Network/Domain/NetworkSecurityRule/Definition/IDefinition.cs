@@ -1,16 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-using System;
 using Microsoft.Azure.Management.Network.Fluent.Models;
 
 namespace Microsoft.Azure.Management.Network.Fluent.NetworkSecurityRule.Definition
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-
     /// <summary>
     /// The stage of the network rule definition allowing the source address to be specified.
     /// Note: network security rule must specify a non empty value for exactly one of:

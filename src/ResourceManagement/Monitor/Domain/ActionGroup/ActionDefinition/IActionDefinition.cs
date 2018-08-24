@@ -27,13 +27,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.ActionDefinition
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.ActionDefinition.IActionDefinition<ParentT> WithAutomationRunbook(string automationAccountId, string runbookName, string webhookResourceId, bool isGlobalRunbook);
 
         /// <summary>
-        /// Sets the Azure Mobile App Push Notification  receiver.
-        /// </summary>
-        /// <param name="emailAddress">The emailAddress value to set.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.ActionDefinition.IActionDefinition<ParentT> WithAzureAppPush(string emailAddress);
-
-        /// <summary>
         /// Sets the Azure Functions receiver.
         /// </summary>
         /// <param name="functionAppResourceId">The functionAppResourceId value to set.</param>
@@ -66,6 +59,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.ActionDefinition
         /// <param name="callbackUrl">The callbackUrl value to set.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.ActionDefinition.IActionDefinition<ParentT> WithLogicApp(string logicAppResourceId, string callbackUrl);
+
+        /// <summary>
+        /// Sets the Azure Mobile App Push Notification  receiver.
+        /// </summary>
+        /// <param name="emailAddress">The emailAddress value to set.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.ActionDefinition.IActionDefinition<ParentT> WithPushNotification(string emailAddress);
 
         /// <summary>
         /// Sets the SMS receiver.

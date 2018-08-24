@@ -196,19 +196,21 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
-        /// Set the flag that indicates the alert should be auto resolved.
+        /// Set alert severity {0, 1, 2, 3, 4} and description.
         /// </summary>
-        /// <return>The next stage of the metric alert update.</return>
-        MetricAlert.Update.IUpdate MetricAlert.Update.IWithMetricUpdate.WithAutoMitigation()
+        /// <param name="severity">The severity value to set.</param>
+        /// <param name="description">Human readable text description of the metric alert.</param>
+        /// <return>The next stage of metric alert definition.</return>
+        MetricAlert.Definition.IWithActionGroup MetricAlert.Definition.IWithSeverity.WithAlertDetails(int severity, string description)
         {
-            return this.WithAutoMitigation();
+            return this.WithAlertDetails(severity, description);
         }
 
         /// <summary>
         /// Set the flag that indicates the alert should be auto resolved.
         /// </summary>
-        /// <return>The next stage of metric alert condition definition.</return>
-        MetricAlert.Definition.IWithCreate MetricAlert.Definition.IWithCreate.WithAutoMitigation()
+        /// <return>The next stage of the metric alert update.</return>
+        MetricAlert.Update.IUpdate MetricAlert.Update.IWithMetricUpdate.WithAutoMitigation()
         {
             return this.WithAutoMitigation();
         }
@@ -224,23 +226,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
-        /// Sets description for metric alert.
-        /// </summary>
-        /// <param name="description">Human readable text description of the metric alert.</param>
-        /// <return>The next stage of metric alert definition.</return>
-        MetricAlert.Definition.IWithAlertEnabled MetricAlert.Definition.IWithDescription.WithDescription(string description)
-        {
-            return this.WithDescription(description);
-        }
-
-        /// <summary>
         /// Set how often the metric alert is evaluated represented in ISO 8601 duration format.
         /// </summary>
         /// <param name="frequency">The evaluationFrequency value to set.</param>
         /// <return>The next stage of the metric alert update.</return>
-        MetricAlert.Update.IUpdate MetricAlert.Update.IWithMetricUpdate.WithEvaluationFrequency(TimeSpan frequency)
+        MetricAlert.Update.IUpdate MetricAlert.Update.IWithMetricUpdate.WithFrequency(TimeSpan frequency)
         {
-            return this.WithEvaluationFrequency(frequency);
+            return this.WithFrequency(frequency);
         }
 
         /// <summary>
@@ -248,9 +240,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="frequency">The evaluationFrequency value to set.</param>
         /// <return>The next stage of metric alert definition.</return>
-        MetricAlert.Definition.IWithSeverity MetricAlert.Definition.IWithEvaluationFrequency.WithEvaluationFrequency(TimeSpan frequency)
+        MetricAlert.Definition.IWithSeverity MetricAlert.Definition.IWithEvaluationFrequency.WithFrequency(TimeSpan frequency)
         {
-            return this.WithEvaluationFrequency(frequency);
+            return this.WithFrequency(frequency);
         }
 
         /// <summary>
@@ -283,6 +275,35 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
+        /// Set the flag that indicates the alert should not be auto resolved.
+        /// </summary>
+        /// <return>The next stage of metric alert condition definition.</return>
+        MetricAlert.Definition.IWithCreate MetricAlert.Definition.IWithCreate.WithoutAutoMitigation()
+        {
+            return this.WithoutAutoMitigation();
+        }
+
+        /// <summary>
+        /// Sets the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold.
+        /// </summary>
+        /// <param name="size">The windowSize value to set.</param>
+        /// <return>The next stage of the metric alert update.</return>
+        MetricAlert.Update.IUpdate MetricAlert.Update.IWithMetricUpdate.WithPeriod(TimeSpan size)
+        {
+            return this.WithPeriod(size);
+        }
+
+        /// <summary>
+        /// Sets the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold.
+        /// </summary>
+        /// <param name="size">The windowSize value to set.</param>
+        /// <return>The next stage of metric alert definition.</return>
+        MetricAlert.Definition.IWithEvaluationFrequency MetricAlert.Definition.IWithWindowSize.WithPeriod(TimeSpan size)
+        {
+            return this.WithPeriod(size);
+        }
+
+        /// <summary>
         /// Sets metric alert as disabled.
         /// </summary>
         /// <return>The next stage of the metric alert update.</return>
@@ -295,7 +316,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// Sets metric alert as disabled during the creation.
         /// </summary>
         /// <return>The next stage of metric alert definition.</return>
-        MetricAlert.Definition.IWithActionGroup MetricAlert.Definition.IWithAlertEnabled.WithRuleDisabled()
+        MetricAlert.Definition.IWithActionGroup MetricAlert.Definition.IWithCreate.WithRuleDisabled()
         {
             return this.WithRuleDisabled();
         }
@@ -310,30 +331,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
-        /// Sets metric alert as enabled during the creation.
-        /// </summary>
-        /// <return>The next stage of metric alert definition.</return>
-        MetricAlert.Definition.IWithActionGroup MetricAlert.Definition.IWithAlertEnabled.WithRuleEnabled()
-        {
-            return this.WithRuleEnabled();
-        }
-
-        /// <summary>
         /// Set alert severity {0, 1, 2, 3, 4}.
         /// </summary>
         /// <param name="severity">The severity value to set.</param>
         /// <return>The next stage of the metric alert update.</return>
         MetricAlert.Update.IUpdate MetricAlert.Update.IWithMetricUpdate.WithSeverity(int severity)
-        {
-            return this.WithSeverity(severity);
-        }
-
-        /// <summary>
-        /// Set alert severity {0, 1, 2, 3, 4}.
-        /// </summary>
-        /// <param name="severity">The severity value to set.</param>
-        /// <return>The next stage of metric alert definition.</return>
-        MetricAlert.Definition.IWithDescription MetricAlert.Definition.IWithSeverity.WithSeverity(int severity)
         {
             return this.WithSeverity(severity);
         }
@@ -356,26 +358,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         MetricAlert.Definition.IWithWindowSize MetricAlert.Definition.IWithScopes.WithTargetResource(IHasId resource)
         {
             return this.WithTargetResource(resource);
-        }
-
-        /// <summary>
-        /// Sets the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold.
-        /// </summary>
-        /// <param name="size">The windowSize value to set.</param>
-        /// <return>The next stage of the metric alert update.</return>
-        MetricAlert.Update.IUpdate MetricAlert.Update.IWithMetricUpdate.WithWindowSize(TimeSpan size)
-        {
-            return this.WithWindowSize(size);
-        }
-
-        /// <summary>
-        /// Sets the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold.
-        /// </summary>
-        /// <param name="size">The windowSize value to set.</param>
-        /// <return>The next stage of metric alert definition.</return>
-        MetricAlert.Definition.IWithEvaluationFrequency MetricAlert.Definition.IWithWindowSize.WithWindowSize(TimeSpan size)
-        {
-            return this.WithWindowSize(size);
         }
     }
 }

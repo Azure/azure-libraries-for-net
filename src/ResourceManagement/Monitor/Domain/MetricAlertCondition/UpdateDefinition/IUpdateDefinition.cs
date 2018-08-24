@@ -25,14 +25,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.UpdateD
         /// <param name="dimensionName">The name of the dimension.</param>
         /// <param name="values">List of dimension values to alert on.</param>
         /// <return>The next stage of metric alert condition definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.UpdateDefinition.IWithConditionAttach<ParentT> WithDimensionFilter(string dimensionName, params string[] values);
-
-        /// <summary>
-        /// Sets Namespace of the metric to filter.
-        /// </summary>
-        /// <param name="metricNamespace">The Namespace of the metric.</param>
-        /// <return>The next stage of metric alert condition definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.UpdateDefinition.IWithConditionAttach<ParentT> WithMetricNamespace(string metricNamespace);
+        Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.UpdateDefinition.IWithConditionAttach<ParentT> WithDimension(string dimensionName, params string[] values);
     }
 
     /// <summary>

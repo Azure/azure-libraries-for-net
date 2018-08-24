@@ -37,13 +37,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithAutomationRunbook(string automationAccountId, string runbookName, string webhookResourceId, bool isGlobalRunbook);
 
         /// <summary>
-        /// Sets the Azure Mobile App Push Notification  receiver.
-        /// </summary>
-        /// <param name="emailAddress">The emailAddress value to set.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithAzureAppPush(string emailAddress);
-
-        /// <summary>
         /// Sets the Azure Functions receiver.
         /// </summary>
         /// <param name="functionAppResourceId">The functionAppResourceId value to set.</param>
@@ -84,12 +77,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithoutAutomationRunbook();
 
         /// <summary>
-        /// Removes Azure mobile App Push notification receiver from current receiver's group.
-        /// </summary>
-        /// <return>The next stage of the receiver group update.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithoutAzureAppPush();
-
-        /// <summary>
         /// Removes Azure Function receiver from current receiver's group.
         /// </summary>
         /// <return>The next stage of the receiver group update.</return>
@@ -114,6 +101,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithoutLogicApp();
 
         /// <summary>
+        /// Removes Azure mobile App Push notification receiver from current receiver's group.
+        /// </summary>
+        /// <return>The next stage of the receiver group update.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithoutPushNotification();
+
+        /// <summary>
         /// Removes SMS receiver from current receiver's group.
         /// </summary>
         /// <return>The next stage of the receiver group update.</return>
@@ -130,6 +123,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update
         /// </summary>
         /// <return>The next stage of the receiver group update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithoutWebhook();
+
+        /// <summary>
+        /// Sets the Azure Mobile App Push Notification  receiver.
+        /// </summary>
+        /// <param name="emailAddress">The emailAddress value to set.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.ActionGroup.Update.IWithActionUpdateDefinition WithPushNotification(string emailAddress);
 
         /// <summary>
         /// Sets the SMS receiver.

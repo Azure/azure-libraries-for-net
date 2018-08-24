@@ -269,12 +269,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this.Inner.AutomationRunbookReceivers.ToList();
         }
 
-        ///GENMHASH:8FF37AAF7002AAE09F309BD1840A70B2:701818A6DF18068BF950BC2079562345
-        public IReadOnlyList<Models.AzureAppPushReceiver> AzureAppPushReceivers()
-        {
-            return this.Inner.AzureAppPushReceivers.ToList();
-        }
-
         ///GENMHASH:F13477E0BE1CCD7BAB34590248147ECB:27202ABC1F2C4E8A5A7A5A906C995A45
         public IReadOnlyList<Models.AzureFunctionReceiver> AzureFunctionReceivers()
         {
@@ -318,6 +312,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         public ActionGroupImpl Parent()
         {
             return this.Attach();
+        }
+
+        ///GENMHASH:1DDC53CFDF25A285EC0454044DCD1675:701818A6DF18068BF950BC2079562345
+        public IReadOnlyList<Models.AzureAppPushReceiver> PushNotificationReceivers()
+        {
+			return this.Inner.AzureAppPushReceivers.ToList();
         }
 
         ///GENMHASH:50EA7681E35A3BDC55F7BBB87F8D9E44:2D4F3E96DFE47F8BC60B3BF071B7170D
@@ -442,23 +442,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             this.runBookReceivers[compositeKey] = arr;
             return this;
         }
-
-        ///GENMHASH:8CA243CAFA8F29DA919E68BD0F861A9E:D6CA7BBBBACC2D62669A6B7E3B976CB4
-        public ActionGroupImpl WithAzureAppPush(string emailAddress)
-        {
-            this.WithoutAzureAppPush();
-
-            var compositeKey = this.actionReceiverPrefix + appActionSuffix;
-            var ar = new AzureAppPushReceiver
-            {
-                Name = compositeKey,
-                EmailAddress = emailAddress
-            };
-            this.appActionReceivers[compositeKey] = ar;
-
-            return this;
-        }
-
         ///GENMHASH:29EAC07C793D2A0E5EB067301A745E12:1239BA4DDECAC5CB19A72AFF5EF502B0
         public ActionGroupImpl WithAzureFunction(string functionAppResourceId, string functionName, string httpTriggerUrl)
         {
@@ -542,21 +525,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this;
         }
 
-        ///GENMHASH:6A9E4AC21CBC2FE1141EB50FD5C4D58B:7E6C5850D68A45EAB5905869CA3556A8
-        public ActionGroupImpl WithoutAzureAppPush()
-        {
-            var compositeKey = this.actionReceiverPrefix + appActionSuffix;
-            if (this.appActionReceivers.ContainsKey(compositeKey))
-            {
-                this.appActionReceivers.Remove(compositeKey);
-            }
-            if (this.appActionReceivers.ContainsKey(this.actionReceiverPrefix))
-            {
-                this.appActionReceivers.Remove(actionReceiverPrefix);
-            }
-            return this;
-        }
-
         ///GENMHASH:A4A60D3F15D17DFC190AA6A7DE0A9FC9:20ECB8BB00FE58830FFCD466DA0B77AA
         public ActionGroupImpl WithoutAzureFunction()
         {
@@ -618,13 +586,29 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this;
         }
 
-        ///GENMHASH:6E2B27425509BA79FDED7388129810A7:A5221B15F602A3DA5F426F1E9F4C5D42
+        ///GENMHASH:6EC8E9CF1C683C3A8D6B7DDF62FBA07A:7E6C5850D68A45EAB5905869CA3556A8
+        public ActionGroupImpl WithoutPushNotification()
+        {
+            var compositeKey = this.actionReceiverPrefix + appActionSuffix;
+            if (this.appActionReceivers.ContainsKey(compositeKey))
+            {
+                this.appActionReceivers.Remove(compositeKey);
+            }
+            if (this.appActionReceivers.ContainsKey(this.actionReceiverPrefix))
+            {
+                this.appActionReceivers.Remove(actionReceiverPrefix);
+            }
+            return this;
+        }
+
+        ///GENMHASH:6E2B27425509BA79FDED7388129810A7:5C8848803185D3CBDDFB76762D97E840
+
         public ActionGroupImpl WithoutReceiver(string actionNamePrefix)
         {
             this.UpdateReceiver(actionNamePrefix);
             this.WithoutEmail();
             this.WithoutSms();
-            this.WithoutAzureAppPush();
+            this.WithoutPushNotification();
             this.WithoutVoice();
             this.WithoutAutomationRunbook();
             this.WithoutLogicApp();
@@ -679,6 +663,22 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this;
         }
 
+        ///GENMHASH:7931352AF6E66532AD6ACE6AC8206A20:7C2BE31C7D877C66ABED0845AC3403DF
+        public ActionGroupImpl WithPushNotification(string emailAddress)
+        {
+            this.WithoutPushNotification();
+
+            var compositeKey = this.actionReceiverPrefix + appActionSuffix;
+            var ar = new AzureAppPushReceiver
+            {
+                Name = compositeKey,
+                EmailAddress = emailAddress
+            };
+            this.appActionReceivers[compositeKey] = ar;
+
+            return this;
+        }
+		
         ///GENMHASH:E15A0C7634ADA2C9A92740002891993B:BE7DA6BC0C09A661C34F2BFFA2DF061D
         public ActionGroupImpl WithShortName(string shortName)
         {

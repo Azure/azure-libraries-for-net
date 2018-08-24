@@ -228,7 +228,7 @@ namespace Fluent.Tests
                     var ag = azure.ActionGroups.Define("simpleActionGroup")
                         .WithNewResourceGroup(rgName, Region.AustraliaSouthEast)
                         .DefineReceiver("first")
-                            .WithAzureAppPush("azurepush@outlook.com")
+                            .WithPushNotification("azurepush@outlook.com")
                             .WithEmail("justemail@outlook.com")
                             .WithSms("1", "4255655665")
                             .WithVoice("1", "2062066050")
@@ -242,8 +242,8 @@ namespace Fluent.Tests
 
                     Assert.NotNull(ag);
                     Assert.Equal("simpleAction", ag.ShortName);
-                    Assert.NotNull(ag.AzureAppPushReceivers);
-                    Assert.Equal(1, ag.AzureAppPushReceivers.Count);
+                    Assert.NotNull(ag.PushNotificationReceivers);
+                    Assert.Equal(1, ag.PushNotificationReceivers.Count);
                     Assert.NotNull(ag.SmsReceivers);
                     Assert.Equal(1, ag.SmsReceivers.Count);
                     Assert.NotNull(ag.VoiceReceivers);
@@ -323,7 +323,7 @@ namespace Fluent.Tests
                     var ag = azure.ActionGroups.Define("simpleActionGroup")
                             .WithExistingResourceGroup(rgName)
                             .DefineReceiver("first")
-                                .WithAzureAppPush("azurepush@outlook.com")
+                                .WithPushNotification("azurepush@outlook.com")
                                 .WithEmail("justemail@outlook.com")
                                 .WithSms("1", "4255655665")
                                 .WithVoice("1", "2062066050")
@@ -338,20 +338,16 @@ namespace Fluent.Tests
                     var ma = azure.AlertRules.MetricAlerts.Define("somename")
                             .WithExistingResourceGroup(rgName)
                             .WithTargetResource(sa.Id)
-                            .WithWindowSize(TimeSpan.FromMinutes(15))
-                            .WithEvaluationFrequency(TimeSpan.FromMinutes(1))
-                            .WithSeverity(3)
-                            .WithDescription("This alert rule is for U3 - Single resource  multiple-criteria  with dimensions-single timeseries")
-                            .WithRuleEnabled()
+                            .WithPeriod(TimeSpan.FromMinutes(15))
+                            .WithFrequency(TimeSpan.FromMinutes(1))
+                            .WithAlertDetails(3, "This alert rule is for U3 - Single resource  multiple-criteria  with dimensions-single timeseries")
                             .WithActionGroups(ag.Id)
                             .DefineAlertCriteria("Metric1")
-                                .WithSignalName("Transactions")
+                                .WithMetricName("Transactions", "Microsoft.Storage/storageAccounts")
                                 .WithCondition(MetricAlertRuleCondition.GreaterThan, MetricAlertRuleTimeAggregation.Total, 100)
-                                .WithDimensionFilter("ResponseType", "Success")
-                                .WithDimensionFilter("ApiName", "GetBlob")
-                                .WithMetricNamespace("Microsoft.Storage/storageAccounts")
+                                .WithDimension("ResponseType", "Success")
+                                .WithDimension("ApiName", "GetBlob")
                                 .Attach()
-                            .WithAutoMitigation()
                             .Create();
 
                     Assert.NotNull(ma);
@@ -369,7 +365,7 @@ namespace Fluent.Tests
 
                     var ac1 = ma.AlertCriterias.Values.First();
                     Assert.Equal("Metric1", ac1.Name);
-                    Assert.Equal("Transactions", ac1.SignalName);
+                    Assert.Equal("Transactions", ac1.MetricName);
                     Assert.Equal("Microsoft.Storage/storageAccounts", ac1.MetricNamespace);
                     Assert.Equal(MetricAlertRuleCondition.GreaterThan, ac1.Condition);
                     Assert.Equal(MetricAlertRuleTimeAggregation.Total, ac1.TimeAggregation);
@@ -400,7 +396,7 @@ namespace Fluent.Tests
                     Assert.Equal(ma.AlertCriterias.Count, maFromGet.AlertCriterias.Count);
                     ac1 = maFromGet.AlertCriterias.Values.First();
                     Assert.Equal("Metric1", ac1.Name);
-                    Assert.Equal("Transactions", ac1.SignalName);
+                    Assert.Equal("Transactions", ac1.MetricName);
                     Assert.Equal("Microsoft.Storage/storageAccounts", ac1.MetricNamespace);
                     Assert.Equal(MetricAlertRuleCondition.GreaterThan, ac1.Condition);
                     Assert.Equal(MetricAlertRuleTimeAggregation.Total, ac1.TimeAggregation);
@@ -422,10 +418,9 @@ namespace Fluent.Tests
                                 .WithCondition(MetricAlertRuleCondition.GreaterThan, MetricAlertRuleTimeAggregation.Total, 99)
                                 .Parent()
                             .DefineAlertCriteria("Metric2")
-                                .WithSignalName("SuccessE2ELatency")
+                                .WithMetricName("SuccessE2ELatency", "Microsoft.Storage/storageAccounts")
                                 .WithCondition(MetricAlertRuleCondition.GreaterThan, MetricAlertRuleTimeAggregation.Average, 200)
-                                .WithDimensionFilter("ApiName", "GetBlob")
-                                .WithMetricNamespace("Microsoft.Storage/storageAccounts")
+                                .WithDimension("ApiName", "GetBlob")
                                 .Attach()
                             .Apply();
 
@@ -444,7 +439,7 @@ namespace Fluent.Tests
                     ac1 = ma.AlertCriterias.Values.ElementAt(0);
                     var ac2 = ma.AlertCriterias.Values.ElementAt(1);
                     Assert.Equal("Metric1", ac1.Name);
-                    Assert.Equal("Transactions", ac1.SignalName);
+                    Assert.Equal("Transactions", ac1.MetricName);
                     Assert.Equal(MetricAlertRuleCondition.GreaterThan, ac1.Condition);
                     Assert.Equal(MetricAlertRuleTimeAggregation.Total, ac1.TimeAggregation);
                     Assert.Equal(99.0, ac1.Threshold, 4);
@@ -459,7 +454,7 @@ namespace Fluent.Tests
                     Assert.Equal("GetBlob", d2.Values.First());
 
                     Assert.Equal("Metric2", ac2.Name);
-                    Assert.Equal("SuccessE2ELatency", ac2.SignalName);
+                    Assert.Equal("SuccessE2ELatency", ac2.MetricName);
                     Assert.Equal("Microsoft.Storage/storageAccounts", ac2.MetricNamespace);
                     Assert.Equal(MetricAlertRuleCondition.GreaterThan, ac2.Condition);
                     Assert.Equal(MetricAlertRuleTimeAggregation.Average, ac2.TimeAggregation);
@@ -488,7 +483,7 @@ namespace Fluent.Tests
                     ac1 = maFromGet.AlertCriterias.Values.ElementAt(0);
                     ac2 = maFromGet.AlertCriterias.Values.ElementAt(1);
                     Assert.Equal("Metric1", ac1.Name);
-                    Assert.Equal("Transactions", ac1.SignalName);
+                    Assert.Equal("Transactions", ac1.MetricName);
                     Assert.Equal(MetricAlertRuleCondition.GreaterThan, ac1.Condition);
                     Assert.Equal(MetricAlertRuleTimeAggregation.Total, ac1.TimeAggregation);
                     Assert.Equal(99.0, ac1.Threshold, 4);
@@ -504,7 +499,7 @@ namespace Fluent.Tests
                     Assert.Equal("GetBlob", d2.Values.First());
 
                     Assert.Equal("Metric2", ac2.Name);
-                    Assert.Equal("SuccessE2ELatency", ac2.SignalName);
+                    Assert.Equal("SuccessE2ELatency", ac2.MetricName);
                     Assert.Equal("Microsoft.Storage/storageAccounts", ac2.MetricNamespace);
                     Assert.Equal(MetricAlertRuleCondition.GreaterThan, ac2.Condition);
                     Assert.Equal(MetricAlertRuleTimeAggregation.Average, ac2.TimeAggregation);
@@ -536,7 +531,7 @@ namespace Fluent.Tests
                     ac1 = maFromGet.AlertCriterias.Values.ElementAt(0);
                     ac2 = maFromGet.AlertCriterias.Values.ElementAt(1);
                     Assert.Equal("Metric1", ac1.Name);
-                    Assert.Equal("Transactions", ac1.SignalName);
+                    Assert.Equal("Transactions", ac1.MetricName);
                     Assert.Equal(MetricAlertRuleCondition.GreaterThan, ac1.Condition);
                     Assert.Equal(MetricAlertRuleTimeAggregation.Total, ac1.TimeAggregation);
                     Assert.Equal(99.0, ac1.Threshold, 4);
@@ -551,7 +546,7 @@ namespace Fluent.Tests
                     Assert.Equal("GetBlob", d2.Values.First());
 
                     Assert.Equal("Metric2", ac2.Name);
-                    Assert.Equal("SuccessE2ELatency", ac2.SignalName);
+                    Assert.Equal("SuccessE2ELatency", ac2.MetricName);
                     Assert.Equal("Microsoft.Storage/storageAccounts", ac2.MetricNamespace);
                     Assert.Equal(MetricAlertRuleCondition.GreaterThan, ac2.Condition);
                     Assert.Equal(MetricAlertRuleTimeAggregation.Average, ac2.TimeAggregation);
@@ -591,7 +586,7 @@ namespace Fluent.Tests
                     var ag = azure.ActionGroups.Define("simpleActionGroup")
                             .WithNewResourceGroup(rgName, Region.USEast2)
                             .DefineReceiver("first")
-                                .WithAzureAppPush("azurepush@outlook.com")
+                                .WithPushNotification("azurepush@outlook.com")
                                 .WithEmail("justemail@outlook.com")
                                 .WithSms("1", "4255655665")
                                 .WithVoice("1", "2062066050")

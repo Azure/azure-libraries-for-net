@@ -36,6 +36,20 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         /// <summary>
+        /// Gets name of the metric signal.
+        /// </summary>
+        /// <summary>
+        /// Gets the metricName value.
+        /// </summary>
+        string Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition.MetricName
+        {
+            get
+            {
+                return this.MetricName();
+            }
+        }
+
+        /// <summary>
         /// Gets namespace of the metric.
         /// </summary>
         /// <summary>
@@ -71,20 +85,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             get
             {
                 return this.Parent();
-            }
-        }
-
-        /// <summary>
-        /// Gets name of the metric signal.
-        /// </summary>
-        /// <summary>
-        /// Gets the metricName value.
-        /// </summary>
-        string Microsoft.Azure.Management.Monitor.Fluent.IMetricAlertCondition.SignalName
-        {
-            get
-            {
-                return this.SignalName();
             }
         }
 
@@ -185,9 +185,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name="dimensionName">The name of the dimension.</param>
         /// <param name="values">List of dimension values to alert on.</param>
         /// <return>The next stage of metric alert condition definition.</return>
-        MetricAlertCondition.UpdateDefinition.IWithConditionAttach<MetricAlert.Update.IUpdate> MetricAlertCondition.UpdateDefinition.IWithConditionAttach<MetricAlert.Update.IUpdate>.WithDimensionFilter(string dimensionName, params string[] values)
+        MetricAlertCondition.UpdateDefinition.IWithConditionAttach<MetricAlert.Update.IUpdate> MetricAlertCondition.UpdateDefinition.IWithConditionAttach<MetricAlert.Update.IUpdate>.WithDimension(string dimensionName, params string[] values)
         {
-            return this.WithDimensionFilter(dimensionName, values);
+            return this.WithDimension(dimensionName, values);
         }
 
         /// <summary>
@@ -196,9 +196,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name="dimensionName">The name of the dimension.</param>
         /// <param name="values">List of dimension values to alert on.</param>
         /// <return>The next stage of the metric alert condition update.</return>
-        MetricAlertCondition.Update.IUpdateStages MetricAlertCondition.Update.IUpdateStages.WithDimensionFilter(string dimensionName, params string[] values)
+        MetricAlertCondition.Update.IUpdateStages MetricAlertCondition.Update.IUpdateStages.WithDimension(string dimensionName, params string[] values)
         {
-            return this.WithDimensionFilter(dimensionName, values);
+            return this.WithDimension(dimensionName, values);
         }
 
         /// <summary>
@@ -207,29 +207,51 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name="dimensionName">The name of the dimension.</param>
         /// <param name="values">List of dimension values to alert on.</param>
         /// <return>The next stage of metric alert condition definition.</return>
-        MetricAlertCondition.Definition.IWithConditionAttach<MetricAlert.Definition.IWithCreate> MetricAlertCondition.Definition.IWithConditionAttach<MetricAlert.Definition.IWithCreate>.WithDimensionFilter(string dimensionName, params string[] values)
+        MetricAlertCondition.Definition.IWithConditionAttach<MetricAlert.Definition.IWithCreate> MetricAlertCondition.Definition.IWithConditionAttach<MetricAlert.Definition.IWithCreate>.WithDimension(string dimensionName, params string[] values)
         {
-            return this.WithDimensionFilter(dimensionName, values);
+            return this.WithDimension(dimensionName, values);
         }
 
         /// <summary>
-        /// Sets Namespace of the metric to filter.
+        /// Sets the name of the signal name to monitor.
         /// </summary>
+        /// <param name="metricName">Metric name of the signal.</param>
         /// <param name="metricNamespace">The Namespace of the metric.</param>
         /// <return>The next stage of metric alert condition definition.</return>
-        MetricAlertCondition.UpdateDefinition.IWithConditionAttach<MetricAlert.Update.IUpdate> MetricAlertCondition.UpdateDefinition.IWithConditionAttach<MetricAlert.Update.IUpdate>.WithMetricNamespace(string metricNamespace)
+        MetricAlertCondition.Definition.IWithCriteriaOperator<MetricAlert.Definition.IWithCreate> MetricAlertCondition.Definition.Blank.MetricName.IMetricName<MetricAlert.Definition.IWithCreate>.WithMetricName(string metricName, string metricNamespace)
         {
-            return this.WithMetricNamespace(metricNamespace);
+            return this.WithMetricName(metricName, metricNamespace);
         }
 
         /// <summary>
-        /// Sets Namespace of the metric to filter.
+        /// Sets the name of the signal name to monitor.
         /// </summary>
+        /// <param name="metricName">Metric name of the signal.</param>
+        /// <return>The next stage of metric alert condition definition.</return>
+        MetricAlertCondition.Definition.IWithCriteriaOperator<MetricAlert.Definition.IWithCreate> MetricAlertCondition.Definition.Blank.MetricName.IMetricName<MetricAlert.Definition.IWithCreate>.WithMetricName(string metricName)
+        {
+            return this.WithMetricName(metricName);
+        }
+
+        /// <summary>
+        /// Sets the name of the signal name to monitor.
+        /// </summary>
+        /// <param name="metricName">Metric name of the signal.</param>
         /// <param name="metricNamespace">The Namespace of the metric.</param>
         /// <return>The next stage of metric alert condition definition.</return>
-        MetricAlertCondition.Definition.IWithConditionAttach<MetricAlert.Definition.IWithCreate> MetricAlertCondition.Definition.IWithConditionAttach<MetricAlert.Definition.IWithCreate>.WithMetricNamespace(string metricNamespace)
+        MetricAlertCondition.UpdateDefinition.IWithCriteriaOperator<MetricAlert.Update.IUpdate> MetricAlertCondition.UpdateDefinition.Blank.MetricName.IMetricName<MetricAlert.Update.IUpdate>.WithMetricName(string metricName, string metricNamespace)
         {
-            return this.WithMetricNamespace(metricNamespace);
+            return this.WithMetricName(metricName, metricNamespace);
+        }
+
+        /// <summary>
+        /// Sets the name of the signal name to monitor.
+        /// </summary>
+        /// <param name="metricName">Metric name of the signal.</param>
+        /// <return>The next stage of metric alert condition definition.</return>
+        MetricAlertCondition.UpdateDefinition.IWithCriteriaOperator<MetricAlert.Update.IUpdate> MetricAlertCondition.UpdateDefinition.Blank.MetricName.IMetricName<MetricAlert.Update.IUpdate>.WithMetricName(string metricName)
+        {
+            return this.WithMetricName(metricName);
         }
 
         /// <summary>
@@ -237,29 +259,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// </summary>
         /// <param name="dimensionName">DimensionName the name of the dimension.</param>
         /// <return>The next stage of the metric alert condition update.</return>
-        MetricAlertCondition.Update.IUpdateStages MetricAlertCondition.Update.IUpdateStages.WithoutDimensionFilter(string dimensionName)
+        MetricAlertCondition.Update.IUpdateStages MetricAlertCondition.Update.IUpdateStages.WithoutDimension(string dimensionName)
         {
-            return this.WithoutDimensionFilter(dimensionName);
-        }
-
-        /// <summary>
-        /// Sets the name of the signal name to monitor.
-        /// </summary>
-        /// <param name="metricName">Metric name of the signal.</param>
-        /// <return>The next stage of metric alert condition definition.</return>
-        MetricAlertCondition.Definition.IWithCriteriaOperator<MetricAlert.Definition.IWithCreate> MetricAlertCondition.Definition.Blank.MetricName.IMetricName<MetricAlert.Definition.IWithCreate>.WithSignalName(string metricName)
-        {
-            return this.WithSignalName(metricName);
-        }
-
-        /// <summary>
-        /// Sets the name of the signal name to monitor.
-        /// </summary>
-        /// <param name="metricName">Metric name of the signal.</param>
-        /// <return>The next stage of metric alert condition definition.</return>
-        MetricAlertCondition.UpdateDefinition.IWithCriteriaOperator<MetricAlert.Update.IUpdate> MetricAlertCondition.UpdateDefinition.Blank.MetricName.IMetricName<MetricAlert.Update.IUpdate>.WithSignalName(string metricName)
-        {
-            return this.WithSignalName(metricName);
+            return this.WithoutDimension(dimensionName);
         }
     }
 }

@@ -3,13 +3,6 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.RouteFilterRule.Definition
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.Network.Fluent.RouteFilterRule.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.Network.Fluent.RouteFilterRule.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-
     /// <summary>
     /// The first stage of a route filter rule definition.
     /// </summary>

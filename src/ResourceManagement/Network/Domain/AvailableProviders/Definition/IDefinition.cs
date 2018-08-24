@@ -3,13 +3,6 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.AvailableProviders.Definition
 {
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-
     /// <summary>
     /// The stage of the definition which allows to specify country or execute the query.
     /// </summary>

@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this.dimensions.Values.ToList();
         }
 
+        ///GENMHASH:B2E154B44EABA68125B16BEABCE76616:FC507FA6241C8D9B7C133FB4D3AA423D
+        public string MetricName()
+        {
+			return this.Inner.MetricName;
+        }
         ///GENMHASH:D09AE837550E1C13CD24EC1395F3B29F:0FD90E1200CF024E769FBAC2692B9B48
         public string MetricNamespace()
         {
@@ -78,12 +83,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         {
             this.Inner.Dimensions = new List<MetricDimension>(this.dimensions.Values);
             return this.parent;
-        }
-
-        ///GENMHASH:F552867FC9A05F92D88BF28BF1DEF50F:FC507FA6241C8D9B7C133FB4D3AA423D
-        public string SignalName()
-        {
-            return this.Inner.MetricName;
         }
 
         ///GENMHASH:ED78A9622D05B9D35EB386F13B8A1F97:1ACDFB5A4AD08FB7DC1F397DB4F139A5
@@ -108,7 +107,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         ///GENMHASH:DD75FFCB37A60861E81671503DB8AC7D:699F63E25F9B0B29EF53C7C4E377174F
-        public MetricAlertConditionImpl WithDimensionFilter(string dimensionName, params string[] values)
+        public MetricAlertConditionImpl WithDimension(string dimensionName, params string[] values)
         {
             if (this.dimensions.ContainsKey(dimensionName))
             {
@@ -125,28 +124,29 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this;
         }
 
-        ///GENMHASH:77655591C7C9774E6C39A4E739B03DDE:EAAEEB745037C40F2C31DCCBDA6A1209
-        public MetricAlertConditionImpl WithMetricNamespace(string metricNamespace)
+        ///GENMHASH:B9E2BF54ADA71F4E1490101F5B237DF2:F9B2A33185F48964C1B3E1838A11D64B
+        public MetricAlertConditionImpl WithMetricName(string metricName, string metricNamespace)
         {
             this.Inner.MetricNamespace = metricNamespace;
-            return this;
+            return this.WithMetricName(metricName);
         }
 
+        ///GENMHASH:70307A93690A699CEA966259D06A449B:CEC6E8E09BD3412971871333315F4209
+        public MetricAlertConditionImpl WithMetricName(string metricName)
+        {
+			this.Inner.MetricName = metricName;
+			return this;
+        }
+
+
         ///GENMHASH:7BF9E5A5A3A6A52D398E193378D1D38E:375524F3FE13EAFFE1CFFE28F1CE6FE8
-        public MetricAlertConditionImpl WithoutDimensionFilter(string dimensionName)
+        public MetricAlertConditionImpl WithoutDimension(string dimensionName)
         {
             if (this.dimensions.ContainsKey(dimensionName))
             {
                 dimensions.Remove(dimensionName);
             }
 
-            return this;
-        }
-
-        ///GENMHASH:3C415B800AC9F4177F9E270F11E3914C:CEC6E8E09BD3412971871333315F4209
-        public MetricAlertConditionImpl WithSignalName(string metricName)
-        {
-            this.Inner.MetricName = metricName;
             return this;
         }
     }
