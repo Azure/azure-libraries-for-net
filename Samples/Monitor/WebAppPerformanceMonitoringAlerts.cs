@@ -14,6 +14,7 @@ using System.Linq;
 using System.IO;
 using Microsoft.Azure.Management.AppService.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent.Models;
+using System.Collections.Generic;
 
 namespace WebAppPerformanceMonitoringAlerts
 {
@@ -53,7 +54,7 @@ namespace WebAppPerformanceMonitoringAlerts
                 var ag = azure.ActionGroups.Define("criticalPerformanceActionGroup")
                         .WithExistingResourceGroup(rgName)
                         .DefineReceiver("tierOne")
-                            .WithAzureAppPush("ops_on_duty@performancemonitoring.com")
+                            .WithPushNotification("ops_on_duty@performancemonitoring.com")
                             .WithEmail("ops_on_duty@performancemonitoring.com")
                             .WithSms("1", "4255655665")
                             .WithVoice("1", "2062066050")
@@ -67,29 +68,24 @@ namespace WebAppPerformanceMonitoringAlerts
 
                 // ============================================================
                 // Set a trigger to fire each time
-                var ma = azure.AlertRules.MetricAlerts.Define("Critical performance alert")
-                        .WithExistingResourceGroup(rgName)
-                        .WithTargetResource(servicePlan.Id)
-                        .WithWindowSize(TimeSpan.FromMinutes(5))
-                        .WithEvaluationFrequency(TimeSpan.FromMinutes(1))
-                        .WithSeverity(3)
-                        .WithDescription("This alert rule is for U5 – Single resource-multiple criteria – with dimensions – with star")
-                        .WithRuleEnabled()
-                        .WithActionGroups(ag.Id)
-                        .DefineAlertCriteria("Metric1")
-                            .WithSignalName("CPUPercentage")
+                var ma = azure.AlertRules.MetricAlerts.Define("performanceAlert")
+                    .WithExistingResourceGroup(rgName)
+                    .WithTargetResource(servicePlan.Id)
+                    .WithPeriod(TimeSpan.FromMinutes(5))
+                    .WithFrequency(TimeSpan.FromMinutes(1))
+                    .WithAlertDetails(3, "Highly performant websites")
+                    .WithActionGroups(ag.Id)
+                    .DefineAlertCriteria("Metric1")
+                            .WithMetricName("CPUPercentage", "Microsoft.Web/serverfarms")
                             .WithCondition(MetricAlertRuleCondition.GreaterThan, MetricAlertRuleTimeAggregation.Total, 80)
-                            .WithMetricNamespace("Microsoft.Web/serverfarms")
-                            .WithDimensionFilter("Instance", "*")
+                            .WithDimension("Instance", "*")
                             .Attach()
-                        .DefineAlertCriteria("Metric2")
-                            .WithSignalName("MemoryPercentage")
+                    .DefineAlertCriteria("Metric2")
+                            .WithMetricName("MemoryPercentage", "Microsoft.Web/serverfarms")
                             .WithCondition(MetricAlertRuleCondition.GreaterThan, MetricAlertRuleTimeAggregation.Total, 90)
-                            .WithMetricNamespace("Microsoft.Web/serverfarms")
-                            .WithDimensionFilter("Instance", "RD00155D44CA4E", "RD07893F35CE3D", "RD00093E32CE8F")
+                            .WithDimension("Instance", "RD00155D44CA4E", "RD07893F35CE3D", "RD00093E32CE8F")
                             .Attach()
-                        .WithAutoMitigation()
-                        .Create();
+                    .Create();
 
                 Utilities.Print(ma);
             }

@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Update
         /// <param name="dimensionName">The name of the dimension.</param>
         /// <param name="values">List of dimension values to alert on.</param>
         /// <returns>The next stage of the metric alert condition update.</returns>
-        IUpdateStages WithDimensionFilter(string dimensionName, params string[] values);
+        IUpdateStages WithDimension(string dimensionName, params string[] values);
 
         /// <summary>
         /// Removes the specified dimension filter.
         /// </summary>
         /// <param name="dimensionName">DimensionName the name of the dimension.</param>
         /// <returns>The next stage of the metric alert condition update.</returns>
-        IUpdateStages WithoutDimensionFilter(string dimensionName);
+        IUpdateStages WithoutDimension(string dimensionName);
 
         /// <summary>
         /// Returns back to the metric alert update flow.

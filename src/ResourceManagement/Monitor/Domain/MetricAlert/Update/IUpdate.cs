@@ -3,14 +3,6 @@
 
 namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update
 {
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Update;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.UpdateDefinition.Blank.MetricName;
-    using System;
-    using Microsoft.Azure.Management.Monitor.Fluent;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Update;
-    using Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.UpdateDefinition.Blank.MetricName;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.Resource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System;
 
     /// <summary>
@@ -58,7 +50,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update
         /// </summary>
         /// <param name="frequency">The evaluationFrequency value to set.</param>
         /// <return>The next stage of the metric alert update.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update.IUpdate WithEvaluationFrequency(TimeSpan frequency);
+        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update.IUpdate WithFrequency(TimeSpan frequency);
 
         /// <summary>
         /// Removes the specified action group from the actions list.
@@ -81,6 +73,13 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update.IUpdate WithoutAutoMitigation();
 
         /// <summary>
+        /// Sets the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold.
+        /// </summary>
+        /// <param name="size">The windowSize value to set.</param>
+        /// <return>The next stage of the metric alert update.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update.IUpdate WithPeriod(TimeSpan size);
+
+        /// <summary>
         /// Sets metric alert as disabled.
         /// </summary>
         /// <return>The next stage of the metric alert update.</return>
@@ -98,13 +97,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update
         /// <param name="severity">The severity value to set.</param>
         /// <return>The next stage of the metric alert update.</return>
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update.IUpdate WithSeverity(int severity);
-
-        /// <summary>
-        /// Sets the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold.
-        /// </summary>
-        /// <param name="size">The windowSize value to set.</param>
-        /// <return>The next stage of the metric alert update.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Update.IUpdate WithWindowSize(TimeSpan size);
     }
 
     /// <summary>

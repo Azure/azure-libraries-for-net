@@ -3,14 +3,6 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.RouteFilterRule.UpdateDefinition
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-    using Microsoft.Azure.Management.Network.Fluent.RouteFilterRule.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-    using Microsoft.Azure.Management.Network.Fluent.RouteFilterRule.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-
     /// <summary>
     /// The final stage of the route filter rule definition.
     /// At this stage, any remaining optional settings can be specified, or the route filter rule definition

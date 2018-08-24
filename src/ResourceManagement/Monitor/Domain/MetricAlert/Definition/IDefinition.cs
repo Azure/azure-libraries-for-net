@@ -17,10 +17,16 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     {
 
         /// <summary>
-        /// Set the flag that indicates the alert should be auto resolved.
+        /// Set the flag that indicates the alert should not be auto resolved.
         /// </summary>
         /// <return>The next stage of metric alert condition definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithCreate WithAutoMitigation();
+        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithCreate WithoutAutoMitigation();
+
+        /// <summary>
+        /// Sets metric alert as disabled during the creation.
+        /// </summary>
+        /// <return>The next stage of metric alert definition.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithActionGroup WithRuleDisabled();
     }
 
     /// <summary>
@@ -65,30 +71,12 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     {
 
         /// <summary>
-        /// Set alert severity {0, 1, 2, 3, 4}.
+        /// Set alert severity {0, 1, 2, 3, 4} and description.
         /// </summary>
         /// <param name="severity">The severity value to set.</param>
+        /// <param name="description">Human readable text description of the metric alert.</param>
         /// <return>The next stage of metric alert definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithDescription WithSeverity(int severity);
-    }
-
-    /// <summary>
-    /// The stage of the definition which specifies if the metric alert should be enabled upon creation.
-    /// </summary>
-    public interface IWithAlertEnabled
-    {
-
-        /// <summary>
-        /// Sets metric alert as disabled during the creation.
-        /// </summary>
-        /// <return>The next stage of metric alert definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithActionGroup WithRuleDisabled();
-
-        /// <summary>
-        /// Sets metric alert as enabled during the creation.
-        /// </summary>
-        /// <return>The next stage of metric alert definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithActionGroup WithRuleEnabled();
+        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithActionGroup WithAlertDetails(int severity, string description);
     }
 
     /// <summary>
@@ -102,7 +90,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
         /// </summary>
         /// <param name="size">The windowSize value to set.</param>
         /// <return>The next stage of metric alert definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithEvaluationFrequency WithWindowSize(TimeSpan size);
+        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithEvaluationFrequency WithPeriod(TimeSpan size);
     }
 
     /// <summary>
@@ -125,7 +113,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
         /// </summary>
         /// <param name="frequency">The evaluationFrequency value to set.</param>
         /// <return>The next stage of metric alert definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithSeverity WithEvaluationFrequency(TimeSpan frequency);
+        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithSeverity WithFrequency(TimeSpan frequency);
     }
 
     /// <summary>
@@ -143,20 +131,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
     }
 
     /// <summary>
-    /// The stage of the definition which specifies description text for metric alert.
-    /// </summary>
-    public interface IWithDescription
-    {
-
-        /// <summary>
-        /// Sets description for metric alert.
-        /// </summary>
-        /// <param name="description">Human readable text description of the metric alert.</param>
-        /// <return>The next stage of metric alert definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithAlertEnabled WithDescription(string description);
-    }
-
-    /// <summary>
     /// The entirety of a Metric Alert definition.
     /// </summary>
     public interface IDefinition :
@@ -166,8 +140,6 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithWindowSize,
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithEvaluationFrequency,
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithSeverity,
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithDescription,
-        Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithAlertEnabled,
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithActionGroup,
         Microsoft.Azure.Management.Monitor.Fluent.MetricAlert.Definition.IWithCriteriaDefinition
     {

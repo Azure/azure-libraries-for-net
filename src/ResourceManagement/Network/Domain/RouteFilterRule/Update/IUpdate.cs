@@ -3,13 +3,6 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.RouteFilterRule.Update
 {
-    using Microsoft.Azure.Management.Network.Fluent.RouteFilter.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
-    using Microsoft.Azure.Management.Network.Fluent.RouteFilter.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
-    using Microsoft.Azure.Management.Network.Fluent.RouteFilter.Update;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResourceActions;
-
     /// <summary>
     /// The entirety of a route filter rule update as part of a route filter group update.
     /// </summary>

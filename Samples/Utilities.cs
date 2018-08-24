@@ -2450,10 +2450,10 @@ namespace Microsoft.Azure.Management.Samples.Common
                 }
             }
 
-            if (actionGroup.AzureAppPushReceivers != null && actionGroup.AzureAppPushReceivers.Any())
+            if (actionGroup.PushNotificationReceivers != null && actionGroup.PushNotificationReceivers.Any())
             {
                 info.Append("\n\tApp Push Notification receivers: ");
-                foreach (var er in actionGroup.AzureAppPushReceivers)
+                foreach (var er in actionGroup.PushNotificationReceivers)
                 {
                     info.Append("\n\t\tName: ").Append(er.Name);
                     info.Append("\n\t\tEmail: ").Append(er.EmailAddress);
@@ -2614,7 +2614,7 @@ namespace Microsoft.Azure.Management.Samples.Common
                 {
                     var alertCondition = er.Value;
                     info.Append("\n\t\tCondition name: ").Append(er.Key)
-                            .Append("\n\t\tSignal name: ").Append(alertCondition.SignalName)
+                            .Append("\n\t\tSignal name: ").Append(alertCondition.MetricName)
                             .Append("\n\t\tMetric Namespace: ").Append(alertCondition.MetricNamespace)
                             .Append("\n\t\tOperator: ").Append(alertCondition.Condition)
                             .Append("\n\t\tThreshold: ").Append(alertCondition.Threshold)

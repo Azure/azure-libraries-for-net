@@ -3,24 +3,6 @@
 
 namespace Microsoft.Azure.Management.Network.Fluent.AzureReachabilityReport.Definition
 {
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System;
-    using Microsoft.Azure.Management.Network.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System;
 
     /// <summary>
