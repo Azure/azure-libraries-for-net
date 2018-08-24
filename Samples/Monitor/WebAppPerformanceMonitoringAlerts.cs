@@ -68,12 +68,12 @@ namespace WebAppPerformanceMonitoringAlerts
 
                 // ============================================================
                 // Set a trigger to fire each time
-                var ma = azure.AlertRules.MetricAlerts.Define("performanceAlert")
+                var ma = azure.AlertRules.MetricAlerts.Define("Critical performance alert")
                     .WithExistingResourceGroup(rgName)
                     .WithTargetResource(servicePlan.Id)
                     .WithPeriod(TimeSpan.FromMinutes(5))
                     .WithFrequency(TimeSpan.FromMinutes(1))
-                    .WithAlertDetails(3, "Highly performant websites")
+                    .WithAlertDetails(3, "This alert rule is for U5 - Single resource-multiple criteria - with dimensions - with star")
                     .WithActionGroups(ag.Id)
                     .DefineAlertCriteria("Metric1")
                             .WithMetricName("CPUPercentage", "Microsoft.Web/serverfarms")
