@@ -20,6 +20,26 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAge
     }
 
     /// <summary>
+    /// The stage of a container service agent pool definition allowing to specify a virtual network to be used for the agents.
+    /// </summary>
+    /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
+    public interface IWithVirtualNetwork<ParentT>  :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies the virtual network to be used for the agents.
+        /// </summary>
+        /// <param name="virtualNetworkId">The ID of a virtual network.</param>
+        /// <param name="subnetName">
+        /// The name of the subnet within the virtual network.; the subnet must have the service
+        /// endpoints enabled for 'Microsoft.ContainerService'.
+        /// </param>
+        /// <return>The next stage.</return>
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithAttach<ParentT> WithVirtualNetwork(string virtualNetworkId, string subnetName);
+    }
+
+    /// <summary>
     /// The stage of a container service agent pool definition allowing to specify the agent pool OS type.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
@@ -89,21 +109,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAge
     }
 
     /// <summary>
-    /// The stage of a container service agent pool definition allowing to specify the subnet to be used by the machines in the agent pool.
-    /// </summary>
-    /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
-    public interface IWithSubnet<ParentT> 
-    {
-        /// <summary>
-        /// Specifies the subnet to be used for each virtual machine in the agent pool.
-        /// The subnet must be in the same virtual network as specified for the master. By default, the master subnet will be used.
-        /// </summary>
-        /// <param name="subnetName">The name of the subnet to be used for each virtual machine in the agent pool.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithAttach<ParentT> WithSubnetName(string subnetName);
-    }
-
-    /// <summary>
     /// The stage of a container service agent pool definition allowing to specify the agent pool storage kind.
     /// </summary>
     /// <typeparam name="ParentT">The stage of the container service definition to return to after attaching this definition.</typeparam>
@@ -142,7 +147,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAge
         Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithOSDiskSize<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithPorts<ParentT>,
         Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithStorageProfile<ParentT>,
-        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithSubnet<ParentT>,
+        Microsoft.Azure.Management.ContainerService.Fluent.ContainerServiceAgentPool.Definition.IWithVirtualNetwork<ParentT>,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition.IInDefinition<ParentT>
     {
     }

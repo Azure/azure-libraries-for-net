@@ -95,9 +95,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// specify 0, it will apply the default osDisk size according to the
         /// vmSize specified.</param>
         /// <param name="vnetSubnetID">VNet SubnetID specifies the vnet's
-        /// subnet identifier. If you specify either master VNet Subnet, or
-        /// agent VNet Subnet, you need to specify both. And they have to be in
-        /// the same VNet.</param>
+        /// subnet identifier.</param>
         /// <param name="firstConsecutiveStaticIP">FirstConsecutiveStaticIP
         /// used to specify the first static ip of masters.</param>
         /// <param name="storageProfile">Storage profile specifies what kind of
@@ -208,8 +206,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
 
         /// <summary>
         /// Gets or sets vNet SubnetID specifies the vnet's subnet identifier.
-        /// If you specify either master VNet Subnet, or agent VNet Subnet, you
-        /// need to specify both. And they have to be in the same VNet.
         /// </summary>
         [JsonProperty(PropertyName = "vnetSubnetID")]
         public string VnetSubnetID { get; set; }

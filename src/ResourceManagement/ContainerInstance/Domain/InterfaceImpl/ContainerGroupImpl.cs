@@ -90,6 +90,44 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// <summary>
+        /// Restarts all containers in a container group in place. If container image has updates, new image will be downloaded.
+        /// </summary>
+        void Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.Restart()
+        {
+ 
+            this.Restart();
+        }
+
+        /// <summary>
+        /// Restarts all containers in a container group in place asynchronously. If container image has updates, new image will be downloaded.
+        /// </summary>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.RestartAsync(CancellationToken cancellationToken)
+        {
+ 
+            await this.RestartAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// Stops all containers in a container group. Compute resources will be de-allocated and billing will stop.
+        /// </summary>
+        void Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.Stop()
+        {
+ 
+            this.Stop();
+        }
+
+        /// <summary>
+        /// Stops all containers in a container group asynchronously. Compute resources will be de-allocated and billing will stop.
+        /// </summary>
+        /// <return>A representation of the deferred computation of this call.</return>
+        async Task Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerGroup.StopAsync(CancellationToken cancellationToken)
+        {
+ 
+            await this.StopAsync(cancellationToken);
+        }
+
         /// Defines one container instance for the specified image with one CPU count and 1.5 GB memory, with TCP port 80 opened externally.
         /// </summary>
         /// <param name="imageName">The name of the container image.</param>

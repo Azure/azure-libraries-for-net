@@ -117,6 +117,26 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return ContainerGroupRestartPolicy.Parse(this.Inner.RestartPolicy);
         }
 
+        public void Restart()
+        {
+            Extensions.Synchronize(() => this.RestartAsync());
+        }
+
+        public async Task RestartAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await this.Manager.Inner.ContainerGroups.RestartAsync(this.ResourceGroupName, this.Name, cancellationToken);
+        }
+
+        public void Stop()
+        {
+            Extensions.Synchronize(() => this.StopAsync());
+        }
+
+        public async Task StopAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
+            await this.Manager.Inner.ContainerGroups.StopAsync(this.ResourceGroupName, this.Name, cancellationToken);
+        }
+
         ///GENMHASH:43FFE67ED1E08092A08C7E35A3244CB2:E6719DA498FFBEA871EB1D1A559ABB37
         public IReadOnlyCollection<Models.EventModel> Events()
         {
@@ -409,7 +429,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:68FA359B278647E097B20441389A58FC:3119C16FFA0F521767097C339920EE47
         public async Task<string> GetLogContentAsync(string containerName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var log = await this.Manager.Inner.ContainerLogs.ListAsync(this.ResourceGroupName, this.Name, containerName, cancellationToken: cancellationToken);
+            var log = await this.Manager.Inner.Container.ListLogsAsync(this.ResourceGroupName, this.Name, containerName, cancellationToken: cancellationToken);
 
             return (log != null) ? log.Content : "";
         }
@@ -417,7 +437,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:FF17FE4F8B9A7B52DB8052C65778E9B1:62A00FD4D8AED790BA6A5B89296698FF
         public async Task<string> GetLogContentAsync(string containerName, int tailLineCount, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var log = await this.Manager.Inner.ContainerLogs.ListAsync(this.ResourceGroupName, this.Name, containerName, tailLineCount, cancellationToken);
+            var log = await this.Manager.Inner.Container.ListLogsAsync(this.ResourceGroupName, this.Name, containerName, tailLineCount, cancellationToken);
 
             return (log != null) ? log.Content : "";
         }
@@ -455,10 +475,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         ///GENMHASH:5D1452C0A2F0D2A020CBCC369E41D1F2:67CC4D00B6C73394256E4765E8876BE5
         public async Task<Microsoft.Azure.Management.ContainerInstance.Fluent.IContainerExecResponse> ExecuteCommandAsync(string containerName, string command, int row, int column, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var containerExecRequestTerminalSize = new ContainerExecRequestTerminalSize() { Row = row, Column = column };
+            var containerExecRequestTerminalSize = new ContainerExecRequestTerminalSize() { Rows = row, Cols = column };
             var containerExecRequestInner = new Models.ContainerExecRequestInner() { Command = command, TerminalSize = containerExecRequestTerminalSize };
-            var containerExecResponseInner = await this.Manager.Inner.StartContainer
-                .LaunchExecAsync(this.ResourceGroupName, this.Name, containerName, containerExecRequestInner, cancellationToken);
+            var containerExecResponseInner = await this.Manager.Inner.Container
+                .ExecuteCommandAsync(this.ResourceGroupName, this.Name, containerName, containerExecRequestInner, cancellationToken);
             return new ContainerExecResponseImpl(containerExecResponseInner);
         }
     }

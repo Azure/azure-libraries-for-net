@@ -62,7 +62,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/orchestrators?api-version=2017-09-30",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/orchestrators?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -123,7 +123,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/orchestrators?api-version=2017-09-30",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/orchestrators?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -184,7 +184,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2018-03-31",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"dnsPrefix\": \"dns-akssamplef1608646cd9530\",\r\n    \"kubernetesVersion\": \"1.8.6\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 1,\r\n        \"vmSize\": \"Standard_D1_v2\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"servicePrincipalProfile\": {\r\n      \"clientId\": \"spId\",\r\n      \"secret\": \"spSecret\"\r\n    }\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
@@ -230,7 +230,7 @@
           "nginx"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2018-03-31"
         ],
         "x-ms-correlation-request-id": [
           "0a8727f9-cecd-475a-8653-868d7fadc393"
@@ -251,7 +251,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2018-03-31",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"dnsPrefix\": \"dns-akssamplef1608646cd9530\",\r\n    \"kubernetesVersion\": \"1.8.6\",\r\n    \"agentPoolProfiles\": [\r\n      {\r\n        \"name\": \"ap\",\r\n        \"count\": 2,\r\n        \"vmSize\": \"Standard_D1_v2\",\r\n        \"storageProfile\": \"ManagedDisks\",\r\n        \"osType\": \"Linux\"\r\n      }\r\n    ],\r\n    \"linuxProfile\": {\r\n      \"adminUsername\": \"aksuser\",\r\n      \"ssh\": {\r\n        \"publicKeys\": [\r\n          {\r\n            \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyhPdNuJUmTeLsaZL83vARuSVlN5qbKs7jCm723fqH85rIRQHgwEUXJbENEgZT0cXEgz4h36bQLMYT3/30fRnxYl8U6gRn27zFiMwaDstOjc9EofStODbiHx9AY1XYStjegdf+LNa5tmRv8dZEdj47XDxosSG3JKHpSuf0fXr4u7NjgAxdYOxyMSPAEcfXQctA+ybHkGDLdjLHT7q5C4RXlQT7S9v5z532C3KuUSQW7n3QBP3xw/bC8aKcJafwZUYjYnw7owkBnv4TsZVva2le7maYkrtLH6w+XbhfHY4WwKY2Xxl1TxSGkb8tDsa6XgTmGfAKcDpnIe0DASJD8wFF dotnet.sample@azure.com\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"centralus\"\r\n}",
       "RequestHeaders": {
@@ -300,7 +300,7 @@
           "Accept-Encoding"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31"
+          "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2018-03-31"
         ],
         "x-ms-correlation-request-id": [
           "dcfce5cd-cd22-4e03-aab3-0ab905d3e4aa"
@@ -321,7 +321,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -376,7 +376,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -431,7 +431,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -486,7 +486,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -541,7 +541,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -596,7 +596,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -651,7 +651,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -706,7 +706,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -761,7 +761,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -816,7 +816,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/4dcc0be9-bb57-48f0-8424-d7be15e3ad51?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -871,7 +871,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -926,7 +926,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -981,7 +981,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterAdmin/listCredential?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterAdmin/listCredential?api-version=2018-03-31",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1042,7 +1042,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterAdmin/listCredential?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterAdmin/listCredential?api-version=2018-03-31",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1103,7 +1103,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterUser/listCredential?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterUser/listCredential?api-version=2018-03-31",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1164,7 +1164,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterUser/listCredential?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgaks5fd519422/providers/Microsoft.ContainerService/managedClusters/akssamplef1608646cd9530/accessProfiles/clusterUser/listCredential?api-version=2018-03-31",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1225,7 +1225,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1280,7 +1280,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1335,7 +1335,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1390,7 +1390,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1445,7 +1445,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1500,7 +1500,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2017-08-31",
+      "RequestUri": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ContainerService/locations/centralus/operations/709ab6d9-8d1c-400e-8fee-a19ff052d9e5?api-version=2018-03-31",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

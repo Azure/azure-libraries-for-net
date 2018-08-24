@@ -200,5 +200,13 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
             return this.Parent;
         }
 
+        ///GENMHASH:AC3242CC7AFA5FD11163B235DA2E6D85:F993D1DA892FDAE482F0E46B146ED99F
+        public ContainerServiceAgentPoolImpl WithVirtualNetwork(string virtualNetworkId, string subnetName)
+        {
+            string vnetSubnetId = virtualNetworkId + "/subnets/" + subnetName;
+            this.subnetName = subnetName;
+            this.Inner.VnetSubnetID = vnetSubnetId;
+            return this;
+        }
     }
 }

@@ -52,19 +52,20 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the preferred language for the response.
+        /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
 
         /// <summary>
-        /// Gets or sets the retry timeout in seconds for Long Running Operations.
-        /// Default value is 30.
+        /// The retry timeout in seconds for Long Running Operations. Default value is
+        /// 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
-        /// When set to true a unique x-ms-client-request-id value is generated and
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When set to
+        /// true a unique x-ms-client-request-id value is generated and included in
+        /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
 
@@ -72,6 +73,11 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         /// Gets the IContainerServicesOperations.
         /// </summary>
         public virtual IContainerServicesOperations ContainerServices { get; private set; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
 
         /// <summary>
         /// Gets the IManagedClustersOperations.
@@ -280,6 +286,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent
         private void Initialize()
         {
             ContainerServices = new ContainerServicesOperations(this);
+            Operations = new Operations(this);
             ManagedClusters = new ManagedClustersOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";

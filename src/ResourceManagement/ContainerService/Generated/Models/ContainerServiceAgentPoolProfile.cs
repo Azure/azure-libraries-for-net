@@ -107,9 +107,7 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
         /// empty, we will choose for you based on the orchestrator choice.
         /// Possible values include: 'StorageAccount', 'ManagedDisks'</param>
         /// <param name="vnetSubnetID">VNet SubnetID specifies the vnet's
-        /// subnet identifier. If you specify either master VNet Subnet, or
-        /// agent VNet Subnet, you need to specify both. And they have to be in
-        /// the same VNet.</param>
+        /// subnet identifier.</param>
         /// <param name="osType">OsType to be used to specify os type. Choose
         /// from Linux and Windows. Default to Linux. Possible values include:
         /// 'Linux', 'Windows'</param>
@@ -249,8 +247,6 @@ namespace Microsoft.Azure.Management.ContainerService.Fluent.Models
 
         /// <summary>
         /// Gets or sets vNet SubnetID specifies the vnet's subnet identifier.
-        /// If you specify either master VNet Subnet, or agent VNet Subnet, you
-        /// need to specify both. And they have to be in the same VNet.
         /// </summary>
         [JsonProperty(PropertyName = "vnetSubnetID")]
         public string VnetSubnetID { get; set; }

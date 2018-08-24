@@ -54,7 +54,9 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         /// containers in this container group.</param>
         /// <param name="instanceView">The instance view of the container
         /// group. Only valid in response.</param>
-        public ContainerGroupInner(IList<Container> containers, string osType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), IList<ImageRegistryCredential> imageRegistryCredentials = default(IList<ImageRegistryCredential>), string restartPolicy = default(string), IpAddress ipAddress = default(IpAddress), IList<Volume> volumes = default(IList<Volume>), ContainerGroupPropertiesInstanceView instanceView = default(ContainerGroupPropertiesInstanceView))
+        /// <param name="diagnostics">The diagnostic information for a
+        /// container group.</param>
+        public ContainerGroupInner(IList<Container> containers, string osType, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), IList<ImageRegistryCredential> imageRegistryCredentials = default(IList<ImageRegistryCredential>), string restartPolicy = default(string), IpAddress ipAddress = default(IpAddress), IList<Volume> volumes = default(IList<Volume>), ContainerGroupPropertiesInstanceView instanceView = default(ContainerGroupPropertiesInstanceView), ContainerGroupDiagnostics diagnostics = default(ContainerGroupDiagnostics))
             : base(location, id, name, type, tags)
         {
             ProvisioningState = provisioningState;
@@ -65,6 +67,7 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
             OsType = osType;
             Volumes = volumes;
             InstanceView = instanceView;
+            Diagnostics = diagnostics;
             CustomInit();
         }
 
@@ -132,6 +135,12 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
         public ContainerGroupPropertiesInstanceView InstanceView { get; private set; }
 
         /// <summary>
+        /// Gets or sets the diagnostic information for a container group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.diagnostics")]
+        public ContainerGroupDiagnostics Diagnostics { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -180,6 +189,10 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.Models
                         element2.Validate();
                     }
                 }
+            }
+            if (Diagnostics != null)
+            {
+                Diagnostics.Validate();
             }
         }
     }

@@ -97,7 +97,7 @@ namespace Fluent.Tests
                     containerGroup.Refresh();
 
                     var containerOperationsList = containerInstanceManager.ContainerGroups.ListOperations();
-                    Assert.Equal(7, containerOperationsList.Count());
+                    Assert.Equal(10, containerOperationsList.Count());
 
                     containerGroup.Update()
                         .WithoutTag("tag1")

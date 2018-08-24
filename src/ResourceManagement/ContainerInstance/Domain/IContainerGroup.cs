@@ -149,5 +149,27 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         /// Gets the container group events.
         /// </summary>
         System.Collections.Generic.IReadOnlyCollection<Models.EventModel> Events { get; }
+
+        /// <summary>
+        /// Restarts all containers in a container group in place. If container image has updates, new image will be downloaded.
+        /// </summary>
+        void Restart();
+
+        /// <summary>
+        /// Restarts all containers in a container group in place asynchronously. If container image has updates, new image will be downloaded.
+        /// </summary>
+        /// <return>A representation of the deferred computation of this call.</return>
+        Task RestartAsync(CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Stops all containers in a container group. Compute resources will be de-allocated and billing will stop.
+        /// </summary>
+        void Stop();
+
+        /// <summary>
+        /// Stops all containers in a container group asynchronously. Compute resources will be de-allocated and billing will stop.
+        /// </summary>
+        /// <return>A representation of the deferred computation of this call.</return>
+        Task StopAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }
