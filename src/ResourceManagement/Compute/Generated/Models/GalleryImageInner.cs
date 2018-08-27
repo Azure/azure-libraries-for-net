@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// image.</param>
         /// <param name="provisioningState">The current state of the gallery
         /// image.</param>
-        public GalleryImageInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string eula = default(string), string privacyStatementUri = default(string), string releaseNoteUri = default(string), OperatingSystemTypes? osType = default(OperatingSystemTypes?), OperatingSystemStateTypes? osState = default(OperatingSystemStateTypes?), System.DateTime? endOfLifeDate = default(System.DateTime?), GalleryImageIdentifier identifier = default(GalleryImageIdentifier), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), ProvisioningState1 provisioningState = default(ProvisioningState1))
+        public GalleryImageInner(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string eula = default(string), string privacyStatementUri = default(string), string releaseNoteUri = default(string), OperatingSystemTypes? osType = default(OperatingSystemTypes?), OperatingSystemStateTypes? osState = default(OperatingSystemStateTypes?), System.DateTime? endOfLifeDate = default(System.DateTime?), GalleryImageIdentifier identifier = default(GalleryImageIdentifier), RecommendedMachineConfiguration recommended = default(RecommendedMachineConfiguration), Disallowed disallowed = default(Disallowed), ImagePurchasePlan purchasePlan = default(ImagePurchasePlan), ProvisioningState provisioningState = default(ProvisioningState))
             : base(location, id, name, type, tags)
         {
             Description = description;
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.Models
         /// 'Succeeded', 'Deleting', 'Migrating'
         /// </remarks>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ProvisioningState1 ProvisioningState { get; private set; }
+        public ProvisioningState ProvisioningState { get; private set; }
 
         /// <summary>
         /// Validate the object.

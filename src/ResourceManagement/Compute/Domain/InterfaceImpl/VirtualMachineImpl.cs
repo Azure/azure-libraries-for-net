@@ -1208,6 +1208,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Specifies the resource ID of a Linux gallery image version to be used as the virtual machines' OS.
+        /// </summary>
+        /// <param name="galleryImageVersionId">The resource ID of a gallery image version.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithLinuxRootUsernameManaged VirtualMachine.Definition.IWithOSBeta.WithLinuxGalleryImageVersion(string galleryImageVersionId)
+        {
+            return this.WithLinuxGalleryImageVersion(galleryImageVersionId);
+        }
+
+        /// <summary>
         /// Specifies definition of a not-yet-created availability set definition
         /// to associate the virtual machine with.
         /// </summary>
@@ -1685,6 +1695,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithSecondaryNetworkInterface.WithoutSecondaryNetworkInterface(string name)
         {
             return this.WithoutSecondaryNetworkInterface(name);
+        }
+
+        /// <summary>
+        /// Removes a network interface from the virtual machine.
+        /// </summary>
+        /// <param name="nicId">The id of the network interface to remove.</param>
+        /// <return>The next stage of the update.</return>
+        VirtualMachine.Update.IUpdate VirtualMachine.Update.IWithSecondaryNetworkInterface.WithoutNetworkInterface(string nicId)
+        {
+            return this.WithoutNetworkInterface(nicId);
         }
 
         /// <summary>
@@ -2207,6 +2227,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachine.Definition.IWithWindowsAdminUsernameManaged VirtualMachine.Definition.IWithOS.WithWindowsCustomImage(string customImageId)
         {
             return this.WithWindowsCustomImage(customImageId);
+        }
+
+        /// <summary>
+        /// Specifies the resource ID of a Windows gallery image version to be used as the virtual machine's OS.
+        /// </summary>
+        /// <param name="galleryImageVersionId">The resource ID of the gallery image version.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachine.Definition.IWithWindowsAdminUsernameManaged VirtualMachine.Definition.IWithOSBeta.WithWindowsGalleryImageVersion(string galleryImageVersionId)
+        {
+            return this.WithWindowsGalleryImageVersion(galleryImageVersionId);
         }
 
         /// <summary>

@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
     using Microsoft.Azure.Management.Network.Fluent;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using Microsoft.Azure.Management.Storage.Fluent;
+    using System;
 
     /// <summary>
     /// The stage of the virtual machine update allowing to enable System Assigned (Local) Managed Service Identity.
@@ -398,7 +399,15 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update
         /// </summary>
         /// <param name="name">The name of a secondary network interface to remove.</param>
         /// <return>The next stage of the update.</return>
+        [Obsolete("WithoutSecondaryNetworkInterface is deprecated, use WithoutNetworkInterface instead.")]
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithoutSecondaryNetworkInterface(string name);
+
+        /// <summary>
+        /// Removes a network interface from the virtual machine.
+        /// </summary>
+        /// <param name="nicId">The id of the network interface to remove.</param>
+        /// <return>The next stage of the update.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachine.Update.IUpdate WithoutNetworkInterface(string nicId);
     }
 
     /// <summary>

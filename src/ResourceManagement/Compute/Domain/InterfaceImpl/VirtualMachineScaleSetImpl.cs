@@ -1197,6 +1197,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         /// <summary>
+        /// Specifies the resource ID of a Linux gallery image version to be used as the virtual machine scaleset OS.
+        /// </summary>
+        /// <param name="galleryImageVersionId">The resource ID of a gallery image version.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManaged VirtualMachineScaleSet.Definition.IWithOSBeta.WithLinuxGalleryImageVersion(string galleryImageVersionId)
+        {
+            return this.WithLinuxGalleryImageVersion(galleryImageVersionId);
+        }
+
+        /// <summary>
         /// Specify that virtual machines in the scale set should be low priority VMs.
         /// </summary>
         /// <return>The next stage of the definition.</return>
@@ -2268,6 +2278,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManaged VirtualMachineScaleSet.Definition.IWithOS.WithWindowsCustomImage(string customImageId)
         {
             return this.WithWindowsCustomImage(customImageId);
+        }
+
+        /// <summary>
+        /// Specifies the resource ID of a Windows gallery image version to be used as the virtual machine scaleset OS.
+        /// </summary>
+        /// <param name="galleryImageVersionId">The resource ID of the gallery image version.</param>
+        /// <return>The next stage of the definition.</return>
+        VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManaged VirtualMachineScaleSet.Definition.IWithOSBeta.WithWindowsGalleryImageVersion(string galleryImageVersionId)
+        {
+            return this.WithWindowsGalleryImageVersion(galleryImageVersionId);
         }
 
         /// <summary>

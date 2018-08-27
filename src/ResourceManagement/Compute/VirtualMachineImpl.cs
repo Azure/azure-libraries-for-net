@@ -547,6 +547,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this;
         }
 
+        ///GENMHASH:C1CAA1ACCAE5C80BBC73F38DBB8A24DB:A5BEB46443374AE5FC100EE84133951F
+        public VirtualMachineImpl WithWindowsGalleryImageVersion(string galleryImageVersionId)
+        {
+            return this.WithWindowsCustomImage(galleryImageVersionId);
+        }
 
         ///GENMHASH:CE03CDBD07CA3BD7500B36B206A91A4A:5BEEBF6F7B101075BFFD1089DC6B2D0F
         public VirtualMachineImpl WithLinuxCustomImage(string customImageId)
@@ -558,6 +563,12 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             Inner.OsProfile.LinuxConfiguration = new LinuxConfiguration();
             this.isMarketplaceLinuxImage = true;
             return this;
+        }
+
+        ///GENMHASH:2B8B909D235B7D7AC3C105F6B606E684:7BC43BF2B183D2EF2284A56184ECD541
+        public VirtualMachineImpl WithLinuxGalleryImageVersion(string galleryImageVersionId)
+        {
+            return this.WithLinuxCustomImage(galleryImageVersionId);
         }
 
         ///GENMHASH:57A0D9F7821CCF113A2473B139EA6535:A5202C2E2CECEF8345A7B13AA2F45579
@@ -1190,7 +1201,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 {
                     idx++;
                     if (nicReference.Primary.HasValue
-                        && !nicReference.Primary == true
+                        && nicReference.Primary == false
                         && name.Equals(ResourceUtils.NameFromResourceId(nicReference.Id), StringComparison.OrdinalIgnoreCase))
                     {
                         Inner.NetworkProfile.NetworkInterfaces.RemoveAt(idx);
@@ -1200,6 +1211,37 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
             return this;
         }
+
+        public VirtualMachineImpl WithoutNetworkInterface(string nicId)
+        {
+            if (Inner.NetworkProfile != null
+                && Inner.NetworkProfile.NetworkInterfaces != null)
+            {
+                int idx = -1;
+                foreach (NetworkInterfaceReferenceInner nicReference in Inner.NetworkProfile.NetworkInterfaces)
+                {
+                    idx++;
+                    if (nicId.Equals(nicReference.Id, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Inner.NetworkProfile.NetworkInterfaces.RemoveAt(idx);
+                        if (nicReference.Primary.HasValue && nicReference.Primary == true)
+                        {
+                            // If removed NIC was primary then use next NIC as primary.
+                            // It looks like the concept of primary nic is legacy (followup service team to get rid of
+                            // this flag if that is the case).
+                            if (Inner.NetworkProfile.NetworkInterfaces.Any())
+                            {
+                                Inner.NetworkProfile.NetworkInterfaces.First().Primary = true;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+            return this;
+        }
+
+
 
         ///GENMHASH:D7A14F2EFF1E4165DA55EF07B6C19534:85E4528E76EBEB2F2002B48ABD89A8E5
         public VirtualMachineExtensionImpl DefineNewExtension(string name)
@@ -2105,6 +2147,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 nicReference.Id = secondaryNetworkInterface.Id;
                 Inner.NetworkProfile.NetworkInterfaces.Add(nicReference);
             }
+            this.creatableSecondaryNetworkInterfaceKeys.Clear();
 
             foreach (INetworkInterface secondaryNetworkInterface in this.existingSecondaryNetworkInterfacesToAssociate)
             {
@@ -2113,6 +2156,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 nicReference.Id = secondaryNetworkInterface.Id;
                 Inner.NetworkProfile.NetworkInterfaces.Add(nicReference);
             }
+            this.existingSecondaryNetworkInterfacesToAssociate.Clear();
         }
 
         ///GENMHASH:C5029F7D6B24C60F12C8C8EE00CA338D:4025A91B58E8284506099B34457E6276

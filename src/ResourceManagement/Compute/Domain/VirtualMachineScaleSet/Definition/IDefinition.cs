@@ -720,7 +720,8 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
     /// <summary>
     /// The stage of the virtual machine scale set definition allowing to specify the operating system image.
     /// </summary>
-    public interface IWithOS
+    public interface IWithOS :
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithOSBeta
     {
 
         /// <summary>
@@ -1242,5 +1243,27 @@ namespace Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Defin
         /// <param name="accountType">The storage account type.</param>
         /// <return>The stage representing creatable VM definition.</return>
         Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithManagedCreate WithOSDiskStorageAccountType(StorageAccountTypes accountType);
+    }
+
+    /// <summary>
+    /// The stage of a virtual machine scaleset definition allowing to specify the operating system image.
+    /// </summary>
+    public interface IWithOSBeta :
+        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
+    {
+
+        /// <summary>
+        /// Specifies the resource ID of a Linux gallery image version to be used as the virtual machines scaleset OS.
+        /// </summary>
+        /// <param name="galleryImageVersionId">The resource ID of a gallery image version.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithLinuxRootUsernameManaged WithLinuxGalleryImageVersion(string galleryImageVersionId);
+
+        /// <summary>
+        /// Specifies the resource ID of a Windows gallery image version to be used as the virtual machine scaleset OS.
+        /// </summary>
+        /// <param name="galleryImageVersionId">The resource ID of the gallery image version.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Compute.Fluent.VirtualMachineScaleSet.Definition.IWithWindowsAdminUsernameManaged WithWindowsGalleryImageVersion(string galleryImageVersionId);
     }
 }
