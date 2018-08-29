@@ -13,7 +13,7 @@ nugetOrgSource="https://api.nuget.org/v3/index.json"
 dotnet --info
 
 getBuildTools() {
-    copyFromRootDir="https://raw.githubusercontent.com/Azure/azure-sdk-for-net/BuildToolsForSdk"
+    copyFromRootDir="https://raw.githubusercontent.com/shahabhijeet/azure-sdk-for-net/addTfm"
     printf "Updating Build tools .....\n"
     
     if [ ! -d ./tools/SdkBuildTools ]; then
