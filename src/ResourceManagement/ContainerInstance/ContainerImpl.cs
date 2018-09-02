@@ -288,6 +288,31 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
             return this;
         }
 
+        public ContainerImpl WithEnvironmentVariableWithSecuredValue(string envName, string securedValue)
+        {
+            if (innerContainer.EnvironmentVariables == null)
+            {
+                innerContainer.EnvironmentVariables = new List<EnvironmentVariable>();
+            }
+            innerContainer.EnvironmentVariables.Add(new EnvironmentVariable
+            {
+                Name = envName,
+                SecureValue = securedValue
+            });
+
+            return this;
+        }
+
+        public ContainerImpl WithEnvironmentVariablesWithSecuredValue(IDictionary<string, string> environmentVariables)
+        {
+            foreach (var entry in environmentVariables)
+            {
+                this.WithEnvironmentVariableWithSecuredValue(entry.Key, entry.Value);
+            }
+
+            return this;
+        }
+
         ///GENMHASH:077EB7776EFFBFAA141C1696E75EF7B3:3096C005BF39DD1EA35957AEE106323D
         public ContainerGroupImpl Attach()
         {
