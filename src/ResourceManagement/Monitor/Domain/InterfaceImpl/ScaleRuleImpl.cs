@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the cooldown value.
         /// </summary>
-        System.TimeSpan? Microsoft.Azure.Management.Monitor.Fluent.IScaleRule.CoolDown
+        System.TimeSpan Microsoft.Azure.Management.Monitor.Fluent.IScaleRule.CoolDown
         {
             get
             {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the timeWindow value.
         /// </summary>
-        System.TimeSpan? Microsoft.Azure.Management.Monitor.Fluent.IScaleRule.Duration
+        System.TimeSpan Microsoft.Azure.Management.Monitor.Fluent.IScaleRule.Duration
         {
             get
             {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the timeGrain value.
         /// </summary>
-        System.TimeSpan? Microsoft.Azure.Management.Monitor.Fluent.IScaleRule.Frequency
+        System.TimeSpan Microsoft.Azure.Management.Monitor.Fluent.IScaleRule.Frequency
         {
             get
             {

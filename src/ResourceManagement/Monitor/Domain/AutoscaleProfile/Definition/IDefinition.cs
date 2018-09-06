@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.AutoscaleProfile.Definition
         /// <param name="startTime">Start time in hh:mm format.</param>
         /// <param name="weekday">List of week days when the schedule should be active.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.AutoscaleProfile.Definition.IWithAttach WithRecurrentSchedule(string scheduleTimeZone, string startTime, params DayOfWeek[] weekday);
+        Microsoft.Azure.Management.Monitor.Fluent.AutoscaleProfile.Definition.IWithAttach WithRecurrentSchedule(string scheduleTimeZone, string startTime, params Models.DayOfWeek[] weekday);
     }
 
     /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.AutoscaleProfile.Definition
         /// <param name="startTime">Start time in hh:mm format.</param>
         /// <param name="weekday">List of week days when the schedule should be active.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.AutoscaleProfile.Definition.IWithScaleRuleOptional WithRecurrentSchedule(string scheduleTimeZone, string startTime, params DayOfWeek[] weekday);
+        Microsoft.Azure.Management.Monitor.Fluent.AutoscaleProfile.Definition.IWithScaleRuleOptional WithRecurrentSchedule(string scheduleTimeZone, string startTime, params Models.DayOfWeek[] weekday);
     }
 
     /// <summary>

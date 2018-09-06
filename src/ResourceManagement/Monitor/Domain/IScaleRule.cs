@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the cooldown value.
         /// </summary>
-        System.TimeSpan? CoolDown { get; }
+        System.TimeSpan CoolDown { get; }
 
         /// <summary>
         /// Gets the range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the timeWindow value.
         /// </summary>
-        System.TimeSpan? Duration { get; }
+        System.TimeSpan Duration { get; }
 
         /// <summary>
         /// Gets the granularity of metrics the rule monitors. Must be one of the predefined values returned from metric definitions for the metric. Must be between 12 hours and 1 minute.
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the timeGrain value.
         /// </summary>
-        System.TimeSpan? Frequency { get; }
+        System.TimeSpan Frequency { get; }
 
         /// <summary>
         /// Gets the metric statistic type. How the metrics from multiple instances are combined. Possible values include: 'Average', 'Min', 'Max', 'Sum'.
