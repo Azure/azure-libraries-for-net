@@ -17,18 +17,18 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// Autoscale profile.
     /// </summary>
-    public partial class AutoscaleProfile
+    public partial class AutoscaleProfileInner
     {
         /// <summary>
-        /// Initializes a new instance of the AutoscaleProfile class.
+        /// Initializes a new instance of the AutoscaleProfileInner class.
         /// </summary>
-        public AutoscaleProfile()
+        public AutoscaleProfileInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AutoscaleProfile class.
+        /// Initializes a new instance of the AutoscaleProfileInner class.
         /// </summary>
         /// <param name="name">the name of the profile.</param>
         /// <param name="capacity">the number of instances that can be used
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// <param name="recurrence">the repeating times at which this profile
         /// begins. This element is not used if the FixedDate element is
         /// used.</param>
-        public AutoscaleProfile(string name, ScaleCapacity capacity, IList<ScaleRule> rules, TimeWindow fixedDate = default(TimeWindow), Recurrence recurrence = default(Recurrence))
+        public AutoscaleProfileInner(string name, ScaleCapacity capacity, IList<ScaleRuleInner> rules, TimeWindow fixedDate = default(TimeWindow), Recurrence recurrence = default(Recurrence))
         {
             Name = name;
             Capacity = capacity;
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// specified.
         /// </summary>
         [JsonProperty(PropertyName = "rules")]
-        public IList<ScaleRule> Rules { get; set; }
+        public IList<ScaleRuleInner> Rules { get; set; }
 
         /// <summary>
         /// Gets or sets the specific date-time for the profile. This element

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:B2E154B44EABA68125B16BEABCE76616:FC507FA6241C8D9B7C133FB4D3AA423D
         public string MetricName()
         {
-			return this.Inner.MetricName;
+            return this.Inner.MetricName;
         }
         ///GENMHASH:D09AE837550E1C13CD24EC1395F3B29F:0FD90E1200CF024E769FBAC2692B9B48
         public string MetricNamespace()
@@ -134,8 +134,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:70307A93690A699CEA966259D06A449B:CEC6E8E09BD3412971871333315F4209
         public MetricAlertConditionImpl WithMetricName(string metricName)
         {
-			this.Inner.MetricName = metricName;
-			return this;
+            this.Inner.MetricName = metricName;
+            return this;
         }
 
 

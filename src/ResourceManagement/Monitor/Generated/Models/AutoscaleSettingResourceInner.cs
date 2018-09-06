@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// autoscale setting.</param>
         /// <param name="targetResourceUri">the resource identifier of the
         /// resource that the autoscale setting should be added to.</param>
-        public AutoscaleSettingResourceInner(IList<AutoscaleProfile> profiles, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<AutoscaleNotification> notifications = default(IList<AutoscaleNotification>), bool? enabled = default(bool?), string autoscaleSettingResourceName = default(string), string targetResourceUri = default(string))
+        public AutoscaleSettingResourceInner(IList<AutoscaleProfileInner> profiles, string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<AutoscaleNotification> notifications = default(IList<AutoscaleNotification>), bool? enabled = default(bool?), string autoscaleSettingResourceName = default(string), string targetResourceUri = default(string))
             : base(location, id, name, type, tags)
         {
             Profiles = profiles;
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// maximum of 20 profiles can be specified.
         /// </summary>
         [JsonProperty(PropertyName = "properties.profiles")]
-        public IList<AutoscaleProfile> Profiles { get; set; }
+        public IList<AutoscaleProfileInner> Profiles { get; set; }
 
         /// <summary>
         /// Gets or sets the collection of notifications.

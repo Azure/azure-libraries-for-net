@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:1DDC53CFDF25A285EC0454044DCD1675:701818A6DF18068BF950BC2079562345
         public IReadOnlyList<Models.AzureAppPushReceiver> PushNotificationReceivers()
         {
-			return this.Inner.AzureAppPushReceivers.ToList();
+            return this.Inner.AzureAppPushReceivers.ToList();
         }
 
         ///GENMHASH:50EA7681E35A3BDC55F7BBB87F8D9E44:2D4F3E96DFE47F8BC60B3BF071B7170D
@@ -678,7 +678,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
 
             return this;
         }
-		
+
         ///GENMHASH:E15A0C7634ADA2C9A92740002891993B:BE7DA6BC0C09A661C34F2BFFA2DF061D
         public ActionGroupImpl WithShortName(string shortName)
         {

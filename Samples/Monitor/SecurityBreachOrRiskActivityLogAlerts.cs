@@ -60,7 +60,8 @@ namespace SecurityBreachOrRiskActivityLogAlerts
 
                 // ============================================================
                 // Set a trigger to fire each time
-                var ala = azure.AlertRules.ActivityLogAlerts.Define("Potential security breach alert")
+                var ala = azure.AlertRules.ActivityLogAlerts
+                        .Define("Potential security breach alert")
                         .WithExistingResourceGroup(rgName)
                         .WithTargetSubscription(azure.SubscriptionId)
                         .WithDescription("Security StorageAccounts ListAccountKeys trigger")
@@ -87,7 +88,7 @@ namespace SecurityBreachOrRiskActivityLogAlerts
                         .StartingFrom(recordDateTime.AddDays(-7))
                         .EndsBefore(recordDateTime)
                         .WithAllPropertiesInResponse()
-                        .FilterByResourceGroup(rgName)
+                        .FilterByResource(ala.Id)
                         .Execute();
 
                 Utilities.Log("Activity logs for the Storage Account:");
