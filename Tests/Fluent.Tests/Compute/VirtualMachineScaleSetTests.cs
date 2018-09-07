@@ -553,7 +553,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     //
                     Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternetFacingLoadBalancer());
                     Assert.Equal(2, virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerBackends().Count());
-                    Assert.Equal(1, virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools().Count());
+                    Assert.Single(virtualMachineScaleSet.ListPrimaryInternetFacingLoadBalancerInboundNatPools());
 
                     Assert.NotNull(virtualMachineScaleSet.GetPrimaryInternalLoadBalancer());
                     Assert.Equal(2, virtualMachineScaleSet.ListPrimaryInternalLoadBalancerBackends().Count());

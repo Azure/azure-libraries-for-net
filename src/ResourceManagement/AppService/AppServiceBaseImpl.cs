@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Management.AppService.Fluent
     /// <typeparam name="FluentT">The fluent interface, WebApp or FunctionApp.</typeparam>
     /// <typeparam name="FluentImplT">The implementation class for FluentT.</typeparam>
     /// <typeparam name="FluentWithCreateT">The definition stage that derives from Creatable.</typeparam>
-    /// <typeparam name="FluentUpdateT">The definition stage that derives from Appliable.</typeparam>
     internal abstract partial class AppServiceBaseImpl<FluentT,FluentImplT,FluentWithCreateT, DefAfterRegionT, DefAfterGroupT, UpdateT>  :
         WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>
         where FluentImplT : AppServiceBaseImpl<FluentT, FluentImplT, FluentWithCreateT, DefAfterRegionT, DefAfterGroupT, UpdateT>, FluentT

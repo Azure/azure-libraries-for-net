@@ -261,8 +261,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Specifies the sub-domain to bind to.
         /// </summary>
-        /// <param name="subDomain">The sub-domain name excluding the top level domain, e.g., ".</param>
-        /// <",>"www".</",>
+        /// <param name="subDomain">The sub-domain name excluding the top level domain, e.g., "www".</param>
         /// <return>The next stage of the definition.</return>
         HostNameBinding.Definition.IWithHostNameDnsRecordType<WebAppBase.Definition.IWithCreate<FluentT>> HostNameBinding.Definition.IWithSubDomain<WebAppBase.Definition.IWithCreate<FluentT>>.WithSubDomain(string subDomain)
         {
@@ -272,8 +271,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent
         /// <summary>
         /// Specifies the sub-domain to bind to.
         /// </summary>
-        /// <param name="subDomain">The sub-domain name excluding the top level domain, e.g., ".</param>
-        /// <",>"www".</",>
+        /// <param name="subDomain">The sub-domain name excluding the top level domain, e.g., "www".</param>
         /// <return>The next stage of the definition.</return>
         HostNameBinding.UpdateDefinition.IWithHostNameDnsRecordType<WebAppBase.Update.IUpdate<FluentT>> HostNameBinding.UpdateDefinition.IWithSubDomain<WebAppBase.Update.IUpdate<FluentT>>.WithSubDomain(string subDomain)
         {

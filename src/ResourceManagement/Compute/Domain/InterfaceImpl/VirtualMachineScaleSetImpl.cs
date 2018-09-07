@@ -461,9 +461,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// in the scale set.
         /// A primary internal load balancer associated with the primary network interfaces of the scale set
         /// virtual machine will be also belong to this network
-        /// </p>.
         /// </return>
-        /// <throws>IOException the IO exception.</throws>
         Microsoft.Azure.Management.Network.Fluent.INetwork Microsoft.Azure.Management.Compute.Fluent.IVirtualMachineScaleSet.GetPrimaryNetwork()
         {
             return this.GetPrimaryNetwork();

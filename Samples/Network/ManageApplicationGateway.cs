@@ -58,7 +58,7 @@ namespace ManageApplicationGateway
          *    Routing rule 2 = HTTPS listener 2 => backend server pool 2
          *    (round-robin load distribution)
          *
-         *  - MODIFY the application gateway - re-configure the Routing Rule 1 for SSL offload &
+         *  - MODIFY the application gateway - re-configure the Routing Rule 1 for SSL offload and
          *    add a host name, www.Contoso.Com
          *
          *    Change listener 1 from HTTP to HTTPS

@@ -2,27 +2,20 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
+    using Microsoft.Azure.Management.AppService.Fluent.Models;
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Management.AppService.Fluent.Models;
-    using Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.UpdateDefinition;
-    using Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.HostNameSslBinding.UpdateDefinition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppAuthentication.UpdateDefinition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.UpdateDefinition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebDeployment.Definition;
-    using Microsoft.Azure.Management.Graph.RBAC.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System.Collections.Generic;
-    using System;
-    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="FluentT"></typeparam>
+    /// <typeparam name="FluentImplT"></typeparam>
+    /// <typeparam name="DefAfterRegionT"></typeparam>
+    /// <typeparam name="DefAfterGroupT"></typeparam>
+    /// <typeparam name="UpdateT"></typeparam>
     internal abstract partial class WebAppBaseImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT>
     {
         /// <summary>

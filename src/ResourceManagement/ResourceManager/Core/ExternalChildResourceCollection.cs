@@ -35,15 +35,7 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
             this.Parent = parent;
             this.childResourceName = childResourceName;
         }
-
-        /**
-        public Task<Observable<FluentModelTImpl>> CommitAsync(CancellationToken cacellationToken)
-        {
-            // This method cannot be implemented as there is no easy way to stream reources due to the 
-            // absence of Rx.Net
-        }
-        **/
-
+        
         /// <summary>
         /// Commits the changes in the external child resource collection.
         /// </summary>

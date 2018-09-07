@@ -61,7 +61,7 @@ namespace Fluent.Tests.Storage
 
                     // Check the defaults
                     //
-                    Assert.Equal(SkuName.StandardGRS, storageAccount.Sku.Name);
+                    Assert.Equal(SkuName.StandardGRS, storageAccount.SkuType.Name);
                     Assert.Equal(Kind.Storage, storageAccount.Kind);
                     //
 
@@ -110,12 +110,12 @@ namespace Fluent.Tests.Storage
                         .WithRegion(Region.USEast2)
                         .WithNewResourceGroup(rgName)
                         .WithBlobStorageAccountKind()     // Override the default which is GeneralPursposeKind
-                        .WithSku(SkuName.StandardRAGRS)   // Override the default which is StandardGRS
+                        .WithSku(StorageAccountSkuType.Standard_RAGRS)   // Override the default which is StandardGRS
                         .Create();
 
                     // Check the overridden settings
                     //
-                    Assert.Equal(SkuName.StandardRAGRS, storageAccount.Sku.Name);
+                    Assert.Equal(SkuName.StandardRAGRS, storageAccount.SkuType.Name);
                     Assert.Equal(Kind.BlobStorage, storageAccount.Kind);
                     Assert.Equal(AccessTier.Hot, storageAccount.AccessTier);    // Default access tier
 
@@ -194,7 +194,7 @@ namespace Fluent.Tests.Storage
                     var storageAccount = storageManager.StorageAccounts.Define(stgName)
                         .WithRegion(Region.USEast2)
                         .WithNewResourceGroup(rgName)
-                        .WithEncryption()
+                        .WithBlobEncryption()
                         .WithTag("aa", "aa")
                         .WithTag("bb", "bb")
                         .Create();
