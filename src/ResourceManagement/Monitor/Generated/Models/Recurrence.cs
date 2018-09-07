@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// 'Hour', 'Day', 'Week', 'Month', 'Year'</param>
         /// <param name="schedule">the scheduling constraints for when the
         /// profile begins.</param>
-        public Recurrence(RecurrenceFrequency frequency, RecurrentSchedule schedule)
+        public Recurrence(string frequency, RecurrentSchedule schedule)
         {
             Frequency = frequency;
             Schedule = schedule;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
         /// 'Week', 'Month', 'Year'
         /// </summary>
         [JsonProperty(PropertyName = "frequency")]
-        public RecurrenceFrequency Frequency { get; set; }
+        public string Frequency { get; set; }
 
         /// <summary>
         /// Gets or sets the scheduling constraints for when the profile

@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the sendToSubscriptionCoAdministrators value.
         /// </summary>
-        bool Microsoft.Azure.Management.Monitor.Fluent.IAutoscaleSetting.COAdminEmailNotificationEnabled
+        bool Microsoft.Azure.Management.Monitor.Fluent.IAutoscaleSetting.CoAdminEmailNotificationEnabled
         {
             get
             {
-                return this.COAdminEmailNotificationEnabled();
+                return this.CoAdminEmailNotificationEnabled();
             }
         }
 

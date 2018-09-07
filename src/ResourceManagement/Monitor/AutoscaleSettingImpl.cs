@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         }
 
         ///GENMHASH:E0153C57553C2696B4198D577FCF1CD8:8C8C16074B2DE4624FD9BBA316CF5173
-        public bool COAdminEmailNotificationEnabled()
+        public bool CoAdminEmailNotificationEnabled()
         {
             if (this.Inner.Notifications != null && 
                 this.Inner.Notifications.FirstOrDefault() != null && 

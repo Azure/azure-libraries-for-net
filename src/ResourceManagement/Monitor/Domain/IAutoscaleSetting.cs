@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <summary>
         /// Gets the sendToSubscriptionCoAdministrators value.
         /// </summary>
-        bool COAdminEmailNotificationEnabled { get; }
+        bool CoAdminEmailNotificationEnabled { get; }
 
         /// <summary>
         /// Gets the custom e-mails list. This value can be null or empty, in which case this attribute will be ignored.
