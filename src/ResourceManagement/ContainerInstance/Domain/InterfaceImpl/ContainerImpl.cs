@@ -252,6 +252,26 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent
         }
 
         /// <summary>
+        /// Specifies a collection of name and secure value pairs for the environment variables.
+        /// </summary>
+        /// <param name="envName">The environment variable name.</param>
+        /// <param name="securedValue">The environment variable secured value.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithEnvironmentVariables<ContainerGroup.Definition.IWithNextContainerInstance>.WithEnvironmentVariableWithSecuredValue(string envName, string securedValue)
+        {
+            return this.WithEnvironmentVariableWithSecuredValue(envName, securedValue);
+        }
+
+        /// <summary>
+        /// Specifies a collection of name and secure value pairs for the environment variables.
+        /// </summary>
+        /// <param name="environmentVariables">The environment variables in a name and value pair to be set after the container gets initialized.</param>
+        /// <return>The next stage of the definition.</return>
+        ContainerGroup.Definition.IWithContainerInstanceAttach<ContainerGroup.Definition.IWithNextContainerInstance> ContainerGroup.Definition.IWithEnvironmentVariables<ContainerGroup.Definition.IWithNextContainerInstance>.WithEnvironmentVariablesWithSecuredValue(IDictionary<string, string> environmentVariables)
+        {
+            return this.WithEnvironmentVariablesWithSecuredValue(environmentVariables);
+        }
+        /// <summary>
         /// Specifies the container image to be used.
         /// </summary>
         /// <param name="imageName">The container image.</param>

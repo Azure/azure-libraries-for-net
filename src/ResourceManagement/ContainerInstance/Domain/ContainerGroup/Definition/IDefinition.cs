@@ -626,6 +626,21 @@ namespace Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Def
         /// <param name="environmentVariables">The environment variables in a name and value pair to be set after the container gets initialized.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithContainerInstanceAttach<ParentT> WithEnvironmentVariables(IDictionary<string,string> environmentVariables);
+
+        /// <summary>
+        /// Specifies a collection of name and secure value pairs for the environment variables.
+        /// </summary>
+        /// <param name="envName">The environment variable name.</param>
+        /// <param name="securedValue">The environment variable secured value.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithContainerInstanceAttach<ParentT> WithEnvironmentVariableWithSecuredValue(string envName, string securedValue);
+
+        /// <summary>
+        /// Specifies a collection of name and secure value pairs for the environment variables.
+        /// </summary>
+        /// <param name="environmentVariables">The environment variables in a name and value pair to be set after the container gets initialized.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.ContainerInstance.Fluent.ContainerGroup.Definition.IWithContainerInstanceAttach<ParentT> WithEnvironmentVariablesWithSecuredValue(IDictionary<string, string> environmentVariables);
     }
 
     /// <summary>
