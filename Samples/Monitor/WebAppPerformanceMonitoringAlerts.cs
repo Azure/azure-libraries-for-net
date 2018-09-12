@@ -26,7 +26,6 @@ namespace WebAppPerformanceMonitoringAlerts
          *  - Setup an action group to trigger a notification to the heavy performance alerts
          *  - Create auto-mitigated metric alerts for the App Service plan when
          *    - average CPUPercentage on any of Web App instance (where Instance = *) over the last 5 minutes is above 80%
-         *    - average MemoryPercentage on three of my instances (where Instance = "RD00155D44CA4E", "RD07893F35CE3D", "RD00093E32CE8F") over the last 5 minutes is above 90%
          */
         public static void RunSample(IAzure azure)
         {
@@ -79,11 +78,6 @@ namespace WebAppPerformanceMonitoringAlerts
                             .WithMetricName("CPUPercentage", "Microsoft.Web/serverfarms")
                             .WithCondition(MetricAlertRuleCondition.GreaterThan, MetricAlertRuleTimeAggregation.Total, 80)
                             .WithDimension("Instance", "*")
-                            .Attach()
-                    .DefineAlertCriteria("Metric2")
-                            .WithMetricName("MemoryPercentage", "Microsoft.Web/serverfarms")
-                            .WithCondition(MetricAlertRuleCondition.GreaterThan, MetricAlertRuleTimeAggregation.Total, 90)
-                            .WithDimension("Instance", "RD00155D44CA4E", "RD07893F35CE3D", "RD00093E32CE8F")
                             .Attach()
                     .Create();
 
