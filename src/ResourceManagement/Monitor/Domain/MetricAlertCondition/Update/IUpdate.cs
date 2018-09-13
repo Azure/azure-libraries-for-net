@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.MetricAlertCondition.Update
         /// <param name="timeAggregation">The criteria time aggregation types. Possible values include: 'Average', 'Minimum', 'Maximum', 'Total'.</param>
         /// <param name="threshold">The criteria threshold value that activates the alert.</param>
         /// <returns>The next stage of the metric alert condition update.</returns>
-        IUpdateStages WithCondition(MetricAlertRuleCondition condition, MetricAlertRuleTimeAggregation timeAggregation, double threshold);
+        IUpdateStages WithCondition(MetricAlertRuleTimeAggregation timeAggregation, MetricAlertRuleCondition condition, double threshold);
 
         /// <summary>
         /// Adds a metric dimension filter.

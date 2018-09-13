@@ -169,8 +169,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return default(TimeAggregationType);
         }
 
-        ///GENMHASH:41C96A24BC2EADE6D2A1ACFBF16B6121:4FD477A1681957D72C07F5CB5F3EE87B
-        public ScaleRuleImpl WithCondition(ComparisonOperationType condition, TimeAggregationType timeAggregation, double threshold)
+        ///GENMHASH:FC95CCD3CB209FAF943A69591F59FCD9:4FD477A1681957D72C07F5CB5F3EE87B
+        public ScaleRuleImpl WithCondition(TimeAggregationType timeAggregation, ComparisonOperationType condition, double threshold)
         {
             this.Inner.MetricTrigger.OperatorProperty = condition;
             this.Inner.MetricTrigger.TimeAggregation = timeAggregation;
@@ -209,6 +209,24 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             this.Inner.MetricTrigger.TimeWindow = duration;
             this.Inner.MetricTrigger.TimeGrain = frequency;
             return this;
+        }
+
+        ///GENMHASH:3FAA430A35AB8C520790316B1BA574F3:968FD7C2DCCC81F1FB769AA1B9A174FA
+        public ScaleRuleImpl WithStatistic()
+        {
+            return this.WithStatistic(TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(1), MetricStatisticType.Average);
+        }
+
+        ///GENMHASH:47F2D2D499DCE32C3CC6806453A72FCE:37DC10C6C78FDA3D552AF8769B2282FC
+        public ScaleRuleImpl WithStatistic(TimeSpan duration)
+        {
+            return this.WithStatistic(duration, TimeSpan.FromMinutes(1), MetricStatisticType.Average);
+        }
+
+        ///GENMHASH:FF2A080FF12D83F694D1FBC9A0BF2CE0:CC5FA33537C949636ABCF5F9AEB86A73
+        public ScaleRuleImpl WithStatistic(TimeSpan duration, MetricStatisticType statisticType)
+        {
+            return this.WithStatistic(duration, TimeSpan.FromMinutes(1), statisticType);
         }
     }
 }

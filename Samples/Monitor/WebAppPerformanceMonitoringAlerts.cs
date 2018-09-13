@@ -76,7 +76,7 @@ namespace WebAppPerformanceMonitoringAlerts
                     .WithActionGroups(ag.Id)
                     .DefineAlertCriteria("Metric1")
                             .WithMetricName("CPUPercentage", "Microsoft.Web/serverfarms")
-                            .WithCondition(MetricAlertRuleCondition.GreaterThan, MetricAlertRuleTimeAggregation.Total, 80)
+                            .WithCondition(MetricAlertRuleTimeAggregation.Total, MetricAlertRuleCondition.GreaterThan, 80)
                             .WithDimension("Instance", "*")
                             .Attach()
                     .Create();

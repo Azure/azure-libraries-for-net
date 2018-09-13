@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ScaleRule.ParentUpdateDefini
         /// <param name="timeAggregation">The time aggregation type. How the data that is collected should be combined over time. The default value is Average. Possible values include: 'Average', 'Minimum', 'Maximum', 'Total', 'Count'.</param>
         /// <param name="threshold">The threshold of the metric that triggers the scale action.</param>
         /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Monitor.Fluent.ScaleRule.ParentUpdateDefinition.IWithScaleAction WithCondition(ComparisonOperationType condition, TimeAggregationType timeAggregation, double threshold);
+        Microsoft.Azure.Management.Monitor.Fluent.ScaleRule.ParentUpdateDefinition.IWithScaleAction WithCondition(TimeAggregationType timeAggregation, ComparisonOperationType condition, double threshold);
     }
 
     /// <summary>
@@ -94,6 +94,27 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.ScaleRule.ParentUpdateDefini
         /// <param name="statisticType">The metric statistic type. How the metrics from multiple instances are combined. Possible values include: 'Average', 'Min', 'Max', 'Sum'.</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.Monitor.Fluent.ScaleRule.ParentUpdateDefinition.IWithCondition WithStatistic(TimeSpan duration, TimeSpan frequency, MetricStatisticType statisticType);
+
+        /// <summary>
+        /// Sets statistics for autoscale trigger action with default values of 10 minutes for duration, 1 minute for frequency(time grain) and 'Average' for statistic type.
+        /// </summary>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.ScaleRule.ParentUpdateDefinition.IWithCondition WithStatistic();
+
+        /// <summary>
+        /// Sets statistics for autoscale trigger action with default values of 1 minute for frequency(time grain) and 'Average' for statistic type.
+        /// </summary>
+        /// <param name="duration">The range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.ScaleRule.ParentUpdateDefinition.IWithCondition WithStatistic(TimeSpan duration);
+
+        /// <summary>
+        /// Sets statistics for autoscale trigger action with default values of 1 minute for frequency(time grain).
+        /// </summary>
+        /// <param name="duration">The range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.</param>
+        /// <param name="statisticType">The metric statistic type. How the metrics from multiple instances are combined. Possible values include: 'Average', 'Min', 'Max', 'Sum'.</param>
+        /// <return>The next stage of the definition.</return>
+        Microsoft.Azure.Management.Monitor.Fluent.ScaleRule.ParentUpdateDefinition.IWithCondition WithStatistic(TimeSpan duration, MetricStatisticType statisticType);
     }
 
     /// <summary>

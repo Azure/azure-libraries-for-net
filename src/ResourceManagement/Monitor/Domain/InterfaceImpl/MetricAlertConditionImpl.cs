@@ -150,9 +150,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name="timeAggregation">The criteria time aggregation types. Possible values include: 'Average', 'Minimum', 'Maximum', 'Total'.</param>
         /// <param name="threshold">The criteria threshold value that activates the alert.</param>
         /// <return>The next stage of metric alert condition definition.</return>
-        MetricAlertCondition.UpdateDefinition.IWithConditionAttach<MetricAlert.Update.IUpdate> MetricAlertCondition.UpdateDefinition.IWithCriteriaOperator<MetricAlert.Update.IUpdate>.WithCondition(MetricAlertRuleCondition condition, MetricAlertRuleTimeAggregation timeAggregation, double threshold)
+        MetricAlertCondition.UpdateDefinition.IWithConditionAttach<MetricAlert.Update.IUpdate> MetricAlertCondition.UpdateDefinition.IWithCriteriaOperator<MetricAlert.Update.IUpdate>.WithCondition(MetricAlertRuleTimeAggregation timeAggregation, MetricAlertRuleCondition condition, double threshold)
         {
-            return this.WithCondition(condition, timeAggregation, threshold);
+            return this.WithCondition(timeAggregation, condition, threshold);
         }
 
         /// <summary>
@@ -162,9 +162,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name="timeAggregation">The criteria time aggregation types. Possible values include: 'Average', 'Minimum', 'Maximum', 'Total'.</param>
         /// <param name="threshold">The criteria threshold value that activates the alert.</param>
         /// <return>The next stage of the metric alert condition update.</return>
-        MetricAlertCondition.Update.IUpdateStages MetricAlertCondition.Update.IUpdateStages.WithCondition(MetricAlertRuleCondition condition, MetricAlertRuleTimeAggregation timeAggregation, double threshold)
+        MetricAlertCondition.Update.IUpdateStages MetricAlertCondition.Update.IUpdateStages.WithCondition(MetricAlertRuleTimeAggregation timeAggregation, MetricAlertRuleCondition condition, double threshold)
         {
-            return this.WithCondition(condition, timeAggregation, threshold);
+            return this.WithCondition(timeAggregation, condition, threshold);
         }
 
         /// <summary>
@@ -174,9 +174,9 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         /// <param name="timeAggregation">The criteria time aggregation types. Possible values include: 'Average', 'Minimum', 'Maximum', 'Total'.</param>
         /// <param name="threshold">The criteria threshold value that activates the alert.</param>
         /// <return>The next stage of metric alert condition definition.</return>
-        MetricAlertCondition.Definition.IWithConditionAttach<MetricAlert.Definition.IWithCreate> MetricAlertCondition.Definition.IWithCriteriaOperator<MetricAlert.Definition.IWithCreate>.WithCondition(MetricAlertRuleCondition condition, MetricAlertRuleTimeAggregation timeAggregation, double threshold)
+        MetricAlertCondition.Definition.IWithConditionAttach<MetricAlert.Definition.IWithCreate> MetricAlertCondition.Definition.IWithCriteriaOperator<MetricAlert.Definition.IWithCreate>.WithCondition(MetricAlertRuleTimeAggregation timeAggregation, MetricAlertRuleCondition condition, double threshold)
         {
-            return this.WithCondition(condition, timeAggregation, threshold);
+            return this.WithCondition(timeAggregation, condition, threshold);
         }
 
         /// <summary>
