@@ -144,53 +144,5 @@ namespace AutoscaleSettingsBasedOnPerformanceOrSchedule
                 Utilities.Log(ex);
             }
         }
-
-        private static void AddBlobTransactions(string storageConnectionString)
-        {
-
-            // Upload the script file as block blob
-            //
-            var account = CloudStorageAccount.Parse(storageConnectionString);
-            var cloudBlobClient = account.CreateCloudBlobClient();
-            var container = cloudBlobClient.GetContainerReference("scripts");
-            container.CreateIfNotExistsAsync().GetAwaiter().GetResult();
-
-            var serviceProps = cloudBlobClient.GetServicePropertiesAsync().GetAwaiter().GetResult();
-
-            // configure Storage logging and metrics
-            serviceProps.Logging = new LoggingProperties
-                                    {
-                                        LoggingOperations = LoggingOperations.All,
-                                        RetentionDays = 2,
-                                        Version = "1.0"
-                                    };
-
-            var metricProps = new MetricsProperties
-                                {
-                                    MetricsLevel = MetricsLevel.ServiceAndApi,
-                                    RetentionDays = 2,
-                                    Version = "1.0"
-                                };
-
-            serviceProps.HourMetrics = metricProps;
-            serviceProps.MinuteMetrics = metricProps;
-
-            // Set the default service version to be used for anonymous requests.
-            serviceProps.DefaultServiceVersion = "2015-04-05";
-
-            // Set the service properties.
-            cloudBlobClient.SetServicePropertiesAsync(serviceProps).GetAwaiter().GetResult();
-            var containerPermissions = new BlobContainerPermissions();
-            // Include public access in the permissions object
-            containerPermissions.PublicAccess = BlobContainerPublicAccessType.Container;
-            // Set the permissions on the container
-            container.SetPermissionsAsync(containerPermissions).GetAwaiter().GetResult();
-
-            var blob = container.GetBlockBlobReference("install_apache.sh");
-            blob.UploadFromFileAsync(Path.Combine(Utilities.ProjectPath, "Asset", "install_apache.sh")).GetAwaiter().GetResult();
-
-            // give sometime for the infrastructure to process the records and fit into time grain.
-            SdkContext.DelayProvider.Delay(6 * 60000);
-        }
     }
 }
