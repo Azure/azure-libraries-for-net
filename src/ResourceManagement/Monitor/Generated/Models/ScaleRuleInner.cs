@@ -15,24 +15,24 @@ namespace Microsoft.Azure.Management.Monitor.Fluent.Models
     /// <summary>
     /// A rule that provide the triggers and parameters for the scaling action.
     /// </summary>
-    public partial class ScaleRule
+    public partial class ScaleRuleInner
     {
         /// <summary>
-        /// Initializes a new instance of the ScaleRule class.
+        /// Initializes a new instance of the ScaleRuleInner class.
         /// </summary>
-        public ScaleRule()
+        public ScaleRuleInner()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ScaleRule class.
+        /// Initializes a new instance of the ScaleRuleInner class.
         /// </summary>
         /// <param name="metricTrigger">the trigger that results in a scaling
         /// action.</param>
         /// <param name="scaleAction">the parameters for the scaling
         /// action.</param>
-        public ScaleRule(MetricTrigger metricTrigger, ScaleAction scaleAction)
+        public ScaleRuleInner(MetricTrigger metricTrigger, ScaleAction scaleAction)
         {
             MetricTrigger = metricTrigger;
             ScaleAction = scaleAction;

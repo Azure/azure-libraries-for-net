@@ -7,15 +7,19 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent.Core
     using System.Threading;
     using Microsoft.Azure.Management.ResourceManager.Fluent;
     using System.Threading.Tasks;
+
     /// <summary>
     /// The implementation for GroupableResource.
     /// (Internal use only)
-    /// 
-    /// @param <FluentModelT> The fluent model type
-    /// @param <InnerModelT> Azure inner resource class type
-    /// @param <FluentModelImplT> the implementation type of the fluent model type
-    /// @param <ManagerT> the service manager type
     /// </summary>
+    /// <typeparam name="IFluentResourceT">The fluent model type</typeparam>
+    /// <typeparam name="InnerResourceT">Azure inner resource class type</typeparam>
+    /// <typeparam name="FluentResourceT">the implementation type of the fluent model type</typeparam>
+    /// <typeparam name="ManagerT"> the service manager type</typeparam>
+    /// <typeparam name="IDefinitionAfterRegion"></typeparam>
+    /// <typeparam name="IDefinitionAfterResourceGroup"></typeparam>
+    /// <typeparam name="DefTypeWithTags"></typeparam>
+    /// <typeparam name="UTypeWithTags"></typeparam>
     public abstract partial class GroupableParentResource<
         IFluentResourceT,
         InnerResourceT,

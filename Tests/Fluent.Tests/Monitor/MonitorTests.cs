@@ -3,6 +3,7 @@
 
 using Azure.Tests;
 using Fluent.Tests.Common;
+using Microsoft.Azure.Management.AppService.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent;
 using Microsoft.Azure.Management.Monitor.Fluent.Models;
 using Microsoft.Azure.Management.ResourceManager.Fluent;
@@ -11,6 +12,7 @@ using System;
 using System.Linq;
 using System.Net;
 using Xunit;
+using DayOfWeek = Microsoft.Azure.Management.Monitor.Fluent.Models.DayOfWeek;
 
 namespace Fluent.Tests
 {
@@ -344,7 +346,7 @@ namespace Fluent.Tests
                             .WithActionGroups(ag.Id)
                             .DefineAlertCriteria("Metric1")
                                 .WithMetricName("Transactions", "Microsoft.Storage/storageAccounts")
-                                .WithCondition(MetricAlertRuleCondition.GreaterThan, MetricAlertRuleTimeAggregation.Total, 100)
+                                .WithCondition(MetricAlertRuleTimeAggregation.Total, MetricAlertRuleCondition.GreaterThan, 100)
                                 .WithDimension("ResponseType", "Success")
                                 .WithDimension("ApiName", "GetBlob")
                                 .Attach()
@@ -415,11 +417,11 @@ namespace Fluent.Tests
                     ma.Update()
                             .WithRuleDisabled()
                             .UpdateAlertCriteria("Metric1")
-                                .WithCondition(MetricAlertRuleCondition.GreaterThan, MetricAlertRuleTimeAggregation.Total, 99)
+                                .WithCondition(MetricAlertRuleTimeAggregation.Total, MetricAlertRuleCondition.GreaterThan, 99)
                                 .Parent()
                             .DefineAlertCriteria("Metric2")
                                 .WithMetricName("SuccessE2ELatency", "Microsoft.Storage/storageAccounts")
-                                .WithCondition(MetricAlertRuleCondition.GreaterThan, MetricAlertRuleTimeAggregation.Average, 200)
+                                .WithCondition(MetricAlertRuleTimeAggregation.Average, MetricAlertRuleCondition.GreaterThan, 200)
                                 .WithDimension("ApiName", "GetBlob")
                                 .Attach()
                             .Apply();
@@ -683,6 +685,513 @@ namespace Fluent.Tests
                 }
             }
         }
+
+        [Fact]
+        public void CanCRUDAutoscale()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var rgName = SdkContext.RandomResourceName("jMonitor_", 18);
+                var saName = SdkContext.RandomResourceName("jMonitorSa", 18);
+                var dsName = SdkContext.RandomResourceName("jMonitorDs_", 18);
+                var ehName = SdkContext.RandomResourceName("jMonitorEH", 18);
+
+                var azure = TestHelper.CreateRollupClient();
+                var appServiceManager = TestHelper.CreateAppServiceManager();
+
+                try
+                {
+                    azure.ResourceGroups.Define(rgName)
+                            .WithRegion(Region.USEast2)
+                            .WithTag("type", "autoscale")
+                            .WithTag("tagname", "tagvalue")
+                            .Create();
+
+                    var servicePlan = appServiceManager.AppServicePlans.Define("HighlyAvailableWebApps")
+                            .WithRegion(Region.USEast2)
+                            .WithExistingResourceGroup(rgName)
+                            .WithPricingTier(PricingTier.PremiumP1)
+                            .WithOperatingSystem(Microsoft.Azure.Management.AppService.Fluent.OperatingSystem.Windows)
+                            .Create();
+
+                    var setting = azure.AutoscaleSettings
+                            .Define("somesettingZ")
+                            .WithRegion(Region.USEast2)
+                            .WithExistingResourceGroup(rgName)
+                            .WithTargetResource(servicePlan.Id)
+
+                            .DefineAutoscaleProfile("Default")
+                                .WithScheduleBasedScale(3)
+                                .WithRecurrentSchedule("UTC", "18:00", DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Saturday)
+                                .Attach()
+
+                            .DefineAutoscaleProfile("AutoScaleProfile1")
+                                .WithMetricBasedScale(1, 10, 1)
+                                .DefineScaleRule()
+                                    .WithMetricSource(servicePlan.Id)
+                                    // current swagger does not support namespace selection
+                                    //.withMetricName("CPUPercentage", "Microsoft.Web/serverfarms")
+                                    .WithMetricName("CPUPercentage")
+                                    .WithStatistic(TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(1), MetricStatisticType.Average)
+                                    .WithCondition(TimeAggregationType.Average, ComparisonOperationType.GreaterThan, 70)
+                                    .WithScaleAction(ScaleDirection.Increase, ScaleType.ExactCount, 10, TimeSpan.FromHours(12))
+                                    .Attach()
+                                .WithFixedDateSchedule("UTC", DateTime.Parse("2050-10-12T20:15:10Z"), DateTime.Parse("2051-09-11T16:08:04Z"))
+                                .Attach()
+
+                            .DefineAutoscaleProfile("AutoScaleProfile2")
+                                .WithMetricBasedScale(1, 5, 3)
+                                .DefineScaleRule()
+                                    .WithMetricSource(servicePlan.Id)
+                                    .WithMetricName("CPUPercentage")
+                                    .WithStatistic(TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(1), MetricStatisticType.Average)
+                                    .WithCondition(TimeAggregationType.Average, ComparisonOperationType.LessThan, 20)
+                                    .WithScaleAction(ScaleDirection.Decrease, ScaleType.ExactCount, 1, TimeSpan.FromHours(3))
+                                    .Attach()
+                                .WithRecurrentSchedule("UTC", "12:13", DayOfWeek.Friday)
+                                .Attach()
+
+                            .WithAdminEmailNotification()
+                            .WithCoAdminEmailNotification()
+                            .WithCustomEmailsNotification("me@mycorp.com", "you@mycorp.com", "him@mycorp.com")
+                            .WithAutoscaleDisabled()
+                            .Create();
+
+                    Assert.NotNull(setting);
+                    Assert.Equal("somesettingZ", setting.Name);
+                    Assert.Equal(servicePlan.Id, setting.TargetResourceId);
+                    Assert.True(setting.AdminEmailNotificationEnabled);
+                    Assert.True(setting.CoAdminEmailNotificationEnabled);
+                    Assert.False(setting.AutoscaleEnabled);
+                    Assert.Equal(3, setting.CustomEmailsNotification.Count);
+                    Assert.Equal("me@mycorp.com", setting.CustomEmailsNotification[0]);
+                    Assert.Equal("you@mycorp.com", setting.CustomEmailsNotification[1]);
+                    Assert.Equal("him@mycorp.com", setting.CustomEmailsNotification[2]);
+
+                    Assert.Equal(3, setting.Profiles.Count);
+
+                    var tempProfile = setting.Profiles["Default"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("Default", tempProfile.Name);
+                    Assert.Equal(3, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(3, tempProfile.MaxInstanceCount);
+                    Assert.Equal(3, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.FixedDateSchedule);
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(0, tempProfile.Rules.Count);
+                    Assert.NotNull(tempProfile.RecurrentSchedule);
+                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
+                    Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Tuesday.ToString()));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Saturday.ToString()));
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Hours.Count);
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Minutes.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Hours.Contains(18));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Minutes.Contains(0));
+                    Assert.Equal("UTC", tempProfile.RecurrentSchedule.Schedule.TimeZone, ignoreCase: true);
+
+                    tempProfile = setting.Profiles["AutoScaleProfile1"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("AutoScaleProfile1", tempProfile.Name);
+                    Assert.Equal(1, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(10, tempProfile.MaxInstanceCount);
+                    Assert.Equal(1, tempProfile.MinInstanceCount);
+                    Assert.NotNull(tempProfile.FixedDateSchedule);
+                    Assert.Equal("UTC", tempProfile.FixedDateSchedule.TimeZone, ignoreCase: true);
+                    Assert.Null(tempProfile.RecurrentSchedule);
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(1, tempProfile.Rules.Count);
+                    var rule = tempProfile.Rules[0];
+                    Assert.Equal(servicePlan.Id, rule.MetricSource);
+                    Assert.Equal("CPUPercentage", rule.MetricName);
+                    Assert.Equal(TimeSpan.FromMinutes(10), rule.Duration);
+                    Assert.Equal(TimeSpan.FromMinutes(1), rule.Frequency);
+                    Assert.Equal(MetricStatisticType.Average, rule.FrequencyStatistic);
+                    Assert.Equal(ComparisonOperationType.GreaterThan, rule.Condition);
+                    Assert.Equal(TimeAggregationType.Average, rule.TimeAggregation);
+                    Assert.Equal(70d, rule.Threshold, 4);
+                    Assert.Equal(ScaleDirection.Increase, rule.ScaleDirection);
+                    Assert.Equal(ScaleType.ExactCount, rule.ScaleType);
+                    Assert.Equal(10, rule.ScaleInstanceCount);
+                    Assert.Equal(TimeSpan.FromHours(12), rule.CoolDown);
+
+                    tempProfile = setting.Profiles["AutoScaleProfile2"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("AutoScaleProfile2", tempProfile.Name);
+                    Assert.Equal(3, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(5, tempProfile.MaxInstanceCount);
+                    Assert.Equal(1, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.FixedDateSchedule);
+                    Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Days.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Friday.ToString()));
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Hours.Count);
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Minutes.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Hours.Contains(12));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Minutes.Contains(13));
+                    Assert.Equal("UTC", tempProfile.RecurrentSchedule.Schedule.TimeZone, ignoreCase: true);
+
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(1, tempProfile.Rules.Count);
+                    rule = tempProfile.Rules[0];
+                    Assert.Equal(servicePlan.Id, rule.MetricSource);
+                    Assert.Equal("CPUPercentage", rule.MetricName);
+                    Assert.Equal(TimeSpan.FromMinutes(10), rule.Duration);
+                    Assert.Equal(TimeSpan.FromMinutes(1), rule.Frequency);
+                    Assert.Equal(MetricStatisticType.Average, rule.FrequencyStatistic);
+                    Assert.Equal(ComparisonOperationType.LessThan, rule.Condition);
+                    Assert.Equal(TimeAggregationType.Average, rule.TimeAggregation);
+                    Assert.Equal(20d, rule.Threshold, 4);
+                    Assert.Equal(ScaleDirection.Decrease, rule.ScaleDirection);
+                    Assert.Equal(ScaleType.ExactCount, rule.ScaleType);
+                    Assert.Equal(1, rule.ScaleInstanceCount);
+                    Assert.Equal(TimeSpan.FromHours(3), rule.CoolDown);
+
+                    // GET Autoscale settings and compare
+                    var settingFromGet = azure.AutoscaleSettings.GetById(setting.Id);
+                    Assert.NotNull(settingFromGet);
+                    Assert.Equal("somesettingZ", settingFromGet.Name);
+                    Assert.Equal(servicePlan.Id, settingFromGet.TargetResourceId);
+                    Assert.True(settingFromGet.AdminEmailNotificationEnabled);
+                    Assert.True(settingFromGet.CoAdminEmailNotificationEnabled);
+                    Assert.False(settingFromGet.AutoscaleEnabled);
+                    Assert.Equal(3, settingFromGet.CustomEmailsNotification.Count);
+                    Assert.Equal("me@mycorp.com", settingFromGet.CustomEmailsNotification[0]);
+                    Assert.Equal("you@mycorp.com", settingFromGet.CustomEmailsNotification[1]);
+                    Assert.Equal("him@mycorp.com", settingFromGet.CustomEmailsNotification[2]);
+
+                    Assert.Equal(3, settingFromGet.Profiles.Count);
+
+                    tempProfile = settingFromGet.Profiles["Default"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("Default", tempProfile.Name);
+                    Assert.Equal(3, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(3, tempProfile.MaxInstanceCount);
+                    Assert.Equal(3, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.FixedDateSchedule);
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(0, tempProfile.Rules.Count);
+                    Assert.NotNull(tempProfile.RecurrentSchedule);
+                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
+                    Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Tuesday.ToString()));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Saturday.ToString()));
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Hours.Count);
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Minutes.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Hours.Contains(18));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Minutes.Contains(0));
+                    Assert.Equal("UTC", tempProfile.RecurrentSchedule.Schedule.TimeZone, ignoreCase: true);
+
+                    tempProfile = settingFromGet.Profiles["AutoScaleProfile1"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("AutoScaleProfile1", tempProfile.Name);
+                    Assert.Equal(1, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(10, tempProfile.MaxInstanceCount);
+                    Assert.Equal(1, tempProfile.MinInstanceCount);
+                    Assert.NotNull(tempProfile.FixedDateSchedule);
+                    Assert.Equal("UTC", tempProfile.FixedDateSchedule.TimeZone, ignoreCase: true);
+                    Assert.Null(tempProfile.RecurrentSchedule);
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(1, tempProfile.Rules.Count);
+                    rule = tempProfile.Rules[0];
+                    Assert.Equal(servicePlan.Id, rule.MetricSource);
+                    Assert.Equal("CPUPercentage", rule.MetricName);
+                    Assert.Equal(TimeSpan.FromMinutes(10), rule.Duration);
+                    Assert.Equal(TimeSpan.FromMinutes(1), rule.Frequency);
+                    Assert.Equal(MetricStatisticType.Average, rule.FrequencyStatistic);
+                    Assert.Equal(ComparisonOperationType.GreaterThan, rule.Condition);
+                    Assert.Equal(TimeAggregationType.Average, rule.TimeAggregation);
+                    Assert.Equal(70d, rule.Threshold, 4);
+                    Assert.Equal(ScaleDirection.Increase, rule.ScaleDirection);
+                    Assert.Equal(ScaleType.ExactCount, rule.ScaleType);
+                    Assert.Equal(10, rule.ScaleInstanceCount);
+                    Assert.Equal(TimeSpan.FromHours(12), rule.CoolDown);
+
+                    tempProfile = settingFromGet.Profiles["AutoScaleProfile2"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("AutoScaleProfile2", tempProfile.Name);
+                    Assert.Equal(3, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(5, tempProfile.MaxInstanceCount);
+                    Assert.Equal(1, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.FixedDateSchedule);
+                    Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Days.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Friday.ToString()));
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Hours.Count);
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Minutes.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Hours.Contains(12));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Minutes.Contains(13));
+                    Assert.Equal("UTC", tempProfile.RecurrentSchedule.Schedule.TimeZone, ignoreCase: true);
+
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(1, tempProfile.Rules.Count);
+                    rule = tempProfile.Rules[0];
+                    Assert.Equal(servicePlan.Id, rule.MetricSource);
+                    Assert.Equal("CPUPercentage", rule.MetricName);
+                    Assert.Equal(TimeSpan.FromMinutes(10), rule.Duration);
+                    Assert.Equal(TimeSpan.FromMinutes(1), rule.Frequency);
+                    Assert.Equal(MetricStatisticType.Average, rule.FrequencyStatistic);
+                    Assert.Equal(ComparisonOperationType.LessThan, rule.Condition);
+                    Assert.Equal(TimeAggregationType.Average, rule.TimeAggregation);
+                    Assert.Equal(20d, rule.Threshold, 4);
+                    Assert.Equal(ScaleDirection.Decrease, rule.ScaleDirection);
+                    Assert.Equal(ScaleType.ExactCount, rule.ScaleType);
+                    Assert.Equal(1, rule.ScaleInstanceCount);
+                    Assert.Equal(TimeSpan.FromHours(3), rule.CoolDown);
+
+                    // Update
+                    setting.Update()
+                            .DefineAutoscaleProfile("very new profile")
+                                .WithScheduleBasedScale(10)
+                                .WithFixedDateSchedule("UTC", DateTime.Parse("2030-02-12T20:15:10Z"), DateTime.Parse("2030-02-12T20:45:10Z"))
+                                .Attach()
+
+                            .DefineAutoscaleProfile("a new profile")
+                                .WithMetricBasedScale(5, 7, 6)
+                                .DefineScaleRule()
+                                    .WithMetricSource(servicePlan.Id)
+                                    .WithMetricName("CPUPercentage")
+                                    .WithStatistic(TimeSpan.FromHours(10), TimeSpan.FromHours(1), MetricStatisticType.Average)
+                                    .WithCondition(TimeAggregationType.Total, ComparisonOperationType.LessThan, 6)
+                                    .WithScaleAction(ScaleDirection.Decrease, ScaleType.PercentChangeCount, 10, TimeSpan.FromHours(10))
+                                    .Attach()
+                                .Attach()
+
+                            .UpdateAutoscaleProfile("AutoScaleProfile2")
+                                .UpdateScaleRule(0)
+                                    .WithStatistic(TimeSpan.FromMinutes(15), TimeSpan.FromMinutes(1), MetricStatisticType.Average)
+                                    .Parent()
+                                .WithFixedDateSchedule("UTC", DateTime.Parse("2025-02-02T02:02:02Z"), DateTime.Parse("2025-02-02T03:03:03Z"))
+                                .DefineScaleRule()
+                                    .WithMetricSource(servicePlan.Id)
+                                    .WithMetricName("CPUPercentage")
+                                    .WithStatistic(TimeSpan.FromHours(5), TimeSpan.FromHours(3), MetricStatisticType.Average)
+                                    .WithCondition(TimeAggregationType.Total, ComparisonOperationType.LessThan, 50)
+                                    .WithScaleAction(ScaleDirection.Decrease, ScaleType.PercentChangeCount, 25, TimeSpan.FromHours(2))
+                                    .Attach()
+                                .WithoutScaleRule(1)
+                                .Parent()
+
+                            .WithoutAutoscaleProfile("AutoScaleProfile1")
+
+                            .WithAutoscaleEnabled()
+                            .WithoutCoAdminEmailNotification()
+                            .Apply();
+
+                    Assert.NotNull(setting);
+                    Assert.Equal("somesettingZ", setting.Name);
+                    Assert.Equal(servicePlan.Id, setting.TargetResourceId);
+                    Assert.True(setting.AdminEmailNotificationEnabled);
+                    Assert.False(setting.CoAdminEmailNotificationEnabled);
+                    Assert.True(setting.AutoscaleEnabled);
+                    Assert.Equal(3, setting.CustomEmailsNotification.Count);
+                    Assert.Equal("me@mycorp.com", setting.CustomEmailsNotification[0]);
+                    Assert.Equal("you@mycorp.com", setting.CustomEmailsNotification[1]);
+                    Assert.Equal("him@mycorp.com", setting.CustomEmailsNotification[2]);
+
+                    Assert.Equal(4, setting.Profiles.Count);
+
+                    Assert.False(setting.Profiles.ContainsKey("AutoScaleProfile1"));
+
+                    tempProfile = setting.Profiles["Default"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("Default", tempProfile.Name);
+                    Assert.Equal(3, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(3, tempProfile.MaxInstanceCount);
+                    Assert.Equal(3, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.FixedDateSchedule);
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(0, tempProfile.Rules.Count);
+                    Assert.NotNull(tempProfile.RecurrentSchedule);
+                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
+                    Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Tuesday.ToString()));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Saturday.ToString()));
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Hours.Count);
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Minutes.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Hours.Contains(18));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Minutes.Contains(0));
+                    Assert.Equal("UTC", tempProfile.RecurrentSchedule.Schedule.TimeZone, ignoreCase: true);
+
+                    tempProfile = setting.Profiles["very new profile"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("very new profile", tempProfile.Name);
+                    Assert.Equal(10, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(10, tempProfile.MaxInstanceCount);
+                    Assert.Equal(10, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.RecurrentSchedule);
+                    Assert.NotNull(tempProfile.FixedDateSchedule);
+                    Assert.Equal("UTC", tempProfile.FixedDateSchedule.TimeZone, ignoreCase: true);
+
+                    tempProfile = setting.Profiles["a new profile"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("a new profile", tempProfile.Name);
+                    Assert.Equal(6, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(7, tempProfile.MaxInstanceCount);
+                    Assert.Equal(5, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.FixedDateSchedule);
+                    Assert.Null(tempProfile.RecurrentSchedule);
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(1, tempProfile.Rules.Count);
+                    rule = tempProfile.Rules[0];
+                    Assert.Equal(servicePlan.Id, rule.MetricSource);
+                    Assert.Equal("CPUPercentage", rule.MetricName);
+                    Assert.Equal(TimeSpan.FromHours(10), rule.Duration);
+                    Assert.Equal(TimeSpan.FromHours(1), rule.Frequency);
+                    Assert.Equal(MetricStatisticType.Average, rule.FrequencyStatistic);
+                    Assert.Equal(ComparisonOperationType.LessThan, rule.Condition);
+                    Assert.Equal(TimeAggregationType.Total, rule.TimeAggregation);
+                    Assert.Equal(6d, rule.Threshold, 4);
+                    Assert.Equal(ScaleDirection.Decrease, rule.ScaleDirection);
+                    Assert.Equal(ScaleType.PercentChangeCount, rule.ScaleType);
+                    Assert.Equal(10, rule.ScaleInstanceCount);
+                    Assert.Equal(TimeSpan.FromHours(10), rule.CoolDown);
+
+                    tempProfile = setting.Profiles["AutoScaleProfile2"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("AutoScaleProfile2", tempProfile.Name);
+                    Assert.Equal(3, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(5, tempProfile.MaxInstanceCount);
+                    Assert.Equal(1, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.RecurrentSchedule);
+                    Assert.NotNull(tempProfile.FixedDateSchedule);
+                    Assert.Equal("UTC", tempProfile.FixedDateSchedule.TimeZone, ignoreCase: true);
+
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(1, tempProfile.Rules.Count);
+                    rule = tempProfile.Rules[0];
+                    Assert.Equal(servicePlan.Id, rule.MetricSource);
+                    Assert.Equal("CPUPercentage", rule.MetricName);
+                    Assert.Equal(TimeSpan.FromMinutes(15), rule.Duration);
+                    Assert.Equal(TimeSpan.FromMinutes(1), rule.Frequency);
+                    Assert.Equal(MetricStatisticType.Average, rule.FrequencyStatistic);
+                    Assert.Equal(ComparisonOperationType.LessThan, rule.Condition);
+                    Assert.Equal(TimeAggregationType.Average, rule.TimeAggregation);
+                    Assert.Equal(20d, rule.Threshold, 4);
+                    Assert.Equal(ScaleDirection.Decrease, rule.ScaleDirection);
+                    Assert.Equal(ScaleType.ExactCount, rule.ScaleType);
+                    Assert.Equal(1, rule.ScaleInstanceCount);
+                    Assert.Equal(TimeSpan.FromHours(3), rule.CoolDown);
+
+                    // List
+                    settingFromGet = azure.AutoscaleSettings.ListByResourceGroup(rgName).First();
+
+                    Assert.NotNull(settingFromGet);
+                    Assert.Equal("somesettingZ", settingFromGet.Name);
+                    Assert.Equal(servicePlan.Id, settingFromGet.TargetResourceId);
+                    Assert.True(settingFromGet.AdminEmailNotificationEnabled);
+                    Assert.False(settingFromGet.CoAdminEmailNotificationEnabled);
+                    Assert.True(settingFromGet.AutoscaleEnabled);
+                    Assert.Equal(3, settingFromGet.CustomEmailsNotification.Count);
+                    Assert.Equal("me@mycorp.com", settingFromGet.CustomEmailsNotification[0]);
+                    Assert.Equal("you@mycorp.com", settingFromGet.CustomEmailsNotification[1]);
+                    Assert.Equal("him@mycorp.com", settingFromGet.CustomEmailsNotification[2]);
+
+                    Assert.Equal(4, settingFromGet.Profiles.Count);
+
+                    Assert.False(settingFromGet.Profiles.ContainsKey("AutoScaleProfile1"));
+
+                    tempProfile = settingFromGet.Profiles["Default"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("Default", tempProfile.Name);
+                    Assert.Equal(3, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(3, tempProfile.MaxInstanceCount);
+                    Assert.Equal(3, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.FixedDateSchedule);
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(0, tempProfile.Rules.Count);
+                    Assert.NotNull(tempProfile.RecurrentSchedule);
+                    Assert.Equal(RecurrenceFrequency.Week.ToString(), tempProfile.RecurrentSchedule.Frequency);
+                    Assert.NotNull(tempProfile.RecurrentSchedule.Schedule);
+                    Assert.Equal(3, tempProfile.RecurrentSchedule.Schedule.Days.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Monday.ToString()));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Tuesday.ToString()));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Days.Contains(DayOfWeek.Saturday.ToString()));
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Hours.Count);
+                    Assert.Equal(1, tempProfile.RecurrentSchedule.Schedule.Minutes.Count);
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Hours.Contains(18));
+                    Assert.True(tempProfile.RecurrentSchedule.Schedule.Minutes.Contains(0));
+                    Assert.Equal("UTC", tempProfile.RecurrentSchedule.Schedule.TimeZone, ignoreCase: true);
+
+                    tempProfile = settingFromGet.Profiles["very new profile"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("very new profile", tempProfile.Name);
+                    Assert.Equal(10, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(10, tempProfile.MaxInstanceCount);
+                    Assert.Equal(10, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.RecurrentSchedule);
+                    Assert.NotNull(tempProfile.FixedDateSchedule);
+                    Assert.Equal("UTC", tempProfile.FixedDateSchedule.TimeZone, ignoreCase: true);
+
+                    tempProfile = settingFromGet.Profiles["a new profile"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("a new profile", tempProfile.Name);
+                    Assert.Equal(6, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(7, tempProfile.MaxInstanceCount);
+                    Assert.Equal(5, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.FixedDateSchedule);
+                    Assert.Null(tempProfile.RecurrentSchedule);
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(1, tempProfile.Rules.Count);
+                    rule = tempProfile.Rules[0];
+                    Assert.Equal(servicePlan.Id, rule.MetricSource);
+                    Assert.Equal("CPUPercentage", rule.MetricName);
+                    Assert.Equal(TimeSpan.FromHours(10), rule.Duration);
+                    Assert.Equal(TimeSpan.FromHours(1), rule.Frequency);
+                    Assert.Equal(MetricStatisticType.Average, rule.FrequencyStatistic);
+                    Assert.Equal(ComparisonOperationType.LessThan, rule.Condition);
+                    Assert.Equal(TimeAggregationType.Total, rule.TimeAggregation);
+                    Assert.Equal(6d, rule.Threshold, 4);
+                    Assert.Equal(ScaleDirection.Decrease, rule.ScaleDirection);
+                    Assert.Equal(ScaleType.PercentChangeCount, rule.ScaleType);
+                    Assert.Equal(10, rule.ScaleInstanceCount);
+                    Assert.Equal(TimeSpan.FromHours(10), rule.CoolDown);
+
+                    tempProfile = settingFromGet.Profiles["AutoScaleProfile2"];
+                    Assert.NotNull(tempProfile);
+                    Assert.Equal("AutoScaleProfile2", tempProfile.Name);
+                    Assert.Equal(3, tempProfile.DefaultInstanceCount);
+                    Assert.Equal(5, tempProfile.MaxInstanceCount);
+                    Assert.Equal(1, tempProfile.MinInstanceCount);
+                    Assert.Null(tempProfile.RecurrentSchedule);
+                    Assert.NotNull(tempProfile.FixedDateSchedule);
+                    Assert.Equal("UTC", tempProfile.FixedDateSchedule.TimeZone, ignoreCase: true);
+
+                    Assert.NotNull(tempProfile.Rules);
+                    Assert.Equal(1, tempProfile.Rules.Count);
+                    rule = tempProfile.Rules[0];
+                    Assert.Equal(servicePlan.Id, rule.MetricSource);
+                    Assert.Equal("CPUPercentage", rule.MetricName);
+                    Assert.Equal(TimeSpan.FromMinutes(15), rule.Duration);
+                    Assert.Equal(TimeSpan.FromMinutes(1), rule.Frequency);
+                    Assert.Equal(MetricStatisticType.Average, rule.FrequencyStatistic);
+                    Assert.Equal(ComparisonOperationType.LessThan, rule.Condition);
+                    Assert.Equal(TimeAggregationType.Average, rule.TimeAggregation);
+                    Assert.Equal(20d, rule.Threshold, 4);
+                    Assert.Equal(ScaleDirection.Decrease, rule.ScaleDirection);
+                    Assert.Equal(ScaleType.ExactCount, rule.ScaleType);
+                    Assert.Equal(1, rule.ScaleInstanceCount);
+                    Assert.Equal(TimeSpan.FromHours(3), rule.CoolDown);
+
+                    // Delete
+                    azure.AutoscaleSettings.DeleteById(settingFromGet.Id);
+
+                    var emptyList = azure.AutoscaleSettings.ListByResourceGroup(rgName);
+                    Assert.Empty(emptyList);
+                }
+                finally
+                {
+                    azure.ResourceGroups.BeginDeleteByName(rgName);
+                }
+            }
+        }
+
 
         private void CheckDiagnosticSettingValues(IDiagnosticSetting expected, IDiagnosticSetting actual)
         {

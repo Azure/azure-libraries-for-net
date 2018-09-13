@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Azure.Management.Network.Fluent.Models;
 using Xunit;
+using Microsoft.Azure.Management.Storage.Fluent;
 
 namespace Fluent.Tests.Compute.VirtualMachine
 {
@@ -473,7 +474,7 @@ namespace Fluent.Tests.Compute.VirtualMachine
                     var storageAccount = storageManager.StorageAccounts.Define(storageName)
                             .WithRegion(Location)
                             .WithNewResourceGroup(groupName)
-                            .WithSku(Microsoft.Azure.Management.Storage.Fluent.Models.SkuName.PremiumLRS)
+                            .WithSku(StorageAccountSkuType.Premium_LRS)
                             .Create();
 
                     // Creates a virtual machine with an unmanaged data disk that gets stored in the above

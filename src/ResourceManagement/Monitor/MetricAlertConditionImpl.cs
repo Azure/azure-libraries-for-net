@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:B2E154B44EABA68125B16BEABCE76616:FC507FA6241C8D9B7C133FB4D3AA423D
         public string MetricName()
         {
-			return this.Inner.MetricName;
+            return this.Inner.MetricName;
         }
         ///GENMHASH:D09AE837550E1C13CD24EC1395F3B29F:0FD90E1200CF024E769FBAC2692B9B48
         public string MetricNamespace()
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return MetricAlertRuleTimeAggregation.Parse(this.Inner.TimeAggregation);
         }
 
-        ///GENMHASH:99B5E6539BC68E39ACAB01EEC7575486:175426222378DAACFA1C214E2C05A68B
-        public MetricAlertConditionImpl WithCondition(MetricAlertRuleCondition condition, MetricAlertRuleTimeAggregation timeAggregation, double threshold)
+        ///GENMHASH:16385B0F625BFE1280EAADD4C9A52F83:175426222378DAACFA1C214E2C05A68B
+        public MetricAlertConditionImpl WithCondition(MetricAlertRuleTimeAggregation timeAggregation, MetricAlertRuleCondition condition, double threshold)
         {
             this.Inner.OperatorProperty = condition.ToString();
             this.Inner.TimeAggregation = timeAggregation.ToString();
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             return this;
         }
 
-        ///GENMHASH:DD75FFCB37A60861E81671503DB8AC7D:699F63E25F9B0B29EF53C7C4E377174F
+        ///GENMHASH:64020DBB92F89D3AF6299208861B69D5:699F63E25F9B0B29EF53C7C4E377174F
         public MetricAlertConditionImpl WithDimension(string dimensionName, params string[] values)
         {
             if (this.dimensions.ContainsKey(dimensionName))
@@ -134,8 +134,8 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:70307A93690A699CEA966259D06A449B:CEC6E8E09BD3412971871333315F4209
         public MetricAlertConditionImpl WithMetricName(string metricName)
         {
-			this.Inner.MetricName = metricName;
-			return this;
+            this.Inner.MetricName = metricName;
+            return this;
         }
 
 

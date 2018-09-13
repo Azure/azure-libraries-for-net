@@ -11,15 +11,15 @@ using Microsoft.Azure.Management.Samples.Common;
 using Microsoft.Azure.Management.Storage.Fluent;
 using System;
 
-/**
- * Azure Event Hub sample for managing event hub models.
- *   - Create a DocumentDB instance
- *   - Creates a Event Hub namespace and an Event Hub in it
- *   - Retrieve the root namespace authorization rule
- *   - Enable diagnostics on a existing cosmosDB to stream events to event hub
- */
 namespace ManageEventHubEvents
 {
+    /**
+     * Azure Event Hub sample for managing event hub models.
+     *   - Create a DocumentDB instance
+     *   - Creates a Event Hub namespace and an Event Hub in it
+     *   - Retrieve the root namespace authorization rule
+     *   - Enable diagnostics on a existing cosmosDB to stream events to event hub
+     */
     public class Program
     {
         public static void RunSample(IAzure azure)

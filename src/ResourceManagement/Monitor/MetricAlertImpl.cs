@@ -176,14 +176,14 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
             }
             return this;
         }
-		
+
         ///GENMHASH:3E72FBE95EB9F0D5CB0EE25FB0D4289B:D28CEE20EE587F7BE2C58D660CBB76F2
         public MetricAlertImpl WithAlertDetails(int severity, string description)
         {
-			this.WithSeverity(severity);
-			return this.WithDescription(description);
+            this.WithSeverity(severity);
+            return this.WithDescription(description);
         }
-		
+
         ///GENMHASH:B1FAD9ED00B5928448AB0AA933758335:5640B4C7C912ABC98D9779381D53E6DC
         public MetricAlertImpl WithAutoMitigation()
         {
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         public MetricAlertImpl WithPeriod(TimeSpan size)
         {
             this.Inner.WindowSize = size;
-			return this;
+            return this;
         }
 
         ///GENMHASH:19D591A5811CC295B77719A40CEB3F64:9A4882A827B87B926799484B506DA9A3

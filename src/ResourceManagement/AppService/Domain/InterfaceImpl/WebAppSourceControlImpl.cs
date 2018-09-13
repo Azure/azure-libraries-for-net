@@ -2,15 +2,14 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.AppService.Fluent
 {
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppBase.Update;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.Definition;
-    using Microsoft.Azure.Management.AppService.Fluent.WebAppSourceControl.UpdateDefinition;
-    using Microsoft.Azure.Management.AppService.Fluent.Models;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Definition;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ChildResource.Update;
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="FluentT"></typeparam>
+    /// <typeparam name="FluentImplT"></typeparam>
+    /// <typeparam name="DefAfterRegionT"></typeparam>
+    /// <typeparam name="DefAfterGroupT"></typeparam>
+    /// <typeparam name="UpdateT"></typeparam>
     internal partial class WebAppSourceControlImpl<FluentT, FluentImplT, DefAfterRegionT, DefAfterGroupT, UpdateT> 
     {
         /// <summary>

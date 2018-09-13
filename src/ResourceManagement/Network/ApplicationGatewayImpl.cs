@@ -1200,7 +1200,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public IReadOnlyDictionary<string, IApplicationGatewayFrontend> PublicFrontends()
         {
             Dictionary<string, IApplicationGatewayFrontend> publicFrontends = new Dictionary<string, IApplicationGatewayFrontend>();
-            ///GENMHASH:3BF87DE2E0C9BBAA60FEF8B345571B0D:78DEDBCE9849DD9B71BA61C7FBEA3261
+            //GENMHASH:3BF87DE2E0C9BBAA60FEF8B345571B0D:78DEDBCE9849DD9B71BA61C7FBEA3261
             foreach (var frontend in Frontends().Values)
             {
                 if (frontend.IsPublic)
@@ -1229,7 +1229,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         ///GENMHASH:F756CBB3F13EF6198269C107AED6F9A2:F819A402FF29D3234FF975971868AD05
         public ApplicationGatewayTier Tier()
         {
-            ///GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:43E446F640DC3345BDBD9A3378F2018A
+            //GENMHASH:F792F6C8C594AA68FA7A0FCA92F55B55:43E446F640DC3345BDBD9A3378F2018A
             if (Sku() != null && Sku().Tier != null)
             {
                 return Sku().Tier;
@@ -1636,7 +1636,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             if (defaultPublicFrontend != null && defaultPublicFrontend.PublicIPAddressId() == null)
             {
                 // If default public frontend requested but no PIP specified, create one
-                ///GENMHASH:D232B3BB0D86D13CC0B242F4000DBF07:28278DE68BEBBF206C58F1B8AC9DEA79
+                //GENMHASH:D232B3BB0D86D13CC0B242F4000DBF07:28278DE68BEBBF206C58F1B8AC9DEA79
                 Task pipTask = Task.Run( async ()=>
                 {
                     var publicIP = await EnsureDefaultPipDefinition().CreateAsync(cancellationToken);
@@ -1663,7 +1663,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
             else
             {
                 // But if default IP config does not have a subnet specified, then create a default VNet
-                ///GENMHASH:378C5280A44231F5593B789FF6A1BF16:91307BB6F8D393A842145FECCE969E10
+                //GENMHASH:378C5280A44231F5593B789FF6A1BF16:91307BB6F8D393A842145FECCE969E10
                 Task networkTask = Task.Run( async ()=>
                 {
                     var network = await EnsureDefaultNetworkDefinition().CreateAsync(cancellationToken);
@@ -1889,7 +1889,7 @@ namespace Microsoft.Azure.Management.Network.Fluent
         public string FrontendPortNameFromNumber(int portNumber)
         {
             string portName = null;
-            ///GENMHASH:F0126379A1F65359204BD22C7CF55E7C:BE15CAD584433DEAF8B46C62642E8728
+            //GENMHASH:F0126379A1F65359204BD22C7CF55E7C:BE15CAD584433DEAF8B46C62642E8728
             foreach (var portEntry in FrontendPorts())
             {
                 if (portNumber == portEntry.Value)

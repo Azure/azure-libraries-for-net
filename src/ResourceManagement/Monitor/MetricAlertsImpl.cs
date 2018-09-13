@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Monitor.Fluent
         ///GENMHASH:2FE8C4C2D5EAD7E37787838DE0B47D92:D3B649BE65613C91605382B3DAA6B9B1
         protected override MetricAlertImpl WrapModel(string name)
         {
-			var inner = new MetricAlertResourceInner();
+            var inner = new MetricAlertResourceInner();
             inner.Enabled = true;
             inner.AutoMitigate = true;
             return new MetricAlertImpl(name, inner, this.Manager);

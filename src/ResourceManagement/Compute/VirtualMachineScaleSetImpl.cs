@@ -2,26 +2,25 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 namespace Microsoft.Azure.Management.Compute.Fluent
 {
+    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
+    using Microsoft.Azure.Management.Msi.Fluent;
+    using Models;
     using Network.Fluent;
     using ResourceManager.Fluent;
     using ResourceManager.Fluent.Core;
     using ResourceManager.Fluent.Core.ResourceActions;
     using Storage.Fluent;
-    using Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
+    using System.Threading;
     using System.Threading.Tasks;
     using VirtualMachineScaleSet.DefinitionManaged;
     using VirtualMachineScaleSet.DefinitionManagedOrUnmanaged;
     using VirtualMachineScaleSet.DefinitionUnmanaged;
     using VirtualMachineScaleSet.Update;
-    using System.Threading;
-    using Microsoft.Azure.Management.Graph.RBAC.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.Msi.Fluent;
 
     /// <summary>
     /// Implementation of VirtualMachineScaleSet.

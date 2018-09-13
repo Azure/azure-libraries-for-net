@@ -47,5 +47,16 @@ namespace Samples.Tests
                 WebAppPerformanceMonitoringAlerts.Program.RunSample(rollUpClient);
             }
         }
+
+        [Fact]
+        [Trait("Samples", "Monitor")]
+        public void AutoscaleSettingsBasedOnPerformanceOrScheduleTest()
+        {
+            using (var context = FluentMockContext.Start(GetType().FullName))
+            {
+                var rollUpClient = TestHelper.CreateRollupClient();
+                AutoscaleSettingsBasedOnPerformanceOrSchedule.Program.RunSample(rollUpClient);
+            }
+        }
     }
 }

@@ -182,7 +182,6 @@ namespace Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update
         /// </summary>
         /// <deprecated>Use IWithEncryption.WithoutBlobEncryption() instead.</deprecated>
         /// <return>The next stage of storage account update.</return>
-        [System.Obsolete("WithEncryption.WithoutEncryption() is deprecated, use IWithEncryption.WithoutEncryption() instead.")]
         Microsoft.Azure.Management.Storage.Fluent.StorageAccount.Update.IUpdate WithoutEncryption();
 
         /// <summary>

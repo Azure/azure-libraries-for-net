@@ -11,8 +11,6 @@ namespace Microsoft.Azure.Management.ResourceManager.Fluent
     /// <summary>
     /// Implementation of IGroupableResource.
     /// </summary>
-    /// The implementation for IGroupableResource.
-    /// </summary>
     /// <typeparam name="IFluentResourceT">The fluent wrapper interface for the resource</typeparam>
     /// <typeparam name="InnerResourceT">The autorest generated resource</typeparam>
     /// <typeparam name="FluentResourceT">The implementation for fluent wrapper interface</typeparam>

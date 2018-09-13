@@ -249,9 +249,9 @@ namespace Microsoft.Azure.Management.AppService.Fluent
 
         public override async Task<FluentT> RefreshAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            ///GENMHASH:9EC0529BA0D08B75AD65E98A4BA01D5D:27E486AB74A10242FF421C0798DDC450
+            //GENMHASH:9EC0529BA0D08B75AD65E98A4BA01D5D:27E486AB74A10242FF421C0798DDC450
             SiteInner inner = await GetSiteAsync(cancellationToken);
-            ///GENMHASH:256905D5B839C64BFE9830503CB5607B:27E486AB74A10242FF421C0798DDC450
+            //GENMHASH:256905D5B839C64BFE9830503CB5607B:27E486AB74A10242FF421C0798DDC450
             this.SiteConfig = await GetConfigInnerAsync(cancellationToken);
             SetInner(inner);
             return this as FluentT;

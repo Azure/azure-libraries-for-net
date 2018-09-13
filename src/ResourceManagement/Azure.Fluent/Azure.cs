@@ -526,6 +526,14 @@ namespace Microsoft.Azure.Management.Fluent
             }
         }
 
+        public IAutoscaleSettings AutoscaleSettings
+        {
+            get
+            {
+                return this.monitorManager.AutoscaleSettings;
+            }
+        }
+
         public IEventHubNamespaces EventHubNamespaces
         {
             get
@@ -1139,5 +1147,11 @@ namespace Microsoft.Azure.Management.Fluent
         /// Entry point to Azure Monitor Alert Rules management.
         /// </summary>
         IAlertRules AlertRules { get; }
+
+
+        /// <summary>
+        /// Entry point to Azure Monitor Autoscale management.
+        /// </summary>
+        IAutoscaleSettings AutoscaleSettings { get; }
     }
 }

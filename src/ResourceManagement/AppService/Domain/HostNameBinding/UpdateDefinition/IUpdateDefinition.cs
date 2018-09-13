@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.UpdateDef
         /// <summary>
         /// Specifies the sub-domain to bind to.
         /// </summary>
-        /// <param name="subDomain">The sub-domain name excluding the top level domain, e.g., ".</param>
-        /// <",>"www".</",>
+        /// <param name="subDomain">The sub-domain name excluding the top level domain, e.g., "www".</param>
         /// <return>The next stage of the definition.</return>
         Microsoft.Azure.Management.AppService.Fluent.HostNameBinding.UpdateDefinition.IWithHostNameDnsRecordType<ParentT> WithSubDomain(string subDomain);
     }

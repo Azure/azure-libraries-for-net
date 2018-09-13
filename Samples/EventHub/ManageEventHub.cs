@@ -10,18 +10,18 @@ using Microsoft.Azure.Management.Samples.Common;
 using Microsoft.Azure.Management.Storage.Fluent;
 using System;
 
-/**
- * Azure Event Hub sample for managing event hub -
- *   - Create an event hub namespace
- *   - Create an event hub in the namespace with data capture enabled along with a consumer group and rule
- *   - List consumer groups in the event hub
- *   - Create a second event hub in the namespace
- *   - Create a consumer group in the second event hub
- *   - List consumer groups in the second event hub
- *   - Create an event hub namespace along with event hub.
- */
 namespace ManageEventHub
 {
+    /**
+     * Azure Event Hub sample for managing event hub -
+     *   - Create an event hub namespace
+     *   - Create an event hub in the namespace with data capture enabled along with a consumer group and rule
+     *   - List consumer groups in the event hub
+     *   - Create a second event hub in the namespace
+     *   - Create a consumer group in the second event hub
+     *   - List consumer groups in the second event hub
+     *   - Create an event hub namespace along with event hub.
+     */
     public class Program
     {
         public static void RunSample(IAzure azure)
