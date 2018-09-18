@@ -43,15 +43,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
         /// Specifies a region in which image version needs to be available.
         /// </summary>
         /// <param name="region">The region.</param>
+        /// <param name="replicaCount">The replica count in the region.</param>
         /// <return>The next definition stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithRegionAvailability(Region region);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithRegionAvailability(Region region, int replicaCount);
 
         /// <summary>
         /// Specifies list of regions in which image version needs to be available.
         /// </summary>
-        /// <param name="regions">The region list.</param>
+        /// <param name="regions">The target region list.</param>
         /// <return>The next definition stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithRegionAvailability(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithRegionAvailability(IList<TargetRegion> regions);
     }
 
     /// <summary>
@@ -68,21 +69,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
         /// </summary>
         /// <return>The next definition stage.</return>
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithExcludedFromLatest();
-    }
-
-    /// <summary>
-    /// The stage of the image version definition allowing to specify the scale tier.
-    /// </summary>
-    public interface IWithScaleTier  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-
-        /// <summary>
-        /// Specifies the scale tier.
-        /// </summary>
-        /// <param name="scaleTier">The scale tier.</param>
-        /// <return>The next stage of the definition.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithCreate WithScaleTier(ScaleTier scaleTier);
     }
 
     /// <summary>
@@ -165,7 +151,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definiti
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.ICreatable<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion>,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithAvailableRegion,
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithScaleTier,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithEndOfLifeDate,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithExcludeFromLatest,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Definition.IWithTags

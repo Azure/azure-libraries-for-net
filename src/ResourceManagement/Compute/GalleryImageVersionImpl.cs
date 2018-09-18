@@ -63,21 +63,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return await client.GetAsync(this.resourceGroupName, this.galleryName, this.galleryImageName, this.galleryImageVersionName, null, cancellationToken);
         }
 
-
-        ///GENMHASH:7224D46AA307534DE0BFEED82F17A1C0:B050247F6761F446EEF781F3F6E12C58
-        public IReadOnlyList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> AvailableRegions()
-        {
-            List<Region> regions = new List<Region>();
-            if (this.Inner.PublishingProfile != null && this.Inner.PublishingProfile.Regions != null)
-            {
-                foreach(var regionStr in this.Inner.PublishingProfile.Regions)
-                {
-                    regions.Add(Region.Create(regionStr));
-                }
-            }
-            return regions;
-        }
-
         ///GENMHASH:0202A00A1DCF248D2647DBDBEF2CA865:1441758C6DA19434093428FE9E67FD01
         public override async Task<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion> CreateResourceAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -155,19 +140,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             return this.Inner.ReplicationStatus;
         }
 
-        ///GENMHASH:113FEBA4AFA08F6AEFAB8F0B2A7A5058:3A95C6D93DAFB975B40ACDDF0DEC7D1A
-        public ScaleTier ScaleTier()
-        {
-            if (this.Inner.PublishingProfile != null)
-            {
-                return this.Inner.PublishingProfile.ScaleTier;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         ///GENMHASH:7F0A9CB4CB6BBC98F72CF50A81EBFBF4:BBFAD2E04A2C1C43EB33356B7F7A2AD6
         public GalleryImageVersionStorageProfile StorageProfile()
         {
@@ -194,38 +166,45 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         }
 
         ///GENMHASH:A8C57DD59CCFD6D7F740DC7D7758EDC1:E38D778F0AAB48C77F9650E19784F982
-        public GalleryImageVersionImpl WithRegionAvailability(Region region)
+        public GalleryImageVersionImpl WithRegionAvailability(Region region, int replicaCount)
         {
             if (this.Inner.PublishingProfile == null)
             {
                 this.Inner.PublishingProfile = new GalleryImageVersionPublishingProfile();
             }
-            if (this.Inner.PublishingProfile.Regions == null)
+            if (this.Inner.PublishingProfile.TargetRegions == null)
             {
-                this.Inner.PublishingProfile.Regions = new List<string>();
+                this.Inner.PublishingProfile.TargetRegions = new List<TargetRegion>();
             }
             bool found = false;
             string newRegionName = region.ToString();
             string newRegionNameTrimmed = newRegionName.Replace(" ", "");
-            foreach(var regionStr in this.Inner.PublishingProfile.Regions)
+            foreach(var targetRegion in this.Inner.PublishingProfile.TargetRegions)
             {
+                string regionStr = targetRegion.Name;
                 string regionStrTrimmed = regionStr.Replace(" ", "");
                 if (regionStrTrimmed.Equals(newRegionNameTrimmed, StringComparison.OrdinalIgnoreCase))
                 {
+                    targetRegion.RegionalReplicaCount = replicaCount; // Update existing
                     found = true;
                     break;
                 }
             }
             if (!found) {
-                this.Inner.PublishingProfile.Regions.Add(newRegionName);
+                this.Inner.PublishingProfile.TargetRegions.Add(new TargetRegion
+                {
+                    Name = newRegionName,
+                    RegionalReplicaCount = replicaCount
+                });
             }
             //
             // Gallery image version publishing profile regions list must contain the location of image version.
             //
             found = false;
             string locationTrimmed = this.Location().Replace(" ", "");
-            foreach(var regionStr in this.Inner.PublishingProfile.Regions)
+            foreach(var targetRegion in this.Inner.PublishingProfile.TargetRegions)
             {
+                string regionStr = targetRegion.Name;
                 string regionStrTrimmed = regionStr.Replace(" ", "");
                 if (regionStrTrimmed.Equals(locationTrimmed, StringComparison.OrdinalIgnoreCase))
                 {
@@ -235,30 +214,31 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
             if (!found)
             {
-                this.Inner.PublishingProfile.Regions.Add(this.Location());
+                this.Inner.PublishingProfile.TargetRegions.Add(new TargetRegion
+                {
+                    Name = this.Location(),
+                    RegionalReplicaCount = null // null means default where service default to 1 replica
+                });
             }
             return this;
         }
 
         ///GENMHASH:004D55E89630E9E1C10773DB1F52DE2A:3D6CB07F9B48FC2F0B29107958928ACA
-        public GalleryImageVersionImpl WithRegionAvailability(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions)
+        public GalleryImageVersionImpl WithRegionAvailability(IList<TargetRegion> regions)
         {
             if (this.Inner.PublishingProfile == null)
             {
                 this.Inner.PublishingProfile = new GalleryImageVersionPublishingProfile();
             }
-            this.Inner.PublishingProfile.Regions = new List<string>();
-            foreach(var region in regions)
-            {
-                this.Inner.PublishingProfile.Regions.Add(region.ToString());
-            }
+            this.Inner.PublishingProfile.TargetRegions = regions;
             //
             // Gallery image version publishing profile regions list must contain the location of image version.
             //
             bool found = false;
             string locationTrimmed = this.Location().Replace(" ", "");
-            foreach(var regionStr in this.Inner.PublishingProfile.Regions)
+            foreach(var targetRegion in this.Inner.PublishingProfile.TargetRegions)
             {
+                string regionStr = targetRegion.Name;
                 string regionStrTrimmed = regionStr.Replace(" ", "");
                 if (regionStrTrimmed.Equals(locationTrimmed, StringComparison.OrdinalIgnoreCase))
                 {
@@ -268,7 +248,11 @@ namespace Microsoft.Azure.Management.Compute.Fluent
             }
             if (!found)
             {
-                this.Inner.PublishingProfile.Regions.Add(this.Location());
+                this.Inner.PublishingProfile.TargetRegions.Add(new TargetRegion
+                {
+                    Name = this.Location(),
+                    RegionalReplicaCount = null // null means default where service default to 1 replica
+                });
             }
             return this;
         }
@@ -321,15 +305,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         ///GENMHASH:03B1F797E02E1089DCD5EB13134EB163:0206C7B1F86570DBFF6507721145FD4A
         public IUpdate WithoutRegionAvailability(Region region)
         {
-            if (this.Inner.PublishingProfile != null && this.Inner.PublishingProfile.Regions != null)
+            if (this.Inner.PublishingProfile != null && this.Inner.PublishingProfile.TargetRegions != null)
             {
                 int foundIndex = -1;
                 int i = 0;
                 string regionNameToRemove = region.ToString();
                 string regionNameToRemoveTrimmed = regionNameToRemove.Replace(" ", "");
                 //
-                foreach(var regionStr in this.Inner.PublishingProfile.Regions)
+                foreach(var targetRegion in this.Inner.PublishingProfile.TargetRegions)
                 {
+                    string regionStr = targetRegion.Name;
                     string regionStrTrimmed = regionStr.Replace(" ", "");
                     if (regionStrTrimmed.Equals(regionNameToRemoveTrimmed, StringComparison.OrdinalIgnoreCase))
                     {
@@ -340,7 +325,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 }
                 if (foundIndex != -1)
                 {
-                    this.Inner.PublishingProfile.Regions.RemoveAt(foundIndex);
+                    this.Inner.PublishingProfile.TargetRegions.RemoveAt(foundIndex);
                 }
             }
             return this;
@@ -354,17 +339,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 this.Inner.PublishingProfile = new GalleryImageVersionPublishingProfile();
             }
             this.Inner.PublishingProfile.ExcludeFromLatest = false;
-            return this;
-        }
-
-        ///GENMHASH:304AD2D7A1FC4F36A157B7EA318613BC:19B02B933C00208C5868287AA1C2AFFE
-        public GalleryImageVersionImpl WithScaleTier(ScaleTier scaleTier)
-        {
-            if (this.Inner.PublishingProfile == null)
-            {
-                this.Inner.PublishingProfile = new GalleryImageVersionPublishingProfile();
-            }
-            this.Inner.PublishingProfile.ScaleTier = scaleTier;
             return this;
         }
 

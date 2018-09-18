@@ -3,25 +3,8 @@
 
 namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update
 {
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using System;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using System;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
-    using System;
-    using System.Collections.Generic;
-    using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
-    using Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions;
     using System;
     using System.Collections.Generic;
 
@@ -37,15 +20,16 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update
         /// Specifies a region in which image version needs to be available.
         /// </summary>
         /// <param name="region">The region.</param>
+        /// <param name="replicaCount">The replica count in the region.</param>
         /// <return>The next update stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IUpdate WithRegionAvailability(Region region);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IUpdate WithRegionAvailability(Region region, int replicaCount);
 
         /// <summary>
         /// Specifies list of regions in which image version needs to be available.
         /// </summary>
-        /// <param name="regions">The region list.</param>
+        /// <param name="regions">The target region list.</param>
         /// <return>The next update stage.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IUpdate WithRegionAvailability(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions);
+        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IUpdate WithRegionAvailability(IList<TargetRegion> regions);
 
         /// <summary>
         /// Specifies that an image version should be removed from an existing region serving it.
@@ -114,26 +98,10 @@ namespace Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta,
         Microsoft.Azure.Management.ResourceManager.Fluent.Core.ResourceActions.IAppliable<Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion>,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IWithAvailableRegion,
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IWithScaleTier,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IWithEndOfLifeDate,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IWithExcludeFromLatest,
         Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IWithTags
     {
 
-    }
-
-    /// <summary>
-    /// The stage of the image version update allowing to specify the scale tier.
-    /// </summary>
-    public interface IWithScaleTier  :
-        Microsoft.Azure.Management.ResourceManager.Fluent.Core.IBeta
-    {
-
-        /// <summary>
-        /// Specifies the scale tier.
-        /// </summary>
-        /// <param name="scaleTier">The scale tier.</param>
-        /// <return>The next stage of the update.</return>
-        Microsoft.Azure.Management.Compute.Fluent.GalleryImageVersion.Update.IUpdate WithScaleTier(ScaleTier scaleTier);
     }
 }

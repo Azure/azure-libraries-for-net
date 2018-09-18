@@ -15,17 +15,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
     internal partial class GalleryImageVersionImpl 
     {
         /// <summary>
-        /// Gets the regions in which the image version is available.
-        /// </summary>
-        System.Collections.Generic.IReadOnlyList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion.AvailableRegions
-        {
-            get
-            {
-                return this.AvailableRegions();
-            }
-        }
-
-        /// <summary>
         /// Gets the date indicating image version's end of life.
         /// </summary>
         System.DateTime? Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion.EndOfLifeDate
@@ -103,18 +92,7 @@ namespace Microsoft.Azure.Management.Compute.Fluent
                 return this.ReplicationStatus();
             }
         }
-
-        /// <summary>
-        /// Gets the image version scale tier.
-        /// </summary>
-        Models.ScaleTier Microsoft.Azure.Management.Compute.Fluent.IGalleryImageVersion.ScaleTier
-        {
-            get
-            {
-                return this.ScaleTier();
-            }
-        }
-
+ 
         /// <summary>
         /// Gets the image version storageProfile describing OS and data disks.
         /// </summary>
@@ -152,28 +130,30 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// Specifies a region in which image version needs to be available.
         /// </summary>
         /// <param name="region">The region.</param>
+        /// <param name="replicaCount">The replica count in the region.</param>
         /// <return>The next update stage.</return>
-        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithAvailableRegion.WithRegionAvailability(Region region)
+        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithAvailableRegion.WithRegionAvailability(Region region, int replicaCount)
         {
-            return this.WithRegionAvailability(region);
+            return this.WithRegionAvailability(region, replicaCount);
         }
 
         /// <summary>
         /// Specifies a region in which image version needs to be available.
         /// </summary>
         /// <param name="region">The region.</param>
+        /// <param name="replicaCount">The replica count in the region.</param>
         /// <return>The next definition stage.</return>
-        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithAvailableRegion.WithRegionAvailability(Region region)
+        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithAvailableRegion.WithRegionAvailability(Region region, int replicaCount)
         {
-            return this.WithRegionAvailability(region);
+            return this.WithRegionAvailability(region, replicaCount);
         }
 
         /// <summary>
         /// Specifies list of regions in which image version needs to be available.
         /// </summary>
-        /// <param name="regions">The region list.</param>
+        /// <param name="regions">The target region list.</param>
         /// <return>The next update stage.</return>
-        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithAvailableRegion.WithRegionAvailability(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions)
+        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithAvailableRegion.WithRegionAvailability(IList<TargetRegion> regions)
         {
             return this.WithRegionAvailability(regions);
         }
@@ -181,9 +161,9 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         /// <summary>
         /// Specifies list of regions in which image version needs to be available.
         /// </summary>
-        /// <param name="regions">The region list.</param>
+        /// <param name="regions">The target region list.</param>
         /// <return>The next definition stage.</return>
-        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithAvailableRegion.WithRegionAvailability(IList<Microsoft.Azure.Management.ResourceManager.Fluent.Core.Region> regions)
+        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithAvailableRegion.WithRegionAvailability(IList<TargetRegion> regions)
         {
             return this.WithRegionAvailability(regions);
         }
@@ -275,26 +255,6 @@ namespace Microsoft.Azure.Management.Compute.Fluent
         GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithExcludeFromLatest.WithoutExcludedFromLatest()
         {
             return this.WithoutExcludedFromLatest();
-        }
-
-        /// <summary>
-        /// Specifies the scale tier.
-        /// </summary>
-        /// <param name="scaleTier">The scale tier.</param>
-        /// <return>The next stage of the update.</return>
-        GalleryImageVersion.Update.IUpdate GalleryImageVersion.Update.IWithScaleTier.WithScaleTier(ScaleTier scaleTier)
-        {
-            return this.WithScaleTier(scaleTier);
-        }
-
-        /// <summary>
-        /// Specifies the scale tier.
-        /// </summary>
-        /// <param name="scaleTier">The scale tier.</param>
-        /// <return>The next stage of the definition.</return>
-        GalleryImageVersion.Definition.IWithCreate GalleryImageVersion.Definition.IWithScaleTier.WithScaleTier(ScaleTier scaleTier)
-        {
-            return this.WithScaleTier(scaleTier);
         }
 
         /// <summary>
